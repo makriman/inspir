@@ -67,7 +67,6 @@ test("guest chat URL helpers do not pull private topic seeds into the client gra
   const helper = fs.readFileSync(path.resolve("lib/content/topic-path.ts"), "utf8");
   const clientFiles = [
     "components/chat/ChatClient.tsx",
-    "components/chat/GuestFeatureGate.tsx",
     "components/chat/topic-model.ts",
   ];
 
@@ -89,6 +88,9 @@ test("guest chat URL helpers do not pull private topic seeds into the client gra
     assert.match(source, /@\/lib\/content\/topic-path/);
     assert.doesNotMatch(source, /@\/lib\/content\/(?:topics|topic-routing)/);
   }
+
+  const guestGate = fs.readFileSync(path.resolve("components/chat/GuestFeatureGate.tsx"), "utf8");
+  assert.doesNotMatch(guestGate, /@\/lib\/content\/(?:topics|topic-routing)/);
 
   const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
   assert.match(chatClient, /dynamic\(\(\) =>\s*import\("@\/components\/chat\/ProfilePanel"\)/);

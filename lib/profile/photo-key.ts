@@ -8,7 +8,11 @@ export async function profileImageUserHash(userId: string) {
 
 export async function profileImageObjectKey(userId: string, hash: string) {
   const userHash = await profileImageUserHash(userId);
-  return `${profileImagePrefix}/${userHash.slice(0, 2)}/${userHash}/${hash}`;
+  // The final component is unique to this upload. Content-addressed keys made
+  // two concurrent requests share an R2 object, so the losing request could
+  // delete the object committed by the winner while cleaning up its D1 CAS
+  // failure. Historical keys without this component remain valid below.
+  return `${profileImagePrefix}/${userHash.slice(0, 2)}/${userHash}/${hash}/${crypto.randomUUID()}`;
 }
 
 export function isValidProfileImageObjectKey(key: string) {

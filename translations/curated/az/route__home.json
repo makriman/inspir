@@ -4,517 +4,12 @@
   "locale": "az",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} praktik bələdçi"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "Öyrənməni əmələ çevirən {value1} bələdçili kitabxana."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Tutorluq, məşq, testlər, yaddaş kartları, debat, yazı rəyi, kodlaşdırma köməyi və öyrənmə planlaması üçün pulsuz ictimai AI öyrənmə yoldaşı."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Çaşqınlıqdan aydın izaha, Sokratik suallara, nümunələrə və aktiv xatırlamaya aparan praktik AI öyrənmə yolu."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Əsasları öyrənmək üçün Hər şeyi öyrən-i inspir-də istifadə etməyə dair praktik bələdçi: promptlar, öyrənmə dövrləri və daha təhlükəsiz AI vərdişləri."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "AI-nin tələbələri passiv cavab toplayanlara çevirmədən öyrənməni necə daha aydın, şəxsi və əlçatan edə bildiyinə praktik baxış."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "İnsanların tez anlaya biləcəyi ictimai öyrənmə saytı."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "inspir-in öyrənmənin pulsuz, əlçatan və canlı olmalı olduğuna inamını təqdim edən qısa film."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "İlk sual üçün tutor"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "əlçatanlıq, promptlar, testlər, daha təhlükəsiz AI davranışı, öyrənən axınları və UI cilası."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Oxuduqdan sonra addım"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Aktiv məşq"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Aktiv xatırlama təkrarı"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Hər ipucundan sonra davam etməzdən əvvəl addımın niyə işlədiyini izah et."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Simulyasiyadan sonra məkanı, məhdudiyyətləri və sübutları yekunlaşdır."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI kod tutoru"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI debat məşqi"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI imtahan hazırlığı planı"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "Testlər və aktiv xatırlama ilə AI imtahan hazırlığı planı"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI İmtahan Hazırlığı Planlayıcısı"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI yaddaş kartları və aktiv xatırlama: daha çox necə yadda saxlamaq olar"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "Aktiv xatırlama üçün AI yaddaş kartları"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "Təkrar üçün AI yaddaş kartları"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI tarix tutoru"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI Tarix Tutoru"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI ev tapşırığı məşqçisi"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "Köçürmədən AI ev tapşırığı köməyi"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "Cavabları köçürmədən AI ev tapşırığı köməyi"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI Ev Tapşırığı Köməkçisi"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI riyaziyyat addım məşqçisi"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI Riyaziyyat Tutoru"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "İmtahanlar üçün AI test generatoru"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI Sokratik tutor"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI dərs cədvəli"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI ilə zaman səyahəti öyrənməsi"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "Çətin anlayışlar üçün AI tutor"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "Fənlər üzrə AI tutorları"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "Tələbələr üçün AI yazı rəyi"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI Yazı Tutoru"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Yoxlama sualını cavabla, addımı sına, iddianı debat et, qaralamanı düzəlt və ya xatırlama kartları hazırla."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "Testlər yenidən oxumaqdan yaxşıdırmı?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Arqument"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Arqument məşqi"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "İstənilən sualı verin və aydın izahlar, nümunələr, davam promptları və səbirli AI tutorluğu ilə öyrənin."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "İstədiyini soruş"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "İpucu istə"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Cavabı yox, ipucu istə"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Ən zəif anlayış üçün daha sadə izah istə."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Tərifləri, nümunələri və transfer tapşırıqlarını qarışdıran beş sual istə."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Düşünməni öyrənəndə saxlayan ipucları, yoxlamalar, rəy və öyrənmə planları istə."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Mövzunu sadə dillə izah etməsini istə, sonra bir bənzətmə, bir nümunə və bir yayğın yanlış anlayış soruş."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Bu mövzu haqqında mənə beş Sokratik sual ver. Hər cavabdan sonra hansı fərziyyədən istifadə etdiyimi və növbəti nəyi yoxlamalı olduğumu de."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Keçmişin ictimai fiqurları ilə əsaslandırılmış söhbətlərdə suallar ver, ideyalara meydan oxu və tarixi öyrən."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Tarixi rejimdən nəyin sənədləşdirilmiş, nəyin çıxarılmış və ya simulyasiya edilmiş olduğunu işarələməyi istə."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Əsl sualı ver"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "İlk sualını ver və birbaşa məşqə keç."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Məktəblər məxfi xüsusi versiyalar işlədə bildiyi halda ictimaiyyətə açıqdır."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Bütün rejimlərə bax"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Fənlərə bax"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Zaman pasportu qur, səyahət xəbərdarlığını keç və səhnə, xəritə, zaman xətti, insanlar, qaydalar, inventar və sübutlarla tarixi dünyanı araşdır."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Realistik öyrənmə planı, xatırlama məşqi, testlər, yaddaş kartları və zəif sahə təkrarı ilə AI imtahan hazırlığı iş axını qur."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "İmtahan planı qur"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Planı qur"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Bizimlə qur"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Maraq, məşq və əlçatanlıq üçün hazırlanıb."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Ümumi çat qutusundan yox, real öyrənən davranışından qurulub."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "İstifadə üçün hazırlanıb"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "AI ev tapşırığı köməyi etik ola bilərmi?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "AI tarixi dialoqunu mənbə kimi sitat gətirə bilərəmmi?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "inspir-dən giriş etmədən istifadə edə bilərəmmi?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "inspir köçürməni təşviq etmədən ev tapşırığında kömək edə bilərmi?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Modelimi yoxla"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Bir addımı yoxla"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Məntiqi sətir-sətir yoxla"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Hesablamamdakı bu addımı yoxla. Səhvdirsə, xətanı izah et və mənə bir növbəti addım ver."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Aydın izahlar"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Aydın məxfilik sərhədləri"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Kod tutoru"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Kodlaşdırma"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Ünsiyyət"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Arqumentləri müqayisə et"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Məxfi yerləşdirmələr"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Davam et"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "AI ilə öyrənmənin daha təhlükəsiz, aydın, əlçatan və faydalı olmasını istəyən mühəndislərin, müəllimlərin, dizaynerlərin, tələbələrin və hər kəsin töhfəsi xoşdur."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Səhvləri çevir"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "İzahı aktiv xatırlama kartlarına çevir, sonra səhv və ya tərəddüddən sonra kartlara qayıt."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Kiçik test yarat"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "Maraq burada başlayır"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Maraq, məşq və öyrədən AI."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Tarix və ideyaların sübutu itirmədən kontekstli, mübahisəli və canlı hiss olunmasını istəyən maraqlı öyrənənlər."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Məlumat məxfiliyi olan xüsusi AI öyrənmə məkanları."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "İddianı debat et"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "İstənilən mövzunu debat et"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "İstənilən mövzunu debat et, çətin suallar al, iddiaları müqayisə et və daha güclü arqumentlər qurmağı öyrən."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Debat iddiaları, sübutları, dəyərləri və fərziyyələri ayırmağa kömək edir; bu da tarixi şərhi daha dəqiq edir."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "İddianı debat et"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "İddianı birdən çox tərəfdən debat et ki, fərziyyələri, güzəştləri və zəif sübutları görə biləsən."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Bu tarixi və ya fəlsəfi iddianı hər iki tərəfdən debat et. Sübutları, fərziyyələri və dəyərləri ayır."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Özünəinam üçün hazırlanıb"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "Düzəldilmiş abzasın niyə daha yaxşı olduğunu izah edə bilmədən onu qəbul etmə."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "Lazım olan ilkin ideyaları bilmədən tam xülasə istəmə."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "Yalnız artıq razı olduğun tərəfi debat etmə."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Planlama"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "Tərəddüdü görməzdən gəlmə; qeyri-müəyyənlik təkrar üçün faydalı siqnaldır."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "Rol oyununun tarixləri, konteksti, sənədləri və ya sübut etiketlərini əvəz etməsinə imkan vermə."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir marağı, ev tapşırığını, təkrarı və böyük sualları izah edən, geri soruşan və məşq etməyə kömək edən yönləndirilmiş AI öyrənmə sessiyalarına çevirir."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "Hər mövzuya eyni vaxt lazım olduğunu fərz edən plan qurma."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Kiçik test yarat"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "Hələ öz sözlərinlə izah edə bilmədiyin cümlələrdən yaddaş kartları hazırlama."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Tapşırığın sahibliyini itirmədən növbəti addıma, səhv yoxlamasına və ya rəyə ehtiyac duyan tələbələr."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "Tapşırığı yapışdırıb hazır cavab istəmə."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Öyrənməyə başla"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "Nələri artıq xatırladığını yoxlamadan qeydləri yenidən oxuma."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "Artıq nəyi sınadığını göstərməyi ötürmə; faydalı kömək həmin kontekstdən asılıdır."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "İlk izahdan sonra dayanma; özünü onun haqqında suallara cavab verməyə məcbur et."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "Yaradılmış dialoqu real sitat və ya ilkin mənbə kimi qəbul etmə."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Onunla nəsə et"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "inspir məktəbləri dəstəkləyirmi?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Hər bələdçi uyğun olan dəqiq öyrənmə rejiminə məşq planları, marşrutlar və keçidlərlə bitir."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Hər bələdçi rejimə, prompta və ya təkrar dövrünə yönəldir ki, oxumaq məşqə çevrilsin."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Hər rejim öz məqsədi, nümunələri və öyrənmə axını olan ictimai qonaq çatı kimi açılır, ona görə öyrənənlər dərhal uyğun dəstəyə başlaya bilirlər."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Asan növbəti addımlar"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Dövr daxil et"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Kontekstə daxil ol"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Hər məqalə kateqoriyalara, canlı rejimlərə, fənn mərkəzlərinə, öyrənmə yollarına və əlaqəli bələdçilərə bağlanır."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Hər qeyri-tətbiq səhifəsinin indi işi var: etibar yaratmaq, öyrənmə marşrutunu izah etmək və vacib detalları gizlətmədən öyrənənləri faydalı növbəti addıma yönəltmək."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Sübutdan xəbərdar səhnələr"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "İmtahana hazırlıq"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "İmtahan Hazırlığı Planlayıcısı"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Geri izah et"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Növbəti addımı izah et"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Bu mövzunu sadə dillə izah et. Mənə lazım olan üç ilkin ideyanı, bir bənzətməni və bir yayğın yanlış anlayışı göstər."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "İzahlar, Sokratik tutorluq, ev tapşırığı məşqçiliyi, testlər, yaddaş kartları, yazı, kod, debat və öyrənmə planlaması."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "AI ilə Tarixi və Böyük İdeyaları Araşdır"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Tarixi və ideyaları araşdır"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Sübutu simulyasiyadan ayıran AI öyrənmə rejimləri ilə tarixi, ictimai fiqurları, səbəbləri, debatları, fəlsəfəni və mənbə tənqidini araşdır."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Məktəbləri araşdır"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Bələdçi kitabxanasını araşdır"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Sürətli öyrənmə marşrutları"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Film bölmələri"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Yaddaş kartı qurucusu"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Yaddaş kartları ən yaxşı bir anda bir ideyanı yoxlayanda, cavabları yalnız cəhddən sonra göstərəndə və səhv kartları daha tez təkrarladanda işləyir."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Riyaziyyat və ya məntiq üçün hər dəfə bir addım işləyin və davam etməzdən əvvəl hər hərəkətin niyə icazəli olduğunu soruşun."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Məktəblər və CSR tərəfdaşları üçün"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Təməllər"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Hamı üçün pulsuz AI öyrənməsi"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Hamı üçün pulsuz AI öyrənməsi | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Hamı üçün pulsuz AI öyrənməsi."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Pulsuz qonaq öyrənməsi"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Pulsuz ictimai AI öyrənmə platforması"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Bloqdan"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "İstənilən fənn üzrə fokuslanmış çoxseçimli test yarat və hər cavabdan sonra izahları təkrar et."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Öyrənmə cədvəli al, zəif sahələr üzrə özünü test et və səhvləri təkrarlı baxış üçün yaddaş kartlarına çevir."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Əvvəl sadə modeli al"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Yazı Məşqçisi"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "İlişdiyin yerdən çıx"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Ev tapşırığında ilişdiyin yerdən çıx"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Tarixi kontekstə daxil ol, arqumentləri müqayisə et və ideyanı birdən çox tərəfdən görməyi məşq et."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Etik ipucları, nümunələr, yoxlamalar və addım-addım məşqçiliklə ev tapşırığında ilişdiyin yerdən çıx."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "öyrənən ehtiyaclarına uyğunlaşdırılmış fənn mərkəzləri"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Struktur, aydınlıq və sübut üzrə rəy ver. Səsimi saxla və bütün cavabı yenidən yazma."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Son hissə missiyaya qayıdır: ictimai əlçatanlıq, məktəblər və öyrənmək üçün daha açıq yol."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Yaxşı başlanğıc sahələri:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Testlər yenidən oxumaqdan yaxşıdırmı?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Bələdçi kitabxanası"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Bələdçilər, yollar, fənlər və promptlar növbəti faydalı məşq yerinə bağlanır."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Faydalı öyrənmə xəritəsi"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Sual budur və mən bunları sınamışam. Son cavabı yox, ən kiçik faydalı ipucunu ver."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Film bölmələrini gizlət"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Film transkriptini gizlət"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "İpucu-öncə kömək"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Tarixi söhbətlər"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "Tarix"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Ev tapşırığı"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Ev Tapşırığı Məşqçisi"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "İmtahan hazırlığı planını nə qədər tez qurmalıyam?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "inspir ümumi AI çatbotundan nə ilə fərqlənir?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Necə işləyir"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "AI ilə özünü aldatmadan necə oxumaq olar"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "AI ilə çətin mövzunu necə anlamaq olar"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "AI ilə Çətin Mövzunu Necə Anlamaq Olar"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Kontekstə dalma"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Qaralamanı yaxşılaşdır"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Səsini qoruyan planlama, düzəliş, struktur və rəylə yazını yaxşılaşdır."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Sualı, artıq nəyi sınadığını, harada ilişdiyini və ipucu, addım yoxlaması yoxsa rəy istədiyini daxil et."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "inspir AI öyrənmə bələdçisi kitabxanası"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir testlər və tələbə icmaları kimi başladı, məktəblər və tədbirlər vasitəsilə böyüdü və indi təkbətək öyrənməni daha əlçatan etmək üçün AI-dən istifadə edir."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir öyrənənin nəyisə anlamaq istədiyi və başlamaq üçün səbirli yerə ehtiyac duyduğu an üçün mövcuddur. Film məhsulu maraq, məşq və əlçatanlıq üçün pulsuz ictimai öyrənmə yoldaşı kimi təqdim edir."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir hərəkətdə"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir açıq şəkildə qurulur."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir xüsusi tədris formaları olan öyrənmə rejimləri ətrafında qurulub: ipucları, Sokratik suallar, testlər, aktiv xatırlama, rol oyunu, debat, yazı rəyi və öyrənmə planlaması."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir öyrənmə filmi"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir marağı, ev tapşırığını, təkrarı və böyük sualları izah edən, geri soruşan və məşq etməyə kömək edən yönləndirilmiş AI öyrənmə sessiyalarına çevirir."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: Hər şeyi öyrənə bilərsən"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "inspir pulsuz istifadə olunurmu?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Marşrutu canlı saxla"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Nəyi sınamalı olduğunu, addımın niyə işlədiyini, səhvin harada baş verdiyini və son cavabı öz səsinlə necə düzəltməyi bil."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Hər şeyi öyrən"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Hər şeyi öyrən üçün promptlar və öyrənmə dövrü"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Pulsuz AI Tutoru ilə Hər Şeyi Öyrən: praktik bələdçi"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Danışaraq, test edərək, debat apararaq və araşdıraraq öyrən."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Öyrənəni prosesdə saxlayan ictimai AI rejimləri ilə proqramlaşdırmanı öyrən, səhvləri ayıkla, layihələr planla, məlumatları şərh et və texniki sualları araşdır."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Passiv cavab oxumaq əvəzinə fokuslanmış suallar, ipucları və düşünmə ilə öyrən."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "İzahlar, Sokratik suallar, ev tapşırığı məşqçiliyi, testlər, yaddaş kartları, debat, yazı rəyi, kodlaşdırma köməyi və öyrənmə planlaması üçün pulsuz AI tutorla öyrən."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Öyrənən-öncəli dəstək"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Öyrənənlərə link yığını yox, ardıcıllıq lazımdır. Bu yollar rejimləri anlama, ev tapşırığı, imtahan hazırlığı və araşdırma üçün praktik öyrənmə dövrlərinə bağlayır."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Yeni fənnin əvvəlində ilişən və ya çətin ideyaya daha sadə giriş yolu istəyən öyrənənlər."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Vaxtı az, proqramı böyük olan və hər şeyin eyni dərəcədə vacib olduğunu iddia etmədən real təkrar yolu istəyən öyrənənlər."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Hamı üçün öyrənmə"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "öyrənmə bələdçiləri və məşq dövrləri"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Sadə dildə model, daha kəskin suallar, geri izah edə biləcəyin nümunələr və təkrar üçün xatırlama kartları ilə ayrıl."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Bu tarixi şəxslə müsahibə etmək istəyirəm. Cavabları sübutdan xəbərdar saxla və qeyri-müəyyənliyi aydın işarələ."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Səhvlərdən yaddaş kartları hazırla və onları gecikmədən sonra təkrar et."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Səhvlərdən, tərəddüdlərdən, formullardan, təriflərdən və aydın izah edə bilmədiyin anlayışlardan yaddaş kartları hazırla."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Yadda qalmasını təmin et"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "İdeyanı yadda saxlat"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Öyrənmə planını real et"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Riyaziyyat"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Riyaziyyat Addım Məşqçisi"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Riyaziyyat, yazı, kodlaşdırma, tarix, ev tapşırığı və imtahan hazırlığının hər birinə fərqli kömək lazımdır. Fəndən başla, sonra uyğun rejimə, prompta, bələdçiyə və ya təkrar dövrünə keç."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Missiya birinci"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Ümumi öyrənmə anları üçün rejim bələdçiləri, prompt dövrləri, öyrənmə üsulları və əsas məqalələr."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Sadə dilli izahdan suallara, nümunələrə və yaddaş məşqinə keç."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Sokratik suallara, testlərə, yaddaş kartlarına, debata, rol oyununa və yönləndirilmiş təlimə keç."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Filmin səsini söndür"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "İmtahanım bu tarixdədir. Proqram, zəif sahələrim və mövcud vaxtım budur. Gündəlik xatırlama ilə real plan qur."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "NCERT-ə uyğun variantlar"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Növbəti addım"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "Xeyr. Yaradılmış dialoqa öyrənmə simulyasiyası kimi yanaş. Fakt iddiaları üçün real ilkin və ya ikinci dərəcəli mənbələrə istinad et."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "Başqa bir cavab qutusu deyil. Öyrənmək üçün yer."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "İctimai qonaq təcrübəsi üçün hesab tələb olunmadan rejimi aç və dərhal başla."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Dizaynca açıq"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Filmi tam ekranda aç"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Qonaq çatını aç"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Fənn mərkəzini aç"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Gəldiyin dəqiq kömək növünü aç."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Öyrənmə xəritəsini aç"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} praktik bələdçi"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Yolu aç"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Səhifələr insanları izahdan canlı rejimə, prompta, testə və ya təkrar dövrünə aparmaq üçün hazırlanıb."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "İstənilən sualı verin və aydın izahlar, nümunələr, davam promptları və səbirli AI tutorluğu ilə öyrənin."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Sayt broşür deyil, marşrutdur."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir məktəbləri dəstəkləyirmi?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir xüsusi tədris formaları olan öyrənmə rejimləri ətrafında qurulub: ipucları, Sokratik suallar, testlər, aktiv xatırlama, rol oyunu, debat, yazı rəyi və öyrənmə planlaması."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Pulsuz ictimai qonaq rejimlərindən istifadə et, sonra açıq mənbəli işi və məktəb yerləşdirmə yollarını araşdır."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "İzahlar, Sokratik tutorluq, ev tapşırığı məşqçiliyi, testlər, yaddaş kartları, yazı, kod, debat və öyrənmə planlaması."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Hamı üçün pulsuz AI öyrənməsi"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "İmtahan Hazırlığı Planlayıcısı"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Etik ipucları, nümunələr, yoxlamalar və addım-addım məşqçiliklə ev tapşırığında ilişdiyin yerdən çıx."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI İmtahan Hazırlığı Planlayıcısı"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Testlər və aktiv xatırlama ilə AI imtahan hazırlığı planı"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Debat iddiaları, sübutları, dəyərləri və fərziyyələri ayırmağa kömək edir; bu da tarixi şərhi daha dəqiq edir."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Səhnənin ümumi rol oyununa çevrilməməsi üçün məkan, zaman, kimlik, məhdudiyyətlər və sübut etiketləri ilə başla."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Ev tapşırığı promptuna nə daxil etməliyəm?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "AI ilə öyrənmənin daha təhlükəsiz, aydın, əlçatan və faydalı olmasını istəyən mühəndislərin, müəllimlərin, dizaynerlərin, tələbələrin və hər kəsin töhfəsi xoşdur."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Çaşqınlıqdan aydın izaha, Sokratik suallara, nümunələrə və aktiv xatırlamaya aparan praktik AI öyrənmə yolu."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI Yazı Tutoru"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir testlər və tələbə icmaları kimi başladı, məktəblər və tədbirlər vasitəsilə böyüdü və indi təkbətək öyrənməni daha əlçatan etmək üçün AI-dən istifadə edir."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir öyrənmə filmi"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Film bölmələrini göstər"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Bu buraxılmış sualları anlayış, formula, tərif və nümunəyə görə qruplaşdırılmış yaddaş kartlarına çevir."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Nəyi sınamalı olduğunu, addımın niyə işlədiyini, səhvin harada baş verdiyini və son cavabı öz səsinlə necə düzəltməyi bil."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Tələbələr üçün AI yazı rəyi"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Hamı üçün öyrənmə"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI kod tutoru"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Zəif sahələri test et"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "İzahlar, Sokratik suallar, ev tapşırığı məşqçiliyi, testlər, yaddaş kartları, debat, yazı rəyi, kodlaşdırma köməyi və öyrənmə planlaması üçün pulsuz AI tutorla öyrən."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Ən güclü iddia ilə ən güclü əks iddianı müqayisə etmək üçün debatdan istifadə et."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "İlk izahdan sonra dayanma; özünü onun haqqında suallara cavab verməyə məcbur et."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Necə işləyir"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Kod tutoru"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "İmtahana hazırlıq"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Axtarış səhifələri, bloq bələdçiləri, promptlar və canlı rejimlər sadə dövr ətrafında bağlanıb: soruş, sına, yoxla, düzəlt və təkrar et."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Kodlaşdırma"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "İlk klikdən faydalı"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "İstənilən fənn üzrə fokuslanmış çoxseçimli test yarat və hər cavabdan sonra izahları təkrar et."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Düzəldilmiş abzasın niyə daha yaxşı olduğunu izah edə bilmədən onu qəbul etmə."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "İmtahanım bu tarixdədir. Proqram, zəif sahələrim və mövcud vaxtım budur. Gündəlik xatırlama ilə real plan qur."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Pulsuz AI Tutoru ilə Hər Şeyi Öyrən: praktik bələdçi"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Bu tarixi şəxslə müsahibə etmək istəyirəm. Cavabları sübutdan xəbərdar saxla və qeyri-müəyyənliyi aydın işarələ."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Ümumi çat qutusundan yox, real öyrənən davranışından qurulub."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Ev tapşırığında ilişdiyin yerdən çıx"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Bloq real öyrənmə anları ətrafında qurulub: ilişdiyin yerdən çıxmaq, daha çox xatırlamaq, daha yaxşı yazmaq, imtahana hazırlaşmaq və səbirli tutorla ideyaları araşdırmaq."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Niyə tarixi debatla birləşdirmək lazımdır?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Bloq faydalı öyrənmə məsləhətlərini canlı məşqə bağlayır, beləliklə bələdçi bir addımda öyrənmə sessiyasına çevrilə bilər."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Sualı və nəyi sınadığını yapışdır, sonra ən kiçik faydalı növbəti addımı istə."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Filmi dayandır"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Yeni fənnin əvvəlində ilişən və ya çətin ideyaya daha sadə giriş yolu istəyən öyrənənlər."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Məni bu zaman və məkana yerləşdir. Sənədləşdirilmiş faktları ehtimal olunan simulyasiyadan ayrıca etiketlə və nə gördüyümü soruş."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "əlçatanlıq, promptlar, testlər, daha təhlükəsiz AI davranışı, öyrənən axınları və UI cilası."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Sadə dilli izahlar"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Kömək istəməzdən əvvəl harada ilişdiyini dəqiq yaz."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "İmtahan təkrarını planla, testlər yarat, yaddaş kartları qur, interval təkrarını cədvəllə və fokuslanmış AI öyrənmə rejimləri ilə motivasiyanı real saxla."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Səhvləri çevir"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "İşi planla, xatırlama məşqi et və testlər və aktiv xatırlama ilə zəif yerləri bağla."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Tarixi və ideyaları araşdır"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Planlama"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AI ilə Tarixi və Böyük İdeyaları Araşdır"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Filmi oynat"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "İdeyanı yadda saxlat"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "inspir öyrənmə önizləməsini oynat"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Fənn mərkəzini aç"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Populyar AI öyrənmə yolları"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Yazı"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Populyar yollar"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Davam et"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Məşq"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Təməllər"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Məşq, cavab köçürmə deyil"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Növbəti təkrarı cədvəllə"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI riyaziyyat addım məşqçisi"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Kontekstə daxil ol"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Əsl sualı ver"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "İmtahana hazırlaş"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "inspir-də Hər şeyi öyrən-dən faydalı öyrənmə nəticələri almaq üçün prompt ideyaları və təkrarlana bilən öyrənmə dövrü."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Sübutu simulyasiyadan ayıran AI öyrənmə rejimləri ilə tarixi, ictimai fiqurları, səbəbləri, debatları, fəlsəfəni və mənbə tənqidini araşdır."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Fiqura sual ver"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI debat məşqi"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Tarixi baxış bucağını sorğula"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Suallar mövzu haqqında öz modelini üzə çıxarmağa məcbur edir; çaşqınlıq, saxta özünəinam və çatışmayan ilkin biliklər adətən orada görünür."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Sürətli cavablar"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Bu mövzular üzrə mənə bir-bir sual ver. Hər cavabdan sonra boşluğu izah et və çətinliyi yavaş-yavaş artır."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Məni viktorina mövzularında test et"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Zəif sahələri test et"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Özünü test et"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Özünü əvvəl test et ki, əslində nəyi xatırladığını və özünəinamın harada aldadıcı olduğunu görəsən."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Testlər adətən daha çox şeyi üzə çıxarır, çünki xatırlamanı yoxlayır. Yenidən oxumaq test nəyin düzəldilməli olduğunu göstərəndən sonra kömək edə bilər."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Missiyanı oxu"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Realistik cədvəl"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Bir səhvi düzəlt"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Zəif nöqtəni düzəlt"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Yenidən oynat"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Filmi yenidən başlat"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Xatırlama məşqi"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Yaddaş kartları ilə təkrar et"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Qaralamamı düzəlt"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Səsini itirmədən düzəlt"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Səhvi saxla"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Növbəti təkrarı cədvəllə"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Məktəbə məxsus iş axınları"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Məktəblər öyrənənlərinə uyğunlaşdırılmış, NCERT-ə uyğun məzmun və iş axınları daxil olmaqla, məktəb brendinə uyğun AI çat təcrübələri təklif edə bilər; istifadə xərcləri tərəfdaş məktəblər və ya CSR sponsorluğu ilə qarşılanır."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Axtarış səhifələri, bloq bələdçiləri, promptlar və canlı rejimlər sadə dövr ətrafında bağlanıb: soruş, sına, yoxla, düzəlt və təkrar et."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Faktı uydurmadan ayır"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Film bölmələrini göstər"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Film transkriptini göstər"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Sokratik yoxlamalar"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Sokratik təlim"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Sokratik tutor"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Sokratik tutorluq passiv cavab oxumaqdan daha dərin anlayış yaratmaq üçün suallardan, hipotezlərdən, ipuclarından və düşünmədən istifadə edir."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Canlı öyrənmə sessiyasına başla."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "İmtahan tarixini bilən kimi başla. Vaxt azdırsa, zəif sahələri, əvvəlki imtahan üslublu sualları və gündəlik xatırlamanı prioritet et."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Sadə izah, gündəlik bir bənzətmə və mövzunun mənalı olması üçün əvvəl bilməli olduğun üç ideya istəməklə başla."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Hər sessiyaya yenidən oxumazdan əvvəl sürətli testlə başla."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "İlk prinsiplərdən başla"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Fəndən başla, sonra uyğun öyrənmə rejimini aç."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Anlamadığın yerdən başla və sadə dilli model, nümunələr və növbəti addımlar al."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Öyrənməyə başla"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Mövzu, tapşırıq, qaralama, imtahan və ya ideya ilə işə uyğun rejimdə başla."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Hər şeyi öyrən ilə başla"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Səhnənin ümumi rol oyununa çevrilməməsi üçün məkan, zaman, kimlik, məhdudiyyətlər və sübut etiketləri ilə başla."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Görüləcək işdən başla."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "İlişdiyin nöqtəni de"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Addım yoxlamaları"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Tarixi kontekstə daxil ol, arqumentləri müqayisə et və ideyanı birdən çox tərəfdən görməyi məşq et."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Tapşırığın sahibliyini itirmədən növbəti addıma, səhv yoxlamasına və ya rəyə ehtiyac duyan tələbələr."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Öyrənmə dövrləri, AI tutorluq bələdçiləri və praktik promptlar."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "öyrənən ehtiyaclarına uyğunlaşdırılmış fənn mərkəzləri"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Konteksti yekunlaşdır"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Dərsdənkənar öyrənməni, akademik məşqi və marağı dəstəkləyir."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Passiv cavab oxumaq əvəzinə fərziyyələri üzə çıxarmaq və boşluqları doldurmaq üçün suallara keç."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Yaradılmış dialoqu sənədləşdirilmiş sitatdan ayrı saxlayaraq tarixi fiqurla danış."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Tarixi şəxslə danış"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "tarixi fiqurlarla danışmaq üçün AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Təkrardan əvvəl test"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Arqumenti yoxla"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Məntiqini yoxla"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "Bloq faydalı öyrənmə məsləhətlərini canlı məşqə bağlayır, beləliklə bələdçi bir addımda öyrənmə sessiyasına çevrilə bilər."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "Bloq real öyrənmə anları ətrafında qurulub: ilişdiyin yerdən çıxmaq, daha çox xatırlamaq, daha yaxşı yazmaq, imtahana hazırlaşmaq və səbirli tutorla ideyaları araşdırmaq."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "Daha geniş açıq mənbəli inspir platforması."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "Son hissə missiyaya qayıdır: ictimai əlçatanlıq, məktəblər və öyrənmək üçün daha açıq yol."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "Hazırkı inspirlearning.com yenidən qurulması."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "Film ilhamdan praktik vədə keçir: səbirli AI öyrənmə yoldaşı."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Ev tapşırığı və Sokratik rejimlər hazır cavabları sadəcə vermək əvəzinə ipucları, məntiq, addım yoxlamaları və öyrənənin izahları ətrafında hazırlanıb."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "Orta hissə inspir-i anlama, ipucları, testlər və aktiv öyrənmə dövrləri ətrafında çərçivələndirir."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "Növbəti nəsil AI öyrənmə platforması."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Açılış kadrları öyrənməni hər kəsin dərhal başlaya bilməli olduğu bir şey kimi qurur."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Tarixi söhbətlər"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "İctimai sayt öyrənmə xəritəsi kimi qurulub: dərhal kömək üçün canlı rejimlər, öyrənən sualları üçün fənn mərkəzləri və oxumağı əmələ çevirən bələdçilər."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "Sayt broşür deyil, marşrutdur."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Baxmadan üç cümləlik izah yaz, sonra Sokratik rejimdən zəif halqanı tapmasını istə."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Daha dərin düşün"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "İddianı debat et"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Zaman səyahəti"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Bütün rejimlərə bax"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Mövzu klasterləri"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Bloqdan"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Transkript"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Cavabı yox, ipucu istə"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Bir dövrü gəz"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Tarixi baxış bucağını sorğula"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Ev Tapşırığı Məşqçisini sına"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Məktəblər məxfi xüsusi versiyalar işlədə bildiyi halda ictimaiyyətə açıqdır."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Onu yaddaş kartlarına çevir"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Səhvləri təkrar dövrlərinə çevir"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Qeydləri və ya mövzuları ipucları, cavablar, nümunələr və yayğın tələlərlə fokuslanmış yaddaş kartlarına çevir."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Düzəldilmiş səhvi sonrakı baxış üçün yaddaş kartına və ya qısa yoxlama siyahısına çevir."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "İzahı bir anlayış kartı, bir nümunə kartı və bir yanlış anlayış kartı olan aktiv xatırlama kartlarına çevir."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Ən çətin buraxılmış sualı yaddaş kartına çevir və sonra təkrar et."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Bu buraxılmış sualları anlayış, formula, tərif və nümunəyə görə qruplaşdırılmış yaddaş kartlarına çevir."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Proqramını, imtahan tarixini, vaxtını və zəif sahələrini praktik öyrənmə planına çevir."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Sokratik suallara, testlərə, yaddaş kartlarına, debata, rol oyununa və yönləndirilmiş təlimə keç."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Çətin mövzunu anla"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Tarixi konteksti anla, baxış bucağını sorğula, iddiaları müqayisə et və simulyasiyanı sənədləşdirilmiş faktdan ayır."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Səsini itirmədən düzəlt"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "İlişdiyin nöqtəni de"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "AI ilə özünü aldatmadan necə oxumaq olar"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Mövzunu sadə dillə izah etməsini istə, sonra bir bənzətmə, bir nümunə və bir yayğın yanlış anlayış soruş."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI ilə zaman səyahəti öyrənməsi"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Məşq"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Nələri artıq xatırladığını yoxlamadan qeydləri yenidən oxuma."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Proqramını, imtahan tarixini, vaxtını və zəif sahələrini praktik öyrənmə planına çevir."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Səhifələr insanları izahdan canlı rejimə, prompta, testə və ya təkrar dövrünə aparmaq üçün hazırlanıb."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Köçürmədən AI ev tapşırığı köməyi"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Riyaziyyat"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "İlk sual üçün tutor"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Hamı üçün pulsuz AI öyrənməsi."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Dərsdənkənar öyrənməni, akademik məşqi və marağı dəstəkləyir."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI yaddaş kartları və aktiv xatırlama: daha çox necə yadda saxlamaq olar"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Yadda qalmasını təmin et"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Sadə dilli izahdan suallara, nümunələrə və yaddaş məşqinə keç."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "İpucu-öncə kömək"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Sual budur və mən bunları sınamışam. Son cavabı yox, ən kiçik faydalı ipucunu ver."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Testlər adətən daha çox şeyi üzə çıxarır, çünki xatırlamanı yoxlayır. Yenidən oxumaq test nəyin düzəldilməli olduğunu göstərəndən sonra kömək edə bilər."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Yoxlama sualını cavabla, addımı sına, iddianı debat et, qaralamanı düzəlt və ya xatırlama kartları hazırla."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI ilə Çətin Mövzunu Necə Anlamaq Olar"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Kodu anla, xətaları ayıkla, proqramlaşdırma anlayışlarını öyrən və kiçik layihələri addım-addım qur."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Filmin səsini aç"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Aktiv məşq"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "AI-dən öyrənməni səssizcə aradan qaldıran qısa yol kimi yox, anlama, məşq və rəy üçün məşqçi kimi istifadə et."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Kontekstə dalma"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Son işin sənin qalması üçün AI ev tapşırığı məşqçiliyindən ipucları, addım yoxlamaları, riyazi məntiq və yazı rəyi üçün istifadə et."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Öyrənən-öncəli dəstək"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Kontekst, sübut, arqument və baxış bucaqlarını araşdırmaq üçün AI zaman səyahətindən, tarixi söhbətlərdən və debat məşqindən istifadə et."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Yaddaş kartları ən yaxşı bir anda bir ideyanı yoxlayanda, cavabları yalnız cəhddən sonra göstərəndə və səhv kartları daha tez təkrarladanda işləyir."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Hər qeyri-tətbiq səhifəsinin indi işi var: etibar yaratmaq, öyrənmə marşrutunu izah etmək və vacib detalları gizlətmədən öyrənənləri faydalı növbəti addıma yönəltmək."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Ən güclü iddia ilə ən güclü əks iddianı müqayisə etmək üçün debatdan istifadə et."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Düzəldilmiş səhvi sonrakı baxış üçün yaddaş kartına və ya qısa yoxlama siyahısına çevir."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Öyrənməni cavab köçürməyə çevirmədən ipuclarından, addım yoxlamalarından və yazı rəyindən istifadə et."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Məlumat məxfiliyi olan xüsusi AI öyrənmə məkanları."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "inspir-dən esse rəyi, oxu dəstəyi, danışıq məşqi, mənbə tənqidi və öyrənənin səsini əvəz etmədən strukturu yaxşılaşdıran düzəliş dövrləri üçün istifadə et."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Qaralamamı düzəlt"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Şəxsi çatları açmadan ev tapşırığı ipucları, riyaziyyat addım yoxlamaları, yazı rəyi, mənbə tənqidi, Sokratik suallar və yaddaş kartları üçün inspir-dən istifadə et."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "İzahı bir anlayış kartı, bir nümunə kartı və bir yanlış anlayış kartı olan aktiv xatırlama kartlarına çevir."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Cavab köçürmədən addım-addım riyaziyyat köməyi, ev tapşırığı ipucları, Sokratik düşünmə, testlər, yaddaş kartları və imtahan hazırlığı üçün inspir-dən istifadə et."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "Fənlər üzrə AI tutorları"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Pulsuz ictimai qonaq rejimlərindən istifadə et, sonra açıq mənbəli işi və məktəb yerləşdirmə yollarını araşdır."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Missiya birinci"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Bu tarixi və ya fəlsəfi iddianı hər iki tərəfdən debat et. Sübutları, fərziyyələri və dəyərləri ayır."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Sokratik suallardan istifadə et"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Real həyata tab gətirə bilən plan qurmaq üçün imtahan tarixindən, proqramdan, mövcud vaxtdan və zəif sahələrdən istifadə et."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Zəif nöqtəni sonra təkrar etmək üçün əlaqəli bələdçidən, promptdan, fənn mərkəzindən və ya öyrənmə yolundan istifadə et."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Son qaralamanın tanınacaq dərəcədə sənin qalması üçün yazı rəyindən struktur, aydınlıq və sübut üzrə istifadə et."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "İlk klikdən faydalı"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Video idarələri"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Video gedişi"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Səsi qoruyan rəy"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "31 saniyəyə bax"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Zəif sahə dövrləri"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "AI öyrənmə yoldaşı hamı üçün nə etməlidir"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Öyrənənlərin başlamazdan əvvəl adətən verdiyi suallar."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "Mövzu çox çətin gələndə əvvəl nə soruşmalıyam?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "Ev tapşırığı promptuna nə daxil etməliyəm?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Nə edə bilərsiniz"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "Məktəb brendinə uyğun AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Sokratik AI tutor ideyaları niyə yadda saxladır"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "Niyə tarixi debatla birləşdirmək lazımdır?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "İzahdan sonra niyə Sokratik suallardan istifadə etmək lazımdır?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "Cəbr, analiz, mətnli məsələlər və riyaziyyat anlayışlarını AI məşqçi ilə hər dəfə bir addım işləyin."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir öyrənənin nəyisə anlamaq istədiyi və başlamaq üçün səbirli yerə ehtiyac duyduğu an üçün mövcuddur. Film məhsulu maraq, məşq və əlçatanlıq üçün pulsuz ictimai öyrənmə yoldaşı kimi təqdim edir."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Riyaziyyat addımları üzərində işləyin"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Baxmadan üç cümləlik izah yaz, sonra Sokratik rejimdən zəif halqanı tapmasını istə."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Kömək istəməzdən əvvəl harada ilişdiyini dəqiq yaz."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Yazı"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Yazı Məşqçisi"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Bəli, kömək ipucu verdikdə, məntiqi yoxladıqda, səhvləri izah etdikdə və cavabı sənin yerinə yazmaq əvəzinə son cavabı səndən istədikdə."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Hər sessiyaya yenidən oxumazdan əvvəl sürətli testlə başla."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Bəli. Hər şeyi öyrən, Sokratik Təlim, Ev Tapşırığı Məşqçisi, testlər və yaddaş kartları kimi ictimai mövzu çatları birbaşa qonaq rejimində açılır."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Bəli. Məktəblər əvvəl ictimai məhsuldan istifadə edə, sonra məktəbə məxsus iş axınları, məxfilik və maliyyələşdirilmiş giriş seçimləri olan xüsusi AI öyrənmə məkanlarını müzakirə edə bilərlər."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Zaman pasportu qur, səyahət xəbərdarlığını keç və səhnə, xəritə, zaman xətti, insanlar, qaydalar, inventar və sübutlarla tarixi dünyanı araşdır."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Bir dövrü gəz"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Səsi qoruyan rəy"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sokratik tutorluq passiv cavab oxumaqdan daha dərin anlayış yaratmaq üçün suallardan, hipotezlərdən, ipuclarından və düşünmədən istifadə edir."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Struktur, aydınlıq və sübut üzrə rəy ver. Səsimi saxla və bütün cavabı yenidən yazma."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Məntiqini yoxla"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Riyaziyyat və ya məntiq üçün hər dəfə bir addım işləyin və davam etməzdən əvvəl hər hərəkətin niyə icazəli olduğunu soruşun."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Məntiqi sətir-sətir yoxla"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "AI tarixi dialoqunu mənbə kimi sitat gətirə bilərəmmi?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Zaman səyahəti"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Xeyr. Yaradılmış dialoqa öyrənmə simulyasiyası kimi yanaş. Fakt iddiaları üçün real ilkin və ya ikinci dərəcəli mənbələrə istinad et."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Görüləcək işdən başla."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Cavab köçürmədən addım-addım riyaziyyat köməyi, ev tapşırığı ipucları, Sokratik düşünmə, testlər, yaddaş kartları və imtahan hazırlığı üçün inspir-dən istifadə et."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Növbəti addım"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Filmin səsini aç"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Məni viktorina mövzularında test et"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Bəli, kömək ipucu verdikdə, məntiqi yoxladıqda, səhvləri izah etdikdə və cavabı sənin yerinə yazmaq əvəzinə son cavabı səndən istədikdə."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "AI-dən öyrənməni səssizcə aradan qaldıran qısa yol kimi yox, anlama, məşq və rəy üçün məşqçi kimi istifadə et."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Orta hissə inspir-i anlama, ipucları, testlər və aktiv öyrənmə dövrləri ətrafında çərçivələndirir."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Zəif nöqtəni sonra təkrar etmək üçün əlaqəli bələdçidən, promptdan, fənn mərkəzindən və ya öyrənmə yolundan istifadə et."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Açılış kadrları öyrənməni hər kəsin dərhal başlaya bilməli olduğu bir şey kimi qurur."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Öyrənəni prosesdə saxlayan ictimai AI rejimləri ilə proqramlaşdırmanı öyrən, səhvləri ayıkla, layihələr planla, məlumatları şərh et və texniki sualları araşdır."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Transkript"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Film bölmələrini gizlət"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "İlk sualını ver və birbaşa məşqə keç."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Fənlərə bax"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Tarix və ideyaların sübutu itirmədən kontekstli, mübahisəli və canlı hiss olunmasını istəyən maraqlı öyrənənlər."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Məktəblər öyrənənlərinə uyğunlaşdırılmış, NCERT-ə uyğun məzmun və iş axınları daxil olmaqla, məktəb brendinə uyğun AI çat təcrübələri təklif edə bilər; istifadə xərcləri tərəfdaş məktəblər və ya CSR sponsorluğu ilə qarşılanır."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "İstənilən mövzunu debat et"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI dərs cədvəli"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Hər bələdçi rejimə, prompta və ya təkrar dövrünə yönəldir ki, oxumaq məşqə çevrilsin."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir hərəkətdə"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Öyrənmə dövrləri, AI tutorluq bələdçiləri və praktik promptlar."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Səhvləri təkrar dövrlərinə çevir"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI imtahan hazırlığı planı"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Əsasları öyrənmək üçün Hər şeyi öyrən-i inspir-də istifadə etməyə dair praktik bələdçi: promptlar, öyrənmə dövrləri və daha təhlükəsiz AI vərdişləri."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Bir səhvi düzəlt"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Səhvlərdən, tərəddüdlərdən, formullardan, təriflərdən və aydın izah edə bilmədiyin anlayışlardan yaddaş kartları hazırla."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Pulsuz qonaq öyrənməsi"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Şəxsi çatları açmadan ev tapşırığı ipucları, riyaziyyat addım yoxlamaları, yazı rəyi, mənbə tənqidi, Sokratik suallar və yaddaş kartları üçün inspir-dən istifadə et."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Özünü əvvəl test et ki, əslində nəyi xatırladığını və özünəinamın harada aldadıcı olduğunu görəsən."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Növbəti nəsil AI öyrənmə platforması."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "İctimai öyrənmə rejimlərini sərbəst sına bilərsiniz. Saxlanmış çatlar, hesablar, admin alətləri və istifadəçi məlumatları məxfi qalır."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Arqumenti yoxla"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Öyrənmə xəritəsini aç"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Təkrar üçün AI yaddaş kartları"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Hər şeyi öyrənə bilərsən"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Tarixi konteksti anla, baxış bucağını sorğula, iddiaları müqayisə et və simulyasiyanı sənədləşdirilmiş faktdan ayır."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "İmtahan planı qur"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "inspir-dən esse rəyi, oxu dəstəyi, danışıq məşqi, mənbə tənqidi və öyrənənin səsini əvəz etmədən strukturu yaxşılaşdıran düzəliş dövrləri üçün istifadə et."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Realistik cədvəl"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Lazım olan ilkin ideyaları bilmədən tam xülasə istəmə."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Tarixi şəxslə danış"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Səhvi saxla"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Realistik öyrənmə planı, xatırlama məşqi, testlər, yaddaş kartları və zəif sahə təkrarı ilə AI imtahan hazırlığı iş axını qur."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Sualı, artıq nəyi sınadığını, harada ilişdiyini və ipucu, addım yoxlaması yoxsa rəy istədiyini daxil et."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Xatırlama məşqi"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "İctimai qonaq təcrübəsi üçün hesab tələb olunmadan rejimi aç və dərhal başla."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Mövzu, tapşırıq, qaralama, imtahan və ya ideya ilə işə uyğun rejimdə başla."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Hələ öz sözlərinlə izah edə bilmədiyin cümlələrdən yaddaş kartları hazırlama."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Populyar yollar"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI ilə çətin mövzunu necə anlamaq olar"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Bəli. İctimai qonaq öyrənmə rejimləri pulsuz giriş üçün hazırlanıb, buna görə öyrənənlər məktəb yerləşdirməsi və ya ödənişli hesab olmadan başlaya bilərlər."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "İctimai öyrənmə rejimlərini sərbəst sına bilərsiniz. Saxlanmış çatlar, hesablar, admin alətləri və istifadəçi məlumatları məxfi qalır."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Məşq, cavab köçürmə deyil"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Ev tapşırığı və Sokratik rejimlər hazır cavabları sadəcə vermək əvəzinə ipucları, məntiq, addım yoxlamaları və öyrənənin izahları ətrafında hazırlanıb."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Modelimi yoxla"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Film transkriptini gizlət"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Video idarələri"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Vaxtı az, proqramı böyük olan və hər şeyin eyni dərəcədə vacib olduğunu iddia etmədən real təkrar yolu istəyən öyrənənlər."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Hamı üçün pulsuz AI öyrənməsi | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "inspir-dən giriş etmədən istifadə edə bilərəmmi?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "İşi planla, xatırlama məşqi et və testlər və aktiv xatırlama ilə zəif yerləri bağla."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Sürətli cavablar"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Yaradılmış dialoqu sənədləşdirilmiş sitatdan ayrı saxlayaraq tarixi fiqurla danış."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Sadə dilli izahlar"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Planı qur"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Simulyasiyadan sonra məkanı, məhdudiyyətləri və sübutları yekunlaşdır."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Bəli. Məktəblər əvvəl ictimai məhsuldan istifadə edə, sonra məktəbə məxsus iş axınları, məxfilik və maliyyələşdirilmiş giriş seçimləri olan xüsusi AI öyrənmə məkanlarını müzakirə edə bilərlər."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Riyaziyyat, yazı, kodlaşdırma, tarix, ev tapşırığı və imtahan hazırlığının hər birinə fərqli kömək lazımdır. Fəndən başla, sonra uyğun rejimə, prompta, bələdçiyə və ya təkrar dövrünə keç."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Arqumentləri müqayisə et"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Aktiv xatırlama təkrarı"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Arqument məşqi"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Yaddaş kartı qurucusu"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Filmi dayandır"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Ən zəif anlayış üçün daha sadə izah istə."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Marşrutu canlı saxla"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Qaralamanı yaxşılaşdır"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "İstənilən mövzunu debat et, çətin suallar al, iddiaları müqayisə et və daha güclü arqumentlər qurmağı öyrən."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Tarix"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI ev tapşırığı köməyi etik ola bilərmi?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Ev Tapşırığı Məşqçisini sına"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Hər şeyi öyrən üçün promptlar və öyrənmə dövrü"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Öyrənməni əmələ çevirən {value1} bələdçili kitabxana."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Məktəblər və CSR tərəfdaşları üçün"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Məktəbə məxsus iş axınları"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Tapşırığı yapışdırıb hazır cavab istəmə."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "Çətin anlayışlar üçün AI tutor"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Oxuduqdan sonra addım"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Suallar mövzu haqqında öz modelini üzə çıxarmağa məcbur edir; çaşqınlıq, saxta özünəinam və çatışmayan ilkin biliklər adətən orada görünür."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Dizaynca açıq"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir açıq şəkildə qurulur."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Keçmişin ictimai fiqurları ilə əsaslandırılmış söhbətlərdə suallar ver, ideyalara meydan oxu və tarixi öyrən."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Öyrənməni cavab köçürməyə çevirmədən ipuclarından, addım yoxlamalarından və yazı rəyindən istifadə et."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Sokratik AI tutor ideyaları niyə yadda saxladır"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Filmi oynat"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Mövzu çox çətin gələndə əvvəl nə soruşmalıyam?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI ev tapşırığı məşqçisi"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Real həyata tab gətirə bilən plan qurmaq üçün imtahan tarixindən, proqramdan, mövcud vaxtdan və zəif sahələrdən istifadə et."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Tərifləri, nümunələri və transfer tapşırıqlarını qarışdıran beş sual istə."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Passiv cavab oxumaq əvəzinə fərziyyələri üzə çıxarmaq və boşluqları doldurmaq üçün suallara keç."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Kontekst, sübut, arqument və baxış bucaqlarını araşdırmaq üçün AI zaman səyahətindən, tarixi söhbətlərdən və debat məşqindən istifadə et."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Öyrənmə cədvəli al, zəif sahələr üzrə özünü test et və səhvləri təkrarlı baxış üçün yaddaş kartlarına çevir."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Hazırkı inspirlearning.com yenidən qurulması."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Passiv cavab oxumaq əvəzinə fokuslanmış suallar, ipucları və düşünmə ilə öyrən."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Ümumi öyrənmə anları üçün rejim bələdçiləri, prompt dövrləri, öyrənmə üsulları və əsas məqalələr."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "tarixi fiqurlarla danışmaq üçün AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Hər rejim öz məqsədi, nümunələri və öyrənmə axını olan ictimai qonaq çatı kimi açılır, ona görə öyrənənlər dərhal uyğun dəstəyə başlaya bilirlər."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir ümumi AI çatbotundan nə ilə fərqlənir?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "İstifadə üçün hazırlanıb"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Təkrardan əvvəl test"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Yaradılmış dialoqu real sitat və ya ilkin mənbə kimi qəbul etmə."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Özünü test et"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Hər mövzuya eyni vaxt lazım olduğunu fərz edən plan qurma."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir öyrənmə önizləməsini oynat"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Sadə izah, gündəlik bir bənzətmə və mövzunun mənalı olması üçün əvvəl bilməli olduğun üç ideya istəməklə başla."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "İmtahanlar üçün AI test generatoru"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "İzahı aktiv xatırlama kartlarına çevir, sonra səhv və ya tərəddüddən sonra kartlara qayıt."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Filmi yenidən başlat"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "inspir köçürməni təşviq etmədən ev tapşırığında kömək edə bilərmi?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Video gedişi"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Əvvəl sadə modeli al"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI öyrənmə bələdçisi kitabxanası"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Hər şeyi öyrən ilə başla"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Tutorluq, məşq, testlər, yaddaş kartları, debat, yazı rəyi, kodlaşdırma köməyi və öyrənmə planlaması üçün pulsuz ictimai AI öyrənmə yoldaşı."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Məktəb brendinə uyğun AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Canlı öyrənmə sessiyasına başla."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI Riyaziyyat Tutoru"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Riyaziyyat Addım Məşqçisi"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Ünsiyyət"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Danışaraq, test edərək, debat apararaq və araşdıraraq öyrən."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "öyrənmə bələdçiləri və məşq dövrləri"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "İddianı birdən çox tərəfdən debat et ki, fərziyyələri, güzəştləri və zəif sübutları görə biləsən."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI tarix tutoru"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Sürətli öyrənmə marşrutları"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "İlk prinsiplərdən başla"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Filmin səsini söndür"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31 saniyəyə bax"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "İmtahan təkrarını planla, testlər yarat, yaddaş kartları qur, interval təkrarını cədvəllə və fokuslanmış AI öyrənmə rejimləri ilə motivasiyanı real saxla."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Gəldiyin dəqiq kömək növünü aç."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Qeydləri və ya mövzuları ipucları, cavablar, nümunələr və yayğın tələlərlə fokuslanmış yaddaş kartlarına çevir."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sokratik tutor"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI Sokratik tutor"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir-də Hər şeyi öyrən-dən faydalı öyrənmə nəticələri almaq üçün prompt ideyaları və təkrarlana bilən öyrənmə dövrü."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Məktəbləri araşdır"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Cəbr, analiz, mətnli məsələlər və riyaziyyat anlayışlarını AI məşqçi ilə hər dəfə bir addım işləyin."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Maraq, məşq və əlçatanlıq üçün hazırlanıb."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Bu mövzular üzrə mənə bir-bir sual ver. Hər cavabdan sonra boşluğu izah et və çətinliyi yavaş-yavaş artır."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Populyar AI öyrənmə yolları"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Aydın məxfilik sərhədləri"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sokratik yoxlamalar"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Pulsuz ictimai AI öyrənmə platforması"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Missiyanı oxu"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sokratik təlim"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Yenidən oynat"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "İnsanların tez anlaya biləcəyi ictimai öyrənmə saytı."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Öyrənənlərin başlamazdan əvvəl adətən verdiyi suallar."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Sübutdan xəbərdar səhnələr"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Konteksti yekunlaşdır"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Bələdçilər, yollar, fənlər və promptlar növbəti faydalı məşq yerinə bağlanır."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Yalnız artıq razı olduğun tərəfi debat etmə."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Faydalı öyrənmə xəritəsi"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Sadə dildə model, daha kəskin suallar, geri izah edə biləcəyin nümunələr və təkrar üçün xatırlama kartları ilə ayrıl."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Öyrənənlərə link yığını yox, ardıcıllıq lazımdır. Bu yollar rejimləri anlama, ev tapşırığı, imtahan hazırlığı və araşdırma üçün praktik öyrənmə dövrlərinə bağlayır."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Hər şeyi öyrən"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Film bölmələri"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Asan növbəti addımlar"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Öyrənmə planını real et"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Bələdçi kitabxanası"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "İzahdan sonra niyə Sokratik suallardan istifadə etmək lazımdır?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "AI-nin tələbələri passiv cavab toplayanlara çevirmədən öyrənməni necə daha aydın, şəxsi və əlçatan edə bildiyinə praktik baxış."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Arqument"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Son qaralamanın tanınacaq dərəcədə sənin qalması üçün yazı rəyindən struktur, aydınlıq və sübut üzrə istifadə et."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-ə uyğun variantlar"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Bu mövzu haqqında mənə beş Sokratik sual ver. Hər cavabdan sonra hansı fərziyyədən istifadə etdiyimi və növbəti nəyi yoxlamalı olduğumu de."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir pulsuz istifadə olunurmu?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Tarixi rejimdən nəyin sənədləşdirilmiş, nəyin çıxarılmış və ya simulyasiya edilmiş olduğunu işarələməyi istə."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Bələdçi kitabxanasını araşdır"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Səhvlərdən yaddaş kartları hazırla və onları gecikmədən sonra təkrar et."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Cavabları köçürmədən AI ev tapşırığı köməyi"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Düşünməni öyrənəndə saxlayan ipucları, yoxlamalar, rəy və öyrənmə planları istə."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Daha geniş açıq mənbəli inspir platforması."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Artıq nəyi sınadığını göstərməyi ötürmə; faydalı kömək həmin kontekstdən asılıdır."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Hesablamamdakı bu addımı yoxla. Səhvdirsə, xətanı izah et və mənə bir növbəti addım ver."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Məni bu zaman və məkana yerləşdir. Sənədləşdirilmiş faktları ehtimal olunan simulyasiyadan ayrıca etiketlə və nə gördüyümü soruş."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Geri izah et"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Zəif sahə dövrləri"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Hər bələdçi uyğun olan dəqiq öyrənmə rejiminə məşq planları, marşrutlar və keçidlərlə bitir."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "AI öyrənmə yoldaşı hamı üçün nə etməlidir"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI Tarix Tutoru"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Fiqura sual ver"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Bir addımı yoxla"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "İddianı debat et"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Zəif nöqtəni düzəlt"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Ev Tapşırığı Məşqçisi"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Növbəti addımı izah et"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Aktiv xatırlama üçün AI yaddaş kartları"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "inspir-in öyrənmənin pulsuz, əlçatan və canlı olmalı olduğuna inamını təqdim edən qısa film."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Anlamadığın yerdən başla və sadə dilli model, nümunələr və növbəti addımlar al."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Mövzu klasterləri"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Film transkriptini göstər"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Ev tapşırığı"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Son işin sənin qalması üçün AI ev tapşırığı məşqçiliyindən ipucları, addım yoxlamaları, riyazi məntiq və yazı rəyi üçün istifadə et."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Aydın izahlar"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Onu yaddaş kartlarına çevir"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "İmtahan hazırlığı planını nə qədər tez qurmalıyam?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Film ilhamdan praktik vədə keçir: səbirli AI öyrənmə yoldaşı."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Bizimlə qur"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Addım yoxlamaları"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Yaxşı başlanğıc sahələri:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Faktı uydurmadan ayır"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Özünəinam üçün hazırlanıb"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Fəndən başla, sonra uyğun öyrənmə rejimini aç."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Səsini qoruyan planlama, düzəliş, struktur və rəylə yazını yaxşılaşdır."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI Ev Tapşırığı Köməkçisi"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Dövr daxil et"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Onunla nəsə et"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Başqa bir cavab qutusu deyil. Öyrənmək üçün yer."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Maraq burada başlayır"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Qonaq çatını aç"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Yaddaş kartları ilə təkrar et"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Rol oyununun tarixləri, konteksti, sənədləri və ya sübut etiketlərini əvəz etməsinə imkan vermə."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "İmtahan tarixini bilən kimi başla. Vaxt azdırsa, zəif sahələri, əvvəlki imtahan üslublu sualları və gündəlik xatırlamanı prioritet et."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Hər ipucundan sonra davam etməzdən əvvəl addımın niyə işlədiyini izah et."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "İpucu istə"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Hər məqalə kateqoriyalara, canlı rejimlərə, fənn mərkəzlərinə, öyrənmə yollarına və əlaqəli bələdçilərə bağlanır."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Daha dərin düşün"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Maraq, məşq və öyrədən AI."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Bu mövzunu sadə dillə izah et. Mənə lazım olan üç ilkin ideyanı, bir bənzətməni və bir yayğın yanlış anlayışı göstər."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Məxfi yerləşdirmələr"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Filmi tam ekranda aç"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Nə edə bilərsiniz"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Ən çətin buraxılmış sualı yaddaş kartına çevir və sonra təkrar et."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "İstədiyini soruş"
     }
   ]
 }

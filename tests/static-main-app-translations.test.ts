@@ -47,7 +47,11 @@ test("tracked main-app packs cover every localized static chat shell", () => {
     assert.equal(Object.keys(bundle.strings).length, Object.keys(sourceStrings).length);
     assert.doesNotThrow(() => buildStaticMainAppBundleAsset(locale, bundle));
   }
-  assert.ok(totalBytes < 8_000_000, `tracked main-app packs grew to ${totalBytes} bytes`);
+  // The tracked corpus now includes the restored account, memory, profile,
+  // quiz, and flashcard UI copy for every locale. Keep the compact 69-locale
+  // build input below a bounded 8.25 MB while allowing those source-current
+  // strings to remain fully translated.
+  assert.ok(totalBytes < 8_250_000, `tracked main-app packs grew to ${totalBytes} bytes`);
 });
 
 test("tracked main-app pack loads with no curated shards or D1 input", () => {
@@ -64,7 +68,7 @@ test("tracked main-app pack loads with no curated shards or D1 input", () => {
     const strings = readStaticMainAppTranslations(source, "Spanish", tempRoot);
     assert.ok(strings);
     assert.equal(Object.keys(strings).length, Object.keys(sourceStrings).length);
-    assert.equal(strings["language.prompt.title"], "Elige tu idioma de aprendizaje");
+    assert.equal(strings["language.prompt.title"], "Escoge tu idioma de aprendizaje");
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }
@@ -80,4 +84,14 @@ test("tracked main-app pack fails closed against a different source hash", () =>
       ),
     /source hash is stale/,
   );
+});
+
+test("Arabic flashcard results keep the card-set sense", () => {
+  const strings = readStaticMainAppTranslations(source, "Arabic", workspaceRoot);
+  assert.ok(strings);
+  assert.equal(
+    strings["activity.flashcards.review.complete"],
+    "اكتملت مجموعة البطاقات: أتقنت {known} من أصل {total}",
+  );
+  assert.equal(strings["activity.flashcards.stat.known"], "متقنة");
 });

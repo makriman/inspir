@@ -2,11 +2,17 @@
 
 import { FormEvent, KeyboardEvent, RefObject } from "react";
 import { Send, Square } from "lucide-react";
-import { isPendingAssistantMessage, type ChatMessage as Message, type MessageMemorySource } from "@/components/chat/chat-message-model";
+import {
+  getChatMessageRenderId,
+  isPendingAssistantMessage,
+  type ChatMessage as Message,
+  type MessageMemorySource,
+} from "@/components/chat/chat-message-model";
 import { MessageCard } from "@/components/chat/MessageCard";
 import { StarterGrid } from "@/components/chat/StarterGrid";
 import { ThinkingMarker } from "@/components/chat/ThinkingMarker";
 import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
+import type { UiTranslator } from "@/components/chat/chat-ui-types";
 import { topicIntroProps, type Topic, type TopicMetadata } from "@/components/chat/topic-model";
 import {
   MessageScroller,
@@ -25,6 +31,8 @@ type StandardChatWorkspaceProps = {
   inputRef: RefObject<HTMLTextAreaElement | null>;
   listRef: RefObject<HTMLDivElement | null>;
   metadata?: TopicMetadata;
+  olderMessagesAvailable: boolean;
+  olderMessagesLoading: boolean;
   sendMessage: (content: string) => Promise<void>;
   sending: boolean;
   setInput: (value: string) => void;
@@ -33,7 +41,11 @@ type StandardChatWorkspaceProps = {
   submitMessage: (event?: FormEvent) => void;
   userDisplayName: string;
   visibleChatMessages: Message[];
+  onLoadOlderMessages: () => void;
+  isMessageContentLoading: (messageId: string) => boolean;
+  onContinueMessageContent: (messageId: string) => void;
   onMemorySources: (messageId: string, sources: MessageMemorySource[]) => void;
+  t: UiTranslator;
 };
 
 export function StandardChatWorkspace({
@@ -44,6 +56,8 @@ export function StandardChatWorkspace({
   inputRef,
   listRef,
   metadata,
+  olderMessagesAvailable,
+  olderMessagesLoading,
   sendMessage,
   sending,
   setInput,
@@ -52,7 +66,11 @@ export function StandardChatWorkspace({
   submitMessage,
   userDisplayName,
   visibleChatMessages,
+  onLoadOlderMessages,
+  isMessageContentLoading,
+  onContinueMessageContent,
   onMemorySources,
+  t,
 }: StandardChatWorkspaceProps) {
   const hasPendingAssistantCard = Boolean(
     awaitingResponse &&
@@ -66,6 +84,20 @@ export function StandardChatWorkspace({
         <MessageScroller className="inspir-message-scroller">
           <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
             <MessageScrollerContent className="inspir-message-stack">
+              {olderMessagesAvailable ? (
+                <MessageScrollerItem>
+                  <div className="inspir-past-chat-loader">
+                    <button
+                      type="button"
+                      aria-busy={olderMessagesLoading}
+                      disabled={olderMessagesLoading}
+                      onClick={onLoadOlderMessages}
+                    >
+                      {t("Past chats")}
+                    </button>
+                  </div>
+                </MessageScrollerItem>
+              ) : null}
               {visibleChatMessages.length === 0 ? (
                 <MessageScrollerItem>
                   <TopicIntroCard {...topicIntroProps(activeTopic)} />
@@ -77,11 +109,14 @@ export function StandardChatWorkspace({
                 </MessageScrollerItem>
               ) : null}
               {visibleChatMessages.map((message) => (
-                <MessageScrollerItem key={message.id} messageId={message.id}>
+                <MessageScrollerItem key={getChatMessageRenderId(message)} messageId={message.id}>
                   <MessageCard
                     message={message}
                     isStreaming={message.id === streamingMessageId}
                     userLabel={userDisplayName}
+                    contentLoading={isMessageContentLoading(message.id)}
+                    continueLabel={t("Continue")}
+                    onContinueContent={onContinueMessageContent}
                     onMemorySources={(sources) => onMemorySources(message.id, sources)}
                   />
                 </MessageScrollerItem>

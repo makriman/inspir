@@ -4,517 +4,12 @@
   "locale": "fi",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "Käytännön oppaat aiheesta {value1}"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "{value1}-opaskirjasto, joka muuttaa oppimisen toiminnaksi."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Maksuton julkinen AI-oppimiskumppani ohjaukseen, harjoitteluun, testeihin, muistikortteihin, väittelyyn, kirjoituspalautteeseen, koodausapuun ja opiskelun suunnitteluun."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Käytännöllinen AI-oppimispolku, joka vie hämmennyksestä selkeisiin selityksiin, sokraattisiin kysymyksiin, esimerkkeihin ja aktiiviseen muistamiseen."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Käytännön opas Opi mitä tahansa -tilan käyttöön inspirissä perustaitojen oppimisessa, mukana kehotteita, opiskelusilmukoita ja turvallisempia AI-tapoja."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "Käytännön katsaus siihen, miten AI voi tehdä oppimisesta selkeämpää, henkilökohtaisempaa ja saavutettavampaa muuttamatta opiskelijoita passiivisiksi vastausten kerääjiksi."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "Julkinen oppimissivusto, jonka idea avautuu nopeasti."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "Lyhyt elokuva inspirin ajatuksesta, että oppimisen pitäisi olla maksutonta, saavutettavaa ja elävää."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "Ohjaaja ensimmäiseen kysymykseen"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "saavutettavuus, kehotteet, testit, turvallisempi AI-toiminta, oppijan polut ja käyttöliittymän viimeistely."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Toimintaa lukemisen jälkeen"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Aktiivinen harjoittelu"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Aktiivisen muistamisen kertaus"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Selitä jokaisen vihjeen jälkeen, miksi vaihe toimii, ennen kuin jatkat."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Tiivistä simulaation jälkeen tilanne, rajoitteet ja todisteet."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI-koodiohjaaja"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI-väittelyharjoittelu"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI-suunnitelma kokeisiin valmistautumiseen"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "AI-koesuunnitelma testeillä ja aktiivisella muistamisella"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI-koevalmistelun suunnittelija"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI-muistikortit ja aktiivinen muistaminen: miten muistaa enemmän"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "AI-muistikortit aktiiviseen muistamiseen"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "AI-muistikortit kertaukseen"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI-historian tuki"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI-historiaohjaaja"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI-läksyvalmentaja"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "AI-läksyapua ilman lunttaamista"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "AI-läksyapua ilman vastausten kopiointia"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI-läksyapu"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI-matematiikan askelvalmentaja"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI-matematiikkaohjaaja"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "AI-testigeneraattori kokeisiin"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI-sokraattinen ohjaaja"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI-opiskeluaikataulu"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI-aikamatkaoppiminen"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "AI-ohjaaja vaikeisiin käsitteisiin"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "AI-ohjaajat aiheittain"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "AI-kirjoituspalaute opiskelijoille"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI-kirjoitusohjaaja"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Vastaa tarkistuskysymykseen, kokeile yhtä vaihetta, väittele väitteestä, muokkaa luonnosta tai rakenna muistamista tukevia kortteja."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "Ovatko testit parempia kuin uudelleen lukeminen?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Argumentti"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Argumentointiharjoitus"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "Kysy mitä tahansa ja opi selkeiden selitysten, esimerkkien, jatkokehotteiden ja kärsivällisen AI-ohjauksen avulla."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "Kysy mitä tahansa"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "Pyydä vihjettä"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Pyydä vihjettä, älä vastausta"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Pyydä yksinkertaisempi selitys heikoimmasta käsitteestä."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Pyydä viisi kysymystä, joissa yhdistyvät määritelmät, esimerkit ja soveltamistehtävät."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Pyydä vihjeitä, tarkistuksia, palautetta ja opiskelusuunnitelmia, jotka jättävät ajattelun oppijalle."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Pyydä aihe selkokielellä ja sen jälkeen yksi vertaus, yksi esimerkki ja yksi yleinen väärinkäsitys."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Kysy minulta viisi sokraattista kysymystä tästä aiheesta. Kerro jokaisen vastauksen jälkeen, mitä oletusta käytin ja mitä kannattaa testata seuraavaksi."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Esitä kysymyksiä, haasta ajatuksia ja opi historiaa perustelluissa keskusteluissa menneisyyden julkisten henkilöiden kanssa."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Pyydä historiallista tilaa merkitsemään, mikä on dokumentoitua, pääteltyä tai simuloitua."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Kysy todellinen kysymys"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "Esitä ensimmäinen kysymyksesi ja siirry suoraan harjoitteluun."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Julkisesti saatavilla, ja koulut voivat samalla käyttää luottamuksellisia räätälöityjä versioita."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Selaa kaikkia tiloja"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Selaa aiheita"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Rakenna aikapassi, käy matkustusohjeet läpi ja tutki historiallista maailmaa näkymän, kartan, aikajanan, ihmisten, sääntöjen, varusteiden ja todisteiden avulla."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Rakenna AI-avusteinen kokeisiin valmistautumisen työnkulku, jossa on realistinen opiskelusuunnitelma, muistista palauttamisen harjoittelua, testejä, muistikortteja ja heikkojen kohtien kertausta."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "Rakenna koesuunnitelma"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Rakenna suunnitelma"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Rakenna kanssamme"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Rakennettu uteliaisuutta, harjoittelua ja saavutettavuutta varten."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Rakennettu todellisen oppijakäyttäytymisen pohjalta, ei geneeriseksi keskustelulaatikoksi."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "Rakennettu käyttöä varten"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "Voiko AI-läksyapu olla eettistä?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "Voinko viitata AI:n historialliseen dialogiin lähteenä?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "Voinko käyttää inspiria kirjautumatta?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "Voiko inspir auttaa läksyissä rohkaisematta lunttaamiseen?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Tarkista mallini"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Tarkista yksi vaihe"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Tarkista päättely rivi riviltä"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Tarkista tämä vaihe ratkaisustani. Jos se on väärin, selitä virhe ja anna yksi seuraava siirto."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Selkeät selitykset"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Selkeät yksityisyysrajat"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Koodiohjaaja"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Koodaus"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Viestintä"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Vertaa argumentteja"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Luottamukselliset käyttöönotot"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Jatka"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "Mukaan ovat tervetulleita insinöörit, opettajat, suunnittelijat, opiskelijat ja kaikki, jotka haluavat tehdä AI-oppimisesta turvallisempaa, selkeämpää, saavutettavampaa ja hyödyllisempää."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Muunna virheet harjoituksiksi"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "Muunna selitys aktiivisen muistamisen korteiksi ja palaa kortteihin virheiden tai epäröinnin jälkeen."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Luo pieni testi"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "Uteliaisuus alkaa tästä"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Uteliaisuutta, harjoittelua ja AI:ta, joka opettaa."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Uteliaille oppijoille, jotka haluavat historian ja ajatusten tuntuvan paikantuneilta, keskusteltavilta ja eläviltä kadottamatta todisteita."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Räätälöityjä AI-oppimistiloja luottamuksellisella tiedonkäsittelyllä."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "Väittele väitteestä"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "Väittele mistä tahansa aiheesta"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "Väittele mistä tahansa aiheesta, anna ajatustesi joutua koetukselle, vertaile väitteitä ja opi rakentamaan vahvempia argumentteja."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Väittely auttaa erottamaan väitteet, todisteet, arvot ja oletukset, mikä tekee historiallisesta tulkinnasta täsmällisempää."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "Käsittele väitettä väitellen"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "Tarkastele väitettä väittelemällä useammalta kannalta, jotta huomaat oletukset, kompromissit ja heikot todisteet."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Väittele tästä historiallisesta tai filosofisesta väitteestä molemmilta puolilta. Erota todisteet, oletukset ja arvot."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Suunniteltu vahvistamaan varmuutta"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "Älä hyväksy muokattua kappaletta ennen kuin osaat selittää, miksi muutos on parempi."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "Älä pyydä täydellistä tiivistelmää ennen kuin tunnet tarvittavat pohjaideat."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "Älä väittele vain sen kannan puolesta, josta olet jo samaa mieltä."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Suunnittelu"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "Älä sivuuta epäröintiä; epävarmuus on hyödyllinen merkki kertauksen tarpeesta."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "Älä anna roolipelin korvata päivämääriä, kontekstia, asiakirjoja tai todisteiden merkintöjä."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir muuttaa uteliaisuuden, läksyt, kertauksen ja suuret kysymykset ohjatuiksi AI-oppimistuokioiksi, jotka selittävät, kysyvät takaisin ja auttavat harjoittelemaan."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "Älä tee suunnitelmaa, joka olettaa jokaisen aiheen tarvitsevan yhtä paljon aikaa."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Luo pieni testi"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "Älä tee muistikortteja lauseista, joita et vielä osaa selittää omin sanoin."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Opiskelijoille, jotka tarvitsevat seuraavan askeleen, virhetarkistuksen tai palautetta menettämättä tehtävän omistajuutta."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "Älä liitä tehtävänantoa ja pyydä valmista vastausta."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Aloita oppiminen"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "Älä lue muistiinpanoja uudelleen ennen kuin testaat, mitä jo muistat."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "Älä jätä kertomatta, mitä olet jo kokeillut; hyödyllinen apu riippuu siitä kontekstista."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "Älä pysähdy ensimmäiseen selitykseen, vaan vastaa siitä kysymyksiin."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "Älä käsittele luotua dialogia oikeana sitaattina tai primäärilähteenä."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Tee sillä jotain"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "Tukeeko inspir kouluja?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Jokainen opas päättyy harjoitussuunnitelmiin, reitteihin ja linkkeihin juuri sopivaan oppimistilaan."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Jokainen opas ohjaa tilaan, kehotteeseen tai kertaussilmukkaan, jotta lukeminen muuttuu harjoitteluksi."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Jokainen tila avautuu julkisena vieraskeskusteluna, jolla on oma tarkoitus, esimerkit ja oppimiskulku, jotta oppija saa heti oikeanlaista tukea."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Helpot seuraavat askeleet"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Valitse aikakausi"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Anna konteksti"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Jokainen artikkeli liittyy kategorioihin, eläviin tiloihin, aihekeskittymiin, oppimispolkuihin ja aiheeseen liittyviin oppaisiin."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Jokaisella sovelluksen ulkopuolisella sivulla on nyt tehtävä: rakentaa luottamusta, selittää oppimisreitti ja ohjata oppijat hyödylliseen seuraavaan tekoon piilottamatta tärkeitä yksityiskohtia."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Todisteet huomioivat kohtaukset"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "Kokeisiin valmistautuminen"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "Koevalmistelun suunnittelija"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Selitä se takaisin"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Selitä seuraava vaihe"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Selitä tämä aihe selkokielellä. Nimeä kolme pohjaideaa, joita tarvitsen, yksi vertaus ja yksi yleinen väärinkäsitys."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "Selityksiä, sokraattista ohjausta, läksyvalmennusta, testejä, muistikortteja, kirjoittamista, koodia, väittelyä ja opiskelun suunnittelua."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "Tutki historiaa ja suuria ajatuksia AI:n avulla"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Tutki historiaa ja ajatuksia"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Tutki historiaa, julkisia henkilöitä, syitä, väittelyitä, filosofiaa ja lähdekritiikkiä AI-oppimistiloissa, jotka erottavat todisteet simulaatiosta."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Tutustu kouluihin"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Tutustu opaskirjastoon"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Nopeat oppimisreitit"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Elokuvan luvut"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Muistikorttien rakentaja"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Muistikortit toimivat parhaiten, kun ne testaavat yhtä ideaa kerrallaan, näyttävät vastauksen vasta yrittämisen jälkeen ja tuovat vaikeat kortit nopeammin kertaukseen."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Matematiikassa ja logiikassa etene vaihe kerrallaan ja kysy ennen jatkamista, miksi jokainen siirto on sallittu."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Kouluille ja CSR-kumppaneille"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Perusteet"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Maksutonta AI-oppimista kaikille"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Maksutonta AI-oppimista kaikille | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Maksutonta AI-oppimista kaikille."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Maksutonta vierasoppimista"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Maksuton julkinen AI-oppimisalusta"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Blogista"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "Luo kohdennettu monivalintatesti mistä tahansa aiheesta ja käy selitykset läpi jokaisen vastauksen jälkeen."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Hanki opiskeluaikataulu, testaa heikkoja kohtiasi ja muuta virheet muistikorteiksi toistuvaa kertausta varten."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Hanki ensin yksinkertainen malli"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Kirjoitusvalmentaja"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "Pääse eteenpäin"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Pääse eteenpäin läksyissä"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Astu historialliseen kontekstiin, vertaile argumentteja ja harjoittele näkemään idea useammalta puolelta."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Pääse eteenpäin läksyissä eettisten vihjeiden, esimerkkien, tarkistusten ja vaiheittaisen valmennuksen avulla."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "oppijan tarpeisiin kartoitettuja aihekeskittymiä"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Anna palautetta rakenteesta, selkeydestä ja todisteista. Säilytä oma ääneni äläkä kirjoita koko vastausta uusiksi."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Lopetus palaa missioon: julkinen pääsy, koulut ja avoimempi tapa oppia."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Hyviä ensimmäisiä alueita:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Ovatko testit parempia kuin uudelleen lukeminen?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Opaskirjasto"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Oppaat, polut, aiheet ja kehotteet vievät seuraavaan hyödylliseen harjoittelupaikkaan."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Hyödyllinen oppimiskartta"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Tässä on kysymys ja se, mitä kokeilin. Anna pienin hyödyllinen vihje, älä lopullista vastausta."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Piilota elokuvan luvut"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Piilota elokuvan tekstiversio"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "Vihje ensin -apu"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Historialliset keskustelut"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "Historia"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Läksyt"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Läksyvalmentaja"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "Kuinka aikaisin koesuunnitelma kannattaa tehdä?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "Miten inspir eroaa tavallisesta AI-keskustelubotista?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Miten se toimii"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "Miten opiskella AI:n avulla huijaamatta itseäsi"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "miten ymmärtää vaikea aihe AI:n avulla"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "Miten ymmärtää vaikea aihe AI:n avulla"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Uppoutuminen"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Paranna luonnosta"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Paranna kirjoittamista suunnittelulla, muokkauksella, rakenteella ja palautteella, joka säilyttää oman äänesi."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Kerro kysymys, mitä olet jo kokeillut, mihin jäit jumiin ja haluatko vihjeen, vaiheen tarkistuksen vai palautetta."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "inspirin AI-oppimisen opaskirjasto"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir alkoi testeistä ja opiskelijayhteisöistä, kasvoi koulujen ja tapahtumien kautta ja käyttää nyt AI:ta tehdäkseen henkilökohtaisesta oppimisesta saavutettavampaa."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir on olemassa sitä hetkeä varten, kun oppija haluaa ymmärtää jotakin ja tarvitsee kärsivällisen paikan aloittaa. Elokuva esittelee tuotteen maksuttomana julkisena oppimiskumppanina uteliaisuutta, harjoittelua ja saavutettavuutta varten."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir liikkeessä"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir rakennetaan julkisesti."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir rakentuu oppimistilojen ympärille, joilla on omat opetuksen muodot: vihjeet, sokraattiset kysymykset, testit, aktiivinen muistaminen, roolipeli, väittely, kirjoituspalaute ja opiskelun suunnittelu."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir-oppimiselokuva"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir muuttaa uteliaisuuden, läksyt, kertauksen ja suuret kysymykset ohjatuiksi AI-oppimistuokioiksi, jotka selittävät, kysyvät takaisin ja auttavat harjoittelemaan."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: voit oppia mitä tahansa"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "Onko inspirin käyttö maksutonta?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Pidä reitti elävänä"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Tiedä, mitä kokeilla seuraavaksi, miksi vaihe toimii, missä virhe tapahtui ja miten muokata lopullinen vastaus omalla äänelläsi."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Opi mitä tahansa"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Opi mitä tahansa: kehotteet ja opiskelusilmukka"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Opi mitä tahansa maksuttoman AI-ohjaajan avulla: käytännön opas"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Opi keskustelemalla, testaamalla, väittelemällä ja tutkimalla."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Opi ohjelmointia, selvitä käsitteitä, suunnittele projekteja, tulkitse dataa ja tutki teknisiä kysymyksiä julkisissa AI-tiloissa, joissa oppija pysyy mukana."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Opi kohdennettujen kysymysten, vihjeiden ja pohdinnan kautta sen sijaan, että lukisit vastauksia passiivisesti."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Opi maksuttoman AI-ohjaajan kanssa: selityksiä, sokraattisia kysymyksiä, läksyvalmennusta, testejä, muistikortteja, väittelyä, kirjoituspalautetta, koodausapua ja opiskelun suunnittelua."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Oppija ensin -tuki"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Oppijat tarvitsevat järjestyksen, eivät linkkikasaa. Nämä polut yhdistävät tilat käytännöllisiksi opiskelusilmukoiksi ymmärtämistä, läksyjä, kokeisiin valmistautumista ja tutkimista varten."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Oppijoille, jotka juuttuvat uuden aiheen alkuun tai tarvitsevat helpomman reitin vaikeaan ideaan."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Oppijoille, joilla on vähän aikaa, laaja oppimäärä ja tarve realistiseen kertaukseen ilman oletusta, että kaikki on yhtä tärkeää."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Oppimista kaikille"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "oppimisoppaat ja harjoittelusilmukat"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Saat mukaasi selkokielisen mallin, tarkempia kysymyksiä, esimerkkejä, jotka osaat selittää takaisin, ja muistamiskortteja kertaukseen."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Anna minun haastatella tätä historiallista henkilöä. Pidä vastaukset todisteet huomioivina ja merkitse epävarmuus selkeästi."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Tee virheistä muistikortteja ja palaa niihin viiveen jälkeen."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Tee muistikortteja virheistä, epäröinnistä, kaavoista, määritelmistä ja käsitteistä, joita et osannut selittää selkeästi."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Tee siitä pysyvää"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "Tee ideasta muistettava"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Tee opiskelusuunnitelmasta realistinen"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Matematiikka"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Matematiikan askelvalmentaja"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Matematiikka, kirjoittaminen, koodaus, historia, läksyt ja kokeisiin valmistautuminen tarvitsevat kukin erilaista apua. Aloita aiheesta ja siirry sitten sopivaan tilaan, kehotteeseen, oppaaseen tai kertaussilmukkaan."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Missio ensin"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Tilaoppaat, kehotesilmukat, opiskelumenetelmät ja perusartikkelit tavallisiin oppimisen hetkiin."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Siirry selkokielisestä selityksestä kysymyksiin, esimerkkeihin ja muistiharjoitteluun."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Siirry sokraattisiin kysymyksiin, testeihin, muistikortteihin, väittelyyn, roolipeliin ja ohjattuun opetukseen."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Mykistä elokuva"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "Kokeeni on tänä päivänä. Tässä ovat oppimäärä, heikot kohtani ja käytettävissä oleva aikani. Tee realistinen suunnitelma, jossa on päivittäistä muistamista."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "NCERT-linjaiset vaihtoehdot"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Seuraava vaihe"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "Ei. Käsittele luotua dialogia oppimissimulaationa. Viittaa faktaväitteissä oikeisiin primääri- tai sekundäärilähteisiin."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "Ei taas yksi vastauslaatikko. Paikka oppia."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "Avaa tila ja aloita heti; julkinen vieraskokemus ei vaadi tiliä."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Avoimuus lähtökohtana"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Avaa elokuva koko näytölle"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Avaa vieraschatti"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Avaa aihekeskittymä"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Avaa juuri se apu, jota tulit hakemaan."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Avaa oppimiskartta"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "Käytännön oppaat aiheesta {value1}"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Avaa polku"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Sivut on suunniteltu viemään ihmiset selityksestä elävään tilaan, kehotteeseen, testiin tai kertaussilmukkaan."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Kysy mitä tahansa ja opi selkeiden selitysten, esimerkkien, jatkokehotteiden ja kärsivällisen AI-ohjauksen avulla."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Sivusto on reitti, ei esite."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Tukeeko inspir kouluja?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir rakentuu oppimistilojen ympärille, joilla on omat opetuksen muodot: vihjeet, sokraattiset kysymykset, testit, aktiivinen muistaminen, roolipeli, väittely, kirjoituspalaute ja opiskelun suunnittelu."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Käytä julkisia vierastiloja maksutta ja tutustu sen jälkeen avoimen lähdekoodin työhön sekä koulukäyttöönoton polkuihin."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Selityksiä, sokraattista ohjausta, läksyvalmennusta, testejä, muistikortteja, kirjoittamista, koodia, väittelyä ja opiskelun suunnittelua."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Maksutonta AI-oppimista kaikille"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Koevalmistelun suunnittelija"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Pääse eteenpäin läksyissä eettisten vihjeiden, esimerkkien, tarkistusten ja vaiheittaisen valmennuksen avulla."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI-koevalmistelun suunnittelija"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "AI-koesuunnitelma testeillä ja aktiivisella muistamisella"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Väittely auttaa erottamaan väitteet, todisteet, arvot ja oletukset, mikä tekee historiallisesta tulkinnasta täsmällisempää."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Aloita paikasta, ajasta, identiteetistä, rajoitteista ja todisteiden merkinnöistä, jotta kohtaus ei muutu geneeriseksi roolipeliksi."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Mitä läksykehotteeseen kannattaa sisällyttää?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Mukaan ovat tervetulleita insinöörit, opettajat, suunnittelijat, opiskelijat ja kaikki, jotka haluavat tehdä AI-oppimisesta turvallisempaa, selkeämpää, saavutettavampaa ja hyödyllisempää."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Käytännöllinen AI-oppimispolku, joka vie hämmennyksestä selkeisiin selityksiin, sokraattisiin kysymyksiin, esimerkkeihin ja aktiiviseen muistamiseen."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI-kirjoitusohjaaja"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir alkoi testeistä ja opiskelijayhteisöistä, kasvoi koulujen ja tapahtumien kautta ja käyttää nyt AI:ta tehdäkseen henkilökohtaisesta oppimisesta saavutettavampaa."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir-oppimiselokuva"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Näytä elokuvan luvut"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Muuta nämä väärin menneet kysymykset muistikorteiksi, jotka on ryhmitelty käsitteen, kaavan, määritelmän ja esimerkin mukaan."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Tiedä, mitä kokeilla seuraavaksi, miksi vaihe toimii, missä virhe tapahtui ja miten muokata lopullinen vastaus omalla äänelläsi."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "AI-kirjoituspalaute opiskelijoille"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Oppimista kaikille"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI-koodiohjaaja"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Testaa heikkoja alueita"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Opi maksuttoman AI-ohjaajan kanssa: selityksiä, sokraattisia kysymyksiä, läksyvalmennusta, testejä, muistikortteja, väittelyä, kirjoituspalautetta, koodausapua ja opiskelun suunnittelua."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Käytä väittelyä vahvimman väitteen ja vahvimman vastaväitteen vertaamiseen."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Älä pysähdy ensimmäiseen selitykseen, vaan vastaa siitä kysymyksiin."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Miten se toimii"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Koodiohjaaja"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Kokeisiin valmistautuminen"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Hakusivut, blogioppaat, kehotteet ja elävät tilat liittyvät yksinkertaiseen silmukkaan: kysy, kokeile, tarkista, korjaa ja kertaa."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Koodaus"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Hyödyllinen ensimmäisestä klikkauksesta"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Luo kohdennettu monivalintatesti mistä tahansa aiheesta ja käy selitykset läpi jokaisen vastauksen jälkeen."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Älä hyväksy muokattua kappaletta ennen kuin osaat selittää, miksi muutos on parempi."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Kokeeni on tänä päivänä. Tässä ovat oppimäärä, heikot kohtani ja käytettävissä oleva aikani. Tee realistinen suunnitelma, jossa on päivittäistä muistamista."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Opi mitä tahansa maksuttoman AI-ohjaajan avulla: käytännön opas"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Anna minun haastatella tätä historiallista henkilöä. Pidä vastaukset todisteet huomioivina ja merkitse epävarmuus selkeästi."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Rakennettu todellisen oppijakäyttäytymisen pohjalta, ei geneeriseksi keskustelulaatikoksi."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Pääse eteenpäin läksyissä"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Blogi on järjestetty todellisten opiskelutilanteiden ympärille: jumista pääsemiseen, paremmin muistamiseen, parempaan kirjoittamiseen, kokeisiin valmistautumiseen ja ideoiden tutkimiseen kärsivällisen ohjaajan kanssa."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Miksi yhdistää historia ja väittely?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Blogi yhdistää hyödylliset oppimisneuvot elävään harjoitteluun, jotta opas voi muuttua opiskelutuokioksi yhdessä askeleessa."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Liitä kysymys ja se, mitä olet kokeillut, ja pyydä pienintä hyödyllistä seuraavaa askelta."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Keskeytä elokuva"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Oppijoille, jotka juuttuvat uuden aiheen alkuun tai tarvitsevat helpomman reitin vaikeaan ideaan."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Sijoita minut tähän aikaan ja paikkaan. Merkitse dokumentoidut faktat erilleen uskottavasta simulaatiosta ja kysy, mitä huomaan."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "saavutettavuus, kehotteet, testit, turvallisempi AI-toiminta, oppijan polut ja käyttöliittymän viimeistely."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Selkokieliset selitykset"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Kirjoita täsmälleen, mihin jäit jumiin, ennen kuin pyydät apua."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "Suunnittele kokeisiin kertaaminen, luo testejä, rakenna muistikortteja, aikatauluta hajautettu kertaus ja pidä motivaatio realistisena kohdennettujen AI-oppimistilojen avulla."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Muunna virheet harjoituksiksi"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "Suunnittele työ, harjoittele muistista palauttamista ja paikkaa heikot kohdat testeillä ja aktiivisella muistamisella."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Tutki historiaa ja ajatuksia"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Suunnittelu"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Tutki historiaa ja suuria ajatuksia AI:n avulla"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Toista elokuva"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Tee ideasta muistettava"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "Toista inspir-oppimisen esikatselu"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Avaa aihekeskittymä"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Suositut AI-oppimispolut"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Kirjoittaminen"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Suositut polut"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Jatka"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Harjoittelu"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Perusteet"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Harjoittelua, ei vastausten kopiointia"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Aikatauluta seuraava toisto"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI-matematiikan askelvalmentaja"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Anna konteksti"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Kysy todellinen kysymys"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "Valmistaudu kokeeseen"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "Kehoteideoita ja toistettava opiskelusilmukka, joilla saat hyödyllisiä oppimistuloksia inspirin Opi mitä tahansa -tilasta."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Tutki historiaa, julkisia henkilöitä, syitä, väittelyitä, filosofiaa ja lähdekritiikkiä AI-oppimistiloissa, jotka erottavat todisteet simulaatiosta."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Kyseenalaista henkilöä"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI-väittelyharjoittelu"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Kyseenalaista historiallista näkökulmaa"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Kysymykset pakottavat tuomaan esiin oman mallisi aiheesta, ja juuri siinä hämmennys, väärä varmuus ja puuttuvat pohjatiedot yleensä näkyvät."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Nopeat vastaukset"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Testaa minua näistä aiheista yksi kysymys kerrallaan. Selitä jokaisen vastauksen jälkeen aukko ja nosta vaikeustasoa hitaasti."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Testaa tietovisalla"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Testaa heikkoja alueita"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Testaa itseäsi"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Testaa itseäsi ensin, jotta näet, mitä oikeasti muistat ja missä varmuus johtaa harhaan."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Testit paljastavat yleensä enemmän, koska ne mittaavat muistista palauttamista. Uudelleen lukeminen auttaa sen jälkeen, kun testi näyttää, mitä pitää korjata."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Lue missio"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Realistinen aikataulu"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Korjaa yksi virhe"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Korjaa heikko kohta"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Toista uudelleen"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Aloita elokuva alusta"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Muistista palauttamisen harjoittelu"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Kertaa muistikorteilla"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Muokkaa luonnostani"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Muokkaa menettämättä omaa ääntäsi"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Tallenna virhe"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Aikatauluta seuraava toisto"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Koulukohtaiset työnkulut"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Koulut voivat tarjota omalla brändillä varustettuja AI-keskustelukokemuksia, jotka on räätälöity niiden oppijoille, mukaan lukien NCERT-linjainen sisältö ja työnkulut, kumppanikoulujen tai CSR-sponsoroinnin rahoittamana."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Hakusivut, blogioppaat, kehotteet ja elävät tilat liittyvät yksinkertaiseen silmukkaan: kysy, kokeile, tarkista, korjaa ja kertaa."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Erota fakta keksitystä"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Näytä elokuvan luvut"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Näytä elokuvan tekstiversio"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Sokraattiset tarkistukset"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Sokraattinen opetus"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Sokraattinen ohjaaja"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Sokraattinen ohjaus käyttää kysymyksiä, hypoteeseja, vihjeitä ja pohdintaa rakentaakseen syvempää ymmärrystä kuin passiivinen vastausten lukeminen."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Aloita elävä oppimistuokio."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "Aloita heti, kun tiedät koepäivän. Jos aikaa on vähän, aseta etusijalle heikot alueet, vanhojen kokeiden tyyliset kysymykset ja päivittäinen muistaminen."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Aloita pyytämällä yksinkertainen selitys, yksi arkinen vertaus ja kolme ideaa, jotka tarvitset ennen kuin aihe alkaa aueta."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Aloita jokainen istunto nopealla testillä ennen uudelleen lukemista."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "Aloita perusperiaatteista"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Aloita aiheesta ja avaa sitten oikea oppimistila."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Aloita siitä, mitä et ymmärrä, ja saat selkokielisen mallin, esimerkkejä ja seuraavat askeleet."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Aloita oppiminen"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Aloita aiheesta, tehtävästä, luonnoksesta, kokeesta tai ideasta siinä tilassa, joka sopii tehtävään."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Aloita Opi mitä tahansa -tilasta"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Aloita paikasta, ajasta, identiteetistä, rajoitteista ja todisteiden merkinnöistä, jotta kohtaus ei muutu geneeriseksi roolipeliksi."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Aloita tehtävästä, jonka haluat saada tehdyksi."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "Kerro jumikohta"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Vaihetarkistukset"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Astu historialliseen kontekstiin, vertaile argumentteja ja harjoittele näkemään idea useammalta puolelta."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Opiskelijoille, jotka tarvitsevat seuraavan askeleen, virhetarkistuksen tai palautetta menettämättä tehtävän omistajuutta."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Opiskelusilmukoita, AI-ohjausoppaita ja käytännön kehotteita."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "oppijan tarpeisiin kartoitettuja aihekeskittymiä"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Tiivistä konteksti"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Tukee koulun ulkopuolista oppimista, akateemista harjoittelua ja uteliaisuutta."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Vaihda kysymyksiin, jotta voit paljastaa oletuksia ja täyttää aukkoja sen sijaan, että lukisit vastauksen passiivisesti."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Keskustele historiallisen henkilön kanssa ja pidä luotu dialogi erillään dokumentoiduista sitaateista."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Keskustele historiallisen henkilön kanssa"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "keskustele historiallisten henkilöiden kanssa AI:n avulla"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Testaa ennen kertausta"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Testaa argumentti"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Testaa päättelysi"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "Blogi yhdistää hyödylliset oppimisneuvot elävään harjoitteluun, jotta opas voi muuttua opiskelutuokioksi yhdessä askeleessa."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "Blogi on järjestetty todellisten opiskelutilanteiden ympärille: jumista pääsemiseen, paremmin muistamiseen, parempaan kirjoittamiseen, kokeisiin valmistautumiseen ja ideoiden tutkimiseen kärsivällisen ohjaajan kanssa."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "Laajempi avoimen lähdekoodin inspir-alusta."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "Lopetus palaa missioon: julkinen pääsy, koulut ja avoimempi tapa oppia."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "Nykyinen inspirlearning.com-uudistus."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "Elokuva siirtyy inspiraatiosta käytännön lupaukseen: kärsivälliseen AI-oppimiskumppaniin."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Läksy- ja sokraattiset tilat on suunniteltu vihjeiden, päättelyn, vaihetarkistusten ja oppijan omien selitysten ympärille, eivät valmiiden vastausten jakamiseen."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "Keskiosa kehystää inspirin ymmärtämisen, vihjeiden, testien ja aktiivisten oppimissilmukoiden ympärille."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "Seuraavan sukupolven AI-opiskelualusta."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Avauskohtaukset esittävät oppimisen asiana, jonka kuka tahansa voi aloittaa heti."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Historialliset keskustelut"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "Julkinen sivusto on rakennettu oppimiskartaksi: elävät tilat tarjoavat välitöntä apua, aihekeskittymät vastaavat oppijoiden kysymyksiin ja oppaat muuttavat lukemisen toiminnaksi."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "Sivusto on reitti, ei esite."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Kirjoita kolmen lauseen selitys katsomatta ja pyydä sitten sokraattista tilaa löytämään heikko lenkki."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Ajattele syvemmin"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Väittele väitteestä"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Aikamatka"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Selaa kaikkia tiloja"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Aiheryhmät"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Blogista"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Tekstiversio"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Pyydä vihjettä, älä vastausta"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Matkusta aikakauden läpi"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Kyseenalaista historiallista näkökulmaa"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Kokeile Läksyvalmentajaa"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Julkisesti saatavilla, ja koulut voivat samalla käyttää luottamuksellisia räätälöityjä versioita."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Muuta se muistikorteiksi"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Muuta virheet kertaussilmukoiksi"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Muuta muistiinpanot tai aiheet kohdennetuiksi muistikorteiksi, joissa on vihjeitä, vastauksia, esimerkkejä ja yleisiä kompastuksia."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Muuta korjattu virhe muistikortiksi tai lyhyeksi tarkistuslistaksi myöhempää varten."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "Muuta selitys aktiivisen muistamisen korteiksi: yksi käsitekortti, yksi esimerkkikortti ja yksi väärinkäsityskortti."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Muuta vaikein väärin mennyt kysymys muistikortiksi ja kertaa se myöhemmin."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Muuta nämä väärin menneet kysymykset muistikorteiksi, jotka on ryhmitelty käsitteen, kaavan, määritelmän ja esimerkin mukaan."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Muuta oppimäärä, koepäivä, aika ja heikot alueet käytännölliseksi opiskelusuunnitelmaksi."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Siirry sokraattisiin kysymyksiin, testeihin, muistikortteihin, väittelyyn, roolipeliin ja ohjattuun opetukseen."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Ymmärrä vaikea aihe"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Ymmärrä historiallinen konteksti, kyseenalaista näkökulma, vertaile väitteitä ja erota simulaatio dokumentoidusta faktasta."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Muokkaa menettämättä omaa ääntäsi"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Kerro jumikohta"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Miten opiskella AI:n avulla huijaamatta itseäsi"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Pyydä aihe selkokielellä ja sen jälkeen yksi vertaus, yksi esimerkki ja yksi yleinen väärinkäsitys."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI-aikamatkaoppiminen"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Harjoittelu"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Älä lue muistiinpanoja uudelleen ennen kuin testaat, mitä jo muistat."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Muuta oppimäärä, koepäivä, aika ja heikot alueet käytännölliseksi opiskelusuunnitelmaksi."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Sivut on suunniteltu viemään ihmiset selityksestä elävään tilaan, kehotteeseen, testiin tai kertaussilmukkaan."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "AI-läksyapua ilman lunttaamista"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matematiikka"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Ohjaaja ensimmäiseen kysymykseen"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Maksutonta AI-oppimista kaikille."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Tukee koulun ulkopuolista oppimista, akateemista harjoittelua ja uteliaisuutta."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI-muistikortit ja aktiivinen muistaminen: miten muistaa enemmän"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Tee siitä pysyvää"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Siirry selkokielisestä selityksestä kysymyksiin, esimerkkeihin ja muistiharjoitteluun."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Vihje ensin -apu"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Tässä on kysymys ja se, mitä kokeilin. Anna pienin hyödyllinen vihje, älä lopullista vastausta."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Testit paljastavat yleensä enemmän, koska ne mittaavat muistista palauttamista. Uudelleen lukeminen auttaa sen jälkeen, kun testi näyttää, mitä pitää korjata."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Vastaa tarkistuskysymykseen, kokeile yhtä vaihetta, väittele väitteestä, muokkaa luonnosta tai rakenna muistamista tukevia kortteja."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Miten ymmärtää vaikea aihe AI:n avulla"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Ymmärrä koodia, selvitä virheitä, opi ohjelmoinnin käsitteitä ja rakenna pieniä projekteja vaihe vaiheelta."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Poista elokuvan mykistys"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Aktiivinen harjoittelu"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "Käytä AI:ta ymmärtämisen, harjoittelun ja palautteen valmentajana, ei oikotienä, joka huomaamatta poistaa oppimisen."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Uppoutuminen"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Käytä AI-läksyvalmennusta vihjeisiin, vaihetarkistuksiin, matematiikan päättelyyn ja kirjoituspalautteeseen niin, että lopullinen työ pysyy omasi."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Oppija ensin -tuki"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Käytä AI-aikamatkaa, historiallisia keskusteluja ja väittelyharjoittelua kontekstin, todisteiden, argumenttien ja näkökulmien tutkimiseen."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Muistikortit toimivat parhaiten, kun ne testaavat yhtä ideaa kerrallaan, näyttävät vastauksen vasta yrittämisen jälkeen ja tuovat vaikeat kortit nopeammin kertaukseen."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Jokaisella sovelluksen ulkopuolisella sivulla on nyt tehtävä: rakentaa luottamusta, selittää oppimisreitti ja ohjata oppijat hyödylliseen seuraavaan tekoon piilottamatta tärkeitä yksityiskohtia."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Käytä väittelyä vahvimman väitteen ja vahvimman vastaväitteen vertaamiseen."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Muuta korjattu virhe muistikortiksi tai lyhyeksi tarkistuslistaksi myöhempää varten."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Käytä vihjeitä, vaihetarkistuksia ja kirjoituspalautetta muuttamatta oppimista vastausten kopioinniksi."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Räätälöityjä AI-oppimistiloja luottamuksellisella tiedonkäsittelyllä."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "Käytä inspiria esseepalautteeseen, lukemisen tukeen, puheharjoitteluun, lähdekritiikkiin ja muokkaussilmukoihin, jotka parantavat rakennetta korvaamatta oppijan ääntä."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Muokkaa luonnostani"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Käytä inspiria läksyvihjeisiin, matematiikan vaihetarkistuksiin, kirjoituspalautteeseen, lähdekritiikkiin, sokraattisiin kysymyksiin ja muistikortteihin paljastamatta yksityisiä keskusteluja."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Muuta selitys aktiivisen muistamisen korteiksi: yksi käsitekortti, yksi esimerkkikortti ja yksi väärinkäsityskortti."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Käytä inspiria vaiheittaiseen matematiikka-apuun, läksyvihjeisiin, sokraattiseen päättelyyn, testeihin, muistikortteihin ja kokeisiin valmistautumiseen ilman vastausten kopiointia."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "AI-ohjaajat aiheittain"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Käytä julkisia vierastiloja maksutta ja tutustu sen jälkeen avoimen lähdekoodin työhön sekä koulukäyttöönoton polkuihin."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Missio ensin"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Väittele tästä historiallisesta tai filosofisesta väitteestä molemmilta puolilta. Erota todisteet, oletukset ja arvot."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Käytä sokraattisia kysymyksiä"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Käytä koepäivää, oppimäärää, käytettävissä olevaa aikaa ja heikkoja alueita suunnitelmaan, joka kestää arjen."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Käytä linkitettyä opasta, kehotetta, aihekeskittymää tai oppimispolkua heikon kohdan kertaamiseen myöhemmin."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Käytä kirjoituspalautetta rakenteeseen, selkeyteen ja todisteisiin niin, että lopullinen luonnos tuntuu yhä omaltasi."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "Hyödyllinen ensimmäisestä klikkauksesta"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Videon säätimet"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Videon eteneminen"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Oman äänen säilyttävä palaute"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "Katso 31 s"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Heikkojen alueiden silmukat"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "Mitä AI-oppimiskumppanin pitäisi tehdä kaikille"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Mitä oppijat yleensä kysyvät ennen aloittamista."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "Mitä minun pitäisi kysyä ensin, kun aihe tuntuu liian vaikealta?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "Mitä läksykehotteeseen kannattaa sisällyttää?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Mitä voit tehdä"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "Koulun omalla brändillä toimiva AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Miksi sokraattinen AI-ohjaaja voi tehdä ideoista muistettavia"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "Miksi yhdistää historia ja väittely?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "Miksi käyttää sokraattisia kysymyksiä selityksen jälkeen?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "Käy algebraa, analyysiä, sanallisia tehtäviä ja matematiikan käsitteitä läpi vaihe kerrallaan AI-valmentajan kanssa."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir on olemassa sitä hetkeä varten, kun oppija haluaa ymmärtää jotakin ja tarvitsee kärsivällisen paikan aloittaa. Elokuva esittelee tuotteen maksuttomana julkisena oppimiskumppanina uteliaisuutta, harjoittelua ja saavutettavuutta varten."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Käy matematiikan vaiheet läpi"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Kirjoita kolmen lauseen selitys katsomatta ja pyydä sitten sokraattista tilaa löytämään heikko lenkki."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Kirjoita täsmälleen, mihin jäit jumiin, ennen kuin pyydät apua."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Kirjoittaminen"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Kirjoitusvalmentaja"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Kyllä, kun se antaa vihjeitä, tarkistaa päättelyä, selittää virheitä ja pyytää sinua tuottamaan lopullisen vastauksen sen sijaan, että kirjoittaisi sen puolestasi."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Aloita jokainen istunto nopealla testillä ennen uudelleen lukemista."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Kyllä. Julkiset aihekeskustelut, kuten Opi mitä tahansa, Sokraattinen opetus, Läksyvalmentaja, testit ja muistikortit, avautuvat suoraan vierastilassa."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Kyllä. Koulut voivat käyttää ensin julkista tuotetta ja keskustella sitten räätälöidyistä AI-oppimistiloista, koulukohtaisista työnkuluista, luottamuksellisuudesta ja rahoitetuista käyttömahdollisuuksista."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Rakenna aikapassi, käy matkustusohjeet läpi ja tutki historiallista maailmaa näkymän, kartan, aikajanan, ihmisten, sääntöjen, varusteiden ja todisteiden avulla."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Matkusta aikakauden läpi"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Oman äänen säilyttävä palaute"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sokraattinen ohjaus käyttää kysymyksiä, hypoteeseja, vihjeitä ja pohdintaa rakentaakseen syvempää ymmärrystä kuin passiivinen vastausten lukeminen."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Anna palautetta rakenteesta, selkeydestä ja todisteista. Säilytä oma ääneni äläkä kirjoita koko vastausta uusiksi."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Testaa päättelysi"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Matematiikassa ja logiikassa etene vaihe kerrallaan ja kysy ennen jatkamista, miksi jokainen siirto on sallittu."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Tarkista päättely rivi riviltä"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Voinko viitata AI:n historialliseen dialogiin lähteenä?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Aikamatka"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Ei. Käsittele luotua dialogia oppimissimulaationa. Viittaa faktaväitteissä oikeisiin primääri- tai sekundäärilähteisiin."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Aloita tehtävästä, jonka haluat saada tehdyksi."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Käytä inspiria vaiheittaiseen matematiikka-apuun, läksyvihjeisiin, sokraattiseen päättelyyn, testeihin, muistikortteihin ja kokeisiin valmistautumiseen ilman vastausten kopiointia."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Seuraava vaihe"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Poista elokuvan mykistys"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Testaa tietovisalla"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Kyllä, kun se antaa vihjeitä, tarkistaa päättelyä, selittää virheitä ja pyytää sinua tuottamaan lopullisen vastauksen sen sijaan, että kirjoittaisi sen puolestasi."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Käytä AI:ta ymmärtämisen, harjoittelun ja palautteen valmentajana, ei oikotienä, joka huomaamatta poistaa oppimisen."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Keskiosa kehystää inspirin ymmärtämisen, vihjeiden, testien ja aktiivisten oppimissilmukoiden ympärille."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Käytä linkitettyä opasta, kehotetta, aihekeskittymää tai oppimispolkua heikon kohdan kertaamiseen myöhemmin."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Avauskohtaukset esittävät oppimisen asiana, jonka kuka tahansa voi aloittaa heti."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Opi ohjelmointia, selvitä käsitteitä, suunnittele projekteja, tulkitse dataa ja tutki teknisiä kysymyksiä julkisissa AI-tiloissa, joissa oppija pysyy mukana."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Tekstiversio"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Piilota elokuvan luvut"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Esitä ensimmäinen kysymyksesi ja siirry suoraan harjoitteluun."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Selaa aiheita"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Uteliaille oppijoille, jotka haluavat historian ja ajatusten tuntuvan paikantuneilta, keskusteltavilta ja eläviltä kadottamatta todisteita."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Koulut voivat tarjota omalla brändillä varustettuja AI-keskustelukokemuksia, jotka on räätälöity niiden oppijoille, mukaan lukien NCERT-linjainen sisältö ja työnkulut, kumppanikoulujen tai CSR-sponsoroinnin rahoittamana."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Väittele mistä tahansa aiheesta"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI-opiskeluaikataulu"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Jokainen opas ohjaa tilaan, kehotteeseen tai kertaussilmukkaan, jotta lukeminen muuttuu harjoitteluksi."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir liikkeessä"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Opiskelusilmukoita, AI-ohjausoppaita ja käytännön kehotteita."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Muuta virheet kertaussilmukoiksi"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI-suunnitelma kokeisiin valmistautumiseen"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Käytännön opas Opi mitä tahansa -tilan käyttöön inspirissä perustaitojen oppimisessa, mukana kehotteita, opiskelusilmukoita ja turvallisempia AI-tapoja."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Korjaa yksi virhe"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Tee muistikortteja virheistä, epäröinnistä, kaavoista, määritelmistä ja käsitteistä, joita et osannut selittää selkeästi."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Maksutonta vierasoppimista"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Käytä inspiria läksyvihjeisiin, matematiikan vaihetarkistuksiin, kirjoituspalautteeseen, lähdekritiikkiin, sokraattisiin kysymyksiin ja muistikortteihin paljastamatta yksityisiä keskusteluja."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Testaa itseäsi ensin, jotta näet, mitä oikeasti muistat ja missä varmuus johtaa harhaan."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Seuraavan sukupolven AI-opiskelualusta."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Voit kokeilla julkisia oppimistiloja vapaasti. Tallennetut keskustelut, tilit, ylläpitotyökalut ja käyttäjätiedot pysyvät yksityisinä."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Testaa argumentti"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Avaa oppimiskartta"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "AI-muistikortit kertaukseen"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: voit oppia mitä tahansa"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Ymmärrä historiallinen konteksti, kyseenalaista näkökulma, vertaile väitteitä ja erota simulaatio dokumentoidusta faktasta."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Rakenna koesuunnitelma"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Käytä inspiria esseepalautteeseen, lukemisen tukeen, puheharjoitteluun, lähdekritiikkiin ja muokkaussilmukoihin, jotka parantavat rakennetta korvaamatta oppijan ääntä."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Realistinen aikataulu"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Älä pyydä täydellistä tiivistelmää ennen kuin tunnet tarvittavat pohjaideat."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Keskustele historiallisen henkilön kanssa"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Tallenna virhe"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Rakenna AI-avusteinen kokeisiin valmistautumisen työnkulku, jossa on realistinen opiskelusuunnitelma, muistista palauttamisen harjoittelua, testejä, muistikortteja ja heikkojen kohtien kertausta."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Kerro kysymys, mitä olet jo kokeillut, mihin jäit jumiin ja haluatko vihjeen, vaiheen tarkistuksen vai palautetta."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Muistista palauttamisen harjoittelu"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Avaa tila ja aloita heti; julkinen vieraskokemus ei vaadi tiliä."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Aloita aiheesta, tehtävästä, luonnoksesta, kokeesta tai ideasta siinä tilassa, joka sopii tehtävään."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Älä tee muistikortteja lauseista, joita et vielä osaa selittää omin sanoin."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Suositut polut"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "miten ymmärtää vaikea aihe AI:n avulla"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Kyllä. Julkiset vierasoppimistilat on suunniteltu maksuttomaan käyttöön, joten oppijat voivat aloittaa ilman koulukäyttöönottoa tai maksullista tiliä."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "Voit kokeilla julkisia oppimistiloja vapaasti. Tallennetut keskustelut, tilit, ylläpitotyökalut ja käyttäjätiedot pysyvät yksityisinä."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Harjoittelua, ei vastausten kopiointia"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Läksy- ja sokraattiset tilat on suunniteltu vihjeiden, päättelyn, vaihetarkistusten ja oppijan omien selitysten ympärille, eivät valmiiden vastausten jakamiseen."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Tarkista mallini"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Piilota elokuvan tekstiversio"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Videon säätimet"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Oppijoille, joilla on vähän aikaa, laaja oppimäärä ja tarve realistiseen kertaukseen ilman oletusta, että kaikki on yhtä tärkeää."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Maksutonta AI-oppimista kaikille | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Voinko käyttää inspiria kirjautumatta?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Suunnittele työ, harjoittele muistista palauttamista ja paikkaa heikot kohdat testeillä ja aktiivisella muistamisella."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Nopeat vastaukset"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Keskustele historiallisen henkilön kanssa ja pidä luotu dialogi erillään dokumentoiduista sitaateista."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Selkokieliset selitykset"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Rakenna suunnitelma"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Tiivistä simulaation jälkeen tilanne, rajoitteet ja todisteet."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Kyllä. Koulut voivat käyttää ensin julkista tuotetta ja keskustella sitten räätälöidyistä AI-oppimistiloista, koulukohtaisista työnkuluista, luottamuksellisuudesta ja rahoitetuista käyttömahdollisuuksista."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Matematiikka, kirjoittaminen, koodaus, historia, läksyt ja kokeisiin valmistautuminen tarvitsevat kukin erilaista apua. Aloita aiheesta ja siirry sitten sopivaan tilaan, kehotteeseen, oppaaseen tai kertaussilmukkaan."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Vertaa argumentteja"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Aktiivisen muistamisen kertaus"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Argumentointiharjoitus"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Muistikorttien rakentaja"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Keskeytä elokuva"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Pyydä yksinkertaisempi selitys heikoimmasta käsitteestä."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Pidä reitti elävänä"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Paranna luonnosta"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Väittele mistä tahansa aiheesta, anna ajatustesi joutua koetukselle, vertaile väitteitä ja opi rakentamaan vahvempia argumentteja."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Historia"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Voiko AI-läksyapu olla eettistä?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Kokeile Läksyvalmentajaa"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Opi mitä tahansa: kehotteet ja opiskelusilmukka"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "{value1}-opaskirjasto, joka muuttaa oppimisen toiminnaksi."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Kouluille ja CSR-kumppaneille"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Koulukohtaiset työnkulut"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Älä liitä tehtävänantoa ja pyydä valmista vastausta."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "AI-ohjaaja vaikeisiin käsitteisiin"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Toimintaa lukemisen jälkeen"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Kysymykset pakottavat tuomaan esiin oman mallisi aiheesta, ja juuri siinä hämmennys, väärä varmuus ja puuttuvat pohjatiedot yleensä näkyvät."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Avoimuus lähtökohtana"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir rakennetaan julkisesti."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Esitä kysymyksiä, haasta ajatuksia ja opi historiaa perustelluissa keskusteluissa menneisyyden julkisten henkilöiden kanssa."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Käytä vihjeitä, vaihetarkistuksia ja kirjoituspalautetta muuttamatta oppimista vastausten kopioinniksi."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Miksi sokraattinen AI-ohjaaja voi tehdä ideoista muistettavia"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Toista elokuva"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Mitä minun pitäisi kysyä ensin, kun aihe tuntuu liian vaikealta?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI-läksyvalmentaja"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Käytä koepäivää, oppimäärää, käytettävissä olevaa aikaa ja heikkoja alueita suunnitelmaan, joka kestää arjen."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Pyydä viisi kysymystä, joissa yhdistyvät määritelmät, esimerkit ja soveltamistehtävät."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Vaihda kysymyksiin, jotta voit paljastaa oletuksia ja täyttää aukkoja sen sijaan, että lukisit vastauksen passiivisesti."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Käytä AI-aikamatkaa, historiallisia keskusteluja ja väittelyharjoittelua kontekstin, todisteiden, argumenttien ja näkökulmien tutkimiseen."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Hanki opiskeluaikataulu, testaa heikkoja kohtiasi ja muuta virheet muistikorteiksi toistuvaa kertausta varten."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Nykyinen inspirlearning.com-uudistus."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Opi kohdennettujen kysymysten, vihjeiden ja pohdinnan kautta sen sijaan, että lukisit vastauksia passiivisesti."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Tilaoppaat, kehotesilmukat, opiskelumenetelmät ja perusartikkelit tavallisiin oppimisen hetkiin."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "keskustele historiallisten henkilöiden kanssa AI:n avulla"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Jokainen tila avautuu julkisena vieraskeskusteluna, jolla on oma tarkoitus, esimerkit ja oppimiskulku, jotta oppija saa heti oikeanlaista tukea."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Miten inspir eroaa tavallisesta AI-keskustelubotista?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Rakennettu käyttöä varten"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Testaa ennen kertausta"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Älä käsittele luotua dialogia oikeana sitaattina tai primäärilähteenä."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Testaa itseäsi"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Älä tee suunnitelmaa, joka olettaa jokaisen aiheen tarvitsevan yhtä paljon aikaa."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Toista inspir-oppimisen esikatselu"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Aloita pyytämällä yksinkertainen selitys, yksi arkinen vertaus ja kolme ideaa, jotka tarvitset ennen kuin aihe alkaa aueta."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "AI-testigeneraattori kokeisiin"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Muunna selitys aktiivisen muistamisen korteiksi ja palaa kortteihin virheiden tai epäröinnin jälkeen."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Aloita elokuva alusta"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Voiko inspir auttaa läksyissä rohkaisematta lunttaamiseen?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Videon eteneminen"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Hanki ensin yksinkertainen malli"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspirin AI-oppimisen opaskirjasto"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Aloita Opi mitä tahansa -tilasta"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Maksuton julkinen AI-oppimiskumppani ohjaukseen, harjoitteluun, testeihin, muistikortteihin, väittelyyn, kirjoituspalautteeseen, koodausapuun ja opiskelun suunnitteluun."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Koulun omalla brändillä toimiva AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Aloita elävä oppimistuokio."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI-matematiikkaohjaaja"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Matematiikan askelvalmentaja"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Viestintä"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Opi keskustelemalla, testaamalla, väittelemällä ja tutkimalla."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "oppimisoppaat ja harjoittelusilmukat"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Tarkastele väitettä väittelemällä useammalta kannalta, jotta huomaat oletukset, kompromissit ja heikot todisteet."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI-historian tuki"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Nopeat oppimisreitit"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Aloita perusperiaatteista"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Mykistä elokuva"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Katso 31 s"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Suunnittele kokeisiin kertaaminen, luo testejä, rakenna muistikortteja, aikatauluta hajautettu kertaus ja pidä motivaatio realistisena kohdennettujen AI-oppimistilojen avulla."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Avaa juuri se apu, jota tulit hakemaan."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Muuta muistiinpanot tai aiheet kohdennetuiksi muistikorteiksi, joissa on vihjeitä, vastauksia, esimerkkejä ja yleisiä kompastuksia."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sokraattinen ohjaaja"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI-sokraattinen ohjaaja"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Kehoteideoita ja toistettava opiskelusilmukka, joilla saat hyödyllisiä oppimistuloksia inspirin Opi mitä tahansa -tilasta."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Tutustu kouluihin"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Käy algebraa, analyysiä, sanallisia tehtäviä ja matematiikan käsitteitä läpi vaihe kerrallaan AI-valmentajan kanssa."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Rakennettu uteliaisuutta, harjoittelua ja saavutettavuutta varten."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Testaa minua näistä aiheista yksi kysymys kerrallaan. Selitä jokaisen vastauksen jälkeen aukko ja nosta vaikeustasoa hitaasti."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Suositut AI-oppimispolut"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Selkeät yksityisyysrajat"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sokraattiset tarkistukset"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Maksuton julkinen AI-oppimisalusta"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Lue missio"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sokraattinen opetus"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Toista uudelleen"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Julkinen oppimissivusto, jonka idea avautuu nopeasti."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Mitä oppijat yleensä kysyvät ennen aloittamista."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Todisteet huomioivat kohtaukset"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Tiivistä konteksti"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Oppaat, polut, aiheet ja kehotteet vievät seuraavaan hyödylliseen harjoittelupaikkaan."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Älä väittele vain sen kannan puolesta, josta olet jo samaa mieltä."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Hyödyllinen oppimiskartta"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Saat mukaasi selkokielisen mallin, tarkempia kysymyksiä, esimerkkejä, jotka osaat selittää takaisin, ja muistamiskortteja kertaukseen."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Oppijat tarvitsevat järjestyksen, eivät linkkikasaa. Nämä polut yhdistävät tilat käytännöllisiksi opiskelusilmukoiksi ymmärtämistä, läksyjä, kokeisiin valmistautumista ja tutkimista varten."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Opi mitä tahansa"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Elokuvan luvut"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Helpot seuraavat askeleet"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Tee opiskelusuunnitelmasta realistinen"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Opaskirjasto"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Miksi käyttää sokraattisia kysymyksiä selityksen jälkeen?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Käytännön katsaus siihen, miten AI voi tehdä oppimisesta selkeämpää, henkilökohtaisempaa ja saavutettavampaa muuttamatta opiskelijoita passiivisiksi vastausten kerääjiksi."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argumentti"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Käytä kirjoituspalautetta rakenteeseen, selkeyteen ja todisteisiin niin, että lopullinen luonnos tuntuu yhä omaltasi."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-linjaiset vaihtoehdot"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Kysy minulta viisi sokraattista kysymystä tästä aiheesta. Kerro jokaisen vastauksen jälkeen, mitä oletusta käytin ja mitä kannattaa testata seuraavaksi."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Onko inspirin käyttö maksutonta?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Pyydä historiallista tilaa merkitsemään, mikä on dokumentoitua, pääteltyä tai simuloitua."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Tutustu opaskirjastoon"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Tee virheistä muistikortteja ja palaa niihin viiveen jälkeen."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "AI-läksyapua ilman vastausten kopiointia"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Pyydä vihjeitä, tarkistuksia, palautetta ja opiskelusuunnitelmia, jotka jättävät ajattelun oppijalle."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Laajempi avoimen lähdekoodin inspir-alusta."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Älä jätä kertomatta, mitä olet jo kokeillut; hyödyllinen apu riippuu siitä kontekstista."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Tarkista tämä vaihe ratkaisustani. Jos se on väärin, selitä virhe ja anna yksi seuraava siirto."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Sijoita minut tähän aikaan ja paikkaan. Merkitse dokumentoidut faktat erilleen uskottavasta simulaatiosta ja kysy, mitä huomaan."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Selitä se takaisin"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Heikkojen alueiden silmukat"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Jokainen opas päättyy harjoitussuunnitelmiin, reitteihin ja linkkeihin juuri sopivaan oppimistilaan."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Mitä AI-oppimiskumppanin pitäisi tehdä kaikille"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI-historiaohjaaja"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Kyseenalaista henkilöä"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Tarkista yksi vaihe"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Käsittele väitettä väitellen"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Korjaa heikko kohta"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Läksyvalmentaja"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Selitä seuraava vaihe"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "AI-muistikortit aktiiviseen muistamiseen"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Lyhyt elokuva inspirin ajatuksesta, että oppimisen pitäisi olla maksutonta, saavutettavaa ja elävää."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Aloita siitä, mitä et ymmärrä, ja saat selkokielisen mallin, esimerkkejä ja seuraavat askeleet."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Aiheryhmät"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Näytä elokuvan tekstiversio"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Läksyt"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Käytä AI-läksyvalmennusta vihjeisiin, vaihetarkistuksiin, matematiikan päättelyyn ja kirjoituspalautteeseen niin, että lopullinen työ pysyy omasi."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Selkeät selitykset"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Muuta se muistikorteiksi"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Kuinka aikaisin koesuunnitelma kannattaa tehdä?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Elokuva siirtyy inspiraatiosta käytännön lupaukseen: kärsivälliseen AI-oppimiskumppaniin."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Rakenna kanssamme"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Vaihetarkistukset"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Hyviä ensimmäisiä alueita:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Erota fakta keksitystä"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Suunniteltu vahvistamaan varmuutta"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Aloita aiheesta ja avaa sitten oikea oppimistila."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Paranna kirjoittamista suunnittelulla, muokkauksella, rakenteella ja palautteella, joka säilyttää oman äänesi."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI-läksyapu"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Valitse aikakausi"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Tee sillä jotain"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Ei taas yksi vastauslaatikko. Paikka oppia."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Uteliaisuus alkaa tästä"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Avaa vieraschatti"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Kertaa muistikorteilla"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Älä anna roolipelin korvata päivämääriä, kontekstia, asiakirjoja tai todisteiden merkintöjä."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Aloita heti, kun tiedät koepäivän. Jos aikaa on vähän, aseta etusijalle heikot alueet, vanhojen kokeiden tyyliset kysymykset ja päivittäinen muistaminen."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Selitä jokaisen vihjeen jälkeen, miksi vaihe toimii, ennen kuin jatkat."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Pyydä vihjettä"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Jokainen artikkeli liittyy kategorioihin, eläviin tiloihin, aihekeskittymiin, oppimispolkuihin ja aiheeseen liittyviin oppaisiin."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Ajattele syvemmin"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Uteliaisuutta, harjoittelua ja AI:ta, joka opettaa."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Selitä tämä aihe selkokielellä. Nimeä kolme pohjaideaa, joita tarvitsen, yksi vertaus ja yksi yleinen väärinkäsitys."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Luottamukselliset käyttöönotot"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Avaa elokuva koko näytölle"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Mitä voit tehdä"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Muuta vaikein väärin mennyt kysymys muistikortiksi ja kertaa se myöhemmin."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Kysy mitä tahansa"
     }
   ]
 }

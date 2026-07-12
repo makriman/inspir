@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Amharic",
+  "locale": "am",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "የሕዝብ ገጾች፣ የርዕስ ውይይቶች፣ የመማር መንገዶች፣ የብሎግ መመሪያዎች እና የእገዛ ገጾች በቀላሉ እንዲገኙና እንዲጋሩ ተዘጋጅተዋል።"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "መማር ጀምር"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "የሕዝብ የመማሪያ ገጾች ክፍት ሲሆኑ፣ የAPI መስመሮች፣ የአስተዳዳሪ መስመሮች፣ የዳግም ማስጀመሪያ ሂደቶች እና የግል መገልገያ ገጾች ዝግ ሆነው ይቆያሉ።"
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "እያንዳንዱ የመማር ዘዴ የሕዝብ ማገናኛ ስላለው ተማሪዎች ትክክለኛው የመማር ተሞክሮ ውስጥ በቀጥታ መጀመር ይችላሉ።"
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "የሕዝብና የግል ወሰኖችን፣ የተማሪ ደህንነትን እና የትምህርት ቤት እምነትን ሲጠቅሱ ይህን ይጠቀሙ።"
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "የAI ይዘት ማውጫ"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "ከአጠቃላይ chatbot በተለየ፣ inspir AIን በመማር ሁነታዎች ዙሪያ ያደራጃል፣ ስለዚህ ተማሪዎች የሚፈልጉትን ዓይነት እገዛ ሊጀምሩ ይችላሉ፦ ፍንጮች፣ ጥያቄዎች፣ quizzes፣ ንቁ ማስታወስ፣ roleplay፣ ክርክር ወይም አስተያየት።"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "በሚያስፈልግበት ጊዜ የትምህርት ቤት አሰማራሮች በብጁ ይዘት፣ የሥራ ፍሰቶች፣ መመሪያዎች እና ከNCERT ጋር በተጣጣሙ የመማር ፍላጎቶች ዙሪያ ሊስተካከሉ ይችላሉ።"
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "የመማር ባሕርይ ቅድሚያውን ይይዛል"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "የሕዝብ የእንግዳ ዘዴዎች ለማንኛውም ሰው ጠቃሚ መነሻ ይሰጣሉ፤ የትምህርት ቤትና የአጋር አሰማራሮች ደግሞ ተሞክሮውን ከአካባቢው ፍላጎት ጋር ማስማማት ይችላሉ።"
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "ሰዎች ከፍለጋ፣ ከማህበራዊ ሚዲያ ወይም ከተጋራ ማገናኛ መጀመር እንዲችሉ እያንዳንዱ ዋና የመማር ዘዴ የሕዝብ የእንግዳ መግቢያ አለው።"
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "አንድ ሥራ በትንሽ ነገር ሊጀመር ይችላል?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "ስለ እንግዳ ዘዴ፣ የግል ውይይቶች፣ የተማሪ ደህንነት እና የትምህርት ቤት እምነት ግልጽ ማብራሪያ።"
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "inspir ለምን እንዳለ እና የመማር መዳረሻ ምን ማለት እንደሆነ የሚገልጸው የሕዝብ መግለጫ።"
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1M+ ተማሪዎች"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "ግቡ ሰዎችን በAI ፊት ቸልተኛ ማድረግ አይደለም። ግቡ ለእያንዳንዱ ተማሪ ለመጠየቅ፣ ለመለማመድ፣ አስተያየት ለማግኘት፣ እንደገና ለመሞከር እና መተማመን ለመገንባት ታጋሽ የመጀመሪያ ቦታ መስጠት ነው።"
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "ትምህርት ቤቶችና የኮርፖሬት ኃላፊነት"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "መጀመሪያ መዳረሻ"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "ስለ ነፃና ተደራሽ ትምህርት የinspir ራዕይ የሚዲያ ሽፋን።"
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "ሚዲያ እና ጥቅሶች"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "ለassistants፣ ለመምህራን፣ ለአጋሮች እና ለጥቅስ መሣሪያዎች የጽሑፍ-መጀመሪያ ማጣቀሻ ፋይል።"
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "በነፃው መድረክና በአጋር ትምህርት ቤቶች በኩል ተማሪዎችን ደርሷል።"
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "ትምህርት ቤቶችና የኮርፖሬት ኃላፊነት አጋሮች"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "የሕዝብ ሁነታዎቹ በመማር ባህሪ ዙሪያ ተዘጋጅተዋል፦ ፍንጮች፣ Socratic ጥያቄዎች፣ የደረጃ ፍተሻዎች፣ quizzes፣ flashcards፣ የጽሑፍ አስተያየት፣ የክለሳ ዙሮች እና ንቁ ማብራሪያ።"
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "የማጣቀሻ ማገናኛዎች፣ የሕዝብ መረጃዎች፣ የሚዲያ ዐውድ እና ለመጥቀስ ቀላል የሆኑ ዝርዝሮች።"
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "ተማሪዎች፣ ወላጆች፣ መምህራን፣ ትምህርት ቤቶች እና በራሳቸው የተማሩ ፈጣሪዎች"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "የትምህርት ቤት እና የአጋር መንገድ"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "ከሕዝብ የመማር ጓደኛ ጋር ጀምር።"
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "ከquizzes እና ከተማሪ ማህበረሰቦች ወደ በሕዝብ የተገነቡ ነፃ AI የመማር መሣሪያዎች ያለው ታሪክ።"
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "inspir ከአንድ የውይይት ሳጥን ይልቅ በሁነታዎች ዙሪያ ለምን ተገንብቷል?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "በ2022 መጨረሻ"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "የስራ ፍሰቶችን ማዋቀር"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "ከተማሪ ማህበረሰብ ወደ AI የመማር መሠረተ ልማት"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "ድጎማ ያለው AI ትምህርት ለሚፈልጉ ማህበረሰቦች መዳረሻው በአጋር ትምህርት ቤቶች ሊደገፍ ወይም በCSR ስፖንሰርነት መንገዶች ሊታገዝ ይችላል።"
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "የሕዝብ ምርቱ፣ የትምህርት ቤት መንገዱ እና የይዘት library ሁሉም ወደ አንድ መርህ መመለስ አለባቸው፦ መማር ንቁ፣ ተደራሽ እና ጠቃሚ ሆኖ መቆየት አለበት።"
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ አገሮች"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "ጥራት ያለው ትምህርት ተደራሽ፣ ሰብዓዊና ሕያው ሆኖ ሊሰማው ይገባል።"
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir በሶቅራጥስ አስተምህሮ፣ በቤት ሥራ ፍንጮች፣ በአጭር ፈተናዎች፣ በማስታወሻ ካርዶች፣ በሒሳብ ደረጃዎች፣ በጽሑፍ ግምገማ እና በፈተና ዕቅድ ዙሪያ በመደራጀቱ ተማሪዎች ወደ ተመረኮዘ የመማር ባህሪ ይገባሉ።"
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "የህዝብ የእንግዳ ሁነታን ይሞክሩ"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "ለdevelopers፣ ለመምህራን እና ለአስተዋጽኦ አቅራቢዎች open-source ዳግም ግንባታ።"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "ከ2013 ጀምሮ የተገነባ"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "ተልዕኮው ከእውነተኛ የምርት ገጽታዎች ጋር ተገናኝቷል።"
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir የመማር ዘዴዎችን በ/chat/{topicSlug} ላይ ክፍት ያደርጋል፤ ተማሪዎችም የተቀመጠ የግል ውይይት ሳያስፈልጋቸው ወደ ትክክለኛው AI የመማር ተሞክሮ በቀጥታ ይገባሉ።"
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "የሕዝብ ምርቱ ለመሞከር ቀላል ሆኖ ይቆያል፦ ተማሪዎች በቀጥታ ወደ መማር ሁነታ መድረስ እና እንደ እንግዳ መጀመር ይችላሉ። ትምህርት ቤቶች እና CSR አጋሮች ማህበረሰቦች ሚስጥራዊነት፣ ከካሪኩለም ጋር መጣጣም ወይም በድጎማ የተደገፈ መዳረሻ ሲፈልጉ የተበጁ ማስጀመሪያዎችን ሊደግፉ ይችላሉ።"
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "ድረ ገጽ"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "የሕዝብ ብሎጉ ከቀጥታ የመማር ሁነታዎች ጋር የተገናኙ ከ100 በላይ መመሪያዎች፣ prompt ዙሮች እና pillar clusters ይዟል።"
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "ከድር ጣቢያው የቀድሞ አድራሻ inspir.app ወደ አዲሱ አድራሻ inspirlearning.com የተደረገ ለውጥ"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "ሁሉንም ሁነታዎች ይመልከቱ"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "ከDeepHack ዕውቅና ጋር የተገናኘ የማህበረሰብ ገጽ።"
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "ትምህርት ቤቶችና አጋሮች ከሕዝብ ምርቱ ተነስተው ወደ ብጁ፣ ሚስጥራዊ እና በድጎማ የተደገፉ አሰማራሮች ሊያድጉ ይችላሉ።"
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "መማር ነፃ፣ አስደሳች፣ ጠቃሚ እና ጉጉት ላለው ማንኛውም ሰው የሚገኝ መሆን አለበት።"
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "ለትምህርት ቤትዎ የተለየ የመማር ተሞክሮ በተማሪ ማህበረሰብዎ፣ በንግግር ዘይቤዎ እና በመማር ቅድሚያዎችዎ ዙሪያ ሊቀረጽ ይችላል።"
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "የእንግዳ ሁነታ እይታ"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "አጭር መግለጫ"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "ጉጉት ላለው ማንኛውም ሰው ነፃ፣ ጠቃሚ እና አሳታፊ AI የመማር መሣሪያዎች።"
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "በነፃው የሕዝብ መድረክና በአጋር ትምህርት ቤት አሰማራሮች የተደረሰ ተደራሽነት።"
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "ነፃ የAI መማር መድረክ"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "መማር ለሁሉም ነው"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "ለምን አሁን"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "እነዚህ ገጾች ታሪኩን ማረጋገጥ፣ መጥቀስ፣ ማጋራት እና መጠቀም ቀላል ያደርጋሉ፦ የሕዝብ ሁነታዎች፣ የመማር መንገዶች፣ ረዘም ያሉ መመሪያዎች፣ የትምህርት ቤት ትግበራ ማስታወሻዎች፣ የሚዲያ እውነታዎች እና የኩባንያው ታሪክ።"
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "ለተማሪዎች የቤት ስራ አሰልጣኝ"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "በጣም አስፈላጊዎቹን የትምህርት ቤት ግቦች ይለዩ፦ የጽንሰ ሐሳብ ድጋፍ፣ የቤት ሥራ ፍንጮች፣ የፈተና ዝግጅት፣ ንቁ ትውስታ፣ የጽሑፍ ግብረመልስ ወይም ተጨማሪ ትምህርት።"
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "ለትምህርት ቤት፣ ለአጋር፣ ለCSR እና ለትምህርት መዳረሻ ማጣቀሻዎች ይህን ይጠቀሙ።"
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "ለAI የመማር ሥራ በDeepHack ላይ ከአሞድ ማልቪያ የተሰጠ የዳኞች ምርጫ ዕውቅና።"
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "ለሕዝብ እና ለግል መንገዶች የቀጥታ መዳረሻ ደንቦች።"
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir በነፃ የሕዝብ AI የመማር መሣሪያዎችና ለትምህርት ቤት ዝግጁ በሆኑ የመማሪያ ቦታዎች አማካኝነት መማርን ጉጉት ላለው ሁሉ ተደራሽ፣ አሳታፊ፣ አስደሳች እና ጠቃሚ ለማድረግ ይሠራል።"
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "ትምህርት ቤቶች መጀመሪያ የሕዝብ ዘዴዎችን መገምገም፣ ከዚያም ስለ ብጁ የሥራ ፍሰቶች፣ የሚስጥራዊነት ዕቅድ፣ የይዘት ፍላጎቶችና በገንዘብ ስለሚደገፍ መዳረሻ መወያየት ይችላሉ።"
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "ድጎማ ያለው መዳረሻ ለሚፈልጉ ማህበረሰቦች AI የመማር መዳረሻ በአጋር ትምህርት ቤቶች ሊደገፍ ወይም በCSR ስፖንሰርነት ሊታገዝ ይችላል።"
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "ምርቱ መልስ መስጠት ብቻ ሳይሆን ማስተማር አለበት።"
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "ታሪኩ ፈተናዎችን፣ ከመስመር ውጪ ያሉ የትምህርት ቤቶችን አውታረ መረቦች፣ የትምህርት መርሃ ግብርን መውሰድ እና የህዝብ AI የመማር ሁነቶችን ይሸፍናል።"
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir ለማብራሪያ፣ ለሶቅራጥስ አስተምህሮ፣ ለቤት ሥራ እገዛ፣ ለአጭር ፈተናዎች፣ ለማስታወሻ ካርዶች፣ ለክርክር፣ ለሚና ጨዋታ፣ ለጽሑፍ ግብረመልስ እና ለጥናት ዕቅድ የሕዝብ የእንግዳ ዘዴዎች ያሉት ነፃ AI የመማር መድረክ ነው።"
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "የinspir የሕዝብ ሥልጣን ማጣቀሻ አገናኞች"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "የተጠቃሚ AI ማስጀመር"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "በ2013 እንደ የሕዝብ አጭር ፈተናዎችና የተማሪ ማህበረሰቦች ጀመረ።"
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "መርሆች"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "ተማሪው ከሕዝብ የመማር ዘዴዎች ማውጫ ውስጥ ማንኛውንም ነገር ይማሩ፣ የሶቅራጥስ አስተምህሮ፣ የቤት ሥራ አስጠኚ፣ የሒሳብ ደረጃ አስጠኚ፣ አጭር ፈተናዎች ወይም የማስታወሻ ካርዶችን በእንግዳ ዘዴ በቀጥታ መክፈት ይችላል።"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "ነፃ የAI መማር መድረክ"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "የትምህርት ቤት እይታ"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "የሕዝብ እንግዶች ቻት ክፍት ናቸው?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "ትምህርት ቤት inspirን መጀመሪያ እንደ የእንግዳ የመማር መሣሪያ መጠቀም ይችላል?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "ከFacebook አጭር ፈተናዎችና ከመስመር ውጭ ዝግጅቶች ወደ ተግባራዊ AI የመማር መሠረተ ልማት።"
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "በጣም ጠንካራው አቅጣጫ በguest mode በቀጥታ የሚከፈት እና ተማሪዎችን ከአጠቃላይ መልስ ማመንጨት ይልቅ በሁነታ-ተኮር ማስተማር ንቁ የሚያደርግ ነፃ የሕዝብ AI መማር ነው።"
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "የሕዝብ መማር ገጾች ለምን ለማጋራት ቀላል ናቸው?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "promptዎችን፣ የጥናት ዙሮችን እና ጥልቅ ልምምድን የሚደግፈው የተጻፈ የመማር library።"
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir በዝምታ መልሶችን ከመቅዳት ይልቅ በፍንጮች፣ በጥያቄዎች፣ በአጭር ፈተናዎች፣ በማስታወሻ ካርዶች፣ በክርክር፣ በግምገማ እና በማብራሪያ ዙሪያ ተደራጅቷል።"
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "ነባሪ የእንግዳ አስተማሪ"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "ለሽፋን በጣም ጠቃሚው የምርት አንግል ምንድን ነው?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "የተለያዩ የመማር ሥራዎች የተለያዩ የግንኙነት ቅርጾችን ይፈልጋሉ፤ ስለዚህ inspir ንቁና ለዘዴው የተለየ አስተምህሮ ይጠቀማል። የቤት ሥራ ፍንጭ፣ የሶቅራጥስ ጥያቄ፣ ታሪካዊ ማስመሰያ፣ የማስታወሻ ካርድ ግምገማ እና የጽሑፍ ትችት እንደ አንድ አጠቃላይ ውይይት መሆን የለባቸውም።"
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "ተልዕኮ | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "ትምህርት ቤቶች መጀመሪያ የሕዝብ የእንግዳ ዘዴዎችን መፈተሽ፣ ከዚያም የትምህርት ቤቶችን ገጽ በመጠቀም ብጁ የሥራ ፍሰቶችን፣ የሚስጥራዊነት ዕቅድን፣ ከNCERT ጋር የተጣጣሙ አማራጮችንና በገንዘብ የሚደገፍ መዳረሻን መመርመር ይችላሉ።"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "መምህራንና መሪዎች ከመደበኛ ማሰማራት በፊት በማንኛውንም ነገር ይማሩ፣ በሶቅራጥስ አስተምህሮ፣ በቤት ሥራ አስጠኚ፣ በአጭር ፈተናዎችና በማስታወሻ ካርዶች መጀመር ይችላሉ።"
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "የተለያዩ ሥራዎች የተለያዩ ዘዴዎችን ይፈልጋሉ፦ የሶቅራጥስ ጥያቄዎች፣ የቤት ሥራ ፍንጮች፣ የማስታወሻ ካርዶች፣ ክርክር፣ ታሪካዊ ሚና ጨዋታ፣ የጽሑፍ ትችት እና ሌሎችም።"
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "አዎ። እንደ /chat/learn-anything እና /chat/socratic-instruction ያሉ የሕዝብ የርዕስ መግቢያዎች ማንኛውም ሰው ሊሞክራቸው የሚችል ክፍት የመማሪያ ገጾች ናቸው።"
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "የinspir ተልዕኮ መርሆች"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "ብቃት ያለው የመማር companion በgeography፣ በቤተሰብ income፣ ወይም ተማሪው ሊጠይቀው የሚችለውን ትክክለኛ ሰው አስቀድሞ ያውቃል ወይስ አያውቅም በሚለው ላይ መደገፍ የለበትም።"
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "የinspir ተልዕኮ በነፃ የሕዝብ AI የመማር መሣሪያዎች አማካኝነት መማርን ለሁሉም ተደራሽ፣ አሳታፊ፣ አስደሳች እና ጠቃሚ ማድረግ ነው።"
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "ቀጣይ ነፃ መዳረሻን ለመደገፍ inspir.app ጎራ ከተሸጠ በኋላ በሥራ ላይ ያለው ምርት ወደ inspirlearning.com ተዛወረ።"
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "የCSR የትምህርት ቴክኖሎጂ ሽርክና"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "የAI መማር መመሪያ ቤተ-መጻሕፍት"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "ስለ ማስጠናት፣ መመሪያዎች፣ የጥናት ዑደቶች፣ ንቁ ትውስታ እና የመማር ዘዴዎች ከ100 በላይ መመሪያዎች።"
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir ለማብራሪያ፣ ለሶቅራጥስ አስተምህሮ፣ ለቤት ሥራ እገዛ፣ ለአጭር ፈተናዎች፣ ለማስታወሻ ካርዶች፣ ለክርክር፣ ለጽሑፍ ግብረመልስ፣ ለኮድ እገዛ እና ለጥናት ዕቅድ የሕዝብ የእንግዳ ዘዴዎች ያሉት ነፃ AI የመማር መድረክ ነው።"
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "የእያንዳንዱ የእንግዳ መማሪያ ውይይት መግቢያ ግልጽ ማውጫ።"
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "ጋዜጠኞች፣ የማውጫ አርታኢዎች፣ አጋሮች፣ ትምህርት ቤቶች እና ስለ inspir የሚጽፍ ማንኛውም ሰው ለመረጃ፣ ለማገናኛዎች፣ ለታሪክ አቅጣጫዎች እና በቀላሉ ለሚጠቀሱ ማጣቀሻዎች ሊጠቀምበት ይችላል።"
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "የካርታ ትምህርት ፍላጎቶች"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "inspir ምንድን ነው?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "ማስጀመሪያ እና የገንዘብ አቅርቦት"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "ጽሑፎች መጀመሪያ ወደ የትኛው URL መገናኘት አለባቸው?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "የትምህርት ቤት ማሰማራት መንገድ"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "የምርት እይታ"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "ስም"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "ለትምህርት ቤቶች የአይ."
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "መነሻ"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "የinspir አጭር መግለጫ ምንድን ነው?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "የተቀመጡ የተጠቃሚ ውይይቶች የግል መለያዎችን ይጠቀማሉ፤ እንደ የሕዝብ ምንጭ ይዘትም መታየት የለባቸውም።"
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "የinspir.uk የቀጣይ ትውልድ ግንባታ"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "ድጎማ ያለው መዳረሻ ለሚፈልጉ ተማሪዎች በትምህርት ቤት ገንዘብ፣ በአጋር ድጋፍ ወይም በCSR መንገዶች ከሙከራ ወደ ሰፊ መዳረሻ ይሂዱ።"
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "ብጁ ይዘት፣ መመሪያዎች እና የሥራ ፍሰቶች ከNCERT ፍላጎቶችና ለትምህርት ቤቱ ከተለዩ የክፍል ቅድሚያዎች ጋር ሊስተካከሉ ይችላሉ።"
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "አንባቢዎችን በቀጥታ ወደ ቀጥታ የመማር ልምድ ሲያገናኙ ይህንን ይጠቀሙ።"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "ይህ ለተማሪዎች አጠቃላይ AI የውይይት መሣሪያ ከመስጠት እንዴት ይለያል?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "መተግበሪያው እንደ ሶቅራጥስ ጥያቄዎችን፣ የቤት ስራ ፍንጮችን፣ ጥያቄዎች፣ ፍላሽ ካርዶችን፣ የፊልም ጨዋታዎችን እና እቅድ ማውጣትን የመሳሰሉ ባህሪያትን በማስተማር ዙሪያ የተደራጀ ነው።"
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "ዋና የመነሻ ገጽ ጥቅስ"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "የinspir ተልዕኮ በነፃ የሕዝብ AI የመማር መሣሪያዎችና ለትምህርት ቤት ዝግጁ በሆኑ የመማሪያ ቦታዎች መማርን ተደራሽ፣ አሳታፊ፣ አስደሳች እና ጠቃሚ ማድረግ ነው።"
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "የinspir ተልዕኮ ምንድን ነው?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "እያንዳንዱ የሕዝብ ዘዴ ወደ ተለየ የመማር ባህሪ የሚያስገባ በር ነው፤ ስለዚህ ሁሉንም ተማሪዎች ወደ አንድ አጠቃላይ ውይይት ሳጥን ከማስገደድ ይልቅ ቅርጹ ከሥራው ጋር ሊጣጣም ይችላል።"
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "የሕዝብ ምርቱ ለማንኛውም ሰው መጀመሪያ ቦታ ይሰጣል፣ የትምህርት ቤት እና የአጋር ማስጀመሪያዎች ግን ተሞክሮውን ለአካባቢ ፍላጎቶች ማስማማት ይችላሉ።"
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "White-labelled AI ቻት"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "የእንግዳ ሁነታ መግቢያ ነጥቦች"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "ቤተሰቦች ተጨማሪ ወጪ ሳይጨምሩ ከፍተኛ ጥራት ያለው ድጋፍ ለሚፈልጉ ማህበረሰቦች በገንዘብ የተደገፈ የAI መማር መዳረሻን ደግፍ።"
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "ሙሉ የሕዝብ ማጣቀሻ ማውጫ"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "መድረኩ በሥርዓተ ትምህርት ማስገባት፣ በመረጃ መልሶ ማግኘት፣ በተዋቀሩ የመማር ፍሰቶች እና በመጀመሪያዎቹ AI የማስጠናት ተሞክሮዎች ላይ ሠርቷል።"
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "በAI ለሚታገዝ ትምህርት ከ100 በላይ መመሪያዎች፣ የመመሪያ ዑደቶች እና ዋና የርዕስ ስብስቦች።"
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "የግላዊነት ፖሊሲ"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "የተመሠረተበት"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "መድረኩ ሰዎች የተጠናቀቁ መልሶችን ከመሰብሰብ ይልቅ ምክንያታዊ እንዲያስቡ፣ እንዲለማመዱ፣ እንዲያስታውሱ እና ሀሳቦችን መልሰው እንዲያብራሩ ለመርዳት ተዘጋጅቷል።"
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "የግል ማስጠናት ኃይለኛ ቢሆንም ለሁሉም እኩል አይገኝም። inspir ተማሪውን ንቁ እያደረገ መዳረሻን ለማስፋት AIን ይጠቀማል፦ ከመልስ በፊት ፍንጮች፣ ከንግግር በፊት ጥያቄዎች፣ ከማብራሪያ በኋላ ልምምድ።"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "ትምህርት ቤቶችና አጋሮች"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "ከሕንድ አልፎ ወደ ሰፊ ዓለም አቀፍ ታዳሚ የተዘረጋ የተማሪዎች መሠረት።"
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir AIን በንቁ የመማር ባህሪያት ዙሪያ ያደራጃል፦ ፍንጮች፣ ጥያቄዎች፣ አጭር ፈተናዎች፣ የማስታወሻ ካርዶች፣ ትችት እና ግምገማ።"
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "የDeccan Business ሽፋን"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "አዎ። የሕዝብ የእንግዳ ዘዴዎች የትምህርት ቤት መሪዎችና መምህራን ስለ ብጁ የትምህርት ቤት አሰማራር ከመወያየታቸው በፊት የመማር ተሞክሮውን እንዲሞክሩ ያስችላሉ።"
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "መጀመሪያ የሕዝብ AI የመማር ንብርብርን ይገምግሙ፤ ከዚያም ብጁ የሥራ ፍሰቶችን፣ የሚስጥራዊነት ፍላጎቶችን፣ የይዘት መጣጣምንና የአጠቃቀም ገንዘብን ይመርምሩ።"
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "ዋና ታዳሚ"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "የተለያዩ የመማር ሥራዎች የተለያዩ ቅርጾችን ይፈልጋሉ፦ የሶቅራጥስ ጥያቄዎች፣ የቤት ሥራ ፍንጮች፣ የማስታወሻ ካርዶች፣ ክርክር፣ ታሪካዊ ሚና ጨዋታ፣ የጽሑፍ ትችት እና የጥናት ዕቅድ።"
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "ተቀባይነት ያለው አጠቃቀም፣ የመለያ ኃላፊነቶች እና የአገልግሎት ሁኔታዎችን የሚሸፍኑ መደበኛ ውሎች።"
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "የተማሪውን ተሞክሮ ከትምህርት ቤቱ ዐውድ፣ ከሥርዓተ ትምህርት ቅድሚያዎች፣ ከይዘት ደህንነት ወሰኖች እና ለሠራተኞች ከሚያስፈልገው የክትትል መጠን ጋር ያስማሙ።"
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "ረዳት እና የማጣቀሻ መዳረሻ"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "ከNCERT ጋር የተስተካከለ የAI መማር"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir አጭር ፈተናዎችን በማተምና ከመደበኛ ትምህርት ውጭ የመማር ልማድን በመገንባት እንደ Facebook ገጽ ጀመረ።"
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "የሕዝብ ምርቱ መማርን ለመሞከር ቀላል ያደርጋል፣ ትምህርት ቤቶች እና CSR አጋሮች ግን ማህበረሰቦች ሚስጥራዊነት፣ ከካሪኩለም ጋር መጣጣም ወይም በገንዘብ የተደገፈ መዳረሻ ሲፈልጉ የተበጁ ማስጀመሪያዎችን ሊደግፉ ይችላሉ።"
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "መማር ለሁሉም ነው።"
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "ስለ inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "የሕዝብ ምርቱ መጀመሪያ ለመሞከር ቀላል ነው፣ ትምህርት ቤቶች እና አጋሮች ግን ለማህበረሰብ ፍላጎቶች የተበጁ ማስጀመሪያዎችን ሊመረምሩ ይችላሉ።"
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "ለተማሪዎች፣ ለትምህርት ቤቶች እና ለፍለጋ ሥርዓቶች ግልጽ መልሶች።"
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "የማጣቀሻ ገጽ"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "ከመስመር ውጭ ያሉ አውታረ መረቦችና የተማሪ ዝግጅቶች"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "የተቀመጡ የግል የተጠቃሚ ውይይቶች በፍለጋ ይታያሉ?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "የእምነት እና የግላዊነት ድንበሮች"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "ማንኛውንም ነገር ለመማር የአይ ቲዩተር"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "ለሁነታ የተለየ መማር"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "ChatGPT ለሕዝብ ከተለቀቀ በጥቂት ሳምንታት ውስጥ inspir ለተጠቃሚዎች የቀረበ AI የመማር ምርት ሆኖ ሥራ ጀመረ።"
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "ፍለጋ እና ማውጫ መዳረሻ"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "አዎ። ትምህርት ቤት በpublic modes መሞከር መጀመር ይችላል፤ ከዚያም የአጠቃቀም ጉዳዩ፣ የይዘት ፍላጎቶቹ እና የገንዘብ መንገዱ ግልጽ ሲሆኑ ወደ pilot ወይም በተለየ የተዘጋጀ ትግበራ መሄድ ይችላል።"
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "የDeepHack ማህበረሰብ ገጽ"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "ተልዕኮውን ወደ ተግባራዊ እገዛ የሚቀይረው ቀጥታ የመማር ተሞክሮ።"
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "ተማሪዎች ከፍለጋ፣ ከማህበራዊ ማገናኛዎች፣ ከትምህርት ቤቶች ወይም ከተጋሩ ምክሮች ጠቃሚ የመማር ዘዴዎች ውስጥ በቀጥታ እንዲጀምሩ የሕዝብ የእንግዳ ዘዴ ማገናኛዎች አሉ።"
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "የመማር ቅርጽ ያለው AI"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "ለትምህርት ቤቶችና ለአጋሮች መንገዶች ያሉት ነፃ የእንግዳ ትምህርት።"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir ከአጠቃላይ AI ቻትቦት በምን ይለያል?"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "የመማር ማህበረሰብ ይጀምራል"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "መልስ ሳይሰጡ ያለ AI መማር"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "ምድብ"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "የDailyhunt ሽፋን"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "አዎ። እንደ ማንኛውንም ነገር ይማሩ፣ የሶቅራጥስ አስተምህሮ፣ የቤት ሥራ አስጠኚ፣ አጭር ፈተናዎች እና የማስታወሻ ካርዶች ያሉ የሕዝብ የእንግዳ ዘዴዎች ከቀላል /chat/{topicSlug} ማገናኛዎች በቀጥታ ይከፈታሉ።"
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "የAI መማር ብሎግ"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "ውሎች"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "ለትምህርት ቤቶች የሚውሉ የAI ጥናት መሳሪያዎች"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "የህዝብ መዳረሻ የእንግዳ ሁነታ"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "የሕዝብ የእንግዳ ትምህርት ወደ ለትምህርት ቤት የተለዩ AI የመማሪያ ቦታዎች እንዴት ሊስፋፋ እንደሚችል።"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "የእንግዳ ሁነታዎችን፣ promptዎችን፣ ልምምድን እና ተዛማጅ መመሪያዎችን የሚያገናኙ የጥናት የስራ ፍሰቶች።"
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "የአይ ኤስ የመማር መመሪያ"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "የመማር ሁነቶችን ማሰስ"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "ለሁነታ የተለዩ የመማር ፍሰቶች"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "አይ። የተቀመጡ የግል ውይይቶች የግል መለያዎችን ይጠቀማሉ፤ የሕዝብ ገጾች፣ የሕዝብ ማጣቀሻ ፋይሎች ወይም የተጋሩ የመማር ማውጫዎች አካልም አይደሉም።"
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "በማስተማር ባህሪና በመማር ፍላጎት የተደራጀ እያንዳንዱ የእንግዳ የመማር ውይይት።"
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "ለሰፊ የተጠቃሚ መዳረሻ syndicated coverage።"
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "እምነት እና ደህንነት"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "ሚስጥራዊ የማሰማራት ንድፍ"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "ስለ ተልዕኮው ተደጋጋሚ ጥያቄዎች"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "ለቤት ሥራ ፍንጮች፣ ለሒሳብ ደረጃዎች፣ ለጽሑፍ ትችት፣ ለአጭር ፈተናዎች፣ ለማስታወሻ ካርዶች ወይም ለፈተና ዕቅድ በትክክለኛው የመማር ዘዴ ውስጥ በቀጥታ ይጀምሩ።"
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "ረዳትና ማጣቀሻ መሣሪያዎች ሰዎችን ወደ ትክክለኛ መመሪያዎችና የእንግዳ ዘዴዎች ለመምራት የሕዝብ የመማሪያ ገጾችን ሊጠቀሙ ይችላሉ።"
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir AIን በተለዩ የማስተማር ባህሪያት ባሏቸው የመማር ዘዴዎች ዙሪያ ያደራጃል፦ ማብራሪያ፣ የሶቅራጥስ ጥያቄዎች፣ የቤት ሥራ ፍንጮች፣ አጭር ፈተናዎች፣ የማስታወሻ ካርዶች፣ ክርክር፣ ሚና ጨዋታ፣ የጽሑፍ ግብረመልስ እና የጥናት ዕቅድ።"
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "ክፍት ማጣቀሻ"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "የDeepHack እውቅና"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "የተቀመጡ የግል ውይይት ማገናኛዎች የሕዝብ የመማር ማጣቀሻዎች፣ የተጋሩ ማውጫዎች ወይም የጥቅስ ይዘት አካል አይደሉም።"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "ሰዎች inspirን ሳይገቡ መጠቀም ይችላሉ?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "ረጅም የመማር ቤተ-መጻሕፍት"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "inspir እንዴት ጀመረ?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "ሰዎች ወዲያውኑ ሊሞክሩት የሚችሏቸውን ሙሉ የእንግዳ ሁነታ የመማሪያ መሳሪያዎችን ሲገልጹ ይህንን ይጠቀሙ።"
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "የትምህርት ቤት ማሰማራት መንገዶች"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "መማርመንገዶች"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "ያልተፈቀደ"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "ትምህርት ቤቶች መጀመሪያ በሕዝብ የእንግዳ ዘዴዎች inspirን መገምገም፣ ከዚያም ብጁ የሥራ ፍሰቶች፣ የሚስጥራዊነት ዕቅድ፣ የሥርዓተ ትምህርት ፍላጎቶችና በገንዘብ የሚደገፉ የመዳረሻ መንገዶች ያሏቸውን ብጁ AI የመማሪያ ቦታዎች መመርመር ይችላሉ።"
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "ማህበረሰቡ በትምህርት ቤቶች፣ ዩኒቨርሲቲዎች፣ ውድድሮች፣ ከመደበኛ ትምህርት ውጭ ፕሮግራሞች እና የተማሪ ማህበረሰቦች በኩል ተስፋፋ።"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "inspir ለትምህርት ቤት የተለየ ይዘትን ወይም የሥርዓተ ትምህርት ፍላጎቶችን ሊደግፍ ይችላል?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "inspir ለምን የትምህርት ቤት እና የአጋር ትግበራዎችን ይደግፋል?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "ቀጣዩ ደረጃ open-source፣ ለአስተዋጽኦ አቅራቢዎች ተስማሚ፣ እና በinspir.uk ካለው ሰፊ ዓለም አቀፍ ግንባታ ጋር የተገናኘ ነው።"
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "inspir ለምን እንዳለ እና የመማር መዳረሻ ለምን እንደሚጠቅም የሚያብራራው የሕዝብ ማብራሪያ።"
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "ለትላልቅ ነገሮች የተሰራ"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "AI one-to-one learningን በጣም የበለጠ ተደራሽ ማድረግ ይችላል።"
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "በገንዘብ ለሚደገፍ መዳረሻ የትምህርት ቤትና የCSR መንገዶች"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "የmedia pageን ማን መጠቀም ይችላል?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "ለተበጁ AI የመማር ቦታዎች እና በገንዘብ ለተደገፈ መዳረሻ የትምህርት ቤት መንገድ።"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "ከNCERT ጋር የተሰማሙ አማራጮች"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "በAI ጋር በጥሩ ሁኔታ አጥና"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "ከinspir ፕሮጀክት ጋር የተገናኘው ሰፊው ዓለም አቀፍ ግንባታ።"
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "በይፋዊ ገጾች ላይ ይፈቀዳል"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "ይህን በመጠቀም inspir እንደ ዋናው ምርት ወይም ከአሳሽ፣ መገለጫ ወይም ጽሑፍ ጋር የሚያገናኝ።"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "በገንዘብ የተደገፉ የመዳረሻ መንገዶች"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "አሁን ክፍትና ለእንግዳ ምቹ የሆኑ AI የመማር መግቢያዎች ሆነው እንደገና ተገንብተዋል።"
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "የሕዝብ ገጾች፣ ሁነታዎች፣ የመማር መንገዶች፣ የብሎግ ቡድኖች እና የግላዊነት ድንበሮች የተዋቀረ ካታሎግ።"
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "ዓላማው ሰዎች ትክክለኛውን የህዝብ ትምህርት ገጽ በፍጥነት እንዲያገኙ መርዳት ነው። የህዝብ መንገዶች፣ መመሪያዎች እና የመማር ማዕከላት ክፍት ናቸው፤ ኤፒአይ፣ አስተዳዳሪ፣ ዳግም ማስጀመር እና የግል መገልገያ መንገዶች ዝግ ሆነው ይቆያሉ።"
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "ረጅም መመሪያዎችን፣ የጥናት መመሪያዎችን እና ለዘዴው የተለዩ ጽሑፎችን ሲጠቅሱ ይህን ይጠቀሙ።"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "ከመልሶች በላይ መረዳት"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "ለድር ጣቢያው https://inspirlearning.com፣ ለተልዕኮው /mission፣ ለሕዝብ የመማር ዘዴዎች ማውጫ /topics እና ለነባሪው የእንግዳ የመማር ተሞክሮ /chat/learn-anything ይጠቀሙ።"
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "የኮርፖሬት ኃላፊነትና የትምህርት አጋሮች"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "አንድ ሰው መጀመሪያ ምን ሊሞክር ይችላል?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "ትምህርት ቤቶች የት መጀመር አለባቸው?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "የትምህርት ቤት አሰማራሮች በተማሪ ግላዊነት፣ በሠራተኛ ቁጥጥር እና የመማር ማህበረሰቡ በሚፈልጋቸው ተግባራዊ ወሰኖች ዙሪያ ሊታቀዱ ይችላሉ።"
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "ተማሪዎችን ወደ አጠቃላይ የውይይት መሣሪያ ሳይልኩ ለልምምድ፣ ለማብራሪያ፣ ለግብረመልስ እና ለክለሳ መመሪያዎች ይበልጥ ደህና መንገድ ይፍጠሩ።"
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "አጭር ካርታ ለሚፈልጉ መሣሪያዎች የሕዝብ ማጣቀሻ ፋይሎች የመማሪያ ገጾችን፣ መስመሮችን፣ ዘዴዎችን፣ መመሪያዎችንና የጥቅስ ወሰኖችን ያጠቃልላሉ።"
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "አሁን"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "ተልዕኮ"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "በእውነተኛ ተማሪዎች ዙሪያ የተገነባ"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "የAI መማር መሠረተ ልማት"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "ለውሂብ አጠቃቀም፣ መብቶች እና የሕዝብ አገልግሎት ሁኔታዎች የመደበኛው የግላዊነት ገጽ።"
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir በ2013 እንደ የሕዝብ አጭር ፈተናና የመማር ማህበረሰብ ጀመረ፣ በትምህርት ቤቶችና በተማሪ አውታረ መረቦች አደገ፣ በኋላም AI የመማር መሠረተ ልማትና የሕዝብ AI የማስጠናት ተሞክሮዎችን አዳበረ።"
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "ነጭ መለያ AI የመማሪያ መድረክ"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir ተማሪ፣ ወላጅ፣ መምህር ወይም በራሱ የተማረ ሰው ቢሆን ጉጉት ላለው ማንኛውም ሰው መማርን ተደራሽ፣ አሳታፊ፣ አስደሳች እና ጠቃሚ ለማድረግ ይሠራል።"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "እንዴት ነው? inspir መልስ ከመለዋወጥ መቆጠብ"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "የምናምነው"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "የAPI፣ የአስተዳዳሪ፣ የዳግም ማስጀመሪያ፣ የግል መገልገያ እና የተቀመጠ የግል ውይይት ክፍሎች የሕዝብ ምንጭ ይዘት አይደሉም።"
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "የሕዝብ ገጾች ሊጋሩና ሊገናኙ ይችላሉ፤ የአስተዳዳሪ መሣሪያዎች፣ የAPI መስመሮች፣ የዳግም ማስጀመሪያ ሂደቶችና የግል መገልገያዎች ግን ዝግ ሆነው ይቆያሉ።"
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "መምህራን"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "የአሁኑ GitHub ማከማቻ"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "በአደባባይ የተገነባ"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "ለተማሪዎች እንዴት ነው የገንዘብ ድጋፍ ሊደረግ የሚችለው?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "የሚዲያ ማስታወሻዎች"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir ለተማሪዎች የተጠናቀቀ ሥራ ከመስጠት ይልቅ በማሰብ፣ በልምምድ፣ በትውስታ እና በማብራሪያ ዙሪያ ተዘጋጅቷል።"
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "ለሁነታ የተለየ የምርት ንድፍ"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "የትምህርት ቤት መሪዎች"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "ተማሪዎች"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { defaultLanguage, languageConfigs } from "../../lib/content/languages";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
 import { staticSiteLanguagesForPath } from "../../lib/i18n/static-availability";
+import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 
 type Check = {
@@ -54,6 +55,12 @@ async function main() {
   checkResponse("static loading state", loading, { bodyIncludes: [/Getting your learning space ready/i] });
   checkStaticAssetDelivery("static loading state", loading);
 
+  const accountRecovery = await request("/reset_pw");
+  checkResponse("static account recovery", accountRecovery, {
+    bodyIncludes: [/no inspir password to reset/i, /Google/i],
+  });
+  checkStaticAssetDelivery("static account recovery", accountRecovery);
+
   await checkRuntimeHealth();
 
   const localized = await request("/hi");
@@ -68,7 +75,7 @@ async function main() {
   checkStaticAssetDelivery("localized Hindi route", localized);
 
   const englishLegacyChat = await request("/chat/learn-anything");
-  checkStaticTopicRedirect(
+  checkWorkerTopicRedirect(
     "known English legacy chat route",
     englishLegacyChat,
     "/chat",
@@ -79,7 +86,7 @@ async function main() {
   checkStaticAssetDelivery("known English chat route", englishChat);
 
   const localizedLegacyChat = await request("/hi/chat/learn-anything");
-  checkStaticTopicRedirect(
+  checkWorkerTopicRedirect(
     "known localized Hindi legacy chat route",
     localizedLegacyChat,
     "/hi/chat",
@@ -111,8 +118,11 @@ async function main() {
     checkLocalizedMainAppBundle(hindiMainAppBundle, "Hindi", hindiMainAppAsset.sourceHash);
   }
 
-  const unavailableLocalized = await request("/hi/mission");
-  checkStaticNotFound("unsupported localized route", unavailableLocalized);
+  const localizedMission = await request("/hi/mission");
+  checkResponse("localized Hindi mission", localizedMission, {
+    bodyIncludes: [/lang=["']hi["']/i, /सीख|शिक्षा|मिशन|उद्देश्य/i],
+  });
+  checkStaticAssetDelivery("localized Hindi mission", localizedMission);
 
   const robots = await request("/robots.txt");
   checkResponse("robots", robots, { bodyIncludes: [/User-Agent/i] });
@@ -169,8 +179,9 @@ async function main() {
   checkStaticAssetDelivery("topics API", topics, { allowFreshPublicCache: true });
   checkTopicsPayload(topics);
 
+  await checkNativeSignedOutSurfaces(englishChat);
   await checkRetiredStaticSurfaces();
-  await checkRemovedTranslationApis();
+  await checkLegacyTranslationApis();
   await checkLocaleResourceSoak();
 
   await checkGuestChat();
@@ -251,12 +262,12 @@ async function checkRuntimeHealth() {
   const architecture = objectValue(payload?.architecture);
   if (
     version.id === expectedWorkerVersion &&
-    architecture.deploymentMode === "free-static-lean-guest" &&
+    architecture.deploymentMode === "free-static-native-accounts" &&
     architecture.publicDocuments === "workers-static-assets" &&
     architecture.workerCpuPlan === "free-10ms" &&
     architecture.openNext === false &&
-    architecture.accounts === false &&
-    architecture.savedState === false &&
+    architecture.accounts === true &&
+    architecture.savedState === true &&
     architecture.games === false
   ) {
     pass("unpinned Worker health architecture", {
@@ -270,47 +281,136 @@ async function checkRuntimeHealth() {
 }
 
 async function checkRetiredStaticSurfaces() {
-  const retiredRoutes: Array<{
-    name: string;
-    route: string;
-    init?: RequestInit;
-    expectedStatus?: 404 | 405;
-  }> = [
-    { name: "unknown chat topic", route: "/chat/__inspir_unknown_topic__" },
-    { name: "deep chat route", route: "/chat/learn-anything/deep" },
-    { name: "UUID saved chat route", route: "/chat/123e4567-e89b-42d3-a456-426614174000" },
-    { name: "deep localized chat route", route: "/hi/chat/learn-anything/deep" },
+  const retiredRoutes = [
     { name: "removed game surface", route: "/games" },
     { name: "removed game deep route", route: "/games/arena" },
-    { name: "removed auth session API", route: "/api/auth/get-session" },
-    { name: "removed account API", route: "/api/me" },
-    { name: "removed saved chats API", route: "/api/chats" },
-    { name: "removed memory API", route: "/api/memory" },
-    { name: "removed admin surface", route: "/admin" },
-    { name: "removed admin API", route: "/api/admin/users" },
-    {
-      name: "removed authenticated chat mutation",
-      route: "/api/chat",
-      init: jsonPost({ content: "production static 404 probe" }),
-      expectedStatus: 405,
-    },
-    {
-      name: "removed analytics mutation",
-      route: "/api/analytics/events",
-      init: jsonPost({ event: "production_static_404_probe" }),
-      expectedStatus: 405,
-    },
-    {
-      name: "removed logout mutation",
-      route: "/api/logout",
-      init: jsonPost({}),
-      expectedStatus: 405,
-    },
   ];
 
   for (const retired of retiredRoutes) {
-    const result = await request(retired.route, retired.init);
-    checkStaticStatus(retired.name, result, retired.expectedStatus ?? 404);
+    const result = await request(retired.route);
+    checkStaticNotFound(retired.name, result);
+  }
+}
+
+async function checkNativeSignedOutSurfaces(staticChatShell: FetchResult) {
+  const uuidChat = await request("/chat/123e4567-e89b-42d3-a456-426614174000");
+  checkExpectedStatus("signed-out UUID chat shell", uuidChat, 200);
+  checkWorkerDelivery("signed-out UUID chat shell", uuidChat);
+  checkPrivateNoStore("signed-out UUID chat shell", uuidChat);
+  const uuidContentType = uuidChat.headers["content-type"] ?? "";
+  if (
+    uuidContentType.includes("text/html") &&
+    uuidChat.body.length > 0 &&
+    uuidChat.body === staticChatShell.body
+  ) {
+    pass("signed-out UUID chat serves only the static shell", {
+      contentType: uuidContentType,
+      bodyBytes: Buffer.byteLength(uuidChat.body),
+    });
+  } else {
+    fail("signed-out UUID chat serves only the static shell", {
+      contentType: uuidContentType,
+      bodyBytes: Buffer.byteLength(uuidChat.body),
+      staticBodyBytes: Buffer.byteLength(staticChatShell.body),
+      matchesStaticShell: uuidChat.body === staticChatShell.body,
+    });
+  }
+
+  const admin = await request("/admin");
+  checkExpectedStatus("static admin shell", admin, 200);
+  checkStaticAssetDelivery("static admin shell", admin, { allowMissingCacheControl: true });
+
+  const chatId = "123e4567-e89b-42d3-a456-426614174000";
+  const signedOutProbes: Array<{
+    name: string;
+    route: string;
+    expectedStatus: 200 | 204 | 401 | 403;
+    init?: RequestInit;
+    expectedBody?: "null" | "empty";
+  }> = [
+    {
+      name: "signed-out Better Auth session",
+      route: "/api/auth/get-session",
+      expectedStatus: 200,
+      expectedBody: "null",
+    },
+    { name: "signed-out profile", route: "/api/me", expectedStatus: 401 },
+    { name: "signed-out saved chats", route: "/api/chats", expectedStatus: 401 },
+    { name: "signed-out memory", route: "/api/memory", expectedStatus: 401 },
+    { name: "signed-out account topics", route: "/api/account/topics", expectedStatus: 401 },
+    { name: "signed-out admin dashboard", route: "/api/admin/dashboard", expectedStatus: 401 },
+    { name: "signed-out admin users", route: "/api/admin/users", expectedStatus: 401 },
+    {
+      name: "signed-out authenticated chat",
+      route: "/api/chat",
+      expectedStatus: 401,
+      init: jsonPost({ chatId, content: "signed-out production probe" }),
+    },
+    {
+      name: "signed-out authenticated chat finalizer",
+      route: "/api/chat/finalize",
+      expectedStatus: 401,
+      init: jsonPost({
+        aiRunId: chatId,
+        chatId,
+        userMessageId: chatId,
+        content: "signed-out production probe",
+      }),
+    },
+    {
+      name: "signed-out quiz activity",
+      route: "/api/activities/quiz",
+      expectedStatus: 401,
+      init: jsonPost({ chatId, topic: "production probe" }),
+    },
+    {
+      name: "signed-out flashcard activity",
+      route: "/api/activities/flashcards",
+      expectedStatus: 401,
+      init: jsonPost({ chatId, topic: "production probe" }),
+    },
+    {
+      name: "cross-origin logout rejected",
+      route: "/api/logout",
+      expectedStatus: 403,
+      init: {
+        ...jsonPost({}),
+        headers: {
+          "content-type": "application/json",
+          origin: "https://signed-out-probe.invalid",
+          "sec-fetch-site": "cross-site",
+        },
+      },
+    },
+    {
+      name: "signed-out logout",
+      route: "/api/logout",
+      expectedStatus: 204,
+      expectedBody: "empty",
+      init: {
+        ...jsonPost({}),
+        headers: {
+          "content-type": "application/json",
+          origin: new URL(baseUrl).origin,
+          "sec-fetch-site": "same-origin",
+        },
+      },
+    },
+  ];
+
+  for (const probe of signedOutProbes) {
+    const result = await request(probe.route, probe.init);
+    checkExpectedStatus(probe.name, result, probe.expectedStatus);
+    checkWorkerDelivery(probe.name, result);
+    checkPrivateNoStore(probe.name, result);
+    if (probe.expectedBody === "null") {
+      if (result.body.trim() === "null") pass(`${probe.name} null body`);
+      else fail(`${probe.name} null body`, { bodyPreview: result.bodyPreview });
+    }
+    if (probe.expectedBody === "empty") {
+      if (result.body.length === 0) pass(`${probe.name} empty body`);
+      else fail(`${probe.name} empty body`, { bodyPreview: result.bodyPreview });
+    }
   }
 }
 
@@ -322,11 +422,79 @@ function jsonPost(body: unknown): RequestInit {
   };
 }
 
-async function checkRemovedTranslationApis() {
-  for (const route of ["/api/site-translations", "/api/main-app-translations"]) {
-    const result = await request(route);
-    checkStaticNotFound(`${route} removed`, result);
+async function checkLegacyTranslationApis() {
+  const languagePreference = await request(
+    "/api/language-preference",
+    jsonPost({ language: "Hindi", pathname: "/mission" }),
+  );
+  checkExpectedStatus("legacy language preference", languagePreference, 200);
+  checkWorkerDelivery("legacy language preference", languagePreference);
+  checkPrivateNoStore("legacy language preference", languagePreference);
+  const preferencePayload = parseJsonObject(languagePreference.body);
+  const preferenceCookies = languagePreference.headers["set-cookie"] ?? "";
+  if (
+    preferencePayload?.language === "Hindi" &&
+    preferencePayload.redirectTo === "/hi/mission" &&
+    preferenceCookies.includes("inspir_locale=Hindi") &&
+    preferenceCookies.includes("inspir_locale_prompt_dismissed=1")
+  ) {
+    pass("legacy language preference contract");
+  } else {
+    fail("legacy language preference contract", {
+      payload: preferencePayload,
+      hasLocaleCookie: preferenceCookies.includes("inspir_locale=Hindi"),
+      hasPromptCookie: preferenceCookies.includes("inspir_locale_prompt_dismissed=1"),
+    });
   }
+
+  for (const probe of [
+    {
+      name: "legacy main-app translations",
+      route: "/api/main-app-translations?language=English",
+      namespace: "main-app",
+    },
+    {
+      name: "legacy site translations",
+      route: "/api/site-translations?language=English&namespace=route%3Ahome",
+      namespace: "route:home",
+    },
+  ]) {
+    const result = await request(probe.route);
+    checkExpectedStatus(probe.name, result, 200);
+    checkWorkerDelivery(probe.name, result);
+    checkCacheControl(probe.name, result, [/\bpublic\b/i, /\bmax-age=300\b/i, /\bs-maxage=3600\b/i]);
+    const payload = parseJsonObject(result.body);
+    const bundle = objectValue(payload?.bundle);
+    if (
+      payload?.complete === true &&
+      typeof payload.translatedCount === "number" &&
+      payload.translatedCount === payload.totalCount &&
+      bundle.language === "English" &&
+      bundle.namespace === probe.namespace
+    ) {
+      pass(`${probe.name} result envelope`, {
+        namespace: bundle.namespace,
+        translatedCount: payload.translatedCount,
+      });
+    } else {
+      fail(`${probe.name} result envelope`, {
+        payload: payload
+          ? {
+              complete: payload.complete,
+              translatedCount: payload.translatedCount,
+              totalCount: payload.totalCount,
+              language: bundle.language,
+              namespace: bundle.namespace,
+            }
+          : null,
+      });
+    }
+  }
+
+  const invalid = await request("/api/site-translations?language=English&namespace=unknown");
+  checkExpectedStatus("legacy site translations reject unknown namespace", invalid, 400);
+  checkWorkerDelivery("legacy site translations reject unknown namespace", invalid);
+  checkPrivateNoStore("legacy site translations reject unknown namespace", invalid);
 }
 
 async function checkLocaleResourceSoak() {
@@ -365,6 +533,7 @@ async function checkGuestChat() {
   const response = await request("/api/guest-chat", {
     method: "POST",
     headers: {
+      accept: "text/event-stream",
       "accept-language": "en-US,en;q=0.9",
       "content-type": "application/json",
       "user-agent": `inspir-production-smoke-${Date.now()}`,
@@ -596,6 +765,29 @@ function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]
   }
 }
 
+function checkPrivateNoStore(name: string, result: FetchResult) {
+  const cacheControl = result.headers["cache-control"] ?? "";
+  const cdnCacheControl = result.headers["cdn-cache-control"] ?? "";
+  const cloudflareCacheControl = result.headers["cloudflare-cdn-cache-control"] ?? "";
+  const valid =
+    /\bprivate\b/i.test(cacheControl) &&
+    /\bno-store\b/i.test(cacheControl) &&
+    /\bno-store\b/i.test(cdnCacheControl);
+  if (valid) {
+    pass(`${name} private no-store policy`, {
+      cacheControl,
+      cdnCacheControl,
+      cloudflareCacheControl,
+    });
+  } else {
+    fail(`${name} private no-store policy`, {
+      cacheControl,
+      cdnCacheControl,
+      cloudflareCacheControl,
+    });
+  }
+}
+
 function checkWorkerDelivery(name: string, result: FetchResult) {
   const delivery = result.headers["x-inspir-delivery"] ?? null;
   if (delivery === "lean-api-worker") {
@@ -605,7 +797,7 @@ function checkWorkerDelivery(name: string, result: FetchResult) {
   }
 }
 
-function checkStaticTopicRedirect(
+function checkWorkerTopicRedirect(
   name: string,
   result: FetchResult,
   expectedPathname: string,
@@ -620,14 +812,14 @@ function checkStaticTopicRedirect(
   };
   if (
     result.status === 308 &&
-    isStaticRedirectDelivery(result.headers["x-inspir-delivery"]) &&
+    result.headers["x-inspir-delivery"] === "lean-api-worker" &&
     location.origin === expectedOrigin &&
     location.pathname === expectedPathname &&
     location.searchParams.get("topic") === expectedTopic
   ) {
-    pass(`${name} static redirect`, detail);
+    pass(`${name} lean Worker redirect`, detail);
   } else {
-    fail(`${name} static redirect`, {
+    fail(`${name} lean Worker redirect`, {
       ...detail,
       expectedLocation: `${expectedPathname}?topic=${expectedTopic}`,
     });
@@ -664,6 +856,19 @@ function checkStaticAssetDelivery(
 
 function checkStaticNotFound(name: string, result: FetchResult) {
   checkStaticStatus(name, result, 404);
+}
+
+function checkExpectedStatus(name: string, result: FetchResult, expectedStatus: number) {
+  if (result.status === expectedStatus) {
+    pass(`${name} status`, { status: result.status, url: result.url });
+  } else {
+    fail(`${name} status`, {
+      status: result.status,
+      expectedStatus,
+      url: result.url,
+      bodyPreview: result.bodyPreview,
+    });
+  }
 }
 
 function checkStaticStatus(name: string, result: FetchResult, expectedStatus: 404 | 405) {
@@ -735,9 +940,23 @@ function writeReport() {
     failedChecks: failed.length,
     checks,
   };
-  fs.writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
+  writePrivateJsonDurably(outputPath, report, { replace: pathEntryExists(outputPath) });
   console.log(JSON.stringify(report, null, 2));
   return report.ok;
+}
+
+function pathEntryExists(file: string) {
+  try {
+    fs.lstatSync(file);
+    return true;
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") return false;
+    throw error;
+  }
+}
+
+function isNodeError(value: unknown): value is NodeJS.ErrnoException {
+  return value instanceof Error && "code" in value;
 }
 
 function getArg(name: string) {

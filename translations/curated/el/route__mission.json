@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Greek",
+  "locale": "el",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Οι δημόσιες σελίδες, οι συνομιλίες θεμάτων, οι διαδρομές μάθησης, οι οδηγοί ιστολογίου και οι σελίδες βοήθειας έχουν σχεδιαστεί ώστε να βρίσκονται και να κοινοποιούνται εύκολα."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Ξεκίνα να μαθαίνεις"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Οι δημόσιες σελίδες μάθησης είναι ανοικτές, ενώ οι διαδρομές API, διαχείρισης και επαναφοράς, καθώς και οι ιδιωτικές βοηθητικές σελίδες, παραμένουν αποκλεισμένες."
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Κάθε τρόπος μάθησης έχει δημόσιο σύνδεσμο, ώστε οι μαθητές να ξεκινούν απευθείας μέσα στη σωστή μαθησιακή εμπειρία."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Χρησιμοποιήστε αυτό όταν αναφέρετε δημόσια/ιδιωτικά σύνορα, ασφάλεια των μαθητών και εμπιστοσύνη στο σχολείο."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "Ευρετήριο περιεχομένου AI"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Σε αντίθεση με ένα γενικό ρομπότ συνομιλίας, το inspir οργανώνει την AI γύρω από τρόπους μάθησης, ώστε οι μαθητές να αρχίζουν με τη βοήθεια που χρειάζονται: υποδείξεις, ερωτήσεις, κουίζ, ενεργή ανάκληση, παιχνίδι ρόλων, συζήτηση ή ανατροφοδότηση."
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Όπου ενδείκνυται, οι σχολικές υλοποιήσεις μπορούν να προσαρμοστούν σε ειδικό περιεχόμενο, ροές εργασίας, προτροπές και μαθησιακές ανάγκες ευθυγραμμισμένες με το NCERT."
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Η μάθηση συμπεριφοράς έρχεται πρώτη"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Οι δημόσιοι τρόποι επισκέπτη προσφέρουν σε όλους ένα χρήσιμο σημείο εκκίνησης, ενώ οι σχολικές και συνεργατικές υλοποιήσεις προσαρμόζουν την εμπειρία στις τοπικές ανάγκες."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Κάθε βασικός τρόπος μάθησης έχει δημόσια είσοδο επισκέπτη, ώστε οι άνθρωποι να ξεκινούν από αναζήτηση, κοινωνικά μέσα ή κοινόχρηστο σύνδεσμο."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Μπορεί μια ανάπτυξη να ξεκινήσει από μικρά;"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Μια καθαρή εξήγηση της λειτουργίας επισκέπτη, των ιδιωτικών συνομιλιών, της ασφάλειας των μαθητών και της εμπιστοσύνης των σχολείων."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Η δημόσια δήλωση για τον λόγο ύπαρξης του inspir και τη σημασία της πρόσβασης στη μάθηση."
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1 εκατ.+ μαθητές"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "Στόχος δεν είναι να γίνουν οι άνθρωποι παθητικοί μπροστά στην AI. Στόχος είναι κάθε μαθητής να έχει ένα υπομονετικό πρώτο μέρος για να ρωτήσει, να εξασκηθεί, να λάβει ανατροφοδότηση, να ξαναδοκιμάσει και να αποκτήσει αυτοπεποίθηση."
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Σχολεία και CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Πρώτα η πρόσβαση"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "Κάλυψη του οράματος του inspir για δωρεάν, προσβάσιμη εκπαίδευση."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Μέσα και αναφορές"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Αρχείο αναφοράς με έμφαση στο κείμενο για βοηθούς, εκπαιδευτικούς, συνεργάτες και εργαλεία παραπομπών."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Προσέγγισε μαθητές σε όλη τη δωρεάν πλατφόρμα και στα συνεργαζόμενα σχολεία."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Σχολεία και εταίροι CSR"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Οι δημόσιες λειτουργίες σχεδιάζονται γύρω από τη συμπεριφορά της μάθησης: ενδείξεις, ερωτήσεις Σωκράτη, έλεγχοι βημάτων, ερωτήματα, κάρτες, γραπτή ανατροφοδότηση, κύκλους αναθεώρησης και ενεργητική εξήγηση."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Σύνδεσμοι αναφοράς, δημόσια στοιχεία, δημοσιογραφικό πλαίσιο και λεπτομέρειες κατάλληλες για παραπομπές."
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Μαθητές, γονείς, δάσκαλοι, σχολεία και αυτοδίδακτοι οικοδόμοι"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Σχολική και συνεργατική πορεία"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Ξεκινήστε με the δημόσιος μάθηση companion."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Η πορεία από τα κουίζ και τις μαθητικές κοινότητες έως τα δωρεάν εργαλεία μάθησης με AI που αναπτύσσονται δημόσια."
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Γιατί το inspir βασίζεται σε τρόπους μάθησης αντί για ένα μόνο πλαίσιο συνομιλίας;"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "Τέλη του 2022"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Διαμόρφωση ροών εργασίας"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "Από τη μαθητική κοινότητα στην υποδομή μάθησης με AI"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Η πρόσβαση μπορεί να χρηματοδοτηθεί από συνεργαζόμενα σχολεία ή να υποστηριχθεί μέσω διαδρομών χορηγίας CSR για κοινότητες που χρειάζονται επιδοτούμενη μάθηση AI."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "Το δημόσιο προϊόν, η σχολική διαδρομή και η βιβλιοθήκη περιεχομένου πρέπει να παραπέμπουν στην ίδια αρχή: η μάθηση να παραμένει ενεργή, προσβάσιμη και χρήσιμη."
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ χώρες"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Η ποιοτική μάθηση πρέπει να μοιάζει διαθέσιμη, ανθρώπινη και ζωντανή."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "Το inspir οργανώνεται γύρω από τρόπους μάθησης όπως η Σωκρατική καθοδήγηση, οι υποδείξεις εργασιών, τα κουίζ, οι κάρτες επανάληψης, τα βήματα μαθηματικών, η κριτική γραφής και ο σχεδιασμός εξετάσεων, ώστε οι μαθητές να υιοθετούν πιο εστιασμένη μαθησιακή συμπεριφορά."
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Δοκιμάστε τις δημόσιες λειτουργίες καλεσμένων"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Η ανακατασκευή ανοικτού κώδικα για προγραμματιστές, εκπαιδευτικούς και συνεισφέροντες."
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Χτίζεται από το 2013"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "Η αποστολή συνδέεται με πραγματικά τμήματα του προϊόντος."
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "Το inspir ανοίγει τρόπους μάθησης στο /chat/{topicSlug}, ώστε οι μαθητές να εισέρχονται απευθείας στη σωστή εμπειρία μάθησης με AI χωρίς αποθηκευμένη ιδιωτική συνομιλία."
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "Το δημόσιο προϊόν παραμένει εύκολο στη δοκιμή: οι μαθητές μπορούν να μπουν απευθείας σε έναν τρόπο μάθησης και να ξεκινήσουν ως επισκέπτες. Τα σχολεία και οι συνεργάτες CSR μπορούν να στηρίξουν προσαρμοσμένες υλοποιήσεις όταν οι κοινότητες χρειάζονται εμπιστευτικότητα, ευθυγράμμιση προγράμματος ή επιδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Ιστότοπος"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Το δημόσιο blog περιέχει περισσότερα από 100 οδηγούς, βρόχους προειδοποίησης και συστάδες πυλώνων που συνδέονται με τις λειτουργίες μάθησης σε ζωντανή βάση."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "Η μετάβαση από τη διεύθυνση inspir.app στη διεύθυνση inspirlearning.com"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Δείτε κάθε λειτουργία"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Σελίδα κοινότητας συνδεδεμένη με τη διάκριση DeepHack."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Τα σχολεία και οι συνεργάτες μπορούν να προχωρήσουν από το δημόσιο προϊόν σε προσαρμοσμένες, εμπιστευτικές και επιδοτούμενες υλοποιήσεις."
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "Η μάθηση πρέπει να είναι δωρεάν, ευχάριστη, χρήσιμη και διαθέσιμη σε κάθε άνθρωπο με περιέργεια."
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Μια μαθησιακή εμπειρία ειδική για το σχολείο μπορεί να διαμορφωθεί γύρω από την κοινότητα των μαθητών σας, τον τόνο και τις μαθησιακές προτεραιότητες."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Γωνία λειτουργίας επισκέπτη"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Σύντομη περιγραφή"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Δωρεάν, χρήσιμα και ελκυστικά εργαλεία μάθησης με AI για κάθε άνθρωπο με περιέργεια."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Έφτασε σε κοινό σε όλη τη δωρεάν δημόσια πλατφόρμα και στις υλοποιήσεις συνεργαζόμενων σχολείων."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "δωρεάν πλατφόρμα μάθησης τεχνητής νοημοσύνης"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "Η μάθηση είναι για όλους."
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Γιατί τώρα"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Αυτές οι σελίδες κάνουν την ιστορία πιο εύκολη στην επαλήθευση, την παραπομπή, την κοινοποίηση και τη χρήση: δημόσιες λειτουργίες, διαδρομές μάθησης, αναλυτικοί οδηγοί, σημειώσεις σχολικής ανάπτυξης, στοιχεία για τα μέσα ενημέρωσης και το υπόβαθρο της εταιρείας."
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "Εκπαιδευτής για μαθητές"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Προσδιορίστε τους σημαντικότερους σχολικούς στόχους: εννοιολογική υποστήριξη, υποδείξεις εργασιών, προετοιμασία εξετάσεων, ενεργή ανάκληση, ανατροφοδότηση γραφής ή εμπλουτισμό."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Χρησιμοποιήστε το για αναφορές σχετικά με σχολεία, συνεργάτες, CSR και πρόσβαση στην εκπαίδευση."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Διάκριση Jury's Choice από τον Amod Malviya στο DeepHack για το έργο μάθησης με AI."
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Οι ισχύοντες κανόνες πρόσβασης για δημόσιες και ιδιωτικές διαδρομές."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "Το inspir υπάρχει για να κάνει τη μάθηση προσβάσιμη, ελκυστική, ευχάριστη και χρήσιμη σε κάθε άνθρωπο με περιέργεια, μέσω δωρεάν δημόσιων εργαλείων μάθησης με AI και μαθησιακών χώρων έτοιμων για σχολεία."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Τα σχολεία μπορούν πρώτα να αξιολογήσουν τους δημόσιους τρόπους και έπειτα να συζητήσουν προσαρμοσμένες ροές εργασίας, σχεδιασμό εμπιστευτικότητας, ανάγκες περιεχομένου και χρηματοδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "Η πρόσβαση στη μάθηση AI μπορεί να χρηματοδοτηθεί από συνεργαζόμενα σχολεία ή να υποστηριχθεί μέσω χορηγίας CSR για κοινότητες που χρειάζονται επιδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "Το προϊόν πρέπει να διδάσκει, όχι μόνο να απαντά."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Η ιστορία περιλαμβάνει κουίζ, σχολικά δίκτυα εκτός σύνδεσης, εισαγωγή προγραμμάτων σπουδών και δημόσιους τρόπους μάθησης με AI."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "Το inspir είναι δωρεάν πλατφόρμα μάθησης με AI, με δημόσιους τρόπους επισκέπτη για εξηγήσεις, Σωκρατική καθοδήγηση, βοήθεια εργασιών, κουίζ, κάρτες επανάληψης, συζήτηση, παιχνίδι ρόλων, ανατροφοδότηση γραφής και σχεδιασμό μελέτης."
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "inspir συνδέσεις αναφοράς δημόσιας αρχής"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Λανσάρισμα τεχνητής νοημοσύνης για καταναλωτές"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Ξεκίνησε ως δημόσια ερωτηματολόγια και φοιτητικές κοινότητες στο 2013."
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Αρχές"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Ένας μαθητής μπορεί από τον δημόσιο κατάλογο τρόπων μάθησης να ανοίξει απευθείας ως επισκέπτης τα «Μάθε οτιδήποτε», «Σωκρατική διδασκαλία», «Βοηθός εργασιών», «Βοηθός μαθηματικών βήμα προς βήμα», κουίζ ή κάρτες επανάληψης."
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Δωρεάν πλατφόρμα μάθησης τεχνητής νοημοσύνης"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Σχολική οπτική"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "Είναι ανοιχτές οι δημόσιες συνομιλίες;"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Μπορεί ένα σχολείο να χρησιμοποιήσει πρώτα το inspir ως εργαλείο μάθησης επισκέπτη;"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "Από τα κουίζ του Facebook και τις εκδηλώσεις εκτός σύνδεσης έως την εφαρμοσμένη υποδομή μάθησης με AI."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Η ισχυρότερη οπτική είναι η δωρεάν δημόσια μάθηση με AI που ανοίγει απευθείας ως επισκέπτης και κρατά τους μαθητές ενεργούς με διδασκαλία ειδική για κάθε τρόπο, αντί για γενική παραγωγή απαντήσεων."
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Γιατί οι δημόσιες σελίδες εκμάθησης είναι εύκολες να μοιραστούν;"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "Η γραπτή βιβλιοθήκη μάθησης που υποστηρίζει προτροπές, κύκλους μελέτης και βαθύτερη εξάσκηση."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir οργανώνεται γύρω από υποδείξεις, ερωτήσεις, τεστ, κάρτες, συζήτηση, ανασκόπηση και εξήγηση αντί για παθητική αντιγραφή απαντήσεων."
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Προεπιλεγμένος εκπαιδευτής επισκέπτη"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Ποια οπτική του προϊόντος είναι χρησιμότερη για δημοσιογραφική κάλυψη;"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Διαφορετικές εργασίες μάθησης χρειάζονται διαφορετικές μορφές αλληλεπίδρασης, γι’ αυτό το inspir χρησιμοποιεί ενεργή διδασκαλία ειδική για κάθε τρόπο. Μια υπόδειξη εργασίας, μια Σωκρατική ερώτηση, μια ιστορική προσομοίωση, μια επανάληψη καρτών και μια κριτική γραφής δεν πρέπει να λειτουργούν σαν την ίδια γενική συνομιλία."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Αποστολή | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Τα σχολεία μπορούν πρώτα να δοκιμάσουν δημόσιους τρόπους επισκέπτη και έπειτα να χρησιμοποιήσουν τη σελίδα σχολείων για προσαρμοσμένες ροές εργασίας, σχεδιασμό εμπιστευτικότητας, επιλογές ευθυγραμμισμένες με το NCERT και χρηματοδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Οι δάσκαλοι και οι ηγέτες μπορούν να ξεκινήσουν με την εκμάθηση οτιδήποτε, τη σοκρατική διδασκαλία, τον προπονητή των εργασμάτων, τα ερωτηματολόγια και τις κάρτες πριν από την επίσημη εκτόξευση."
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Διαφορετικές εργασίες χρειάζονται διαφορετικούς τρόπους: Σωκρατικές ερωτήσεις, υποδείξεις εργασιών, κάρτες επανάληψης, συζήτηση, ιστορικό παιχνίδι ρόλων, κριτική γραφής και άλλα."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Ναι. Δημόσια σημεία εισόδου θεμάτων όπως τα /chat/learn-anything και /chat/socratic-instruction είναι ανοικτές σελίδες μάθησης που μπορεί να δοκιμάσει οποιοσδήποτε."
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "αρχές αποστολής του inspir"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Ένας ικανός μαθησιακός σύντροφος δεν πρέπει να εξαρτάται από τη γεωγραφία, το οικογενειακό εισόδημα ή το αν ένας μαθητής γνωρίζει ήδη το σωστό άτομο να ρωτήσει."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "Αποστολή του inspir είναι να κάνει τη μάθηση προσβάσιμη, ελκυστική, ευχάριστη και χρήσιμη σε όλους μέσω δωρεάν δημόσιων εργαλείων μάθησης με AI."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Αφού ο τομέας inspir.app πουλήθηκε για να χρηματοδοτηθεί η συνεχιζόμενη δωρεάν πρόσβαση, το ζωντανό προϊόν μεταφέρθηκε στο inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "Συνεργασία CSR για εκπαιδευτική τεχνολογία"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "Βιβλιοθήκη οδηγών μάθησης AI"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Περισσότερα από 100 οδηγίες για την διδασκαλία, τις προτάσεις, τους κύκλους μελέτης, την ενεργό ανάκληση και τις λειτουργίες."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Το inspir είναι δωρεάν πλατφόρμα μάθησης με AI, με δημόσιους τρόπους επισκέπτη για εξηγήσεις, Σωκρατική καθοδήγηση, βοήθεια εργασιών, κουίζ, κάρτες επανάληψης, συζήτηση, ανατροφοδότηση γραφής, βοήθεια προγραμματισμού και σχεδιασμό μελέτης."
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Ένας καθαρός κατάλογος κάθε σημείου εισόδου σε συνομιλία μάθησης επισκέπτη."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Δημοσιογράφοι, συντάκτες καταλόγων, συνεργάτες, σχολεία και όσοι γράφουν για το inspir μπορούν να το χρησιμοποιήσουν για στοιχεία, συνδέσμους, οπτικές ιστοριών και αναφορές κατάλληλες για παραπομπές."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Απαιτήσεις εκμάθησης χαρτών"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Τι είναι το inspir;"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Ξεκίνηση και πρόσβαση στα κεφάλαια"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Σε ποιο URL πρέπει να παραπέμπουν πρώτα τα άρθρα;"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Διαδρομή σχολικής διάθεσης"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Οπτική προϊόντος"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Όνομα"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "Εκπαιδευτής για σχολεία"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Αρχική"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Ποια είναι η σύντομη περιγραφή του inspir;"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Οι αποθηκευμένες συνομιλίες χρηστών χρησιμοποιούν ιδιωτικά αναγνωριστικά και δεν πρέπει να θεωρούνται δημόσιο υλικό πηγής."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "ανάπτυξη επόμενης γενιάς του inspir.uk"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Μεταβείτε από πιλοτική εφαρμογή σε ευρύτερη πρόσβαση μέσω σχολικής χρηματοδότησης, υποστήριξης συνεργατών ή διαδρομών CSR για μαθητές που χρειάζονται επιδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Το ειδικό περιεχόμενο, οι προτροπές και οι ροές εργασίας μπορούν να προσαρμοστούν στις ανάγκες NCERT και στις ιδιαίτερες προτεραιότητες κάθε σχολικής τάξης."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Χρησιμοποιήστε το όταν συνδέετε τους αναγνώστες απευθείας με τη ζωντανή μαθησιακή εμπειρία."
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Σε τι διαφέρει αυτό από το να δίνουμε στους μαθητές ένα γενικό ρομπότ συνομιλίας AI;"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Η εφαρμογή οργανώνεται γύρω από διδακτικές συμπεριφορές όπως η Σωκρατική ερώτηση, οι υποδείξεις εργασιών, τα κουίζ, οι κάρτες επανάληψης, το παιχνίδι ρόλων και ο σχεδιασμός."
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Κύρια παραπομπή αρχικής σελίδας"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "Αποστολή του inspir είναι να κάνει τη μάθηση προσβάσιμη, ελκυστική, ευχάριστη και χρήσιμη μέσω δωρεάν δημόσιων εργαλείων μάθησης με AI και μαθησιακών χώρων έτοιμων για σχολεία."
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Ποια είναι η αποστολή του inspir;"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Κάθε δημόσιος τρόπος είναι μια είσοδος σε διαφορετική μαθησιακή συμπεριφορά, ώστε η μορφή να ταιριάζει στην εργασία αντί να αναγκάζει κάθε μαθητή σε ένα γενικό πλαίσιο συνομιλίας."
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "Το δημόσιο προϊόν προσφέρει σε όλους ένα σημείο εκκίνησης, ενώ οι σχολικές και συνεργατικές υλοποιήσεις προσαρμόζουν την εμπειρία στις τοπικές ανάγκες."
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Συνομιλία τεχνητής νοημοσύνης με λευκή ετικέτα"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Πύλες εισόδου σε λειτουργία επισκέπτη"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Στηρίξτε χρηματοδοτούμενη πρόσβαση στη μάθηση με AI για κοινότητες που χρειάζονται υποστήριξη υψηλής ποιότητας χωρίς επιπλέον κόστος για τις οικογένειες."
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Ολόκληρος δημόσιος δείκτης αναφοράς"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Η πλατφόρμα εργάστηκε στην εισαγωγή προγραμμάτων σπουδών, την ανάκτηση, τις δομημένες ροές μάθησης και τις πρώιμες εμπειρίες καθοδήγησης με AI."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Περισσότερα από 100 οδηγούς, σύντομα βρόχους και συστάδες πυλώνων για μαθησιακή υποστήριξη από τεχνητή νοημοσύνη."
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Πολιτική απορρήτου"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Ιδρύθηκε"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "Η πλατφόρμα έχει σχεδιαστεί για να βοηθά τους ανθρώπους να συλλογίζονται, να εξασκούνται, να θυμούνται και να εξηγούν ιδέες, αντί να συγκεντρώνουν έτοιμες απαντήσεις."
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "Η ιδιωτική καθοδήγηση είναι ισχυρή αλλά κατανέμεται άνισα. Το inspir χρησιμοποιεί AI για να διευρύνει την πρόσβαση διατηρώντας τον μαθητή ενεργό: υποδείξεις πριν από απαντήσεις, ερωτήσεις πριν από διαλέξεις και εξάσκηση μετά την εξήγηση."
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Σχολεία και εταίροι"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Μια βάση μαθητών που ήδη εκτείνεται πέρα από την Ινδία σε ένα ευρύτερο διεθνές κοινό."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir οργανώνει την ΤΝ γύρω από ενεργές συμπεριφορές μάθησης: ενδείξεις, ερωτήσεις, τεστ, κάρτες, κριτική και αναθεώρηση."
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Κάλυψη Deccan Business"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "- Ναι, ναι. Οι δημόσιες λειτουργίες επισκέψεων επιτρέπουν στους διευθυντές και τους εκπαιδευτικούς να δοκιμάσουν την εκπαιδευτήρια εμπειρία πριν συζητήσουν μια προσαρμοσμένη εκπαίδευση."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Αξιολογήστε πρώτα ένα δημόσιο επίπεδο μάθησης με AI και έπειτα εξερευνήστε ειδικές ροές εργασίας, ανάγκες εμπιστευτικότητας, ευθυγράμμιση περιεχομένου και χρηματοδότηση χρήσης."
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Κύριο κοινό"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Διαφορετικές εργασίες μάθησης χρειάζονται διαφορετικές μορφές: Σωκρατικές ερωτήσεις, υποδείξεις εργασιών, κάρτες επανάληψης, συζήτηση, ιστορικό παιχνίδι ρόλων, κριτική γραφής και σχεδιασμό μελέτης."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Οι επίσημοι όροι που καλύπτουν την αποδεκτή χρήση, τις ευθύνες λογαριασμού και τις προϋποθέσεις υπηρεσίας."
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Προσαρμόστε την εμπειρία του μαθητή γύρω από το σχολικό πλαίσιο, τις προτεραιότητες του προγράμματος σπουδών, τα όρια περιεχομένου και το επίπεδο ορατότητας προσωπικού που χρειάζεται."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Πρόσβαση σε βοηθό και αναφορά"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "Η NCERT ευθυγραμμίζει την εκμάθηση της τεχνητής νοημοσύνης"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "Το inspir ξεκίνησε ως σελίδα στο Facebook που δημοσίευε κουίζ και καλλιεργούσε τη συνήθεια εξωσχολικής μάθησης."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Το δημόσιο προϊόν κρατά τη μάθηση εύκολη στη δοκιμή, ενώ σχολεία και συνεργάτες CSR στηρίζουν προσαρμοσμένες υλοποιήσεις όταν οι κοινότητες χρειάζονται εμπιστευτικότητα, ευθυγράμμιση προγράμματος ή χρηματοδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "Μάθηση"
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "Σχετικά με το inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Το δημόσιο προϊόν δοκιμάζεται εύκολα πρώτα, ενώ σχολεία και συνεργάτες μπορούν να εξερευνήσουν προσαρμοσμένες υλοποιήσεις για κοινοτικές ανάγκες."
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Καθαρές απαντήσεις για μαθητές, σχολεία και μηχανές αναζήτησης."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Σελίδα αναφοράς"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Δίκτυα εκτός σύνδεσης και μαθητικές εκδηλώσεις"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Εμφανίζονται οι ιδιωτικές αποθηκευμένες συνομιλίες χρηστών στην αναζήτηση;"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Όρια εμπιστοσύνης και ιδιωτικής ζωής"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "Επιστήμη για να μάθετε οτιδήποτε ."
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Λειτουργία-specific μάθηση"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "Το inspir τέθηκε σε λειτουργία ως προϊόν μάθησης με AI για καταναλωτές μέσα σε λίγες εβδομάδες από τη δημόσια κυκλοφορία του ChatGPT."
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Αναζήτηση και πρόσβαση σε κατάλογο"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Ναι. Ένα σχολείο μπορεί να αρχίσει δοκιμάζοντας δημόσιους τρόπους και να προχωρήσει σε πιλοτική ή προσαρμοσμένη υλοποίηση όταν είναι σαφή η χρήση, οι ανάγκες περιεχομένου και η χρηματοδότηση."
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "Σελίδα κοινότητας DeepHack"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "Η ζωντανή μαθησιακή εμπειρία που μετατρέπει την αποστολή σε πρακτική βοήθεια."
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Υπάρχουν δημόσιοι σύνδεσμοι τρόπων επισκέπτη ώστε οι μαθητές να ξεκινούν απευθείας σε χρήσιμους τρόπους μάθησης από αναζήτηση, κοινωνικούς συνδέσμους, σχολεία ή κοινές προτάσεις."
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "Τεχνητή νοημοσύνη με μορφή μάθησης"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Δωρεάν εκπαίδευση για επισκέπτες, με μονοπάτια για σχολεία και εταίρους."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Πώς διαφέρει το inspir από ένα γενικό AI chatbot;"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Μια μαθησιακή κοινότητα αρχίζει"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "μάθηση AI χωρίς παθητική αντιγραφή απαντήσεων"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Κατηγορία"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Dailyhunt κάλυψη"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "- Ναι, ναι. Οι δημόσιες λειτουργίες επισκεπτών όπως Μάθετε τα πάντα, Σωκράτης, Δασκάλος Επιστημονικής, ερωτήματα και κάρτες ανοίγουν απευθείας από απλό /chat/{topicSlug} - Σχέσεις."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "Ιστολόγιο μάθησης AI"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Όροι"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "Εργαλεία μελέτης τεχνητής νοημοσύνης για τα σχολεία"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Guest λειτουργία για δημόσιος access"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Πώς η δημόσια μάθηση επισκεπτών μπορεί να επεκταθεί σε ειδικούς χώρους μάθησης AI για σχολεία."
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Μελέτη ροών εργασίας που συνδέουν τις λειτουργίες επισκέπτη, προκλήσεις, πρακτική και σχετικούς οδηγούς."
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "Οδηγοί μάθησης AI"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Διαβάστε τις λειτουργίες μάθησης"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Δοκιμαστικές ροές μάθησης"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "Όχι. Οι ιδιωτικές αποθηκευμένες συνομιλίες χρησιμοποιούν ιδιωτικά αναγνωριστικά και δεν αποτελούν μέρος δημόσιων σελίδων, αρχείων αναφοράς ή κοινών καταλόγων μάθησης."
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Κάθε συνομιλία μάθησης επισκέπτη οργανώνεται ανά διδακτική συμπεριφορά και μαθησιακή ανάγκη."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Αναδημοσιευμένη κάλυψη για ευρύτερη απήχηση στο καταναλωτικό κοινό."
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Εμπιστοσύνη και ασφάλεια"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Εμπιστευτικός σχεδιασμός διάθεσης"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Συχνές ερωτήσεις αποστολής"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Ξεκινήστε αμέσως με τη σωστή μέθοδο μάθησης για υποδείξεις για τα μαθήματα, τα βήματα μαθηματικών, την κριτική γραφής, τα τεστ, τις κάρτες ή τον προγραμματισμό των εξετάσεων."
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Τα εργαλεία βοηθού και αναφοράς μπορούν να χρησιμοποιήσουν δημόσιες σελίδες μάθησης για να κατευθύνουν τους ανθρώπους προς τους σωστούς οδηγούς και τις λειτουργίες επισκεπτών."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "Το inspir οργανώνει την AI γύρω από τρόπους μάθησης με συγκεκριμένη διδακτική συμπεριφορά: εξηγήσεις, Σωκρατικές ερωτήσεις, υποδείξεις εργασιών, κουίζ, κάρτες επανάληψης, συζήτηση, παιχνίδι ρόλων, ανατροφοδότηση γραφής και σχεδιασμό μελέτης."
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Άνοιξε αναφορά"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "DeepHack αναγνώριση"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Οι σύνδεσμοι ιδιωτικών αποθηκευμένων συνομιλιών δεν αποτελούν μέρος δημόσιων αναφορών μάθησης, κοινών ευρετηρίων ή υλικού παραπομπών."
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Μπορούν οι άνθρωποι να χρησιμοποιούν το inspir χωρίς σύνδεση;"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Μακροδιαμορφωμένη βιβλιοθήκη μάθησης"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Πώς ... inspir Ξεκινάς;"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Χρησιμοποιήστε αυτό όταν περιγράφετε το πλήρες σύνολο εργαλείων μάθησης σε λειτουργία επισκέπτη που οι άνθρωποι μπορούν να δοκιμάσουν αμέσως."
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Δρόμοι ανάπτυξης στα σχολεία"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "Μάθηση"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Μη επιτρεπτό"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Τα σχολεία μπορούν πρώτα να αξιολογήσουν το inspir μέσω δημόσιων τρόπων επισκέπτη και έπειτα να εξερευνήσουν προσαρμοσμένους χώρους μάθησης με AI, ειδικές ροές εργασίας, σχεδιασμό εμπιστευτικότητας, ανάγκες προγράμματος και χρηματοδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Η κοινότητα επεκτάθηκε μέσω σχολείων, πανεπιστημίων, διαγωνισμών, εξωσχολικών προγραμμάτων και κοινοτήτων μαθητών."
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "Μπορεί το inspir να υποστηρίξει ειδικό σχολικό περιεχόμενο ή ανάγκες προγράμματος σπουδών;"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Γιατί το inspir υποστηρίζει σχολικές και συνεργατικές υλοποιήσεις;"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Η επόμενη φάση είναι ανοικτού κώδικα, φιλική προς συνεισφέροντες και συνδεδεμένη με την ευρύτερη διεθνή ανάπτυξη στο inspir.uk."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Η δημόσια εξήγηση του λόγου ύπαρξης του inspir και της σημασίας της πρόσβασης στη μάθηση."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Κατασκευασμένο για την κλίμακα"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "Η AI μπορεί να κάνει την εξατομικευμένη μάθηση δραματικά πιο διαθέσιμη."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Σχολικές και CSR διαδρομές για χρηματοδοτούμενη πρόσβαση"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Ποιος μπορεί να χρησιμοποιήσει την ιστοσελίδα των μέσων ενημέρωσης;"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Η σχολική διαδρομή για προσαρμοσμένους χώρους μάθησης με AI και χρηματοδοτούμενη πρόσβαση."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Επιλογές ευθυγραμμισμένες με NCERT"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "Μελετήστε με την AI καλά"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "Η ευρύτερη διεθνής ανάπτυξη που συνδέεται με το έργο inspir."
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Επιτρέπεται σε δημόσιες σελίδες"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Χρησιμοποιήστε το όταν παρουσιάζετε το inspir ως κύριο προϊόν ή συνδέετε από κατάλογο, προφίλ ή άρθρο."
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Χρηματοδοτούμενες διαδρομές πρόσβασης"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Ανακατασκευασμένο πλέον ως ανοικτά, φιλικά προς επισκέπτες σημεία εισόδου μάθησης με AI."
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Δομημένος κατάλογος δημόσιων σελίδων, τρόπων, διαδρομών μάθησης, θεματικών ομάδων ιστολογίου και ορίων ιδιωτικότητας."
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "Στόχος είναι να βρίσκουν οι άνθρωποι γρήγορα τη σωστή δημόσια σελίδα μάθησης. Οι δημόσιες διαδρομές, οι οδηγοί και οι κόμβοι μάθησης είναι ανοικτοί· οι διαδρομές API, admin, reset και οι ιδιωτικές βοηθητικές διαδρομές παραμένουν κλειστές."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Χρησιμοποιήστε το όταν ανατρέχετε στη μακρά βιβλιοθήκη οδηγιών, στα στοιχεία που σας οδηγούν στη μελέτη και στα άρθρα που αφορούν συγκεκριμένα είδη."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Κατανόηση πάνω από απαντήσεις"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Χρησιμοποιήστε το https://inspirlearning.com για τον ιστότοπο, το /mission για την αποστολή, το /topics για τον δημόσιο κατάλογο τρόπων μάθησης και το /chat/learn-anything για την προεπιλεγμένη εμπειρία μάθησης επισκέπτη."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "Εταιρική κοινωνική ευθύνη και εταίροι στην εκπαίδευση"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Τι μπορεί κάποιος να δοκιμάσει πρώτα;"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Από πού πρέπει να ξεκινήσουν τα σχολεία;"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Οι σχολικές υλοποιήσεις μπορούν να σχεδιαστούν γύρω από την ιδιωτικότητα των μαθητών, την εποπτεία προσωπικού και τα πρακτικά όρια που χρειάζεται μια μαθησιακή κοινότητα."
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Δημιουργήστε ασφαλέστερη διαδρομή για εξάσκηση, εξηγήσεις, ανατροφοδότηση και προτροπές επανάληψης χωρίς να στέλνετε τους μαθητές σε ένα γενικό ρομπότ συνομιλίας."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Τα δημόσια αρχεία αναφοράς συνοψίζουν σελίδες μάθησης, διαδρομές, τρόπους, οδηγούς και όρια παραπομπών για εργαλεία που χρειάζονται συνοπτικό χάρτη."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Τώρα"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "Αποστολή"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Χτισμένο γύρω από πραγματικούς μαθητές"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "Υποδομή μάθησης AI"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Η επίσημη σελίδα ιδιωτικότητας για χρήση δεδομένων, δικαιώματα και όρους δημόσιας υπηρεσίας."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "Το inspir ξεκίνησε το 2013 ως δημόσια κοινότητα κουίζ και μάθησης, αναπτύχθηκε μέσω σχολείων και μαθητικών δικτύων και αργότερα δημιούργησε υποδομή μάθησης με AI και δημόσιες εμπειρίες καθοδήγησης με AI."
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "πλατφόρμα μάθησης τεχνητής νοημοσύνης white label"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "Το inspir υπάρχει για να κάνει τη μάθηση προσβάσιμη, ελκυστική, ευχάριστη και χρήσιμη σε κάθε άνθρωπο με περιέργεια, είτε είναι μαθητής, γονέας, εκπαιδευτικός είτε αυτοδίδακτος."
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Πώς το κάνεις; inspir να μειώσουν την αντιγραφή των απαντήσεων;"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Τι πιστεύουμε"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "Οι επιφάνειες API, admin, reset, ιδιωτικών βοηθητικών εργαλείων και ιδιωτικών αποθηκευμένων συνομιλιών δεν αποτελούν δημόσιο περιεχόμενο πηγής."
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Οι δημόσιες σελίδες μπορούν να κοινοποιούνται και να συνδέονται, ενώ τα εργαλεία admin, οι διαδρομές API, οι ροές reset και τα ιδιωτικά βοηθητικά εργαλεία παραμένουν κλειστά."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Σχολεία"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Τρέχον αποθετήριο GitHub"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Χτισμένο σε δημόσιο χώρο"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Πώς μπορεί να χρηματοδοτηθεί η πρόσβαση για τους μαθητές;"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Σημειώσεις μέσων"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "Το inspir έχει σχεδιαστεί γύρω από τον συλλογισμό, την εξάσκηση, την ανάκληση και την εξήγηση, αντί να παραδίδει έτοιμη εργασία στους μαθητές."
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Σχεδιασμός ειδικού προϊόντος"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Σχολικοί ηγέτες"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "Σχολεία"
+    }
+  ]
+}

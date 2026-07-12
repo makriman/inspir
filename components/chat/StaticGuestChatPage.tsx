@@ -7,6 +7,7 @@ import {
 import { defaultTopicSlug } from "@/lib/content/topics";
 import { getCuratedMainAppTranslationBundle } from "@/lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "@/lib/i18n/main-app-static-asset";
+import { createTranslationLookup } from "@/lib/i18n/translation-lookup";
 
 export function StaticGuestChatPage({ language = defaultLanguage }: { language?: SupportedLanguage }) {
   const bundle = getCuratedMainAppTranslationBundle(language);
@@ -14,6 +15,12 @@ export function StaticGuestChatPage({ language = defaultLanguage }: { language?:
   const config = languageConfigs[language];
   const locale = config.prefix || config.locale;
   const asset = buildStaticMainAppBundleAsset(locale, bundle);
+  const lookup = createTranslationLookup(
+    Object.entries(bundle.sourceStrings).map(([key, source]) => [
+      source,
+      bundle.strings[key] ?? source,
+    ]),
+  );
 
   return (
     <StaticGuestChatBootstrap
@@ -21,6 +28,12 @@ export function StaticGuestChatPage({ language = defaultLanguage }: { language?:
       defaultTopicId={defaultTopicSlug}
       translationBundleUrl={asset.publicPath}
       translationSourceHash={asset.sourceHash}
+      loadingLabel={lookup.translate("Loading your learning space…")}
+      loadErrorLabel={lookup.translate(
+        "We could not load your learning space. Your saved data has not been changed.",
+      )}
+      retryLabel={lookup.translate("Try again")}
+      authErrorLabel={lookup.translate("We could not sign you in. Please try again.")}
     />
   );
 }

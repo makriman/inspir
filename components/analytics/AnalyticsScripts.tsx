@@ -1,9 +1,15 @@
 import Script from "next/script";
 
-const googleAnalyticsId = "G-S3E1FV3RK8";
+export const googleAnalyticsId = "G-S3E1FV3RK8";
 const clarityProjectId = "xi5vqkce95";
 
-export function AnalyticsScripts({ nonce }: { nonce?: string }) {
+export function AnalyticsScripts({
+  nonce,
+  automaticPageViews = true,
+}: {
+  nonce?: string;
+  automaticPageViews?: boolean;
+}) {
   return (
     <>
       <Script
@@ -18,7 +24,7 @@ export function AnalyticsScripts({ nonce }: { nonce?: string }) {
           function gtag(){window.dataLayer.push(arguments);}
           window.gtag = window.gtag || gtag;
           gtag('js', new Date());
-          gtag('config', '${googleAnalyticsId}', { send_page_view: false });
+          gtag('config', '${googleAnalyticsId}', { send_page_view: ${automaticPageViews ? "true" : "false"} });
         `}
       </Script>
       <Script id="microsoft-clarity" strategy="afterInteractive" nonce={nonce}>

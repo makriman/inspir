@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useReducer } from "react";
+import { FormEvent, useEffect, useReducer, useRef } from "react";
 import { Sparkles } from "lucide-react";
 import {
   type ActivityRun,
@@ -8,9 +8,14 @@ import {
   isQuizState,
   mergeActivityState,
 } from "@/components/chat/activity-model";
+import type { UiTranslator } from "@/components/chat/chat-ui-types";
 import { QuizBuildLoader } from "@/components/chat/QuizBuildLoader";
 import { QuizFeedback } from "@/components/chat/QuizFeedback";
 import { QuizReview } from "@/components/chat/QuizReview";
+import {
+  formatMainAppActivity,
+  translateMainAppActivity,
+} from "@/lib/i18n/main-app-activity-copy";
 
 type QuizWorkspaceProps = {
   activeChatId?: string;
@@ -18,6 +23,7 @@ type QuizWorkspaceProps = {
   activityRun: ActivityRun | null;
   createChat: (topicId?: string) => Promise<string>;
   onActivityRun: (run: ActivityRun | null) => void;
+  t: UiTranslator;
 };
 
 export function QuizWorkspace({
@@ -26,6 +32,7 @@ export function QuizWorkspace({
   activityRun,
   createChat,
   onActivityRun,
+  t,
 }: QuizWorkspaceProps) {
   const [{ topic, loading, buildProgress, answering, error }, updateQuizState] = useReducer(
     mergeActivityState<{
@@ -37,6 +44,7 @@ export function QuizWorkspace({
     }>,
     { topic: "", loading: false, buildProgress: 0, answering: false, error: "" },
   );
+  const pendingBuildRequest = useRef<{ signature: string; requestId: string } | null>(null);
   const quiz = activityRun?.type === "quiz" && isQuizState(activityRun.state) ? activityRun.state : null;
   const currentQuestion = quiz?.questions[quiz.currentIndex];
   const lastAnswered = quiz
@@ -61,18 +69,28 @@ export function QuizWorkspace({
     updateQuizState({ error: "", buildProgress: 8, loading: true });
     try {
       const chatId = activeChatId ?? (await createChat(activeTopicId));
+      const signature = `${chatId}\n${quizTopic}`;
+      const buildRequest = pendingBuildRequest.current?.signature === signature
+        ? pendingBuildRequest.current
+        : { signature, requestId: crypto.randomUUID() };
+      pendingBuildRequest.current = buildRequest;
       const response = await fetch("/api/activities/quiz", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ chatId, topic: quizTopic }),
+        body: JSON.stringify({
+          chatId,
+          topic: quizTopic,
+          requestId: buildRequest.requestId,
+        }),
       });
       if (!response.ok) throw new Error("Could not build quiz");
       const data = (await response.json()) as ActivityRunResponse;
+      pendingBuildRequest.current = null;
       updateQuizState({ buildProgress: 100 });
       onActivityRun(data.activityRun);
     } catch {
       updateQuizState({
-        error: "I could not build that quiz right now. Try a simpler topic or try again.",
+        error: translateMainAppActivity(t, "activity.quiz.error.build"),
         buildProgress: 0,
       });
     } finally {
@@ -93,34 +111,34 @@ export function QuizWorkspace({
       const data = (await response.json()) as ActivityRunResponse;
       onActivityRun(data.activityRun);
     } catch {
-      updateQuizState({ error: "I could not score that answer. Please try again." });
+      updateQuizState({ error: translateMainAppActivity(t, "activity.quiz.error.score") });
     } finally {
       updateQuizState({ answering: false });
     }
   }
 
   return (
-    <main className="inspir-workspace inspir-quiz-workspace">
+    <main className="inspir-workspace inspir-quiz-workspace" data-no-auto-translate>
       {!quiz ? (
         loading ? (
-          <QuizBuildLoader topic={topic} progress={buildProgress} />
+          <QuizBuildLoader topic={topic} progress={buildProgress} t={t} />
         ) : (
           <form onSubmit={startQuiz} className="inspir-quiz-start">
             <div className="inspir-quiz-start-icon">
               <Sparkles size={28} />
             </div>
-            <h2>What would you like to be quizzed on today?</h2>
-            <p>Pick any topic. I will build 10 multiple-choice questions and score you as you go.</p>
+            <h2>{translateMainAppActivity(t, "activity.quiz.start.title")}</h2>
+            <p>{translateMainAppActivity(t, "activity.quiz.start.body")}</p>
             <div className="inspir-quiz-input-row">
               <input
-                aria-label="Quiz topic"
+                aria-label={translateMainAppActivity(t, "activity.quiz.start.topicLabel")}
                 value={topic}
                 onChange={(event) => updateQuizState({ topic: event.target.value })}
-                placeholder="Space exploration, Indian history, algebra..."
+                placeholder={translateMainAppActivity(t, "activity.quiz.start.topicPlaceholder")}
                 disabled={loading}
               />
               <button type="submit" disabled={loading || !topic.trim()}>
-                Start
+                {translateMainAppActivity(t, "activity.quiz.start.action")}
               </button>
             </div>
             {error ? <span className="inspir-quiz-error">{error}</span> : null}
@@ -130,7 +148,7 @@ export function QuizWorkspace({
         <section className="inspir-quiz-card">
           <header className="inspir-quiz-header">
             <div>
-              <span>Quiz on</span>
+              <span>{translateMainAppActivity(t, "activity.quiz.header")}</span>
               <h2>{quiz.topic}</h2>
             </div>
             <strong>
@@ -141,12 +159,15 @@ export function QuizWorkspace({
             <span style={{ width: `${(quiz.questions.filter((q) => q.userAnswerIndex !== undefined).length / 10) * 100}%` }} />
           </div>
 
-          {lastAnswered ? <QuizFeedback question={lastAnswered} /> : null}
+          {lastAnswered ? <QuizFeedback question={lastAnswered} t={t} /> : null}
 
           {!quiz.completed && currentQuestion ? (
             <article className="inspir-question-card">
               <span>
-                Question {quiz.currentIndex + 1} of {quiz.maxScore}
+                {formatMainAppActivity(t, "activity.quiz.progress", {
+                  current: quiz.currentIndex + 1,
+                  total: quiz.maxScore,
+                })}
               </span>
               <h3>{currentQuestion.prompt}</h3>
               <div className="inspir-option-grid">
@@ -164,7 +185,7 @@ export function QuizWorkspace({
               </div>
             </article>
           ) : (
-            <QuizReview quiz={quiz} />
+            <QuizReview quiz={quiz} t={t} />
           )}
           {error ? <span className="inspir-quiz-error">{error}</span> : null}
         </section>

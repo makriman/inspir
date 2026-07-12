@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Vietnamese",
+  "locale": "vi",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v2",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Các trang công khai, trò chuyện theo chủ đề, lộ trình học, hướng dẫn blog và trang trợ giúp được thiết kế để dễ tìm và dễ chia sẻ."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Bắt đầu học"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Các trang học tập công khai được mở, còn tuyến API, tuyến quản trị, luồng đặt lại và các trang tiện ích riêng tư vẫn bị chặn."
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Mỗi chế độ học có một liên kết công khai để người học có thể bắt đầu trực tiếp trong đúng trải nghiệm học tập."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Dùng phần này khi nhắc đến ranh giới công khai/riêng tư, an toàn của người học và niềm tin của trường học."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "Chỉ mục nội dung AI"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Khác với một chatbot thông thường, inspir tổ chức AI quanh các chế độ học tập để người học có thể bắt đầu với kiểu hỗ trợ họ cần: gợi ý, câu hỏi, câu đố, luyện nhớ chủ động, nhập vai, tranh luận hoặc phản hồi."
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Các triển khai trong trường học có thể được điều chỉnh theo nội dung, quy trình, prompt tùy chỉnh và nhu cầu học tập phù hợp với NCERT khi thích hợp."
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Hành vi học tập được đặt lên trước"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Các chế độ khách công khai cho bất kỳ ai một nơi hữu ích để bắt đầu, còn các triển khai cho trường học và đối tác có thể điều chỉnh trải nghiệm theo nhu cầu địa phương."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Mỗi chế độ học cốt lõi đều có điểm vào công khai dành cho khách để mọi người có thể bắt đầu từ tìm kiếm, mạng xã hội hoặc liên kết được chia sẻ."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Việc triển khai có thể bắt đầu nhỏ không?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Lời giải thích rõ ràng về chế độ khách, trò chuyện riêng tư, an toàn cho người học và niềm tin của nhà trường."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Tuyên bố công khai về lý do inspir tồn tại và khả năng tiếp cận học tập có nghĩa là gì."
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "Hơn 1 triệu người học"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "Mục tiêu không phải là khiến mọi người thụ động trước AI. Mục tiêu là cho mỗi người học một nơi khởi đầu kiên nhẫn để hỏi, luyện tập, nhận phản hồi, thử lại và xây dựng sự tự tin."
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Trường học và CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Ưu tiên quyền truy cập"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "Đưa tin về tầm nhìn của inspir cho giáo dục miễn phí, dễ tiếp cận."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Truyền thông và trích dẫn"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Tệp tham chiếu ưu tiên văn bản dành cho trợ lý, nhà giáo dục, đối tác và công cụ trích dẫn."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Đã tiếp cận người học trên nền tảng miễn phí và tại các trường đối tác."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Trường học và đối tác CSR"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Các chế độ công khai được thiết kế quanh hành vi học tập: gợi ý, câu hỏi kiểu Socrates, kiểm tra từng bước, câu đố, thẻ ghi nhớ, phản hồi bài viết, vòng ôn tập và giải thích chủ động."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Liên kết tham khảo, thông tin công khai, bối cảnh báo chí và chi tiết phù hợp để trích dẫn."
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Người học, phụ huynh, giáo viên, trường học và những người tự học xây dựng sản phẩm"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Lộ trình cho trường học và đối tác"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Bắt đầu với learning companion công khai."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Câu chuyện từ các câu đố và cộng đồng học sinh đến những công cụ học tập AI miễn phí được xây dựng công khai."
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Vì sao inspir được xây quanh các chế độ thay vì một hộp trò chuyện duy nhất?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "Cuối năm 2022"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Cấu hình quy trình"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "Từ cộng đồng học sinh đến hạ tầng học tập AI"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Quyền truy cập có thể được tài trợ bởi các trường đối tác hoặc được hỗ trợ qua các lộ trình tài trợ CSR cho những cộng đồng cần học bằng AI có trợ cấp."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "Sản phẩm công khai, lộ trình trường học và thư viện nội dung đều nên quay lại cùng một nguyên tắc: việc học phải luôn chủ động, dễ tiếp cận và hữu ích."
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "Hơn 100 quốc gia"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Việc học chất lượng nên mang lại cảm giác dễ tiếp cận, có tính con người và sống động."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir được tổ chức quanh các chế độ học như gia sư kiểu Socrates, gợi ý bài tập, quiz, flashcard, các bước toán, phê bình bài viết và lập kế hoạch ôn thi, để học sinh bước vào một hành vi học tập tập trung hơn."
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Thử các chế độ khách công khai"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Bản xây dựng lại mã nguồn mở dành cho nhà phát triển, nhà giáo dục và người đóng góp."
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Được xây dựng từ năm 2013"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "Sứ mệnh được kết nối với các bề mặt sản phẩm thực tế."
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir mở các chế độ học tại /chat/{topicSlug}, cho phép người học đi thẳng vào đúng trải nghiệm học AI mà không cần một cuộc trò chuyện riêng tư đã lưu."
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "Sản phẩm công khai vẫn dễ thử: người học có thể vào thẳng một chế độ học tập và bắt đầu với tư cách khách. Trường học và đối tác CSR có thể hỗ trợ các triển khai tùy chỉnh khi cộng đồng cần bảo mật, căn chỉnh chương trình học hoặc quyền truy cập được trợ cấp."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Trang web"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Blog công khai có hơn 100 hướng dẫn, vòng prompt và cụm trụ cột được kết nối với các chế độ học tập trực tiếp."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "Từ inspir.app đến inspirlearning.com"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Xem mọi chế độ"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Trang cộng đồng được kết nối với sự ghi nhận DeepHack."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Trường học và đối tác có thể bắt đầu từ sản phẩm công khai để tiến tới các triển khai được tùy chỉnh, bảo mật và được trợ cấp."
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "Việc học nên miễn phí, vui, hữu ích và sẵn có cho bất kỳ ai có trí tò mò."
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Trải nghiệm học tập riêng cho trường có thể được định hình quanh cộng đồng học sinh, giọng điệu và ưu tiên học tập của bạn."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Góc nhìn chế độ khách"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Mô tả ngắn"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Các công cụ học tập AI miễn phí, hữu ích và hấp dẫn cho bất kỳ ai tò mò."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Đã tiếp cận trên nền tảng công khai miễn phí và các triển khai tại trường đối tác."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "nền tảng học tập AI miễn phí"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "Học tập là dành cho mọi người"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Vì sao là lúc này"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Những trang này giúp câu chuyện dễ xác minh, trích dẫn, chia sẻ và sử dụng hơn: các chế độ công khai, lộ trình học tập, hướng dẫn dài, ghi chú triển khai tại trường, thông tin truyền thông và bối cảnh công ty."
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "Huấn luyện viên bài tập về nhà AI cho học sinh"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Xác định các mục tiêu quan trọng nhất của trường: hỗ trợ khái niệm, gợi ý bài tập, ôn thi, truy hồi chủ động, phản hồi viết hoặc mở rộng kiến thức."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Dùng phần này cho các tham chiếu về trường học, đối tác, CSR và tiếp cận giáo dục."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Được Amod Malviya tại DeepHack ghi nhận ở hạng mục Jury's Choice cho công việc học tập AI."
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Các quy tắc truy cập hiện hành cho tuyến công khai và riêng tư."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir tồn tại để làm cho việc học trở nên dễ tiếp cận, hấp dẫn, thú vị và hữu ích cho bất kỳ ai tò mò thông qua các công cụ học AI công khai miễn phí và không gian học sẵn sàng cho trường học."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Trường học có thể đánh giá các chế độ công khai trước, rồi trao đổi về quy trình tùy chỉnh, kế hoạch bảo mật, nhu cầu nội dung và quyền tiếp cận được tài trợ."
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "Quyền truy cập học bằng AI có thể được tài trợ bởi các trường đối tác hoặc được hỗ trợ qua tài trợ CSR cho những cộng đồng cần quyền truy cập có trợ cấp."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "Sản phẩm nên dạy học, chứ không chỉ trả lời."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Câu chuyện trải dài qua các câu đố, mạng lưới trường học ngoại tuyến, việc nạp chương trình học và các chế độ học tập AI công khai."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir là một nền tảng học tập AI miễn phí với các chế độ khách công khai cho giải thích, gia sư kiểu Socrates, huấn luyện bài tập, quiz, flashcard, tranh luận, nhập vai, phản hồi viết và lập kế hoạch học."
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "liên kết tham chiếu thẩm quyền công khai của inspir"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Ra mắt AI dành cho người tiêu dùng"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Bắt đầu từ các bài quiz công khai và cộng đồng học sinh vào năm 2013."
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Nguyên tắc"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Người học có thể mở Học bất cứ điều gì, Hướng dẫn kiểu Socrates, Trợ lý bài tập về nhà, Huấn luyện từng bước môn toán, bài kiểm tra hoặc flashcard trực tiếp ở chế độ khách từ danh mục chế độ học công khai."
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Nền tảng học tập AI miễn phí"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Góc nhìn trường học"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "Các cuộc trò chuyện công khai dành cho khách có mở không?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Một trường học có thể dùng inspir trước như một công cụ học dành cho khách không?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "Từ các câu đố Facebook và sự kiện offline đến hạ tầng học tập AI ứng dụng."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Góc nhìn mạnh nhất là học tập AI công khai miễn phí, mở trực tiếp ở chế độ khách và giữ người học chủ động thông qua cách dạy theo từng chế độ thay vì tạo đáp án chung chung."
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Vì sao các trang học công khai dễ chia sẻ?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "Thư viện học tập dạng viết hỗ trợ prompt, vòng học tập và luyện tập sâu hơn."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir được tổ chức quanh gợi ý, câu hỏi, quiz, flashcard, tranh luận, ôn tập và giải thích thay vì chép đáp án thụ động."
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Gia sư khách mặc định"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Góc nhìn sản phẩm hữu ích nhất để đưa tin là gì?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Các nhiệm vụ học tập khác nhau cần những dạng tương tác khác nhau, vì vậy inspir dùng cách dạy chủ động, riêng theo từng chế độ. Một gợi ý bài tập, câu hỏi kiểu Socrates, mô phỏng lịch sử, ôn flashcard và phê bình bài viết không nên hoạt động như cùng một cuộc trò chuyện chung chung."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Sứ mệnh | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Trường học có thể thử các chế độ khách công khai trước, rồi dùng trang dành cho trường học để khám phá quy trình tùy chỉnh, kế hoạch bảo mật, các tùy chọn phù hợp với NCERT và quyền tiếp cận được tài trợ."
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Giáo viên và lãnh đạo có thể bắt đầu với Học mọi thứ, Hướng dẫn theo phương pháp Socrates, Trợ lý bài tập, câu đố và thẻ ghi nhớ trước khi triển khai chính thức."
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Các nhiệm vụ khác nhau cần các chế độ khác nhau: câu hỏi kiểu Socrates, gợi ý bài tập về nhà, flashcard, tranh luận, nhập vai lịch sử, phê bình bài viết và nhiều hơn nữa."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Có. Các điểm vào chủ đề công khai như /chat/learn-anything và /chat/socratic-instruction là các trang học mở mà ai cũng có thể thử."
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "các nguyên tắc sứ mệnh của inspir"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Một người bạn đồng hành học tập hiệu quả không nên phụ thuộc vào địa lý, thu nhập gia đình hay việc người học đã biết đúng người để hỏi hay chưa."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "sứ mệnh của inspir là làm cho việc học trở nên dễ tiếp cận, hấp dẫn, thú vị và hữu ích cho mọi người thông qua các công cụ học AI công khai miễn phí."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Sau khi tên miền inspir.app được bán để tiếp tục tài trợ quyền truy cập miễn phí, sản phẩm đang hoạt động đã chuyển sang inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "quan hệ đối tác CSR về công nghệ giáo dục"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "Thư viện hướng dẫn học bằng AI"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Hơn 100 hướng dẫn về gia sư, câu lệnh gợi ý, vòng học tập, chủ động nhớ lại và các chế độ."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir là một nền tảng học tập AI miễn phí với các chế độ khách công khai cho giải thích, gia sư kiểu Socrates, huấn luyện bài tập, quiz, flashcard, tranh luận, phản hồi viết, trợ giúp lập trình và lập kế hoạch học."
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Một danh mục rõ ràng cho mọi điểm vào trò chuyện học tập dành cho khách."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Nhà báo, biên tập viên thư mục, đối tác, trường học và bất kỳ ai viết về inspir đều có thể dùng nó để lấy sự kiện, liên kết, góc câu chuyện và tài liệu tham khảo thuận tiện cho trích dẫn."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Lập bản đồ nhu cầu học tập"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "inspir là gì?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Ra mắt và tài trợ quyền truy cập"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Bài viết nên liên kết tới URL nào trước?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Lộ trình triển khai trong trường học"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Góc nhìn sản phẩm"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Tên"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "Gia sư AI cho trường học"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Trang chủ"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Mô tả ngắn của inspir là gì?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Các cuộc trò chuyện đã lưu của người dùng sử dụng mã định danh riêng tư và không nên được xem là tài liệu nguồn công khai."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "xây dựng thế hệ tiếp theo của inspir.uk"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Chuyển từ thử nghiệm sang tiếp cận rộng hơn thông qua tài trợ của trường, hỗ trợ từ đối tác hoặc các lộ trình CSR cho những người học cần quyền truy cập được trợ giá."
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Nội dung, gợi ý và quy trình tùy chỉnh có thể được điều chỉnh quanh nhu cầu NCERT và ưu tiên lớp học riêng của từng trường."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Dùng phần này khi đưa người đọc thẳng vào trải nghiệm học trực tiếp."
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Điều này khác gì việc đưa cho học sinh một chatbot AI thông thường?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Ứng dụng được tổ chức quanh các hành vi dạy học như đặt câu hỏi Socratic, gợi ý bài tập về nhà, câu đố, thẻ ghi nhớ, nhập vai và lập kế hoạch."
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Trích dẫn chính trên trang chủ"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "sứ mệnh của inspir là làm cho việc học trở nên dễ tiếp cận, hấp dẫn, thú vị và hữu ích thông qua các công cụ học AI công khai miễn phí và không gian học sẵn sàng cho trường học."
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Sứ mệnh của inspir là gì?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Mỗi chế độ công khai là một cánh cửa vào một hành vi học tập khác nhau, để định dạng có thể phù hợp với nhiệm vụ thay vì ép mọi người học vào một ô chat chung chung."
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "Sản phẩm công khai cho bất kỳ ai một nơi để bắt đầu, trong khi các triển khai cho trường học và đối tác có thể điều chỉnh trải nghiệm theo nhu cầu địa phương."
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Trò chuyện AI gắn thương hiệu riêng"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Điểm vào chế độ khách"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Hỗ trợ quyền tiếp cận học tập AI được tài trợ cho các cộng đồng cần hỗ trợ chất lượng cao mà không làm tăng chi phí cho gia đình."
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Chỉ mục tham chiếu công khai đầy đủ"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Nền tảng đã làm việc với việc nạp chương trình học, truy hồi, các luồng học tập có cấu trúc và những trải nghiệm gia sư AI ban đầu."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Hơn 100 hướng dẫn, vòng câu lệnh gợi ý và cụm nội dung trụ cột cho việc học có AI hỗ trợ."
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Chính sách quyền riêng tư"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Thành lập"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "Nền tảng được thiết kế để giúp mọi người lập luận, luyện tập, ghi nhớ và giải thích lại ý tưởng thay vì thu thập đáp án hoàn chỉnh."
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "Gia sư riêng rất hiệu quả, nhưng được phân bổ không đồng đều. inspir dùng AI để mở rộng khả năng tiếp cận trong khi vẫn giữ người học chủ động: gợi ý trước đáp án, câu hỏi trước bài giảng và luyện tập sau phần giải thích."
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Trường học và đối tác"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Một cộng đồng người học đã vượt ra ngoài Ấn Độ để vươn tới đối tượng quốc tế rộng hơn."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir tổ chức AI quanh các hành vi học chủ động: gợi ý, câu hỏi, quiz, flashcard, phê bình và ôn tập."
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Đưa tin của Deccan Business"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Có. Các chế độ khách công khai cho phép lãnh đạo trường và giáo viên thử trải nghiệm học tập trước khi trao đổi về triển khai tùy chỉnh cho trường."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Đánh giá lớp học bằng AI công khai trước, rồi khám phá quy trình tùy chỉnh, nhu cầu bảo mật, căn chỉnh nội dung và tài trợ sử dụng."
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Đối tượng chính"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Các nhiệm vụ học tập khác nhau cần các hình thức khác nhau: câu hỏi kiểu Socrates, gợi ý bài tập về nhà, flashcard, tranh luận, nhập vai lịch sử, phê bình bài viết và lập kế hoạch học tập."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Các điều khoản chính thức bao quát việc sử dụng được chấp nhận, trách nhiệm tài khoản và điều kiện dịch vụ."
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Điều chỉnh trải nghiệm học sinh theo bối cảnh nhà trường, ưu tiên chương trình học, rào chắn nội dung và mức độ quan sát cần thiết của đội ngũ nhân viên."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Quyền truy cập trợ lý và tài liệu tham khảo"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "Học tập bằng AI bám sát NCERT"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir bắt đầu như một trang Facebook đăng quiz và xây dựng thói quen học ngoại khóa."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Sản phẩm công khai giữ cho việc học dễ thử, trong khi trường học và đối tác CSR có thể hỗ trợ các triển khai tùy chỉnh khi cộng đồng cần bảo mật, căn chỉnh chương trình học hoặc quyền truy cập được tài trợ."
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "Học tập là dành cho mọi người."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "Về inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Sản phẩm công khai dễ thử trước, trong khi trường học và đối tác có thể khám phá các triển khai được điều chỉnh theo nhu cầu cộng đồng."
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Câu trả lời rõ ràng cho người học, trường học và hệ thống tìm kiếm."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Trang tham khảo"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Mạng lưới ngoại tuyến và sự kiện sinh viên"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Các cuộc trò chuyện riêng tư đã lưu của người dùng có bị đưa vào tìm kiếm không?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Ranh giới về niềm tin và quyền riêng tư"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "Gia sư AI để học bất cứ điều gì"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Học tập theo từng chế độ"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir ra mắt như một sản phẩm học AI hướng tới người dùng chỉ trong vài tuần sau khi ChatGPT được phát hành công khai."
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Quyền truy cập tìm kiếm và thư mục"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Có. Một trường có thể bắt đầu bằng cách thử các chế độ công khai, rồi tiến tới thí điểm hoặc triển khai tùy chỉnh khi trường hợp sử dụng, nhu cầu nội dung và lộ trình tài trợ đã rõ."
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "Trang cộng đồng DeepHack"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "Trải nghiệm học tập trực tiếp biến sứ mệnh thành sự trợ giúp thực tế."
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Các liên kết chế độ khách công khai tồn tại để người học có thể bắt đầu trực tiếp trong những chế độ học tập hữu ích từ tìm kiếm, liên kết xã hội, trường học hoặc đề xuất được chia sẻ."
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "AI có cấu trúc học tập"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Học miễn phí ở chế độ khách, với lộ trình cho trường học và đối tác."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir khác trợ lý trò chuyện AI thông thường như thế nào?"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Một cộng đồng học tập bắt đầu"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "Học bằng AI mà không sao chép đáp án thụ động"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Danh mục"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Đưa tin của Dailyhunt"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "Có. Các chế độ khách công khai như Học mọi thứ, Hướng dẫn theo phương pháp Socrates, Trợ lý bài tập, câu đố và thẻ ghi nhớ mở trực tiếp từ các liên kết /chat/{topicSlug} đơn giản."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "Blog học bằng AI"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Điều khoản"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "Công cụ học tập bằng AI cho trường học"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Chế độ khách cho truy cập công khai"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Cách học công khai ở chế độ khách có thể mở rộng thành không gian học AI riêng cho từng trường."
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Quy trình học tập kết nối các chế độ khách, câu lệnh gợi ý, luyện tập và hướng dẫn liên quan."
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "Hướng dẫn học bằng AI"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Duyệt chế độ học"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Luồng học tập theo từng chế độ"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "Không. Các cuộc trò chuyện đã lưu riêng tư dùng mã định danh riêng tư và không thuộc các trang công khai, tệp tham chiếu công khai hoặc danh mục học tập dùng chung."
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Mọi cuộc trò chuyện học tập dành cho khách, được sắp xếp theo hành vi dạy học và nhu cầu học tập."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Phủ sóng qua các kênh phân phối nội dung để tiếp cận người dùng rộng hơn."
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Niềm tin và an toàn"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Thiết kế triển khai bảo mật"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Câu hỏi thường gặp về sứ mệnh"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Bắt đầu trực tiếp trong chế độ học phù hợp để nhận gợi ý bài tập về nhà, các bước toán học, nhận xét bài viết, câu đố, thẻ ghi nhớ hoặc lập kế hoạch ôn thi."
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Các công cụ trợ lý và tham khảo có thể dùng các trang học tập công khai để hướng mọi người đến đúng hướng dẫn và chế độ khách."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir tổ chức AI quanh các chế độ học với hành vi dạy học cụ thể: giải thích, câu hỏi kiểu Socrates, gợi ý bài tập, quiz, flashcard, tranh luận, nhập vai, phản hồi viết và lập kế hoạch học."
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Mở tham chiếu"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "Sự ghi nhận DeepHack"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Các liên kết trò chuyện riêng tư đã lưu không thuộc tài liệu tham chiếu học tập công khai, chỉ mục được chia sẻ hay tài liệu trích dẫn."
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Mọi người có thể dùng inspir mà không cần đăng nhập không?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Thư viện học tập chuyên sâu"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "inspir bắt đầu như thế nào?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Dùng phần này khi mô tả đầy đủ bộ công cụ học ở chế độ khách mà mọi người có thể thử ngay."
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Các hướng triển khai trong trường học"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "Học tập paths"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Không được phép"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Trường học có thể đánh giá inspir trước qua các chế độ khách công khai, rồi khám phá các không gian học bằng AI được tùy chỉnh với quy trình riêng, kế hoạch bảo mật, nhu cầu chương trình học và lộ trình tiếp cận được tài trợ."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Cộng đồng đã mở rộng qua trường học, đại học, cuộc thi, chương trình ngoại khóa và các cộng đồng người học."
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "inspir có thể hỗ trợ nội dung riêng của trường hoặc nhu cầu chương trình học không?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Vì sao inspir hỗ trợ triển khai cho trường học và đối tác?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Giai đoạn tiếp theo là mã nguồn mở, thân thiện với người đóng góp và được kết nối với quá trình mở rộng quốc tế rộng hơn tại inspir.uk."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Phần giải thích công khai về lý do inspir tồn tại và vì sao khả năng tiếp cận học tập lại quan trọng."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Được xây dựng để mở rộng"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "AI có thể khiến việc học một-kèm-một trở nên dễ tiếp cận hơn rất nhiều."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Lộ trình cho trường học và CSR để tiếp cận được tài trợ"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Ai có thể sử dụng trang truyền thông?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Lộ trình trường học cho các không gian học tập AI được tùy chỉnh và quyền truy cập được tài trợ."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Tùy chọn theo NCERT"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "Học với AI hiệu quả"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "Quá trình mở rộng quốc tế rộng hơn được kết nối với dự án inspir."
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Được phép trên các trang công khai"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Dùng phần này khi giới thiệu inspir là sản phẩm chính hoặc khi liên kết từ danh bạ, hồ sơ hay bài viết."
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Các lộ trình truy cập được tài trợ"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Hiện đã được xây dựng lại thành các điểm vào học bằng AI mở, thân thiện với khách."
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Danh mục có cấu trúc về các trang công khai, chế độ, lộ trình học, cụm blog và ranh giới quyền riêng tư."
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "Mục tiêu là giúp mọi người nhanh chóng tìm đúng trang học tập công khai. Các tuyến công khai, hướng dẫn và trung tâm học tập được mở; các tuyến API, admin, đặt lại và tiện ích riêng tư vẫn đóng."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Dùng phần này khi trích dẫn thư viện hướng dẫn dài, prompt học tập và bài viết riêng cho từng chế độ."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Ưu tiên hiểu biết hơn câu trả lời"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Dùng https://inspirlearning.com cho trang web, /mission cho sứ mệnh, /topics cho thư mục chế độ học công khai và /chat/learn-anything cho trải nghiệm học mặc định dành cho khách."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "CSR và đối tác giáo dục"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Người dùng có thể thử gì trước tiên?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Các trường nên bắt đầu từ đâu?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Việc triển khai trong trường học có thể được lập kế hoạch quanh quyền riêng tư của học sinh, sự giám sát của nhân viên và các ranh giới thực tế mà một cộng đồng học tập cần."
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Tạo một tuyến an toàn hơn cho luyện tập, giải thích, phản hồi và gợi ý ôn tập mà không đưa học sinh vào một chatbot chung chung."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Các tệp tham chiếu công khai tóm tắt trang học tập, tuyến, chế độ, hướng dẫn và ranh giới trích dẫn cho những công cụ cần một bản đồ ngắn gọn."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Hiện tại"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "Sứ mệnh"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Được xây dựng quanh người học thật"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "Hạ tầng học bằng AI"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Trang quyền riêng tư chính thức về việc sử dụng dữ liệu, các quyền và điều kiện dịch vụ công khai."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir bắt đầu vào năm 2013 như một cộng đồng học tập và quiz công khai, phát triển qua trường học và mạng lưới học sinh, rồi sau đó phát triển hạ tầng học tập AI và trải nghiệm gia sư AI công khai."
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "nền tảng học tập AI gắn thương hiệu riêng"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir tồn tại để làm cho việc học trở nên dễ tiếp cận, hấp dẫn, thú vị và hữu ích cho bất kỳ ai tò mò, dù họ là học sinh, phụ huynh, giáo viên hay người tự học."
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "inspir giảm việc chép đáp án như thế nào?"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Điều chúng tôi tin tưởng"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "Các bề mặt API, admin, reset, tiện ích riêng tư và trò chuyện đã lưu riêng tư không phải là nội dung nguồn công khai."
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Các trang công khai có thể được chia sẻ và liên kết, còn công cụ quản trị, tuyến API, luồng đặt lại và tiện ích riêng tư vẫn đóng."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Giáo viên"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Kho GitHub hiện tại"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Được xây dựng công khai"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Làm thế nào để tài trợ quyền truy cập cho người học?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Ghi chú truyền thông"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir được thiết kế quanh suy luận, luyện tập, truy hồi và giải thích thay vì trao cho người học sản phẩm hoàn chỉnh."
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Thiết kế sản phẩm theo từng chế độ"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Lãnh đạo trường học"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "Học sinh"
+    }
+  ]
+}

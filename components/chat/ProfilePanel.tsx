@@ -15,7 +15,6 @@ import { ProfileStat } from "@/components/chat/ProfileStat";
 import type { ProfileDetailsInput, UserProfile } from "@/components/chat/profile-model";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { localizeHref } from "@/lib/i18n/routing";
 import { formatAppDate } from "@/lib/utils/dates";
 
 type ProfilePanelState = {
@@ -63,6 +62,7 @@ export function ProfilePanel({
   onMemoryUpdate,
   onMemoryDelete,
   onMemoryClear,
+  onMemoryLoadMore,
   onClose,
   t,
 }: {
@@ -80,6 +80,7 @@ export function ProfilePanel({
   onMemoryUpdate: (memoryId: string, input: MemoryUpdateInput) => void;
   onMemoryDelete: (memoryId: string) => void;
   onMemoryClear: () => void;
+  onMemoryLoadMore: () => void;
   onClose: () => void;
   t: UiTranslator;
 }) {
@@ -128,7 +129,6 @@ export function ProfilePanel({
     }
 
     updateState({ detailsSaving: true, detailsError: "", detailsMessage: "" });
-    const previousLanguage = user.preferredLanguage || defaultLanguage;
     try {
       const updatedUser = await onProfileSave({
         name: trimmedName,
@@ -141,9 +141,6 @@ export function ProfilePanel({
         preferredLanguage: (updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage,
         detailsMessage: t("Profile saved."),
       });
-      if ((updatedUser.preferredLanguage || defaultLanguage) !== previousLanguage) {
-        window.location.assign(localizeHref(window.location.pathname + window.location.search, updatedUser.preferredLanguage));
-      }
     } catch (saveError) {
       updateState({ detailsError: saveError instanceof Error ? saveError.message : t("Could not save profile.") });
     } finally {
@@ -281,6 +278,7 @@ export function ProfilePanel({
             onUpdate={onMemoryUpdate}
             onDelete={onMemoryDelete}
             onClear={onMemoryClear}
+            onLoadMore={onMemoryLoadMore}
             t={t}
           />
         </section>

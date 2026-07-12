@@ -4,517 +4,12 @@
   "locale": "es",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} guías prácticas"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "Una biblioteca de {value1} guías creada para que el aprendizaje se convierta en acción."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Un compañero público y gratuito de aprendizaje con IA para tutorías, práctica, cuestionarios, tarjetas de repaso, debate, comentarios sobre escritura, ayuda con programación y planificación del estudio."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Una ruta práctica de aprendizaje con IA para pasar de la confusión a explicaciones claras, preguntas socráticas, ejemplos y recuperación activa."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Una guía práctica para usar Aprende cualquier cosa en inspir para aprender fundamentos, con indicaciones, ciclos de estudio y hábitos de IA más seguros."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "Una mirada práctica a cómo la IA puede hacer que aprender sea más claro, más personal y más accesible sin convertir a los estudiantes en recolectores pasivos de respuestas."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "Un sitio público de aprendizaje que las personas pueden entender rápido."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "Un cortometraje que presenta la convicción de inspir de que aprender debe ser gratuito, accesible y vivo."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "Un tutor para la primera pregunta"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "accesibilidad, indicaciones, pruebas, comportamiento más seguro de la IA, flujos de aprendizaje y pulido de la interfaz."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Acción después de leer"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Práctica activa"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Repaso con recuperación activa"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Después de cada pista, explica por qué funciona el paso antes de continuar."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Después de la simulación, resume el escenario, las restricciones y las pruebas."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "Tutor de código con IA"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "práctica de debate con IA"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "plan de preparación de exámenes con IA"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "Plan de preparación de exámenes con IA, cuestionarios y recuperación activa"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "Planificador de preparación de exámenes con IA"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "Tarjetas de repaso con IA y recuperación activa: cómo recordar más"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "Tarjetas de repaso con IA para la recuperación activa"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "Tarjetas de repaso con IA para revisar"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "tutor de historia con IA"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "Tutor de historia con IA"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "entrenador de tareas con IA"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "Ayuda con tareas mediante IA sin hacer trampa"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "Ayuda con tareas mediante IA sin copiar respuestas"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "Ayudante de tareas con IA"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "entrenador de pasos de matemáticas con IA"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "Tutor de matemáticas con IA"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "generador de cuestionarios con IA para exámenes"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "tutor socrático con IA"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "horario de estudio con IA"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "aprendizaje de viaje en el tiempo con IA"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "tutor con IA para conceptos difíciles"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "tutores con IA por asignatura"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "comentarios de escritura con IA para estudiantes"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "Tutor de escritura con IA"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Responde una pregunta de comprobación, intenta un paso, debate una afirmación, revisa un borrador o crea tarjetas de recuperación."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "¿Los cuestionarios son mejores que releer?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Argumento"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Práctica de argumentación"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "Haz cualquier pregunta y aprende con explicaciones claras, ejemplos, indicaciones de seguimiento y una tutoría de IA paciente."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "Pregunta cualquier cosa"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "Pide una pista"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Pide una pista, no la respuesta"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Pide una explicación más sencilla del concepto más débil."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Pide cinco preguntas que mezclen definiciones, ejemplos y problemas de transferencia."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Pide pistas, comprobaciones, comentarios y planes de estudio que mantengan el razonamiento en manos del estudiante."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Pide el tema en lenguaje sencillo y luego solicita una analogía, un ejemplo y una idea equivocada común."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Hazme cinco preguntas socráticas sobre este tema. Después de cada respuesta, dime qué supuesto usé y qué debería comprobar después."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Haz preguntas, cuestiona ideas y aprende historia mediante conversaciones fundamentadas con figuras públicas del pasado."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Pide al modo histórico que etiquete qué está documentado, qué se infiere y qué se simula."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Haz la pregunta real"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "Haz tu primera pregunta y pasa directamente a la práctica."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Disponible públicamente, mientras las escuelas pueden ejecutar versiones personalizadas confidenciales."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Explorar todos los modos"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Explorar asignaturas"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Crea un pasaporte temporal, revisa el aviso de viaje y explora un mundo histórico mediante escena, mapa, línea temporal, personas, reglas, inventario y pruebas."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Crea un flujo de preparación de exámenes con IA mediante un plan de estudio realista, práctica de recuperación, cuestionarios, tarjetas de repaso y revisión de áreas débiles."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "Crear un plan de examen"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Crear el plan"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Construye con nosotros"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Creado para la curiosidad, la práctica y el acceso."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Creado a partir de conductas reales de aprendizaje, no de una conversación genérica."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "Creado para usarse"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "¿Puede ser ética la ayuda con tareas mediante IA?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "¿Puedo citar un diálogo histórico con IA como fuente?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "¿Puedo usar inspir sin iniciar sesión?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "¿Puede inspir ayudar con las tareas sin fomentar la trampa?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Revisar mi modelo"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Revisar un paso"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Revisar el razonamiento línea por línea"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Revisa este paso de mi desarrollo. Si está mal, explica el error y dame un siguiente movimiento."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Explicaciones claras"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Límites claros de privacidad"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Tutor de código"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Programación"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Comunicación"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Comparar los argumentos"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Implementaciones confidenciales"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Continuar"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "Aceptamos contribuciones de ingenieros, educadores, diseñadores, estudiantes y cualquier persona que quiera que el aprendizaje con IA sea más seguro, más claro, más accesible y más útil."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Convertir errores"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "Convierte la explicación en tarjetas de recuperación activa y vuelve a revisarlas después de errores o dudas."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Crear un cuestionario breve"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "La curiosidad empieza aquí"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Curiosidad, práctica e IA que enseña."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Estudiantes curiosos que quieren que la historia y las ideas se sientan situadas, discutibles y vivas sin perder de vista las pruebas."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Espacios personalizados de aprendizaje con IA y confidencialidad de datos."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "Debatir una afirmación"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "Debatir cualquier tema"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "Debate cualquier tema, recibe retos, compara afirmaciones y aprende a construir argumentos más sólidos."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Debatir te ayuda a separar afirmaciones, pruebas, valores y supuestos, lo que hace más precisa la interpretación histórica."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "Debatir la afirmación"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "Debate la afirmación desde más de un lado para detectar supuestos, compensaciones y pruebas débiles."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Debate esta afirmación histórica o filosófica desde ambos lados. Separa pruebas, supuestos y valores."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Diseñado para dar confianza"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "No aceptes un párrafo revisado hasta que puedas explicar por qué la revisión es mejor."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "No pidas un resumen completo antes de conocer las ideas previas necesarias."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "No debatas solo el lado con el que ya estás de acuerdo."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Planificación"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "No ignores la duda; la incertidumbre es una señal útil para repasar."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "No dejes que la simulación de rol sustituya fechas, contexto, documentos o etiquetas de evidencia."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir convierte la curiosidad, las tareas, el repaso y las grandes preguntas en sesiones guiadas de aprendizaje con IA que explican, preguntan de vuelta y te ayudan a practicar."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "No hagas un plan que suponga que todos los temas necesitan el mismo tiempo."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Crear un cuestionario breve"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "No hagas tarjetas de repaso a partir de frases que aún no puedes explicar con tus propias palabras."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Estudiantes que necesitan un siguiente paso, revisar un error o recibir comentarios sin perder la autoría de la tarea."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "No pegues una tarea y pidas la respuesta terminada."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Empezar a aprender"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "No releas apuntes antes de comprobar qué puedes recordar ya."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "No omitas mostrar lo que ya intentaste; la ayuda útil depende de ese contexto."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "No te detengas tras la primera explicación; oblígate a responder preguntas sobre ella."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "No trates el diálogo generado como una cita real ni como una fuente primaria."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Haz algo con eso"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "¿inspir da soporte a escuelas?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Cada guía termina con planes de práctica, rutas y enlaces al modo de aprendizaje exacto que encaja."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Cada guía apunta a un modo, una indicación o un ciclo de repaso para que la lectura se convierta en práctica."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Cada modo se abre como una conversación pública de invitado con su propio propósito, ejemplos y flujo de aprendizaje, para que los estudiantes empiecen de inmediato con el tipo de apoyo adecuado."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Siguientes pasos sencillos"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Introduce un periodo"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Introduce el contexto"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Cada artículo conecta con categorías, modos en vivo, centros de asignaturas, rutas de aprendizaje y guías relacionadas."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Cada página que no pertenece a la aplicación ahora tiene una tarea: generar confianza, explicar la ruta de aprendizaje y llevar a los estudiantes hacia una siguiente acción útil sin ocultar los detalles importantes."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Escenas atentas a la evidencia"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "Preparación de exámenes"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "Planificador de preparación de exámenes"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Explícalo con tus palabras"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Explicar el siguiente paso"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Explica este tema en lenguaje sencillo. Nombra las tres ideas previas que necesito, una analogía y una idea equivocada común."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "Explicaciones, tutoría socrática, acompañamiento en tareas, cuestionarios, tarjetas de repaso, escritura, código, debate y planificación del estudio."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "Explora la historia y las grandes ideas con IA"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Explorar historia e ideas"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Explora historia, figuras públicas, causas, debates, filosofía y crítica de fuentes con modos de aprendizaje con IA que separan la evidencia de la simulación."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Explorar escuelas"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Explorar la biblioteca de guías"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Rutas rápidas de aprendizaje"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Capítulos del vídeo"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Constructor de tarjetas de repaso"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Las tarjetas de repaso funcionan mejor cuando prueban una idea a la vez, revelan respuestas solo después del esfuerzo y repasan antes las tarjetas falladas."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Para matemáticas o lógica, trabaja un paso a la vez y pregunta por qué cada movimiento está permitido antes de seguir."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Para escuelas y socios de RSC"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Fundamentos"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Aprendizaje con IA gratis para todos"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Aprendizaje con IA gratis para todos | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Aprendizaje con IA gratis para todos."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Aprendizaje gratuito como invitado"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Plataforma pública gratuita de aprendizaje con IA"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Del blog"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "Genera un cuestionario de opción múltiple enfocado sobre cualquier asignatura y revisa las explicaciones después de cada respuesta."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Recibe un horario de estudio, ponte a prueba en las áreas débiles y convierte los errores en tarjetas de repaso para revisar de forma repetida."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Obtén primero el modelo sencillo"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Entrenador de escritura"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "Desbloquearse"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Desbloquearse con las tareas"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Entra en el contexto histórico, compara argumentos y practica ver una idea desde más de un lado."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Desbloquéate con las tareas mediante pistas éticas, ejemplos, comprobaciones y acompañamiento paso a paso."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "centros de asignaturas mapeados según las necesidades del estudiante"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Dame comentarios sobre la estructura, la claridad y la evidencia. Mantén mi voz y no reescribas toda la respuesta."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "El cierre vuelve a la misión: acceso público, escuelas y una forma más abierta de aprender."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Buenas áreas para empezar:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "¿Los cuestionarios son mejores que releer?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Biblioteca de guías"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Guías, rutas, asignaturas e indicaciones conectan con el siguiente lugar útil para practicar."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Mapa de aprendizaje útil"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Aquí está la pregunta y lo que intenté. Dame la pista útil más pequeña, no la respuesta final."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Ocultar capítulos del vídeo"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Ocultar transcripción del vídeo"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "Ayuda primero con pistas"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Conversaciones históricas"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "Historia"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Tareas"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Tutor de tareas"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "¿Con cuánta antelación debería hacer un plan de preparación de exámenes?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "¿En qué se diferencia inspir de un bot conversacional genérico de IA?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Cómo funciona"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "Cómo estudiar con IA sin hacerte trampa"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "cómo entender un tema difícil con IA"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "Cómo entender un tema difícil con IA"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Inmersión"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Mejorar el borrador"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Mejora la escritura con planificación, revisión, estructura y comentarios que mantienen intacta tu voz."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Incluye la pregunta, lo que ya intentaste, dónde te atascaste y si quieres una pista, una revisión de paso o comentarios."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "biblioteca de guías de aprendizaje de inspir con IA"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir empezó con cuestionarios y comunidades estudiantiles, creció mediante escuelas y eventos, y ahora usa IA para hacer más accesible el aprendizaje personalizado."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir existe para el momento en que un estudiante quiere entender algo y necesita un lugar paciente donde empezar. El vídeo presenta el producto como un compañero público y gratuito de aprendizaje para la curiosidad, la práctica y el acceso."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir en movimiento"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir se está construyendo en público."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir se organiza alrededor de modos de aprendizaje con formas de enseñanza específicas: pistas, preguntas socráticas, cuestionarios, recuperación activa, simulación de rol, debate, comentarios sobre escritura y planificación del estudio."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "vídeo de aprendizaje de inspir"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir convierte la curiosidad, las tareas, el repaso y las grandes preguntas en sesiones guiadas de aprendizaje con IA que explican, preguntan de vuelta y te ayudan a practicar."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: puedes aprender cualquier cosa"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "¿inspir es gratis?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Mantener viva la ruta"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Saber qué probar después, por qué funciona un paso, dónde ocurrió el error y cómo revisar la respuesta final con tu propia voz."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Aprende cualquier cosa"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Indicaciones y ciclo de estudio de Aprende cualquier cosa"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Aprende cualquier cosa con un tutor gratuito de IA: guía práctica"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Aprende conversando, probando, debatiendo y explorando."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Aprende programación, depura conceptos, planifica proyectos, interpreta datos e investiga preguntas técnicas con modos públicos de IA que mantienen al estudiante dentro del proceso."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Aprende mediante preguntas enfocadas, pistas y reflexión en lugar de leer respuestas pasivamente."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Aprende con un tutor gratuito de IA para explicaciones, preguntas socráticas, acompañamiento en tareas, cuestionarios, tarjetas de repaso, debate, comentarios sobre escritura, ayuda con programación y planificación del estudio."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Apoyo centrado en el estudiante"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Los estudiantes necesitan una secuencia, no un montón de enlaces. Estas rutas conectan modos en ciclos de estudio prácticos para entender, hacer tareas, preparar exámenes y explorar."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Estudiantes que se sienten atascados al principio de una asignatura nueva o necesitan una entrada más sencilla a una idea difícil."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Estudiantes con poco tiempo, un programa amplio y la necesidad de repasar de forma realista sin fingir que todo importa por igual."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Aprendizaje para todos"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "guías de aprendizaje y ciclos de práctica"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Sal con un modelo en lenguaje sencillo, preguntas más precisas, ejemplos que puedas explicar con tus palabras y tarjetas de recuperación para repasar."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Déjame entrevistar a esta persona histórica. Mantén las respuestas atentas a la evidencia y marca la incertidumbre con claridad."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Crea tarjetas de repaso a partir de errores y vuelve a ellas después de un intervalo."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Crea tarjetas de repaso a partir de errores, dudas, fórmulas, definiciones y conceptos que no pudiste explicar con claridad."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Haz que se quede"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "Hacer que la idea se quede"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Hacer realista el plan de estudio"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Matemáticas"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Entrenador de pasos de matemáticas"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Las matemáticas, la escritura, la programación, la historia, las tareas y la preparación de exámenes necesitan ayudas distintas. Empieza por la asignatura y luego pasa al modo, la indicación, la guía o el ciclo de repaso que encaje."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Primero la misión"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Guías de modos, ciclos de indicaciones, métodos de estudio y artículos esenciales para momentos comunes de aprendizaje."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Pasa de una explicación en lenguaje sencillo a preguntas, ejemplos y práctica de memoria."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Pasa a preguntas socráticas, cuestionarios, tarjetas de repaso, debate, simulación de rol e instrucción guiada."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Silenciar vídeo"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "Mi examen es en esta fecha. Aquí están el programa, mis áreas débiles y mi tiempo disponible. Haz un plan realista con recuperación diaria."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "Opciones alineadas con NCERT"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Siguiente paso"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "No. Trata el diálogo generado como una simulación de aprendizaje. Cita fuentes primarias o secundarias reales para las afirmaciones factuales."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "No es otra caja de respuestas. Es un lugar para aprender."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "Abre un modo y empieza de inmediato, sin cuenta necesaria para la experiencia pública como invitado."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Abierto por diseño"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Abrir vídeo a pantalla completa"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Abrir conversación de invitado"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Abrir centro de asignatura"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Abre exactamente el tipo de ayuda por la que viniste."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Abrir el mapa de aprendizaje"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} guías prácticas"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Abrir la ruta"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Las páginas están diseñadas para llevar a las personas de la explicación a un modo en vivo, una indicación, un cuestionario o un ciclo de repaso."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Haz cualquier pregunta y aprende con explicaciones claras, ejemplos, indicaciones de seguimiento y una tutoría de IA paciente."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "El sitio es una ruta, no un folleto."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "¿inspir da soporte a escuelas?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir se organiza alrededor de modos de aprendizaje con formas de enseñanza específicas: pistas, preguntas socráticas, cuestionarios, recuperación activa, simulación de rol, debate, comentarios sobre escritura y planificación del estudio."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Usa los modos públicos de invitado gratis y luego explora el trabajo de código abierto y las rutas de implementación escolar."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Explicaciones, tutoría socrática, acompañamiento en tareas, cuestionarios, tarjetas de repaso, escritura, código, debate y planificación del estudio."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Aprendizaje con IA gratis para todos"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Planificador de preparación de exámenes"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Desbloquéate con las tareas mediante pistas éticas, ejemplos, comprobaciones y acompañamiento paso a paso."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "Planificador de preparación de exámenes con IA"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Plan de preparación de exámenes con IA, cuestionarios y recuperación activa"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Debatir te ayuda a separar afirmaciones, pruebas, valores y supuestos, lo que hace más precisa la interpretación histórica."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Empieza con lugar, tiempo, identidad, restricciones y etiquetas de evidencia para que la escena no se convierta en una simulación de rol genérica."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "¿Qué debería incluir en una indicación para tareas?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Aceptamos contribuciones de ingenieros, educadores, diseñadores, estudiantes y cualquier persona que quiera que el aprendizaje con IA sea más seguro, más claro, más accesible y más útil."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Una ruta práctica de aprendizaje con IA para pasar de la confusión a explicaciones claras, preguntas socráticas, ejemplos y recuperación activa."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "Tutor de escritura con IA"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir empezó con cuestionarios y comunidades estudiantiles, creció mediante escuelas y eventos, y ahora usa IA para hacer más accesible el aprendizaje personalizado."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "vídeo de aprendizaje de inspir"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Mostrar capítulos del vídeo"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Convierte estas preguntas falladas en tarjetas de repaso agrupadas por concepto, fórmula, definición y ejemplo."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Saber qué probar después, por qué funciona un paso, dónde ocurrió el error y cómo revisar la respuesta final con tu propia voz."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "comentarios de escritura con IA para estudiantes"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Aprendizaje para todos"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "Tutor de código con IA"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Cuestionar las áreas débiles"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Aprende con un tutor gratuito de IA para explicaciones, preguntas socráticas, acompañamiento en tareas, cuestionarios, tarjetas de repaso, debate, comentarios sobre escritura, ayuda con programación y planificación del estudio."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Usa el debate para comparar la afirmación más sólida y la contraafirmación más sólida."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "No te detengas tras la primera explicación; oblígate a responder preguntas sobre ella."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Cómo funciona"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Tutor de código"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Preparación de exámenes"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Las páginas de búsqueda, las guías del blog, las indicaciones y los modos en vivo están enlazados alrededor de un ciclo simple: preguntar, intentar, comprobar, reparar y repasar."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Programación"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Útil desde el primer clic"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Genera un cuestionario de opción múltiple enfocado sobre cualquier asignatura y revisa las explicaciones después de cada respuesta."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "No aceptes un párrafo revisado hasta que puedas explicar por qué la revisión es mejor."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Mi examen es en esta fecha. Aquí están el programa, mis áreas débiles y mi tiempo disponible. Haz un plan realista con recuperación diaria."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Aprende cualquier cosa con un tutor gratuito de IA: guía práctica"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Déjame entrevistar a esta persona histórica. Mantén las respuestas atentas a la evidencia y marca la incertidumbre con claridad."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Creado a partir de conductas reales de aprendizaje, no de una conversación genérica."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Desbloquearse con las tareas"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "El blog se organiza alrededor de momentos reales de estudio: desbloquearse, recordar más, escribir mejor, preparar exámenes y explorar ideas con un tutor paciente."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "¿Por qué combinar historia con debate?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "El blog conecta consejos útiles de aprendizaje con práctica en vivo, para que una guía pueda convertirse en una sesión de estudio en un solo paso."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Pega la pregunta y lo que intentaste, luego pide el siguiente paso útil más pequeño."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Pausar vídeo"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Estudiantes que se sienten atascados al principio de una asignatura nueva o necesitan una entrada más sencilla a una idea difícil."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Ubícame en este tiempo y lugar. Etiqueta los hechos documentados por separado de la simulación plausible y pregunta qué observo."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "accesibilidad, indicaciones, pruebas, comportamiento más seguro de la IA, flujos de aprendizaje y pulido de la interfaz."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Explicaciones en lenguaje sencillo"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Escribe exactamente dónde te atascaste antes de pedir ayuda."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "Planifica el repaso de exámenes, genera cuestionarios, crea tarjetas de repaso, programa revisión espaciada y mantén una motivación realista con modos de aprendizaje con IA enfocados."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Convertir errores"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "Planifica el trabajo, practica la recuperación y cierra lagunas con cuestionarios y recuperación activa."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Explorar historia e ideas"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Planificación"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Explora la historia y las grandes ideas con IA"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Reproducir vídeo"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Hacer que la idea se quede"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "Reproducir vista previa de aprendizaje de inspir"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Abrir centro de asignatura"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Rutas populares de aprendizaje con IA"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Escritura"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Rutas populares"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Continuar"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Práctica"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Fundamentos"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Práctica, no copiar respuestas"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Programar la próxima repetición"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "entrenador de pasos de matemáticas con IA"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Introduce el contexto"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Haz la pregunta real"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "Preparar un examen"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "Ideas de indicaciones y un ciclo de estudio repetible para obtener resultados útiles de aprendizaje con Aprende cualquier cosa en inspir."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Explora historia, figuras públicas, causas, debates, filosofía y crítica de fuentes con modos de aprendizaje con IA que separan la evidencia de la simulación."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Interrogar a una figura"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "práctica de debate con IA"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Cuestionar una perspectiva histórica"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Las preguntas te obligan a exponer tu propio modelo del tema, que es donde suelen aparecer la confusión, la falsa confianza y las ideas previas que faltan."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Respuestas rápidas"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Hazme un cuestionario sobre estos temas, una pregunta a la vez. Después de cada respuesta, explica la laguna y aumenta la dificultad poco a poco."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Hazme preguntas de trivia"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Cuestionar las áreas débiles"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Ponte a prueba"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Ponte a prueba primero para ver qué recuerdas realmente y dónde la confianza te engaña."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Los cuestionarios suelen revelar más porque ponen a prueba la recuperación. Releer puede ayudar después de que un cuestionario muestre qué hay que reparar."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Leer la misión"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Horario realista"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Reparar un error"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Reparar el punto débil"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Volver a reproducir"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Reiniciar vídeo"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Práctica de recuperación"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Repasar con tarjetas"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Revisar mi borrador"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Revisar sin perder tu voz"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Guardar el error"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Programar la próxima repetición"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Flujos de trabajo específicos de la escuela"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Las escuelas pueden ofrecer experiencias de conversación con IA de marca blanca adaptadas a sus estudiantes, incluido contenido y flujos alineados con NCERT, con uso financiado por escuelas asociadas o patrocinios de RSC."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Las páginas de búsqueda, las guías del blog, las indicaciones y los modos en vivo están enlazados alrededor de un ciclo simple: preguntar, intentar, comprobar, reparar y repasar."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Separar los hechos de la invención"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Mostrar capítulos del vídeo"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Mostrar transcripción del vídeo"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Comprobaciones socráticas"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Instrucción socrática"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "tutor socrático"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "La tutoría socrática usa preguntas, hipótesis, pistas y reflexión para construir una comprensión más profunda que la lectura pasiva de respuestas."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Inicia una sesión de aprendizaje en vivo."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "Empieza en cuanto conozcas la fecha del examen. Si queda poco tiempo, prioriza las áreas débiles, las preguntas de estilo examen anterior y la recuperación diaria."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Empieza pidiendo una explicación sencilla, una analogía cotidiana y las tres ideas que necesitas para que el tema tenga sentido."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Empieza cada sesión con un cuestionario rápido antes de releer."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "Empezar por los primeros principios"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Empieza por la asignatura y luego abre el modo de aprendizaje adecuado."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Empieza por aquello que no entiendes y consigue un modelo en lenguaje sencillo, ejemplos y siguientes pasos."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Empezar a aprender"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Empieza con un tema, una tarea, un borrador, un examen o una idea en el modo que encaje con el trabajo."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Empieza con Aprende cualquier cosa"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Empieza con lugar, tiempo, identidad, restricciones y etiquetas de evidencia para que la escena no se convierta en una simulación de rol genérica."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Empieza con el trabajo que necesitas hacer."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "Indica el punto de atasco"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Revisión de pasos"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Entra en el contexto histórico, compara argumentos y practica ver una idea desde más de un lado."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Estudiantes que necesitan un siguiente paso, revisar un error o recibir comentarios sin perder la autoría de la tarea."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Ciclos de estudio, guías de tutoría con IA e indicaciones prácticas."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "centros de asignaturas mapeados según las necesidades del estudiante"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Resumir el contexto"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Apoya el aprendizaje extracurricular, la práctica académica y la curiosidad."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Cambia a preguntas para revelar supuestos y llenar lagunas en lugar de leer la respuesta pasivamente."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Habla con una figura histórica manteniendo el diálogo generado separado de las citas documentadas."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Hablar con una persona histórica"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "hablar con figuras históricas mediante IA"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Comprobar antes de repasar"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Poner a prueba el argumento"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Poner a prueba tu razonamiento"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "El blog conecta consejos útiles de aprendizaje con práctica en vivo, para que una guía pueda convertirse en una sesión de estudio en un solo paso."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "El blog se organiza alrededor de momentos reales de estudio: desbloquearse, recordar más, escribir mejor, preparar exámenes y explorar ideas con un tutor paciente."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "La plataforma inspir de código abierto más amplia."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "El cierre vuelve a la misión: acceso público, escuelas y una forma más abierta de aprender."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "La reconstrucción actual de inspirlearning.com."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "El vídeo pasa de la inspiración a la promesa práctica: un compañero paciente de aprendizaje con IA."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Los modos de tareas y socrático están diseñados alrededor de pistas, razonamiento, revisión de pasos y explicaciones del estudiante, en lugar de entregar simplemente respuestas terminadas."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "La sección central presenta inspir alrededor de la comprensión, las pistas, los cuestionarios y los ciclos de aprendizaje activo."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "La plataforma de estudio con IA de próxima generación."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Los primeros fotogramas plantean el aprendizaje como algo que cualquiera debería poder empezar de inmediato."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Conversaciones históricas"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "El sitio público está estructurado como un mapa de aprendizaje: modos en vivo para ayuda inmediata, centros de asignaturas para preguntas de estudiantes y guías que convierten la lectura en acción."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "El sitio es una ruta, no un folleto."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Escribe una explicación de tres frases sin mirar y luego pide al modo socrático que encuentre el punto débil."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Pensar más a fondo"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Debatir una afirmación"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Viaje en el tiempo"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Explorar todos los modos"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Grupos de temas"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Del blog"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Transcripción"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Pide una pista, no la respuesta"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Viajar por un periodo"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Cuestionar una perspectiva histórica"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Probar Tutor de tareas"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Disponible públicamente, mientras las escuelas pueden ejecutar versiones personalizadas confidenciales."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Convertirlo en tarjetas de repaso"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Convertir errores en ciclos de repaso"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Convierte apuntes o temas en tarjetas de repaso enfocadas con pistas, respuestas, ejemplos y trampas comunes."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Convierte el error corregido en una tarjeta de repaso o una breve lista de comprobación para más tarde."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "Convierte la explicación en tarjetas de recuperación activa con una tarjeta conceptual, una tarjeta de ejemplo y una tarjeta de idea equivocada."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Convierte la pregunta fallada más difícil en una tarjeta de repaso y revísala más tarde."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Convierte estas preguntas falladas en tarjetas de repaso agrupadas por concepto, fórmula, definición y ejemplo."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Convierte tu programa, fecha de examen, tiempo y áreas débiles en un plan de estudio práctico."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Pasa a preguntas socráticas, cuestionarios, tarjetas de repaso, debate, simulación de rol e instrucción guiada."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Entender un tema difícil"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Entiende un contexto histórico, cuestiona una perspectiva, compara afirmaciones y separa la simulación del hecho documentado."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Revisar sin perder tu voz"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Indica el punto de atasco"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Cómo estudiar con IA sin hacerte trampa"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Pide el tema en lenguaje sencillo y luego solicita una analogía, un ejemplo y una idea equivocada común."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "aprendizaje de viaje en el tiempo con IA"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Práctica"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "No releas apuntes antes de comprobar qué puedes recordar ya."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Convierte tu programa, fecha de examen, tiempo y áreas débiles en un plan de estudio práctico."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Las páginas están diseñadas para llevar a las personas de la explicación a un modo en vivo, una indicación, un cuestionario o un ciclo de repaso."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Ayuda con tareas mediante IA sin hacer trampa"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matemáticas"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Un tutor para la primera pregunta"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Aprendizaje con IA gratis para todos."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Apoya el aprendizaje extracurricular, la práctica académica y la curiosidad."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Tarjetas de repaso con IA y recuperación activa: cómo recordar más"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Haz que se quede"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Pasa de una explicación en lenguaje sencillo a preguntas, ejemplos y práctica de memoria."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Ayuda primero con pistas"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Aquí está la pregunta y lo que intenté. Dame la pista útil más pequeña, no la respuesta final."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Los cuestionarios suelen revelar más porque ponen a prueba la recuperación. Releer puede ayudar después de que un cuestionario muestre qué hay que reparar."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Responde una pregunta de comprobación, intenta un paso, debate una afirmación, revisa un borrador o crea tarjetas de recuperación."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Cómo entender un tema difícil con IA"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Entiende código, depura errores, aprende conceptos de programación y crea pequeños proyectos paso a paso."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Activar sonido del vídeo"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Práctica activa"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "Usa la IA como entrenadora para entender, practicar y recibir comentarios, no como un atajo que elimina silenciosamente el aprendizaje."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Inmersión"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Usa el acompañamiento de tareas con IA para pistas, revisión de pasos, razonamiento matemático y comentarios de escritura, manteniendo el trabajo final como tuyo."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Apoyo centrado en el estudiante"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Usa viajes en el tiempo con IA, conversaciones históricas y práctica de debate para explorar contexto, evidencia, argumentos y perspectivas."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Las tarjetas de repaso funcionan mejor cuando prueban una idea a la vez, revelan respuestas solo después del esfuerzo y repasan antes las tarjetas falladas."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Cada página que no pertenece a la aplicación ahora tiene una tarea: generar confianza, explicar la ruta de aprendizaje y llevar a los estudiantes hacia una siguiente acción útil sin ocultar los detalles importantes."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Usa el debate para comparar la afirmación más sólida y la contraafirmación más sólida."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Convierte el error corregido en una tarjeta de repaso o una breve lista de comprobación para más tarde."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Usa pistas, revisiones de pasos y comentarios de escritura sin convertir el aprendizaje en copiar respuestas."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Espacios personalizados de aprendizaje con IA y confidencialidad de datos."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "Usa inspir para comentarios sobre ensayos, apoyo de lectura, práctica oral, crítica de fuentes y ciclos de revisión que mejoran la estructura sin sustituir la voz del estudiante."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Revisar mi borrador"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Usa inspir para pistas de tareas, revisiones de pasos matemáticos, comentarios de escritura, crítica de fuentes, preguntas socráticas y tarjetas de repaso sin exponer conversaciones privadas."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Convierte la explicación en tarjetas de recuperación activa con una tarjeta conceptual, una tarjeta de ejemplo y una tarjeta de idea equivocada."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Usa inspir para ayuda paso a paso en matemáticas, pistas de tareas, razonamiento socrático, cuestionarios, tarjetas de repaso y preparación de exámenes sin copiar respuestas."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "tutores con IA por asignatura"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Usa los modos públicos de invitado gratis y luego explora el trabajo de código abierto y las rutas de implementación escolar."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Primero la misión"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Debate esta afirmación histórica o filosófica desde ambos lados. Separa pruebas, supuestos y valores."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Usar preguntas socráticas"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Usa la fecha del examen, el programa, el tiempo disponible y las áreas débiles para crear un plan que sobreviva a la vida real."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Usa la guía enlazada, la indicación, el centro de asignatura o la ruta de aprendizaje para repasar más tarde el punto débil."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Usa comentarios de escritura para estructura, claridad y evidencia mientras mantienes el borrador final reconociblemente tuyo."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "Útil desde el primer clic"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Controles de vídeo"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Progreso del vídeo"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Comentarios que preservan la voz"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "Ver 31 s"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Ciclos de áreas débiles"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "Qué debería hacer un compañero de aprendizaje con IA por todos"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Lo que suelen preguntar los estudiantes antes de empezar."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "¿Qué debería preguntar primero cuando un tema parece demasiado difícil?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "¿Qué debería incluir en una indicación para tareas?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Qué puedes hacer"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "IA escolar de marca blanca"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Por qué un tutor socrático con IA puede hacer que las ideas se queden"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "¿Por qué combinar historia con debate?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "¿Por qué usar preguntas socráticas después de una explicación?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "Trabaja álgebra, cálculo, problemas de enunciado y conceptos matemáticos paso a paso con un entrenador de IA."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir existe para el momento en que un estudiante quiere entender algo y necesita un lugar paciente donde empezar. El vídeo presenta el producto como un compañero público y gratuito de aprendizaje para la curiosidad, la práctica y el acceso."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Trabajar pasos de matemáticas"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Escribe una explicación de tres frases sin mirar y luego pide al modo socrático que encuentre el punto débil."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Escribe exactamente dónde te atascaste antes de pedir ayuda."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Escritura"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Entrenador de escritura"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Sí, cuando da pistas, revisa el razonamiento, explica errores y te pide producir la respuesta final en lugar de escribirla por ti."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Empieza cada sesión con un cuestionario rápido antes de releer."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Sí. Las conversaciones públicas por tema, como Aprende cualquier cosa, Instrucción socrática, Tutor de tareas, cuestionarios y tarjetas de repaso, se abren directamente en modo invitado."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Sí. Las escuelas pueden usar primero el producto público y luego hablar sobre espacios personalizados de aprendizaje con IA, con flujos de trabajo específicos de la escuela, confidencialidad y opciones de acceso financiado."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Crea un pasaporte temporal, revisa el aviso de viaje y explora un mundo histórico mediante escena, mapa, línea temporal, personas, reglas, inventario y pruebas."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Viajar por un periodo"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Comentarios que preservan la voz"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "La tutoría socrática usa preguntas, hipótesis, pistas y reflexión para construir una comprensión más profunda que la lectura pasiva de respuestas."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Dame comentarios sobre la estructura, la claridad y la evidencia. Mantén mi voz y no reescribas toda la respuesta."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Poner a prueba tu razonamiento"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Para matemáticas o lógica, trabaja un paso a la vez y pregunta por qué cada movimiento está permitido antes de seguir."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Revisar el razonamiento línea por línea"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "¿Puedo citar un diálogo histórico con IA como fuente?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Viaje en el tiempo"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "No. Trata el diálogo generado como una simulación de aprendizaje. Cita fuentes primarias o secundarias reales para las afirmaciones factuales."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Empieza con el trabajo que necesitas hacer."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Usa inspir para ayuda paso a paso en matemáticas, pistas de tareas, razonamiento socrático, cuestionarios, tarjetas de repaso y preparación de exámenes sin copiar respuestas."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Siguiente paso"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Activar sonido del vídeo"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Hazme preguntas de trivia"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Sí, cuando da pistas, revisa el razonamiento, explica errores y te pide producir la respuesta final en lugar de escribirla por ti."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Usa la IA como entrenadora para entender, practicar y recibir comentarios, no como un atajo que elimina silenciosamente el aprendizaje."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "La sección central presenta inspir alrededor de la comprensión, las pistas, los cuestionarios y los ciclos de aprendizaje activo."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Usa la guía enlazada, la indicación, el centro de asignatura o la ruta de aprendizaje para repasar más tarde el punto débil."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Los primeros fotogramas plantean el aprendizaje como algo que cualquiera debería poder empezar de inmediato."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Aprende programación, depura conceptos, planifica proyectos, interpreta datos e investiga preguntas técnicas con modos públicos de IA que mantienen al estudiante dentro del proceso."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Transcripción"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Ocultar capítulos del vídeo"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Haz tu primera pregunta y pasa directamente a la práctica."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Explorar asignaturas"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Estudiantes curiosos que quieren que la historia y las ideas se sientan situadas, discutibles y vivas sin perder de vista las pruebas."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Las escuelas pueden ofrecer experiencias de conversación con IA de marca blanca adaptadas a sus estudiantes, incluido contenido y flujos alineados con NCERT, con uso financiado por escuelas asociadas o patrocinios de RSC."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Debatir cualquier tema"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "horario de estudio con IA"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Cada guía apunta a un modo, una indicación o un ciclo de repaso para que la lectura se convierta en práctica."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir en movimiento"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Ciclos de estudio, guías de tutoría con IA e indicaciones prácticas."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Convertir errores en ciclos de repaso"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "plan de preparación de exámenes con IA"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Una guía práctica para usar Aprende cualquier cosa en inspir para aprender fundamentos, con indicaciones, ciclos de estudio y hábitos de IA más seguros."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Reparar un error"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Crea tarjetas de repaso a partir de errores, dudas, fórmulas, definiciones y conceptos que no pudiste explicar con claridad."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Aprendizaje gratuito como invitado"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Usa inspir para pistas de tareas, revisiones de pasos matemáticos, comentarios de escritura, crítica de fuentes, preguntas socráticas y tarjetas de repaso sin exponer conversaciones privadas."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Ponte a prueba primero para ver qué recuerdas realmente y dónde la confianza te engaña."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "La plataforma de estudio con IA de próxima generación."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Puedes probar libremente los modos públicos de aprendizaje. Las conversaciones guardadas, las cuentas, las herramientas de administración y los datos de usuario permanecen privados."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Poner a prueba el argumento"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Abrir el mapa de aprendizaje"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Tarjetas de repaso con IA para revisar"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: puedes aprender cualquier cosa"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Entiende un contexto histórico, cuestiona una perspectiva, compara afirmaciones y separa la simulación del hecho documentado."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Crear un plan de examen"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Usa inspir para comentarios sobre ensayos, apoyo de lectura, práctica oral, crítica de fuentes y ciclos de revisión que mejoran la estructura sin sustituir la voz del estudiante."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Horario realista"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "No pidas un resumen completo antes de conocer las ideas previas necesarias."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Hablar con una persona histórica"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Guardar el error"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Crea un flujo de preparación de exámenes con IA mediante un plan de estudio realista, práctica de recuperación, cuestionarios, tarjetas de repaso y revisión de áreas débiles."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Incluye la pregunta, lo que ya intentaste, dónde te atascaste y si quieres una pista, una revisión de paso o comentarios."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Práctica de recuperación"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Abre un modo y empieza de inmediato, sin cuenta necesaria para la experiencia pública como invitado."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Empieza con un tema, una tarea, un borrador, un examen o una idea en el modo que encaje con el trabajo."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "No hagas tarjetas de repaso a partir de frases que aún no puedes explicar con tus propias palabras."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Rutas populares"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "cómo entender un tema difícil con IA"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Sí. Los modos públicos de aprendizaje como invitado están diseñados para acceso gratuito, para que los estudiantes puedan empezar sin necesitar una implementación escolar ni una cuenta de pago."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "Puedes probar libremente los modos públicos de aprendizaje. Las conversaciones guardadas, las cuentas, las herramientas de administración y los datos de usuario permanecen privados."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Práctica, no copiar respuestas"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Los modos de tareas y socrático están diseñados alrededor de pistas, razonamiento, revisión de pasos y explicaciones del estudiante, en lugar de entregar simplemente respuestas terminadas."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Revisar mi modelo"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Ocultar transcripción del vídeo"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Controles de vídeo"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Estudiantes con poco tiempo, un programa amplio y la necesidad de repasar de forma realista sin fingir que todo importa por igual."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Aprendizaje con IA gratis para todos | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "¿Puedo usar inspir sin iniciar sesión?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Planifica el trabajo, practica la recuperación y cierra lagunas con cuestionarios y recuperación activa."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Respuestas rápidas"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Habla con una figura histórica manteniendo el diálogo generado separado de las citas documentadas."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Explicaciones en lenguaje sencillo"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Crear el plan"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Después de la simulación, resume el escenario, las restricciones y las pruebas."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Sí. Las escuelas pueden usar primero el producto público y luego hablar sobre espacios personalizados de aprendizaje con IA, con flujos de trabajo específicos de la escuela, confidencialidad y opciones de acceso financiado."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Las matemáticas, la escritura, la programación, la historia, las tareas y la preparación de exámenes necesitan ayudas distintas. Empieza por la asignatura y luego pasa al modo, la indicación, la guía o el ciclo de repaso que encaje."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Comparar los argumentos"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Repaso con recuperación activa"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Práctica de argumentación"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Constructor de tarjetas de repaso"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Pausar vídeo"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Pide una explicación más sencilla del concepto más débil."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Mantener viva la ruta"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Mejorar el borrador"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Debate cualquier tema, recibe retos, compara afirmaciones y aprende a construir argumentos más sólidos."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Historia"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "¿Puede ser ética la ayuda con tareas mediante IA?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Probar Tutor de tareas"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Indicaciones y ciclo de estudio de Aprende cualquier cosa"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Una biblioteca de {value1} guías creada para que el aprendizaje se convierta en acción."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Para escuelas y socios de RSC"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Flujos de trabajo específicos de la escuela"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "No pegues una tarea y pidas la respuesta terminada."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "tutor con IA para conceptos difíciles"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Acción después de leer"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Las preguntas te obligan a exponer tu propio modelo del tema, que es donde suelen aparecer la confusión, la falsa confianza y las ideas previas que faltan."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Abierto por diseño"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir se está construyendo en público."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Haz preguntas, cuestiona ideas y aprende historia mediante conversaciones fundamentadas con figuras públicas del pasado."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Usa pistas, revisiones de pasos y comentarios de escritura sin convertir el aprendizaje en copiar respuestas."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Por qué un tutor socrático con IA puede hacer que las ideas se queden"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Reproducir vídeo"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "¿Qué debería preguntar primero cuando un tema parece demasiado difícil?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "entrenador de tareas con IA"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Usa la fecha del examen, el programa, el tiempo disponible y las áreas débiles para crear un plan que sobreviva a la vida real."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Pide cinco preguntas que mezclen definiciones, ejemplos y problemas de transferencia."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Cambia a preguntas para revelar supuestos y llenar lagunas en lugar de leer la respuesta pasivamente."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Usa viajes en el tiempo con IA, conversaciones históricas y práctica de debate para explorar contexto, evidencia, argumentos y perspectivas."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Recibe un horario de estudio, ponte a prueba en las áreas débiles y convierte los errores en tarjetas de repaso para revisar de forma repetida."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "La reconstrucción actual de inspirlearning.com."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Aprende mediante preguntas enfocadas, pistas y reflexión en lugar de leer respuestas pasivamente."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Guías de modos, ciclos de indicaciones, métodos de estudio y artículos esenciales para momentos comunes de aprendizaje."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "hablar con figuras históricas mediante IA"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Cada modo se abre como una conversación pública de invitado con su propio propósito, ejemplos y flujo de aprendizaje, para que los estudiantes empiecen de inmediato con el tipo de apoyo adecuado."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "¿En qué se diferencia inspir de un bot conversacional genérico de IA?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Creado para usarse"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Comprobar antes de repasar"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "No trates el diálogo generado como una cita real ni como una fuente primaria."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Ponte a prueba"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "No hagas un plan que suponga que todos los temas necesitan el mismo tiempo."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Reproducir vista previa de aprendizaje de inspir"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Empieza pidiendo una explicación sencilla, una analogía cotidiana y las tres ideas que necesitas para que el tema tenga sentido."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "generador de cuestionarios con IA para exámenes"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Convierte la explicación en tarjetas de recuperación activa y vuelve a revisarlas después de errores o dudas."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Reiniciar vídeo"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "¿Puede inspir ayudar con las tareas sin fomentar la trampa?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Progreso del vídeo"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Obtén primero el modelo sencillo"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "biblioteca de guías de aprendizaje de inspir con IA"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Empieza con Aprende cualquier cosa"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Un compañero público y gratuito de aprendizaje con IA para tutorías, práctica, cuestionarios, tarjetas de repaso, debate, comentarios sobre escritura, ayuda con programación y planificación del estudio."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "IA escolar de marca blanca"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Inicia una sesión de aprendizaje en vivo."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "Tutor de matemáticas con IA"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Entrenador de pasos de matemáticas"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Comunicación"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Aprende conversando, probando, debatiendo y explorando."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "guías de aprendizaje y ciclos de práctica"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Debate la afirmación desde más de un lado para detectar supuestos, compensaciones y pruebas débiles."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "tutor de historia con IA"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Rutas rápidas de aprendizaje"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Empezar por los primeros principios"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Silenciar vídeo"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Ver 31 s"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Planifica el repaso de exámenes, genera cuestionarios, crea tarjetas de repaso, programa revisión espaciada y mantén una motivación realista con modos de aprendizaje con IA enfocados."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Abre exactamente el tipo de ayuda por la que viniste."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Convierte apuntes o temas en tarjetas de repaso enfocadas con pistas, respuestas, ejemplos y trampas comunes."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "tutor socrático"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "tutor socrático con IA"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Ideas de indicaciones y un ciclo de estudio repetible para obtener resultados útiles de aprendizaje con Aprende cualquier cosa en inspir."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Explorar escuelas"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Trabaja álgebra, cálculo, problemas de enunciado y conceptos matemáticos paso a paso con un entrenador de IA."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Creado para la curiosidad, la práctica y el acceso."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Hazme un cuestionario sobre estos temas, una pregunta a la vez. Después de cada respuesta, explica la laguna y aumenta la dificultad poco a poco."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Rutas populares de aprendizaje con IA"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Límites claros de privacidad"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Comprobaciones socráticas"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Plataforma pública gratuita de aprendizaje con IA"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Leer la misión"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Instrucción socrática"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Volver a reproducir"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Un sitio público de aprendizaje que las personas pueden entender rápido."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Lo que suelen preguntar los estudiantes antes de empezar."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Escenas atentas a la evidencia"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Resumir el contexto"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Guías, rutas, asignaturas e indicaciones conectan con el siguiente lugar útil para practicar."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "No debatas solo el lado con el que ya estás de acuerdo."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Mapa de aprendizaje útil"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Sal con un modelo en lenguaje sencillo, preguntas más precisas, ejemplos que puedas explicar con tus palabras y tarjetas de recuperación para repasar."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Los estudiantes necesitan una secuencia, no un montón de enlaces. Estas rutas conectan modos en ciclos de estudio prácticos para entender, hacer tareas, preparar exámenes y explorar."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Aprende cualquier cosa"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Capítulos del vídeo"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Siguientes pasos sencillos"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Hacer realista el plan de estudio"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Biblioteca de guías"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "¿Por qué usar preguntas socráticas después de una explicación?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Una mirada práctica a cómo la IA puede hacer que aprender sea más claro, más personal y más accesible sin convertir a los estudiantes en recolectores pasivos de respuestas."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argumento"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Usa comentarios de escritura para estructura, claridad y evidencia mientras mantienes el borrador final reconociblemente tuyo."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Opciones alineadas con NCERT"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Hazme cinco preguntas socráticas sobre este tema. Después de cada respuesta, dime qué supuesto usé y qué debería comprobar después."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "¿inspir es gratis?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Pide al modo histórico que etiquete qué está documentado, qué se infiere y qué se simula."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Explorar la biblioteca de guías"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Crea tarjetas de repaso a partir de errores y vuelve a ellas después de un intervalo."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Ayuda con tareas mediante IA sin copiar respuestas"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Pide pistas, comprobaciones, comentarios y planes de estudio que mantengan el razonamiento en manos del estudiante."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "La plataforma inspir de código abierto más amplia."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "No omitas mostrar lo que ya intentaste; la ayuda útil depende de ese contexto."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Revisa este paso de mi desarrollo. Si está mal, explica el error y dame un siguiente movimiento."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Ubícame en este tiempo y lugar. Etiqueta los hechos documentados por separado de la simulación plausible y pregunta qué observo."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Explícalo con tus palabras"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Ciclos de áreas débiles"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Cada guía termina con planes de práctica, rutas y enlaces al modo de aprendizaje exacto que encaja."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Qué debería hacer un compañero de aprendizaje con IA por todos"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "Tutor de historia con IA"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Interrogar a una figura"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Revisar un paso"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Debatir la afirmación"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Reparar el punto débil"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Tutor de tareas"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Explicar el siguiente paso"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Tarjetas de repaso con IA para la recuperación activa"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Un cortometraje que presenta la convicción de inspir de que aprender debe ser gratuito, accesible y vivo."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Empieza por aquello que no entiendes y consigue un modelo en lenguaje sencillo, ejemplos y siguientes pasos."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Grupos de temas"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Mostrar transcripción del vídeo"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Tareas"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Usa el acompañamiento de tareas con IA para pistas, revisión de pasos, razonamiento matemático y comentarios de escritura, manteniendo el trabajo final como tuyo."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Explicaciones claras"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Convertirlo en tarjetas de repaso"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "¿Con cuánta antelación debería hacer un plan de preparación de exámenes?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "El vídeo pasa de la inspiración a la promesa práctica: un compañero paciente de aprendizaje con IA."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Construye con nosotros"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Revisión de pasos"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Buenas áreas para empezar:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Separar los hechos de la invención"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Diseñado para dar confianza"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Empieza por la asignatura y luego abre el modo de aprendizaje adecuado."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Mejora la escritura con planificación, revisión, estructura y comentarios que mantienen intacta tu voz."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "Ayudante de tareas con IA"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Introduce un periodo"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Haz algo con eso"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "No es otra caja de respuestas. Es un lugar para aprender."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "La curiosidad empieza aquí"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Abrir conversación de invitado"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Repasar con tarjetas"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "No dejes que la simulación de rol sustituya fechas, contexto, documentos o etiquetas de evidencia."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Empieza en cuanto conozcas la fecha del examen. Si queda poco tiempo, prioriza las áreas débiles, las preguntas de estilo examen anterior y la recuperación diaria."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Después de cada pista, explica por qué funciona el paso antes de continuar."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Pide una pista"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Cada artículo conecta con categorías, modos en vivo, centros de asignaturas, rutas de aprendizaje y guías relacionadas."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Pensar más a fondo"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Curiosidad, práctica e IA que enseña."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Explica este tema en lenguaje sencillo. Nombra las tres ideas previas que necesito, una analogía y una idea equivocada común."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Implementaciones confidenciales"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Abrir vídeo a pantalla completa"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Qué puedes hacer"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Convierte la pregunta fallada más difícil en una tarjeta de repaso y revísala más tarde."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Pregunta cualquier cosa"
     }
   ]
 }

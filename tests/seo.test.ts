@@ -724,9 +724,11 @@ test("next config preserves canonical legal route and crawler headers", async ()
   assert.ok(csp.includes("frame-ancestors 'none'"));
   assert.ok(csp.includes("form-action 'self' https://accounts.google.com"));
   assert.ok(scriptDirective?.includes("script-src 'self' 'nonce-test-nonce' 'strict-dynamic'"));
+  assert.ok(scriptDirective?.includes("https://*.clarity.ms"));
   assert.equal(scriptDirective?.includes("'unsafe-inline'"), false);
   assert.equal(scriptDirective?.includes("'unsafe-eval'"), process.env.NODE_ENV === "development");
   assert.ok(marketingScriptDirective?.includes("script-src 'self' 'unsafe-inline'"));
+  assert.ok(marketingScriptDirective?.includes("https://*.clarity.ms"));
   assert.equal(marketingScriptDirective?.includes("'strict-dynamic'"), false);
   assert.equal(marketingScriptDirective?.includes("'nonce-"), false);
   assert.equal(

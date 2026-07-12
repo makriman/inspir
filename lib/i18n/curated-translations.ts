@@ -23,25 +23,8 @@ type CuratedTranslationPack = {
   }>;
 };
 
-type CuratedLanguageBundle = {
-  schemaVersion?: number;
-  kind?: string;
-  language?: string;
-  locale?: string;
-  namespaces?: Record<
-    string,
-    {
-      sourceHash?: string;
-      translations?: Record<string, string>;
-      entries?: CuratedTranslationPack["entries"];
-    }
-  >;
-};
-
 const curatedRoot = "translations/curated";
-const curatedBundleRoot = "translations/curated-bundles";
 const bundleCache = new Map<string, TranslationBundle | null>();
-const languagePackCache = new Map<SupportedLanguage, CuratedLanguageBundle | null>();
 
 export function getCuratedTranslationBundle(source: TranslationSource, language: string) {
   const normalized = normalizeLanguage(language);
@@ -135,48 +118,9 @@ function curatedPackFiles(language: SupportedLanguage, namespace: string) {
 }
 
 function curatedPacksForNamespace(language: SupportedLanguage, namespace: string) {
-  const bundledPack = curatedBundledPack(language, namespace);
-  if (bundledPack) return [bundledPack];
-
   return curatedPackFiles(language, namespace).map(
     (file) => JSON.parse(readFileSync(file, "utf8")) as CuratedTranslationPack,
   );
-}
-
-function curatedBundledPack(language: SupportedLanguage, namespace: string): CuratedTranslationPack | null {
-  const bundle = curatedLanguageBundle(language);
-  const namespacePack = bundle?.namespaces?.[namespace];
-  if (!bundle || !namespacePack) return null;
-
-  return {
-    schemaVersion: bundle.schemaVersion,
-    language: bundle.language,
-    locale: bundle.locale,
-    namespace,
-    sourceHash: namespacePack.sourceHash,
-    translations: namespacePack.translations,
-    entries: namespacePack.entries,
-  };
-}
-
-function curatedLanguageBundle(language: SupportedLanguage) {
-  if (languagePackCache.has(language)) return languagePackCache.get(language) ?? null;
-
-  const locale = languageConfigs[language].prefix || languageConfigs[language].locale;
-  const filePath = join(resolve(process.cwd(), curatedBundleRoot), `${locale}.json`);
-  if (!existsSync(filePath)) {
-    languagePackCache.set(language, null);
-    return null;
-  }
-
-  const bundle = JSON.parse(readFileSync(filePath, "utf8")) as CuratedLanguageBundle;
-  if (bundle.kind !== "curated-language-bundle" || bundle.language !== language) {
-    languagePackCache.set(language, null);
-    return null;
-  }
-
-  languagePackCache.set(language, bundle);
-  return bundle;
 }
 
 function fileSafeNamespace(namespace: string) {

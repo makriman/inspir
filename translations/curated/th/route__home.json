@@ -4,517 +4,12 @@
   "locale": "th",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} คู่มือใช้งานจริง"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "คลังคู่มือ {value1} รายการที่ออกแบบให้การเรียนรู้กลายเป็นการลงมือทำ"
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "เพื่อนเรียนรู้เอไอฟรีสำหรับทุกคน ทั้งการติว ฝึกทำ ควิซ บัตรคำ โต้วาที ข้อเสนอแนะงานเขียน ช่วยเขียนโค้ด และวางแผนการเรียน"
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "เส้นทางการเรียนรู้ด้วยเอไอที่ใช้งานได้จริง ช่วยพาจากความสับสนไปสู่คำอธิบายที่ชัดเจน คำถามแบบโสเครติส ตัวอย่าง และการฝึกดึงความจำ"
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "คู่มือใช้งานโหมดเรียนรู้อะไรก็ได้บน inspir เพื่อปูพื้นฐาน พร้อมพรอมป์ วงจรการเรียน และนิสัยใช้เอไออย่างปลอดภัยขึ้น"
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "มุมมองใช้งานจริงว่าเอไอช่วยให้การเรียนชัดขึ้น เป็นส่วนตัวขึ้น และเข้าถึงง่ายขึ้นได้อย่างไร โดยไม่ทำให้นักเรียนกลายเป็นผู้รับคำตอบอย่างเดียว"
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "เว็บไซต์การเรียนรู้สาธารณะที่ผู้คนเข้าใจได้เร็ว"
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "ภาพยนตร์สั้นที่แนะนำความเชื่อของ inspir ว่าการเรียนรู้ควรฟรี เข้าถึงได้ และมีชีวิตชีวา"
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "ติวเตอร์สำหรับคำถามแรก"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "การเข้าถึง พรอมป์ การทดสอบ พฤติกรรมเอไอที่ปลอดภัยขึ้น เส้นทางผู้เรียน และการขัดเกลาส่วนติดต่อผู้ใช้"
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "ลงมือทำหลังอ่าน"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "การฝึกแบบลงมือทำ"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "การทบทวนแบบดึงความจำ"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "หลังได้คำใบ้แต่ละครั้ง ให้อธิบายว่าขั้นตอนนั้นใช้ได้เพราะอะไรก่อนค่อยไปต่อ"
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "หลังการจำลอง ให้สรุปฉาก เงื่อนไขจำกัด และหลักฐาน"
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "ติวเตอร์โค้ดเอไอ"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "ฝึกโต้วาทีด้วยเอไอ"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "แผนเตรียมสอบด้วยเอไอ"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "แผนเตรียมสอบด้วยเอไอพร้อมควิซและการดึงความจำ"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "ตัววางแผนเตรียมสอบด้วยเอไอ"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "บัตรคำเอไอและการทบทวนแบบดึงความจำ: จำให้ได้มากขึ้น"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "บัตรคำเอไอสำหรับการทบทวนแบบดึงความจำ"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "บัตรคำเอไอสำหรับทบทวน"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "ติวเตอร์ประวัติศาสตร์เอไอ"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "ติวเตอร์ประวัติศาสตร์เอไอ"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "โค้ชการบ้านเอไอ"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "ความช่วยเหลือการบ้านด้วยเอไอโดยไม่โกง"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "ความช่วยเหลือการบ้านด้วยเอไอโดยไม่ลอกคำตอบ"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "ผู้ช่วยการบ้านเอไอ"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "โค้ชคณิตศาสตร์เอไอทีละขั้น"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "ติวเตอร์คณิตศาสตร์เอไอ"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "เครื่องสร้างควิซเอไอสำหรับสอบ"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "ติวเตอร์โสเครติสด้วยเอไอ"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "ตารางเรียนด้วยเอไอ"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "การเรียนรู้แบบเดินทางข้ามเวลาด้วยเอไอ"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "ติวเตอร์เอไอสำหรับแนวคิดยาก"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "ติวเตอร์เอไอตามวิชา"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "ข้อเสนอแนะงานเขียนด้วยเอไอสำหรับนักเรียน"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "ติวเตอร์การเขียนเอไอ"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "ตอบคำถามตรวจความเข้าใจ ลองทำหนึ่งขั้นตอน โต้วาทีข้อกล่าวอ้าง ปรับร่างงานเขียน หรือสร้างบัตรทบทวนความจำ"
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "ควิซดีกว่าการอ่านซ้ำไหม"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "ข้อโต้แย้ง"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "ฝึกสร้างข้อโต้แย้ง"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "ถามได้ทุกคำถาม แล้วเรียนรู้ผ่านคำอธิบายชัดเจน ตัวอย่าง พรอมป์ต่อเนื่อง และการติวด้วยเอไอที่ใจเย็น"
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "ถามได้ทุกเรื่อง"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "ขอคำใบ้"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "ขอคำใบ้ ไม่ใช่คำตอบ"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "ขอคำอธิบายที่ง่ายขึ้นของแนวคิดที่อ่อนที่สุด"
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "ขอคำถามห้าข้อที่ผสมทั้งนิยาม ตัวอย่าง และโจทย์ประยุกต์"
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "ขอคำใบ้ การตรวจคำตอบ ข้อเสนอแนะ และแผนการเรียนที่ยังให้ผู้เรียนเป็นคนคิดเอง"
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "ขอให้สรุปหัวข้อด้วยภาษาง่ายๆ แล้วขออุปมาหนึ่งข้อ ตัวอย่างหนึ่งข้อ และความเข้าใจผิดที่พบบ่อยหนึ่งข้อ"
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "ถามฉันด้วยคำถามแบบโสเครติสห้าข้อเกี่ยวกับหัวข้อนี้ หลังคำตอบแต่ละครั้ง บอกว่าฉันใช้สมมติฐานอะไรและควรทดสอบอะไรต่อ"
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "ตั้งคำถาม ท้าทายแนวคิด และเรียนประวัติศาสตร์ผ่านบทสนทนาที่มีฐานหลักฐานกับบุคคลสาธารณะในอดีต"
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "ขอให้โหมดประวัติศาสตร์ติดป้ายกำกับว่าสิ่งใดมีเอกสารยืนยัน สิ่งใดเป็นข้ออนุมาน หรือสิ่งใดเป็นการจำลอง"
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "ถามคำถามที่อยากรู้จริงๆ"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "ถามคำถามแรกแล้วเริ่มฝึกทันที"
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "เปิดใช้ได้สาธารณะ ขณะเดียวกันโรงเรียนใช้เวอร์ชันปรับแต่งแบบเป็นความลับได้"
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "ดูทุกโหมด"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "ดูรายวิชา"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "สร้างพาสปอร์ตข้ามเวลา อ่านคำแนะนำการเดินทางให้ชัด แล้วสำรวจโลกประวัติศาสตร์ผ่านฉาก แผนที่ ไทม์ไลน์ ผู้คน กฎ สิ่งของติดตัว และหลักฐาน"
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "สร้างเวิร์กโฟลว์เตรียมสอบด้วยเอไอ พร้อมแผนการเรียนที่ทำได้จริง การฝึกดึงความจำ ควิซ บัตรคำ และการทบทวนจุดอ่อน"
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "สร้างแผนสอบ"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "สร้างแผน"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "ร่วมสร้างไปกับเรา"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "สร้างมาเพื่อความอยากรู้ การฝึกฝน และการเข้าถึง"
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "สร้างจากพฤติกรรมผู้เรียนจริง ไม่ใช่กล่องแชตทั่วไป"
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "สร้างมาเพื่อใช้งานจริง"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "ความช่วยเหลือการบ้านด้วยเอไอทำได้อย่างมีจริยธรรมไหม"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "อ้างบทสนทนาประวัติศาสตร์จากเอไอเป็นแหล่งข้อมูลได้ไหม"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "ใช้ inspir โดยไม่ลงชื่อเข้าใช้ได้ไหม"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "inspir ช่วยเรื่องการบ้านโดยไม่ส่งเสริมการโกงได้ไหม"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "ตรวจแบบจำลองความเข้าใจของฉัน"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "ตรวจหนึ่งขั้นตอน"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "ตรวจเหตุผลทีละบรรทัด"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "ตรวจขั้นตอนนี้ในวิธีทำของฉัน ถ้าผิด ให้อธิบายข้อผิดพลาดและบอกทางไปต่อหนึ่งอย่าง"
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "คำอธิบายที่ชัดเจน"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "ขอบเขตความเป็นส่วนตัวที่ชัดเจน"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "ติวเตอร์โค้ด"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "การเขียนโค้ด"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "การสื่อสาร"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "เปรียบเทียบข้อโต้แย้ง"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "การใช้งานแบบเป็นความลับ"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "ดำเนินการต่อ"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "ยินดีรับการมีส่วนร่วมจากวิศวกร นักการศึกษา นักออกแบบ นักเรียน และทุกคนที่อยากให้การเรียนรู้ด้วยเอไอปลอดภัยขึ้น ชัดเจนขึ้น เข้าถึงง่ายขึ้น และมีประโยชน์ขึ้น"
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "เปลี่ยนข้อที่พลาดเป็นการทบทวน"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "เปลี่ยนคำอธิบายเป็นบัตรทบทวนแบบดึงความจำ แล้วกลับมาดูบัตรหลังจากทำผิดหรือลังเล"
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "สร้างควิซสั้นๆ"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "ความอยากรู้เริ่มที่นี่"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "ความอยากรู้ การฝึกฝน และเอไอที่สอนเป็น"
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "ผู้เรียนที่อยากให้ประวัติศาสตร์และแนวคิดมีบริบท ถกเถียงได้ และมีชีวิตชีวา โดยไม่หลุดจากหลักฐาน"
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "พื้นที่เรียนรู้เอไอที่ปรับแต่งได้พร้อมการรักษาความลับของข้อมูล"
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "โต้วาทีข้อกล่าวอ้าง"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "โต้วาทีได้ทุกหัวข้อ"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "โต้วาทีได้ทุกหัวข้อ รับคำท้าทาย เปรียบเทียบข้อกล่าวอ้าง และเรียนรู้วิธีสร้างเหตุผลให้แข็งแรงขึ้น"
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "การโต้วาทีช่วยแยกข้อกล่าวอ้าง หลักฐาน คุณค่า และสมมติฐาน ทำให้การตีความทางประวัติศาสตร์แม่นยำขึ้น"
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "โต้วาทีข้อกล่าวอ้าง"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "โต้วาทีข้อกล่าวอ้างจากมากกว่าหนึ่งมุม เพื่อมองเห็นสมมติฐาน สิ่งที่ต้องแลก และหลักฐานที่อ่อน"
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "โต้วาทีข้อกล่าวอ้างทางประวัติศาสตร์หรือปรัชญานี้จากทั้งสองฝ่าย แยกหลักฐาน สมมติฐาน และคุณค่าออกจากกัน"
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "ออกแบบมาเพื่อสร้างความมั่นใจ"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "อย่ายอมรับย่อหน้าที่แก้แล้วจนกว่าคุณจะอธิบายได้ว่าทำไมฉบับแก้จึงดีกว่า"
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "อย่าขอสรุปทั้งหมดก่อนจะรู้แนวคิดพื้นฐานที่ต้องมี"
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "อย่าโต้วาทีเฉพาะฝั่งที่คุณเห็นด้วยอยู่แล้ว"
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "การวางแผน"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "อย่าเมินความลังเล ความไม่แน่ใจเป็นสัญญาณที่มีประโยชน์สำหรับการทบทวน"
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "อย่าให้บทบาทสมมติมาแทนวันที่ บริบท เอกสาร หรือป้ายกำกับหลักฐาน"
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir เปลี่ยนความอยากรู้ การบ้าน การทบทวน และคำถามใหญ่ๆ ให้เป็นเซสชันการเรียนรู้ด้วยเอไอแบบมีแนวทาง ที่อธิบาย ถามกลับ และช่วยให้คุณฝึก"
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "อย่าวางแผนโดยคิดว่าทุกหัวข้อต้องใช้เวลาเท่ากัน"
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "สร้างควิซสั้นๆ"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "อย่าทำบัตรคำจากประโยคที่คุณยังอธิบายด้วยคำของตัวเองไม่ได้"
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "นักเรียนที่ต้องการขั้นตอนถัดไป การตรวจข้อผิดพลาด หรือข้อเสนอแนะ โดยไม่เสียความเป็นเจ้าของงานที่ได้รับมอบหมาย"
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "อย่าวางโจทย์งานแล้วขอคำตอบสำเร็จรูป"
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "เริ่มเรียนรู้"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "อย่าอ่านโน้ตซ้ำก่อนทดสอบว่าคุณจำอะไรได้แล้ว"
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "อย่าข้ามการบอกสิ่งที่คุณลองทำแล้ว เพราะความช่วยเหลือที่มีประโยชน์ต้องอาศัยบริบทนั้น"
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "อย่าหยุดหลังคำอธิบายแรก ให้บังคับตัวเองตอบคำถามเกี่ยวกับเรื่องนั้น"
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "อย่าถือบทสนทนาที่สร้างขึ้นว่าเป็นคำพูดจริงหรือแหล่งข้อมูลปฐมภูมิ"
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "นำไปลงมือทำ"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "inspir รองรับโรงเรียนไหม"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "คู่มือแต่ละบทลงท้ายด้วยแผนฝึก เส้นทาง และลิงก์ไปยังโหมดการเรียนรู้ที่ตรงที่สุด"
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "คู่มือแต่ละบทชี้ไปยังโหมด พรอมป์ หรือวงจรทบทวน เพื่อให้การอ่านกลายเป็นการฝึกได้"
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "แต่ละโหมดเปิดเป็นแชตผู้ใช้ทั่วไปแบบสาธารณะ พร้อมเป้าหมาย ตัวอย่าง และลำดับการเรียนรู้ของตัวเอง เพื่อให้ผู้เรียนเริ่มรับการช่วยเหลือที่เหมาะสมได้ทันที"
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "ขั้นตอนถัดไปที่ทำง่าย"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "ป้อนช่วงเวลา"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "ป้อนบริบท"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "ทุกบทความเชื่อมกับหมวดหมู่ โหมดที่ใช้งานได้ทันที ศูนย์วิชา เส้นทางการเรียนรู้ และคู่มือที่เกี่ยวข้อง"
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "ทุกหน้าที่ไม่ใช่แอปมีหน้าที่ชัดเจนแล้ว: สร้างความไว้วางใจ อธิบายเส้นทางการเรียนรู้ และพาผู้เรียนไปสู่การลงมือทำถัดไปที่มีประโยชน์ โดยไม่ซ่อนรายละเอียดสำคัญ"
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "ฉากที่ใส่ใจหลักฐาน"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "เตรียมสอบ"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "ตัววางแผนเตรียมสอบ"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "อธิบายกลับด้วยคำของตัวเอง"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "อธิบายขั้นตอนถัดไป"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "อธิบายหัวข้อนี้ด้วยภาษาง่ายๆ บอกแนวคิดพื้นฐานสามอย่างที่ฉันต้องรู้ อุปมาหนึ่งข้อ และความเข้าใจผิดที่พบบ่อยหนึ่งข้อ"
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "คำอธิบาย การติวแบบโสเครติส โค้ชการบ้าน ควิซ บัตรคำ การเขียน โค้ด โต้วาที และการวางแผนการเรียน"
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "สำรวจประวัติศาสตร์และแนวคิดใหญ่ด้วยเอไอ"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "สำรวจประวัติศาสตร์และแนวคิด"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "สำรวจประวัติศาสตร์ บุคคลสาธารณะ เหตุปัจจัย การโต้วาที ปรัชญา และการวิพากษ์แหล่งข้อมูลด้วยโหมดการเรียนรู้เอไอที่แยกหลักฐานออกจากการจำลอง"
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "สำรวจสำหรับโรงเรียน"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "สำรวจคลังคู่มือ"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "เส้นทางเรียนรู้ที่รวดเร็ว"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "ตอนต่างๆ ของวิดีโอ"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "ตัวสร้างบัตรคำ"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "บัตรคำได้ผลดีที่สุดเมื่อทดสอบทีละแนวคิด เปิดคำตอบหลังจากพยายามแล้วเท่านั้น และทบทวนบัตรที่ตอบพลาดให้เร็วขึ้น"
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "สำหรับคณิตศาสตร์หรือตรรกะ ให้ทำทีละขั้นตอนและถามว่าทำไมแต่ละวิธีจึงใช้ได้ก่อนค่อยไปต่อ"
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "สำหรับโรงเรียนและพันธมิตร CSR"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "พื้นฐาน"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน"
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "การเรียนรู้ฟรีในโหมดผู้ใช้ทั่วไป"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "แพลตฟอร์มการเรียนรู้เอไอสาธารณะฟรี"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "จากบล็อก"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "สร้างควิซปรนัยแบบเจาะจงในวิชาใดก็ได้ แล้วทบทวนคำอธิบายหลังตอบแต่ละข้อ"
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "รับตารางเรียน ทำควิซทดสอบจุดอ่อนของตัวเอง และเปลี่ยนข้อที่พลาดเป็นบัตรคำสำหรับทบทวนซ้ำ"
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "เข้าใจแบบจำลองง่ายๆ ก่อน"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "โค้ชการเขียน"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "หลุดจากจุดที่ติด"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "แก้จุดติดในการบ้าน"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "ก้าวเข้าสู่บริบททางประวัติศาสตร์ เปรียบเทียบข้อโต้แย้ง และฝึกมองแนวคิดจากมากกว่าหนึ่งด้าน"
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "แก้จุดติดในการบ้านด้วยคำใบ้ที่มีจริยธรรม ตัวอย่าง การตรวจ และโค้ชทีละขั้น"
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "ศูนย์วิชาที่เชื่อมกับความต้องการของผู้เรียน"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "ให้ข้อเสนอแนะเรื่องโครงสร้าง ความชัดเจน และหลักฐาน รักษาน้ำเสียงของฉันไว้ และอย่าเขียนคำตอบใหม่ทั้งหมด"
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "ช่วงปิดท้ายกลับมาที่ภารกิจ: การเข้าถึงสาธารณะ โรงเรียน และวิธีเรียนรู้ที่เปิดกว้างขึ้น"
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "จุดเริ่มต้นที่ดี:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "ควิซดีกว่าการอ่านซ้ำไหม"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "คลังคู่มือ"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "คู่มือ เส้นทาง วิชา และพรอมป์เชื่อมไปยังจุดฝึกที่มีประโยชน์ถัดไป"
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "แผนที่การเรียนรู้ที่ช่วยนำทาง"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "นี่คือคำถามและสิ่งที่ฉันลองทำแล้ว ขอคำใบ้ที่มีประโยชน์น้อยที่สุด ไม่ใช่คำตอบสุดท้าย"
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "ซ่อนตอนของวิดีโอ"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "ซ่อนถอดเสียงวิดีโอ"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "ความช่วยเหลือที่ให้คำใบ้ก่อน"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "บทสนทนาทางประวัติศาสตร์"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "ประวัติศาสตร์"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "การบ้าน"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "โค้ชการบ้าน"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "ควรวางแผนเตรียมสอบล่วงหน้านานแค่ไหน"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "inspir ต่างจากแชตบอตเอไอทั่วไปอย่างไร"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "วิธีการทำงาน"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "วิธีเรียนกับเอไอโดยไม่โกงตัวเอง"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "วิธีเข้าใจหัวข้อยากด้วยเอไอ"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "วิธีเข้าใจหัวข้อยากด้วยเอไอ"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "การดื่มด่ำ"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "ปรับปรุงร่างเขียน"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "พัฒนางานเขียนด้วยการวางแผน การปรับแก้ โครงสร้าง และข้อเสนอแนะที่ยังรักษาน้ำเสียงของคุณไว้"
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "ใส่คำถาม สิ่งที่ลองทำแล้ว จุดที่ติด และระบุว่าต้องการคำใบ้ การตรวจขั้นตอน หรือข้อเสนอแนะ"
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "คลังคู่มือการเรียนรู้ด้วยเอไอของ inspir"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir เริ่มจากควิซและชุมชนนักเรียน เติบโตผ่านโรงเรียนและกิจกรรมต่างๆ และตอนนี้ใช้เอไอเพื่อทำให้การเรียนแบบตัวต่อตัวเข้าถึงง่ายขึ้น"
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir มีอยู่เพื่อช่วงเวลาที่ผู้เรียนอยากเข้าใจบางสิ่งและต้องการจุดเริ่มต้นที่ใจเย็น ภาพยนตร์นี้แนะนำผลิตภัณฑ์ในฐานะเพื่อนเรียนรู้สาธารณะฟรีสำหรับความอยากรู้ การฝึกฝน และการเข้าถึง"
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir ในความเคลื่อนไหว"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir กำลังสร้างอย่างเปิดเผย"
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir จัดวางรอบโหมดการเรียนรู้ที่มีรูปแบบการสอนเฉพาะ: คำใบ้ คำถามแบบโสเครติส ควิซ การทบทวนแบบดึงความจำ บทบาทสมมติ โต้วาที ข้อเสนอแนะงานเขียน และการวางแผนการเรียน"
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "ภาพยนตร์การเรียนรู้ของ inspir"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir เปลี่ยนความอยากรู้ การบ้าน การทบทวน และคำถามใหญ่ๆ ให้เป็นเซสชันการเรียนรู้ด้วยเอไอแบบมีแนวทาง ที่อธิบาย ถามกลับ และช่วยให้คุณฝึก"
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: คุณเรียนรู้อะไรก็ได้"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "inspir ใช้งานฟรีไหม"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "ทำให้เส้นทางยังเดินต่อได้"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "รู้ว่าควรลองอะไรต่อ ทำไมขั้นตอนหนึ่งจึงใช้ได้ ข้อผิดพลาดเกิดตรงไหน และจะแก้คำตอบสุดท้ายด้วยเสียงของตัวเองอย่างไร"
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "เรียนรู้อะไรก็ได้"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "เรียนรู้อะไรก็ได้: ไอเดียพรอมป์และวงจรการเรียน"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "เรียนรู้อะไรก็ได้กับติวเตอร์เอไอฟรี: คู่มือใช้งานจริง"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "เรียนรู้ผ่านการพูดคุย ทดสอบ โต้วาที และสำรวจ"
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "เรียนรู้การเขียนโปรแกรม แก้ความเข้าใจเรื่องบั๊ก วางแผนโปรเจกต์ ตีความข้อมูล และค้นคว้าคำถามทางเทคนิคด้วยโหมดเอไอสาธารณะที่ยังให้ผู้เรียนมีส่วนร่วมตลอดทาง"
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "เรียนรู้ผ่านคำถามที่เจาะจง คำใบ้ และการสะท้อนคิด แทนการอ่านคำตอบแบบรับอย่างเดียว"
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "เรียนกับติวเตอร์เอไอฟรีสำหรับคำอธิบาย คำถามแบบโสเครติส โค้ชการบ้าน ควิซ บัตรคำ โต้วาที ข้อเสนอแนะงานเขียน ช่วยเขียนโค้ด และวางแผนการเรียน"
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "การช่วยเหลือที่ให้ผู้เรียนมาก่อน"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "ผู้เรียนต้องการลำดับ ไม่ใช่กองลิงก์ เส้นทางเหล่านี้เชื่อมโหมดต่างๆ เป็นวงจรการเรียนที่ใช้งานได้จริงสำหรับการทำความเข้าใจ การบ้าน เตรียมสอบ และการสำรวจ"
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "ผู้เรียนที่ติดตั้งแต่เริ่มวิชาใหม่ หรือต้องการทางเข้าที่ง่ายขึ้นสู่แนวคิดยาก"
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "ผู้เรียนที่มีเวลาจำกัด เนื้อหามาก และต้องการวิธีทบทวนที่ทำได้จริงโดยไม่แกล้งคิดว่าทุกอย่างสำคัญเท่ากัน"
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "การเรียนรู้สำหรับทุกคน"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "คู่มือการเรียนรู้และวงจรฝึกฝน"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "จบด้วยแบบจำลองความเข้าใจภาษาง่ายๆ คำถามที่คมขึ้น ตัวอย่างที่คุณอธิบายกลับได้ และบัตรดึงความจำสำหรับทบทวน"
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "ให้ฉันสัมภาษณ์บุคคลทางประวัติศาสตร์คนนี้ รักษาคำตอบให้ใส่ใจหลักฐานและระบุความไม่แน่นอนให้ชัด"
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "ทำบัตรคำจากข้อผิดพลาด แล้วกลับมาทบทวนภายหลัง"
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "ทำบัตรคำจากข้อผิดพลาด ความลังเล สูตร นิยาม และแนวคิดที่คุณยังอธิบายให้ชัดไม่ได้"
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "ทำให้จำติดตัว"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "ทำให้แนวคิดจำได้จริง"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "ทำให้แผนการเรียนเป็นจริงได้"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "คณิตศาสตร์"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "โค้ชคณิตทีละขั้น"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "คณิตศาสตร์ การเขียน การเขียนโค้ด ประวัติศาสตร์ การบ้าน และการเตรียมสอบต้องการความช่วยเหลือต่างกัน เริ่มจากวิชา แล้วไปยังโหมด พรอมป์ คู่มือ หรือวงจรทบทวนที่เหมาะ"
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "ภารกิจมาก่อน"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "คู่มือโหมด วงจรพรอมป์ วิธีเรียน และบทความหลักสำหรับช่วงเวลาการเรียนรู้ที่พบบ่อย"
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "ต่อยอดจากคำอธิบายภาษาง่ายๆ ไปสู่คำถาม ตัวอย่าง และการฝึกความจำ"
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "ต่อยอดไปสู่คำถามแบบโสเครติส ควิซ บัตรคำ การโต้วาที บทบาทสมมติ และการสอนแบบมีแนวทาง"
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "ปิดเสียงวิดีโอ"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "สอบของฉันอยู่วันที่นี้ นี่คือหลักสูตร จุดอ่อน และเวลาที่มี ช่วยทำแผนจริงจังพร้อมฝึกจำทุกวัน"
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "ตัวเลือกที่สอดคล้องกับ NCERT"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "ขั้นตอนถัดไป"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "ไม่ใช่ ให้ถือบทสนทนาที่สร้างขึ้นเป็นการจำลองเพื่อการเรียนรู้ ควรอ้างอิงแหล่งข้อมูลปฐมภูมิหรือทุติยภูมิจริงสำหรับข้อกล่าวอ้างเชิงข้อเท็จจริง"
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "ไม่ใช่กล่องคำตอบอีกใบ แต่เป็นที่สำหรับเรียนรู้"
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "เปิดโหมดแล้วเริ่มได้ทันที โดยไม่ต้องมีบัญชีสำหรับประสบการณ์ผู้ใช้ทั่วไปแบบสาธารณะ"
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "ออกแบบมาให้เปิด"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "เปิดวิดีโอแบบเต็มหน้าจอ"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "เปิดแชตผู้ใช้ทั่วไป"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "เปิด ศูนย์วิชา"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "เปิดความช่วยเหลือแบบที่คุณต้องการพอดี"
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "เปิดแผนที่การเรียนรู้"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} คู่มือใช้งานจริง"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "เปิดเส้นทาง"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "หน้าเว็บถูกออกแบบให้พาคนจากคำอธิบายไปสู่โหมดใช้งานจริง พรอมป์ ควิซ หรือวงจรทบทวน"
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "ถามได้ทุกคำถาม แล้วเรียนรู้ผ่านคำอธิบายชัดเจน ตัวอย่าง พรอมป์ต่อเนื่อง และการติวด้วยเอไอที่ใจเย็น"
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "เว็บไซต์คือเส้นทาง ไม่ใช่โบรชัวร์"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir รองรับโรงเรียนไหม"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir จัดวางรอบโหมดการเรียนรู้ที่มีรูปแบบการสอนเฉพาะ: คำใบ้ คำถามแบบโสเครติส ควิซ การทบทวนแบบดึงความจำ บทบาทสมมติ โต้วาที ข้อเสนอแนะงานเขียน และการวางแผนการเรียน"
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "ใช้โหมดผู้ใช้ทั่วไปแบบสาธารณะได้ฟรี แล้วสำรวจงานโอเพนซอร์สและเส้นทางการใช้งานในโรงเรียน"
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "คำอธิบาย การติวแบบโสเครติส โค้ชการบ้าน ควิซ บัตรคำ การเขียน โค้ด โต้วาที และการวางแผนการเรียน"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "ตัววางแผนเตรียมสอบ"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "แก้จุดติดในการบ้านด้วยคำใบ้ที่มีจริยธรรม ตัวอย่าง การตรวจ และโค้ชทีละขั้น"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "ตัววางแผนเตรียมสอบด้วยเอไอ"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "แผนเตรียมสอบด้วยเอไอพร้อมควิซและการดึงความจำ"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "การโต้วาทีช่วยแยกข้อกล่าวอ้าง หลักฐาน คุณค่า และสมมติฐาน ทำให้การตีความทางประวัติศาสตร์แม่นยำขึ้น"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "เริ่มด้วยสถานที่ เวลา ตัวตน เงื่อนไขจำกัด และป้ายกำกับหลักฐาน เพื่อไม่ให้ฉากกลายเป็นบทบาทสมมติทั่วไป"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "ควรใส่อะไรในพรอมป์การบ้าน"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "ยินดีรับการมีส่วนร่วมจากวิศวกร นักการศึกษา นักออกแบบ นักเรียน และทุกคนที่อยากให้การเรียนรู้ด้วยเอไอปลอดภัยขึ้น ชัดเจนขึ้น เข้าถึงง่ายขึ้น และมีประโยชน์ขึ้น"
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "เส้นทางการเรียนรู้ด้วยเอไอที่ใช้งานได้จริง ช่วยพาจากความสับสนไปสู่คำอธิบายที่ชัดเจน คำถามแบบโสเครติส ตัวอย่าง และการฝึกดึงความจำ"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "ติวเตอร์การเขียนเอไอ"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir เริ่มจากควิซและชุมชนนักเรียน เติบโตผ่านโรงเรียนและกิจกรรมต่างๆ และตอนนี้ใช้เอไอเพื่อทำให้การเรียนแบบตัวต่อตัวเข้าถึงง่ายขึ้น"
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "ภาพยนตร์การเรียนรู้ของ inspir"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "แสดงตอนของวิดีโอ"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "เปลี่ยนคำถามที่พลาดเหล่านี้เป็นบัตรคำที่จัดกลุ่มตามแนวคิด สูตร นิยาม และตัวอย่าง"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "รู้ว่าควรลองอะไรต่อ ทำไมขั้นตอนหนึ่งจึงใช้ได้ ข้อผิดพลาดเกิดตรงไหน และจะแก้คำตอบสุดท้ายด้วยเสียงของตัวเองอย่างไร"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "ข้อเสนอแนะงานเขียนด้วยเอไอสำหรับนักเรียน"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "การเรียนรู้สำหรับทุกคน"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "ติวเตอร์โค้ดเอไอ"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "ทำควิซจุดอ่อน"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "เรียนกับติวเตอร์เอไอฟรีสำหรับคำอธิบาย คำถามแบบโสเครติส โค้ชการบ้าน ควิซ บัตรคำ โต้วาที ข้อเสนอแนะงานเขียน ช่วยเขียนโค้ด และวางแผนการเรียน"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "ใช้การโต้วาทีเพื่อเปรียบเทียบข้อกล่าวอ้างที่แข็งแรงที่สุดกับข้อโต้แย้งกลับที่แข็งแรงที่สุด"
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "อย่าหยุดหลังคำอธิบายแรก ให้บังคับตัวเองตอบคำถามเกี่ยวกับเรื่องนั้น"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "วิธีการทำงาน"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "ติวเตอร์โค้ด"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "เตรียมสอบ"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "หน้าค้นหา คู่มือบล็อก พรอมป์ และโหมดใช้งานจริงเชื่อมกันด้วยวงจรง่ายๆ: ถาม ลอง ตรวจ แก้ และทบทวน"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "การเขียนโค้ด"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "มีประโยชน์ตั้งแต่คลิกแรก"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "สร้างควิซปรนัยแบบเจาะจงในวิชาใดก็ได้ แล้วทบทวนคำอธิบายหลังตอบแต่ละข้อ"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "อย่ายอมรับย่อหน้าที่แก้แล้วจนกว่าคุณจะอธิบายได้ว่าทำไมฉบับแก้จึงดีกว่า"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "สอบของฉันอยู่วันที่นี้ นี่คือหลักสูตร จุดอ่อน และเวลาที่มี ช่วยทำแผนจริงจังพร้อมฝึกจำทุกวัน"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "เรียนรู้อะไรก็ได้กับติวเตอร์เอไอฟรี: คู่มือใช้งานจริง"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "ให้ฉันสัมภาษณ์บุคคลทางประวัติศาสตร์คนนี้ รักษาคำตอบให้ใส่ใจหลักฐานและระบุความไม่แน่นอนให้ชัด"
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "สร้างจากพฤติกรรมผู้เรียนจริง ไม่ใช่กล่องแชตทั่วไป"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "แก้จุดติดในการบ้าน"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "บล็อกจัดตามช่วงเวลาการเรียนจริง: แก้จุดติด จำให้ได้มากขึ้น เขียนให้ดีขึ้น เตรียมสอบ และสำรวจแนวคิดกับติวเตอร์ที่ใจเย็น"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "ทำไมต้องผสานประวัติศาสตร์กับการโต้วาที"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "บล็อกเชื่อมคำแนะนำการเรียนที่มีประโยชน์กับการฝึกทันที เพื่อให้คู่มือกลายเป็นเซสชันการเรียนได้ในขั้นตอนเดียว"
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "วางคำถามและสิ่งที่คุณลองทำแล้ว จากนั้นขอขั้นตอนถัดไปที่มีประโยชน์น้อยที่สุด"
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "หยุดวิดีโอชั่วคราว"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "ผู้เรียนที่ติดตั้งแต่เริ่มวิชาใหม่ หรือต้องการทางเข้าที่ง่ายขึ้นสู่แนวคิดยาก"
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "พาฉันไปอยู่ในเวลาและสถานที่นี้ แยกป้ายกำกับข้อเท็จจริงที่มีเอกสารยืนยันออกจากการจำลองที่เป็นไปได้ และถามว่าฉันสังเกตเห็นอะไร"
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "การเข้าถึง พรอมป์ การทดสอบ พฤติกรรมเอไอที่ปลอดภัยขึ้น เส้นทางผู้เรียน และการขัดเกลาส่วนติดต่อผู้ใช้"
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "คำอธิบายภาษาง่าย"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "เขียนให้ชัดว่าคุณติดตรงไหนก่อนขอความช่วยเหลือ"
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "วางแผนทบทวนสอบ สร้างควิซ ทำบัตรคำ จัดตารางทบทวนแบบเว้นระยะ และรักษาแรงจูงใจให้สมจริงด้วยโหมดการเรียนรู้เอไอที่เจาะจง"
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "เปลี่ยนข้อที่พลาดเป็นการทบทวน"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "วางแผนงาน ฝึกดึงความจำ และปิดจุดอ่อนด้วยควิซและการทบทวนแบบดึงความจำ"
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "สำรวจประวัติศาสตร์และแนวคิด"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "การวางแผน"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "สำรวจประวัติศาสตร์และแนวคิดใหญ่ด้วยเอไอ"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "เล่นวิดีโอ"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "ทำให้แนวคิดจำได้จริง"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "เล่นตัวอย่างการเรียนรู้ของ inspir"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "เปิด ศูนย์วิชา"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "เส้นทางการเรียนรู้ด้วยเอไอยอดนิยม"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "การเขียน"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "เส้นทางยอดนิยม"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "ดำเนินการต่อ"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "การฝึกฝน"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "พื้นฐาน"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "ฝึกฝน ไม่ใช่ลอกคำตอบ"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "กำหนดทบทวนครั้งถัดไป"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "โค้ชคณิตศาสตร์เอไอทีละขั้น"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "ป้อนบริบท"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "ถามคำถามที่อยากรู้จริงๆ"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "เตรียมตัวสอบ"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "ไอเดียพรอมป์และวงจรการเรียนที่ทำซ้ำได้เพื่อให้ได้ผลการเรียนรู้ที่มีประโยชน์จาก เรียนรู้อะไรก็ได้ บน inspir"
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "สำรวจประวัติศาสตร์ บุคคลสาธารณะ เหตุปัจจัย การโต้วาที ปรัชญา และการวิพากษ์แหล่งข้อมูลด้วยโหมดการเรียนรู้เอไอที่แยกหลักฐานออกจากการจำลอง"
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "ตั้งคำถามกับบุคคล"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "ฝึกโต้วาทีด้วยเอไอ"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "ตั้งคำถามกับมุมมองทางประวัติศาสตร์"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "คำถามทำให้คุณเผยแบบจำลองความเข้าใจของตัวเองต่อหัวข้อนั้น ซึ่งเป็นจุดที่ความสับสน ความมั่นใจเกินจริง และพื้นฐานที่ขาดไปมักปรากฏ"
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "คำตอบด่วน"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "ถามควิซหัวข้อเหล่านี้ทีละคำถาม หลังคำตอบแต่ละข้อ ให้อธิบายช่องว่างและค่อยๆ เพิ่มความยาก"
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "ถามควิซความรู้รอบตัว"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "ทำควิซจุดอ่อน"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "ทำควิซทดสอบตัวเอง"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "ทดสอบตัวเองก่อน เพื่อดูว่าจำอะไรได้จริงและความมั่นใจหลอกตรงไหน"
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "ควิซมักเผยให้เห็นมากกว่า เพราะมันทดสอบการดึงความจำ การอ่านซ้ำช่วยได้หลังควิซชี้ให้เห็นว่าส่วนไหนต้องซ่อม"
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "อ่านภารกิจ"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "ตารางที่ทำได้จริง"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "แก้ข้อพลาดหนึ่งข้อ"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "แก้จุดอ่อน"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "เล่นซ้ำ"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "เริ่มวิดีโอใหม่"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "การฝึกดึงความจำ"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "ทบทวนด้วยบัตรคำ"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "ช่วยปรับร่างของฉัน"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "ปรับแก้โดยไม่เสียเสียงของตัวเอง"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "บันทึกข้อผิดพลาด"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "กำหนดทบทวนครั้งถัดไป"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "กระบวนการทำงานเฉพาะโรงเรียน"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "โรงเรียนสามารถให้ประสบการณ์แชตเอไอติดแบรนด์ของตนเองที่ปรับให้เข้ากับผู้เรียนได้ รวมถึงเนื้อหาและกระบวนการทำงานที่สอดคล้องกับ NCERT โดยมีโรงเรียนพันธมิตรหรือการสนับสนุน CSR เป็นผู้สนับสนุนค่าใช้งาน"
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "หน้าค้นหา คู่มือบล็อก พรอมป์ และโหมดใช้งานจริงเชื่อมกันด้วยวงจรง่ายๆ: ถาม ลอง ตรวจ แก้ และทบทวน"
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "แยกข้อเท็จจริงออกจากสิ่งแต่งขึ้น"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "แสดงตอนของวิดีโอ"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "แสดงถอดเสียงวิดีโอ"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "การตรวจแบบโสเครติส"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "การสอนแบบโสเครตีส"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "ติวเตอร์แบบโสเครติส"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "การติวแบบโสเครติสใช้คำถาม สมมติฐาน คำใบ้ และการสะท้อนคิด เพื่อสร้างความเข้าใจที่ลึกกว่าการอ่านคำตอบแบบรับอย่างเดียว"
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "เริ่มเซสชันการเรียนรู้แบบสด"
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "เริ่มทันทีที่รู้วันสอบ ถ้าเวลาน้อย ให้จัดลำดับความสำคัญที่จุดอ่อน คำถามแนวข้อสอบเก่า และการดึงความจำทุกวัน"
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "เริ่มด้วยการขอคำอธิบายง่ายๆ อุปมาในชีวิตประจำวันหนึ่งข้อ และแนวคิดสามอย่างที่ต้องรู้ก่อนหัวข้อนั้นจะเข้าใจได้"
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "เริ่มแต่ละรอบด้วยควิซสั้นๆ ก่อนอ่านซ้ำ"
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "เริ่มจากหลักการพื้นฐาน"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "เริ่มจากวิชา แล้วเปิดโหมดการเรียนรู้ที่เหมาะ"
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "เริ่มจากสิ่งที่คุณไม่เข้าใจ แล้วรับแบบจำลองภาษาง่ายๆ ตัวอย่าง และขั้นตอนถัดไป"
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "เริ่มเรียนรู้"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "เริ่มด้วยหัวข้อ งานที่ได้รับมอบหมาย ร่างงาน สอบ หรือแนวคิด ในโหมดที่เหมาะกับงานนั้น"
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "เริ่มด้วยเรียนรู้อะไรก็ได้"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "เริ่มด้วยสถานที่ เวลา ตัวตน เงื่อนไขจำกัด และป้ายกำกับหลักฐาน เพื่อไม่ให้ฉากกลายเป็นบทบาทสมมติทั่วไป"
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "เริ่มจากงานที่ต้องทำให้เสร็จ"
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "บอกจุดที่ติด"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "การตรวจขั้นตอน"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "ก้าวเข้าสู่บริบททางประวัติศาสตร์ เปรียบเทียบข้อโต้แย้ง และฝึกมองแนวคิดจากมากกว่าหนึ่งด้าน"
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "นักเรียนที่ต้องการขั้นตอนถัดไป การตรวจข้อผิดพลาด หรือข้อเสนอแนะ โดยไม่เสียความเป็นเจ้าของงานที่ได้รับมอบหมาย"
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "วงจรการเรียน คู่มือการติวด้วยเอไอ และพรอมป์ที่ใช้ได้จริง"
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "ศูนย์วิชาที่เชื่อมกับความต้องการของผู้เรียน"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "สรุปบริบท"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "รองรับการเรียนรู้นอกหลักสูตร การฝึกทางวิชาการ และความอยากรู้"
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "เปลี่ยนเป็นคำถาม เพื่อเผยสมมติฐานและเติมช่องว่าง แทนการอ่านคำตอบแบบรับอย่างเดียว"
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "คุยกับบุคคลทางประวัติศาสตร์ โดยแยกบทสนทนาที่สร้างขึ้นจากคำอ้างอิงที่มีหลักฐาน"
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "คุยกับบุคคลในประวัติศาสตร์"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "เอไอคุยกับบุคคลทางประวัติศาสตร์"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "ทดสอบก่อนทบทวน"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "ทดสอบข้อโต้แย้ง"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "ทดสอบเหตุผลของคุณ"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "บล็อกเชื่อมคำแนะนำการเรียนที่มีประโยชน์กับการฝึกทันที เพื่อให้คู่มือกลายเป็นเซสชันการเรียนได้ในขั้นตอนเดียว"
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "บล็อกจัดตามช่วงเวลาการเรียนจริง: แก้จุดติด จำให้ได้มากขึ้น เขียนให้ดีขึ้น เตรียมสอบ และสำรวจแนวคิดกับติวเตอร์ที่ใจเย็น"
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "แพลตฟอร์ม inspir แบบโอเพนซอร์สที่กว้างกว่า"
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "ช่วงปิดท้ายกลับมาที่ภารกิจ: การเข้าถึงสาธารณะ โรงเรียน และวิธีเรียนรู้ที่เปิดกว้างขึ้น"
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "การสร้าง inspirlearning.com ใหม่ในตอนนี้"
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "ภาพยนตร์เปลี่ยนจากแรงบันดาลใจไปสู่คำมั่นที่ใช้งานได้จริง: เพื่อนเรียนรู้เอไอที่ใจเย็น"
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "โหมดการบ้านและโหมดโสเครติสออกแบบรอบคำใบ้ การให้เหตุผล การตรวจขั้นตอน และคำอธิบายของผู้เรียน แทนการส่งคำตอบสำเร็จรูปให้เฉยๆ"
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "ช่วงกลางวางกรอบ inspir รอบความเข้าใจ คำใบ้ ควิซ และวงจรการเรียนรู้แบบลงมือทำ"
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "แพลตฟอร์มเรียนรู้ด้วยเอไอรุ่นใหม่"
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "เฟรมเปิดเรื่องวางการเรียนรู้เป็นสิ่งที่ทุกคนควรเริ่มได้ทันที"
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "บทสนทนาทางประวัติศาสตร์"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "เว็บไซต์สาธารณะถูกจัดโครงสร้างเหมือนแผนที่การเรียนรู้: โหมดใช้งานจริงสำหรับความช่วยเหลือทันที ศูนย์วิชาสำหรับคำถามของผู้เรียน และคู่มือที่เปลี่ยนการอ่านเป็นการลงมือทำ"
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "เว็บไซต์คือเส้นทาง ไม่ใช่โบรชัวร์"
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "เขียนคำอธิบายสามประโยคโดยไม่ดู แล้วขอให้โหมดโสเครติสหาจุดเชื่อมที่อ่อน"
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "คิดให้ลึกขึ้น"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "โต้วาทีข้อกล่าวอ้าง"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "การเดินทางข้ามเวลา"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "ดูทุกโหมด"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "กลุ่มหัวข้อ"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "จากบล็อก"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "ถอดเสียง"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "ขอคำใบ้ ไม่ใช่คำตอบ"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "เดินทางผ่านยุคสมัย"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "ตั้งคำถามกับมุมมองทางประวัติศาสตร์"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "ลองใช้โค้ชการบ้าน"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "เปิดใช้ได้สาธารณะ ขณะเดียวกันโรงเรียนใช้เวอร์ชันปรับแต่งแบบเป็นความลับได้"
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "เปลี่ยนเป็นบัตรคำ"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "เปลี่ยนข้อที่พลาดเป็นวงจรทบทวน"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "เปลี่ยนโน้ตหรือหัวข้อเป็นบัตรคำแบบเจาะจง พร้อมคำใบ้ คำตอบ ตัวอย่าง และกับดักที่พบบ่อย"
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "เปลี่ยนข้อผิดพลาดที่แก้แล้วเป็นบัตรคำหรือเช็กลิสต์สั้นๆ สำหรับภายหลัง"
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "เปลี่ยนคำอธิบายเป็นบัตรทบทวนแบบดึงความจำ โดยมีบัตรแนวคิดหนึ่งใบ บัตรตัวอย่างหนึ่งใบ และบัตรความเข้าใจผิดหนึ่งใบ"
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "เปลี่ยนคำถามที่พลาดยากที่สุดเป็นบัตรคำ แล้วทบทวนภายหลัง"
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "เปลี่ยนคำถามที่พลาดเหล่านี้เป็นบัตรคำที่จัดกลุ่มตามแนวคิด สูตร นิยาม และตัวอย่าง"
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "เปลี่ยนหลักสูตร วันสอบ เวลา และจุดอ่อนให้เป็นแผนการเรียนที่ทำได้จริง"
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "ต่อยอดไปสู่คำถามแบบโสเครติส ควิซ บัตรคำ การโต้วาที บทบาทสมมติ และการสอนแบบมีแนวทาง"
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "เข้าใจหัวข้อยาก"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "เข้าใจบริบททางประวัติศาสตร์ ตั้งคำถามกับมุมมอง เปรียบเทียบข้อกล่าวอ้าง และแยกการจำลองออกจากข้อเท็จจริงที่มีเอกสารยืนยัน"
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "ปรับแก้โดยไม่เสียเสียงของตัวเอง"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "บอกจุดที่ติด"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "วิธีเรียนกับเอไอโดยไม่โกงตัวเอง"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "ขอให้สรุปหัวข้อด้วยภาษาง่ายๆ แล้วขออุปมาหนึ่งข้อ ตัวอย่างหนึ่งข้อ และความเข้าใจผิดที่พบบ่อยหนึ่งข้อ"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "การเรียนรู้แบบเดินทางข้ามเวลาด้วยเอไอ"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "การฝึกฝน"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "อย่าอ่านโน้ตซ้ำก่อนทดสอบว่าคุณจำอะไรได้แล้ว"
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "เปลี่ยนหลักสูตร วันสอบ เวลา และจุดอ่อนให้เป็นแผนการเรียนที่ทำได้จริง"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "หน้าเว็บถูกออกแบบให้พาคนจากคำอธิบายไปสู่โหมดใช้งานจริง พรอมป์ ควิซ หรือวงจรทบทวน"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "ความช่วยเหลือการบ้านด้วยเอไอโดยไม่โกง"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "คณิตศาสตร์"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "ติวเตอร์สำหรับคำถามแรก"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "รองรับการเรียนรู้นอกหลักสูตร การฝึกทางวิชาการ และความอยากรู้"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "บัตรคำเอไอและการทบทวนแบบดึงความจำ: จำให้ได้มากขึ้น"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "ทำให้จำติดตัว"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "ต่อยอดจากคำอธิบายภาษาง่ายๆ ไปสู่คำถาม ตัวอย่าง และการฝึกความจำ"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "ความช่วยเหลือที่ให้คำใบ้ก่อน"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "นี่คือคำถามและสิ่งที่ฉันลองทำแล้ว ขอคำใบ้ที่มีประโยชน์น้อยที่สุด ไม่ใช่คำตอบสุดท้าย"
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "ควิซมักเผยให้เห็นมากกว่า เพราะมันทดสอบการดึงความจำ การอ่านซ้ำช่วยได้หลังควิซชี้ให้เห็นว่าส่วนไหนต้องซ่อม"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "ตอบคำถามตรวจความเข้าใจ ลองทำหนึ่งขั้นตอน โต้วาทีข้อกล่าวอ้าง ปรับร่างงานเขียน หรือสร้างบัตรทบทวนความจำ"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "วิธีเข้าใจหัวข้อยากด้วยเอไอ"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "เข้าใจโค้ด แก้ข้อผิดพลาด เรียนรู้แนวคิดการเขียนโปรแกรม และสร้างโปรเจกต์เล็กๆ ทีละขั้น"
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "เปิดเสียงวิดีโอ"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "การฝึกแบบลงมือทำ"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "ใช้เอไอเป็นโค้ชเพื่อทำความเข้าใจ ฝึกฝน และรับข้อเสนอแนะ แทนทางลัดที่ค่อยๆ ดึงการเรียนรู้ออกไป"
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "การดื่มด่ำ"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "ใช้โค้ชการบ้านเอไอสำหรับคำใบ้ การตรวจขั้นตอน เหตุผลทางคณิตศาสตร์ และข้อเสนอแนะงานเขียน โดยให้งานสุดท้ายยังเป็นของคุณ"
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "การช่วยเหลือที่ให้ผู้เรียนมาก่อน"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "ใช้การเดินทางข้ามเวลาด้วยเอไอ บทสนทนาทางประวัติศาสตร์ และการฝึกโต้วาที เพื่อสำรวจบริบท หลักฐาน ข้อโต้แย้ง และมุมมอง"
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "บัตรคำได้ผลดีที่สุดเมื่อทดสอบทีละแนวคิด เปิดคำตอบหลังจากพยายามแล้วเท่านั้น และทบทวนบัตรที่ตอบพลาดให้เร็วขึ้น"
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "ทุกหน้าที่ไม่ใช่แอปมีหน้าที่ชัดเจนแล้ว: สร้างความไว้วางใจ อธิบายเส้นทางการเรียนรู้ และพาผู้เรียนไปสู่การลงมือทำถัดไปที่มีประโยชน์ โดยไม่ซ่อนรายละเอียดสำคัญ"
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "ใช้การโต้วาทีเพื่อเปรียบเทียบข้อกล่าวอ้างที่แข็งแรงที่สุดกับข้อโต้แย้งกลับที่แข็งแรงที่สุด"
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "เปลี่ยนข้อผิดพลาดที่แก้แล้วเป็นบัตรคำหรือเช็กลิสต์สั้นๆ สำหรับภายหลัง"
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "ใช้คำใบ้ การตรวจขั้นตอน และข้อเสนอแนะงานเขียน โดยไม่เปลี่ยนการเรียนรู้เป็นการลอกคำตอบ"
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "พื้นที่เรียนรู้เอไอที่ปรับแต่งได้พร้อมการรักษาความลับของข้อมูล"
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "ใช้ inspir สำหรับข้อเสนอแนะเรียงความ การช่วยอ่าน การฝึกพูด การวิพากษ์แหล่งข้อมูล และวงจรปรับแก้ที่พัฒนาโครงสร้างโดยไม่แทนที่เสียงของผู้เรียน"
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "ช่วยปรับร่างของฉัน"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "ใช้ inspir สำหรับคำใบ้การบ้าน การตรวจขั้นตอนคณิตศาสตร์ ข้อเสนอแนะงานเขียน การวิพากษ์แหล่งข้อมูล คำถามแบบโสเครติส และบัตรคำ โดยไม่เปิดเผยแชตส่วนตัว"
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "เปลี่ยนคำอธิบายเป็นบัตรทบทวนแบบดึงความจำ โดยมีบัตรแนวคิดหนึ่งใบ บัตรตัวอย่างหนึ่งใบ และบัตรความเข้าใจผิดหนึ่งใบ"
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "ใช้ inspir สำหรับความช่วยเหลือคณิตศาสตร์ทีละขั้น คำใบ้การบ้าน เหตุผลแบบโสเครติส ควิซ บัตรคำ และการเตรียมสอบโดยไม่ลอกคำตอบ"
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "ติวเตอร์เอไอตามวิชา"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "ใช้โหมดผู้ใช้ทั่วไปแบบสาธารณะได้ฟรี แล้วสำรวจงานโอเพนซอร์สและเส้นทางการใช้งานในโรงเรียน"
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "ภารกิจมาก่อน"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "โต้วาทีข้อกล่าวอ้างทางประวัติศาสตร์หรือปรัชญานี้จากทั้งสองฝ่าย แยกหลักฐาน สมมติฐาน และคุณค่าออกจากกัน"
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "ใช้คำถามแบบโสเครติส"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "ใช้วันสอบ หลักสูตร เวลาที่มี และจุดอ่อน เพื่อสร้างแผนที่อยู่รอดในชีวิตจริงได้"
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "ใช้คู่มือ พรอมป์ ศูนย์วิชา หรือเส้นทางการเรียนรู้ที่ลิงก์ไว้ เพื่อทบทวนจุดอ่อนภายหลัง"
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "ใช้ข้อเสนอแนะงานเขียนเรื่องโครงสร้าง ความชัดเจน และหลักฐาน โดยให้ร่างสุดท้ายยังดูเป็นงานของคุณ"
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "มีประโยชน์ตั้งแต่คลิกแรก"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "ตัวควบคุมวิดีโอ"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "ความคืบหน้าวิดีโอ"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "ข้อเสนอแนะที่รักษาเสียงของผู้เขียน"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "ดู 31 วินาที"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "วงจรทบทวนจุดอ่อน"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "เพื่อนเรียนรู้เอไอควรทำอะไรเพื่อทุกคน"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "สิ่งที่ผู้เรียนมักถามก่อนเริ่ม"
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "ควรถามอะไรก่อนเมื่อหัวข้อรู้สึกยากเกินไป"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "ควรใส่อะไรในพรอมป์การบ้าน"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "คุณทำอะไรได้บ้าง"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "เอไอสำหรับโรงเรียนแบบติดแบรนด์"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "ทำไมติวเตอร์เอไอแบบโสเครติสจึงช่วยให้จำแนวคิดได้"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "ทำไมต้องผสานประวัติศาสตร์กับการโต้วาที"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "ทำไมต้องใช้คำถามแบบโสเครติสหลังคำอธิบาย"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "ค่อยๆ ทำพีชคณิต แคลคูลัส โจทย์ปัญหา และแนวคิดคณิตศาสตร์ทีละขั้นกับโค้ชเอไอ"
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir มีอยู่เพื่อช่วงเวลาที่ผู้เรียนอยากเข้าใจบางสิ่งและต้องการจุดเริ่มต้นที่ใจเย็น ภาพยนตร์นี้แนะนำผลิตภัณฑ์ในฐานะเพื่อนเรียนรู้สาธารณะฟรีสำหรับความอยากรู้ การฝึกฝน และการเข้าถึง"
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "ทำขั้นตอนคณิตศาสตร์ทีละขั้น"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "เขียนคำอธิบายสามประโยคโดยไม่ดู แล้วขอให้โหมดโสเครติสหาจุดเชื่อมที่อ่อน"
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "เขียนให้ชัดว่าคุณติดตรงไหนก่อนขอความช่วยเหลือ"
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "การเขียน"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "โค้ชการเขียน"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "ได้ เมื่อมันให้คำใบ้ ตรวจเหตุผล อธิบายข้อผิดพลาด และขอให้คุณสร้างคำตอบสุดท้ายเอง แทนที่จะเขียนให้คุณ"
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "เริ่มแต่ละรอบด้วยควิซสั้นๆ ก่อนอ่านซ้ำ"
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "ได้ แชตหัวข้อสาธารณะ เช่น เรียนรู้อะไรก็ได้ การสอนแบบโสเครติส โค้ชการบ้าน ควิซ และบัตรคำ เปิดได้โดยตรงในโหมดผู้ใช้ทั่วไป"
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "ได้ โรงเรียนใช้ผลิตภัณฑ์สาธารณะก่อน แล้วคุยเรื่องพื้นที่เรียนรู้เอไอแบบปรับแต่งได้ พร้อมกระบวนการเฉพาะโรงเรียน การรักษาความลับ และตัวเลือกการเข้าถึงที่มีผู้สนับสนุนค่าใช้จ่ายได้"
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "สร้างพาสปอร์ตข้ามเวลา อ่านคำแนะนำการเดินทางให้ชัด แล้วสำรวจโลกประวัติศาสตร์ผ่านฉาก แผนที่ ไทม์ไลน์ ผู้คน กฎ สิ่งของติดตัว และหลักฐาน"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "เดินทางผ่านยุคสมัย"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "ข้อเสนอแนะที่รักษาเสียงของผู้เขียน"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "การติวแบบโสเครติสใช้คำถาม สมมติฐาน คำใบ้ และการสะท้อนคิด เพื่อสร้างความเข้าใจที่ลึกกว่าการอ่านคำตอบแบบรับอย่างเดียว"
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "ให้ข้อเสนอแนะเรื่องโครงสร้าง ความชัดเจน และหลักฐาน รักษาน้ำเสียงของฉันไว้ และอย่าเขียนคำตอบใหม่ทั้งหมด"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "ทดสอบเหตุผลของคุณ"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "สำหรับคณิตศาสตร์หรือตรรกะ ให้ทำทีละขั้นตอนและถามว่าทำไมแต่ละวิธีจึงใช้ได้ก่อนค่อยไปต่อ"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "ตรวจเหตุผลทีละบรรทัด"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "อ้างบทสนทนาประวัติศาสตร์จากเอไอเป็นแหล่งข้อมูลได้ไหม"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "การเดินทางข้ามเวลา"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "ไม่ใช่ ให้ถือบทสนทนาที่สร้างขึ้นเป็นการจำลองเพื่อการเรียนรู้ ควรอ้างอิงแหล่งข้อมูลปฐมภูมิหรือทุติยภูมิจริงสำหรับข้อกล่าวอ้างเชิงข้อเท็จจริง"
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "เริ่มจากงานที่ต้องทำให้เสร็จ"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "ใช้ inspir สำหรับความช่วยเหลือคณิตศาสตร์ทีละขั้น คำใบ้การบ้าน เหตุผลแบบโสเครติส ควิซ บัตรคำ และการเตรียมสอบโดยไม่ลอกคำตอบ"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "ขั้นตอนถัดไป"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "เปิดเสียงวิดีโอ"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "ถามควิซความรู้รอบตัว"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "ได้ เมื่อมันให้คำใบ้ ตรวจเหตุผล อธิบายข้อผิดพลาด และขอให้คุณสร้างคำตอบสุดท้ายเอง แทนที่จะเขียนให้คุณ"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "ใช้เอไอเป็นโค้ชเพื่อทำความเข้าใจ ฝึกฝน และรับข้อเสนอแนะ แทนทางลัดที่ค่อยๆ ดึงการเรียนรู้ออกไป"
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "ช่วงกลางวางกรอบ inspir รอบความเข้าใจ คำใบ้ ควิซ และวงจรการเรียนรู้แบบลงมือทำ"
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "ใช้คู่มือ พรอมป์ ศูนย์วิชา หรือเส้นทางการเรียนรู้ที่ลิงก์ไว้ เพื่อทบทวนจุดอ่อนภายหลัง"
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "เฟรมเปิดเรื่องวางการเรียนรู้เป็นสิ่งที่ทุกคนควรเริ่มได้ทันที"
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "เรียนรู้การเขียนโปรแกรม แก้ความเข้าใจเรื่องบั๊ก วางแผนโปรเจกต์ ตีความข้อมูล และค้นคว้าคำถามทางเทคนิคด้วยโหมดเอไอสาธารณะที่ยังให้ผู้เรียนมีส่วนร่วมตลอดทาง"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "ถอดเสียง"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "ซ่อนตอนของวิดีโอ"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "ถามคำถามแรกแล้วเริ่มฝึกทันที"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "ดูรายวิชา"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "ผู้เรียนที่อยากให้ประวัติศาสตร์และแนวคิดมีบริบท ถกเถียงได้ และมีชีวิตชีวา โดยไม่หลุดจากหลักฐาน"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "โรงเรียนสามารถให้ประสบการณ์แชตเอไอติดแบรนด์ของตนเองที่ปรับให้เข้ากับผู้เรียนได้ รวมถึงเนื้อหาและกระบวนการทำงานที่สอดคล้องกับ NCERT โดยมีโรงเรียนพันธมิตรหรือการสนับสนุน CSR เป็นผู้สนับสนุนค่าใช้งาน"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "โต้วาทีได้ทุกหัวข้อ"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "ตารางเรียนด้วยเอไอ"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "คู่มือแต่ละบทชี้ไปยังโหมด พรอมป์ หรือวงจรทบทวน เพื่อให้การอ่านกลายเป็นการฝึกได้"
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir ในความเคลื่อนไหว"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "วงจรการเรียน คู่มือการติวด้วยเอไอ และพรอมป์ที่ใช้ได้จริง"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "เปลี่ยนข้อที่พลาดเป็นวงจรทบทวน"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "แผนเตรียมสอบด้วยเอไอ"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "คู่มือใช้งานโหมดเรียนรู้อะไรก็ได้บน inspir เพื่อปูพื้นฐาน พร้อมพรอมป์ วงจรการเรียน และนิสัยใช้เอไออย่างปลอดภัยขึ้น"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "แก้ข้อพลาดหนึ่งข้อ"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "ทำบัตรคำจากข้อผิดพลาด ความลังเล สูตร นิยาม และแนวคิดที่คุณยังอธิบายให้ชัดไม่ได้"
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "การเรียนรู้ฟรีในโหมดผู้ใช้ทั่วไป"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "ใช้ inspir สำหรับคำใบ้การบ้าน การตรวจขั้นตอนคณิตศาสตร์ ข้อเสนอแนะงานเขียน การวิพากษ์แหล่งข้อมูล คำถามแบบโสเครติส และบัตรคำ โดยไม่เปิดเผยแชตส่วนตัว"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "ทดสอบตัวเองก่อน เพื่อดูว่าจำอะไรได้จริงและความมั่นใจหลอกตรงไหน"
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "แพลตฟอร์มเรียนรู้ด้วยเอไอรุ่นใหม่"
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "คุณลองใช้โหมดการเรียนรู้สาธารณะได้ฟรี แชตที่บันทึกไว้ บัญชี เครื่องมือผู้ดูแล และข้อมูลผู้ใช้ยังคงเป็นส่วนตัว"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "ทดสอบข้อโต้แย้ง"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "เปิดแผนที่การเรียนรู้"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "บัตรคำเอไอสำหรับทบทวน"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: คุณเรียนรู้อะไรก็ได้"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "เข้าใจบริบททางประวัติศาสตร์ ตั้งคำถามกับมุมมอง เปรียบเทียบข้อกล่าวอ้าง และแยกการจำลองออกจากข้อเท็จจริงที่มีเอกสารยืนยัน"
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "สร้างแผนสอบ"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "ใช้ inspir สำหรับข้อเสนอแนะเรียงความ การช่วยอ่าน การฝึกพูด การวิพากษ์แหล่งข้อมูล และวงจรปรับแก้ที่พัฒนาโครงสร้างโดยไม่แทนที่เสียงของผู้เรียน"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "ตารางที่ทำได้จริง"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "อย่าขอสรุปทั้งหมดก่อนจะรู้แนวคิดพื้นฐานที่ต้องมี"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "คุยกับบุคคลในประวัติศาสตร์"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "บันทึกข้อผิดพลาด"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "สร้างเวิร์กโฟลว์เตรียมสอบด้วยเอไอ พร้อมแผนการเรียนที่ทำได้จริง การฝึกดึงความจำ ควิซ บัตรคำ และการทบทวนจุดอ่อน"
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "ใส่คำถาม สิ่งที่ลองทำแล้ว จุดที่ติด และระบุว่าต้องการคำใบ้ การตรวจขั้นตอน หรือข้อเสนอแนะ"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "การฝึกดึงความจำ"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "เปิดโหมดแล้วเริ่มได้ทันที โดยไม่ต้องมีบัญชีสำหรับประสบการณ์ผู้ใช้ทั่วไปแบบสาธารณะ"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "เริ่มด้วยหัวข้อ งานที่ได้รับมอบหมาย ร่างงาน สอบ หรือแนวคิด ในโหมดที่เหมาะกับงานนั้น"
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "อย่าทำบัตรคำจากประโยคที่คุณยังอธิบายด้วยคำของตัวเองไม่ได้"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "เส้นทางยอดนิยม"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "วิธีเข้าใจหัวข้อยากด้วยเอไอ"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "ได้ โหมดการเรียนรู้ผู้ใช้ทั่วไปแบบสาธารณะออกแบบมาเพื่อให้เข้าถึงฟรี ผู้เรียนจึงเริ่มได้โดยไม่ต้องมีการใช้งานผ่านโรงเรียนหรือบัญชีแบบชำระเงิน"
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "คุณลองใช้โหมดการเรียนรู้สาธารณะได้ฟรี แชตที่บันทึกไว้ บัญชี เครื่องมือผู้ดูแล และข้อมูลผู้ใช้ยังคงเป็นส่วนตัว"
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "ฝึกฝน ไม่ใช่ลอกคำตอบ"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "โหมดการบ้านและโหมดโสเครติสออกแบบรอบคำใบ้ การให้เหตุผล การตรวจขั้นตอน และคำอธิบายของผู้เรียน แทนการส่งคำตอบสำเร็จรูปให้เฉยๆ"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "ตรวจแบบจำลองความเข้าใจของฉัน"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "ซ่อนถอดเสียงวิดีโอ"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "ตัวควบคุมวิดีโอ"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "ผู้เรียนที่มีเวลาจำกัด เนื้อหามาก และต้องการวิธีทบทวนที่ทำได้จริงโดยไม่แกล้งคิดว่าทุกอย่างสำคัญเท่ากัน"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "การเรียนรู้ด้วยเอไอฟรีสำหรับทุกคน | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "ใช้ inspir โดยไม่ลงชื่อเข้าใช้ได้ไหม"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "วางแผนงาน ฝึกดึงความจำ และปิดจุดอ่อนด้วยควิซและการทบทวนแบบดึงความจำ"
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "คำตอบด่วน"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "คุยกับบุคคลทางประวัติศาสตร์ โดยแยกบทสนทนาที่สร้างขึ้นจากคำอ้างอิงที่มีหลักฐาน"
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "คำอธิบายภาษาง่าย"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "สร้างแผน"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "หลังการจำลอง ให้สรุปฉาก เงื่อนไขจำกัด และหลักฐาน"
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "ได้ โรงเรียนใช้ผลิตภัณฑ์สาธารณะก่อน แล้วคุยเรื่องพื้นที่เรียนรู้เอไอแบบปรับแต่งได้ พร้อมกระบวนการเฉพาะโรงเรียน การรักษาความลับ และตัวเลือกการเข้าถึงที่มีผู้สนับสนุนค่าใช้จ่ายได้"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "คณิตศาสตร์ การเขียน การเขียนโค้ด ประวัติศาสตร์ การบ้าน และการเตรียมสอบต้องการความช่วยเหลือต่างกัน เริ่มจากวิชา แล้วไปยังโหมด พรอมป์ คู่มือ หรือวงจรทบทวนที่เหมาะ"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "เปรียบเทียบข้อโต้แย้ง"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "การทบทวนแบบดึงความจำ"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "ฝึกสร้างข้อโต้แย้ง"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "ตัวสร้างบัตรคำ"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "หยุดวิดีโอชั่วคราว"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "ขอคำอธิบายที่ง่ายขึ้นของแนวคิดที่อ่อนที่สุด"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "ทำให้เส้นทางยังเดินต่อได้"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "ปรับปรุงร่างเขียน"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "โต้วาทีได้ทุกหัวข้อ รับคำท้าทาย เปรียบเทียบข้อกล่าวอ้าง และเรียนรู้วิธีสร้างเหตุผลให้แข็งแรงขึ้น"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "ประวัติศาสตร์"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "ความช่วยเหลือการบ้านด้วยเอไอทำได้อย่างมีจริยธรรมไหม"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "ลองใช้โค้ชการบ้าน"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "เรียนรู้อะไรก็ได้: ไอเดียพรอมป์และวงจรการเรียน"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "คลังคู่มือ {value1} รายการที่ออกแบบให้การเรียนรู้กลายเป็นการลงมือทำ"
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "สำหรับโรงเรียนและพันธมิตร CSR"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "กระบวนการทำงานเฉพาะโรงเรียน"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "อย่าวางโจทย์งานแล้วขอคำตอบสำเร็จรูป"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "ติวเตอร์เอไอสำหรับแนวคิดยาก"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "ลงมือทำหลังอ่าน"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "คำถามทำให้คุณเผยแบบจำลองความเข้าใจของตัวเองต่อหัวข้อนั้น ซึ่งเป็นจุดที่ความสับสน ความมั่นใจเกินจริง และพื้นฐานที่ขาดไปมักปรากฏ"
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "ออกแบบมาให้เปิด"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir กำลังสร้างอย่างเปิดเผย"
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "ตั้งคำถาม ท้าทายแนวคิด และเรียนประวัติศาสตร์ผ่านบทสนทนาที่มีฐานหลักฐานกับบุคคลสาธารณะในอดีต"
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "ใช้คำใบ้ การตรวจขั้นตอน และข้อเสนอแนะงานเขียน โดยไม่เปลี่ยนการเรียนรู้เป็นการลอกคำตอบ"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "ทำไมติวเตอร์เอไอแบบโสเครติสจึงช่วยให้จำแนวคิดได้"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "เล่นวิดีโอ"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "ควรถามอะไรก่อนเมื่อหัวข้อรู้สึกยากเกินไป"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "โค้ชการบ้านเอไอ"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "ใช้วันสอบ หลักสูตร เวลาที่มี และจุดอ่อน เพื่อสร้างแผนที่อยู่รอดในชีวิตจริงได้"
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "ขอคำถามห้าข้อที่ผสมทั้งนิยาม ตัวอย่าง และโจทย์ประยุกต์"
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "เปลี่ยนเป็นคำถาม เพื่อเผยสมมติฐานและเติมช่องว่าง แทนการอ่านคำตอบแบบรับอย่างเดียว"
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "ใช้การเดินทางข้ามเวลาด้วยเอไอ บทสนทนาทางประวัติศาสตร์ และการฝึกโต้วาที เพื่อสำรวจบริบท หลักฐาน ข้อโต้แย้ง และมุมมอง"
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "รับตารางเรียน ทำควิซทดสอบจุดอ่อนของตัวเอง และเปลี่ยนข้อที่พลาดเป็นบัตรคำสำหรับทบทวนซ้ำ"
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "การสร้าง inspirlearning.com ใหม่ในตอนนี้"
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "เรียนรู้ผ่านคำถามที่เจาะจง คำใบ้ และการสะท้อนคิด แทนการอ่านคำตอบแบบรับอย่างเดียว"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "คู่มือโหมด วงจรพรอมป์ วิธีเรียน และบทความหลักสำหรับช่วงเวลาการเรียนรู้ที่พบบ่อย"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "เอไอคุยกับบุคคลทางประวัติศาสตร์"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "แต่ละโหมดเปิดเป็นแชตผู้ใช้ทั่วไปแบบสาธารณะ พร้อมเป้าหมาย ตัวอย่าง และลำดับการเรียนรู้ของตัวเอง เพื่อให้ผู้เรียนเริ่มรับการช่วยเหลือที่เหมาะสมได้ทันที"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir ต่างจากแชตบอตเอไอทั่วไปอย่างไร"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "สร้างมาเพื่อใช้งานจริง"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "ทดสอบก่อนทบทวน"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "อย่าถือบทสนทนาที่สร้างขึ้นว่าเป็นคำพูดจริงหรือแหล่งข้อมูลปฐมภูมิ"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "ทำควิซทดสอบตัวเอง"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "อย่าวางแผนโดยคิดว่าทุกหัวข้อต้องใช้เวลาเท่ากัน"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "เล่นตัวอย่างการเรียนรู้ของ inspir"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "เริ่มด้วยการขอคำอธิบายง่ายๆ อุปมาในชีวิตประจำวันหนึ่งข้อ และแนวคิดสามอย่างที่ต้องรู้ก่อนหัวข้อนั้นจะเข้าใจได้"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "เครื่องสร้างควิซเอไอสำหรับสอบ"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "เปลี่ยนคำอธิบายเป็นบัตรทบทวนแบบดึงความจำ แล้วกลับมาดูบัตรหลังจากทำผิดหรือลังเล"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "เริ่มวิดีโอใหม่"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "inspir ช่วยเรื่องการบ้านโดยไม่ส่งเสริมการโกงได้ไหม"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "ความคืบหน้าวิดีโอ"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "เข้าใจแบบจำลองง่ายๆ ก่อน"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "คลังคู่มือการเรียนรู้ด้วยเอไอของ inspir"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "เริ่มด้วยเรียนรู้อะไรก็ได้"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "เพื่อนเรียนรู้เอไอฟรีสำหรับทุกคน ทั้งการติว ฝึกทำ ควิซ บัตรคำ โต้วาที ข้อเสนอแนะงานเขียน ช่วยเขียนโค้ด และวางแผนการเรียน"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "เอไอสำหรับโรงเรียนแบบติดแบรนด์"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "เริ่มเซสชันการเรียนรู้แบบสด"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "ติวเตอร์คณิตศาสตร์เอไอ"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "โค้ชคณิตทีละขั้น"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "การสื่อสาร"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "เรียนรู้ผ่านการพูดคุย ทดสอบ โต้วาที และสำรวจ"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "คู่มือการเรียนรู้และวงจรฝึกฝน"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "โต้วาทีข้อกล่าวอ้างจากมากกว่าหนึ่งมุม เพื่อมองเห็นสมมติฐาน สิ่งที่ต้องแลก และหลักฐานที่อ่อน"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "ติวเตอร์ประวัติศาสตร์เอไอ"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "เส้นทางเรียนรู้ที่รวดเร็ว"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "เริ่มจากหลักการพื้นฐาน"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "ปิดเสียงวิดีโอ"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "ดู 31 วินาที"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "วางแผนทบทวนสอบ สร้างควิซ ทำบัตรคำ จัดตารางทบทวนแบบเว้นระยะ และรักษาแรงจูงใจให้สมจริงด้วยโหมดการเรียนรู้เอไอที่เจาะจง"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "เปิดความช่วยเหลือแบบที่คุณต้องการพอดี"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "เปลี่ยนโน้ตหรือหัวข้อเป็นบัตรคำแบบเจาะจง พร้อมคำใบ้ คำตอบ ตัวอย่าง และกับดักที่พบบ่อย"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "ติวเตอร์แบบโสเครติส"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "ติวเตอร์โสเครติสด้วยเอไอ"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "ไอเดียพรอมป์และวงจรการเรียนที่ทำซ้ำได้เพื่อให้ได้ผลการเรียนรู้ที่มีประโยชน์จาก เรียนรู้อะไรก็ได้ บน inspir"
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "สำรวจสำหรับโรงเรียน"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ค่อยๆ ทำพีชคณิต แคลคูลัส โจทย์ปัญหา และแนวคิดคณิตศาสตร์ทีละขั้นกับโค้ชเอไอ"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "สร้างมาเพื่อความอยากรู้ การฝึกฝน และการเข้าถึง"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "ถามควิซหัวข้อเหล่านี้ทีละคำถาม หลังคำตอบแต่ละข้อ ให้อธิบายช่องว่างและค่อยๆ เพิ่มความยาก"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "เส้นทางการเรียนรู้ด้วยเอไอยอดนิยม"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "ขอบเขตความเป็นส่วนตัวที่ชัดเจน"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "การตรวจแบบโสเครติส"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "แพลตฟอร์มการเรียนรู้เอไอสาธารณะฟรี"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "อ่านภารกิจ"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "การสอนแบบโสเครตีส"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "เล่นซ้ำ"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "เว็บไซต์การเรียนรู้สาธารณะที่ผู้คนเข้าใจได้เร็ว"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "สิ่งที่ผู้เรียนมักถามก่อนเริ่ม"
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "ฉากที่ใส่ใจหลักฐาน"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "สรุปบริบท"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "คู่มือ เส้นทาง วิชา และพรอมป์เชื่อมไปยังจุดฝึกที่มีประโยชน์ถัดไป"
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "อย่าโต้วาทีเฉพาะฝั่งที่คุณเห็นด้วยอยู่แล้ว"
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "แผนที่การเรียนรู้ที่ช่วยนำทาง"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "จบด้วยแบบจำลองความเข้าใจภาษาง่ายๆ คำถามที่คมขึ้น ตัวอย่างที่คุณอธิบายกลับได้ และบัตรดึงความจำสำหรับทบทวน"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "ผู้เรียนต้องการลำดับ ไม่ใช่กองลิงก์ เส้นทางเหล่านี้เชื่อมโหมดต่างๆ เป็นวงจรการเรียนที่ใช้งานได้จริงสำหรับการทำความเข้าใจ การบ้าน เตรียมสอบ และการสำรวจ"
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "เรียนรู้อะไรก็ได้"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "ตอนต่างๆ ของวิดีโอ"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "ขั้นตอนถัดไปที่ทำง่าย"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "ทำให้แผนการเรียนเป็นจริงได้"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "คลังคู่มือ"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "ทำไมต้องใช้คำถามแบบโสเครติสหลังคำอธิบาย"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "มุมมองใช้งานจริงว่าเอไอช่วยให้การเรียนชัดขึ้น เป็นส่วนตัวขึ้น และเข้าถึงง่ายขึ้นได้อย่างไร โดยไม่ทำให้นักเรียนกลายเป็นผู้รับคำตอบอย่างเดียว"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "ข้อโต้แย้ง"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "ใช้ข้อเสนอแนะงานเขียนเรื่องโครงสร้าง ความชัดเจน และหลักฐาน โดยให้ร่างสุดท้ายยังดูเป็นงานของคุณ"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "ตัวเลือกที่สอดคล้องกับ NCERT"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "ถามฉันด้วยคำถามแบบโสเครติสห้าข้อเกี่ยวกับหัวข้อนี้ หลังคำตอบแต่ละครั้ง บอกว่าฉันใช้สมมติฐานอะไรและควรทดสอบอะไรต่อ"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir ใช้งานฟรีไหม"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "ขอให้โหมดประวัติศาสตร์ติดป้ายกำกับว่าสิ่งใดมีเอกสารยืนยัน สิ่งใดเป็นข้ออนุมาน หรือสิ่งใดเป็นการจำลอง"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "สำรวจคลังคู่มือ"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "ทำบัตรคำจากข้อผิดพลาด แล้วกลับมาทบทวนภายหลัง"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "ความช่วยเหลือการบ้านด้วยเอไอโดยไม่ลอกคำตอบ"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "ขอคำใบ้ การตรวจคำตอบ ข้อเสนอแนะ และแผนการเรียนที่ยังให้ผู้เรียนเป็นคนคิดเอง"
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "แพลตฟอร์ม inspir แบบโอเพนซอร์สที่กว้างกว่า"
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "อย่าข้ามการบอกสิ่งที่คุณลองทำแล้ว เพราะความช่วยเหลือที่มีประโยชน์ต้องอาศัยบริบทนั้น"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "ตรวจขั้นตอนนี้ในวิธีทำของฉัน ถ้าผิด ให้อธิบายข้อผิดพลาดและบอกทางไปต่อหนึ่งอย่าง"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "พาฉันไปอยู่ในเวลาและสถานที่นี้ แยกป้ายกำกับข้อเท็จจริงที่มีเอกสารยืนยันออกจากการจำลองที่เป็นไปได้ และถามว่าฉันสังเกตเห็นอะไร"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "อธิบายกลับด้วยคำของตัวเอง"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "วงจรทบทวนจุดอ่อน"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "คู่มือแต่ละบทลงท้ายด้วยแผนฝึก เส้นทาง และลิงก์ไปยังโหมดการเรียนรู้ที่ตรงที่สุด"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "เพื่อนเรียนรู้เอไอควรทำอะไรเพื่อทุกคน"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "ติวเตอร์ประวัติศาสตร์เอไอ"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "ตั้งคำถามกับบุคคล"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "ตรวจหนึ่งขั้นตอน"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "โต้วาทีข้อกล่าวอ้าง"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "แก้จุดอ่อน"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "โค้ชการบ้าน"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "อธิบายขั้นตอนถัดไป"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "บัตรคำเอไอสำหรับการทบทวนแบบดึงความจำ"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "ภาพยนตร์สั้นที่แนะนำความเชื่อของ inspir ว่าการเรียนรู้ควรฟรี เข้าถึงได้ และมีชีวิตชีวา"
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "เริ่มจากสิ่งที่คุณไม่เข้าใจ แล้วรับแบบจำลองภาษาง่ายๆ ตัวอย่าง และขั้นตอนถัดไป"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "กลุ่มหัวข้อ"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "แสดงถอดเสียงวิดีโอ"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "การบ้าน"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "ใช้โค้ชการบ้านเอไอสำหรับคำใบ้ การตรวจขั้นตอน เหตุผลทางคณิตศาสตร์ และข้อเสนอแนะงานเขียน โดยให้งานสุดท้ายยังเป็นของคุณ"
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "คำอธิบายที่ชัดเจน"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "เปลี่ยนเป็นบัตรคำ"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "ควรวางแผนเตรียมสอบล่วงหน้านานแค่ไหน"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "ภาพยนตร์เปลี่ยนจากแรงบันดาลใจไปสู่คำมั่นที่ใช้งานได้จริง: เพื่อนเรียนรู้เอไอที่ใจเย็น"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "ร่วมสร้างไปกับเรา"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "การตรวจขั้นตอน"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "จุดเริ่มต้นที่ดี:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "แยกข้อเท็จจริงออกจากสิ่งแต่งขึ้น"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "ออกแบบมาเพื่อสร้างความมั่นใจ"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "เริ่มจากวิชา แล้วเปิดโหมดการเรียนรู้ที่เหมาะ"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "พัฒนางานเขียนด้วยการวางแผน การปรับแก้ โครงสร้าง และข้อเสนอแนะที่ยังรักษาน้ำเสียงของคุณไว้"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "ผู้ช่วยการบ้านเอไอ"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "ป้อนช่วงเวลา"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "นำไปลงมือทำ"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "ไม่ใช่กล่องคำตอบอีกใบ แต่เป็นที่สำหรับเรียนรู้"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "ความอยากรู้เริ่มที่นี่"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "เปิดแชตผู้ใช้ทั่วไป"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "ทบทวนด้วยบัตรคำ"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "อย่าให้บทบาทสมมติมาแทนวันที่ บริบท เอกสาร หรือป้ายกำกับหลักฐาน"
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "เริ่มทันทีที่รู้วันสอบ ถ้าเวลาน้อย ให้จัดลำดับความสำคัญที่จุดอ่อน คำถามแนวข้อสอบเก่า และการดึงความจำทุกวัน"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "หลังได้คำใบ้แต่ละครั้ง ให้อธิบายว่าขั้นตอนนั้นใช้ได้เพราะอะไรก่อนค่อยไปต่อ"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "ขอคำใบ้"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "ทุกบทความเชื่อมกับหมวดหมู่ โหมดที่ใช้งานได้ทันที ศูนย์วิชา เส้นทางการเรียนรู้ และคู่มือที่เกี่ยวข้อง"
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "คิดให้ลึกขึ้น"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "ความอยากรู้ การฝึกฝน และเอไอที่สอนเป็น"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "อธิบายหัวข้อนี้ด้วยภาษาง่ายๆ บอกแนวคิดพื้นฐานสามอย่างที่ฉันต้องรู้ อุปมาหนึ่งข้อ และความเข้าใจผิดที่พบบ่อยหนึ่งข้อ"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "การใช้งานแบบเป็นความลับ"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "เปิดวิดีโอแบบเต็มหน้าจอ"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "คุณทำอะไรได้บ้าง"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "เปลี่ยนคำถามที่พลาดยากที่สุดเป็นบัตรคำ แล้วทบทวนภายหลัง"
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "ถามได้ทุกเรื่อง"
     }
   ]
 }

@@ -1,6 +1,9 @@
 import { Check, Plus, Search } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { ProfileAvatarImage } from "@/components/chat/ProfileAvatarImage";
+import { GoogleContinueButton } from "@/components/marketing/SignInButton";
+import { topicWorkspacePath } from "@/lib/content/topic-path";
+import { localizeHref } from "@/lib/i18n/routing";
 import { topicMetadata, type Topic } from "@/components/chat/topic-model";
 
 type TopicSidebarProps = {
@@ -14,6 +17,7 @@ type TopicSidebarProps = {
   activeTopicId: string;
   addedTopicIds: string[];
   search: string;
+  t: (source: string) => string;
   onAddFeature: (topicId: string) => void;
   onOpenStore: () => void;
   onProfile: () => void;
@@ -32,6 +36,7 @@ export function TopicSidebar({
   activeTopicId,
   addedTopicIds,
   search,
+  t,
   onAddFeature,
   onOpenStore,
   onProfile,
@@ -52,9 +57,13 @@ export function TopicSidebar({
     <div className="inspir-sidebar-inner">
       <div className="inspir-sidebar-header">
         {isGuest ? (
-          <span className="inspir-guest-auth-button" aria-label={`${currentLanguage} guest mode`}>
-            <span>Preferred Language</span>
-          </span>
+          <GoogleContinueButton
+            className="inspir-guest-auth-button"
+            callbackUrl={localizeHref(activeTopic ? topicWorkspacePath(activeTopic.slug) : "/chat", currentLanguage)}
+            errorMessage={t("We could not sign you in. Please try again.")}
+          >
+            {t("Continue with Google")}
+          </GoogleContinueButton>
         ) : (
           <button type="button" onClick={onProfile} aria-label="Open profile" className="inspir-avatar-button">
             <ProfileAvatarImage
@@ -71,8 +80,8 @@ export function TopicSidebar({
         <button
           type="button"
           onClick={onOpenStore}
-          aria-label="Open learning store"
-          title="Open learning store"
+          aria-label={t("Open learning store")}
+          title={t("Open learning store")}
           className="inspir-sidebar-store-button"
         >
           <Plus size={20} />
@@ -81,10 +90,10 @@ export function TopicSidebar({
       <div className="inspir-search-row">
         <div className="inspir-search-shell">
           <input
-            aria-label="Search chats"
+            aria-label={t("Search chats")}
             value={search}
             onChange={(event) => onSearch(event.target.value)}
-            placeholder="Search"
+            placeholder={t("Search")}
             className="inspir-search-input"
           />
           {search ? <Search className="inspir-search-icon" size={16} /> : null}

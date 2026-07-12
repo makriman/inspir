@@ -4,517 +4,12 @@
   "locale": "ko",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} 실용 가이드"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "배움을 행동으로 바꾸도록 만든 {value1}개의 가이드 라이브러리입니다."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "튜터링, 연습, 퀴즈, 플래시카드, 토론, 글쓰기 피드백, 코딩 도움, 학습 계획을 위한 무료 공개 AI 학습 동반자입니다."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "혼란에서 명확한 설명, 소크라테스식 질문, 예시, 능동 회상으로 나아가게 해 주는 실용적인 AI 학습 경로입니다."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "inspir에서 기초 학습에 무엇이든 배우기를 활용하는 실용 가이드입니다. 프롬프트, 학습 루프, 더 안전한 AI 습관을 담았습니다."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "AI가 학생을 수동적인 답 수집가로 만들지 않으면서 학습을 더 명확하고 개인화되며 접근하기 쉽게 만드는 방법을 실용적으로 살펴봅니다."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "사람들이 빠르게 이해할 수 있는 공개 학습 사이트입니다."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "배움은 무료이고 접근 가능하며 살아 있어야 한다는 inspir의 믿음을 소개하는 짧은 영상입니다."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "첫 질문을 위한 튜터"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "접근성, 프롬프트, 테스트, 더 안전한 AI 동작, 학습자 흐름, UI 다듬기."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "읽은 뒤 실천"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "능동적인 연습"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "능동 회상 복습"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "각 힌트 뒤에는 계속하기 전에 그 단계가 왜 작동하는지 설명하세요."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "시뮬레이션이 끝난 뒤 배경, 제약, 증거를 요약하세요."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI 코드 튜터"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI 토론 연습"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI 시험 준비 계획"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "퀴즈와 능동 회상을 활용한 AI 시험 준비 계획"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI 시험 준비 플래너"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI 플래시카드와 능동 회상: 더 많이 기억하는 방법"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "능동 회상을 위한 AI 플래시카드"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "복습용 AI 플래시카드"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI 역사 튜터"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI 역사 튜터"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI 숙제 코치"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "부정행위 없는 AI 숙제 도움"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "답을 베끼지 않는 AI 숙제 도움"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI 숙제 도우미"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI 수학 단계 코치"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI 수학 튜터"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "시험용 AI 퀴즈 생성기"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI 소크라테스식 튜터"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI 학습 일정"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI 시간 여행 학습"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "어려운 개념을 위한 AI 튜터"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "과목별 AI 튜터"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "학생을 위한 AI 글쓰기 피드백"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI 글쓰기 튜터"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "점검 질문에 답하고, 한 단계를 시도하고, 주장에 대해 토론하고, 초안을 수정하거나 회상 카드를 만들어 보세요."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "퀴즈가 다시 읽기보다 나은가요?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "논증"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "논증 연습"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "어떤 질문이든 묻고 명확한 설명, 예시, 후속 프롬프트, 인내심 있는 AI 튜터링으로 배워 보세요."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "무엇이든 질문하기"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "힌트 요청하기"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "답이 아니라 힌트를 요청하기"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "가장 약한 개념을 더 쉽게 설명해 달라고 요청하세요."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "정의, 예시, 응용 문제를 섞은 질문 다섯 개를 요청하세요."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "생각은 학습자가 하도록 두면서 힌트, 점검, 피드백, 학습 계획을 요청하세요."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "주제를 쉬운 말로 설명해 달라고 한 뒤, 비유 하나, 예시 하나, 흔한 오해 하나를 요청하세요."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "이 주제에 대해 소크라테스식 질문 다섯 개를 해 주세요. 답할 때마다 제가 어떤 가정을 사용했는지, 다음에 무엇을 확인해야 하는지 알려 주세요."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "질문하고, 아이디어에 도전하고, 과거의 유명 인물들과 근거 있는 대화를 나누며 역사를 배워 보세요."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "역사 모드에 무엇이 문서로 확인된 내용인지, 추론인지, 시뮬레이션인지 표시해 달라고 요청하세요."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "진짜 질문을 던지기"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "첫 질문을 하고 바로 연습으로 넘어가세요."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "공개로 이용할 수 있으며, 학교는 기밀을 지키는 맞춤 버전을 운영할 수 있습니다."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "모든 모드 둘러보기"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "과목 둘러보기"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "시간 여행 여권을 만들고, 여행 주의사항을 확인한 뒤, 장면, 지도, 타임라인, 인물, 규칙, 소지품, 증거를 통해 역사 세계를 탐험하세요."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "현실적인 학습 계획, 인출 연습, 퀴즈, 플래시카드, 취약 영역 복습으로 AI 시험 준비 워크플로를 만드세요."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "시험 계획 만들기"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "계획 만들기"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "함께 만들기"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "호기심, 연습, 접근성을 위해 만들었습니다."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "일반적인 채팅 상자가 아니라 실제 학습자 행동에서 만들었습니다."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "실제로 쓰이도록 만든 것"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "AI 숙제 도움은 윤리적일 수 있나요?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "AI 역사 대화를 출처로 인용해도 되나요?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "로그인하지 않고 inspir를 사용할 수 있나요?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "inspir가 부정행위를 부추기지 않고 숙제를 도울 수 있나요?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "내 모델 점검하기"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "한 단계 점검하기"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "추론을 한 줄씩 점검하기"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "제가 푼 과정의 이 단계를 확인해 주세요. 틀렸다면 실수를 설명하고 다음에 할 일 하나를 알려 주세요."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "명확한 설명"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "명확한 개인정보 보호 경계"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "코드 튜터"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "코딩"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "커뮤니케이션"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "논증 비교하기"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "기밀 배포"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "계속"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "AI 학습을 더 안전하고, 명확하고, 접근 가능하며, 유용하게 만들고 싶은 엔지니어, 교육자, 디자이너, 학생, 누구나 기여할 수 있습니다."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "오답 전환하기"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "설명을 능동 회상 카드로 바꾸고, 실수하거나 망설인 뒤에는 그 카드를 다시 보세요."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "작은 퀴즈 만들기"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "호기심은 여기서 시작됩니다"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "호기심, 연습, 그리고 가르치는 AI."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "증거를 놓치지 않으면서 역사와 아이디어를 맥락 있게, 토론 가능하게, 생생하게 느끼고 싶은 호기심 많은 학습자."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "데이터 기밀성을 갖춘 맞춤 AI 학습 공간."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "주장 토론하기"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "어떤 주제든 토론하기"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "어떤 주제든 토론하고, 도전을 받고, 주장을 비교하며, 더 강한 논증을 만드는 방법을 배워 보세요."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "토론은 주장, 증거, 가치, 가정을 구분하게 해 주어 역사 해석을 더 정밀하게 만듭니다."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "그 주장 토론하기"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "그 주장을 여러 관점에서 토론해 가정, 상충점, 약한 증거를 알아차려 보세요."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "이 역사적 또는 철학적 주장을 양쪽 입장에서 토론하세요. 증거, 가정, 가치를 구분하세요."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "자신감을 위해 설계됨"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "수정이 왜 더 나은지 설명할 수 있을 때까지 고친 문단을 받아들이지 마세요."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "선행 개념을 알기 전에 완전한 요약을 요청하지 마세요."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "이미 동의하는 쪽만 토론하지 마세요."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "계획"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "망설임을 무시하지 마세요. 불확실성은 복습에 유용한 신호입니다."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "역할극이 날짜, 맥락, 문서, 증거 라벨을 대신하게 하지 마세요."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir는 호기심, 숙제, 복습, 큰 질문을 설명하고 되물으며 연습을 돕는 안내형 AI 학습 세션으로 바꿉니다."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "모든 주제에 같은 시간이 필요하다고 가정하는 계획을 세우지 마세요."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "작은 퀴즈 만들기"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "아직 자기 말로 설명할 수 없는 문장으로 플래시카드를 만들지 마세요."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "과제의 주도권을 잃지 않으면서 다음 단계, 실수 점검, 피드백이 필요한 학생."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "과제를 붙여 넣고 완성된 답변을 요구하지 마세요."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "학습 시작"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "이미 기억해 낼 수 있는 것을 확인하기 전에 노트를 다시 읽지 마세요."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "이미 시도한 것을 보여 주는 과정을 건너뛰지 마세요. 유용한 도움은 그 맥락에 달려 있습니다."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "첫 설명에서 멈추지 말고, 그 내용에 대해 스스로 질문에 답해 보세요."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "생성된 대화를 실제 인용문이나 1차 자료로 취급하지 마세요."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "그것으로 무언가 해 보기"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "inspir는 학교를 지원하나요?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "각 가이드는 연습 계획, 경로, 알맞은 학습 모드로 이어지는 링크로 끝납니다."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "각 가이드는 읽기가 연습이 되도록 모드, 프롬프트, 복습 루프로 안내합니다."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "각 모드는 고유한 목적, 예시, 학습 흐름이 있는 공개 게스트 채팅으로 열리므로, 학습자는 즉시 알맞은 지원으로 시작할 수 있습니다."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "쉬운 다음 단계"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "시대 입력하기"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "맥락 입력하기"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "모든 글은 카테고리, 라이브 모드, 과목 허브, 학습 경로, 관련 가이드로 연결됩니다."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "앱이 아닌 모든 페이지에는 이제 역할이 있습니다. 신뢰를 쌓고, 학습 경로를 설명하며, 중요한 세부 정보를 숨기지 않고 학습자를 유용한 다음 행동으로 보내는 것입니다."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "증거를 고려한 장면"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "시험 준비"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "시험 준비 플래너"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "다시 설명해 보기"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "다음 단계 설명"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "이 주제를 쉬운 말로 설명해 주세요. 제가 필요한 선행 개념 세 가지, 비유 하나, 흔한 오해 하나를 말해 주세요."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "설명, 소크라테스식 튜터링, 숙제 코칭, 퀴즈, 플래시카드, 글쓰기, 코드, 토론, 학습 계획."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "AI로 역사와 큰 아이디어 탐험하기"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "역사와 아이디어 탐험하기"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "증거와 시뮬레이션을 구분하는 AI 학습 모드로 역사, 유명 인물, 원인, 토론, 철학, 출처 비평을 탐험하세요."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "학교 살펴보기"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "가이드 라이브러리 살펴보기"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "빠른 학습 경로"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "영상 챕터"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "플래시카드 만들기"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "플래시카드는 한 번에 한 가지 생각을 확인하고, 노력한 뒤에만 답을 보여 주며, 틀린 카드를 더 빨리 복습할 때 가장 효과적입니다."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "수학이나 논리는 한 번에 한 단계씩 진행하고, 넘어가기 전에 각 풀이가 왜 허용되는지 물어보세요."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "학교와 CSR 파트너를 위해"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "기초"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "모두를 위한 무료 AI 학습"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "모두를 위한 무료 AI 학습 | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "모두를 위한 무료 AI 학습."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "무료 게스트 학습"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "무료 공개 AI 학습 플랫폼"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "블로그에서"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "어떤 과목이든 집중형 객관식 퀴즈를 만들고, 각 답변 뒤에 설명을 확인하세요."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "학습 일정을 받고, 취약 영역을 퀴즈로 점검하고, 틀린 부분을 반복 복습용 플래시카드로 바꾸세요."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "먼저 간단한 모델을 잡기"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "글쓰기 코치"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "막힘 풀기"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "숙제에서 막힌 부분 풀기"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "역사적 맥락에 들어가고, 논증을 비교하고, 한 가지 생각을 여러 관점에서 보는 연습을 하세요."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "윤리적인 힌트, 예시, 점검, 단계별 코칭으로 숙제에서 막힌 부분을 풀어 보세요."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "학습자 필요에 맞춘 과목 허브"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "구조, 명확성, 증거에 대한 피드백을 주세요. 제 목소리는 유지하고 전체 답변을 다시 쓰지는 마세요."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "마무리 장면은 공개 접근, 학교, 더 열린 학습 방식이라는 미션으로 돌아갑니다."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "좋은 시작 영역:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "퀴즈가 다시 읽기보다 나은가요?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "가이드 라이브러리"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "가이드, 경로, 과목, 프롬프트가 다음에 연습할 유용한 곳으로 이어집니다."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "도움이 되는 학습 지도"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "질문과 제가 시도한 내용은 이렇습니다. 최종 답이 아니라 가장 작고 유용한 힌트를 주세요."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "영상 챕터 숨기기"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "영상 대본 숨기기"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "힌트 우선 도움"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "역사 대화"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "역사"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "숙제"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "숙제 코치"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "시험 준비 계획은 얼마나 일찍 세워야 하나요?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "inspir는 일반 AI 챗봇과 어떻게 다른가요?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "작동 방식"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "스스로를 속이지 않고 AI로 공부하는 방법"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "AI로 어려운 주제를 이해하는 방법"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "AI로 어려운 주제를 이해하는 방법"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "몰입"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "초안 개선하기"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "계획, 수정, 구조, 피드백으로 글을 개선하면서도 자신의 목소리를 그대로 유지하세요."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "질문, 이미 시도한 것, 어디서 막혔는지, 힌트나 단계 점검 또는 피드백을 원하는지 포함하세요."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "inspir AI 학습 가이드 라이브러리"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir는 퀴즈와 학생 커뮤니티로 시작해 학교와 행사를 거쳐 성장했으며, 이제 AI로 일대일 학습을 더 접근하기 쉽게 만듭니다."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir는 학습자가 무언가를 이해하고 싶고 시작할 수 있는 인내심 있는 공간이 필요한 순간을 위해 존재합니다. 이 영상은 호기심, 연습, 접근성을 위한 무료 공개 학습 동반자로 제품을 소개합니다."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "움직이는 inspir"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir는 공개적으로 만들어지고 있습니다."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir는 힌트, 소크라테스식 질문, 퀴즈, 능동 회상, 역할극, 토론, 글쓰기 피드백, 학습 계획처럼 구체적인 교수 형태를 가진 학습 모드를 중심으로 구성되어 있습니다."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir 학습 영상"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir는 호기심, 숙제, 복습, 큰 질문을 설명하고 되물으며 연습을 돕는 안내형 AI 학습 세션으로 바꿉니다."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: 무엇이든 배울 수 있습니다"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "inspir는 무료로 사용할 수 있나요?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "학습 경로를 계속 이어가기"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "다음에 무엇을 시도할지, 왜 한 단계가 작동하는지, 실수가 어디서 생겼는지, 최종 답을 자기 목소리로 어떻게 고칠지 알게 됩니다."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "무엇이든 배우기"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "무엇이든 배우기 프롬프트와 학습 루프"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "무료 AI 튜터와 함께하는 무엇이든 배우기: 실용 가이드"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "대화하고, 시험해 보고, 토론하고, 탐험하며 배우세요."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "학습자를 과정 안에 머물게 하는 공개 AI 모드로 프로그래밍을 배우고, 디버깅 개념을 익히고, 프로젝트를 계획하고, 데이터를 해석하고, 기술 질문을 조사하세요."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "수동적으로 답을 읽는 대신 집중된 질문, 힌트, 성찰을 통해 배우세요."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "설명, 소크라테스식 질문, 숙제 코칭, 퀴즈, 플래시카드, 토론, 글쓰기 피드백, 코딩 도움, 학습 계획에 무료 AI 튜터를 활용해 배우세요."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "학습자 우선 지원"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "학습자에게 필요한 것은 링크 더미가 아니라 순서입니다. 이 경로들은 이해, 숙제, 시험 준비, 탐험을 위한 실용적인 학습 루프로 모드를 연결합니다."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "새 과목을 시작할 때 막막하거나 어려운 생각으로 들어가는 더 쉬운 길이 필요한 학습자."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "시간은 부족하고, 범위는 넓으며, 모든 것이 똑같이 중요하다고 가장하지 않고 복습할 현실적인 방법이 필요한 학습자."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "모두를 위한 배움"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "학습 가이드와 연습 루프"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "마지막에는 쉬운 말 모델, 더 날카로운 질문, 직접 다시 설명할 수 있는 예시, 복습용 회상 카드를 얻게 됩니다."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "이 역사적 인물을 인터뷰하게 해 주세요. 답변은 증거를 고려하고 불확실성을 분명히 표시해 주세요."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "오류로 플래시카드를 만들고 시간이 지난 뒤 다시 보세요."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "오류, 망설임, 공식, 정의, 명확히 설명하지 못한 개념으로 플래시카드를 만드세요."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "기억에 남게 하기"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "그 생각이 기억에 남게 하기"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "학습 계획을 현실적으로 만들기"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "수학"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "수학 단계 코치"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "수학, 글쓰기, 코딩, 역사, 숙제, 시험 준비는 각각 다른 도움이 필요합니다. 과목에서 시작한 다음 알맞은 모드, 프롬프트, 가이드, 복습 루프로 이동하세요."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "미션 우선"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "흔한 학습 순간을 위한 모드 가이드, 프롬프트 루프, 학습 방법, 핵심 글."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "쉬운 말 설명에서 질문, 예시, 기억 연습으로 이동하세요."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "소크라테스식 질문, 퀴즈, 플래시카드, 토론, 역할극, 안내형 수업으로 이동하세요."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "영상 음소거"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "제 시험은 이 날짜입니다. 시험 범위, 취약 영역, 가능한 시간을 알려 드립니다. 매일 회상을 포함한 현실적인 계획을 만들어 주세요."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "NCERT에 맞춘 옵션"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "다음 단계"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "아니요. 생성된 대화는 학습 시뮬레이션으로 다루세요. 사실 주장에는 실제 1차 또는 2차 출처를 인용하세요."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "또 하나의 답변 상자가 아니라, 배우는 곳."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "모드를 열고 바로 시작하세요. 공개 게스트 경험에는 계정이 필요하지 않습니다."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "처음부터 열린 설계"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "영상을 전체 화면으로 열기"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "게스트 채팅 열기"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "과목 허브 열기"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "찾아온 바로 그 종류의 도움 열기"
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "학습 지도 열기"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} 실용 가이드"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "경로 열기"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "페이지는 사람들을 설명에서 라이브 모드, 프롬프트, 퀴즈, 복습 루프로 이동시키도록 설계되었습니다."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "어떤 질문이든 묻고 명확한 설명, 예시, 후속 프롬프트, 인내심 있는 AI 튜터링으로 배워 보세요."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "이 사이트는 브로셔가 아니라 경로입니다."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir는 학교를 지원하나요?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir는 힌트, 소크라테스식 질문, 퀴즈, 능동 회상, 역할극, 토론, 글쓰기 피드백, 학습 계획처럼 구체적인 교수 형태를 가진 학습 모드를 중심으로 구성되어 있습니다."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "공개 게스트 모드를 무료로 사용한 뒤, 오픈소스 작업과 학교 배포 경로를 살펴보세요."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "설명, 소크라테스식 튜터링, 숙제 코칭, 퀴즈, 플래시카드, 글쓰기, 코드, 토론, 학습 계획."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "모두를 위한 무료 AI 학습"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "시험 준비 플래너"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "윤리적인 힌트, 예시, 점검, 단계별 코칭으로 숙제에서 막힌 부분을 풀어 보세요."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI 시험 준비 플래너"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "퀴즈와 능동 회상을 활용한 AI 시험 준비 계획"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "토론은 주장, 증거, 가치, 가정을 구분하게 해 주어 역사 해석을 더 정밀하게 만듭니다."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "장소, 시간, 정체성, 제약, 증거 라벨에서 시작해 장면이 일반적인 역할극이 되지 않게 하세요."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "숙제 프롬프트에 무엇을 포함해야 하나요?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "AI 학습을 더 안전하고, 명확하고, 접근 가능하며, 유용하게 만들고 싶은 엔지니어, 교육자, 디자이너, 학생, 누구나 기여할 수 있습니다."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "혼란에서 명확한 설명, 소크라테스식 질문, 예시, 능동 회상으로 나아가게 해 주는 실용적인 AI 학습 경로입니다."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI 글쓰기 튜터"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir는 퀴즈와 학생 커뮤니티로 시작해 학교와 행사를 거쳐 성장했으며, 이제 AI로 일대일 학습을 더 접근하기 쉽게 만듭니다."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir 학습 영상"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "영상 챕터 보이기"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "틀린 질문들을 개념, 공식, 정의, 예시별로 묶은 플래시카드로 바꾸세요."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "다음에 무엇을 시도할지, 왜 한 단계가 작동하는지, 실수가 어디서 생겼는지, 최종 답을 자기 목소리로 어떻게 고칠지 알게 됩니다."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "학생을 위한 AI 글쓰기 피드백"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "모두를 위한 배움"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI 코드 튜터"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "취약 영역 퀴즈"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "설명, 소크라테스식 질문, 숙제 코칭, 퀴즈, 플래시카드, 토론, 글쓰기 피드백, 코딩 도움, 학습 계획에 무료 AI 튜터를 활용해 배우세요."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "토론을 사용해 가장 강한 주장과 가장 강한 반론을 비교하세요."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "첫 설명에서 멈추지 말고, 그 내용에 대해 스스로 질문에 답해 보세요."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "작동 방식"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "코드 튜터"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "시험 준비"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "검색 페이지, 블로그 가이드, 프롬프트, 라이브 모드는 묻기, 시도하기, 확인하기, 고치기, 복습하기라는 간단한 루프를 중심으로 연결됩니다."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "코딩"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "첫 클릭부터 유용함"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "어떤 과목이든 집중형 객관식 퀴즈를 만들고, 각 답변 뒤에 설명을 확인하세요."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "수정이 왜 더 나은지 설명할 수 있을 때까지 고친 문단을 받아들이지 마세요."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "제 시험은 이 날짜입니다. 시험 범위, 취약 영역, 가능한 시간을 알려 드립니다. 매일 회상을 포함한 현실적인 계획을 만들어 주세요."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "무료 AI 튜터와 함께하는 무엇이든 배우기: 실용 가이드"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "이 역사적 인물을 인터뷰하게 해 주세요. 답변은 증거를 고려하고 불확실성을 분명히 표시해 주세요."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "일반적인 채팅 상자가 아니라 실제 학습자 행동에서 만들었습니다."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "숙제에서 막힌 부분 풀기"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "블로그는 실제 공부 순간을 중심으로 구성되어 있습니다. 막힘 풀기, 더 많이 기억하기, 더 잘 쓰기, 시험 준비하기, 인내심 있는 튜터와 아이디어 탐험하기."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "왜 역사와 토론을 결합하나요?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "블로그는 유용한 학습 조언을 실시간 연습과 연결하므로, 가이드가 한 단계 만에 학습 세션이 될 수 있습니다."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "질문과 시도한 내용을 붙여 넣은 다음, 가장 작고 유용한 다음 단계를 요청하세요."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "영상 일시정지"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "새 과목을 시작할 때 막막하거나 어려운 생각으로 들어가는 더 쉬운 길이 필요한 학습자."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "저를 이 시간과 장소에 놓아 주세요. 문서로 확인된 사실과 그럴듯한 시뮬레이션을 따로 표시하고, 제가 무엇을 알아차리는지 물어보세요."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "접근성, 프롬프트, 테스트, 더 안전한 AI 동작, 학습자 흐름, UI 다듬기."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "쉬운 말 설명"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "도움을 요청하기 전에 어디서 막혔는지 정확히 쓰세요."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "집중형 AI 학습 모드로 시험 복습을 계획하고, 퀴즈를 만들고, 플래시카드를 구성하고, 간격 복습을 예약하며, 동기를 현실적으로 유지하세요."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "오답 전환하기"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "공부할 일을 계획하고, 인출을 연습하고, 퀴즈와 능동 회상으로 취약점을 메우세요."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "역사와 아이디어 탐험하기"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "계획"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AI로 역사와 큰 아이디어 탐험하기"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "영상 재생"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "그 생각이 기억에 남게 하기"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "inspir 학습 미리보기 재생"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "과목 허브 열기"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "인기 AI 학습 경로"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "글쓰기"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "인기 경로"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "계속"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "연습"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "기초"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "답 베끼기가 아니라 연습"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "다음 반복 일정 잡기"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI 수학 단계 코치"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "맥락 입력하기"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "진짜 질문을 던지기"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "시험 준비하기"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "inspir의 무엇이든 배우기에서 유용한 학습 결과를 얻기 위한 프롬프트 아이디어와 반복 가능한 학습 루프."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "증거와 시뮬레이션을 구분하는 AI 학습 모드로 역사, 유명 인물, 원인, 토론, 철학, 출처 비평을 탐험하세요."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "인물에게 질문하기"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI 토론 연습"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "역사적 관점에 질문하기"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "질문은 주제에 대한 자신의 이해 모델을 드러나게 합니다. 바로 그 지점에서 혼란, 근거 없는 자신감, 빠진 선행 지식이 보통 드러납니다."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "빠른 답변"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "이 주제들에 대해 한 번에 한 문제씩 퀴즈를 내 주세요. 각 답변 뒤에는 빈틈을 설명하고 난이도를 천천히 높여 주세요."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "상식 퀴즈 내기"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "취약 영역 퀴즈"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "스스로 퀴즈 풀기"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "먼저 스스로 퀴즈를 풀어 실제로 무엇을 기억하는지, 어디서 자신감이 착각인지 확인하세요."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "퀴즈는 인출을 테스트하므로 보통 더 많은 것을 드러냅니다. 퀴즈가 고쳐야 할 부분을 보여 준 뒤에는 다시 읽기가 도움이 될 수 있습니다."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "미션 읽기"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "현실적인 일정"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "틀린 것 하나 고치기"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "취약점 보완하기"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "다시 재생"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "영상 다시 시작"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "인출 연습"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "플래시카드로 복습하기"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "내 초안 수정하기"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "자기 목소리를 잃지 않고 수정하기"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "실수 저장하기"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "다음 반복 일정 잡기"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "학교별 워크플로"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "학교는 NCERT에 맞춘 콘텐츠와 워크플로를 포함해 학습자에게 맞춘 화이트 라벨 AI 채팅 경험을 제공할 수 있으며, 사용 비용은 파트너 학교나 CSR 후원으로 지원됩니다."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "검색 페이지, 블로그 가이드, 프롬프트, 라이브 모드는 묻기, 시도하기, 확인하기, 고치기, 복습하기라는 간단한 루프를 중심으로 연결됩니다."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "사실과 창작 구분"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "영상 챕터 보이기"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "영상 대본 보이기"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "소크라테스식 점검"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "소크라테스식 수업"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "소크라테스식 튜터"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "소크라테스식 튜터링은 질문, 가설, 힌트, 성찰을 사용해 수동적인 답 읽기보다 더 깊은 이해를 쌓게 합니다."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "실시간 학습 세션을 시작하세요."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "시험 날짜를 알게 되는 즉시 시작하세요. 시간이 짧다면 취약 영역, 기출문제식 질문, 매일 회상을 우선하세요."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "간단한 설명, 일상적인 비유 하나, 주제를 이해하기 전에 필요한 세 가지 생각을 요청하는 것부터 시작하세요."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "각 세션은 다시 읽기 전에 빠른 퀴즈로 시작하세요."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "제1원리에서 시작하기"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "과목에서 시작한 다음 알맞은 학습 모드를 여세요."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "이해하지 못하는 것에서 시작해 쉬운 말 모델, 예시, 다음 단계를 얻으세요."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "학습 시작"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "주제, 과제, 초안, 시험, 아이디어를 알맞은 모드에서 시작하세요."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "무엇이든 배우기로 시작하기"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "장소, 시간, 정체성, 제약, 증거 라벨에서 시작해 장면이 일반적인 역할극이 되지 않게 하세요."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "필요한 일에서 시작하세요."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "막힌 지점 말하기"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "단계 점검"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "역사적 맥락에 들어가고, 논증을 비교하고, 한 가지 생각을 여러 관점에서 보는 연습을 하세요."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "과제의 주도권을 잃지 않으면서 다음 단계, 실수 점검, 피드백이 필요한 학생."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "학습 루프, AI 튜터링 가이드, 실용 프롬프트."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "학습자 필요에 맞춘 과목 허브"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "맥락 요약하기"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "비교과 학습, 학업 연습, 호기심을 지원합니다."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "답을 수동적으로 읽는 대신 가정을 드러내고 빈틈을 채울 수 있도록 질문으로 전환하세요."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "생성된 대화를 문서화된 인용문과 구분하면서 역사적 인물과 대화하세요."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "역사적 인물과 대화하기"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "역사적 인물과 대화하는 AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "복습 전에 테스트하기"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "논증 시험하기"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "내 추론 점검하기"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "블로그는 유용한 학습 조언을 실시간 연습과 연결하므로, 가이드가 한 단계 만에 학습 세션이 될 수 있습니다."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "블로그는 실제 공부 순간을 중심으로 구성되어 있습니다. 막힘 풀기, 더 많이 기억하기, 더 잘 쓰기, 시험 준비하기, 인내심 있는 튜터와 아이디어 탐험하기."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "더 넓은 오픈소스 inspir 플랫폼."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "마무리 장면은 공개 접근, 학교, 더 열린 학습 방식이라는 미션으로 돌아갑니다."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "현재 inspirlearning.com 재구축 버전."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "영상은 영감에서 실용적인 약속, 즉 인내심 있는 AI 학습 동반자로 전환됩니다."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "숙제와 소크라테스식 모드는 완성된 답을 단순히 건네는 대신 힌트, 추론, 단계 점검, 학습자의 설명을 중심으로 설계되었습니다."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "중간 부분은 inspir를 이해, 힌트, 퀴즈, 능동 학습 루프를 중심으로 보여 줍니다."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "차세대 AI 학습 플랫폼."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "오프닝 장면은 배움을 누구나 즉시 시작할 수 있는 것으로 제시합니다."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "역사 대화"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "공개 사이트는 학습 지도처럼 구성되어 있습니다. 즉각적인 도움을 위한 라이브 모드, 학습자 질문을 위한 과목 허브, 읽기를 행동으로 바꾸는 가이드입니다."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "이 사이트는 브로셔가 아니라 경로입니다."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "보지 않고 세 문장으로 설명을 쓴 다음, 소크라테스식 모드에 약한 연결고리를 찾아 달라고 요청하세요."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "더 깊이 생각하기"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "주장 토론하기"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "시간 여행"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "모든 모드 둘러보기"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "주제 묶음"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "블로그에서"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "대본"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "답이 아니라 힌트를 요청하기"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "한 시대를 여행하기"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "역사적 관점에 질문하기"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "숙제 코치 사용해 보기"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "공개로 이용할 수 있으며, 학교는 기밀을 지키는 맞춤 버전을 운영할 수 있습니다."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "플래시카드로 바꾸기"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "틀린 부분을 복습 루프로 바꾸기"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "노트나 주제를 힌트, 답, 예시, 흔한 함정이 있는 집중형 플래시카드로 바꾸세요."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "고친 실수를 나중을 위한 플래시카드나 짧은 체크리스트로 바꾸세요."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "설명을 개념 카드 하나, 예시 카드 하나, 오해 카드 하나가 있는 능동 회상 카드로 바꾸세요."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "가장 어려웠던 오답을 플래시카드로 바꾸고 나중에 복습하세요."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "틀린 질문들을 개념, 공식, 정의, 예시별로 묶은 플래시카드로 바꾸세요."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "시험 범위, 시험 날짜, 시간, 취약 영역을 실용적인 학습 계획으로 바꾸세요."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "소크라테스식 질문, 퀴즈, 플래시카드, 토론, 역할극, 안내형 수업으로 이동하세요."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "어려운 주제 이해하기"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "역사적 맥락을 이해하고, 관점에 질문하고, 주장을 비교하고, 시뮬레이션과 문서화된 사실을 구분하세요."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "자기 목소리를 잃지 않고 수정하기"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "막힌 지점 말하기"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "스스로를 속이지 않고 AI로 공부하는 방법"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "주제를 쉬운 말로 설명해 달라고 한 뒤, 비유 하나, 예시 하나, 흔한 오해 하나를 요청하세요."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI 시간 여행 학습"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "연습"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "이미 기억해 낼 수 있는 것을 확인하기 전에 노트를 다시 읽지 마세요."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "시험 범위, 시험 날짜, 시간, 취약 영역을 실용적인 학습 계획으로 바꾸세요."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "페이지는 사람들을 설명에서 라이브 모드, 프롬프트, 퀴즈, 복습 루프로 이동시키도록 설계되었습니다."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "부정행위 없는 AI 숙제 도움"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "수학"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "첫 질문을 위한 튜터"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "모두를 위한 무료 AI 학습."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "비교과 학습, 학업 연습, 호기심을 지원합니다."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI 플래시카드와 능동 회상: 더 많이 기억하는 방법"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "기억에 남게 하기"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "쉬운 말 설명에서 질문, 예시, 기억 연습으로 이동하세요."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "힌트 우선 도움"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "질문과 제가 시도한 내용은 이렇습니다. 최종 답이 아니라 가장 작고 유용한 힌트를 주세요."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "퀴즈는 인출을 테스트하므로 보통 더 많은 것을 드러냅니다. 퀴즈가 고쳐야 할 부분을 보여 준 뒤에는 다시 읽기가 도움이 될 수 있습니다."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "점검 질문에 답하고, 한 단계를 시도하고, 주장에 대해 토론하고, 초안을 수정하거나 회상 카드를 만들어 보세요."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI로 어려운 주제를 이해하는 방법"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "코드를 이해하고, 오류를 디버그하고, 프로그래밍 개념을 배우고, 작은 프로젝트를 단계별로 만들어 보세요."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "영상 음소거 해제"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "능동적인 연습"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "AI를 학습을 조용히 없애는 지름길이 아니라 이해, 연습, 피드백을 위한 코치로 사용하세요."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "몰입"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "최종 결과물은 자신의 것으로 유지하면서 힌트, 단계 점검, 수학 추론, 글쓰기 피드백을 위해 AI 숙제 코칭을 사용하세요."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "학습자 우선 지원"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "AI 시간 여행, 역사 대화, 토론 연습으로 맥락, 증거, 논증, 관점을 탐험하세요."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "플래시카드는 한 번에 한 가지 생각을 확인하고, 노력한 뒤에만 답을 보여 주며, 틀린 카드를 더 빨리 복습할 때 가장 효과적입니다."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "앱이 아닌 모든 페이지에는 이제 역할이 있습니다. 신뢰를 쌓고, 학습 경로를 설명하며, 중요한 세부 정보를 숨기지 않고 학습자를 유용한 다음 행동으로 보내는 것입니다."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "토론을 사용해 가장 강한 주장과 가장 강한 반론을 비교하세요."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "고친 실수를 나중을 위한 플래시카드나 짧은 체크리스트로 바꾸세요."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "학습이 답 베끼기로 바뀌지 않게 힌트, 단계 점검, 글쓰기 피드백을 사용하세요."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "데이터 기밀성을 갖춘 맞춤 AI 학습 공간."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "학습자의 목소리를 대체하지 않고 구조를 개선하는 에세이 피드백, 읽기 지원, 말하기 연습, 출처 비평, 수정 루프에 inspir를 사용하세요."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "내 초안 수정하기"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "비공개 채팅을 노출하지 않고 숙제 힌트, 수학 단계 점검, 글쓰기 피드백, 출처 비평, 소크라테스식 질문, 플래시카드에 inspir를 사용하세요."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "설명을 개념 카드 하나, 예시 카드 하나, 오해 카드 하나가 있는 능동 회상 카드로 바꾸세요."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "답 베끼기 없이 단계별 수학 도움, 숙제 힌트, 소크라테스식 추론, 퀴즈, 플래시카드, 시험 준비에 inspir를 사용하세요."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "과목별 AI 튜터"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "공개 게스트 모드를 무료로 사용한 뒤, 오픈소스 작업과 학교 배포 경로를 살펴보세요."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "미션 우선"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "이 역사적 또는 철학적 주장을 양쪽 입장에서 토론하세요. 증거, 가정, 가치를 구분하세요."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "소크라테스식 질문 사용하기"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "시험 날짜, 시험 범위, 가능한 시간, 취약 영역을 사용해 실생활에서도 유지할 수 있는 계획을 만드세요."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "연결된 가이드, 프롬프트, 과목 허브, 학습 경로를 사용해 나중에 취약점을 복습하세요."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "최종 초안이 분명히 자신의 글로 남도록 하면서 구조, 명확성, 증거에 대한 글쓰기 피드백을 사용하세요."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "첫 클릭부터 유용함"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "동영상 컨트롤"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "동영상 진행 상황"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "목소리를 지키는 피드백"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "31초 보기"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "취약 영역 루프"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "AI 학습 동반자가 모두를 위해 해야 할 일"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "학습자가 시작 전에 자주 묻는 것."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "주제가 너무 어렵게 느껴질 때 먼저 무엇을 물어봐야 하나요?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "숙제 프롬프트에 무엇을 포함해야 하나요?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "할 수 있는 일"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "화이트 라벨 학교 AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "소크라테스식 AI 튜터가 아이디어를 기억에 남게 하는 이유"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "왜 역사와 토론을 결합하나요?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "설명 뒤에 소크라테스식 질문을 사용하는 이유"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "AI 코치와 함께 대수, 미적분, 문장제 문제, 수학 개념을 한 번에 한 단계씩 풀어 보세요."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir는 학습자가 무언가를 이해하고 싶고 시작할 수 있는 인내심 있는 공간이 필요한 순간을 위해 존재합니다. 이 영상은 호기심, 연습, 접근성을 위한 무료 공개 학습 동반자로 제품을 소개합니다."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "수학 단계를 풀어 보기"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "보지 않고 세 문장으로 설명을 쓴 다음, 소크라테스식 모드에 약한 연결고리를 찾아 달라고 요청하세요."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "도움을 요청하기 전에 어디서 막혔는지 정확히 쓰세요."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "글쓰기"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "글쓰기 코치"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "네. 힌트를 주고, 추론을 점검하고, 실수를 설명하고, 대신 써 주는 것이 아니라 최종 답을 직접 만들도록 요청할 때 그렇습니다."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "각 세션은 다시 읽기 전에 빠른 퀴즈로 시작하세요."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "네. 무엇이든 배우기, 소크라테스식 수업, 숙제 코치, 퀴즈, 플래시카드 같은 공개 주제 채팅은 게스트 모드에서 바로 열립니다."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "네. 학교는 공개 제품을 먼저 사용한 뒤, 학교별 워크플로, 기밀성, 지원형 접근 옵션을 갖춘 맞춤 AI 학습 공간을 논의할 수 있습니다."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "시간 여행 여권을 만들고, 여행 주의사항을 확인한 뒤, 장면, 지도, 타임라인, 인물, 규칙, 소지품, 증거를 통해 역사 세계를 탐험하세요."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "한 시대를 여행하기"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "목소리를 지키는 피드백"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "소크라테스식 튜터링은 질문, 가설, 힌트, 성찰을 사용해 수동적인 답 읽기보다 더 깊은 이해를 쌓게 합니다."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "구조, 명확성, 증거에 대한 피드백을 주세요. 제 목소리는 유지하고 전체 답변을 다시 쓰지는 마세요."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "내 추론 점검하기"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "수학이나 논리는 한 번에 한 단계씩 진행하고, 넘어가기 전에 각 풀이가 왜 허용되는지 물어보세요."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "추론을 한 줄씩 점검하기"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "AI 역사 대화를 출처로 인용해도 되나요?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "시간 여행"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "아니요. 생성된 대화는 학습 시뮬레이션으로 다루세요. 사실 주장에는 실제 1차 또는 2차 출처를 인용하세요."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "필요한 일에서 시작하세요."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "답 베끼기 없이 단계별 수학 도움, 숙제 힌트, 소크라테스식 추론, 퀴즈, 플래시카드, 시험 준비에 inspir를 사용하세요."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "다음 단계"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "영상 음소거 해제"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "상식 퀴즈 내기"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "네. 힌트를 주고, 추론을 점검하고, 실수를 설명하고, 대신 써 주는 것이 아니라 최종 답을 직접 만들도록 요청할 때 그렇습니다."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "AI를 학습을 조용히 없애는 지름길이 아니라 이해, 연습, 피드백을 위한 코치로 사용하세요."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "중간 부분은 inspir를 이해, 힌트, 퀴즈, 능동 학습 루프를 중심으로 보여 줍니다."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "연결된 가이드, 프롬프트, 과목 허브, 학습 경로를 사용해 나중에 취약점을 복습하세요."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "오프닝 장면은 배움을 누구나 즉시 시작할 수 있는 것으로 제시합니다."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "학습자를 과정 안에 머물게 하는 공개 AI 모드로 프로그래밍을 배우고, 디버깅 개념을 익히고, 프로젝트를 계획하고, 데이터를 해석하고, 기술 질문을 조사하세요."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "대본"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "영상 챕터 숨기기"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "첫 질문을 하고 바로 연습으로 넘어가세요."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "과목 둘러보기"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "증거를 놓치지 않으면서 역사와 아이디어를 맥락 있게, 토론 가능하게, 생생하게 느끼고 싶은 호기심 많은 학습자."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "학교는 NCERT에 맞춘 콘텐츠와 워크플로를 포함해 학습자에게 맞춘 화이트 라벨 AI 채팅 경험을 제공할 수 있으며, 사용 비용은 파트너 학교나 CSR 후원으로 지원됩니다."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "어떤 주제든 토론하기"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI 학습 일정"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "각 가이드는 읽기가 연습이 되도록 모드, 프롬프트, 복습 루프로 안내합니다."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "움직이는 inspir"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "학습 루프, AI 튜터링 가이드, 실용 프롬프트."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "틀린 부분을 복습 루프로 바꾸기"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI 시험 준비 계획"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "inspir에서 기초 학습에 무엇이든 배우기를 활용하는 실용 가이드입니다. 프롬프트, 학습 루프, 더 안전한 AI 습관을 담았습니다."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "틀린 것 하나 고치기"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "오류, 망설임, 공식, 정의, 명확히 설명하지 못한 개념으로 플래시카드를 만드세요."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "무료 게스트 학습"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "비공개 채팅을 노출하지 않고 숙제 힌트, 수학 단계 점검, 글쓰기 피드백, 출처 비평, 소크라테스식 질문, 플래시카드에 inspir를 사용하세요."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "먼저 스스로 퀴즈를 풀어 실제로 무엇을 기억하는지, 어디서 자신감이 착각인지 확인하세요."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "차세대 AI 학습 플랫폼."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "공개 학습 모드를 자유롭게 사용해 볼 수 있습니다. 저장된 채팅, 계정, 관리 도구, 사용자 데이터는 비공개로 유지됩니다."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "논증 시험하기"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "학습 지도 열기"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "복습용 AI 플래시카드"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: 무엇이든 배울 수 있습니다"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "역사적 맥락을 이해하고, 관점에 질문하고, 주장을 비교하고, 시뮬레이션과 문서화된 사실을 구분하세요."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "시험 계획 만들기"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "학습자의 목소리를 대체하지 않고 구조를 개선하는 에세이 피드백, 읽기 지원, 말하기 연습, 출처 비평, 수정 루프에 inspir를 사용하세요."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "현실적인 일정"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "선행 개념을 알기 전에 완전한 요약을 요청하지 마세요."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "역사적 인물과 대화하기"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "실수 저장하기"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "현실적인 학습 계획, 인출 연습, 퀴즈, 플래시카드, 취약 영역 복습으로 AI 시험 준비 워크플로를 만드세요."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "질문, 이미 시도한 것, 어디서 막혔는지, 힌트나 단계 점검 또는 피드백을 원하는지 포함하세요."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "인출 연습"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "모드를 열고 바로 시작하세요. 공개 게스트 경험에는 계정이 필요하지 않습니다."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "주제, 과제, 초안, 시험, 아이디어를 알맞은 모드에서 시작하세요."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "아직 자기 말로 설명할 수 없는 문장으로 플래시카드를 만들지 마세요."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "인기 경로"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI로 어려운 주제를 이해하는 방법"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "네. 공개 게스트 학습 모드는 무료 접근을 위해 설계되어 학습자가 학교 배포나 유료 계정 없이 시작할 수 있습니다."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "공개 학습 모드를 자유롭게 사용해 볼 수 있습니다. 저장된 채팅, 계정, 관리 도구, 사용자 데이터는 비공개로 유지됩니다."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "답 베끼기가 아니라 연습"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "숙제와 소크라테스식 모드는 완성된 답을 단순히 건네는 대신 힌트, 추론, 단계 점검, 학습자의 설명을 중심으로 설계되었습니다."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "내 모델 점검하기"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "영상 대본 숨기기"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "동영상 컨트롤"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "시간은 부족하고, 범위는 넓으며, 모든 것이 똑같이 중요하다고 가장하지 않고 복습할 현실적인 방법이 필요한 학습자."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "모두를 위한 무료 AI 학습 | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "로그인하지 않고 inspir를 사용할 수 있나요?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "공부할 일을 계획하고, 인출을 연습하고, 퀴즈와 능동 회상으로 취약점을 메우세요."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "빠른 답변"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "생성된 대화를 문서화된 인용문과 구분하면서 역사적 인물과 대화하세요."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "쉬운 말 설명"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "계획 만들기"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "시뮬레이션이 끝난 뒤 배경, 제약, 증거를 요약하세요."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "네. 학교는 공개 제품을 먼저 사용한 뒤, 학교별 워크플로, 기밀성, 지원형 접근 옵션을 갖춘 맞춤 AI 학습 공간을 논의할 수 있습니다."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "수학, 글쓰기, 코딩, 역사, 숙제, 시험 준비는 각각 다른 도움이 필요합니다. 과목에서 시작한 다음 알맞은 모드, 프롬프트, 가이드, 복습 루프로 이동하세요."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "논증 비교하기"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "능동 회상 복습"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "논증 연습"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "플래시카드 만들기"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "영상 일시정지"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "가장 약한 개념을 더 쉽게 설명해 달라고 요청하세요."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "학습 경로를 계속 이어가기"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "초안 개선하기"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "어떤 주제든 토론하고, 도전을 받고, 주장을 비교하며, 더 강한 논증을 만드는 방법을 배워 보세요."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "역사"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI 숙제 도움은 윤리적일 수 있나요?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "숙제 코치 사용해 보기"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "무엇이든 배우기 프롬프트와 학습 루프"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "배움을 행동으로 바꾸도록 만든 {value1}개의 가이드 라이브러리입니다."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "학교와 CSR 파트너를 위해"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "학교별 워크플로"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "과제를 붙여 넣고 완성된 답변을 요구하지 마세요."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "어려운 개념을 위한 AI 튜터"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "읽은 뒤 실천"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "질문은 주제에 대한 자신의 이해 모델을 드러나게 합니다. 바로 그 지점에서 혼란, 근거 없는 자신감, 빠진 선행 지식이 보통 드러납니다."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "처음부터 열린 설계"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir는 공개적으로 만들어지고 있습니다."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "질문하고, 아이디어에 도전하고, 과거의 유명 인물들과 근거 있는 대화를 나누며 역사를 배워 보세요."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "학습이 답 베끼기로 바뀌지 않게 힌트, 단계 점검, 글쓰기 피드백을 사용하세요."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "소크라테스식 AI 튜터가 아이디어를 기억에 남게 하는 이유"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "영상 재생"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "주제가 너무 어렵게 느껴질 때 먼저 무엇을 물어봐야 하나요?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI 숙제 코치"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "시험 날짜, 시험 범위, 가능한 시간, 취약 영역을 사용해 실생활에서도 유지할 수 있는 계획을 만드세요."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "정의, 예시, 응용 문제를 섞은 질문 다섯 개를 요청하세요."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "답을 수동적으로 읽는 대신 가정을 드러내고 빈틈을 채울 수 있도록 질문으로 전환하세요."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "AI 시간 여행, 역사 대화, 토론 연습으로 맥락, 증거, 논증, 관점을 탐험하세요."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "학습 일정을 받고, 취약 영역을 퀴즈로 점검하고, 틀린 부분을 반복 복습용 플래시카드로 바꾸세요."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "현재 inspirlearning.com 재구축 버전."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "수동적으로 답을 읽는 대신 집중된 질문, 힌트, 성찰을 통해 배우세요."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "흔한 학습 순간을 위한 모드 가이드, 프롬프트 루프, 학습 방법, 핵심 글."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "역사적 인물과 대화하는 AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "각 모드는 고유한 목적, 예시, 학습 흐름이 있는 공개 게스트 채팅으로 열리므로, 학습자는 즉시 알맞은 지원으로 시작할 수 있습니다."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir는 일반 AI 챗봇과 어떻게 다른가요?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "실제로 쓰이도록 만든 것"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "복습 전에 테스트하기"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "생성된 대화를 실제 인용문이나 1차 자료로 취급하지 마세요."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "스스로 퀴즈 풀기"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "모든 주제에 같은 시간이 필요하다고 가정하는 계획을 세우지 마세요."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir 학습 미리보기 재생"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "간단한 설명, 일상적인 비유 하나, 주제를 이해하기 전에 필요한 세 가지 생각을 요청하는 것부터 시작하세요."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "시험용 AI 퀴즈 생성기"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "설명을 능동 회상 카드로 바꾸고, 실수하거나 망설인 뒤에는 그 카드를 다시 보세요."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "영상 다시 시작"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "inspir가 부정행위를 부추기지 않고 숙제를 도울 수 있나요?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "동영상 진행 상황"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "먼저 간단한 모델을 잡기"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI 학습 가이드 라이브러리"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "무엇이든 배우기로 시작하기"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "튜터링, 연습, 퀴즈, 플래시카드, 토론, 글쓰기 피드백, 코딩 도움, 학습 계획을 위한 무료 공개 AI 학습 동반자입니다."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "화이트 라벨 학교 AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "실시간 학습 세션을 시작하세요."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI 수학 튜터"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "수학 단계 코치"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "커뮤니케이션"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "대화하고, 시험해 보고, 토론하고, 탐험하며 배우세요."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "학습 가이드와 연습 루프"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "그 주장을 여러 관점에서 토론해 가정, 상충점, 약한 증거를 알아차려 보세요."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI 역사 튜터"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "빠른 학습 경로"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "제1원리에서 시작하기"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "영상 음소거"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31초 보기"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "집중형 AI 학습 모드로 시험 복습을 계획하고, 퀴즈를 만들고, 플래시카드를 구성하고, 간격 복습을 예약하며, 동기를 현실적으로 유지하세요."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "찾아온 바로 그 종류의 도움 열기"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "노트나 주제를 힌트, 답, 예시, 흔한 함정이 있는 집중형 플래시카드로 바꾸세요."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "소크라테스식 튜터"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI 소크라테스식 튜터"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir의 무엇이든 배우기에서 유용한 학습 결과를 얻기 위한 프롬프트 아이디어와 반복 가능한 학습 루프."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "학교 살펴보기"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "AI 코치와 함께 대수, 미적분, 문장제 문제, 수학 개념을 한 번에 한 단계씩 풀어 보세요."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "호기심, 연습, 접근성을 위해 만들었습니다."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "이 주제들에 대해 한 번에 한 문제씩 퀴즈를 내 주세요. 각 답변 뒤에는 빈틈을 설명하고 난이도를 천천히 높여 주세요."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "인기 AI 학습 경로"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "명확한 개인정보 보호 경계"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "소크라테스식 점검"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "무료 공개 AI 학습 플랫폼"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "미션 읽기"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "소크라테스식 수업"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "다시 재생"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "사람들이 빠르게 이해할 수 있는 공개 학습 사이트입니다."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "학습자가 시작 전에 자주 묻는 것."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "증거를 고려한 장면"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "맥락 요약하기"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "가이드, 경로, 과목, 프롬프트가 다음에 연습할 유용한 곳으로 이어집니다."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "이미 동의하는 쪽만 토론하지 마세요."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "도움이 되는 학습 지도"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "마지막에는 쉬운 말 모델, 더 날카로운 질문, 직접 다시 설명할 수 있는 예시, 복습용 회상 카드를 얻게 됩니다."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "학습자에게 필요한 것은 링크 더미가 아니라 순서입니다. 이 경로들은 이해, 숙제, 시험 준비, 탐험을 위한 실용적인 학습 루프로 모드를 연결합니다."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "무엇이든 배우기"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "영상 챕터"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "쉬운 다음 단계"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "학습 계획을 현실적으로 만들기"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "가이드 라이브러리"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "설명 뒤에 소크라테스식 질문을 사용하는 이유"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "AI가 학생을 수동적인 답 수집가로 만들지 않으면서 학습을 더 명확하고 개인화되며 접근하기 쉽게 만드는 방법을 실용적으로 살펴봅니다."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "논증"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "최종 초안이 분명히 자신의 글로 남도록 하면서 구조, 명확성, 증거에 대한 글쓰기 피드백을 사용하세요."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT에 맞춘 옵션"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "이 주제에 대해 소크라테스식 질문 다섯 개를 해 주세요. 답할 때마다 제가 어떤 가정을 사용했는지, 다음에 무엇을 확인해야 하는지 알려 주세요."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir는 무료로 사용할 수 있나요?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "역사 모드에 무엇이 문서로 확인된 내용인지, 추론인지, 시뮬레이션인지 표시해 달라고 요청하세요."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "가이드 라이브러리 살펴보기"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "오류로 플래시카드를 만들고 시간이 지난 뒤 다시 보세요."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "답을 베끼지 않는 AI 숙제 도움"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "생각은 학습자가 하도록 두면서 힌트, 점검, 피드백, 학습 계획을 요청하세요."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "더 넓은 오픈소스 inspir 플랫폼."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "이미 시도한 것을 보여 주는 과정을 건너뛰지 마세요. 유용한 도움은 그 맥락에 달려 있습니다."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "제가 푼 과정의 이 단계를 확인해 주세요. 틀렸다면 실수를 설명하고 다음에 할 일 하나를 알려 주세요."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "저를 이 시간과 장소에 놓아 주세요. 문서로 확인된 사실과 그럴듯한 시뮬레이션을 따로 표시하고, 제가 무엇을 알아차리는지 물어보세요."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "다시 설명해 보기"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "취약 영역 루프"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "각 가이드는 연습 계획, 경로, 알맞은 학습 모드로 이어지는 링크로 끝납니다."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "AI 학습 동반자가 모두를 위해 해야 할 일"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI 역사 튜터"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "인물에게 질문하기"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "한 단계 점검하기"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "그 주장 토론하기"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "취약점 보완하기"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "숙제 코치"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "다음 단계 설명"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "능동 회상을 위한 AI 플래시카드"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "배움은 무료이고 접근 가능하며 살아 있어야 한다는 inspir의 믿음을 소개하는 짧은 영상입니다."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "이해하지 못하는 것에서 시작해 쉬운 말 모델, 예시, 다음 단계를 얻으세요."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "주제 묶음"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "영상 대본 보이기"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "숙제"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "최종 결과물은 자신의 것으로 유지하면서 힌트, 단계 점검, 수학 추론, 글쓰기 피드백을 위해 AI 숙제 코칭을 사용하세요."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "명확한 설명"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "플래시카드로 바꾸기"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "시험 준비 계획은 얼마나 일찍 세워야 하나요?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "영상은 영감에서 실용적인 약속, 즉 인내심 있는 AI 학습 동반자로 전환됩니다."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "함께 만들기"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "단계 점검"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "좋은 시작 영역:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "사실과 창작 구분"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "자신감을 위해 설계됨"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "과목에서 시작한 다음 알맞은 학습 모드를 여세요."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "계획, 수정, 구조, 피드백으로 글을 개선하면서도 자신의 목소리를 그대로 유지하세요."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI 숙제 도우미"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "시대 입력하기"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "그것으로 무언가 해 보기"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "또 하나의 답변 상자가 아니라, 배우는 곳."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "호기심은 여기서 시작됩니다"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "게스트 채팅 열기"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "플래시카드로 복습하기"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "역할극이 날짜, 맥락, 문서, 증거 라벨을 대신하게 하지 마세요."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "시험 날짜를 알게 되는 즉시 시작하세요. 시간이 짧다면 취약 영역, 기출문제식 질문, 매일 회상을 우선하세요."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "각 힌트 뒤에는 계속하기 전에 그 단계가 왜 작동하는지 설명하세요."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "힌트 요청하기"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "모든 글은 카테고리, 라이브 모드, 과목 허브, 학습 경로, 관련 가이드로 연결됩니다."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "더 깊이 생각하기"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "호기심, 연습, 그리고 가르치는 AI."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "이 주제를 쉬운 말로 설명해 주세요. 제가 필요한 선행 개념 세 가지, 비유 하나, 흔한 오해 하나를 말해 주세요."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "기밀 배포"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "영상을 전체 화면으로 열기"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "할 수 있는 일"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "가장 어려웠던 오답을 플래시카드로 바꾸고 나중에 복습하세요."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "무엇이든 질문하기"
     }
   ]
 }

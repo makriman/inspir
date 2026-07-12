@@ -1,92 +1,81 @@
 # Runtime Route Policy
 
-Inspir uses a static-first Cloudflare Workers Free architecture. OpenNext builds the application, then the deploy pipeline turns every eligible prerendered public document into a Workers Static Asset. A public page that can be known at deploy time must not spend Worker CPU at request time.
+Inspir uses a static-first, native-account architecture for Cloudflare Workers Free. OpenNext is a build tool only: it prerenders documents, and the deploy pipeline materializes eligible output into Workers Static Assets. The deployed request handler does not import Next or the OpenNext request runtime.
 
-## Delivery Map
+## Delivery map
 
-| Route class | Examples | Production delivery | Cache and state contract |
+| Route class | Examples | Production delivery | Contract |
 | --- | --- | --- | --- |
-| Public documents | `/`, marketing pages, supported localized pages, generated comparison/audience/subject/learn pages, privacy, terms | Direct Workers Static Assets; no Worker invocation | `X-Inspir-Delivery: static-assets`; public document caching; no response cookie |
-| SEO, discovery, and PWA metadata | `/robots.txt`, `/sitemap.xml`, `/sitemap/:locale.xml`, `/rss.xml`, `/llms.txt`, `/llms-full.txt`, `/ai-content-index.json`, `/manifest.webmanifest` | Direct Workers Static Assets | Deployed with the same versioned asset manifest as the app |
-| Immutable frontend assets | `/_next/static/*`, `/media/*`, `/inspir-social-preview.png` | Direct Workers Static Assets | Long-lived `public, immutable` caching for content-addressed or release-owned files |
-| Static redirect | `/tnc` | Native `_redirects` `308` to `/terms`; no Worker invocation | Exact permanent legal canonicalization before Static Asset headers |
-| Canonical host | `www.inspirlearning.com/*` | Separate `inspirlearning-www-redirect` route Worker ahead of the main Custom Domain | `308` to the exact apex path/query; `X-Inspir-Delivery: www-redirect-worker`; bounded public caching |
-| Public topic workspace | `/chat?topic=:topic` and localized equivalents | Direct Workers Static Assets; validated query selects a seeded topic | Guest-only, `noindex, follow`; content-addressed main-app bundle for the selected language |
-| Legacy public topic URL | Exact seeded `/chat/:topic` and localized equivalents | Native `_redirects` `308` to the query-based static chat shell; no Worker invocation | English rules are exact/static; one localized placeholder rule per seeded topic stays below Cloudflare's 100 dynamic-rule limit |
-| Public topic catalogue | `/api/topics` | Prerendered JSON Static Asset | Seeded at build time; bounded public cache policy; no D1 read |
-| Lean native APIs | `/api/health`, `/api/guest-chat` | The only main-Worker routes | `X-Inspir-Delivery: lean-api-worker`; `private, no-store`; no Next/OpenNext runtime |
-| Unknown or removed paths | Unknown public/API paths, unsupported localized documents, `/games`, retired translation APIs, legacy `/og` | Direct Workers Static Asset `404`; no Worker invocation | `X-Inspir-Delivery: static-assets`; public revalidation policy; no OpenNext headers |
+| Public documents | `/`, marketing pages, supported localized pages, privacy, terms | Direct Workers Static Assets | `X-Inspir-Delivery: static-assets`; no D1 read or Worker invocation |
+| SEO and PWA metadata | `/robots.txt`, `/sitemap.xml`, `/rss.xml`, `/llms.txt`, `/manifest.webmanifest` | Direct Workers Static Assets | Versioned with the application assets |
+| Frontend assets | `/_next/static/*`, `/media/*`, `/i18n/main-app/*` | Direct Workers Static Assets | Content-addressed or release-owned immutable caching |
+| Public topic catalogue | `/api/topics` | Prerendered JSON Static Asset | Seeded at build time; no prompt or private field |
+| Chat shell | `/chat`, localized equivalents | Static HTML and client bootstrap | Starts as a guest shell, then checks `/api/me`; signed-in users receive profile, D1 topics, saved chat, memory, and admin capabilities |
+| Account recovery | `/reset_pw` | Direct Workers Static Assets | No password form or private data; explains Google-only recovery and returns existing users to sign-in without invoking the Worker |
+| Topic and saved-chat child URL | `/chat/:topic`, `/chat/:uuid` | Tiny native router | Known topics receive a `308` to the query shell; UUIDs receive the same static shell with private/no-store and load only through an ownership-checked API |
+| Native account APIs | `/api/auth/*`, `/api/logout`, `/api/me`, `/api/me/photo` | Native Worker | Better Auth-compatible Google OAuth/session model; private/no-store; bounded bodies; no Next/OpenNext |
+| Legacy localization compatibility | `/api/language-preference`, `/api/main-app-translations`, `/api/site-translations` | Tiny native adapter over release-owned Static Assets | Preserves pre-games cookie/JSON contracts for cached clients; bounded input and no request-time D1, translation provider, Next, or OpenNext work |
+| Native saved-state APIs | `/api/chats/*`, `/api/memory/*` | Native Worker | Session and ownership checks in every handler; bounded raw D1 operations |
+| Product event ingestion | `/api/analytics/events` | Native Worker | Bounded anonymous or signed events; server-derived identity when present; no client-trusted user ID and no private-data read |
+| Native learning APIs | `/api/chat`, `/api/chat/finalize`, quiz/flashcard routes, `/api/account/topics` | Native Worker | User quota, fail-closed global LLM ceiling, pass-through streaming, ownership-scoped saved answers, and complete activity results |
+| Native admin APIs | `/api/admin/dashboard`, `/api/admin/users`, `/api/admin/topics` | Native Worker | Session plus DB/bootstrap admin authorization in every handler; durable all-time totals come from one daily metadata snapshot while indexed window metrics stay live |
+| Background memory and maintenance | daily cron, authenticated `GET /api/cron/memory-dreaming`, and `inspirlearning-memory-post-turn-prod` | Native HTTP/scheduled/Queue handlers | `CRON_SECRET` bearer authentication, write-freeze enforcement, bounded enqueue/prune, daily admin-total refresh, and deterministic D1 synthesis; no inline LLM/OpenNext work |
+| Removed games | `/games`, game APIs and manifests | Static `404` | No game code, assets, route, binding, or deployment surface |
 
-The removed game surface has no runtime route, API, install manifest, or Static Asset. `/games` is expected to return `404`.
+The separate `inspirlearning-www-redirect` Worker canonicalizes `www.inspirlearning.com/*` to the exact apex path/query. It is not an application runtime.
 
-`www.inspirlearning.com` is not an application route. The current credential can write Worker routes but cannot edit zone Redirect Rules, so `wrangler.www-redirect.jsonc` deploys a tiny Worker Route at `www.inspirlearning.com/*`. Worker Routes take precedence over the main Custom Domain. The route Worker returns `308` to the identical path and query on `https://inspirlearning.com` and identifies the delivery path with `X-Inspir-Delivery: www-redirect-worker`. Both Custom Domains remain configured for DNS/certificate continuity; Next middleware is only defense in depth for dynamic and local execution.
+## Free-plan CPU boundary
 
-A zone-level Single Redirect is an optional future optimization because it would canonicalize `www` without a Worker invocation. It requires separate Single Redirect edit permission and is not managed by Wrangler. Do not remove the route Worker unless the zone rule, exact path/query behavior, zero-invocation evidence, verifier changes, and rollback plan ship together.
+`wrangler.jsonc` deliberately has no `limits.cpu_ms`; Workers Free rejects configurable CPU limits and enforces a 10 ms HTTP CPU ceiling. Every native route must be sampled below the repository's 8 ms release threshold so two milliseconds remain as operating headroom.
 
-## Static Public Documents
+The exact `assets.run_worker_first` rules contain only the native routes above, the three exact legacy compatibility paths, narrow child globs, and the higher-precedence `!/_next/static/*` exclusion. Cloudflare `*` patterns match deeply, so the exclusion prevents chat route globs from intercepting immutable Next chunks whose generated path contains a `/chat/` segment. Broad `/api/*` and `/*` patterns are forbidden. Public HTML, SEO documents, `/api/topics`, backing translation assets, chunks, and media bypass the Worker.
 
-`pnpm cf:build` materializes eligible OpenNext cache entries into `.open-next/assets`. The materializer fails closed when required documents (including the PWA manifest) are missing, when the locale/document floor is not met, when Cloudflare asset limits are exceeded, when a removed route appears in the output, or when static HTML references the billable `/_next/image` optimizer. Next image optimization is globally disabled for this deployment; browsers request the cached source image directly. `.open-next/static-marketing-assets-report.json` records the exact generated paths, build ID, budgets, and output hash.
+Framework-neutral handlers use Web `Request`/`Response`, raw D1 statements, Web Crypto, R2, Vectorize, and Queues. They must not import `next`, `next/server`, `.open-next/worker.js`, or `@opennextjs/cloudflare`. Request bodies, cookies, history, D1 result sizes, provider responses, and persisted assistant output are bounded.
 
-Public HTML must be served with `X-Inspir-Delivery: static-assets`. This is operational evidence that the request bypassed the Worker; `CF-Cache-Status` alone is not sufficient because a cache miss can still invoke Worker code. Public documents must not rely on `x-nextjs-cache`, `x-opennext-cache`, OpenNext ISR revalidation, or managed HTML Cache Rules for availability.
+The legacy `NEXT_CACHE_DO_QUEUE` class, migration tag, and self binding remain only for rollback compatibility after the already-applied Durable Object migration. The native runtime does not call that cache queue, and the 14 GB OpenNext incremental-cache R2 bucket is not bound.
 
-Static layouts may load the configured external analytics scripts, but they do not mount the D1-backed `ProductAnalytics` beacon. Product-event writes remain a workspace interaction concern. The global static `404` uses plain document links with no RSC prefetch, so an idle unknown-path visit is also main-Worker quiet.
+## Authorization and state
 
-The OpenNext R2 incremental-cache binding is removed. The existing Durable Object class, migration tag, and self binding remain only to preserve rollback compatibility after the already-applied migration; normal production traffic never calls them.
+Static HTML is never treated as an authorization boundary. The chat and admin shells contain no private data. Each private API verifies the HMAC-signed Better Auth cookie, loads an unexpired D1 session, and scopes every read or mutation to `session.user.id`; admin APIs add a DB/bootstrap admin check.
 
-## Multilingual Routing and Translation
+Google remains the sole identity provider. Verified Google email may link to a migrated same-email user without changing that user's id, preserving historical chats and memory. Do not rotate `AUTH_SECRET`, rename cookies, recreate account tables, or rewrite user ids during a normal deploy.
 
-Localized marketing HTML is deploy-time immutable. It is released as a source-current Static Asset, never repaired or regenerated during a visitor request.
+Saved chat child URLs are safe to serve as a shell because messages are returned only after `/api/chats/:id` verifies ownership. Guest and unowned requests receive `401` or `404` from the API and never receive private state.
 
-The language picker writes bounded locale preference cookies in the browser and performs a full document navigation. It does not call a language-preference API. Full navigation is intentional: the destination is an HTML Static Asset rather than a React Server Component response from the Worker.
+Saved-chat pages return at most 30 messages and 8,000 Unicode code points per message. When more content exists, message metadata carries the next character offset; `GET /api/chats/:chatId/messages/:messageId?offset=N` re-checks session and chat ownership, selects only the next bounded D1 `substr` chunk, and returns private/no-store `{ content, hasMore, nextOffset }` data without materializing the full message in the Worker.
 
-Only route/language pairs backed by complete, source-hash-exact curated packs committed with the release are materialized. Generated links use canonical English when coverage is missing. A direct unsupported localized URL receives the static `404`, so it cannot spend Worker CPU or publish partial English fallback copy under a locale URL.
+## Memory and AI budgets
 
-D1 remains the operational translation source-manifest audit trail. The confirmed SEO repair path validates all extracted namespaces, computes an incremental source diff under a conservative Workers Free write budget, removes retired private/game keys, and applies the audited CTA repairs for all 69 target languages in one atomic SQL file. Build-time eligibility still comes from committed curated packs, so a D1 row alone does not authorize a route for static publication.
+Guest chat keeps server-derived session, fingerprint, and IP buckets. Signed-in chat uses a user bucket. Per-user/guest quota-storage failures may fail open only where the handler logs the deliberate availability posture. The global LLM daily ceiling always fails closed.
 
-For new or changed public copy:
+Authenticated chat passes the provider SSE body straight to the browser without parsing or remounting token chunks in the Worker. After the browser has already decoded the bounded answer for display, it makes one idempotent `/api/chat/finalize` request carrying the run, chat, user-message, and answer values; the server rechecks the session and chat ownership, accepts only a still-pending matching run, atomically saves the assistant message, and enqueues post-turn memory. This deliberately trades one small authenticated request for removal of unbounded stream-parsing CPU from the Free Worker. Normal answers are capped at 800 completion tokens (1,200 for reasoning profiles), and the finalize JSON remains under the native 20 KiB request ceiling. Queue processing and daily synthesis are deterministic and bounded on Free; they do not invoke a second request-time LLM pipeline.
 
-1. update the typed source and regenerate the site source manifest;
-2. supply valid NFC translations for every claimed language and preserve stable translation keys;
-3. validate exact source hashes and field completeness;
-4. commit the curated route packs used by static generation;
-5. run the read-only translation repair/validation and the full Cloudflare build gates;
-6. synchronize D1 only through an explicit, backed-up, production-confirmed command.
+Explicit personal memory commands use a compile-time-complete lexicon for every supported language. Only anchored “remember this about me”, “forget this about me”, preference, and identity forms with a 5–600 character payload mutate memory; the queue applies the account's preferred-language lexicon plus typo-tolerant English fallback. Ordinary study requests such as “remember the planets” are not personal-memory writes. Creates and bounded deletes remain scoped to the queue job's already ownership-checked user/chat.
 
-Do not expand DOM-walking translation. Public copy should use render-time typed lookup from curated bundles or audited D1 data.
+The memory cron endpoint preserves its historical GET-only contract. It requires `Authorization: Bearer <CRON_SECRET>`, never accepts a query-string secret, enqueues at most 25 due users, prunes at most 5,000 expired rate-limit windows through the `reset_at` index, returns private/no-store JSON, and performs no synthesis inline. The platform's daily scheduled event separately refreshes one `app_metadata` row containing durable admin totals and marks at most 500 client-unfinalized AI runs older than one hour as failed through the `created_at` index; ordinary admin requests read the bounded snapshot instead of recounting historical account and chat tables. Snapshot SQL excludes only the reserved `@inspirlearning.invalid` disposable validator and deliberately retains NULL/orphan historical chats, messages, and AI runs.
 
-## Dynamic Worker Surfaces
+Profile images use `PROFILE_IMAGES_R2_BUCKET`; memory cleanup uses `MEMORY_VECTORIZE`; relational identity, chats, results, translations, and memory stay in D1. The memory Queue has a DLQ and bounded retry policy.
 
-`wrangler.jsonc` deliberately has no `limits.cpu_ms` because Workers Free rejects configurable CPU limits. Every request that reaches the Worker must fit the platform's 10 ms CPU ceiling. External network wait time is not permission for unbounded parsing, rendering, retries, replay, or database work.
+## Multilingual contract
 
-`assets.not_found_handling` is `404-page`, and `run_worker_first` is the exact two-entry allowlist `/api/health` and `/api/guest-chat`. There are no globs or exclusions. Unknown GETs resolve to the Static Asset 404, while unsupported mutation methods receive the Static Asset router's 405 without entering application code.
+Localized marketing HTML is deploy-time immutable. It is emitted only from source-hash-exact curated packs and is served directly by Workers Static Assets.
 
-- `/api/health` is a tiny native, version-attributed, `private, no-store` response so release verification can prove which Worker is active.
-- `/api/topics` is build-time seeded JSON and never invokes the Worker.
-- `/api/guest-chat` is a native streaming POST. It validates a bounded strict JSON contract, consumes D1-backed IP/fingerprint/session quotas, fails closed on the global daily LLM ceiling, and passes the provider's SSE body through without parsing token chunks in the Worker.
-- `inspirlearning-www-redirect` is a separate minimal Free-plan Worker with no application bindings or rendering. It performs only URL normalization and a `308`; its invocation must never enter the main OpenNext Worker.
-- Signed-in chat, profiles, saved state, memory, generated quizzes/flashcards, auth, admin, migration, cron, queues, and games are deliberately not production surfaces on the Free architecture.
-- Retired source files may remain for build history or future paid architecture work, but the Static Asset router makes them unreachable in production.
+Translations are generated and validated offline. Static main-app bundles include the account, saved-chat, profile, memory, and admin copy for every supported language; the client does not walk the DOM to translate token updates. D1 mirrors audited source-current payloads, but page rendering does not fan out across D1 translation rows.
 
-Guest quotas require server-derived buckets and bounded request history; client-resettable state is never the only key. Per-guest D1 failure may fail open with a structured warning for availability. The global LLM ceiling always fails closed.
+Only source-hash-exact curated route/language pairs may become localized public HTML. A direct unsupported localized URL receives the static `404` instead of shipping mixed English copy. New UI text must be added to the typed main-app source and all tracked language packs before deployment.
 
-## Cache Boundaries
+Generated links use canonical English when coverage is missing, so navigation never advertises a partially translated route.
 
-- Do not enable Worker-wide caching.
-- Do not add a managed HTML Cache Rule or deployment purge for public documents. Static Assets provide their delivery and release invalidation boundary.
-- Static HTML and SEO responses are public and carry the Static Asset delivery marker.
-- Canonical `www` responses are public `308` responses with bounded caching and the redirect Worker delivery marker.
-- Versioned `/_next/static/*`, media, and the release-owned social image may use long-lived immutable caching.
-- The two lean API responses use `private, no-store` and must never produce a shared-cache hit.
-- A new public dynamic GET must set a deliberately bounded cache policy and be added to the delivery map with the reason it cannot be a build-time asset.
+## Adding or changing a route
 
-## Adding or Changing a Route
+1. Prefer a prerendered Static Asset when output is public and known at build time.
+2. For private or mutating behavior, add a framework-neutral native handler with its own session, ownership/admin, schema, quota, cache, and write-freeze checks.
+3. Add only the exact path or narrow child glob to `assets.run_worker_first`; never add `/api/*` or `/*`.
+4. Add preview tests and a production-tail probe proving the expected status, delivery marker, cache policy, outcome, and CPU sample.
+5. Keep games absent unless the product scope is explicitly changed again.
 
-Before merging a route change, decide its delivery class explicitly:
+The release is healthy only when the expected version is alone at 100%, public static probes produce no main-Worker tail event, every native probe has outcome `ok`, no resource-limit log appears, and every sampled native invocation stays below 8 ms CPU.
 
-1. If the output is known at build time, make it statically generatable and prove it appears in the materialization report.
-2. Private, mutating, personalized, account, admin, and background surfaces are outside the current Free production scope; adding one requires an explicit architecture and quota review rather than merely exposing an existing Next route.
-3. If a public dynamic endpoint is unavoidable, implement it in the dependency-minimal native Worker, bound its D1 work and payload, document its freshness policy, and add its exact path to the Worker-first allowlist and deploy-preflight contract.
-4. Never restore a broad `/api/*`, locale, or catch-all Worker-first pattern. Unlisted asset misses must remain direct Static Asset 404s.
-5. Add production verification for the correct delivery marker, cache policy, canonical behavior, and Worker outcome.
+Production release verification temporarily installs five bound Worker secrets: the operator-supplied exact existing admin email and 32–512-byte capability, plus wrapper-generated existing-user guard, mutation run UUID, and hard mint-expiry timestamp. Mint actions require the configured run, the active Worker version, and a live expiry no more than two hours ahead. Historical-account sessions are deterministic per run/version/purpose and never change that user's profile or admin membership; disposable mutations use a separate deterministic non-admin `@inspirlearning.invalid` user. The tail soak samples Google OAuth initiation first-use/warm before hidden authentication, then carries the returned session cookie through paired authenticated profile, saved-chat, memory, and admin probes. `E2E_TEST_AUTH_IS_ADMIN` is obsolete; admin authorization is accepted only when the server reports the configured/bootstrap admin.
 
-The release is not healthy unless deployment status shows the expected main version alone at 100%, an unpinned health request reports that UUID, public documents and 404s carry `X-Inspir-Delivery: static-assets`, canonical `www` responses carry `X-Inspir-Delivery: www-redirect-worker`, static requests are absent from the main Worker tail, every nonce-tagged dynamic probe is captured, and every sampled invocation completes with outcome `ok` below the 8 ms headroom threshold.
+The migration E2E route is a temporary release instrument, not a production login method. Both child validators and the parent wrapper exact-clean and independently verify the two historical validation sessions plus the complete disposable D1 graph before the capability is removed. Cleanup remains allowed after expiry and after an active-version change because it derives only the recorded run/candidate identity and can delete only HMAC-bound validation rows; minting remains pinned to the live active version. Every bound response also reports the actual runtime version, so an ignored Cloudflare version override cannot certify another version's empty inventory. The wrapper writes a private, fsynced recovery manifest before its first secret operation and removes it only after zero residue, all five secret names are authoritatively absent, and its global D1 lease is released with an exact absent readback. The lease is a non-secret, source/run/candidate/lease-generation-bound compare-and-swap row in `app_metadata`; it uses D1's clock, excludes concurrent validators across workspaces, fails closed on noncanonical, stale-generation, or live foreign ownership, reclaims an exact expired owner only through compare-and-swap, is attested around every secret mutation and authenticated child gate even after failures, and has a pre-reserved bounded D1 row/operation budget. Every production-mutating release, migration, sync, rollback, translation-repair, and authenticated-validation operation must hold that shared exclusion. A separate durable maintenance marker blocks all ordinary operations if translation repair becomes indeterminate; only the explicitly confirmed recovery command may restore the recorded candidate Worker and atomically clear that marker while holding the matching lease. Cross-store backup and destructive whole-D1 restore remain unsupported on Free. Confirm the route returns `404`, require the post-removal version alone at 100%, and rerun the secret-free tail CPU/resource gate before accepting the release. A real Google consent/callback round trip remains mandatory manual evidence whenever automation has no Google credentials.

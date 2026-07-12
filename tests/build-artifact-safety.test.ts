@@ -116,6 +116,20 @@ test("fresh OpenNext artifacts must pass the resource budget before upload", () 
   assert.ok(budgetIndex > buildIndex);
   assert.ok(scanIndex > budgetIndex);
   assert.match(source, /resourceBudgetOk: false/);
+  const lockChecks = [...source.matchAll(/options\.assertValidationLockAvailable \?\? assertNoLiveProductionValidationLock/g)]
+    .map((match) => match.index ?? -1);
+  assert.equal(lockChecks.length, 2);
+  assert.ok(lockChecks[0]! < buildIndex);
+  assert.ok(lockChecks[1]! > scanIndex);
+  assert.ok(lockChecks[1]! < source.indexOf("runBoundedReleaseChildSync(actualCommand", lockChecks[1]!));
+  const captureIndex = source.indexOf("commandArtifactEvidence = deployEvidence.captureCommandArtifacts()", lockChecks[1]!);
+  const acquireIndex = source.indexOf("acquireProductionValidationExclusion", captureIndex);
+  const commandIndex = source.indexOf("runBoundedReleaseChildSync(actualCommand", acquireIndex);
+  const releaseIndex = source.indexOf("releaseProductionValidationExclusion", commandIndex);
+  assert.ok(captureIndex > lockChecks[1]!);
+  assert.ok(acquireIndex > captureIndex);
+  assert.ok(commandIndex > acquireIndex);
+  assert.ok(releaseIndex > commandIndex);
 });
 
 test("blocked OpenNext deploy writes non-secret Worker deploy evidence", () => {
@@ -173,6 +187,41 @@ test("direct OpenNext deploy refuses to run when deploy preflight fails", () => 
     assert.equal(report.deployPreflightOk, false);
     assert.equal(report.deployPreflightStatus, 1);
     assert.equal(report.scanBeforeOk, null);
+  } finally {
+    process.argv = originalArgv;
+    console.error = originalConsoleError;
+    console.log = originalConsoleLog;
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("direct OpenNext deploy refuses an active cross-workspace validation lock before building", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-worker-deploy-lock-"));
+  const originalArgv = process.argv;
+  const originalConsoleError = console.error;
+  const originalConsoleLog = console.log;
+  let lockChecks = 0;
+  try {
+    process.argv = [process.execPath, "test", "--backup", backupDir];
+    console.error = () => undefined;
+    console.log = () => undefined;
+
+    const result = runSanitizedBuildCommand("opennext-deploy", [], {
+      deployPreflight: () => ({ ok: true, status: 0 }),
+      assertValidationLockAvailable: () => {
+        lockChecks += 1;
+        throw new Error("simulated active validation lock");
+      },
+    });
+    const report = JSON.parse(
+      fs.readFileSync(path.join(backupDir, WORKER_DEPLOY_REPORT), "utf8"),
+    ) as WorkerDeployEvidenceReport;
+
+    assert.equal(result.status, 1);
+    assert.equal(lockChecks, 1);
+    assert.equal(report.ok, false);
+    assert.equal(report.commandExecuted, false);
+    assert.match(report.error ?? "", /lock absence was not proved before build/);
   } finally {
     process.argv = originalArgv;
     console.error = originalConsoleError;
@@ -319,30 +368,47 @@ test("sanitized preview dotenv includes test auth only when explicitly supplied"
   const cwd = makeRepo();
   const previousSecret = process.env.E2E_TEST_AUTH_SECRET;
   const previousEmail = process.env.E2E_TEST_AUTH_EMAIL;
-  const previousAdmin = process.env.E2E_TEST_AUTH_IS_ADMIN;
+  const previousAllowLocalCreate = process.env.E2E_TEST_AUTH_ALLOW_LOCAL_CREATE;
+  const previousMutationRunId = process.env.E2E_TEST_MUTATION_RUN_ID;
+  const previousExpiresAt = process.env.E2E_TEST_AUTH_EXPIRES_AT;
 
   try {
     delete process.env.E2E_TEST_AUTH_SECRET;
     delete process.env.E2E_TEST_AUTH_EMAIL;
-    delete process.env.E2E_TEST_AUTH_IS_ADMIN;
+    process.env.E2E_TEST_AUTH_ALLOW_LOCAL_CREATE = "1";
+    process.env.E2E_TEST_MUTATION_RUN_ID = "22222222-2222-4222-8222-222222222222";
+    process.env.E2E_TEST_AUTH_EXPIRES_AT = "1783872000000";
     assert.equal(sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true }).includes("E2E_TEST_AUTH"), false);
+    assert.doesNotMatch(
+      sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true }),
+      /E2E_TEST_MUTATION_RUN_ID/,
+    );
+    assert.doesNotMatch(
+      sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true }),
+      /E2E_TEST_AUTH_EXPIRES_AT/,
+    );
 
-    process.env.E2E_TEST_AUTH_SECRET = "local-preview-session-secret";
+    process.env.E2E_TEST_AUTH_SECRET = "local-preview-session-secret-32-bytes-minimum";
     process.env.E2E_TEST_AUTH_EMAIL = "learner@example.com";
-    process.env.E2E_TEST_AUTH_IS_ADMIN = "1";
     const content = sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true });
 
-    assert.match(content, /E2E_TEST_AUTH_SECRET=local-preview-session-secret/);
+    assert.match(content, /E2E_TEST_AUTH_SECRET=local-preview-session-secret-32-bytes-minimum/);
     assert.match(content, /E2E_TEST_AUTH_EMAIL=learner@example\.com/);
-    assert.match(content, /E2E_TEST_AUTH_IS_ADMIN=1/);
+    assert.match(content, /E2E_TEST_AUTH_ALLOW_LOCAL_CREATE=1/);
+    assert.match(content, /E2E_TEST_AUTH_REQUIRE_EXISTING=0/);
     assert.match(content, /ADMIN_EMAILS=learner@example\.com/);
+    assert.doesNotMatch(content, /E2E_TEST_AUTH_IS_ADMIN/);
   } finally {
     if (previousSecret === undefined) delete process.env.E2E_TEST_AUTH_SECRET;
     else process.env.E2E_TEST_AUTH_SECRET = previousSecret;
     if (previousEmail === undefined) delete process.env.E2E_TEST_AUTH_EMAIL;
     else process.env.E2E_TEST_AUTH_EMAIL = previousEmail;
-    if (previousAdmin === undefined) delete process.env.E2E_TEST_AUTH_IS_ADMIN;
-    else process.env.E2E_TEST_AUTH_IS_ADMIN = previousAdmin;
+    if (previousAllowLocalCreate === undefined) delete process.env.E2E_TEST_AUTH_ALLOW_LOCAL_CREATE;
+    else process.env.E2E_TEST_AUTH_ALLOW_LOCAL_CREATE = previousAllowLocalCreate;
+    if (previousMutationRunId === undefined) delete process.env.E2E_TEST_MUTATION_RUN_ID;
+    else process.env.E2E_TEST_MUTATION_RUN_ID = previousMutationRunId;
+    if (previousExpiresAt === undefined) delete process.env.E2E_TEST_AUTH_EXPIRES_AT;
+    else process.env.E2E_TEST_AUTH_EXPIRES_AT = previousExpiresAt;
   }
 });
 

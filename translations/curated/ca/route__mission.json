@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Catalan",
+  "locale": "ca",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v2",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Les pàgines públiques, els xats per tema, els itineraris d'aprenentatge, les guies del blog i les pàgines d'ajuda estan dissenyats perquè siguin fàcils de trobar i compartir."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Comença a aprendre"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Les pàgines d'aprenentatge públiques són obertes, mentre que les rutes d'API, les rutes d'administració, els fluxos de restabliment i les pàgines d'utilitats privades continuen bloquejades."
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Cada mode d'aprenentatge té un enllaç públic perquè els aprenents puguin començar directament dins de l'experiència d'aprenentatge adequada."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Utilitza això quan facis referència als límits públics/privats, la seguretat de l'aprenent i la confiança escolar."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "índex de contingut d'IA"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "A diferència d'un chatbot genèric, inspir organitza la IA al voltant de modes d'aprenentatge perquè els aprenents puguin començar amb el tipus d'ajuda que necessiten: pistes, preguntes, qüestionaris, record actiu, joc de rol, debat o feedback."
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Les implementacions escolars es poden adaptar al voltant de contingut personalitzat, fluxos de treball, prompts i necessitats d'aprenentatge alineades amb NCERT quan sigui adequat."
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "El comportament d'aprenentatge va primer"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Els modes públics de convidat donen a qualsevol persona un lloc útil per començar, mentre que les implementacions escolars i amb socis poden adaptar l'experiència a les necessitats locals."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Cada mode bàsic d'aprenentatge té un punt d'entrada públic de convidat perquè la gent pugui començar des de la cerca, les xarxes socials o un enllaç compartit."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Un desplegament pot començar petit?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Una explicació clara del mode convidat, els xats privats, la seguretat dels aprenents i la confiança escolar."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "La declaració pública de per què existeix inspir i què significa l'accés a l'aprenentatge."
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "Més d'1 M d'aprenents"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "L'objectiu no és fer que la gent sigui passiva davant la IA. L'objectiu és donar a cada aprenent un primer lloc pacient on preguntar, practicar, rebre feedback, tornar-ho a provar i construir confiança."
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Escoles i RSC"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Primer, l'accés"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "Cobertura de la visió d'inspir per a una educació gratuïta i accessible."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Mitjans i citacions"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Fitxer de referència centrat en text per a assistents, educadors, socis i eines de citació."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Ha arribat a aprenents a través de la plataforma gratuïta i d'escoles sòcies."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Escoles i socis de RSC"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Els modes públics estan dissenyats al voltant del comportament d'aprenentatge: pistes, preguntes socràtiques, comprovacions de passos, qüestionaris, targetes de memòria, feedback d'escriptura, bucles de repàs i explicació activa."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Enllaços de referència, dades públiques, context per a premsa i detalls aptes per a citació."
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Aprenents, pares, professors, escoles i creadors autodidactes"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Via escolar i de socis"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Comença amb el company públic d'aprenentatge."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "La història que va dels qüestionaris i comunitats d'estudiants a eines gratuïtes d'aprenentatge amb IA construïdes en públic."
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Per què inspir està construït al voltant de modes en lloc d'una sola caixa de xat?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "Finals del 2022"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Configura fluxos de treball"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "De comunitat d'estudiants a infraestructura d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "L'accés pot ser finançat per escoles associades o recolzat mitjançant vies de patrocini de CSR per a comunitats que necessiten aprenentatge amb IA subvencionat."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "El producte públic, la via escolar i la biblioteca de continguts haurien de remetre al mateix principi: l'aprenentatge ha de continuar sent actiu, accessible i útil."
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "Més de 100 països"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "L'aprenentatge de qualitat hauria de sentir-se disponible, humà i viu."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir s'organitza al voltant de modes d'aprenentatge com tutoria socràtica, pistes per als deures, qüestionaris, targetes de memòria, passos de matemàtiques, crítica d'escriptura i planificació d'exàmens, perquè els estudiants arribin a un comportament d'aprenentatge més enfocat."
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Prova els modes públics de convidat"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "La reconstrucció de codi obert per a desenvolupadors, educadors i col·laboradors."
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Construït des del 2013"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "La missió està connectada amb superfícies reals del producte."
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir fa que els modes d'aprenentatge s'obrin a /chat/{topicSlug}, permetent que els aprenents arribin directament a l'experiència d'aprenentatge amb IA adequada sense necessitar un xat privat desat."
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "El producte públic continua sent fàcil de provar: els aprenents poden arribar directament a un mode d'aprenentatge i començar com a convidats. Les escoles i els socis de RSC poden donar suport a implementacions a mida quan les comunitats necessiten confidencialitat, alineació curricular o accés subvencionat."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Lloc web"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "El blog públic conté més de 100 guies, bucles de prompts i grups de pilars connectats amb modes d'aprenentatge en directe."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "D'inspir.app a inspirlearning.com"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Veure tots els modes"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Pàgina de comunitat connectada amb el reconeixement de DeepHack."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Les escoles i els socis poden construir a partir del producte públic cap a implementacions personalitzades, confidencials i subvencionades."
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "L'aprenentatge hauria de ser gratuït, divertit, útil i disponible per a qualsevol persona amb curiositat."
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Una experiència d'aprenentatge específica per a l'escola es pot adaptar a la vostra comunitat d'estudiants, al vostre to i a les prioritats d'aprenentatge."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Angle del mode de convidat"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Descripció breu"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Eines gratuïtes, útils i atractives d'aprenentatge amb IA per a qualsevol persona amb curiositat."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Arribat a través de la plataforma pública gratuïta i les implementacions en escoles sòcies."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "plataforma gratuïta d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "L'aprenentatge és per a tothom"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Per què ara"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Aquestes pàgines fan que la història sigui més fàcil de verificar, citar, compartir i utilitzar: modes públics, itineraris d'aprenentatge, guies de format llarg, notes de desplegament escolar, dades per als mitjans i els antecedents de l'empresa."
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "coach de deures amb IA per a estudiants"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Identifica els objectius escolars que importen més: suport conceptual, pistes per als deures, preparació d'exàmens, record actiu, feedback d'escriptura o enriquiment."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Utilitza això per a referències d'escoles, socis, RSC i accés educatiu."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Reconeixement Jury's Choice d'Amod Malviya a DeepHack per la feina d'aprenentatge amb IA."
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Les regles d'accés en directe per a rutes públiques i privades."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir existeix per fer que l'aprenentatge sigui accessible, atractiu, agradable i útil per a qualsevol persona amb curiositat mitjançant eines públiques gratuïtes d'aprenentatge amb IA i espais d'aprenentatge preparats per a escoles."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Les escoles poden avaluar primer els modes públics i després parlar de fluxos de treball a mida, planificació de la confidencialitat, necessitats de contingut i accés finançat."
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "L'accés a l'aprenentatge amb IA pot ser finançat per escoles associades o recolzat mitjançant patrocini de CSR per a comunitats que necessiten accés subvencionat."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "El producte hauria d'ensenyar, no només respondre."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "La història abasta qüestionaris, xarxes escolars fora de línia, ingestió curricular i modes públics d'aprenentatge amb IA."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir és una plataforma gratuïta d'aprenentatge amb IA amb modes públics de convidat per a explicacions, tutoria socràtica, acompanyament de deures, qüestionaris, targetes de memòria, debat, joc de rol, feedback d'escriptura i planificació d'estudi."
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "enllaços de referència d'autoritat pública d'inspir"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Llançament d'IA per a consumidors"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Va començar com a qüestionaris públics i comunitats d'estudiants el 2013."
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Principis"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Un aprenent pot obrir «Aprèn qualsevol cosa», «Instrucció socràtica», «Mentor de deures», «Mentor de passos de matemàtiques», qüestionaris o targetes d’estudi directament en mode de convidat des del directori públic de modes d’aprenentatge."
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Plataforma gratuïta d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Enfocament escolar"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "Els xats públics de convidat estan oberts?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Una escola pot utilitzar inspir primer com a eina d'aprenentatge de convidat?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "De qüestionaris de Facebook i esdeveniments fora de línia a infraestructura aplicada d'aprenentatge amb IA."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "L'angle més fort és l'aprenentatge públic gratuït amb IA que s'obre directament en mode de convidat i manté els aprenents actius mitjançant ensenyament específic per mode en lloc de generació genèrica de respostes."
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Per què les pàgines públiques d'aprenentatge són fàcils de compartir?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "La biblioteca escrita d'aprenentatge que dona suport a prompts, bucles d'estudi i pràctica més profunda."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir s'organitza al voltant de pistes, preguntes, qüestionaris, targetes de memòria, debat, repàs i explicació en lloc de copiar respostes passivament."
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Tutor de convidat predeterminat"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Quin és l'angle de producte més útil per a la cobertura?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Tasques d'aprenentatge diferents necessiten formes d'interacció diferents, per això inspir utilitza ensenyament actiu i específic per mode. Una pista per als deures, una pregunta socràtica, una simulació històrica, un repàs de targetes de memòria i una crítica d'escriptura no haurien de comportar-se com el mateix xat genèric."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Missió | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Les escoles poden provar primer els modes públics de convidat i després utilitzar la pàgina d'escoles per explorar fluxos de treball a mida, planificació de la confidencialitat, opcions alineades amb NCERT i accés finançat."
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "El professorat i els responsables poden començar amb «Aprèn qualsevol cosa», «Instrucció socràtica», «Mentor de deures», qüestionaris i targetes d’estudi abans d’un desplegament formal."
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Tasques diferents necessiten modes diferents: preguntes socràtiques, pistes per als deures, targetes de memòria, debat, joc de rol històric, crítica d'escriptura i més."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Sí. Els punts d'entrada públics de tema com /chat/learn-anything i /chat/socratic-instruction són pàgines d'aprenentatge obertes que qualsevol pot provar."
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "principis de missió d'inspir"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Un company d'aprenentatge capaç no hauria de dependre de la geografia, dels ingressos familiars ni de si l'aprenent ja coneix la persona adequada a qui preguntar."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "La missió d'inspir és fer que l'aprenentatge sigui accessible, atractiu, agradable i útil per a tothom mitjançant eines públiques gratuïtes d'aprenentatge amb IA."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Després que el domini inspir.app es vengués per finançar l'accés gratuït continuat, el producte en directe es va traslladar a inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "aliança de tecnologia educativa de RSC"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "biblioteca de guies d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Més de 100 guies sobre tutoria, prompts, bucles d'estudi, record actiu i modes."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir és una plataforma gratuïta d'aprenentatge amb IA amb modes públics de convidat per a explicacions, tutoria socràtica, acompanyament de deures, qüestionaris, targetes de memòria, debat, feedback d'escriptura, ajuda de programació i planificació d'estudi."
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Un directori clar de tots els punts d'entrada al xat d'aprenentatge com a convidat."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Periodistes, editors de directoris, socis, escoles i qualsevol persona que escrigui sobre inspir poden utilitzar-ho per a fets, enllaços, angles narratius i referències fàcils de citar."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Mapa les necessitats d'aprenentatge"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Què és inspir?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Llança i finança l'accés"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "A quina URL haurien d'enllaçar primer els articles?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Via d'implementació escolar"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Enfocament del producte"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Nom"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "tutor d'IA per a escoles"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Inici"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Quina és la descripció breu d'inspir?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Les converses desades dels usuaris utilitzen identificadors privats i no s'han de tractar com a material font públic."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "desenvolupament de nova generació d'inspir.uk"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Passa del pilot a un accés més ampli mitjançant finançament escolar, suport de socis o rutes de RSC per a aprenents que necessiten accés subvencionat."
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "El contingut, els prompts i els fluxos de treball personalitzats es poden adaptar a les necessitats de l'NCERT i a les prioritats d'aula específiques de cada escola."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Utilitza això quan enllacis els lectors directament amb l'experiència d'aprenentatge en directe."
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "En què es diferencia això de donar als estudiants un chatbot d'IA genèric?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "L'aplicació s'organitza al voltant de comportaments d'ensenyament com preguntes socràtiques, pistes per als deures, qüestionaris, targetes de memòria, joc de rol i planificació."
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Citació principal de la pàgina d'inici"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "La missió d'inspir és fer que l'aprenentatge sigui accessible, atractiu, agradable i útil mitjançant eines públiques gratuïtes d'aprenentatge amb IA i espais d'aprenentatge preparats per a escoles."
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Quina és la missió d'inspir?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Cada mode públic és una porta d'entrada a un comportament d'aprenentatge diferent, de manera que el format pot encaixar amb la tasca en lloc de forçar cada aprenent a una sola caixa de xat genèrica."
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "El producte públic dona a qualsevol persona un lloc per començar, mentre que les implementacions d'escoles i socis poden adaptar l'experiència a les necessitats locals."
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Xat d'IA de marca blanca"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Punts d'entrada del mode de convidat"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Dona suport a l'accés finançat a l'aprenentatge amb IA per a comunitats que necessiten suport d'alta qualitat sense afegir costos a les famílies."
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Índex complet de referència pública"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "La plataforma va treballar en ingestió curricular, recuperació, fluxos d'aprenentatge estructurats i experiències inicials de tutoria amb IA."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Més de 100 guies, bucles de prompts i clústers pilar per a l'aprenentatge assistit per IA."
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Política de privadesa"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Fundat"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "La plataforma està dissenyada per ajudar les persones a raonar, practicar, recordar i tornar a explicar idees en lloc de recollir respostes acabades."
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "La tutoria privada és potent, però està distribuïda de manera desigual. inspir utilitza la IA per ampliar l'accés mantenint l'aprenent actiu: pistes abans de respostes, preguntes abans de lliçons i pràctica després de l'explicació."
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Escoles i socis"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Una base d'aprenents que ja s'estén més enllà de l'Índia cap a una audiència internacional més àmplia."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir organitza la IA al voltant de comportaments d'aprenentatge actiu: pistes, preguntes, qüestionaris, targetes de memòria, crítica i repàs."
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Cobertura de Deccan Business"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Sí. Els modes públics de convidat permeten als responsables escolars i al professorat provar l'experiència d'aprenentatge abans de parlar d'un desplegament escolar a mida."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Avalua primer una capa pública d'aprenentatge amb IA i després explora fluxos de treball personalitzats, necessitats de confidencialitat, alineació de continguts i finançament d'ús."
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Públic principal"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Tasques d'aprenentatge diferents necessiten formes diferents: preguntes socràtiques, pistes per als deures, targetes de memòria, debat, joc de rol històric, crítica d'escriptura i planificació d'estudi."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Els termes formals que cobreixen l'ús acceptable, les responsabilitats del compte i les condicions del servei."
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Adapta l'experiència de l'estudiant al context escolar, les prioritats curriculars, les barreres de contingut i el nivell de visibilitat del personal que calgui."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Accés d'assistents i referència"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "aprenentatge amb IA alineat amb NCERT"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir va començar com una pàgina de Facebook que publicava qüestionaris i construïa un hàbit d'aprenentatge extracurricular."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "El producte públic manté l'aprenentatge fàcil de provar, mentre que les escoles i els socis de RSC poden donar suport a implementacions a mida quan les comunitats necessiten confidencialitat, alineació curricular o accés finançat."
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "L’aprenentatge és per a tothom."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "Sobre inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "El producte públic és fàcil de provar primer, mentre que les escoles i els socis poden explorar implementacions a mida per a les necessitats de la comunitat."
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Respostes clares per a aprenents, escoles i sistemes de cerca."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Pàgina de referència"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Xarxes presencials i esdeveniments d'estudiants"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Les converses privades desades dels usuaris estan exposades a la cerca?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Límits de confiança i privadesa"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "tutor d'IA per aprendre qualsevol cosa"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Aprenentatge específic per mode"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir es va llançar com a producte d'aprenentatge amb IA orientat al consumidor poques setmanes després del llançament públic de ChatGPT."
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Accés de cerca i directori"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Sí. Una escola pot començar provant els modes públics i després avançar cap a un pilot o un desplegament a mida quan el cas d'ús, les necessitats de contingut i la via de finançament siguin clars."
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "Pàgina de la comunitat DeepHack"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "L'experiència d'aprenentatge en directe que converteix la missió en ajuda pràctica."
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Els enllaços dels modes públics de convidat existeixen perquè els aprenents puguin començar directament en modes d'aprenentatge útils des de la cerca, enllaços socials, escoles o recomanacions compartides."
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "IA amb forma d'aprenentatge"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Aprenentatge gratuït de convidat, amb rutes per a escoles i socis."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "En què es diferencia inspir d’un xatbot d’AI genèric?"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Comença una comunitat d'aprenentatge"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "Aprenentatge amb IA sense copiar respostes passivament"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Categoria"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Cobertura de Dailyhunt"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "Sí. Els modes públics per a convidats, com «Aprèn qualsevol cosa», «Instrucció socràtica», «Mentor de deures», qüestionaris i targetes d’estudi, s’obren directament des d’enllaços senzills /chat/{topicSlug}."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "blog d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Condicions"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "eines d'estudi amb IA per a escoles"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Mode de convidat per a accés públic"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Com l'aprenentatge públic de convidat es pot ampliar a espais d'aprenentatge amb IA específics d'una escola."
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Fluxos d'estudi que connecten modes de convidat, prompts, pràctica i guies relacionades."
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "guies d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Explora els modes d'aprenentatge"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Fluxos d'aprenentatge específics per mode"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "No. Els xats privats desats utilitzen identificadors privats i no formen part de pàgines públiques, fitxers públics de referència ni catàlegs d'aprenentatge compartits."
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Tots els xats d'aprenentatge de convidat, organitzats per comportament docent i necessitat d'aprenentatge."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Cobertura sindicada per arribar a un públic consumidor més ampli."
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Confiança i seguretat"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Disseny de desplegament confidencial"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Preguntes freqüents de la missió"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Comença directament en el mode d'aprenentatge adequat per a pistes de deures, passos de matemàtiques, crítica d'escriptura, qüestionaris, targetes de memòria o planificació d'exàmens."
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Els assistents i les eines de referència poden utilitzar pàgines públiques d'aprenentatge per orientar les persones cap a les guies i els modes de convidat adequats."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir organitza la IA al voltant de modes d'aprenentatge amb comportament docent específic: explicacions, preguntes socràtiques, pistes per als deures, qüestionaris, targetes de memòria, debat, joc de rol, feedback d'escriptura i planificació d'estudi."
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Obre la referència"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "Reconeixement de DeepHack"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Els enllaços de xats privats desats no formen part de les referències d'aprenentatge públiques, els índexs compartits ni el material de citació."
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "La gent pot utilitzar inspir sense iniciar sessió?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Biblioteca d'aprenentatge de format llarg"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Com va començar inspir?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Utilitza això quan descriguis el conjunt complet d'eines d'aprenentatge en mode convidat que la gent pot provar immediatament."
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Rutes d'implementació escolar"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "Camins d’aprenentatge"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "No permès"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Les escoles poden avaluar inspir primer mitjançant modes públics de convidat i després explorar espais d'aprenentatge amb IA a mida, amb fluxos de treball personalitzats, planificació de la confidencialitat, necessitats curriculars i vies d'accés finançat."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "La comunitat es va expandir a través d'escoles, universitats, competicions, programes extraescolars i comunitats d'aprenents."
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "inspir pot donar suport a contingut específic d'una escola o a necessitats curriculars?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Per què inspir dona suport a desplegaments escolars i de socis?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "La fase següent és de codi obert, amable amb els col·laboradors i connectada amb el desplegament internacional més ampli a inspir.uk."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "L'explicació pública de per què existeix inspir i per què importa l'accés a l'aprenentatge."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Creat per escalar"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "La IA pot fer que l'aprenentatge individual sigui molt més accessible."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Vies escolars i de RSC per a accés finançat"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Qui pot utilitzar la pàgina de mitjans?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "La via escolar per a espais d'aprenentatge amb IA a mida i accés finançat."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Opcions alineades amb NCERT"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "Estudiar bé amb IA"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "El desplegament internacional més ampli connectat amb el projecte inspir."
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Permès a les pàgines públiques"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Utilitza això quan presentis inspir com a producte principal o hi enllacis des d'un directori, perfil o article."
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Rutes d'accés finançades"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Ara reconstruït com a punts d'entrada oberts i aptes per a convidats d'aprenentatge amb IA."
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Catàleg estructurat de pàgines públiques, modes, itineraris d'aprenentatge, grups del blog i límits de privadesa."
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "L'objectiu és ajudar la gent a trobar ràpidament la pàgina pública d'aprenentatge adequada. Les rutes públiques, guies i centres d'aprenentatge són oberts; les rutes d'API, administració, restabliment i utilitats privades romanen tancades."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Utilitza això quan citis la biblioteca de guies llargues, els prompts d'estudi i els articles específics de cada mode."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Comprensió per damunt de les respostes"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Utilitza https://inspirlearning.com per al lloc, /mission per a la missió, /topics per al directori públic de modes d'aprenentatge i /chat/learn-anything per a l'experiència d'aprenentatge de convidat predeterminada."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "RSC i socis educatius"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Què pot provar algú primer?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Per on haurien de començar les escoles?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Els desplegaments escolars es poden planificar al voltant de la privadesa dels estudiants, la supervisió del personal i els límits pràctics que necessita una comunitat d'aprenentatge."
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Crea una ruta més segura per a pràctica, explicacions, feedback i prompts de repàs sense enviar els estudiants a un chatbot genèric."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Els fitxers públics de referència resumeixen pàgines d'aprenentatge, rutes, modes, guies i límits de citació per a eines que necessiten un mapa concís."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Ara"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "Missió"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Construït al voltant d'aprenents reals"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "infraestructura d'aprenentatge amb IA"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "La pàgina formal de privadesa sobre ús de dades, drets i condicions del servei públic."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir va començar el 2013 com una comunitat pública de qüestionaris i aprenentatge, va créixer a través d'escoles i xarxes d'estudiants, i més tard va desenvolupar infraestructura d'aprenentatge amb IA i experiències públiques de tutoria amb IA."
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "plataforma d'aprenentatge amb IA de marca blanca"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir existeix per fer que l'aprenentatge sigui accessible, atractiu, agradable i útil per a qualsevol persona amb curiositat, sigui estudiant, pare o mare, professor o aprenent autodidacte."
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Com redueix inspir la còpia de respostes?"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Què creiem"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "Les superfícies d'API, administració, reinici, utilitats privades i xats desats privats no són contingut font públic."
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Les pàgines públiques es poden compartir i enllaçar, mentre que les eines d'administració, les rutes d'API, els fluxos de restabliment i les utilitats privades romanen tancats."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Docents"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Repositori actual de GitHub"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Construït en públic"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Com es pot finançar l'accés per als aprenents?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Notes per a mitjans"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir està dissenyat al voltant del raonament, la pràctica, el record i l'explicació en lloc de lliurar feina acabada als aprenents."
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Disseny de producte específic per mode"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Líders escolars"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "Estudiants"
+    }
+  ]
+}

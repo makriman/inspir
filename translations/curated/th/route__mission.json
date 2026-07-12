@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Thai",
+  "locale": "th",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "หน้าสาธารณะ แชตตามหัวข้อ เส้นทางการเรียนรู้ คู่มือในบล็อก และหน้าช่วยเหลือถูกออกแบบให้ค้นหาและแชร์ได้ง่าย"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "เริ่มเรียนรู้"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "หน้าการเรียนรู้สาธารณะเปิดให้เข้าถึงได้ ส่วนเส้นทาง API เส้นทางแอดมิน โฟลว์รีเซ็ต และหน้ายูทิลิตีส่วนตัวยังคงถูกบล็อก"
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "แต่ละโหมดการเรียนรู้มีลิงก์สาธารณะ เพื่อให้ผู้เรียนเริ่มต้นได้โดยตรงในประสบการณ์การเรียนรู้ที่เหมาะสม."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "ใช้ส่วนนี้เมื่ออ้างถึงขอบเขตสาธารณะ/ส่วนตัว ความปลอดภัยของผู้เรียน และความไว้วางใจของโรงเรียน"
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "ดัชนีเนื้อหา AI"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "ต่างจากแชตบอตทั่วไป inspir จัด AI รอบโหมดการเรียนรู้ เพื่อให้ผู้เรียนเริ่มจากความช่วยเหลือแบบที่ต้องการได้ ไม่ว่าจะเป็นคำใบ้ คำถาม ควิซ การดึงความจำ บทบาทสมมติ การโต้วาที หรือฟีดแบ็ก"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "การนำไปใช้ในโรงเรียนสามารถปรับให้เข้ากับเนื้อหา เวิร์กโฟลว์ พรอมป์ และความต้องการการเรียนรู้ที่สอดคล้องกับ NCERT ได้ตามความเหมาะสม"
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "พฤติกรรมการเรียนรู้มาก่อน"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "โหมดผู้เยี่ยมชมสาธารณะมอบจุดเริ่มต้นที่เป็นประโยชน์ให้ทุกคน ขณะที่การใช้งานในโรงเรียนและกับพาร์ตเนอร์สามารถปรับประสบการณ์ให้เข้ากับความต้องการในพื้นที่ได้"
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "โหมดการเรียนรู้หลักทุกโหมดมีจุดเข้าใช้งานสาธารณะสำหรับผู้เยี่ยมชม เพื่อให้ผู้คนเริ่มจากการค้นหา โซเชียล หรือ ลิงก์ที่แชร์ได้"
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "การเปิดตัวเริ่มจากขนาดเล็กได้หรือไม่?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "คำอธิบายที่ชัดเจนเกี่ยวกับโหมดผู้เยี่ยมชม แชตส่วนตัว ความปลอดภัยของผู้เรียน และความไว้วางใจของโรงเรียน."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "แถลงการณ์สาธารณะว่าเหตุใด inspir จึงมีอยู่ และการเข้าถึงการเรียนรู้หมายถึงอะไร"
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "ผู้เรียน 1M+"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "เป้าหมายไม่ใช่ทำให้ผู้คนเป็นฝ่ายรับต่อหน้า AI แต่คือการให้ผู้เรียนทุกคนมีพื้นที่เริ่มต้นที่อดทนสำหรับถาม ฝึก รับข้อเสนอแนะ ลองอีกครั้ง และสร้างความมั่นใจ"
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "โรงเรียนและ CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "ให้การเข้าถึงมาก่อน"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "การนำเสนอวิสัยทัศน์ของ inspir เพื่อการศึกษาที่ฟรีและเข้าถึงได้."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "สื่อและการอ้างอิง"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "ไฟล์อ้างอิงแบบเน้นข้อความสำหรับผู้ช่วย ครู พาร์ตเนอร์ และเครื่องมืออ้างอิง"
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "เข้าถึงผู้เรียนผ่านแพลตฟอร์มฟรีและโรงเรียนพาร์ทเนอร์"
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "โรงเรียนและพาร์ทเนอร์ CSR"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "โหมดสาธารณะออกแบบตามพฤติกรรมการเรียนรู้: คำใบ้ คำถามแบบโสกราตีส การตรวจขั้นตอน แบบทดสอบ แฟลชการ์ด ฟีดแบ็กงานเขียน วงจรทบทวน และการอธิบายอย่างมีส่วนร่วม"
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "ลิงก์อ้างอิง ข้อเท็จจริงสาธารณะ บริบทสำหรับสื่อ และรายละเอียดที่เหมาะต่อการอ้างอิง"
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "ผู้เรียน ผู้ปกครอง ครู โรงเรียน และผู้สร้างที่เรียนรู้ด้วยตนเอง"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "เส้นทางสำหรับโรงเรียนและพาร์ทเนอร์"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "เริ่มด้วย learning companion สาธารณะ"
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "เรื่องราวจากแบบทดสอบและชุมชนนักเรียน สู่เครื่องมือการเรียนรู้ AI ฟรีที่สร้างอย่างเปิดเผยต่อสาธารณะ"
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "ทำไม inspir จึงออกแบบรอบโหมดต่าง ๆ แทนที่จะเป็นกล่องแชตเดียว?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "ปลายปี 2022"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "กำหนดค่าเวิร์กโฟลว์"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "จากชุมชนนักเรียนสู่โครงสร้างพื้นฐานการเรียนรู้ AI"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "การเข้าถึงสามารถได้รับเงินสนับสนุนจากโรงเรียนพันธมิตร หรือได้รับการสนับสนุนผ่านเส้นทางสปอนเซอร์ CSR สำหรับชุมชนที่ต้องการการเรียนรู้ด้วย AI แบบมีเงินอุดหนุน."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "ผลิตภัณฑ์สาธารณะ เส้นทางสำหรับโรงเรียน และคลังเนื้อหาควรชี้กลับไปยังหลักการเดียวกัน: การเรียนรู้ควรยังคงเป็นแบบลงมือทำ เข้าถึงได้ และนำไปใช้ได้จริง"
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ ประเทศ"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "การเรียนรู้ที่มีคุณภาพควรรู้สึกเข้าถึงได้ เป็นมนุษย์ และมีชีวิตชีวา"
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir จัดระบบรอบโหมดการเรียนรู้ เช่น การติวแบบ Socratic คำใบ้การบ้าน แบบทดสอบ แฟลชการ์ด ขั้นตอนคณิตศาสตร์ การวิจารณ์งานเขียน และการวางแผนสอบ เพื่อให้นักเรียนเข้าสู่พฤติกรรมการเรียนที่มีโฟกัสมากขึ้น"
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "ลองใช้โหมดผู้เยี่ยมชมสาธารณะ"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "การสร้างใหม่แบบโอเพนซอร์สสำหรับนักพัฒนา นักการศึกษา และผู้ร่วมพัฒนา"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "สร้างมาตั้งแต่ปี 2013"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "พันธกิจเชื่อมโยงกับพื้นที่ใช้งานจริงของผลิตภัณฑ์"
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir ทำให้โหมดการเรียนรู้เปิดได้ที่ /chat/{topicSlug} ให้ผู้เรียนเข้าสู่ประสบการณ์เรียนรู้ด้วย AI ที่เหมาะสมได้โดยตรง โดยไม่ต้องมีแชตส่วนตัวที่บันทึกไว้"
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "ผลิตภัณฑ์สาธารณะยังคงลองใช้ได้ง่าย: ผู้เรียนเข้าสู่โหมดการเรียนรู้ได้โดยตรงและเริ่มในฐานะผู้เยี่ยมชมได้ โรงเรียนและพาร์ทเนอร์ CSR สามารถสนับสนุนการใช้งานที่ปรับแต่งได้เมื่อชุมชนต้องการความเป็นส่วนตัว การจัดให้สอดคล้องกับหลักสูตร หรือการเข้าถึงแบบอุดหนุนค่าใช้จ่าย"
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "เว็บไซต์"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "บล็อกสาธารณะมีคู่มือ วงจรพรอมป์ และกลุ่มเนื้อหาหลักมากกว่า 100 รายการที่เชื่อมกับโหมดการเรียนรู้แบบใช้งานจริง"
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "การย้ายโดเมนของเว็บไซต์จาก inspir.app ไปยัง inspirlearning.com"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "ดูทุกโหมด"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "หน้าชุมชนที่เชื่อมโยงกับการยอมรับจาก DeepHack."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "โรงเรียนและพาร์ทเนอร์สามารถเริ่มจากผลิตภัณฑ์สาธารณะ แล้วต่อยอดไปสู่การใช้งานที่ปรับแต่งได้ เป็นความลับ และได้รับการอุดหนุน"
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "การเรียนรู้ควรฟรี สนุก มีประโยชน์ และพร้อมให้ทุกคนที่มีความใฝ่รู้เข้าถึงได้"
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "ประสบการณ์การเรียนรู้เฉพาะโรงเรียนสามารถปรับให้เข้ากับชุมชนนักเรียน น้ำเสียง และลำดับความสำคัญด้านการเรียนรู้ของคุณได้."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "มุมมองเรื่องโหมดผู้เยี่ยมชม"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "คำอธิบายสั้น"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "เครื่องมือเรียนรู้ AI ที่ฟรี มีประโยชน์ และน่าสนใจ สำหรับทุกคนที่มีความใคร่รู้"
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "เข้าถึงผ่านแพลตฟอร์มสาธารณะฟรีและการใช้งานในโรงเรียนพาร์ทเนอร์"
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "แพลตฟอร์มการเรียนรู้ AI ฟรี"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "การเรียนรู้เป็นของทุกคน"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "ทำไมต้องตอนนี้"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "หน้าเหล่านี้ทำให้เรื่องราวตรวจสอบ อ้างอิง แชร์ และนำไปใช้ได้ง่ายขึ้น: โหมดสาธารณะ เส้นทางการเรียนรู้ คู่มือเชิงลึก บันทึกการนำไปใช้ในโรงเรียน ข้อมูลสำหรับสื่อ และภูมิหลังของบริษัท"
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "โค้ชการบ้าน AI สำหรับนักเรียน"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "ระบุเป้าหมายของโรงเรียนที่สำคัญที่สุด: การสนับสนุนความเข้าใจแนวคิด คำใบ้การบ้าน การเตรียมสอบ การดึงความจำแบบแอ็กทีฟ ฟีดแบ็กงานเขียน หรือการเสริมความรู้"
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "ใช้ส่วนนี้สำหรับการอ้างอิงเรื่องโรงเรียน พาร์ทเนอร์ CSR และการเข้าถึงการศึกษา"
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "ได้รับการยกย่องรางวัล Jury's Choice จาก Amod Malviya ที่ DeepHack สำหรับงานด้านการเรียนรู้ด้วย AI"
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "กฎการเข้าถึงจริงสำหรับเส้นทางสาธารณะและส่วนตัว"
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir มีอยู่เพื่อทำให้การเรียนรู้เข้าถึงได้ น่าสนใจ สนุก และมีประโยชน์สำหรับทุกคนที่มีความใฝ่รู้ ผ่านเครื่องมือเรียนรู้ AI สาธารณะฟรีและพื้นที่เรียนรู้ที่พร้อมสำหรับโรงเรียน"
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "โรงเรียนสามารถประเมินโหมดสาธารณะก่อน แล้วจึงหารือเรื่องเวิร์กโฟลว์ที่ปรับแต่งได้ การวางแผนความลับ ความต้องการด้านเนื้อหา และการเข้าถึงที่ได้รับทุนสนับสนุน"
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "การเข้าถึงการเรียนรู้ด้วย AI สามารถได้รับเงินสนับสนุนจากโรงเรียนพันธมิตร หรือได้รับการสนับสนุนผ่านสปอนเซอร์ CSR สำหรับชุมชนที่ต้องการการเข้าถึงแบบมีเงินอุดหนุน."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "ผลิตภัณฑ์ควรสอน ไม่ใช่แค่ตอบ"
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "เรื่องราวครอบคลุมแบบทดสอบ เครือข่ายโรงเรียนออฟไลน์ การนำเข้าหลักสูตร และโหมดการเรียนรู้ AI สาธารณะ"
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir คือแพลตฟอร์มการเรียนรู้ด้วย AI ฟรีที่มีโหมดแขกสาธารณะสำหรับคำอธิบาย การติวแบบ Socratic การโค้ชการบ้าน แบบทดสอบ แฟลชการ์ด การโต้วาที บทบาทสมมติ ฟีดแบ็กงานเขียน และการวางแผนการเรียน"
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "ลิงก์อ้างอิงหน่วยงานสาธารณะของ inspir"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "การเปิดตัว AI สำหรับผู้บริโภค"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "เริ่มต้นจากควิซสาธารณะและชุมชนนักเรียนในปี 2013"
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "หลักการ"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "ผู้เรียนสามารถเปิด “เรียนรู้ทุกเรื่อง” “การสอนแบบโสเครตีส” “โค้ชช่วยการบ้าน” “โค้ชคณิตศาสตร์ทีละขั้น” แบบทดสอบ หรือบัตรคำได้โดยตรงในโหมดผู้เยี่ยมชมจากไดเรกทอรีโหมดการเรียนรู้สาธารณะ"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "แพลตฟอร์มการเรียนรู้ AI ฟรี"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "มุมมองสำหรับโรงเรียน"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "แชตผู้เยี่ยมชมสาธารณะเปิดอยู่หรือไม่?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "โรงเรียนสามารถใช้ inspir เป็นเครื่องมือการเรียนรู้สำหรับผู้เยี่ยมชมก่อนได้หรือไม่?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "จากควิซบน Facebook และกิจกรรมออฟไลน์ สู่โครงสร้างพื้นฐานการเรียนรู้ AI แบบประยุกต์"
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "จุดเด่นที่แข็งแรงที่สุดคือการเรียนรู้ด้วย AI สาธารณะฟรีที่เปิดเข้าสู่โหมดผู้เยี่ยมชมได้โดยตรง และช่วยให้ผู้เรียนยังคงลงมือคิดผ่านการสอนเฉพาะโหมด แทนการสร้างคำตอบทั่วไป"
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "ทำไมหน้าเรียนรู้สาธารณะจึงแชร์ง่าย?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "คลังบทเรียนแบบเขียนที่รองรับพรอมป์ วงจรการเรียน และการฝึกที่ลึกขึ้น"
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir จัดระบบรอบคำใบ้ คำถาม แบบทดสอบ แฟลชการ์ด การโต้วาที การทบทวน และการอธิบาย แทนการคัดลอกคำตอบแบบเฉย ๆ"
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "ติวเตอร์ผู้เยี่ยมชมเริ่มต้น"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "มุมของผลิตภัณฑ์ที่มีประโยชน์ที่สุดสำหรับการนำเสนอข่าวคืออะไร?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "งานเรียนรู้ที่ต่างกันต้องการรูปแบบการโต้ตอบที่ต่างกัน ดังนั้น inspir จึงใช้การสอนเชิงรุกเฉพาะแต่ละโหมด คำใบ้การบ้าน คำถามแบบโสเครตีส การจำลองประวัติศาสตร์ การทบทวนแฟลชการ์ด และการวิจารณ์งานเขียนไม่ควรทำงานเหมือนแชตทั่วไปแบบเดียวกัน."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "พันธกิจ | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "โรงเรียนสามารถทดสอบโหมดผู้เยี่ยมชมสาธารณะก่อน แล้วใช้หน้าโรงเรียนเพื่อสำรวจเวิร์กโฟลว์ที่ปรับแต่งได้ การวางแผนความลับ ตัวเลือกที่สอดคล้องกับ NCERT และการเข้าถึงที่ได้รับทุนสนับสนุน"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "ครูและผู้นำสามารถเริ่มจาก “เรียนรู้ทุกเรื่อง” “การสอนแบบโสเครตีส” “โค้ชช่วยการบ้าน” แบบทดสอบ และบัตรคำ ก่อนการเปิดใช้อย่างเป็นทางการ"
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "งานต่างกันต้องใช้โหมดต่างกัน: คำถามแบบโสเครตีส คำใบ้การบ้าน แฟลชการ์ด ดีเบต บทบาทสมมติทางประวัติศาสตร์ การวิจารณ์งานเขียน และอื่น ๆ."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "ใช่ จุดเข้าใช้งานหัวข้อสาธารณะ เช่น /chat/learn-anything และ /chat/socratic-instruction เป็นหน้าเรียนรู้แบบเปิดที่ทุกคนลองใช้ได้"
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "หลักการพันธกิจของ inspir"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "เพื่อนร่วมเรียนรู้ที่มีความสามารถไม่ควรขึ้นอยู่กับภูมิศาสตร์ รายได้ครอบครัว หรือว่าผู้เรียนรู้จักคนที่ควรถามอยู่แล้วหรือไม่."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "ภารกิจของ inspir คือทำให้การเรียนรู้เข้าถึงได้ น่ามีส่วนร่วม สนุก และเป็นประโยชน์สำหรับทุกคน ผ่านเครื่องมือเรียนรู้ด้วย AI สาธารณะที่ใช้ฟรี"
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "หลังจากขายโดเมน inspir.app เพื่อนำเงินมาสนับสนุนการเข้าถึงฟรีอย่างต่อเนื่อง ผลิตภัณฑ์ที่ใช้งานจริงจึงย้ายไปที่ inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "ความร่วมมือ CSR ด้านเทคโนโลยีการศึกษา"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "คลังคู่มือการเรียนรู้ด้วย AI"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "คู่มือกว่า 100 รายการเกี่ยวกับการติว พรอมต์ วงจรการเรียน การทบทวนแบบ active recall และโหมดต่าง ๆ"
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir คือแพลตฟอร์มการเรียนรู้ด้วย AI ฟรีที่มีโหมดแขกสาธารณะสำหรับคำอธิบาย การติวแบบ Socratic การโค้ชการบ้าน แบบทดสอบ แฟลชการ์ด การโต้วาที ฟีดแบ็กงานเขียน ความช่วยเหลือด้านการเขียนโค้ด และการวางแผนการเรียน"
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "ไดเรกทอรีที่ชัดเจนของจุดเข้าสู่แชตการเรียนรู้สำหรับผู้เยี่ยมชมทุกจุด."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "นักข่าว บรรณาธิการไดเรกทอรี พันธมิตร โรงเรียน และทุกคนที่เขียนเกี่ยวกับ inspir สามารถใช้ข้อมูลนี้เพื่อข้อเท็จจริง ลิงก์ มุมเล่าเรื่อง และแหล่งอ้างอิงที่อ้างถึงได้สะดวก"
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "จับคู่ความต้องการด้านการเรียนรู้"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "inspir คืออะไร?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "เปิดตัวและสนับสนุนการเข้าถึง"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "บทความควรลิงก์ไปที่ URL ใดก่อน?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "เส้นทางการนำไปใช้ในโรงเรียน"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "มุมมองด้านผลิตภัณฑ์"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "ชื่อ"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "ติวเตอร์ AI สำหรับโรงเรียน"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "หน้าแรก"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "คำอธิบายสั้น ๆ ของ inspir คืออะไร?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "บทสนทนาของผู้ใช้ที่บันทึกไว้ใช้ตัวระบุส่วนตัว และไม่ควรถูกมองว่าเป็นแหล่งข้อมูลสาธารณะ"
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "การพัฒนาเจเนอเรชันถัดไปของ inspir.uk"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "ย้ายจากโครงการนำร่องไปสู่การเข้าถึงที่กว้างขึ้นผ่านงบประมาณโรงเรียน การสนับสนุนจากพันธมิตร หรือช่องทาง CSR สำหรับผู้เรียนที่ต้องการการเข้าถึงแบบได้รับเงินอุดหนุน"
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "เนื้อหา พรอมป์ และเวิร์กโฟลว์ที่ปรับแต่งได้สามารถปรับให้เข้ากับความต้องการของ NCERT และลำดับความสำคัญเฉพาะห้องเรียนของแต่ละโรงเรียน."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "ใช้ส่วนนี้เมื่อลิงก์ผู้อ่านตรงเข้าสู่ประสบการณ์การเรียนรู้แบบสด"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "สิ่งนี้ต่างจากการให้นักเรียนใช้แชตบอต AI ทั่วไปอย่างไร?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "แอปจัดระเบียบตามพฤติกรรมการสอน เช่น การตั้งคำถามแบบโสคราตีส คำใบ้การบ้าน แบบทดสอบ แฟลชการ์ด บทบาทสมมติ และการวางแผน"
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "การอ้างอิงหน้าแรกหลัก"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "ภารกิจของ inspir คือทำให้การเรียนรู้เข้าถึงได้ น่ามีส่วนร่วม สนุก และเป็นประโยชน์ ผ่านเครื่องมือเรียนรู้ด้วย AI สาธารณะที่ใช้ฟรีและพื้นที่เรียนรู้ที่พร้อมใช้สำหรับโรงเรียน"
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "พันธกิจของ inspir คืออะไร?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "โหมดสาธารณะทุกโหมดเป็นประตูสู่พฤติกรรมการเรียนรู้ที่แตกต่างกัน ทำให้รูปแบบตรงกับงาน แทนที่จะบังคับผู้เรียนทุกคนให้ใช้กล่องแชตทั่วไปแบบเดียว"
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "ผลิตภัณฑ์สาธารณะเปิดพื้นที่ให้ทุกคนเริ่มต้นได้ ขณะที่การใช้งานสำหรับโรงเรียนและพาร์ทเนอร์สามารถปรับประสบการณ์ให้เข้ากับความต้องการในพื้นที่ได้"
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "แชต AI แบบ white-label"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "จุดเข้าใช้งานโหมดผู้เยี่ยมชม"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "สนับสนุนการเข้าถึงการเรียนรู้ด้วย AI ที่ได้รับทุนสำหรับชุมชนที่ต้องการการสนับสนุนคุณภาพสูงโดยไม่เพิ่มค่าใช้จ่ายให้ครอบครัว"
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "ดัชนีอ้างอิงสาธารณะฉบับเต็ม"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "แพลตฟอร์มทำงานกับการนำเข้าหลักสูตร การค้นคืนข้อมูล ลำดับการเรียนรู้แบบมีโครงสร้าง และประสบการณ์ติวด้วย AI ระยะแรก"
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "คู่มือ วงจรพรอมต์ และกลุ่มเนื้อหาหลักกว่า 100 รายการสำหรับการเรียนรู้ที่มี AI ช่วย"
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "นโยบายความเป็นส่วนตัว"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "ก่อตั้ง"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "แพลตฟอร์มนี้ออกแบบมาเพื่อช่วยให้ผู้คนให้เหตุผล ฝึกฝน จดจำ และอธิบายแนวคิดกลับออกมา แทนที่จะสะสมคำตอบสำเร็จรูป"
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "การติวส่วนตัวทรงพลัง แต่กระจายไม่ทั่วถึง inspir ใช้ AI เพื่อขยายการเข้าถึง พร้อมรักษาบทบาทเชิงรุกของผู้เรียน: คำใบ้ก่อนคำตอบ คำถามก่อนการบรรยาย และการฝึกหลังคำอธิบาย"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "โรงเรียนและพาร์ทเนอร์"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "ฐานผู้เรียนที่ขยายเกินอินเดียไปสู่ผู้ชมระดับนานาชาติที่กว้างขึ้นแล้ว."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir จัดระบบ AI รอบพฤติกรรมการเรียนรู้แบบลงมือทำ: คำใบ้ คำถาม แบบทดสอบ แฟลชการ์ด การวิจารณ์ และการทบทวน"
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "การนำเสนอข่าวโดย Deccan Business"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "ใช่ โหมดผู้เยี่ยมชมสาธารณะช่วยให้ผู้นำโรงเรียนและครูลองประสบการณ์การเรียนรู้ก่อนพูดคุยเรื่องการใช้งานสำหรับโรงเรียนที่ปรับให้เหมาะ"
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "ประเมินชั้นการเรียนรู้ AI แบบสาธารณะก่อน จากนั้นจึงสำรวจเวิร์กโฟลว์ที่ปรับแต่งได้ ความต้องการด้านความลับ ความสอดคล้องของเนื้อหา และงบประมาณสำหรับการใช้งาน"
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "กลุ่มผู้ชมหลัก"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "งานเรียนรู้ที่ต่างกันต้องการรูปแบบที่ต่างกัน: คำถามแบบโสเครตีส คำใบ้การบ้าน แฟลชการ์ด ดีเบต บทบาทสมมติทางประวัติศาสตร์ การวิจารณ์งานเขียน และการวางแผนเรียน."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "ข้อกำหนดอย่างเป็นทางการที่ครอบคลุมการใช้งานที่ยอมรับได้ ความรับผิดชอบของบัญชี และเงื่อนไขบริการ"
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "ปรับประสบการณ์ของนักเรียนให้เข้ากับบริบทของโรงเรียน ลำดับความสำคัญของหลักสูตร ขอบเขตเนื้อหา และระดับการมองเห็นของบุคลากรที่จำเป็น."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "การเข้าถึงผู้ช่วยและแหล่งอ้างอิง"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "การเรียนรู้ด้วย AI ที่สอดคล้องกับ NCERT"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir เริ่มต้นจากเพจ Facebook ที่เผยแพร่แบบทดสอบและสร้างนิสัยการเรียนรู้นอกหลักสูตร"
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "ผลิตภัณฑ์สาธารณะทำให้การเรียนรู้ลองใช้ได้ง่าย ขณะที่โรงเรียนและพาร์ทเนอร์ CSR สามารถสนับสนุนการใช้งานที่ปรับแต่งได้เมื่อชุมชนต้องการความเป็นส่วนตัว การจัดให้สอดคล้องกับหลักสูตร หรือการเข้าถึงที่มีทุนสนับสนุน"
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "การเรียนรู้เป็นของทุกคน"
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "เกี่ยวกับ inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "ผลิตภัณฑ์สาธารณะลองใช้ได้ง่ายก่อน ส่วนโรงเรียนและพาร์ทเนอร์ก็สามารถสำรวจการใช้งานที่ปรับให้เหมาะกับความต้องการของชุมชนได้"
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "คำตอบที่ชัดเจนสำหรับผู้เรียน โรงเรียน และระบบค้นหา."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "หน้าอ้างอิง"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "เครือข่ายออฟไลน์และกิจกรรมนักเรียน"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "บทสนทนาผู้ใช้ส่วนตัวที่บันทึกไว้ถูกเปิดเผยต่อการค้นหาหรือไม่?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "ขอบเขตความไว้วางใจและความเป็นส่วนตัว"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "ติวเตอร์ AI สำหรับเรียนรู้อะไรก็ได้"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "การเรียนรู้เฉพาะโหมด"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir เปิดให้ใช้งานในฐานะผลิตภัณฑ์การเรียนรู้ด้วย AI สำหรับผู้ใช้ทั่วไปภายในไม่กี่สัปดาห์หลังจาก ChatGPT เปิดตัวสู่สาธารณะ"
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "การค้นหาและการเข้าถึงไดเรกทอรี"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "ใช่ โรงเรียนสามารถเริ่มจากการทดลองใช้โหมดสาธารณะ แล้วค่อยพัฒนาไปสู่การนำร่องหรือการใช้งานที่ปรับให้เหมาะ เมื่อกรณีใช้งาน ความต้องการด้านเนื้อหา และแนวทางงบประมาณชัดเจนแล้ว"
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "หน้าชุมชน DeepHack"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "ประสบการณ์การเรียนรู้แบบใช้งานจริงที่เปลี่ยนพันธกิจให้เป็นความช่วยเหลือที่ใช้ได้จริง"
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "ลิงก์โหมดผู้เยี่ยมชมสาธารณะมีไว้เพื่อให้ผู้เรียนเริ่มต้นในโหมดการเรียนรู้ที่มีประโยชน์ได้โดยตรงจากการค้นหา ลิงก์โซเชียล โรงเรียน หรือคำแนะนำที่แชร์กัน"
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "AI ที่มีรูปแบบเพื่อการเรียนรู้"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "การเรียนรู้แบบผู้เยี่ยมใช้ฟรี พร้อมเส้นทางสำหรับโรงเรียนและพาร์ตเนอร์"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir ต่างจากแชตบอตเอไอทั่วไปอย่างไร"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "ชุมชนการเรียนรู้เริ่มต้นขึ้น"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "การเรียนรู้ด้วย AI โดยไม่คัดลอกคำตอบแบบเฉย ๆ"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "หมวดหมู่"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "การนำเสนอข่าวโดย Dailyhunt"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "ใช่ โหมดผู้เยี่ยมชมสาธารณะ เช่น “เรียนรู้ทุกเรื่อง” “การสอนแบบโสเครตีส” “โค้ชช่วยการบ้าน” แบบทดสอบ และบัตรคำ เปิดได้โดยตรงจากลิงก์ /chat/{topicSlug} ที่เรียบง่าย"
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "บล็อกการเรียนรู้ด้วย AI"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "ข้อกำหนด"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "เครื่องมือการเรียนด้วย AI สำหรับโรงเรียน"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "โหมดผู้เยี่ยมชมสำหรับการเข้าถึงสาธารณะ"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "การเรียนแบบแขกสาธารณะสามารถต่อยอดไปสู่พื้นที่เรียนรู้ AI เฉพาะโรงเรียนได้อย่างไร"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "เวิร์กโฟลว์การเรียนที่เชื่อมโหมดผู้เยี่ยมชม พรอมป์ การฝึก และคู่มือที่เกี่ยวข้องเข้าด้วยกัน"
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "คู่มือการเรียนรู้ด้วย AI"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "เรียกดูโหมดการเรียนรู้"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "โฟลว์การเรียนรู้เฉพาะโหมด"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "ไม่ใช่ แชตที่บันทึกแบบส่วนตัวใช้ตัวระบุส่วนตัว และไม่ได้เป็นส่วนหนึ่งของหน้าสาธารณะ ไฟล์อ้างอิงสาธารณะ หรือแคตตาล็อกการเรียนรู้ที่แชร์ร่วมกัน"
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "แชตการเรียนรู้สำหรับผู้เยี่ยมชมทั้งหมด จัดตามพฤติกรรมการสอนและความต้องการในการเรียนรู้"
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "การเผยแพร่ผ่านเครือข่ายสื่อเพื่อเข้าถึงผู้บริโภควงกว้างขึ้น"
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "ความไว้วางใจและความปลอดภัย"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "การออกแบบการติดตั้งใช้งานแบบเป็นความลับ"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "คำถามที่พบบ่อยเกี่ยวกับพันธกิจ"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "เริ่มโดยตรงในโหมดการเรียนรู้ที่เหมาะกับคำใบ้การบ้าน ขั้นตอนคณิตศาสตร์ คำวิจารณ์งานเขียน แบบทดสอบ แฟลชการ์ด หรือการวางแผนสอบ"
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "เครื่องมือผู้ช่วยและแหล่งอ้างอิงสามารถใช้หน้าการเรียนรู้สาธารณะเพื่อนำผู้คนไปยังคู่มือและโหมดผู้เยี่ยมชมที่เหมาะสม."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir จัดระบบ AI รอบโหมดการเรียนรู้ที่มีพฤติกรรมการสอนเฉพาะ: คำอธิบาย คำถามแบบ Socratic คำใบ้การบ้าน แบบทดสอบ แฟลชการ์ด การโต้วาที บทบาทสมมติ ฟีดแบ็กงานเขียน และการวางแผนการเรียน"
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "เปิดข้อมูลอ้างอิง"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "การยอมรับจาก DeepHack"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "ลิงก์แชตที่บันทึกแบบส่วนตัวไม่ใช่ส่วนหนึ่งของแหล่งอ้างอิงการเรียนรู้สาธารณะ ดัชนีที่แชร์ หรือเนื้อหาอ้างอิง"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "ผู้คนใช้ inspir โดยไม่ลงชื่อเข้าใช้ได้ไหม?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "คลังการเรียนรู้แบบยาว"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "inspir เริ่มต้นอย่างไร?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "ใช้ส่วนนี้เมื่ออธิบายชุดเครื่องมือการเรียนรู้ในโหมดผู้เยี่ยมชมทั้งหมดที่ผู้คนลองใช้ได้ทันที"
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "เส้นทางการนำไปใช้ในโรงเรียน"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "การเรียนรู้"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "ไม่อนุญาต"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "โรงเรียนสามารถประเมิน inspir ผ่านโหมดผู้เยี่ยมชมสาธารณะก่อน แล้วจึงสำรวจพื้นที่การเรียนรู้ด้วย AI ที่ปรับแต่งได้ พร้อมเวิร์กโฟลว์เฉพาะ การวางแผนความลับ ความต้องการด้านหลักสูตร และเส้นทางการเข้าถึงที่ได้รับทุนสนับสนุน"
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "ชุมชนขยายตัวผ่านโรงเรียน มหาวิทยาลัย การแข่งขัน โปรแกรมนอกหลักสูตร และชุมชนผู้เรียน"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "inspir รองรับเนื้อหาเฉพาะโรงเรียนหรือความต้องการด้านหลักสูตรได้ไหม?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "ทำไม inspir จึงรองรับการใช้งานสำหรับโรงเรียนและพันธมิตร?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "ระยะถัดไปเป็นโอเพนซอร์ส เป็นมิตรต่อผู้ร่วมพัฒนา และเชื่อมกับการขยายงานระดับนานาชาติที่กว้างขึ้นบน inspir.uk"
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "คำอธิบายสาธารณะว่าเหตุใด inspir จึงมีอยู่ และเหตุใดการเข้าถึงการเรียนรู้จึงสำคัญ"
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "สร้างมาเพื่อรองรับการขยายขนาด"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "AI สามารถทำให้การเรียนรู้แบบตัวต่อตัวเข้าถึงได้มากขึ้นอย่างมาก."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "เส้นทางสำหรับโรงเรียนและ CSR เพื่อการเข้าถึงที่ได้รับทุนสนับสนุน"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "ใครใช้หน้าสื่อได้บ้าง?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "เส้นทางสำหรับโรงเรียนเพื่อพื้นที่เรียนรู้ AI ที่ปรับแต่งได้และการเข้าถึงที่มีทุนสนับสนุน"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "ตัวเลือกที่สอดคล้องกับ NCERT"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "เรียนด้วย AI อย่างเหมาะสม"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "การขยายงานระดับนานาชาติที่กว้างขึ้นซึ่งเชื่อมกับโครงการ inspir"
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "อนุญาตบนหน้าสาธารณะ"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "ใช้ส่วนนี้เมื่อแนะนำ inspir ในฐานะผลิตภัณฑ์หลัก หรือเมื่อลิงก์จากไดเรกทอรี โปรไฟล์ หรือบทความ"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "เส้นทางการเข้าถึงที่มีทุนสนับสนุน"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "ตอนนี้สร้างใหม่เป็นจุดเข้าใช้งานการเรียนรู้ด้วย AI แบบเปิดและเป็นมิตรต่อผู้เยี่ยมชม"
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "แคตตาล็อกที่มีโครงสร้างของหน้าสาธารณะ โหมด เส้นทางการเรียน กลุ่มบล็อก และขอบเขตความเป็นส่วนตัว"
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "เป้าหมายคือช่วยให้ผู้คนหาหน้าการเรียนรู้สาธารณะที่เหมาะสมได้อย่างรวดเร็ว เส้นทางสาธารณะ คู่มือ และฮับการเรียนรู้เปิดให้เข้าถึงได้ ส่วน API, admin, reset และเส้นทางยูทิลิตีส่วนตัวยังคงปิดอยู่"
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "ใช้ส่วนนี้เมื่ออ้างถึงคลังคู่มือแบบยาว พรอมป์การเรียน และบทความเฉพาะโหมด"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "เน้นความเข้าใจมากกว่าคำตอบ"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "ใช้ https://inspirlearning.com สำหรับเว็บไซต์, /mission สำหรับพันธกิจ, /topics สำหรับไดเรกทอรีโหมดการเรียนรู้สาธารณะ และ /chat/learn-anything สำหรับประสบการณ์การเรียนรู้เริ่มต้นแบบผู้เยี่ยมชม"
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "CSR และพันธมิตรด้านการศึกษา"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "คนทั่วไปควรลองอะไรเป็นอย่างแรก?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "โรงเรียนควรเริ่มจากตรงไหน?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "การเปิดใช้งานในโรงเรียนสามารถวางแผนโดยคำนึงถึงความเป็นส่วนตัวของนักเรียน การกำกับดูแลของบุคลากร และขอบเขตเชิงปฏิบัติที่ชุมชนการเรียนรู้ต้องการ"
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "สร้างเส้นทางที่ปลอดภัยยิ่งขึ้นสำหรับการฝึกฝน คำอธิบาย ฟีดแบ็ก และพรอมป์แก้ไข โดยไม่ส่งนักเรียนเข้าไปในแชตบอตทั่วไป."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "ไฟล์อ้างอิงสาธารณะสรุปหน้าเรียนรู้ เส้นทาง โหมด คู่มือ และขอบเขตการอ้างอิงสำหรับเครื่องมือที่ต้องการแผนที่แบบย่อ"
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "ตอนนี้"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "พันธกิจ"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "สร้างขึ้นรอบผู้เรียนจริง"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "โครงสร้างพื้นฐานการเรียนรู้ด้วย AI"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "หน้าความเป็นส่วนตัวอย่างเป็นทางการเกี่ยวกับการใช้ข้อมูล สิทธิ และเงื่อนไขบริการสาธารณะ"
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir เริ่มต้นในปี 2013 ในฐานะชุมชนแบบทดสอบและการเรียนรู้สาธารณะ เติบโตผ่านโรงเรียนและเครือข่ายนักเรียน และต่อมาพัฒนาโครงสร้างพื้นฐานการเรียนรู้ด้วย AI กับประสบการณ์ติว AI สาธารณะ"
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "แพลตฟอร์มการเรียนรู้ด้วย AI แบบ white label"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir มีอยู่เพื่อทำให้การเรียนรู้เข้าถึงได้ น่าสนใจ สนุก และมีประโยชน์สำหรับทุกคนที่มีความใฝ่รู้ ไม่ว่าจะเป็นนักเรียน ผู้ปกครอง ครู หรือผู้เรียนด้วยตนเอง"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "inspir ลดการคัดลอกคำตอบได้อย่างไร?"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "สิ่งที่เราเชื่อ"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "ส่วน API ส่วนผู้ดูแลระบบ การรีเซ็ต เครื่องมือส่วนตัว และแชตส่วนตัวที่บันทึกไว้ ไม่ใช่เนื้อหาต้นทางสาธารณะ"
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "หน้าสาธารณะสามารถแชร์และลิงก์ได้ ส่วนเครื่องมือผู้ดูแล เส้นทาง API ขั้นตอนรีเซ็ต และยูทิลิตีส่วนตัวยังคงปิดไว้"
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "ครู"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "รีโพ GitHub ปัจจุบัน"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "สร้างอย่างเปิดเผยต่อสาธารณะ"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "จะสนับสนุนค่าเข้าถึงให้ผู้เรียนได้อย่างไร?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "บันทึกสำหรับสื่อ"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir ออกแบบรอบการให้เหตุผล การฝึก การดึงความจำ และการอธิบาย แทนการส่งงานสำเร็จรูปให้ผู้เรียน"
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "การออกแบบผลิตภัณฑ์เฉพาะโหมด"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "ผู้นำโรงเรียน"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "นักเรียน"
+    }
+  ]
+}

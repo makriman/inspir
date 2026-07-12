@@ -14,9 +14,11 @@ import {
   useState,
 } from "react";
 import dynamic from "next/dynamic";
+import { trackProductEvent } from "@/components/analytics/trackProductEvent";
 import type { ActivityRun } from "@/components/chat/activity-model";
 import { ChatMainSection } from "@/components/chat/ChatMainSection";
 import { ChatPanelOverlays } from "@/components/chat/ChatPanelOverlays";
+import { CompactTranscriptDetails } from "@/components/chat/CompactTranscriptDetails";
 import {
   getDefaultSidebarTopicIds,
   type LearningStoreTopic,
@@ -24,9 +26,21 @@ import {
 import { LearningStore } from "@/components/chat/LearningStore";
 import {
   clearPendingAssistantMetadata,
+  getMessageContentNextOffset,
   type ChatMessage as Message,
   type MessageMemorySource,
 } from "@/components/chat/chat-message-model";
+import {
+  appendBoundedAssistantText,
+  createBrowserChatFinalizationOutbox,
+  createPendingChatFinalization,
+  emptyBoundedAssistantText,
+  postPendingChatFinalization,
+  reconcilePendingChatFinalizationMessages,
+  retryPendingChatFinalizations,
+  type ChatFinalizationOutbox,
+  type PendingChatFinalization,
+} from "@/components/chat/chat-finalization-outbox";
 import { FlashcardWorkspace } from "@/components/chat/FlashcardWorkspace";
 import { GuidedMiniAppWorkspace } from "@/components/chat/GuidedMiniAppWorkspace";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
@@ -34,6 +48,8 @@ import { parseOpenAiSseText } from "@/components/chat/openai-sse";
 import {
   type MemoryCreateInput,
   type MemoryDashboard,
+  type MemoryItem,
+  type MemorySettings,
   type MemorySettingsPatch,
   type MemoryUpdateInput,
 } from "@/components/chat/memory-model";
@@ -62,9 +78,11 @@ import {
 import { TopicSidebar } from "@/components/chat/TopicSidebar";
 import { TimeTravelWorkspace } from "@/components/chat/TimeTravelWorkspace";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
+import { setClientLanguagePreferenceCookie } from "@/components/i18n/client-language-preference";
 import { defaultLanguage } from "@/lib/content/languages";
 import { topicWorkspacePath } from "@/lib/content/topic-path";
-import { localizeHref } from "@/lib/i18n/routing";
+import { parseSupportedChatLanguage } from "@/lib/i18n/chat-locale-reconciliation";
+import { localeCookieName, localizeHref } from "@/lib/i18n/routing";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 
 const InteractiveInstructionWorkspace = dynamic(() =>
@@ -98,13 +116,287 @@ type ChatCreateResponse = {
 type ChatLoadResponse = {
   chat: { id: string };
   messages?: Message[];
+  messagePage?: ChatMessagePage;
   topic?: { id?: string | null } | null;
   activityRun?: ActivityRun | null;
+};
+
+type ChatMessagePage = {
+  hasMore: boolean;
+  nextCursor: string | null;
+  limit: number;
+};
+
+type MessageContentChunk = {
+  content: string;
+  hasMore: boolean;
+  nextOffset: number | null;
 };
 
 type RecentChatsResponse = {
   chats?: RecentChat[];
 };
+
+function isJsonRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function parseChatMessagePage(value: unknown): ChatMessagePage | null {
+  if (
+    !isJsonRecord(value) ||
+    typeof value.hasMore !== "boolean" ||
+    (typeof value.nextCursor !== "string" && value.nextCursor !== null) ||
+    typeof value.limit !== "number" ||
+    !Number.isInteger(value.limit) ||
+    value.limit < 1 ||
+    value.limit > 100
+  ) {
+    return null;
+  }
+  return { hasMore: value.hasMore, nextCursor: value.nextCursor, limit: value.limit };
+}
+
+function parseChatMessage(value: unknown): Message | null {
+  if (
+    !isJsonRecord(value) ||
+    typeof value.id !== "string" ||
+    (value.role !== "user" && value.role !== "assistant" && value.role !== "system") ||
+    typeof value.content !== "string" ||
+    typeof value.createdAt !== "string"
+  ) {
+    return null;
+  }
+  return {
+    id: value.id,
+    role: value.role,
+    content: value.content,
+    createdAt: value.createdAt,
+    metadata: isJsonRecord(value.metadata) ? value.metadata : undefined,
+  };
+}
+
+function parseChatHistoryPage(
+  value: unknown,
+  expectedChatId: string,
+): { messages: Message[]; messagePage: ChatMessagePage } | null {
+  if (
+    !isJsonRecord(value) ||
+    !isJsonRecord(value.chat) ||
+    value.chat.id !== expectedChatId ||
+    !Array.isArray(value.messages)
+  ) {
+    return null;
+  }
+  const messages = value.messages.map(parseChatMessage);
+  const messagePage = parseChatMessagePage(value.messagePage);
+  if (messages.some((message) => message === null) || !messagePage) return null;
+  return {
+    messages: messages.filter((message): message is Message => message !== null),
+    messagePage,
+  };
+}
+
+function parseActivityRun(value: unknown): ActivityRun | null {
+  if (
+    !isJsonRecord(value) ||
+    typeof value.id !== "string" ||
+    typeof value.chatId !== "string" ||
+    typeof value.type !== "string" ||
+    typeof value.status !== "string" ||
+    !isJsonRecord(value.state) ||
+    (typeof value.score !== "number" && value.score !== null) ||
+    (typeof value.maxScore !== "number" && value.maxScore !== null) ||
+    typeof value.createdAt !== "string" ||
+    typeof value.updatedAt !== "string" ||
+    (typeof value.completedAt !== "string" && value.completedAt !== null)
+  ) {
+    return null;
+  }
+  return {
+    id: value.id,
+    chatId: value.chatId,
+    type: value.type,
+    status: value.status,
+    state: value.state,
+    score: value.score,
+    maxScore: value.maxScore,
+    createdAt: value.createdAt,
+    updatedAt: value.updatedAt,
+    completedAt: value.completedAt,
+  };
+}
+
+function parseChatLoadResponse(value: unknown, expectedChatId: string): ChatLoadResponse | null {
+  const history = parseChatHistoryPage(value, expectedChatId);
+  if (!history || !isJsonRecord(value)) return null;
+
+  let topic: ChatLoadResponse["topic"] = null;
+  if (value.topic !== undefined && value.topic !== null) {
+    if (
+      !isJsonRecord(value.topic) ||
+      (value.topic.id !== undefined && typeof value.topic.id !== "string" && value.topic.id !== null)
+    ) {
+      return null;
+    }
+    topic = { id: value.topic.id };
+  }
+
+  const activityRun = value.activityRun === undefined || value.activityRun === null
+    ? null
+    : parseActivityRun(value.activityRun);
+  if (value.activityRun !== undefined && value.activityRun !== null && !activityRun) return null;
+
+  return {
+    chat: { id: expectedChatId },
+    messages: history.messages,
+    messagePage: history.messagePage,
+    topic,
+    activityRun,
+  };
+}
+
+async function readActiveChatLoadResponse(
+  response: Response,
+  expectedChatId: string,
+  isActive: () => boolean,
+) {
+  const value: unknown = await response.json();
+  return isActive() ? parseChatLoadResponse(value, expectedChatId) : null;
+}
+
+function parseMessageContentChunk(
+  value: unknown,
+  expectedChatId: string,
+  expectedMessageId: string,
+  expectedOffset: number,
+): MessageContentChunk | null {
+  if (
+    !isJsonRecord(value) ||
+    value.chatId !== expectedChatId ||
+    value.messageId !== expectedMessageId ||
+    value.offset !== expectedOffset ||
+    typeof value.content !== "string" ||
+    typeof value.hasMore !== "boolean"
+  ) {
+    return null;
+  }
+  const characters = boundedUnicodeLength(value.content, 8_000);
+  if (characters === null) return null;
+  if (value.hasMore) {
+    if (
+      characters < 1 ||
+      typeof value.nextOffset !== "number" ||
+      !Number.isSafeInteger(value.nextOffset) ||
+      value.nextOffset !== expectedOffset + characters
+    ) {
+      return null;
+    }
+    return { content: value.content, hasMore: true, nextOffset: value.nextOffset };
+  }
+  return value.nextOffset === null
+    ? { content: value.content, hasMore: false, nextOffset: null }
+    : null;
+}
+
+function boundedUnicodeLength(value: string, limit: number) {
+  let characters = 0;
+  for (const character of value) {
+    characters += character.length > 0 ? 1 : 0;
+    if (characters > limit) return null;
+  }
+  return characters;
+}
+
+function isMemorySettings(value: unknown): value is MemorySettings {
+  return (
+    isJsonRecord(value) &&
+    typeof value.enabled === "boolean" &&
+    typeof value.savedMemoryEnabled === "boolean" &&
+    typeof value.chatHistoryEnabled === "boolean" &&
+    typeof value.dreamingEnabled === "boolean" &&
+    typeof value.captureScope === "string" &&
+    typeof value.retrievalMode === "string" &&
+    (typeof value.noticeSeenAt === "string" || value.noticeSeenAt === null)
+  );
+}
+
+function isMemoryItem(value: unknown): value is MemoryItem {
+  return (
+    isJsonRecord(value) &&
+    typeof value.id === "string" &&
+    typeof value.kind === "string" &&
+    typeof value.category === "string" &&
+    typeof value.content === "string" &&
+    Array.isArray(value.tags) &&
+    value.tags.every((tag) => typeof tag === "string") &&
+    typeof value.confidence === "number" &&
+    typeof value.salience === "number" &&
+    typeof value.createdAt === "string" &&
+    typeof value.updatedAt === "string"
+  );
+}
+
+function isMemoryDashboard(value: unknown): value is MemoryDashboard {
+  if (
+    !isJsonRecord(value) ||
+    !isMemorySettings(value.settings) ||
+    !Array.isArray(value.memories) ||
+    !value.memories.every(isMemoryItem) ||
+    !Array.isArray(value.profiles) ||
+    !value.profiles.every(isMemoryProfile) ||
+    !(value.summary === null || isMemorySummary(value.summary))
+  ) {
+    return false;
+  }
+  return value.memoryPage === undefined || isMemoryPage(value.memoryPage);
+}
+
+function isMemoryProfile(value: unknown) {
+  return (
+    isJsonRecord(value) &&
+    typeof value.category === "string" &&
+    typeof value.summary === "string" &&
+    typeof value.updatedAt === "string"
+  );
+}
+
+function isMemorySummary(value: unknown) {
+  return (
+    isJsonRecord(value) &&
+    typeof value.summary === "string" &&
+    Array.isArray(value.sections) &&
+    value.sections.every(isMemorySummarySection) &&
+    typeof value.lastSynthesizedAt === "string" &&
+    typeof value.updatedAt === "string"
+  );
+}
+
+function isMemorySummarySection(value: unknown) {
+  return (
+    isJsonRecord(value) &&
+    typeof value.id === "string" &&
+    typeof value.title === "string" &&
+    typeof value.category === "string" &&
+    typeof value.summary === "string" &&
+    (value.sourceMemoryIds === undefined ||
+      (Array.isArray(value.sourceMemoryIds) && value.sourceMemoryIds.every((id) => typeof id === "string"))) &&
+    (value.sourceTurnIds === undefined ||
+      (Array.isArray(value.sourceTurnIds) && value.sourceTurnIds.every((id) => typeof id === "string"))) &&
+    (value.doNotMention === undefined || typeof value.doNotMention === "boolean")
+  );
+}
+
+function isMemoryPage(value: unknown) {
+  return (
+    isJsonRecord(value) &&
+    typeof value.hasMore === "boolean" &&
+    (typeof value.nextCursor === "string" || value.nextCursor === null) &&
+    typeof value.limit === "number" &&
+    Number.isInteger(value.limit) &&
+    value.limit >= 1 &&
+    value.limit <= 100
+  );
+}
 
 class StaleChatRequestError extends Error {
   constructor() {
@@ -175,6 +467,22 @@ function assistantResponseMetadata(response: Response) {
   if (aiRunId) metadata.aiRunId = aiRunId;
   if (memorySources.length > 0) metadata.memorySources = memorySources;
   return Object.keys(metadata).length > 0 ? metadata : null;
+}
+
+function pendingChatFinalizationFromResponse(
+  response: Response,
+  input: {
+    accountId: string;
+    chatId: string;
+    temporaryMessageId: string;
+    content: string;
+  },
+) {
+  return createPendingChatFinalization({
+    ...input,
+    aiRunId: response.headers.get("x-inspir-ai-run-id")?.trim() ?? "",
+    userMessageId: response.headers.get("x-inspir-user-message-id")?.trim() ?? "",
+  });
 }
 
 function parseMemorySourcesHeader(value: string | null): MessageMemorySource[] {
@@ -369,6 +677,9 @@ type ChatClientState = {
   activeTopicId: string;
   activeChatId: string | undefined;
   messages: Message[];
+  messagePage: ChatMessagePage | null;
+  olderMessagesLoading: boolean;
+  messageContentLoadingIds: string[];
   streamingMessageId: string | null;
   activityRun: ActivityRun | null;
   input: string;
@@ -400,12 +711,13 @@ function chatClientStateReducer(state: ChatClientState, nextState: MergeStateAct
 }
 
 type ChatClientProps = {
-  authMode: "guest";
+  authMode: "authenticated" | "guest";
   user: UserProfile;
   topics: Topic[];
   initialTopicId: string;
   initialChatId?: string;
   initialMessages: Message[];
+  initialMessagePage?: ChatMessagePage | null;
   initialActivityRun: ActivityRun | null;
   initialTranslationBundle: MainAppTranslationBundle;
   guestMessageLimit?: number;
@@ -424,6 +736,7 @@ function useChatClientController({
   initialTopicId,
   initialChatId,
   initialMessages,
+  initialMessagePage = null,
   initialActivityRun,
   initialTranslationBundle,
   guestMessageLimit = 10,
@@ -434,6 +747,9 @@ function useChatClientController({
       activeTopicId,
       activeChatId,
       messages,
+      messagePage,
+      olderMessagesLoading,
+      messageContentLoadingIds,
       streamingMessageId,
       activityRun,
       input,
@@ -464,6 +780,9 @@ function useChatClientController({
     activeTopicId: initialTopicId,
     activeChatId: initialChatId,
     messages: initialMessages,
+    messagePage: initialMessagePage,
+    olderMessagesLoading: false,
+    messageContentLoadingIds: [],
     streamingMessageId: null,
     activityRun: initialActivityRun,
     input: "",
@@ -504,6 +823,10 @@ function useChatClientController({
   const setActiveChatId = (value: SetStateAction<ChatClientState["activeChatId"]>) =>
     updateChatField("activeChatId", value);
   const setMessages = (value: SetStateAction<ChatClientState["messages"]>) => updateChatField("messages", value);
+  const setMessagePage = (value: SetStateAction<ChatClientState["messagePage"]>) =>
+    updateChatField("messagePage", value);
+  const setOlderMessagesLoading = (value: SetStateAction<ChatClientState["olderMessagesLoading"]>) =>
+    updateChatField("olderMessagesLoading", value);
   const setStreamingMessageId = (value: SetStateAction<ChatClientState["streamingMessageId"]>) =>
     updateChatField("streamingMessageId", value);
   const setActivityRun = (value: SetStateAction<ChatClientState["activityRun"]>) =>
@@ -551,11 +874,27 @@ function useChatClientController({
   const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
+  const historyRequestSeqRef = useRef(0);
+  const messageContentAbortControllersRef = useRef<Map<string, AbortController> | null>(null);
+  if (messageContentAbortControllersRef.current === null) {
+    messageContentAbortControllersRef.current = new Map<string, AbortController>();
+  }
+  const messageContentAbortControllers = messageContentAbortControllersRef.current;
+  const finalizationOutboxRef = useRef<ChatFinalizationOutbox | null>(null);
+  const finalizationDrainRef = useRef<Promise<void> | null>(null);
+  const chatClientMountedRef = useRef(false);
   const scrollFrameRef = useRef<number | null>(null);
   const shouldAutoFollowMessagesRef = useRef(true);
   const forceAutoFollowMessagesRef = useRef(false);
+  const historyPrependScrollRef = useRef<{ scrollHeight: number; scrollTop: number } | null>(null);
   const sidebarHydratedRef = useRef(false);
+  const activeChatIdRef = useRef(activeChatId);
+  activeChatIdRef.current = activeChatId;
   const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
+  const messageContentLoadingSet = useMemo(
+    () => new Set(messageContentLoadingIds),
+    [messageContentLoadingIds],
+  );
   const translationTextMap = useMemo(
     () => buildTranslationTextMap(initialTranslationBundle),
     [initialTranslationBundle],
@@ -567,6 +906,71 @@ function useChatClientController({
   );
   const learningTools = usePersistentLearningTools();
   useAutoTranslate(translationRootRef, translationTextMap);
+
+  const getFinalizationOutbox = useCallback(() => {
+    if (isGuest || typeof window === "undefined" || !window.indexedDB) return null;
+    finalizationOutboxRef.current ??= createBrowserChatFinalizationOutbox(window.indexedDB);
+    return finalizationOutboxRef.current;
+  }, [isGuest]);
+
+  const reconcileFinalizedAssistant = useCallback(
+    (pending: PendingChatFinalization, persistedAssistantMessageId: string) => {
+      if (!chatClientMountedRef.current) return;
+      updateChatState((current) => {
+        const nextMessages = reconcilePendingChatFinalizationMessages({
+          currentAccountId: current.profileUser.id,
+          currentChatId: current.activeChatId,
+          messages: current.messages,
+          pending,
+          persistedAssistantMessageId,
+        });
+        return nextMessages ? { messages: nextMessages } : {};
+      });
+    },
+    [],
+  );
+
+  const drainFinalizationOutbox = useCallback(() => {
+    const outbox = getFinalizationOutbox();
+    if (!outbox) return Promise.resolve();
+    if (finalizationDrainRef.current) return finalizationDrainRef.current;
+    const drain = retryPendingChatFinalizations({
+      outbox,
+      accountId: user.id,
+      force: true,
+      post: postPendingChatFinalization,
+      onSuccess: reconcileFinalizedAssistant,
+    })
+      .then(() => undefined)
+      .catch((error: unknown) => {
+        console.warn(
+          "Pending chat finalization retry failed",
+          error instanceof Error ? error.name : "UnknownError",
+        );
+      })
+      .finally(() => {
+        if (finalizationDrainRef.current === drain) finalizationDrainRef.current = null;
+      });
+    finalizationDrainRef.current = drain;
+    return drain;
+  }, [getFinalizationOutbox, reconcileFinalizedAssistant, user.id]);
+
+  useEffect(() => {
+    chatClientMountedRef.current = true;
+    return () => {
+      chatClientMountedRef.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isGuest) return;
+    const handleOnline = () => {
+      void drainFinalizationOutbox();
+    };
+    void drainFinalizationOutbox();
+    window.addEventListener("online", handleOnline);
+    return () => window.removeEventListener("online", handleOnline);
+  }, [drainFinalizationOutbox, isGuest]);
 
   const defaultSidebarIds = useMemo(
     () => getDefaultSidebarTopicIds(displayTopics as LearningStoreTopic[]),
@@ -637,14 +1041,44 @@ function useChatClientController({
     try {
       const response = await fetch("/api/memory");
       if (!response.ok) throw new Error("Could not load memory");
-      const data = (await response.json()) as MemoryDashboard;
-      updateChatState({ memoryDashboard: data });
+      const page: unknown = await response.json();
+      if (!isMemoryDashboard(page)) throw new Error("Memory response is invalid");
+      updateChatState({ memoryDashboard: page });
     } catch {
       updateChatState({ memoryError: "Could not load memory right now." });
     } finally {
       updateChatState({ memoryLoading: false });
     }
   }, [isGuest]);
+
+  const loadMoreMemories = useCallback(async () => {
+    const cursor = memoryDashboard?.memoryPage?.nextCursor;
+    if (isGuest || !cursor || memoryLoading || memorySaving) return;
+    updateChatState({ memoryLoading: true, memoryError: null });
+    try {
+      const response = await fetch(`/api/memory?cursor=${encodeURIComponent(cursor)}`);
+      if (!response.ok) throw new Error("Could not load more memory");
+      const page: unknown = await response.json();
+      if (!isMemoryDashboard(page)) throw new Error("Memory response is invalid");
+      updateChatState((current) => {
+        const currentDashboard = current.memoryDashboard;
+        if (!currentDashboard) return {};
+        const memories = new Map(currentDashboard.memories.map((memory) => [memory.id, memory]));
+        for (const memory of page.memories) memories.set(memory.id, memory);
+        return {
+          memoryDashboard: {
+            ...currentDashboard,
+            memories: [...memories.values()],
+            memoryPage: page.memoryPage,
+          },
+        };
+      });
+    } catch {
+      // Keep the current page intact; the bounded load-more action remains retryable.
+    } finally {
+      updateChatState({ memoryLoading: false });
+    }
+  }, [isGuest, memoryDashboard, memoryLoading, memorySaving]);
 
   useEffect(() => {
     if (isGuest || !profileOpen || memoryDashboard || memoryLoading) return;
@@ -690,6 +1124,14 @@ function useChatClientController({
   useEffect(() => {
     return cancelScheduledMessageScroll;
   }, [cancelScheduledMessageScroll]);
+
+  useEffect(() => {
+    const controllers = messageContentAbortControllers;
+    return () => {
+      for (const controller of controllers.values()) controller.abort();
+      controllers.clear();
+    };
+  }, [messageContentAbortControllers]);
 
   useEffect(() => {
     if (usesManagedMessageScroller) return;
@@ -765,12 +1207,16 @@ function useChatClientController({
   }, [activeChatId, activeTopicId, scrollMessageViewportToEnd]);
 
   useLayoutEffect(() => {
+    const prependScroll = historyPrependScrollRef.current;
+    const element = listRef.current;
+    if (prependScroll && element) {
+      element.scrollTop = prependScroll.scrollTop + (element.scrollHeight - prependScroll.scrollHeight);
+      historyPrependScrollRef.current = null;
+      return;
+    }
+    historyPrependScrollRef.current = null;
     scrollMessageViewportToEnd("auto");
-  }, [visibleChatMessages.length, activityRun, scrollMessageViewportToEnd]);
-
-  useLayoutEffect(() => {
-    scrollMessageViewportToEnd("auto");
-  }, [messages, streamingMessageId, scrollMessageViewportToEnd]);
+  }, [activityRun, messages, streamingMessageId, scrollMessageViewportToEnd]);
 
   useEffect(() => {
     const textarea = inputRef.current;
@@ -790,31 +1236,56 @@ function useChatClientController({
     const data = (await response.json()) as ChatCreateResponse;
     if (activate) {
       setActiveChatId(data.chatId);
-      window.history.replaceState(null, "", `/chat/${data.chatId}`);
+      window.history.replaceState(
+        null,
+        "",
+        localizeHref(`/chat/${data.chatId}`, currentLanguage),
+      );
     }
     return data.chatId as string;
   }
 
   function cancelActiveRequest() {
     requestSeqRef.current += 1;
+    historyRequestSeqRef.current += 1;
+    historyPrependScrollRef.current = null;
+    for (const controller of messageContentAbortControllers.values()) controller.abort();
+    messageContentAbortControllers.clear();
     abortRef.current?.abort();
     abortRef.current = null;
-    updateChatState({ awaitingResponse: false, sending: false, streamingMessageId: null });
+    updateChatState({
+      awaitingResponse: false,
+      sending: false,
+      streamingMessageId: null,
+      olderMessagesLoading: false,
+      messageContentLoadingIds: [],
+    });
   }
 
   async function loadChat(chatId: string, options?: { preserveRequest?: boolean }) {
     if (isGuest) return;
     if (!options?.preserveRequest) cancelActiveRequest();
+    const requestId = requestSeqRef.current;
     const response = await fetch(`/api/chats/${chatId}`);
-    if (!response.ok) return;
-    const data = (await response.json()) as ChatLoadResponse;
+    if (!response.ok || requestSeqRef.current !== requestId) return;
+    const data = await readActiveChatLoadResponse(
+      response,
+      chatId,
+      () => requestSeqRef.current === requestId,
+    );
+    if (!data) return;
     if (data.topic?.id) setActiveTopicId(data.topic.id);
     setActiveChatId(data.chat.id);
     setMessages(data.messages ?? []);
+    setMessagePage(data.messagePage ?? null);
     setActivityRun(data.activityRun ?? null);
     setRecentOpen(false);
     setMobileSidebarOpen(false);
-    window.history.replaceState(null, "", `/chat/${chatId}`);
+    window.history.replaceState(
+      null,
+      "",
+      localizeHref(`/chat/${chatId}`, currentLanguage),
+    );
   }
 
   async function resetChat() {
@@ -823,6 +1294,7 @@ function useChatClientController({
     if (isGuest) {
       setActiveChatId(undefined);
       setMessages([]);
+      setMessagePage(null);
       setActivityRun(null);
       setInput("");
       setRecentOpen(false);
@@ -831,9 +1303,136 @@ function useChatClientController({
     }
     const chatId = await createChat(activeTopicId);
     setMessages([]);
+    setMessagePage(null);
     setActivityRun(null);
     setRecentOpen(false);
-    window.history.replaceState(null, "", `/chat/${chatId}`);
+    window.history.replaceState(
+      null,
+      "",
+      localizeHref(`/chat/${chatId}`, currentLanguage),
+    );
+  }
+
+  async function loadOlderMessages() {
+    const chatId = activeChatId;
+    const cursor = messagePage?.nextCursor;
+    if (isGuest || !chatId || !messagePage?.hasMore || !cursor || olderMessagesLoading) return;
+
+    const requestId = historyRequestSeqRef.current + 1;
+    historyRequestSeqRef.current = requestId;
+    setOlderMessagesLoading(true);
+    try {
+      const response = await fetch(
+        `/api/chats/${encodeURIComponent(chatId)}?messageCursor=${encodeURIComponent(cursor)}`,
+        {
+          cache: "no-store",
+          credentials: "same-origin",
+          headers: { accept: "application/json" },
+        },
+      );
+      if (!response.ok) throw new Error("Could not load past chats");
+      const page = parseChatHistoryPage(await response.json(), chatId);
+      if (!page) throw new Error("Past chat response is invalid");
+      if (historyRequestSeqRef.current !== requestId || activeChatIdRef.current !== chatId) return;
+
+      const element = listRef.current;
+      historyPrependScrollRef.current = element
+        ? { scrollHeight: element.scrollHeight, scrollTop: element.scrollTop }
+        : null;
+      shouldAutoFollowMessagesRef.current = false;
+      forceAutoFollowMessagesRef.current = false;
+      updateChatState((current) => {
+        if (current.activeChatId !== chatId) return {};
+        const existingIds = new Set(current.messages.map((message) => message.id));
+        const olderMessages = page.messages.filter((message) => !existingIds.has(message.id));
+        return {
+          messages: [...olderMessages, ...current.messages],
+          messagePage: page.messagePage,
+        };
+      });
+    } catch {
+      historyPrependScrollRef.current = null;
+    } finally {
+      if (historyRequestSeqRef.current === requestId) setOlderMessagesLoading(false);
+    }
+  }
+
+  async function loadMoreMessageContent(messageId: string) {
+    const chatId = activeChatId;
+    const message = messages.find((candidate) => candidate.id === messageId);
+    const offset = message ? getMessageContentNextOffset(message) : null;
+    const controllers = messageContentAbortControllers;
+    if (
+      isGuest ||
+      !chatId ||
+      offset === null ||
+      controllers.has(messageId) ||
+      controllers.size >= 4
+    ) {
+      return;
+    }
+
+    const controller = new AbortController();
+    controllers.set(messageId, controller);
+    updateChatState((current) => ({
+      messageContentLoadingIds: current.messageContentLoadingIds.includes(messageId)
+        ? current.messageContentLoadingIds
+        : [...current.messageContentLoadingIds, messageId],
+    }));
+
+    try {
+      const response = await fetch(
+        `/api/chats/${encodeURIComponent(chatId)}/messages/${encodeURIComponent(messageId)}?offset=${offset}`,
+        {
+          cache: "no-store",
+          credentials: "same-origin",
+          headers: { accept: "application/json" },
+          signal: controller.signal,
+        },
+      );
+      if (!response.ok) throw new Error("Message content is unavailable");
+      const chunk = parseMessageContentChunk(
+        await response.json(),
+        chatId,
+        messageId,
+        offset,
+      );
+      if (!chunk) throw new Error("Message content response is invalid");
+      if (controllers.get(messageId) !== controller || activeChatIdRef.current !== chatId) return;
+
+      updateChatState((current) => {
+        if (current.activeChatId !== chatId) return {};
+        const currentMessage = current.messages.find((candidate) => candidate.id === messageId);
+        if (!currentMessage || getMessageContentNextOffset(currentMessage) !== offset) return {};
+        const metadata = { ...(currentMessage.metadata ?? {}) };
+        delete metadata.contentNextOffset;
+        delete metadata.contentTruncated;
+        if (chunk.hasMore && chunk.nextOffset !== null) {
+          metadata.contentTruncated = true;
+          metadata.contentNextOffset = chunk.nextOffset;
+        }
+        return {
+          messages: current.messages.map((candidate) =>
+            candidate.id === messageId
+              ? {
+                  ...candidate,
+                  content: `${candidate.content}${chunk.content}`,
+                  metadata,
+                }
+              : candidate,
+          ),
+        };
+      });
+    } catch {
+      // The existing Continue control remains available for a bounded retry.
+    } finally {
+      if (controllers.get(messageId) === controller) {
+        controllers.delete(messageId);
+        updateChatState((current) => ({
+          messageContentLoadingIds: current.messageContentLoadingIds.filter((id) => id !== messageId),
+        }));
+      }
+    }
   }
 
   async function sendMessage(content: string, appendUser = true) {
@@ -898,11 +1497,18 @@ function useChatClientController({
       ensureCurrentRequest();
       if (!isGuest && chatId && !activeChatId) {
         setActiveChatId(chatId);
-        window.history.replaceState(null, "", `/chat/${chatId}`);
+        window.history.replaceState(
+          null,
+          "",
+          localizeHref(`/chat/${chatId}`, currentLanguage),
+        );
       }
       const response = await fetch(isGuest ? "/api/guest-chat" : "/api/chat", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: {
+          accept: "text/event-stream",
+          "content-type": "application/json",
+        },
         body: JSON.stringify(
           isGuest
             ? {
@@ -924,6 +1530,10 @@ function useChatClientController({
         return;
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
+      trackProductEvent("chat_message_sent", {
+        guest: isGuest,
+        topic: activeTopic.slug,
+      });
       const responseAssistantMetadata = assistantResponseMetadata(response);
       if (responseAssistantMetadata) {
         setMessages((current) =>
@@ -944,6 +1554,7 @@ function useChatClientController({
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       const isOpenAiSse = response.headers.get("content-type")?.includes("text/event-stream") ?? false;
+      let boundedAssistantText = emptyBoundedAssistantText();
       let assistantText = "";
       let sseBuffer = "";
       let assistantInserted = true;
@@ -955,6 +1566,17 @@ function useChatClientController({
         if (isCurrentRequest()) return;
         void reader.cancel();
         throw new StaleChatRequestError();
+      }
+
+      function appendAssistantText(addition: string) {
+        boundedAssistantText = appendBoundedAssistantText(boundedAssistantText, addition);
+        assistantText = boundedAssistantText.text;
+        return boundedAssistantText.reachedLimit;
+      }
+
+      function cancelCappedProviderStream() {
+        void reader.cancel("assistant_response_limit_reached").catch(() => undefined);
+        if (!controller.signal.aborted) controller.abort("assistant_response_limit_reached");
       }
 
       function cancelAssistantFlush() {
@@ -1041,10 +1663,10 @@ function useChatClientController({
           const finalDecoderText = decoder.decode();
           if (isOpenAiSse) {
             const parsed = parseOpenAiSseText(`${sseBuffer}${finalDecoderText}`, true);
-            assistantText += parsed.text;
+            appendAssistantText(parsed.text);
             sseBuffer = parsed.remainder;
           } else if (finalDecoderText) {
-            assistantText += finalDecoderText;
+            appendAssistantText(finalDecoderText);
           }
           if (!assistantText.trim()) throw new Error("Empty assistant response");
           flushAssistantText({ final: true });
@@ -1053,10 +1675,16 @@ function useChatClientController({
         const decoded = decoder.decode(value, { stream: true });
         if (isOpenAiSse) {
           const parsed = parseOpenAiSseText(`${sseBuffer}${decoded}`);
-          assistantText += parsed.text;
+          appendAssistantText(parsed.text);
           sseBuffer = parsed.remainder;
         } else {
-          assistantText += decoded;
+          appendAssistantText(decoded);
+        }
+        if (boundedAssistantText.reachedLimit) {
+          cancelCappedProviderStream();
+          if (!assistantText.trim()) throw new Error("Empty assistant response");
+          flushAssistantText({ final: true });
+          return;
         }
         const paintedFirstText = scheduleAssistantFlush();
         if (paintedFirstText) await waitForFirstAssistantPaint();
@@ -1064,6 +1692,66 @@ function useChatClientController({
       }
 
       await readAssistantStream();
+      if (isCurrentRequest() && !isGuest && chatId) {
+        const pendingFinalization = pendingChatFinalizationFromResponse(response, {
+          accountId: user.id,
+          chatId,
+          temporaryMessageId: assistantMessageId,
+          content: assistantText,
+        });
+        if (!pendingFinalization) {
+          console.error(
+            "Authenticated chat completion metadata is invalid",
+            "InvalidFinalizationMetadata",
+          );
+        } else {
+          const outbox = getFinalizationOutbox();
+          if (outbox) {
+            try {
+              await outbox.enqueue(pendingFinalization);
+              const result = await retryPendingChatFinalizations({
+                outbox,
+                accountId: user.id,
+                onlyId: pendingFinalization.id,
+                force: true,
+                post: postPendingChatFinalization,
+                onSuccess: reconcileFinalizedAssistant,
+              });
+              if (result.succeeded === 0) {
+                console.warn("Authenticated chat completion queued for retry", "PendingFinalization");
+              }
+            } catch (error) {
+              console.warn(
+                "Authenticated chat finalization outbox failed",
+                error instanceof Error ? error.name : "UnknownError",
+              );
+              try {
+                const persistedAssistantMessageId = await postPendingChatFinalization(
+                  pendingFinalization,
+                );
+                reconcileFinalizedAssistant(pendingFinalization, persistedAssistantMessageId);
+              } catch (postError) {
+                console.error(
+                  "Authenticated chat completion persistence failed",
+                  postError instanceof Error ? postError.name : "UnknownError",
+                );
+              }
+            }
+          } else {
+            try {
+              const persistedAssistantMessageId = await postPendingChatFinalization(
+                pendingFinalization,
+              );
+              reconcileFinalizedAssistant(pendingFinalization, persistedAssistantMessageId);
+            } catch (error) {
+              console.error(
+                "Authenticated chat completion persistence failed",
+                error instanceof Error ? error.name : "UnknownError",
+              );
+            }
+          }
+        }
+      }
       if (isCurrentRequest()) {
         setStreamingMessageId(null);
         scheduleMessageScrollToEnd("auto");
@@ -1191,6 +1879,7 @@ function useChatClientController({
     setActiveTopicId(topicId);
     setActiveChatId(undefined);
     setMessages([]);
+    setMessagePage(null);
     setActivityRun(null);
     setInput("");
     setRecentOpen(false);
@@ -1231,10 +1920,18 @@ function useChatClientController({
       });
       if (!response.ok) throw new Error("Could not update language");
       const data = (await response.json()) as ProfileResponse;
-      if (data.user) {
-        setProfileUser(profileFromApiUser(data.user));
-      }
-      window.location.assign(localizeHref(window.location.pathname + window.location.search, preferredLanguage));
+      if (!data.user) throw new Error("Language update response is invalid");
+      const updatedUser = profileFromApiUser(data.user);
+      const updatedLanguage = parseSupportedChatLanguage(updatedUser.preferredLanguage);
+      if (!updatedLanguage) throw new Error("Language update response is invalid");
+      setProfileUser(updatedUser);
+      setClientLanguagePreferenceCookie(localeCookieName, updatedLanguage);
+      window.location.replace(
+        localizeHref(
+          `${window.location.pathname}${window.location.search}${window.location.hash}`,
+          updatedLanguage,
+        ),
+      );
     } catch {
       setProfileUser(previous);
     } finally {
@@ -1244,6 +1941,7 @@ function useChatClientController({
 
   async function updateProfileDetails(input: ProfileDetailsInput) {
     if (isGuest) return profileUser;
+    const previousLanguage = parseSupportedChatLanguage(profileUser.preferredLanguage) ?? defaultLanguage;
     const response = await fetch("/api/me", {
       method: "PATCH",
       headers: { "content-type": "application/json" },
@@ -1254,8 +1952,17 @@ function useChatClientController({
       throw new Error(data?.error || "Could not save profile");
     }
     const updatedUser = profileFromApiUser(data.user);
-    setProfileUser(updatedUser);
-    return updatedUser;
+    const updatedLanguage = parseSupportedChatLanguage(updatedUser.preferredLanguage);
+    if (!updatedLanguage) throw new Error("Profile response has an invalid language");
+    const normalizedUser = { ...updatedUser, preferredLanguage: updatedLanguage };
+    setProfileUser(normalizedUser);
+    setClientLanguagePreferenceCookie(localeCookieName, updatedLanguage);
+    if (updatedLanguage !== previousLanguage) {
+      const currentHref = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+      const localizedHref = localizeHref(currentHref, updatedLanguage);
+      if (localizedHref !== currentHref) window.location.replace(localizedHref);
+    }
+    return normalizedUser;
   }
 
   async function uploadProfilePhoto(file: File) {
@@ -1278,18 +1985,30 @@ function useChatClientController({
   }
 
   async function patchMemorySettings(input: MemorySettingsPatch) {
-    if (isGuest) return;
+    if (isGuest || memoryLoading || memorySaving) return;
+    const disablesChatHistory =
+      input.chatHistoryEnabled === false && memoryDashboard?.settings.chatHistoryEnabled === true;
     setMemorySaving(true);
     setMemoryError(null);
     try {
       const response = await fetch("/api/memory", {
         method: "PATCH",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          "x-inspir-state-contract": "incremental-v2",
+        },
         body: JSON.stringify(input),
       });
       if (!response.ok) throw new Error("Could not update memory settings");
-      const data = (await response.json()) as MemoryDashboard;
-      setMemoryDashboard(data);
+      const data: unknown = await response.json();
+      if (!isJsonRecord(data) || !isMemorySettings(data.settings)) {
+        throw new Error("Memory settings response is invalid");
+      }
+      const settings = data.settings;
+      setMemoryDashboard((current) => (current ? { ...current, settings } : current));
+      if (disablesChatHistory || typeof data.correctionMemoryId === "string") {
+        await loadMemoryDashboard();
+      }
     } catch {
       setMemoryError("Could not update memory settings.");
     } finally {
@@ -1298,18 +2017,33 @@ function useChatClientController({
   }
 
   async function createMemoryItem(input: MemoryCreateInput) {
-    if (isGuest) return;
+    if (isGuest || memoryLoading || memorySaving) return;
     setMemorySaving(true);
     setMemoryError(null);
     try {
       const response = await fetch("/api/memory", {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: {
+          "content-type": "application/json",
+          "x-inspir-state-contract": "incremental-v2",
+        },
         body: JSON.stringify(input),
       });
       if (!response.ok) throw new Error("Could not add memory");
-      const data = (await response.json()) as MemoryDashboard;
-      setMemoryDashboard(data);
+      const data: unknown = await response.json();
+      if (!isJsonRecord(data) || !isMemoryItem(data.memory)) {
+        throw new Error("Memory response is invalid");
+      }
+      const createdMemory = data.memory;
+      if (memoryDashboard) {
+        setMemoryDashboard((current) => {
+          if (!current) return current;
+          const memories = [createdMemory, ...current.memories.filter((memory) => memory.id !== createdMemory.id)];
+          return { ...current, memories };
+        });
+      } else {
+        await loadMemoryDashboard();
+      }
     } catch {
       setMemoryError("Could not add that memory.");
     } finally {
@@ -1321,7 +2055,7 @@ function useChatClientController({
     memoryId: string,
     input: MemoryUpdateInput,
   ) {
-    if (isGuest) return;
+    if (isGuest || memoryLoading || memorySaving) return;
     setMemorySaving(true);
     setMemoryError(null);
     try {
@@ -1331,7 +2065,21 @@ function useChatClientController({
         body: JSON.stringify(input),
       });
       if (!response.ok) throw new Error("Could not update memory");
-      await loadMemoryDashboard();
+      const data: unknown = await response.json();
+      if (!isJsonRecord(data) || !isMemoryItem(data.memory)) {
+        throw new Error("Memory response is invalid");
+      }
+      const updatedMemory = data.memory;
+      setMemoryDashboard((current) =>
+        current
+          ? {
+              ...current,
+              memories: current.memories.map((memory) =>
+                memory.id === updatedMemory.id ? updatedMemory : memory,
+              ),
+            }
+          : current,
+      );
     } catch {
       setMemoryError("Could not update that memory.");
     } finally {
@@ -1340,13 +2088,16 @@ function useChatClientController({
   }
 
   async function deleteMemoryItem(memoryId: string) {
-    if (isGuest) return;
+    if (isGuest || memoryLoading || memorySaving) return;
     setMemorySaving(true);
     setMemoryError(null);
     try {
       const response = await fetch(`/api/memory/${memoryId}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Could not delete memory");
-      await loadMemoryDashboard();
+      await response.body?.cancel();
+      setMemoryDashboard((current) =>
+        current ? { ...current, memories: current.memories.filter((memory) => memory.id !== memoryId) } : current,
+      );
     } catch {
       setMemoryError("Could not delete that memory.");
     } finally {
@@ -1355,13 +2106,14 @@ function useChatClientController({
   }
 
   async function clearMemory() {
-    if (isGuest) return;
+    if (isGuest || memoryLoading || memorySaving) return;
     setMemorySaving(true);
     setMemoryError(null);
     try {
       const response = await fetch("/api/memory", { method: "DELETE" });
       if (!response.ok) throw new Error("Could not clear memory");
-      const data = (await response.json()) as MemoryDashboard;
+      const data: unknown = await response.json();
+      if (!isMemoryDashboard(data)) throw new Error("Memory response is invalid");
       setMemoryDashboard(data);
     } catch {
       setMemoryError("Could not clear memory.");
@@ -1427,7 +2179,13 @@ function useChatClientController({
     learningTools,
     listRef,
     loadChat,
+    loadOlderMessages,
+    loadMoreMessageContent,
+    loadMoreMemories,
+    messageContentLoadingSet,
+    messagePage,
     messages,
+    olderMessagesLoading,
     streamingMessageId,
     memoryDashboard,
     memoryError,
@@ -1547,6 +2305,7 @@ function ChatClientLayout(controller: ChatClientController) {
           activeTopicId={activeTopicId}
           addedTopicIds={addedTopicIds}
           search={search}
+          t={translateUi}
           onAddFeature={(topicId) => addSidebarTopic(topicId, { selectAfterAdd: true })}
           onOpenStore={openLearningStore}
           onProfile={() => {
@@ -1555,6 +2314,7 @@ function ChatClientLayout(controller: ChatClientController) {
               controller.setStoreOpen(false);
               controller.setRecentOpen(false);
               setProfileOpen(true);
+              trackProductEvent("profile_opened");
             }
             setMobileSidebarOpen(false);
           }}
@@ -1608,7 +2368,9 @@ function ChatClientLayout(controller: ChatClientController) {
         <ChatWorkspaceSwitch controller={controller} />
       </ChatMainSection>
       <ChatPanelOverlays
+        activeTopic={activeTopic}
         agePromptOpen={agePromptOpen}
+        currentLanguage={currentLanguage}
         guestMessageLimit={guestMessageLimit}
         guestMessagesUsed={guestMessagesUsed}
         guestPromptOpen={guestPromptOpen}
@@ -1652,6 +2414,11 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     learningTools,
     listRef,
     loadChat,
+    loadOlderMessages,
+    loadMoreMessageContent,
+    loadMoreMemories,
+    messageContentLoadingSet,
+    messagePage,
     messages,
     metadata,
     memoryDashboard,
@@ -1659,6 +2426,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     memoryLoading,
     memorySaving,
     miniAppMode,
+    olderMessagesLoading,
     profileOpen,
     profileUser,
     recentChats,
@@ -1701,7 +2469,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         languageSaving={languageSaving}
         memoryDashboard={memoryDashboard}
         memoryLoading={memoryLoading}
-        memorySaving={memorySaving}
+        memorySaving={memorySaving || memoryLoading}
         memoryError={memoryError}
         onPhotoUpload={uploadProfilePhoto}
         onProfileSave={updateProfileDetails}
@@ -1710,6 +2478,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         onMemoryUpdate={updateMemoryItem}
         onMemoryDelete={deleteMemoryItem}
         onMemoryClear={clearMemory}
+        onMemoryLoadMore={() => void loadMoreMemories()}
         onClose={() => setProfileOpen(false)}
         t={translateUi}
       />
@@ -1740,25 +2509,43 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     );
   }
 
+  const transcriptDetails = isGuest ? null : (
+    <CompactTranscriptDetails
+      messages={visibleChatMessages}
+      userDisplayName={userDisplayName}
+      olderMessagesAvailable={messagePage?.hasMore === true}
+      olderMessagesLoading={olderMessagesLoading}
+      isMessageContentLoading={(messageId) => messageContentLoadingSet.has(messageId)}
+      onContinueMessageContent={(messageId) => void loadMoreMessageContent(messageId)}
+      onLoadOlderMessages={() => void loadOlderMessages()}
+      onMemorySources={(messageId, sources) => setMemorySourceModal({ messageId, sources })}
+      t={translateUi}
+    />
+  );
+
   if (isQuizMode) {
     if (isGuest) {
       return (
         <GuestFeatureGate
           {...topicIntroProps(activeTopic)}
-          featureName="scored AI quizzes"
           starters={topicMetadata(activeTopic)?.starters ?? []}
+          t={translateUi}
           topicHref={localizedTopicHref(activeTopic, currentLanguage)}
         />
       );
     }
     return (
-      <QuizWorkspace
-        activeChatId={activeChatId}
-        activeTopicId={activeTopicId}
-        activityRun={activityRun}
-        createChat={createChat}
-        onActivityRun={setActivityRun}
-      />
+      <>
+        {transcriptDetails}
+        <QuizWorkspace
+          activeChatId={activeChatId}
+          activeTopicId={activeTopicId}
+          activityRun={activityRun}
+          createChat={createChat}
+          onActivityRun={setActivityRun}
+          t={translateUi}
+        />
+      </>
     );
   }
 
@@ -1767,21 +2554,25 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
       return (
         <GuestFeatureGate
           {...topicIntroProps(activeTopic)}
-          featureName="AI flashcard decks"
           starters={topicMetadata(activeTopic)?.starters ?? []}
+          t={translateUi}
           topicHref={localizedTopicHref(activeTopic, currentLanguage)}
         />
       );
     }
     return (
-      <FlashcardWorkspace
-        activeChatId={activeChatId}
-        activeTopicId={activeTopicId}
-        activityRun={activityRun}
-        createChat={createChat}
-        onActivityRun={setActivityRun}
-        onReset={resetChat}
-      />
+      <>
+        {transcriptDetails}
+        <FlashcardWorkspace
+          activeChatId={activeChatId}
+          activeTopicId={activeTopicId}
+          activityRun={activityRun}
+          createChat={createChat}
+          onActivityRun={setActivityRun}
+          onReset={resetChat}
+          t={translateUi}
+        />
+      </>
     );
   }
 
@@ -1797,6 +2588,8 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         input={input}
         inputRef={inputRef}
         listRef={listRef}
+        olderMessagesAvailable={messagePage?.hasMore === true}
+        olderMessagesLoading={olderMessagesLoading}
         metadata={metadata}
         sendMessage={sendMessage}
         sending={sending}
@@ -1806,7 +2599,11 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         submitMessage={submitMessage}
         userDisplayName={userDisplayName}
         visibleChatMessages={visibleChatMessages}
+        onLoadOlderMessages={() => void loadOlderMessages()}
+        isMessageContentLoading={(messageId) => messageContentLoadingSet.has(messageId)}
+        onContinueMessageContent={(messageId) => void loadMoreMessageContent(messageId)}
         onMemorySources={(messageId, sources) => setMemorySourceModal({ messageId, sources })}
+        t={translateUi}
       />
     );
   }
@@ -1832,17 +2629,39 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
 
   if (miniAppMode === "interactive-instruction") {
     return (
-      <InteractiveInstructionWorkspace
-        key={miniAppProps.key}
-        topic={activeTopic}
-        language={currentLanguage}
-        onReset={resetChat}
-      />
+      <>
+        {transcriptDetails}
+        <InteractiveInstructionWorkspace
+          key={miniAppProps.key}
+          topic={activeTopic}
+          language={currentLanguage}
+          onReset={resetChat}
+        />
+      </>
     );
   }
-  if (miniAppMode === "time-travel") return <TimeTravelWorkspace {...miniAppProps} />;
-  if (miniAppMode === "socratic-instruction") return <SocraticWorkspace {...miniAppProps} />;
-  return <GuidedMiniAppWorkspace {...miniAppProps} mode={miniAppMode} />;
+  if (miniAppMode === "time-travel") {
+    return (
+      <>
+        {transcriptDetails}
+        <TimeTravelWorkspace {...miniAppProps} />
+      </>
+    );
+  }
+  if (miniAppMode === "socratic-instruction") {
+    return (
+      <>
+        {transcriptDetails}
+        <SocraticWorkspace {...miniAppProps} />
+      </>
+    );
+  }
+  return (
+    <>
+      {transcriptDetails}
+      <GuidedMiniAppWorkspace {...miniAppProps} mode={miniAppMode} />
+    </>
+  );
 }
 
 function findAiRunIdForMessage(messages: Message[], messageId: string) {

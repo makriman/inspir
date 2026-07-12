@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "../../globals.css";
 import "katex/dist/katex.min.css";
+import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { StaticDocumentNavigation } from "@/components/navigation/StaticDocumentNavigation";
 import { languageConfigs } from "@/lib/content/languages";
 import { siteName, siteUrl } from "@/lib/seo/config";
@@ -61,7 +63,10 @@ export default async function LocalizedWorkspaceLayout({
     >
       <body className="min-h-full bg-[#171614] text-white">
         <StaticDocumentNavigation />
-        <AnalyticsScripts />
+        <AnalyticsScripts automaticPageViews={false} />
+        <Suspense fallback={null}>
+          <ProductAnalytics />
+        </Suspense>
         {children}
       </body>
     </html>

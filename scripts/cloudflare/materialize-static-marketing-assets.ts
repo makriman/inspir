@@ -11,6 +11,10 @@ import { topicSeeds } from "../../lib/content/topics";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
 import { getMainAppSourceHash } from "../../lib/i18n/main-app-source";
 import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
+import {
+  materializeLegacyTranslationApiAssets,
+  type LegacyTranslationApiAssetOptions,
+} from "./materialize-legacy-translation-api-assets";
 
 const maxAssetFiles = 20_000;
 const maxAssetBytes = 25 * 1024 * 1024;
@@ -38,11 +42,9 @@ const staticChatCacheKeys = new Set([
 
 const privateAppPrefixes = new Set([
   "_global-error",
-  "admin",
   "api",
   "chat",
   "games",
-  "reset_pw",
 ]);
 
 const textualRouteKeys = new Set([
@@ -55,6 +57,10 @@ const textualRouteKeys = new Set([
   "rss.xml",
   "sitemap",
 ]);
+const binaryRouteContentTypes: ReadonlyMap<string, string> = new Map([
+  ["icon.png", "image/png"],
+]);
+const pngSignature = Buffer.from("89504e470d0a1a0a", "hex");
 
 type AppCacheEntry = {
   type: "app";
@@ -64,6 +70,7 @@ type AppCacheEntry = {
 type RouteCacheEntry = {
   type: "route";
   body: string;
+  contentType: string | null;
 };
 
 export type StaticMarketingAssetReport = {
@@ -77,6 +84,12 @@ export type StaticMarketingAssetReport = {
   staticChatExactRedirects: number;
   staticChatDynamicRedirects: number;
   staticMainAppBundles: number;
+  legacyTranslationApiAssets: number;
+  legacyMainAppTranslationResponses: number;
+  legacySiteTranslationResponses: number;
+  legacyCompleteTranslationResponses: number;
+  legacyIncompleteTranslationResponses: number;
+  legacyTranslationApiBytes: number;
   routeDocuments: number;
   skippedEntries: number;
   assetFiles: number;
@@ -85,12 +98,19 @@ export type StaticMarketingAssetReport = {
   generatedPaths: string[];
 };
 
+export type StaticMarketingAssetOptions = {
+  legacyTranslationApi?: LegacyTranslationApiAssetOptions;
+};
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const report = materializeStaticMarketingAssets(process.cwd());
   console.log(JSON.stringify(report, null, 2));
 }
 
-export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAssetReport {
+export function materializeStaticMarketingAssets(
+  cwd: string,
+  options: StaticMarketingAssetOptions = {},
+): StaticMarketingAssetReport {
   const openNextRoot = path.join(cwd, ".open-next");
   const assetsRoot = path.join(openNextRoot, "assets");
   const cacheRoot = path.join(openNextRoot, "cache");
@@ -137,7 +157,7 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
       skippedEntries += 1;
       continue;
     }
-    writeAsset(assetsRoot, outputPath, entry.body);
+    writeAsset(assetsRoot, outputPath, routeAssetContent(cacheKey, entry));
     generatedPaths.push(outputPath);
     routeDocuments += 1;
   }
@@ -146,6 +166,12 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
 
   const staticMainAppBundlePaths = writeStaticMainAppBundles(assetsRoot);
   generatedPaths.push(...staticMainAppBundlePaths);
+
+  const legacyTranslationApi = materializeLegacyTranslationApiAssets(
+    assetsRoot,
+    options.legacyTranslationApi,
+  );
+  generatedPaths.push(...legacyTranslationApi.paths);
 
   const staticChatRedirects = writeStaticRedirects(cwd, assetsRoot);
   generatedPaths.push("_redirects");
@@ -190,10 +216,12 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
     "index.html",
     "404.html",
     "manifest.webmanifest",
+    "icon.png",
     "robots.txt",
     "sitemap.xml",
     "llms.txt",
     "api/topics",
+    "admin/index.html",
     "_redirects",
   ]) {
     if (!generatedPaths.includes(required)) throw new Error(`Required static document was not materialized: ${required}`);
@@ -210,6 +238,12 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
     staticChatExactRedirects: staticChatRedirects.exact,
     staticChatDynamicRedirects: staticChatRedirects.dynamic,
     staticMainAppBundles: staticMainAppBundlePaths.length,
+    legacyTranslationApiAssets: legacyTranslationApi.paths.length,
+    legacyMainAppTranslationResponses: legacyTranslationApi.mainAppResponses,
+    legacySiteTranslationResponses: legacyTranslationApi.siteResponses,
+    legacyCompleteTranslationResponses: legacyTranslationApi.completeResponses,
+    legacyIncompleteTranslationResponses: legacyTranslationApi.incompleteResponses,
+    legacyTranslationApiBytes: legacyTranslationApi.bytes,
     routeDocuments,
     skippedEntries,
     assetFiles: assetFiles.length,
@@ -240,8 +274,18 @@ function parseCacheEntry(file: string): AppCacheEntry | RouteCacheEntry {
   const parsed: unknown = JSON.parse(fs.readFileSync(file, "utf8"));
   if (!isRecord(parsed)) throw new Error(`Invalid OpenNext cache object: ${file}`);
   if (parsed.type === "app" && typeof parsed.html === "string") return { type: "app", html: parsed.html };
-  if (parsed.type === "route" && typeof parsed.body === "string") return { type: "route", body: parsed.body };
+  if (parsed.type === "route" && typeof parsed.body === "string") {
+    return { type: "route", body: parsed.body, contentType: cacheEntryContentType(parsed) };
+  }
   throw new Error(`Unsupported OpenNext cache entry in ${file}.`);
+}
+
+function cacheEntryContentType(entry: Record<string, unknown>) {
+  if (!isRecord(entry.meta) || !isRecord(entry.meta.headers)) return null;
+  const value = entry.meta.headers["content-type"];
+  if (typeof value !== "string") return null;
+  const normalized = value.split(";", 1)[0]?.trim().toLowerCase();
+  return normalized || null;
 }
 
 function cacheKeyForFile(buildRoot: string, file: string) {
@@ -263,6 +307,7 @@ function htmlOutputPath(cacheKey: string) {
     ? (segments[1] ?? "")
     : firstSegment;
   if (
+    (localizedRoutePrefixes.has(firstSegment) && appRouteSegment === "admin") ||
     privateAppPrefixes.has(appRouteSegment) ||
     appRouteSegment.startsWith("_") ||
     segments.includes("games")
@@ -274,11 +319,34 @@ function htmlOutputPath(cacheKey: string) {
 
 function routeOutputPath(cacheKey: string) {
   if (cacheKey.startsWith("sitemap/") && cacheKey.endsWith(".xml")) return cacheKey;
+  if (binaryRouteContentTypes.has(cacheKey)) return cacheKey;
   if (!textualRouteKeys.has(cacheKey)) return null;
   return cacheKey === "sitemap" ? "sitemap.xml" : cacheKey;
 }
 
-function writeAsset(assetsRoot: string, relativePath: string, content: string) {
+function routeAssetContent(cacheKey: string, entry: RouteCacheEntry) {
+  const expectedContentType = binaryRouteContentTypes.get(cacheKey);
+  if (!expectedContentType) return entry.body;
+  if (entry.contentType !== expectedContentType) {
+    throw new Error(
+      `OpenNext ${cacheKey} cache must use ${expectedContentType}; received ${entry.contentType ?? "no content type"}.`,
+    );
+  }
+  if (
+    entry.body.length === 0 ||
+    entry.body.length % 4 !== 0 ||
+    !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(entry.body)
+  ) {
+    throw new Error(`OpenNext ${cacheKey} cache must contain canonical base64.`);
+  }
+  const content = Buffer.from(entry.body, "base64");
+  if (content.toString("base64") !== entry.body || !content.subarray(0, 8).equals(pngSignature)) {
+    throw new Error(`OpenNext ${cacheKey} cache must contain a valid PNG.`);
+  }
+  return content;
+}
+
+function writeAsset(assetsRoot: string, relativePath: string, content: string | Uint8Array) {
   const destination = path.resolve(assetsRoot, relativePath);
   const normalizedRoot = `${path.resolve(assetsRoot)}${path.sep}`;
   if (!destination.startsWith(normalizedRoot)) throw new Error(`Refusing unsafe asset path: ${relativePath}`);
@@ -363,6 +431,7 @@ function removePreviouslyMaterializedFiles(assetsRoot: string) {
       relative === "404.html" ||
       relative === "robots.txt" ||
       relative === "manifest.webmanifest" ||
+      relative === "icon.png" ||
       relative === "sitemap.xml" ||
       relative === "llms.txt" ||
       relative === "llms-full.txt" ||
@@ -370,6 +439,7 @@ function removePreviouslyMaterializedFiles(assetsRoot: string) {
       relative === "ai-content-index.json" ||
       relative === "api/topics" ||
       (relative.startsWith("i18n/main-app/") && relative.endsWith(".json")) ||
+      (relative.startsWith("i18n/legacy-api/") && relative.endsWith(".json")) ||
       (relative.startsWith("sitemap/") && relative.endsWith(".xml"))
     ) {
       fs.rmSync(file, { force: true });

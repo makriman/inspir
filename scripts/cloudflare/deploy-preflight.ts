@@ -6,12 +6,24 @@ import {
   D1_DATABASE_ID,
   D1_DATABASE_NAME,
   LOCAL_GATE_IDS,
+  MEMORY_POST_TURN_DLQ_NAME,
+  MEMORY_POST_TURN_QUEUE_NAME,
+  PROFILE_IMAGES_R2_BUCKET_NAME,
+  VECTORIZE_INDEX_NAME,
   cloudflareDir,
   commandEnv,
   resolveBackupDir,
 } from "./migration-config";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 import { freshBackupScopedReportBlockers } from "./fresh-report-gate";
+import { assertGitReleaseIdentity } from "./git-release-identity";
+import {
+  RUNTIME_MIGRATION_EVIDENCE_KIND,
+  RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH,
+  RUNTIME_MIGRATION_FILES,
+  RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS,
+} from "./verify-d1-runtime-migrations";
+import { readAndValidateHistoricalDataBaseline } from "./verify-historical-data-preservation";
 
 type CheckStatus = "pass" | "fail";
 
@@ -52,6 +64,20 @@ type BuildArtifactScanReport = {
   findings?: unknown[];
 };
 
+type RuntimeMigrationEvidenceReport = {
+  kind?: string;
+  ok?: boolean;
+  createdAt?: string;
+  backupDir?: string;
+  database?: string;
+  migrations?: string[];
+  sourceFingerprintBefore?: SourceFingerprint;
+  sourceFingerprint?: SourceFingerprint;
+  sourceFingerprintStable?: boolean;
+  rowsWritten?: number;
+  checks?: Array<{ id?: string; ok?: boolean }>;
+};
+
 type DeployPreflightReport = {
   createdAt: string;
   backupDir: string;
@@ -62,19 +88,33 @@ type DeployPreflightReport = {
 
 const REQUIRED_SECRET_KEYS = [
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
+  "AUTH_SECRET",
+  "AUTH_GOOGLE_ID",
+  "AUTH_GOOGLE_SECRET",
+  "ADMIN_EMAILS",
+  "CRON_SECRET",
 ];
 
 const REQUIRED_WRANGLER_VARS = [
+  "APP_URL",
+  "AUTH_URL",
+  "BETTER_AUTH_URL",
   "CLOUDFLARE_AI_GATEWAY_BASE_URL",
   "CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS",
   "OPENAI_MODEL",
   "OPENAI_FAST_MODEL",
   "OPENAI_REASONING_MODEL",
   "OPENAI_STRUCTURED_MODEL",
+  "OPENAI_EMBEDDING_MODEL",
+  "RATE_LIMIT_USER_CHAT_DAILY",
   "RATE_LIMIT_GUEST_SESSION_DAILY",
   "RATE_LIMIT_GUEST_FINGERPRINT_DAILY",
   "RATE_LIMIT_GUEST_IP_DAILY",
+  "RATE_LIMIT_ACTIVITY_DAILY",
+  "RATE_LIMIT_MEMORY_DAILY",
   "LLM_GLOBAL_DAILY_CALL_LIMIT",
+  "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
+  "MEMORY_PROFILE_COMPILE_LIMIT",
   "OBSERVABILITY_INCIDENT_MODE",
   "APP_WRITE_FREEZE",
   "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS",
@@ -90,8 +130,37 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
 
 export const FREE_PLAN_WORKER_FIRST_ROUTES = [
+  "!/_next/static/*",
+  "/api/account/topics",
+  "/api/activities/flashcards",
+  "/api/activities/flashcards/*",
+  "/api/activities/quiz",
+  "/api/activities/quiz/*",
+  "/api/admin/dashboard",
+  "/api/admin/topics",
+  "/api/admin/users",
+  "/api/analytics/events",
+  "/api/auth",
+  "/api/auth/*",
+  "/api/chat",
+  "/api/chat/finalize",
+  "/api/chats",
+  "/api/chats/*",
+  "/api/cron/memory-dreaming",
   "/api/guest-chat",
   "/api/health",
+  "/api/language-preference",
+  "/api/logout",
+  "/api/main-app-translations",
+  "/api/migration/e2e-auth",
+  "/api/migration/write-freeze",
+  "/api/me",
+  "/api/me/photo",
+  "/api/memory",
+  "/api/memory/*",
+  "/api/site-translations",
+  "/chat/*",
+  "/*/chat/*",
 ] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -112,9 +181,12 @@ export function buildSteadyStateDeployPreflightReport(options: {
   const checks: DeployPreflightCheck[] = [];
   const currentSourceFingerprint = buildRepoSourceFingerprint(cwd);
 
+  checks.push(gitReleaseIdentityCheck(cwd));
   checks.push(localGatesCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
+  checks.push(runtimeMigrationEvidenceCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
+  checks.push(historicalDataBaselineCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(wranglerConfigCheck(cwd));
   checks.push(leanWorkerArchitectureCheck(cwd));
 
@@ -130,6 +202,25 @@ export function buildSteadyStateDeployPreflightReport(options: {
     ok: checks.every((check) => check.status === "pass"),
     checks,
   };
+}
+
+function gitReleaseIdentityCheck(cwd: string): DeployPreflightCheck {
+  try {
+    const identity = assertGitReleaseIdentity({ cwd });
+    return {
+      name: "clean pushed Git release identity",
+      status: "pass",
+      detail: identity,
+    };
+  } catch (error) {
+    return {
+      name: "clean pushed Git release identity",
+      status: "fail",
+      detail: {
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
 }
 
 function remoteDurableObjectInfrastructureCheck(): DeployPreflightCheck {
@@ -324,6 +415,132 @@ function buildArtifactScanCheck(backupDir: string, currentSourceFingerprint: Sou
   };
 }
 
+function runtimeMigrationEvidenceCheck(
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+): DeployPreflightCheck {
+  const fileSecurity = backupEvidenceFileSecurity(
+    backupDir,
+    RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH,
+  );
+  const report = fileSecurity.ok
+    ? readBackupJson<RuntimeMigrationEvidenceReport>(
+        backupDir,
+        RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH,
+      )
+    : null;
+  const freshnessBlockers = freshBackupScopedReportBlockers({
+    relativePath: RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH,
+    report,
+    backupDir,
+    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
+    nowMs,
+    requireOk: true,
+  });
+  const backupDirOk = path.resolve(report?.backupDir ?? "") === path.resolve(backupDir);
+  const sourceFingerprintOk =
+    report?.sourceFingerprintStable === true &&
+    report.sourceFingerprintBefore?.sha256 === currentSourceFingerprint.sha256 &&
+    report.sourceFingerprintBefore?.fileCount === currentSourceFingerprint.fileCount &&
+    report.sourceFingerprint?.sha256 === currentSourceFingerprint.sha256 &&
+    report.sourceFingerprint?.fileCount === currentSourceFingerprint.fileCount;
+  const migrationsOk = sameStringSequence(report?.migrations ?? [], RUNTIME_MIGRATION_FILES);
+  const checksById = new Map((report?.checks ?? []).map((check) => [check.id, check]));
+  const requiredChecksOk =
+    report?.checks?.length === RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.length &&
+    checksById.size === RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.length &&
+    RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.every((id) => checksById.get(id)?.ok === true);
+  const reportShapeOk =
+    report?.kind === RUNTIME_MIGRATION_EVIDENCE_KIND &&
+    report.database === D1_DATABASE_NAME &&
+    report.rowsWritten === 0 &&
+    migrationsOk &&
+    requiredChecksOk;
+  const ok =
+    report?.ok === true &&
+    freshnessBlockers.length === 0 &&
+    fileSecurity.ok &&
+    backupDirOk &&
+    sourceFingerprintOk &&
+    reportShapeOk;
+  return {
+    name: "D1 runtime migrations 0013-0015",
+    status: ok ? "pass" : "fail",
+    detail: ok
+      ? {
+          sourceFingerprint: currentSourceFingerprint.sha256,
+          migrations: RUNTIME_MIGRATION_FILES,
+          checks: RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS,
+        }
+      : {
+          reportOk: report?.ok,
+          freshnessBlockers,
+          fileSecurity,
+          backupDirOk,
+          sourceFingerprintOk,
+          reportShapeOk,
+          migrationsOk,
+          requiredChecksOk,
+          expectedSourceFingerprint: currentSourceFingerprint.sha256,
+          actualSourceFingerprint: report?.sourceFingerprint?.sha256,
+        },
+  };
+}
+
+function historicalDataBaselineCheck(
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+): DeployPreflightCheck {
+  try {
+    const baseline = readAndValidateHistoricalDataBaseline({
+      backupDir,
+      expectedSourceFingerprint: currentSourceFingerprint,
+      now: new Date(nowMs ?? Date.now()),
+    });
+    return {
+      name: "historical production data preservation baseline",
+      status: "pass",
+      detail: {
+        createdAt: baseline.createdAt,
+        utcDay: baseline.utcDay,
+        operationId: baseline.operationId,
+        sourceFingerprint: baseline.sourceFingerprint.sha256,
+        rowsRead: baseline.rowsRead,
+        rowsWritten: baseline.rowsWritten,
+        ledgerRevision: baseline.ledger.revision,
+      },
+    };
+  } catch (error) {
+    return {
+      name: "historical production data preservation baseline",
+      status: "fail",
+      detail: {
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+}
+
+function backupEvidenceFileSecurity(backupDir: string, relativePath: string) {
+  const filePath = path.join(backupDir, relativePath);
+  try {
+    const stat = fs.lstatSync(filePath);
+    const mode = stat.mode & 0o777;
+    const regularFile = stat.isFile();
+    const symlink = stat.isSymbolicLink();
+    return {
+      ok: regularFile && !symlink && mode === 0o600,
+      regularFile,
+      symlink,
+      mode,
+    };
+  } catch {
+    return { ok: false, regularFile: false, symlink: false, mode: null };
+  }
+}
+
 function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const config = readRepoJson<Record<string, unknown>>(cwd, "wrangler.jsonc");
   const staticRedirectsPath = path.resolve(cwd, "public/_redirects");
@@ -334,6 +551,19 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const secrets = objectValue(config.secrets);
   const requiredSecrets = Array.isArray(secrets.required) ? secrets.required.filter(isString) : [];
   const d1 = arrayValue(config.d1_databases).find((binding) => binding.binding === "DB");
+  const vectorize = arrayValue(config.vectorize).find((binding) => binding.binding === "MEMORY_VECTORIZE");
+  const profileImagesR2 = arrayValue(config.r2_buckets).find(
+    (binding) => binding.binding === "PROFILE_IMAGES_R2_BUCKET",
+  );
+  const nextCacheR2 = arrayValue(config.r2_buckets).find(
+    (binding) => binding.binding === "NEXT_INC_CACHE_R2_BUCKET",
+  );
+  const queueProducer = arrayValue(objectValue(config.queues).producers).find(
+    (binding) => binding.binding === "MEMORY_POST_TURN_QUEUE",
+  );
+  const queueConsumer = arrayValue(objectValue(config.queues).consumers).find(
+    (binding) => binding.queue === MEMORY_POST_TURN_QUEUE_NAME,
+  );
   const services = arrayValue(config.services).find((binding) => binding.binding === "WORKER_SELF_REFERENCE");
   const versionMetadata = objectValue(config.version_metadata);
   const cacheQueueDo = arrayValue(objectValue(config.durable_objects).bindings).find(
@@ -365,17 +595,26 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     leakedSecretVars: SECRET_KEYS_THAT_MUST_NOT_BE_VARS.filter((key) => vars[key] !== undefined),
     requiredSecretsOk: sameStringSet(requiredSecrets, REQUIRED_SECRET_KEYS),
     d1Ok: d1?.database_name === D1_DATABASE_NAME && d1?.database_id === D1_DATABASE_ID,
-    retiredBindingsAbsent:
-      arrayValue(config.vectorize).length === 0 &&
-      arrayValue(config.r2_buckets).length === 0 &&
-      arrayValue(objectValue(config.queues).producers).length === 0 &&
-      arrayValue(objectValue(config.queues).consumers).length === 0 &&
-      (!Array.isArray(configuredCrons) || configuredCrons.length === 0),
+    memoryBindingsOk:
+      vectorize?.index_name === VECTORIZE_INDEX_NAME &&
+      profileImagesR2?.bucket_name === PROFILE_IMAGES_R2_BUCKET_NAME &&
+      nextCacheR2 === undefined &&
+      arrayValue(config.r2_buckets).length === 1 &&
+      queueProducer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
+      queueConsumer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
+      queueConsumer.dead_letter_queue === MEMORY_POST_TURN_DLQ_NAME &&
+      Number(queueConsumer.max_retries) >= 1 &&
+      Array.isArray(configuredCrons) &&
+      configuredCrons.includes("0 3 * * *"),
     serviceOk: services?.service === "inspirlearning",
     versionMetadataOk: versionMetadata.binding === "CF_VERSION_METADATA",
     cacheRevalidationDoOk: cacheQueueDo?.class_name === "DOQueueHandler",
     cacheRevalidationMigrationOk: cacheQueueMigration !== undefined,
     routesOk: routes.includes("inspirlearning.com") && routes.includes("www.inspirlearning.com"),
+    appUrlOk:
+      vars.APP_URL === "https://inspirlearning.com" &&
+      vars.AUTH_URL === "https://inspirlearning.com" &&
+      vars.BETTER_AUTH_URL === "https://inspirlearning.com",
     mainEntryOk: config.main === "./cloudflare-worker.ts",
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
@@ -405,12 +644,13 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     !problems.leakedSecretVars.length &&
     problems.requiredSecretsOk &&
     problems.d1Ok &&
-    problems.retiredBindingsAbsent &&
+    problems.memoryBindingsOk &&
     problems.serviceOk &&
     problems.versionMetadataOk &&
     problems.cacheRevalidationDoOk &&
     problems.cacheRevalidationMigrationOk &&
     problems.routesOk &&
+    problems.appUrlOk &&
     problems.mainEntryOk &&
     problems.workersDevOk &&
     problems.previewUrlsOk &&
@@ -422,7 +662,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   return {
     name: "Wrangler production config",
     status: ok ? "pass" : "fail",
-    detail: ok ? { worker: "inspirlearning", deploymentMode: "free-static-lean-guest" } : problems,
+    detail: ok ? { worker: "inspirlearning", deploymentMode: "free-static-native-accounts" } : problems,
   };
 }
 
@@ -431,9 +671,18 @@ function leanWorkerArchitectureCheck(cwd: string): DeployPreflightCheck {
   const source = fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : "";
   const materializerPath = path.join(cwd, "scripts/cloudflare/materialize-static-marketing-assets.ts");
   const materializer = fs.existsSync(materializerPath) ? fs.readFileSync(materializerPath, "utf8") : "";
+  const translationAssetPath = path.join(cwd, "lib/i18n/main-app-static-asset.ts");
+  const translationAsset = fs.existsSync(translationAssetPath) ? fs.readFileSync(translationAssetPath, "utf8") : "";
   const architecture = {
     noOpenNextRuntimeImport: !hasOpenNextRequestRuntimeImport(source),
     nativeGuestHandler: /handleFreeGuestChat/.test(source),
+    nativeLegacyI18nHandler: /handleLegacyI18nApiRequest/.test(source),
+    nativeAccountHandler: /handleAccountApiRequest/.test(source),
+    nativeAccountPrewarm:
+      /prewarmAccountApi/.test(source) && /env as workerEnv/.test(source),
+    nativeStateHandler: /handleStateApiRequest/.test(source),
+    nativeProtectedAiHandler: /handleProtectedAiApiRequest/.test(source),
+    nativeMemoryBackgroundHandlers: /handleMemoryScheduled/.test(source) && /handleMemoryQueue/.test(source),
     nativeHealthHandler: /CF_VERSION_METADATA/.test(source),
     legacyDoExportRetained: /DOQueueHandler/.test(source),
     staticChatDocuments: /staticChatCacheKeys/.test(materializer),
@@ -442,14 +691,20 @@ function leanWorkerArchitectureCheck(cwd: string): DeployPreflightCheck {
       /\/chat\?topic=/.test(materializer) &&
       / 308/.test(materializer),
     staticTopicsDocument: /api\/topics/.test(materializer),
+    staticAdminDocument: /admin\/index\.html/.test(materializer),
     staticMainAppBundles:
       /writeStaticMainAppBundles/.test(materializer) && /i18n\/main-app/.test(materializer),
+    staticLegacyTranslationResponses:
+      /materializeLegacyTranslationApiAssets/.test(materializer) && /legacyTranslationApiAssets/.test(materializer),
+    accountTranslationsIncluded: !/retiredStaticGuestAuthTranslationKeys/.test(translationAsset),
   };
   const ok = Object.values(architecture).every(Boolean);
   return {
-    name: "Free static and lean guest architecture",
+    name: "Free static and native account architecture",
     status: ok ? "pass" : "fail",
-    detail: ok ? { workerRuntime: "native-health-and-guest-chat", publicRuntime: "static-assets" } : architecture,
+    detail: ok
+      ? { workerRuntime: "native-auth-state-ai", publicRuntime: "static-assets", openNextRuntime: false }
+      : architecture,
   };
 }
 
@@ -462,8 +717,7 @@ export function hasOpenNextRequestRuntimeImport(source: string): boolean {
 
   return importSpecifiers.some(
     (specifier) =>
-      (specifier.includes(".open-next/") &&
-        specifier !== "./.open-next/.build/durable-objects/queue.js") ||
+      specifier.includes(".open-next/") ||
       specifier === "@opennextjs/cloudflare" ||
       specifier.startsWith("@opennextjs/cloudflare/") ||
       specifier === "next" ||
@@ -530,6 +784,10 @@ function samplingRateAtMost(value: unknown, max: number) {
 
 function sameStringSet(actual: readonly string[], expected: readonly string[]) {
   return actual.length === expected.length && new Set(actual).size === actual.length && expected.every((value) => actual.includes(value));
+}
+
+function sameStringSequence(actual: readonly string[], expected: readonly string[]) {
+  return actual.length === expected.length && expected.every((value, index) => actual[index] === value);
 }
 
 function parseJsonFromOutput<T>(output: string, fallback: T): T {

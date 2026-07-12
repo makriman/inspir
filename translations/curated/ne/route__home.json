@@ -4,517 +4,12 @@
   "locale": "ne",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} उपयोगी मार्गदर्शिका"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "सिकाइलाई काममा बदल्न बनाइएको {value1}-मार्गदर्शिका पुस्तकालय।"
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "ट्युटरिङ, अभ्यास, क्विज, फ्ल्यासकार्ड, बहस, लेखन प्रतिक्रिया, कोडिङ सहयोग र अध्ययन योजनाका लागि निःशुल्क सार्वजनिक AI सिकाइ साथी।"
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "अलमलबाट स्पष्ट व्याख्या, Socratic प्रश्न, उदाहरण र सक्रिय सम्झनासम्म लैजाने उपयोगी AI सिकाइ मार्ग।"
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "आधारभूत सिकाइका लागि inspir मा जे पनि सिक्नुहोस् प्रयोग गर्ने उपयोगी मार्गदर्शिका, प्रम्प्ट, अध्ययन चक्र र सुरक्षित AI बानीसहित।"
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "विद्यार्थीलाई निष्क्रिय उत्तर-संकलक नबनाई AI ले सिकाइलाई कसरी अझ स्पष्ट, व्यक्तिगत र पहुँचयोग्य बनाउन सक्छ भन्ने उपयोगी दृष्टि।"
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "मानिसहरूले छिट्टै बुझ्न सक्ने सार्वजनिक सिकाइ साइट।"
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "सिकाइ निःशुल्क, पहुँचयोग्य र जीवन्त हुनुपर्छ भन्ने inspir को विश्वास चिनाउने छोटो चलचित्र।"
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "पहिलो प्रश्नका लागि ट्युटर"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "पहुँचयोग्यता, प्रम्प्ट, परीक्षण, सुरक्षित AI व्यवहार, सिक्नेहरूको प्रवाह र UI परिष्कार।"
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "पढेपछि गर्ने काम"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "सक्रिय अभ्यास"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "सक्रिय सम्झना समीक्षा"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "हरेक संकेतपछि अघि बढ्नुअघि त्यो चरण किन काम गर्छ भनेर व्याख्या गर्नुहोस्।"
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "सिमुलेसनपछि परिवेश, सीमाहरू र प्रमाणको सार दिनुहोस्।"
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI कोड ट्युटर"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI बहस अभ्यास"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI परीक्षा तयारी योजना"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "क्विज र सक्रिय सम्झनासहित AI परीक्षा तयारी योजना"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI परीक्षा तयारी योजनाकार"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI फ्ल्यासकार्ड र सक्रिय सम्झना: कसरी धेरै सम्झने"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "सक्रिय सम्झनाका लागि AI फ्ल्यासकार्ड"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "पुनरावलोकनका लागि AI फ्ल्यासकार्ड"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI इतिहास ट्युटर"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI इतिहास ट्युटर"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI गृहकार्य कोच"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "नकल नगरी AI गृहकार्य सहयोग"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "उत्तर नक्कल नगरी AI गृहकार्य सहयोग"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI गृहकार्य सहयोगी"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI गणित चरण कोच"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI गणित ट्युटर"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "परीक्षाका लागि AI क्विज बनाउने साधन"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI Socratic ट्युटर"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI अध्ययन तालिका"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI समय-यात्रा सिकाइ"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "कठिन अवधारणाका लागि AI ट्युटर"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "विषयअनुसार AI ट्युटर"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "विद्यार्थीका लागि AI लेखन प्रतिक्रिया"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI लेखन ट्युटर"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "जाँच प्रश्नको उत्तर दिनुहोस्, एउटा चरण प्रयास गर्नुहोस्, दाबीमा बहस गर्नुहोस्, मस्यौदा सुधार्नुहोस् वा सम्झना कार्ड बनाउनुहोस्।"
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "फेरि पढ्नुभन्दा क्विज राम्रो हुन्छ?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "तर्क"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "तर्क अभ्यास"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "कुनै पनि प्रश्न सोध्नुहोस् र स्पष्ट व्याख्या, उदाहरण, पछिल्ला प्रम्प्ट र धैर्य AI ट्युटरिङबाट सिक्नुहोस्।"
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "जे पनि सोध्नुहोस्"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "संकेत माग्नुहोस्"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "उत्तर होइन, संकेत माग्नुहोस्"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "सबैभन्दा कमजोर अवधारणाको अझ सरल व्याख्या माग्नुहोस्।"
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "परिभाषा, उदाहरण र नयाँ अवस्थामा लगाउने समस्या मिसिएका पाँच प्रश्न माग्नुहोस्।"
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "सोचाइ सिक्ने व्यक्तिमै रहने गरी संकेत, जाँच, प्रतिक्रिया र अध्ययन योजना माग्नुहोस्।"
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "विषयलाई सरल भाषामा बुझाउन भन्नुहोस्, त्यसपछि एउटा उपमा, एउटा उदाहरण र एउटा सामान्य गलत बुझाइ माग्नुहोस्।"
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "यस विषयमा मलाई पाँच Socratic प्रश्न सोध्नुहोस्। प्रत्येक उत्तरपछि मैले कुन अनुमान प्रयोग गरें र अब के जाँच्ने भनेर भन्नुहोस्।"
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "प्रश्न सोध्नुहोस्, विचारलाई चुनौती दिनुहोस् र विगतका सार्वजनिक व्यक्तित्वसँग प्रमाणमा आधारित संवादबाट इतिहास सिक्नुहोस्।"
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "ऐतिहासिक मोडलाई के अभिलेखित, के अनुमानित र के सिमुलेट गरिएको हो भनेर चिनाउन भन्नुहोस्।"
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "साँचो प्रश्न सोध्नुहोस्"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "पहिलो प्रश्न सोध्नुहोस् र सिधै अभ्यासमा जानुहोस्।"
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "सार्वजनिक रूपमा उपलब्ध, तर विद्यालयहरूले गोप्य अनुकूल संस्करण चलाउन सक्छन्।"
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "हरेक मोड हेर्नुहोस्"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "विषयहरू हेर्नुहोस्"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "समय-पासपोर्ट बनाउनुहोस्, यात्रा सल्लाह पार गर्नुहोस्, र दृश्य, नक्सा, समयरेखा, मानिस, नियम, सामग्री र प्रमाणमार्फत ऐतिहासिक संसार अन्वेषण गर्नुहोस्।"
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "यथार्थ अध्ययन योजना, सम्झना अभ्यास, क्विज, फ्ल्यासकार्ड र कमजोर क्षेत्र समीक्षासहित AI परीक्षा तयारी कार्यप्रवाह बनाउनुहोस्।"
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "परीक्षा योजना बनाउनुहोस्"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "योजना बनाउनुहोस्"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "हामीसँग बनाउनुहोस्"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "जिज्ञासा, अभ्यास र पहुँचका लागि बनाइएको।"
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "सामान्य च्याट बक्स होइन, वास्तविक सिक्नेहरूको व्यवहारबाट बनाइएको।"
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "प्रयोग गर्नकै लागि बनाइएको"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "AI गृहकार्य सहयोग नैतिक हुन सक्छ?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "AI ऐतिहासिक संवादलाई स्रोतका रूपमा उद्धृत गर्न मिल्छ?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "साइन इन नगरी inspir प्रयोग गर्न मिल्छ?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "नकललाई प्रोत्साहन नगरी inspir ले गृहकार्यमा सहयोग गर्न सक्छ?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "मेरो सोचाइ-मोडेल जाँच्नुहोस्"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "एउटा चरण जाँच्नुहोस्"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "तर्कलाई पंक्ति-पंक्तिमा जाँच्नुहोस्"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "मेरो कामको यो चरण जाँच्नुहोस्। गलत छ भने गल्ती बुझाइदिनुहोस् र अर्को एउटा कदम दिनुहोस्।"
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "स्पष्ट व्याख्या"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "स्पष्ट गोपनीयता सीमा"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "कोड ट्युटर"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "कोडिङ"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "सञ्चार"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "तर्कहरू तुलना गर्नुहोस्"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "गोप्य परिनियोजन"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "जारी राख्नुहोस्"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "AI सिकाइलाई अझ सुरक्षित, स्पष्ट, पहुँचयोग्य र उपयोगी बनाउन चाहने इन्जिनियर, शिक्षक, डिजाइनर, विद्यार्थी र जो कोहीको योगदान स्वागत छ।"
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "गल्तीलाई सिकाइमा बदल्नुहोस्"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "व्याख्यालाई सक्रिय सम्झना कार्डमा बदल्नुहोस्, त्यसपछि गल्ती वा हिचकिचाहटपछि ती कार्ड फेरि हेर्नुहोस्।"
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "सानो क्विज बनाउनुहोस्"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "जिज्ञासा यहाँबाट सुरु हुन्छ"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "जिज्ञासा, अभ्यास र सिकाउने AI।"
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "प्रमाणबाट नहटिकन इतिहास र विचारलाई सन्दर्भयुक्त, बहसयोग्य र जीवन्त महसुस गर्न चाहने जिज्ञासु सिक्नेहरू।"
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "डाटा गोपनीयतासहित अनुकूल AI सिकाइ ठाउँहरू।"
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "दाबीमा बहस गर्नुहोस्"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "कुनै पनि विषयमा बहस गर्नुहोस्"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "कुनै पनि विषयमा बहस गर्नुहोस्, चुनौती पाउनुहोस्, दाबी तुलना गर्नुहोस् र बलिया तर्क बनाउन सिक्नुहोस्।"
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "बहसले दाबी, प्रमाण, मूल्य र अनुमान छुट्याउन मद्दत गर्छ, जसले ऐतिहासिक व्याख्यालाई अझ ठीक बनाउँछ।"
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "दाबीमाथि बहस गर्नुहोस्"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "अनुमान, सम्झौता र कमजोर प्रमाण देख्न सकियोस् भनेर दाबीलाई एकभन्दा बढी पक्षबाट बहस गर्नुहोस्।"
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "यो ऐतिहासिक वा दार्शनिक दाबीलाई दुवै पक्षबाट बहस गर्नुहोस्। प्रमाण, अनुमान र मूल्य छुट्याउनुहोस्।"
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "आत्मविश्वासका लागि डिजाइन गरिएको"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "सुधारिएको अनुच्छेद किन राम्रो छ भनेर व्याख्या गर्न नसक्दासम्म त्यसलाई स्वीकार नगर्नुहोस्।"
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "आवश्यक पूर्व-विचार नबुझी पूरा सारांश नमाग्नुहोस्।"
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "आफू पहिले नै सहमत भएको पक्ष मात्र बहस नगर्नुहोस्।"
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "योजना"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "हिचकिचाहटलाई बेवास्ता नगर्नुहोस्; अनिश्चितता समीक्षाका लागि उपयोगी संकेत हो।"
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "भूमिका-खेलले मिति, सन्दर्भ, कागजात वा प्रमाण-चिन्हलाई प्रतिस्थापन गर्न नदिनुहोस्।"
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir ले जिज्ञासा, गृहकार्य, पुनरावलोकन र ठूला प्रश्नलाई व्याख्या गर्ने, प्रतिप्रश्न गर्ने र अभ्यास गराउने निर्देशित AI सिकाइ सत्रमा बदल्छ।"
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "हरेक विषयलाई बराबर समय चाहिन्छ भन्ने मानेर योजना नबनाउनुहोस्।"
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "सानो क्विज बनाउनुहोस्"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "आफ्नै शब्दमा अझै व्याख्या गर्न नसक्ने वाक्यबाट फ्ल्यासकार्ड नबनाउनुहोस्।"
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "असाइनमेन्टको स्वामित्व नगुमाई अर्को कदम, गल्ती जाँच वा प्रतिक्रिया चाहिने विद्यार्थीहरू।"
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "असाइनमेन्ट टाँसेर तयार उत्तर नमाग्नुहोस्।"
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "सिक्न सुरु गर्नुहोस्"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "पहिले आफूले के सम्झन सक्नुहुन्छ भनेर जाँच नगरी नोट फेरि नपढ्नुहोस्।"
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "तपाईंले पहिले के प्रयास गर्नुभयो भनेर देखाउन नछोड्नुहोस्; उपयोगी सहयोग त्यही सन्दर्भमा निर्भर हुन्छ।"
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "पहिलो व्याख्यापछि नरोकिनुहोस्; त्यसबारे आफैंलाई प्रश्नहरूको उत्तर दिन लगाउनुहोस्।"
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "बनाइएको संवादलाई वास्तविक उद्धरण वा प्राथमिक स्रोतका रूपमा नलिनुहोस्।"
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "त्यसलाई प्रयोगमा ल्याउनुहोस्"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "inspir ले विद्यालयहरूलाई समर्थन गर्छ?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "हरेक मार्गदर्शिका अभ्यास योजना, मार्ग र मिल्ने सिकाइ मोडका लिंकसँग समाप्त हुन्छ।"
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "हरेक मार्गदर्शिकाले पढाइलाई अभ्यास बनाउन मोड, प्रम्प्ट वा समीक्षा चक्रतर्फ लैजान्छ।"
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "हरेक मोड आफ्नो उद्देश्य, उदाहरण र सिकाइ प्रवाहसहित सार्वजनिक अतिथि च्याटका रूपमा खुल्छ, त्यसैले सिक्नेहरूले तुरुन्तै उपयुक्त सहयोगबाट सुरु गर्न सक्छन्।"
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "सजिला अर्को कदम"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "समयावधि प्रविष्ट गर्नुहोस्"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "सन्दर्भ प्रविष्ट गर्नुहोस्"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "हरेक लेख श्रेणी, लाइभ मोड, विषय केन्द्र, सिकाइ मार्ग र सम्बन्धित मार्गदर्शिकासँग जोडिन्छ।"
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "हरेक गैर-एप पृष्ठको काम छ: विश्वास बनाउने, सिकाइ मार्ग बुझाउने, र महत्वपूर्ण विवरण नलुकाई सिक्नेहरूलाई उपयोगी अर्को कामतर्फ पठाउने।"
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "प्रमाण-सचेत दृश्यहरू"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "परीक्षा तयारी"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "परीक्षा तयारी योजनाकार"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "फेरि आफैं व्याख्या गर्नुहोस्"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "अर्को चरण व्याख्या गर्नुहोस्"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "यो विषय सरल भाषामा व्याख्या गर्नुहोस्। मलाई चाहिने तीन पूर्व-विचार, एउटा उपमा र एउटा सामान्य गलत बुझाइ बताउनुहोस्।"
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "व्याख्या, Socratic ट्युटरिङ, गृहकार्य कोचिङ, क्विज, फ्ल्यासकार्ड, लेखन, कोड, बहस र अध्ययन योजना।"
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "AI सँग इतिहास र ठूला विचार अन्वेषण गर्नुहोस्"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "इतिहास र विचार अन्वेषण गर्नुहोस्"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "प्रमाणलाई सिमुलेसनबाट छुट्याउने AI सिकाइ मोडसँग इतिहास, सार्वजनिक व्यक्तित्व, कारण, बहस, दर्शन र स्रोत आलोचना अन्वेषण गर्नुहोस्।"
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "विद्यालयहरू अन्वेषण गर्नुहोस्"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "मार्गदर्शिका पुस्तकालय अन्वेषण गर्नुहोस्"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "छिटो सिकाइ मार्गहरू"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "चलचित्र अध्यायहरू"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "फ्ल्यासकार्ड निर्माता"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "फ्ल्यासकार्डले एक पटकमा एउटा विचार जाँच्दा, प्रयासपछि मात्र उत्तर देखाउँदा, र छुटेका कार्ड चाँडै समीक्षा गर्दा सबैभन्दा राम्रो काम गर्छ।"
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "गणित वा तर्कमा एक पटकमा एउटा चरण गर्नुहोस् र अघि बढ्नुअघि प्रत्येक कदम किन मिल्छ भनेर सोध्नुहोस्।"
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "विद्यालय र CSR साझेदारका लागि"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "आधारहरू"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "सबैका लागि निःशुल्क AI सिकाइ"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "सबैका लागि निःशुल्क AI सिकाइ | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "सबैका लागि निःशुल्क AI सिकाइ।"
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "निःशुल्क अतिथि सिकाइ"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "निःशुल्क सार्वजनिक AI सिकाइ प्लेटफर्म"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "ब्लगबाट"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "कुनै पनि विषयमा केन्द्रित बहुविकल्पीय क्विज बनाउनुहोस् र प्रत्येक उत्तरपछि व्याख्या समीक्षा गर्नुहोस्।"
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "अध्ययन तालिका पाउनुहोस्, कमजोर क्षेत्रमा आफैं क्विज लिनुहोस्, र गल्तीलाई दोहोरिने समीक्षाका लागि फ्ल्यासकार्डमा बदल्नुहोस्।"
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "पहिले सरल मोडेल बुझ्नुहोस्"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "लेखन कोच"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "अड्किएको ठाउँबाट निस्कनुहोस्"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "गृहकार्यमा अड्किएको ठाउँबाट निस्कनुहोस्"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "ऐतिहासिक सन्दर्भमा प्रवेश गर्नुहोस्, तर्कहरू तुलना गर्नुहोस्, र विचारलाई एकभन्दा बढी पक्षबाट हेर्ने अभ्यास गर्नुहोस्।"
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "नैतिक संकेत, उदाहरण, जाँच र चरण-दर-चरण कोचिङसँग गृहकार्यमा अड्किएको ठाउँबाट निस्कनुहोस्।"
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "सिक्नेहरूको आवश्यकतासँग मिलाइएका विषय केन्द्रहरू"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "संरचना, स्पष्टता र प्रमाणमा प्रतिक्रिया दिनुहोस्। मेरो शैली राख्नुहोस् र पूरा उत्तर फेरि नलेख्नुहोस्।"
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "अन्तिम भाग मिसनमा फर्कन्छ: सार्वजनिक पहुँच, विद्यालयहरू, र सिक्ने अझ खुला तरिका।"
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "सुरु गर्न राम्रा क्षेत्रहरू:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "फेरि पढ्नुभन्दा क्विज राम्रो हुन्छ?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "मार्गदर्शिका पुस्तकालय"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "मार्गदर्शिका, मार्ग, विषय र प्रम्प्टहरू अभ्यास गर्ने अर्को उपयोगी ठाउँसँग जोडिन्छन्।"
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "मद्दतगार सिकाइ नक्सा"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "यो प्रश्न हो र मैले गरेको प्रयास हो। अन्तिम उत्तर होइन, सबैभन्दा सानो उपयोगी संकेत दिनुहोस्।"
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "चलचित्र अध्याय लुकाउनुहोस्"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "चलचित्र प्रतिलिपि लुकाउनुहोस्"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "पहिले संकेत दिने सहयोग"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "ऐतिहासिक संवादहरू"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "इतिहास"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "गृहकार्य"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "गृहकार्य कोच"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "परीक्षा तयारी योजना कति चाँडो बनाउनु पर्छ?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "inspir सामान्य AI च्याटबोटभन्दा कसरी फरक छ?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "यसले कसरी काम गर्छ"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "आफैंलाई नछली AI सँग कसरी अध्ययन गर्ने"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "AI सँग कठिन विषय कसरी बुझ्ने"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "AI सँग कठिन विषय कसरी बुझ्ने"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "डुबेर सिकाइ"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "मस्यौदा सुधार्नुहोस्"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "योजना, संशोधन, संरचना र तपाईंको आवाज कायम राख्ने प्रतिक्रियाबाट लेखन सुधार्नुहोस्।"
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "प्रश्न, तपाईंले पहिले गरेको प्रयास, कहाँ अड्किनुभयो, र संकेत, चरण जाँच वा प्रतिक्रिया चाहिएको हो कि होइन समावेश गर्नुहोस्।"
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "inspir AI सिकाइ मार्गदर्शिका पुस्तकालय"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir क्विज र विद्यार्थी समुदायबाट सुरु भयो, विद्यालय र कार्यक्रममार्फत बढ्यो, र अहिले एक-एक सिकाइलाई अझ पहुँचयोग्य बनाउन AI प्रयोग गर्छ।"
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "कुनै सिक्ने व्यक्ति केही बुझ्न चाहन्छ र सुरु गर्न धैर्य ठाउँ चाहिन्छ भन्ने क्षणका लागि inspir छ। चलचित्रले उत्पादनलाई जिज्ञासा, अभ्यास र पहुँचका लागि निःशुल्क सार्वजनिक सिकाइ साथीका रूपमा चिनाउँछ।"
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "गतिमा inspir"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir सार्वजनिक रूपमा बनिरहेको छ।"
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir संकेत, Socratic प्रश्न, क्विज, सक्रिय सम्झना, भूमिका-खेल, बहस, लेखन प्रतिक्रिया र अध्ययन योजना जस्ता स्पष्ट सिकाउने रूप भएका सिकाइ मोडहरू वरिपरि संगठित छ।"
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir सिकाइ चलचित्र"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir ले जिज्ञासा, गृहकार्य, पुनरावलोकन र ठूला प्रश्नलाई व्याख्या गर्ने, प्रतिप्रश्न गर्ने र अभ्यास गराउने निर्देशित AI सिकाइ सत्रमा बदल्छ।"
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: तपाईं जे पनि सिक्न सक्नुहुन्छ"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "inspir प्रयोग गर्न निःशुल्क हो?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "मार्गलाई जीवित राख्नुहोस्"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "अब के प्रयास गर्ने, चरण किन काम गर्छ, गल्ती कहाँ भयो, र अन्तिम उत्तरलाई आफ्नै आवाजमा कसरी सुधार्ने थाहा पाउनुहोस्।"
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "जे पनि सिक्नुहोस्"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "जे पनि सिक्नुहोस् प्रम्प्ट र अध्ययन चक्र"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "निःशुल्क AI ट्युटरसँग जे पनि सिक्नुहोस्: उपयोगी मार्गदर्शिका"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "कुरा गरेर, जाँचेर, बहस गरेर र अन्वेषण गरेर सिक्नुहोस्।"
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "सिक्ने व्यक्तिलाई प्रक्रियामा राख्ने सार्वजनिक AI मोडहरूसँग प्रोग्रामिङ सिक्नुहोस्, अवधारणा डिबग गर्नुहोस्, परियोजना योजना गर्नुहोस्, डाटा बुझ्नुहोस् र प्राविधिक प्रश्न अनुसन्धान गर्नुहोस्।"
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "निष्क्रिय रूपमा उत्तर पढ्नुको सट्टा केन्द्रित प्रश्न, संकेत र आत्म-चिन्तनबाट सिक्नुहोस्।"
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "व्याख्या, Socratic प्रश्न, गृहकार्य कोचिङ, क्विज, फ्ल्यासकार्ड, बहस, लेखन प्रतिक्रिया, कोडिङ सहयोग र अध्ययन योजनाका लागि निःशुल्क AI ट्युटरसँग सिक्नुहोस्।"
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "सिक्ने व्यक्तिलाई पहिलो स्थान दिने सहयोग"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "सिक्नेहरूलाई लिंकको थुप्रो होइन, क्रम चाहिन्छ। यी मार्गहरूले बुझाइ, गृहकार्य, परीक्षा तयारी र अन्वेषणका लागि मोडहरूलाई उपयोगी अध्ययन चक्रमा जोड्छन्।"
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "नयाँ विषयको सुरुमै अड्किएका वा कठिन विचारतर्फ सरल बाटो चाहिने सिक्नेहरू।"
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "सीमित समय, ठूलो पाठ्यक्रम, र सबै कुरा बराबर महत्वपूर्ण छ भनेर नदेखाई समीक्षा गर्ने यथार्थ तरिका चाहिने सिक्नेहरू।"
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "सबैका लागि सिकाइ"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "सिकाइ मार्गदर्शिका र अभ्यास चक्र"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "सरल भाषाको मोडेल, धारिला प्रश्न, आफैं फेरि व्याख्या गर्न सक्ने उदाहरण र समीक्षाका लागि सम्झना कार्ड लिएर जानुहोस्।"
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "मलाई यो ऐतिहासिक व्यक्तिको अन्तर्वार्ता लिन दिनुहोस्। उत्तरहरू प्रमाण-सचेत राख्नुहोस् र अनिश्चितता स्पष्ट चिनाउनुहोस्।"
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "गल्तीबाट फ्ल्यासकार्ड बनाउनुहोस् र केही समयपछि फेरि हेर्नुहोस्।"
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "गल्ती, हिचकिचाहट, सूत्र, परिभाषा र स्पष्ट व्याख्या गर्न नसकिएका अवधारणाबाट फ्ल्यासकार्ड बनाउनुहोस्।"
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "यसलाई दिमागमा बसाउनुहोस्"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "विचारलाई दिमागमा बसाउनुहोस्"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "अध्ययन योजना यथार्थ बनाउनुहोस्"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "गणित"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "गणित चरण कोच"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "गणित, लेखन, कोडिङ, इतिहास, गृहकार्य र परीक्षा तयारीलाई फरक-फरक सहयोग चाहिन्छ। विषयबाट सुरु गर्नुहोस्, त्यसपछि मिल्ने मोड, प्रम्प्ट, मार्गदर्शिका वा समीक्षा चक्रमा जानुहोस्।"
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "मिसन पहिले"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "सामान्य सिकाइ क्षणका लागि मोड मार्गदर्शिका, प्रम्प्ट चक्र, अध्ययन विधि र मुख्य लेखहरू।"
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "सरल भाषाको व्याख्याबाट प्रश्न, उदाहरण र स्मरण अभ्यासतर्फ जानुहोस्।"
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Socratic प्रश्न, क्विज, फ्ल्यासकार्ड, बहस, भूमिका-खेल र निर्देशित शिक्षातर्फ जानुहोस्।"
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "चलचित्र मौन पार्नुहोस्"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "मेरो परीक्षा यो मितिमा छ। यहाँ पाठ्यक्रम, मेरा कमजोर क्षेत्र र उपलब्ध समय छन्। दैनिक सम्झनासहित यथार्थ योजना बनाउनुहोस्।"
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "NCERT-अनुरूप विकल्पहरू"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "अर्को कदम"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "होइन। बनाइएको संवादलाई सिकाइ सिमुलेसनका रूपमा लिनुहोस्। तथ्यात्मक दाबीका लागि वास्तविक प्राथमिक वा द्वितीयक स्रोत उद्धृत गर्नुहोस्।"
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "अर्को उत्तर बाकस होइन। सिक्ने ठाउँ।"
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "मोड खोल्नुहोस् र तुरुन्तै सुरु गर्नुहोस्; सार्वजनिक अतिथि अनुभवका लागि खाता चाहिँदैन।"
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "डिजाइनमै खुला"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "चलचित्र पूर्ण पर्दामा खोल्नुहोस्"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "अतिथि च्याट खोल्नुहोस्"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "विषय केन्द्र खोल्नुहोस्"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "तपाईंले खोजेको ठ्याक्कै प्रकारको सहयोग खोल्नुहोस्।"
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "सिकाइ नक्सा खोल्नुहोस्"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} उपयोगी मार्गदर्शिका"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "मार्ग खोल्नुहोस्"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "पृष्ठहरू मानिसहरूलाई व्याख्याबाट लाइभ मोड, प्रम्प्ट, क्विज वा समीक्षा चक्रमा लैजान डिजाइन गरिएका छन्।"
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "कुनै पनि प्रश्न सोध्नुहोस् र स्पष्ट व्याख्या, उदाहरण, पछिल्ला प्रम्प्ट र धैर्य AI ट्युटरिङबाट सिक्नुहोस्।"
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "साइट ब्रुशर होइन, मार्ग हो।"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir ले विद्यालयहरूलाई समर्थन गर्छ?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir संकेत, Socratic प्रश्न, क्विज, सक्रिय सम्झना, भूमिका-खेल, बहस, लेखन प्रतिक्रिया र अध्ययन योजना जस्ता स्पष्ट सिकाउने रूप भएका सिकाइ मोडहरू वरिपरि संगठित छ।"
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "सार्वजनिक अतिथि मोडहरू निःशुल्क प्रयोग गर्नुहोस्, त्यसपछि खुला-स्रोत काम र विद्यालय परिनियोजन मार्ग अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "व्याख्या, Socratic ट्युटरिङ, गृहकार्य कोचिङ, क्विज, फ्ल्यासकार्ड, लेखन, कोड, बहस र अध्ययन योजना।"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "सबैका लागि निःशुल्क AI सिकाइ"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "परीक्षा तयारी योजनाकार"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "नैतिक संकेत, उदाहरण, जाँच र चरण-दर-चरण कोचिङसँग गृहकार्यमा अड्किएको ठाउँबाट निस्कनुहोस्।"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI परीक्षा तयारी योजनाकार"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "क्विज र सक्रिय सम्झनासहित AI परीक्षा तयारी योजना"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "बहसले दाबी, प्रमाण, मूल्य र अनुमान छुट्याउन मद्दत गर्छ, जसले ऐतिहासिक व्याख्यालाई अझ ठीक बनाउँछ।"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "दृश्य सामान्य भूमिका-खेल नबनोस् भनेर स्थान, समय, पहिचान, सीमा र प्रमाण-चिन्हबाट सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "गृहकार्य प्रम्प्टमा के समावेश गर्ने?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "AI सिकाइलाई अझ सुरक्षित, स्पष्ट, पहुँचयोग्य र उपयोगी बनाउन चाहने इन्जिनियर, शिक्षक, डिजाइनर, विद्यार्थी र जो कोहीको योगदान स्वागत छ।"
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "अलमलबाट स्पष्ट व्याख्या, Socratic प्रश्न, उदाहरण र सक्रिय सम्झनासम्म लैजाने उपयोगी AI सिकाइ मार्ग।"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI लेखन ट्युटर"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir क्विज र विद्यार्थी समुदायबाट सुरु भयो, विद्यालय र कार्यक्रममार्फत बढ्यो, र अहिले एक-एक सिकाइलाई अझ पहुँचयोग्य बनाउन AI प्रयोग गर्छ।"
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir सिकाइ चलचित्र"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "चलचित्र अध्याय देखाउनुहोस्"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "यी छुटेका प्रश्नलाई अवधारणा, सूत्र, परिभाषा र उदाहरणअनुसार समूहबद्ध फ्ल्यासकार्डमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "अब के प्रयास गर्ने, चरण किन काम गर्छ, गल्ती कहाँ भयो, र अन्तिम उत्तरलाई आफ्नै आवाजमा कसरी सुधार्ने थाहा पाउनुहोस्।"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "विद्यार्थीका लागि AI लेखन प्रतिक्रिया"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "सबैका लागि सिकाइ"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI कोड ट्युटर"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "कमजोर क्षेत्रमा क्विज लिनुहोस्"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "व्याख्या, Socratic प्रश्न, गृहकार्य कोचिङ, क्विज, फ्ल्यासकार्ड, बहस, लेखन प्रतिक्रिया, कोडिङ सहयोग र अध्ययन योजनाका लागि निःशुल्क AI ट्युटरसँग सिक्नुहोस्।"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "सबैभन्दा बलियो दाबी र सबैभन्दा बलियो प्रतिदाबी तुलना गर्न बहस प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "पहिलो व्याख्यापछि नरोकिनुहोस्; त्यसबारे आफैंलाई प्रश्नहरूको उत्तर दिन लगाउनुहोस्।"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "यसले कसरी काम गर्छ"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "कोड ट्युटर"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "परीक्षा तयारी"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "खोज पृष्ठ, ब्लग मार्गदर्शिका, प्रम्प्ट र लाइभ मोडहरू सरल चक्र वरिपरि जोडिएका छन्: सोध्नुहोस्, प्रयास गर्नुहोस्, जाँच्नुहोस्, सुधार्नुहोस् र समीक्षा गर्नुहोस्।"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "कोडिङ"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "पहिलो क्लिकदेखि उपयोगी"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "कुनै पनि विषयमा केन्द्रित बहुविकल्पीय क्विज बनाउनुहोस् र प्रत्येक उत्तरपछि व्याख्या समीक्षा गर्नुहोस्।"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "सुधारिएको अनुच्छेद किन राम्रो छ भनेर व्याख्या गर्न नसक्दासम्म त्यसलाई स्वीकार नगर्नुहोस्।"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "मेरो परीक्षा यो मितिमा छ। यहाँ पाठ्यक्रम, मेरा कमजोर क्षेत्र र उपलब्ध समय छन्। दैनिक सम्झनासहित यथार्थ योजना बनाउनुहोस्।"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "निःशुल्क AI ट्युटरसँग जे पनि सिक्नुहोस्: उपयोगी मार्गदर्शिका"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "मलाई यो ऐतिहासिक व्यक्तिको अन्तर्वार्ता लिन दिनुहोस्। उत्तरहरू प्रमाण-सचेत राख्नुहोस् र अनिश्चितता स्पष्ट चिनाउनुहोस्।"
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "सामान्य च्याट बक्स होइन, वास्तविक सिक्नेहरूको व्यवहारबाट बनाइएको।"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "गृहकार्यमा अड्किएको ठाउँबाट निस्कनुहोस्"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "ब्लग वास्तविक अध्ययन क्षण वरिपरि संगठित छ: अड्किएको ठाउँबाट निस्कने, धेरै सम्झने, राम्रो लेख्ने, परीक्षा तयारी गर्ने र धैर्य ट्युटरसँग विचार अन्वेषण गर्ने।"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "इतिहासलाई बहससँग किन जोड्ने?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "ब्लगले उपयोगी सिकाइ सल्लाहलाई लाइभ अभ्याससँग जोड्छ, त्यसैले मार्गदर्शिका एकै कदममा अध्ययन सत्र बन्न सक्छ।"
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "प्रश्न र तपाईंले गरेको प्रयास टाँस्नुहोस्, त्यसपछि सबैभन्दा सानो उपयोगी अर्को कदम माग्नुहोस्।"
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "चलचित्र रोक्नुहोस्"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "नयाँ विषयको सुरुमै अड्किएका वा कठिन विचारतर्फ सरल बाटो चाहिने सिक्नेहरू।"
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "मलाई यो समय र स्थानमा राख्नुहोस्। अभिलेखित तथ्यलाई सम्भावित सिमुलेसनबाट अलग चिनाउनुहोस् र मैले के देख्छु भनेर सोध्नुहोस्।"
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "पहुँचयोग्यता, प्रम्प्ट, परीक्षण, सुरक्षित AI व्यवहार, सिक्नेहरूको प्रवाह र UI परिष्कार।"
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "सरल भाषाका व्याख्याहरू"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "सहयोग माग्नुअघि ठ्याक्कै कहाँ अड्किनुभयो लेख्नुहोस्।"
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "केन्द्रित AI सिकाइ मोडहरूसँग परीक्षा पुनरावलोकन योजना गर्नुहोस्, क्विज बनाउनुहोस्, फ्ल्यासकार्ड बनाउनुहोस्, अन्तराल समीक्षा तालिका बनाउनुहोस् र प्रेरणा यथार्थ राख्नुहोस्।"
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "गल्तीलाई सिकाइमा बदल्नुहोस्"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "काम योजना गर्नुहोस्, सम्झना अभ्यास गर्नुहोस्, र क्विज तथा सक्रिय सम्झनाबाट कमजोर ठाउँ बन्द गर्नुहोस्।"
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "इतिहास र विचार अन्वेषण गर्नुहोस्"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "योजना"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AI सँग इतिहास र ठूला विचार अन्वेषण गर्नुहोस्"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "चलचित्र चलाउनुहोस्"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "विचारलाई दिमागमा बसाउनुहोस्"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "inspir सिकाइ पूर्वावलोकन चलाउनुहोस्"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "विषय केन्द्र खोल्नुहोस्"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "लोकप्रिय AI सिकाइ मार्गहरू"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "लेखन"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "लोकप्रिय मार्गहरू"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "जारी राख्नुहोस्"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "अभ्यास"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "आधारहरू"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "अभ्यास, उत्तर-नक्कल होइन"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "अर्को दोहोर्याइ तालिका बनाउनुहोस्"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI गणित चरण कोच"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "सन्दर्भ प्रविष्ट गर्नुहोस्"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "साँचो प्रश्न सोध्नुहोस्"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "परीक्षाका लागि तयारी गर्नुहोस्"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "inspir मा जे पनि सिक्नुहोस् बाट उपयोगी सिकाइ नतिजा पाउन प्रम्प्ट विचार र दोहोर्याउन मिल्ने अध्ययन चक्र।"
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "प्रमाणलाई सिमुलेसनबाट छुट्याउने AI सिकाइ मोडसँग इतिहास, सार्वजनिक व्यक्तित्व, कारण, बहस, दर्शन र स्रोत आलोचना अन्वेषण गर्नुहोस्।"
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "व्यक्तित्वलाई प्रश्न गर्नुहोस्"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI बहस अभ्यास"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "ऐतिहासिक दृष्टिकोणलाई प्रश्न गर्नुहोस्"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "प्रश्नहरूले तपाईंको विषयबारेको आफ्नै मोडेल बाहिर ल्याउँछन्, जहाँ अलमल, झुटो आत्मविश्वास र छुटेका पूर्व-ज्ञान प्रायः देखिन्छन्।"
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "छिटो उत्तरहरू"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "यी विषयमा मलाई एक पटकमा एउटा प्रश्न सोध्दै क्विज लिनुहोस्। प्रत्येक उत्तरपछि कमी व्याख्या गर्नुहोस् र कठिनाइ बिस्तारै बढाउनुहोस्।"
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "ट्रिभियामा मलाई क्विज लिनुहोस्"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "कमजोर क्षेत्रमा क्विज लिनुहोस्"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "आफैंलाई क्विज लिनुहोस्"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "पहिले आफैंलाई क्विज लिनुहोस्, ताकि वास्तवमा के सम्झनुभयो र कहाँ आत्मविश्वास भ्रमपूर्ण छ देख्न सकियोस्।"
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "क्विजले सम्झना जाँच्ने भएकाले प्रायः बढी कुरा देखाउँछ। के सुधार्नुपर्छ भनेर क्विजले देखाएपछि फेरि पढ्दा मद्दत गर्छ।"
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "मिसन पढ्नुहोस्"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "यथार्थ तालिका"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "एउटा गल्ती सुधार्नुहोस्"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "कमजोर ठाउँ सुधार्नुहोस्"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "फेरि चलाउनुहोस्"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "चलचित्र फेरि सुरु गर्नुहोस्"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "सम्झना अभ्यास"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "फ्ल्यासकार्डसँग समीक्षा गर्नुहोस्"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "मेरो मस्यौदा सुधार्नुहोस्"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "आफ्नो आवाज नगुमाई सुधार्नुहोस्"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "गल्ती सुरक्षित गर्नुहोस्"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "अर्को दोहोर्याइ तालिका बनाउनुहोस्"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "विद्यालय-विशेष कार्यप्रवाह"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "विद्यालयहरूले आफ्ना सिक्नेहरूका लागि विद्यालयकै ब्रान्डमा मिलाइएको AI च्याट अनुभव दिन सक्छन्, NCERT-अनुरूप सामग्री र कार्यप्रवाहसहित, जसको प्रयोग साझेदार विद्यालय वा CSR प्रायोजनबाट वित्तपोषित हुन्छ।"
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "खोज पृष्ठ, ब्लग मार्गदर्शिका, प्रम्प्ट र लाइभ मोडहरू सरल चक्र वरिपरि जोडिएका छन्: सोध्नुहोस्, प्रयास गर्नुहोस्, जाँच्नुहोस्, सुधार्नुहोस् र समीक्षा गर्नुहोस्।"
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "तथ्यलाई कल्पनाबाट छुट्याउनुहोस्"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "चलचित्र अध्याय देखाउनुहोस्"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "चलचित्र प्रतिलिपि देखाउनुहोस्"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Socratic जाँचहरू"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Socratic निर्देशन"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Socratic ट्युटर"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Socratic ट्युटरिङले निष्क्रिय उत्तर-पढाइभन्दा गहिरो बुझाइ बनाउन प्रश्न, परिकल्पना, संकेत र आत्म-चिन्तन प्रयोग गर्छ।"
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "लाइभ सिकाइ सत्र सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "परीक्षा मिति थाहा पाएलगत्तै सुरु गर्नुहोस्। समय छोटो छ भने कमजोर क्षेत्र, पुराना प्रश्नपत्र शैलीका प्रश्न र दैनिक सम्झनालाई प्राथमिकता दिनुहोस्।"
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "सरल व्याख्या, एउटा दैनिक उपमा, र विषय बुझिनुअघि चाहिने तीन विचार मागेर सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "फेरि पढ्नुअघि हरेक सत्र छिटो क्विजबाट सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "पहिलो सिद्धान्तबाट सुरु गर्नुहोस्"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "विषयबाट सुरु गर्नुहोस्, त्यसपछि सही सिकाइ मोड खोल्नुहोस्।"
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "नबुझेको कुराबाट सुरु गर्नुहोस् र सरल भाषाको मोडेल, उदाहरण र अर्को कदम पाउनुहोस्।"
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "सिक्न सुरु गर्नुहोस्"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "कामसँग मिल्ने मोडमा विषय, असाइनमेन्ट, मस्यौदा, परीक्षा वा विचारबाट सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "जे पनि सिक्नुहोस् बाट सुरु गर्नुहोस्"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "दृश्य सामान्य भूमिका-खेल नबनोस् भनेर स्थान, समय, पहिचान, सीमा र प्रमाण-चिन्हबाट सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "तपाईंले गर्नुपर्ने कामबाट सुरु गर्नुहोस्।"
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "अड्किएको ठाउँ बताउनुहोस्"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "चरण जाँचहरू"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "ऐतिहासिक सन्दर्भमा प्रवेश गर्नुहोस्, तर्कहरू तुलना गर्नुहोस्, र विचारलाई एकभन्दा बढी पक्षबाट हेर्ने अभ्यास गर्नुहोस्।"
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "असाइनमेन्टको स्वामित्व नगुमाई अर्को कदम, गल्ती जाँच वा प्रतिक्रिया चाहिने विद्यार्थीहरू।"
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "अध्ययन चक्र, AI ट्युटरिङ मार्गदर्शिका र उपयोगी प्रम्प्टहरू।"
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "सिक्नेहरूको आवश्यकतासँग मिलाइएका विषय केन्द्रहरू"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "सन्दर्भको सार दिनुहोस्"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "अतिरिक्त सिकाइ, शैक्षिक अभ्यास र जिज्ञासालाई समर्थन गर्छ।"
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "निष्क्रिय रूपमा उत्तर पढ्नुको सट्टा अनुमान देखाउन र खाली ठाउँ भर्न प्रश्नमा जानुहोस्।"
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "बनाइएको संवादलाई अभिलेखित उद्धरणबाट अलग राख्दै ऐतिहासिक व्यक्तित्वसँग कुरा गर्नुहोस्।"
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "ऐतिहासिक व्यक्तिसँग कुरा गर्नुहोस्"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "ऐतिहासिक व्यक्तित्वसँग कुरा गर्ने AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "समीक्षाअघि जाँच्नुहोस्"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "तर्क जाँच्नुहोस्"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "आफ्नो तर्क जाँच्नुहोस्"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "ब्लगले उपयोगी सिकाइ सल्लाहलाई लाइभ अभ्याससँग जोड्छ, त्यसैले मार्गदर्शिका एकै कदममा अध्ययन सत्र बन्न सक्छ।"
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "ब्लग वास्तविक अध्ययन क्षण वरिपरि संगठित छ: अड्किएको ठाउँबाट निस्कने, धेरै सम्झने, राम्रो लेख्ने, परीक्षा तयारी गर्ने र धैर्य ट्युटरसँग विचार अन्वेषण गर्ने।"
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "फराकिलो खुला-स्रोत inspir प्लेटफर्म।"
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "अन्तिम भाग मिसनमा फर्कन्छ: सार्वजनिक पहुँच, विद्यालयहरू, र सिक्ने अझ खुला तरिका।"
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "हालको inspirlearning.com पुनर्निर्माण।"
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "चलचित्र प्रेरणाबाट उपयोगी प्रतिज्ञातर्फ सर्छ: धैर्य AI सिकाइ साथी।"
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "गृहकार्य र Socratic मोडहरू तयार उत्तर मात्र दिनुको सट्टा संकेत, तर्क, चरण जाँच र सिक्नेको व्याख्या वरिपरि डिजाइन गरिएका छन्।"
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "मध्य भागले inspir लाई बुझाइ, संकेत, क्विज र सक्रिय सिकाइ चक्र वरिपरि राख्छ।"
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "अर्को पुस्ताको AI अध्ययन प्लेटफर्म।"
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "सुरुवाती दृश्यहरूले सिकाइलाई जो कोहीले तुरुन्तै सुरु गर्न सक्ने कुरा रूपमा प्रस्तुत गर्छन्।"
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "ऐतिहासिक संवादहरू"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "सार्वजनिक साइट सिकाइ नक्साजस्तो संरचित छ: तुरुन्त सहयोगका लागि लाइभ मोड, सिक्नेका प्रश्नका लागि विषय केन्द्र, र पढाइलाई काममा बदल्ने मार्गदर्शिका।"
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "साइट ब्रुशर होइन, मार्ग हो।"
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "नहेरी तीन वाक्यको व्याख्या लेख्नुहोस्, त्यसपछि कमजोर कडी खोज्न Socratic मोडलाई भन्नुहोस्।"
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "अझ गहिरो सोच्नुहोस्"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "दाबीमा बहस गर्नुहोस्"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "समय यात्रा"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "हरेक मोड हेर्नुहोस्"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "विषय समूहहरू"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "ब्लगबाट"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "प्रतिलिपि"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "उत्तर होइन, संकेत माग्नुहोस्"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "एक समयावधिमा यात्रा गर्नुहोस्"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "ऐतिहासिक दृष्टिकोणलाई प्रश्न गर्नुहोस्"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "गृहकार्य कोच प्रयास गर्नुहोस्"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "सार्वजनिक रूपमा उपलब्ध, तर विद्यालयहरूले गोप्य अनुकूल संस्करण चलाउन सक्छन्।"
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "यसलाई फ्ल्यासकार्डमा बदल्नुहोस्"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "गल्तीलाई समीक्षा चक्रमा बदल्नुहोस्"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "नोट वा विषयलाई संकेत, उत्तर, उदाहरण र सामान्य फन्दासहित केन्द्रित फ्ल्यासकार्डमा बदल्नुहोस्।"
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "सुधारिएको गल्तीलाई पछि हेर्न फ्ल्यासकार्ड वा छोटो चेकलिस्टमा बदल्नुहोस्।"
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "व्याख्यालाई एउटा अवधारणा कार्ड, एउटा उदाहरण कार्ड र एउटा गलत बुझाइ कार्डसहित सक्रिय सम्झना कार्डमा बदल्नुहोस्।"
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "सबैभन्दा कठिन छुटेको प्रश्नलाई फ्ल्यासकार्डमा बदल्नुहोस् र पछि समीक्षा गर्नुहोस्।"
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "यी छुटेका प्रश्नलाई अवधारणा, सूत्र, परिभाषा र उदाहरणअनुसार समूहबद्ध फ्ल्यासकार्डमा बदल्नुहोस्।"
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "आफ्नो पाठ्यक्रम, परीक्षा मिति, समय र कमजोर क्षेत्रलाई उपयोगी अध्ययन योजनामा बदल्नुहोस्।"
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Socratic प्रश्न, क्विज, फ्ल्यासकार्ड, बहस, भूमिका-खेल र निर्देशित शिक्षातर्फ जानुहोस्।"
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "कठिन विषय बुझ्नुहोस्"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "ऐतिहासिक सन्दर्भ बुझ्नुहोस्, दृष्टिकोणलाई प्रश्न गर्नुहोस्, दाबी तुलना गर्नुहोस्, र सिमुलेसनलाई अभिलेखित तथ्यबाट छुट्याउनुहोस्।"
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "आफ्नो आवाज नगुमाई सुधार्नुहोस्"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "अड्किएको ठाउँ बताउनुहोस्"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "आफैंलाई नछली AI सँग कसरी अध्ययन गर्ने"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "विषयलाई सरल भाषामा बुझाउन भन्नुहोस्, त्यसपछि एउटा उपमा, एउटा उदाहरण र एउटा सामान्य गलत बुझाइ माग्नुहोस्।"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI समय-यात्रा सिकाइ"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "पहिले आफूले के सम्झन सक्नुहुन्छ भनेर जाँच नगरी नोट फेरि नपढ्नुहोस्।"
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "आफ्नो पाठ्यक्रम, परीक्षा मिति, समय र कमजोर क्षेत्रलाई उपयोगी अध्ययन योजनामा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "पृष्ठहरू मानिसहरूलाई व्याख्याबाट लाइभ मोड, प्रम्प्ट, क्विज वा समीक्षा चक्रमा लैजान डिजाइन गरिएका छन्।"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "नकल नगरी AI गृहकार्य सहयोग"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "गणित"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "पहिलो प्रश्नका लागि ट्युटर"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "सबैका लागि निःशुल्क AI सिकाइ।"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "अतिरिक्त सिकाइ, शैक्षिक अभ्यास र जिज्ञासालाई समर्थन गर्छ।"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI फ्ल्यासकार्ड र सक्रिय सम्झना: कसरी धेरै सम्झने"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "यसलाई दिमागमा बसाउनुहोस्"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "सरल भाषाको व्याख्याबाट प्रश्न, उदाहरण र स्मरण अभ्यासतर्फ जानुहोस्।"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "पहिले संकेत दिने सहयोग"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "यो प्रश्न हो र मैले गरेको प्रयास हो। अन्तिम उत्तर होइन, सबैभन्दा सानो उपयोगी संकेत दिनुहोस्।"
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "क्विजले सम्झना जाँच्ने भएकाले प्रायः बढी कुरा देखाउँछ। के सुधार्नुपर्छ भनेर क्विजले देखाएपछि फेरि पढ्दा मद्दत गर्छ।"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "जाँच प्रश्नको उत्तर दिनुहोस्, एउटा चरण प्रयास गर्नुहोस्, दाबीमा बहस गर्नुहोस्, मस्यौदा सुधार्नुहोस् वा सम्झना कार्ड बनाउनुहोस्।"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI सँग कठिन विषय कसरी बुझ्ने"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "कोड बुझ्नुहोस्, त्रुटि डिबग गर्नुहोस्, प्रोग्रामिङ अवधारणा सिक्नुहोस्, र साना परियोजना चरण-दर-चरण बनाउनुहोस्।"
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "चलचित्रको आवाज खोल्नुहोस्"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "सक्रिय अभ्यास"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "सिकाइलाई चुपचाप हटाउने छोटो बाटोको सट्टा बुझाइ, अभ्यास र प्रतिक्रियाका लागि AI लाई कोचका रूपमा प्रयोग गर्नुहोस्।"
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "डुबेर सिकाइ"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "अन्तिम काम आफ्नै राख्दै संकेत, चरण जाँच, गणितीय तर्क र लेखन प्रतिक्रियाका लागि AI गृहकार्य कोचिङ प्रयोग गर्नुहोस्।"
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "सिक्ने व्यक्तिलाई पहिलो स्थान दिने सहयोग"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "सन्दर्भ, प्रमाण, तर्क र दृष्टिकोण अन्वेषण गर्न AI समय यात्रा, ऐतिहासिक संवाद र बहस अभ्यास प्रयोग गर्नुहोस्।"
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "फ्ल्यासकार्डले एक पटकमा एउटा विचार जाँच्दा, प्रयासपछि मात्र उत्तर देखाउँदा, र छुटेका कार्ड चाँडै समीक्षा गर्दा सबैभन्दा राम्रो काम गर्छ।"
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "हरेक गैर-एप पृष्ठको काम छ: विश्वास बनाउने, सिकाइ मार्ग बुझाउने, र महत्वपूर्ण विवरण नलुकाई सिक्नेहरूलाई उपयोगी अर्को कामतर्फ पठाउने।"
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "सबैभन्दा बलियो दाबी र सबैभन्दा बलियो प्रतिदाबी तुलना गर्न बहस प्रयोग गर्नुहोस्।"
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "सुधारिएको गल्तीलाई पछि हेर्न फ्ल्यासकार्ड वा छोटो चेकलिस्टमा बदल्नुहोस्।"
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "सिकाइलाई उत्तर-नक्कलमा नबदली संकेत, चरण जाँच र लेखन प्रतिक्रिया प्रयोग गर्नुहोस्।"
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "डाटा गोपनीयतासहित अनुकूल AI सिकाइ ठाउँहरू।"
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "सिक्नेको आवाज प्रतिस्थापन नगरी संरचना सुधार्ने निबन्ध प्रतिक्रिया, पढाइ सहयोग, बोल्ने अभ्यास, स्रोत आलोचना र संशोधन चक्रका लागि inspir प्रयोग गर्नुहोस्।"
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "मेरो मस्यौदा सुधार्नुहोस्"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "निजी च्याट नखोलिकन गृहकार्य संकेत, गणित चरण जाँच, लेखन प्रतिक्रिया, स्रोत आलोचना, Socratic प्रश्न र फ्ल्यासकार्डका लागि inspir प्रयोग गर्नुहोस्।"
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "व्याख्यालाई एउटा अवधारणा कार्ड, एउटा उदाहरण कार्ड र एउटा गलत बुझाइ कार्डसहित सक्रिय सम्झना कार्डमा बदल्नुहोस्।"
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "उत्तर-नक्कल नगरी चरण-दर-चरण गणित सहयोग, गृहकार्य संकेत, Socratic तर्क, क्विज, फ्ल्यासकार्ड र परीक्षा तयारीका लागि inspir प्रयोग गर्नुहोस्।"
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "विषयअनुसार AI ट्युटर"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "सार्वजनिक अतिथि मोडहरू निःशुल्क प्रयोग गर्नुहोस्, त्यसपछि खुला-स्रोत काम र विद्यालय परिनियोजन मार्ग अन्वेषण गर्नुहोस्।"
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "मिसन पहिले"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "यो ऐतिहासिक वा दार्शनिक दाबीलाई दुवै पक्षबाट बहस गर्नुहोस्। प्रमाण, अनुमान र मूल्य छुट्याउनुहोस्।"
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Socratic प्रश्न प्रयोग गर्नुहोस्"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "वास्तविक जीवनमा टिक्ने योजना बनाउन परीक्षा मिति, पाठ्यक्रम, उपलब्ध समय र कमजोर क्षेत्र प्रयोग गर्नुहोस्।"
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "कमजोर ठाउँ पछि समीक्षा गर्न जोडिएको मार्गदर्शिका, प्रम्प्ट, विषय केन्द्र वा सिकाइ मार्ग प्रयोग गर्नुहोस्।"
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "अन्तिम मस्यौदा स्पष्ट रूपमा आफ्नै रहोस् भनेर संरचना, स्पष्टता र प्रमाणका लागि लेखन प्रतिक्रिया प्रयोग गर्नुहोस्।"
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "पहिलो क्लिकदेखि उपयोगी"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "भिडियो नियन्त्रणहरू"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "भिडियो प्रगति"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "आवाज जोगाउने प्रतिक्रिया"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "३१ सेकेन्ड हेर्नुहोस्"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "कमजोर क्षेत्र चक्रहरू"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "सबैका लागि AI सिकाइ साथीले के गर्नुपर्छ"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "सुरु गर्नुअघि सिक्नेहरूले प्रायः सोध्ने कुरा।"
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "विषय धेरै कठिन लाग्दा पहिले के सोध्ने?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "गृहकार्य प्रम्प्टमा के समावेश गर्ने?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "तपाईंले गर्न सक्ने कुरा"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "विद्यालयको आफ्नै ब्रान्डमा AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Socratic AI ट्युटरले विचार किन दिमागमा बसाउन सक्छ"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "इतिहासलाई बहससँग किन जोड्ने?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "व्याख्यापछि Socratic प्रश्न किन प्रयोग गर्ने?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "AI कोचसँग बीजगणित, क्याल्कुलस, शब्द समस्या र गणित अवधारणा एक पटकमा एक चरण गरेर बुझ्नुहोस्।"
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "कुनै सिक्ने व्यक्ति केही बुझ्न चाहन्छ र सुरु गर्न धैर्य ठाउँ चाहिन्छ भन्ने क्षणका लागि inspir छ। चलचित्रले उत्पादनलाई जिज्ञासा, अभ्यास र पहुँचका लागि निःशुल्क सार्वजनिक सिकाइ साथीका रूपमा चिनाउँछ।"
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "गणित चरणहरू गर्दै जानुहोस्"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "नहेरी तीन वाक्यको व्याख्या लेख्नुहोस्, त्यसपछि कमजोर कडी खोज्न Socratic मोडलाई भन्नुहोस्।"
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "सहयोग माग्नुअघि ठ्याक्कै कहाँ अड्किनुभयो लेख्नुहोस्।"
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "लेखन"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "लेखन कोच"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "हो, जब यसले संकेत दिन्छ, तर्क जाँच्छ, गल्ती व्याख्या गर्छ, र तपाईंका लागि लेख्नुको सट्टा अन्तिम उत्तर तपाईंलाई बनाउन लगाउँछ।"
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "फेरि पढ्नुअघि हरेक सत्र छिटो क्विजबाट सुरु गर्नुहोस्।"
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "हो। जे पनि सिक्नुहोस्, Socratic निर्देशन, गृहकार्य कोच, क्विज र फ्ल्यासकार्डजस्ता सार्वजनिक विषय च्याटहरू सिधै अतिथि मोडमा खुल्छन्।"
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "हो। विद्यालयहरूले पहिले सार्वजनिक उत्पादन प्रयोग गर्न सक्छन्, त्यसपछि विद्यालय-विशेष कार्यप्रवाह, गोपनीयता र वित्तपोषित पहुँच विकल्पसहित अनुकूल AI सिकाइ ठाउँबारे कुरा गर्न सक्छन्।"
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "समय-पासपोर्ट बनाउनुहोस्, यात्रा सल्लाह पार गर्नुहोस्, र दृश्य, नक्सा, समयरेखा, मानिस, नियम, सामग्री र प्रमाणमार्फत ऐतिहासिक संसार अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "एक समयावधिमा यात्रा गर्नुहोस्"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "आवाज जोगाउने प्रतिक्रिया"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Socratic ट्युटरिङले निष्क्रिय उत्तर-पढाइभन्दा गहिरो बुझाइ बनाउन प्रश्न, परिकल्पना, संकेत र आत्म-चिन्तन प्रयोग गर्छ।"
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "संरचना, स्पष्टता र प्रमाणमा प्रतिक्रिया दिनुहोस्। मेरो शैली राख्नुहोस् र पूरा उत्तर फेरि नलेख्नुहोस्।"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "आफ्नो तर्क जाँच्नुहोस्"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "गणित वा तर्कमा एक पटकमा एउटा चरण गर्नुहोस् र अघि बढ्नुअघि प्रत्येक कदम किन मिल्छ भनेर सोध्नुहोस्।"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "तर्कलाई पंक्ति-पंक्तिमा जाँच्नुहोस्"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "AI ऐतिहासिक संवादलाई स्रोतका रूपमा उद्धृत गर्न मिल्छ?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "समय यात्रा"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "होइन। बनाइएको संवादलाई सिकाइ सिमुलेसनका रूपमा लिनुहोस्। तथ्यात्मक दाबीका लागि वास्तविक प्राथमिक वा द्वितीयक स्रोत उद्धृत गर्नुहोस्।"
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "तपाईंले गर्नुपर्ने कामबाट सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "उत्तर-नक्कल नगरी चरण-दर-चरण गणित सहयोग, गृहकार्य संकेत, Socratic तर्क, क्विज, फ्ल्यासकार्ड र परीक्षा तयारीका लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "अर्को कदम"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "चलचित्रको आवाज खोल्नुहोस्"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "ट्रिभियामा मलाई क्विज लिनुहोस्"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "हो, जब यसले संकेत दिन्छ, तर्क जाँच्छ, गल्ती व्याख्या गर्छ, र तपाईंका लागि लेख्नुको सट्टा अन्तिम उत्तर तपाईंलाई बनाउन लगाउँछ।"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "सिकाइलाई चुपचाप हटाउने छोटो बाटोको सट्टा बुझाइ, अभ्यास र प्रतिक्रियाका लागि AI लाई कोचका रूपमा प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "मध्य भागले inspir लाई बुझाइ, संकेत, क्विज र सक्रिय सिकाइ चक्र वरिपरि राख्छ।"
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "कमजोर ठाउँ पछि समीक्षा गर्न जोडिएको मार्गदर्शिका, प्रम्प्ट, विषय केन्द्र वा सिकाइ मार्ग प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "सुरुवाती दृश्यहरूले सिकाइलाई जो कोहीले तुरुन्तै सुरु गर्न सक्ने कुरा रूपमा प्रस्तुत गर्छन्।"
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "सिक्ने व्यक्तिलाई प्रक्रियामा राख्ने सार्वजनिक AI मोडहरूसँग प्रोग्रामिङ सिक्नुहोस्, अवधारणा डिबग गर्नुहोस्, परियोजना योजना गर्नुहोस्, डाटा बुझ्नुहोस् र प्राविधिक प्रश्न अनुसन्धान गर्नुहोस्।"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "प्रतिलिपि"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "चलचित्र अध्याय लुकाउनुहोस्"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "पहिलो प्रश्न सोध्नुहोस् र सिधै अभ्यासमा जानुहोस्।"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "विषयहरू हेर्नुहोस्"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "प्रमाणबाट नहटिकन इतिहास र विचारलाई सन्दर्भयुक्त, बहसयोग्य र जीवन्त महसुस गर्न चाहने जिज्ञासु सिक्नेहरू।"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "विद्यालयहरूले आफ्ना सिक्नेहरूका लागि विद्यालयकै ब्रान्डमा मिलाइएको AI च्याट अनुभव दिन सक्छन्, NCERT-अनुरूप सामग्री र कार्यप्रवाहसहित, जसको प्रयोग साझेदार विद्यालय वा CSR प्रायोजनबाट वित्तपोषित हुन्छ।"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "कुनै पनि विषयमा बहस गर्नुहोस्"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI अध्ययन तालिका"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "हरेक मार्गदर्शिकाले पढाइलाई अभ्यास बनाउन मोड, प्रम्प्ट वा समीक्षा चक्रतर्फ लैजान्छ।"
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "गतिमा inspir"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "अध्ययन चक्र, AI ट्युटरिङ मार्गदर्शिका र उपयोगी प्रम्प्टहरू।"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "गल्तीलाई समीक्षा चक्रमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI परीक्षा तयारी योजना"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "आधारभूत सिकाइका लागि inspir मा जे पनि सिक्नुहोस् प्रयोग गर्ने उपयोगी मार्गदर्शिका, प्रम्प्ट, अध्ययन चक्र र सुरक्षित AI बानीसहित।"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "एउटा गल्ती सुधार्नुहोस्"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "गल्ती, हिचकिचाहट, सूत्र, परिभाषा र स्पष्ट व्याख्या गर्न नसकिएका अवधारणाबाट फ्ल्यासकार्ड बनाउनुहोस्।"
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "निःशुल्क अतिथि सिकाइ"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "निजी च्याट नखोलिकन गृहकार्य संकेत, गणित चरण जाँच, लेखन प्रतिक्रिया, स्रोत आलोचना, Socratic प्रश्न र फ्ल्यासकार्डका लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "पहिले आफैंलाई क्विज लिनुहोस्, ताकि वास्तवमा के सम्झनुभयो र कहाँ आत्मविश्वास भ्रमपूर्ण छ देख्न सकियोस्।"
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "अर्को पुस्ताको AI अध्ययन प्लेटफर्म।"
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "तपाईं सार्वजनिक सिकाइ मोडहरू स्वतन्त्र रूपमा प्रयास गर्न सक्नुहुन्छ। सुरक्षित च्याट, खाता, प्रशासनिक उपकरण र प्रयोगकर्ता डाटा निजी रहन्छन्।"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "तर्क जाँच्नुहोस्"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "सिकाइ नक्सा खोल्नुहोस्"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "पुनरावलोकनका लागि AI फ्ल्यासकार्ड"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: तपाईं जे पनि सिक्न सक्नुहुन्छ"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "ऐतिहासिक सन्दर्भ बुझ्नुहोस्, दृष्टिकोणलाई प्रश्न गर्नुहोस्, दाबी तुलना गर्नुहोस्, र सिमुलेसनलाई अभिलेखित तथ्यबाट छुट्याउनुहोस्।"
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "परीक्षा योजना बनाउनुहोस्"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "सिक्नेको आवाज प्रतिस्थापन नगरी संरचना सुधार्ने निबन्ध प्रतिक्रिया, पढाइ सहयोग, बोल्ने अभ्यास, स्रोत आलोचना र संशोधन चक्रका लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "यथार्थ तालिका"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "आवश्यक पूर्व-विचार नबुझी पूरा सारांश नमाग्नुहोस्।"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "ऐतिहासिक व्यक्तिसँग कुरा गर्नुहोस्"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "गल्ती सुरक्षित गर्नुहोस्"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "यथार्थ अध्ययन योजना, सम्झना अभ्यास, क्विज, फ्ल्यासकार्ड र कमजोर क्षेत्र समीक्षासहित AI परीक्षा तयारी कार्यप्रवाह बनाउनुहोस्।"
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "प्रश्न, तपाईंले पहिले गरेको प्रयास, कहाँ अड्किनुभयो, र संकेत, चरण जाँच वा प्रतिक्रिया चाहिएको हो कि होइन समावेश गर्नुहोस्।"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "सम्झना अभ्यास"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "मोड खोल्नुहोस् र तुरुन्तै सुरु गर्नुहोस्; सार्वजनिक अतिथि अनुभवका लागि खाता चाहिँदैन।"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "कामसँग मिल्ने मोडमा विषय, असाइनमेन्ट, मस्यौदा, परीक्षा वा विचारबाट सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "आफ्नै शब्दमा अझै व्याख्या गर्न नसक्ने वाक्यबाट फ्ल्यासकार्ड नबनाउनुहोस्।"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "लोकप्रिय मार्गहरू"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI सँग कठिन विषय कसरी बुझ्ने"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "हो। सार्वजनिक अतिथि सिकाइ मोडहरू निःशुल्क पहुँचका लागि डिजाइन गरिएका छन्, त्यसैले सिक्नेहरूले विद्यालय परिनियोजन वा सशुल्क खाता बिना सुरु गर्न सक्छन्।"
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "तपाईं सार्वजनिक सिकाइ मोडहरू स्वतन्त्र रूपमा प्रयास गर्न सक्नुहुन्छ। सुरक्षित च्याट, खाता, प्रशासनिक उपकरण र प्रयोगकर्ता डाटा निजी रहन्छन्।"
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "अभ्यास, उत्तर-नक्कल होइन"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "गृहकार्य र Socratic मोडहरू तयार उत्तर मात्र दिनुको सट्टा संकेत, तर्क, चरण जाँच र सिक्नेको व्याख्या वरिपरि डिजाइन गरिएका छन्।"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "मेरो सोचाइ-मोडेल जाँच्नुहोस्"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "चलचित्र प्रतिलिपि लुकाउनुहोस्"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "भिडियो नियन्त्रणहरू"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "सीमित समय, ठूलो पाठ्यक्रम, र सबै कुरा बराबर महत्वपूर्ण छ भनेर नदेखाई समीक्षा गर्ने यथार्थ तरिका चाहिने सिक्नेहरू।"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "सबैका लागि निःशुल्क AI सिकाइ | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "साइन इन नगरी inspir प्रयोग गर्न मिल्छ?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "काम योजना गर्नुहोस्, सम्झना अभ्यास गर्नुहोस्, र क्विज तथा सक्रिय सम्झनाबाट कमजोर ठाउँ बन्द गर्नुहोस्।"
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "छिटो उत्तरहरू"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "बनाइएको संवादलाई अभिलेखित उद्धरणबाट अलग राख्दै ऐतिहासिक व्यक्तित्वसँग कुरा गर्नुहोस्।"
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "सरल भाषाका व्याख्याहरू"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "योजना बनाउनुहोस्"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "सिमुलेसनपछि परिवेश, सीमाहरू र प्रमाणको सार दिनुहोस्।"
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "हो। विद्यालयहरूले पहिले सार्वजनिक उत्पादन प्रयोग गर्न सक्छन्, त्यसपछि विद्यालय-विशेष कार्यप्रवाह, गोपनीयता र वित्तपोषित पहुँच विकल्पसहित अनुकूल AI सिकाइ ठाउँबारे कुरा गर्न सक्छन्।"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "गणित, लेखन, कोडिङ, इतिहास, गृहकार्य र परीक्षा तयारीलाई फरक-फरक सहयोग चाहिन्छ। विषयबाट सुरु गर्नुहोस्, त्यसपछि मिल्ने मोड, प्रम्प्ट, मार्गदर्शिका वा समीक्षा चक्रमा जानुहोस्।"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "तर्कहरू तुलना गर्नुहोस्"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "सक्रिय सम्झना समीक्षा"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "तर्क अभ्यास"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "फ्ल्यासकार्ड निर्माता"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "चलचित्र रोक्नुहोस्"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "सबैभन्दा कमजोर अवधारणाको अझ सरल व्याख्या माग्नुहोस्।"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "मार्गलाई जीवित राख्नुहोस्"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "मस्यौदा सुधार्नुहोस्"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "कुनै पनि विषयमा बहस गर्नुहोस्, चुनौती पाउनुहोस्, दाबी तुलना गर्नुहोस् र बलिया तर्क बनाउन सिक्नुहोस्।"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "इतिहास"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI गृहकार्य सहयोग नैतिक हुन सक्छ?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "गृहकार्य कोच प्रयास गर्नुहोस्"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "जे पनि सिक्नुहोस् प्रम्प्ट र अध्ययन चक्र"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "सिकाइलाई काममा बदल्न बनाइएको {value1}-मार्गदर्शिका पुस्तकालय।"
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "विद्यालय र CSR साझेदारका लागि"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "विद्यालय-विशेष कार्यप्रवाह"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "असाइनमेन्ट टाँसेर तयार उत्तर नमाग्नुहोस्।"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "कठिन अवधारणाका लागि AI ट्युटर"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "पढेपछि गर्ने काम"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "प्रश्नहरूले तपाईंको विषयबारेको आफ्नै मोडेल बाहिर ल्याउँछन्, जहाँ अलमल, झुटो आत्मविश्वास र छुटेका पूर्व-ज्ञान प्रायः देखिन्छन्।"
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "डिजाइनमै खुला"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir सार्वजनिक रूपमा बनिरहेको छ।"
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "प्रश्न सोध्नुहोस्, विचारलाई चुनौती दिनुहोस् र विगतका सार्वजनिक व्यक्तित्वसँग प्रमाणमा आधारित संवादबाट इतिहास सिक्नुहोस्।"
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "सिकाइलाई उत्तर-नक्कलमा नबदली संकेत, चरण जाँच र लेखन प्रतिक्रिया प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Socratic AI ट्युटरले विचार किन दिमागमा बसाउन सक्छ"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "चलचित्र चलाउनुहोस्"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "विषय धेरै कठिन लाग्दा पहिले के सोध्ने?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI गृहकार्य कोच"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "वास्तविक जीवनमा टिक्ने योजना बनाउन परीक्षा मिति, पाठ्यक्रम, उपलब्ध समय र कमजोर क्षेत्र प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "परिभाषा, उदाहरण र नयाँ अवस्थामा लगाउने समस्या मिसिएका पाँच प्रश्न माग्नुहोस्।"
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "निष्क्रिय रूपमा उत्तर पढ्नुको सट्टा अनुमान देखाउन र खाली ठाउँ भर्न प्रश्नमा जानुहोस्।"
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "सन्दर्भ, प्रमाण, तर्क र दृष्टिकोण अन्वेषण गर्न AI समय यात्रा, ऐतिहासिक संवाद र बहस अभ्यास प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "अध्ययन तालिका पाउनुहोस्, कमजोर क्षेत्रमा आफैं क्विज लिनुहोस्, र गल्तीलाई दोहोरिने समीक्षाका लागि फ्ल्यासकार्डमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "हालको inspirlearning.com पुनर्निर्माण।"
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "निष्क्रिय रूपमा उत्तर पढ्नुको सट्टा केन्द्रित प्रश्न, संकेत र आत्म-चिन्तनबाट सिक्नुहोस्।"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "सामान्य सिकाइ क्षणका लागि मोड मार्गदर्शिका, प्रम्प्ट चक्र, अध्ययन विधि र मुख्य लेखहरू।"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "ऐतिहासिक व्यक्तित्वसँग कुरा गर्ने AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "हरेक मोड आफ्नो उद्देश्य, उदाहरण र सिकाइ प्रवाहसहित सार्वजनिक अतिथि च्याटका रूपमा खुल्छ, त्यसैले सिक्नेहरूले तुरुन्तै उपयुक्त सहयोगबाट सुरु गर्न सक्छन्।"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir सामान्य AI च्याटबोटभन्दा कसरी फरक छ?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "प्रयोग गर्नकै लागि बनाइएको"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "समीक्षाअघि जाँच्नुहोस्"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "बनाइएको संवादलाई वास्तविक उद्धरण वा प्राथमिक स्रोतका रूपमा नलिनुहोस्।"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "आफैंलाई क्विज लिनुहोस्"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "हरेक विषयलाई बराबर समय चाहिन्छ भन्ने मानेर योजना नबनाउनुहोस्।"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir सिकाइ पूर्वावलोकन चलाउनुहोस्"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "सरल व्याख्या, एउटा दैनिक उपमा, र विषय बुझिनुअघि चाहिने तीन विचार मागेर सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "परीक्षाका लागि AI क्विज बनाउने साधन"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "व्याख्यालाई सक्रिय सम्झना कार्डमा बदल्नुहोस्, त्यसपछि गल्ती वा हिचकिचाहटपछि ती कार्ड फेरि हेर्नुहोस्।"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "चलचित्र फेरि सुरु गर्नुहोस्"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "नकललाई प्रोत्साहन नगरी inspir ले गृहकार्यमा सहयोग गर्न सक्छ?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "भिडियो प्रगति"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "पहिले सरल मोडेल बुझ्नुहोस्"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI सिकाइ मार्गदर्शिका पुस्तकालय"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "जे पनि सिक्नुहोस् बाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "ट्युटरिङ, अभ्यास, क्विज, फ्ल्यासकार्ड, बहस, लेखन प्रतिक्रिया, कोडिङ सहयोग र अध्ययन योजनाका लागि निःशुल्क सार्वजनिक AI सिकाइ साथी।"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "विद्यालयको आफ्नै ब्रान्डमा AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "लाइभ सिकाइ सत्र सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI गणित ट्युटर"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "गणित चरण कोच"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "सञ्चार"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "कुरा गरेर, जाँचेर, बहस गरेर र अन्वेषण गरेर सिक्नुहोस्।"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "सिकाइ मार्गदर्शिका र अभ्यास चक्र"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "अनुमान, सम्झौता र कमजोर प्रमाण देख्न सकियोस् भनेर दाबीलाई एकभन्दा बढी पक्षबाट बहस गर्नुहोस्।"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI इतिहास ट्युटर"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "छिटो सिकाइ मार्गहरू"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "पहिलो सिद्धान्तबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "चलचित्र मौन पार्नुहोस्"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "३१ सेकेन्ड हेर्नुहोस्"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "केन्द्रित AI सिकाइ मोडहरूसँग परीक्षा पुनरावलोकन योजना गर्नुहोस्, क्विज बनाउनुहोस्, फ्ल्यासकार्ड बनाउनुहोस्, अन्तराल समीक्षा तालिका बनाउनुहोस् र प्रेरणा यथार्थ राख्नुहोस्।"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "तपाईंले खोजेको ठ्याक्कै प्रकारको सहयोग खोल्नुहोस्।"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "नोट वा विषयलाई संकेत, उत्तर, उदाहरण र सामान्य फन्दासहित केन्द्रित फ्ल्यासकार्डमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Socratic ट्युटर"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI Socratic ट्युटर"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir मा जे पनि सिक्नुहोस् बाट उपयोगी सिकाइ नतिजा पाउन प्रम्प्ट विचार र दोहोर्याउन मिल्ने अध्ययन चक्र।"
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "विद्यालयहरू अन्वेषण गर्नुहोस्"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "AI कोचसँग बीजगणित, क्याल्कुलस, शब्द समस्या र गणित अवधारणा एक पटकमा एक चरण गरेर बुझ्नुहोस्।"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "जिज्ञासा, अभ्यास र पहुँचका लागि बनाइएको।"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "यी विषयमा मलाई एक पटकमा एउटा प्रश्न सोध्दै क्विज लिनुहोस्। प्रत्येक उत्तरपछि कमी व्याख्या गर्नुहोस् र कठिनाइ बिस्तारै बढाउनुहोस्।"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "लोकप्रिय AI सिकाइ मार्गहरू"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "स्पष्ट गोपनीयता सीमा"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Socratic जाँचहरू"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "निःशुल्क सार्वजनिक AI सिकाइ प्लेटफर्म"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "मिसन पढ्नुहोस्"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Socratic निर्देशन"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "फेरि चलाउनुहोस्"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "मानिसहरूले छिट्टै बुझ्न सक्ने सार्वजनिक सिकाइ साइट।"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "सुरु गर्नुअघि सिक्नेहरूले प्रायः सोध्ने कुरा।"
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "प्रमाण-सचेत दृश्यहरू"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "सन्दर्भको सार दिनुहोस्"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "मार्गदर्शिका, मार्ग, विषय र प्रम्प्टहरू अभ्यास गर्ने अर्को उपयोगी ठाउँसँग जोडिन्छन्।"
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "आफू पहिले नै सहमत भएको पक्ष मात्र बहस नगर्नुहोस्।"
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "मद्दतगार सिकाइ नक्सा"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "सरल भाषाको मोडेल, धारिला प्रश्न, आफैं फेरि व्याख्या गर्न सक्ने उदाहरण र समीक्षाका लागि सम्झना कार्ड लिएर जानुहोस्।"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "सिक्नेहरूलाई लिंकको थुप्रो होइन, क्रम चाहिन्छ। यी मार्गहरूले बुझाइ, गृहकार्य, परीक्षा तयारी र अन्वेषणका लागि मोडहरूलाई उपयोगी अध्ययन चक्रमा जोड्छन्।"
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "जे पनि सिक्नुहोस्"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "चलचित्र अध्यायहरू"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "सजिला अर्को कदम"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "अध्ययन योजना यथार्थ बनाउनुहोस्"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "मार्गदर्शिका पुस्तकालय"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "व्याख्यापछि Socratic प्रश्न किन प्रयोग गर्ने?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "विद्यार्थीलाई निष्क्रिय उत्तर-संकलक नबनाई AI ले सिकाइलाई कसरी अझ स्पष्ट, व्यक्तिगत र पहुँचयोग्य बनाउन सक्छ भन्ने उपयोगी दृष्टि।"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "तर्क"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "अन्तिम मस्यौदा स्पष्ट रूपमा आफ्नै रहोस् भनेर संरचना, स्पष्टता र प्रमाणका लागि लेखन प्रतिक्रिया प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-अनुरूप विकल्पहरू"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "यस विषयमा मलाई पाँच Socratic प्रश्न सोध्नुहोस्। प्रत्येक उत्तरपछि मैले कुन अनुमान प्रयोग गरें र अब के जाँच्ने भनेर भन्नुहोस्।"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir प्रयोग गर्न निःशुल्क हो?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "ऐतिहासिक मोडलाई के अभिलेखित, के अनुमानित र के सिमुलेट गरिएको हो भनेर चिनाउन भन्नुहोस्।"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "मार्गदर्शिका पुस्तकालय अन्वेषण गर्नुहोस्"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "गल्तीबाट फ्ल्यासकार्ड बनाउनुहोस् र केही समयपछि फेरि हेर्नुहोस्।"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "उत्तर नक्कल नगरी AI गृहकार्य सहयोग"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "सोचाइ सिक्ने व्यक्तिमै रहने गरी संकेत, जाँच, प्रतिक्रिया र अध्ययन योजना माग्नुहोस्।"
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "फराकिलो खुला-स्रोत inspir प्लेटफर्म।"
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "तपाईंले पहिले के प्रयास गर्नुभयो भनेर देखाउन नछोड्नुहोस्; उपयोगी सहयोग त्यही सन्दर्भमा निर्भर हुन्छ।"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "मेरो कामको यो चरण जाँच्नुहोस्। गलत छ भने गल्ती बुझाइदिनुहोस् र अर्को एउटा कदम दिनुहोस्।"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "मलाई यो समय र स्थानमा राख्नुहोस्। अभिलेखित तथ्यलाई सम्भावित सिमुलेसनबाट अलग चिनाउनुहोस् र मैले के देख्छु भनेर सोध्नुहोस्।"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "फेरि आफैं व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "कमजोर क्षेत्र चक्रहरू"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "हरेक मार्गदर्शिका अभ्यास योजना, मार्ग र मिल्ने सिकाइ मोडका लिंकसँग समाप्त हुन्छ।"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "सबैका लागि AI सिकाइ साथीले के गर्नुपर्छ"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI इतिहास ट्युटर"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "व्यक्तित्वलाई प्रश्न गर्नुहोस्"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "एउटा चरण जाँच्नुहोस्"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "दाबीमाथि बहस गर्नुहोस्"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "कमजोर ठाउँ सुधार्नुहोस्"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "गृहकार्य कोच"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "अर्को चरण व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "सक्रिय सम्झनाका लागि AI फ्ल्यासकार्ड"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "सिकाइ निःशुल्क, पहुँचयोग्य र जीवन्त हुनुपर्छ भन्ने inspir को विश्वास चिनाउने छोटो चलचित्र।"
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "नबुझेको कुराबाट सुरु गर्नुहोस् र सरल भाषाको मोडेल, उदाहरण र अर्को कदम पाउनुहोस्।"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "विषय समूहहरू"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "चलचित्र प्रतिलिपि देखाउनुहोस्"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "गृहकार्य"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "अन्तिम काम आफ्नै राख्दै संकेत, चरण जाँच, गणितीय तर्क र लेखन प्रतिक्रियाका लागि AI गृहकार्य कोचिङ प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "स्पष्ट व्याख्या"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "यसलाई फ्ल्यासकार्डमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "परीक्षा तयारी योजना कति चाँडो बनाउनु पर्छ?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "चलचित्र प्रेरणाबाट उपयोगी प्रतिज्ञातर्फ सर्छ: धैर्य AI सिकाइ साथी।"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "हामीसँग बनाउनुहोस्"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "चरण जाँचहरू"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "सुरु गर्न राम्रा क्षेत्रहरू:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "तथ्यलाई कल्पनाबाट छुट्याउनुहोस्"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "आत्मविश्वासका लागि डिजाइन गरिएको"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "विषयबाट सुरु गर्नुहोस्, त्यसपछि सही सिकाइ मोड खोल्नुहोस्।"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "योजना, संशोधन, संरचना र तपाईंको आवाज कायम राख्ने प्रतिक्रियाबाट लेखन सुधार्नुहोस्।"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI गृहकार्य सहयोगी"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "समयावधि प्रविष्ट गर्नुहोस्"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "त्यसलाई प्रयोगमा ल्याउनुहोस्"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "अर्को उत्तर बाकस होइन। सिक्ने ठाउँ।"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "जिज्ञासा यहाँबाट सुरु हुन्छ"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "अतिथि च्याट खोल्नुहोस्"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "फ्ल्यासकार्डसँग समीक्षा गर्नुहोस्"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "भूमिका-खेलले मिति, सन्दर्भ, कागजात वा प्रमाण-चिन्हलाई प्रतिस्थापन गर्न नदिनुहोस्।"
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "परीक्षा मिति थाहा पाएलगत्तै सुरु गर्नुहोस्। समय छोटो छ भने कमजोर क्षेत्र, पुराना प्रश्नपत्र शैलीका प्रश्न र दैनिक सम्झनालाई प्राथमिकता दिनुहोस्।"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "हरेक संकेतपछि अघि बढ्नुअघि त्यो चरण किन काम गर्छ भनेर व्याख्या गर्नुहोस्।"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "संकेत माग्नुहोस्"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "हरेक लेख श्रेणी, लाइभ मोड, विषय केन्द्र, सिकाइ मार्ग र सम्बन्धित मार्गदर्शिकासँग जोडिन्छ।"
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "अझ गहिरो सोच्नुहोस्"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "जिज्ञासा, अभ्यास र सिकाउने AI।"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "यो विषय सरल भाषामा व्याख्या गर्नुहोस्। मलाई चाहिने तीन पूर्व-विचार, एउटा उपमा र एउटा सामान्य गलत बुझाइ बताउनुहोस्।"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "गोप्य परिनियोजन"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "चलचित्र पूर्ण पर्दामा खोल्नुहोस्"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "तपाईंले गर्न सक्ने कुरा"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "सबैभन्दा कठिन छुटेको प्रश्नलाई फ्ल्यासकार्डमा बदल्नुहोस् र पछि समीक्षा गर्नुहोस्।"
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "जे पनि सोध्नुहोस्"
     }
   ]
 }

@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Estonian",
+  "locale": "et",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v2",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Avalikud lehed, teemavestlused, õpirajad, blogijuhendid ja abilehed on loodud nii, et neid oleks lihtne leida ja jagada."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Alusta õppimist"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Avalikud õppelehed on avatud, samal ajal kui API-marsruudid, haldusmarsruudid, lähtestusvood ja privaatsed utiliidilehed jäävad blokeerituks."
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Igal õpperežiimil on avalik link, et õppijad saaksid alustada otse õiges õpikogemuses."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Kasuta seda avaliku ja privaatse piiride, õppija turvalisuse ning koolide usalduse käsitlemisel."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "AI sisuindeks"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Erinevalt üldisest vestlusrobotist korraldab inspir AI õpperežiimide ümber, et õppijad saaksid alustada sellisest abist, mida nad vajavad: vihjed, küsimused, viktoriinid, aktiivne meenutamine, rollimäng, väitlus või tagasiside."
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Koolijuurutusi saab vajaduse korral kohandada erisisu, töövoogude, viipade ja NCERT-iga joondatud õppevajaduste järgi."
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Õpikäitumine tuleb esimesena"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Avalikud külalisrežiimid annavad igaühele kasuliku alguskoha, samal ajal kui kooli- ja partnerjuurutused saavad kogemust kohalikele vajadustele kohandada."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Igal põhiõpperežiimil on avalik külalise sisenemiskoht, et inimesed saaksid alustada otsingust, sotsiaalmeediast või jagatud lingilt."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Kas kasutuselevõttu saab alustada väikeselt?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Selge selgitus külalisrežiimi, privaatvestluste, õppija turvalisuse ja koolide usalduse kohta."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Avalik seisukoht selle kohta, miks inspir olemas on ja mida ligipääs õppimisele tähendab."
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1 mln+ õppijat"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "Eesmärk ei ole muuta inimesi AI ees passiivseks. Eesmärk on anda igale õppijale kannatlik esimene koht, kus küsida, harjutada, saada tagasisidet, proovida uuesti ja kasvatada enesekindlust."
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Koolid ja CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Ligipääs esikohal"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "Kajastus inspir visioonist tasuta ja kättesaadava hariduse jaoks."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Meedia ja tsitaadid"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Tekstipõhine viitefail assistentidele, õpetajatele, partneritele ja tsiteerimistööriistadele."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Jõudnud õppijateni tasuta platvormil ja partnerkoolides."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Koolid ja CSR-partnerid"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Avalikud režiimid on loodud õppimiskäitumise ümber: vihjed, sokraatilised küsimused, sammukontrollid, viktoriinid, mälukaardid, kirjutamise tagasiside, kordamistsüklid ja aktiivne selgitamine."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Viitelingid, avalikud faktid, pressikontekst ja tsiteerimiseks sobivad üksikasjad."
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Õppijad, lapsevanemad, õpetajad, koolid ja iseõppinud loojad"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Kooli- ja partnerirada"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Alusta avalikust õpikaaslasest."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Lugu viktoriinidest ja õpilaskogukondadest avalikult ehitatud tasuta AI-õppetööriistadeni."
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Miks on inspir üles ehitatud režiimide, mitte ühe vestluskasti ümber?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "2022. aasta lõpp"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Seadista töövood"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "Õpilaskogukonnast AI-õppe taristuni"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Ligipääsu saavad rahastada partnerkoolid või toetada CSR-sponsorluse teed kogukondadele, kes vajavad subsideeritud AI-õpet."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "Avalik toode, koolirada ja sisukogu peaksid kõik viitama tagasi samale põhimõttele: õppimine peaks jääma aktiivseks, kättesaadavaks ja kasulikuks."
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ riiki"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Kvaliteetne õppimine peaks tunduma kättesaadav, inimlik ja elav."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir on korraldatud õpperežiimide ümber, nagu sokraatiline juhendamine, kodutöövihjed, testid, mälukaardid, matemaatikasammud, kirjutamiskriitika ja eksamiplaneerimine, et õpilased jõuaksid keskendunuma õpikäitumiseni."
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Proovi avalikke külalisrežiime"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Avatud lähtekoodiga uusversioon arendajatele, õpetajatele ja panustajatele."
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Ehitatud alates 2013. aastast"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "Missioon on seotud päris toote pindadega."
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir avab õpperežiimid aadressil /chat/{topicSlug}, võimaldades õppijatel jõuda otse õigesse AI-õpikogemusse ilma salvestatud privaatvestlust vajamata."
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "Avalik toode jääb lihtsasti proovitavaks: õppijad saavad jõuda otse õpperežiimi ja alustada külalisena. Koolid ja CSR-partnerid saavad toetada kohandatud juurutusi, kui kogukonnad vajavad konfidentsiaalsust, õppekava joondamist või subsideeritud ligipääsu."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Veebisait"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Avalik blogi sisaldab üle 100 juhendi, viibatsükli ja põhisammaste klastri, mis on seotud reaalajas õpperežiimidega."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "inspir.appist inspirlearning.comini"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Vaata kõiki režiime"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Kogukonnaleht, mis on seotud DeepHacki tunnustusega."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Koolid ja partnerid saavad avalikust tootest liikuda kohandatud, konfidentsiaalsete ja subsideeritud juurutusteni."
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "Õppimine peaks olema tasuta, lõbus, kasulik ja kättesaadav kõigile uudishimulikele."
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Koolipõhise õpikogemuse saab kujundada teie õpilaskonna, tooni ja õppeprioriteetide järgi."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Külalisrežiimi vaatenurk"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Lühikirjeldus"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Tasuta, kasulikud ja kaasahaaravad AI-õppe tööriistad kõigile uudishimulikele."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Jõudnud kasutajateni tasuta avalikul platvormil ja partnerkoolide juurutustes."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "tasuta AI-õppe platvorm"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "Õppimine on kõigile"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Miks just nüüd"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Need lehed muudavad loo kontrollimise, viitamise, jagamise ja kasutamise lihtsamaks: avalikud režiimid, õpiteed, põhjalikud juhendid, koolides kasutuselevõtu märkmed, meediafaktid ja ettevõtte taust."
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "AI kodutöötreener õpilastele"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Tuvasta kooli eesmärgid, mis on kõige olulisemad: mõisteline tugi, kodutöövihjed, eksamiks valmistumine, aktiivne meenutamine, kirjutamise tagasiside või rikastamine."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Kasuta seda kooli-, partner-, CSR- ja haridusligipääsu viidete jaoks."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Amod Malviya Jury's Choice tunnustus DeepHackil AI-õppe töö eest."
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Avalike ja privaatsete marsruutide reaalajaligipääsu reeglid."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir on olemas selleks, et teha õppimine tasuta avalike AI-õppetööriistade ja koolivalmis õpperuumide kaudu kättesaadavaks, kaasahaaravaks, nauditavaks ja kasulikuks kõigile uudishimulikele."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Koolid saavad esmalt hinnata avalikke režiime ning seejärel arutada kohandatud töövooge, konfidentsiaalsuse planeerimist, sisuvajadusi ja rahastatud ligipääsu."
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "AI-õppe ligipääsu saavad rahastada partnerkoolid või toetada CSR-sponsorlusega kogukondadele, kes vajavad subsideeritud ligipääsu."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "Toode peaks õpetama, mitte lihtsalt vastama."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Lugu hõlmab viktoriine, võrguväliseid koolivõrgustikke, õppekava sisestamist ja avalikke AI-õpperežiime."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir on tasuta AI-õppe platvorm avalike külalisrežiimidega selgituste, sokraatilise juhendamise, kodutöötreeningu, testide, mälukaartide, väitluse, rollimängu, kirjutamise tagasiside ja õppeplaneerimise jaoks."
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "inspir avaliku autoriteedi viitelingid"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Tarbijatele mõeldud AI käivitamine"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Algas 2013. aastal avalike viktoriinide ja õpilaskogukondadena."
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Põhimõtted"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Õppija saab avalike õppimisrežiimide kataloogist külalisrežiimis otse avada „Õpi mida tahes“, „Sokraatilise õpetuse“, „Kodutöö juhendaja“, „Matemaatika sammujuhendaja“, viktoriine või mälukaarte."
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Tasuta AI-õppe platvorm"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Kooli vaatenurk"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "Kas avalikud külalisvestlused on avatud?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Kas kool saab inspir kõigepealt kasutada külalisõppe tööriistana?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "Facebooki testidest ja võrguvälistest üritustest rakendusliku AI-õppe taristuni."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Tugevaim vaatenurk on tasuta avalik AI-õpe, mis avaneb otse külalisrežiimis ja hoiab õppijad aktiivsena režiimipõhise õpetamise, mitte üldise vastuste genereerimise kaudu."
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Miks on avalikke õppelehti lihtne jagada?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "Kirjalik õppekogu, mis toetab viipasid, õppetsükleid ja sügavamat harjutamist."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir on korraldatud vihjete, küsimuste, testide, mälukaartide, väitluse, kordamise ja selgitamise ümber, mitte passiivse vastuste kopeerimise ümber."
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Vaikimisi külalisjuhendaja"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Milline tootenurk on kajastuse jaoks kõige kasulikum?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Erinevad õpiülesanded vajavad erinevaid suhtlusvorme, seega kasutab inspir aktiivset, režiimipõhist õpetamist. Kodutöövihje, sokraatiline küsimus, ajalooline simulatsioon, mälukaardi kordamine ja kirjutamiskriitika ei tohiks käituda nagu sama üldine vestlus."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Missioon | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Koolid saavad esmalt testida avalikke külalisrežiime ning seejärel kasutada koolide lehte, et uurida kohandatud töövooge, konfidentsiaalsuse planeerimist, NCERT-iga joondatud võimalusi ja rahastatud ligipääsu."
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Õpetajad ja juhid saavad enne ametlikku kasutuselevõttu alustada „Õpi mida tahes“, „Sokraatilise õpetuse“, „Kodutöö juhendaja“, viktoriinide ja mälukaartidega."
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Erinevad ülesanded vajavad erinevaid režiime: sokraatilised küsimused, kodutöövihjed, mälukaardid, väitlus, ajaloo rollimäng, kirjutamiskriitika ja palju muud."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Jah. Avalikud teemasisendid nagu /chat/learn-anything ja /chat/socratic-instruction on avatud õppelehed, mida igaüks saab proovida."
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "inspir missiooni põhimõtted"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Võimekas õpikaaslane ei tohiks sõltuda geograafiast, pere sissetulekust ega sellest, kas õppija juba teab õiget inimest, kellelt küsida."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "inspir missioon on teha õppimine kõigile kättesaadavaks, kaasahaaravaks, nauditavaks ja kasulikuks tasuta avalike AI-õppetööriistade kaudu."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Pärast seda, kui inspir.app domeen müüdi jätkuva tasuta ligipääsu rahastamiseks, kolis toimiv toode aadressile inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "CSR haridustehnoloogia partnerlus"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "AI-õppe juhendikogu"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Üle 100 juhendi juhendamise, viipade, õppetsüklite, aktiivse meenutamise ja režiimide kohta."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir on tasuta AI-õppe platvorm avalike külalisrežiimidega selgituste, sokraatilise juhendamise, kodutöötreeningu, testide, mälukaartide, väitluse, kirjutamise tagasiside, koodimisabi ja õppeplaneerimise jaoks."
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Selge kataloog kõigi külalisõppe vestluste sisenemiskohtadega."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Ajakirjanikud, kataloogitoimetajad, partnerid, koolid ja kõik, kes kirjutavad inspirist, saavad seda kasutada faktide, linkide, loo vaatenurkade ja tsiteerimiseks sobivate viidete jaoks."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Kaardista õpivajadused"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Mis on inspir?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Käivita ja rahasta ligipääsu"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Millisele URL-ile peaksid artiklid esimesena linkima?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Koolijuurutuse rada"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Toote vaatenurk"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Nimi"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "AI-juhendaja koolidele"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Avaleht"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Mis on inspir lühikirjeldus?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Salvestatud kasutajavestlused kasutavad privaatseid identifikaatoreid ja neid ei tohiks käsitleda avaliku allikmaterjalina."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "inspir.uk järgmise põlvkonna ülesehitus"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Liigu piloodist laiema ligipääsuni koolirahastuse, partneritoe või CSR-radade kaudu õppijatele, kes vajavad subsideeritud ligipääsu."
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Kohandatud sisu, viipasid ja töövooge saab kohandada NCERT vajaduste ja koolipõhiste klassiruumi prioriteetide järgi."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Kasuta seda siis, kui suunad lugejad otse reaalajas õpikogemusse."
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Mille poolest see erineb õpilastele üldise AI-vestlusroboti andmisest?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Rakendus on korraldatud õpetamiskäitumiste ümber, nagu sokraatiline küsimine, kodutöövihjed, viktoriinid, mälukaardid, rollimäng ja planeerimine."
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Peamine avalehe viide"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir missioon on teha õppimine kättesaadavaks, kaasahaaravaks, nauditavaks ja kasulikuks tasuta avalike AI-õppetööriistade ja koolivalmis õpperuumide kaudu."
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Mis on inspir missioon?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Iga avalik režiim on uks erinevasse õpikäitumisse, nii et formaat saab sobida ülesandega, selle asemel et suruda iga õppija ühte üldisesse vestluskasti."
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "Avalik toode annab igaühele koha alustamiseks, samal ajal kui kooli- ja partnerjuurutused saavad kogemust kohalikele vajadustele kohandada."
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Omamärgistatud AI-vestlus"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Külalisrežiimi sisenemiskohad"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Toeta rahastatud AI-õppe ligipääsu kogukondadele, kes vajavad kvaliteetset tuge ilma perede kulusid suurendamata."
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Täielik avalik viiteindeks"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Platvorm tegeles õppekava sisestamise, meenutamise, struktureeritud õppevoogude ja varaste AI-juhendamise kogemustega."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Üle 100 juhendi, viibatsükli ja põhiklastri AI-toega õppimiseks."
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Privaatsuspoliitika"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Asutatud"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "Platvorm on loodud aitama inimestel arutleda, harjutada, mäletada ja ideid oma sõnadega tagasi selgitada, mitte koguda valmis vastuseid."
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "Eraõpetus on võimas, kuid jaotub ebaühtlaselt. inspir kasutab AI-d ligipääsu laiendamiseks, hoides õppija aktiivsena: vihjed enne vastuseid, küsimused enne loenguid ja harjutamine pärast selgitust."
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Koolid ja partnerid"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Õppijaskond, mis ulatub juba Indiast kaugemale laiema rahvusvahelise publikuni."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir korraldab AI aktiivsete õpikäitumiste ümber: vihjed, küsimused, testid, mälukaardid, kriitika ja kordamine."
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Deccan Businessi kajastus"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Jah. Avalikud külalisrežiimid võimaldavad koolijuhtidel ja õpetajatel õpikogemust proovida enne kohandatud koolijuurutuse arutamist."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Hinda esmalt avalikku AI-õppekihti, seejärel uuri kohandatud töövooge, konfidentsiaalsusvajadusi, sisu joondamist ja kasutuse rahastamist."
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Peamine sihtrühm"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Erinevad õpiülesanded vajavad erinevaid vorme: sokraatilised küsimused, kodutöövihjed, mälukaardid, väitlus, ajaloo rollimäng, kirjutamiskriitika ja õppeplaneerimine."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Ametlikud tingimused, mis käsitlevad lubatud kasutust, konto vastutust ja teenuse tingimusi."
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Kohandage õpilaskogemus kooli konteksti, õppekava prioriteetide, sisu kaitsepiiride ja vajaliku töötajate nähtavuse taseme järgi."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Assistendi ja viitematerjalide ligipääs"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "NCERT-ga joondatud AI-õpe"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir alustas Facebooki lehena, mis avaldas teste ja kujundas koolivälise õppimise harjumust."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Avalik toode hoiab õppimise proovimise lihtsana, samal ajal kui koolid ja CSR-partnerid saavad toetada kohandatud juurutusi, kui kogukonnad vajavad konfidentsiaalsust, õppekava joondamist või rahastatud ligipääsu."
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "Õppimine on kõigile."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "inspirist"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Avalikku toodet on lihtne esmalt proovida, samal ajal kui koolid ja partnerid saavad uurida kogukonna vajadustele kohandatud juurutusi."
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Selged vastused õppijatele, koolidele ja otsingusüsteemidele."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Viiteleht"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Võrguvälised võrgustikud ja õpilasüritused"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Kas privaatsed salvestatud kasutajavestlused on otsingule nähtavad?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Usalduse ja privaatsuse piirid"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "AI-juhendaja ükskõik mille õppimiseks"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Režiimipõhine õppimine"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir läks tarbijatele suunatud AI-õppe tootena avalikuks mõne nädala jooksul pärast ChatGPT avalikku väljalaset."
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Otsingu- ja kataloogiligipääs"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Jah. Kool saab alustada avalike režiimide testimisega ning liikuda seejärel piloodi või kohandatud juurutuse poole, kui kasutusjuht, sisuvajadused ja rahastusviis on selged."
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "DeepHacki kogukonnaleht"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "Reaalajas õpikogemus, mis muudab missiooni praktiliseks abiks."
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Avalike külalisrežiimide lingid on olemas selleks, et õppijad saaksid otsingust, sotsiaalsetest linkidest, koolidest või jagatud soovitustest alustada otse kasulikes õpperežiimides."
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "Õppekujuga AI"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Tasuta külalisõpe koos radadega koolidele ja partneritele."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Kuidas erineb inspir üldisest AI-vestlusbotist?"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Õpikogukond algab"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "AI-õpe ilma passiivse vastuste kopeerimiseta"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Kategooria"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Dailyhunti kajastus"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "Jah. Avalikud külalisrežiimid, nagu „Õpi mida tahes“, „Sokraatiline õpetus“, „Kodutöö juhendaja“, viktoriinid ja mälukaardid, avanevad otse lihtsatelt /chat/{topicSlug} linkidelt."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "AI-õppe blogi"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Tingimused"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "AI õppetööriistad koolidele"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Külalisrežiim avalikuks ligipääsuks"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Kuidas avalik külalisõpe saab laieneda koolipõhisteks AI-õpperuumideks."
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Õppetöövood, mis ühendavad külalisrežiimid, viibad, harjutamise ja seotud juhendid."
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "AI-õppe juhendid"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Sirvi õpperežiime"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Režiimipõhised õppevood"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "Ei. Privaatsed salvestatud vestlused kasutavad privaatseid identifikaatoreid ega kuulu avalike lehtede, avalike viitefailide ega jagatud õppekataloogide hulka."
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Iga külalisõppe vestlus, korraldatud õpetamiskäitumise ja õpivajaduse järgi."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Sündikeeritud kajastus laiema tarbijaskonnani jõudmiseks."
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Usaldus ja turvalisus"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Konfidentsiaalne kasutuselevõtu disain"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Missiooni KKK"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Alusta otse õiges õpperežiimis kodutöövihjete, matemaatikasammude, kirjutamise kriitika, viktoriinide, mälukaartide või eksamiplaneerimise jaoks."
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Assistendi- ja viitetööriistad saavad kasutada avalikke õppelehti, et suunata inimesi õigete juhendite ja külalisrežiimide juurde."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir korraldab AI õpperežiimide ümber, millel on konkreetne õpetamiskäitumine: selgitused, sokraatilised küsimused, kodutöövihjed, testid, mälukaardid, väitlus, rollimäng, kirjutamise tagasiside ja õppeplaneerimine."
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Ava viide"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "DeepHacki tunnustus"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Privaatsed salvestatud vestluslingid ei kuulu avalike õppimisviidete, jagatud indeksite ega tsiteerimismaterjali hulka."
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Kas inimesed saavad inspir kasutada ilma sisse logimata?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Pikemate õppematerjalide kogu"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Kuidas inspir alguse sai?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Kasuta seda siis, kui kirjeldad kogu külalisrežiimi õppetööriistade komplekti, mida inimesed saavad kohe proovida."
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Koolijuurutuse rajad"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "õppimine teed"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Keelatud"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Koolid saavad inspirit esmalt hinnata avalike külalisrežiimide kaudu ning seejärel uurida kohandatud AI-õpperuume koos eraldi töövoogude, konfidentsiaalsuse planeerimise, õppekava vajaduste ja rahastatud ligipääsu radadega."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Kogukond laienes koolide, ülikoolide, võistluste, õppekavaväliste programmide ja õppijakogukondade kaudu."
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "Kas inspir saab toetada koolipõhist sisu või õppekava vajadusi?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Miks toetab inspir kooli- ja partnerjuurutusi?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Järgmine etapp on avatud lähtekoodiga, panustajasõbralik ja seotud laiema rahvusvahelise arendusega aadressil inspir.uk."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Avalik selgitus selle kohta, miks inspir olemas on ja miks ligipääs õppimisele loeb."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Loodud skaleerimiseks"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "AI võib teha üks-ühele õppe palju kättesaadavamaks."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Koolide ja CSR-i rajad rahastatud ligipääsuks"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Kes saab meedialehte kasutada?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Koolirada kohandatud AI-õpperuumide ja rahastatud ligipääsu jaoks."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-iga kooskõlas valikud"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "Õpi AI-ga hästi"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "Laiem rahvusvaheline arendus, mis on seotud inspir projektiga."
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Lubatud avalikel lehtedel"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Kasuta seda siis, kui tutvustad inspir põhitootena või lingid kataloogist, profiilist või artiklist."
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Rahastatud ligipääsurajad"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Nüüd ümber ehitatud avatud ja külalisesõbralikeks AI-õppe sisenemiskohtadeks."
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Struktureeritud kataloog avalikest lehtedest, režiimidest, õpiradadest, blogiklastritest ja privaatsuspiiridest."
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "Eesmärk on aidata inimestel kiiresti leida õige avalik õppeleht. Avalikud marsruudid, juhendid ja õppekeskused on avatud; API-, haldus-, lähtestus- ja privaatsed utiliidimarsruudid jäävad suletuks."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Kasuta seda pikkade juhendite kogu, õppeviipade ja režiimipõhiste artiklite tsiteerimisel."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Mõistmine vastustest ettepoole"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Kasuta saidi jaoks https://inspirlearning.com, missiooni jaoks /mission, avaliku õpperežiimide kataloogi jaoks /topics ja vaikimisi külalisõppe kogemuse jaoks /chat/learn-anything."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "CSR ja hariduspartnerid"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Mida võiks keegi esimesena proovida?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Kust peaksid koolid alustama?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Koolides kasutuselevõttu saab planeerida õpilaste privaatsuse, töötajate järelevalve ja õppimiskogukonnale vajalike praktiliste piiride ümber."
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Loo turvalisem tee harjutamiseks, selgitusteks, tagasisideks ja kordamisviipadeks, ilma õpilasi üldisesse vestlusrobotisse saatmata."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Avalikud viitefailid võtavad kokku õppelehed, marsruudid, režiimid, juhendid ja tsiteerimispiirid tööriistade jaoks, mis vajavad lühikest kaarti."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Nüüd"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "missioon"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Loodud päris õppijate ümber"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "AI-õppe taristu"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Ametlik privaatsusleht andmekasutuse, õiguste ja avaliku teenuse tingimuste kohta."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir algas 2013. aastal avaliku viktoriini- ja õpikogukonnana, kasvas koolide ja õpilasvõrgustike kaudu ning arendas hiljem AI-õppe taristut ja avalikke AI-juhendamise kogemusi."
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "omamärgistatud AI-õppeplatvorm"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir on olemas selleks, et teha õppimine kättesaadavaks, kaasahaaravaks, nauditavaks ja kasulikuks kõigile uudishimulikele, olgu nad õpilased, lapsevanemad, õpetajad või iseõppijad."
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Kuidas inspir vähendab vastuste kopeerimist?"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Mida me usume"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "API, admin, reset, privaatsete utiliitide ja privaatsete salvestatud vestluste pinnad ei ole avalik lähtesisu."
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Avalikke lehti saab jagada ja neile linkida, samal ajal kui haldustööriistad, API-marsruudid, lähtestusvood ja privaatsed utiliidid jäävad suletuks."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "õpetajad"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Praegune GitHubi repo"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Avalikult üles ehitatud"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Kuidas saab õppijate ligipääsu rahastada?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Meediamärkmed"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir on kujundatud arutlemise, harjutamise, meenutamise ja selgitamise ümber, mitte õppijatele valmis töö üleandmiseks."
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Režiimipõhine tootedisain"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Koolijuhid"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "õpilased"
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+import type { UiTranslator } from "@/components/chat/chat-ui-types";
+import {
+  formatMainAppActivity,
+  translateMainAppActivity,
+} from "@/lib/i18n/main-app-activity-copy";
+
 type FlashcardReviewCard = {
   id: string;
   front: string;
@@ -21,28 +27,41 @@ export function FlashcardReview({
   deck,
   onReviewMissed,
   onStartOver,
+  t,
 }: {
   deck: FlashcardReviewDeck;
   onReviewMissed: (deck: FlashcardReviewDeck) => void;
   onStartOver: () => void;
+  t: UiTranslator;
 }) {
   const missed = deck.cards.filter((card) => card.rating === "again");
   return (
     <article className="inspir-flashcard-review">
-      <h3>Deck complete: {deck.knownCount}/12 known</h3>
+      <h3>
+        {formatMainAppActivity(t, "activity.flashcards.review.complete", {
+          known: deck.knownCount,
+          total: deck.maxCards,
+        })}
+      </h3>
       <p>
         {missed.length
-          ? "Review the cards marked again, then rebuild a smaller deck from those weak spots."
-          : "Clean sweep. Come back later and test the same deck from memory."}
+          ? `${formatMainAppActivity(
+              t,
+              missed.length === 1
+                ? "activity.flashcards.review.missed.one"
+                : "activity.flashcards.review.missed.other",
+              { count: missed.length },
+            )} ${translateMainAppActivity(t, "activity.flashcards.review.missedBody")}`
+          : translateMainAppActivity(t, "activity.flashcards.review.cleanBody")}
       </p>
       <div className="inspir-flashcard-review-actions">
         {missed.length ? (
           <button type="button" onClick={() => onReviewMissed(deck)}>
-            Review missed cards
+            {translateMainAppActivity(t, "activity.flashcards.review.missedAction")}
           </button>
         ) : null}
         <button type="button" onClick={onStartOver}>
-          Build another deck
+          {translateMainAppActivity(t, "activity.flashcards.review.anotherAction")}
         </button>
       </div>
       <div className="inspir-review-list">
@@ -52,7 +71,13 @@ export function FlashcardReview({
               {index + 1}. {card.front}
             </strong>
             <span>{card.back}</span>
-            {card.trap ? <p>Trap: {card.trap}</p> : null}
+            {card.trap ? (
+              <p>
+                {formatMainAppActivity(t, "activity.flashcards.review.trap", {
+                  trap: card.trap,
+                })}
+              </p>
+            ) : null}
           </div>
         ))}
       </div>

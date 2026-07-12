@@ -10,16 +10,18 @@ SET
     '$."site.649df08a448ee3fa90"',
     '$."site.2ac5cdad2988ba0c40"',
     '$."site.b78a38d18d6555118d"',
-    '$."site.4b0412c73bb17a566f"'
+    '$."site.4b0412c73bb17a566f"',
+    '$."site.97d1bd7fe820bd7b27"'
   ),
-  source_hash = 'f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0',
+  source_hash = '8fba4fae8adf717ba9de242b46c5b0f1861b2414209355280f36e25ae6992166',
   model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE namespace = 'marketing-site'
   AND source_hash IN (
     'ec84387ca93fbec6a68df90e756a5b64af6dc401b0fefbc4646866ee897b228b',
     '784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39',
-    'f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0'
+    'f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0',
+    '8fba4fae8adf717ba9de242b46c5b0f1861b2414209355280f36e25ae6992166'
   );
 
 UPDATE app_translations

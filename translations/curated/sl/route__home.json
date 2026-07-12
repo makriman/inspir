@@ -4,517 +4,12 @@
   "locale": "sl",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} praktičnih vodnikov"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "Knjižnica {value1} vodnikov, ustvarjena za učenje, ki se spremeni v dejanja."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Brezplačen javni učni spremljevalec z AI za tutorstvo, vajo, kvize, učne kartice, razpravo, povratne informacije pri pisanju, pomoč pri programiranju in načrtovanje učenja."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Praktična učna pot z AI od zmede do jasnih razlag, sokratskih vprašanj, primerov in aktivnega priklica."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Praktični vodnik za uporabo načina Nauči se karkoli v inspir za osnove učenja, s pozivi, učnimi zankami in varnejšimi navadami pri uporabi AI."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "Praktičen pogled na to, kako lahko AI naredi učenje jasnejše, bolj osebno in dostopnejše, ne da bi učence spremenila v pasivne zbiralce odgovorov."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "Javno učno spletno mesto, ki ga ljudje hitro razumejo."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "Kratek film predstavi prepričanje inspir, da mora biti učenje brezplačno, dostopno in živo."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "Tutor za prvo vprašanje"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "dostopnost, pozivi, testi, varnejše vedenje AI, učne poti in izpiljen vmesnik."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Dejanje po branju"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Aktivna vaja"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Pregled z aktivnim priklicem"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Po vsakem namigu pojasni, zakaj korak deluje, preden nadaljuješ."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Po simulaciji povzemi okolje, omejitve in dokaze."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI tutor za programiranje"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "Vadba razprave z AI"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "Načrt priprave na izpit z AI"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "Načrt priprave na izpit z AI, kvizi in aktivnim priklicem"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI načrtovalnik priprave na izpit"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI učne kartice in aktivni priklic: kako si zapomniti več"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "AI učne kartice za aktivni priklic"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "AI učne kartice za ponavljanje"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI tutor za zgodovino"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI tutor za zgodovino"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI mentor za domače naloge"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "Pomoč z AI pri domačih nalogah brez goljufanja"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "Pomoč z AI pri domačih nalogah brez prepisovanja odgovorov"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI pomočnik za domače naloge"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI mentor za matematične korake"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI tutor za matematiko"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "AI ustvarjalnik kvizov za izpite"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "Sokratski AI tutor"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI urnik učenja"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "Učenje s časovnim potovanjem z AI"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "AI tutor za težke pojme"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "AI tutorji po predmetih"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "Povratne informacije z AI za pisanje učencev"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI tutor za pisanje"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Odgovori na preveritveno vprašanje, poskusi korak, razpravljaj o trditvi, popravi osnutek ali pripravi kartice za priklic."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "Ali so kvizi boljši od ponovnega branja?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Argument"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Vadba argumentiranja"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "Vprašaj karkoli in se uči z jasnimi razlagami, primeri, nadaljnjimi pozivi in potrpežljivo mentorsko podporo z AI."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "Vprašaj karkoli"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "Prosi za namig"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Prosi za namig, ne za odgovor"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Prosi za preprostejšo razlago najšibkejšega pojma."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Prosi za pet vprašanj, ki mešajo definicije, primere in naloge za prenos znanja."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Prosi za namige, preverjanja, povratne informacije in učne načrte, ki razmišljanje pustijo učencu."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Prosi za temo v preprostem jeziku, nato zahtevaj eno analogijo, en primer in eno pogosto napačno predstavo."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Postavi mi pet sokratskih vprašanj o tej temi. Po vsakem odgovoru mi povej, katero predpostavko sem uporabil in kaj naj preverim naslednje."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Postavljaj vprašanja, izzivaj ideje in se uči zgodovino skozi utemeljene pogovore z javnimi osebnostmi iz preteklosti."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Zgodovinski način prosi, naj označi, kaj je dokumentirano, sklepano ali simulirano."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Postavi pravo vprašanje"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "Postavi prvo vprašanje in takoj preidi v vajo."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Javno dostopno, šole pa lahko uporabljajo zaupne različice po meri."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Prebrskaj vse načine"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Prebrskaj predmete"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Sestavi časovni potni list, preveri potovalno opozorilo in razišči zgodovinski svet skozi prizor, zemljevid, časovnico, ljudi, pravila, inventar in dokaze."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Zgradi potek priprave na izpit z AI: realističen učni načrt, vajo priklica, kvize, učne kartice in pregled šibkih področij."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "Sestavi načrt za izpit"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Sestavi načrt"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Gradi z nami"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Ustvarjeno za radovednost, vajo in dostop."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Zgrajeno na resničnem vedenju učencev, ne na generičnem klepetalniku."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "Zasnovano za uporabo"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "Je lahko pomoč z AI pri domačih nalogah etična?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "Ali lahko zgodovinski dialog z AI navedem kot vir?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "Ali lahko uporabljam inspir brez prijave?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "Ali lahko inspir pomaga pri domačih nalogah, ne da bi spodbujal goljufanje?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Preveri moj model"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Preveri en korak"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Preveri razmišljanje vrstico za vrstico"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Preveri ta korak v mojem postopku. Če je napačen, razloži napako in mi daj eno naslednjo potezo."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Jasne razlage"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Jasne meje zasebnosti"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Tutor za programiranje"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Programiranje"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Komunikacija"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Primerjaj argumente"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Zaupne uvedbe"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Nadaljuj"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "Dobrodošli so prispevki inženirjev, pedagogov, oblikovalcev, študentov in vseh, ki želijo, da je učenje z AI varnejše, jasnejše, dostopnejše in uporabnejše."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Pretvori zgrešene odgovore"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "Razlago pretvori v kartice za aktivni priklic, nato se po napakah ali oklevanju vrni k njim."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Ustvari kratek kviz"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "Radovednost se začne tukaj"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Radovednost, vaja in AI, ki poučuje."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Radovedni učenci, ki želijo, da se zgodovina in ideje zdijo umeščene, odprte za razpravo in žive, ne da bi izgubili sled dokazom."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Učni prostori z AI po meri in z zaupnostjo podatkov."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "Razpravljaj o trditvi"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "Razpravljaj o katerikoli temi"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "Razpravljaj o katerikoli temi, sprejmi izzive, primerjaj trditve in se nauči graditi močnejše argumente."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Razprava ti pomaga ločiti trditve, dokaze, vrednote in predpostavke, zato je zgodovinska razlaga natančnejša."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "Razpravljaj o trditvi"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "Razpravljaj o trditvi z več strani, da opaziš predpostavke, kompromise in šibke dokaze."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Razpravljaj o tej zgodovinski ali filozofski trditvi z obeh strani. Loči dokaze, predpostavke in vrednote."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Zasnovano za samozavest"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "Popravljenega odstavka ne sprejmi, dokler ne znaš razložiti, zakaj je izboljšava boljša."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "Ne prosi za celoten povzetek, preden poznaš predhodne ideje."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "Ne razpravljaj samo za stran, s katero se že strinjaš."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Načrtovanje"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "Ne prezri oklevanja; negotovost je koristen signal za ponavljanje."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "Ne dovoli, da igra vlog nadomesti datume, kontekst, dokumente ali oznake dokazov."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir spremeni radovednost, domače naloge, ponavljanje in velika vprašanja v vodene učne seje z AI, ki razlagajo, sprašujejo nazaj in ti pomagajo vaditi."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "Ne pripravi načrta s predpostavko, da vsaka tema zahteva enako časa."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Ustvari kratek kviz"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "Ne izdeluj učnih kartic iz stavkov, ki jih še ne znaš razložiti s svojimi besedami."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Študenti, ki potrebujejo naslednji korak, preverjanje napake ali povratne informacije, ne da bi izgubili lastništvo nad nalogo."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "Ne prilepi naloge in ne prosi za končni odgovor."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Začni se učiti"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "Ne beri zapiskov znova, preden preveriš, česa se že lahko spomniš."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "Ne preskoči prikaza tega, kar si že poskusil; uporabna pomoč je odvisna od tega konteksta."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "Ne ustavi se po prvi razlagi; prisili se, da odgovoriš na vprašanja o njej."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "Ustvarjenega dialoga ne obravnavaj kot resničnega citata ali primarnega vira."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Uporabi ga v praksi"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "Ali inspir podpira šole?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Vsak vodnik se konča z načrti vaje, potmi in povezavami do točno tistega učnega načina, ki ustreza."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Vsak vodnik kaže na način, poziv ali zanko ponavljanja, da se branje lahko spremeni v vajo."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Vsak način se odpre kot javni klepet za goste s svojim namenom, primeri in učnim tokom, zato lahko učenci takoj začnejo s pravo vrsto podpore."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Preprosti naslednji koraki"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Vnesi obdobje"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Vnesi kontekst"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Vsak članek se povezuje s kategorijami, živimi načini, predmetnimi središči, učnimi potmi in sorodnimi vodniki."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Vsaka stran zunaj aplikacije ima zdaj nalogo: graditi zaupanje, razložiti učno pot in učence usmeriti k koristnemu naslednjemu dejanju, ne da bi skrila pomembne podrobnosti."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Prizori, pozorni na dokaze"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "Priprava na izpite"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "Načrtovalnik priprave na izpite"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Razloži nazaj"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Razloži naslednji korak"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Razloži to temo v preprostem jeziku. Navedi tri predhodne ideje, ki jih potrebujem, eno analogijo in eno pogosto napačno predstavo."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "Razlage, sokratsko tutorstvo, mentorstvo pri domačih nalogah, kvizi, učne kartice, pisanje, koda, razprava in načrtovanje učenja."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "Raziskuj zgodovino in velike ideje z AI"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Raziskuj zgodovino in ideje"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Raziskuj zgodovino, javne osebnosti, vzroke, razprave, filozofijo in kritiko virov z učnimi načini AI, ki ločijo dokaze od simulacije."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Razišči šolske možnosti"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Razišči knjižnico vodnikov"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Hitre učne poti"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Poglavja filma"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Ustvarjalnik učnih kartic"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Učne kartice najbolje delujejo, ko preverjajo eno idejo naenkrat, razkrijejo odgovore šele po trudu in hitreje ponovijo zgrešene kartice."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Pri matematiki ali logiki delaj po en korak in vprašaj, zakaj je vsak premik dovoljen, preden nadaljuješ."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Za šole in partnerje CSR"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Osnove"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Brezplačno učenje z AI za vse"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Brezplačno učenje z AI za vse | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Brezplačno učenje z AI za vse."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Brezplačno učenje kot gost"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Brezplačna javna učna platforma z AI"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Iz bloga"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "Ustvari osredotočen kviz z več izbirami o kateremkoli predmetu in po vsakem odgovoru preglej razlage."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Pripravi učni urnik, preveri šibka področja s kvizom in zgrešene odgovore pretvori v kartice za ponavljajoči pregled."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Najprej dobi preprost model"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Mentor za pisanje"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "Premagaj zastoj"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Premagaj zastoj pri domači nalogi"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Vstopi v zgodovinski kontekst, primerjaj argumente in vadi gledanje ideje z več kot ene strani."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Premagaj zastoj pri domači nalogi z etičnimi namigi, primeri, preverjanji in postopnim mentorstvom."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "predmetna središča, usklajena s potrebami učencev"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Podaj povratne informacije o strukturi, jasnosti in dokazih. Ohrani moj glas in ne prepiši celotnega odgovora."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Zaključni poudarek se vrne k poslanstvu: javnemu dostopu, šolam in bolj odprtemu načinu učenja."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Dobra prva področja:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Ali so kvizi boljši od ponovnega branja?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Knjižnica vodnikov"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Vodniki, poti, predmeti in pozivi vodijo do naslednjega koristnega mesta za vajo."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Koristen učni zemljevid"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Tukaj sta vprašanje in to, kar sem poskusil. Daj mi najmanjši uporaben namig, ne končnega odgovora."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Skrij poglavja filma"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Skrij prepis filma"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "Pomoč najprej z namigi"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Zgodovinski pogovori"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "Zgodovina"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Domače naloge"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Mentor za domače naloge"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "Kako zgodaj naj pripravim načrt za izpit?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "Kako se inspir razlikuje od generičnega AI klepetalnika?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Kako deluje"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "Kako se učiti z AI, ne da bi goljufal samega sebe"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "kako z AI razumeti težko temo"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "Kako z AI razumeti težko temo"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Poglobitev"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Izboljšaj osnutek"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Izboljšaj pisanje z načrtovanjem, popravljanjem, strukturo in povratnimi informacijami, ki ohranijo tvoj glas."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Vključi vprašanje, kaj si že poskusil, kje si obtičal in ali želiš namig, preverjanje koraka ali povratne informacije."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "knjižnica učnih vodnikov inspir z AI"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir se je začel s kvizi in študentskimi skupnostmi, rasel skozi šole in dogodke, zdaj pa uporablja AI, da je učenje ena na ena dostopnejše."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir obstaja za trenutek, ko učenec želi nekaj razumeti in potrebuje potrpežljiv prostor za začetek. Film predstavi izdelek kot brezplačnega javnega učnega spremljevalca za radovednost, vajo in dostop."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir v gibanju"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir nastaja javno."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir je organiziran okoli učnih načinov s posebnimi oblikami poučevanja: namigi, sokratska vprašanja, kvizi, aktivni priklic, igra vlog, razprava, povratne informacije pri pisanju in načrtovanje učenja."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "učni film inspir"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir spremeni radovednost, domače naloge, ponavljanje in velika vprašanja v vodene učne seje z AI, ki razlagajo, sprašujejo nazaj in ti pomagajo vaditi."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: Nauči se karkoli"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "Ali je inspir brezplačen za uporabo?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Ohrani pot živo"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Spoznaj, kaj poskusiti naslednje, zakaj korak deluje, kje se je zgodila napaka in kako končni odgovor popraviti s svojim glasom."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Nauči se karkoli"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Pozivi in učni krog za Nauči se karkoli"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Nauči se karkoli z brezplačnim AI tutorjem: praktični vodnik"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Uči se s pogovorom, preverjanjem, razpravo in raziskovanjem."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Uči se programiranja, razhroščuj pojme, načrtuj projekte, razlagaj podatke in raziskuj tehnična vprašanja z javnimi AI načini, ki učenca ohranjajo v procesu."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Uči se skozi osredotočena vprašanja, namige in razmislek namesto pasivnega branja odgovorov."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Uči se z brezplačnim AI tutorjem za razlage, sokratska vprašanja, mentorstvo pri domačih nalogah, kvize, učne kartice, razpravo, povratne informacije pri pisanju, pomoč pri programiranju in načrtovanje učenja."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Podpora z učencem na prvem mestu"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Učenci potrebujejo zaporedje, ne kupa povezav. Te poti povezujejo načine v praktične učne zanke za razumevanje, domače naloge, pripravo na izpite in raziskovanje."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Učenci, ki se na začetku novega predmeta zataknejo ali potrebujejo preprostejšo pot v težko idejo."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Učenci z malo časa, obsežno snovjo in potrebo po realističnem ponavljanju, brez pretvarjanja, da je vse enako pomembno."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Učenje za vse"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "učni vodniki in vadbene zanke"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Na koncu imaš model v preprostem jeziku, ostrejša vprašanja, primere, ki jih znaš razložiti nazaj, in kartice za priklic pri ponavljanju."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Naj intervjuvam to zgodovinsko osebo. Odgovori naj upoštevajo dokaze in jasno označijo negotovost."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Iz napak naredi učne kartice in se k njim vrni z zamikom."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Iz napak, oklevanja, formul, definicij in pojmov, ki jih nisi znal jasno razložiti, naredi učne kartice."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Naj se ideja utrdi"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "Naj se ideja utrdi"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Učni načrt naj bo realističen"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Matematika"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Mentor za matematične korake"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Matematika, pisanje, programiranje, zgodovina, domače naloge in priprava na izpite potrebujejo različne vrste pomoči. Začni pri predmetu, nato se premakni v način, poziv, vodnik ali zanko ponavljanja, ki ustreza."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Najprej poslanstvo"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Vodniki po načinih, zanke pozivov, učne metode in temeljni članki za pogoste učne trenutke."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Premakni se od razlage v preprostem jeziku k vprašanjem, primerom in vaji spomina."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Preidi na sokratska vprašanja, kvize, učne kartice, razpravo, igro vlog in vodeno poučevanje."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Utišaj film"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "Moj izpit je na ta datum. Tukaj so snov, moja šibka področja in moj razpoložljivi čas. Pripravi realističen načrt z dnevnim priklicem."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "Možnosti, usklajene z NCERT"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Naslednji korak"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "Ne. Ustvarjen dialog obravnavaj kot učno simulacijo. Za dejanske trditve citiraj prave primarne ali sekundarne vire."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "Ni še eno polje za odgovore. Je prostor za učenje."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "Odpri način in začni takoj, brez računa za javno gostujočo izkušnjo."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Odprto po zasnovi"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Odpri film čez cel zaslon"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Odpri klepet za goste"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Odpri predmetno središče"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Odpri točno tisto vrsto pomoči, po katero si prišel."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Odpri učni zemljevid"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} praktičnih vodnikov"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Odpri pot"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Strani so zasnovane tako, da ljudi premaknejo od razlage v živi način, poziv, kviz ali zanko ponavljanja."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Vprašaj karkoli in se uči z jasnimi razlagami, primeri, nadaljnjimi pozivi in potrpežljivo mentorsko podporo z AI."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Spletno mesto je pot, ne brošura."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Ali inspir podpira šole?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir je organiziran okoli učnih načinov s posebnimi oblikami poučevanja: namigi, sokratska vprašanja, kvizi, aktivni priklic, igra vlog, razprava, povratne informacije pri pisanju in načrtovanje učenja."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Brezplačno uporabljaj javne gostujoče načine, nato razišči odprtokodno delo in poti za šolsko uvedbo."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Razlage, sokratsko tutorstvo, mentorstvo pri domačih nalogah, kvizi, učne kartice, pisanje, koda, razprava in načrtovanje učenja."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Brezplačno učenje z AI za vse"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Načrtovalnik priprave na izpite"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Premagaj zastoj pri domači nalogi z etičnimi namigi, primeri, preverjanji in postopnim mentorstvom."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI načrtovalnik priprave na izpit"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Načrt priprave na izpit z AI, kvizi in aktivnim priklicem"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Razprava ti pomaga ločiti trditve, dokaze, vrednote in predpostavke, zato je zgodovinska razlaga natančnejša."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Začni s krajem, časom, identiteto, omejitvami in oznakami dokazov, da prizor ne postane generična igra vlog."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Kaj naj vključim v poziv za domačo nalogo?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Dobrodošli so prispevki inženirjev, pedagogov, oblikovalcev, študentov in vseh, ki želijo, da je učenje z AI varnejše, jasnejše, dostopnejše in uporabnejše."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Praktična učna pot z AI od zmede do jasnih razlag, sokratskih vprašanj, primerov in aktivnega priklica."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI tutor za pisanje"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir se je začel s kvizi in študentskimi skupnostmi, rasel skozi šole in dogodke, zdaj pa uporablja AI, da je učenje ena na ena dostopnejše."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "učni film inspir"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Pokaži poglavja filma"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Ta zgrešena vprašanja spremeni v učne kartice, razvrščene po pojmu, formuli, definiciji in primeru."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Spoznaj, kaj poskusiti naslednje, zakaj korak deluje, kje se je zgodila napaka in kako končni odgovor popraviti s svojim glasom."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Povratne informacije z AI za pisanje učencev"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Učenje za vse"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI tutor za programiranje"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Preveri šibka področja s kvizom"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Uči se z brezplačnim AI tutorjem za razlage, sokratska vprašanja, mentorstvo pri domačih nalogah, kvize, učne kartice, razpravo, povratne informacije pri pisanju, pomoč pri programiranju in načrtovanje učenja."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Uporabi razpravo za primerjavo najmočnejše trditve in najmočnejšega protiargumenta."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Ne ustavi se po prvi razlagi; prisili se, da odgovoriš na vprašanja o njej."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Kako deluje"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Tutor za programiranje"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Priprava na izpite"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Iskalne strani, blogovski vodniki, pozivi in živi načini so povezani okoli preproste zanke: vprašaj, poskusi, preveri, popravi in ponovi."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Programiranje"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Koristno od prvega klika"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Ustvari osredotočen kviz z več izbirami o kateremkoli predmetu in po vsakem odgovoru preglej razlage."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Popravljenega odstavka ne sprejmi, dokler ne znaš razložiti, zakaj je izboljšava boljša."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Moj izpit je na ta datum. Tukaj so snov, moja šibka področja in moj razpoložljivi čas. Pripravi realističen načrt z dnevnim priklicem."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Nauči se karkoli z brezplačnim AI tutorjem: praktični vodnik"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Naj intervjuvam to zgodovinsko osebo. Odgovori naj upoštevajo dokaze in jasno označijo negotovost."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Zgrajeno na resničnem vedenju učencev, ne na generičnem klepetalniku."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Premagaj zastoj pri domači nalogi"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Blog je organiziran okoli resničnih učnih trenutkov: premagovanja zastojev, boljšega pomnjenja, boljšega pisanja, priprave na izpite in raziskovanja idej s potrpežljivim tutorjem."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Zakaj združiti zgodovino z razpravo?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Blog povezuje uporabne učne nasvete z živo vajo, zato se lahko vodnik v enem koraku spremeni v učno sejo."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Prilepi vprašanje in to, kar si poskusil, nato prosi za najmanjši uporaben naslednji korak."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Zaustavi film"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Učenci, ki se na začetku novega predmeta zataknejo ali potrebujejo preprostejšo pot v težko idejo."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Postavi me v ta čas in kraj. Dokumentirana dejstva označi ločeno od verjetne simulacije in vprašaj, kaj opazim."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "dostopnost, pozivi, testi, varnejše vedenje AI, učne poti in izpiljen vmesnik."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Razlage v preprostem jeziku"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Preden prosiš za pomoč, natančno napiši, kje si obtičal."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "Načrtuj ponavljanje za izpit, ustvarjaj kvize, izdeluj učne kartice, razporedi razmaknjeno ponavljanje in ohrani realno motivacijo z osredotočenimi učnimi načini AI."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Pretvori zgrešene odgovore"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "Načrtuj delo, vadi priklic in zapri šibke točke s kvizi in aktivnim priklicem."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Raziskuj zgodovino in ideje"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Načrtovanje"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Raziskuj zgodovino in velike ideje z AI"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Predvajaj film"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Naj se ideja utrdi"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "Predvajaj predogled učenja z inspir"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Odpri predmetno središče"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Priljubljene učne poti z AI"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Pisanje"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Priljubljene poti"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Nadaljuj"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Vaja"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Osnove"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Vaja, ne prepisovanje odgovorov"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Načrtuj naslednjo ponovitev"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI mentor za matematične korake"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Vnesi kontekst"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Postavi pravo vprašanje"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "Pripravi se na izpit"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "Ideje za pozive in ponovljiva učna zanka za pridobivanje uporabnih učnih rezultatov z Nauči se karkoli v inspir."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Raziskuj zgodovino, javne osebnosti, vzroke, razprave, filozofijo in kritiko virov z učnimi načini AI, ki ločijo dokaze od simulacije."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Vprašaj zgodovinsko osebnost"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "Vadba razprave z AI"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Vprašaj zgodovinsko perspektivo"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Vprašanja te prisilijo, da razkriješ svoj model teme; tam se običajno pokažejo zmeda, lažna samozavest in manjkajoče predznanje."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Hitri odgovori"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Sprašuj me o teh temah eno vprašanje naenkrat. Po vsakem odgovoru razloži vrzel in postopoma povečuj težavnost."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Preizkusi me v Trivia"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Preveri šibka področja s kvizom"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Preizkusi se"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Najprej se preizkusi, da vidiš, česa se res spomniš in kje te samozavest zavaja."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Kvizi običajno razkrijejo več, ker preverjajo priklic. Ponovno branje pomaga potem, ko kviz pokaže, kaj je treba popraviti."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Preberi poslanstvo"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Realističen urnik"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Popravi eno napako"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Popravi šibko točko"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Ponovno predvajaj"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Znova zaženi film"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Vaja priklica"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Ponavljaj z učnimi karticami"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Popravi moj osnutek"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Popravljaj, ne da izgubiš svoj glas"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Shrani napako"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Načrtuj naslednjo ponovitev"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Šolski poteki dela"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Šole lahko ponudijo AI klepetalne izkušnje pod lastno znamko, prilagojene svojim učencem, vključno z vsebino in poteki dela, usklajenimi z NCERT, pri čemer uporabo financirajo partnerske šole ali sponzorstvo CSR."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Iskalne strani, blogovski vodniki, pozivi in živi načini so povezani okoli preproste zanke: vprašaj, poskusi, preveri, popravi in ponovi."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Loči dejstvo od izmišljije"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Pokaži poglavja filma"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Pokaži prepis filma"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Sokratska preverjanja"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Sokratsko poučevanje"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Sokratski tutor"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Sokratsko tutorstvo uporablja vprašanja, hipoteze, namige in razmislek za globlje razumevanje kot pasivno branje odgovorov."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Začni učno sejo v živo."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "Začni takoj, ko poznaš datum izpita. Če je časa malo, daj prednost šibkim področjem, vprašanjem v slogu preteklih izpitov in vsakodnevnemu priklicu."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Začni tako, da prosiš za preprosto razlago, eno vsakdanjo analogijo in tri ideje, ki jih potrebuješ, da bo tema dobila smisel."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Vsako sejo začni s hitrim kvizom pred ponovnim branjem."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "Začni pri prvih načelih"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Začni pri predmetu, nato odpri pravi učni način."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Začni pri stvari, ki je ne razumeš, in dobi model v preprostem jeziku, primere in naslednje korake."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Začni se učiti"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Začni s temo, nalogo, osnutkom, izpitom ali idejo v načinu, ki ustreza delu."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Začni z Nauči se karkoli"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Začni s krajem, časom, identiteto, omejitvami in oznakami dokazov, da prizor ne postane generična igra vlog."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Začni z nalogo, ki jo potrebuješ opravljeno."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "Povej, kje si obtičal"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Preverjanja korakov"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Vstopi v zgodovinski kontekst, primerjaj argumente in vadi gledanje ideje z več kot ene strani."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Študenti, ki potrebujejo naslednji korak, preverjanje napake ali povratne informacije, ne da bi izgubili lastništvo nad nalogo."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Učne zanke, vodniki za AI tutorstvo in praktični pozivi."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "predmetna središča, usklajena s potrebami učencev"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Povzemi kontekst"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Podpira obšolsko učenje, akademsko vajo in radovednost."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Preklopi v vprašanja, da razkriješ predpostavke in zapolniš vrzeli, namesto da pasivno bereš odgovor."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Pogovarjaj se z zgodovinsko osebnostjo, pri tem pa ustvarjen dialog loči od dokumentiranega citata."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Pogovarjaj se z zgodovinsko osebo"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "pogovor z zgodovinskimi osebnostmi z AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Preizkus pred ponavljanjem"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Preizkusi argument"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Preizkusi svoje razmišljanje"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "Blog povezuje uporabne učne nasvete z živo vajo, zato se lahko vodnik v enem koraku spremeni v učno sejo."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "Blog je organiziran okoli resničnih učnih trenutkov: premagovanja zastojev, boljšega pomnjenja, boljšega pisanja, priprave na izpite in raziskovanja idej s potrpežljivim tutorjem."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "Širša odprtokodna platforma inspir."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "Zaključni poudarek se vrne k poslanstvu: javnemu dostopu, šolam in bolj odprtemu načinu učenja."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "Trenutna prenova inspirlearning.com."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "Film se iz navdiha premakne v praktično obljubo: potrpežljivega učnega spremljevalca z AI."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Načina za domače naloge in sokratsko učenje sta zasnovana okoli namigov, razmišljanja, preverjanja korakov in učenčevih razlag, namesto da bi preprosto izročila končne odgovore."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "Srednji del predstavi inspir skozi razumevanje, namige, kvize in aktivne učne zanke."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "Učna platforma z AI naslednje generacije."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Uvodni prizori pokažejo učenje kot nekaj, kar bi moral vsak začeti takoj."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Zgodovinski pogovori"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "Javno spletno mesto je urejeno kot učni zemljevid: živi načini za takojšnjo pomoč, predmetna središča za vprašanja učencev in vodniki, ki branje spremenijo v dejanje."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "Spletno mesto je pot, ne brošura."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Napiši razlago v treh stavkih brez gledanja, nato prosi sokratski način, naj najde šibki člen."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Razmišljaj globlje"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Razpravljaj o trditvi"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Časovno potovanje"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Prebrskaj vse načine"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Tematski sklopi"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Iz bloga"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Prepis"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Prosi za namig, ne za odgovor"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Potuj skozi obdobje"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Vprašaj zgodovinsko perspektivo"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Preizkusi mentorja za domače naloge"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Javno dostopno, šole pa lahko uporabljajo zaupne različice po meri."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Pretvori v učne kartice"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Zgrešene odgovore spremeni v zanke ponavljanja"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Zapiske ali teme spremeni v osredotočene učne kartice z namigi, odgovori, primeri in pogostimi pastmi."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Popravljeno napako spremeni v učno kartico ali kratek seznam za pozneje."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "Razlago spremeni v kartice za aktivni priklic: eno pojmovno kartico, eno kartico s primerom in eno kartico za napačno predstavo."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Najtežje zgrešeno vprašanje spremeni v učno kartico in jo ponovi pozneje."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Ta zgrešena vprašanja spremeni v učne kartice, razvrščene po pojmu, formuli, definiciji in primeru."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Snov, datum izpita, razpoložljivi čas in šibka področja spremeni v praktičen učni načrt."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Preidi na sokratska vprašanja, kvize, učne kartice, razpravo, igro vlog in vodeno poučevanje."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Razumi težko temo"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Razumi zgodovinski kontekst, vprašaj perspektivo, primerjaj trditve in loči simulacijo od dokumentiranega dejstva."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Popravljaj, ne da izgubiš svoj glas"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Povej, kje si obtičal"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Kako se učiti z AI, ne da bi goljufal samega sebe"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Prosi za temo v preprostem jeziku, nato zahtevaj eno analogijo, en primer in eno pogosto napačno predstavo."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "Učenje s časovnim potovanjem z AI"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Vaja"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Ne beri zapiskov znova, preden preveriš, česa se že lahko spomniš."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Snov, datum izpita, razpoložljivi čas in šibka področja spremeni v praktičen učni načrt."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Strani so zasnovane tako, da ljudi premaknejo od razlage v živi način, poziv, kviz ali zanko ponavljanja."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Pomoč z AI pri domačih nalogah brez goljufanja"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matematika"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Tutor za prvo vprašanje"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Brezplačno učenje z AI za vse."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Podpira obšolsko učenje, akademsko vajo in radovednost."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI učne kartice in aktivni priklic: kako si zapomniti več"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Naj se ideja utrdi"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Premakni se od razlage v preprostem jeziku k vprašanjem, primerom in vaji spomina."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Pomoč najprej z namigi"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Tukaj sta vprašanje in to, kar sem poskusil. Daj mi najmanjši uporaben namig, ne končnega odgovora."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Kvizi običajno razkrijejo več, ker preverjajo priklic. Ponovno branje pomaga potem, ko kviz pokaže, kaj je treba popraviti."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Odgovori na preveritveno vprašanje, poskusi korak, razpravljaj o trditvi, popravi osnutek ali pripravi kartice za priklic."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Kako z AI razumeti težko temo"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Razumi kodo, odpravljaj napake, uči se programerskih pojmov in gradi majhne projekte korak za korakom."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Vklopi zvok filma"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Aktivna vaja"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "Uporabi AI kot mentorja za razumevanje, vajo in povratne informacije, ne kot bližnjico, ki tiho odstrani učenje."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Poglobitev"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Uporabi mentorstvo z AI pri domačih nalogah za namige, preverjanje korakov, matematično razmišljanje in povratne informacije pri pisanju, pri tem pa naj končno delo ostane tvoje."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Podpora z učencem na prvem mestu"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Uporabi časovno potovanje z AI, zgodovinske pogovore in vadbo razprave za raziskovanje konteksta, dokazov, argumentov in perspektiv."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Učne kartice najbolje delujejo, ko preverjajo eno idejo naenkrat, razkrijejo odgovore šele po trudu in hitreje ponovijo zgrešene kartice."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Vsaka stran zunaj aplikacije ima zdaj nalogo: graditi zaupanje, razložiti učno pot in učence usmeriti k koristnemu naslednjemu dejanju, ne da bi skrila pomembne podrobnosti."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Uporabi razpravo za primerjavo najmočnejše trditve in najmočnejšega protiargumenta."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Popravljeno napako spremeni v učno kartico ali kratek seznam za pozneje."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Uporabi namige, preverjanja korakov in povratne informacije pri pisanju, ne da bi učenje spremenil v prepisovanje odgovorov."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Učni prostori z AI po meri in z zaupnostjo podatkov."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "Uporabi inspir za povratne informacije o esejih, podporo pri branju, govorno vajo, kritiko virov in zanke popravljanja, ki izboljšajo strukturo, ne da bi nadomestile učenčev glas."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Popravi moj osnutek"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Uporabi inspir za namige pri domačih nalogah, preverjanje matematičnih korakov, povratne informacije pri pisanju, kritiko virov, sokratska vprašanja in učne kartice brez izpostavljanja zasebnih klepetov."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Razlago spremeni v kartice za aktivni priklic: eno pojmovno kartico, eno kartico s primerom in eno kartico za napačno predstavo."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Uporabi inspir za postopno pomoč pri matematiki, namige pri domačih nalogah, sokratsko razmišljanje, kvize, učne kartice in pripravo na izpite brez prepisovanja odgovorov."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "AI tutorji po predmetih"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Brezplačno uporabljaj javne gostujoče načine, nato razišči odprtokodno delo in poti za šolsko uvedbo."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Najprej poslanstvo"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Razpravljaj o tej zgodovinski ali filozofski trditvi z obeh strani. Loči dokaze, predpostavke in vrednote."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Uporabi sokratska vprašanja"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Uporabi datum izpita, snov, razpoložljivi čas in šibka področja za načrt, ki zdrži resnično življenje."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Uporabi povezani vodnik, poziv, predmetno središče ali učno pot, da pozneje ponoviš šibko točko."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Uporabi povratne informacije pri pisanju za strukturo, jasnost in dokaze, pri tem pa naj končni osnutek ostane prepoznavno tvoj."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "Koristno od prvega klika"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Upravljanje videa"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Napredek videa"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Povratne informacije, ki ohranijo glas"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "Oglej si 31 s"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Zanke za šibka področja"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "Kaj mora učni spremljevalec z AI narediti za vsakogar"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Kaj učenci običajno vprašajo, preden začnejo."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "Kaj naj najprej vprašam, ko je tema pretežka?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "Kaj naj vključim v poziv za domačo nalogo?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Kaj lahko narediš"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "Šolski AI pod lastno znamko"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Zakaj lahko sokratski AI tutor pomaga, da se ideje utrdijo"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "Zakaj združiti zgodovino z razpravo?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "Zakaj po razlagi uporabiti sokratska vprašanja?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "S pomočjo AI mentorja predelaj algebro, analizo, besedilne naloge in matematične pojme korak za korakom."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir obstaja za trenutek, ko učenec želi nekaj razumeti in potrebuje potrpežljiv prostor za začetek. Film predstavi izdelek kot brezplačnega javnega učnega spremljevalca za radovednost, vajo in dostop."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Predelaj matematične korake"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Napiši razlago v treh stavkih brez gledanja, nato prosi sokratski način, naj najde šibki člen."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Preden prosiš za pomoč, natančno napiši, kje si obtičal."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Pisanje"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Mentor za pisanje"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Da, kadar daje namige, preverja razmišljanje, razlaga napake in od tebe zahteva, da končni odgovor pripraviš sam, namesto da bi ga napisal namesto tebe."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Vsako sejo začni s hitrim kvizom pred ponovnim branjem."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Da. Javni tematski klepeti, kot so Nauči se karkoli, Sokratsko poučevanje, Mentor za domače naloge, kvizi in učne kartice, se odprejo neposredno v gostujočem načinu."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Da. Šole lahko najprej uporabijo javni izdelek, nato pa se pogovorijo o učnih prostorih z AI po meri, šolskih potekih dela, zaupnosti in možnostih financiranega dostopa."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Sestavi časovni potni list, preveri potovalno opozorilo in razišči zgodovinski svet skozi prizor, zemljevid, časovnico, ljudi, pravila, inventar in dokaze."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Potuj skozi obdobje"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Povratne informacije, ki ohranijo glas"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sokratsko tutorstvo uporablja vprašanja, hipoteze, namige in razmislek za globlje razumevanje kot pasivno branje odgovorov."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Podaj povratne informacije o strukturi, jasnosti in dokazih. Ohrani moj glas in ne prepiši celotnega odgovora."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Preizkusi svoje razmišljanje"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Pri matematiki ali logiki delaj po en korak in vprašaj, zakaj je vsak premik dovoljen, preden nadaljuješ."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Preveri razmišljanje vrstico za vrstico"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Ali lahko zgodovinski dialog z AI navedem kot vir?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Časovno potovanje"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Ne. Ustvarjen dialog obravnavaj kot učno simulacijo. Za dejanske trditve citiraj prave primarne ali sekundarne vire."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Začni z nalogo, ki jo potrebuješ opravljeno."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Uporabi inspir za postopno pomoč pri matematiki, namige pri domačih nalogah, sokratsko razmišljanje, kvize, učne kartice in pripravo na izpite brez prepisovanja odgovorov."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Naslednji korak"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Vklopi zvok filma"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Preizkusi me v Trivia"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Da, kadar daje namige, preverja razmišljanje, razlaga napake in od tebe zahteva, da končni odgovor pripraviš sam, namesto da bi ga napisal namesto tebe."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Uporabi AI kot mentorja za razumevanje, vajo in povratne informacije, ne kot bližnjico, ki tiho odstrani učenje."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Srednji del predstavi inspir skozi razumevanje, namige, kvize in aktivne učne zanke."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Uporabi povezani vodnik, poziv, predmetno središče ali učno pot, da pozneje ponoviš šibko točko."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Uvodni prizori pokažejo učenje kot nekaj, kar bi moral vsak začeti takoj."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Uči se programiranja, razhroščuj pojme, načrtuj projekte, razlagaj podatke in raziskuj tehnična vprašanja z javnimi AI načini, ki učenca ohranjajo v procesu."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Prepis"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Skrij poglavja filma"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Postavi prvo vprašanje in takoj preidi v vajo."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Prebrskaj predmete"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Radovedni učenci, ki želijo, da se zgodovina in ideje zdijo umeščene, odprte za razpravo in žive, ne da bi izgubili sled dokazom."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Šole lahko ponudijo AI klepetalne izkušnje pod lastno znamko, prilagojene svojim učencem, vključno z vsebino in poteki dela, usklajenimi z NCERT, pri čemer uporabo financirajo partnerske šole ali sponzorstvo CSR."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Razpravljaj o katerikoli temi"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI urnik učenja"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Vsak vodnik kaže na način, poziv ali zanko ponavljanja, da se branje lahko spremeni v vajo."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir v gibanju"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Učne zanke, vodniki za AI tutorstvo in praktični pozivi."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Zgrešene odgovore spremeni v zanke ponavljanja"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "Načrt priprave na izpit z AI"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Praktični vodnik za uporabo načina Nauči se karkoli v inspir za osnove učenja, s pozivi, učnimi zankami in varnejšimi navadami pri uporabi AI."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Popravi eno napako"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Iz napak, oklevanja, formul, definicij in pojmov, ki jih nisi znal jasno razložiti, naredi učne kartice."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Brezplačno učenje kot gost"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Uporabi inspir za namige pri domačih nalogah, preverjanje matematičnih korakov, povratne informacije pri pisanju, kritiko virov, sokratska vprašanja in učne kartice brez izpostavljanja zasebnih klepetov."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Najprej se preizkusi, da vidiš, česa se res spomniš in kje te samozavest zavaja."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Učna platforma z AI naslednje generacije."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Javne učne načine lahko preizkusiš brezplačno. Shranjeni klepeti, računi, skrbniška orodja in uporabniški podatki ostanejo zasebni."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Preizkusi argument"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Odpri učni zemljevid"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "AI učne kartice za ponavljanje"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Nauči se karkoli"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Razumi zgodovinski kontekst, vprašaj perspektivo, primerjaj trditve in loči simulacijo od dokumentiranega dejstva."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Sestavi načrt za izpit"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Uporabi inspir za povratne informacije o esejih, podporo pri branju, govorno vajo, kritiko virov in zanke popravljanja, ki izboljšajo strukturo, ne da bi nadomestile učenčev glas."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Realističen urnik"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Ne prosi za celoten povzetek, preden poznaš predhodne ideje."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Pogovarjaj se z zgodovinsko osebo"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Shrani napako"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Zgradi potek priprave na izpit z AI: realističen učni načrt, vajo priklica, kvize, učne kartice in pregled šibkih področij."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Vključi vprašanje, kaj si že poskusil, kje si obtičal in ali želiš namig, preverjanje koraka ali povratne informacije."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Vaja priklica"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Odpri način in začni takoj, brez računa za javno gostujočo izkušnjo."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Začni s temo, nalogo, osnutkom, izpitom ali idejo v načinu, ki ustreza delu."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Ne izdeluj učnih kartic iz stavkov, ki jih še ne znaš razložiti s svojimi besedami."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Priljubljene poti"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "kako z AI razumeti težko temo"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Da. Javni gostujoči učni načini so zasnovani za brezplačen dostop, zato lahko učenci začnejo brez šolske uvedbe ali plačljivega računa."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "Javne učne načine lahko preizkusiš brezplačno. Shranjeni klepeti, računi, skrbniška orodja in uporabniški podatki ostanejo zasebni."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Vaja, ne prepisovanje odgovorov"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Načina za domače naloge in sokratsko učenje sta zasnovana okoli namigov, razmišljanja, preverjanja korakov in učenčevih razlag, namesto da bi preprosto izročila končne odgovore."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Preveri moj model"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Skrij prepis filma"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Upravljanje videa"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Učenci z malo časa, obsežno snovjo in potrebo po realističnem ponavljanju, brez pretvarjanja, da je vse enako pomembno."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Brezplačno učenje z AI za vse | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Ali lahko uporabljam inspir brez prijave?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Načrtuj delo, vadi priklic in zapri šibke točke s kvizi in aktivnim priklicem."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Hitri odgovori"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Pogovarjaj se z zgodovinsko osebnostjo, pri tem pa ustvarjen dialog loči od dokumentiranega citata."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Razlage v preprostem jeziku"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Sestavi načrt"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Po simulaciji povzemi okolje, omejitve in dokaze."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Da. Šole lahko najprej uporabijo javni izdelek, nato pa se pogovorijo o učnih prostorih z AI po meri, šolskih potekih dela, zaupnosti in možnostih financiranega dostopa."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Matematika, pisanje, programiranje, zgodovina, domače naloge in priprava na izpite potrebujejo različne vrste pomoči. Začni pri predmetu, nato se premakni v način, poziv, vodnik ali zanko ponavljanja, ki ustreza."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Primerjaj argumente"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Pregled z aktivnim priklicem"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Vadba argumentiranja"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Ustvarjalnik učnih kartic"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Zaustavi film"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Prosi za preprostejšo razlago najšibkejšega pojma."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Ohrani pot živo"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Izboljšaj osnutek"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Razpravljaj o katerikoli temi, sprejmi izzive, primerjaj trditve in se nauči graditi močnejše argumente."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Zgodovina"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Je lahko pomoč z AI pri domačih nalogah etična?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Preizkusi mentorja za domače naloge"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Pozivi in učni krog za Nauči se karkoli"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Knjižnica {value1} vodnikov, ustvarjena za učenje, ki se spremeni v dejanja."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Za šole in partnerje CSR"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Šolski poteki dela"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Ne prilepi naloge in ne prosi za končni odgovor."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "AI tutor za težke pojme"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Dejanje po branju"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Vprašanja te prisilijo, da razkriješ svoj model teme; tam se običajno pokažejo zmeda, lažna samozavest in manjkajoče predznanje."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Odprto po zasnovi"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir nastaja javno."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Postavljaj vprašanja, izzivaj ideje in se uči zgodovino skozi utemeljene pogovore z javnimi osebnostmi iz preteklosti."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Uporabi namige, preverjanja korakov in povratne informacije pri pisanju, ne da bi učenje spremenil v prepisovanje odgovorov."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Zakaj lahko sokratski AI tutor pomaga, da se ideje utrdijo"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Predvajaj film"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Kaj naj najprej vprašam, ko je tema pretežka?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI mentor za domače naloge"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Uporabi datum izpita, snov, razpoložljivi čas in šibka področja za načrt, ki zdrži resnično življenje."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Prosi za pet vprašanj, ki mešajo definicije, primere in naloge za prenos znanja."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Preklopi v vprašanja, da razkriješ predpostavke in zapolniš vrzeli, namesto da pasivno bereš odgovor."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Uporabi časovno potovanje z AI, zgodovinske pogovore in vadbo razprave za raziskovanje konteksta, dokazov, argumentov in perspektiv."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Pripravi učni urnik, preveri šibka področja s kvizom in zgrešene odgovore pretvori v kartice za ponavljajoči pregled."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Trenutna prenova inspirlearning.com."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Uči se skozi osredotočena vprašanja, namige in razmislek namesto pasivnega branja odgovorov."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Vodniki po načinih, zanke pozivov, učne metode in temeljni članki za pogoste učne trenutke."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "pogovor z zgodovinskimi osebnostmi z AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Vsak način se odpre kot javni klepet za goste s svojim namenom, primeri in učnim tokom, zato lahko učenci takoj začnejo s pravo vrsto podpore."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Kako se inspir razlikuje od generičnega AI klepetalnika?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Zasnovano za uporabo"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Preizkus pred ponavljanjem"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Ustvarjenega dialoga ne obravnavaj kot resničnega citata ali primarnega vira."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Preizkusi se"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Ne pripravi načrta s predpostavko, da vsaka tema zahteva enako časa."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Predvajaj predogled učenja z inspir"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Začni tako, da prosiš za preprosto razlago, eno vsakdanjo analogijo in tri ideje, ki jih potrebuješ, da bo tema dobila smisel."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "AI ustvarjalnik kvizov za izpite"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Razlago pretvori v kartice za aktivni priklic, nato se po napakah ali oklevanju vrni k njim."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Znova zaženi film"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Ali lahko inspir pomaga pri domačih nalogah, ne da bi spodbujal goljufanje?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Napredek videa"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Najprej dobi preprost model"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "knjižnica učnih vodnikov inspir z AI"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Začni z Nauči se karkoli"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Brezplačen javni učni spremljevalec z AI za tutorstvo, vajo, kvize, učne kartice, razpravo, povratne informacije pri pisanju, pomoč pri programiranju in načrtovanje učenja."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Šolski AI pod lastno znamko"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Začni učno sejo v živo."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI tutor za matematiko"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Mentor za matematične korake"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Komunikacija"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Uči se s pogovorom, preverjanjem, razpravo in raziskovanjem."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "učni vodniki in vadbene zanke"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Razpravljaj o trditvi z več strani, da opaziš predpostavke, kompromise in šibke dokaze."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI tutor za zgodovino"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Hitre učne poti"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Začni pri prvih načelih"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Utišaj film"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Oglej si 31 s"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Načrtuj ponavljanje za izpit, ustvarjaj kvize, izdeluj učne kartice, razporedi razmaknjeno ponavljanje in ohrani realno motivacijo z osredotočenimi učnimi načini AI."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Odpri točno tisto vrsto pomoči, po katero si prišel."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Zapiske ali teme spremeni v osredotočene učne kartice z namigi, odgovori, primeri in pogostimi pastmi."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sokratski tutor"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "Sokratski AI tutor"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Ideje za pozive in ponovljiva učna zanka za pridobivanje uporabnih učnih rezultatov z Nauči se karkoli v inspir."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Razišči šolske možnosti"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "S pomočjo AI mentorja predelaj algebro, analizo, besedilne naloge in matematične pojme korak za korakom."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Ustvarjeno za radovednost, vajo in dostop."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Sprašuj me o teh temah eno vprašanje naenkrat. Po vsakem odgovoru razloži vrzel in postopoma povečuj težavnost."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Priljubljene učne poti z AI"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Jasne meje zasebnosti"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sokratska preverjanja"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Brezplačna javna učna platforma z AI"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Preberi poslanstvo"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sokratsko poučevanje"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Ponovno predvajaj"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Javno učno spletno mesto, ki ga ljudje hitro razumejo."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Kaj učenci običajno vprašajo, preden začnejo."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Prizori, pozorni na dokaze"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Povzemi kontekst"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Vodniki, poti, predmeti in pozivi vodijo do naslednjega koristnega mesta za vajo."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Ne razpravljaj samo za stran, s katero se že strinjaš."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Koristen učni zemljevid"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Na koncu imaš model v preprostem jeziku, ostrejša vprašanja, primere, ki jih znaš razložiti nazaj, in kartice za priklic pri ponavljanju."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Učenci potrebujejo zaporedje, ne kupa povezav. Te poti povezujejo načine v praktične učne zanke za razumevanje, domače naloge, pripravo na izpite in raziskovanje."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Nauči se karkoli"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Poglavja filma"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Preprosti naslednji koraki"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Učni načrt naj bo realističen"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Knjižnica vodnikov"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Zakaj po razlagi uporabiti sokratska vprašanja?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Praktičen pogled na to, kako lahko AI naredi učenje jasnejše, bolj osebno in dostopnejše, ne da bi učence spremenila v pasivne zbiralce odgovorov."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argumentacija"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Uporabi povratne informacije pri pisanju za strukturo, jasnost in dokaze, pri tem pa naj končni osnutek ostane prepoznavno tvoj."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Možnosti, usklajene z NCERT"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Postavi mi pet sokratskih vprašanj o tej temi. Po vsakem odgovoru mi povej, katero predpostavko sem uporabil in kaj naj preverim naslednje."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Ali je inspir brezplačen za uporabo?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Zgodovinski način prosi, naj označi, kaj je dokumentirano, sklepano ali simulirano."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Razišči knjižnico vodnikov"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Iz napak naredi učne kartice in se k njim vrni z zamikom."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Pomoč z AI pri domačih nalogah brez prepisovanja odgovorov"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Prosi za namige, preverjanja, povratne informacije in učne načrte, ki razmišljanje pustijo učencu."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Širša odprtokodna platforma inspir."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Ne preskoči prikaza tega, kar si že poskusil; uporabna pomoč je odvisna od tega konteksta."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Preveri ta korak v mojem postopku. Če je napačen, razloži napako in mi daj eno naslednjo potezo."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Postavi me v ta čas in kraj. Dokumentirana dejstva označi ločeno od verjetne simulacije in vprašaj, kaj opazim."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Razloži nazaj"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Zanke za šibka področja"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Vsak vodnik se konča z načrti vaje, potmi in povezavami do točno tistega učnega načina, ki ustreza."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Kaj mora učni spremljevalec z AI narediti za vsakogar"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI tutor za zgodovino"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Vprašaj zgodovinsko osebnost"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Preveri en korak"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Razpravljaj o trditvi"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Popravi šibko točko"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Mentor za domače naloge"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Razloži naslednji korak"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "AI učne kartice za aktivni priklic"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Kratek film predstavi prepričanje inspir, da mora biti učenje brezplačno, dostopno in živo."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Začni pri stvari, ki je ne razumeš, in dobi model v preprostem jeziku, primere in naslednje korake."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Tematski sklopi"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Pokaži prepis filma"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Domače naloge"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Uporabi mentorstvo z AI pri domačih nalogah za namige, preverjanje korakov, matematično razmišljanje in povratne informacije pri pisanju, pri tem pa naj končno delo ostane tvoje."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Jasne razlage"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Pretvori v učne kartice"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Kako zgodaj naj pripravim načrt za izpit?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Film se iz navdiha premakne v praktično obljubo: potrpežljivega učnega spremljevalca z AI."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Gradi z nami"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Preverjanja korakov"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Dobra prva področja:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Loči dejstvo od izmišljije"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Zasnovano za samozavest"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Začni pri predmetu, nato odpri pravi učni način."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Izboljšaj pisanje z načrtovanjem, popravljanjem, strukturo in povratnimi informacijami, ki ohranijo tvoj glas."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI pomočnik za domače naloge"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Vnesi obdobje"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Uporabi ga v praksi"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Ni še eno polje za odgovore. Je prostor za učenje."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Radovednost se začne tukaj"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Odpri klepet za goste"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Ponavljaj z učnimi karticami"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Ne dovoli, da igra vlog nadomesti datume, kontekst, dokumente ali oznake dokazov."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Začni takoj, ko poznaš datum izpita. Če je časa malo, daj prednost šibkim področjem, vprašanjem v slogu preteklih izpitov in vsakodnevnemu priklicu."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Po vsakem namigu pojasni, zakaj korak deluje, preden nadaljuješ."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Prosi za namig"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Vsak članek se povezuje s kategorijami, živimi načini, predmetnimi središči, učnimi potmi in sorodnimi vodniki."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Razmišljaj globlje"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Radovednost, vaja in AI, ki poučuje."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Razloži to temo v preprostem jeziku. Navedi tri predhodne ideje, ki jih potrebujem, eno analogijo in eno pogosto napačno predstavo."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Zaupne uvedbe"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Odpri film čez cel zaslon"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Kaj lahko narediš"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Najtežje zgrešeno vprašanje spremeni v učno kartico in jo ponovi pozneje."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Vprašaj karkoli"
     }
   ]
 }

@@ -9,6 +9,9 @@ export const D1_DATABASE_ID = "7cb2ddf7-ca3d-4f46-a022-cc8b3a25b7b9";
 export const VECTORIZE_INDEX_NAME = "inspirlearning-memory-prod";
 export const R2_BUCKET_NAME = "inspirlearning-next-cache-prod";
 export const PROFILE_IMAGES_R2_BUCKET_NAME = "inspirlearning-profile-images-prod";
+export const MEMORY_POST_TURN_QUEUE_NAME = "inspirlearning-memory-post-turn-prod";
+export const MEMORY_POST_TURN_DLQ_NAME = "inspirlearning-memory-post-turn-dlq";
+export const CLOUDFLARE_CLI_TIMEOUT_MS = 10 * 60 * 1_000;
 export const LOCAL_GATE_IDS = [
   "typecheck",
   "cloudflare-worker-typecheck",
@@ -47,6 +50,8 @@ export type RunCommandOptions = {
   input?: string;
   allowFailure?: boolean;
   maxBuffer?: number;
+  env?: Record<string, string | undefined>;
+  timeoutMs?: number;
 };
 
 export type RunCommandResult = {
@@ -56,6 +61,8 @@ export type RunCommandResult = {
   stderr: string;
   output: string;
 };
+
+export type WranglerRunner = typeof runWrangler;
 
 export function runWrangler(args: string[], options: RunCommandOptions = {}) {
   return runWranglerResult(args, options).output;
@@ -95,8 +102,10 @@ function runCommand(command: string, args: string[], options: RunCommandOptions 
     cwd: process.cwd(),
     encoding: "utf8",
     input: options.input,
-    env: commandEnv(),
+    env: { ...commandEnv(), ...options.env },
     maxBuffer: options.maxBuffer ?? 64 * 1024 * 1024,
+    timeout: options.timeoutMs ?? CLOUDFLARE_CLI_TIMEOUT_MS,
+    killSignal: "SIGKILL",
   });
   const stdout = result.stdout ?? "";
   const stderr = result.stderr ?? (result.error ? String(result.error) : "");
@@ -143,6 +152,8 @@ function commandExistsWithoutWranglerRecursion(command: string) {
       NO_COLOR: "1",
     },
     maxBuffer: 1024 * 1024,
+    timeout: 30_000,
+    killSignal: "SIGKILL",
   });
   return result.status === 0;
 }
@@ -169,6 +180,23 @@ export function cloudflareDir(backupDir: string) {
   return dir;
 }
 
+export function parseD1TimeTravelBookmark(output: string) {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(output.trim());
+  } catch {
+    throw new Error("Wrangler D1 Time Travel did not return valid JSON.");
+  }
+  if (!isUnknownRecord(parsed)) {
+    throw new Error("Wrangler D1 Time Travel did not return a valid bookmark.");
+  }
+  const bookmark = parsed.bookmark;
+  if (typeof bookmark !== "string" || !/^\S{8,}$/.test(bookmark)) {
+    throw new Error("Wrangler D1 Time Travel did not return a valid bookmark.");
+  }
+  return bookmark;
+}
+
 export function stableStringify(value: unknown): string {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
   if (Array.isArray(value)) return `[${value.map((item) => stableStringify(item)).join(",")}]`;
@@ -181,4 +209,8 @@ export function stableStringify(value: unknown): string {
 
 export function createHash() {
   return crypto.createHash("sha256");
+}
+
+function isUnknownRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

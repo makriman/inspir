@@ -41,7 +41,10 @@ import {
   removeLocaleFromPath,
 } from "../lib/i18n/routing";
 import { createTranslationLookup } from "../lib/i18n/translation-lookup";
-import { isTranslationBundleCompleteAndFluent } from "../lib/i18n/translation-quality";
+import {
+  isTranslationBundleCompleteAndFluent,
+  isTranslationFieldLikelyFluent,
+} from "../lib/i18n/translation-quality";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
@@ -51,7 +54,10 @@ import {
   maxProfileImageUploadRequestBytes,
   prepareProfileImage,
 } from "../lib/profile/photo";
-import { profileImageObjectKey } from "../lib/profile/photo-key";
+import {
+  isValidProfileImageObjectKey,
+  profileImageObjectKey,
+} from "../lib/profile/photo-key";
 import { updateProfileSchema } from "../lib/profile/validation";
 import { isChatAppPath } from "../lib/routes/chat-path";
 
@@ -101,11 +107,21 @@ test("profile photo upload preflight rejects oversized content length", () => {
   assert.equal(isOversizedProfileImageUpload(String(maxProfileImageUploadRequestBytes + 1)), true);
 });
 
-test("profile photo R2 keys are deterministic and do not expose user ids", async () => {
-  const key = await profileImageObjectKey("user@example.com", "a".repeat(64));
-  assert.match(key, /^profile-images\/users\/[a-f0-9]{2}\/[a-f0-9]{64}\/a{64}$/);
-  assert.equal(key.includes("user@example.com"), false);
-  assert.equal(key.includes(".."), false);
+test("profile photo R2 keys are unique per upload without exposing user ids", async () => {
+  const [firstKey, secondKey] = await Promise.all([
+    profileImageObjectKey("user@example.com", "a".repeat(64)),
+    profileImageObjectKey("user@example.com", "a".repeat(64)),
+  ]);
+  const uniqueKeyPattern = /^profile-images\/users\/[a-f0-9]{2}\/[a-f0-9]{64}\/a{64}\/[a-f0-9-]{36}$/;
+  assert.match(firstKey, uniqueKeyPattern);
+  assert.match(secondKey, uniqueKeyPattern);
+  assert.notEqual(firstKey, secondKey);
+  assert.equal(firstKey.includes("user@example.com"), false);
+  assert.equal(firstKey.includes(".."), false);
+  assert.equal(isValidProfileImageObjectKey(firstKey), true);
+
+  const historicalKey = `profile-images/users/${"b".repeat(2)}/${"b".repeat(64)}/${"c".repeat(64)}`;
+  assert.equal(isValidProfileImageObjectKey(historicalKey), true);
 });
 
 test("prompt assembly includes age context only when known", () => {
@@ -211,6 +227,244 @@ test("field translation validation rejects unchanged visible mode labels", () =>
   );
 });
 
+test("field translation validation rejects unchanged capitalized UI copy", () => {
+  assert.equal(isValidFieldTranslation("Privacy Policy", "Privacy Policy", "Hindi"), false);
+  assert.equal(isValidFieldTranslation("Get Started Now", "Get Started Now", "Hindi"), false);
+  assert.equal(isValidFieldTranslation("Task Board", "Task Board", "Hindi"), false);
+  assert.equal(isValidFieldTranslation("For", "For", "Chinese"), false);
+  assert.equal(isValidFieldTranslation("For", "For", "Yoruba"), false);
+  assert.equal(isValidFieldTranslation("Age", "Age", "French"), false);
+  assert.equal(isValidFieldTranslation("GET STARTED", "GET STARTED", "Spanish"), false);
+  assert.equal(isValidFieldTranslation("STEM", "STEM", "Spanish"), true);
+  assert.equal(
+    isValidFieldTranslation("Freedman accountant", "Freedman accountant", "Dutch"),
+    false,
+  );
+  assert.equal(isValidFieldTranslation("XP & Leveling", "XP & Leveling", "Malay"), false);
+});
+
+test("translation fluency preserves explicit historical names across localized punctuation", () => {
+  const source = "Ada Lovelace, Cleopatra, B. R. Ambedkar...";
+
+  assert.equal(isValidFieldTranslation(source, source, "Spanish"), true);
+  assert.equal(isTranslationFieldLikelyFluent(source, source, "Spanish"), true);
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      source,
+      "Ada Lovelace、Cleopatra、B. R. Ambedkar...",
+      "Japanese",
+    ),
+    true,
+  );
+  assert.equal(isTranslationFieldLikelyFluent("Privacy Policy", "Privacy Policy", "Hindi"), false);
+});
+
+test("translation fluency rejects exact English scaffolding and short non-Latin hybrids", () => {
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Important events, facts learned, and uncertainty notes stay visible.",
+      "Impotant events, facts aprendered, y uncertainty notas stay visible.",
+      "Spanish",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "It is impossible to know anything until terminal value is calculated.",
+      "It es impossible un know anything until terminal valo es calculated.",
+      "Spanish",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Right. Transfer to a fresh example is stronger evidence than recognition.",
+      "Right. Transfer un un fresh ejemplo es más fuerte evidencia than recognition.",
+      "Spanish",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Assistant to a trading household or workshop",
+      "Assistant un un trading household o wokshop",
+      "Spanish",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Public learning pages are open, while API routes remain blocked.",
+      "Public öğrenme pages are open, while API rotaları remain blocked.",
+      "Turkish",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent("Time travel", "Time यात्रा", "Hindi"),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Work through fractions",
+      "Work के ज़रिए fractions",
+      "Hindi",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Debate with a personality",
+      "Debate के साथ a personality",
+      "Hindi",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Pick the strongest",
+      "समझें: Pick the strongest",
+      "Hindi",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "How do I look at a painting?",
+      "हिंदी में: How do I look at a painting?",
+      "Hindi",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "Cíl is ne k make people passive v front z AI. cíl is k give every student patient nejprve place k ask, practise, get zpětná vazba, vyzkoušet again, build confidence.",
+      "Czech",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "Unlike ein generic chatbot, inspir organizes AI rund um Lernen Modi damit Lernende kann starten mit die kind von help sie brauchen: hints, Fragen, Quizze, aktives Abrufen, Rollenspiel, Debatte, oder Feedback.",
+      "German",
+    ),
+    false,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "inspir is a مجاني تعلم AI platform مع عام وضع الضيفs لـ explanations، مدرب سقراطيing، الواجبات coaching، اختبارات، بطاقات تعليمية، نقاش، تمثيل أدوار، الكتابة تغذية راجعة، و الدراسة planning.",
+      "Arabic",
+    ),
+    false,
+  );
+});
+
+test("translation fluency keeps protected names, technical terms, and fully translated short copy", () => {
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "From inspir.app to inspirlearning.com",
+      "Von inspir.app zu inspirlearning.com",
+      "German",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Format this website in MLA",
+      "Formatieren Sie diese Website in MLA",
+      "German",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "From inspir.app to inspirlearning.com",
+      "inspir.app से inspirlearning.com तक",
+      "Hindi",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Meet B. R. Ambedkar in committee",
+      "समिति में B. R. Ambedkar से मिलें",
+      "Hindi",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent("Google email", "Google ईमेल", "Hindi"),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent("Mock IELTS speaking", "IELTS बोलने का अभ्यास", "Hindi"),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent("Time travel", "समय यात्रा", "Hindi"),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "DeepHack recognition",
+      "የDeepHack እውቅና",
+      "Amharic",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "الهدف هو مساعدة الناس على العثور بسرعة على صفحة التعلم العامة المناسبة. المسارات والأدلة ومراكز التعلم العامة مفتوحة، بينما تظل مسارات API وadmin وreset والمسارات المساعدة الخاصة مغلقة.",
+      "Arabic",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Format this website in MLA",
+      "Formate este website em MLA",
+      "Portuguese",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Try first: a value logs as undefined right after a fetch call. What is the most useful first check?",
+      "መጀመሪያ ሞክር፦ fetch call በኋላ ዋጋ undefined ብሎ ይመዘገባል። በጣም ጠቃሚው የመጀመሪያ ምርመራ ምንድነው?",
+      "Amharic",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "St Paul's Cathedral was destroyed",
+      "Nawasak ang St Paul's Cathedral",
+      "Filipino",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "Aralin ang algebra, calculus, problemang pasalaysay, at mga konsepto sa matematika nang paisa-isang hakbang kasama ang AI coach.",
+      "Filipino",
+    ),
+    true,
+  );
+  assert.equal(
+    isTranslationFieldLikelyFluent(
+      "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "Karramawar Jury's Choice daga Amod Malviya a DeepHack saboda aikin koyon AI.",
+      "Hausa",
+    ),
+    true,
+  );
+});
+
 test("locale routing helpers preserve canonical English and prefix non-English paths", () => {
   assert.equal(localizePath("/", "Spanish"), "/es");
   assert.equal(localizePath("/blog/example", "Spanish"), "/es/blog/example");
@@ -236,10 +490,13 @@ test("static locale availability admits only render-localized page bodies", () =
   assert.equal(isStaticSiteLanguageAvailableForPath("/", "Spanish"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/about", "Spanish"), false);
-  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), false);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/reset_pw", "Spanish"), false);
   assert.equal(localizeStaticSiteHref("/mission?source=home#principles", "Spanish"), "/es/mission?source=home#principles");
-  assert.equal(localizeStaticSiteHref("/mission?source=home#principles", "Hindi"), "/mission?source=home#principles");
+  assert.equal(
+    localizeStaticSiteHref("/mission?source=home#principles", "Hindi"),
+    "/hi/mission?source=home#principles",
+  );
   assert.equal(localizeStaticSiteHref("/chat/learn-anything?source=home", "Hindi"), "/hi/chat/learn-anything?source=home");
   assert.equal(localizeStaticSiteHref("/blog/ai-learn-anything-guide", "Spanish"), "/blog/ai-learn-anything-guide");
 });

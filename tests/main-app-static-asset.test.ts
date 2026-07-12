@@ -4,10 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { getCuratedMainAppTranslationBundle } from "../lib/i18n/main-app-curated";
 import type { MainAppTranslationBundle } from "../lib/i18n/main-app-types";
-import {
-  buildStaticMainAppBundleAsset,
-  retiredStaticGuestAuthTranslationKeys,
-} from "../lib/i18n/main-app-static-asset";
+import { buildStaticMainAppBundleAsset } from "../lib/i18n/main-app-static-asset";
 
 const sourceHash = "a".repeat(64);
 
@@ -55,7 +52,7 @@ test("static main-app bundle paths reject unsafe locale and source hash input", 
   );
 });
 
-test("deployed guest bundles are complete translated subsets without retired account promises", () => {
+test("deployed main-app bundles include complete translated account and memory copy", () => {
   const curated = getCuratedMainAppTranslationBundle("English");
   assert.ok(curated);
 
@@ -65,14 +62,10 @@ test("deployed guest bundles are complete translated subsets without retired acc
   const deployedTranslationKeys = Object.keys(deployed.strings).sort();
 
   assert.equal(deployed.sourceHash, curated.sourceHash);
-  assert.equal(deployedSourceKeys.length, Object.keys(curated.sourceStrings).length - 6);
+  assert.equal(deployedSourceKeys.length, Object.keys(curated.sourceStrings).length);
   assert.deepEqual(deployedTranslationKeys, deployedSourceKeys);
   assert.ok(Object.values(deployed.strings).every((translation) => translation.trim().length > 0));
-  for (const key of retiredStaticGuestAuthTranslationKeys) {
-    assert.equal(key in deployed.sourceStrings, false);
-    assert.equal(key in deployed.strings, false);
-  }
-  assert.doesNotMatch(
+  assert.match(
     asset.serialized,
     /Easy Google login|Continue with Google|Google email|Your saved chats|Sign in to keep learning/i,
   );

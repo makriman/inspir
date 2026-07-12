@@ -8,12 +8,14 @@ import { defaultLanguage, languageConfigs, supportedLanguages } from "../lib/con
 import { topicSeeds } from "../lib/content/topics";
 import { materializeStaticMarketingAssets } from "../scripts/cloudflare/materialize-static-marketing-assets";
 
+const fixtureIcon = Buffer.from("89504e470d0a1a0a0000000d49484452", "hex");
+
 test("OpenNext prerenders become direct Free-plan static assets", () => {
   const cwd = makeFixture();
   try {
-    const report = materializeStaticMarketingAssets(cwd);
+    const report = materializeFixture(cwd);
 
-    assert.equal(report.htmlDocuments, 52 + (supportedLanguages.length - 1) + supportedLanguages.length);
+    assert.equal(report.htmlDocuments, 54 + (supportedLanguages.length - 1) + supportedLanguages.length);
     assert.equal(report.localizedHomeDocuments, supportedLanguages.length - 1);
     assert.equal(report.staticChatDocuments, supportedLanguages.length);
     assert.equal(report.staticChatRedirects, topicSeeds.length * 2);
@@ -21,7 +23,15 @@ test("OpenNext prerenders become direct Free-plan static assets", () => {
     assert.equal(report.staticChatDynamicRedirects, topicSeeds.length);
     assert.ok(report.staticChatDynamicRedirects < 100);
     assert.equal(report.staticMainAppBundles, supportedLanguages.length);
-    assert.equal(report.routeDocuments, 8);
+    assert.equal(report.legacyTranslationApiAssets, 4);
+    assert.equal(report.legacyMainAppTranslationResponses, 2);
+    assert.equal(report.legacySiteTranslationResponses, 2);
+    assert.equal(
+      report.legacyCompleteTranslationResponses + report.legacyIncompleteTranslationResponses,
+      4,
+    );
+    assert.ok(report.legacyTranslationApiBytes > 0);
+    assert.equal(report.routeDocuments, 9);
     assert.equal(report.skippedEntries, 5);
     assert.ok(report.assetFiles < 20_000);
     assert.match(report.outputSha256, /^[a-f0-9]{64}$/);
@@ -32,9 +42,15 @@ test("OpenNext prerenders become direct Free-plan static assets", () => {
       fs.readFileSync(path.join(cwd, ".open-next/assets/manifest.webmanifest"), "utf8"),
       '{"name":"inspir"}',
     );
+    assert.deepEqual(fs.readFileSync(path.join(cwd, ".open-next/assets/icon.png")), fixtureIcon);
     assert.equal(fs.existsSync(path.join(cwd, ".open-next/assets/api/secret/index.html")), false);
     assert.equal(fs.readFileSync(path.join(cwd, ".open-next/assets/api/topics"), "utf8"), '{"topics":[]}');
     assert.equal(fs.readFileSync(path.join(cwd, ".open-next/assets/chat/index.html"), "utf8"), "<h1>Chat</h1>");
+    assert.equal(fs.readFileSync(path.join(cwd, ".open-next/assets/admin/index.html"), "utf8"), "<h1>Admin</h1>");
+    assert.equal(
+      fs.readFileSync(path.join(cwd, ".open-next/assets/reset_pw/index.html"), "utf8"),
+      "<h1>Account recovery</h1>",
+    );
     assert.equal(
       fs.readFileSync(path.join(cwd, ".open-next/assets/hi/chat/index.html"), "utf8"),
       "<h1>Hindi chat</h1>",
@@ -83,7 +99,17 @@ test("static materialization rejects unknown OpenNext cache contracts", () => {
   const cwd = makeFixture();
   try {
     writeCache(cwd, "broken", { type: "future-cache-contract", value: true });
-    assert.throws(() => materializeStaticMarketingAssets(cwd), /Unsupported OpenNext cache entry/);
+    assert.throws(() => materializeFixture(cwd), /Unsupported OpenNext cache entry/);
+  } finally {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("static materialization rejects an invalid cached app icon", () => {
+  const cwd = makeFixture();
+  try {
+    writeCache(cwd, "icon.png", binaryRoute(Buffer.from("not a png"), "image/png"));
+    assert.throws(() => materializeFixture(cwd), /icon\.png cache must contain a valid PNG/);
   } finally {
     fs.rmSync(cwd, { recursive: true, force: true });
   }
@@ -94,7 +120,7 @@ test("static materialization rejects billable Next image optimizer URLs", () => 
   try {
     writeCache(cwd, "optimizer-dependent", app('<img src="/_next/image?url=%2Fmedia%2Fhero.jpg&amp;w=640&amp;q=75">'));
     assert.throws(
-      () => materializeStaticMarketingAssets(cwd),
+      () => materializeFixture(cwd),
       /must not depend on the billable Next image optimizer/,
     );
   } finally {
@@ -111,7 +137,7 @@ test("static materialization rejects residual game assets outside route HTML", (
       "removed game bundle",
     );
     assert.throws(
-      () => materializeStaticMarketingAssets(cwd),
+      () => materializeFixture(cwd),
       /Game assets must not be present in the static production output/,
     );
   } finally {
@@ -128,7 +154,7 @@ test("static materialization counts committed and generated dynamic redirects to
     );
     fs.writeFileSync(path.join(cwd, "public/_redirects"), `${existingDynamicRules.join("\n")}\n`);
     assert.throws(
-      () => materializeStaticMarketingAssets(cwd),
+      () => materializeFixture(cwd),
       /dynamic redirect rules; the limit is 100/,
     );
   } finally {
@@ -145,7 +171,7 @@ test("static materialization counts committed and generated static redirects tog
     );
     fs.writeFileSync(path.join(cwd, "public/_redirects"), `${existingStaticRules.join("\n")}\n`);
     assert.throws(
-      () => materializeStaticMarketingAssets(cwd),
+      () => materializeFixture(cwd),
       /redirect rules exceed the platform limits: 2001 static/,
     );
   } finally {
@@ -178,7 +204,9 @@ function makeFixture() {
   writeCache(cwd, "hi/games", app("removed localized game"));
   writeCache(cwd, "hi/admin", app("removed localized admin"));
   writeCache(cwd, "hi/chat/private", app("removed private chat"));
+  writeCache(cwd, "admin", app("<h1>Admin</h1>"));
   writeCache(cwd, "chat", app("<h1>Chat</h1>"));
+  writeCache(cwd, "reset_pw", app("<h1>Account recovery</h1>"));
   for (const language of supportedLanguages) {
     if (language === defaultLanguage) continue;
     const prefix = languageConfigs[language].prefix;
@@ -191,8 +219,18 @@ function makeFixture() {
   writeCache(cwd, "llms.txt", route("# inspir"));
   writeCache(cwd, "llms-full.txt", route("# inspir full"));
   writeCache(cwd, "manifest.webmanifest", route('{"name":"inspir"}'));
+  writeCache(cwd, "icon.png", binaryRoute(fixtureIcon, "image/png"));
   writeCache(cwd, "rss.xml", route("<rss />"));
   return cwd;
+}
+
+function materializeFixture(cwd: string) {
+  return materializeStaticMarketingAssets(cwd, {
+    legacyTranslationApi: {
+      languages: ["English", "Hindi"],
+      siteNamespaces: ["route:home"],
+    },
+  });
 }
 
 function app(html: string) {
@@ -201,6 +239,14 @@ function app(html: string) {
 
 function route(body: string) {
   return { type: "route", body };
+}
+
+function binaryRoute(body: Buffer, contentType: string) {
+  return {
+    type: "route",
+    meta: { status: 200, headers: { "content-type": contentType } },
+    body: body.toString("base64"),
+  };
 }
 
 function writeCache(cwd: string, key: string, payload: object) {

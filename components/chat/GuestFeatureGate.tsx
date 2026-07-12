@@ -1,20 +1,20 @@
 import { Sparkles } from "lucide-react";
 import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
-import { defaultTopicWorkspacePath } from "@/lib/content/topic-path";
+import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 
 export function GuestFeatureGate({
   category,
   description,
-  featureName,
   name,
   starters,
+  t,
   topicHref,
 }: {
   category: string;
   description: string;
-  featureName: string;
   name: string;
   starters: string[];
+  t: (source: string) => string;
   topicHref: string;
 }) {
   return (
@@ -23,12 +23,16 @@ export function GuestFeatureGate({
         <TopicIntroCard category={category} name={name} description={description} />
         <div className="inspir-guest-feature-card">
           <Sparkles size={26} />
-          <span>Continue learning</span>
-          <h2>{featureName}</h2>
-          <p>{description}</p>
-          <a className="inspir-guest-modal-primary" href={defaultTopicWorkspacePath()}>
-            Learn Anything
-          </a>
+          <span>{t("Sign in to keep learning")}</span>
+          <h2>{t("Continue learning")}</h2>
+          <p>{t("Easy Google login, then inspir stores your learning history, language preference, and chats so everything is ready next time. inspir stays free to use.")}</p>
+          <GoogleContinueButton
+            className="inspir-guest-modal-primary"
+            callbackUrl={topicHref}
+            errorMessage={t("We could not sign you in. Please try again.")}
+          >
+            {t("Continue with Google")}
+          </GoogleContinueButton>
         </div>
         {starters.length ? (
           <div className="inspir-starter-grid">

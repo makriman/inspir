@@ -27,6 +27,8 @@ export const CURRENT_RUNTIME_SECRET_ENV_KEYS = [
   "GOOGLE_CLIENT_SECRET",
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
   "OPENAI_API_KEY",
+  "E2E_TEST_MUTATION_RUN_ID",
+  "E2E_TEST_AUTH_EXPIRES_AT",
 ] as const;
 
 const ALWAYS_SAFE_ENV = {
@@ -59,7 +61,6 @@ const LOCAL_PREVIEW_RUNTIME_ENV = {
 const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = [
   "E2E_TEST_AUTH_SECRET",
   "E2E_TEST_AUTH_EMAIL",
-  "E2E_TEST_AUTH_IS_ADMIN",
 ] as const;
 
 export function withSanitizedProjectEnvFiles<T>(
@@ -124,11 +125,17 @@ export function sanitizedDotEnvContent(cwd = process.cwd(), options: SanitizedPr
 
 export function localPreviewRuntimeEnv() {
   const localPreviewUrl = process.env.PLAYWRIGHT_BASE_URL?.trim() || "http://localhost:8787";
-  const previewAdminEmail =
-    process.env.E2E_TEST_AUTH_IS_ADMIN === "1" ? process.env.E2E_TEST_AUTH_EMAIL?.trim() : undefined;
+  const previewAdminEmail = exactLocalE2EEmail(process.env.E2E_TEST_AUTH_EMAIL);
+  const previewE2ESecret = exactLocalE2ESecret(process.env.E2E_TEST_AUTH_SECRET);
   const env: Record<string, string> = {
     ...LOCAL_PREVIEW_RUNTIME_ENV,
-    ...(previewAdminEmail ? { ADMIN_EMAILS: previewAdminEmail } : {}),
+    ...(previewAdminEmail && previewE2ESecret
+      ? {
+          ADMIN_EMAILS: previewAdminEmail,
+          E2E_TEST_AUTH_ALLOW_LOCAL_CREATE: "1",
+          E2E_TEST_AUTH_REQUIRE_EXISTING: "0",
+        }
+      : {}),
     APP_URL: localPreviewUrl,
     AUTH_URL: localPreviewUrl,
     BETTER_AUTH_URL: localPreviewUrl,
@@ -140,12 +147,24 @@ export function localPreviewRuntimeEnv() {
   return env;
 }
 
+function exactLocalE2EEmail(value: string | undefined) {
+  if (!value || value !== value.trim() || value !== value.toLowerCase()) return undefined;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? value : undefined;
+}
+
+function exactLocalE2ESecret(value: string | undefined) {
+  if (!value || !/^[\x21-\x7e]+$/.test(value)) return undefined;
+  const bytes = Buffer.byteLength(value, "utf8");
+  return bytes >= 32 && bytes <= 512 ? value : undefined;
+}
+
 function stringifyValues(values: Record<string, string | number | boolean>) {
   return Object.fromEntries(Object.entries(values).map(([key, value]) => [key, String(value)]));
 }
 
 export function isForbiddenBuildEnvKey(key: string) {
   if (key === "SKIP_NEXT_APP_BUILD") return true;
+  if (key === "E2E_TEST_AUTH_ALLOW_LOCAL_CREATE") return true;
   if ((CURRENT_RUNTIME_SECRET_ENV_KEYS as readonly string[]).includes(key)) return true;
   if (/SECRET|TOKEN|PASSWORD|PRIVATE_KEY|API_KEY|ACCESS_KEY/i.test(key)) return key !== "CLOUDFLARE_ACCOUNT_ID";
   return false;

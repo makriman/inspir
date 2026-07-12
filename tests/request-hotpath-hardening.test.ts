@@ -95,7 +95,10 @@ test("topic seed synchronization is explicit, deterministic, and local-setup own
   const sql = buildTopicSeedSql(topicSeeds, 123, hash);
   const batches = buildTopicSeedSqlBatches(topicSeeds, 123, hash);
 
-  assert.equal(packageJson.scripts?.["cf:sync:topic-seeds"], "tsx scripts/cloudflare/sync-topic-seeds.ts");
+  assert.equal(
+    packageJson.scripts?.["cf:sync:topic-seeds"],
+    "tsx scripts/cloudflare/run-production-release-operation.ts sync-topic-seeds",
+  );
   assert.match(setup, /syncTopicSeeds\("local"\)/);
   assert.ok(setup.indexOf('syncTopicSeeds("local")') < setup.indexOf('syncSiteTranslationSources("local")'));
   assert.equal(hash.length, 64);

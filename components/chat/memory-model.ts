@@ -56,6 +56,11 @@ export type MemoryDashboard = {
   summary: MemorySummary | null;
   memories: MemoryItem[];
   profiles: MemoryProfile[];
+  memoryPage?: {
+    hasMore: boolean;
+    nextCursor: string | null;
+    limit: number;
+  };
 };
 
 export type MemorySettingsPatch = {

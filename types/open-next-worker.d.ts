@@ -8,7 +8,3 @@ declare module "*/.open-next/worker.js" {
 
   export default handler;
 }
-
-declare module "*/.open-next/.build/durable-objects/queue.js" {
-  export class DOQueueHandler extends DurableObject<CloudflareBindings> {}
-}

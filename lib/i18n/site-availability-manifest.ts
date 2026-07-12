@@ -5,7 +5,8 @@ import type { SupportedLanguage } from "@/lib/content/languages";
 export const staticSiteTranslationNamespaceAvailability: Partial<Record<SupportedLanguage, readonly string[]>> = {
   "Hindi": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Spanish": [
     "marketing-shell",
@@ -14,270 +15,337 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   ],
   "French": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "German": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Italian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Portuguese": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Dutch": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Russian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Ukrainian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Polish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Romanian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Czech": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Hungarian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Greek": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Turkish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Arabic": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Hebrew": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Persian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Urdu": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Bengali": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Tamil": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Telugu": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Marathi": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Gujarati": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Kannada": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Malayalam": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Punjabi": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Odia": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Assamese": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Nepali": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Sinhala": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Chinese": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Japanese": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Korean": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Vietnamese": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Thai": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Indonesian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Malay": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Filipino": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Swahili": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Afrikaans": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Amharic": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Yoruba": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Zulu": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Hausa": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Somali": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Norwegian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Swedish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Danish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Finnish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Icelandic": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Irish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Welsh": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Catalan": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Basque": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Galician": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Serbian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Croatian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Bosnian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Bulgarian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Slovak": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Slovenian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Lithuanian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Latvian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Estonian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Albanian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Georgian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Armenian": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "Azerbaijani": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ]
 } as const;

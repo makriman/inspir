@@ -1,9 +1,15 @@
 import { topicSeeds, type TopicSeed } from "../content/topics";
+import {
+  acceptsOpenAiSse,
+  readBoundedOpenAiChatCompletionText,
+} from "./openai-chat-contract";
 
 export const FREE_GUEST_CHAT_DELIVERY = "lean-api-worker";
 export const MAX_FREE_GUEST_CHAT_BODY_BYTES = 20 * 1024;
 export const MAX_FREE_GUEST_CHAT_HISTORY_MESSAGES = 12;
 export const MAX_FREE_GUEST_CHAT_HISTORY_CHARACTERS = 12_000;
+export const MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES = 128 * 1_024;
+export const MAX_FREE_GUEST_LEGACY_ASSISTANT_CHARACTERS = 12_000;
 
 const guestSessionCookie = "inspir_guest_session";
 const guestUsageCookie = "inspir_guest_messages_used";
@@ -328,7 +334,8 @@ export async function handleFreeGuestChat(
     return jsonResponse({ error: "Topic not available for guest chat" }, 404);
   }
 
-  const provider = providerSettings(env);
+  const useOpenAiSse = acceptsOpenAiSse(request);
+  const provider = providerSettings(env, useOpenAiSse);
   if (!provider) {
     emitLog(runtime, {
       event: "guest_chat_provider_unavailable",
@@ -425,7 +432,13 @@ export async function handleFreeGuestChat(
 
   const language = normalizePreferredLanguage(parsed.value.preferredLanguage);
   const model = modelForTopic(env, topic);
-  const providerBody = buildProviderBody(parsed.value, topic, language, model);
+  const providerBody = buildProviderBody(
+    parsed.value,
+    topic,
+    language,
+    model,
+    useOpenAiSse,
+  );
   let providerResponse: Response;
   try {
     providerResponse = await (runtime.fetch ?? fetch)(provider.endpoint, {
@@ -466,7 +479,7 @@ export async function handleFreeGuestChat(
   }
 
   const contentType = providerResponse.headers.get("content-type")?.toLowerCase() ?? "";
-  if (!providerResponse.body || !contentType.startsWith("text/event-stream")) {
+  if (useOpenAiSse && (!providerResponse.body || !contentType.startsWith("text/event-stream"))) {
     await cancelBody(providerResponse.body);
     emitLog(runtime, {
       event: "guest_chat_provider_invalid_stream",
@@ -481,12 +494,36 @@ export async function handleFreeGuestChat(
   }
 
   const responseHeaders = new Headers(guestHeaders);
-  responseHeaders.set("content-type", providerResponse.headers.get("content-type") ?? "text/event-stream; charset=utf-8");
-  responseHeaders.set("x-accel-buffering", "no");
-  return new Response(providerResponse.body, {
-    status: 200,
-    headers: responseHeaders,
+  if (useOpenAiSse) {
+    responseHeaders.set("content-type", providerResponse.headers.get("content-type") ?? "text/event-stream; charset=utf-8");
+    responseHeaders.set("x-accel-buffering", "no");
+    return new Response(providerResponse.body, {
+      status: 200,
+      headers: responseHeaders,
+    });
+  }
+
+  if (!contentType.startsWith("application/json")) {
+    await cancelBody(providerResponse.body);
+    return jsonResponse(
+      { error: "The assistant could not answer right now." },
+      502,
+      guestHeaders,
+    );
+  }
+  const assistantText = await readBoundedOpenAiChatCompletionText(providerResponse, {
+    maxBytes: MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES,
+    maxCharacters: MAX_FREE_GUEST_LEGACY_ASSISTANT_CHARACTERS,
   });
+  if (!assistantText) {
+    return jsonResponse(
+      { error: "The assistant could not answer right now." },
+      502,
+      guestHeaders,
+    );
+  }
+  responseHeaders.set("content-type", "text/plain; charset=utf-8");
+  return new Response(assistantText, { status: 200, headers: responseHeaders });
 }
 
 async function readBoundedJson(request: Request): Promise<ReadJsonResult> {
@@ -822,6 +859,7 @@ function buildProviderBody(
   topic: TopicSeed,
   language: string,
   model: string,
+  stream: boolean,
 ) {
   const profile = topic.metadata.modelProfile;
   const reasoningModel = isReasoningModel(model);
@@ -838,8 +876,8 @@ function buildProviderBody(
       })),
       { role: "user" as const, content: payload.content },
     ],
-    stream: true,
-    stream_options: { include_usage: true },
+    stream,
+    ...(stream ? { stream_options: { include_usage: true } } : {}),
     max_completion_tokens: profile === "reasoning" ? 3_200 : 2_400,
     ...(reasoningModel
       ? { reasoning_effort: profile === "reasoning" ? ("low" as const) : ("minimal" as const) }
@@ -859,7 +897,7 @@ function compactTopicPrompt(topic: TopicSeed, language: string) {
   ].join("\n");
 }
 
-function providerSettings(env: FreeGuestChatEnv): ProviderSettings | null {
+function providerSettings(env: FreeGuestChatEnv, stream: boolean): ProviderSettings | null {
   const gatewayBaseUrl = nonEmpty(env.CLOUDFLARE_AI_GATEWAY_BASE_URL);
   const gatewayToken = nonEmpty(env.CLOUDFLARE_AI_GATEWAY_TOKEN);
   const openAiKey = nonEmpty(env.OPENAI_API_KEY);
@@ -868,7 +906,7 @@ function providerSettings(env: FreeGuestChatEnv): ProviderSettings | null {
     const endpoint = chatCompletionsEndpoint(gatewayBaseUrl, cloudflareGatewayHost);
     const byokAlias = nonEmpty(env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS);
     if (!endpoint || !gatewayToken || !byokAlias) return null;
-    const headers = gatewayProviderHeaders(gatewayToken, byokAlias);
+    const headers = gatewayProviderHeaders(gatewayToken, byokAlias, stream);
     return { endpoint, headers, provider: "cloudflare-ai-gateway" };
   }
 
@@ -880,26 +918,26 @@ function providerSettings(env: FreeGuestChatEnv): ProviderSettings | null {
   if (!endpoint) return null;
   return {
     endpoint,
-    headers: providerHeaders(openAiKey),
+    headers: providerHeaders(openAiKey, stream),
     provider: "openai",
   };
 }
 
-function providerHeaders(bearerToken: string) {
+function providerHeaders(bearerToken: string, stream: boolean) {
   return new Headers({
     authorization: `Bearer ${bearerToken}`,
     "content-type": "application/json",
-    accept: "text/event-stream",
+    accept: stream ? "text/event-stream" : "application/json",
   });
 }
 
-function gatewayProviderHeaders(gatewayToken: string, byokAlias: string) {
+function gatewayProviderHeaders(gatewayToken: string, byokAlias: string, stream: boolean) {
   return new Headers({
     "cf-aig-authorization": `Bearer ${gatewayToken}`,
     "cf-aig-byok-alias": byokAlias,
     "cf-aig-collect-log-payload": "false",
     "content-type": "application/json",
-    accept: "text/event-stream",
+    accept: stream ? "text/event-stream" : "application/json",
   });
 }
 

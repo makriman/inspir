@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "../globals.css";
+import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { StaticDocumentNavigation } from "@/components/navigation/StaticDocumentNavigation";
 import { Geist } from "next/font/google";
 import { languageConfigs } from "@/lib/content/languages";
@@ -77,7 +79,10 @@ export default function WorkspaceLayout({
     >
       <body className="min-h-full bg-[#171614] text-white">
         <StaticDocumentNavigation />
-        <AnalyticsScripts />
+        <AnalyticsScripts automaticPageViews={false} />
+        <Suspense fallback={null}>
+          <ProductAnalytics />
+        </Suspense>
         {children}
       </body>
     </html>

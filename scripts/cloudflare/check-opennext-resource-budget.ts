@@ -16,11 +16,20 @@ export type OpenNextResourceMetrics = OpenNextResourceBudget & {
   limits: OpenNextResourceBudget;
 };
 
+const localizedLanguageCount = supportedLanguages.filter(
+  (language) => language !== defaultLanguage,
+).length;
+
 export const defaultOpenNextResourceBudget: OpenNextResourceBudget = {
   artifactBytes: 256 * 1024 * 1024,
   cacheBytes: 128 * 1024 * 1024,
-  cacheEntries: 400,
-  localizedCacheEntries: 140,
+  // The deploy intentionally prerenders three complete localized route
+  // families: home, the static chat shell, and mission. Keep the localized
+  // cap exact so a fourth family still fails closed. The separate 450-entry
+  // internal-cache guard leaves only deterministic headroom; the materializer
+  // independently enforces Cloudflare Free's final Static Asset file limit.
+  cacheEntries: 450,
+  localizedCacheEntries: localizedLanguageCount * 3,
   largestCacheEntryBytes: 2 * 1024 * 1024,
 };
 
@@ -45,7 +54,14 @@ export function inspectOpenNextResourceBudget(
   const artifactPresent = fs.existsSync(artifactRoot) && fs.statSync(artifactRoot).isDirectory();
   const artifactFiles = listFiles(artifactRoot);
   const cacheFiles = listFiles(cacheRoot);
-  const artifactBytes = totalBytes(artifactFiles);
+  // The native Worker deploy graph contains cloudflare-worker.ts and
+  // `.open-next/assets`; `.open-next/cache` is build-time input consumed by
+  // the static materializer and is never uploaded by wrangler.jsonc. Keep the
+  // cache under its own strict byte/entry limits without counting the same
+  // prerender payload a second time against the deployable-artifact budget.
+  const cacheFileSet = new Set(cacheFiles);
+  const deployableArtifactFiles = artifactFiles.filter((file) => !cacheFileSet.has(file));
+  const artifactBytes = totalBytes(deployableArtifactFiles);
   const cacheBytes = totalBytes(cacheFiles);
   const largestCacheEntryBytes = Math.max(0, ...cacheFiles.map((file) => fs.statSync(file).size));
   const localizedCacheEntries = cacheFiles.filter((file) => isLocalizedCacheEntry(cacheRoot, file)).length;
@@ -61,7 +77,7 @@ export function inspectOpenNextResourceBudget(
     ...metrics,
     ok:
       artifactPresent &&
-      artifactFiles.length > 0 &&
+      deployableArtifactFiles.length > 0 &&
       (Object.keys(limits) as Array<keyof OpenNextResourceBudget>).every((key) => metrics[key] <= limits[key]),
     limits,
   };

@@ -8,7 +8,6 @@ declare global {
     MEMORY_VECTORIZE: VectorizeIndex;
     MEMORY_POST_TURN_QUEUE: Queue<import("./lib/ai/memory-queue").MemoryQueueMessage>;
     NEXT_CACHE_DO_QUEUE: DurableObjectNamespace<import("./cloudflare-worker").DOQueueHandler>;
-    NEXT_INC_CACHE_R2_BUCKET: R2Bucket;
     PROFILE_IMAGES_R2_BUCKET: R2Bucket;
     WORKER_SELF_REFERENCE: Fetcher;
     APP_URL: string;
@@ -21,10 +20,6 @@ declare global {
     OPENAI_REASONING_MODEL: string;
     OPENAI_STRUCTURED_MODEL: string;
     OPENAI_EMBEDDING_MODEL: string;
-    AI_RESPONSE_CACHE_ENABLED: string;
-    AI_RESPONSE_CACHE_TTL_SECONDS: string;
-    AI_RESPONSE_CACHE_MAX_RESPONSE_BYTES: string;
-    AI_RESPONSE_CACHE_SEMANTIC_ENABLED: string;
     RATE_LIMIT_USER_CHAT_DAILY: string;
     RATE_LIMIT_GUEST_SESSION_DAILY: string;
     RATE_LIMIT_GUEST_FINGERPRINT_DAILY: string;
@@ -37,14 +32,24 @@ declare global {
     OBSERVABILITY_INCIDENT_MODE: string;
     APP_WRITE_FREEZE: string;
     APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: string;
-    MAX_REVALIDATE_CONCURRENCY: string;
-    NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION: string;
     CLOUDFLARE_AI_GATEWAY_TOKEN: string;
     AUTH_SECRET: string;
     AUTH_GOOGLE_ID: string;
     AUTH_GOOGLE_SECRET: string;
     ADMIN_EMAILS: string;
     CRON_SECRET: string;
+    E2E_TEST_AUTH_SECRET?: string;
+    E2E_TEST_AUTH_EMAIL?: string;
+    E2E_TEST_AUTH_REQUIRE_EXISTING?: string;
+    E2E_TEST_AUTH_ALLOW_LOCAL_CREATE?: string;
+    E2E_TEST_MUTATION_RUN_ID?: string;
+    E2E_TEST_AUTH_EXPIRES_AT?: string;
+  }
+
+  namespace Cloudflare {
+    interface Env extends CloudflareEnv {
+      readonly __inspirCloudflareBindings?: never;
+    }
   }
 }
 

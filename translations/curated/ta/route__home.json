@@ -4,517 +4,12 @@
   "locale": "ta",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} நடைமுறை வழிகாட்டிகள்"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "கற்றதைச் செயலாக்க உதவும் {value1} வழிகாட்டிகள் கொண்ட நூலகம்."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "வழிகாட்டல், பயிற்சி, வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், எழுதுதல் கருத்துரை, குறியீட்டு உதவி, படிப்பு திட்டமிடல் ஆகியவற்றுக்கான இலவச பொதுப் AI கற்றல் துணை."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "குழப்பத்திலிருந்து தெளிவான விளக்கம், சோக்ரட்டீய கேள்விகள், உதாரணங்கள், செயலில் நினைவுகூரல் ஆகியவற்றுக்குச் செல்லும் நடைமுறை AI கற்றல் பாதை."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "அடித்தளக் கற்றலுக்காக inspir-இல் எதையும் கற்கவும்-ஐ பயன்படுத்தும் நடைமுறை வழிகாட்டி; கேள்வி முன்மாதிரிகள், படிப்பு சுழற்சிகள், பாதுகாப்பான AI பழக்கங்கள் உடன்."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "மாணவர்கள் சும்மா பதில்களைச் சேகரிப்பவர்களாக மாறாமல், கற்றலை AI எப்படி தெளிவாகவும் தனிப்பட்டதாகவும் எளிதில் அணுகக்கூடியதாகவும் மாற்ற முடியும் என்பதைப் பார்க்கும் நடைமுறை பார்வை."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "மக்கள் விரைவாகப் புரிந்துகொள்ளக்கூடிய பொதுக் கற்றல் தளம்."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "கற்றல் இலவசமாகவும் அணுகக்கூடியதாகவும் உயிரோட்டமுடனும் இருக்க வேண்டும் என்ற inspir-இன் நம்பிக்கையை அறிமுகப்படுத்தும் குறும்படம்."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "முதல் கேள்விக்கான வழிகாட்டி"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "அணுகல்தன்மை, கேள்வி முன்மாதிரிகள், சோதனைகள், பாதுகாப்பான AI நடத்தை, கற்றோர் ஓட்டங்கள், இடைமுக மெருகூட்டல்."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "படித்த பின் செயல்"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "செயலில் பயிற்சி"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "செயலில் நினைவுகூரல் மறுபார்வை"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "ஒவ்வொரு குறிப்பிற்குப் பிறகும், தொடர்வதற்கு முன் அந்த படி ஏன் செயல்படுகிறது என்பதை விளக்குங்கள்."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "உருவகப்படுத்தலுக்குப் பிறகு, சூழல், கட்டுப்பாடுகள், ஆதாரங்கள் ஆகியவற்றைச் சுருக்குங்கள்."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI குறியீட்டு பயிற்சியாளர்"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI விவாதப் பயிற்சி"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI தேர்வு தயாரிப்பு திட்டம்"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "வினாடி வினாக்கள் மற்றும் செயலில் நினைவுகூரலுடன் AI தேர்வு தயாரிப்பு திட்டம்"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI தேர்வு தயாரிப்பு திட்டமிடுபவர்"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI நினைவூட்டல் அட்டைகள் மற்றும் செயலில் நினைவுகூரல்: மேலும் நினைவில் வைத்துக் கொள்வது எப்படி"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "செயலில் நினைவுகூரலுக்கான AI நினைவூட்டல் அட்டைகள்"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "மறுபயிற்சிக்கான AI நினைவூட்டல் அட்டைகள்"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI வரலாறு பயிற்சியாளர்"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI வரலாறு பயிற்சியாளர்"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI வீட்டுப்பாட வழிகாட்டி"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "ஏமாற்றம் இல்லாமல் AI வீட்டுப்பாட உதவி"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "பதில்களை நகலெடுக்காமல் AI வீட்டுப்பாட உதவி"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI வீட்டுப்பாட உதவியாளர்"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI கணித படிப்படி வழிகாட்டி"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI கணித பயிற்சியாளர்"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "தேர்வுகளுக்கான AI வினாடி வினா உருவாக்கி"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI சோக்ரட்டீய பயிற்சியாளர்"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI படிப்பு அட்டவணை"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI காலப் பயணக் கற்றல்"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "கடினமான கருத்துகளுக்கான AI பயிற்சியாளர்"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "பாடவாரியாக AI பயிற்சியாளர்கள்"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "மாணவர்களுக்கான AI எழுதுதல் கருத்துரை"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI எழுதுதல் பயிற்சியாளர்"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "சரிபார்ப்பு கேள்விக்கு பதிலளியுங்கள், ஒரு படியை முயலுங்கள், ஒரு கூற்றை விவாதியுங்கள், ஒரு வரைவைக் திருத்துங்கள், அல்லது நினைவூட்டல் அட்டைகள் உருவாக்குங்கள்."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "வினாடி வினாக்கள் மீண்டும் வாசிப்பதை விட சிறந்தவையா?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "வாதம்"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "வாதப் பயிற்சி"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "எந்தக் கேள்வியையும் கேட்டு, தெளிவான விளக்கங்கள், உதாரணங்கள், தொடர்க் கேள்விகள், பொறுமையான AI வழிகாட்டுதல் மூலம் கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "எதையும் கேளுங்கள்"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "ஒரு குறிப்பைக் கேளுங்கள்"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "பதிலை அல்ல, ஒரு குறிப்பைக் கேளுங்கள்"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "மிகவும் பலவீனமாக உள்ள கருத்துக்கான எளிய விளக்கத்தைக் கேளுங்கள்."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "வரையறைகள், உதாரணங்கள், மாற்றிப் பயன்படுத்தும் சிக்கல்கள் ஆகியவற்றை கலந்த ஐந்து கேள்விகளை கேளுங்கள்."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "சிந்தனை கற்றோரிடமே இருக்க உதவும் குறிப்புகள், சரிபார்ப்புகள், கருத்துரை, படிப்பு திட்டங்கள் ஆகியவற்றைக் கேளுங்கள்."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "தலைப்பை எளிய மொழியில் விளக்கச் சொல்லி, பின்னர் ஒரு ஒப்புமை, ஒரு உதாரணம், ஒரு பொதுவான தவறான எண்ணம் ஆகியவற்றைக் கேளுங்கள்."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "இந்தத் தலைப்பைப் பற்றி எனக்கு ஐந்து சோக்ரட்டீய கேள்விகள் கேளுங்கள். ஒவ்வொரு பதிலுக்கும் பிறகு நான் பயன்படுத்திய முன்கருத்து என்ன, அடுத்து என்ன சோதிக்க வேண்டும் என்பதைக் கூறுங்கள்."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "கேள்விகள் கேளுங்கள், கருத்துகளுக்கு சவால் விடுங்கள், கடந்த காலப் பொதுப் பிரமுகர்களுடன் ஆதாரமுள்ள உரையாடல்களால் வரலாறைக் கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "வரலாற்று முறையிடம் ஆவணப்படுத்தப்பட்டது, ஊகிக்கப்பட்டது, அல்லது உருவகப்படுத்தப்பட்டது என்ன என்பதை குறிக்கச் சொல்லுங்கள்."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "உண்மையான கேள்வியை கேளுங்கள்"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "உங்கள் முதல் கேள்வியை கேட்டு உடனே பயிற்சிக்குச் செல்லுங்கள்."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "பொதுவாகக் கிடைக்கும்; அதே நேரத்தில் பள்ளிகள் ரகசியமான தனிப்பயன் பதிப்புகளை இயக்கலாம்."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "எல்லா முறைகளையும் பாருங்கள்"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "பாடங்களைப் பாருங்கள்"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "காலப் பயண அடையாளத்தை உருவாக்கி, பயண அறிவுறுத்தலை முடித்து, காட்சி, வரைபடம், காலவரிசை, மக்கள், விதிகள், பொருட்கள், ஆதாரம் ஆகியவற்றின் மூலம் ஒரு வரலாற்றுலகத்தை ஆராயுங்கள்."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "யதார்த்தமான படிப்பு திட்டம், நினைவுகூரல் பயிற்சி, வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், பலவீனப் பகுதிகளின் மறுபார்வை ஆகியவற்றுடன் AI தேர்வு தயாரிப்பு பணிச்சூழலை உருவாக்குங்கள்."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "தேர்வு திட்டம் உருவாக்குங்கள்"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "திட்டத்தை உருவாக்குங்கள்"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "எங்களுடன் உருவாக்குங்கள்"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "ஆர்வம், பயிற்சி, அணுகல் ஆகியவற்றுக்காக உருவாக்கப்பட்டது."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "பொதுவான உரையாடல் பெட்டியிலிருந்து அல்ல, உண்மையான கற்றோர் நடத்தை அடிப்படையாக உருவாக்கப்பட்டது."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "பயன்படுத்தப்படுவதற்காக உருவாக்கப்பட்டது"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "AI வீட்டுப்பாட உதவி ஒழுக்கமானதாக இருக்க முடியுமா?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "AI வரலாற்று உரையாடலை ஆதாரமாக மேற்கோள் காட்டலாமா?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "உள்நுழையாமல் inspir-ஐப் பயன்படுத்த முடியுமா?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "ஏமாற்றத்தை ஊக்குவிக்காமல் வீட்டுப்பாடத்தில் inspir உதவுமா?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "என் புரிதல் மாதிரியைச் சரிபார்க்கவும்"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "ஒரு படியைச் சரிபார்க்கவும்"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "காரணத்தை வரி வரியாகச் சரிபார்க்கவும்"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "என் செயல்முறையில் இந்தப் படியைச் சரிபார்க்கவும். அது தவறாக இருந்தால், தவறை விளக்கி அடுத்த ஒரு நகர்வைக் கூறுங்கள்."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "தெளிவான விளக்கங்கள்"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "தெளிவான தனியுரிமை எல்லைகள்"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "குறியீட்டு பயிற்சியாளர்"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "நிரலாக்கம்"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "தொடர்பு"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "வாதங்களை ஒப்பிடுங்கள்"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "ரகசியமான செயல்படுத்தல்கள்"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "தொடரவும்"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "பொறியாளர்கள், கல்வியாளர்கள், வடிவமைப்பாளர்கள், மாணவர்கள், மேலும் AI கற்றல் பாதுகாப்பாகவும் தெளிவாகவும் எளிதில் அணுகக்கூடியதாகவும் பயனுள்ளதாகவும் இருக்க வேண்டும் என்று விரும்பும் அனைவரிடமிருந்தும் பங்களிப்புகள் வரவேற்கப்படுகின்றன."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "தவறுகளை மாற்றுங்கள்"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "விளக்கத்தை செயலில் நினைவுகூரல் அட்டைகளாக மாற்றி, தவறுகள் அல்லது தயக்கம் ஏற்பட்ட பிறகு அவற்றை மீண்டும் பாருங்கள்."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "சிறிய வினாடி வினா உருவாக்குங்கள்"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "ஆர்வம் இங்கிருந்து தொடங்குகிறது"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "ஆர்வம், பயிற்சி, கற்பிக்கும் AI."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "ஆதாரத்திலிருந்து விலகாமல், வரலாறும் கருத்துகளும் சூழலுடனும் விவாதிக்கத்தக்கதாகவும் உயிரோட்டமுடனும் உணரப்பட வேண்டும் என்று விரும்பும் ஆர்வமுள்ள கற்றோர்."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "தரவு ரகசியத்துடன் தனிப்பயன் AI கற்றல் இடங்கள்."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "ஒரு கூற்றை விவாதியுங்கள்"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "எந்தத் தலைப்பையும் விவாதியுங்கள்"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "எந்தத் தலைப்பையும் விவாதியுங்கள், சவால்களைப் பெறுங்கள், கூற்றுகளை ஒப்பிடுங்கள், மேலும் வலுவான வாதங்களை அமைப்பது எப்படி என்பதை கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "கூற்றுகள், ஆதாரம், மதிப்புகள், முன்கருத்துகள் ஆகியவற்றைப் பிரிக்க விவாதம் உதவுகிறது; இதனால் வரலாற்றுப் பொருளாக்கம் இன்னும் துல்லியமாகிறது."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "கூற்றை விவாதியுங்கள்"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "முன்கருத்துகள், சமரசங்கள், பலவீனமான ஆதாரம் ஆகியவற்றைக் கவனிக்கக் கூற்றை ஒன்றுக்கும் மேற்பட்ட கோணங்களில் விவாதியுங்கள்."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "இந்த வரலாற்று அல்லது தத்துவக் கூற்றை இரு பக்கங்களிலிருந்தும் விவாதியுங்கள். ஆதாரம், முன்கருத்துகள், மதிப்புகள் ஆகியவற்றைப் பிரியுங்கள்."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "நம்பிக்கைக்காக வடிவமைக்கப்பட்டது"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "திருத்தப்பட்ட பகுதி ஏன் மேம்பட்டது என்பதை நீங்கள் விளக்க முடியும் வரை அதை ஏற்க வேண்டாம்."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "தேவையான அடிப்படை கருத்துகளை அறியும்முன் முழுச் சுருக்கத்தைக் கேட்க வேண்டாம்."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "நீங்கள் ஏற்கெனவே ஒப்புக்கொள்ளும் பக்கத்தை மட்டும் விவாதிக்க வேண்டாம்."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "திட்டமிடல்"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "தயக்கத்தைப் புறக்கணிக்க வேண்டாம்; உறுதியின்மை மறுபார்வைக்கு பயனுள்ள அறிகுறி."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "தேதிகள், சூழல், ஆவணங்கள், அல்லது ஆதாரக் குறிச்சொற்களுக்கு பதிலாக வேடமிட்டு உரையாடலை விட வேண்டாம்."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "ஆர்வம், வீட்டுப்பாடம், மறுபயிற்சி, பெரிய கேள்விகள் ஆகியவற்றை விளக்கி, திரும்பக் கேட்டு, பயிற்சி செய்ய உதவும் வழிகாட்டப்பட்ட AI கற்றல் அமர்வுகளாக inspir மாற்றுகிறது."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "ஒவ்வொரு தலைப்புக்கும் சமமான நேரம் தேவை எனக் கருதும் திட்டம் அமைக்க வேண்டாம்."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "சிறிய வினாடி வினா உருவாக்குங்கள்"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "உங்கள் சொற்களில் இன்னும் விளக்க முடியாத வாக்கியங்களிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்க வேண்டாம்."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "அடுத்த படி, தவறு சரிபார்ப்பு, அல்லது பணியின் உரிமையை இழக்காமல் கருத்துரை தேவைப்படும் மாணவர்கள்."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "ஒரு பணியை ஒட்டி முடிந்த பதிலை கேட்க வேண்டாம்."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "கற்றலைத் தொடங்குங்கள்"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "ஏற்கெனவே நினைவில் என்ன இருக்கிறது என்பதைச் சோதிப்பதற்கு முன் குறிப்புகளை மீண்டும் வாசிக்க வேண்டாம்."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "நீங்கள் ஏற்கெனவே முயன்றதை காட்டாமல் விட வேண்டாம்; பயனுள்ள உதவி அந்தச் சூழலின் மீது சார்ந்துள்ளது."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "முதல் விளக்கத்திலேயே நிற்க வேண்டாம்; அதைப் பற்றி நீங்களே கேள்விகளுக்கு பதிலளிக்கச் செய்யுங்கள்."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "உருவாக்கப்பட்ட உரையாடலை உண்மையான மேற்கோளாகவோ முதன்மை ஆதாரமாகவோ கருத வேண்டாம்."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "அதைப் பயன்படுத்தி ஏதாவது செய்யுங்கள்"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "inspir பள்ளிகளுக்கு ஆதரவு தருகிறதா?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "ஒவ்வொரு வழிகாட்டியும் பொருத்தமான சரியான கற்றல் முறைக்குச் செல்லும் பயிற்சி திட்டங்கள், பாதைகள், இணைப்புகளுடன் முடிகிறது."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "ஒவ்வொரு வழிகாட்டியும் ஒரு முறை, கேள்வி முன்மாதிரி, அல்லது மறுபார்வைச் சுழற்சியைச் சுட்டுகிறது; அதனால் வாசிப்பு பயிற்சியாக மாற முடியும்."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "ஒவ்வொரு முறையும் தனித்த நோக்கம், உதாரணங்கள், கற்றல் ஓட்டத்துடன் பொதுவான விருந்தினர் உரையாடலாக திறக்கிறது; எனவே கற்றோர் உடனே சரியான வகை ஆதரவுடன் தொடங்கலாம்."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "எளிய அடுத்த படிகள்"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "ஒரு காலப்பகுதிக்குள் செல்லுங்கள்"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "சூழலுக்குள் செல்லுங்கள்"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "ஒவ்வொரு கட்டுரையும் பிரிவுகள், நேரடி முறைகள், பாட மையங்கள், கற்றல் பாதைகள், தொடர்புடைய வழிகாட்டிகள் ஆகியவற்றுடன் இணைக்கப்பட்டுள்ளது."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "செயலி அல்லாத ஒவ்வொரு பக்கத்துக்கும் இப்போது ஒரு பணி உள்ளது: நம்பிக்கையை உருவாக்குதல், கற்றல் பாதையை விளக்குதல், முக்கிய விவரங்களை மறைக்காமல் கற்றோரை பயனுள்ள அடுத்த செயலில் செலுத்துதல்."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "ஆதாரத்தை உணரும் காட்சிகள்"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "தேர்வு தயாரிப்பு"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "தேர்வு தயாரிப்பு திட்டமிடுபவர்"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "மீண்டும் விளக்குங்கள்"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "அடுத்த படியை விளக்குங்கள்"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "இந்தத் தலைப்பை எளிய மொழியில் விளக்குங்கள். எனக்கு தேவையான மூன்று அடிப்படை கருத்துகள், ஒரு ஒப்புமை, ஒரு பொதுவான தவறான எண்ணம் ஆகியவற்றைக் கூறுங்கள்."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "விளக்கங்கள், சோக்ரட்டீய வழிகாட்டல், வீட்டுப்பாட வழிகாட்டுதல், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், எழுதுதல், குறியீடு, விவாதம், படிப்பு திட்டமிடல்."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "AI மூலம் வரலாறையும் பெரிய கருத்துகளையும் ஆராயுங்கள்"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "வரலாறையும் கருத்துகளையும் ஆராயுங்கள்"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "ஆதாரத்தையும் உருவகப்படுத்தலையும் பிரித்துக் காட்டும் AI கற்றல் முறைகளுடன் வரலாறு, பொதுப் பிரமுகர்கள், காரணங்கள், விவாதங்கள், தத்துவம், மூல ஆதார விமர்சனம் ஆகியவற்றை ஆராயுங்கள்."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "பள்ளிகளை ஆராயுங்கள்"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "வழிகாட்டி நூலகத்தை ஆராயுங்கள்"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "வேகமான கற்றல் பாதைகள்"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "பட அத்தியாயங்கள்"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "நினைவூட்டல் அட்டை உருவாக்கி"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "ஒரே நேரத்தில் ஒரு கருத்தைச் சோதித்து, முயற்சிக்குப் பிறகே பதில்களை காட்டி, தவறிய அட்டைகளை விரைவில் மறுபார்வை செய்தால் நினைவூட்டல் அட்டைகள் சிறப்பாக செயல்படும்."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "கணிதம் அல்லது தர்க்கத்திற்கு, ஒவ்வொரு படியாகச் சென்று, அடுத்ததிற்கு செல்லும்முன் ஒவ்வொரு நகர்வும் ஏன் அனுமதிக்கப்படுகிறது என்று கேளுங்கள்."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "பள்ளிகள் மற்றும் CSR கூட்டாளிகளுக்காக"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "அடித்தளங்கள்"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "அனைவருக்கும் இலவச AI கற்றல்"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "அனைவருக்கும் இலவச AI கற்றல் | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "அனைவருக்கும் இலவச AI கற்றல்."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "இலவச விருந்தினர் கற்றல்"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "இலவச பொதுப் AI கற்றல் தளம்"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "வலைப்பதிவிலிருந்து"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "எந்தப் பாடத்திலும் கவனமுள்ள பல்தேர்வு வினாடி வினாவை உருவாக்கி, ஒவ்வொரு பதிலுக்குப் பிறகும் விளக்கங்களைப் பாருங்கள்."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "படிப்பு அட்டவணை பெறுங்கள், பலவீனப் பகுதிகளில் உங்களைச் சோதியுங்கள், தவறுகளை மீண்டும் மறுபார்வைக்கான நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "முதலில் எளிய மாதிரியைப் பெறுங்கள்"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "எழுதுதல் பயிற்சியாளர்"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "சிக்கலில் இருந்து விடுபடுங்கள்"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "வீட்டுப்பாடத்தில் சிக்கலைத் தீர்த்துக்கொள்ளுங்கள்"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "வரலாற்றுச் சூழலுக்குள் சென்று, வாதங்களை ஒப்பிட்டு, ஒரு கருத்தை ஒன்றுக்கும் மேற்பட்ட பக்கங்களில் இருந்து காணப் பயிற்சி செய்யுங்கள்."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "ஒழுக்கமான குறிப்புகள், உதாரணங்கள், சரிபார்ப்புகள், படிப்படி வழிகாட்டுதல் மூலம் வீட்டுப்பாடத்தில் சிக்கலைத் தீர்த்துக்கொள்ளுங்கள்."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "கற்றோர் தேவைகளுக்கேற்ப வரைபடுத்தப்பட்ட பாட மையங்கள்"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "வடிவமைப்பு, தெளிவு, ஆதாரம் ஆகியவற்றைப் பற்றி கருத்துரை கொடுங்கள். என் குரலை வைத்திருங்கள்; முழுப் பதிலையும் மீண்டும் எழுத வேண்டாம்."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "இறுதி பகுதி நோக்கத்திற்குத் திரும்புகிறது: பொதுப் பயன்பாடு, பள்ளிகள், மேலும் திறந்த கற்றல் வழி."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "தொடங்க நல்ல பகுதிகள்:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "வினாடி வினாக்கள் மீண்டும் வாசிப்பதை விட சிறந்தவையா?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "வழிகாட்டி நூலகம்"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "வழிகாட்டிகள், பாதைகள், பாடங்கள், கேள்வி முன்மாதிரிகள் ஆகியவை அடுத்த பயனுள்ள பயிற்சி இடத்துடன் இணைக்கப்படுகின்றன."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "உதவும் கற்றல் வரைபடம்"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "கேள்வியும் நான் முயன்றதும் இதோ. இறுதி பதிலை அல்ல, பயனுள்ள மிகச் சிறிய குறிப்பைத் தாருங்கள்."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "பட அத்தியாயங்களை மறைக்கவும்"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "பட உரைப் பதிவை மறைக்கவும்"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "முதலில் குறிப்பு தரும் உதவி"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "வரலாற்று உரையாடல்கள்"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "வரலாறு"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "வீட்டுப்பாடம்"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "வீட்டுப்பாட வழிகாட்டி"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "தேர்வு தயாரிப்பு திட்டத்தை எவ்வளவு முன்கூட்டியே அமைக்க வேண்டும்?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "பொதுவான AI உரையாடல் பொறியிலிருந்து inspir எப்படி வேறுபடுகிறது?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "இது எப்படி செயல்படுகிறது"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "உங்களை நீங்களே ஏமாற்றாமல் AI உடன் படிப்பது எப்படி"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "AI மூலம் கடினமான தலைப்பை எப்படி புரிந்துகொள்வது"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "AI மூலம் கடினமான தலைப்பை எப்படி புரிந்துகொள்வது"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "மூழ்கிப் பயிலல்"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "வரைவைக் மேம்படுத்துங்கள்"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "திட்டமிடல், திருத்தம், அமைப்பு, உங்கள் குரலைக் காக்கும் கருத்துரை ஆகியவற்றுடன் எழுதுதலை மேம்படுத்துங்கள்."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "கேள்வி, நீங்கள் ஏற்கெனவே முயன்றது, எங்கு சிக்கினீர்கள், உங்களுக்கு குறிப்பு வேண்டுமா, படி சரிபார்ப்பு வேண்டுமா, அல்லது கருத்துரை வேண்டுமா என்பதைக் சேர்க்கவும்."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "inspir AI கற்றல் வழிகாட்டி நூலகம்"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir வினாடி வினாக்களும் மாணவர் சமூகங்களுமாகத் தொடங்கி, பள்ளிகளும் நிகழ்வுகளும் வழியாக வளர்ந்து, இப்போது ஒருவருக்கு ஒருவர் கற்றலை மேலும் அணுகக்கூடியதாக்க AI-ஐ பயன்படுத்துகிறது."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "ஒரு கற்றோர் ஏதாவது புரிந்துகொள்ள விரும்பி, தொடங்க பொறுமையான இடம் தேவைப்படும் தருணத்திற்காக inspir உள்ளது. ஆர்வம், பயிற்சி, அணுகல் ஆகியவற்றுக்கான இலவச பொதுக் கற்றல் துணையாக இந்தப் படம் தயாரிப்பை அறிமுகப்படுத்துகிறது."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "இயக்கத்தில் inspir"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir பொதுமக்கள் முன்னிலையில் உருவாக்கப்படுகிறது."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir குறிப்பிட்ட கற்பித்தல் வடிவங்களைக் கொண்ட கற்றல் முறைகளின் சுற்றில் அமைந்துள்ளது: குறிப்புகள், சோக்ரட்டீய கேள்விகள், வினாடி வினாக்கள், செயலில் நினைவுகூரல், வேடமிட்டு உரையாடல், விவாதம், எழுதுதல் கருத்துரை, படிப்பு திட்டமிடல்."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir கற்றல் படம்"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "ஆர்வம், வீட்டுப்பாடம், மறுபயிற்சி, பெரிய கேள்விகள் ஆகியவற்றை விளக்கி, திரும்பக் கேட்டு, பயிற்சி செய்ய உதவும் வழிகாட்டப்பட்ட AI கற்றல் அமர்வுகளாக inspir மாற்றுகிறது."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: நீங்கள் எதையும் கற்கலாம்"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "inspir பயன்படுத்த இலவசமா?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "பாதையை உயிரோட்டமாக வைத்திருங்கள்"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "அடுத்து என்ன முயல வேண்டும், ஒரு படி ஏன் செயல்படுகிறது, தவறு எங்கு ஏற்பட்டது, இறுதி பதிலை உங்கள் சொந்த குரலில் எப்படி திருத்துவது ஆகியவற்றுடன் வெளியேறுங்கள்."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "எதையும் கற்கவும்"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "எதையும் கற்கவும்: கேள்வி முன்மாதிரிகள் மற்றும் படிப்பு சுழற்சி"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "இலவச AI பயிற்சியாளருடன் எதையும் கற்கவும்: நடைமுறை வழிகாட்டி"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "பேசி, சோதித்து, விவாதித்து, ஆராய்ந்து கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "பொது AI முறைகளுடன் நிரலாக்கம் கற்றுக்கொள்ளுங்கள், கருத்துகளை பிழைதிருத்துங்கள், திட்டங்களைத் திட்டமிடுங்கள், தரவைப் புரிந்துகொள்ளுங்கள், தொழில்நுட்பக் கேள்விகளை ஆராயுங்கள்; கற்றோர் செயல்முறையில் தொடர்கிறார்."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "சும்மா பதிலை வாசிப்பதற்குப் பதிலாக கவனமுள்ள கேள்விகள், குறிப்புகள், சிந்தனை மூலம் கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "விளக்கங்கள், சோக்ரட்டீய கேள்விகள், வீட்டுப்பாட வழிகாட்டுதல், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், எழுதுதல் கருத்துரை, குறியீட்டு உதவி, படிப்பு திட்டமிடல் ஆகியவற்றுக்கான இலவச AI பயிற்சியாளருடன் கற்றுக்கொள்ளுங்கள்."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "கற்றோருக்கு முன்னுரிமை தரும் ஆதரவு"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "கற்றோருக்கு இணைப்புகளின் குவியல் அல்ல, ஒரு ஒழுங்கான தொடர் தேவை. புரிதல், வீட்டுப்பாடம், தேர்வு தயாரிப்பு, ஆராய்ச்சி ஆகியவற்றுக்கான நடைமுறை படிப்பு சுழற்சிகளாக இந்தப் பாதைகள் முறைகளை இணைக்கின்றன."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "புதிய பாடத்தின் தொடக்கத்தில் சிக்கித் தவிக்கும் அல்லது கடினமான கருத்துக்குள் நுழைய எளிய பாதை தேவைப்படும் கற்றோர்."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "நேரம் குறைவாகவும் பாடத்திட்டம் பெரிதாகவும் இருக்கும், எல்லாவற்றும் சமமாக முக்கியம் என நடிக்காமல் மறுபார்வை செய்ய யதார்த்தமான வழி தேவைப்படும் கற்றோர்."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "அனைவருக்கும் கற்றல்"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "கற்றல் வழிகாட்டிகள் மற்றும் பயிற்சி சுழற்சிகள்"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "எளிய மொழி மாதிரி, கூர்மையான கேள்விகள், நீங்கள் மீண்டும் விளக்கக்கூடிய உதாரணங்கள், மறுபார்வைக்கான நினைவூட்டல் அட்டைகள் ஆகியவற்றுடன் முடிக்குங்கள்."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "இந்த வரலாற்று நபரை நான் நேர்காணல் செய்ய விடுங்கள். பதில்கள் ஆதாரத்தை உணரும் வகையில் இருக்கட்டும்; உறுதியின்மையைத் தெளிவாகக் குறியிடுங்கள்."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "தவறுகளிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்கி, சிறிது இடைவெளிக்குப் பிறகு அவற்றை மீண்டும் பாருங்கள்."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "தவறுகள், தயக்கம், வாய்ப்பாடுகள், வரையறைகள், தெளிவாக விளக்க முடியாத கருத்துகள் ஆகியவற்றிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்குங்கள்."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "அதை மனதில் பதியச் செய்யுங்கள்"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "கருத்தை மனதில் பதியச் செய்யுங்கள்"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "படிப்பு திட்டத்தை யதார்த்தமாக அமைக்கவும்"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "கணிதம்"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "கணித படிப்படி வழிகாட்டி"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "கணிதம், எழுதுதல், நிரலாக்கம், வரலாறு, வீட்டுப்பாடம், தேர்வு தயாரிப்பு ஒவ்வொன்றுக்கும் வேறு விதமான உதவி தேவை. பாடத்திலிருந்து தொடங்கி, பொருத்தமான முறை, கேள்வி முன்மாதிரி, வழிகாட்டி, அல்லது மறுபார்வைச் சுழற்சிக்குச் செல்லுங்கள்."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "முதலில் நோக்கம்"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "பொதுவான கற்றல் தருணங்களுக்கான முறை வழிகாட்டிகள், கேள்வி முன்மாதிரி சுழற்சிகள், படிப்பு முறைகள், அடிப்படை கட்டுரைகள்."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "எளிய மொழி விளக்கத்திலிருந்து கேள்விகள், உதாரணங்கள், நினைவுப் பயிற்சிக்குச் செல்லுங்கள்."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "சோக்ரட்டீய கேள்விகள், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், வேடமிட்டு உரையாடல், வழிகாட்டப்பட்ட கற்பித்தல் ஆகியவற்றுக்குச் செல்லுங்கள்."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "பட ஒலியை அணைக்கவும்"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "என் தேர்வு இந்த தேதியில் உள்ளது. பாடத்திட்டம், எனது பலவீனப் பகுதிகள், எனக்குக் கிடைக்கும் நேரம் இவை. தினசரி நினைவுகூரலுடன் யதார்த்தமான திட்டம் அமைக்கவும்."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "NCERT-க்கு ஒத்த விருப்பங்கள்"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "அடுத்த படி"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "இல்லை. உருவாக்கப்பட்ட உரையாடலை கற்றல் உருவகப்படுத்தலாகவே கருதுங்கள். உண்மை கூற்றுகளுக்கு உண்மையான முதன்மை அல்லது இரண்டாம் நிலை ஆதாரங்களை மேற்கோள் காட்டுங்கள்."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "மற்றொரு பதில் பெட்டி அல்ல. கற்கும் இடம்."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "பொது விருந்தினர் அனுபவத்திற்கு கணக்கு தேவையில்லை; ஒரு முறையைத் திறந்து உடனே தொடங்குங்கள்."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "வடிவமைப்பிலேயே திறந்தது"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "படத்தை முழுத்திரையில் திறக்கவும்"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "விருந்தினர் உரையாடலைத் திறக்கவும்"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "பாட மையத்தைத் திறக்கவும்"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "நீங்கள் வந்த சரியான உதவியைத் திறக்கவும்."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "கற்றல் வரைபடத்தைத் திறக்கவும்"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} நடைமுறை வழிகாட்டிகள்"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "பாதையைத் திறக்கவும்"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "பக்கங்கள் விளக்கத்திலிருந்து நேரடி முறை, கேள்வி முன்மாதிரி, வினாடி வினா, அல்லது மறுபார்வைச் சுழற்சிக்குச் செலுத்துமாறு வடிவமைக்கப்பட்டுள்ளன."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "எந்தக் கேள்வியையும் கேட்டு, தெளிவான விளக்கங்கள், உதாரணங்கள், தொடர்க் கேள்விகள், பொறுமையான AI வழிகாட்டுதல் மூலம் கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "தளம் ஒரு பாதை; விளம்பரக் கையேடு அல்ல."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir பள்ளிகளுக்கு ஆதரவு தருகிறதா?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir குறிப்பிட்ட கற்பித்தல் வடிவங்களைக் கொண்ட கற்றல் முறைகளின் சுற்றில் அமைந்துள்ளது: குறிப்புகள், சோக்ரட்டீய கேள்விகள், வினாடி வினாக்கள், செயலில் நினைவுகூரல், வேடமிட்டு உரையாடல், விவாதம், எழுதுதல் கருத்துரை, படிப்பு திட்டமிடல்."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "பொது விருந்தினர் முறைகளை இலவசமாகப் பயன்படுத்தி, பின்னர் திறந்த மூலப் பணியும் பள்ளி செயல்படுத்தல் பாதைகளும் ஆராயுங்கள்."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "விளக்கங்கள், சோக்ரட்டீய வழிகாட்டல், வீட்டுப்பாட வழிகாட்டுதல், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், எழுதுதல், குறியீடு, விவாதம், படிப்பு திட்டமிடல்."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "அனைவருக்கும் இலவச AI கற்றல்"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "தேர்வு தயாரிப்பு திட்டமிடுபவர்"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "ஒழுக்கமான குறிப்புகள், உதாரணங்கள், சரிபார்ப்புகள், படிப்படி வழிகாட்டுதல் மூலம் வீட்டுப்பாடத்தில் சிக்கலைத் தீர்த்துக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI தேர்வு தயாரிப்பு திட்டமிடுபவர்"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "வினாடி வினாக்கள் மற்றும் செயலில் நினைவுகூரலுடன் AI தேர்வு தயாரிப்பு திட்டம்"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "கூற்றுகள், ஆதாரம், மதிப்புகள், முன்கருத்துகள் ஆகியவற்றைப் பிரிக்க விவாதம் உதவுகிறது; இதனால் வரலாற்றுப் பொருளாக்கம் இன்னும் துல்லியமாகிறது."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "காட்சி பொதுவான வேடமிட்டு உரையாடலாக மாறாமல் இருக்க, இடம், காலம், அடையாளம், கட்டுப்பாடுகள், ஆதாரக் குறிச்சொற்கள் ஆகியவற்றுடன் தொடங்குங்கள்."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "வீட்டுப்பாட கேள்வி முன்மாதிரியில் என்ன சேர்க்க வேண்டும்?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "பொறியாளர்கள், கல்வியாளர்கள், வடிவமைப்பாளர்கள், மாணவர்கள், மேலும் AI கற்றல் பாதுகாப்பாகவும் தெளிவாகவும் எளிதில் அணுகக்கூடியதாகவும் பயனுள்ளதாகவும் இருக்க வேண்டும் என்று விரும்பும் அனைவரிடமிருந்தும் பங்களிப்புகள் வரவேற்கப்படுகின்றன."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "குழப்பத்திலிருந்து தெளிவான விளக்கம், சோக்ரட்டீய கேள்விகள், உதாரணங்கள், செயலில் நினைவுகூரல் ஆகியவற்றுக்குச் செல்லும் நடைமுறை AI கற்றல் பாதை."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI எழுதுதல் பயிற்சியாளர்"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir வினாடி வினாக்களும் மாணவர் சமூகங்களுமாகத் தொடங்கி, பள்ளிகளும் நிகழ்வுகளும் வழியாக வளர்ந்து, இப்போது ஒருவருக்கு ஒருவர் கற்றலை மேலும் அணுகக்கூடியதாக்க AI-ஐ பயன்படுத்துகிறது."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir கற்றல் படம்"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "பட அத்தியாயங்களை காட்டவும்"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "இந்தத் தவறிய கேள்விகளை கருத்து, வாய்ப்பாடு, வரையறை, உதாரணம் என்ற குழுக்களாக நினைவூட்டல் அட்டைகளாக்குங்கள்."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "அடுத்து என்ன முயல வேண்டும், ஒரு படி ஏன் செயல்படுகிறது, தவறு எங்கு ஏற்பட்டது, இறுதி பதிலை உங்கள் சொந்த குரலில் எப்படி திருத்துவது ஆகியவற்றுடன் வெளியேறுங்கள்."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "மாணவர்களுக்கான AI எழுதுதல் கருத்துரை"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "அனைவருக்கும் கற்றல்"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI குறியீட்டு பயிற்சியாளர்"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "பலவீனப் பகுதிகளைச் சோதியுங்கள்"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "விளக்கங்கள், சோக்ரட்டீய கேள்விகள், வீட்டுப்பாட வழிகாட்டுதல், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், எழுதுதல் கருத்துரை, குறியீட்டு உதவி, படிப்பு திட்டமிடல் ஆகியவற்றுக்கான இலவச AI பயிற்சியாளருடன் கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "மிக வலுவான கூற்றையும் மிக வலுவான எதிர்கூற்றையும் ஒப்பிட விவாதத்தைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "முதல் விளக்கத்திலேயே நிற்க வேண்டாம்; அதைப் பற்றி நீங்களே கேள்விகளுக்கு பதிலளிக்கச் செய்யுங்கள்."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "இது எப்படி செயல்படுகிறது"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "குறியீட்டு பயிற்சியாளர்"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "தேர்வு தயாரிப்பு"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "தேடல் பக்கங்கள், வலைப்பதிவு வழிகாட்டிகள், கேள்வி முன்மாதிரிகள், நேரடி முறைகள் ஆகியவை ஒரு எளிய சுழற்சியைச் சுற்றி இணைக்கப்பட்டுள்ளன: கேள், முயல், சரிபார், சரிசெய், மறுபார்."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "நிரலாக்கம்"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "முதல் சொடுக்கிலிருந்தே பயனுள்ளது"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "எந்தப் பாடத்திலும் கவனமுள்ள பல்தேர்வு வினாடி வினாவை உருவாக்கி, ஒவ்வொரு பதிலுக்குப் பிறகும் விளக்கங்களைப் பாருங்கள்."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "திருத்தப்பட்ட பகுதி ஏன் மேம்பட்டது என்பதை நீங்கள் விளக்க முடியும் வரை அதை ஏற்க வேண்டாம்."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "என் தேர்வு இந்த தேதியில் உள்ளது. பாடத்திட்டம், எனது பலவீனப் பகுதிகள், எனக்குக் கிடைக்கும் நேரம் இவை. தினசரி நினைவுகூரலுடன் யதார்த்தமான திட்டம் அமைக்கவும்."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "இலவச AI பயிற்சியாளருடன் எதையும் கற்கவும்: நடைமுறை வழிகாட்டி"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "இந்த வரலாற்று நபரை நான் நேர்காணல் செய்ய விடுங்கள். பதில்கள் ஆதாரத்தை உணரும் வகையில் இருக்கட்டும்; உறுதியின்மையைத் தெளிவாகக் குறியிடுங்கள்."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "பொதுவான உரையாடல் பெட்டியிலிருந்து அல்ல, உண்மையான கற்றோர் நடத்தை அடிப்படையாக உருவாக்கப்பட்டது."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "வீட்டுப்பாடத்தில் சிக்கலைத் தீர்த்துக்கொள்ளுங்கள்"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "சிக்கலில் இருந்து விடுபடுதல், மேலும் நினைவில் வைத்துக்கொள்வது, சிறப்பாக எழுதுதல், தேர்வுக்கு தயாராகுதல், பொறுமையான பயிற்சியாளருடன் கருத்துகளை ஆராய்தல் போன்ற உண்மையான படிப்பு தருணங்களைச் சுற்றி வலைப்பதிவு அமைக்கப்பட்டுள்ளது."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "வரலாற்றையும் விவாதத்தையும் ஏன் இணைக்க வேண்டும்?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "வலைப்பதிவு பயனுள்ள கற்றல் ஆலோசனையை நேரடி பயிற்சியுடன் இணைக்கிறது; எனவே ஒரு வழிகாட்டி ஒரே படியில் படிப்பு அமர்வாக மாற முடியும்."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "கேள்வியையும் நீங்கள் முயன்றதையும் ஒட்டி, பயனுள்ள மிகச் சிறிய அடுத்த படியைக் கேளுங்கள்."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "படத்தை இடைநிறுத்தவும்"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "புதிய பாடத்தின் தொடக்கத்தில் சிக்கித் தவிக்கும் அல்லது கடினமான கருத்துக்குள் நுழைய எளிய பாதை தேவைப்படும் கற்றோர்."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "இந்தக் காலத்திலும் இடத்திலும் என்னை நிறுத்துங்கள். ஆவணப்படுத்தப்பட்ட உண்மைகளை சாத்தியமான உருவகப்படுத்தலிலிருந்து தனியாகக் குறியிட்டு, நான் என்ன கவனிக்கிறேன் என்று கேளுங்கள்."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "அணுகல்தன்மை, கேள்வி முன்மாதிரிகள், சோதனைகள், பாதுகாப்பான AI நடத்தை, கற்றோர் ஓட்டங்கள், இடைமுக மெருகூட்டல்."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "எளிய மொழி விளக்கங்கள்"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "உதவி கேட்பதற்கு முன் நீங்கள் எங்கு சிக்கினீர்கள் என்பதைத் துல்லியமாக எழுதுங்கள்."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "தேர்வு மறுபயிற்சியைத் திட்டமிடுங்கள், வினாடி வினாக்களை உருவாக்குங்கள், நினைவூட்டல் அட்டைகள் அமைக்குங்கள், இடைவெளி மறுபார்வையை அட்டவணையிடுங்கள், கவனமுள்ள AI கற்றல் முறைகளுடன் ஊக்கத்தை யதார்த்தமாக வைத்திருங்கள்."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "தவறுகளை மாற்றுங்கள்"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "பணியைத் திட்டமிடுங்கள், நினைவுகூரலைப் பயிற்சி செய்யுங்கள், வினாடி வினாக்கள் மற்றும் செயலில் நினைவுகூரலால் பலவீன இடங்களை மூடுங்கள்."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "வரலாறையும் கருத்துகளையும் ஆராயுங்கள்"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "திட்டமிடல்"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AI மூலம் வரலாறையும் பெரிய கருத்துகளையும் ஆராயுங்கள்"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "படத்தை இயக்கவும்"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "கருத்தை மனதில் பதியச் செய்யுங்கள்"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "inspir கற்றல் முன்னோட்டத்தை இயக்கவும்"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "பாட மையத்தைத் திறக்கவும்"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "பிரபலமான AI கற்றல் பாதைகள்"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "எழுதுதல்"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "பிரபலமான பாதைகள்"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "தொடரவும்"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "பயிற்சி"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "அடித்தளங்கள்"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "பயிற்சி; பதில் நகலெடுப்பல்ல"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "அடுத்த மீள்பார்வையை அட்டவணையிடுங்கள்"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI கணித படிப்படி வழிகாட்டி"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "சூழலுக்குள் செல்லுங்கள்"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "உண்மையான கேள்வியை கேளுங்கள்"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "தேர்வுக்கு தயாராகுங்கள்"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "inspir-இல் எதையும் கற்கவும்-இலிருந்து பயனுள்ள கற்றல் முடிவுகளைப் பெற கேள்வி யோசனைகள் மற்றும் மீண்டும் செய்யக்கூடிய படிப்பு சுழற்சி."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "ஆதாரத்தையும் உருவகப்படுத்தலையும் பிரித்துக் காட்டும் AI கற்றல் முறைகளுடன் வரலாறு, பொதுப் பிரமுகர்கள், காரணங்கள், விவாதங்கள், தத்துவம், மூல ஆதார விமர்சனம் ஆகியவற்றை ஆராயுங்கள்."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "ஒரு நபரிடம் கேள்வி கேளுங்கள்"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI விவாதப் பயிற்சி"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "ஒரு வரலாற்றுக் கண்ணோட்டத்தை கேள்வி கேளுங்கள்"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "கேள்விகள் தலைப்பைப் பற்றிய உங்கள் சொந்த மாதிரியை வெளிப்படுத்தச் செய்கின்றன; குழப்பம், பொய்யான நம்பிக்கை, இல்லாத அடிப்படை அறிவு ஆகியவை பொதுவாக அங்கேயே தெரியும்."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "விரைவு பதில்கள்"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "இந்தத் தலைப்புகளில் என்னை ஒரே நேரத்தில் ஒரு கேள்வியாகச் சோதியுங்கள். ஒவ்வொரு பதிலுக்கும் பிறகு இடைவெளியை விளக்கி, கடினத்தன்மையை மெதுவாக உயர்த்துங்கள்."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "பொது அறிவில் என்னைச் சோதியுங்கள்"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "பலவீனப் பகுதிகளைச் சோதியுங்கள்"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "உங்களைச் சோதியுங்கள்"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "முதலில் உங்களைச் சோதியுங்கள்; உண்மையில் என்ன நினைவில் உள்ளது, நம்பிக்கை எங்கு தவறாக வழிநடத்துகிறது என்பதைக் காணலாம்."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "வினாடி வினாக்கள் பொதுவாக அதிகம் வெளிப்படுத்தும், ஏனெனில் அவை நினைவுகூரலைச் சோதிக்கும். எதைச் சரிசெய்ய வேண்டும் என்பதை வினாடி வினா காட்டிய பிறகு மீண்டும் வாசிப்பு உதவும்."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "நோக்கத்தைப் படியுங்கள்"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "யதார்த்தமான அட்டவணை"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "ஒரு தவறைச் சரிசெய்யுங்கள்"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "பலவீன இடத்தைச் சரிசெய்யுங்கள்"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "மீண்டும் இயக்கவும்"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "படத்தை மீண்டும் தொடங்கவும்"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "நினைவுகூரல் பயிற்சி"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "நினைவூட்டல் அட்டைகளுடன் மறுபார்வை செய்யுங்கள்"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "என் வரைவைக் திருத்துங்கள்"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "உங்கள் குரலை இழக்காமல் திருத்துங்கள்"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "தவறைச் சேமியுங்கள்"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "அடுத்த மீள்பார்வையை அட்டவணையிடுங்கள்"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "பள்ளிக்கான தனிப்பட்ட பணிச்சூழல்கள்"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "பள்ளிகள் தங்கள் கற்றோருக்கேற்ப, NCERT-க்கு ஒத்த உள்ளடக்கம் மற்றும் பணிச்சூழல்களுடன், கூட்டாளர் பள்ளிகள் அல்லது CSR ஆதரவு நிதியளிக்கும் பள்ளிப் பெயரிடப்பட்ட AI உரையாடல் அனுபவங்களை வழங்கலாம்."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "தேடல் பக்கங்கள், வலைப்பதிவு வழிகாட்டிகள், கேள்வி முன்மாதிரிகள், நேரடி முறைகள் ஆகியவை ஒரு எளிய சுழற்சியைச் சுற்றி இணைக்கப்பட்டுள்ளன: கேள், முயல், சரிபார், சரிசெய், மறுபார்."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "உண்மையையும் கற்பனையையும் பிரியுங்கள்"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "பட அத்தியாயங்களை காட்டவும்"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "பட உரைப் பதிவை காட்டவும்"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "சோக்ரட்டீய சரிபார்ப்புகள்"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "சோக்ரட்டீய கற்பித்தல்"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "சோக்ரட்டீய பயிற்சியாளர்"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "சோக்ரட்டீய வழிகாட்டல் கேள்விகள், கருதுகோள்கள், குறிப்புகள், சிந்தனை ஆகியவற்றைப் பயன்படுத்தி, சும்மா பதில் வாசிப்பதை விட ஆழமான புரிதலை உருவாக்குகிறது."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "நேரடி கற்றல் அமர்வைத் தொடங்குங்கள்."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "தேர்வு தேதியை அறிந்த உடனே தொடங்குங்கள். நேரம் குறைந்தால், பலவீனப் பகுதிகள், முந்தைய வினாத்தாள் பாணி கேள்விகள், தினசரி நினைவுகூரல் ஆகியவற்றுக்கு முன்னுரிமைத் தாருங்கள்."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "முதலில் ஒரு எளிய விளக்கம், அன்றாட ஒப்புமை ஒன்று, தலைப்பு புரிவதற்கு முன் தேவைப்படும் மூன்று கருத்துகள் ஆகியவற்றைக் கேட்டு தொடங்குங்கள்."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "ஒவ்வொரு அமர்வையும் மீண்டும் வாசிப்பதற்கு முன் ஒரு விரைவு வினாடி வினாவுடன் தொடங்குங்கள்."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "முதல் கோட்பாடுகளிலிருந்து தொடங்குங்கள்"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "பாடத்திலிருந்து தொடங்கி, சரியான கற்றல் முறையைத் திறக்கவும்."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "புரியாத விஷயத்திலிருந்து தொடங்கி, எளிய மொழி மாதிரி, உதாரணங்கள், அடுத்த படிகள் பெறுங்கள்."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "கற்றலைத் தொடங்குங்கள்"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "தலைப்பு, பணி, வரைவு, தேர்வு, அல்லது கருத்து எதுவாக இருந்தாலும், வேலையிற்கு பொருத்தமான முறையில் தொடங்குங்கள்."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "எதையும் கற்கவும் முறையுடன் தொடங்குங்கள்"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "காட்சி பொதுவான வேடமிட்டு உரையாடலாக மாறாமல் இருக்க, இடம், காலம், அடையாளம், கட்டுப்பாடுகள், ஆதாரக் குறிச்சொற்கள் ஆகியவற்றுடன் தொடங்குங்கள்."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "நீங்கள் செய்ய வேண்டிய வேலையிலிருந்து தொடங்குங்கள்."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "சிக்கிய இடத்தைச் சொல்லுங்கள்"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "படி சரிபார்ப்புகள்"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "வரலாற்றுச் சூழலுக்குள் சென்று, வாதங்களை ஒப்பிட்டு, ஒரு கருத்தை ஒன்றுக்கும் மேற்பட்ட பக்கங்களில் இருந்து காணப் பயிற்சி செய்யுங்கள்."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "அடுத்த படி, தவறு சரிபார்ப்பு, அல்லது பணியின் உரிமையை இழக்காமல் கருத்துரை தேவைப்படும் மாணவர்கள்."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "படிப்பு சுழற்சிகள், AI வழிகாட்டல் கையேடுகள், நடைமுறை கேள்வி முன்மாதிரிகள்."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "கற்றோர் தேவைகளுக்கேற்ப வரைபடுத்தப்பட்ட பாட மையங்கள்"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "சூழலைச் சுருக்குங்கள்"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "பாடத்திட்டத்திற்கு அப்பாற்பட்ட கற்றல், கல்விப் பயிற்சி, ஆர்வம் ஆகியவற்றை ஆதரிக்கிறது."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "பதிலை சும்மா வாசிப்பதற்குப் பதிலாக, முன்கருத்துகளை வெளிக்கொண்டு வந்து இடைவெளிகளை நிரப்ப கேள்விகளுக்குள் மாறுங்கள்."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "உருவாக்கப்பட்ட உரையாடலை ஆவணப்படுத்தப்பட்ட மேற்கோளிலிருந்து பிரித்துக் கொண்டே ஒரு வரலாற்று நபருடன் பேசுங்கள்."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "ஒரு வரலாற்று நபருடன் பேசுங்கள்"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "வரலாற்று நபர்களுடன் பேசும் AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "மறுபார்வைக்கு முன் சோதியுங்கள்"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "வாதத்தைச் சோதியுங்கள்"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "உங்கள் காரணத்தைச் சோதியுங்கள்"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "வலைப்பதிவு பயனுள்ள கற்றல் ஆலோசனையை நேரடி பயிற்சியுடன் இணைக்கிறது; எனவே ஒரு வழிகாட்டி ஒரே படியில் படிப்பு அமர்வாக மாற முடியும்."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "சிக்கலில் இருந்து விடுபடுதல், மேலும் நினைவில் வைத்துக்கொள்வது, சிறப்பாக எழுதுதல், தேர்வுக்கு தயாராகுதல், பொறுமையான பயிற்சியாளருடன் கருத்துகளை ஆராய்தல் போன்ற உண்மையான படிப்பு தருணங்களைச் சுற்றி வலைப்பதிவு அமைக்கப்பட்டுள்ளது."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "பரந்த திறந்த மூல inspir தளம்."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "இறுதி பகுதி நோக்கத்திற்குத் திரும்புகிறது: பொதுப் பயன்பாடு, பள்ளிகள், மேலும் திறந்த கற்றல் வழி."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "தற்போதைய inspirlearning.com மறுகட்டமைப்பு."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "படம் ஊக்கத்திலிருந்து நடைமுறை வாக்குறுதிக்குச் செல்கிறது: பொறுமையான AI கற்றல் துணை."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "வீட்டுப்பாட மற்றும் சோக்ரட்டீய முறைகள் முடிந்த பதில்களை நேரடியாக வழங்குவதற்குப் பதிலாக குறிப்புகள், காரணம், படி சரிபார்ப்புகள், கற்றோர் விளக்கங்கள் ஆகியவற்றைச் சுற்றி வடிவமைக்கப்பட்டுள்ளன."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "நடுத்தர பகுதி inspir-ஐ புரிதல், குறிப்புகள், வினாடி வினாக்கள், செயலில் கற்றல் சுழற்சிகள் ஆகியவற்றின் சுற்றில் அமைக்கிறது."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "அடுத்த தலைமுறை AI படிப்பு தளம்."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "தொடக்கக் காட்சிகள், யாரும் உடனே தொடங்கக்கூடிய ஒன்றாக கற்றலை அமைக்கின்றன."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "வரலாற்று உரையாடல்கள்"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "பொது தளம் ஒரு கற்றல் வரைபடம்போல் அமைந்துள்ளது: உடனடி உதவிக்கு நேரடி முறைகள், கற்றோர் கேள்விகளுக்குப் பாட மையங்கள், வாசிப்பைச் செயலாக்கும் வழிகாட்டிகள்."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "தளம் ஒரு பாதை; விளம்பரக் கையேடு அல்ல."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "பார்க்காமல் மூன்று வாக்கிய விளக்கம் எழுதுங்கள்; பின்னர் பலவீனமான இணைப்பைக் கண்டுபிடிக்க சோக்ரட்டீய முறையைக் கேளுங்கள்."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "ஆழமாகச் சிந்தியுங்கள்"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "ஒரு கூற்றை விவாதியுங்கள்"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "காலப் பயணம்"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "எல்லா முறைகளையும் பாருங்கள்"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "தலைப்பு தொகுப்புகள்"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "வலைப்பதிவிலிருந்து"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "உரைப் பதிவு"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "பதிலை அல்ல, ஒரு குறிப்பைக் கேளுங்கள்"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "ஒரு காலப்பகுதியில் பயணியுங்கள்"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "ஒரு வரலாற்றுக் கண்ணோட்டத்தை கேள்வி கேளுங்கள்"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "வீட்டுப்பாட வழிகாட்டியை முயற்சிக்கவும்"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "பொதுவாகக் கிடைக்கும்; அதே நேரத்தில் பள்ளிகள் ரகசியமான தனிப்பயன் பதிப்புகளை இயக்கலாம்."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "அதை நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "தவறுகளை மறுபார்வைச் சுழற்சிகளாக மாற்றுங்கள்"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "குறிப்புகள், பதில்கள், உதாரணங்கள், பொதுவான சிக்கல்கள் ஆகியவற்றுடன் குறிப்புகள் அல்லது தலைப்புகளை கவனமுள்ள நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "சரிசெய்யப்பட்ட தவறை பின்னர் பார்க்க ஒரு நினைவூட்டல் அட்டையாகவோ குறுகிய சரிபார்ப்பு பட்டியலாகவோ மாற்றுங்கள்."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "விளக்கத்தை ஒரு கருத்து அட்டை, ஒரு உதாரண அட்டை, ஒரு தவறான எண்ண அட்டை கொண்ட செயலில் நினைவுகூரல் அட்டைகளாக மாற்றுங்கள்."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "மிகக் கடினமாக தவறிய கேள்வியை நினைவூட்டல் அட்டையாக மாற்றி, பின்னர் மறுபார்வை செய்யுங்கள்."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "இந்தத் தவறிய கேள்விகளை கருத்து, வாய்ப்பாடு, வரையறை, உதாரணம் என்ற குழுக்களாக நினைவூட்டல் அட்டைகளாக்குங்கள்."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "உங்கள் பாடத்திட்டம், தேர்வு தேதி, நேரம், பலவீனப் பகுதிகள் ஆகியவற்றை நடைமுறை படிப்பு திட்டமாக மாற்றுங்கள்."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "சோக்ரட்டீய கேள்விகள், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், வேடமிட்டு உரையாடல், வழிகாட்டப்பட்ட கற்பித்தல் ஆகியவற்றுக்குச் செல்லுங்கள்."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "கடினமான தலைப்பைப் புரிந்துகொள்ளுங்கள்"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "வரலாற்றுச் சூழலைப் புரிந்துகொள்ளுங்கள், ஒரு கண்ணோட்டத்தை கேள்வி கேளுங்கள், கூற்றுகளை ஒப்பிடுங்கள், உருவகப்படுத்தலை ஆவணப்படுத்தப்பட்ட உண்மையிலிருந்து பிரியுங்கள்."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "உங்கள் குரலை இழக்காமல் திருத்துங்கள்"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "சிக்கிய இடத்தைச் சொல்லுங்கள்"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "உங்களை நீங்களே ஏமாற்றாமல் AI உடன் படிப்பது எப்படி"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "தலைப்பை எளிய மொழியில் விளக்கச் சொல்லி, பின்னர் ஒரு ஒப்புமை, ஒரு உதாரணம், ஒரு பொதுவான தவறான எண்ணம் ஆகியவற்றைக் கேளுங்கள்."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI காலப் பயணக் கற்றல்"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "பயிற்சி"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "ஏற்கெனவே நினைவில் என்ன இருக்கிறது என்பதைச் சோதிப்பதற்கு முன் குறிப்புகளை மீண்டும் வாசிக்க வேண்டாம்."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "உங்கள் பாடத்திட்டம், தேர்வு தேதி, நேரம், பலவீனப் பகுதிகள் ஆகியவற்றை நடைமுறை படிப்பு திட்டமாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "பக்கங்கள் விளக்கத்திலிருந்து நேரடி முறை, கேள்வி முன்மாதிரி, வினாடி வினா, அல்லது மறுபார்வைச் சுழற்சிக்குச் செலுத்துமாறு வடிவமைக்கப்பட்டுள்ளன."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "ஏமாற்றம் இல்லாமல் AI வீட்டுப்பாட உதவி"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "கணிதம்"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "முதல் கேள்விக்கான வழிகாட்டி"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "அனைவருக்கும் இலவச AI கற்றல்."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "பாடத்திட்டத்திற்கு அப்பாற்பட்ட கற்றல், கல்விப் பயிற்சி, ஆர்வம் ஆகியவற்றை ஆதரிக்கிறது."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI நினைவூட்டல் அட்டைகள் மற்றும் செயலில் நினைவுகூரல்: மேலும் நினைவில் வைத்துக் கொள்வது எப்படி"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "அதை மனதில் பதியச் செய்யுங்கள்"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "எளிய மொழி விளக்கத்திலிருந்து கேள்விகள், உதாரணங்கள், நினைவுப் பயிற்சிக்குச் செல்லுங்கள்."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "முதலில் குறிப்பு தரும் உதவி"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "கேள்வியும் நான் முயன்றதும் இதோ. இறுதி பதிலை அல்ல, பயனுள்ள மிகச் சிறிய குறிப்பைத் தாருங்கள்."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "வினாடி வினாக்கள் பொதுவாக அதிகம் வெளிப்படுத்தும், ஏனெனில் அவை நினைவுகூரலைச் சோதிக்கும். எதைச் சரிசெய்ய வேண்டும் என்பதை வினாடி வினா காட்டிய பிறகு மீண்டும் வாசிப்பு உதவும்."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "சரிபார்ப்பு கேள்விக்கு பதிலளியுங்கள், ஒரு படியை முயலுங்கள், ஒரு கூற்றை விவாதியுங்கள், ஒரு வரைவைக் திருத்துங்கள், அல்லது நினைவூட்டல் அட்டைகள் உருவாக்குங்கள்."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI மூலம் கடினமான தலைப்பை எப்படி புரிந்துகொள்வது"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "குறியீட்டை புரிந்துகொள்ளுங்கள், பிழைகளைத் திருத்துங்கள், நிரலாக்கக் கருத்துகளை கற்றுக்கொள்ளுங்கள், சிறு திட்டங்களை படிப்படியாக உருவாக்குங்கள்."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "பட ஒலியை இயக்கவும்"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "செயலில் பயிற்சி"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "கற்றலை அமைதியாக நீக்கிவிடும் குறுக்குவழியாக அல்லாமல், புரிதல், பயிற்சி, கருத்துரை ஆகியவற்றிற்கான பயிற்சியாளராக AI-ஐ பயன்படுத்துங்கள்."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "மூழ்கிப் பயிலல்"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "இறுதி வேலை உங்களுடையதாகவே இருக்கும்படி, குறிப்புகள், படி சரிபார்ப்புகள், கணிதக் காரணம், எழுதுதல் கருத்துரை ஆகியவற்றிற்கு AI வீட்டுப்பாட வழிகாட்டுதலைப் பயன்படுத்துங்கள்."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "கற்றோருக்கு முன்னுரிமை தரும் ஆதரவு"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "சூழல், ஆதாரம், வாதங்கள், கண்ணோட்டங்கள் ஆகியவற்றை ஆராய AI காலப் பயணம், வரலாற்று உரையாடல்கள், விவாதப் பயிற்சி ஆகியவற்றைப் பயன்படுத்துங்கள்."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "ஒரே நேரத்தில் ஒரு கருத்தைச் சோதித்து, முயற்சிக்குப் பிறகே பதில்களை காட்டி, தவறிய அட்டைகளை விரைவில் மறுபார்வை செய்தால் நினைவூட்டல் அட்டைகள் சிறப்பாக செயல்படும்."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "செயலி அல்லாத ஒவ்வொரு பக்கத்துக்கும் இப்போது ஒரு பணி உள்ளது: நம்பிக்கையை உருவாக்குதல், கற்றல் பாதையை விளக்குதல், முக்கிய விவரங்களை மறைக்காமல் கற்றோரை பயனுள்ள அடுத்த செயலில் செலுத்துதல்."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "மிக வலுவான கூற்றையும் மிக வலுவான எதிர்கூற்றையும் ஒப்பிட விவாதத்தைப் பயன்படுத்துங்கள்."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "சரிசெய்யப்பட்ட தவறை பின்னர் பார்க்க ஒரு நினைவூட்டல் அட்டையாகவோ குறுகிய சரிபார்ப்பு பட்டியலாகவோ மாற்றுங்கள்."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "கற்றலை பதில் நகலெடுப்பாக மாற்றாமல் குறிப்புகள், படி சரிபார்ப்புகள், எழுதுதல் கருத்துரை ஆகியவற்றைப் பயன்படுத்துங்கள்."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "தரவு ரகசியத்துடன் தனிப்பயன் AI கற்றல் இடங்கள்."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "கற்றோரின் குரலை மாற்றாமல் அமைப்பை மேம்படுத்தும் கட்டுரை கருத்துரை, வாசிப்பு ஆதரவு, பேச்சுப் பயிற்சி, மூல ஆதார விமர்சனம், திருத்தச் சுழற்சிகள் ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "என் வரைவைக் திருத்துங்கள்"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "தனிப்பட்ட உரையாடல்களை வெளிப்படுத்தாமல் வீட்டுப்பாட குறிப்புகள், கணித படி சரிபார்ப்புகள், எழுதுதல் கருத்துரை, மூல ஆதார விமர்சனம், சோக்ரட்டீய கேள்விகள், நினைவூட்டல் அட்டைகள் ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "விளக்கத்தை ஒரு கருத்து அட்டை, ஒரு உதாரண அட்டை, ஒரு தவறான எண்ண அட்டை கொண்ட செயலில் நினைவுகூரல் அட்டைகளாக மாற்றுங்கள்."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "பதில் நகலெடுப்பில்லாமல் படிப்படிக் கணித உதவி, வீட்டுப்பாட குறிப்புகள், சோக்ரட்டீய காரணம், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், தேர்வு தயாரிப்பு ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "பாடவாரியாக AI பயிற்சியாளர்கள்"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "பொது விருந்தினர் முறைகளை இலவசமாகப் பயன்படுத்தி, பின்னர் திறந்த மூலப் பணியும் பள்ளி செயல்படுத்தல் பாதைகளும் ஆராயுங்கள்."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "முதலில் நோக்கம்"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "இந்த வரலாற்று அல்லது தத்துவக் கூற்றை இரு பக்கங்களிலிருந்தும் விவாதியுங்கள். ஆதாரம், முன்கருத்துகள், மதிப்புகள் ஆகியவற்றைப் பிரியுங்கள்."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "சோக்ரட்டீய கேள்விகளைப் பயன்படுத்துங்கள்"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "உண்மையான வாழ்க்கையிலும் நிலைத்திருக்கும் திட்டத்தை உருவாக்க தேர்வு தேதி, பாடத்திட்டம், கிடைக்கும் நேரம், பலவீனப் பகுதிகள் ஆகியவற்றைப் பயன்படுத்துங்கள்."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "பலவீன இடத்தை பின்னர் மறுபார்வை செய்ய இணைக்கப்பட்ட வழிகாட்டி, கேள்வி முன்மாதிரி, பாட மையம், அல்லது கற்றல் பாதையைப் பயன்படுத்துங்கள்."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "இறுதி வரைவு தெளிவாக உங்களுடையதாகவே இருக்கும்படி, அமைப்பு, தெளிவு, ஆதாரம் ஆகியவற்றிற்கு எழுதுதல் கருத்துரையைப் பயன்படுத்துங்கள்."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "முதல் சொடுக்கிலிருந்தே பயனுள்ளது"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "காணொளி கட்டுப்பாடுகள்"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "காணொளி முன்னேற்றம்"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "குரலைக் காக்கும் கருத்துரை"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "31 வினாடிகள் பார்க்க"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "பலவீனப் பகுதி சுழற்சிகள்"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "ஒரு AI கற்றல் துணை அனைவருக்கும் என்ன செய்ய வேண்டும்"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "கற்றோர் தொடங்குவதற்கு முன் பொதுவாக கேட்பவை."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "ஒரு தலைப்பு மிகவும் கடினமாகத் தோன்றினால் முதலில் என்ன கேட்க வேண்டும்?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "வீட்டுப்பாட கேள்வி முன்மாதிரியில் என்ன சேர்க்க வேண்டும்?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "நீங்கள் செய்யக்கூடியவை"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "பள்ளிப் பெயரிடப்பட்ட AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "சோக்ரட்டீய AI பயிற்சியாளர் கருத்துகளை மனதில் பதியச் செய்வது ஏன்"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "வரலாற்றையும் விவாதத்தையும் ஏன் இணைக்க வேண்டும்?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "ஒரு விளக்கத்திற்குப் பிறகு சோக்ரட்டீய கேள்விகளை ஏன் பயன்படுத்த வேண்டும்?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "ஒரு AI பயிற்சியாளருடன் அல்ஜீப்ரா, கல்குலஸ், சொல் பிரச்சினைகள், கணிதக் கருத்துகள் ஆகியவற்றை ஒவ்வொரு படியாகப் பயிற்சி செய்யுங்கள்."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "ஒரு கற்றோர் ஏதாவது புரிந்துகொள்ள விரும்பி, தொடங்க பொறுமையான இடம் தேவைப்படும் தருணத்திற்காக inspir உள்ளது. ஆர்வம், பயிற்சி, அணுகல் ஆகியவற்றுக்கான இலவச பொதுக் கற்றல் துணையாக இந்தப் படம் தயாரிப்பை அறிமுகப்படுத்துகிறது."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "கணிதப் படிகளைப் பயிற்சி செய்யுங்கள்"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "பார்க்காமல் மூன்று வாக்கிய விளக்கம் எழுதுங்கள்; பின்னர் பலவீனமான இணைப்பைக் கண்டுபிடிக்க சோக்ரட்டீய முறையைக் கேளுங்கள்."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "உதவி கேட்பதற்கு முன் நீங்கள் எங்கு சிக்கினீர்கள் என்பதைத் துல்லியமாக எழுதுங்கள்."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "எழுதுதல்"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "எழுதுதல் பயிற்சியாளர்"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "ஆம்; அது குறிப்புகள் தரும்போது, காரணத்தைச் சரிபார்க்கும்போது, தவறுகளை விளக்கும்போது, உங்களுக்குப் பதிலாக எழுதாமல் இறுதி பதிலை நீங்கள் உருவாக்கச் சொல்லும்போது."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "ஒவ்வொரு அமர்வையும் மீண்டும் வாசிப்பதற்கு முன் ஒரு விரைவு வினாடி வினாவுடன் தொடங்குங்கள்."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "ஆம். எதையும் கற்கவும், சோக்ரட்டீய கற்பித்தல், வீட்டுப்பாட வழிகாட்டி, வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள் போன்ற பொதுத் தலைப்பு உரையாடல்கள் விருந்தினர் முறையில் நேரடியாகத் திறக்கும்."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "ஆம். பள்ளிகள் முதலில் பொதுத் தயாரிப்பைப் பயன்படுத்தி, பின்னர் பள்ளிக்கே உரிய பணிச்சூழல்கள், ரகசியத்தன்மை, நிதியுதவி வாய்ப்புகள் கொண்ட தனிப்பயன் AI கற்றல் இடங்களைப் பற்றி பேசலாம்."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "காலப் பயண அடையாளத்தை உருவாக்கி, பயண அறிவுறுத்தலை முடித்து, காட்சி, வரைபடம், காலவரிசை, மக்கள், விதிகள், பொருட்கள், ஆதாரம் ஆகியவற்றின் மூலம் ஒரு வரலாற்றுலகத்தை ஆராயுங்கள்."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "ஒரு காலப்பகுதியில் பயணியுங்கள்"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "குரலைக் காக்கும் கருத்துரை"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "சோக்ரட்டீய வழிகாட்டல் கேள்விகள், கருதுகோள்கள், குறிப்புகள், சிந்தனை ஆகியவற்றைப் பயன்படுத்தி, சும்மா பதில் வாசிப்பதை விட ஆழமான புரிதலை உருவாக்குகிறது."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "வடிவமைப்பு, தெளிவு, ஆதாரம் ஆகியவற்றைப் பற்றி கருத்துரை கொடுங்கள். என் குரலை வைத்திருங்கள்; முழுப் பதிலையும் மீண்டும் எழுத வேண்டாம்."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "உங்கள் காரணத்தைச் சோதியுங்கள்"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "கணிதம் அல்லது தர்க்கத்திற்கு, ஒவ்வொரு படியாகச் சென்று, அடுத்ததிற்கு செல்லும்முன் ஒவ்வொரு நகர்வும் ஏன் அனுமதிக்கப்படுகிறது என்று கேளுங்கள்."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "காரணத்தை வரி வரியாகச் சரிபார்க்கவும்"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "AI வரலாற்று உரையாடலை ஆதாரமாக மேற்கோள் காட்டலாமா?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "காலப் பயணம்"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "இல்லை. உருவாக்கப்பட்ட உரையாடலை கற்றல் உருவகப்படுத்தலாகவே கருதுங்கள். உண்மை கூற்றுகளுக்கு உண்மையான முதன்மை அல்லது இரண்டாம் நிலை ஆதாரங்களை மேற்கோள் காட்டுங்கள்."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "நீங்கள் செய்ய வேண்டிய வேலையிலிருந்து தொடங்குங்கள்."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "பதில் நகலெடுப்பில்லாமல் படிப்படிக் கணித உதவி, வீட்டுப்பாட குறிப்புகள், சோக்ரட்டீய காரணம், வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், தேர்வு தயாரிப்பு ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "அடுத்த படி"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "பட ஒலியை இயக்கவும்"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "பொது அறிவில் என்னைச் சோதியுங்கள்"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "ஆம்; அது குறிப்புகள் தரும்போது, காரணத்தைச் சரிபார்க்கும்போது, தவறுகளை விளக்கும்போது, உங்களுக்குப் பதிலாக எழுதாமல் இறுதி பதிலை நீங்கள் உருவாக்கச் சொல்லும்போது."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "கற்றலை அமைதியாக நீக்கிவிடும் குறுக்குவழியாக அல்லாமல், புரிதல், பயிற்சி, கருத்துரை ஆகியவற்றிற்கான பயிற்சியாளராக AI-ஐ பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "நடுத்தர பகுதி inspir-ஐ புரிதல், குறிப்புகள், வினாடி வினாக்கள், செயலில் கற்றல் சுழற்சிகள் ஆகியவற்றின் சுற்றில் அமைக்கிறது."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "பலவீன இடத்தை பின்னர் மறுபார்வை செய்ய இணைக்கப்பட்ட வழிகாட்டி, கேள்வி முன்மாதிரி, பாட மையம், அல்லது கற்றல் பாதையைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "தொடக்கக் காட்சிகள், யாரும் உடனே தொடங்கக்கூடிய ஒன்றாக கற்றலை அமைக்கின்றன."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "பொது AI முறைகளுடன் நிரலாக்கம் கற்றுக்கொள்ளுங்கள், கருத்துகளை பிழைதிருத்துங்கள், திட்டங்களைத் திட்டமிடுங்கள், தரவைப் புரிந்துகொள்ளுங்கள், தொழில்நுட்பக் கேள்விகளை ஆராயுங்கள்; கற்றோர் செயல்முறையில் தொடர்கிறார்."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "உரைப் பதிவு"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "பட அத்தியாயங்களை மறைக்கவும்"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "உங்கள் முதல் கேள்வியை கேட்டு உடனே பயிற்சிக்குச் செல்லுங்கள்."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "பாடங்களைப் பாருங்கள்"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "ஆதாரத்திலிருந்து விலகாமல், வரலாறும் கருத்துகளும் சூழலுடனும் விவாதிக்கத்தக்கதாகவும் உயிரோட்டமுடனும் உணரப்பட வேண்டும் என்று விரும்பும் ஆர்வமுள்ள கற்றோர்."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "பள்ளிகள் தங்கள் கற்றோருக்கேற்ப, NCERT-க்கு ஒத்த உள்ளடக்கம் மற்றும் பணிச்சூழல்களுடன், கூட்டாளர் பள்ளிகள் அல்லது CSR ஆதரவு நிதியளிக்கும் பள்ளிப் பெயரிடப்பட்ட AI உரையாடல் அனுபவங்களை வழங்கலாம்."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "எந்தத் தலைப்பையும் விவாதியுங்கள்"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI படிப்பு அட்டவணை"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "ஒவ்வொரு வழிகாட்டியும் ஒரு முறை, கேள்வி முன்மாதிரி, அல்லது மறுபார்வைச் சுழற்சியைச் சுட்டுகிறது; அதனால் வாசிப்பு பயிற்சியாக மாற முடியும்."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "இயக்கத்தில் inspir"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "படிப்பு சுழற்சிகள், AI வழிகாட்டல் கையேடுகள், நடைமுறை கேள்வி முன்மாதிரிகள்."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "தவறுகளை மறுபார்வைச் சுழற்சிகளாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI தேர்வு தயாரிப்பு திட்டம்"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "அடித்தளக் கற்றலுக்காக inspir-இல் எதையும் கற்கவும்-ஐ பயன்படுத்தும் நடைமுறை வழிகாட்டி; கேள்வி முன்மாதிரிகள், படிப்பு சுழற்சிகள், பாதுகாப்பான AI பழக்கங்கள் உடன்."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "ஒரு தவறைச் சரிசெய்யுங்கள்"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "தவறுகள், தயக்கம், வாய்ப்பாடுகள், வரையறைகள், தெளிவாக விளக்க முடியாத கருத்துகள் ஆகியவற்றிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்குங்கள்."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "இலவச விருந்தினர் கற்றல்"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "தனிப்பட்ட உரையாடல்களை வெளிப்படுத்தாமல் வீட்டுப்பாட குறிப்புகள், கணித படி சரிபார்ப்புகள், எழுதுதல் கருத்துரை, மூல ஆதார விமர்சனம், சோக்ரட்டீய கேள்விகள், நினைவூட்டல் அட்டைகள் ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "முதலில் உங்களைச் சோதியுங்கள்; உண்மையில் என்ன நினைவில் உள்ளது, நம்பிக்கை எங்கு தவறாக வழிநடத்துகிறது என்பதைக் காணலாம்."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "அடுத்த தலைமுறை AI படிப்பு தளம்."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "பொது கற்றல் முறைகளை நீங்கள் இலவசமாக முயற்சிக்கலாம். சேமிக்கப்பட்ட உரையாடல்கள், கணக்குகள், நிர்வாக கருவிகள், பயனர் தரவு ஆகியவை தனிப்பட்டவையாகவே இருக்கும்."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "வாதத்தைச் சோதியுங்கள்"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "கற்றல் வரைபடத்தைத் திறக்கவும்"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "மறுபயிற்சிக்கான AI நினைவூட்டல் அட்டைகள்"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: நீங்கள் எதையும் கற்கலாம்"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "வரலாற்றுச் சூழலைப் புரிந்துகொள்ளுங்கள், ஒரு கண்ணோட்டத்தை கேள்வி கேளுங்கள், கூற்றுகளை ஒப்பிடுங்கள், உருவகப்படுத்தலை ஆவணப்படுத்தப்பட்ட உண்மையிலிருந்து பிரியுங்கள்."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "தேர்வு திட்டம் உருவாக்குங்கள்"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "கற்றோரின் குரலை மாற்றாமல் அமைப்பை மேம்படுத்தும் கட்டுரை கருத்துரை, வாசிப்பு ஆதரவு, பேச்சுப் பயிற்சி, மூல ஆதார விமர்சனம், திருத்தச் சுழற்சிகள் ஆகியவற்றிற்கு inspir-ஐப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "யதார்த்தமான அட்டவணை"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "தேவையான அடிப்படை கருத்துகளை அறியும்முன் முழுச் சுருக்கத்தைக் கேட்க வேண்டாம்."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "ஒரு வரலாற்று நபருடன் பேசுங்கள்"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "தவறைச் சேமியுங்கள்"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "யதார்த்தமான படிப்பு திட்டம், நினைவுகூரல் பயிற்சி, வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், பலவீனப் பகுதிகளின் மறுபார்வை ஆகியவற்றுடன் AI தேர்வு தயாரிப்பு பணிச்சூழலை உருவாக்குங்கள்."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "கேள்வி, நீங்கள் ஏற்கெனவே முயன்றது, எங்கு சிக்கினீர்கள், உங்களுக்கு குறிப்பு வேண்டுமா, படி சரிபார்ப்பு வேண்டுமா, அல்லது கருத்துரை வேண்டுமா என்பதைக் சேர்க்கவும்."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "நினைவுகூரல் பயிற்சி"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "பொது விருந்தினர் அனுபவத்திற்கு கணக்கு தேவையில்லை; ஒரு முறையைத் திறந்து உடனே தொடங்குங்கள்."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "தலைப்பு, பணி, வரைவு, தேர்வு, அல்லது கருத்து எதுவாக இருந்தாலும், வேலையிற்கு பொருத்தமான முறையில் தொடங்குங்கள்."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "உங்கள் சொற்களில் இன்னும் விளக்க முடியாத வாக்கியங்களிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்க வேண்டாம்."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "பிரபலமான பாதைகள்"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI மூலம் கடினமான தலைப்பை எப்படி புரிந்துகொள்வது"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "ஆம். பொதுவான விருந்தினர் கற்றல் முறைகள் இலவச அணுகலுக்காக வடிவமைக்கப்பட்டுள்ளன; எனவே கற்றோர் பள்ளி செயல்படுத்தல் அல்லது கட்டணக் கணக்கு இல்லாமலேயே தொடங்கலாம்."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "பொது கற்றல் முறைகளை நீங்கள் இலவசமாக முயற்சிக்கலாம். சேமிக்கப்பட்ட உரையாடல்கள், கணக்குகள், நிர்வாக கருவிகள், பயனர் தரவு ஆகியவை தனிப்பட்டவையாகவே இருக்கும்."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "பயிற்சி; பதில் நகலெடுப்பல்ல"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "வீட்டுப்பாட மற்றும் சோக்ரட்டீய முறைகள் முடிந்த பதில்களை நேரடியாக வழங்குவதற்குப் பதிலாக குறிப்புகள், காரணம், படி சரிபார்ப்புகள், கற்றோர் விளக்கங்கள் ஆகியவற்றைச் சுற்றி வடிவமைக்கப்பட்டுள்ளன."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "என் புரிதல் மாதிரியைச் சரிபார்க்கவும்"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "பட உரைப் பதிவை மறைக்கவும்"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "காணொளி கட்டுப்பாடுகள்"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "நேரம் குறைவாகவும் பாடத்திட்டம் பெரிதாகவும் இருக்கும், எல்லாவற்றும் சமமாக முக்கியம் என நடிக்காமல் மறுபார்வை செய்ய யதார்த்தமான வழி தேவைப்படும் கற்றோர்."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "அனைவருக்கும் இலவச AI கற்றல் | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "உள்நுழையாமல் inspir-ஐப் பயன்படுத்த முடியுமா?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "பணியைத் திட்டமிடுங்கள், நினைவுகூரலைப் பயிற்சி செய்யுங்கள், வினாடி வினாக்கள் மற்றும் செயலில் நினைவுகூரலால் பலவீன இடங்களை மூடுங்கள்."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "விரைவு பதில்கள்"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "உருவாக்கப்பட்ட உரையாடலை ஆவணப்படுத்தப்பட்ட மேற்கோளிலிருந்து பிரித்துக் கொண்டே ஒரு வரலாற்று நபருடன் பேசுங்கள்."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "எளிய மொழி விளக்கங்கள்"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "திட்டத்தை உருவாக்குங்கள்"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "உருவகப்படுத்தலுக்குப் பிறகு, சூழல், கட்டுப்பாடுகள், ஆதாரங்கள் ஆகியவற்றைச் சுருக்குங்கள்."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "ஆம். பள்ளிகள் முதலில் பொதுத் தயாரிப்பைப் பயன்படுத்தி, பின்னர் பள்ளிக்கே உரிய பணிச்சூழல்கள், ரகசியத்தன்மை, நிதியுதவி வாய்ப்புகள் கொண்ட தனிப்பயன் AI கற்றல் இடங்களைப் பற்றி பேசலாம்."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "கணிதம், எழுதுதல், நிரலாக்கம், வரலாறு, வீட்டுப்பாடம், தேர்வு தயாரிப்பு ஒவ்வொன்றுக்கும் வேறு விதமான உதவி தேவை. பாடத்திலிருந்து தொடங்கி, பொருத்தமான முறை, கேள்வி முன்மாதிரி, வழிகாட்டி, அல்லது மறுபார்வைச் சுழற்சிக்குச் செல்லுங்கள்."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "வாதங்களை ஒப்பிடுங்கள்"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "செயலில் நினைவுகூரல் மறுபார்வை"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "வாதப் பயிற்சி"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "நினைவூட்டல் அட்டை உருவாக்கி"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "படத்தை இடைநிறுத்தவும்"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "மிகவும் பலவீனமாக உள்ள கருத்துக்கான எளிய விளக்கத்தைக் கேளுங்கள்."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "பாதையை உயிரோட்டமாக வைத்திருங்கள்"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "வரைவைக் மேம்படுத்துங்கள்"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "எந்தத் தலைப்பையும் விவாதியுங்கள், சவால்களைப் பெறுங்கள், கூற்றுகளை ஒப்பிடுங்கள், மேலும் வலுவான வாதங்களை அமைப்பது எப்படி என்பதை கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "வரலாறு"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI வீட்டுப்பாட உதவி ஒழுக்கமானதாக இருக்க முடியுமா?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "வீட்டுப்பாட வழிகாட்டியை முயற்சிக்கவும்"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "எதையும் கற்கவும்: கேள்வி முன்மாதிரிகள் மற்றும் படிப்பு சுழற்சி"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "கற்றதைச் செயலாக்க உதவும் {value1} வழிகாட்டிகள் கொண்ட நூலகம்."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "பள்ளிகள் மற்றும் CSR கூட்டாளிகளுக்காக"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "பள்ளிக்கான தனிப்பட்ட பணிச்சூழல்கள்"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "ஒரு பணியை ஒட்டி முடிந்த பதிலை கேட்க வேண்டாம்."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "கடினமான கருத்துகளுக்கான AI பயிற்சியாளர்"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "படித்த பின் செயல்"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "கேள்விகள் தலைப்பைப் பற்றிய உங்கள் சொந்த மாதிரியை வெளிப்படுத்தச் செய்கின்றன; குழப்பம், பொய்யான நம்பிக்கை, இல்லாத அடிப்படை அறிவு ஆகியவை பொதுவாக அங்கேயே தெரியும்."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "வடிவமைப்பிலேயே திறந்தது"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir பொதுமக்கள் முன்னிலையில் உருவாக்கப்படுகிறது."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "கேள்விகள் கேளுங்கள், கருத்துகளுக்கு சவால் விடுங்கள், கடந்த காலப் பொதுப் பிரமுகர்களுடன் ஆதாரமுள்ள உரையாடல்களால் வரலாறைக் கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "கற்றலை பதில் நகலெடுப்பாக மாற்றாமல் குறிப்புகள், படி சரிபார்ப்புகள், எழுதுதல் கருத்துரை ஆகியவற்றைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "சோக்ரட்டீய AI பயிற்சியாளர் கருத்துகளை மனதில் பதியச் செய்வது ஏன்"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "படத்தை இயக்கவும்"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "ஒரு தலைப்பு மிகவும் கடினமாகத் தோன்றினால் முதலில் என்ன கேட்க வேண்டும்?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI வீட்டுப்பாட வழிகாட்டி"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "உண்மையான வாழ்க்கையிலும் நிலைத்திருக்கும் திட்டத்தை உருவாக்க தேர்வு தேதி, பாடத்திட்டம், கிடைக்கும் நேரம், பலவீனப் பகுதிகள் ஆகியவற்றைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "வரையறைகள், உதாரணங்கள், மாற்றிப் பயன்படுத்தும் சிக்கல்கள் ஆகியவற்றை கலந்த ஐந்து கேள்விகளை கேளுங்கள்."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "பதிலை சும்மா வாசிப்பதற்குப் பதிலாக, முன்கருத்துகளை வெளிக்கொண்டு வந்து இடைவெளிகளை நிரப்ப கேள்விகளுக்குள் மாறுங்கள்."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "சூழல், ஆதாரம், வாதங்கள், கண்ணோட்டங்கள் ஆகியவற்றை ஆராய AI காலப் பயணம், வரலாற்று உரையாடல்கள், விவாதப் பயிற்சி ஆகியவற்றைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "படிப்பு அட்டவணை பெறுங்கள், பலவீனப் பகுதிகளில் உங்களைச் சோதியுங்கள், தவறுகளை மீண்டும் மறுபார்வைக்கான நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "தற்போதைய inspirlearning.com மறுகட்டமைப்பு."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "சும்மா பதிலை வாசிப்பதற்குப் பதிலாக கவனமுள்ள கேள்விகள், குறிப்புகள், சிந்தனை மூலம் கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "பொதுவான கற்றல் தருணங்களுக்கான முறை வழிகாட்டிகள், கேள்வி முன்மாதிரி சுழற்சிகள், படிப்பு முறைகள், அடிப்படை கட்டுரைகள்."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "வரலாற்று நபர்களுடன் பேசும் AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "ஒவ்வொரு முறையும் தனித்த நோக்கம், உதாரணங்கள், கற்றல் ஓட்டத்துடன் பொதுவான விருந்தினர் உரையாடலாக திறக்கிறது; எனவே கற்றோர் உடனே சரியான வகை ஆதரவுடன் தொடங்கலாம்."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "பொதுவான AI உரையாடல் பொறியிலிருந்து inspir எப்படி வேறுபடுகிறது?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "பயன்படுத்தப்படுவதற்காக உருவாக்கப்பட்டது"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "மறுபார்வைக்கு முன் சோதியுங்கள்"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "உருவாக்கப்பட்ட உரையாடலை உண்மையான மேற்கோளாகவோ முதன்மை ஆதாரமாகவோ கருத வேண்டாம்."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "உங்களைச் சோதியுங்கள்"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "ஒவ்வொரு தலைப்புக்கும் சமமான நேரம் தேவை எனக் கருதும் திட்டம் அமைக்க வேண்டாம்."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir கற்றல் முன்னோட்டத்தை இயக்கவும்"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "முதலில் ஒரு எளிய விளக்கம், அன்றாட ஒப்புமை ஒன்று, தலைப்பு புரிவதற்கு முன் தேவைப்படும் மூன்று கருத்துகள் ஆகியவற்றைக் கேட்டு தொடங்குங்கள்."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "தேர்வுகளுக்கான AI வினாடி வினா உருவாக்கி"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "விளக்கத்தை செயலில் நினைவுகூரல் அட்டைகளாக மாற்றி, தவறுகள் அல்லது தயக்கம் ஏற்பட்ட பிறகு அவற்றை மீண்டும் பாருங்கள்."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "படத்தை மீண்டும் தொடங்கவும்"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "ஏமாற்றத்தை ஊக்குவிக்காமல் வீட்டுப்பாடத்தில் inspir உதவுமா?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "காணொளி முன்னேற்றம்"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "முதலில் எளிய மாதிரியைப் பெறுங்கள்"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI கற்றல் வழிகாட்டி நூலகம்"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "எதையும் கற்கவும் முறையுடன் தொடங்குங்கள்"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "வழிகாட்டல், பயிற்சி, வினாடி வினாக்கள், நினைவூட்டல் அட்டைகள், விவாதம், எழுதுதல் கருத்துரை, குறியீட்டு உதவி, படிப்பு திட்டமிடல் ஆகியவற்றுக்கான இலவச பொதுப் AI கற்றல் துணை."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "பள்ளிப் பெயரிடப்பட்ட AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "நேரடி கற்றல் அமர்வைத் தொடங்குங்கள்."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI கணித பயிற்சியாளர்"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "கணித படிப்படி வழிகாட்டி"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "தொடர்பு"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "பேசி, சோதித்து, விவாதித்து, ஆராய்ந்து கற்றுக்கொள்ளுங்கள்."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "கற்றல் வழிகாட்டிகள் மற்றும் பயிற்சி சுழற்சிகள்"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "முன்கருத்துகள், சமரசங்கள், பலவீனமான ஆதாரம் ஆகியவற்றைக் கவனிக்கக் கூற்றை ஒன்றுக்கும் மேற்பட்ட கோணங்களில் விவாதியுங்கள்."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI வரலாறு பயிற்சியாளர்"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "வேகமான கற்றல் பாதைகள்"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "முதல் கோட்பாடுகளிலிருந்து தொடங்குங்கள்"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "பட ஒலியை அணைக்கவும்"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31 வினாடிகள் பார்க்க"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "தேர்வு மறுபயிற்சியைத் திட்டமிடுங்கள், வினாடி வினாக்களை உருவாக்குங்கள், நினைவூட்டல் அட்டைகள் அமைக்குங்கள், இடைவெளி மறுபார்வையை அட்டவணையிடுங்கள், கவனமுள்ள AI கற்றல் முறைகளுடன் ஊக்கத்தை யதார்த்தமாக வைத்திருங்கள்."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "நீங்கள் வந்த சரியான உதவியைத் திறக்கவும்."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "குறிப்புகள், பதில்கள், உதாரணங்கள், பொதுவான சிக்கல்கள் ஆகியவற்றுடன் குறிப்புகள் அல்லது தலைப்புகளை கவனமுள்ள நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "சோக்ரட்டீய பயிற்சியாளர்"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI சோக்ரட்டீய பயிற்சியாளர்"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir-இல் எதையும் கற்கவும்-இலிருந்து பயனுள்ள கற்றல் முடிவுகளைப் பெற கேள்வி யோசனைகள் மற்றும் மீண்டும் செய்யக்கூடிய படிப்பு சுழற்சி."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "பள்ளிகளை ஆராயுங்கள்"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ஒரு AI பயிற்சியாளருடன் அல்ஜீப்ரா, கல்குலஸ், சொல் பிரச்சினைகள், கணிதக் கருத்துகள் ஆகியவற்றை ஒவ்வொரு படியாகப் பயிற்சி செய்யுங்கள்."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "ஆர்வம், பயிற்சி, அணுகல் ஆகியவற்றுக்காக உருவாக்கப்பட்டது."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "இந்தத் தலைப்புகளில் என்னை ஒரே நேரத்தில் ஒரு கேள்வியாகச் சோதியுங்கள். ஒவ்வொரு பதிலுக்கும் பிறகு இடைவெளியை விளக்கி, கடினத்தன்மையை மெதுவாக உயர்த்துங்கள்."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "பிரபலமான AI கற்றல் பாதைகள்"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "தெளிவான தனியுரிமை எல்லைகள்"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "சோக்ரட்டீய சரிபார்ப்புகள்"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "இலவச பொதுப் AI கற்றல் தளம்"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "நோக்கத்தைப் படியுங்கள்"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "சோக்ரட்டீய கற்பித்தல்"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "மீண்டும் இயக்கவும்"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "மக்கள் விரைவாகப் புரிந்துகொள்ளக்கூடிய பொதுக் கற்றல் தளம்."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "கற்றோர் தொடங்குவதற்கு முன் பொதுவாக கேட்பவை."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "ஆதாரத்தை உணரும் காட்சிகள்"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "சூழலைச் சுருக்குங்கள்"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "வழிகாட்டிகள், பாதைகள், பாடங்கள், கேள்வி முன்மாதிரிகள் ஆகியவை அடுத்த பயனுள்ள பயிற்சி இடத்துடன் இணைக்கப்படுகின்றன."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "நீங்கள் ஏற்கெனவே ஒப்புக்கொள்ளும் பக்கத்தை மட்டும் விவாதிக்க வேண்டாம்."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "உதவும் கற்றல் வரைபடம்"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "எளிய மொழி மாதிரி, கூர்மையான கேள்விகள், நீங்கள் மீண்டும் விளக்கக்கூடிய உதாரணங்கள், மறுபார்வைக்கான நினைவூட்டல் அட்டைகள் ஆகியவற்றுடன் முடிக்குங்கள்."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "கற்றோருக்கு இணைப்புகளின் குவியல் அல்ல, ஒரு ஒழுங்கான தொடர் தேவை. புரிதல், வீட்டுப்பாடம், தேர்வு தயாரிப்பு, ஆராய்ச்சி ஆகியவற்றுக்கான நடைமுறை படிப்பு சுழற்சிகளாக இந்தப் பாதைகள் முறைகளை இணைக்கின்றன."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "எதையும் கற்கவும்"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "பட அத்தியாயங்கள்"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "எளிய அடுத்த படிகள்"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "படிப்பு திட்டத்தை யதார்த்தமாக அமைக்கவும்"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "வழிகாட்டி நூலகம்"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "ஒரு விளக்கத்திற்குப் பிறகு சோக்ரட்டீய கேள்விகளை ஏன் பயன்படுத்த வேண்டும்?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "மாணவர்கள் சும்மா பதில்களைச் சேகரிப்பவர்களாக மாறாமல், கற்றலை AI எப்படி தெளிவாகவும் தனிப்பட்டதாகவும் எளிதில் அணுகக்கூடியதாகவும் மாற்ற முடியும் என்பதைப் பார்க்கும் நடைமுறை பார்வை."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "வாதம்"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "இறுதி வரைவு தெளிவாக உங்களுடையதாகவே இருக்கும்படி, அமைப்பு, தெளிவு, ஆதாரம் ஆகியவற்றிற்கு எழுதுதல் கருத்துரையைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-க்கு ஒத்த விருப்பங்கள்"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "இந்தத் தலைப்பைப் பற்றி எனக்கு ஐந்து சோக்ரட்டீய கேள்விகள் கேளுங்கள். ஒவ்வொரு பதிலுக்கும் பிறகு நான் பயன்படுத்திய முன்கருத்து என்ன, அடுத்து என்ன சோதிக்க வேண்டும் என்பதைக் கூறுங்கள்."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir பயன்படுத்த இலவசமா?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "வரலாற்று முறையிடம் ஆவணப்படுத்தப்பட்டது, ஊகிக்கப்பட்டது, அல்லது உருவகப்படுத்தப்பட்டது என்ன என்பதை குறிக்கச் சொல்லுங்கள்."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "வழிகாட்டி நூலகத்தை ஆராயுங்கள்"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "தவறுகளிலிருந்து நினைவூட்டல் அட்டைகள் உருவாக்கி, சிறிது இடைவெளிக்குப் பிறகு அவற்றை மீண்டும் பாருங்கள்."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "பதில்களை நகலெடுக்காமல் AI வீட்டுப்பாட உதவி"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "சிந்தனை கற்றோரிடமே இருக்க உதவும் குறிப்புகள், சரிபார்ப்புகள், கருத்துரை, படிப்பு திட்டங்கள் ஆகியவற்றைக் கேளுங்கள்."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "பரந்த திறந்த மூல inspir தளம்."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "நீங்கள் ஏற்கெனவே முயன்றதை காட்டாமல் விட வேண்டாம்; பயனுள்ள உதவி அந்தச் சூழலின் மீது சார்ந்துள்ளது."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "என் செயல்முறையில் இந்தப் படியைச் சரிபார்க்கவும். அது தவறாக இருந்தால், தவறை விளக்கி அடுத்த ஒரு நகர்வைக் கூறுங்கள்."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "இந்தக் காலத்திலும் இடத்திலும் என்னை நிறுத்துங்கள். ஆவணப்படுத்தப்பட்ட உண்மைகளை சாத்தியமான உருவகப்படுத்தலிலிருந்து தனியாகக் குறியிட்டு, நான் என்ன கவனிக்கிறேன் என்று கேளுங்கள்."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "மீண்டும் விளக்குங்கள்"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "பலவீனப் பகுதி சுழற்சிகள்"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "ஒவ்வொரு வழிகாட்டியும் பொருத்தமான சரியான கற்றல் முறைக்குச் செல்லும் பயிற்சி திட்டங்கள், பாதைகள், இணைப்புகளுடன் முடிகிறது."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "ஒரு AI கற்றல் துணை அனைவருக்கும் என்ன செய்ய வேண்டும்"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI வரலாறு பயிற்சியாளர்"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "ஒரு நபரிடம் கேள்வி கேளுங்கள்"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "ஒரு படியைச் சரிபார்க்கவும்"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "கூற்றை விவாதியுங்கள்"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "பலவீன இடத்தைச் சரிசெய்யுங்கள்"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "வீட்டுப்பாட வழிகாட்டி"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "அடுத்த படியை விளக்குங்கள்"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "செயலில் நினைவுகூரலுக்கான AI நினைவூட்டல் அட்டைகள்"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "கற்றல் இலவசமாகவும் அணுகக்கூடியதாகவும் உயிரோட்டமுடனும் இருக்க வேண்டும் என்ற inspir-இன் நம்பிக்கையை அறிமுகப்படுத்தும் குறும்படம்."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "புரியாத விஷயத்திலிருந்து தொடங்கி, எளிய மொழி மாதிரி, உதாரணங்கள், அடுத்த படிகள் பெறுங்கள்."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "தலைப்பு தொகுப்புகள்"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "பட உரைப் பதிவை காட்டவும்"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "வீட்டுப்பாடம்"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "இறுதி வேலை உங்களுடையதாகவே இருக்கும்படி, குறிப்புகள், படி சரிபார்ப்புகள், கணிதக் காரணம், எழுதுதல் கருத்துரை ஆகியவற்றிற்கு AI வீட்டுப்பாட வழிகாட்டுதலைப் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "தெளிவான விளக்கங்கள்"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "அதை நினைவூட்டல் அட்டைகளாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "தேர்வு தயாரிப்பு திட்டத்தை எவ்வளவு முன்கூட்டியே அமைக்க வேண்டும்?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "படம் ஊக்கத்திலிருந்து நடைமுறை வாக்குறுதிக்குச் செல்கிறது: பொறுமையான AI கற்றல் துணை."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "எங்களுடன் உருவாக்குங்கள்"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "படி சரிபார்ப்புகள்"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "தொடங்க நல்ல பகுதிகள்:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "உண்மையையும் கற்பனையையும் பிரியுங்கள்"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "நம்பிக்கைக்காக வடிவமைக்கப்பட்டது"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "பாடத்திலிருந்து தொடங்கி, சரியான கற்றல் முறையைத் திறக்கவும்."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "திட்டமிடல், திருத்தம், அமைப்பு, உங்கள் குரலைக் காக்கும் கருத்துரை ஆகியவற்றுடன் எழுதுதலை மேம்படுத்துங்கள்."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI வீட்டுப்பாட உதவியாளர்"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "ஒரு காலப்பகுதிக்குள் செல்லுங்கள்"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "அதைப் பயன்படுத்தி ஏதாவது செய்யுங்கள்"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "மற்றொரு பதில் பெட்டி அல்ல. கற்கும் இடம்."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "ஆர்வம் இங்கிருந்து தொடங்குகிறது"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "விருந்தினர் உரையாடலைத் திறக்கவும்"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "நினைவூட்டல் அட்டைகளுடன் மறுபார்வை செய்யுங்கள்"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "தேதிகள், சூழல், ஆவணங்கள், அல்லது ஆதாரக் குறிச்சொற்களுக்கு பதிலாக வேடமிட்டு உரையாடலை விட வேண்டாம்."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "தேர்வு தேதியை அறிந்த உடனே தொடங்குங்கள். நேரம் குறைந்தால், பலவீனப் பகுதிகள், முந்தைய வினாத்தாள் பாணி கேள்விகள், தினசரி நினைவுகூரல் ஆகியவற்றுக்கு முன்னுரிமைத் தாருங்கள்."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "ஒவ்வொரு குறிப்பிற்குப் பிறகும், தொடர்வதற்கு முன் அந்த படி ஏன் செயல்படுகிறது என்பதை விளக்குங்கள்."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "ஒரு குறிப்பைக் கேளுங்கள்"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "ஒவ்வொரு கட்டுரையும் பிரிவுகள், நேரடி முறைகள், பாட மையங்கள், கற்றல் பாதைகள், தொடர்புடைய வழிகாட்டிகள் ஆகியவற்றுடன் இணைக்கப்பட்டுள்ளது."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "ஆழமாகச் சிந்தியுங்கள்"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "ஆர்வம், பயிற்சி, கற்பிக்கும் AI."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "இந்தத் தலைப்பை எளிய மொழியில் விளக்குங்கள். எனக்கு தேவையான மூன்று அடிப்படை கருத்துகள், ஒரு ஒப்புமை, ஒரு பொதுவான தவறான எண்ணம் ஆகியவற்றைக் கூறுங்கள்."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "ரகசியமான செயல்படுத்தல்கள்"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "படத்தை முழுத்திரையில் திறக்கவும்"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "நீங்கள் செய்யக்கூடியவை"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "மிகக் கடினமாக தவறிய கேள்வியை நினைவூட்டல் அட்டையாக மாற்றி, பின்னர் மறுபார்வை செய்யுங்கள்."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "எதையும் கேளுங்கள்"
     }
   ]
 }

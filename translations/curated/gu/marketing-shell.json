@@ -4,467 +4,12 @@
   "locale": "gu",
   "namespace": "marketing-shell",
   "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
-    {
-      "key": "site.184924ce836d931ea3",
-      "source": "{value1} on inspir",
-      "value": "inspir પર {value1}"
-    },
-    {
-      "key": "site.b1dbda7daecd02de50",
-      "source": "\\u003c",
-      "value": "\\u003c"
-    },
-    {
-      "key": "site.6b21fb791ac0517089",
-      "source": "About",
-      "value": "વિશે"
-    },
-    {
-      "key": "site.36019c92743104254d",
-      "source": "active recall",
-      "value": "સક્રિય સ્મરણ"
-    },
-    {
-      "key": "site.796a0595fd873c197a",
-      "source": "AI explanations",
-      "value": "AI સમજણ"
-    },
-    {
-      "key": "site.33c22396f6e33f672e",
-      "source": "AI learning map",
-      "value": "AI શીખવાનો નકશો"
-    },
-    {
-      "key": "site.4b5eed23ef93d99980",
-      "source": "AI learning modes",
-      "value": "AI શીખવાના મોડ"
-    },
-    {
-      "key": "site.8cf0e39998cb4dc235",
-      "source": "AI learning prompt library",
-      "value": "AI શીખવાની પ્રોમ્પ્ટ લાઇબ્રેરી"
-    },
-    {
-      "key": "site.8f277c54e75609265c",
-      "source": "AI study prompts",
-      "value": "AI અભ્યાસ પ્રોમ્પ્ટ્સ"
-    },
-    {
-      "key": "site.71cf6cd0ccb16981fe",
-      "source": "AI tutoring",
-      "value": "AI ટ્યુટરિંગ"
-    },
-    {
-      "key": "site.a16a4eda7cb2c8e91d",
-      "source": "Answer",
-      "value": "જવાબ"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "તમારો પહેલો પ્રશ્ન પૂછો અને સીધા અભ્યાસમાં પ્રવેશો."
-    },
-    {
-      "key": "site.51d9934555e29c55ec",
-      "source": "Audience",
-      "value": "વાચકવર્ગ"
-    },
-    {
-      "key": "site.0b9d2b2362bc33581b",
-      "source": "Blog",
-      "value": "બ્લોગ"
-    },
-    {
-      "key": "site.97a19c47a7d6922aa7",
-      "source": "BlogPosting",
-      "value": "BlogPosting"
-    },
-    {
-      "key": "site.78b7c9f6d6d7dfc01a",
-      "source": "Choose",
-      "value": "પસંદ કરો"
-    },
-    {
-      "key": "site.895e0be8b3156639c0",
-      "source": "Choose another language",
-      "value": "બીજી ભાષા પસંદ કરો"
-    },
-    {
-      "key": "site.d0d9118568f5027bc1",
-      "source": "Choose the language for this visit.",
-      "value": "આ મુલાકાત માટે ભાષા પસંદ કરો."
-    },
-    {
-      "key": "site.1ee9cc3793a0d9c91d",
-      "source": "Choose your language",
-      "value": "તમારી ભાષા પસંદ કરો"
-    },
-    {
-      "key": "site.1bd3bd675d34fadf02",
-      "source": "Clip",
-      "value": "ક્લિપ"
-    },
-    {
-      "key": "site.68079a84852a6b6e08",
-      "source": "coding help",
-      "value": "કોડિંગ મદદ"
-    },
-    {
-      "key": "site.8d105cf44d3926289e",
-      "source": "Compare",
-      "value": "તુલના"
-    },
-    {
-      "key": "site.96e7b8ebfd52439d88",
-      "source": "Compare AI tutors",
-      "value": "AI ટ્યુટરની તુલના કરો"
-    },
-    {
-      "key": "site.b56a736b37bd52dbde",
-      "source": "Continue with English",
-      "value": "અંગ્રેજીમાં ચાલુ રાખો"
-    },
-    {
-      "key": "site.ccc5b0edaae6094090",
-      "source": "Continue with Google",
-      "value": "Google સાથે ચાલુ રાખો"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "જિજ્ઞાસા, અભ્યાસ અને શીખવતું AI."
-    },
-    {
-      "key": "site.950c582c14e6769170",
-      "source": "Dismiss language options",
-      "value": "ભાષા વિકલ્પો બંધ કરો"
-    },
-    {
-      "key": "site.e96bab4b016c25af6d",
-      "source": "educational technology",
-      "value": "શૈક્ષણિક ટેકનોલોજી"
-    },
-    {
-      "key": "site.9d9238b7d9fc7180ce",
-      "source": "EducationalApplication",
-      "value": "EducationalApplication"
-    },
-    {
-      "key": "site.104854c08c13c48eb7",
-      "source": "EducationalOrganization",
-      "value": "EducationalOrganization"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "ફિલ્મ પ્રકરણો"
-    },
-    {
-      "key": "site.cf7eb9c684b11a2995",
-      "source": "flashcard generation",
-      "value": "ફ્લેશકાર્ડ બનાવટ"
-    },
-    {
-      "key": "site.a917f3a02c55ca37c5",
-      "source": "Footer links",
-      "value": "ફૂટર લિંક્સ"
-    },
-    {
-      "key": "site.f7880600348a091a43",
-      "source": "For",
-      "value": "માટે"
-    },
-    {
-      "key": "site.ce3963262ac925e716",
-      "source": "free AI tutoring",
-      "value": "મફત AI ટ્યુટરિંગ"
-    },
-    {
-      "key": "site.5442e2b64fa09764b9",
-      "source": "GitHub",
-      "value": "GitHub"
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "ફિલ્મ પ્રકરણો છુપાવો"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "ફિલ્મ ટ્રાન્સક્રિપ્ટ છુપાવો"
-    },
-    {
-      "key": "site.70f8bb9a8a5393ef08",
-      "source": "Home",
-      "value": "હોમ"
-    },
-    {
-      "key": "site.d7de14f0e779c0fc1c",
-      "source": "homework coaching",
-      "value": "ગૃહકાર્ય માર્ગદર્શન"
-    },
-    {
-      "key": "site.f27383221552d2bb47",
-      "source": "HowToStep",
-      "value": "HowToStep"
-    },
-    {
-      "key": "site.3a04071d8bf5e748c4",
-      "source": "inspir AI learning platform",
-      "value": "inspir AI શીખવાનું પ્લેટફોર્મ"
-    },
-    {
-      "key": "site.116474409fe330fe3a",
-      "source": "inspir home",
-      "value": "inspir હોમ"
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir ગતિમાં"
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir શીખણ ફિલ્મ"
-    },
-    {
-      "key": "site.6b31d7e48f8c1f2526",
-      "source": "inspir learning film preview",
-      "value": "inspir શીખવાની ફિલ્મ પૂર્વદર્શન"
-    },
-    {
-      "key": "site.856b2d763a6501c6f1",
-      "source": "inspir public AI learning modes",
-      "value": "inspir ના જાહેર AI શીખવાના મોડ"
-    },
-    {
-      "key": "site.6d5dc74d0505491406",
-      "source": "inspir public navigation",
-      "value": "inspir જાહેર નેવિગેશન"
-    },
-    {
-      "key": "site.12f065125d05ecf1b9",
-      "source": "Interactive learning chat",
-      "value": "ઇન્ટરેક્ટિવ શીખવાની ચેટ"
-    },
-    {
-      "key": "site.89b86ab0e66f527166",
-      "source": "Language",
-      "value": "ભાષા"
-    },
-    {
-      "key": "site.59a258a0acfce20904",
-      "source": "Language options",
-      "value": "ભાષા વિકલ્પો"
-    },
-    {
-      "key": "site.4a5b17460e4ef3a2b0",
-      "source": "Learning guide",
-      "value": "શીખવાની માર્ગદર્શિકા"
-    },
-    {
-      "key": "site.8d50862a1031d7cbc6",
-      "source": "Learning is for everyone.",
-      "value": "શીખવું દરેક માટે છે."
-    },
-    {
-      "key": "site.a35bd36f759f921eb8",
-      "source": "Learning mode",
-      "value": "શીખવાનો મોડ"
-    },
-    {
-      "key": "site.5e3c6047001a06e246",
-      "source": "Learning modes",
-      "value": "શીખવાના મોડ"
-    },
-    {
-      "key": "site.be81c1c0d0706156da",
-      "source": "Learning paths",
-      "value": "શીખવાના માર્ગો"
-    },
-    {
-      "key": "site.11a8eb82ea153eddba",
-      "source": "ListItem",
-      "value": "ListItem"
-    },
-    {
-      "key": "site.ab478f3efc840eebab",
-      "source": "Map",
-      "value": "નકશો"
-    },
-    {
-      "key": "site.0c77aeece8c2581131",
-      "source": "Media",
-      "value": "મીડિયા"
-    },
-    {
-      "key": "site.e4698d4ceacbe68b86",
-      "source": "Mission",
-      "value": "મિશન"
-    },
-    {
-      "key": "site.79f5b225cffab11e22",
-      "source": "Modes",
-      "value": "મોડ"
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "ફિલ્મનો અવાજ બંધ કરો"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "આગલું પગલું"
-    },
-    {
-      "key": "site.3898b9aa06204b6c19",
-      "source": "Offer",
-      "value": "પ્રસ્તાવ"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "ફિલ્મ પૂર્ણ સ્ક્રીનમાં ખોલો"
-    },
-    {
-      "key": "site.280cfd1a5bc6d8fd74",
-      "source": "Parents",
-      "value": "માતા-પિતા"
-    },
-    {
-      "key": "site.13e7e11722f7d8309c",
-      "source": "Paths",
-      "value": "માર્ગો"
-    },
-    {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "ફિલ્મ થોભાવો"
-    },
-    {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "ફિલ્મ ચલાવો"
-    },
-    {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "inspir શીખણનું પૂર્વાવલોકન ચલાવો"
-    },
-    {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "અભ્યાસ"
-    },
-    {
-      "key": "site.d36dad20338f9c4a00",
-      "source": "Primary navigation",
-      "value": "મુખ્ય નેવિગેશન"
-    },
-    {
-      "key": "site.cf01481f626d5127ec",
-      "source": "Privacy",
-      "value": "ગોપનીયતા"
-    },
-    {
-      "key": "site.7afef6c780a2c65e1b",
-      "source": "Prompt guide",
-      "value": "પ્રોમ્પ્ટ માર્ગદર્શિકા"
-    },
-    {
-      "key": "site.eea5311d723f2493a5",
-      "source": "Prompts",
-      "value": "પ્રોમ્પ્ટ્સ"
-    },
     {
       "key": "site.002ff598115d84595f",
       "source": "Question",
       "value": "પ્રશ્ન"
-    },
-    {
-      "key": "site.e1f81a66a58f50d674",
-      "source": "quiz generation",
-      "value": "ક્વિઝ બનાવટ"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "ફરી ચલાવો"
-    },
-    {
-      "key": "site.341ee879ad9cf7d89c",
-      "source": "required name=search_term_string",
-      "value": "required name=search_term_string"
-    },
-    {
-      "key": "site.1a23773989b1dda3cc",
-      "source": "Requires a modern web browser with JavaScript enabled.",
-      "value": "JavaScript સક્રિય હોય એવો આધુનિક વેબ બ્રાઉઝર જરૂરી છે."
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "ફિલ્મ ફરી શરૂ કરો"
-    },
-    {
-      "key": "site.06c76a46e432118770",
-      "source": "Schools",
-      "value": "શાળાઓ"
-    },
-    {
-      "key": "site.1271c424f2606e879b",
-      "source": "Search the full language list.",
-      "value": "સંપૂર્ણ ભાષા યાદીમાં શોધો."
-    },
-    {
-      "key": "site.af77421f7ef4a19e07",
-      "source": "SearchAction",
-      "value": "SearchAction"
-    },
-    {
-      "key": "site.b44db0bdf171a388aa",
-      "source": "Self-taught learners",
-      "value": "સ્વઅભ્યાસી શીખનારાઓ"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "ફિલ્મના અધ્યાયો બતાવો"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "ફિલ્મનો ટ્રાન્સક્રિપ્ટ બતાવો"
-    },
-    {
-      "key": "site.dc4f7ae02ae1046f9d",
-      "source": "SiteNavigationElement",
-      "value": "SiteNavigationElement"
-    },
-    {
-      "key": "site.6b301fd9e1520bf0c0",
-      "source": "Socratic learning",
-      "value": "સોક્રેટિક શીખવું"
-    },
-    {
-      "key": "site.b9b1c44db40fe7372b",
-      "source": "Socratic tutoring",
-      "value": "સોક્રેટિક ટ્યુટરિંગ"
-    },
-    {
-      "key": "site.952f375412e89ff213",
-      "source": "Start",
-      "value": "શરૂ કરો"
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "લાઇવ શીખવાનું સત્ર શરૂ કરો."
     },
     {
       "key": "site.02d279ce2f7b58c890",
@@ -472,19 +17,79 @@
       "value": "શીખવાનું શરૂ કરો"
     },
     {
-      "key": "site.fcfac3efb6ae696fcb",
-      "source": "Students",
-      "value": "વિદ્યાર્થીઓ"
+      "key": "site.06c76a46e432118770",
+      "source": "Schools",
+      "value": "શાળાઓ"
     },
     {
-      "key": "site.7393fb30c7626ace9c",
-      "source": "Study guide",
-      "value": "અભ્યાસ માર્ગદર્શિકા"
+      "key": "site.0b9d2b2362bc33581b",
+      "source": "Blog",
+      "value": "બ્લોગ"
     },
     {
-      "key": "site.bc2177c2c39b29277d",
-      "source": "study planning",
-      "value": "અભ્યાસ આયોજન"
+      "key": "site.0c77aeece8c2581131",
+      "source": "Media",
+      "value": "મીડિયા"
+    },
+    {
+      "key": "site.104854c08c13c48eb7",
+      "source": "EducationalOrganization",
+      "value": "EducationalOrganization"
+    },
+    {
+      "key": "site.116474409fe330fe3a",
+      "source": "inspir home",
+      "value": "inspir હોમ"
+    },
+    {
+      "key": "site.11a8eb82ea153eddba",
+      "source": "ListItem",
+      "value": "ListItem"
+    },
+    {
+      "key": "site.1271c424f2606e879b",
+      "source": "Search the full language list.",
+      "value": "સંપૂર્ણ ભાષા યાદીમાં શોધો."
+    },
+    {
+      "key": "site.12f065125d05ecf1b9",
+      "source": "Interactive learning chat",
+      "value": "ઇન્ટરેક્ટિવ શીખવાની ચેટ"
+    },
+    {
+      "key": "site.13e7e11722f7d8309c",
+      "source": "Paths",
+      "value": "માર્ગો"
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir શીખણ ફિલ્મ"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "ફિલ્મના અધ્યાયો બતાવો"
+    },
+    {
+      "key": "site.184924ce836d931ea3",
+      "source": "{value1} on inspir",
+      "value": "inspir પર {value1}"
+    },
+    {
+      "key": "site.1a23773989b1dda3cc",
+      "source": "Requires a modern web browser with JavaScript enabled.",
+      "value": "JavaScript સક્રિય હોય એવો આધુનિક વેબ બ્રાઉઝર જરૂરી છે."
+    },
+    {
+      "key": "site.1bd3bd675d34fadf02",
+      "source": "Clip",
+      "value": "ક્લિપ"
+    },
+    {
+      "key": "site.1ee9cc3793a0d9c91d",
+      "source": "Choose your language",
+      "value": "તમારી ભાષા પસંદ કરો"
     },
     {
       "key": "site.278947dee289782f78",
@@ -492,34 +97,9 @@
       "value": "વિષયો"
     },
     {
-      "key": "site.f2604f9b72ad42b1d5",
-      "source": "Teachers",
-      "value": "શિક્ષકો"
-    },
-    {
-      "key": "site.a55a275aa676930d92",
-      "source": "Terms",
-      "value": "શરતો"
-    },
-    {
-      "key": "site.6cf8704e55dde03c62",
-      "source": "The film has a text transcript, timed captions, and chapter markers on the page.",
-      "value": "ફિલ્મના પૃષ્ઠ પર લખાણરૂપ પ્રતિલિપિ, સમય સાથે સુમેળ કરેલાં ઉપશીર્ષકો અને પ્રકરણનાં નિશાન છે."
-    },
-    {
-      "key": "site.e0681542c880148c2d",
-      "source": "Thing",
-      "value": "વસ્તુ"
-    },
-    {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "પ્રતિલિપિ"
-    },
-    {
-      "key": "site.7aad230a95f7bcbf8b",
-      "source": "Translate inspir?",
-      "value": "inspir અનુવાદિત કરવું?"
+      "key": "site.280cfd1a5bc6d8fd74",
+      "source": "Parents",
+      "value": "માતા-પિતા"
     },
     {
       "key": "site.33a579ffc0dccbff15",
@@ -527,9 +107,64 @@
       "value": "વિશ્વાસ"
     },
     {
-      "key": "site.c19625cf10ea355c0e",
-      "source": "Tutoring",
-      "value": "ટ્યુટરિંગ"
+      "key": "site.33c22396f6e33f672e",
+      "source": "AI learning map",
+      "value": "AI શીખવાનો નકશો"
+    },
+    {
+      "key": "site.341ee879ad9cf7d89c",
+      "source": "required name=search_term_string",
+      "value": "required name=search_term_string"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "સક્રિય સ્મરણ"
+    },
+    {
+      "key": "site.3898b9aa06204b6c19",
+      "source": "Offer",
+      "value": "પ્રસ્તાવ"
+    },
+    {
+      "key": "site.3a04071d8bf5e748c4",
+      "source": "inspir AI learning platform",
+      "value": "inspir AI શીખવાનું પ્લેટફોર્મ"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "અભ્યાસ"
+    },
+    {
+      "key": "site.4a5b17460e4ef3a2b0",
+      "source": "Learning guide",
+      "value": "શીખવાની માર્ગદર્શિકા"
+    },
+    {
+      "key": "site.4b5eed23ef93d99980",
+      "source": "AI learning modes",
+      "value": "AI શીખવાના મોડ"
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "વાચકવર્ગ"
+    },
+    {
+      "key": "site.52a30ef3aed25969e5",
+      "source": "writing feedback",
+      "value": "લેખન પ્રતિસાદ"
+    },
+    {
+      "key": "site.5442e2b64fa09764b9",
+      "source": "GitHub",
+      "value": "GitHub"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "આગલું પગલું"
     },
     {
       "key": "site.555550019c0610a389",
@@ -537,39 +172,29 @@
       "value": "ફિલ્મનો અવાજ ચાલુ કરો"
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.59a258a0acfce20904",
+      "source": "Language options",
+      "value": "ભાષા વિકલ્પો"
     },
     {
-      "key": "site.779d256d15d0904407",
-      "source": "Use inspir in the language that feels most natural.",
-      "value": "તમને સૌથી સ્વાભાવિક લાગે તેવી ભાષામાં inspir વાપરો."
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "પ્રતિલિપિ"
     },
     {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "વિડિયો નિયંત્રણો"
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "ફિલ્મ પ્રકરણો છુપાવો"
     },
     {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "વિડિયો પ્રગતિ"
+      "key": "site.5e3c6047001a06e246",
+      "source": "Learning modes",
+      "value": "શીખવાના મોડ"
     },
     {
-      "key": "site.7e92ed18e882da1167",
-      "source": "VideoObject",
-      "value": "VideoObject"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "31 સેકન્ડ જુઓ"
-    },
-    {
-      "key": "site.a8323a2a9b34ae7e0c",
-      "source": "Web",
-      "value": "વેબ"
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "તમારો પહેલો પ્રશ્ન પૂછો અને સીધા અભ્યાસમાં પ્રવેશો."
     },
     {
       "key": "site.631a003d1b5cd6b986",
@@ -577,9 +202,384 @@
       "value": "વિશ્વભરમાં"
     },
     {
-      "key": "site.52a30ef3aed25969e5",
-      "source": "writing feedback",
-      "value": "લેખન પ્રતિસાદ"
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir ગતિમાં"
+    },
+    {
+      "key": "site.68079a84852a6b6e08",
+      "source": "coding help",
+      "value": "કોડિંગ મદદ"
+    },
+    {
+      "key": "site.6b21fb791ac0517089",
+      "source": "About",
+      "value": "વિશે"
+    },
+    {
+      "key": "site.6b301fd9e1520bf0c0",
+      "source": "Socratic learning",
+      "value": "સોક્રેટિક શીખવું"
+    },
+    {
+      "key": "site.6b31d7e48f8c1f2526",
+      "source": "inspir learning film preview",
+      "value": "inspir શીખવાની ફિલ્મ પૂર્વદર્શન"
+    },
+    {
+      "key": "site.6cf8704e55dde03c62",
+      "source": "The film has a text transcript, timed captions, and chapter markers on the page.",
+      "value": "ફિલ્મના પૃષ્ઠ પર લખાણરૂપ પ્રતિલિપિ, સમય સાથે સુમેળ કરેલાં ઉપશીર્ષકો અને પ્રકરણનાં નિશાન છે."
+    },
+    {
+      "key": "site.6d5dc74d0505491406",
+      "source": "inspir public navigation",
+      "value": "inspir જાહેર નેવિગેશન"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "હોમ"
+    },
+    {
+      "key": "site.71cf6cd0ccb16981fe",
+      "source": "AI tutoring",
+      "value": "AI ટ્યુટરિંગ"
+    },
+    {
+      "key": "site.7393fb30c7626ace9c",
+      "source": "Study guide",
+      "value": "અભ્યાસ માર્ગદર્શિકા"
+    },
+    {
+      "key": "site.779d256d15d0904407",
+      "source": "Use inspir in the language that feels most natural.",
+      "value": "તમને સૌથી સ્વાભાવિક લાગે તેવી ભાષામાં inspir વાપરો."
+    },
+    {
+      "key": "site.78b7c9f6d6d7dfc01a",
+      "source": "Choose",
+      "value": "પસંદ કરો"
+    },
+    {
+      "key": "site.796a0595fd873c197a",
+      "source": "AI explanations",
+      "value": "AI સમજણ"
+    },
+    {
+      "key": "site.79f5b225cffab11e22",
+      "source": "Modes",
+      "value": "મોડ"
+    },
+    {
+      "key": "site.7aad230a95f7bcbf8b",
+      "source": "Translate inspir?",
+      "value": "inspir અનુવાદિત કરવું?"
+    },
+    {
+      "key": "site.7afef6c780a2c65e1b",
+      "source": "Prompt guide",
+      "value": "પ્રોમ્પ્ટ માર્ગદર્શિકા"
+    },
+    {
+      "key": "site.7e92ed18e882da1167",
+      "source": "VideoObject",
+      "value": "VideoObject"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "ફિલ્મ ટ્રાન્સક્રિપ્ટ છુપાવો"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "વિડિયો નિયંત્રણો"
+    },
+    {
+      "key": "site.856b2d763a6501c6f1",
+      "source": "inspir public AI learning modes",
+      "value": "inspir ના જાહેર AI શીખવાના મોડ"
+    },
+    {
+      "key": "site.895e0be8b3156639c0",
+      "source": "Choose another language",
+      "value": "બીજી ભાષા પસંદ કરો"
+    },
+    {
+      "key": "site.89b86ab0e66f527166",
+      "source": "Language",
+      "value": "ભાષા"
+    },
+    {
+      "key": "site.8cf0e39998cb4dc235",
+      "source": "AI learning prompt library",
+      "value": "AI શીખવાની પ્રોમ્પ્ટ લાઇબ્રેરી"
+    },
+    {
+      "key": "site.8d105cf44d3926289e",
+      "source": "Compare",
+      "value": "તુલના"
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "શીખવું દરેક માટે છે."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "ફિલ્મ થોભાવો"
+    },
+    {
+      "key": "site.8f277c54e75609265c",
+      "source": "AI study prompts",
+      "value": "AI અભ્યાસ પ્રોમ્પ્ટ્સ"
+    },
+    {
+      "key": "site.950c582c14e6769170",
+      "source": "Dismiss language options",
+      "value": "ભાષા વિકલ્પો બંધ કરો"
+    },
+    {
+      "key": "site.952f375412e89ff213",
+      "source": "Start",
+      "value": "શરૂ કરો"
+    },
+    {
+      "key": "site.96e7b8ebfd52439d88",
+      "source": "Compare AI tutors",
+      "value": "AI ટ્યુટરની તુલના કરો"
+    },
+    {
+      "key": "site.97a19c47a7d6922aa7",
+      "source": "BlogPosting",
+      "value": "BlogPosting"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "ફિલ્મ ચલાવો"
+    },
+    {
+      "key": "site.9d9238b7d9fc7180ce",
+      "source": "EducationalApplication",
+      "value": "EducationalApplication"
+    },
+    {
+      "key": "site.a16a4eda7cb2c8e91d",
+      "source": "Answer",
+      "value": "જવાબ"
+    },
+    {
+      "key": "site.a35bd36f759f921eb8",
+      "source": "Learning mode",
+      "value": "શીખવાનો મોડ"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "શરતો"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir શીખણનું પૂર્વાવલોકન ચલાવો"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "ફિલ્મ ફરી શરૂ કરો"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "વિડિયો પ્રગતિ"
+    },
+    {
+      "key": "site.a8323a2a9b34ae7e0c",
+      "source": "Web",
+      "value": "વેબ"
+    },
+    {
+      "key": "site.a917f3a02c55ca37c5",
+      "source": "Footer links",
+      "value": "ફૂટર લિંક્સ"
+    },
+    {
+      "key": "site.ab478f3efc840eebab",
+      "source": "Map",
+      "value": "નકશો"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "લાઇવ શીખવાનું સત્ર શરૂ કરો."
+    },
+    {
+      "key": "site.af77421f7ef4a19e07",
+      "source": "SearchAction",
+      "value": "SearchAction"
+    },
+    {
+      "key": "site.b1dbda7daecd02de50",
+      "source": "\\u003c",
+      "value": "\\u003c"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "ફિલ્મનો અવાજ બંધ કરો"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31 સેકન્ડ જુઓ"
+    },
+    {
+      "key": "site.b44db0bdf171a388aa",
+      "source": "Self-taught learners",
+      "value": "સ્વઅભ્યાસી શીખનારાઓ"
+    },
+    {
+      "key": "site.b56a736b37bd52dbde",
+      "source": "Continue with English",
+      "value": "અંગ્રેજીમાં ચાલુ રાખો"
+    },
+    {
+      "key": "site.b9b1c44db40fe7372b",
+      "source": "Socratic tutoring",
+      "value": "સોક્રેટિક ટ્યુટરિંગ"
+    },
+    {
+      "key": "site.bc2177c2c39b29277d",
+      "source": "study planning",
+      "value": "અભ્યાસ આયોજન"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "શીખવાના માર્ગો"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "ફરી ચલાવો"
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "ટ્યુટરિંગ"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "ફિલ્મ પ્રકરણો"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ccc5b0edaae6094090",
+      "source": "Continue with Google",
+      "value": "Google સાથે ચાલુ રાખો"
+    },
+    {
+      "key": "site.ce3963262ac925e716",
+      "source": "free AI tutoring",
+      "value": "મફત AI ટ્યુટરિંગ"
+    },
+    {
+      "key": "site.cf01481f626d5127ec",
+      "source": "Privacy",
+      "value": "ગોપનીયતા"
+    },
+    {
+      "key": "site.cf7eb9c684b11a2995",
+      "source": "flashcard generation",
+      "value": "ફ્લેશકાર્ડ બનાવટ"
+    },
+    {
+      "key": "site.d0d9118568f5027bc1",
+      "source": "Choose the language for this visit.",
+      "value": "આ મુલાકાત માટે ભાષા પસંદ કરો."
+    },
+    {
+      "key": "site.d36dad20338f9c4a00",
+      "source": "Primary navigation",
+      "value": "મુખ્ય નેવિગેશન"
+    },
+    {
+      "key": "site.d7de14f0e779c0fc1c",
+      "source": "homework coaching",
+      "value": "ગૃહકાર્ય માર્ગદર્શન"
+    },
+    {
+      "key": "site.dc4f7ae02ae1046f9d",
+      "source": "SiteNavigationElement",
+      "value": "SiteNavigationElement"
+    },
+    {
+      "key": "site.e0681542c880148c2d",
+      "source": "Thing",
+      "value": "વસ્તુ"
+    },
+    {
+      "key": "site.e1f81a66a58f50d674",
+      "source": "quiz generation",
+      "value": "ક્વિઝ બનાવટ"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "ફિલ્મનો ટ્રાન્સક્રિપ્ટ બતાવો"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "મિશન"
+    },
+    {
+      "key": "site.e96bab4b016c25af6d",
+      "source": "educational technology",
+      "value": "શૈક્ષણિક ટેકનોલોજી"
+    },
+    {
+      "key": "site.eea5311d723f2493a5",
+      "source": "Prompts",
+      "value": "પ્રોમ્પ્ટ્સ"
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "શિક્ષકો"
+    },
+    {
+      "key": "site.f27383221552d2bb47",
+      "source": "HowToStep",
+      "value": "HowToStep"
+    },
+    {
+      "key": "site.f7880600348a091a43",
+      "source": "For",
+      "value": "માટે"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "જિજ્ઞાસા, અભ્યાસ અને શીખવતું AI."
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "ફિલ્મ પૂર્ણ સ્ક્રીનમાં ખોલો"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "વિદ્યાર્થીઓ"
     }
   ]
 }

@@ -11,15 +11,34 @@ import {
   sanitizedDotEnvContent,
   withSanitizedProjectEnvFiles,
 } from "./sanitized-build-env";
-import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 import { inspectOpenNextResourceBudget } from "./check-opennext-resource-budget";
 import { materializeStaticMarketingAssets } from "./materialize-static-marketing-assets";
-import { writeWorkerDeployEvidenceReport, type WorkerDeployEvidenceReport } from "./worker-deploy-evidence";
+import {
+  acquireProductionValidationExclusion,
+  assertProductionValidationExclusionCommandWindow,
+  assertNoLiveProductionValidationLock,
+  attestProductionValidationExclusion,
+  PRODUCTION_VALIDATION_LOCK_MAX_PROTECTED_COMMAND_MS,
+  releaseProductionValidationExclusion,
+  type ProductionValidationExclusion,
+} from "./production-validation-lock";
+import {
+  assertWorkerDeployArtifactEvidenceUnchanged,
+  createWorkerDeployEvidenceSession,
+  readSoleActiveWorkerVersion,
+  type ActiveWorkerVersionReader,
+  type WorkerDeployArtifactEvidence,
+  type WorkerDeployEvidenceFinishInput,
+  type WorkerDeployEvidenceReport,
+} from "./worker-deploy-evidence";
+import { runBoundedReleaseChildSync } from "./run-production-release-operation";
 
 type CommandMode = "next-build" | "opennext-build" | "opennext-deploy" | "opennext-upload" | "wrangler-preview";
 type DeployPreflightResult = { ok: boolean; status: number | null };
 type RunSanitizedBuildOptions = {
   deployPreflight?: (backupDir: string) => DeployPreflightResult;
+  readActiveWorkerVersion?: ActiveWorkerVersionReader;
+  assertValidationLockAvailable?: () => void;
 };
 
 const COMMANDS: Record<
@@ -75,17 +94,28 @@ export function runSanitizedBuildCommand(
   }
 
   const command = COMMANDS[mode];
-  const deployEvidence = createWorkerDeployEvidenceWriter(mode, command, passthroughArgs);
+  const deployEvidence = createWorkerDeployEvidenceWriter(
+    mode,
+    command,
+    passthroughArgs,
+    options.readActiveWorkerVersion,
+  );
   let productionDeployPreflightResult: DeployPreflightResult | null = null;
-  const blockedArgs = blockedOpenNextSkipBuildArgs(mode, passthroughArgs);
+  const immutableDeployArgs = blockedImmutableWorkerDeployArgs(mode, passthroughArgs);
+  const blockedArgs = immutableDeployArgs.length
+    ? immutableDeployArgs
+    : blockedOpenNextSkipBuildArgs(mode, passthroughArgs);
   if (blockedArgs.length) {
-    console.error(`Refusing OpenNext skip-build argument(s) in sanitized Cloudflare build path: ${blockedArgs.join(", ")}`);
+    const reason = immutableDeployArgs.length
+      ? "Production Worker deploy/upload passthrough arguments can change the evidenced entry point, assets, config, or target"
+      : "OpenNext skip-build arguments bypass the sanitized build";
+    console.error(`Refusing argument(s) in sanitized Cloudflare build path: ${blockedArgs.join(", ")}. ${reason}.`);
     return deployEvidence.finish(2, {
       commandExecuted: false,
       scanBeforeOk: null,
       scanAfterOk: null,
       blockedArgs,
-      error: `Refusing OpenNext skip-build argument(s): ${blockedArgs.join(", ")}`,
+      error: `${reason}: ${blockedArgs.join(", ")}`,
     });
   }
 
@@ -103,6 +133,22 @@ export function runSanitizedBuildCommand(
         scanBeforeOk: null,
         scanAfterOk: null,
         error: `Deploy preflight exited with status ${preflight.status ?? "unknown"}.`,
+      });
+    }
+  }
+
+  if (mode === "opennext-deploy") {
+    try {
+      (options.assertValidationLockAvailable ?? assertNoLiveProductionValidationLock)();
+    } catch (error) {
+      return deployEvidence.finish(1, {
+        commandExecuted: false,
+        deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+        deployPreflightStatus: productionDeployPreflightResult?.status,
+        resourceBudgetOk: null,
+        scanBeforeOk: null,
+        scanAfterOk: null,
+        error: `Production deployment lock absence was not proved before build: ${errorMessage(error)}`,
       });
     }
   }
@@ -191,21 +237,124 @@ export function runSanitizedBuildCommand(
           : ["--config", localPreviewConfig, ...passthroughArgs];
       }
 
-      const result = spawnSync(command.executable, [...command.args, ...commandArgs], {
-        cwd: process.cwd(),
-        env,
-        stdio: "inherit",
-      });
-      if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
-      if (result.status !== 0) {
-        return deployEvidence.finish(result.status ?? 1, {
-          commandExecuted: true,
+      if (mode === "opennext-deploy") {
+        try {
+          (options.assertValidationLockAvailable ?? assertNoLiveProductionValidationLock)();
+        } catch (error) {
+          if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
+          return deployEvidence.finish(1, {
+            commandExecuted: false,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: command.buildBefore ? true : undefined,
+            scanBeforeOk: command.scanBefore ? true : null,
+            scanAfterOk: null,
+            error: `Production deployment lock absence was not proved: ${errorMessage(error)}`,
+          });
+        }
+      }
+
+      let commandArtifactEvidence: WorkerDeployArtifactEvidence | undefined;
+      try {
+        commandArtifactEvidence = deployEvidence.captureCommandArtifacts();
+      } catch (error) {
+        if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
+        return deployEvidence.finish(1, {
+          commandExecuted: false,
           deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
           deployPreflightStatus: productionDeployPreflightResult?.status,
           resourceBudgetOk: command.buildBefore ? true : undefined,
           scanBeforeOk: command.scanBefore ? true : null,
           scanAfterOk: null,
-          error: `${mode} exited with status ${result.status ?? "unknown"}.`,
+          error: `Immutable Worker deploy artifact evidence failed before ${mode}: ${errorMessage(error)}`,
+        });
+      }
+
+      let deploymentExclusion: ProductionValidationExclusion | null = null;
+      if (mode === "opennext-deploy") {
+        try {
+          if (!commandArtifactEvidence) {
+            throw new Error("Immutable deploy artifacts were not captured before lock acquisition.");
+          }
+          deploymentExclusion = acquireProductionValidationExclusion({
+            candidateVersionId: (options.readActiveWorkerVersion ?? readSoleActiveWorkerVersion)(),
+            sourceFingerprintSha256: commandArtifactEvidence.sourceFingerprint.sha256,
+          });
+        } catch (error) {
+          if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
+          return deployEvidence.finish(1, {
+            commandExecuted: false,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: command.buildBefore ? true : undefined,
+            scanBeforeOk: command.scanBefore ? true : null,
+            scanAfterOk: null,
+            error: `Production deployment exclusion could not be acquired: ${errorMessage(error)}`,
+          });
+        }
+      }
+
+      if (deploymentExclusion && commandArtifactEvidence) {
+        try {
+          deploymentExclusion = attestProductionValidationExclusion(deploymentExclusion);
+          assertProductionValidationExclusionCommandWindow(deploymentExclusion);
+          const lockedActiveVersion = (options.readActiveWorkerVersion ?? readSoleActiveWorkerVersion)();
+          if (lockedActiveVersion !== deploymentExclusion.owner.candidateVersionId) {
+            throw new Error(
+              `Active Worker changed between deployment baseline and exclusion acquisition: expected ${deploymentExclusion.owner.candidateVersionId}, received ${lockedActiveVersion}.`,
+            );
+          }
+          assertWorkerDeployArtifactEvidenceUnchanged(commandArtifactEvidence);
+        } catch (error) {
+          if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
+          return finishWorkerCommandWithExclusion({
+            exclusion: deploymentExclusion,
+            finish: deployEvidence.finish,
+            status: 1,
+            extra: {
+              commandExecuted: false,
+              deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+              deployPreflightStatus: productionDeployPreflightResult?.status,
+              resourceBudgetOk: command.buildBefore ? true : undefined,
+              scanBeforeOk: command.scanBefore ? true : null,
+              scanAfterOk: null,
+              error: `Locked production deployment revalidation failed: ${errorMessage(error)}`,
+            },
+          });
+        }
+      }
+
+      const actualCommand = {
+        command: command.executable,
+        args: [...command.args, ...commandArgs],
+      };
+      const result = requiresProductionDeployPreflight(mode)
+        ? runBoundedReleaseChildSync(actualCommand, {
+            cwd: process.cwd(),
+            env,
+            stdio: "inherit",
+            timeoutMs: PRODUCTION_VALIDATION_LOCK_MAX_PROTECTED_COMMAND_MS,
+          })
+        : spawnSync(actualCommand.command, actualCommand.args, {
+            cwd: process.cwd(),
+            env,
+            stdio: "inherit",
+          });
+      if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
+      if (result.status !== 0) {
+        return finishWorkerCommandWithExclusion({
+          exclusion: deploymentExclusion,
+          finish: deployEvidence.finish,
+          status: result.status ?? 1,
+          extra: {
+            commandExecuted: true,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: command.buildBefore ? true : undefined,
+            scanBeforeOk: command.scanBefore ? true : null,
+            scanAfterOk: null,
+            error: `${mode} exited with status ${result.status ?? "unknown"}.`,
+          },
         });
       }
 
@@ -214,24 +363,34 @@ export function runSanitizedBuildCommand(
           materializeStaticMarketingAssets(process.cwd());
           pruneUnusedOpenNextServerRuntime(process.cwd());
         } catch (error) {
-          return deployEvidence.finish(1, {
+          return finishWorkerCommandWithExclusion({
+            exclusion: deploymentExclusion,
+            finish: deployEvidence.finish,
+            status: 1,
+            extra: {
             commandExecuted: true,
             resourceBudgetOk: null,
             scanBeforeOk: null,
             scanAfterOk: null,
             error: `Static marketing asset materialization failed after ${mode}: ${errorMessage(error)}`,
+            },
           });
         }
 
         const resourceBudget = inspectOpenNextResourceBudget(process.cwd());
         if (!resourceBudget.ok) {
           console.error(`OpenNext resource budget failed after ${mode}: ${JSON.stringify(resourceBudget)}`);
-          return deployEvidence.finish(1, {
+          return finishWorkerCommandWithExclusion({
+            exclusion: deploymentExclusion,
+            finish: deployEvidence.finish,
+            status: 1,
+            extra: {
             commandExecuted: true,
             resourceBudgetOk: false,
             scanBeforeOk: null,
             scanAfterOk: null,
             error: `OpenNext resource budget failed after ${mode}.`,
+            },
           });
         }
       }
@@ -240,7 +399,11 @@ export function runSanitizedBuildCommand(
         const report = writeBuildArtifactScanReport();
         if (!report.ok) {
           printScanFailure(report.findings.length);
-          return deployEvidence.finish(1, {
+          return finishWorkerCommandWithExclusion({
+            exclusion: deploymentExclusion,
+            finish: deployEvidence.finish,
+            status: 1,
+            extra: {
             commandExecuted: true,
             deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
             deployPreflightStatus: productionDeployPreflightResult?.status,
@@ -248,17 +411,23 @@ export function runSanitizedBuildCommand(
             scanBeforeOk: command.scanBefore ? true : null,
             scanAfterOk: false,
             error: `OpenNext artifact scan failed with ${report.findings.length} finding(s).`,
+            },
           });
         }
       }
 
-      return deployEvidence.finish(0, {
-        commandExecuted: true,
-        deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
-        deployPreflightStatus: productionDeployPreflightResult?.status,
-        resourceBudgetOk: command.buildBefore || mode === "opennext-build" ? true : undefined,
-        scanBeforeOk: command.scanBefore ? true : null,
-        scanAfterOk: command.scanAfter ? true : null,
+      return finishWorkerCommandWithExclusion({
+        exclusion: deploymentExclusion,
+        finish: deployEvidence.finish,
+        status: 0,
+        extra: {
+          commandExecuted: true,
+          deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+          deployPreflightStatus: productionDeployPreflightResult?.status,
+          resourceBudgetOk: command.buildBefore || mode === "opennext-build" ? true : undefined,
+          scanBeforeOk: command.scanBefore ? true : null,
+          scanAfterOk: command.scanAfter ? true : null,
+        },
       });
     } finally {
       fs.rmSync(localCliBinDir, { recursive: true, force: true });
@@ -279,8 +448,8 @@ export function clearLocalPreviewCacheApiState(cwd = process.cwd()) {
 export function pruneUnusedOpenNextServerRuntime(cwd = process.cwd()) {
   const serverFunctionsDir = path.join(cwd, ".open-next", "server-functions");
   const removed = fs.existsSync(serverFunctionsDir);
-  // Production uses cloudflare-worker.ts plus Static Assets. The generated Next
-  // server function is outside that deploy graph and only consumes artifact budget.
+  // Production routes only native handlers and static assets. Generated Next
+  // server functions remain outside the deploy graph and only consume budget.
   fs.rmSync(serverFunctionsDir, { recursive: true, force: true });
   return { path: serverFunctionsDir, removed };
 }
@@ -299,6 +468,15 @@ export function blockedOpenNextSkipBuildArgs(mode: CommandMode, passthroughArgs:
   return passthroughArgs.filter((arg) =>
     BLOCKED_OPENNEXT_SKIP_BUILD_ARGS.some((blocked) => arg === blocked || arg.startsWith(`${blocked}=`)),
   );
+}
+
+export function blockedImmutableWorkerDeployArgs(mode: CommandMode, passthroughArgs: string[]) {
+  // The report fingerprints the fixed native entry point, wrangler.jsonc, and
+  // .open-next/assets. Wrangler passthrough flags (including --dry-run,
+  // --config, --name, --assets, --env, or a positional entry point) could make
+  // the executed command differ from that evidence, so production wrappers do
+  // not accept any. Metadata-only version workflows use dedicated scripts.
+  return requiresProductionDeployPreflight(mode) ? [...passthroughArgs] : [];
 }
 
 export function applyNativeWranglerDeployEnvironment(
@@ -325,6 +503,104 @@ function printScanFailure(findings: number) {
 
 function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
+}
+
+function asError(error: unknown) {
+  return error instanceof Error ? error : new Error("Unknown deployment exclusion failure.");
+}
+
+function finishWorkerCommandWithExclusion(input: {
+  exclusion: ProductionValidationExclusion | null;
+  finish: (
+    status: number | null,
+    extra: WorkerDeployEvidenceFinishInput,
+  ) => { status: number; report?: WorkerDeployEvidenceReport };
+  status: number | null;
+  extra: WorkerDeployEvidenceFinishInput;
+}) {
+  if (!input.exclusion) return input.finish(input.status, input.extra);
+
+  let exclusion = input.exclusion;
+  let result: { status: number; report?: WorkerDeployEvidenceReport } | null = null;
+  const certificationErrors: Error[] = [];
+  try {
+    // Renew immediately after the external command, before final remote and
+    // local certification begins on whatever lease time remains.
+    exclusion = attestProductionValidationExclusion(exclusion);
+    assertProductionValidationExclusionCommandWindow(exclusion);
+  } catch (error) {
+    certificationErrors.push(asError(error));
+  }
+  const promotableSuccess = input.status === 0 && !input.extra.error;
+  let pendingActiveVersionId: string | null = null;
+  if (certificationErrors.length === 0) {
+    try {
+      // A successful command is first certified into a deliberately false
+      // report. Only after post-attestation and exact release is that same
+      // active version eligible for promotion to ok=true.
+      result = input.finish(input.status, promotableSuccess
+        ? {
+            ...input.extra,
+            error: "Pending production exclusion post-certification and release.",
+          }
+        : input.extra);
+      if (promotableSuccess) {
+        const pendingReport = result.report;
+        pendingActiveVersionId = pendingReport?.activeDeployment?.versionId ?? null;
+        if (
+          !pendingActiveVersionId ||
+          !pendingReport?.sourceFingerprintStable ||
+          pendingReport.artifactEvidenceStable !== true
+        ) {
+          certificationErrors.push(
+            new Error("Pending deploy evidence did not complete its active-version and artifact certification."),
+          );
+        }
+      }
+    } catch (error) {
+      certificationErrors.push(asError(error));
+    }
+  }
+  try {
+    exclusion = attestProductionValidationExclusion(exclusion);
+  } catch (error) {
+    certificationErrors.push(asError(error));
+  }
+
+  try {
+    releaseProductionValidationExclusion(exclusion);
+  } catch (error) {
+    certificationErrors.push(asError(error));
+  }
+
+  if (certificationErrors.length) {
+    const failure = new AggregateError(
+      certificationErrors,
+      "Production deployment final certification or exclusion release failed.",
+    );
+    try {
+      return input.finish(1, {
+        ...input.extra,
+        error: `${input.extra.error ? `${input.extra.error} ` : ""}${failure.message}`,
+      });
+    } catch (reportError) {
+      throw new AggregateError(
+        [...certificationErrors, asError(reportError)],
+        "Production deployment failed and its false evidence report could not be written.",
+      );
+    }
+  }
+  if (promotableSuccess) {
+    if (!pendingActiveVersionId) {
+      throw new Error("Production deployment promotion omitted its pending active version.");
+    }
+    return input.finish(0, {
+      ...input.extra,
+      expectedActiveVersionId: pendingActiveVersionId,
+    });
+  }
+  if (!result) throw new Error("Production deployment certification did not return a result.");
+  return result;
 }
 
 function bin(name: string) {
@@ -381,53 +657,32 @@ function createWorkerDeployEvidenceWriter(
   mode: CommandMode,
   command: (typeof COMMANDS)[CommandMode],
   passthroughArgs: string[],
+  readActiveWorkerVersion?: ActiveWorkerVersionReader,
 ) {
   if (mode !== "opennext-deploy" && mode !== "opennext-upload") {
-    return { finish: (status: number | null) => ({ status }) };
+    return {
+      captureCommandArtifacts: () => undefined,
+      finish: (status: number | null, extra: WorkerDeployEvidenceFinishInput) => {
+        void extra;
+        return { status: status ?? 1 };
+      },
+    };
   }
 
   const backupDir = resolveBackupDir();
-  const startedAt = new Date().toISOString();
-  const sourceFingerprintBefore = buildRepoSourceFingerprint();
+  const session = createWorkerDeployEvidenceSession({
+    backupDir,
+    mode,
+    command: [command.executable, ...command.args, ...passthroughArgs],
+    passthroughArgs,
+    ...(readActiveWorkerVersion ? { readActiveWorkerVersion } : {}),
+  });
 
   return {
-    finish(
-      status: number | null,
-      extra: Pick<
-        WorkerDeployEvidenceReport,
-        | "commandExecuted"
-        | "deployPreflightOk"
-        | "deployPreflightStatus"
-        | "resourceBudgetOk"
-        | "scanBeforeOk"
-        | "scanAfterOk"
-        | "blockedArgs"
-        | "error"
-      >,
-    ) {
-      const completedAt = new Date().toISOString();
-      const sourceFingerprintAfter = buildRepoSourceFingerprint();
-      const sourceFingerprintStable = sourceFingerprintBefore.sha256 === sourceFingerprintAfter.sha256;
-      const report: WorkerDeployEvidenceReport = {
-        createdAt: completedAt,
-        startedAt,
-        completedAt,
-        backupDir,
-        mode,
-        command: [command.executable, ...command.args, ...passthroughArgs],
-        passthroughArgs,
-        ok:
-          status === 0 &&
-          extra.commandExecuted === true &&
-          extra.resourceBudgetOk === true &&
-          sourceFingerprintStable,
-        status,
-        sourceFingerprintBefore,
-        sourceFingerprintAfter,
-        sourceFingerprintStable,
-        ...extra,
-      };
-      writeWorkerDeployEvidenceReport(report);
+    captureCommandArtifacts: session.captureCommandArtifacts,
+    finish(status: number | null, extra: WorkerDeployEvidenceFinishInput) {
+      const result = session.finish(status, extra);
+      const { report } = result;
       console.log(
         JSON.stringify(
           {
@@ -436,22 +691,24 @@ function createWorkerDeployEvidenceWriter(
             mode: report.mode,
             status: report.status,
             sourceFingerprint: {
-              before: sourceFingerprintSummary(sourceFingerprintBefore),
-              after: sourceFingerprintSummary(sourceFingerprintAfter),
-              stable: sourceFingerprintStable,
+              sha256: report.sourceFingerprint?.sha256,
+              before: report.sourceFingerprintBefore.sha256,
+              after: report.sourceFingerprintAfter.sha256,
+              stable: report.sourceFingerprintStable,
             },
+            workerSourceSha256: report.workerSourceSha256,
+            wranglerConfigSha256: report.wranglerConfigSha256,
+            assetManifest: report.assetManifest,
+            artifactEvidenceStable: report.artifactEvidenceStable,
+            activeDeployment: report.activeDeployment,
           },
           null,
           2,
         ),
       );
-      return { status };
+      return result;
     },
   };
-}
-
-function sourceFingerprintSummary(fingerprint: SourceFingerprint) {
-  return { sha256: fingerprint.sha256, fileCount: fingerprint.fileCount };
 }
 
 function createLocalCliWrappers() {

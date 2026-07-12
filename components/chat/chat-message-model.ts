@@ -1,5 +1,6 @@
 export type ChatMessage = {
   id: string;
+  clientRenderId?: string;
   role: "user" | "assistant" | "system";
   content: string;
   createdAt: string | Date;
@@ -19,6 +20,30 @@ export type MessageMemorySource = {
 
 export function isPendingAssistantMessage(message: ChatMessage) {
   return message.role === "assistant" && message.metadata?.pendingAssistant === true;
+}
+
+export function getChatMessageRenderId(message: ChatMessage) {
+  return message.clientRenderId ?? message.id;
+}
+
+export function reconcilePersistedChatMessageId(
+  message: ChatMessage,
+  temporaryMessageId: string,
+  persistedMessageId: string,
+) {
+  if (message.id !== temporaryMessageId) return message;
+  return {
+    ...message,
+    id: persistedMessageId,
+    clientRenderId: getChatMessageRenderId(message),
+  };
+}
+
+export function getMessageContentNextOffset(message: ChatMessage) {
+  const offset = message.metadata?.contentNextOffset;
+  return typeof offset === "number" && Number.isSafeInteger(offset) && offset > 0
+    ? offset
+    : null;
 }
 
 export function clearPendingAssistantMetadata(metadata: Record<string, unknown> | undefined) {

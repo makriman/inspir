@@ -4,517 +4,12 @@
   "locale": "sk",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "{value1} praktických návodov"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "Knižnica s {value1} návodmi, vytvorená pre učenie, ktoré sa mení na konkrétny krok."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Bezplatný verejný AI sprievodca učením na doučovanie, precvičovanie, kvízy, kartičky, debatu, spätnú väzbu k písaniu, pomoc s kódom aj plánovanie štúdia."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Praktická AI cesta od zmätku k jasnému vysvetleniu, sokratovským otázkam, príkladom a aktívnemu vybavovaniu z pamäti."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Praktický návod, ako používať Nauč sa čokoľvek v inspir na zvládnutie základov, s výzvami, študijnými cyklami a bezpečnejšími AI návykmi."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "Praktický pohľad na to, ako môže AI sprístupniť učenie jasnejšie a osobnejšie bez toho, aby zo študentov robila pasívnych zberačov odpovedí."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "Verejná vzdelávacia stránka, ktorú ľudia rýchlo pochopia."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "Krátky film o presvedčení inspir, že učenie má byť bezplatné, dostupné a živé."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "Tútor pre prvú otázku"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "dostupnosť, výzvy, testy, bezpečnejšie správanie AI, toky učenia a doladenie rozhrania."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Krok po prečítaní"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Aktívna prax"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Opakovanie aktívnym vybavovaním"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Po každej nápovede vysvetli, prečo daný krok funguje, až potom pokračuj."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Po simulácii zhrň prostredie, obmedzenia a dôkazy."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI tútor programovania"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "Debatný tréning s AI"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI plán prípravy na skúšku"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "AI plán prípravy na skúšku s kvízmi a aktívnym vybavovaním"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI plánovač prípravy na skúšku"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI kartičky a aktívne vybavovanie: ako si zapamätať viac"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "AI kartičky na aktívne vybavovanie"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "AI kartičky na opakovanie"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI tútor histórie"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI tútor histórie"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI kouč domácich úloh"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "AI pomoc s domácimi úlohami bez podvádzania"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "AI pomoc s domácimi úlohami bez kopírovania odpovedí"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI pomocník s domácimi úlohami"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI matematický kouč krokov"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI tútor matematiky"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "AI generátor kvízov na skúšky"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI sokratovský tútor"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI študijný rozvrh"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "Učenie formou cestovania v čase s AI"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "AI tútor na náročné pojmy"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "AI tútori podľa predmetu"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "AI spätná väzba k písaniu pre študentov"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI tútor písania"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Odpovedz na kontrolnú otázku, skús krok, prediskutuj tvrdenie, uprav návrh alebo vytvor kartičky na vybavovanie."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "Sú kvízy lepšie než opätovné čítanie?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Argument"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Nácvik argumentácie"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "Polož akúkoľvek otázku a uč sa cez jasné vysvetlenia, príklady, nadväzujúce výzvy a trpezlivé AI doučovanie."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "Opýtaj sa na čokoľvek"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "Požiadaj o nápovedu"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Požiadaj o nápovedu, nie o odpoveď"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Požiadaj o jednoduchšie vysvetlenie najslabšieho pojmu."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Požiadaj o päť otázok, ktoré miešajú definície, príklady a úlohy na prenos poznatkov."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Pýtaj si nápovede, kontroly, spätnú väzbu a študijné plány, ktoré nechávajú premýšľanie na učiacom sa."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Požiadaj o tému v jednoduchej reči, potom si vypýtaj jednu analógiu, jeden príklad a jeden častý omyl."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Polož mi päť sokratovských otázok o tejto téme. Po každej odpovedi povedz, aký predpoklad som použil a čo mám overiť ďalej."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Pýtaj sa, spochybňuj myšlienky a uč sa históriu cez vecné rozhovory s verejnými osobnosťami minulosti."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Požiadaj historický režim, aby označil, čo je doložené, odvodené alebo simulované."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Polož skutočnú otázku"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "Polož prvú otázku a prejdi rovno do praxe."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Verejne dostupné, pričom školy môžu spúšťať dôverné vlastné verzie."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Prehliadnuť všetky režimy"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Prehliadnuť predmety"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Vytvor časový pas, prečítaj si cestovné upozornenie a preskúmaj historický svet cez scénu, mapu, časovú os, ľudí, pravidlá, inventár a dôkazy."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Vytvor AI postup prípravy na skúšku s realistickým plánom, precvičovaním vybavovania, kvízmi, kartičkami a opakovaním slabých miest."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "Vytvor plán na skúšku"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Vytvoriť plán"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Buduj s nami"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Vytvorené pre zvedavosť, prax a dostupnosť."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Postavené na skutočnom správaní učiacich sa, nie na všeobecnom chatovacom poli."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "Vytvorené na používanie"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "Môže byť AI pomoc s domácimi úlohami etická?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "Môžem citovať AI historický dialóg ako zdroj?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "Môžem používať inspir bez prihlásenia?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "Vie inspir pomôcť s domácimi úlohami bez podpory podvádzania?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Skontroluj môj model"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Skontroluj jeden krok"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Skontroluj uvažovanie riadok po riadku"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Skontroluj tento krok v mojom riešení. Ak je nesprávny, vysvetli chybu a daj mi jeden ďalší krok."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Jasné vysvetlenia"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Jasné hranice súkromia"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Tútor programovania"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Programovanie"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Komunikácia"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Porovnaj argumenty"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Dôverné nasadenia"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Pokračovať"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "Príspevky sú vítané od inžinierov, pedagógov, dizajnérov, študentov aj každého, kto chce, aby bolo učenie s AI bezpečnejšie, jasnejšie, dostupnejšie a užitočnejšie."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Premeň omyly na opakovanie"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "Premeň vysvetlenie na kartičky na aktívne vybavovanie a vráť sa k nim po chybách alebo zaváhaní."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Vytvor krátky kvíz"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "Zvedavosť začína tu"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Zvedavosť, prax a AI, ktorá učí."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Zvedaví učiaci sa, ktorí chcú vnímať históriu a myšlienky v kontexte, ako diskutovateľné a živé, no bez straty dôkazov."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Vlastné AI vzdelávacie priestory s dôvernosťou údajov."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "Debatuj o tvrdení"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "Debatuj o akejkoľvek téme"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "Debatuj o akejkoľvek téme, nechaj sa vyzvať, porovnávaj tvrdenia a uč sa tvoriť silnejšie argumenty."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Debata ti pomáha oddeliť tvrdenia, dôkazy, hodnoty a predpoklady, čím spresňuje historickú interpretáciu."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "Prediskutuj tvrdenie"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "Prediskutuj tvrdenie z viacerých strán, aby si si všimol predpoklady, kompromisy a slabé dôkazy."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Prediskutuj toto historické alebo filozofické tvrdenie z oboch strán. Oddeľ dôkazy, predpoklady a hodnoty."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Navrhnuté pre istotu"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "Neprijmi upravený odsek, kým nevieš vysvetliť, prečo je verzia lepšia."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "Nepýtaj si úplné zhrnutie skôr, než poznáš potrebné základné myšlienky."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "Nedebatuj iba za stranu, s ktorou už súhlasíš."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Plánovanie"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "Neignoruj zaváhanie; neistota je užitočný signál na opakovanie."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "Nedovoľ, aby hranie rolí nahradilo dátumy, kontext, dokumenty alebo označenie dôkazov."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir premieňa zvedavosť, domáce úlohy, opakovanie a veľké otázky na vedené AI učenie, ktoré vysvetľuje, kladie protiotázky a pomáha precvičovať."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "Nerob plán, ktorý predpokladá, že každá téma potrebuje rovnaký čas."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Vytvor krátky kvíz"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "Nerob kartičky z viet, ktoré ešte nevieš vysvetliť vlastnými slovami."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Študenti, ktorí potrebujú ďalší krok, kontrolu chyby alebo spätnú väzbu bez toho, aby stratili vlastníctvo nad zadaním."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "Nevkladaj zadanie s prosbou o hotovú odpoveď."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Začať sa učiť"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "Nečítaj si poznámky znovu skôr, než otestuješ, čo si už vieš vybaviť."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "Nevynechaj ukážku toho, čo si už skúšal; užitočná pomoc závisí od tohto kontextu."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "Nezastav sa pri prvom vysvetlení; prinúť sa odpovedať na otázky o ňom."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "Nepovažuj vygenerovaný dialóg za skutočný citát ani primárny zdroj."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Urob s tým ďalší krok"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "Podporuje inspir školy?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Každý návod končí plánmi praxe, trasami a odkazmi na presný režim učenia, ktorý sa hodí."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Každý návod smeruje na režim, výzvu alebo opakovací cyklus, aby sa čítanie zmenilo na prax."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Každý režim sa otvorí ako verejný hosťovský chat s vlastným cieľom, príkladmi a tokom učenia, takže učiaci sa môžu začať so správnou podporou hneď."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Jednoduché ďalšie kroky"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Zadaj obdobie"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Zadaj kontext"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Každý článok je prepojený s kategóriami, živými režimami, tematickými centrami, cestami učenia a súvisiacimi návodmi."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Každá stránka mimo aplikácie má teraz úlohu: budovať dôveru, vysvetliť cestu učenia a nasmerovať učiacich sa k užitočnému ďalšiemu kroku bez skrývania dôležitých detailov."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Scény citlivé na dôkazy"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "Príprava na skúšku"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "Plánovač prípravy na skúšku"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Vysvetli to naspäť"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Vysvetli ďalší krok"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Vysvetli túto tému jednoduchou rečou. Pomenuj tri predchádzajúce myšlienky, ktoré potrebujem, jednu analógiu a jeden častý omyl."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "Vysvetlenia, sokratovské doučovanie, koučing domácich úloh, kvízy, kartičky, písanie, kód, debata a plánovanie štúdia."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "Skúmaj históriu a veľké myšlienky s AI"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Skúmaj históriu a myšlienky"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Skúmaj históriu, verejné osobnosti, príčiny, debaty, filozofiu a kritiku zdrojov pomocou AI režimov učenia, ktoré oddeľujú dôkazy od simulácie."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Preskúmať školy"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Preskúmať knižnicu návodov"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Rýchle trasy učenia"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Kapitoly filmu"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Tvorca kartičiek"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Kartičky fungujú najlepšie, keď testujú jednu myšlienku naraz, ukážu odpoveď až po snahe a chybné kartičky vrátia skôr."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Pri matematike alebo logike pracuj po jednom kroku a pred pokračovaním sa pýtaj, prečo je daný ťah dovolený."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Pre školy a CSR partnerov"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Základy"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Bezplatné učenie s AI pre každého"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Bezplatné učenie s AI pre každého | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Bezplatné učenie s AI pre každého."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Bezplatné učenie ako hosť"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Bezplatná verejná platforma na učenie s AI"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Z blogu"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "Vygeneruj sústredený kvíz s výberom odpovede z ľubovoľného predmetu a po každej odpovedi si pozri vysvetlenie."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Získaj študijný rozvrh, otestuj sa zo slabých miest a premeň chyby na kartičky na opakované precvičovanie."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Najprv získaj jednoduchý model"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Kouč písania"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "Pohni sa z miesta"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Pohni sa z miesta pri domácich úlohách"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Vstúp do historického kontextu, porovnávaj argumenty a precvičuj pohľad na myšlienku z viacerých strán."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Pohni sa z miesta pri domácich úlohách pomocou etických nápovied, príkladov, kontrol a koučingu krok za krokom."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "tematické centrá zmapované podľa potrieb učiacich sa"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Daj spätnú väzbu k štruktúre, jasnosti a dôkazom. Zachovaj môj hlas a neprepisuj celú odpoveď."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Záverečný moment sa vracia k misii: verejný prístup, školy a otvorenejší spôsob učenia."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Dobré oblasti na začiatok:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Sú kvízy lepšie než opätovné čítanie?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Knižnica návodov"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Návody, cesty, predmety a výzvy vedú na ďalšie užitočné miesto na precvičenie."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Užitočná mapa učenia"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Tu je otázka a to, čo som skúsil. Daj mi najmenšiu užitočnú nápovedu, nie konečnú odpoveď."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Skryť kapitoly filmu"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Skryť prepis filmu"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "Pomoc najprv cez nápovedy"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Historické rozhovory"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "História"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Domáce úlohy"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Kouč domácich úloh"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "Ako skoro si mám vytvoriť plán prípravy na skúšku?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "V čom sa inspir líši od bežného AI chatbota?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Ako to funguje"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "Ako sa učiť s AI bez toho, aby si klamal sám seba"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "ako pochopiť ťažkú tému s AI"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "Ako pochopiť ťažkú tému s AI"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Ponorenie"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Vylepši návrh"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Zlepšuj písanie pomocou plánovania, úprav, štruktúry a spätnej väzby, ktorá zachová tvoj hlas."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Uveď otázku, čo si už skúsil, kde si sa zasekol a či chceš nápovedu, kontrolu kroku alebo spätnú väzbu."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "knižnica návodov na učenie s AI v inspir"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir začal ako kvízy a študentské komunity, rástol cez školy a podujatia a dnes používa AI, aby sprístupnil osobné učenie."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir existuje pre chvíľu, keď chce učiaci sa niečo pochopiť a potrebuje trpezlivé miesto na začiatok. Film predstavuje produkt ako bezplatného verejného sprievodcu učením pre zvedavosť, prax a dostupnosť."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir v pohybe"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir sa buduje verejne."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir je usporiadaný okolo režimov učenia s konkrétnymi vyučovacími formami: nápovedy, sokratovské otázky, kvízy, aktívne vybavovanie, hranie rolí, debata, spätná väzba k písaniu a plánovanie štúdia."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "film o učení s inspir"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir premieňa zvedavosť, domáce úlohy, opakovanie a veľké otázky na vedené AI učenie, ktoré vysvetľuje, kladie protiotázky a pomáha precvičovať."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: Nauč sa čokoľvek"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "Je používanie inspir bezplatné?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Udrž cestu živú"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Zisti, čo skúsiť ďalej, prečo krok funguje, kde vznikla chyba a ako upraviť konečnú odpoveď vlastným hlasom."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Nauč sa čokoľvek"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Nauč sa čokoľvek výzvy a študijný cyklus"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Nauč sa čokoľvek s bezplatným AI tútorom: praktický návod"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Uč sa rozprávaním, testovaním, debatou a skúmaním."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Uč sa programovať, ladiť pojmy, plánovať projekty, interpretovať dáta a skúmať technické otázky s verejnými AI režimami, ktoré udržiavajú učiaceho sa v procese."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Uč sa cez sústredené otázky, nápovede a reflexiu namiesto pasívneho čítania odpovedí."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Uč sa s bezplatným AI tútorom na vysvetlenia, sokratovské otázky, koučing domácich úloh, kvízy, kartičky, debatu, spätnú väzbu k písaniu, pomoc s programovaním a plánovanie štúdia."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Podpora zameraná na učiaceho sa"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Učiaci sa potrebujú postupnosť, nie kopu odkazov. Tieto cesty prepájajú režimy do praktických študijných cyklov na porozumenie, domáce úlohy, prípravu na skúšky a objavovanie."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Učiaci sa, ktorí sa zasekli na začiatku nového predmetu alebo potrebujú jednoduchšiu cestu k náročnej myšlienke."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Učiaci sa, ktorí majú málo času, rozsiahly sylabus a potrebujú realistický spôsob opakovania bez predstierania, že všetko je rovnako dôležité."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Učenie pre každého"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "návody na učenie a cykly precvičovania"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Odíď s jednoduchým modelom, presnejšími otázkami, príkladmi, ktoré vieš vysvetliť naspäť, a kartičkami na opakovanie."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Nechaj ma urobiť rozhovor s touto historickou osobnosťou. Odpovede drž pri dôkazoch a neistotu jasne označ."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Vytvor kartičky z chýb a po čase sa k nim vráť."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Vytvor kartičky z chýb, zaváhaní, vzorcov, definícií a pojmov, ktoré si nevedel jasne vysvetliť."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Nech si myšlienku zapamätáš"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "Nech si myšlienku zapamätáš"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Urob študijný plán realistický"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Matematika"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Matematický kouč krokov"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Matematika, písanie, programovanie, história, domáce úlohy a príprava na skúšky potrebujú každé inú pomoc. Začni predmetom a potom prejdi do vhodného režimu, výzvy, návodu alebo opakovacieho cyklu."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Najprv misia"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Návody k režimom, cykly výziev, študijné metódy a základné články pre bežné chvíle učenia."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Prejdi od jednoduchého vysvetlenia k otázkam, príkladom a precvičovaniu pamäti."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Prejdi do sokratovských otázok, kvízov, kartičiek, debaty, hrania rolí a vedeného výkladu."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Stlmiť film"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "Skúšku mám v tento dátum. Tu je sylabus, moje slabé miesta a dostupný čas. Vytvor realistický plán s každodenným vybavovaním z pamäti."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "Možnosti zosúladené s NCERT"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Ďalší krok"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "Nie. Ber vygenerovaný dialóg ako učebnú simuláciu. Pri faktických tvrdeniach cituj skutočné primárne alebo sekundárne zdroje."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "Nie je to ďalšie políčko na odpovede. Je to miesto na učenie."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "Otvor režim a začni hneď; na verejné hosťovské používanie nepotrebuješ účet."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Otvorené už v návrhu"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Otvoriť film na celú obrazovku"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Otvoriť hosťovský chat"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Otvoriť centrum predmetu"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Otvor presne ten typ pomoci, po ktorý si prišiel."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Otvoriť mapu učenia"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} praktických návodov"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Otvoriť cestu"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Stránky sú navrhnuté tak, aby ľudí posunuli od vysvetlenia do živého režimu, výzvy, kvízu alebo opakovacieho cyklu."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Polož akúkoľvek otázku a uč sa cez jasné vysvetlenia, príklady, nadväzujúce výzvy a trpezlivé AI doučovanie."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Stránka je trasa, nie brožúra."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Podporuje inspir školy?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir je usporiadaný okolo režimov učenia s konkrétnymi vyučovacími formami: nápovedy, sokratovské otázky, kvízy, aktívne vybavovanie, hranie rolí, debata, spätná väzba k písaniu a plánovanie štúdia."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Používaj verejné hosťovské režimy zadarmo a potom preskúmaj open-source prácu aj cesty školského nasadenia."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Vysvetlenia, sokratovské doučovanie, koučing domácich úloh, kvízy, kartičky, písanie, kód, debata a plánovanie štúdia."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Bezplatné učenie s AI pre každého"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Plánovač prípravy na skúšku"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Pohni sa z miesta pri domácich úlohách pomocou etických nápovied, príkladov, kontrol a koučingu krok za krokom."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI plánovač prípravy na skúšku"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "AI plán prípravy na skúšku s kvízmi a aktívnym vybavovaním"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Debata ti pomáha oddeliť tvrdenia, dôkazy, hodnoty a predpoklady, čím spresňuje historickú interpretáciu."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Začni miestom, časom, identitou, obmedzeniami a označením dôkazov, aby sa scéna nezmenila na všeobecné hranie rolí."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Čo mám zahrnúť do výzvy k domácej úlohe?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Príspevky sú vítané od inžinierov, pedagógov, dizajnérov, študentov aj každého, kto chce, aby bolo učenie s AI bezpečnejšie, jasnejšie, dostupnejšie a užitočnejšie."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Praktická AI cesta od zmätku k jasnému vysvetleniu, sokratovským otázkam, príkladom a aktívnemu vybavovaniu z pamäti."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI tútor písania"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir začal ako kvízy a študentské komunity, rástol cez školy a podujatia a dnes používa AI, aby sprístupnil osobné učenie."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "film o učení s inspir"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Zobraziť kapitoly filmu"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Premeň tieto nezvládnuté otázky na kartičky zoskupené podľa pojmu, vzorca, definície a príkladu."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Zisti, čo skúsiť ďalej, prečo krok funguje, kde vznikla chyba a ako upraviť konečnú odpoveď vlastným hlasom."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "AI spätná väzba k písaniu pre študentov"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Učenie pre každého"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI tútor programovania"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Otestuj slabé oblasti"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Uč sa s bezplatným AI tútorom na vysvetlenia, sokratovské otázky, koučing domácich úloh, kvízy, kartičky, debatu, spätnú väzbu k písaniu, pomoc s programovaním a plánovanie štúdia."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Použi debatu na porovnanie najsilnejšieho tvrdenia a najsilnejšieho protitvrdenia."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Nezastav sa pri prvom vysvetlení; prinúť sa odpovedať na otázky o ňom."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Ako to funguje"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Tútor programovania"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Príprava na skúšku"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Vyhľadávacie stránky, blogové návody, výzvy a živé režimy sú prepojené okolo jednoduchého cyklu: opýtaj sa, skús, skontroluj, oprav a zopakuj."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Programovanie"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Užitočné od prvého kliknutia"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Vygeneruj sústredený kvíz s výberom odpovede z ľubovoľného predmetu a po každej odpovedi si pozri vysvetlenie."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Neprijmi upravený odsek, kým nevieš vysvetliť, prečo je verzia lepšia."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Skúšku mám v tento dátum. Tu je sylabus, moje slabé miesta a dostupný čas. Vytvor realistický plán s každodenným vybavovaním z pamäti."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Nauč sa čokoľvek s bezplatným AI tútorom: praktický návod"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Nechaj ma urobiť rozhovor s touto historickou osobnosťou. Odpovede drž pri dôkazoch a neistotu jasne označ."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Postavené na skutočnom správaní učiacich sa, nie na všeobecnom chatovacom poli."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Pohni sa z miesta pri domácich úlohách"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Blog je usporiadaný okolo skutočných študijných chvíľ: pohnúť sa z miesta, zapamätať si viac, písať lepšie, pripravovať sa na skúšky a skúmať myšlienky s trpezlivým tútorom."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Prečo spájať históriu s debatou?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Blog prepája užitočné rady k učeniu so živou praxou, takže návod sa môže jedným krokom zmeniť na študijnú reláciu."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Vlož otázku aj to, čo si skúsil, a potom si vypýtaj najmenší užitočný ďalší krok."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Pozastaviť film"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Učiaci sa, ktorí sa zasekli na začiatku nového predmetu alebo potrebujú jednoduchšiu cestu k náročnej myšlienke."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Umiestni ma do tohto času a miesta. Označ doložené fakty oddelene od vierohodnej simulácie a opýtaj sa, čo si všímam."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "dostupnosť, výzvy, testy, bezpečnejšie správanie AI, toky učenia a doladenie rozhrania."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Vysvetlenia jednoduchou rečou"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Pred žiadosťou o pomoc presne napíš, kde si sa zasekol."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "Naplánuj opakovanie na skúšku, generuj kvízy, vytváraj kartičky, rozvrhni rozložené opakovanie a udrž motiváciu realistickú pomocou sústredených AI režimov učenia."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Premeň omyly na opakovanie"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "Naplánuj prácu, precvičuj vybavovanie a uzatváraj slabé miesta kvízmi a aktívnym vybavovaním."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Skúmaj históriu a myšlienky"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Plánovanie"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Skúmaj históriu a veľké myšlienky s AI"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Prehrať film"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Nech si myšlienku zapamätáš"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "Prehrať ukážku učenia s inspir"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Otvoriť centrum predmetu"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Obľúbené cesty učenia s AI"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Písanie"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Obľúbené cesty"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Pokračovať"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Prax"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Základy"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Prax, nie kopírovanie odpovedí"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Naplánuj ďalšie opakovanie"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI matematický kouč krokov"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Zadaj kontext"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Polož skutočnú otázku"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "Priprav sa na skúšku"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "Nápady na výzvy a opakovateľný študijný cyklus pre užitočné výsledky s Nauč sa čokoľvek v inspir."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Skúmaj históriu, verejné osobnosti, príčiny, debaty, filozofiu a kritiku zdrojov pomocou AI režimov učenia, ktoré oddeľujú dôkazy od simulácie."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Pýtaj sa osobnosti"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "Debatný tréning s AI"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Spochybni historickú perspektívu"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Otázky ťa prinútia odhaliť vlastný model témy; práve tam sa zvyčajne ukáže zmätok, falošná istota aj chýbajúce základy."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Rýchle odpovede"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Skúšaj ma z týchto tém po jednej otázke. Po každej odpovedi vysvetli medzeru a pomaly zvyšuj náročnosť."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Otestuj ma z vedomostných otázok"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Otestuj slabé oblasti"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Otestuj sa"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Najprv sa otestuj, aby si videl, čo si naozaj pamätáš a kde ťa istota zavádza."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Kvízy zvyčajne odhalia viac, pretože testujú vybavovanie. Opätovné čítanie pomôže po tom, čo kvíz ukáže, čo treba opraviť."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Prečítať misiu"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Realistický rozvrh"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Oprav jednu chybu"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Oprav slabé miesto"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Prehrať znova"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Spustiť film od začiatku"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Precvičovanie vybavovania"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Opakuj s kartičkami"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Uprav môj návrh"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Upravuj bez straty vlastného hlasu"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Ulož chybu"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Naplánuj ďalšie opakovanie"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Pracovné postupy pre konkrétnu školu"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Školy môžu ponúkať AI chaty pod vlastnou značkou prispôsobené svojim učiacim sa, vrátane obsahu a postupov zosúladených s NCERT, pričom používanie financujú partnerské školy alebo CSR sponzoring."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Vyhľadávacie stránky, blogové návody, výzvy a živé režimy sú prepojené okolo jednoduchého cyklu: opýtaj sa, skús, skontroluj, oprav a zopakuj."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Oddeľ fakty od výmyslov"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Zobraziť kapitoly filmu"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Zobraziť prepis filmu"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Sokratovské kontroly"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Sokratovské vedenie"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Sokratovský tútor"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Sokratovské doučovanie používa otázky, hypotézy, nápovede a reflexiu, aby budovalo hlbšie porozumenie než pasívne čítanie odpovedí."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Spusti živú vzdelávaciu reláciu."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "Začni hneď, ako poznáš dátum skúšky. Ak je času málo, uprednostni slabé oblasti, otázky v štýle minulých testov a každodenné vybavovanie."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Začni tým, že si vypýtaš jednoduché vysvetlenie, jednu každodennú analógiu a tri myšlienky, ktoré potrebuješ, aby téma dávala zmysel."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Každú reláciu začni rýchlym kvízom pred opätovným čítaním."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "Začni od prvých princípov"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Začni predmetom a potom otvor správny režim učenia."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Začni tým, čomu nerozumieš, a získaj jednoduchý model, príklady a ďalšie kroky."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Začať sa učiť"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Začni témou, zadaním, návrhom, skúškou alebo nápadom v režime, ktorý sa hodí k úlohe."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Začni s Nauč sa čokoľvek"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Začni miestom, časom, identitou, obmedzeniami a označením dôkazov, aby sa scéna nezmenila na všeobecné hranie rolí."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Začni úlohou, ktorú potrebuješ urobiť."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "Pomenuj miesto zaseknutia"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Kontroly krokov"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Vstúp do historického kontextu, porovnávaj argumenty a precvičuj pohľad na myšlienku z viacerých strán."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Študenti, ktorí potrebujú ďalší krok, kontrolu chyby alebo spätnú väzbu bez toho, aby stratili vlastníctvo nad zadaním."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Študijné cykly, návody na AI doučovanie a praktické výzvy."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "tematické centrá zmapované podľa potrieb učiacich sa"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Zhrň kontext"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Podporuje mimoškolské učenie, akademickú prax a zvedavosť."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Prejdi do otázok, aby si odhalil predpoklady a doplnil medzery namiesto pasívneho čítania odpovede."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Rozprávaj sa s historickou osobnosťou a drž vygenerovaný dialóg oddelený od doložených citátov."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Rozprávaj sa s historickou osobnosťou"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "AI rozhovor s historickými osobnosťami"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Testuj pred opakovaním"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Otestuj argument"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Otestuj svoje uvažovanie"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "Blog prepája užitočné rady k učeniu so živou praxou, takže návod sa môže jedným krokom zmeniť na študijnú reláciu."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "Blog je usporiadaný okolo skutočných študijných chvíľ: pohnúť sa z miesta, zapamätať si viac, písať lepšie, pripravovať sa na skúšky a skúmať myšlienky s trpezlivým tútorom."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "Širšia open-source platforma inspir."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "Záverečný moment sa vracia k misii: verejný prístup, školy a otvorenejší spôsob učenia."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "Aktuálna prestavba inspirlearning.com."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "Film prechádza od inšpirácie k praktickému prísľubu: trpezlivému AI sprievodcovi učením."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Režimy domácich úloh a sokratovského učenia sú navrhnuté okolo nápovied, uvažovania, kontrol krokov a vysvetlení od učiaceho sa namiesto jednoduchého odovzdávania hotových odpovedí."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "Stredná časť rámcuje inspir okolo porozumenia, nápovied, kvízov a cyklov aktívneho učenia."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "AI študijná platforma novej generácie."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Úvodné zábery ukazujú učenie ako niečo, s čím by mal vedieť každý začať okamžite."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Historické rozhovory"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "Verejná stránka je štruktúrovaná ako mapa učenia: živé režimy na okamžitú pomoc, tematické centrá pre otázky učiacich sa a návody, ktoré menia čítanie na konanie."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "Stránka je trasa, nie brožúra."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Napíš trojvetové vysvetlenie bez pozerania a potom požiadaj sokratovský režim, aby našiel slabý článok."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Premýšľaj hlbšie"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Debatuj o tvrdení"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Cestovanie v čase"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Prehliadnuť všetky režimy"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Zhluky tém"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Z blogu"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Prepis"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Požiadaj o nápovedu, nie o odpoveď"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Precestuj obdobie"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Spochybni historickú perspektívu"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Vyskúšať Kouča domácich úloh"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Verejne dostupné, pričom školy môžu spúšťať dôverné vlastné verzie."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Premeň to na kartičky"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Premeň chyby na cykly opakovania"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Premeň poznámky alebo témy na sústredené kartičky s nápovedami, odpoveďami, príkladmi a častými nástrahami."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Premeň opravenú chybu na kartičku alebo krátky kontrolný zoznam na neskôr."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "Premeň vysvetlenie na kartičky na aktívne vybavovanie: jednu pojmovú, jednu príkladovú a jednu o mylnej predstave."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Premeň najťažšiu zmeškanú otázku na kartičku a zopakuj si ju neskôr."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Premeň tieto nezvládnuté otázky na kartičky zoskupené podľa pojmu, vzorca, definície a príkladu."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Premeň sylabus, dátum skúšky, čas a slabé oblasti na praktický študijný plán."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Prejdi do sokratovských otázok, kvízov, kartičiek, debaty, hrania rolí a vedeného výkladu."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Pochop náročnú tému"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Pochop historický kontext, spochybni perspektívu, porovnaj tvrdenia a oddeľ simuláciu od doloženého faktu."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Upravuj bez straty vlastného hlasu"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Pomenuj miesto zaseknutia"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Ako sa učiť s AI bez toho, aby si klamal sám seba"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Požiadaj o tému v jednoduchej reči, potom si vypýtaj jednu analógiu, jeden príklad a jeden častý omyl."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "Učenie formou cestovania v čase s AI"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Prax"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Nečítaj si poznámky znovu skôr, než otestuješ, čo si už vieš vybaviť."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Premeň sylabus, dátum skúšky, čas a slabé oblasti na praktický študijný plán."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Stránky sú navrhnuté tak, aby ľudí posunuli od vysvetlenia do živého režimu, výzvy, kvízu alebo opakovacieho cyklu."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "AI pomoc s domácimi úlohami bez podvádzania"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matematika"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Tútor pre prvú otázku"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Bezplatné učenie s AI pre každého."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Podporuje mimoškolské učenie, akademickú prax a zvedavosť."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI kartičky a aktívne vybavovanie: ako si zapamätať viac"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Nech si myšlienku zapamätáš"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Prejdi od jednoduchého vysvetlenia k otázkam, príkladom a precvičovaniu pamäti."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Pomoc najprv cez nápovedy"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Tu je otázka a to, čo som skúsil. Daj mi najmenšiu užitočnú nápovedu, nie konečnú odpoveď."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Kvízy zvyčajne odhalia viac, pretože testujú vybavovanie. Opätovné čítanie pomôže po tom, čo kvíz ukáže, čo treba opraviť."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Odpovedz na kontrolnú otázku, skús krok, prediskutuj tvrdenie, uprav návrh alebo vytvor kartičky na vybavovanie."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Ako pochopiť ťažkú tému s AI"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Pochop kód, odhaľuj chyby, uč sa programátorské pojmy a krok za krokom stavaj malé projekty."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Zapnúť zvuk filmu"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Aktívna prax"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "Používaj AI ako kouča na porozumenie, prax a spätnú väzbu, nie ako skratku, ktorá potichu odoberá učenie."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Ponorenie"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Použi AI koučing domácich úloh na nápovede, kontroly krokov, matematické uvažovanie a spätnú väzbu k písaniu, pričom finálna práca zostane tvoja."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Podpora zameraná na učiaceho sa"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Použi AI cestovanie v čase, historické rozhovory a debatný tréning na skúmanie kontextu, dôkazov, argumentov a perspektív."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Kartičky fungujú najlepšie, keď testujú jednu myšlienku naraz, ukážu odpoveď až po snahe a chybné kartičky vrátia skôr."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Každá stránka mimo aplikácie má teraz úlohu: budovať dôveru, vysvetliť cestu učenia a nasmerovať učiacich sa k užitočnému ďalšiemu kroku bez skrývania dôležitých detailov."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Použi debatu na porovnanie najsilnejšieho tvrdenia a najsilnejšieho protitvrdenia."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Premeň opravenú chybu na kartičku alebo krátky kontrolný zoznam na neskôr."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Používaj nápovede, kontroly krokov a spätnú väzbu k písaniu bez toho, aby sa učenie zmenilo na kopírovanie odpovedí."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Vlastné AI vzdelávacie priestory s dôvernosťou údajov."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "Používaj inspir na spätnú väzbu k esejam, podporu čítania, nácvik hovorenia, kritiku zdrojov a revízne cykly, ktoré zlepšujú štruktúru bez nahradenia hlasu učiaceho sa."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Uprav môj návrh"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Používaj inspir na nápovede k domácim úlohám, kontroly matematických krokov, spätnú väzbu k písaniu, kritiku zdrojov, sokratovské otázky a kartičky bez odhaľovania súkromných chatov."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Premeň vysvetlenie na kartičky na aktívne vybavovanie: jednu pojmovú, jednu príkladovú a jednu o mylnej predstave."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Používaj inspir na matematickú pomoc krok za krokom, nápovede k domácim úlohám, sokratovské uvažovanie, kvízy, kartičky a prípravu na skúšky bez kopírovania odpovedí."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "AI tútori podľa predmetu"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Používaj verejné hosťovské režimy zadarmo a potom preskúmaj open-source prácu aj cesty školského nasadenia."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Najprv misia"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Prediskutuj toto historické alebo filozofické tvrdenie z oboch strán. Oddeľ dôkazy, predpoklady a hodnoty."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Použi sokratovské otázky"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Použi dátum skúšky, sylabus, dostupný čas a slabé oblasti na vytvorenie plánu, ktorý zvládne skutočný život."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Použi prepojený návod, výzvu, tematické centrum alebo cestu učenia, aby si sa k slabému miestu vrátil neskôr."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Použi spätnú väzbu k písaniu na štruktúru, jasnosť a dôkazy, pričom finálny návrh zostane rozpoznateľne tvoj."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "Užitočné od prvého kliknutia"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Ovládanie videa"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Priebeh videa"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Spätná väzba, ktorá zachováva hlas"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "Pozrieť 31 s"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Cykly pre slabé oblasti"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "Čo by mal AI sprievodca učením robiť pre každého"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Na čo sa učiaci sa zvyčajne pýtajú pred začiatkom."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "Na čo sa mám opýtať ako prvé, keď je téma príliš ťažká?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "Čo mám zahrnúť do výzvy k domácej úlohe?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Čo môžeš robiť"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "Školská AI pod vlastnou značkou"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Prečo môže sokratovský AI tútor pomôcť, aby myšlienky držali"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "Prečo spájať históriu s debatou?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "Prečo po vysvetlení používať sokratovské otázky?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "Prechádzaj algebrou, kalkulom, slovnými úlohami a matematickými pojmami krok za krokom s AI koučom."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir existuje pre chvíľu, keď chce učiaci sa niečo pochopiť a potrebuje trpezlivé miesto na začiatok. Film predstavuje produkt ako bezplatného verejného sprievodcu učením pre zvedavosť, prax a dostupnosť."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Prejdi matematické kroky"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Napíš trojvetové vysvetlenie bez pozerania a potom požiadaj sokratovský režim, aby našiel slabý článok."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Pred žiadosťou o pomoc presne napíš, kde si sa zasekol."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Písanie"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Kouč písania"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Áno, keď dáva nápovede, kontroluje uvažovanie, vysvetľuje chyby a žiada ťa vytvoriť finálnu odpoveď namiesto toho, aby ju napísala za teba."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Každú reláciu začni rýchlym kvízom pred opätovným čítaním."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Áno. Verejné tematické chaty ako Nauč sa čokoľvek, Sokratovské vedenie, Kouč domácich úloh, kvízy a kartičky sa otvárajú priamo v hosťovskom režime."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Áno. Školy môžu najprv používať verejný produkt a potom hovoriť o vlastných AI vzdelávacích priestoroch so školskými postupmi, dôvernosťou a možnosťami financovaného prístupu."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Vytvor časový pas, prečítaj si cestovné upozornenie a preskúmaj historický svet cez scénu, mapu, časovú os, ľudí, pravidlá, inventár a dôkazy."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Precestuj obdobie"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Spätná väzba, ktorá zachováva hlas"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sokratovské doučovanie používa otázky, hypotézy, nápovede a reflexiu, aby budovalo hlbšie porozumenie než pasívne čítanie odpovedí."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Daj spätnú väzbu k štruktúre, jasnosti a dôkazom. Zachovaj môj hlas a neprepisuj celú odpoveď."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Otestuj svoje uvažovanie"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Pri matematike alebo logike pracuj po jednom kroku a pred pokračovaním sa pýtaj, prečo je daný ťah dovolený."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Skontroluj uvažovanie riadok po riadku"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Môžem citovať AI historický dialóg ako zdroj?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Cestovanie v čase"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Nie. Ber vygenerovaný dialóg ako učebnú simuláciu. Pri faktických tvrdeniach cituj skutočné primárne alebo sekundárne zdroje."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Začni úlohou, ktorú potrebuješ urobiť."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Používaj inspir na matematickú pomoc krok za krokom, nápovede k domácim úlohám, sokratovské uvažovanie, kvízy, kartičky a prípravu na skúšky bez kopírovania odpovedí."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Ďalší krok"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Zapnúť zvuk filmu"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Otestuj ma z vedomostných otázok"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Áno, keď dáva nápovede, kontroluje uvažovanie, vysvetľuje chyby a žiada ťa vytvoriť finálnu odpoveď namiesto toho, aby ju napísala za teba."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Používaj AI ako kouča na porozumenie, prax a spätnú väzbu, nie ako skratku, ktorá potichu odoberá učenie."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Stredná časť rámcuje inspir okolo porozumenia, nápovied, kvízov a cyklov aktívneho učenia."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Použi prepojený návod, výzvu, tematické centrum alebo cestu učenia, aby si sa k slabému miestu vrátil neskôr."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Úvodné zábery ukazujú učenie ako niečo, s čím by mal vedieť každý začať okamžite."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Uč sa programovať, ladiť pojmy, plánovať projekty, interpretovať dáta a skúmať technické otázky s verejnými AI režimami, ktoré udržiavajú učiaceho sa v procese."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Prepis"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Skryť kapitoly filmu"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Polož prvú otázku a prejdi rovno do praxe."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Prehliadnuť predmety"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Zvedaví učiaci sa, ktorí chcú vnímať históriu a myšlienky v kontexte, ako diskutovateľné a živé, no bez straty dôkazov."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Školy môžu ponúkať AI chaty pod vlastnou značkou prispôsobené svojim učiacim sa, vrátane obsahu a postupov zosúladených s NCERT, pričom používanie financujú partnerské školy alebo CSR sponzoring."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Debatuj o akejkoľvek téme"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI študijný rozvrh"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Každý návod smeruje na režim, výzvu alebo opakovací cyklus, aby sa čítanie zmenilo na prax."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir v pohybe"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Študijné cykly, návody na AI doučovanie a praktické výzvy."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Premeň chyby na cykly opakovania"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI plán prípravy na skúšku"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Praktický návod, ako používať Nauč sa čokoľvek v inspir na zvládnutie základov, s výzvami, študijnými cyklami a bezpečnejšími AI návykmi."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Oprav jednu chybu"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Vytvor kartičky z chýb, zaváhaní, vzorcov, definícií a pojmov, ktoré si nevedel jasne vysvetliť."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Bezplatné učenie ako hosť"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Používaj inspir na nápovede k domácim úlohám, kontroly matematických krokov, spätnú väzbu k písaniu, kritiku zdrojov, sokratovské otázky a kartičky bez odhaľovania súkromných chatov."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Najprv sa otestuj, aby si videl, čo si naozaj pamätáš a kde ťa istota zavádza."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "AI študijná platforma novej generácie."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Verejné režimy učenia si môžeš vyskúšať zadarmo. Uložené chaty, účty, administračné nástroje a používateľské dáta zostávajú súkromné."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Otestuj argument"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Otvoriť mapu učenia"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "AI kartičky na opakovanie"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Nauč sa čokoľvek"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Pochop historický kontext, spochybni perspektívu, porovnaj tvrdenia a oddeľ simuláciu od doloženého faktu."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Vytvor plán na skúšku"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Používaj inspir na spätnú väzbu k esejam, podporu čítania, nácvik hovorenia, kritiku zdrojov a revízne cykly, ktoré zlepšujú štruktúru bez nahradenia hlasu učiaceho sa."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Realistický rozvrh"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Nepýtaj si úplné zhrnutie skôr, než poznáš potrebné základné myšlienky."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Rozprávaj sa s historickou osobnosťou"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Ulož chybu"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Vytvor AI postup prípravy na skúšku s realistickým plánom, precvičovaním vybavovania, kvízmi, kartičkami a opakovaním slabých miest."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Uveď otázku, čo si už skúsil, kde si sa zasekol a či chceš nápovedu, kontrolu kroku alebo spätnú väzbu."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Precvičovanie vybavovania"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Otvor režim a začni hneď; na verejné hosťovské používanie nepotrebuješ účet."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Začni témou, zadaním, návrhom, skúškou alebo nápadom v režime, ktorý sa hodí k úlohe."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Nerob kartičky z viet, ktoré ešte nevieš vysvetliť vlastnými slovami."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Obľúbené cesty"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "ako pochopiť ťažkú tému s AI"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Áno. Verejné hosťovské režimy učenia sú navrhnuté na bezplatný prístup, takže učiaci sa môžu začať bez školského nasadenia alebo plateného účtu."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "Verejné režimy učenia si môžeš vyskúšať zadarmo. Uložené chaty, účty, administračné nástroje a používateľské dáta zostávajú súkromné."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Prax, nie kopírovanie odpovedí"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Režimy domácich úloh a sokratovského učenia sú navrhnuté okolo nápovied, uvažovania, kontrol krokov a vysvetlení od učiaceho sa namiesto jednoduchého odovzdávania hotových odpovedí."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Skontroluj môj model"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Skryť prepis filmu"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Ovládanie videa"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Učiaci sa, ktorí majú málo času, rozsiahly sylabus a potrebujú realistický spôsob opakovania bez predstierania, že všetko je rovnako dôležité."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Bezplatné učenie s AI pre každého | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Môžem používať inspir bez prihlásenia?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Naplánuj prácu, precvičuj vybavovanie a uzatváraj slabé miesta kvízmi a aktívnym vybavovaním."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Rýchle odpovede"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Rozprávaj sa s historickou osobnosťou a drž vygenerovaný dialóg oddelený od doložených citátov."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Vysvetlenia jednoduchou rečou"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Vytvoriť plán"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Po simulácii zhrň prostredie, obmedzenia a dôkazy."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Áno. Školy môžu najprv používať verejný produkt a potom hovoriť o vlastných AI vzdelávacích priestoroch so školskými postupmi, dôvernosťou a možnosťami financovaného prístupu."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Matematika, písanie, programovanie, história, domáce úlohy a príprava na skúšky potrebujú každé inú pomoc. Začni predmetom a potom prejdi do vhodného režimu, výzvy, návodu alebo opakovacieho cyklu."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Porovnaj argumenty"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Opakovanie aktívnym vybavovaním"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Nácvik argumentácie"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Tvorca kartičiek"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Pozastaviť film"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Požiadaj o jednoduchšie vysvetlenie najslabšieho pojmu."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Udrž cestu živú"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Vylepši návrh"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Debatuj o akejkoľvek téme, nechaj sa vyzvať, porovnávaj tvrdenia a uč sa tvoriť silnejšie argumenty."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "História"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Môže byť AI pomoc s domácimi úlohami etická?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Vyskúšať Kouča domácich úloh"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Nauč sa čokoľvek výzvy a študijný cyklus"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Knižnica s {value1} návodmi, vytvorená pre učenie, ktoré sa mení na konkrétny krok."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Pre školy a CSR partnerov"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Pracovné postupy pre konkrétnu školu"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Nevkladaj zadanie s prosbou o hotovú odpoveď."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "AI tútor na náročné pojmy"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Krok po prečítaní"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Otázky ťa prinútia odhaliť vlastný model témy; práve tam sa zvyčajne ukáže zmätok, falošná istota aj chýbajúce základy."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Otvorené už v návrhu"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir sa buduje verejne."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Pýtaj sa, spochybňuj myšlienky a uč sa históriu cez vecné rozhovory s verejnými osobnosťami minulosti."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Používaj nápovede, kontroly krokov a spätnú väzbu k písaniu bez toho, aby sa učenie zmenilo na kopírovanie odpovedí."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Prečo môže sokratovský AI tútor pomôcť, aby myšlienky držali"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Prehrať film"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Na čo sa mám opýtať ako prvé, keď je téma príliš ťažká?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI kouč domácich úloh"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Použi dátum skúšky, sylabus, dostupný čas a slabé oblasti na vytvorenie plánu, ktorý zvládne skutočný život."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Požiadaj o päť otázok, ktoré miešajú definície, príklady a úlohy na prenos poznatkov."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Prejdi do otázok, aby si odhalil predpoklady a doplnil medzery namiesto pasívneho čítania odpovede."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Použi AI cestovanie v čase, historické rozhovory a debatný tréning na skúmanie kontextu, dôkazov, argumentov a perspektív."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Získaj študijný rozvrh, otestuj sa zo slabých miest a premeň chyby na kartičky na opakované precvičovanie."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Aktuálna prestavba inspirlearning.com."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Uč sa cez sústredené otázky, nápovede a reflexiu namiesto pasívneho čítania odpovedí."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Návody k režimom, cykly výziev, študijné metódy a základné články pre bežné chvíle učenia."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "AI rozhovor s historickými osobnosťami"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Každý režim sa otvorí ako verejný hosťovský chat s vlastným cieľom, príkladmi a tokom učenia, takže učiaci sa môžu začať so správnou podporou hneď."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "V čom sa inspir líši od bežného AI chatbota?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Vytvorené na používanie"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Testuj pred opakovaním"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Nepovažuj vygenerovaný dialóg za skutočný citát ani primárny zdroj."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Otestuj sa"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Nerob plán, ktorý predpokladá, že každá téma potrebuje rovnaký čas."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Prehrať ukážku učenia s inspir"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Začni tým, že si vypýtaš jednoduché vysvetlenie, jednu každodennú analógiu a tri myšlienky, ktoré potrebuješ, aby téma dávala zmysel."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "AI generátor kvízov na skúšky"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Premeň vysvetlenie na kartičky na aktívne vybavovanie a vráť sa k nim po chybách alebo zaváhaní."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Spustiť film od začiatku"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Vie inspir pomôcť s domácimi úlohami bez podpory podvádzania?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Priebeh videa"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Najprv získaj jednoduchý model"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "knižnica návodov na učenie s AI v inspir"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Začni s Nauč sa čokoľvek"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Bezplatný verejný AI sprievodca učením na doučovanie, precvičovanie, kvízy, kartičky, debatu, spätnú väzbu k písaniu, pomoc s kódom aj plánovanie štúdia."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Školská AI pod vlastnou značkou"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Spusti živú vzdelávaciu reláciu."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI tútor matematiky"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Matematický kouč krokov"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Komunikácia"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Uč sa rozprávaním, testovaním, debatou a skúmaním."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "návody na učenie a cykly precvičovania"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Prediskutuj tvrdenie z viacerých strán, aby si si všimol predpoklady, kompromisy a slabé dôkazy."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI tútor histórie"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Rýchle trasy učenia"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Začni od prvých princípov"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Stlmiť film"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Pozrieť 31 s"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Naplánuj opakovanie na skúšku, generuj kvízy, vytváraj kartičky, rozvrhni rozložené opakovanie a udrž motiváciu realistickú pomocou sústredených AI režimov učenia."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Otvor presne ten typ pomoci, po ktorý si prišiel."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Premeň poznámky alebo témy na sústredené kartičky s nápovedami, odpoveďami, príkladmi a častými nástrahami."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sokratovský tútor"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI sokratovský tútor"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Nápady na výzvy a opakovateľný študijný cyklus pre užitočné výsledky s Nauč sa čokoľvek v inspir."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Preskúmať školy"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Prechádzaj algebrou, kalkulom, slovnými úlohami a matematickými pojmami krok za krokom s AI koučom."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Vytvorené pre zvedavosť, prax a dostupnosť."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Skúšaj ma z týchto tém po jednej otázke. Po každej odpovedi vysvetli medzeru a pomaly zvyšuj náročnosť."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Obľúbené cesty učenia s AI"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Jasné hranice súkromia"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sokratovské kontroly"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Bezplatná verejná platforma na učenie s AI"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Prečítať misiu"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sokratovské vedenie"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Prehrať znova"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Verejná vzdelávacia stránka, ktorú ľudia rýchlo pochopia."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Na čo sa učiaci sa zvyčajne pýtajú pred začiatkom."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Scény citlivé na dôkazy"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Zhrň kontext"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Návody, cesty, predmety a výzvy vedú na ďalšie užitočné miesto na precvičenie."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Nedebatuj iba za stranu, s ktorou už súhlasíš."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Užitočná mapa učenia"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Odíď s jednoduchým modelom, presnejšími otázkami, príkladmi, ktoré vieš vysvetliť naspäť, a kartičkami na opakovanie."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Učiaci sa potrebujú postupnosť, nie kopu odkazov. Tieto cesty prepájajú režimy do praktických študijných cyklov na porozumenie, domáce úlohy, prípravu na skúšky a objavovanie."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Nauč sa čokoľvek"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Kapitoly filmu"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Jednoduché ďalšie kroky"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Urob študijný plán realistický"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Knižnica návodov"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Prečo po vysvetlení používať sokratovské otázky?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Praktický pohľad na to, ako môže AI sprístupniť učenie jasnejšie a osobnejšie bez toho, aby zo študentov robila pasívnych zberačov odpovedí."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argumentácia"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Použi spätnú väzbu k písaniu na štruktúru, jasnosť a dôkazy, pričom finálny návrh zostane rozpoznateľne tvoj."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Možnosti zosúladené s NCERT"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Polož mi päť sokratovských otázok o tejto téme. Po každej odpovedi povedz, aký predpoklad som použil a čo mám overiť ďalej."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Je používanie inspir bezplatné?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Požiadaj historický režim, aby označil, čo je doložené, odvodené alebo simulované."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Preskúmať knižnicu návodov"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Vytvor kartičky z chýb a po čase sa k nim vráť."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "AI pomoc s domácimi úlohami bez kopírovania odpovedí"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Pýtaj si nápovede, kontroly, spätnú väzbu a študijné plány, ktoré nechávajú premýšľanie na učiacom sa."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Širšia open-source platforma inspir."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Nevynechaj ukážku toho, čo si už skúšal; užitočná pomoc závisí od tohto kontextu."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Skontroluj tento krok v mojom riešení. Ak je nesprávny, vysvetli chybu a daj mi jeden ďalší krok."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Umiestni ma do tohto času a miesta. Označ doložené fakty oddelene od vierohodnej simulácie a opýtaj sa, čo si všímam."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Vysvetli to naspäť"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Cykly pre slabé oblasti"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Každý návod končí plánmi praxe, trasami a odkazmi na presný režim učenia, ktorý sa hodí."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Čo by mal AI sprievodca učením robiť pre každého"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI tútor histórie"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Pýtaj sa osobnosti"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Skontroluj jeden krok"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Prediskutuj tvrdenie"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Oprav slabé miesto"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Kouč domácich úloh"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Vysvetli ďalší krok"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "AI kartičky na aktívne vybavovanie"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Krátky film o presvedčení inspir, že učenie má byť bezplatné, dostupné a živé."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Začni tým, čomu nerozumieš, a získaj jednoduchý model, príklady a ďalšie kroky."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Zhluky tém"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Zobraziť prepis filmu"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Domáce úlohy"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Použi AI koučing domácich úloh na nápovede, kontroly krokov, matematické uvažovanie a spätnú väzbu k písaniu, pričom finálna práca zostane tvoja."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Jasné vysvetlenia"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Premeň to na kartičky"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Ako skoro si mám vytvoriť plán prípravy na skúšku?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Film prechádza od inšpirácie k praktickému prísľubu: trpezlivému AI sprievodcovi učením."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Buduj s nami"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Kontroly krokov"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Dobré oblasti na začiatok:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Oddeľ fakty od výmyslov"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Navrhnuté pre istotu"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Začni predmetom a potom otvor správny režim učenia."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Zlepšuj písanie pomocou plánovania, úprav, štruktúry a spätnej väzby, ktorá zachová tvoj hlas."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI pomocník s domácimi úlohami"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Zadaj obdobie"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Urob s tým ďalší krok"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Nie je to ďalšie políčko na odpovede. Je to miesto na učenie."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Zvedavosť začína tu"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Otvoriť hosťovský chat"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Opakuj s kartičkami"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Nedovoľ, aby hranie rolí nahradilo dátumy, kontext, dokumenty alebo označenie dôkazov."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Začni hneď, ako poznáš dátum skúšky. Ak je času málo, uprednostni slabé oblasti, otázky v štýle minulých testov a každodenné vybavovanie."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Po každej nápovede vysvetli, prečo daný krok funguje, až potom pokračuj."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Požiadaj o nápovedu"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Každý článok je prepojený s kategóriami, živými režimami, tematickými centrami, cestami učenia a súvisiacimi návodmi."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Premýšľaj hlbšie"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Zvedavosť, prax a AI, ktorá učí."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Vysvetli túto tému jednoduchou rečou. Pomenuj tri predchádzajúce myšlienky, ktoré potrebujem, jednu analógiu a jeden častý omyl."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Dôverné nasadenia"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Otvoriť film na celú obrazovku"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Čo môžeš robiť"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Premeň najťažšiu zmeškanú otázku na kartičku a zopakuj si ju neskôr."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Opýtaj sa na čokoľvek"
     }
   ]
 }

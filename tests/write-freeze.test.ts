@@ -54,6 +54,14 @@ test("write freeze response is a 503 with retry guidance", async () => {
   }
 });
 
+test("native Worker exposes the private write-freeze status contract", () => {
+  const worker = fs.readFileSync(path.resolve("cloudflare-worker.ts"), "utf8");
+  assert.match(worker, /pathname === "\/api\/migration\/write-freeze"/);
+  assert.match(worker, /writeFreezeActive \? 200 : 409/);
+  assert.match(worker, /write_freeze_inactive/);
+  assert.match(worker, /writeFreezeErrorCode/);
+});
+
 test("durable mutation routes are covered by the migration write-freeze guard", () => {
   const durableMutationRoutes = [
     "app/api/auth/[...all]/route.ts",

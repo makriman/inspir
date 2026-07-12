@@ -104,13 +104,19 @@ export const verificationTokens = sqliteTable(
   }),
 );
 
-export const rateLimitWindows = sqliteTable("rate_limit_windows", {
-  key: text("key").primaryKey(),
-  count: integer("count").notNull().default(0),
-  resetAt: timestampMs("reset_at").notNull(),
-  createdAt: timestampMsNow("created_at"),
-  updatedAt: timestampMsNow("updated_at"),
-});
+export const rateLimitWindows = sqliteTable(
+  "rate_limit_windows",
+  {
+    key: text("key").primaryKey(),
+    count: integer("count").notNull().default(0),
+    resetAt: timestampMs("reset_at").notNull(),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+  },
+  (table) => ({
+    resetAtIdx: index("rate_limit_windows_reset_at_idx").on(table.resetAt),
+  }),
+);
 
 export const llmUsageDailyShards = sqliteTable(
   "llm_usage_daily_shards",
@@ -178,6 +184,7 @@ export const opsEvents = sqliteTable(
     createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
+    userIdx: index("ops_events_user_id_idx").on(table.userId),
     eventCreatedIdx: index("ops_events_event_created_idx").on(table.eventName, table.createdAt),
     severityCreatedIdx: index("ops_events_severity_created_idx").on(table.severity, table.createdAt),
     surfaceCreatedIdx: index("ops_events_surface_created_idx").on(table.surface, table.createdAt),
@@ -267,6 +274,11 @@ export const activityRuns = sqliteTable(
       .$defaultFn(() => ({})),
     score: integer("score"),
     maxScore: integer("max_score"),
+    // Nullable for activity rows completed before the atomic-completion rollout.
+    // New completions claim both values in the same D1 transaction that writes
+    // their score/message side effects, making that transaction its receipt.
+    completionToken: text("completion_token"),
+    completionMessageId: text("completion_message_id"),
     createdAt: timestampMsNow("created_at"),
     updatedAt: timestampMsNow("updated_at"),
     completedAt: timestampMs("completed_at"),
@@ -274,33 +286,45 @@ export const activityRuns = sqliteTable(
   (table) => ({
     chatIdx: index("activity_runs_chat_id_idx").on(table.chatId),
     typeIdx: index("activity_runs_type_idx").on(table.type),
+    completionTokenIdx: uniqueIndex("activity_runs_completion_token_uidx")
+      .on(table.completionToken)
+      .where(sql`${table.completionToken} is not null`),
+    completionMessageIdx: uniqueIndex("activity_runs_completion_message_id_uidx")
+      .on(table.completionMessageId)
+      .where(sql`${table.completionMessageId} is not null`),
   }),
 );
 
-export const aiRuns = sqliteTable("ai_runs", {
-  id: uuidText("id").primaryKey(),
-  chatId: text("chat_id")
-    .references(() => chats.id, { onDelete: "cascade" })
-    .notNull(),
-  userMessageId: text("user_message_id").references(() => messages.id, {
-    onDelete: "set null",
+export const aiRuns = sqliteTable(
+  "ai_runs",
+  {
+    id: uuidText("id").primaryKey(),
+    chatId: text("chat_id")
+      .references(() => chats.id, { onDelete: "cascade" })
+      .notNull(),
+    userMessageId: text("user_message_id").references(() => messages.id, {
+      onDelete: "set null",
+    }),
+    assistantMessageId: text("assistant_message_id").references(() => messages.id, {
+      onDelete: "set null",
+    }),
+    model: text("model").notNull(),
+    promptTokens: integer("prompt_tokens"),
+    completionTokens: integer("completion_tokens"),
+    totalTokens: integer("total_tokens"),
+    cachedPromptTokens: integer("cached_prompt_tokens"),
+    memoryContext: jsonText<Record<string, unknown>>("memory_context")
+      .notNull()
+      .$defaultFn(() => ({})),
+    status: text("status").notNull().default("started"),
+    error: text("error"),
+    createdAt: timestampMsNow("created_at"),
+    completedAt: timestampMs("completed_at"),
+  },
+  (table) => ({
+    createdIdx: index("ai_runs_created_idx").on(table.createdAt),
   }),
-  assistantMessageId: text("assistant_message_id").references(() => messages.id, {
-    onDelete: "set null",
-  }),
-  model: text("model").notNull(),
-  promptTokens: integer("prompt_tokens"),
-  completionTokens: integer("completion_tokens"),
-  totalTokens: integer("total_tokens"),
-  cachedPromptTokens: integer("cached_prompt_tokens"),
-  memoryContext: jsonText<Record<string, unknown>>("memory_context")
-    .notNull()
-    .$defaultFn(() => ({})),
-  status: text("status").notNull().default("started"),
-  error: text("error"),
-  createdAt: timestampMsNow("created_at"),
-  completedAt: timestampMs("completed_at"),
-});
+);
 
 export const aiResponseCache = sqliteTable(
   "ai_response_cache",

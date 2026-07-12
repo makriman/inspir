@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     ".wrangler/**",
     "backups/**",
     "inspirlearning-local-backups/**",
+    "tmp/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

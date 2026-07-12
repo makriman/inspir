@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Bot, CheckCircle2, Copy, StickyNote, UserRound } from "lucide-react";
 import {
+  getMessageContentNextOffset,
   getMessageMemorySources,
   isPendingAssistantMessage,
   type ChatMessage,
@@ -29,16 +30,23 @@ export function MessageCard({
   userLabel = "Learner",
   assistantLabel = "Coach response",
   onMemorySources,
+  contentLoading = false,
+  continueLabel = "Continue",
+  onContinueContent,
 }: {
   message: ChatMessage;
   isStreaming?: boolean;
   userLabel?: string;
   assistantLabel?: string;
   onMemorySources?: (sources: MessageMemorySource[]) => void;
+  contentLoading?: boolean;
+  continueLabel?: string;
+  onContinueContent?: (messageId: string) => void;
 }) {
   const isUser = message.role === "user";
   const isPending = isPendingAssistantMessage(message) && isStreaming && message.content.trim().length === 0;
   const memorySources = getMessageMemorySources(message);
+  const hasMoreContent = getMessageContentNextOffset(message) !== null;
   const [copied, setCopied] = useState(false);
 
   async function copyMessage() {
@@ -79,6 +87,17 @@ export function MessageCard({
                       className="inspir-memory-source-button"
                     >
                       <StickyNote size={14} />
+                    </button>
+                  ) : null}
+                  {hasMoreContent && onContinueContent ? (
+                    <button
+                      type="button"
+                      className="inspir-message-content-continue"
+                      aria-busy={contentLoading}
+                      disabled={contentLoading}
+                      onClick={() => onContinueContent(message.id)}
+                    >
+                      {continueLabel}
                     </button>
                   ) : null}
                   <button type="button" onClick={copyMessage} aria-label="Copy message">

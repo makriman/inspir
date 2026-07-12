@@ -10,19 +10,16 @@ const languageSpecificIdenticalTranslations: Record<string, ReadonlySet<string>>
   Spanish: new Set(["Blog", "Prompts", "Social", "agenda"]),
   Dutch: new Set([
     "Blog",
-    "Freedman accountant",
     "Media",
     "Privacy",
-    "Renaissance Florence in 1490",
     "Social",
     "Start",
     "Start 10 min",
-    "XP & Leveling",
   ]),
   Czech: new Set(["Sparring partner"]),
-  Indonesian: new Set(["2 September 1666", "Media", "XP & Leveling"]),
-  Malay: new Set(["2 September 1666", "Media", "XP & Leveling"]),
-  Afrikaans: new Set(["2 September 1666", "Media", "Renaissance Florence in 1490"]),
+  Indonesian: new Set(["2 September 1666", "Media"]),
+  Malay: new Set(["2 September 1666", "Media"]),
+  Afrikaans: new Set(["2 September 1666", "Media"]),
   Yoruba: new Set(["Media"]),
   Norwegian: new Set(["Blog", "Media", "Social", "Start", "Start 10 min"]),
   Swedish: new Set(["Blog", "Media", "Social", "Start"]),
@@ -34,7 +31,21 @@ const languageSpecificIdenticalTranslations: Record<string, ReadonlySet<string>>
   Azerbaijani: new Set(["Media"]),
 };
 
-const globalIdenticalTranslations = new Set(["GitHub", "inspir"]);
+const globalIdenticalTranslations = new Set(["GitHub", "inspir", "STEM"]);
+const historicalProperNameLiterals = new Set([
+  "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+  "B. R. Ambedkar",
+  "Chandni Chowk",
+  "Chang'an",
+  "Fatehpur Sikri",
+  "Faubourg Saint-Antoine",
+  "Kashmere Gate",
+  "Les Invalides",
+  "Pudding Lane",
+  "Stoa Basileios",
+  "West Market",
+  "Winston Churchill",
+]);
 const mustTranslatePhrases = new Set([
   "AI Homework Coach With Hints, Not Answer Dumping",
   "AI Learning Mode",
@@ -84,6 +95,23 @@ export function isValidFieldTranslation(source: string, value: string | undefine
   return true;
 }
 
+/**
+ * Returns true only for source literals that are deliberately allowed to keep
+ * their lexical content. The token comparison permits target-language
+ * punctuation around proper names without treating ordinary English UI copy
+ * as translated.
+ */
+export function isPreservedTranslationLiteral(
+  source: string,
+  value: string | undefined,
+  language?: string,
+) {
+  if (!value?.trim() || !canRemainUntranslated(source, language)) return false;
+  if (source.trim() === value.trim()) return true;
+  if (!historicalProperNameLiterals.has(source.trim())) return false;
+  return lexicalLiteralTokens(source).join("\u0000") === lexicalLiteralTokens(value).join("\u0000");
+}
+
 function hasLikelyExtraneousTranslationArtifact(source: string, value: string, language?: string) {
   if (language !== "Spanish") return false;
   if (/\bvuelta\b/i.test(value) && !/\b(?:again|back|cycle|return|round|turn)\b/i.test(source)) return true;
@@ -93,7 +121,7 @@ function hasLikelyExtraneousTranslationArtifact(source: string, value: string, l
 
 function canRemainUntranslated(source: string, language?: string) {
   const value = source.trim();
-  if (mustTranslatePhrases.has(value)) return false;
+  if (mustTranslatePhrases.has(value) || mustTranslateSingleWords.has(value)) return false;
   const literalText = value
     .replace(/\{[a-zA-Z0-9_]+\}/g, "")
     .replace(/\binspir\b/gi, "")
@@ -105,11 +133,11 @@ function canRemainUntranslated(source: string, language?: string) {
   if (isEscapedCodeLiteral(value)) return true;
   if (isSlugKeywordList(value)) return true;
   if (language && languageSpecificIdenticalTranslations[language]?.has(value)) return true;
+  if (historicalProperNameLiterals.has(value)) return true;
+  if (isQuotedHistoricalPlaceYearLiteral(value)) return true;
   if (/^https?:\/\//i.test(value)) return true;
   if (/^\d+\s*[-–]\s*\d+\s*(?:min|mins|minutes|sec|secs|hours?|hrs?)$/i.test(value)) return true;
-  if (isProperNameLabel(value)) return true;
-  if (!mustTranslateSingleWords.has(value) && /^[A-Z][a-z]+(?:'[A-Za-z]+)?$/.test(value)) return true;
-  return /^[A-Z0-9][A-Z0-9\s&+./:'-]*$/.test(value) && !/[a-z]/.test(value);
+  return false;
 }
 
 function isSchemaOrCodeIdentifier(value: string) {
@@ -121,6 +149,10 @@ function isSchemaOrCodeIdentifier(value: string) {
   return false;
 }
 
+function isQuotedHistoricalPlaceYearLiteral(value: string) {
+  return /^["“][\p{L}\p{M} .’'’-]+,\s*\d{3,4}["”]$/u.test(value);
+}
+
 function isEscapedCodeLiteral(value: string) {
   return /^\\u[0-9a-fA-F]{4}$/.test(value);
 }
@@ -129,18 +161,6 @@ function isSlugKeywordList(value: string) {
   return /^[a-z0-9]+(?:-[a-z0-9]+)+(?:,\s*[a-z0-9]+(?:-[a-z0-9]+)+)*$/.test(value);
 }
 
-function isProperNameLabel(value: string) {
-  const normalized = value.replace(/\.{3}$/, "").replace(/^["“”']|["“”']$/g, "");
-  const segments = normalized.split(",").flatMap((segment) => {
-    const value = segment.trim();
-    return value ? [value] : [];
-  });
-  if (!segments.length) return false;
-
-  const words = segments.flatMap((segment) => segment.split(/\s+/));
-  const hasProperNameSignal =
-    value.includes(",") || value.includes("'") || /\d/.test(value) || /(?:[A-Z]\.\s*)+/.test(value) || words.length >= 2;
-  if (!hasProperNameSignal) return false;
-
-  return words.every((word) => /^(?:[A-Z]\.|[A-Z][A-Za-z.'-]*|\d{2,4})$/.test(word));
+function lexicalLiteralTokens(value: string) {
+  return (value.normalize("NFKC").toLocaleLowerCase("en-US").match(/[\p{L}\p{N}]+/gu) ?? []);
 }

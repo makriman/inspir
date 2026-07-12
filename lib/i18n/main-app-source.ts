@@ -2,11 +2,13 @@ import { createHash } from "node:crypto";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import { topicSeeds } from "@/lib/content/topics";
 import { mainAppComponentText } from "./main-app-component-text";
+import { mainAppActivityNewSourceStrings } from "./main-app-activity-copy";
 import type { MainAppTranslationBundle } from "./main-app-types";
 
 export const mainAppTranslationNamespace = "main-app";
 
 const baseStrings: Record<string, string> = {
+  ...mainAppActivityNewSourceStrings,
   "onboarding.age.title": "Help inspir fit your age",
   "onboarding.age.body":
     "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
@@ -19,6 +21,11 @@ const baseStrings: Record<string, string> = {
   "sidebar.openLearningStore": "Open learning store",
   "sidebar.search": "Search",
   "sidebar.searchChats": "Search chats",
+  "bootstrap.loading": "Loading your learning space…",
+  "bootstrap.loadError":
+    "We could not load your learning space. Your saved data has not been changed.",
+  "bootstrap.retry": "Try again",
+  "auth.signInError": "We could not sign you in. Please try again.",
   "guest.continue.kicker": "free guest messages used",
   "guest.continue.title": "Continue learning",
   "guest.continue.body":

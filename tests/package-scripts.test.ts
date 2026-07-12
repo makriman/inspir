@@ -96,6 +96,8 @@ test("reset password page is honest about Google-only auth", () => {
   assert.match(source, /no inspir password to reset/i);
   assert.match(source, /GoogleContinueButton/);
   assert.match(source, /callbackUrl="\/chat"/);
+  assert.match(source, /export const dynamic = "force-static"/);
+  assert.match(source, /export const revalidate = false/);
 });
 
 test("marketing metadata has one localized alternates source of truth", () => {
@@ -152,6 +154,13 @@ test("large translation dictionaries are not exposed through dynamic public API 
   assert.doesNotMatch(nextConfig, /\/api\/main-app-translations/);
 });
 
+test("tracked curated packs cannot be shadowed by ignored authoring bundles", () => {
+  const loader = fs.readFileSync(path.resolve("lib/i18n/curated-translations.ts"), "utf8");
+
+  assert.match(loader, /const curatedRoot = "translations\/curated"/);
+  assert.doesNotMatch(loader, /translations\/curated-bundles|curatedBundledPack|languagePackCache/);
+});
+
 test("runtime translation reads cannot accumulate request-bound promises in isolate globals", () => {
   const sourceReader = fs.readFileSync(path.resolve("lib/i18n/runtime-site-source.ts"), "utf8");
   const bundleReader = fs.readFileSync(path.resolve("lib/i18n/db-translations.ts"), "utf8");
@@ -165,7 +174,7 @@ test("runtime translation reads cannot accumulate request-bound promises in isol
   assert.match(manifestGenerator, /site-namespace-manifest\.ts/);
 });
 
-test("public delivery is Static Assets with only two lean API Worker routes", () => {
+test("public delivery is Static Assets with exact native account Worker routes", () => {
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
   const nextConfig = fs.readFileSync(path.resolve("next.config.ts"), "utf8");
   const globalNotFound = fs.readFileSync(path.resolve("app/global-not-found.tsx"), "utf8");
@@ -219,7 +228,8 @@ test("public delivery is Static Assets with only two lean API Worker routes", ()
   assert.match(staticHeaders, /^\/:locale\/chat$/m);
   assert.doesNotMatch(staticHeaders, /^\/chat\*$/m);
   assert.doesNotMatch(staticHeaders, /^\/\*\/chat\*$/m);
-  assert.doesNotMatch(staticHeaders, /accounts\.google\.com/);
+  assert.match(staticHeaders, /accounts\.google\.com/);
+  assert.match(staticHeaders, /script-src[^\n]*https:\/\/\*\.clarity\.ms/);
   assert.doesNotMatch(staticHeaders, /api\.openai\.com/);
   assert.match(staticRedirects, /^\/tnc\s+\/terms\s+308$/m);
   assert.doesNotMatch(staticRedirects, /^\s*\/(?:[^\s]*\/)?chat\/\*/m);
@@ -241,6 +251,28 @@ test("public delivery is Static Assets with only two lean API Worker routes", ()
   assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], undefined);
   assert.equal(packageJson.scripts?.["cf:cache:purge-deploy-html"], undefined);
   assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], undefined);
+  assert.equal(
+    packageJson.scripts?.["cf:verify:authenticated-production"],
+    "tsx scripts/cloudflare/run-authenticated-production-validation.ts",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:apply:d1-runtime-migrations"],
+    "tsx scripts/cloudflare/run-production-release-operation.ts apply-d1-runtime-migrations",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:rollback"],
+    "tsx scripts/cloudflare/run-production-release-operation.ts rollback",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:resolve:production-maintenance"],
+    "tsx scripts/cloudflare/resolve-production-maintenance.ts",
+  );
+  assert.equal(packageJson.scripts?.["cf:activate:write-freeze"], undefined);
+  assert.equal(packageJson.scripts?.["cf:backup:frozen-cloudflare"], undefined);
+  assert.equal(
+    packageJson.scripts?.["cf:verify:historical-data-preservation"],
+    "tsx scripts/cloudflare/verify-historical-data-preservation.ts",
+  );
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.main, "./cloudflare-worker.ts");
@@ -252,8 +284,16 @@ test("public delivery is Static Assets with only two lean API Worker routes", ()
   assert.equal(wrangler.assets?.not_found_handling, "404-page");
   assert.deepEqual(wrangler.assets?.run_worker_first, [...FREE_PLAN_WORKER_FIRST_ROUTES]);
   const workerFirstRoutes = new Set<string>(wrangler.assets?.run_worker_first ?? []);
-  assert.deepEqual([...workerFirstRoutes], ["/api/guest-chat", "/api/health"]);
-  assert.equal([...workerFirstRoutes].some((route) => route.includes("*") || route.startsWith("!")), false);
+  assert.ok(workerFirstRoutes.has("/api/auth/*"));
+  assert.ok(workerFirstRoutes.has("/api/chats/*"));
+  assert.ok(workerFirstRoutes.has("/api/migration/e2e-auth"));
+  assert.ok(workerFirstRoutes.has("/api/memory/*"));
+  assert.ok(workerFirstRoutes.has("/chat/*"));
+  assert.ok(workerFirstRoutes.has("!/_next/static/*"));
+  assert.deepEqual(
+    [...workerFirstRoutes].filter((route) => route.startsWith("!")),
+    ["!/_next/static/*"],
+  );
   assert.equal(workerFirstRoutes.has("/api/*"), false);
   assert.equal(workerFirstRoutes.has("/*"), false);
   assert.ok(
@@ -261,11 +301,15 @@ test("public delivery is Static Assets with only two lean API Worker routes", ()
       (binding) => binding.binding === "DB" && binding.database_name === "inspirlearning-prod",
     ),
   );
-  assert.deepEqual(wrangler.vectorize ?? [], []);
-  assert.deepEqual(wrangler.r2_buckets ?? [], []);
-  assert.deepEqual(wrangler.queues?.producers ?? [], []);
-  assert.deepEqual(wrangler.queues?.consumers ?? [], []);
-  assert.deepEqual(wrangler.triggers?.crons ?? [], []);
+  assert.deepEqual(wrangler.vectorize, [
+    { binding: "MEMORY_VECTORIZE", index_name: "inspirlearning-memory-prod" },
+  ]);
+  assert.deepEqual(wrangler.r2_buckets, [
+    { binding: "PROFILE_IMAGES_R2_BUCKET", bucket_name: "inspirlearning-profile-images-prod" },
+  ]);
+  assert.equal(wrangler.queues?.producers?.length, 1);
+  assert.equal(wrangler.queues?.consumers?.length, 1);
+  assert.deepEqual(wrangler.triggers?.crons, ["0 3 * * *"]);
   assert.ok(
     wrangler.services?.some(
       (binding) => binding.binding === "WORKER_SELF_REFERENCE" && binding.service === "inspirlearning",
@@ -278,8 +322,15 @@ test("public delivery is Static Assets with only two lean API Worker routes", ()
     ),
   );
   assert.ok(wrangler.migrations?.some((migration) => migration.new_sqlite_classes?.includes("DOQueueHandler")));
-  assert.deepEqual(wrangler.secrets?.required, ["CLOUDFLARE_AI_GATEWAY_TOKEN"]);
-  assert.equal(wrangler.vars?.AUTH_URL, undefined);
+  assert.deepEqual(wrangler.secrets?.required, [
+    "CLOUDFLARE_AI_GATEWAY_TOKEN",
+    "AUTH_SECRET",
+    "AUTH_GOOGLE_ID",
+    "AUTH_GOOGLE_SECRET",
+    "ADMIN_EMAILS",
+    "CRON_SECRET",
+  ]);
+  assert.equal(wrangler.vars?.AUTH_URL, "https://inspirlearning.com");
   assert.equal(wrangler.vars?.AI_RESPONSE_CACHE_TTL_SECONDS, undefined);
 });
 
@@ -436,7 +487,7 @@ test("profile avatars fall back instead of rendering broken images", () => {
   assert.match(chatClient, /const avatarFallbackSrc = profileUser\.image \|\| undefined/);
 });
 
-test("public chat shells are static, localized, and limited to seeded topics", () => {
+test("static chat shells upgrade safely to authenticated accounts and saved state", () => {
   const page = fs.readFileSync(path.resolve("app/(workspace)/chat/page.tsx"), "utf8");
   const localizedPage = fs.readFileSync(
     path.resolve("app/(localized-workspace)/[locale]/chat/page.tsx"),
@@ -448,6 +499,8 @@ test("public chat shells are static, localized, and limited to seeded topics", (
   const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
   const sidebar = fs.readFileSync(path.resolve("components/chat/TopicSidebar.tsx"), "utf8");
   const learningStore = fs.readFileSync(path.resolve("components/chat/LearningStore.tsx"), "utf8");
+  const staticPage = fs.readFileSync(path.resolve("components/chat/StaticGuestChatPage.tsx"), "utf8");
+  const signIn = fs.readFileSync(path.resolve("components/marketing/SignInButton.tsx"), "utf8");
 
   assert.equal(fs.existsSync(path.resolve("app/(workspace)/chat/[chatId]/page.tsx")), false);
   assert.match(page, /export const dynamic = "force-static"/);
@@ -459,16 +512,27 @@ test("public chat shells are static, localized, and limited to seeded topics", (
   assert.match(bootstrap, /topicSlugFromChatLocation/);
   assert.match(bootstrap, /window\.location\.search/);
   assert.match(bootstrap, /topics\.find\(\(topic\) => topic\.slug === slug\)/);
-  assert.match(bootstrap, /authMode="guest"/);
+  assert.match(bootstrap, /fetch\("\/api\/me"/);
+  assert.match(bootstrap, /fetch\("\/api\/account\/topics"/);
+  assert.match(bootstrap, /privateChatIdFromLocation/);
+  assert.match(bootstrap, /inspir-bootstrap-error/);
+  assert.match(bootstrap, /window\.location\.reload\(\)/);
+  assert.match(bootstrap, /inspir-auth-error-notice/);
+  assert.match(bootstrap, /oauth_callback_failed/);
+  assert.match(staticPage, /Your saved data has not been changed/);
+  assert.match(signIn, /google-auth-error/);
+  assert.match(signIn, /setFailed\(true\)/);
+  assert.match(signIn, /accounts\.google\.com/);
   assert.match(topicsRoute, /export const dynamic = "force-static"/);
   assert.match(topicsRoute, /getPublicSeededTopics/);
   assert.match(publicTopics, /topicSeeds\.map/);
-  assert.match(chatClient, /authMode: "guest"/);
-  assert.doesNotMatch(chatClient, /authMode\s*=\s*"authenticated"/);
-  assert.doesNotMatch(chatClient, /trackProductEvent|\/api\/analytics\/events/);
-  assert.doesNotMatch(sidebar, /GoogleContinueButton|SignInButton|Continue with Google/);
+  assert.match(chatClient, /authMode: "authenticated" \| "guest"/);
+  assert.match(chatClient, /trackProductEvent/);
+  assert.match(chatClient, /localizeHref\(`\/chat\/\$\{(?:data\.chatId|chatId)\}`, currentLanguage\)/);
+  assert.doesNotMatch(chatClient, /replaceState\(null, "", `\/chat\/\$\{/);
+  assert.match(sidebar, /GoogleContinueButton|Continue with Google/);
   assert.doesNotMatch(learningStore, /ai-game-arena|href=\{?["'`]\/games/);
-  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), false);
+  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), true);
 });
 
 test("Better Auth can safely link migrated Google-only users", () => {
@@ -484,6 +548,7 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
   const adminAuth = fs.readFileSync(path.resolve("lib/auth/admin.ts"), "utf8");
   const profilePanel = fs.readFileSync(path.resolve("components/chat/ProfilePanel.tsx"), "utf8");
   const adminPage = fs.readFileSync(path.resolve("app/(workspace)/admin/page.tsx"), "utf8");
+  const adminDashboard = fs.readFileSync(path.resolve("components/admin/AdminDashboard.tsx"), "utf8");
   const schema = fs.readFileSync(path.resolve("lib/db/schema.ts"), "utf8");
 
   assert.match(adminAuth, /makridroid@gmail\.com/);
@@ -491,14 +556,16 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
   assert.match(schema, /sqliteTable\(\s*"admin_users"/);
   assert.match(profilePanel, /user\.isAdmin/);
   assert.match(profilePanel, /t\("Admin dashboard"\)/);
-  assert.match(adminPage, /getAdminDashboardData\(14\)/);
-  assert.match(adminPage, /AdminUserManager/);
-  assert.match(adminPage, /Response cache/);
-  assert.match(adminPage, /Cache savings/);
-  assert.match(adminPage, /Cached topics/);
+  assert.match(adminPage, /dynamic = "force-static"/);
+  assert.match(adminPage, /AdminDashboard/);
+  assert.match(adminDashboard, /\/api\/admin\/dashboard/);
+  assert.match(adminDashboard, /AdminUserManager/);
+  assert.match(adminDashboard, /Response cache/);
+  assert.match(adminDashboard, /Cache savings/);
+  assert.match(adminDashboard, /Cached topics/);
 });
 
-test("all static page shells keep external analytics without D1 product events", () => {
+test("static workspace restores bounded product analytics while marketing remains external-only", () => {
   const analyticsScripts = fs.readFileSync(path.resolve("components/analytics/AnalyticsScripts.tsx"), "utf8");
   const marketingLayout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
   const localizedLayout = fs.readFileSync(path.resolve("app/[locale]/layout.tsx"), "utf8");
@@ -506,13 +573,16 @@ test("all static page shells keep external analytics without D1 product events",
 
   assert.match(analyticsScripts, /G-S3E1FV3RK8/);
   assert.match(analyticsScripts, /xi5vqkce95/);
+  assert.match(analyticsScripts, /automaticPageViews = true/);
+  assert.match(analyticsScripts, /send_page_view: \$\{automaticPageViews \? "true" : "false"\}/);
   assert.match(marketingLayout, /AnalyticsScripts/);
   assert.match(localizedLayout, /AnalyticsScripts/);
   assert.match(workspaceLayout, /AnalyticsScripts/);
   assert.doesNotMatch(marketingLayout, /ProductAnalytics/);
   assert.doesNotMatch(localizedLayout, /ProductAnalytics/);
-  assert.doesNotMatch(workspaceLayout, /ProductAnalytics/);
-  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), false);
+  assert.match(workspaceLayout, /ProductAnalytics/);
+  assert.match(workspaceLayout, /<AnalyticsScripts automaticPageViews=\{false\} \/>/);
+  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), true);
   assert.match(workspaceLayout, /export const dynamic = "force-static"/);
   assert.doesNotMatch(workspaceLayout, /headers\(\)/);
 });

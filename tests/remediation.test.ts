@@ -108,6 +108,30 @@ test("historical AI response cache migration remains while the Free runtime disa
   assert.doesNotMatch(wrangler, /NEXT_INC_CACHE_R2_BUCKET/);
 });
 
+test("runtime cleanup indexes and cached admin totals stay additive and deployable", () => {
+  const supplementalMigrations = readdirSync("drizzle-d1")
+    .filter((file) => file.endsWith(".sql") && !file.startsWith("0000_"))
+    .sort()
+    .map((file) => readFileSync(`drizzle-d1/${file}`, "utf8"))
+    .join("\n");
+
+  assert.match(
+    supplementalMigrations,
+    /CREATE INDEX IF NOT EXISTS `rate_limit_windows_reset_at_idx` ON `rate_limit_windows` \(`reset_at`\)/,
+  );
+  assert.match(
+    supplementalMigrations,
+    /CREATE INDEX IF NOT EXISTS `ai_runs_created_idx` ON `ai_runs` \(`created_at`\)/,
+  );
+  assert.match(supplementalMigrations, /INSERT INTO `app_metadata` \(`key`, `value`, `updated_at`\)/);
+  assert.match(supplementalMigrations, /'native-admin-totals-v1'/);
+  assert.match(supplementalMigrations, /ON CONFLICT \(`key`\) DO UPDATE/);
+  assert.doesNotMatch(
+    readFileSync("drizzle-d1/0014_admin_totals_snapshot.sql", "utf8"),
+    /(?:INSERT INTO|UPDATE|DELETE FROM) `(?:users|chats|messages|ai_runs)`/i,
+  );
+});
+
 test("D1 LIKE patterns stay within the platform byte limit", () => {
   const pattern = d1ContainsLikePattern("हिन्दी_%_search_".repeat(10));
   assert.ok(pattern);

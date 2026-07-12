@@ -20,7 +20,7 @@ test("localized routes are generated only for proven route coverage", () => {
     staticSiteLanguagesForPath("/").filter((language) => language !== defaultLanguage).length,
     supportedLanguages.length - 1,
   );
-  assert.deepEqual(staticSiteLanguagesForPath("/mission"), [defaultLanguage, "Spanish"]);
+  assert.deepEqual(staticSiteLanguagesForPath("/mission"), [...supportedLanguages]);
   assert.deepEqual(staticSiteLanguagesForPath("/about"), [defaultLanguage]);
   assert.deepEqual(staticSiteLanguagesForPath("/reset_pw"), [defaultLanguage]);
 

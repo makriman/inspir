@@ -25,6 +25,7 @@ export function MemoryPanel({
   onUpdate,
   onDelete,
   onClear,
+  onLoadMore,
   t,
 }: {
   dashboard: MemoryDashboard | null;
@@ -36,6 +37,7 @@ export function MemoryPanel({
   onUpdate: (memoryId: string, input: MemoryUpdateInput) => void;
   onDelete: (memoryId: string) => void;
   onClear: () => void;
+  onLoadMore: () => void;
   t: UiTranslator;
 }) {
   const settings = dashboard?.settings;
@@ -165,7 +167,7 @@ export function MemoryPanel({
 
           <div className="inspir-memory-summary">
             <span>
-              {dashboard.memories.length}{" "}
+              {dashboard.memories.length}{dashboard.memoryPage?.hasMore ? "+" : ""}{" "}
               {dashboard.memories.length === 1 ? t("saved memory") : t("saved memories")}
             </span>
             <div className="inspir-memory-summary-actions">
@@ -242,6 +244,16 @@ export function MemoryPanel({
               ))
             )}
           </div>
+          {dashboard.memoryPage?.hasMore ? (
+            <button
+              type="button"
+              className="inspir-memory-load-more"
+              disabled={loading || saving}
+              onClick={onLoadMore}
+            >
+              {t("Continue")}
+            </button>
+          ) : null}
         </>
       ) : null}
     </section>

@@ -1,36 +1,70 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { createAuthClient } from "better-auth/react";
+import { useState, type ReactNode } from "react";
 
 async function startGoogleSignIn(callbackUrl = "/chat") {
   if (typeof window === "undefined") return;
 
   const nextUrl = callbackUrl || "/chat";
-  const authClient = createAuthClient({
-    baseURL: new URL("/api/auth", window.location.origin).toString(),
+  const response = await fetch("/api/auth/sign-in/social", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      provider: "google",
+      callbackURL: nextUrl,
+      disableRedirect: true,
+    }),
   });
-
-  await authClient.signIn.social({
-    provider: "google",
-    callbackURL: nextUrl,
-  });
+  if (!response.ok) throw new Error();
+  const value: unknown = await response.json().catch(() => null);
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error();
+  }
+  const url = "url" in value && typeof value.url === "string" ? value.url : null;
+  if (!url) throw new Error();
+  const destination = new URL(url);
+  if (destination.origin !== "https://accounts.google.com") {
+    throw new Error();
+  }
+  window.location.assign(destination.toString());
 }
 
 export function GoogleContinueButton({
   children = "Continue with Google",
   className = "",
   callbackUrl = "/chat",
+  errorMessage,
 }: {
   children?: ReactNode;
   className?: string;
   callbackUrl?: string;
+  errorMessage?: ReactNode;
 }) {
+  const [failed, setFailed] = useState(false);
+
   return (
-    <button type="button" onClick={() => void startGoogleSignIn(callbackUrl)} className={className}>
-      <GoogleLogo />
-      <span>{children}</span>
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          setFailed(false);
+          void startGoogleSignIn(callbackUrl).catch(() => setFailed(true));
+        }}
+        className={className}
+      >
+        <GoogleLogo />
+        <span>{children}</span>
+      </button>
+      {failed && errorMessage ? (
+        <span className="google-auth-error" role="alert">
+          {errorMessage}
+        </span>
+      ) : null}
+    </>
   );
 }
 

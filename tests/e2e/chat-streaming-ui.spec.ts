@@ -24,6 +24,7 @@ export function stable() {
 Done.`;
 
 const streamingChunks = chunkText(streamingText, 5);
+const persistedAssistantMessageId = "00000000-0000-4000-8000-000000000003";
 
 type StreamingSample = {
   assistantBottom: number | null;
@@ -52,9 +53,11 @@ type StreamingSample = {
 test("guest chat streaming stays visually stable and formats rich markdown after completion", async ({ page }) => {
   await installGuestChatStream(page, streamingChunks);
   await page.goto("/chat");
-  await page.waitForLoadState("networkidle").catch(() => {});
-
-  await page.locator("textarea.inspir-composer-input").first().fill("Stream a formatted answer slowly.");
+  const composer = page.locator("textarea.inspir-composer-input").first();
+  await expect(composer).toBeVisible();
+  await expect(composer).toBeEditable();
+  await composer.fill("Stream a formatted answer slowly.");
+  await expect(page.locator("button.inspir-send-button").last()).toBeEnabled();
   await startStreamingProbe(page);
   await page.getByRole("button", { name: /send message/i }).last().click();
 
@@ -197,9 +200,11 @@ test("guest chat streaming stays visually stable and formats rich markdown after
 test("guest chat paints streamed text before a fast response completes", async ({ page }) => {
   await installGuestChatStream(page, streamingChunks, { chunkDelayMs: -1, initialDelayMs: 40 });
   await page.goto("/chat");
-  await page.waitForLoadState("networkidle").catch(() => {});
-
-  await page.locator("textarea.inspir-composer-input").first().fill("Stream a burst response.");
+  const composer = page.locator("textarea.inspir-composer-input").first();
+  await expect(composer).toBeVisible();
+  await expect(composer).toBeEditable();
+  await composer.fill("Stream a burst response.");
+  await expect(page.locator("button.inspir-send-button").last()).toBeEnabled();
   await startStreamingProbe(page);
   await page.getByRole("button", { name: /send message/i }).last().click();
 
@@ -244,12 +249,66 @@ test("guest chat paints streamed text before a fast response completes", async (
   expect(diagnostics.maxScrollTopRegression).toBe(0);
 });
 
+test("authenticated chat keeps the streamed assistant DOM mounted when persistence replaces its ID", async ({ page }) => {
+  await installAuthenticatedChatStream(page, ["Stable ", "authenticated ", "streamed ", "answer."]);
+  await page.goto("/chat");
+
+  const composer = page.locator("textarea.inspir-composer-input").first();
+  await expect(composer).toBeVisible();
+  await expect(composer).toBeEditable();
+  await composer.fill("Keep this streamed answer mounted.");
+  await page.getByRole("button", { name: /send message/i }).last().click();
+
+  const assistantRow = page.locator(".inspir-message-row.is-assistant").last();
+  const assistantContent = assistantRow.locator(".inspir-rich-content");
+  await expect(assistantContent).toHaveClass(/is-streaming/);
+  await expect(assistantContent).toContainText("Stable");
+  await page.evaluate(() => {
+    const identityWindow = window as typeof window & {
+      __authenticatedAssistantMessageWrapper?: Element | null;
+      __authenticatedAssistantRow?: Element | null;
+    };
+    identityWindow.__authenticatedAssistantRow = Array.from(
+      document.querySelectorAll(".inspir-message-row.is-assistant"),
+    ).at(-1);
+    identityWindow.__authenticatedAssistantMessageWrapper =
+      identityWindow.__authenticatedAssistantRow?.closest("[data-message-id]");
+  });
+
+  const persistedRow = page.locator(`[data-message-id="${persistedAssistantMessageId}"]`);
+  await expect(persistedRow).toBeVisible();
+  await expect(persistedRow.locator(".inspir-rich-content")).not.toHaveClass(/is-streaming/);
+  const identity = await page.evaluate((persistedId) => {
+    const identityWindow = window as typeof window & {
+      __authenticatedAssistantMessageWrapper?: Element | null;
+      __authenticatedAssistantRow?: Element | null;
+    };
+    const currentMessageWrapper = document.querySelector(`[data-message-id="${persistedId}"]`);
+    const currentAssistantRow = currentMessageWrapper?.querySelector(".inspir-message-row.is-assistant");
+    return {
+      rowConnected: identityWindow.__authenticatedAssistantRow?.isConnected ?? false,
+      rowPreserved: identityWindow.__authenticatedAssistantRow === currentAssistantRow,
+      wrapperConnected: identityWindow.__authenticatedAssistantMessageWrapper?.isConnected ?? false,
+      wrapperPreserved: identityWindow.__authenticatedAssistantMessageWrapper === currentMessageWrapper,
+    };
+  }, persistedAssistantMessageId);
+
+  expect(identity).toEqual({
+    rowConnected: true,
+    rowPreserved: true,
+    wrapperConnected: true,
+    wrapperPreserved: true,
+  });
+});
+
 test("localized auto-translation leaves streamed assistant tokens untouched", async ({ page }) => {
   await installGuestChatStream(page, ["Search"], { chunkDelayMs: 1_000, initialDelayMs: 100 });
   await page.goto("/hi/chat?topic=learn-anything");
-  await page.waitForLoadState("networkidle").catch(() => {});
-
-  await page.locator("textarea.inspir-composer-input").fill("Reply with one UI word.");
+  const composer = page.locator("textarea.inspir-composer-input");
+  await expect(composer).toBeVisible();
+  await expect(composer).toBeEditable();
+  await composer.fill("Reply with one UI word.");
+  await expect(page.locator("button.inspir-send-button")).toBeEnabled();
   await page.locator("button.inspir-send-button").click();
 
   const latestAssistantContent = page
@@ -318,6 +377,104 @@ async function installGuestChatStream(
       );
     };
   }, { chunks, chunkDelayMs: options.chunkDelayMs ?? 55, initialDelayMs: options.initialDelayMs ?? 550 });
+}
+
+async function installAuthenticatedChatStream(page: Page, chunks: string[]) {
+  await page.addInitScript(({ streamChunks, persistedMessageId }) => {
+    const originalFetch = window.fetch.bind(window);
+    const chatId = "00000000-0000-4000-8000-000000000001";
+    const jsonResponse = (value: unknown, status = 200) =>
+      new Response(JSON.stringify(value), {
+        status,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+
+    window.fetch = (input, init) => {
+      const rawUrl = typeof input === "string" ? input : input instanceof Request ? input.url : String(input);
+      const url = new URL(rawUrl, window.location.origin);
+      const method = (init?.method ?? (input instanceof Request ? input.method : "GET")).toUpperCase();
+
+      if (url.pathname.startsWith("/i18n/main-app/")) {
+        const sourceHash = url.pathname.split("/").at(-1)?.split(".").at(1) ?? "";
+        const sourceStrings: Record<string, string> = {};
+        const strings: Record<string, string> = {};
+        for (let index = 0; index < 1_000; index += 1) {
+          const key = `browser-test-${index}`;
+          sourceStrings[key] = key;
+          strings[key] = key;
+        }
+        return Promise.resolve(jsonResponse({
+          namespace: "main-app",
+          language: "English",
+          sourceHash,
+          sourceStrings,
+          strings,
+        }));
+      }
+      if (url.pathname === "/api/me") {
+        return Promise.resolve(jsonResponse({
+          user: {
+            id: "authenticated-streaming-user",
+            name: "Authenticated learner",
+            email: "learner@example.test",
+            image: null,
+            score: 0,
+            preferredLanguage: "English",
+            dateOfBirth: "2000-01-01",
+            age: 26,
+            createdAt: "2026-07-12T12:00:00.000Z",
+            profileImageHash: null,
+            isAdmin: false,
+          },
+        }));
+      }
+      if (url.pathname === "/api/account/topics") {
+        return Promise.resolve(jsonResponse({ error: "Use public topics in this isolated browser test" }, 401));
+      }
+      if (url.pathname === "/api/chats" && method === "POST") {
+        return Promise.resolve(jsonResponse({ chatId }));
+      }
+      if (url.pathname === "/api/chat" && method === "POST") {
+        const encoder = new TextEncoder();
+        let index = 0;
+        return Promise.resolve(
+          new Response(
+            new ReadableStream({
+              start(controller) {
+                const send = () => {
+                  if (index >= streamChunks.length) {
+                    controller.close();
+                    return;
+                  }
+                  controller.enqueue(encoder.encode(streamChunks[index++]));
+                  window.setTimeout(send, 180);
+                };
+                window.setTimeout(send, 120);
+              },
+            }),
+            {
+              status: 200,
+              headers: {
+                "content-type": "text/plain; charset=utf-8",
+                "x-inspir-ai-run-id": "00000000-0000-4000-8000-000000000002",
+                "x-inspir-user-message-id": "00000000-0000-4000-8000-000000000004",
+              },
+            },
+          ),
+        );
+      }
+      if (url.pathname === "/api/chat/finalize" && method === "POST") {
+        return new Promise((resolve) => {
+          window.setTimeout(
+            () => resolve(jsonResponse({ ok: true, assistantMessageId: persistedMessageId })),
+            450,
+          );
+        });
+      }
+
+      return originalFetch(input, init);
+    };
+  }, { streamChunks: chunks, persistedMessageId: persistedAssistantMessageId });
 }
 
 async function startStreamingProbe(page: Page) {

@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Armenian",
+  "locale": "hy",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Հանրային էջերը, թեմատիկ զրույցները, ուսումնական ուղիները, բլոգի ուղեցույցները և օգնության էջերը նախագծված են այնպես, որ հեշտ լինի գտնել և տարածել։"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Սկսել սովորել"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Հանրային ուսումնական էջերը բաց են, իսկ API երթուղիները, ադմին երթուղիները, վերակայման հոսքերը և մասնավոր ծառայողական էջերը մնում են արգելափակված։"
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Յուրաքանչյուր ուսուցման ռեժիմ ունի հանրային հղում, որպեսզի սովորողները կարողանան անմիջապես սկսել ճիշտ ուսումնական փորձառության մեջ։"
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Օգտագործեք սա հանրային և մասնավոր սահմանների, սովորողի անվտանգության և դպրոցի վստահության մասին խոսելիս։"
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "AI բովանդակության ինդեքս"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Ի տարբերություն սովորական չաթբոտի՝ inspir-ը AI-ն կազմակերպում է ուսուցման ռեժիմների շուրջ, որպեսզի սովորողները կարողանան սկսել իրենց պետք եղած օգնության տեսակից՝ հուշումներ, հարցեր, վիկտորինաներ, ակտիվ վերհիշում, դերախաղ, բանավեճ կամ հետադարձ կապ։"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Դպրոցական ներդրումները, անհրաժեշտության դեպքում, կարող են հարմարեցվել հատուկ բովանդակությանը, աշխատանքային հոսքերին, հուշումներին և NCERT-ին համապատասխանեցված ուսումնական կարիքներին։"
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Ուսուցման վարքագիծն առաջին տեղում է"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Հանրային հյուրային ռեժիմները յուրաքանչյուրին տալիս են օգտակար մեկնակետ, իսկ դպրոցական և գործընկերային գործարկումները կարող են փորձառությունը հարմարեցնել տեղական կարիքներին։"
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Յուրաքանչյուր հիմնական ուսուցման ռեժիմ ունի հանրային հյուրային մուտքակետ, որպեսզի մարդիկ կարողանան սկսել որոնումից, սոցիալական հարթակից կամ կիսված հղումից։"
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Կարո՞ղ է ներդրումը սկսել փոքր ծավալով։"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Հյուրի ռեժիմի, անձնական չատերի, սովորողի անվտանգության և դպրոցի վստահության հստակ բացատրություն։"
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Հանրային հայտարարություն այն մասին, թե ինչու է inspir-ը գոյություն ունենում, և ինչ է նշանակում ուսման հասանելիությունը։"
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1M+ սովորող"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "Նպատակը մարդկանց արհեստական բանականության առջև պասիվ դարձնելը չէ։ Նպատակը յուրաքանչյուր սովորողի տալն է համբերատար առաջին հենակետ՝ հարցնելու, վարժվելու, հետադարձ կապ ստանալու, կրկին փորձելու և վստահություն զարգացնելու համար։"
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Դպրոցներ և CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Նախ՝ հասանելիություն"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "inspir-ի՝ անվճար և հասանելի կրթության տեսլականի լուսաբանում։"
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Մեդիա և հղումներ"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Տեքստին առաջնահերթություն տվող տեղեկատու ֆայլ՝ օգնականների, մանկավարժների, գործընկերների և մեջբերման գործիքների համար։"
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Հասավ սովորողներին անվճար հարթակում և գործընկեր դպրոցներում։"
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Դպրոցներ և CSR-ի գործընկերներ"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Հանրային ռեժիմները մշակված են սովորելու վարքագծի շուրջ՝ հուշումներ, սոկրատյան հարցեր, քայլերի ստուգումներ, վիկտորինաներ, ֆլեշքարտեր, գրավոր աշխատանքի արձագանք, կրկնության ցիկլեր և ակտիվ բացատրություն։"
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Տեղեկատու հղումներ, հանրային փաստեր, մամուլի համատեքստ և մեջբերման համար հարմար մանրամասներ։"
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Սովորողներ, ծնողներ, ուսուցիչներ, դպրոցներ և ինքնուս ստեղծողներ"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Դպրոցների և գործընկերների ուղի"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Սկսեք հանրային ուսուցման ուղեկցից։"
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Պատմությունը՝ հարցաշարերից և սովորողների համայնքներից մինչև հանրության առաջ կառուցվող անվճար AI ուսումնական գործիքներ։"
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Ինչո՞ւ է inspir-ը կառուցված ռեժիմների շուրջ՝ մեկ չաթի պատուհանի փոխարեն։"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "2022 թվականի վերջ"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Կարգավորեք աշխատանքային ընթացքերը"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "Ուսանողական համայնքից դեպի AI ուսուցման ենթակառուցվածք"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Հասանելիությունը կարող է ֆինանսավորվել գործընկեր դպրոցների կողմից կամ աջակցվել CSR հովանավորության ուղիներով այն համայնքների համար, որոնց պետք է սուբսիդավորված AI ուսուցում։"
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "Հանրային արտադրանքը, դպրոցական ուղին և բովանդակության գրադարանը բոլորը պետք է վերադառնան նույն սկզբունքին. ուսումը պետք է մնա ակտիվ, հասանելի և օգտակար։"
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ երկիր"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Որակյալ ուսումը պետք է հասանելի, մարդկային և կենդանի զգացվի։"
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir-ը կազմակերպված է ուսուցման ռեժիմների շուրջ, ինչպիսիք են Սոկրատյան դասուսույցությունը, տնային առաջադրանքի հուշումները, վիկտորինաները, ֆլեշքարտերը, մաթեմատիկական քայլերը, գրավոր աշխատանքի քննադատական դիտարկումը և քննությունների պլանավորումը, որպեսզի սովորողները հայտնվեն ավելի կենտրոնացված ուսումնական վարքագծի մեջ։"
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Փորձեք հանրային հյուրային ռեժիմները"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Բաց կոդով վերակառուցում՝ ծրագրավորողների, մանկավարժների և ներդրում կատարողների համար։"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Ստեղծվում է 2013 թվականից ի վեր"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "Առաքելությունը կապված է արտադրանքի իրական միջերեսների հետ։"
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir-ը այնպես է անում, որ ուսուցման ռեժիմները բացվեն /chat/{topicSlug} հասցեում՝ սովորողներին թույլ տալով անմիջապես հայտնվել ճիշտ AI ուսուցման փորձառության մեջ՝ առանց պահպանված մասնավոր չաթի կարիքի։"
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "Հանրային արտադրանքը շարունակում է հեշտ փորձելի մնալ. սովորողները կարող են անմիջապես անցնել ուսման ռեժիմի և սկսել որպես հյուր։ Դպրոցներն ու CSR գործընկերները կարող են աջակցել հարմարեցված ներդրումներին, երբ համայնքներին անհրաժեշտ են գաղտնիություն, ուսումնական ծրագրի հետ համապատասխանեցում կամ սուբսիդավորվող հասանելիություն։"
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Կայք"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Հանրային բլոգը պարունակում է ավելի քան 100 ուղեցույց, հուշումների ցիկլեր և հիմնական թեմատիկ կլաստերներ, որոնք կապված են կենդանի ուսուցման ռեժիմների հետ։"
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "Անցում inspir.app կայքի հասցեից դեպի inspirlearning.com կայքի հասցեն"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Տեսնել բոլոր ռեժիմները"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Համայնքի էջ՝ կապված DeepHack-ի ճանաչման հետ։"
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Դպրոցներն ու գործընկերները կարող են հանրային արտադրանքից անցնել հարմարեցված, գաղտնի և սուբսիդավորվող ներդրումների։"
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "Ուսուցումը պետք է լինի անվճար, զվարճալի, օգտակար և հասանելի յուրաքանչյուր հետաքրքրասեր մարդու։"
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Դպրոցին հատուկ ուսումնական փորձառությունը կարելի է ձևավորել ձեր աշակերտական համայնքի, տոնի և ուսումնական առաջնահերթությունների շուրջ։"
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Հյուրի ռեժիմի դիտանկյուն"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Կարճ նկարագրություն"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Անվճար, օգտակար և ներգրավող AI ուսուցման գործիքներ՝ հետաքրքրասիրություն ունեցող յուրաքանչյուրի համար։"
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Հասանելի դարձավ անվճար հանրային հարթակում և գործընկեր դպրոցների գործարկումներում։"
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "անվճար AI ուսուցման հարթակ"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "Ուսուցումը բոլորի համար է"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Ինչու հիմա"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Այս էջերը պատմությունն ավելի հեշտ են դարձնում ստուգելու, մեջբերելու, կիսվելու և օգտագործելու համար՝ հանրային ռեժիմներ, ուսուցման ուղիներ, ծավալուն ուղեցույցներ, դպրոցներում ներդրման նշումներ, մեդիա փաստեր և ընկերության նախապատմություն։"
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "AI տնային աշխատանքի մարզիչ ուսանողների համար"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Բացահայտեք դպրոցի ամենակարևոր նպատակները՝ հասկացությունների աջակցություն, տնային աշխատանքի հուշումներ, քննության նախապատրաստություն, ակտիվ վերհիշում, գրավոր աշխատանքի հետադարձ կապ կամ հարստացում։"
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Օգտագործեք սա դպրոցի, գործընկերների, կորպորատիվ սոցիալական պատասխանատվության և կրթության հասանելիության մասին հղումների համար։"
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "DeepHack-ում AI ուսուցման աշխատանքի համար Amod Malviya-ի կողմից տրված Jury's Choice ճանաչում։"
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Հանրային և մասնավոր ուղիների հասանելիության գործող կանոնները։"
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir-ը գոյություն ունի, որպեսզի անվճար հանրային AI ուսուցման գործիքների և դպրոցների համար պատրաստ ուսումնական տարածքների միջոցով ուսումը դարձնի հասանելի, ներգրավող, հաճելի և օգտակար հետաքրքրասեր յուրաքանչյուր մարդու համար։"
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Դպրոցները կարող են նախ գնահատել հանրային ռեժիմները, ապա քննարկել հարմարեցված աշխատանքային հոսքերը, գաղտնիության պլանավորումը, բովանդակության կարիքները և ֆինանսավորվող հասանելիությունը։"
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "AI ուսուցման հասանելիությունը կարող է ֆինանսավորվել գործընկեր դպրոցների կողմից կամ աջակցվել CSR հովանավորությամբ այն համայնքների համար, որոնց պետք է սուբսիդավորված հասանելիություն։"
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "Արտադրանքը պետք է ուսուցանի, ոչ թե պարզապես պատասխանի։"
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Այս պատմությունը ներառում է վիկտորինաներ, օֆլայն դպրոցական ցանցեր, ուսումնական ծրագրերի ներմուծում և հանրային AI ուսուցման ռեժիմներ։"
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir-ը անվճար AI ուսուցման հարթակ է՝ բացատրությունների, սոկրատյան դասուսուցման, տնային աշխատանքի օգնության, վիկտորինաների, ֆլեշքարտերի, բանավեճի, դերախաղի, գրավոր աշխատանքի հետադարձ կապի և ուսման պլանավորման հանրային հյուրային ռեժիմներով։"
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "inspir-ի հանրային հեղինակավոր հղումներ"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Սպառողական AI-ի մեկնարկ"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Սկիզբ է առել 2013 թվականին՝ որպես հանրային վիկտորինաներ և ուսանողական համայնքներ։"
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Սկզբունքներ"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Սովորողը կարող է բացել «Սովորիր ցանկացած բան», «Սոկրատյան ուսուցում», «Տնային աշխատանքի մարզիչ», «Մաթեմատիկայի քայլային մարզիչ», թեստերը կամ ֆլեշքարտերը անմիջապես հյուրի ռեժիմում՝ հանրային ուսուցման ռեժիմների տեղեկատուից։"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Անվճար AI ուսուցման հարթակ"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Դպրոցական տեսանկյուն"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "Հանրային հյուրային զրույցները բա՞ց են։"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Կարո՞ղ է դպրոցը սկզբում օգտագործել inspir-ը որպես հյուրի ուսուցման գործիք։"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "Facebook-ի վիկտորինաներից և օֆլայն միջոցառումներից դեպի կիրառական AI ուսուցման ենթակառուցվածք։"
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Ամենաուժեղ դիտանկյունը անվճար հանրային AI ուսուցումն է, որը բացվում է անմիջապես հյուրային ռեժիմում և սովորողներին ակտիվ է պահում ռեժիմին հատուկ դասավանդման միջոցով, այլ ոչ թե ընդհանուր պատասխաններ ստեղծելով։"
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Ինչո՞ւ է հեշտ տարածել հանրային ուսուցման էջերը։"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "Գրավոր ուսումնական գրադարանը, որն աջակցում է հուշումներին, ուսումնառության ցիկլերին և ավելի խորքային գործնական աշխատանքին։"
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir-ը կազմակերպված է հուշումների, հարցերի, վիկտորինաների, ֆլեշքարտերի, բանավեճի, կրկնության և բացատրության շուրջ՝ պասիվ պատասխաններ պատճենելու փոխարեն։"
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Կանխադրված հյուր ուսուցիչ"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Ո՞րն է լուսաբանման համար արտադրանքի ամենաօգտակար դիտանկյունը։"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Ուսման տարբեր առաջադրանքներ պահանջում են փոխգործակցության տարբեր ձևեր, ուստի inspir-ը օգտագործում է ակտիվ, ռեժիմին հատուկ ուսուցում։ Տնային աշխատանքի հուշումը, սոկրատյան հարցը, պատմական սիմուլյացիան, հիշաքարտերի կրկնությունը և գրավոր աշխատանքի քննադատությունը չպետք է գործեն նույն ընդհանուր չաթի պես։"
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Առաքելություն | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Դպրոցները կարող են նախ փորձարկել հանրային հյուրի ռեժիմները, ապա օգտագործել դպրոցների էջը՝ ուսումնասիրելու հարմարեցված աշխատանքային հոսքերը, գաղտնիության պլանավորումը, NCERT-ին համապատասխանեցված տարբերակները և ֆինանսավորվող հասանելիությունը։"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Ուսուցիչներն ու ղեկավարները կարող են սկսել «Սովորիր ցանկացած բան», «Սոկրատյան ուսուցում», «Տնային աշխատանքի մարզիչ» գործիքներից, թեստերից և ֆլեշքարտերից՝ նախքան պաշտոնական ներդրումը։"
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Տարբեր առաջադրանքների համար տարբեր ռեժիմներ են պետք՝ սոկրատյան հարցեր, տնային աշխատանքի հուշումներ, հիշաքարտեր, բանավեճ, պատմական դերախաղ, գրավոր աշխատանքի քննադատություն և ավելին։"
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Այո։ /chat/learn-anything և /chat/socratic-instruction թեմաների հանրային մուտքի կետերը բաց ուսումնական էջեր են, որոնք յուրաքանչյուրը կարող է փորձել։"
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "inspir-ի առաքելության սկզբունքներ"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Կարողունակ ուսուցման ուղեկիցը չպետք է կախված լինի աշխարհագրությունից, ընտանիքի եկամուտից կամ նրանից, թե սովորողն արդեն գիտի՞ ճիշտ մարդուն, ում կարող է հարցնել։"
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "inspir-ի առաքելությունն է ուսուցումը դարձնել հասանելի, ներգրավող, հաճելի և օգտակար բոլորի համար՝ անվճար հանրային AI ուսուցման գործիքների միջոցով։"
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Այն բանից հետո, երբ inspir.app դոմեյնը վաճառվեց շարունակական անվճար հասանելիությունը ֆինանսավորելու համար, գործող արտադրանքը տեղափոխվեց inspirlearning.com։"
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "CSR կրթական տեխնոլոգիաների գործընկերություն"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "AI ուսուցման ուղեցույցների գրադարան"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Ավելի քան 100 ուղեցույց՝ անհատական ուսուցման, հուշումների, ուսման ցիկլերի, ակտիվ վերհիշման և ռեժիմների մասին։"
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir-ը անվճար AI ուսուցման հարթակ է՝ բացատրությունների, սոկրատյան դասուսուցման, տնային աշխատանքի օգնության, վիկտորինաների, ֆլեշքարտերի, բանավեճի, գրավոր աշխատանքի հետադարձ կապի, կոդավորման օգնության և ուսման պլանավորման հանրային հյուրային ռեժիմներով։"
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Հյուրի ուսումնական չատի յուրաքանչյուր մուտքի կետի հստակ տեղեկատու։"
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Լրագրողները, տեղեկատուների խմբագիրները, գործընկերները, դպրոցները և inspir-ի մասին գրող յուրաքանչյուր ոք կարող են այն օգտագործել փաստերի, հղումների, պատմության դիտանկյունների և մեջբերման համար հարմար աղբյուրների համար։"
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Քարտեզագրեք սովորելու կարիքները"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Ի՞նչ է inspir-ը։"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Գործարկել և ֆինանսավորել հասանելիությունը"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Հոդվածներն առաջին հերթին ո՞ր URL-ին պետք է հղվեն"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Դպրոցում ներդրման ուղի"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Ապրանքի դիտանկյուն"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Անուն"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "AI դասուսույց դպրոցների համար"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Գլխավոր"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Ո՞րն է inspir-ի կարճ նկարագրությունը։"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Օգտատերերի պահպանված զրույցներն օգտագործում են մասնավոր նույնացուցիչներ և չպետք է դիտարկվեն որպես հանրային աղբյուրային նյութ։"
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "inspir.uk հաջորդ սերնդի կառուցում"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Փորձնական փուլից անցեք ավելի լայն հասանելիության՝ դպրոցի ֆինանսավորման, գործընկերների աջակցության կամ CSR ուղիների միջոցով այն սովորողների համար, որոնց սուբսիդավորվող հասանելիություն է պետք։"
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Անհատականացված բովանդակությունը, հուշումները և աշխատանքային հոսքերը կարող են հարմարեցվել NCERT-ի կարիքներին և յուրաքանչյուր դպրոցի դասարանային առաջնահերթություններին։"
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Օգտագործեք սա, երբ ընթերցողներին անմիջապես ուղղորդում եք դեպի կենդանի ուսումնական փորձառություն։"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Սա ինչո՞վ է տարբերվում աշակերտներին ընդհանուր AI չաթբոտ տալուց։"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Հավելվածը կազմակերպված է ուսուցման վարքագծերի շուրջ, ինչպիսիք են Սոկրատյան հարցադրումը, տնային աշխատանքի հուշումները, վիկտորինաները, ֆլեշքարտերը, դերախաղը և պլանավորումը։"
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Գլխավոր էջի հիմնական մեջբերում"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir-ի առաքելությունն է ուսուցումը դարձնել հասանելի, ներգրավող, հաճելի և օգտակար՝ անվճար հանրային AI ուսուցման գործիքների և դպրոցների համար պատրաստ ուսումնական տարածքների միջոցով։"
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Ո՞րն է inspir-ի առաքելությունը։"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Յուրաքանչյուր հանրային ռեժիմ դուռ է դեպի ուսուցման տարբեր վարքագիծ, որպեսզի ձևաչափը համապատասխանի խնդրին՝ ամեն սովորողին մեկ ընդհանուր չատի դաշտի մեջ ստիպելու փոխարեն։"
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "Հանրային արտադրանքը յուրաքանչյուրին մեկնարկելու տեղ է տալիս, իսկ դպրոցական և գործընկերային ներդրումները կարող են փորձառությունը հարմարեցնել տեղական կարիքներին։"
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Սեփական բրենդով AI չաթ"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Հյուրի ռեժիմի մուտքի կետեր"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Աջակցիր ֆինանսավորվող AI ուսուցման հասանելիությանը այն համայնքների համար, որոնց պետք է բարձրորակ աջակցություն՝ առանց ընտանիքների ծախսերը ավելացնելու։"
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Հանրային հղումների ամբողջական ցուցիչ"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Հարթակը աշխատել է ուսումնական ծրագրերի ներմուծման, որոնման, կառուցվածքային ուսուցման հոսքերի և AI-ով ուսուցանման վաղ փորձառությունների վրա։"
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Ավելի քան 100 ուղեցույց, հուշումների ցիկլեր և հիմնական թեմատիկ խմբեր՝ AI-ի օգնությամբ ուսուցման համար։"
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Գաղտնիության քաղաքականություն"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Հիմնադրվել է"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "Հարթակը նախագծված է այնպես, որ օգնի մարդկանց տրամաբանել, վարժվել, հիշել և գաղափարները սեփական բառերով բացատրել՝ պատրաստի պատասխաններ հավաքելու փոխարեն։"
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "Մասնավոր կրկնուսուցումն արդյունավետ է, բայց անհավասար է բաշխված։ inspir-ը օգտագործում է AI՝ հասանելիությունն ընդլայնելու և սովորողին ակտիվ պահելու համար. հուշումներ՝ նախքան պատասխանները, հարցեր՝ նախքան դասախոսությունները, և վարժանք՝ բացատրությունից հետո։"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Դպրոցներ և գործընկերներ"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Սովորողների բազա, որն արդեն Հնդկաստանից դուրս է տարածվել դեպի ավելի լայն միջազգային լսարան։"
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir-ը AI-ն կազմակերպում է ակտիվ ուսուցման վարքագծերի շուրջ՝ հուշումներ, հարցեր, վիկտորինաներ, ֆլեշքարտեր, քննադատական դիտարկում և կրկնություն։"
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Deccan Business-ի անդրադարձը"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Այո։ Հանրային հյուրային ռեժիմները դպրոցների ղեկավարներին և ուսուցիչներին թույլ են տալիս փորձել ուսուցման փորձառությունը՝ նախքան հարմարեցված դպրոցական գործարկում քննարկելը։"
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Նախ գնահատիր հանրային AI ուսուցման շերտը, ապա ուսումնասիրիր անհատական աշխատանքային հոսքերը, գաղտնիության կարիքները, բովանդակության համապատասխանեցումը և օգտագործման ֆինանսավորումը։"
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Հիմնական լսարան"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Ուսման տարբեր առաջադրանքների համար տարբեր ձևեր են պետք՝ սոկրատյան հարցեր, տնային աշխատանքի հուշումներ, հիշաքարտեր, բանավեճ, պատմական դերախաղ, գրավոր աշխատանքի քննադատություն և ուսման պլանավորում։"
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Ընդունելի օգտագործումը, հաշվի պատասխանատվությունները և ծառայության պայմանները ընդգրկող պաշտոնական պայմանները։"
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Հարմարեցրեք աշակերտի փորձառությունը դպրոցի համատեքստին, ուսումնական ծրագրի առաջնահերթություններին, բովանդակության սահմանափակումներին և անձնակազմի տեսանելիության անհրաժեշտ մակարդակին։"
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Օգնականի և տեղեկատու նյութերի հասանելիություն"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "NCERT-ին համապատասխանեցված AI ուսուցում"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir-ը սկսվել է որպես Facebook էջ, որը հրապարակում էր վիկտորինաներ և ձևավորում արտադասարանական ուսուցման սովորություն։"
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Հանրային արտադրանքը պահպանում է ուսումը հեշտ փորձելի, իսկ դպրոցներն ու CSR գործընկերները կարող են աջակցել հարմարեցված ներդրումներին, երբ համայնքներին անհրաժեշտ են գաղտնիություն, ուսումնական ծրագրի հետ համապատասխանեցում կամ ֆինանսավորված հասանելիություն։"
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "Ուսուցումը բոլորի համար է։"
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "inspir-ի մասին"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Հանրային արտադրանքը հեշտ է նախ փորձել, իսկ դպրոցներն ու գործընկերները կարող են ուսումնասիրել համայնքի կարիքներին հարմարեցված ներդրումներ։"
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Հստակ պատասխաններ սովորողների, դպրոցների և որոնման համակարգերի համար։"
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Տեղեկատու էջ"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Օֆլայն ցանցեր և ուսանողական միջոցառումներ"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Մասնավոր պահված օգտատիրոջ զրույցները հասանելի՞ են որոնման համար։"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Վստահության և գաղտնիության սահմաններ"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "AI դասուսույց ցանկացած բան սովորելու համար"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Ռեժիմին հատուկ ուսուցում"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir-ը ChatGPT-ի հանրային թողարկումից ընդամենը մի քանի շաբաթ անց գործարկվեց որպես սպառողներին ուղղված AI ուսուցման արտադրանք։"
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Որոնման և տեղեկատուի հասանելիություն"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Այո։ Դպրոցը կարող է սկսել հանրային ռեժիմները փորձարկելով, ապա անցնել փորձնական կամ հարմարեցված ներդրման, երբ օգտագործման դեպքը, բովանդակության կարիքները և ֆինանսավորման ուղին պարզ լինեն։"
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "DeepHack համայնքի էջ"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "Կենդանի ուսուցման փորձառությունը, որը առաքելությունը վերածում է գործնական օգնության։"
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Հանրային հյուրի ռեժիմի հղումները նախատեսված են, որ սովորողները որոնումից, սոցիալական հղումներից, դպրոցներից կամ կիսված առաջարկություններից կարողանան անմիջապես սկսել օգտակար ուսուցման ռեժիմներում։"
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "Ուսուցման ձև ունեցող AI"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Անվճար հյուրային ուսուցում՝ դպրոցների և գործընկերների համար նախատեսված ուղիներով։"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Ինչո՞վ է inspir-ը տարբերվում սովորական AI չաթբոթից։"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Ուսումնական համայնքը սկսվում է"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "AI-ով ուսուցում՝ առանց պատասխանների պասիվ արտագրության"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Կատեգորիա"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Dailyhunt-ի լուսաբանում"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "Այո։ «Սովորել ամեն ինչ», «Սոկրատյան ուսուցում», «Տնային աշխատանքի մարզիչ», վիկտորինաներ և քարտեր հանրային հյուրի ռեժիմով անմիջապես բացվում են պարզ /chat/{topicSlug} հղումներից։"
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "AI ուսուցման բլոգ"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Պայմաններ"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "AI ուսումնական գործիքներ դպրոցների համար"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Հանրային հասանելիության հյուրի ռեժիմ"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Ինչպես կարող է հանրային հյուրային ուսուցումը ընդլայնվել դեպի դպրոցին հատուկ AI ուսումնական տարածքներ։"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Ուսումնական աշխատանքային ընթացքներ, որոնք կապում են հյուրի ռեժիմները, հուշումները, վարժանքը և առնչվող ուղեցույցները։"
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "AI ուսուցման ուղեցույցներ"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Դիտել ուսուցման ռեժիմները"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Ռեժիմին հատուկ ուսուցման հոսքեր"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "Ոչ։ Անձնական պահված զրույցները օգտագործում են մասնավոր նույնացուցիչներ և հանրային էջերի, հանրային տեղեկատու ֆայլերի կամ համօգտագործվող ուսումնական կատալոգների մաս չեն։"
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Յուրաքանչյուր հյուրային ուսումնական չատ՝ դասավանդման վարքագծի և ուսումնական կարիքի համաձայն կազմակերպված։"
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Սինդիկացված լուսաբանում՝ սպառողների ավելի լայն ընդգրկման համար։"
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Վստահություն և անվտանգություն"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Գաղտնի տեղակայման ձևավորում"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Առաքելության ՀՏՀ"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Սկսեք անմիջապես ճիշտ ուսուցման ռեժիմում՝ տնային աշխատանքի հուշումների, մաթեմատիկայի քայլերի, գրավոր աշխատանքի քննադատության, վիկտորինաների, ֆլեշքարտերի կամ քննության պլանավորման համար։"
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Օգնականի և տեղեկատու գործիքները կարող են օգտագործել հանրային ուսումնական էջերը՝ մարդկանց ճիշտ ուղեցույցների և հյուրի ռեժիմների ուղղորդելու համար։"
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir-ը AI-ն կազմակերպում է ուսուցման ռեժիմների շուրջ՝ դասավանդման կոնկրետ վարքագծերով՝ բացատրություններ, Սոկրատյան հարցեր, տնային առաջադրանքի հուշումներ, վիկտորինաներ, ֆլեշքարտեր, բանավեճ, դերախաղ, գրավոր աշխատանքի հետադարձ կապ և ուսումնական պլանավորում։"
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Բացել հղումը"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "DeepHack-ի ճանաչում"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Մասնավոր պահպանված զրույցների հղումները հանրային ուսումնական հղումների, համօգտագործվող ինդեքսների կամ մեջբերման նյութերի մաս չեն։"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Կարո՞ղ են մարդիկ օգտագործել inspir-ը՝ առանց մուտք գործելու։"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Երկար ձևաչափի ուսուցման գրադարան"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Ինչպե՞ս սկսվեց inspir-ը։"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Օգտագործեք սա՝ նկարագրելու համար հյուրի ռեժիմով ուսուցման գործիքների ամբողջ հավաքածուն, որը մարդիկ կարող են անմիջապես փորձել։"
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Դպրոցներում ներդրման ուղիներ"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "ուսուցում ուղիներ"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Չթույլատրված"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Դպրոցները կարող են նախ հանրային հյուրի ռեժիմներով գնահատել inspir հարթակը, ապա ուսումնասիրել հարմարեցված AI ուսուցման տարածքներ՝ հատուկ աշխատանքային հոսքերով, գաղտնիության պլանավորմամբ, ուսումնական ծրագրի կարիքներով և ֆինանսավորվող հասանելիության ուղիներով։"
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Համայնքը ընդլայնվեց դպրոցների, համալսարանների, մրցույթների, արտադասարանական ծրագրերի և սովորողների համայնքների միջոցով։"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "Կարո՞ղ է inspir-ը աջակցել դպրոցին հատուկ բովանդակության կամ ուսումնական ծրագրի կարիքներին։"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Ինչո՞ւ է inspir-ը աջակցում դպրոցական և գործընկերային ներդրումներին։"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Հաջորդ փուլը բաց կոդով է, բարենպաստ է ներդրում կատարողների համար և կապված է inspir.uk-ում ընթացող ավելի լայն միջազգային կառուցման հետ։"
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Հանրային բացատրություն այն մասին, թե ինչու է inspir-ը գոյություն ունենում, և ինչու է կարևոր ուսման հասանելիությունը։"
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Ստեղծված մասշտաբավորման համար"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "AI-ը կարող է անհատական ուսուցումը զգալիորեն ավելի հասանելի դարձնել։"
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Դպրոցների և CSR-ի ուղիներ՝ ֆինանսավորվող հասանելիության համար"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Ո՞վ կարող է օգտագործել մեդիա էջը։"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Դպրոցների ուղին՝ հարմարեցված AI ուսումնական տարածքների և ֆինանսավորվող հասանելիության համար։"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-ին համապատասխան տարբերակներ"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "AI-ի հետ արդյունավետ սովորել"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "inspir նախագծի հետ կապված ավելի լայն միջազգային ընդլայնումը։"
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Թույլատրված հանրային էջերում"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Օգտագործեք սա, երբ inspir-ը ներկայացնում եք որպես հիմնական արտադրանք կամ հղում եք տալիս տեղեկատուից, պրոֆիլից կամ հոդվածից։"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Ֆինանսավորվող հասանելիության ուղիներ"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Այժմ վերակառուցված որպես բաց, հյուրերի համար հարմար AI ուսուցման մուտքակետեր։"
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Հանրային էջերի, ռեժիմների, ուսուցման ուղիների, բլոգային կլաստերների և գաղտնիության սահմանների կառուցվածքային կատալոգ։"
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "Նպատակը մարդկանց օգնելն է արագ գտնել ճիշտ հանրային ուսումնական էջը։ Հանրային երթուղիները, ուղեցույցները և ուսումնական հանգույցները բաց են. API, admin, reset և մասնավոր օժանդակ երթուղիները փակ են մնում։"
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Օգտագործեք սա երկարաձև ուղեցույցների գրադարանը, ուսումնական հուշումները և ռեժիմներին հատուկ հոդվածները մեջբերելիս։"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Հասկանալը՝ պատասխաններից ավելի կարևոր"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Կայքի համար օգտագործեք https://inspirlearning.com, առաքելության համար՝ /mission, ուսուցման հանրային ռեժիմների ցանկի համար՝ /topics, իսկ հյուրի լռելյայն ուսուցման փորձառության համար՝ /chat/learn-anything։"
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "CSR և կրթական գործընկերներ"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Ի՞նչ կարելի է փորձել առաջին հերթին։"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Որտեղի՞ց պետք է սկսեն դպրոցները"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Դպրոցներում գործարկումները կարող են պլանավորվել՝ հաշվի առնելով սովորողների գաղտնիությունը, աշխատակազմի վերահսկողությունը և այն գործնական սահմանները, որոնց կարիք ունի ուսումնական համայնքը։"
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Ստեղծեք ավելի անվտանգ ուղի վարժանքի, բացատրությունների, հետադարձ կապի և կրկնության հուշումների համար՝ առանց ուսանողներին ընդհանուր չաթբոտի մոտ ուղարկելու։"
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Հանրային տեղեկատու ֆայլերը ամփոփում են ուսումնական էջերը, երթուղիները, ռեժիմները, ուղեցույցները և մեջբերման սահմանները այն գործիքների համար, որոնց պետք է համառոտ քարտեզ։"
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Հիմա"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "առաքելություն"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Ստեղծված իրական սովորողների համար"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "AI ուսուցման ենթակառուցվածք"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Տվյալների օգտագործման, իրավունքների և հանրային ծառայության պայմանների վերաբերյալ պաշտոնական գաղտնիության էջը։"
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir-ը սկսվեց 2013 թվականին որպես հանրային վիկտորինայի և ուսուցման համայնք, աճեց դպրոցների և աշակերտական ցանցերի միջոցով, իսկ հետո զարգացրեց AI ուսուցման ենթակառուցվածք և հանրային AI դասուսուցման փորձառություններ։"
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "սեփական բրենդով AI ուսուցման հարթակ"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "inspir-ը գոյություն ունի, որպեսզի ուսումը դարձնի հասանելի, ներգրավող, հաճելի և օգտակար հետաքրքրասեր յուրաքանչյուր մարդու համար՝ անկախ նրանից՝ նա աշակերտ է, ծնող, ուսուցիչ, թե ինքնուս սովորող։"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Ինչպե՞ս է inspir-ը նվազեցնում պատասխանների արտագրումը։"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Ինչին ենք հավատում"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "API- ն, կառավարումը, վերանորոգումը, մասնավոր օգտակարությունը եւ մասնավոր պահպանված զրույցի մակերեսները հանրային աղբյուրի բովանդակություն չեն:"
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Հանրային էջերը կարելի է տարածել և դրանց հղում տալ, իսկ վարչական գործիքները, API երթուղիները, վերակայման հոսքերը և մասնավոր գործիքները մնում են փակ։"
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "ուսուցիչներ"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Ընթացիկ GitHub պահոց"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Կառուցվում է բաց հանրային ձևով"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Ինչպե՞ս կարելի է ֆինանսավորել սովորողների հասանելիությունը։"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Մեդիա նշումներ"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir-ը նախագծված է հիմնվելու դատողության, վարժանքի, վերհիշման և բացատրության վրա՝ սովորողներին պատրաստի աշխատանք մատուցելու փոխարեն։"
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Ռեժիմին հատուկ արտադրանքի դիզայն"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Դպրոցների ղեկավարներ"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "աշակերտներ"
+    }
+  ]
+}

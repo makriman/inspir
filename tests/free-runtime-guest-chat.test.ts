@@ -6,6 +6,8 @@ import {
   handleFreeGuestChat,
   MAX_FREE_GUEST_CHAT_BODY_BYTES,
   MAX_FREE_GUEST_CHAT_HISTORY_CHARACTERS,
+  MAX_FREE_GUEST_LEGACY_ASSISTANT_CHARACTERS,
+  MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES,
   type FreeGuestChatD1Database,
   type FreeGuestChatD1Result,
   type FreeGuestChatD1Statement,
@@ -151,6 +153,68 @@ test("quiz and flashcard seeds degrade to conversational guest streams", async (
     assert.ok(isRecord(system));
     assert.match(String(system.content), new RegExp(`\\(${topicId}\\)`));
   }
+});
+
+test("legacy guest clients receive bounded plain text without token-chunk SSE parsing", async () => {
+  const database = createMockDatabase();
+  let providerBody: unknown;
+  let providerAccept = "";
+  const response = await handleFreeGuestChat(
+    jsonRequest(
+      { topicId: "learn-anything", content: "Explain gravity" },
+      { accept: "*/*" },
+    ),
+    baseEnv(database.db),
+    runtime(async (_input, init) => {
+      providerBody = JSON.parse(String(init?.body));
+      providerAccept = new Headers(init?.headers).get("accept") ?? "";
+      return Response.json({
+        choices: [{ message: { content: "Gravity attracts masses." } }],
+      });
+    }),
+  );
+
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("content-type"), "text/plain; charset=utf-8");
+  assert.equal(await response.text(), "Gravity attracts masses.");
+  assert.equal(providerAccept, "application/json");
+  assert.ok(isRecord(providerBody));
+  assert.equal(providerBody.stream, false);
+  assert.equal("stream_options" in providerBody, false);
+  assert.equal(MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES, 128 * 1_024);
+  assert.equal(MAX_FREE_GUEST_LEGACY_ASSISTANT_CHARACTERS, 12_000);
+});
+
+test("legacy guest provider JSON fails closed when malformed or oversized", async () => {
+  const malformedDatabase = createMockDatabase();
+  const malformed = await handleFreeGuestChat(
+    jsonRequest(
+      { topicId: "learn-anything", content: "Explain gravity" },
+      { accept: "*/*" },
+    ),
+    baseEnv(malformedDatabase.db),
+    runtime(async () =>
+      new Response('{"choices":[', {
+        headers: { "content-type": "application/json" },
+      }),
+    ),
+  );
+  assert.equal(malformed.status, 502);
+
+  const oversizedDatabase = createMockDatabase();
+  const oversized = await handleFreeGuestChat(
+    jsonRequest(
+      { topicId: "learn-anything", content: "Explain gravity" },
+      { accept: "*/*" },
+    ),
+    baseEnv(oversizedDatabase.db),
+    runtime(async () =>
+      Response.json({
+        choices: [{ message: { content: "x".repeat(MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES) } }],
+      }),
+    ),
+  );
+  assert.equal(oversized.status, 502);
 });
 
 test("a thrown admission batch rolls back and guest quotas fail open behind a fresh global reservation", async () => {
@@ -793,6 +857,7 @@ function jsonRequest(body: unknown, headers: Record<string, string> = {}) {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      accept: "text/event-stream",
       "cf-connecting-ip": "203.0.113.10",
       "user-agent": "Inspir unit test browser",
       "accept-language": "en-GB,en;q=0.9",

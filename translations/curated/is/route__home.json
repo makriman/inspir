@@ -4,517 +4,12 @@
   "locale": "is",
   "namespace": "route:home",
   "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
-  "model": "curated-codex-v2",
+  "model": "curated-quality-repair-v2",
   "entries": [
     {
-      "key": "site.07a357bc36430248d1",
-      "source": "{value1} practical guides",
-      "value": "Hagnýtir leiðarvísar fyrir {value1}"
-    },
-    {
-      "key": "site.925ff321656c966f56",
-      "source": "A {value1}-guide library built for learning that turns into action.",
-      "value": "Safn {value1}-leiðarvísa fyrir nám sem verður að verki."
-    },
-    {
-      "key": "site.ab115a93150e7a06ae",
-      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Ókeypis opinn AI-námsfélagi fyrir leiðsögn, æfingar, próf, minniskort, rökræður, ritendurgjöf, kóðahjálp og námsáætlanir."
-    },
-    {
-      "key": "site.1204c5f44e4f621dc1",
-      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
-      "value": "Hagnýt AI-námsleið sem færir þig frá ruglingi yfir í skýra útskýringu, sókratískar spurningar, dæmi og virka upprifjun."
-    },
-    {
-      "key": "site.660e8ab787b7647f4d",
-      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
-      "value": "Hagnýtur leiðarvísir um að nota Lærðu hvað sem er á inspir til að byggja grunninn, með fyrirmælum, námslotum og öruggari AI-venjum."
-    },
-    {
-      "key": "site.cd7ec783fe04413db9",
-      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
-      "value": "Hagnýt umfjöllun um hvernig AI getur gert nám skýrara, persónulegra og aðgengilegra án þess að nemendur verði óvirkir safnarar svara."
-    },
-    {
-      "key": "site.c109227813c69b1e5a",
-      "source": "A public learning site people can understand quickly.",
-      "value": "Opinn námsvefur sem fólk skilur fljótt."
-    },
-    {
-      "key": "site.e30bc8c62089995cb7",
-      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      "value": "Stutt mynd sem kynnir þá trú inspir að nám eigi að vera ókeypis, aðgengilegt og lifandi."
-    },
-    {
-      "key": "site.3f2bdaf5f0bd4b28a2",
-      "source": "A tutor for the first question",
-      "value": "Leiðbeinandi fyrir fyrstu spurninguna"
-    },
-    {
-      "key": "site.2aa8c1048b9f196902",
-      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
-      "value": "aðgengi, fyrirmæli, prófanir, öruggari AI-hegðun, námsflæði og fágað viðmót."
-    },
-    {
-      "key": "site.95184db267e0a035c5",
-      "source": "Action after reading",
-      "value": "Aðgerð eftir lestur"
-    },
-    {
-      "key": "site.43ec5c5a05b4954ea6",
-      "source": "Active practice",
-      "value": "Virk æfing"
-    },
-    {
-      "key": "site.8bc4fbc90c8e9c86b6",
-      "source": "Active recall review",
-      "value": "Yfirferð með virkri upprifjun"
-    },
-    {
-      "key": "site.f68f1f0ca7c2e9bea4",
-      "source": "After each hint, explain why the step works before continuing.",
-      "value": "Útskýrðu eftir hverja vísbendingu hvers vegna skrefið virkar áður en þú heldur áfram."
-    },
-    {
-      "key": "site.8a46d135cf50f178dc",
-      "source": "After the simulation, summarize the setting, constraints, and evidence.",
-      "value": "Taktu saman sögusviðið, takmarkanirnar og sönnunargögnin eftir hermunina."
-    },
-    {
-      "key": "site.1797c87f833df44771",
-      "source": "AI Code Tutor",
-      "value": "AI-kóðaleiðbeinandi"
-    },
-    {
-      "key": "site.31d2d79f22f9a1f3a5",
-      "source": "AI debate practice",
-      "value": "AI-rökræðuæfing"
-    },
-    {
-      "key": "site.65b6c2ffc4f05740f4",
-      "source": "AI exam prep plan",
-      "value": "AI-áætlun fyrir prófundirbúning"
-    },
-    {
-      "key": "site.0f15e8657395bc417a",
-      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
-      "value": "AI-prófundirbúningsáætlun með prófum og virkri upprifjun"
-    },
-    {
-      "key": "site.0ebaaaae7e0b6b8c54",
-      "source": "AI Exam Prep Planner",
-      "value": "AI-prófundirbúningsskipuleggjari"
-    },
-    {
-      "key": "site.3ffc005101843fb96e",
-      "source": "AI flashcards and active recall: how to remember more",
-      "value": "AI-minniskort og virk upprifjun: hvernig þú manst meira"
-    },
-    {
-      "key": "site.e307fcca9c1d174b0b",
-      "source": "AI flashcards for active recall",
-      "value": "AI-minniskort fyrir virka upprifjun"
-    },
-    {
-      "key": "site.6f4a9472ade8b0f187",
-      "source": "AI flashcards for revision",
-      "value": "AI-minniskort fyrir upprifjun"
-    },
-    {
-      "key": "site.b304cc7b41fd7f5598",
-      "source": "AI history tutor",
-      "value": "AI-söguleiðbeinandi"
-    },
-    {
-      "key": "site.dd9a32e062ead6421d",
-      "source": "AI History Tutor",
-      "value": "AI-söguleiðbeinandi"
-    },
-    {
-      "key": "site.9934b557028ea58e35",
-      "source": "AI homework coach",
-      "value": "AI-heimavinnuþjálfari"
-    },
-    {
-      "key": "site.3ece0a6c6ee7334d12",
-      "source": "AI homework help without cheating",
-      "value": "AI-heimavinnuhjálp án svindls"
-    },
-    {
-      "key": "site.d75c0f0918af68bb3a",
-      "source": "AI Homework Help Without Copying Answers",
-      "value": "AI-heimavinnuhjálp án þess að afrita svör"
-    },
-    {
-      "key": "site.f12feed708f02b10fe",
-      "source": "AI Homework Helper",
-      "value": "AI-heimavinnuhjálp"
-    },
-    {
-      "key": "site.2f7d415e4a528d3424",
-      "source": "AI math step coach",
-      "value": "AI-skrefaþjálfari í stærðfræði"
-    },
-    {
-      "key": "site.ac2a55b07e4c4f813e",
-      "source": "AI Math Tutor",
-      "value": "AI-stærðfræðileiðbeinandi"
-    },
-    {
-      "key": "site.a66254e93319e01241",
-      "source": "AI quiz generator for exams",
-      "value": "AI-spurningasmiður fyrir próf"
-    },
-    {
-      "key": "site.b5e2de3d24523bd9d5",
-      "source": "AI Socratic tutor",
-      "value": "AI-leiðbeinandi með sókratískum spurningum"
-    },
-    {
-      "key": "site.639df740680bb81ecc",
-      "source": "AI study schedule",
-      "value": "AI-námsáætlun"
-    },
-    {
-      "key": "site.3d26487f434c2aa113",
-      "source": "AI time travel learning",
-      "value": "AI-tímaferðalag til náms"
-    },
-    {
-      "key": "site.94ad4463944c3f8b6b",
-      "source": "AI tutor for difficult concepts",
-      "value": "AI-leiðbeinandi fyrir erfið hugtök"
-    },
-    {
-      "key": "site.48a4f5f1272c5615a7",
-      "source": "AI tutors by subject",
-      "value": "AI-leiðbeinendur eftir námsgrein"
-    },
-    {
-      "key": "site.1611baf2165f1a2574",
-      "source": "AI writing feedback for students",
-      "value": "AI-ritendurgjöf fyrir nemendur"
-    },
-    {
-      "key": "site.1286b1cf29ceb48cec",
-      "source": "AI Writing Tutor",
-      "value": "AI-ritunarleiðbeinandi"
-    },
-    {
-      "key": "site.423e1acbeb242376a2",
-      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
-      "value": "Svaraðu athugunarspurningu, prófaðu skref, rökræddu fullyrðingu, lagaðu drög eða búðu til upprifjunarspjöld."
-    },
-    {
-      "key": "site.066bf3fd79787c0aa0",
-      "source": "Are quizzes better than rereading?",
-      "value": "Eru próf betri en að lesa aftur?"
-    },
-    {
-      "key": "site.ce5e5792e97fe5c786",
-      "source": "Argument",
-      "value": "Rökfærsla"
-    },
-    {
-      "key": "site.8d328c362de1ca40a5",
-      "source": "Argument practice",
-      "value": "Rökfærsluæfing"
-    },
-    {
-      "key": "site.09827c7a4a4e3d49aa",
-      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
-      "value": "Spurðu hvaða spurningu sem er og lærðu með skýrum útskýringum, dæmum, framhaldsfyrirmælum og þolinmóðri AI-leiðsögn."
-    },
-    {
-      "key": "site.fffbce7dc473518ed3",
-      "source": "Ask anything",
-      "value": "Spyrðu um hvað sem er"
-    },
-    {
-      "key": "site.f6b0b688ba270161b7",
-      "source": "Ask for a hint",
-      "value": "Biddu um vísbendingu"
-    },
-    {
-      "key": "site.356cb16c463b79042c",
-      "source": "Ask for a hint, not the answer",
-      "value": "Biddu um vísbendingu, ekki svarið"
-    },
-    {
-      "key": "site.8e6e4130c7bbf6e77b",
-      "source": "Ask for a simpler explanation of the weakest concept.",
-      "value": "Biddu um einfaldari útskýringu á hugtakinu sem þú átt erfiðast með."
-    },
-    {
-      "key": "site.99d2d178dc9e3177c3",
-      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
-      "value": "Biddu um fimm spurningar sem blanda saman skilgreiningum, dæmum og yfirfærsluverkefnum."
-    },
-    {
-      "key": "site.d796999939090513b0",
-      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
-      "value": "Biddu um vísbendingar, athuganir, endurgjöf og námsáætlanir sem láta hugsunina vera hjá nemandanum."
-    },
-    {
-      "key": "site.3bc69865d77d46d0e9",
-      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
-      "value": "Biddu um að efnið sé útskýrt á einföldu máli og óskaðu síðan eftir einni samlíkingu, einu dæmi og einum algengum misskilningi."
-    },
-    {
-      "key": "site.d074052ccb5b9ac76f",
-      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
-      "value": "Spurðu mig fimm sókratískra spurninga um þetta efni. Eftir hvert svar skaltu segja mér hvaða forsendu ég notaði og hvað ég ætti að prófa næst."
-    },
-    {
-      "key": "site.9723a48c598bcb10c2",
-      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
-      "value": "Spyrðu spurninga, ögraðu hugmyndum og lærðu sögu með jarðbundnum samtölum við þekktar persónur fortíðarinnar."
-    },
-    {
-      "key": "site.d33b252b9554dc0f01",
-      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
-      "value": "Biddu söguhaminn að merkja það sem er skjalfest, ályktað eða hermt."
-    },
-    {
-      "key": "site.3084462f3cb5ab0dac",
-      "source": "Ask the real question",
-      "value": "Spyrðu raunverulegu spurninguna"
-    },
-    {
-      "key": "site.5e4f930345a16005d3",
-      "source": "Ask your first question and move straight into practice.",
-      "value": "Spurðu fyrstu spurningu þína og farðu beint í æfingu."
-    },
-    {
-      "key": "site.36933e53b48c769889",
-      "source": "Available publicly while schools can run confidential custom versions.",
-      "value": "Aðgengilegt almenningi, á meðan skólar geta keyrt trúnaðarbundnar sérútgáfur."
-    },
-    {
-      "key": "site.34fbf06e215da78420",
-      "source": "Browse every mode",
-      "value": "Skoða alla hami"
-    },
-    {
-      "key": "site.5e8f1c553ed04dfa75",
-      "source": "Browse subjects",
-      "value": "Skoða námsgreinar"
-    },
-    {
-      "key": "site.4f8a8bc9c0f6fe441f",
-      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
-      "value": "Búðu til tímapassa, farðu yfir ferðaráðlegginguna og kannaðu sögulegan heim með sögusviði, korti, tímalínu, fólki, reglum, búnaði og sönnunargögnum."
-    },
-    {
-      "key": "site.7875b72e2fb703c0d9",
-      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
-      "value": "Búðu til AI-vinnuflæði fyrir prófundirbúning með raunhæfri námsáætlun, upprifjunaræfingu, prófum, minniskortum og yfirferð á veikleikum."
-    },
-    {
-      "key": "site.718872ecb8918ccc4c",
-      "source": "Build an exam plan",
-      "value": "Búa til prófáætlun"
-    },
-    {
-      "key": "site.8a02031f85e3e14dcf",
-      "source": "Build the plan",
-      "value": "Búa til áætlunina"
-    },
-    {
-      "key": "site.e9488c9d49232e93fa",
-      "source": "Build with us",
-      "value": "Byggðu með okkur"
-    },
-    {
-      "key": "site.b9e3ec5bdae27d85d0",
-      "source": "Built for curiosity, practice, and access.",
-      "value": "Byggt fyrir forvitni, æfingu og aðgengi."
-    },
-    {
-      "key": "site.24d611d55bfd1fd36a",
-      "source": "Built from real learner behavior, not a generic chat box.",
-      "value": "Byggt út frá raunverulegri hegðun námsfólks, ekki almennum spjallreit."
-    },
-    {
-      "key": "site.a1d249a1b4ac815a08",
-      "source": "Built to be used",
-      "value": "Byggt til notkunar"
-    },
-    {
-      "key": "site.90cd9b8f0ca4389792",
-      "source": "Can AI homework help be ethical?",
-      "value": "Getur AI-heimavinnuhjálp verið siðferðileg?"
-    },
-    {
-      "key": "site.532f3af3eee8e18836",
-      "source": "Can I cite AI historical dialogue as a source?",
-      "value": "Má ég vitna í AI-sögusamtal sem heimild?"
-    },
-    {
-      "key": "site.881de22882ac1fbed1",
-      "source": "Can I use inspir without signing in?",
-      "value": "Get ég notað inspir án innskráningar?"
-    },
-    {
-      "key": "site.a71f0be5382364e0d7",
-      "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "Getur inspir hjálpað með heimavinnu án þess að ýta undir svindl?"
-    },
-    {
-      "key": "site.833b567cc0b33a57ba",
-      "source": "Check my model",
-      "value": "Athugaðu skilninginn minn"
-    },
-    {
-      "key": "site.e15170352f3cb4e2a0",
-      "source": "Check one step",
-      "value": "Athugaðu eitt skref"
-    },
-    {
-      "key": "site.52d23e52d6bee06edc",
-      "source": "Check the reasoning line by line",
-      "value": "Farðu yfir röksemdafærsluna línu fyrir línu"
-    },
-    {
-      "key": "site.db2400ba03e78eaddf",
-      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
-      "value": "Athugaðu þetta skref í lausninni minni. Ef það er rangt skaltu útskýra mistökin og gefa mér eitt næsta skref."
-    },
-    {
-      "key": "site.e706b6be9e7464a3a3",
-      "source": "Clear explanations",
-      "value": "Skýrar útskýringar"
-    },
-    {
-      "key": "site.bca4abf0832cb158fb",
-      "source": "Clear privacy boundaries",
-      "value": "Skýr friðhelgismörk"
-    },
-    {
-      "key": "site.20987f2bb05ca607b9",
-      "source": "Code Tutor",
-      "value": "Kóðaleiðbeinandi"
-    },
-    {
-      "key": "site.224abff6cabf8a8699",
-      "source": "Coding",
-      "value": "Kóðun"
-    },
-    {
-      "key": "site.ade0d50c9254cf0c94",
-      "source": "Communication",
-      "value": "Samskipti"
-    },
-    {
-      "key": "site.8b59dcfb75861bd0c0",
-      "source": "Compare the arguments",
-      "value": "Berðu röksemdirnar saman"
-    },
-    {
-      "key": "site.f9eed846f53dcbcf1e",
-      "source": "Confidential deployments",
-      "value": "Trúnaðarbundnar uppsetningar"
-    },
-    {
-      "key": "site.2e02623966f9391fac",
-      "source": "Continue",
-      "value": "Halda áfram"
-    },
-    {
-      "key": "site.11920520f8e8927eba",
-      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
-      "value": "Framlög eru velkomin frá verkfræðingum, kennurum, hönnuðum, nemendum og öllum sem vilja gera AI-nám öruggara, skýrara, aðgengilegra og gagnlegra."
-    },
-    {
-      "key": "site.2c4f32b5900b9beef7",
-      "source": "Convert misses",
-      "value": "Breyttu mistökum í æfingu"
-    },
-    {
-      "key": "site.a6644b14103ea246d4",
-      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
-      "value": "Breyttu útskýringunni í minniskort fyrir virka upprifjun og farðu aftur yfir kortin eftir mistök eða hik."
-    },
-    {
-      "key": "site.01ff1921147e28c735",
-      "source": "Create a tiny quiz",
-      "value": "Búðu til stutt próf"
-    },
-    {
-      "key": "site.f3bb93efc9b355931f",
-      "source": "Curiosity starts here",
-      "value": "Forvitnin byrjar hér"
-    },
-    {
-      "key": "site.f8bb4b90f14257ccd2",
-      "source": "Curiosity, practice, and AI that teaches.",
-      "value": "Forvitni, æfing og AI sem kennir."
-    },
-    {
-      "key": "site.5eebdef3c313d9607f",
-      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
-      "value": "Forvitið námsfólk sem vill að saga og hugmyndir séu staðsettar í samhengi, opnar fyrir rökræðu og lifandi án þess að missa sjónar á sönnunargögnum."
-    },
-    {
-      "key": "site.47857da659bedbf89a",
-      "source": "Custom AI learning spaces with data confidentiality.",
-      "value": "Sérsniðin AI-námsrými með gagnaleynd."
-    },
-    {
-      "key": "site.34f0987ebea74fc940",
-      "source": "Debate a claim",
-      "value": "Rökræddu fullyrðingu"
-    },
-    {
-      "key": "site.62563ae4f4175234eb",
-      "source": "Debate any topic",
-      "value": "Rökræddu hvaða efni sem er"
-    },
-    {
-      "key": "site.907666477e5fe34f49",
-      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
-      "value": "Rökræddu hvaða efni sem er, láttu ögra þér, berðu saman fullyrðingar og lærðu að byggja sterkari rök."
-    },
-    {
-      "key": "site.1034eb0dcf6fc1230d",
-      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
-      "value": "Rökræða hjálpar þér að greina á milli fullyrðinga, sönnunargagna, gilda og forsenda, sem gerir sögulega túlkun nákvæmari."
-    },
-    {
-      "key": "site.e1a4fa573c7f545d3c",
-      "source": "Debate the claim",
-      "value": "Rökræddu fullyrðinguna"
-    },
-    {
-      "key": "site.b1bb71c713289fd31b",
-      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
-      "value": "Rökræddu fullyrðinguna frá fleiri en einni hlið svo þú sjáir forsendur, málamiðlanir og veik sönnunargögn."
-    },
-    {
-      "key": "site.4c22a785282a7a33db",
-      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
-      "value": "Rökræddu þessa sögulegu eða heimspekilegu fullyrðingu frá báðum hliðum. Aðgreindu sönnunargögn, forsendur og gildi."
-    },
-    {
-      "key": "site.ee1229c09055721bfd",
-      "source": "Designed for confidence",
-      "value": "Hannað til að byggja öryggi"
-    },
-    {
-      "key": "site.23434ad4b2352cd83d",
-      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
-      "value": "Samþykktu ekki endurskoðaða málsgrein fyrr en þú getur útskýrt hvers vegna breytingin er betri."
-    },
-    {
-      "key": "site.761df0c823f13a98b5",
-      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
-      "value": "Biddu ekki um heildaryfirlit áður en þú þekkir undirstöðuhugmyndirnar."
-    },
-    {
-      "key": "site.c4559ce2b10f6ead02",
-      "source": "Do not debate only the side you already agree with.",
-      "value": "Rökræddu ekki aðeins hliðina sem þú ert þegar sammála."
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Skipulagning"
     },
     {
       "key": "site.00aa0ce5925c3a4939",
@@ -522,234 +17,29 @@
       "value": "Hunsa ekki hik; óvissa er gagnlegt merki um hvað þarf að rifja upp."
     },
     {
-      "key": "site.f5de131f08eb4bd5fa",
-      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
-      "value": "Láttu hlutverkaleik ekki koma í stað dagsetninga, samhengis, skjala eða merkja fyrir sönnunargögn."
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir breytir forvitni, heimavinnu, upprifjun og stórum spurningum í leiðsagðar AI-námslotur sem útskýra, spyrja til baka og hjálpa þér að æfa."
     },
     {
-      "key": "site.a5242f3ba86cd9c0f0",
-      "source": "Do not make a plan that assumes every topic needs equal time.",
-      "value": "Gerðu ekki áætlun sem gerir ráð fyrir að hvert efni þurfi jafn mikinn tíma."
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Búðu til stutt próf"
     },
     {
-      "key": "site.7d575017a3f23cd39a",
-      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "Búðu ekki til minniskort úr setningum sem þú getur ekki enn útskýrt með eigin orðum."
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Nemendur sem þurfa næsta skref, athugun á mistökum eða endurgjöf án þess að missa eignarhald á verkefninu."
     },
     {
-      "key": "site.93a88b5002dec789a8",
-      "source": "Do not paste an assignment and ask for the finished response.",
-      "value": "Límdu ekki inn verkefni og biddu um fullbúið svar."
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Byrjaðu að læra"
     },
     {
-      "key": "site.3e1a706bca15d6e1cc",
-      "source": "Do not reread notes before testing what you can already recall.",
-      "value": "Ekki lesa glósurnar aftur áður en þú prófar hvað þú manst nú þegar."
-    },
-    {
-      "key": "site.db0a85d5315d363264",
-      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
-      "value": "Slepptu ekki að sýna hvað þú hefur þegar prófað; gagnleg hjálp byggir á því samhengi."
-    },
-    {
-      "key": "site.1b7692a5742065c8fd",
-      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
-      "value": "Ekki hætta eftir fyrstu útskýringu; láttu þig svara spurningum um hana."
-    },
-    {
-      "key": "site.a2ad47724e94b66423",
-      "source": "Do not treat generated dialogue as a real quote or primary source.",
-      "value": "Líttu ekki á búið til samtal sem raunverulega tilvitnun eða frumheimild."
-    },
-    {
-      "key": "site.f328079c2a15303520",
-      "source": "Do something with it",
-      "value": "Gerðu eitthvað með það"
-    },
-    {
-      "key": "site.09b147c2709a66e103",
-      "source": "Does inspir support schools?",
-      "value": "Styður inspir skóla?"
-    },
-    {
-      "key": "site.dd7f37a9850d9ab6b4",
-      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
-      "value": "Hver leiðarvísir endar með æfingaáætlunum, leiðum og tenglum í þann námsham sem passar best."
-    },
-    {
-      "key": "site.63e69f35a1f972a2bd",
-      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
-      "value": "Hver leiðarvísir vísar á ham, fyrirmæli eða upprifjunarlykkju svo lestur geti orðið að æfingu."
-    },
-    {
-      "key": "site.9e34a7ba8c3f410aae",
-      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
-      "value": "Hver hamur opnast sem opið gestaspjall með eigin markmiði, dæmum og námsflæði, svo námsfólk geti byrjað strax með rétta tegund stuðnings."
-    },
-    {
-      "key": "site.c9e4d4f8dbab7b20de",
-      "source": "Easy next steps",
-      "value": "Auðveld næstu skref"
-    },
-    {
-      "key": "site.f1ea2357a10ef5bd80",
-      "source": "Enter a period",
-      "value": "Sláðu inn tímabil"
-    },
-    {
-      "key": "site.2ff4cd1087fbfb8275",
-      "source": "Enter the context",
-      "value": "Sláðu inn samhengið"
-    },
-    {
-      "key": "site.f854abe788da39c094",
-      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
-      "value": "Hver grein tengist flokkum, lifandi hömum, efnismiðjum, námsleiðum og skyldum leiðarvísum."
-    },
-    {
-      "key": "site.4746a3ca4c3fc9a645",
-      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
-      "value": "Hver síða utan appsins hefur nú hlutverk: að byggja traust, útskýra námsleiðina og vísa námsfólki í gagnlegt næsta skref án þess að fela mikilvægu smáatriðin."
-    },
-    {
-      "key": "site.c3ad6830e2ed444fa4",
-      "source": "Evidence-aware scenes",
-      "value": "Sviðsmyndir sem merkja sönnunargögn"
-    },
-    {
-      "key": "site.213aa4eda2224f9758",
-      "source": "Exam prep",
-      "value": "Prófundirbúningur"
-    },
-    {
-      "key": "site.0c8d16b7e3c031e1d2",
-      "source": "Exam Prep Planner",
-      "value": "Skipuleggjari prófundirbúnings"
-    },
-    {
-      "key": "site.dc0000a11294d4645d",
-      "source": "Explain it back",
-      "value": "Útskýrðu það til baka"
-    },
-    {
-      "key": "site.e2d2c3170bcfe3c7f7",
-      "source": "Explain the next step",
-      "value": "Útskýrðu næsta skref"
-    },
-    {
-      "key": "site.f976690f1b80c16cc7",
-      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
-      "value": "Útskýrðu þetta efni á einföldu máli. Nefndu þrjár undirstöðuhugmyndir sem ég þarf, eina samlíkingu og einn algengan misskilning."
-    },
-    {
-      "key": "site.0b1d98a07088fa1e3c",
-      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
-      "value": "Útskýringar, sókratísk leiðsögn, heimavinnuþjálfun, próf, minniskort, ritun, kóði, rökræða og námsáætlanir."
-    },
-    {
-      "key": "site.2cdce1dc74d4649b1d",
-      "source": "Explore History and Big Ideas With AI",
-      "value": "Kannaðu sögu og stórar hugmyndir með AI"
-    },
-    {
-      "key": "site.2c8140e7c879749da9",
-      "source": "Explore history and ideas",
-      "value": "Kannaðu sögu og hugmyndir"
-    },
-    {
-      "key": "site.31602042ce71cfc075",
-      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
-      "value": "Kannaðu sögu, þekktar persónur, orsakir, rökræður, heimspeki og heimildarýni með AI-námshömum sem aðgreina sönnunargögn frá hermun."
-    },
-    {
-      "key": "site.b79d7c1cfe675535c2",
-      "source": "Explore schools",
-      "value": "Skoða skóla"
-    },
-    {
-      "key": "site.d45ce385b1ed73f5c9",
-      "source": "Explore the guide library",
-      "value": "Skoða leiðarvísasafnið"
-    },
-    {
-      "key": "site.b330117e7dfb1d0c41",
-      "source": "Fast learning routes",
-      "value": "Hraðar námsleiðir"
-    },
-    {
-      "key": "site.c81a932350c436b565",
-      "source": "Film chapters",
-      "value": "Kaflar myndarinnar"
-    },
-    {
-      "key": "site.8d3383856ae937dbc8",
-      "source": "Flashcard Builder",
-      "value": "Minniskortasmiður"
-    },
-    {
-      "key": "site.4717d13b6ef8aea9d2",
-      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
-      "value": "Minniskort virka best þegar þau prófa eina hugmynd í einu, sýna svör aðeins eftir áreynslu og rifja fyrr upp kort sem fóru úrskeiðis."
-    },
-    {
-      "key": "site.5276ea30c955550e97",
-      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
-      "value": "Í stærðfræði eða rökfræði skaltu vinna eitt skref í einu og spyrja hvers vegna hvert skref er leyfilegt áður en þú heldur áfram."
-    },
-    {
-      "key": "site.92b41e9f0148fb0f0a",
-      "source": "For schools and CSR partners",
-      "value": "Fyrir skóla og CSR-samstarfsaðila"
-    },
-    {
-      "key": "site.2efa1e7572ca417851",
-      "source": "Foundations",
-      "value": "Grunnatriði"
-    },
-    {
-      "key": "site.0becb18dcb85b53ff1",
-      "source": "Free AI learning for everyone",
-      "value": "Ókeypis AI-nám fyrir alla"
-    },
-    {
-      "key": "site.86c7908370fe03dd0c",
-      "source": "Free AI learning for everyone | inspir",
-      "value": "Ókeypis AI-nám fyrir alla | inspir"
-    },
-    {
-      "key": "site.3fd455102b46891af2",
-      "source": "Free AI learning for everyone.",
-      "value": "Ókeypis AI-nám fyrir alla."
-    },
-    {
-      "key": "site.69e83e18f371b5ae7b",
-      "source": "Free guest learning",
-      "value": "Ókeypis gestanám"
-    },
-    {
-      "key": "site.bf94355949ee3b5c3a",
-      "source": "Free public AI learning platform",
-      "value": "Ókeypis opinn AI-námsvettvangur"
-    },
-    {
-      "key": "site.3500071337b0ad334d",
-      "source": "From the blog",
-      "value": "Af blogginu"
-    },
-    {
-      "key": "site.2334c3ba1c4723b3b9",
-      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
-      "value": "Búðu til hnitmiðað fjölvalpróf um hvaða námsgrein sem er og farðu yfir útskýringar eftir hvert svar."
-    },
-    {
-      "key": "site.9b248a2446901b4913",
-      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
-      "value": "Fáðu námsáætlun, prófaðu þig á veikleikum og breyttu mistökum í minniskort fyrir endurtekna upprifjun."
-    },
-    {
-      "key": "site.a93dc55abe6c62d5ba",
-      "source": "Get the simple model first",
-      "value": "Fáðu einfalda líkanið fyrst"
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Ritunarþjálfari"
     },
     {
       "key": "site.03a9ef834faab0396a",
@@ -757,389 +47,29 @@
       "value": "Komast úr stoppi"
     },
     {
-      "key": "site.251edb415d354f2aea",
-      "source": "Get unstuck on homework",
-      "value": "Komast áfram með heimavinnu"
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Stígðu inn í sögulegt samhengi, berðu saman rök og æfðu þig í að sjá hugmynd frá fleiri en einni hlið."
     },
     {
-      "key": "site.0cbb471bce8f56f67c",
-      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
-      "value": "Komdu þér áfram í heimavinnu með siðferðilegum vísbendingum, dæmum, athugunum og skref-fyrir-skref þjálfun."
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "efnismiðjur tengdar þörfum námsfólks"
     },
     {
-      "key": "site.50f236034a934a9dc3",
-      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
-      "value": "Gefðu endurgjöf um uppbyggingu, skýrleika og sönnunargögn. Haltu röddinni minni og endurskrifaðu ekki allt svarið."
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Lokakaflinn snýr aftur að markmiðinu: opnu aðgengi, skólum og opnari leið til náms."
     },
     {
-      "key": "site.ebcc7f2cfb4a436cbc",
-      "source": "Good first areas:",
-      "value": "Góðir staðir til að byrja á:"
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Eru próf betri en að lesa aftur?"
     },
     {
-      "key": "site.ca8d5e5cc3e33bdf88",
-      "source": "Guide library",
-      "value": "Leiðarvísasafn"
-    },
-    {
-      "key": "site.c43f3f4806786f9ef0",
-      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
-      "value": "Leiðarvísar, leiðir, námsgreinar og fyrirmæli tengja þig við næsta gagnlega stað til að æfa."
-    },
-    {
-      "key": "site.c4aeb3142173434038",
-      "source": "Helpful learning map",
-      "value": "Gagnlegt námskort"
-    },
-    {
-      "key": "site.41f4cf1baff097d685",
-      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
-      "value": "Hér er spurningin og það sem ég prófaði. Gefðu mér minnstu gagnlegu vísbendinguna, ekki lokasvarið."
-    },
-    {
-      "key": "site.5c870eec4fd9e934ac",
-      "source": "Hide film chapters",
-      "value": "Fela kafla myndarinnar"
-    },
-    {
-      "key": "site.83727dd19f3de7179d",
-      "source": "Hide film transcript",
-      "value": "Fela texta myndarinnar"
-    },
-    {
-      "key": "site.4118582bb8830474c8",
-      "source": "Hint-first help",
-      "value": "Hjálp sem byrjar á vísbendingu"
-    },
-    {
-      "key": "site.32f8688cfce862e11b",
-      "source": "Historical conversations",
-      "value": "Söguleg samtöl"
-    },
-    {
-      "key": "site.90ccd6497400b5576a",
-      "source": "History",
-      "value": "Saga"
-    },
-    {
-      "key": "site.e4e86dcdfb4072dab5",
-      "source": "Homework",
-      "value": "Heimavinna"
-    },
-    {
-      "key": "site.e210ba7bb8b7dffc72",
-      "source": "Homework Coach",
-      "value": "Heimavinnuþjálfari"
-    },
-    {
-      "key": "site.e868f882cc9301f04c",
-      "source": "How early should I make an exam prep plan?",
-      "value": "Hversu snemma ætti ég að gera prófundirbúningsáætlun?"
-    },
-    {
-      "key": "site.a06fbb33165c168d14",
-      "source": "How is inspir different from a generic AI chatbot?",
-      "value": "Hvernig er inspir ólíkt almennu AI-spjallmenni?"
-    },
-    {
-      "key": "site.1dd6a17cb4033f4f74",
-      "source": "How it works",
-      "value": "Hvernig það virkar"
-    },
-    {
-      "key": "site.3b2800f5d2c3b2c7dd",
-      "source": "How to study with AI without cheating yourself",
-      "value": "Hvernig á að læra með AI án þess að svíkja sjálfan sig"
-    },
-    {
-      "key": "site.7dcc8edc4da0e595e9",
-      "source": "how to understand a hard topic with AI",
-      "value": "hvernig á að skilja erfitt efni með AI"
-    },
-    {
-      "key": "site.427a0e65c3332fca92",
-      "source": "How to Understand a Hard Topic With AI",
-      "value": "Hvernig á að skilja erfitt efni með AI"
-    },
-    {
-      "key": "site.44845f4e3fccd01b4f",
-      "source": "Immersion",
-      "value": "Dýpkun"
-    },
-    {
-      "key": "site.8fcc7fa2ab2c9c7301",
-      "source": "Improve the draft",
-      "value": "Bættu drögin"
-    },
-    {
-      "key": "site.f09ad2640fd954f2d1",
-      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
-      "value": "Bættu ritun með skipulagningu, endurskoðun, uppbyggingu og endurgjöf sem heldur röddinni þinni óbreyttri."
-    },
-    {
-      "key": "site.78b4970d07d221fcc6",
-      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
-      "value": "Láttu spurninguna fylgja, hvað þú hefur þegar prófað, hvar þú festist og hvort þú viljir vísbendingu, skrefaskoðun eða endurgjöf."
-    },
-    {
-      "key": "site.aa6592f0c930b72b85",
-      "source": "inspir AI learning guide library",
-      "value": "AI-námsleiðarvísasafn inspir"
-    },
-    {
-      "key": "site.131a6131495bba6bfd",
-      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
-      "value": "inspir byrjaði sem próf og nemendasamfélög, óx í gegnum skóla og viðburði og notar nú AI til að gera einstaklingsmiðað nám aðgengilegra."
-    },
-    {
-      "key": "site.4d58ea095fc5f2c07f",
-      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
-      "value": "inspir er til fyrir augnablikið þegar nemandi vill skilja eitthvað og þarf þolinmóðan stað til að byrja. Myndin kynnir vöruna sem ókeypis opinn námsfélaga fyrir forvitni, æfingu og aðgengi."
-    },
-    {
-      "key": "site.646411f4ba89569311",
-      "source": "inspir in motion",
-      "value": "inspir á hreyfingu"
-    },
-    {
-      "key": "site.970b34ac6b5e964b18",
-      "source": "inspir is being built in public.",
-      "value": "inspir er þróað í opnu ferli."
-    },
-    {
-      "key": "site.0a6f330a14dcc70645",
-      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
-      "value": "inspir er skipulagt í kringum námshami með skýrum kennsluformum: vísbendingum, sókratískum spurningum, prófum, virkri upprifjun, hlutverkaleik, rökræðu, ritendurgjöf og námsáætlunum."
-    },
-    {
-      "key": "site.143952c3b348ab1dad",
-      "source": "inspir learning film",
-      "value": "inspir-námsmynd"
-    },
-    {
-      "key": "site.0122c1283c1bf98b16",
-      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
-      "value": "inspir breytir forvitni, heimavinnu, upprifjun og stórum spurningum í leiðsagðar AI-námslotur sem útskýra, spyrja til baka og hjálpa þér að æfa."
-    },
-    {
-      "key": "site.6f70af069c7834e22c",
-      "source": "inspir: You can Learn Anything",
-      "value": "inspir: Þú getur lært hvað sem er"
-    },
-    {
-      "key": "site.d0c3a432a6057385ba",
-      "source": "Is inspir free to use?",
-      "value": "Er ókeypis að nota inspir?"
-    },
-    {
-      "key": "site.8f7037bfb9e1edd520",
-      "source": "Keep the route alive",
-      "value": "Haltu leiðinni lifandi"
-    },
-    {
-      "key": "site.1582ba0451dc7c52f4",
-      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
-      "value": "Vittu hvað þú átt að prófa næst, hvers vegna skref virkar, hvar mistökin urðu og hvernig þú lagar lokasvarið með eigin rödd."
-    },
-    {
-      "key": "site.c7c9ff97842b1e33ba",
-      "source": "Learn Anything",
-      "value": "Lærðu hvað sem er"
-    },
-    {
-      "key": "site.92579c86e348294495",
-      "source": "Learn Anything prompts and study loop",
-      "value": "Fyrirmæli og námslota fyrir Lærðu hvað sem er"
-    },
-    {
-      "key": "site.2454155c3547f259bb",
-      "source": "Learn Anything With a Free AI Tutor: practical guide",
-      "value": "Lærðu hvað sem er með ókeypis AI-leiðbeinanda: hagnýtur leiðarvísir"
-    },
-    {
-      "key": "site.afee965b76409c8dcf",
-      "source": "Learn by talking, testing, debating, and exploring.",
-      "value": "Lærðu með því að tala, prófa, rökræða og kanna."
-    },
-    {
-      "key": "site.5aff981e794d4c8a7c",
-      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
-      "value": "Lærðu forritun, greindu villur, skipuleggðu verkefni, túlkaðu gögn og rannsakaðu tæknilegar spurningar með opnum AI-hömum sem halda nemandanum virkum í ferlinu."
-    },
-    {
-      "key": "site.9d218a043b632a71a9",
-      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
-      "value": "Lærðu með markvissum spurningum, vísbendingum og ígrundun í stað þess að lesa svör óvirkt."
-    },
-    {
-      "key": "site.1a88028ff9e430edae",
-      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-      "value": "Lærðu með ókeypis AI-leiðbeinanda fyrir útskýringar, sókratískar spurningar, heimavinnuþjálfun, próf, minniskort, rökræðu, ritendurgjöf, kóðahjálp og námsáætlanir."
-    },
-    {
-      "key": "site.4557ea500d921956e2",
-      "source": "Learner-first support",
-      "value": "Stuðningur sem setur námsmanninn fyrst"
-    },
-    {
-      "key": "site.c59234985540319bab",
-      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
-      "value": "Námsfólk þarf röð, ekki hrúgu af tenglum. Þessar leiðir tengja hami í hagnýtar námslotur fyrir skilning, heimavinnu, prófundirbúning og könnun."
-    },
-    {
-      "key": "site.29452fbee0c92b6985",
-      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
-      "value": "Námsfólk sem festist í upphafi nýrrar námsgreinar eða þarf einfaldari leið inn í erfiða hugmynd."
-    },
-    {
-      "key": "site.854622c01e379bda6b",
-      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
-      "value": "Námsfólk sem hefur takmarkaðan tíma, umfangsmikla námsáætlun og þarf raunhæfa leið til upprifjunar án þess að láta eins og allt skipti jafnmiklu máli."
-    },
-    {
-      "key": "site.16445da6dc0fb8f58c",
-      "source": "Learning for everyone",
-      "value": "Nám fyrir alla"
-    },
-    {
-      "key": "site.b1903b28e76fc4f22f",
-      "source": "learning guides and practice loops",
-      "value": "námsleiðarvísar og æfingalotur"
-    },
-    {
-      "key": "site.c4eef625b53068a0cb",
-      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
-      "value": "Farðu út með einfalt skilningslíkan, skarpari spurningar, dæmi sem þú getur útskýrt til baka og upprifjunarspjöld fyrir yfirferð."
-    },
-    {
-      "key": "site.249376730e992ff424",
-      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
-      "value": "Leyfðu mér að taka viðtal við þessa sögulegu persónu. Hafðu svörin meðvituð um sönnunargögn og merktu óvissu skýrt."
-    },
-    {
-      "key": "site.d4bf802ec96e3ae018",
-      "source": "Make flashcards from errors and revisit them after a delay.",
-      "value": "Búðu til minniskort úr mistökum og farðu aftur yfir þau síðar."
-    },
-    {
-      "key": "site.686e30fa1304a39944",
-      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
-      "value": "Búðu til minniskort úr mistökum, hiki, formúlum, skilgreiningum og hugtökum sem þú gast ekki útskýrt skýrt."
-    },
-    {
-      "key": "site.4006cd4d503710da94",
-      "source": "Make it stick",
-      "value": "Láttu það festast"
-    },
-    {
-      "key": "site.2ced5a7d3fe83945cc",
-      "source": "Make the idea stick",
-      "value": "Láttu hugmyndina festast"
-    },
-    {
-      "key": "site.ca6b5ec0de1b670bed",
-      "source": "Make the study plan realistic",
-      "value": "Gerðu námsáætlunina raunhæfa"
-    },
-    {
-      "key": "site.3edf0df49942da6d11",
-      "source": "Math",
-      "value": "Stærðfræði"
-    },
-    {
-      "key": "site.accca8c4b44c698f11",
-      "source": "Math Step Coach",
-      "value": "Skrefaþjálfari í stærðfræði"
-    },
-    {
-      "key": "site.8a8b5b1ba0b43a8b41",
-      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
-      "value": "Stærðfræði, ritun, kóðun, saga, heimavinna og prófundirbúningur þurfa ólíka hjálp. Byrjaðu á námsgreininni og farðu síðan í þann ham, fyrirmæli, leiðarvísi eða upprifjunarlykkju sem passar."
-    },
-    {
-      "key": "site.49a1ca68ffa8cffabd",
-      "source": "Mission first",
-      "value": "Markmiðið fyrst"
-    },
-    {
-      "key": "site.9ddbb219033e30f431",
-      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
-      "value": "Leiðarvísar fyrir hami, fyrirmælalykkjur, námsaðferðir og grunngreinar fyrir algengar námsaðstæður."
-    },
-    {
-      "key": "site.40597b496c50e06cba",
-      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
-      "value": "Farðu frá einfaldri útskýringu yfir í spurningar, dæmi og minnisæfingu."
-    },
-    {
-      "key": "site.37fe8045ce471dd45e",
-      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
-      "value": "Farðu yfir í sókratískar spurningar, próf, minniskort, rökræðu, hlutverkaleik og leiðsagða kennslu."
-    },
-    {
-      "key": "site.b3f1a868d11c99421b",
-      "source": "Mute film",
-      "value": "Slökkva á hljóði myndarinnar"
-    },
-    {
-      "key": "site.23bdaa41402cf810e7",
-      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
-      "value": "Prófið mitt er þennan dag. Hér er námsefnið, veikleikarnir mínir og tíminn sem ég hef. Gerðu raunhæfa áætlun með daglegri upprifjun."
-    },
-    {
-      "key": "site.cefd4d57efca3b4c27",
-      "source": "NCERT-aligned options",
-      "value": "Valmöguleikar í samræmi við NCERT"
-    },
-    {
-      "key": "site.5500eef9fdb1576f57",
-      "source": "Next step",
-      "value": "Næsta skref"
-    },
-    {
-      "key": "site.537fbac462af326c4e",
-      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
-      "value": "Nei. Líttu á búið til samtal sem námshermun. Vitnaðu í raunverulegar frumheimildir eða fræðilegar heimildir fyrir staðhæfingum um staðreyndir."
-    },
-    {
-      "key": "site.f398e93ba3cc1c04fd",
-      "source": "Not another answer box. A place to learn.",
-      "value": "Ekki enn einn svarreiturinn. Staður til að læra."
-    },
-    {
-      "key": "site.7ae7cdd166634a89de",
-      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
-      "value": "Opnaðu ham og byrjaðu strax, án þess að þurfa reikning fyrir opna gestaupplifun."
-    },
-    {
-      "key": "site.965e7f42f9aac32d2e",
-      "source": "Open by design",
-      "value": "Opið að hönnun"
-    },
-    {
-      "key": "site.fa270cc5e9f75bec2a",
-      "source": "Open film fullscreen",
-      "value": "Opna myndina á öllum skjánum"
-    },
-    {
-      "key": "site.f408b36efd1825ae46",
-      "source": "Open guest chat",
-      "value": "Opna gestaspjall"
-    },
-    {
-      "key": "site.2d5cd6a24ffa08f338",
-      "source": "Open subject hub",
-      "value": "Opna efnismiðju"
-    },
-    {
-      "key": "site.b4c3ee477e9ac9996c",
-      "source": "Open the exact kind of help you came for.",
-      "value": "Opnaðu nákvæmlega þá hjálp sem þú komst eftir."
-    },
-    {
-      "key": "site.6eee031ce4d05fa1f0",
-      "source": "Open the learning map",
-      "value": "Opna námskortið"
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "Hagnýtir leiðarvísar fyrir {value1}"
     },
     {
       "key": "site.08cb05cece7fcdc481",
@@ -1147,9 +77,229 @@
       "value": "Opna leiðina"
     },
     {
-      "key": "site.3e915977da1859f65b",
-      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
-      "value": "Síðurnar eru hannaðar til að færa fólk frá útskýringu yfir í lifandi ham, fyrirmæli, próf eða upprifjunarlykkju."
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Spurðu hvaða spurningu sem er og lærðu með skýrum útskýringum, dæmum, framhaldsfyrirmælum og þolinmóðri AI-leiðsögn."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Vefurinn er leið, ekki bæklingur."
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Styður inspir skóla?"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir er skipulagt í kringum námshami með skýrum kennsluformum: vísbendingum, sókratískum spurningum, prófum, virkri upprifjun, hlutverkaleik, rökræðu, ritendurgjöf og námsáætlunum."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Notaðu opna gestahami ókeypis og skoðaðu síðan vinnuna við opinn hugbúnað og leiðir til uppsetningar fyrir skóla."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Útskýringar, sókratísk leiðsögn, heimavinnuþjálfun, próf, minniskort, ritun, kóði, rökræða og námsáætlanir."
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Ókeypis AI-nám fyrir alla"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Skipuleggjari prófundirbúnings"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Komdu þér áfram í heimavinnu með siðferðilegum vísbendingum, dæmum, athugunum og skref-fyrir-skref þjálfun."
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI-prófundirbúningsskipuleggjari"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "AI-prófundirbúningsáætlun með prófum og virkri upprifjun"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Rökræða hjálpar þér að greina á milli fullyrðinga, sönnunargagna, gilda og forsenda, sem gerir sögulega túlkun nákvæmari."
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Byrjaðu á stað, tíma, sjálfsmynd, takmörkunum og merkjum fyrir sönnunargögn svo sviðsmyndin verði ekki almennur hlutverkaleikur."
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Hvað ætti ég að hafa með í heimavinnufyrirmælum?"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Framlög eru velkomin frá verkfræðingum, kennurum, hönnuðum, nemendum og öllum sem vilja gera AI-nám öruggara, skýrara, aðgengilegra og gagnlegra."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Hagnýt AI-námsleið sem færir þig frá ruglingi yfir í skýra útskýringu, sókratískar spurningar, dæmi og virka upprifjun."
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI-ritunarleiðbeinandi"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir byrjaði sem próf og nemendasamfélög, óx í gegnum skóla og viðburði og notar nú AI til að gera einstaklingsmiðað nám aðgengilegra."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir-námsmynd"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Sýna kafla myndarinnar"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Breyttu spurningunum sem þú svaraðir rangt í minniskort flokkuð eftir hugtaki, formúlu, skilgreiningu og dæmi."
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Vittu hvað þú átt að prófa næst, hvers vegna skref virkar, hvar mistökin urðu og hvernig þú lagar lokasvarið með eigin rödd."
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "AI-ritendurgjöf fyrir nemendur"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Nám fyrir alla"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI-kóðaleiðbeinandi"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Prófaðu veikleikana"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Lærðu með ókeypis AI-leiðbeinanda fyrir útskýringar, sókratískar spurningar, heimavinnuþjálfun, próf, minniskort, rökræðu, ritendurgjöf, kóðahjálp og námsáætlanir."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Notaðu rökræðu til að bera saman sterkustu fullyrðinguna og sterkustu mótrökin."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Ekki hætta eftir fyrstu útskýringu; láttu þig svara spurningum um hana."
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Hvernig það virkar"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Kóðaleiðbeinandi"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Prófundirbúningur"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Leitarsíður, bloggleiðarvísar, fyrirmæli og lifandi hamir tengjast í kringum einfalda lykkju: spyrja, prófa, athuga, laga og rifja upp."
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Kóðun"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Gagnlegt frá fyrsta smelli"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Búðu til hnitmiðað fjölvalpróf um hvaða námsgrein sem er og farðu yfir útskýringar eftir hvert svar."
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Samþykktu ekki endurskoðaða málsgrein fyrr en þú getur útskýrt hvers vegna breytingin er betri."
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Prófið mitt er þennan dag. Hér er námsefnið, veikleikarnir mínir og tíminn sem ég hef. Gerðu raunhæfa áætlun með daglegri upprifjun."
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Lærðu hvað sem er með ókeypis AI-leiðbeinanda: hagnýtur leiðarvísir"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Leyfðu mér að taka viðtal við þessa sögulegu persónu. Hafðu svörin meðvituð um sönnunargögn og merktu óvissu skýrt."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Byggt út frá raunverulegri hegðun námsfólks, ekki almennum spjallreit."
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Komast áfram með heimavinnu"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Bloggið er skipulagt í kringum raunverulegar námsaðstæður: að komast úr stoppi, muna meira, skrifa betur, undirbúa próf og kanna hugmyndir með þolinmóðum leiðbeinanda."
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Af hverju að sameina sögu og rökræðu?"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Bloggið tengir gagnleg námsráð við lifandi æfingu, svo leiðarvísir getur orðið að námslotu í einu skrefi."
     },
     {
       "key": "site.2882d30f0153bb0830",
@@ -1157,64 +307,79 @@
       "value": "Límdu inn spurninguna og það sem þú hefur prófað, og biddu síðan um minnsta gagnlega næsta skrefið."
     },
     {
-      "key": "site.8e65026ea44b665d7f",
-      "source": "Pause film",
-      "value": "Gera hlé á myndinni"
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Námsfólk sem festist í upphafi nýrrar námsgreinar eða þarf einfaldari leið inn í erfiða hugmynd."
     },
     {
-      "key": "site.dbdb42d1c0ac0f641d",
-      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
-      "value": "Settu mig á þennan tíma og stað. Merktu skjalfestar staðreyndir aðskildar frá trúverðugri hermun og spurðu hvað ég tek eftir."
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "aðgengi, fyrirmæli, prófanir, öruggari AI-hegðun, námsflæði og fágað viðmót."
     },
     {
-      "key": "site.896991ab7730a1d36f",
-      "source": "Plain-language explanations",
-      "value": "Útskýringar á einföldu máli"
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Skrifaðu nákvæmlega hvar þú festist áður en þú biður um hjálp."
     },
     {
-      "key": "site.b49c2683a7f8e9ba04",
-      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
-      "value": "Skipuleggðu prófupprifjun, búðu til próf, smíðaðu minniskort, tímasettu dreifða upprifjun og haltu hvatningu raunhæfri með markvissum AI-námshömum."
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Breyttu mistökum í æfingu"
     },
     {
-      "key": "site.88613cd9f4e52a850a",
-      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
-      "value": "Skipuleggðu vinnuna, æfðu upprifjun og lokaðu veikleikum með prófum og virkri upprifjun."
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Kannaðu sögu og hugmyndir"
     },
     {
-      "key": "site.0005027d894f6116a6",
-      "source": "Planning",
-      "value": "Skipulagning"
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Kannaðu sögu og stórar hugmyndir með AI"
     },
     {
-      "key": "site.989d43cc247b32a98b",
-      "source": "Play film",
-      "value": "Spila myndina"
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Láttu hugmyndina festast"
     },
     {
-      "key": "site.a58f0bc12b7e451fdf",
-      "source": "Play inspir learning preview",
-      "value": "Spila forsýningu á inspir-námi"
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Opna efnismiðju"
     },
     {
-      "key": "site.bca473d3438d9d87b8",
-      "source": "Popular AI learning paths",
-      "value": "Vinsælar AI-námsleiðir"
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Ritun"
     },
     {
-      "key": "site.7d6c8e4e5d444d752d",
-      "source": "Popular paths",
-      "value": "Vinsælar leiðir"
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Halda áfram"
     },
     {
-      "key": "site.3e15ac7882aa8da5f1",
-      "source": "Practice",
-      "value": "Æfing"
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Grunnatriði"
     },
     {
-      "key": "site.7e2e70fef6cf5a71bd",
-      "source": "Practice, not answer-copying",
-      "value": "Æfing, ekki afritun svara"
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Tímasettu næstu endurtekningu"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI-skrefaþjálfari í stærðfræði"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Sláðu inn samhengið"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Spyrðu raunverulegu spurninguna"
     },
     {
       "key": "site.3112ef0b944597c68c",
@@ -1227,354 +392,19 @@
       "value": "Undirbúðu þig fyrir próf"
     },
     {
-      "key": "site.b6c57c829df00235d3",
-      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
-      "value": "Hugmyndir að fyrirmælum og endurtekin námslota til að fá gagnlegar námsniðurstöður úr Lærðu hvað sem er á inspir."
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Kannaðu sögu, þekktar persónur, orsakir, rökræður, heimspeki og heimildarýni með AI-námshömum sem aðgreina sönnunargögn frá hermun."
     },
     {
-      "key": "site.de06c20ba0a01c99dc",
-      "source": "Question a figure",
-      "value": "Spyrðu persónu"
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI-rökræðuæfing"
     },
     {
-      "key": "site.35fa56b8d4c3f8c114",
-      "source": "Question a historical perspective",
-      "value": "Spyrðu sögulegt sjónarhorn"
-    },
-    {
-      "key": "site.95edfccad814282ebb",
-      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
-      "value": "Spurningar láta þig afhjúpa eigið skilningslíkan af efninu, þar sem ruglingur, falskt öryggi og vantar undirstöður koma oftast í ljós."
-    },
-    {
-      "key": "site.88a09039e843bfc240",
-      "source": "Quick answers",
-      "value": "Fljót svör"
-    },
-    {
-      "key": "site.bc370fc79f2618dd0f",
-      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
-      "value": "Prófaðu mig úr þessum efnum, ein spurning í einu. Eftir hvert svar skaltu útskýra bilið og auka erfiðleikann hægt."
-    },
-    {
-      "key": "site.5728bdb5f3eb838312",
-      "source": "Quiz me on Trivia",
-      "value": "Prófaðu mig í fróðleik"
-    },
-    {
-      "key": "site.19f05fe3613746ddec",
-      "source": "Quiz weak areas",
-      "value": "Prófaðu veikleikana"
-    },
-    {
-      "key": "site.a4cb09690b7bf7842e",
-      "source": "Quiz yourself",
-      "value": "Prófaðu þig"
-    },
-    {
-      "key": "site.6b9f48ebb7d5746120",
-      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
-      "value": "Prófaðu þig fyrst svo þú sjáir hvað þú manst í raun og hvar öryggið blekkir."
-    },
-    {
-      "key": "site.42366e2f6505c4a02c",
-      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
-      "value": "Próf sýna yfirleitt meira vegna þess að þau prófa upprifjun. Endurlestur getur hjálpað eftir að próf sýnir hvað þarf að laga."
-    },
-    {
-      "key": "site.bfa2e30751f302a55a",
-      "source": "Read the mission",
-      "value": "Lestu markmiðið"
-    },
-    {
-      "key": "site.74db8409c654eb064f",
-      "source": "Realistic schedule",
-      "value": "Raunhæf dagskrá"
-    },
-    {
-      "key": "site.666dafcaa6473bb42d",
-      "source": "Repair one miss",
-      "value": "Lagaðu ein mistök"
-    },
-    {
-      "key": "site.e1d7888585cf2df5bc",
-      "source": "Repair the weak spot",
-      "value": "Lagaðu veikleikann"
-    },
-    {
-      "key": "site.c0f85d6679730ccd89",
-      "source": "Replay",
-      "value": "Spila aftur"
-    },
-    {
-      "key": "site.a673ced8dddc550f97",
-      "source": "Restart film",
-      "value": "Byrja myndina aftur"
-    },
-    {
-      "key": "site.78da2c36ecf2d7d856",
-      "source": "Retrieval practice",
-      "value": "Upprifjunaræfing"
-    },
-    {
-      "key": "site.f41b60afa800299604",
-      "source": "Review with flashcards",
-      "value": "Rifja upp með minniskortum"
-    },
-    {
-      "key": "site.47a2ad291e423eac19",
-      "source": "Revise my draft",
-      "value": "Endurskoðaðu drögin mín"
-    },
-    {
-      "key": "site.3aac0e85b4f95cb6e7",
-      "source": "Revise without losing your voice",
-      "value": "Endurskoðaðu án þess að missa röddina"
-    },
-    {
-      "key": "site.78682f561028af9af9",
-      "source": "Save the mistake",
-      "value": "Vistaðu mistökin"
-    },
-    {
-      "key": "site.2f2777d9836d0e598e",
-      "source": "Schedule the next repetition",
-      "value": "Tímasettu næstu endurtekningu"
-    },
-    {
-      "key": "site.933329109d0358aa6a",
-      "source": "School-specific workflows",
-      "value": "Vinnuflæði sniðin að skólum"
-    },
-    {
-      "key": "site.612f92623bf6afb21f",
-      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
-      "value": "Skólar geta boðið sérmerktar AI-spjallupplifanir sem eru sniðnar að þeirra nemendum, þar á meðal efni og vinnuflæði í samræmi við NCERT, með notkun fjármagnaðri af samstarfsskólum eða CSR-stuðningi."
-    },
-    {
-      "key": "site.223227dc50ee10045f",
-      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
-      "value": "Leitarsíður, bloggleiðarvísar, fyrirmæli og lifandi hamir tengjast í kringum einfalda lykkju: spyrja, prófa, athuga, laga og rifja upp."
-    },
-    {
-      "key": "site.ed0284e84fbec7109f",
-      "source": "Separate fact from invention",
-      "value": "Aðgreindu staðreynd frá tilbúningi"
-    },
-    {
-      "key": "site.145f7b8ce293ce4921",
-      "source": "Show film chapters",
-      "value": "Sýna kafla myndarinnar"
-    },
-    {
-      "key": "site.e43628d4b042bd4701",
-      "source": "Show film transcript",
-      "value": "Sýna texta myndarinnar"
-    },
-    {
-      "key": "site.bcb54b7803dc654a46",
-      "source": "Socratic checks",
-      "value": "Sókratískar athuganir"
-    },
-    {
-      "key": "site.bfac28b8b6c02e7484",
-      "source": "Socratic Instruction",
-      "value": "Sókratísk kennsla"
-    },
-    {
-      "key": "site.b586bea1f41da28bdc",
-      "source": "Socratic tutor",
-      "value": "Sókratískur leiðbeinandi"
-    },
-    {
-      "key": "site.50de465a2e853df96b",
-      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
-      "value": "Sókratísk leiðsögn notar spurningar, tilgátur, vísbendingar og ígrundun til að byggja dýpri skilning en óvirkur lestur svara gerir."
-    },
-    {
-      "key": "site.ac03d0786921a7ada5",
-      "source": "Start a live learning session.",
-      "value": "Byrjaðu lifandi námslotu."
-    },
-    {
-      "key": "site.f62cc1ec8e8e6beb64",
-      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
-      "value": "Byrjaðu um leið og þú veist prófdaginn. Ef tíminn er knappur skaltu forgangsraða veikleikum, spurningum í prófstíl og daglegri upprifjun."
-    },
-    {
-      "key": "site.a6192a1d04229aa735",
-      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
-      "value": "Byrjaðu á að biðja um einfalda útskýringu, eina hversdagslega samlíkingu og þrjár hugmyndir sem þú þarft áður en efnið verður skiljanlegt."
-    },
-    {
-      "key": "site.4e5e24e4f3160a1073",
-      "source": "Start each session with a quick quiz before rereading.",
-      "value": "Byrjaðu hverja lotu á stuttu prófi áður en þú lest aftur."
-    },
-    {
-      "key": "site.b3b270e133dd3c1318",
-      "source": "Start from first principles",
-      "value": "Byrjaðu á frumforsendum"
-    },
-    {
-      "key": "site.ee45c49a07ace8c741",
-      "source": "Start from the subject, then open the right learning mode.",
-      "value": "Byrjaðu á námsgreininni og opnaðu síðan rétta námshaminn."
-    },
-    {
-      "key": "site.e37d17cc6975fc35f3",
-      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
-      "value": "Byrjaðu á því sem þú skilur ekki og fáðu einfalt skilningslíkan, dæmi og næstu skref."
-    },
-    {
-      "key": "site.02d279ce2f7b58c890",
-      "source": "Start learning",
-      "value": "Byrjaðu að læra"
-    },
-    {
-      "key": "site.7bf5c783e0e45dbcba",
-      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
-      "value": "Byrjaðu með efni, verkefni, drög, próf eða hugmynd í hamnum sem passar verkinu."
-    },
-    {
-      "key": "site.aa8c9f9d46e3c16f1f",
-      "source": "Start with Learn Anything",
-      "value": "Byrjaðu með Lærðu hvað sem er"
-    },
-    {
-      "key": "site.1153fe30b38ef9826f",
-      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
-      "value": "Byrjaðu á stað, tíma, sjálfsmynd, takmörkunum og merkjum fyrir sönnunargögn svo sviðsmyndin verði ekki almennur hlutverkaleikur."
-    },
-    {
-      "key": "site.53cdd9cd009f737f93",
-      "source": "Start with the job you need done.",
-      "value": "Byrjaðu á verkinu sem þú þarft að leysa."
-    },
-    {
-      "key": "site.3ab933be8f0526fa38",
-      "source": "State the stuck point",
-      "value": "Segðu hvar þú festist"
-    },
-    {
-      "key": "site.ea0fe8464cc555a772",
-      "source": "Step checks",
-      "value": "Skrefaskoðanir"
-    },
-    {
-      "key": "site.047526cdb6421387d4",
-      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
-      "value": "Stígðu inn í sögulegt samhengi, berðu saman rök og æfðu þig í að sjá hugmynd frá fleiri en einni hlið."
-    },
-    {
-      "key": "site.02784cd57d167ffd6b",
-      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
-      "value": "Nemendur sem þurfa næsta skref, athugun á mistökum eða endurgjöf án þess að missa eignarhald á verkefninu."
-    },
-    {
-      "key": "site.651348d1cb2b1a6e85",
-      "source": "Study loops, AI tutoring guides, and practical prompts.",
-      "value": "Námslotur, AI-leiðsagnarvísar og hagnýt fyrirmæli."
-    },
-    {
-      "key": "site.04b79d7d3d9d8596f4",
-      "source": "subject hubs mapped to learner needs",
-      "value": "efnismiðjur tengdar þörfum námsfólks"
-    },
-    {
-      "key": "site.c3c058c289d430b423",
-      "source": "Summarize the context",
-      "value": "Taktu samhengið saman"
-    },
-    {
-      "key": "site.3ff20108ad7694163a",
-      "source": "Supports extracurricular learning, academic practice, and curiosity.",
-      "value": "Styður nám utan skóla, fræðilega æfingu og forvitni."
-    },
-    {
-      "key": "site.9a3eb7e1dfc6d450f8",
-      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
-      "value": "Skiptu yfir í spurningar svo þú getir afhjúpað forsendur og fyllt í eyður í stað þess að lesa svarið óvirkt."
-    },
-    {
-      "key": "site.88a9fea69240291a5f",
-      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
-      "value": "Talaðu við sögulega persónu og haltu búnu til samtali aðskildu frá skjalfestum tilvitnunum."
-    },
-    {
-      "key": "site.77fa2b3ec987ab1aa4",
-      "source": "Talk to a historical person",
-      "value": "Talaðu við sögulega persónu"
-    },
-    {
-      "key": "site.9df89025b4bd1ee045",
-      "source": "talk to historical figures AI",
-      "value": "tala við sögulegar persónur með AI"
-    },
-    {
-      "key": "site.a2239be0c7855e64bf",
-      "source": "Test before review",
-      "value": "Prófaðu áður en þú rifjar upp"
-    },
-    {
-      "key": "site.6da5b23e718ca9e323",
-      "source": "Test the argument",
-      "value": "Prófaðu rökin"
-    },
-    {
-      "key": "site.5223abcc7a10e74cff",
-      "source": "Test your reasoning",
-      "value": "Prófaðu röksemdafærsluna þína"
-    },
-    {
-      "key": "site.27ab1313ce5cd637c8",
-      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
-      "value": "Bloggið tengir gagnleg námsráð við lifandi æfingu, svo leiðarvísir getur orðið að námslotu í einu skrefi."
-    },
-    {
-      "key": "site.2612682890bf429128",
-      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
-      "value": "Bloggið er skipulagt í kringum raunverulegar námsaðstæður: að komast úr stoppi, muna meira, skrifa betur, undirbúa próf og kanna hugmyndir með þolinmóðum leiðbeinanda."
-    },
-    {
-      "key": "site.d9c636955d36e0ee3a",
-      "source": "The broader open-source inspir platform.",
-      "value": "Víðari inspir-vettvangurinn sem opinn hugbúnaður."
-    },
-    {
-      "key": "site.059c79ee431bfc4427",
-      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
-      "value": "Lokakaflinn snýr aftur að markmiðinu: opnu aðgengi, skólum og opnari leið til náms."
-    },
-    {
-      "key": "site.9c2dd1d68f53e68960",
-      "source": "The current inspirlearning.com rebuild.",
-      "value": "Núverandi endurbygging inspirlearning.com."
-    },
-    {
-      "key": "site.e92b2222fa496b32ce",
-      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "Myndin færist frá innblæstri yfir í hagnýta loforðið: þolinmóðan AI-námsfélaga."
-    },
-    {
-      "key": "site.7e6ed2d38c989652c5",
-      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
-      "value": "Heimavinnu- og sókratísku hamirnir eru hannaðir í kringum vísbendingar, rökhugsun, skrefaskoðanir og útskýringar nemandans í stað þess að afhenda einfaldlega fullbúin svör."
-    },
-    {
-      "key": "site.58be6769f6599885a2",
-      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
-      "value": "Miðhlutinn setur inspir í samhengi við skilning, vísbendingar, próf og virkar námslykkjur."
-    },
-    {
-      "key": "site.6bc1b280c55aceeb1b",
-      "source": "The next-generation AI study platform.",
-      "value": "Næsta kynslóð AI-námsvettvangs."
-    },
-    {
-      "key": "site.59b5ab693533b9d350",
-      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
-      "value": "Upphafsrammarnir stilla námi upp sem einhverju sem allir ættu að geta byrjað strax."
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Söguleg samtöl"
     },
     {
       "key": "site.33237ba4c491cb9422",
@@ -1582,79 +412,44 @@
       "value": "Opni vefurinn er byggður eins og námskort: lifandi hamir fyrir tafarlausa hjálp, efnismiðjur fyrir spurningar námsfólks og leiðarvísar sem breyta lestri í aðgerð."
     },
     {
-      "key": "site.09ad4dd2ea0c36ebb3",
-      "source": "The site is a route, not a brochure.",
-      "value": "Vefurinn er leið, ekki bæklingur."
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Skrifaðu þriggja setninga útskýringu án þess að horfa og biddu síðan sókratíska haminn að finna veikasta hlekkinn."
     },
     {
-      "key": "site.f875dfe94a0d5ef0d2",
-      "source": "Think deeper",
-      "value": "Hugsaðu dýpra"
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Rökræddu fullyrðingu"
     },
     {
-      "key": "site.534f9712426325b6e2",
-      "source": "Time travel",
-      "value": "Tímaferðalag"
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Skoða alla hami"
     },
     {
-      "key": "site.e380cdbfb5a190fcaf",
-      "source": "Topic clusters",
-      "value": "Efnisklasar"
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Af blogginu"
     },
     {
-      "key": "site.5bcd602254f322e5e2",
-      "source": "Transcript",
-      "value": "Textauppskrift"
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Biddu um vísbendingu, ekki svarið"
     },
     {
-      "key": "site.504b702ceedfaa1372",
-      "source": "Travel through a period",
-      "value": "Ferðastu um tímabil"
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Spyrðu sögulegt sjónarhorn"
     },
     {
-      "key": "site.9219f300e6d6741265",
-      "source": "Try Homework Coach",
-      "value": "Prófaðu Heimavinnuþjálfara"
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Aðgengilegt almenningi, á meðan skólar geta keyrt trúnaðarbundnar sérútgáfur."
     },
     {
-      "key": "site.e71a79ec223bf638e0",
-      "source": "Turn it into flashcards",
-      "value": "Breyttu því í minniskort"
-    },
-    {
-      "key": "site.654996be2022b987df",
-      "source": "Turn misses into review loops",
-      "value": "Breyttu mistökum í upprifjunarlykkjur"
-    },
-    {
-      "key": "site.b510debc2ba94dfda6",
-      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
-      "value": "Breyttu glósum eða efnum í markviss minniskort með vísbendingum, svörum, dæmum og algengum gildrum."
-    },
-    {
-      "key": "site.477b50d4abd0da659b",
-      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
-      "value": "Breyttu leiðréttu mistökunum í minniskort eða stuttan gátlista fyrir seinna."
-    },
-    {
-      "key": "site.48a08f580119dbfd04",
-      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
-      "value": "Breyttu útskýringunni í kort fyrir virka upprifjun með einu hugtakakorti, einu dæmakorti og einu misskilningskorti."
-    },
-    {
-      "key": "site.ff1a7c17f19c22b5eb",
-      "source": "Turn the hardest missed question into a flashcard and review it later.",
-      "value": "Breyttu erfiðustu spurningunni sem þú misstir af í minniskort og rifjaðu hana upp síðar."
-    },
-    {
-      "key": "site.148eb6fc9a6b1b8134",
-      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
-      "value": "Breyttu spurningunum sem þú svaraðir rangt í minniskort flokkuð eftir hugtaki, formúlu, skilgreiningu og dæmi."
-    },
-    {
-      "key": "site.3e23220342351e6253",
-      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
-      "value": "Breyttu námsefni, prófdegi, tíma og veikleikum í hagnýta námsáætlun."
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Farðu yfir í sókratískar spurningar, próf, minniskort, rökræðu, hlutverkaleik og leiðsagða kennslu."
     },
     {
       "key": "site.3a056d0d453e66afed",
@@ -1662,9 +457,114 @@
       "value": "Skildu erfitt efni"
     },
     {
-      "key": "site.7142cc64953587182b",
-      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
-      "value": "Skildu sögulegt samhengi, spurðu sjónarhorn, berðu saman fullyrðingar og aðgreindu hermun frá skjalfestri staðreynd."
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Endurskoðaðu án þess að missa röddina"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Segðu hvar þú festist"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Hvernig á að læra með AI án þess að svíkja sjálfan sig"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Biddu um að efnið sé útskýrt á einföldu máli og óskaðu síðan eftir einni samlíkingu, einu dæmi og einum algengum misskilningi."
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI-tímaferðalag til náms"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Æfing"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Ekki lesa glósurnar aftur áður en þú prófar hvað þú manst nú þegar."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Breyttu námsefni, prófdegi, tíma og veikleikum í hagnýta námsáætlun."
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Síðurnar eru hannaðar til að færa fólk frá útskýringu yfir í lifandi ham, fyrirmæli, próf eða upprifjunarlykkju."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "AI-heimavinnuhjálp án svindls"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Stærðfræði"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Leiðbeinandi fyrir fyrstu spurninguna"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Ókeypis AI-nám fyrir alla."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Styður nám utan skóla, fræðilega æfingu og forvitni."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI-minniskort og virk upprifjun: hvernig þú manst meira"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Láttu það festast"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Farðu frá einfaldri útskýringu yfir í spurningar, dæmi og minnisæfingu."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Hjálp sem byrjar á vísbendingu"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Hér er spurningin og það sem ég prófaði. Gefðu mér minnstu gagnlegu vísbendinguna, ekki lokasvarið."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Próf sýna yfirleitt meira vegna þess að þau prófa upprifjun. Endurlestur getur hjálpað eftir að próf sýnir hvað þarf að laga."
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Svaraðu athugunarspurningu, prófaðu skref, rökræddu fullyrðingu, lagaðu drög eða búðu til upprifjunarspjöld."
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Hvernig á að skilja erfitt efni með AI"
     },
     {
       "key": "site.43417b2770a6aa9b4b",
@@ -1672,59 +572,64 @@
       "value": "Skildu kóða, greindu villur, lærðu forritunarhugtök og byggðu lítil verkefni skref fyrir skref."
     },
     {
-      "key": "site.555550019c0610a389",
-      "source": "Unmute film",
-      "value": "Kveikja á hljóði myndarinnar"
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Virk æfing"
     },
     {
-      "key": "site.5837baa2f3fd477b73",
-      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
-      "value": "Notaðu AI sem þjálfara fyrir skilning, æfingu og endurgjöf í stað flýtileiðar sem fjarlægir námið hljóðlega."
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Dýpkun"
     },
     {
-      "key": "site.e6ef6fb29b1c837901",
-      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
-      "value": "Notaðu AI-heimavinnuþjálfun fyrir vísbendingar, skrefaskoðanir, stærðfræðirök og ritendurgjöf, á meðan lokaverkið er áfram þitt."
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Stuðningur sem setur námsmanninn fyrst"
     },
     {
-      "key": "site.9a8c3a87f33267391f",
-      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
-      "value": "Notaðu AI-tímaferðalag, söguleg samtöl og rökræðuæfingu til að kanna samhengi, sönnunargögn, rök og sjónarhorn."
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Minniskort virka best þegar þau prófa eina hugmynd í einu, sýna svör aðeins eftir áreynslu og rifja fyrr upp kort sem fóru úrskeiðis."
     },
     {
-      "key": "site.ca2809d878b3d8d4bf",
-      "source": "use client",
-      "value": "use client"
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Hver síða utan appsins hefur nú hlutverk: að byggja traust, útskýra námsleiðina og vísa námsfólki í gagnlegt næsta skref án þess að fela mikilvægu smáatriðin."
     },
     {
-      "key": "site.1ae09bc3eef4a70662",
-      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
-      "value": "Notaðu rökræðu til að bera saman sterkustu fullyrðinguna og sterkustu mótrökin."
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Breyttu leiðréttu mistökunum í minniskort eða stuttan gátlista fyrir seinna."
     },
     {
-      "key": "site.981c30512d55fc31b6",
-      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
-      "value": "Notaðu vísbendingar, skrefaskoðanir og ritendurgjöf án þess að breyta náminu í afritun svara."
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Sérsniðin AI-námsrými með gagnaleynd."
     },
     {
-      "key": "site.7365f708ac121cec86",
-      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "Notaðu inspir fyrir endurgjöf um ritgerðir, lestrarstuðning, talæfingu, heimildarýni og endurskoðunarlykkjur sem bæta uppbyggingu án þess að skipta út rödd nemandans."
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Endurskoðaðu drögin mín"
     },
     {
-      "key": "site.6aada9efddc2925e91",
-      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "Notaðu inspir fyrir heimavinnuvísbendingar, skrefaskoðanir í stærðfræði, ritendurgjöf, heimildarýni, sókratískar spurningar og minniskort án þess að afhjúpa einkaspjöll."
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Breyttu útskýringunni í kort fyrir virka upprifjun með einu hugtakakorti, einu dæmakorti og einu misskilningskorti."
     },
     {
-      "key": "site.5419b0585afa54c629",
-      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "Notaðu inspir fyrir skref-fyrir-skref stærðfræðihjálp, heimavinnuvísbendingar, sókratíska rökhugsun, próf, minniskort og prófundirbúning án afritunar svara."
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "AI-leiðbeinendur eftir námsgrein"
     },
     {
-      "key": "site.0af3b33b94561f1ce4",
-      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
-      "value": "Notaðu opna gestahami ókeypis og skoðaðu síðan vinnuna við opinn hugbúnað og leiðir til uppsetningar fyrir skóla."
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Markmiðið fyrst"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Rökræddu þessa sögulegu eða heimspekilegu fullyrðingu frá báðum hliðum. Aðgreindu sönnunargögn, forsendur og gildi."
     },
     {
       "key": "site.4cfe6ba8b15db0b7c1",
@@ -1732,99 +637,9 @@
       "value": "Notaðu sókratískar spurningar"
     },
     {
-      "key": "site.9963920c7bdac40912",
-      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
-      "value": "Notaðu prófdaginn, námsefnið, tiltækan tíma og veikleika til að búa til áætlun sem þolir raunverulegt líf."
-    },
-    {
-      "key": "site.5917147366ea1099e5",
-      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
-      "value": "Notaðu tengda leiðarvísinn, fyrirmælin, efnismiðjuna eða námsleiðina til að rifja veikleikann upp síðar."
-    },
-    {
-      "key": "site.cedb4e92bf7b0e0fcc",
-      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
-      "value": "Notaðu ritendurgjöf fyrir uppbyggingu, skýrleika og sönnunargögn á meðan lokadrögin eru greinilega þín."
-    },
-    {
-      "key": "site.22ae52c971e1606ead",
-      "source": "Useful from the first click",
-      "value": "Gagnlegt frá fyrsta smelli"
-    },
-    {
-      "key": "site.83d51c9d18fe71ac90",
-      "source": "Video controls",
-      "value": "Myndbandsstýringar"
-    },
-    {
-      "key": "site.a7e51103cd6606a2ba",
-      "source": "Video progress",
-      "value": "Framvinda myndbands"
-    },
-    {
-      "key": "site.5075ec6fde28bf0c22",
-      "source": "Voice-preserving feedback",
-      "value": "Endurgjöf sem varðveitir röddina"
-    },
-    {
-      "key": "site.b403b9e2441bca4f6a",
-      "source": "Watch 31s",
-      "value": "Horfa í 31 s"
-    },
-    {
-      "key": "site.dd4a106d8c6a7587bb",
-      "source": "Weak-area loops",
-      "value": "Lykkjur fyrir veikleika"
-    },
-    {
-      "key": "site.dd89c6eec7302a5fa6",
-      "source": "What an AI learning companion should do for everyone",
-      "value": "Hvað AI-námsfélagi ætti að gera fyrir alla"
-    },
-    {
-      "key": "site.c180ca03873f371014",
-      "source": "What learners usually ask before they start.",
-      "value": "Það sem námsfólk spyr yfirleitt um áður en það byrjar."
-    },
-    {
-      "key": "site.991dc86bc00526d618",
-      "source": "What should I ask first when a topic feels too hard?",
-      "value": "Hvað ætti ég að spyrja fyrst þegar efni virðist of erfitt?"
-    },
-    {
-      "key": "site.1176f58d853e6b6bc6",
-      "source": "What should I include in a homework prompt?",
-      "value": "Hvað ætti ég að hafa með í heimavinnufyrirmælum?"
-    },
-    {
-      "key": "site.fb2dbad141ac041ae2",
-      "source": "What you can do",
-      "value": "Það sem þú getur gert"
-    },
-    {
-      "key": "site.abf643921ca1c59909",
-      "source": "White-labelled school AI",
-      "value": "Sérmerkt skóla-AI"
-    },
-    {
-      "key": "site.9884d6321db182435a",
-      "source": "Why a Socratic AI tutor can make ideas stick",
-      "value": "Af hverju sókratískur AI-leiðbeinandi getur látið hugmyndir festast"
-    },
-    {
-      "key": "site.26e66d2c403929d540",
-      "source": "Why combine history with debate?",
-      "value": "Af hverju að sameina sögu og rökræðu?"
-    },
-    {
-      "key": "site.cb3f19f849d9a614f6",
-      "source": "Why use Socratic questions after an explanation?",
-      "value": "Af hverju að nota sókratískar spurningar eftir útskýringu?"
-    },
-    {
-      "key": "site.b8a5730cebdd9b8c2d",
-      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
-      "value": "Vinndu þig í gegnum algebru, örsmæðareikning, orðadæmi og stærðfræðihugtök eitt skref í einu með AI-þjálfara."
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir er til fyrir augnablikið þegar nemandi vill skilja eitthvað og þarf þolinmóðan stað til að byrja. Myndin kynnir vöruna sem ókeypis opinn námsfélaga fyrir forvitni, æfingu og aðgengi."
     },
     {
       "key": "site.4e2149136bd53c413f",
@@ -1832,29 +647,9 @@
       "value": "Vinna í gegnum stærðfræðiskref"
     },
     {
-      "key": "site.3437548ca48afa1053",
-      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
-      "value": "Skrifaðu þriggja setninga útskýringu án þess að horfa og biddu síðan sókratíska haminn að finna veikasta hlekkinn."
-    },
-    {
-      "key": "site.2b690267ad064f9d94",
-      "source": "Write exactly where you got stuck before asking for help.",
-      "value": "Skrifaðu nákvæmlega hvar þú festist áður en þú biður um hjálp."
-    },
-    {
-      "key": "site.2dabb8334b6cbbc196",
-      "source": "Writing",
-      "value": "Ritun"
-    },
-    {
-      "key": "site.031857a0f03861e726",
-      "source": "Writing Coach",
-      "value": "Ritunarþjálfari"
-    },
-    {
-      "key": "site.572dd800fbaae05945",
-      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
-      "value": "Já, þegar hún gefur vísbendingar, athugar röksemdafærslu, útskýrir mistök og biður þig að búa til lokasvarið í stað þess að skrifa það fyrir þig."
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Byrjaðu hverja lotu á stuttu prófi áður en þú lest aftur."
     },
     {
       "key": "site.4eb7825da66025f6ae",
@@ -1862,9 +657,314 @@
       "value": "Já. Opin efnisspjöll eins og Lærðu hvað sem er, Sókratísk kennsla, Heimavinnuþjálfari, próf og minniskort opnast beint í gestaham."
     },
     {
-      "key": "site.8a7aa2b153eb463026",
-      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "Já. Skólar geta fyrst notað opnu vöruna og síðan rætt sérsniðin AI-námsrými með skólasértækum vinnuflæðum, trúnaði og fjármögnuðum aðgangsleiðum."
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Búðu til tímapassa, farðu yfir ferðaráðlegginguna og kannaðu sögulegan heim með sögusviði, korti, tímalínu, fólki, reglum, búnaði og sönnunargögnum."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Ferðastu um tímabil"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Endurgjöf sem varðveitir röddina"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sókratísk leiðsögn notar spurningar, tilgátur, vísbendingar og ígrundun til að byggja dýpri skilning en óvirkur lestur svara gerir."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Gefðu endurgjöf um uppbyggingu, skýrleika og sönnunargögn. Haltu röddinni minni og endurskrifaðu ekki allt svarið."
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Prófaðu röksemdafærsluna þína"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Í stærðfræði eða rökfræði skaltu vinna eitt skref í einu og spyrja hvers vegna hvert skref er leyfilegt áður en þú heldur áfram."
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Farðu yfir röksemdafærsluna línu fyrir línu"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Má ég vitna í AI-sögusamtal sem heimild?"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Tímaferðalag"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Nei. Líttu á búið til samtal sem námshermun. Vitnaðu í raunverulegar frumheimildir eða fræðilegar heimildir fyrir staðhæfingum um staðreyndir."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Byrjaðu á verkinu sem þú þarft að leysa."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Notaðu inspir fyrir skref-fyrir-skref stærðfræðihjálp, heimavinnuvísbendingar, sókratíska rökhugsun, próf, minniskort og prófundirbúning án afritunar svara."
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Næsta skref"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Kveikja á hljóði myndarinnar"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Prófaðu mig í fróðleik"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Já, þegar hún gefur vísbendingar, athugar röksemdafærslu, útskýrir mistök og biður þig að búa til lokasvarið í stað þess að skrifa það fyrir þig."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Notaðu AI sem þjálfara fyrir skilning, æfingu og endurgjöf í stað flýtileiðar sem fjarlægir námið hljóðlega."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Miðhlutinn setur inspir í samhengi við skilning, vísbendingar, próf og virkar námslykkjur."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Notaðu tengda leiðarvísinn, fyrirmælin, efnismiðjuna eða námsleiðina til að rifja veikleikann upp síðar."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Upphafsrammarnir stilla námi upp sem einhverju sem allir ættu að geta byrjað strax."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Lærðu forritun, greindu villur, skipuleggðu verkefni, túlkaðu gögn og rannsakaðu tæknilegar spurningar með opnum AI-hömum sem halda nemandanum virkum í ferlinu."
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Textauppskrift"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Fela kafla myndarinnar"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Spurðu fyrstu spurningu þína og farðu beint í æfingu."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Skoða námsgreinar"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Forvitið námsfólk sem vill að saga og hugmyndir séu staðsettar í samhengi, opnar fyrir rökræðu og lifandi án þess að missa sjónar á sönnunargögnum."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Skólar geta boðið sérmerktar AI-spjallupplifanir sem eru sniðnar að þeirra nemendum, þar á meðal efni og vinnuflæði í samræmi við NCERT, með notkun fjármagnaðri af samstarfsskólum eða CSR-stuðningi."
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Rökræddu hvaða efni sem er"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI-námsáætlun"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Hver leiðarvísir vísar á ham, fyrirmæli eða upprifjunarlykkju svo lestur geti orðið að æfingu."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir á hreyfingu"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Námslotur, AI-leiðsagnarvísar og hagnýt fyrirmæli."
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Breyttu mistökum í upprifjunarlykkjur"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI-áætlun fyrir prófundirbúning"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Hagnýtur leiðarvísir um að nota Lærðu hvað sem er á inspir til að byggja grunninn, með fyrirmælum, námslotum og öruggari AI-venjum."
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Lagaðu ein mistök"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Búðu til minniskort úr mistökum, hiki, formúlum, skilgreiningum og hugtökum sem þú gast ekki útskýrt skýrt."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Ókeypis gestanám"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Notaðu inspir fyrir heimavinnuvísbendingar, skrefaskoðanir í stærðfræði, ritendurgjöf, heimildarýni, sókratískar spurningar og minniskort án þess að afhjúpa einkaspjöll."
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Prófaðu þig fyrst svo þú sjáir hvað þú manst í raun og hvar öryggið blekkir."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Næsta kynslóð AI-námsvettvangs."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Þú getur prófað opna námshami ókeypis. Vistuð spjöll, reikningar, stjórnendatól og notendagögn haldast einkamál."
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Prófaðu rökin"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Opna námskortið"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "AI-minniskort fyrir upprifjun"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Þú getur lært hvað sem er"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Skildu sögulegt samhengi, spurðu sjónarhorn, berðu saman fullyrðingar og aðgreindu hermun frá skjalfestri staðreynd."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Búa til prófáætlun"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Notaðu inspir fyrir endurgjöf um ritgerðir, lestrarstuðning, talæfingu, heimildarýni og endurskoðunarlykkjur sem bæta uppbyggingu án þess að skipta út rödd nemandans."
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Raunhæf dagskrá"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Biddu ekki um heildaryfirlit áður en þú þekkir undirstöðuhugmyndirnar."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Talaðu við sögulega persónu"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Vistaðu mistökin"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Búðu til AI-vinnuflæði fyrir prófundirbúning með raunhæfri námsáætlun, upprifjunaræfingu, prófum, minniskortum og yfirferð á veikleikum."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Láttu spurninguna fylgja, hvað þú hefur þegar prófað, hvar þú festist og hvort þú viljir vísbendingu, skrefaskoðun eða endurgjöf."
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Upprifjunaræfing"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Opnaðu ham og byrjaðu strax, án þess að þurfa reikning fyrir opna gestaupplifun."
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Byrjaðu með efni, verkefni, drög, próf eða hugmynd í hamnum sem passar verkinu."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Búðu ekki til minniskort úr setningum sem þú getur ekki enn útskýrt með eigin orðum."
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Vinsælar leiðir"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "hvernig á að skilja erfitt efni með AI"
     },
     {
       "key": "site.7e0d4a8f0b3a3c531c",
@@ -1872,9 +972,909 @@
       "value": "Já. Opnu gestanámshamirnir eru hannaðir fyrir ókeypis aðgang, svo námsfólk getur byrjað án skólaútgáfu eða greidds reiknings."
     },
     {
-      "key": "site.6ca3eede4c1406628d",
-      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
-      "value": "Þú getur prófað opna námshami ókeypis. Vistuð spjöll, reikningar, stjórnendatól og notendagögn haldast einkamál."
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Æfing, ekki afritun svara"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Heimavinnu- og sókratísku hamirnir eru hannaðir í kringum vísbendingar, rökhugsun, skrefaskoðanir og útskýringar nemandans í stað þess að afhenda einfaldlega fullbúin svör."
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Athugaðu skilninginn minn"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Fela texta myndarinnar"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Myndbandsstýringar"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Námsfólk sem hefur takmarkaðan tíma, umfangsmikla námsáætlun og þarf raunhæfa leið til upprifjunar án þess að láta eins og allt skipti jafnmiklu máli."
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Ókeypis AI-nám fyrir alla | inspir"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Get ég notað inspir án innskráningar?"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Skipuleggðu vinnuna, æfðu upprifjun og lokaðu veikleikum með prófum og virkri upprifjun."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Fljót svör"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Talaðu við sögulega persónu og haltu búnu til samtali aðskildu frá skjalfestum tilvitnunum."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Útskýringar á einföldu máli"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Búa til áætlunina"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Taktu saman sögusviðið, takmarkanirnar og sönnunargögnin eftir hermunina."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Já. Skólar geta fyrst notað opnu vöruna og síðan rætt sérsniðin AI-námsrými með skólasértækum vinnuflæðum, trúnaði og fjármögnuðum aðgangsleiðum."
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Stærðfræði, ritun, kóðun, saga, heimavinna og prófundirbúningur þurfa ólíka hjálp. Byrjaðu á námsgreininni og farðu síðan í þann ham, fyrirmæli, leiðarvísi eða upprifjunarlykkju sem passar."
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Berðu röksemdirnar saman"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Yfirferð með virkri upprifjun"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Rökfærsluæfing"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Minniskortasmiður"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Gera hlé á myndinni"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Biddu um einfaldari útskýringu á hugtakinu sem þú átt erfiðast með."
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Haltu leiðinni lifandi"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Bættu drögin"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Rökræddu hvaða efni sem er, láttu ögra þér, berðu saman fullyrðingar og lærðu að byggja sterkari rök."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Saga"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Getur AI-heimavinnuhjálp verið siðferðileg?"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Prófaðu Heimavinnuþjálfara"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Fyrirmæli og námslota fyrir Lærðu hvað sem er"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Safn {value1}-leiðarvísa fyrir nám sem verður að verki."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Fyrir skóla og CSR-samstarfsaðila"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Vinnuflæði sniðin að skólum"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Límdu ekki inn verkefni og biddu um fullbúið svar."
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "AI-leiðbeinandi fyrir erfið hugtök"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Aðgerð eftir lestur"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Spurningar láta þig afhjúpa eigið skilningslíkan af efninu, þar sem ruglingur, falskt öryggi og vantar undirstöður koma oftast í ljós."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Opið að hönnun"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir er þróað í opnu ferli."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Spyrðu spurninga, ögraðu hugmyndum og lærðu sögu með jarðbundnum samtölum við þekktar persónur fortíðarinnar."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Notaðu vísbendingar, skrefaskoðanir og ritendurgjöf án þess að breyta náminu í afritun svara."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Af hverju sókratískur AI-leiðbeinandi getur látið hugmyndir festast"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Spila myndina"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Hvað ætti ég að spyrja fyrst þegar efni virðist of erfitt?"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI-heimavinnuþjálfari"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Notaðu prófdaginn, námsefnið, tiltækan tíma og veikleika til að búa til áætlun sem þolir raunverulegt líf."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Biddu um fimm spurningar sem blanda saman skilgreiningum, dæmum og yfirfærsluverkefnum."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Skiptu yfir í spurningar svo þú getir afhjúpað forsendur og fyllt í eyður í stað þess að lesa svarið óvirkt."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Notaðu AI-tímaferðalag, söguleg samtöl og rökræðuæfingu til að kanna samhengi, sönnunargögn, rök og sjónarhorn."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Fáðu námsáætlun, prófaðu þig á veikleikum og breyttu mistökum í minniskort fyrir endurtekna upprifjun."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Núverandi endurbygging inspirlearning.com."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Lærðu með markvissum spurningum, vísbendingum og ígrundun í stað þess að lesa svör óvirkt."
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Leiðarvísar fyrir hami, fyrirmælalykkjur, námsaðferðir og grunngreinar fyrir algengar námsaðstæður."
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "tala við sögulegar persónur með AI"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Hver hamur opnast sem opið gestaspjall með eigin markmiði, dæmum og námsflæði, svo námsfólk geti byrjað strax með rétta tegund stuðnings."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Hvernig er inspir ólíkt almennu AI-spjallmenni?"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Byggt til notkunar"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Prófaðu áður en þú rifjar upp"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Líttu ekki á búið til samtal sem raunverulega tilvitnun eða frumheimild."
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Prófaðu þig"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Gerðu ekki áætlun sem gerir ráð fyrir að hvert efni þurfi jafn mikinn tíma."
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Spila forsýningu á inspir-námi"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Byrjaðu á að biðja um einfalda útskýringu, eina hversdagslega samlíkingu og þrjár hugmyndir sem þú þarft áður en efnið verður skiljanlegt."
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "AI-spurningasmiður fyrir próf"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Breyttu útskýringunni í minniskort fyrir virka upprifjun og farðu aftur yfir kortin eftir mistök eða hik."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Byrja myndina aftur"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Getur inspir hjálpað með heimavinnu án þess að ýta undir svindl?"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Framvinda myndbands"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Fáðu einfalda líkanið fyrst"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "AI-námsleiðarvísasafn inspir"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Byrjaðu með Lærðu hvað sem er"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Ókeypis opinn AI-námsfélagi fyrir leiðsögn, æfingar, próf, minniskort, rökræður, ritendurgjöf, kóðahjálp og námsáætlanir."
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Sérmerkt skóla-AI"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Byrjaðu lifandi námslotu."
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI-stærðfræðileiðbeinandi"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Skrefaþjálfari í stærðfræði"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Samskipti"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Lærðu með því að tala, prófa, rökræða og kanna."
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "námsleiðarvísar og æfingalotur"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Rökræddu fullyrðinguna frá fleiri en einni hlið svo þú sjáir forsendur, málamiðlanir og veik sönnunargögn."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI-söguleiðbeinandi"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Hraðar námsleiðir"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Byrjaðu á frumforsendum"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Slökkva á hljóði myndarinnar"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Horfa í 31 s"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Skipuleggðu prófupprifjun, búðu til próf, smíðaðu minniskort, tímasettu dreifða upprifjun og haltu hvatningu raunhæfri með markvissum AI-námshömum."
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Opnaðu nákvæmlega þá hjálp sem þú komst eftir."
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Breyttu glósum eða efnum í markviss minniskort með vísbendingum, svörum, dæmum og algengum gildrum."
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sókratískur leiðbeinandi"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI-leiðbeinandi með sókratískum spurningum"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Hugmyndir að fyrirmælum og endurtekin námslota til að fá gagnlegar námsniðurstöður úr Lærðu hvað sem er á inspir."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Skoða skóla"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Vinndu þig í gegnum algebru, örsmæðareikning, orðadæmi og stærðfræðihugtök eitt skref í einu með AI-þjálfara."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Byggt fyrir forvitni, æfingu og aðgengi."
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Prófaðu mig úr þessum efnum, ein spurning í einu. Eftir hvert svar skaltu útskýra bilið og auka erfiðleikann hægt."
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Vinsælar AI-námsleiðir"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Skýr friðhelgismörk"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sókratískar athuganir"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Ókeypis opinn AI-námsvettvangur"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Lestu markmiðið"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sókratísk kennsla"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Spila aftur"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Opinn námsvefur sem fólk skilur fljótt."
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Það sem námsfólk spyr yfirleitt um áður en það byrjar."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Sviðsmyndir sem merkja sönnunargögn"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Taktu samhengið saman"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Leiðarvísar, leiðir, námsgreinar og fyrirmæli tengja þig við næsta gagnlega stað til að æfa."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Rökræddu ekki aðeins hliðina sem þú ert þegar sammála."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Gagnlegt námskort"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Farðu út með einfalt skilningslíkan, skarpari spurningar, dæmi sem þú getur útskýrt til baka og upprifjunarspjöld fyrir yfirferð."
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Námsfólk þarf röð, ekki hrúgu af tenglum. Þessar leiðir tengja hami í hagnýtar námslotur fyrir skilning, heimavinnu, prófundirbúning og könnun."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Lærðu hvað sem er"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Kaflar myndarinnar"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Auðveld næstu skref"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Gerðu námsáætlunina raunhæfa"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Leiðarvísasafn"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Af hverju að nota sókratískar spurningar eftir útskýringu?"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Hagnýt umfjöllun um hvernig AI getur gert nám skýrara, persónulegra og aðgengilegra án þess að nemendur verði óvirkir safnarar svara."
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Rökfærsla"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Notaðu ritendurgjöf fyrir uppbyggingu, skýrleika og sönnunargögn á meðan lokadrögin eru greinilega þín."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Valmöguleikar í samræmi við NCERT"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Spurðu mig fimm sókratískra spurninga um þetta efni. Eftir hvert svar skaltu segja mér hvaða forsendu ég notaði og hvað ég ætti að prófa næst."
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Er ókeypis að nota inspir?"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Biddu söguhaminn að merkja það sem er skjalfest, ályktað eða hermt."
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Skoða leiðarvísasafnið"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Búðu til minniskort úr mistökum og farðu aftur yfir þau síðar."
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "AI-heimavinnuhjálp án þess að afrita svör"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Biddu um vísbendingar, athuganir, endurgjöf og námsáætlanir sem láta hugsunina vera hjá nemandanum."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Víðari inspir-vettvangurinn sem opinn hugbúnaður."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Slepptu ekki að sýna hvað þú hefur þegar prófað; gagnleg hjálp byggir á því samhengi."
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Athugaðu þetta skref í lausninni minni. Ef það er rangt skaltu útskýra mistökin og gefa mér eitt næsta skref."
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Settu mig á þennan tíma og stað. Merktu skjalfestar staðreyndir aðskildar frá trúverðugri hermun og spurðu hvað ég tek eftir."
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Útskýrðu það til baka"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Lykkjur fyrir veikleika"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Hver leiðarvísir endar með æfingaáætlunum, leiðum og tenglum í þann námsham sem passar best."
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Hvað AI-námsfélagi ætti að gera fyrir alla"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI-söguleiðbeinandi"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Spyrðu persónu"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Athugaðu eitt skref"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Rökræddu fullyrðinguna"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Lagaðu veikleikann"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Heimavinnuþjálfari"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Útskýrðu næsta skref"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "AI-minniskort fyrir virka upprifjun"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Stutt mynd sem kynnir þá trú inspir að nám eigi að vera ókeypis, aðgengilegt og lifandi."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Byrjaðu á því sem þú skilur ekki og fáðu einfalt skilningslíkan, dæmi og næstu skref."
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Efnisklasar"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Sýna texta myndarinnar"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Heimavinna"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Notaðu AI-heimavinnuþjálfun fyrir vísbendingar, skrefaskoðanir, stærðfræðirök og ritendurgjöf, á meðan lokaverkið er áfram þitt."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Skýrar útskýringar"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Breyttu því í minniskort"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Hversu snemma ætti ég að gera prófundirbúningsáætlun?"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Myndin færist frá innblæstri yfir í hagnýta loforðið: þolinmóðan AI-námsfélaga."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Byggðu með okkur"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Skrefaskoðanir"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Góðir staðir til að byrja á:"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Aðgreindu staðreynd frá tilbúningi"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Hannað til að byggja öryggi"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Byrjaðu á námsgreininni og opnaðu síðan rétta námshaminn."
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Bættu ritun með skipulagningu, endurskoðun, uppbyggingu og endurgjöf sem heldur röddinni þinni óbreyttri."
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI-heimavinnuhjálp"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Sláðu inn tímabil"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Gerðu eitthvað með það"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Ekki enn einn svarreiturinn. Staður til að læra."
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Forvitnin byrjar hér"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Opna gestaspjall"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Rifja upp með minniskortum"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Láttu hlutverkaleik ekki koma í stað dagsetninga, samhengis, skjala eða merkja fyrir sönnunargögn."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Byrjaðu um leið og þú veist prófdaginn. Ef tíminn er knappur skaltu forgangsraða veikleikum, spurningum í prófstíl og daglegri upprifjun."
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Útskýrðu eftir hverja vísbendingu hvers vegna skrefið virkar áður en þú heldur áfram."
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Biddu um vísbendingu"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Hver grein tengist flokkum, lifandi hömum, efnismiðjum, námsleiðum og skyldum leiðarvísum."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Hugsaðu dýpra"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Forvitni, æfing og AI sem kennir."
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Útskýrðu þetta efni á einföldu máli. Nefndu þrjár undirstöðuhugmyndir sem ég þarf, eina samlíkingu og einn algengan misskilning."
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Trúnaðarbundnar uppsetningar"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Opna myndina á öllum skjánum"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Það sem þú getur gert"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Breyttu erfiðustu spurningunni sem þú misstir af í minniskort og rifjaðu hana upp síðar."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Spyrðu um hvað sem er"
     }
   ]
 }

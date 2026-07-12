@@ -13,7 +13,7 @@ function getConfiguredAdminEmails() {
     });
 }
 
-export function getBootstrapAdminEmails() {
+function getBootstrapAdminEmails() {
   return [...new Set([...bootstrapAdminEmails, ...getConfiguredAdminEmails()])];
 }
 

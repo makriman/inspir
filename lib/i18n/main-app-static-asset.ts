@@ -11,25 +11,6 @@ export type StaticMainAppBundleAsset = {
   serialized: string;
 };
 
-/**
- * Rollback-only account copy remains in the curated corpus, but the Free static
- * guest app neither offers nor deploys these retired Google/account promises.
- * Keeping the source corpus unchanged avoids invalidating every curated locale;
- * the content hash below addresses the exact sanitized public subset instead.
- */
-export const retiredStaticGuestAuthTranslationKeys = [
-  "guest.continue.body",
-  "guest.continue.google",
-  "profile.details.googleEmail",
-  "profile.account.body",
-  "component.ccc5b0edaae6",
-  "component.ebc442134fc5",
-] as const;
-
-const retiredStaticGuestAuthTranslationKeySet = new Set<string>(
-  retiredStaticGuestAuthTranslationKeys,
-);
-
 export function buildStaticMainAppBundleAsset(
   locale: string,
   bundle: MainAppTranslationBundle,
@@ -61,7 +42,6 @@ function buildCompleteStaticGuestTranslationSubset(
   const sourceStrings: Record<string, string> = {};
   const strings: Record<string, string> = {};
   for (const [key, source] of Object.entries(bundle.sourceStrings)) {
-    if (retiredStaticGuestAuthTranslationKeySet.has(key)) continue;
     const translated = bundle.strings[key];
     if (typeof translated !== "string" || !translated.trim()) {
       throw new Error(`Incomplete static guest translation for ${locale}: ${key}`);

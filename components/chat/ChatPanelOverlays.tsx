@@ -7,7 +7,10 @@ import type { MessageMemorySource } from "@/components/chat/chat-message-model";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
 import type { PersistentLearningToolsController } from "@/components/chat/PersistentLearningTools";
 import type { UserProfile } from "@/components/chat/profile-model";
+import type { Topic } from "@/components/chat/topic-model";
 import { defaultLanguage } from "@/lib/content/languages";
+import { topicWorkspacePath } from "@/lib/content/topic-path";
+import { localizeHref } from "@/lib/i18n/routing";
 
 type MemorySourceModalState = {
   messageId: string;
@@ -15,7 +18,9 @@ type MemorySourceModalState = {
 } | null;
 
 type ChatPanelOverlaysProps = {
+  activeTopic?: Topic;
   agePromptOpen: boolean;
+  currentLanguage: string;
   guestMessageLimit: number;
   guestMessagesUsed: number;
   guestPromptOpen: boolean;
@@ -37,7 +42,9 @@ type ChatPanelOverlaysProps = {
 };
 
 export function ChatPanelOverlays({
+  activeTopic,
   agePromptOpen,
+  currentLanguage,
   guestMessageLimit,
   guestMessagesUsed,
   guestPromptOpen,
@@ -61,6 +68,11 @@ export function ChatPanelOverlays({
         <GuestContinueModal
           used={guestMessagesUsed}
           limit={guestMessageLimit}
+          callbackUrl={localizeHref(
+            activeTopic ? topicWorkspacePath(activeTopic.slug) : "/chat",
+            currentLanguage,
+          )}
+          t={t}
           onClose={() => onGuestPromptOpen(false)}
         />
       ) : null}

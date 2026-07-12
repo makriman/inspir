@@ -9,6 +9,9 @@ const pageMetadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export function generateMetadata() {
   return localizeMarketingMetadata(pageMetadata, "/reset_pw");
 }
@@ -29,7 +32,11 @@ export default function ResetPasswordPage() {
             To recover access, use the same Google account you used before. Password recovery is handled by Google, not
             by inspir.
           </p>
-          <GoogleContinueButton className="marketing-auth-action" callbackUrl="/chat">
+          <GoogleContinueButton
+            className="marketing-auth-action"
+            callbackUrl="/chat"
+            errorMessage="We could not sign you in. Please try again."
+          >
             Continue with Google
           </GoogleContinueButton>
         </div>

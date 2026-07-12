@@ -53,8 +53,7 @@ for (const namespace of args.namespaces) {
       byNamespace[namespace].complete += 1;
       const renderReady =
         isTranslationBundleFieldValid(source, bundle, language) &&
-        (namespace === mainAppTranslationNamespace ||
-          isTranslationBundleCompleteAndFluent(source, bundle, language));
+        isTranslationBundleCompleteAndFluent(source, bundle, language);
       if (renderReady) {
         byNamespace[namespace].renderReady += 1;
       } else {

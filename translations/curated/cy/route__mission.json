@@ -1,0 +1,1265 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "route:mission",
+  "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.01f08383c6ed8f8926",
+      "source": "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
+      "value": "Mae tudalennau cyhoeddus, sgyrsiau pwnc, llwybrau dysgu, canllawiau blog, a thudalennau help wedi'u dylunio i fod yn hawdd dod o hyd iddynt a'u rhannu."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Dechreuwch ddysgu"
+    },
+    {
+      "key": "site.02e4b05d0efca56720",
+      "source": "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
+      "value": "Mae tudalennau dysgu cyhoeddus ar agor, tra bod llwybrau API, llwybrau gweinyddol, llifoedd ailosod, a thudalennau cyfleustodau preifat yn parhau wedi'u blocio."
+    },
+    {
+      "key": "site.048b1c003d58cbe2a4",
+      "source": "Each learning mode has a public link so learners can start directly inside the right learning experience.",
+      "value": "Mae gan bob modd dysgu ddolen gyhoeddus fel y gall dysgwyr ddechrau'n uniongyrchol y tu mewn i'r profiad dysgu cywir."
+    },
+    {
+      "key": "site.0724f9bb2b6dc94aad",
+      "source": "Use this when referencing public/private boundaries, learner safety, and school trust.",
+      "value": "Defnyddiwch hyn wrth gyfeirio at ffiniau cyhoeddus/preifat, diogelwch dysgwyr, ac ymddiriedaeth ysgolion."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "mynegai cynnwys AI"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Yn wahanol i chatbot generig, mae inspir yn trefnu AI o amgylch moddau dysgu fel y gall dysgwyr ddechrau gyda'r math o gymorth sydd ei angen arnynt: awgrymiadau, cwestiynau, cwisiau, adalw gweithredol, chwarae rôl, dadlau, neu adborth."
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Gellir addasu cyflwyniadau ysgol o amgylch cynnwys wedi'i deilwra, llifoedd gwaith, promptiau, ac anghenion dysgu wedi'u halinio â NCERT lle bo'n briodol."
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Ymddygiad dysgu sy'n dod gyntaf"
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Mae moddau gwestai cyhoeddus yn rhoi man defnyddiol i unrhyw un ddechrau, tra gall cyflwyniadau ysgol a phartneriaid addasu'r profiad ar gyfer anghenion lleol."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Mae gan bob modd dysgu craidd fynedfa westai gyhoeddus fel y gall pobl ddechrau o chwilio, cyfryngau cymdeithasol, neu ddolen a rennir."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "A all cyflwyno ddechrau'n fach?"
+    },
+    {
+      "key": "site.1085047cc3b0386561",
+      "source": "A clear explanation of guest mode, private chats, learner safety, and school trust.",
+      "value": "Esboniad clir o fodd gwestai, sgyrsiau preifat, diogelwch dysgwyr, ac ymddiriedaeth ysgolion."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Y datganiad cyhoeddus o pam mae inspir yn bodoli a beth mae mynediad at ddysgu yn ei olygu."
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1M+ o ddysgwyr"
+    },
+    {
+      "key": "site.15232ca14fa99ffee5",
+      "source": "The goal is not to make people passive in front of AI. The goal is to give every learner a patient first place to ask, practise, get feedback, try again, and build confidence.",
+      "value": "Nid y nod yw gwneud pobl yn oddefol o flaen AI. Y nod yw rhoi man cyntaf amyneddgar i bob dysgwr ofyn, ymarfer, cael adborth, rhoi cynnig arall arni, ac adeiladu hyder."
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Ysgolion a CSR"
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Mynediad yn gyntaf"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "Sylw i weledigaeth inspir ar gyfer addysg am ddim a hygyrch."
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Cyfryngau a dyfyniadau"
+    },
+    {
+      "key": "site.1948c2f30f9d9a0e3f",
+      "source": "Text-first reference file for assistants, educators, partners, and citation tools.",
+      "value": "Ffeil gyfeirio testun-gyntaf ar gyfer cynorthwywyr, addysgwyr, partneriaid, ac offer dyfynnu."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Wedi cyrraedd dysgwyr ar draws y llwyfan am ddim ac ysgolion partner."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Ysgolion a phartneriaid CSR"
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Mae'r moddau cyhoeddus wedi'u cynllunio o amgylch ymddygiad dysgu: awgrymiadau, cwestiynau Socrataidd, gwiriadau camau, cwisiau, cardiau fflach, adborth ysgrifennu, dolenni adolygu, ac esbonio gweithredol."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Dolenni cyfeirio, ffeithiau cyhoeddus, cyd-destun i'r wasg, a manylion sy'n addas i'w dyfynnu."
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Dysgwyr, rhieni, athrawon, ysgolion, ac adeiladwyr hunanddysgedig"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Llwybr ysgol a phartneriaid"
+    },
+    {
+      "key": "site.1d357527da50cab875",
+      "source": "Start with the public learning companion.",
+      "value": "Dechreuwch gyda'r cydymaith dysgu cyhoeddus."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Y stori o gwisiau a chymunedau myfyrwyr i offer dysgu AI am ddim wedi'u hadeiladu'n gyhoeddus."
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Pam mae inspir wedi'i adeiladu o amgylch moddau yn hytrach nag un blwch sgwrsio?"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "Diwedd 2022"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Ffurfweddu llifoedd gwaith"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "O gymuned myfyrwyr i seilwaith dysgu AI"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Gellir ariannu mynediad gan ysgolion partner neu ei gefnogi drwy lwybrau nawdd CSR ar gyfer cymunedau sydd angen dysgu AI wedi'i gymorthdalu."
+    },
+    {
+      "key": "site.260478aaac0a704d36",
+      "source": "The public product, the school pathway, and the content library should all point back to the same principle: learning should stay active, accessible, and useful.",
+      "value": "Dylai'r cynnyrch cyhoeddus, y llwybr ysgol, a'r llyfrgell gynnwys i gyd bwyntio'n ôl at yr un egwyddor: dylai dysgu aros yn weithredol, yn hygyrch, ac yn ddefnyddiol."
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ o wledydd"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Dylai dysgu o ansawdd deimlo ar gael, yn ddynol, ac yn fyw."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "Mae inspir wedi'i drefnu o amgylch moddau dysgu fel tiwtora Socrataidd, awgrymiadau gwaith cartref, cwisiau, cardiau fflach, camau mathemateg, beirniadaeth ysgrifennu, a chynllunio arholiadau, fel bod myfyrwyr yn glanio mewn ymddygiad dysgu â mwy o ffocws."
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Rhoi cynnig ar foddau gwesteion cyhoeddus"
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Yr ailadeiladu ffynhonnell agored ar gyfer datblygwyr, addysgwyr, a chyfranwyr."
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Wedi'i adeiladu ers 2013"
+    },
+    {
+      "key": "site.2bebd13d1cc22ff0cc",
+      "source": "The mission is connected to real product surfaces.",
+      "value": "Mae'r genhadaeth wedi'i chysylltu ag arwynebau cynnyrch go iawn."
+    },
+    {
+      "key": "site.2c5d950f9023b4c753",
+      "source": "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "Mae inspir yn gwneud i foddau dysgu agor yn /chat/{topicSlug}, gan adael i ddysgwyr lanio'n uniongyrchol y tu mewn i'r profiad dysgu AI cywir heb fod angen sgwrs breifat wedi'i chadw."
+    },
+    {
+      "key": "site.2e5637794ad9387541",
+      "source": "The public product stays easy to try: learners can land directly on a learning mode and begin as a guest. Schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or subsidised access.",
+      "value": "Mae'r cynnyrch cyhoeddus yn parhau'n hawdd i roi cynnig arno: gall dysgwyr lanio'n uniongyrchol ar fodd dysgu a dechrau fel gwestai. Gall ysgolion a phartneriaid CSR gefnogi gweithrediadau wedi'u teilwra pan fydd cymunedau angen cyfrinachedd, aliniad cwricwlwm, neu fynediad wedi'i gymhorthdal."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Gwefan"
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Mae'r blog cyhoeddus yn cynnwys mwy na 100 o ganllawiau, dolenni prompt, a chlystyrau piler wedi'u cysylltu â moddau dysgu byw."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "O inspir.app i inspirlearning.com"
+    },
+    {
+      "key": "site.32d85689f30d9b7dae",
+      "source": "See every mode",
+      "value": "Gweld pob modd"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Tudalen gymunedol sy'n gysylltiedig â chydnabyddiaeth DeepHack."
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Gall ysgolion a phartneriaid adeiladu o'r cynnyrch cyhoeddus tuag at gyflwyniadau wedi'u teilwra, cyfrinachol, ac â chymhorthdal."
+    },
+    {
+      "key": "site.342bd9dda3d4964514",
+      "source": "Learning should be free, fun, useful, and available to anyone with curiosity.",
+      "value": "Dylai dysgu fod am ddim, yn hwyl, yn ddefnyddiol, ac ar gael i unrhyw un sy'n chwilfrydig."
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Gellir siapio profiad dysgu penodol i ysgol o amgylch cymuned eich myfyrwyr, tôn, a blaenoriaethau dysgu."
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Ongl modd gwestai"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Disgrifiad byr"
+    },
+    {
+      "key": "site.3a170e599b75f66eb6",
+      "source": "Free, useful, engaging AI learning tools for anyone with curiosity.",
+      "value": "Offer dysgu AI am ddim, defnyddiol, a deniadol i unrhyw un sy'n chwilfrydig."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Wedi cyrraedd ar draws y llwyfan cyhoeddus am ddim a chyflwyniadau ysgolion partner."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "llwyfan dysgu AI am ddim"
+    },
+    {
+      "key": "site.3b700dde4d341f9849",
+      "source": "Learning is for everyone",
+      "value": "Mae dysgu i bawb"
+    },
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Pam nawr"
+    },
+    {
+      "key": "site.3c4c2e16bc958feb06",
+      "source": "These pages make the story easier to verify, cite, share, and use: public modes, learning paths, long-form guides, school deployment notes, media facts, and the company background.",
+      "value": "Mae'r tudalennau hyn yn gwneud y stori'n haws i'w gwirio, ei dyfynnu, ei rhannu a'i defnyddio: moddau cyhoeddus, llwybrau dysgu, canllawiau hir, nodiadau gweithredu ysgol, ffeithiau i'r cyfryngau a chefndir y cwmni."
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "hyfforddwr gwaith cartref AI i fyfyrwyr"
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Nodi'r nodau ysgol sy'n bwysicaf: cymorth cysyniadol, awgrymiadau gwaith cartref, paratoi arholiadau, adalw gweithredol, adborth ysgrifennu, neu gyfoethogi."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Defnyddiwch hyn ar gyfer cyfeiriadau ysgol, partner, CSR, a mynediad addysg."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Cydnabyddiaeth Dewis y Rheithgor gan Amod Malviya yn DeepHack am waith dysgu AI."
+    },
+    {
+      "key": "site.42c11babbea60523de",
+      "source": "The live access rules for public and private routes.",
+      "value": "Y rheolau mynediad byw ar gyfer llwybrau cyhoeddus a phreifat."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "Mae inspir yn bodoli i wneud dysgu'n hygyrch, yn ddiddorol, yn bleserus, ac yn ddefnyddiol i unrhyw un sy'n chwilfrydig drwy offer dysgu AI cyhoeddus am ddim a mannau dysgu sy'n barod i ysgolion."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Gall ysgolion werthuso moddau cyhoeddus yn gyntaf, yna trafod llifoedd gwaith wedi'u teilwra, cynllunio cyfrinachedd, anghenion cynnwys, a mynediad wedi'i ariannu."
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "Gellir ariannu mynediad at ddysgu AI gan ysgolion partner neu ei gefnogi drwy nawdd CSR ar gyfer cymunedau sydd angen mynediad wedi'i gymorthdalu."
+    },
+    {
+      "key": "site.46e26517948313e18d",
+      "source": "The product should teach, not just answer.",
+      "value": "Dylai'r cynnyrch addysgu, nid ateb yn unig."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Mae'r stori'n ymestyn dros gwisiau, rhwydweithiau ysgol all-lein, mewnbynnu cwricwlwm, a moddau dysgu AI cyhoeddus."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "Mae inspir yn lwyfan dysgu AI am ddim gyda moddau gwestai cyhoeddus ar gyfer esboniadau, tiwtora Socrataidd, hyfforddi gwaith cartref, cwisiau, cardiau fflach, dadlau, chwarae rôl, adborth ysgrifennu, a chynllunio astudio."
+    },
+    {
+      "key": "site.485ce9e008441ce5f8",
+      "source": "inspir public authority reference links",
+      "value": "dolenni cyfeirio awdurdod cyhoeddus inspir"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Lansiad AI i ddefnyddwyr"
+    },
+    {
+      "key": "site.4957affe902dafdcaf",
+      "source": "Started as public quizzes and student communities in 2013.",
+      "value": "Dechreuodd fel cwisiau cyhoeddus a chymunedau myfyrwyr yn 2013."
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Egwyddorion"
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Gall dysgwr agor Dysgwch unrhyw beth, Cyfarwyddyd Socratig, Hyfforddwr Gwaith Cartref, Hyfforddwr Camau Mathemateg, cwisiau neu gardiau cof yn uniongyrchol yn y modd gwestai o gyfeiriadur cyhoeddus y dulliau dysgu."
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Llwyfan dysgu AI am ddim"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Ongl ysgol"
+    },
+    {
+      "key": "site.4d31a14e3ac004dd3e",
+      "source": "Are public guest chats open?",
+      "value": "A yw sgyrsiau gwestai cyhoeddus ar agor?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "A all ysgol ddefnyddio inspir fel offeryn dysgu gwestai yn gyntaf?"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "O gwisiau Facebook a digwyddiadau all-lein i seilwaith dysgu AI cymhwysol."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Yr ongl gryfaf yw dysgu AI cyhoeddus am ddim sy'n agor yn uniongyrchol mewn modd gwestai ac yn cadw dysgwyr yn weithredol drwy addysgu penodol i fodd yn hytrach na chynhyrchu atebion generig."
+    },
+    {
+      "key": "site.501e16edc5f5d250e7",
+      "source": "Why are public learning pages easy to share?",
+      "value": "Pam mae tudalennau dysgu cyhoeddus yn hawdd i'w rhannu?"
+    },
+    {
+      "key": "site.510b1bc750f44afe6c",
+      "source": "The written learning library that supports prompts, study loops, and deeper practice.",
+      "value": "Y llyfrgell ddysgu ysgrifenedig sy'n cefnogi promptiau, dolenni astudio, ac ymarfer dyfnach."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "Mae inspir wedi'i drefnu o amgylch awgrymiadau, cwestiynau, cwisiau, cardiau fflach, dadlau, adolygu, ac esbonio yn lle copïo atebion yn oddefol."
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Tiwtor gwestai diofyn"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Beth yw'r ongl cynnyrch fwyaf defnyddiol ar gyfer sylw yn y cyfryngau?"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Mae angen siapiau rhyngweithio gwahanol ar wahanol dasgau dysgu, felly mae inspir yn defnyddio addysgu gweithredol sy'n benodol i'r modd. Ni ddylai awgrym gwaith cartref, cwestiwn Socrataidd, efelychiad hanesyddol, adolygiad cardiau fflach, a beirniadaeth ysgrifennu ymddwyn fel yr un sgwrs generig."
+    },
+    {
+      "key": "site.558397a1b59101b0be",
+      "source": "Mission | inspir",
+      "value": "Cenhadaeth | inspir"
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Gall ysgolion brofi moddau gwestai cyhoeddus yn gyntaf, yna defnyddio tudalen yr ysgolion i archwilio llifoedd gwaith wedi'u teilwra, cynllunio cyfrinachedd, opsiynau wedi'u halinio â NCERT, a mynediad wedi'i ariannu."
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Gall athrawon ac arweinwyr ddechrau gyda Dysgwch unrhyw beth, Cyfarwyddyd Socratig, Hyfforddwr Gwaith Cartref, cwisiau a chardiau cof cyn cyflwyno’r gwasanaeth yn ffurfiol."
+    },
+    {
+      "key": "site.597bfef7720861d525",
+      "source": "Different jobs need different modes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and more.",
+      "value": "Mae angen moddau gwahanol ar wahanol dasgau: cwestiynau Socrataidd, awgrymiadau gwaith cartref, cardiau fflach, dadlau, chwarae rôl hanes, beirniadaeth ysgrifennu, a mwy."
+    },
+    {
+      "key": "site.59a454af1a1e158bb2",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
+      "value": "Ie. Mae pwyntiau mynediad pwnc cyhoeddus fel /chat/learn-anything a /chat/socratic-instruction yn dudalennau dysgu agored y gall unrhyw un roi cynnig arnynt."
+    },
+    {
+      "key": "site.5b72f4eacfe4e7e93c",
+      "source": "inspir mission principles",
+      "value": "egwyddorion cenhadaeth inspir"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Ni ddylai cydymaith dysgu galluog ddibynnu ar ddaearyddiaeth, incwm teuluol, nac a yw dysgwr eisoes yn gwybod y person iawn i ofyn iddo."
+    },
+    {
+      "key": "site.5d6c0f3138da1e91a8",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
+      "value": "Cenhadaeth inspir yw gwneud dysgu'n hygyrch, yn ddiddorol, yn bleserus, ac yn ddefnyddiol i bawb drwy offer dysgu AI cyhoeddus am ddim."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Ar ôl i'r parth inspir.app gael ei werthu i ariannu mynediad am ddim parhaus, symudodd y cynnyrch byw i inspirlearning.com."
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "partneriaeth technoleg addysg CSR"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "llyfrgell ganllawiau dysgu AI"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Mwy na 100 o ganllawiau ar diwtora, promptiau, dolenni astudio, adalw gweithredol, a moddau."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Mae inspir yn lwyfan dysgu AI am ddim gyda moddau gwestai cyhoeddus ar gyfer esboniadau, tiwtora Socrataidd, hyfforddi gwaith cartref, cwisiau, cardiau fflach, dadlau, adborth ysgrifennu, help codio, a chynllunio astudio."
+    },
+    {
+      "key": "site.688a53fd5c18d95166",
+      "source": "A clear directory of every guest learning chat entrypoint.",
+      "value": "Cyfeiriadur clir o bob man cychwyn sgwrs ddysgu i westeion."
+    },
+    {
+      "key": "site.68cde8dd822172fcea",
+      "source": "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Gall newyddiadurwyr, golygyddion cyfeiriaduron, partneriaid, ysgolion, ac unrhyw un sy'n ysgrifennu am inspir ei ddefnyddio ar gyfer ffeithiau, dolenni, onglau stori, a chyfeiriadau sy'n addas i'w dyfynnu."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Mapio anghenion dysgu"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Beth yw inspir?"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Lansio ac ariannu mynediad"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Pa URL ddylai erthyglau gysylltu ag ef gyntaf?"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Llwybr cyflwyno ysgol"
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Ongl cynnyrch"
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Enw"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "tiwtor AI i ysgolion"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Hafan"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Beth yw'r disgrifiad byr o inspir?"
+    },
+    {
+      "key": "site.712d2b5081ef0a68f5",
+      "source": "Saved user conversations use private identifiers and should not be treated as public source material.",
+      "value": "Mae sgyrsiau defnyddwyr wedi'u cadw yn defnyddio dynodwyr preifat ac ni ddylid eu trin fel deunydd ffynhonnell cyhoeddus."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "adeiladu cenhedlaeth nesaf inspir.uk"
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Symud o beilot i fynediad ehangach drwy gyllid ysgol, cymorth partneriaid, neu lwybrau CSR i ddysgwyr sydd angen mynediad â chymhorthdal."
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Gellir addasu cynnwys wedi'i deilwra, promptiau, a llifoedd gwaith o amgylch anghenion NCERT a blaenoriaethau ystafell ddosbarth penodol i ysgol."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Defnyddiwch hyn wrth gysylltu darllenwyr yn syth i'r profiad dysgu byw."
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Sut mae hyn yn wahanol i roi chatbot AI generig i fyfyrwyr?"
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Mae'r ap wedi'i drefnu o amgylch ymddygiadau addysgu megis cwestiynu Socrataidd, awgrymiadau gwaith cartref, cwisiau, cardiau fflach, chwarae rôl, a chynllunio."
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Dyfyniad hafan sylfaenol"
+    },
+    {
+      "key": "site.76e0e32283eeaf309d",
+      "source": "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      "value": "Cenhadaeth inspir yw gwneud dysgu'n hygyrch, yn ddiddorol, yn bleserus, ac yn ddefnyddiol drwy offer dysgu AI cyhoeddus am ddim a mannau dysgu sy'n barod i ysgolion."
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Beth yw cenhadaeth inspir?"
+    },
+    {
+      "key": "site.78c1ae83609a5f9fe0",
+      "source": "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+      "value": "Mae pob modd cyhoeddus yn ddrws i mewn i ymddygiad dysgu gwahanol, fel y gall y fformat gyd-fynd â'r dasg yn lle gorfodi pob dysgwr i mewn i un blwch sgwrs generig."
+    },
+    {
+      "key": "site.78e4753b006b2803a3",
+      "source": "The public product gives anyone a place to start while school and partner deployments can adapt the experience for local needs.",
+      "value": "Mae'r cynnyrch cyhoeddus yn rhoi man cychwyn i unrhyw un, tra gall gweithrediadau ysgolion a phartneriaid addasu'r profiad ar gyfer anghenion lleol."
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Sgwrs AI label gwyn"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Mynedfeydd modd gwestai"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Cefnogwch fynediad dysgu AI wedi'i ariannu i gymunedau sydd angen cymorth o ansawdd uchel heb ychwanegu cost i deuluoedd."
+    },
+    {
+      "key": "site.7a6a5dcd5b773964b6",
+      "source": "Full public reference index",
+      "value": "Mynegai cyfeirio cyhoeddus llawn"
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Gweithiodd y platfform ar fewnbynnu cwricwlwm, adalw, llifoedd dysgu strwythuredig, a phrofiadau tiwtora AI cynnar."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Mwy na 100 o ganllawiau, dolenni prompt, a chlystyrau colofn ar gyfer dysgu gyda chymorth AI."
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Polisi preifatrwydd"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Sefydlwyd"
+    },
+    {
+      "key": "site.7d5784fc7e89075e13",
+      "source": "The platform is designed to help people reason, practise, remember, and explain ideas back instead of collecting finished answers.",
+      "value": "Mae'r platfform wedi'i gynllunio i helpu pobl i resymu, ymarfer, cofio, ac egluro syniadau'n ôl yn lle casglu atebion gorffenedig."
+    },
+    {
+      "key": "site.7d69139ae55984a6c7",
+      "source": "Private tutoring is powerful, but it is unevenly distributed. inspir uses AI to widen access while keeping the learner active: hints before answers, questions before lectures, and practice after explanation.",
+      "value": "Mae tiwtora preifat yn bwerus, ond mae wedi'i ddosbarthu'n anghyfartal. Mae inspir yn defnyddio AI i ehangu mynediad gan gadw'r dysgwr yn weithredol: awgrymiadau cyn atebion, cwestiynau cyn darlithoedd, ac ymarfer ar ôl esboniad."
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Ysgolion a phartneriaid"
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Sylfaen dysgwyr sydd eisoes yn ymestyn y tu hwnt i India i gynulleidfa ryngwladol ehangach."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "Mae inspir yn trefnu AI o amgylch ymddygiadau dysgu gweithredol: awgrymiadau, cwestiynau, cwisiau, cardiau fflach, beirniadaeth, ac adolygu."
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "sylw Deccan Business"
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Ie. Mae'r moddau gwesteion cyhoeddus yn gadael i arweinwyr ysgol ac athrawon roi cynnig ar y profiad dysgu cyn trafod lleoliad ysgol wedi'i deilwra."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Gwerthuswch haen dysgu AI gyhoeddus yn gyntaf, yna archwiliwch lifoedd gwaith wedi'u teilwra, anghenion cyfrinachedd, aliniad cynnwys, a chyllid defnydd."
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Prif gynulleidfa"
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Mae angen siapiau gwahanol ar wahanol dasgau dysgu: cwestiynau Socrataidd, awgrymiadau gwaith cartref, cardiau fflach, dadlau, chwarae rôl hanes, beirniadaeth ysgrifennu, a chynllunio astudio."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Y telerau ffurfiol sy'n cwmpasu defnydd derbyniol, cyfrifoldebau cyfrifon, ac amodau gwasanaeth."
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Addaswch brofiad y myfyriwr o amgylch cyd-destun yr ysgol, blaenoriaethau'r cwricwlwm, rheiliau gwarchod cynnwys, a'r lefel o weladwyedd staff sydd ei hangen."
+    },
+    {
+      "key": "site.88f244e2f3ee33dd5a",
+      "source": "Assistant and reference access",
+      "value": "Mynediad cynorthwyydd a chyfeirio"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "dysgu AI wedi'i alinio â NCERT"
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "Dechreuodd inspir fel tudalen Facebook a oedd yn cyhoeddi cwisiau ac yn adeiladu arfer o ddysgu allgyrsiol."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Mae'r cynnyrch cyhoeddus yn cadw dysgu'n hawdd i roi cynnig arno, tra gall ysgolion a phartneriaid CSR gefnogi gweithrediadau wedi'u teilwra pan fydd cymunedau angen cyfrinachedd, aliniad cwricwlwm, neu fynediad wedi'i ariannu."
+    },
+    {
+      "key": "site.8d50862a1031d7cbc6",
+      "source": "Learning is for everyone.",
+      "value": "Mae dysgu ar gyfer pawb."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "Am inspir"
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Mae'r cynnyrch cyhoeddus yn hawdd rhoi cynnig arno yn gyntaf, tra gall ysgolion a phartneriaid archwilio gweithrediadau wedi'u teilwra ar gyfer anghenion cymunedol."
+    },
+    {
+      "key": "site.8f48a8b3673c25023c",
+      "source": "Clear answers for learners, schools, and search systems.",
+      "value": "Atebion clir i ddysgwyr, ysgolion, a systemau chwilio."
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Tudalen gyfeirio"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Rhwydweithiau all-lein a digwyddiadau myfyrwyr"
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "A yw sgyrsiau defnyddwyr preifat wedi'u cadw yn cael eu hamlygu i chwilio?"
+    },
+    {
+      "key": "site.92b307e5f4dca15b56",
+      "source": "Trust and privacy boundaries",
+      "value": "Ffiniau ymddiriedaeth a phreifatrwydd"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "tiwtor AI i ddysgu unrhyw beth"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Dysgu penodol i fodd"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "Aeth inspir yn fyw fel cynnyrch dysgu AI i ddefnyddwyr o fewn wythnosau i ryddhad cyhoeddus ChatGPT."
+    },
+    {
+      "key": "site.9af4ab277a3efff0ca",
+      "source": "Search and directory access",
+      "value": "Mynediad chwilio a chyfeiriadur"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Ie. Gall ysgol ddechrau drwy brofi moddau cyhoeddus, ac yna symud tuag at dreial neu leoliad wedi'i deilwra pan fydd yr achos defnydd, anghenion cynnwys, a'r llwybr ariannu yn glir."
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "tudalen gymuned DeepHack"
+    },
+    {
+      "key": "site.9d1d9471b315f09acf",
+      "source": "The live learning experience that turns the mission into practical help.",
+      "value": "Y profiad dysgu byw sy'n troi'r genhadaeth yn gymorth ymarferol."
+    },
+    {
+      "key": "site.9e27eb71ffaf2c0d95",
+      "source": "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
+      "value": "Mae dolenni modd gwestai cyhoeddus yn bodoli fel y gall dysgwyr ddechrau'n uniongyrchol mewn moddau dysgu defnyddiol o chwilio, dolenni cymdeithasol, ysgolion, neu argymhellion a rennir."
+    },
+    {
+      "key": "site.9ec643793ee292724f",
+      "source": "AI with a learning shape",
+      "value": "AI gyda siâp dysgu"
+    },
+    {
+      "key": "site.9efaa42335ec444a7f",
+      "source": "Free guest learning, with paths for schools and partners.",
+      "value": "Dysgu gwestai am ddim, gyda llwybrau i ysgolion a phartneriaid."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Sut mae inspir yn wahanol i sgwrsfot AI cyffredinol?"
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Mae cymuned ddysgu'n dechrau"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "dysgu AI heb gopïo atebion yn oddefol"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Categori"
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "sylw Dailyhunt"
+    },
+    {
+      "key": "site.a4d26ae1b3500af2f6",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
+      "value": "Gallant. Mae dulliau cyhoeddus i westeion fel Dysgwch unrhyw beth, Cyfarwyddyd Socratig, Hyfforddwr Gwaith Cartref, cwisiau a chardiau cof yn agor yn uniongyrchol o ddolenni /chat/{topicSlug} syml."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "blog dysgu AI"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Telerau"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "offer astudio AI i ysgolion"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "Modd gwestai ar gyfer mynediad cyhoeddus"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Sut gall dysgu gwestai cyhoeddus ymestyn i fannau dysgu AI penodol i ysgol."
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Llifoedd gwaith astudio sy'n cysylltu moddau gwesteion, promptiau, ymarfer, a chanllawiau cysylltiedig."
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "canllawiau dysgu AI"
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Pori moddau dysgu"
+    },
+    {
+      "key": "site.a9b6e8fc852172dc8e",
+      "source": "Mode-specific learning flows",
+      "value": "Llifoedd dysgu penodol i fodd"
+    },
+    {
+      "key": "site.b08a94a0cf31dd3bf7",
+      "source": "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
+      "value": "Na. Mae sgyrsiau preifat wedi'u cadw yn defnyddio dynodwyr preifat ac nid ydynt yn rhan o dudalennau cyhoeddus, ffeiliau cyfeirio cyhoeddus, na chatalogau dysgu a rennir."
+    },
+    {
+      "key": "site.b2b289c6267ec7435f",
+      "source": "Every guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Pob sgwrs dysgu gwestai, wedi'i threfnu yn ôl ymddygiad addysgu ac angen dysgu."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Sylw wedi'i syndiceiddio ar gyfer cyrhaeddiad ehangach at ddefnyddwyr."
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Ymddiriedaeth a diogelwch"
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Dyluniad defnyddio cyfrinachol"
+    },
+    {
+      "key": "site.b763eb4401f65f0001",
+      "source": "Mission FAQ",
+      "value": "Cwestiynau cyffredin y genhadaeth"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Dechrau'n uniongyrchol yn y modd dysgu cywir ar gyfer awgrymiadau gwaith cartref, camau mathemateg, beirniadaeth ysgrifennu, cwisiau, cardiau fflach, neu gynllunio arholiadau."
+    },
+    {
+      "key": "site.b985c626f35be7ba5b",
+      "source": "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
+      "value": "Gall offer cynorthwyydd a chyfeirio ddefnyddio tudalennau dysgu cyhoeddus i gyfeirio pobl at y canllawiau a'r moddau gwestai cywir."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "Mae inspir yn trefnu AI o amgylch moddau dysgu ag ymddygiad addysgu penodol: esboniadau, cwestiynau Socrataidd, awgrymiadau gwaith cartref, cwisiau, cardiau fflach, dadlau, chwarae rôl, adborth ysgrifennu, a chynllunio astudio."
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Agor cyfeiriad"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "cydnabyddiaeth DeepHack"
+    },
+    {
+      "key": "site.bc167b7f0d60b0e4d9",
+      "source": "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
+      "value": "Nid yw dolenni sgyrsiau preifat wedi'u cadw yn rhan o gyfeiriadau dysgu cyhoeddus, mynegeion a rennir, na deunydd dyfynnu."
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "A all pobl ddefnyddio inspir heb fewngofnodi?"
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Llyfrgell dysgu ffurf hir"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Sut dechreuodd inspir?"
+    },
+    {
+      "key": "site.bd8b75355bbd8c611c",
+      "source": "Use this when describing the full set of guest-mode learning tools people can try immediately.",
+      "value": "Defnyddiwch hyn wrth ddisgrifio'r set lawn o offer dysgu modd gwestai y gall pobl roi cynnig arnynt ar unwaith."
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Llwybrau cyflwyno ysgol"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "Llwybrau dysgu"
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Heb ei ganiatáu"
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Gall ysgolion werthuso inspir drwy foddau gwestai cyhoeddus yn gyntaf, yna archwilio mannau dysgu AI wedi'u teilwra gyda llifoedd gwaith personol, cynllunio cyfrinachedd, anghenion cwricwlwm, a llwybrau mynediad wedi'u hariannu."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Ehangodd y gymuned drwy ysgolion, prifysgolion, cystadlaethau, rhaglenni allgyrsiol, a chymunedau dysgwyr."
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "A all inspir gefnogi cynnwys penodol i ysgol neu anghenion cwricwlwm?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Pam mae inspir yn cefnogi lleoliadau ysgol a phartneriaeth?"
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Mae'r cam nesaf yn ffynhonnell agored, yn gyfeillgar i gyfranwyr, ac wedi'i gysylltu â'r ehangu rhyngwladol ehangach yn inspir.uk."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Yr esboniad cyhoeddus o pam mae inspir yn bodoli a pham mae mynediad at ddysgu yn bwysig."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Wedi'i adeiladu ar gyfer graddfa"
+    },
+    {
+      "key": "site.cd89221492c4621057",
+      "source": "AI can make one-to-one learning dramatically more available.",
+      "value": "Gall AI wneud dysgu un-i-un yn llawer mwy ar gael."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Llwybrau ysgol a CSR ar gyfer mynediad wedi'i ariannu"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Pwy all ddefnyddio'r dudalen gyfryngau?"
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Y llwybr ysgol ar gyfer mannau dysgu AI wedi'u teilwra a mynediad wedi'i ariannu."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Opsiynau sy'n cyd-fynd â NCERT"
+    },
+    {
+      "key": "site.d0b28994ad66714280",
+      "source": "Study with AI well",
+      "value": "Astudio'n dda gydag AI"
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "Yr ehangu rhyngwladol ehangach sy'n gysylltiedig â phrosiect inspir."
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Caniateir ar dudalennau cyhoeddus"
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Defnyddiwch hyn wrth gyflwyno inspir fel y prif gynnyrch neu wrth gysylltu o gyfeiriadur, proffil, neu erthygl."
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Llwybrau mynediad wedi'u hariannu"
+    },
+    {
+      "key": "site.d464c52fb911b5c331",
+      "source": "Now rebuilt as open, guest-friendly AI learning entrypoints.",
+      "value": "Bellach wedi'u hailadeiladu fel mynedfeydd dysgu AI agored sy'n gyfeillgar i westeion."
+    },
+    {
+      "key": "site.d61c21978811629826",
+      "source": "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
+      "value": "Catalog strwythuredig o dudalennau cyhoeddus, moddau, llwybrau dysgu, clystyrau blog, a ffiniau preifatrwydd."
+    },
+    {
+      "key": "site.d7a6f2caf1c2c8aa63",
+      "source": "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
+      "value": "Y nod yw helpu pobl i ddod o hyd i'r dudalen ddysgu gyhoeddus gywir yn gyflym. Mae llwybrau cyhoeddus, canllawiau, a chanolfannau dysgu ar agor; mae llwybrau API, admin, reset, a chyfleustodau preifat yn aros ar gau."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Defnyddiwch hyn wrth ddyfynnu'r llyfrgell ganllawiau hir, promptiau astudio, ac erthyglau penodol i fodd."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Dealltwriaeth dros atebion"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Defnyddiwch https://inspirlearning.com ar gyfer y safle, /mission ar gyfer y genhadaeth, /topics ar gyfer cyfeiriadur y moddau dysgu cyhoeddus, a /chat/learn-anything ar gyfer y profiad dysgu gwesteion diofyn."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "partneriaid CSR ac addysg"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Beth all rhywun roi cynnig arno gyntaf?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Ble dylai ysgolion ddechrau?"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Gellir cynllunio cyflwyniadau ysgol o amgylch preifatrwydd myfyrwyr, goruchwyliaeth staff, a'r ffiniau ymarferol sydd eu hangen ar gymuned ddysgu."
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Creu llwybr mwy diogel ar gyfer ymarfer, esboniadau, adborth, a phromptiau adolygu heb anfon myfyrwyr i chatbot generig."
+    },
+    {
+      "key": "site.e19092c6e089c341c6",
+      "source": "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
+      "value": "Mae ffeiliau cyfeirio cyhoeddus yn crynhoi tudalennau dysgu, llwybrau, moddau, canllawiau, a ffiniau dyfynnu ar gyfer offer sydd angen map cryno."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Nawr"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "Cenhadaeth"
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Wedi'i adeiladu o amgylch dysgwyr go iawn"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "seilwaith dysgu AI"
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Y dudalen breifatrwydd ffurfiol ar gyfer defnydd data, hawliau, ac amodau gwasanaeth cyhoeddus."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "Dechreuodd inspir yn 2013 fel cymuned gwisiau a dysgu gyhoeddus, tyfodd drwy ysgolion a rhwydweithiau myfyrwyr, ac yn ddiweddarach datblygodd seilwaith dysgu AI a phrofiadau tiwtora AI cyhoeddus."
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "platfform dysgu AI label gwyn"
+    },
+    {
+      "key": "site.ed09d5aa7dd27b2edc",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
+      "value": "Mae inspir yn bodoli i wneud dysgu'n hygyrch, yn ddiddorol, yn bleserus, ac yn ddefnyddiol i unrhyw un sy'n chwilfrydig, boed yn fyfyriwr, rhiant, athro, neu ddysgwr hunanddysgedig."
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Sut mae inspir yn lleihau copïo atebion?"
+    },
+    {
+      "key": "site.eea07538476e7d34d6",
+      "source": "What we believe",
+      "value": "Yr hyn rydym yn ei gredu"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "Nid yw API, gweinyddwr, ailsefyll, defnyddioldeb preifat, a wyneb sgwrsio wedi'i arbed yn cynnwys ffynhonnell gyhoeddus."
+    },
+    {
+      "key": "site.efb55652c6367f853f",
+      "source": "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
+      "value": "Gellir rhannu a chysylltu tudalennau cyhoeddus, tra bod offer gweinyddol, llwybrau API, llifoedd ailosod, a chyfleustodau preifat yn aros ar gau."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Athrawon"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Repo GitHub presennol"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Wedi'i adeiladu'n gyhoeddus"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Sut gellir ariannu mynediad i ddysgwyr?"
+    },
+    {
+      "key": "site.f48c8862cd0cb4f9cc",
+      "source": "Media notes",
+      "value": "Nodiadau cyfryngau"
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "Mae inspir wedi'i ddylunio o amgylch rhesymu, ymarfer, adalw, ac esbonio yn lle rhoi gwaith gorffenedig i ddysgwyr."
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Dylunio cynnyrch penodol i fodd"
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Arweinwyr ysgol"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "Myfyrwyr"
+    }
+  ]
+}

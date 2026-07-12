@@ -2,7 +2,7 @@
 
 Learning is for everyone.
 
-inspir is an AI learning companion running as a production Next.js application on Cloudflare. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
+inspir is an AI learning companion built with Next.js and delivered through a static-first native Cloudflare Worker. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
 
 Live app: [https://inspirlearning.com](https://inspirlearning.com)
 
@@ -34,18 +34,19 @@ The product preserves the core learning behavior on a Cloudflare-native stack th
 
 - Polished product UI across landing, legal pages, loading, reset, chat, profile, and history states.
 - Google sign-in through Better Auth on Cloudflare D1.
-- Server-only OpenAI calls through the AI SDK.
+- Server-only OpenAI calls through Cloudflare AI Gateway.
 - Cloudflare D1 with Drizzle ORM.
 - Cloudflare Vectorize for memory embeddings.
-- Cloudflare R2 for OpenNext incremental cache and profile image storage.
+- Cloudflare R2 for profile image storage.
 - Cloudflare Queues for post-turn memory work.
 - Persisted chats, messages, users, topics, profile data, and AI run telemetry.
 - First-party product analytics and ops telemetry in D1, with GA and Clarity installed client-side.
 - Cloudflare operational checks for local gates, source scans, build artifact scans, preview, and production smoke tests.
-- App-owned D1 response cache for token-efficient guest/public starter questions.
 - Admin dashboard for AI usage, quota posture, product analytics, topics, and admin management.
 - Modernized chat experience with streaming responses and polished loading states.
-- Production deployment through OpenNext on Cloudflare Workers.
+- Multilingual curated static bundles with source-hash and fluency gates.
+- Games and the game arena are absent; accounts, saved chats, memory, admin, and learning APIs remain.
+- OpenNext is build tooling only; Wrangler deploys direct Static Assets plus a framework-neutral native Worker.
 
 ## Tech stack
 
@@ -67,7 +68,7 @@ The product preserves the core learning behavior on a Cloudflare-native stack th
 ```txt
 app/                 Next.js routes, layouts, API handlers, public pages
 components/          Brand, marketing, legal, admin, and chat UI
-lib/ai/              Topic prompts, agent setup, AI utilities, response cache
+lib/ai/              Topic prompts, agent setup, and AI utilities
 lib/auth/            Auth config, session helpers, admin checks, photo sync
 lib/content/         Legal, mission, topic, blog, language, and SEO content
 lib/db/              Drizzle schema, database client, query helpers
@@ -103,7 +104,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-For Cloudflare parity, build and preview with OpenNext:
+For Cloudflare parity, build and preview the native Worker plus materialized OpenNext static output:
 
 ```bash
 pnpm cf:build
@@ -120,13 +121,12 @@ Generate migrations:
 pnpm db:generate
 ```
 
-Apply remote D1 migrations only when you intentionally provide maintainer credentials:
+Never apply production migrations through the generic Drizzle command. Production releases use the source-bound, Free-budgeted migration sequence in [`deploy.md`](deploy.md):
 
 ```bash
-CLOUDFLARE_ACCOUNT_ID=<account-id> \
-CLOUDFLARE_D1_DATABASE_ID=<database-id> \
-CLOUDFLARE_API_TOKEN=<token> \
-pnpm db:migrate
+pnpm cf:check:d1-migration-budget -- --confirm-production
+pnpm cf:apply:d1-runtime-migrations -- --confirm-production
+pnpm cf:verify:d1-runtime-migrations -- --confirm-production
 ```
 
 For day-to-day local Cloudflare preview, prefer the local D1 setup command:
@@ -135,13 +135,11 @@ For day-to-day local Cloudflare preview, prefer the local D1 setup command:
 pnpm cf:d1:local:setup
 ```
 
-The guest/public starter response cache lives in D1 table `ai_response_cache`. Apply `drizzle-d1/0011_ai_response_cache.sql` before deploying code that reads cache metrics in admin. See [docs/ai-response-cache.md](docs/ai-response-cache.md).
+The historical `ai_response_cache` table remains migration-compatible, but the Workers Free native runtime does not read or write it.
 
 ## Cloudflare Operations
 
-The app runs on Cloudflare Workers through OpenNext, with D1 for relational data, Vectorize for memory retrieval, R2 for OpenNext cache/profile images, and a Queue for post-turn memory work.
-
-Guest/public first-turn AI answers are cached in D1 after successful streaming completion. Cache hits still respect guest abuse quotas but return before consuming the global LLM budget or calling OpenAI.
+Public documents, localized pages, SEO files, topic JSON, and frontend assets are direct Workers Static Assets. Only the exact account, saved-state, learning, admin, analytics, health, chat-child, and tutor routes invoke the native Worker. D1 stores relational data, Vectorize supports memory retrieval, R2 stores profile images, and a Queue performs bounded post-turn memory work. Neither Next nor the OpenNext request runtime is imported by the deployed Worker.
 
 Useful commands:
 
@@ -156,14 +154,13 @@ REQUIRE_LIVE_AI=1 pnpm cf:verify:production
 
 `pnpm cf:verify:local` records typecheck, Worker typecheck, lint, unit tests, source secret scan, Next build, OpenNext build, artifact scan, Wrangler dry run, and Worker startup evidence under `tmp/cloudflare-reports/`. The deploy wrapper uses the same report directory for preflight evidence and refuses production deploys when the local gates or artifact scans are stale.
 
-Cloudflare data backups are explicit operational tasks, not part of every deploy:
-
-```bash
-pnpm cf:backup:frozen-cloudflare
-pnpm cf:harden:backup-permissions -- --backup <backup-dir>
-```
-
-Backups and generated reports can contain personal data or environment fingerprints. Keep them local and out of git.
+Cross-store frozen backup and destructive whole-D1 restore are intentionally unsupported on the
+Workers Free architecture. Connected HTTP invocations have no finite wall-time ceiling, while
+Queue and cron consumers can run for 15 minutes, so a deployment-time write-freeze cannot prove
+that every previously admitted D1, R2, Vectorize, Queue, or `waitUntil` mutation has drained.
+Release maintenance therefore uses additive migrations, atomic scoped imports, Time Travel
+bookmarks for diagnostics, and reviewed forward corrections only. Generated reports can contain
+personal data or environment fingerprints; keep them local and out of git.
 
 Cloudflare also owns post-turn memory work through the `inspirlearning-memory-post-turn-prod` Queue and `inspirlearning-memory-post-turn-dlq` dead-letter Queue. Chat responses enqueue memory extraction after the answer finishes; the Worker queue consumer processes memory against D1/Vectorize with retry support, keeping long-running memory synthesis off the request path.
 
@@ -171,7 +168,6 @@ The production Worker is `inspirlearning`, backed by:
 
 - D1: `inspirlearning-prod`
 - Vectorize: `inspirlearning-memory-prod`
-- R2: `inspirlearning-next-cache-prod`
 - R2: `inspirlearning-profile-images-prod`
 - Queue: `inspirlearning-memory-post-turn-prod`
 - DLQ: `inspirlearning-memory-post-turn-dlq`

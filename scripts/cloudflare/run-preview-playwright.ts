@@ -39,9 +39,12 @@ writeReport({
   stats: parsed?.stats ?? null,
   liveEnvironment: {
     requireLiveAi: process.env.REQUIRE_LIVE_AI === "1",
+    migrationE2eAuth: hasValidLocalE2EAuth(),
+    migrationE2eAdminVerifiedByServer: hasValidLocalE2EAuth(),
     googleEmail: Boolean(process.env.E2E_GOOGLE_EMAIL?.trim()),
     googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
     googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
+    productScope: "multilingual-static-native-accounts-memory-admin-and-activities",
   },
   rawOutput: parsed ? undefined : output,
   playwright: parsed,
@@ -160,4 +163,16 @@ function parsePlaywrightJson(output: string) {
   } catch {
     return null;
   }
+}
+
+function hasValidLocalE2EAuth() {
+  const secret = process.env.E2E_TEST_AUTH_SECRET ?? "";
+  const email = process.env.E2E_TEST_AUTH_EMAIL ?? "";
+  return (
+    Buffer.byteLength(secret, "utf8") >= 32 &&
+    /^[\x21-\x7e]+$/.test(secret) &&
+    email === email.trim() &&
+    email === email.toLowerCase() &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  );
 }
