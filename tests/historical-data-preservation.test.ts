@@ -6,9 +6,14 @@ import path from "node:path";
 import test from "node:test";
 import {
   HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_COUNT_RESULT_SET_COUNT,
   HISTORICAL_DATA_BASELINE_MAX_AGE_MS,
   HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
+  HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT,
   HISTORICAL_DATA_IDENTITIES_SQL,
+  HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT,
+  HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT,
+  HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATA_SUMMARY_SQL,
   HISTORICAL_DATASET_NAMES,
   createHistoricalDataBaseline,
@@ -42,7 +47,7 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
   try {
     const source = makeSource("same source");
     const baselineFixture = databaseFixture();
-    const baselineCalls: string[][] = [];
+    const baselineCalls: WranglerCall[] = [];
     const baseline = createHistoricalDataBaseline({
       backupDir,
       hmacSecret: secret,
@@ -56,9 +61,15 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
     assert.equal(baseline.rowsWritten, 0);
     assert.equal(baseline.ledger.reservation.maximumRowsRead, HISTORICAL_BILLED_READ_LIMIT);
     assert.equal(baseline.ledger.reservation.phase, "exact");
-    assert.equal(baselineCalls.length, 2);
-    assert.equal(baselineCalls[0]?.at(-1), HISTORICAL_DATA_SUMMARY_SQL);
-    assert.equal(baselineCalls[1]?.at(-1), HISTORICAL_DATA_IDENTITIES_SQL);
+    assert.equal(baselineCalls.length, 1);
+    assert.equal(baselineCalls[0]?.args.at(-1), HISTORICAL_DATA_SNAPSHOT_SQL);
+    assert.deepEqual(baselineCalls[0]?.options, {
+      env: {
+        HISTORICAL_DATA_PRESERVATION_HMAC_SECRET: undefined,
+        WRANGLER_WRITE_LOGS: "false",
+      },
+    });
+    assert.equal(baseline.rowsRead, 21);
 
     const reportPath = writeHistoricalDataReport(backupDir, baseline);
     assert.equal(fs.statSync(reportPath).mode & 0o777, 0o600);
@@ -177,7 +188,7 @@ test("cumulative ledger overflow rejects baseline before its first D1 execute", 
       observedUsage: emptyUsage,
       now,
     });
-    const calls: string[][] = [];
+    const calls: WranglerCall[] = [];
     assert.throws(
       () => createHistoricalDataBaseline({
         backupDir,
@@ -347,15 +358,109 @@ test("final verification permits the guarded release window while preflight fres
 });
 
 test("preservation SQL is bounded and read-only", () => {
-  for (const sql of [HISTORICAL_DATA_SUMMARY_SQL, HISTORICAL_DATA_IDENTITIES_SQL]) {
+  assert.equal(HISTORICAL_DATA_COUNT_RESULT_SET_COUNT, 10);
+  assert.equal(HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT, 9);
+  assert.equal(HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT, 10);
+  assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 29);
+  const statements = HISTORICAL_DATA_SNAPSHOT_SQL
+    .split(";")
+    .map((statement) => statement.trim())
+    .filter(Boolean);
+  assert.equal(statements.length, HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT);
+  for (const statement of statements) {
+    assert.match(statement, /^SELECT\b/i);
+    assert.equal((statement.match(/\bSELECT\b/gi) ?? []).length, 1);
+    assert.doesNotMatch(statement, /\b(?:UNION|INTERSECT|EXCEPT)\b/i);
     assert.doesNotMatch(
-      sql,
-      /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH)\b/i,
+      statement,
+      /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH|PRAGMA)\b/i,
     );
   }
+  assert.doesNotMatch(HISTORICAL_DATA_SNAPSHOT_SQL, /\bUNION\b/i);
   assert.equal((HISTORICAL_DATA_IDENTITIES_SQL.match(/ORDER BY rowid LIMIT 16/g) ?? []).length, 10);
   assert.doesNotMatch(HISTORICAL_DATA_IDENTITIES_SQL, /LIMIT 1\d{3,}/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /profile_photo_pointers/);
+});
+
+test("snapshot result partitions and billing metadata fail closed", () => {
+  const cases: Array<{
+    name: string;
+    mutate: (sets: FixtureResultSet[]) => void;
+    pattern: RegExp;
+  }> = [
+    {
+      name: "written rows",
+      mutate: (sets) => {
+        const set = sets[0];
+        if (set) set.rowsWritten = 1;
+      },
+      pattern: /unexpectedly wrote rows/,
+    },
+    {
+      name: "billing overflow",
+      mutate: (sets) => {
+        const first = sets[0];
+        const second = sets[1];
+        if (first) first.rowsRead = Number.MAX_SAFE_INTEGER;
+        if (second) second.rowsRead = 1;
+      },
+      pattern: /metadata overflowed/,
+    },
+    {
+      name: "missing billing metadata",
+      mutate: (sets) => {
+        const set = sets[0];
+        if (set) set.rowsRead = Number.NaN;
+      },
+      pattern: /lacks billing metadata/,
+    },
+    {
+      name: "swapped count results",
+      mutate: (sets) => {
+        const first = sets[0];
+        const second = sets[1];
+        if (first && second) [first.rows, second.rows] = [second.rows, first.rows];
+      },
+      pattern: /count result order or shape is invalid/,
+    },
+    {
+      name: "extra identity field",
+      mutate: (sets) => {
+        const firstIdentity = sets[
+          HISTORICAL_DATA_COUNT_RESULT_SET_COUNT + HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT
+        ];
+        const row = firstIdentity?.rows[0];
+        if (row) row.raw_identifier = "must-never-be-accepted";
+      },
+      pattern: /users identity shape is invalid/,
+    },
+    {
+      name: "missing result set",
+      mutate: (sets) => {
+        sets.pop();
+      },
+      pattern: /unexpected result-set count/,
+    },
+  ];
+
+  for (const fixtureCase of cases) {
+    const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-malformed-"));
+    try {
+      assert.throws(
+        () => createHistoricalDataBaseline({
+          backupDir,
+          hmacSecret: secret,
+          sourceFingerprint: makeSource(`malformed ${fixtureCase.name}`),
+          runner: fixtureRunner(databaseFixture(), [], fixtureCase.mutate),
+          usageLoader: () => emptyUsage,
+          clock: () => now,
+        }),
+        fixtureCase.pattern,
+      );
+    } finally {
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
 });
 
 type DatabaseFixture = {
@@ -379,11 +484,14 @@ function databaseFixture(): DatabaseFixture {
     },
     identities: {
       users: [{ identity_1: "historical-user-id" }],
-      accounts: [{ identity_1: "account-id", identity_2: "historical-user-id" }],
+      accounts: [{
+        identity_1: "provider",
+        identity_2: "provider-account-id",
+        identity_3: "historical-user-id",
+      }],
       sessions: [{
-        identity_1: "session-id",
+        identity_1: "private-session-token",
         identity_2: "historical-user-id",
-        identity_3: "private-session-token",
       }],
       chats: [{ identity_1: "chat-id", identity_2: "historical-user-id" }],
       messages: [{ identity_1: "message-id", identity_2: "chat-id" }],
@@ -398,45 +506,57 @@ function databaseFixture(): DatabaseFixture {
 
 function fixtureRunner(
   fixture: DatabaseFixture,
-  calls: string[][] = [],
+  calls: WranglerCall[] = [],
+  mutate?: (sets: FixtureResultSet[]) => void,
 ): WranglerRunner {
-  return (args) => {
-    calls.push(args);
+  return (args, options) => {
+    calls.push({ args, options });
     const sql = args.at(-1);
-    if (sql === HISTORICAL_DATA_SUMMARY_SQL) {
-      const countRows = HISTORICAL_DATASET_NAMES.map((name) => ({
-        dataset: name,
-        row_count: fixture.counts[name],
+    if (sql === HISTORICAL_DATA_SNAPSHOT_SQL) {
+      const countSets = HISTORICAL_DATASET_NAMES.map((name) => ({
+        rows: [{ dataset: name, row_count: fixture.counts[name] }],
+        rowsRead: fixture.counts[name],
       }));
-      const schemaRows = schemaTableNames().map((table) => ({
-        table_name: table,
-        name: table === "admin_users" ? "email" : "id",
-        type: "text",
-        not_null: 1,
-        primary_key: 1,
+      const schemaSets = schemaTableNames().map((table) => ({
+        rows: [{
+          table_name: table,
+          name: table === "admin_users" ? "email" : "id",
+          type: "text",
+          not_null: 1,
+          primary_key: 1,
+        }],
+        rowsRead: 1,
       }));
-      return wranglerResult([
-        { rows: countRows, rowsRead: countRows.length },
-        { rows: schemaRows, rowsRead: schemaRows.length },
-      ]);
-    }
-    if (sql === HISTORICAL_DATA_IDENTITIES_SQL) {
-      return wranglerResult(HISTORICAL_DATASET_NAMES.map((name) => ({
+      const identitySets = HISTORICAL_DATASET_NAMES.map((name) => ({
         rows: fixture.identities[name],
         rowsRead: fixture.identities[name].length,
-      })));
+      }));
+      const sets: FixtureResultSet[] = [...countSets, ...schemaSets, ...identitySets];
+      mutate?.(sets);
+      return wranglerResult(sets);
     }
     throw new Error("Unexpected D1 SQL in historical preservation fixture.");
   };
 }
 
+type WranglerCall = {
+  args: string[];
+  options: Parameters<WranglerRunner>[1];
+};
+
+type FixtureResultSet = {
+  rows: Array<Record<string, unknown>>;
+  rowsRead: number;
+  rowsWritten?: number;
+};
+
 function wranglerResult(
-  sets: Array<{ rows: Array<Record<string, unknown>>; rowsRead: number }>,
+  sets: FixtureResultSet[],
 ) {
   return JSON.stringify(sets.map((set) => ({
     success: true,
     results: set.rows,
-    meta: { rows_read: set.rowsRead, rows_written: 0 },
+    meta: { rows_read: set.rowsRead, rows_written: set.rowsWritten ?? 0 },
   })));
 }
 

@@ -31,8 +31,7 @@ import {
 } from "../scripts/cloudflare/verify-d1-runtime-migrations";
 import {
   HISTORICAL_DATA_BASELINE_RELATIVE_PATH,
-  HISTORICAL_DATA_IDENTITIES_SQL,
-  HISTORICAL_DATA_SUMMARY_SQL,
+  HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATASET_NAMES,
   createHistoricalDataBaseline,
   writeHistoricalDataReport,
@@ -1017,11 +1016,14 @@ function historicalDatabaseFixture(): HistoricalDatabaseFixture {
     },
     identities: {
       users: [{ identity_1: "historical-user-id" }],
-      accounts: [{ identity_1: "account-id", identity_2: "historical-user-id" }],
+      accounts: [{
+        identity_1: "provider",
+        identity_2: "provider-account-id",
+        identity_3: "historical-user-id",
+      }],
       sessions: [{
-        identity_1: "session-id",
+        identity_1: "private-session-token",
         identity_2: "historical-user-id",
-        identity_3: "private-session-token",
       }],
       chats: [{ identity_1: "chat-id", identity_2: "historical-user-id" }],
       messages: [{ identity_1: "message-id", identity_2: "chat-id" }],
@@ -1038,28 +1040,26 @@ function historicalFixtureRunner(): WranglerRunner {
   const fixture = historicalDatabaseFixture();
   return (args) => {
     const sql = args.at(-1);
-    if (sql === HISTORICAL_DATA_SUMMARY_SQL) {
-      const countRows = HISTORICAL_DATASET_NAMES.map((name) => ({
-        dataset: name,
-        row_count: fixture.counts[name],
+    if (sql === HISTORICAL_DATA_SNAPSHOT_SQL) {
+      const countSets = HISTORICAL_DATASET_NAMES.map((name) => ({
+        rows: [{ dataset: name, row_count: fixture.counts[name] }],
+        rowsRead: fixture.counts[name],
       }));
-      const schemaRows = historicalSchemaTableNames().map((table) => ({
-        table_name: table,
-        name: table === "admin_users" ? "email" : "id",
-        type: "text",
-        not_null: 1,
-        primary_key: 1,
+      const schemaSets = historicalSchemaTableNames().map((table) => ({
+        rows: [{
+          table_name: table,
+          name: table === "admin_users" ? "email" : "id",
+          type: "text",
+          not_null: 1,
+          primary_key: 1,
+        }],
+        rowsRead: 1,
       }));
-      return historicalWranglerResult([
-        { rows: countRows, rowsRead: countRows.length },
-        { rows: schemaRows, rowsRead: schemaRows.length },
-      ]);
-    }
-    if (sql === HISTORICAL_DATA_IDENTITIES_SQL) {
-      return historicalWranglerResult(HISTORICAL_DATASET_NAMES.map((name) => ({
+      const identitySets = HISTORICAL_DATASET_NAMES.map((name) => ({
         rows: fixture.identities[name],
         rowsRead: fixture.identities[name].length,
-      })));
+      }));
+      return historicalWranglerResult([...countSets, ...schemaSets, ...identitySets]);
     }
     throw new Error("Unexpected D1 SQL in deploy preflight historical fixture.");
   };

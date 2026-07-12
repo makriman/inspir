@@ -36,6 +36,13 @@ export const HISTORICAL_DATA_VERIFICATION_RELATIVE_PATH =
 export const HISTORICAL_SENTINEL_LIMIT = 16;
 export const HISTORICAL_CORE_ROW_LIMIT = 350_000;
 export const HISTORICAL_BILLED_READ_LIMIT = 750_000;
+export const HISTORICAL_DATA_COUNT_RESULT_SET_COUNT = 10;
+export const HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT = 9;
+export const HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT = 10;
+export const HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT =
+  HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
+  HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT +
+  HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT;
 export const HISTORICAL_DATA_REPORT_MAX_BYTES = 2 * 1024 * 1024;
 export const HISTORICAL_DATA_BASELINE_MAX_AGE_MS = 30 * 60 * 1000;
 export const HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS = 12 * 60 * 60 * 1000;
@@ -167,6 +174,7 @@ type DatasetSpec = {
   name: HistoricalDatasetName;
   table: string;
   cap: number;
+  identityArity: 1 | 2 | 3 | 4;
   identitySql: string;
 };
 
@@ -183,19 +191,20 @@ const coreTableNames = [
 ] as const;
 
 const datasetSpecs: readonly DatasetSpec[] = [
-  { name: "users", table: "users", cap: 100_000, identitySql: "SELECT id AS identity_1 FROM users ORDER BY rowid LIMIT 16;" },
-  { name: "accounts", table: "accounts", cap: 150_000, identitySql: "SELECT provider AS identity_1, provider_account_id AS identity_2, user_id AS identity_3 FROM accounts ORDER BY rowid LIMIT 16;" },
-  { name: "sessions", table: "sessions", cap: 150_000, identitySql: "SELECT session_token AS identity_1, user_id AS identity_2 FROM sessions ORDER BY rowid LIMIT 16;" },
-  { name: "chats", table: "chats", cap: 100_000, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM chats ORDER BY rowid LIMIT 16;" },
-  { name: "messages", table: "messages", cap: 250_000, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM messages ORDER BY rowid LIMIT 16;" },
-  { name: "admin_users", table: "admin_users", cap: 1_000, identitySql: "SELECT email AS identity_1 FROM admin_users ORDER BY rowid LIMIT 16;" },
-  { name: "user_memories", table: "user_memories", cap: 100_000, identitySql: "SELECT id AS identity_1, user_id AS identity_2 FROM user_memories ORDER BY rowid LIMIT 16;" },
-  { name: "activity_runs", table: "activity_runs", cap: 75_000, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM activity_runs ORDER BY rowid LIMIT 16;" },
-  { name: "product_events", table: "product_events", cap: 250_000, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM product_events ORDER BY rowid LIMIT 16;" },
+  { name: "users", table: "users", cap: 100_000, identityArity: 1, identitySql: "SELECT id AS identity_1 FROM users ORDER BY rowid LIMIT 16;" },
+  { name: "accounts", table: "accounts", cap: 150_000, identityArity: 3, identitySql: "SELECT provider AS identity_1, provider_account_id AS identity_2, user_id AS identity_3 FROM accounts ORDER BY rowid LIMIT 16;" },
+  { name: "sessions", table: "sessions", cap: 150_000, identityArity: 2, identitySql: "SELECT session_token AS identity_1, user_id AS identity_2 FROM sessions ORDER BY rowid LIMIT 16;" },
+  { name: "chats", table: "chats", cap: 100_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM chats ORDER BY rowid LIMIT 16;" },
+  { name: "messages", table: "messages", cap: 250_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM messages ORDER BY rowid LIMIT 16;" },
+  { name: "admin_users", table: "admin_users", cap: 1_000, identityArity: 1, identitySql: "SELECT email AS identity_1 FROM admin_users ORDER BY rowid LIMIT 16;" },
+  { name: "user_memories", table: "user_memories", cap: 100_000, identityArity: 2, identitySql: "SELECT id AS identity_1, user_id AS identity_2 FROM user_memories ORDER BY rowid LIMIT 16;" },
+  { name: "activity_runs", table: "activity_runs", cap: 75_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM activity_runs ORDER BY rowid LIMIT 16;" },
+  { name: "product_events", table: "product_events", cap: 250_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM product_events ORDER BY rowid LIMIT 16;" },
   {
     name: "profile_photo_pointers",
     table: "users",
     cap: 100_000,
+    identityArity: 4,
     identitySql:
       "SELECT id AS identity_1, coalesce(profile_image_r2_key, '') AS identity_2, coalesce(profile_image_hash, '') AS identity_3, coalesce(profile_image_r2_etag, '') AS identity_4 FROM users WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL ORDER BY rowid LIMIT 16;",
   },
@@ -301,25 +310,40 @@ const historicalBaselineSchema = z.object({
   datasets: z.record(z.enum(HISTORICAL_DATASET_NAMES), historicalDatasetSchema),
 }).strict();
 
+const historicalDataCountStatements = datasetSpecs.map((spec) =>
+  spec.name === "profile_photo_pointers"
+    ? `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM users WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL;`
+    : `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM ${spec.table};`,
+);
+
+const historicalDataSchemaStatements = coreTableNames.map(
+  (table) =>
+    `SELECT '${table}' AS table_name, name, lower(type) AS type, "notnull" AS not_null, pk AS primary_key FROM pragma_table_info('${table}') ORDER BY primary_key DESC, name;`,
+);
+
+const historicalDataIdentityStatements = datasetSpecs.map((spec) => spec.identitySql);
+
+if (
+  historicalDataCountStatements.length !== HISTORICAL_DATA_COUNT_RESULT_SET_COUNT ||
+  historicalDataSchemaStatements.length !== HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT ||
+  historicalDataIdentityStatements.length !== HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT
+) {
+  throw new Error("Historical preservation snapshot plan has an invalid result-set partition.");
+}
+
 export const HISTORICAL_DATA_SUMMARY_SQL = [
-  `SELECT ${datasetSpecs
-    .map((spec) =>
-      spec.name === "profile_photo_pointers"
-        ? `('${spec.name}') AS dataset, (SELECT count(*) FROM users WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL) AS row_count`
-        : `('${spec.name}') AS dataset, (SELECT count(*) FROM ${spec.table}) AS row_count`,
-    )
-    .join(" UNION ALL SELECT ")};`,
-  `SELECT table_name, name, type, not_null, primary_key FROM (${coreTableNames
-    .map(
-      (table) =>
-        `SELECT '${table}' AS table_name, name, lower(type) AS type, "notnull" AS not_null, pk AS primary_key FROM pragma_table_info('${table}')`,
-    )
-    .join(" UNION ALL ")}) ORDER BY table_name, primary_key DESC, name;`,
+  ...historicalDataCountStatements,
+  ...historicalDataSchemaStatements,
 ].join("\n");
 
-export const HISTORICAL_DATA_IDENTITIES_SQL = datasetSpecs
-  .map((spec) => spec.identitySql)
-  .join("\n");
+export const HISTORICAL_DATA_IDENTITIES_SQL = historicalDataIdentityStatements.join("\n");
+
+export const HISTORICAL_DATA_SNAPSHOT_SQL = [
+  HISTORICAL_DATA_SUMMARY_SQL,
+  HISTORICAL_DATA_IDENTITIES_SQL,
+].join("\n");
+
+assertHistoricalDataSnapshotSql(HISTORICAL_DATA_SNAPSHOT_SQL);
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCli();
@@ -331,12 +355,48 @@ function captureHistoricalDataSnapshot(options: {
 }): HistoricalCapture {
   const secret = requireHistoricalHmacSecret(options.hmacSecret);
   const runner = options.runner ?? runWrangler;
-  const summary = executeD1ReadOnly(HISTORICAL_DATA_SUMMARY_SQL, runner);
-  if (summary.resultSets.length !== 2) {
-    throw new Error("Historical preservation summary returned an unexpected result-set count.");
+  const snapshot = executeD1ReadOnly(HISTORICAL_DATA_SNAPSHOT_SQL, runner);
+  if (snapshot.resultSets.length !== HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT) {
+    throw new Error("Historical preservation snapshot returned an unexpected result-set count.");
   }
-  const counts = parseDatasetCounts(summary.resultSets[0] ?? []);
-  const columns = parseSchemaColumns(summary.resultSets[1] ?? []);
+  const countResultSets = snapshot.resultSets.slice(0, HISTORICAL_DATA_COUNT_RESULT_SET_COUNT);
+  const schemaStart = HISTORICAL_DATA_COUNT_RESULT_SET_COUNT;
+  const schemaEnd = schemaStart + HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT;
+  const schemaResultSets = snapshot.resultSets.slice(schemaStart, schemaEnd);
+  const identityResultSets = snapshot.resultSets.slice(schemaEnd);
+  const countRows = countResultSets.map((rows, index) => {
+    const expected = datasetSpecs[index];
+    if (rows.length !== 1) {
+      throw new Error(
+        `Historical preservation ${expected?.name ?? "unknown"} count returned an unexpected row count.`,
+      );
+    }
+    const row = rows[0] ?? {};
+    if (
+      !expected ||
+      row.dataset !== expected.name ||
+      !hasExactKeys(row, ["dataset", "row_count"])
+    ) {
+      throw new Error("Historical preservation count result order or shape is invalid.");
+    }
+    return row;
+  });
+  for (const [index, rows] of schemaResultSets.entries()) {
+    const expectedTable = coreTableNames[index];
+    if (!expectedTable || rows.length === 0) {
+      throw new Error("Historical preservation schema result order or cardinality is invalid.");
+    }
+    for (const row of rows) {
+      if (
+        row.table_name !== expectedTable ||
+        !hasExactKeys(row, ["table_name", "name", "type", "not_null", "primary_key"])
+      ) {
+        throw new Error("Historical preservation schema result order or shape is invalid.");
+      }
+    }
+  }
+  const counts = parseDatasetCounts(countRows);
+  const columns = parseSchemaColumns(schemaResultSets.flat());
   const coreRows = coreTableNames.reduce((sum, table) => sum + counts[table], 0);
   if (coreRows > HISTORICAL_CORE_ROW_LIMIT) {
     throw new Error(
@@ -350,23 +410,7 @@ function captureHistoricalDataSnapshot(options: {
       );
     }
   }
-  const projectedRowsRead =
-    summary.rowsRead +
-    HISTORICAL_DATASET_NAMES.reduce(
-      (sum, name) => sum + Math.min(counts[name], HISTORICAL_SENTINEL_LIMIT),
-      0,
-    );
-  if (projectedRowsRead > HISTORICAL_BILLED_READ_LIMIT) {
-    throw new Error(
-      `Historical preservation projected reads exceed the Free-plan cap: ${projectedRowsRead} > ${HISTORICAL_BILLED_READ_LIMIT}.`,
-    );
-  }
-
-  const identities = executeD1ReadOnly(HISTORICAL_DATA_IDENTITIES_SQL, runner);
-  if (identities.resultSets.length !== datasetSpecs.length) {
-    throw new Error("Historical preservation identities returned an unexpected result-set count.");
-  }
-  const rowsRead = summary.rowsRead + identities.rowsRead;
+  const rowsRead = snapshot.rowsRead;
   if (rowsRead > HISTORICAL_BILLED_READ_LIMIT) {
     throw new Error(
       `Historical preservation billed reads exceed the Free-plan cap: ${rowsRead} > ${HISTORICAL_BILLED_READ_LIMIT}.`,
@@ -375,12 +419,19 @@ function captureHistoricalDataSnapshot(options: {
 
   const datasets: Partial<Record<HistoricalDatasetName, CapturedDataset>> = {};
   for (const [index, spec] of datasetSpecs.entries()) {
-    const rows = identities.resultSets[index] ?? [];
+    const rows = identityResultSets[index] ?? [];
     const expectedRows = Math.min(counts[spec.name], HISTORICAL_SENTINEL_LIMIT);
     if (rows.length !== expectedRows) {
       throw new Error(
         `Historical preservation ${spec.name} sentinel cardinality mismatch: ${rows.length}/${expectedRows}.`,
       );
+    }
+    const expectedIdentityKeys = Array.from(
+      { length: spec.identityArity },
+      (_, identityIndex) => `identity_${identityIndex + 1}`,
+    );
+    if (rows.some((row) => !hasExactKeys(row, expectedIdentityKeys))) {
+      throw new Error(`Historical preservation ${spec.name} identity shape is invalid.`);
     }
     const identityHashes = new Set(
       rows.map((row) => hmacIdentity(secret, spec.name, identityValues(row))),
@@ -737,6 +788,7 @@ function runCli() {
 }
 
 function executeD1ReadOnly(sql: string, runner: WranglerRunner) {
+  assertHistoricalDataSnapshotSql(sql);
   const output = runner([
     "d1",
     "execute",
@@ -745,7 +797,12 @@ function executeD1ReadOnly(sql: string, runner: WranglerRunner) {
     "--json",
     "--command",
     sql,
-  ]);
+  ], {
+    env: {
+      HISTORICAL_DATA_PRESERVATION_HMAC_SECRET: undefined,
+      WRANGLER_WRITE_LOGS: "false",
+    },
+  });
   const value = parseJsonOutput(output);
   if (!Array.isArray(value)) throw new Error("Historical preservation D1 output is malformed.");
   const resultSets: Array<Array<Record<string, unknown>>> = [];
@@ -765,14 +822,43 @@ function executeD1ReadOnly(sql: string, runner: WranglerRunner) {
     if (read === null || written === null) {
       throw new Error(`Historical preservation D1 result set ${index + 1} lacks billing metadata.`);
     }
-    rowsRead += read;
-    rowsWritten += written;
+    rowsRead = safeAddBillingRows(rowsRead, read, "read");
+    rowsWritten = safeAddBillingRows(rowsWritten, written, "written");
     resultSets.push(rows);
   }
   if (rowsWritten !== 0) {
     throw new Error("Historical preservation read-only query unexpectedly wrote rows.");
   }
   return { resultSets, rowsRead, rowsWritten: 0 };
+}
+
+function assertHistoricalDataSnapshotSql(sql: string) {
+  if (Buffer.byteLength(sql, "utf8") > 100_000 || !sql.trimEnd().endsWith(";")) {
+    throw new Error("Historical preservation snapshot SQL is invalid or too large.");
+  }
+  const parts = sql.split(";");
+  const trailing = parts.pop();
+  if (trailing?.trim() !== "" || parts.length !== HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT) {
+    throw new Error("Historical preservation snapshot SQL has an invalid statement count.");
+  }
+  for (const statement of parts) {
+    const trimmed = statement.trim();
+    if (
+      !/^SELECT\b/i.test(trimmed) ||
+      (trimmed.match(/\bSELECT\b/gi) ?? []).length !== 1 ||
+      /\b(?:UNION|INTERSECT|EXCEPT)\b/i.test(trimmed) ||
+      /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH|PRAGMA)\b/i.test(trimmed)
+    ) {
+      throw new Error("Historical preservation snapshot SQL must contain only simple read-only SELECT statements.");
+    }
+  }
+}
+
+function safeAddBillingRows(current: number, addition: number, label: "read" | "written") {
+  if (current > Number.MAX_SAFE_INTEGER - addition) {
+    throw new Error(`Historical preservation billed rows ${label} metadata overflowed.`);
+  }
+  return current + addition;
 }
 
 function parseDatasetCounts(rows: Array<Record<string, unknown>>) {
@@ -833,6 +919,13 @@ function identityValues(row: Record<string, unknown>) {
   }
   if (values.length === 0) throw new Error("Historical preservation identity is empty.");
   return values;
+}
+
+function hasExactKeys(row: Record<string, unknown>, expected: readonly string[]) {
+  const actual = Object.keys(row).sort();
+  const sortedExpected = [...expected].sort();
+  return actual.length === sortedExpected.length &&
+    actual.every((key, index) => key === sortedExpected[index]);
 }
 
 function hmacIdentity(secret: string, dataset: HistoricalDatasetName, values: string[]) {
