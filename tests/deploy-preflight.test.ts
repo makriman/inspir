@@ -490,7 +490,11 @@ test("steady-state deploy preflight rejects a live ledger from the wrong source"
   const { backupDir, repoDir } = makeFixture();
   const baselineEvidence = readHistoricalBaselineFixture(backupDir);
   const ledger = JSON.parse(fs.readFileSync(baselineEvidence.ledger.ledgerPath, "utf8")) as D1ReleaseBudgetLedger;
-  ledger.sourceFingerprint.sha256 = "0".repeat(64);
+  const baselineReservation = ledger.reservations.find(
+    (reservation) => reservation.operationId === baselineEvidence.operationId,
+  );
+  assert.ok(baselineReservation);
+  baselineReservation.sourceFingerprint.sha256 = "0".repeat(64);
   writePrivateFixtureJson(baselineEvidence.ledger.ledgerPath, ledger);
 
   const report = buildSteadyStateDeployPreflightReport({

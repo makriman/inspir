@@ -13,7 +13,8 @@ import {
 } from "./migration-config";
 
 export const D1_RELEASE_BUDGET_LEDGER_KIND = "d1-release-budget-ledger" as const;
-export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 1 as const;
+export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 2 as const;
+const D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION = 1 as const;
 const D1_RELEASE_BUDGET_LEDGER_MAX_BYTES = 4 * 1024 * 1024;
 
 export type D1ReleaseSourceIdentity = {
@@ -36,6 +37,10 @@ export type D1ReleaseBudgetReservation = {
   updatedAt: string;
 };
 
+export type D1ReleaseBudgetLedgerReservation = D1ReleaseBudgetReservation & {
+  sourceFingerprint: D1ReleaseSourceIdentity;
+};
+
 export type D1ReleaseBudgetObservedUsageFloor = D1DailyUsage & {
   observedAt: string;
 };
@@ -51,13 +56,12 @@ export type D1ReleaseBudgetLedger = {
     id: typeof D1_DATABASE_ID;
     name: typeof D1_DATABASE_NAME;
   };
-  sourceFingerprint: D1ReleaseSourceIdentity;
   safeDailyLimits: {
     rowsRead: typeof D1_FREE_SAFE_ROWS_READ_LIMIT;
     rowsWritten: typeof D1_FREE_SAFE_ROWS_WRITTEN_LIMIT;
   };
   observedUsageFloor: D1ReleaseBudgetObservedUsageFloor;
-  reservations: D1ReleaseBudgetReservation[];
+  reservations: D1ReleaseBudgetLedgerReservation[];
   totals: {
     rowsRead: number;
     rowsWritten: number;
@@ -132,7 +136,6 @@ export function reserveD1ReleaseBudget(
       if (existing.utcDay !== utcDay) {
         throw new Error("D1 release budget ledger UTC day changed; start a new release operation.");
       }
-      assertSameSourceIdentity(existing.sourceFingerprint, sourceFingerprint);
       if (now.getTime() < Date.parse(existing.updatedAt)) {
         throw new Error("D1 release budget reservation clock moved backwards; refusing to rewrite the ledger.");
       }
@@ -143,14 +146,15 @@ export function reserveD1ReleaseBudget(
       ? mergeObservedUsageFloor(existing.observedUsageFloor, input.observedUsage, timestamp)
       : { ...input.observedUsage, observedAt: timestamp };
     const reservations = existing ? [...existing.reservations] : [];
-    const reservationIndex = reservations.findIndex(
-      (reservation) => reservation.operationId === operationId,
+    const reservationIndex = reservations.findIndex((reservation) =>
+      sameReservationIdentity(reservation, operationId, sourceFingerprint),
     );
     const prior = reservationIndex >= 0 ? reservations[reservationIndex] : undefined;
     const transition = transitionReservation({
       prior,
       operationId,
       operation,
+      sourceFingerprint,
       candidateVersionId,
       phase: input.phase,
       rowsRead,
@@ -159,7 +163,7 @@ export function reserveD1ReleaseBudget(
     });
     if (reservationIndex >= 0) reservations[reservationIndex] = transition.reservation;
     else reservations.push(transition.reservation);
-    reservations.sort((left, right) => left.operationId.localeCompare(right.operationId));
+    reservations.sort(compareReservationIdentity);
 
     const totals = sumReservations(reservations);
     const accountedUsage = {
@@ -181,7 +185,9 @@ export function reserveD1ReleaseBudget(
         utcDay,
         revision: existing.revision,
         idempotent: true,
-        reservation: requiredReservation(existing, operationId),
+        reservation: outwardReservation(
+          requiredReservation(existing, operationId, sourceFingerprint),
+        ),
         totals: existing.totals,
         accountedUsage: existing.accountedUsage,
       };
@@ -195,7 +201,6 @@ export function reserveD1ReleaseBudget(
       createdAt: existing?.createdAt ?? timestamp,
       updatedAt: timestamp,
       database: { id: D1_DATABASE_ID, name: D1_DATABASE_NAME },
-      sourceFingerprint,
       safeDailyLimits: {
         rowsRead: D1_FREE_SAFE_ROWS_READ_LIMIT,
         rowsWritten: D1_FREE_SAFE_ROWS_WRITTEN_LIMIT,
@@ -210,7 +215,9 @@ export function reserveD1ReleaseBudget(
     }
     writePrivateJsonDurably(ledgerPath, next, { replace: existing !== undefined });
     const stored = readD1ReleaseBudgetLedger(ledgerPath);
-    const reservation = requiredReservation(stored, operationId);
+    const reservation = outwardReservation(
+      requiredReservation(stored, operationId, sourceFingerprint),
+    );
     return {
       ledgerPath,
       utcDay,
@@ -232,8 +239,13 @@ export function assertD1ReleaseBudgetReservation(
   if (ledger.utcDay !== input.utcDay) {
     throw new Error("D1 release budget evidence points to the wrong UTC-day ledger.");
   }
-  assertSameSourceIdentity(ledger.sourceFingerprint, validateSourceIdentity(input.sourceFingerprint));
-  const reservation = requiredReservation(ledger, validateOperationId(input.operationId));
+  const sourceFingerprint = validateSourceIdentity(input.sourceFingerprint);
+  const storedReservation = requiredReservation(
+    ledger,
+    validateOperationId(input.operationId),
+    sourceFingerprint,
+  );
+  const reservation = outwardReservation(storedReservation);
   const candidateVersionId = validateCandidateVersion(input.candidateVersionId);
   if (
     reservation.candidateVersionId !== candidateVersionId ||
@@ -366,15 +378,16 @@ export function writePrivateJsonDurably(
 }
 
 function transitionReservation(input: {
-  prior: D1ReleaseBudgetReservation | undefined;
+  prior: D1ReleaseBudgetLedgerReservation | undefined;
   operationId: string;
   operation: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
   candidateVersionId: string | null;
   phase: D1ReleaseBudgetReservationPhase;
   rowsRead: number;
   rowsWritten: number;
   timestamp: string;
-}): { idempotent: boolean; reservation: D1ReleaseBudgetReservation } {
+}): { idempotent: boolean; reservation: D1ReleaseBudgetLedgerReservation } {
   const prior = input.prior;
   if (!prior) {
     return {
@@ -382,6 +395,7 @@ function transitionReservation(input: {
       reservation: {
         operationId: input.operationId,
         operation: input.operation,
+        sourceFingerprint: input.sourceFingerprint,
         candidateVersionId: input.candidateVersionId,
         phase: input.phase,
         rowsRead: input.rowsRead,
@@ -390,7 +404,7 @@ function transitionReservation(input: {
         maximumRowsWritten: input.rowsWritten,
         createdAt: input.timestamp,
         updatedAt: input.timestamp,
-      } satisfies D1ReleaseBudgetReservation,
+      } satisfies D1ReleaseBudgetLedgerReservation,
     };
   }
   if (
@@ -436,11 +450,27 @@ function transitionReservation(input: {
 
 function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   if (!isRecord(value)) throw new Error("D1 release budget ledger is not an object.");
+  const schemaVersion = value.schemaVersion;
   if (
     value.kind !== D1_RELEASE_BUDGET_LEDGER_KIND ||
-    value.schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION
+    (schemaVersion !== D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION &&
+      schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION)
   ) {
     throw new Error("D1 release budget ledger has an unsupported schema.");
+  }
+  const legacySourceFingerprint =
+    schemaVersion === D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION
+      ? validateSourceIdentity(
+          requiredRecord(value.sourceFingerprint, "legacy ledger source fingerprint"),
+        )
+      : undefined;
+  if (
+    schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION &&
+    Object.hasOwn(value, "sourceFingerprint")
+  ) {
+    throw new Error(
+      "D1 release budget ledger schema v2 must bind source fingerprints only to reservations.",
+    );
   }
   const database = requiredRecord(value.database, "ledger database");
   if (database.id !== D1_DATABASE_ID || database.name !== D1_DATABASE_NAME) {
@@ -453,9 +483,6 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   ) {
     throw new Error("D1 release budget ledger daily limits do not match this source revision.");
   }
-  const sourceFingerprint = validateSourceIdentity(
-    requiredRecord(value.sourceFingerprint, "ledger source fingerprint"),
-  );
   const usage = requiredRecord(value.observedUsageFloor, "ledger observed usage floor");
   const observedUsageFloor: D1ReleaseBudgetObservedUsageFloor = {
     databaseCount: positiveSafeInteger(usage.databaseCount, "ledger database count"),
@@ -470,9 +497,18 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   if (!Array.isArray(value.reservations)) {
     throw new Error("D1 release budget ledger reservations must be an array.");
   }
-  const reservations = value.reservations.map(parseReservation);
-  if (new Set(reservations.map((reservation) => reservation.operationId)).size !== reservations.length) {
-    throw new Error("D1 release budget ledger contains duplicate operation IDs.");
+  if (value.reservations.length === 0) {
+    throw new Error("D1 release budget ledger must contain at least one reservation.");
+  }
+  const reservations = value.reservations.map((reservation, index) =>
+    parseReservation(reservation, index, legacySourceFingerprint),
+  );
+  if (
+    new Set(reservations.map(reservationIdentityKey)).size !== reservations.length
+  ) {
+    throw new Error(
+      "D1 release budget ledger contains duplicate operation-and-source identities.",
+    );
   }
   const totals = sumReservations(reservations);
   const storedTotals = requiredRecord(value.totals, "ledger reservation totals");
@@ -521,7 +557,6 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
     createdAt,
     updatedAt,
     database: { id: D1_DATABASE_ID, name: D1_DATABASE_NAME },
-    sourceFingerprint,
     safeDailyLimits: {
       rowsRead: D1_FREE_SAFE_ROWS_READ_LIMIT,
       rowsWritten: D1_FREE_SAFE_ROWS_WRITTEN_LIMIT,
@@ -533,8 +568,25 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   };
 }
 
-function parseReservation(value: unknown, index: number): D1ReleaseBudgetReservation {
+function parseReservation(
+  value: unknown,
+  index: number,
+  legacySourceFingerprint: D1ReleaseSourceIdentity | undefined,
+): D1ReleaseBudgetLedgerReservation {
   if (!isRecord(value)) throw new Error(`D1 release budget reservation ${index} is invalid.`);
+  if (legacySourceFingerprint && Object.hasOwn(value, "sourceFingerprint")) {
+    throw new Error(
+      `Legacy D1 release budget reservation ${index} contains an ambiguous source fingerprint.`,
+    );
+  }
+  const sourceFingerprint = legacySourceFingerprint
+    ? { ...legacySourceFingerprint }
+    : validateSourceIdentity(
+        requiredRecord(
+          value.sourceFingerprint,
+          `reservation ${index} source fingerprint`,
+        ),
+      );
   const phase = value.phase;
   if (phase !== "maximum" && phase !== "exact") {
     throw new Error(`D1 release budget reservation ${index} has an invalid phase.`);
@@ -563,6 +615,7 @@ function parseReservation(value: unknown, index: number): D1ReleaseBudgetReserva
   return {
     operationId: validateOperationId(value.operationId),
     operation: validateOperation(value.operation),
+    sourceFingerprint,
     candidateVersionId,
     phase,
     rowsRead,
@@ -651,17 +704,70 @@ function assertRegularDirectory(directory: string) {
   }
 }
 
-function requiredReservation(ledger: D1ReleaseBudgetLedger, operationId: string) {
+function requiredReservation(
+  ledger: D1ReleaseBudgetLedger,
+  operationId: string,
+  sourceFingerprint: D1ReleaseSourceIdentity,
+) {
   const matches = ledger.reservations.filter(
-    (reservation) => reservation.operationId === operationId,
+    (reservation) =>
+      sameReservationIdentity(reservation, operationId, sourceFingerprint),
   );
   if (matches.length !== 1) {
-    throw new Error(`D1 release budget ledger is missing exact operation ${operationId}.`);
+    throw new Error(
+      `D1 release budget ledger is missing exact operation ${operationId} for the requested source fingerprint; a different source fingerprint cannot validate it.`,
+    );
   }
   return matches[0];
 }
 
-function sumReservations(reservations: D1ReleaseBudgetReservation[]) {
+function outwardReservation(
+  reservation: D1ReleaseBudgetLedgerReservation,
+): D1ReleaseBudgetReservation {
+  return {
+    operationId: reservation.operationId,
+    operation: reservation.operation,
+    candidateVersionId: reservation.candidateVersionId,
+    phase: reservation.phase,
+    rowsRead: reservation.rowsRead,
+    rowsWritten: reservation.rowsWritten,
+    maximumRowsRead: reservation.maximumRowsRead,
+    maximumRowsWritten: reservation.maximumRowsWritten,
+    createdAt: reservation.createdAt,
+    updatedAt: reservation.updatedAt,
+  };
+}
+
+function sameReservationIdentity(
+  reservation: D1ReleaseBudgetLedgerReservation,
+  operationId: string,
+  sourceFingerprint: D1ReleaseSourceIdentity,
+) {
+  return (
+    reservation.operationId === operationId &&
+    sameSourceIdentity(reservation.sourceFingerprint, sourceFingerprint)
+  );
+}
+
+function reservationIdentityKey(reservation: D1ReleaseBudgetLedgerReservation) {
+  return `${reservation.operationId}\u0000${reservation.sourceFingerprint.sha256}\u0000${reservation.sourceFingerprint.fileCount}`;
+}
+
+function compareReservationIdentity(
+  left: D1ReleaseBudgetLedgerReservation,
+  right: D1ReleaseBudgetLedgerReservation,
+) {
+  const operationOrder = left.operationId.localeCompare(right.operationId);
+  if (operationOrder !== 0) return operationOrder;
+  const sourceOrder = left.sourceFingerprint.sha256.localeCompare(
+    right.sourceFingerprint.sha256,
+  );
+  if (sourceOrder !== 0) return sourceOrder;
+  if (left.sourceFingerprint.fileCount === right.sourceFingerprint.fileCount) return 0;
+  return left.sourceFingerprint.fileCount < right.sourceFingerprint.fileCount ? -1 : 1;
+}
+
+function sumReservations(reservations: D1ReleaseBudgetLedgerReservation[]) {
   return reservations.reduce(
     (total, reservation) => ({
       rowsRead: safeAdd(total.rowsRead, reservation.rowsRead, "reserved rows read"),
@@ -753,15 +859,11 @@ function validateSourceIdentity(value: unknown): D1ReleaseSourceIdentity {
   };
 }
 
-function assertSameSourceIdentity(
-  expected: D1ReleaseSourceIdentity,
-  current: D1ReleaseSourceIdentity,
+function sameSourceIdentity(
+  left: D1ReleaseSourceIdentity,
+  right: D1ReleaseSourceIdentity,
 ) {
-  if (expected.sha256 !== current.sha256 || expected.fileCount !== current.fileCount) {
-    throw new Error(
-      "D1 release budget ledger is bound to a different source fingerprint; wait for a new UTC-day ledger.",
-    );
-  }
+  return left.sha256 === right.sha256 && left.fileCount === right.fileCount;
 }
 
 function validateCandidateVersion(value: string | undefined): string | null {
