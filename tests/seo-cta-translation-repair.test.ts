@@ -1,9 +1,15 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { DatabaseSync } from "node:sqlite";
 import test from "node:test";
-import { defaultLanguage, supportedLanguages } from "../lib/content/languages";
+import {
+  defaultLanguage,
+  supportedLanguages,
+  type SupportedLanguage,
+} from "../lib/content/languages";
 import {
   getMainAppSourceHash,
   getMainAppSourceStrings,
@@ -15,6 +21,7 @@ import { isValidFieldTranslation } from "../lib/i18n/translation-field-validatio
 import { isTranslationFieldLikelyFluent } from "../lib/i18n/translation-quality";
 import {
   assertReadOnlyRemoteTranslationVerificationArgs,
+  abortedPrewriteRecoveryOperationId,
   assertRepairReadBudget,
   assertRepairWriteBudget,
   assertD1SqlStatementSize,
@@ -40,6 +47,8 @@ import {
   nativeWranglerDeployEnv,
   projectRepairBilledRowReads,
   projectRepairBilledRowWrites,
+  productionMaintenanceRepairRunId,
+  refineAbortedPrewriteTranslationRepairReservation,
   repairSeoCtaTranslations,
   readPrivateWorkerDeployEvidence,
   splitSqlStatements,
@@ -57,11 +66,23 @@ import {
   writePreWriteDiagnosticEvidence,
   type CuratedNamespaceRepairRow,
   type MainAppRepairRow,
+  type RemoteTranslationDriftReport,
 } from "../scripts/cloudflare/repair-seo-cta-translations";
+import {
+  readD1ReleaseBudgetLedger,
+  reserveD1ReleaseBudget,
+} from "../scripts/cloudflare/d1-release-budget-ledger";
 import type { WranglerRunner } from "../scripts/cloudflare/migration-config";
+import {
+  PRODUCTION_VALIDATION_LOCK_KEY,
+  PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+  PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+  type ProductionValidationLockRunner,
+} from "../scripts/cloudflare/production-validation-lock";
 import {
   assertSourceSyncWriteBudget,
   buildSiteTranslationSourceSyncPlan,
+  MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
   parseD1SourceSnapshotResultSets,
   syncSiteTranslationSources,
@@ -565,10 +586,12 @@ test("verify-only production drift detection is exact, structured, and mutation-
   assert.equal(report.payloadSnapshot.verification?.curatedRowsMatched, 691);
   assert.equal(report.payloadSnapshot.verification?.mainAppRowsMatched, 69);
   assert.equal(report.readOnly.remoteQueries, 4);
+  assert.ok(report.readOnly.billedRowsRead > 0);
   assert.deepEqual(
     report.readOnly,
     {
       remoteQueries: 4,
+      billedRowsRead: report.readOnly.billedRowsRead,
       workerUploads: 0,
       workerDeployments: 0,
       maintenanceActivations: 0,
@@ -640,7 +663,9 @@ test("verify-only repair exits before ledger admission and never alters ledger e
       "utf8",
     );
     const verifyOnlyExit = source.indexOf("if (options.verifyOnly) {");
-    const ledgerAdmission = source.indexOf("reserveD1ReleaseBudget({");
+    const ledgerAdmission = source.indexOf(
+      "let budgetReservation: D1ReleaseBudgetReservationResult = reserveD1ReleaseBudget({",
+    );
     assert.ok(verifyOnlyExit >= 0 && verifyOnlyExit < ledgerAdmission);
     assert.match(
       source.slice(verifyOnlyExit, ledgerAdmission),
@@ -664,7 +689,7 @@ test("verify-only production drift detection fails closed on malformed or indete
         mainAppRepairRows: expected.mainAppRows,
         runner: malformed.runner,
       }),
-    /did not return a deterministic result/,
+    /did not return a deterministic result|billing metadata/,
   );
   assert.equal(malformed.calls.length, 2);
 
@@ -895,6 +920,24 @@ test("remote repair budget identities bind candidate, source, and immutable plan
     }),
     operationId,
   );
+  const runBoundOperationId = translationRepairBudgetOperationId({
+    candidateVersionId: input.candidateVersionId,
+    sourceFingerprint,
+    planSha256,
+    releasePreflightRunId: recoveryReleasePreflightRunId,
+  });
+  assert.match(runBoundOperationId, /^seo-cta-translation-repair:[a-f0-9]{64}$/);
+  assert.notEqual(runBoundOperationId, operationId);
+  assert.notEqual(
+    translationRepairBudgetOperationId({
+      candidateVersionId: input.candidateVersionId,
+      sourceFingerprint,
+      planSha256,
+      releasePreflightRunId:
+        "2026-07-12T09-10-50-779Z-f9f19c85-9499-4c0f-a9fb-7e4c0fffe141",
+    }),
+    runBoundOperationId,
+  );
   assert.notEqual(
     translationRepairBudgetPlanSha256({
       ...input,
@@ -989,6 +1032,31 @@ test("remote repair maintenance uses the native Worker and proves both freeze st
   assert.ok(freezeArgs.includes(".open-next/assets"));
   assert.doesNotMatch([...freezeArgs, ...releaseArgs].join(" "), /opennext/i);
   assert.deepEqual(nativeWranglerDeployEnv, { OPEN_NEXT_DEPLOY: "true" });
+
+  assert.equal(
+    productionMaintenanceRepairRunId(
+      "2026-07-12T09-10-50-778Z-e9f19c85-9499-4c0f-a9fb-7e4c0fffe141",
+    ),
+    "e9f19c85-9499-4c0f-a9fb-7e4c0fffe141",
+  );
+  assert.throws(
+    () => productionMaintenanceRepairRunId("e9f19c85-9499-4c0f-a9fb-7e4c0fffe141"),
+    /exact UTC timestamp followed by a lowercase RFC UUID/,
+  );
+  assert.throws(
+    () =>
+      productionMaintenanceRepairRunId(
+        "2026-07-12T09-10-50-778Z-E9F19C85-9499-4C0F-A9FB-7E4C0FFFE141",
+      ),
+    /exact UTC timestamp followed by a lowercase RFC UUID/,
+  );
+  assert.throws(
+    () =>
+      productionMaintenanceRepairRunId(
+        "2026-02-30T09-10-50-778Z-e9f19c85-9499-4c0f-a9fb-7e4c0fffe141",
+      ),
+    /run timestamp is malformed/,
+  );
 
   let readbackAttempts = 0;
   assert.equal(
@@ -1692,7 +1760,7 @@ function d1TestResultSets(resultSets: readonly (readonly Record<string, unknown>
     resultSets.map((results) => ({
       success: true,
       results,
-      meta: { rows_read: results.length },
+      meta: { rows_read: results.length, rows_written: 0 },
     })),
   );
 }
@@ -1707,4 +1775,704 @@ function isTestPublishedNamespace(
   value: string,
 ): value is keyof typeof siteSourceManifest {
   return Object.prototype.hasOwnProperty.call(siteSourceManifest, value);
+}
+
+const recoveryReleasePreflightRunId =
+  "2026-07-12T09-10-50-778Z-e9f19c85-9499-4c0f-a9fb-7e4c0fffe141";
+const recoveryReleasePreflightCreatedAt = "2026-07-12T09:10:50.778Z";
+const recoveryReservationCreatedAt = "2026-07-12T09:10:50.783Z";
+const recoveryClock = new Date("2026-07-12T09:11:00.000Z");
+const recoveryCandidateVersionId = "42986870-cd08-4a64-9276-8495400783dd";
+const recoveryDriftBilledRowsRead = 36_502;
+const recoveryDailyUsage = {
+  databaseCount: 1,
+  queryGroups: 0,
+  rowsRead: 0,
+  rowsWritten: 0,
+  executions: 0,
+  windowMinutes: 552,
+};
+const recoveryOperationIds = new Map<string, string>();
+
+test("prewrite-abort recovery retains exact D1 verification and lock charges", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  let sourceAssertions = 0;
+  let activeReads = 0;
+  let candidateProbes = 0;
+  let driftReads = 0;
+  try {
+    const report = refineAbortedPrewriteTranslationRepairReservation({
+      backupDir: fixture.backupDir,
+      releasePreflightRunId: fixture.runId,
+      confirmed: true,
+      prewriteAbortConfirmed: true,
+      dailyUsage: recoveryDailyUsage,
+      now: recoveryClock,
+      lockRunner: fixture.runner,
+      assertRecoverySource: () => {
+        sourceAssertions += 1;
+      },
+      buildRecoveryPlan: fixture.buildRecoveryPlan,
+      readActiveWorkerVersion: () => {
+        activeReads += 1;
+        return fixture.candidateVersionId;
+      },
+      probeCandidate: (candidateVersionId) => {
+        candidateProbes += 1;
+        return inactiveRecoveryCandidateProbe(candidateVersionId);
+      },
+      verifyDrift: () => {
+        driftReads += 1;
+        return recoveryRepairRequiredDriftReport();
+      },
+    });
+
+    const expectedRowsRead =
+      recoveryDriftBilledRowsRead + PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ;
+    assert.equal(report.status, "complete");
+    assert.equal(report.proof.driftBilledRowsRead, recoveryDriftBilledRowsRead);
+    assert.equal(report.proof.validationLockRowsReadReserved, 1_024);
+    assert.equal(report.proof.validationLockRowsWrittenReserved, 64);
+    assert.equal(report.ledger.exactRowsRead, expectedRowsRead);
+    assert.equal(
+      report.ledger.exactRowsWritten,
+      PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+    );
+    assert.equal(sourceAssertions, 1);
+    assert.equal(activeReads, 2);
+    assert.equal(candidateProbes, 2);
+    assert.equal(driftReads, 1);
+
+    const ledger = readD1ReleaseBudgetLedger(fixture.ledgerPath);
+    const reservation = ledger.reservations.find(
+      (entry) => entry.operationId === fixture.operationId,
+    );
+    assert.ok(reservation);
+    assert.equal(reservation.phase, "exact");
+    assert.equal(reservation.rowsRead, expectedRowsRead);
+    assert.equal(reservation.rowsWritten, 64);
+    assert.equal(readRecoveryMetadataValue(fixture.database, PRODUCTION_VALIDATION_LOCK_KEY), null);
+    const evidence = readTestJsonRecord(fixture.refinementEvidencePath);
+    assert.equal(evidence.status, "complete");
+    assert.equal(fs.statSync(fixture.refinementEvidencePath).mode & 0o777, 0o600);
+  } finally {
+    fixture.close();
+  }
+});
+
+test("prewrite-abort recovery requires both explicit confirmations before any proof work", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  let runnerCalls = 0;
+  const countingRunner: ProductionValidationLockRunner = (args) => {
+    runnerCalls += 1;
+    return fixture.runner(args);
+  };
+  const common = {
+    backupDir: fixture.backupDir,
+    releasePreflightRunId: fixture.runId,
+    dailyUsage: recoveryDailyUsage,
+    now: recoveryClock,
+    lockRunner: countingRunner,
+    assertRecoverySource: () => {
+      throw new Error("confirmation gate leaked into source proof");
+    },
+    buildRecoveryPlan: fixture.buildRecoveryPlan,
+    readActiveWorkerVersion: () => fixture.candidateVersionId,
+    probeCandidate: inactiveRecoveryCandidateProbe,
+    verifyDrift: recoveryRepairRequiredDriftReport,
+  };
+  try {
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...common,
+          confirmed: false,
+          prewriteAbortConfirmed: true,
+        }),
+      /requires --confirm-production/,
+    );
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...common,
+          confirmed: true,
+          prewriteAbortConfirmed: false,
+        }),
+      /requires --confirm-prewrite-abort/,
+    );
+    assert.equal(runnerCalls, 0);
+    assert.equal(fs.existsSync(fixture.refinementEvidencePath), false);
+    assert.equal(readD1ReleaseBudgetLedger(fixture.ledgerPath).revision, 1);
+  } finally {
+    fixture.close();
+  }
+});
+
+test("prewrite-abort recovery treats dangling safety markers as present", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  const unresolvedMarker = path.join(
+    fixture.backupDir,
+    "cloudflare/d1-translation-repair-unresolved.json",
+  );
+  let runnerCalls = 0;
+  try {
+    fs.symlinkSync("missing-unresolved-marker-target", unresolvedMarker);
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(fixture),
+          lockRunner: (args) => {
+            runnerCalls += 1;
+            return fixture.runner(args);
+          },
+        }),
+      /unresolved D1 translation repair already exists/,
+    );
+    assert.equal(runnerCalls, 0);
+    assert.equal(readD1ReleaseBudgetLedger(fixture.ledgerPath).revision, 1);
+  } finally {
+    fixture.close();
+  }
+});
+
+test("prewrite-abort recovery rejects a tampered source inventory before lock work", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  let runnerCalls = 0;
+  try {
+    const preflight = readTestJsonRecord(fixture.preflightPath);
+    assert.ok(isTestRecord(preflight.sourceFingerprint));
+    preflight.sourceFingerprint.sha256 = "f".repeat(64);
+    writeTestPrivateJson(fixture.preflightPath, preflight);
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(fixture),
+          lockRunner: (args) => {
+            runnerCalls += 1;
+            return fixture.runner(args);
+          },
+        }),
+      /digest does not match its file inventory/,
+    );
+    assert.equal(runnerCalls, 0);
+    assert.equal(readD1ReleaseBudgetLedger(fixture.ledgerPath).revision, 1);
+  } finally {
+    fixture.close();
+  }
+});
+
+test("prewrite-abort recovery is bound to the exact preflight reservation window and UTC day", () => {
+  const lateFixture = createPrewriteAbortRecoveryFixture({
+    reservationCreatedAt: "2026-07-12T09:10:55.779Z",
+  });
+  const rolloverFixture = createPrewriteAbortRecoveryFixture();
+  const runBoundFixture = createPrewriteAbortRecoveryFixture({
+    reservationCreatedAt: "2026-07-12T09:11:50.778Z",
+    useRunBoundOperationId: true,
+  });
+  let runnerCalls = 0;
+  try {
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(lateFixture),
+          lockRunner: (args) => {
+            runnerCalls += 1;
+            return lateFixture.runner(args);
+          },
+        }),
+      /tightly bound to the selected release preflight/,
+    );
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(rolloverFixture),
+          now: new Date("2026-07-13T00:00:00.000Z"),
+          lockRunner: (args) => {
+            runnerCalls += 1;
+            return rolloverFixture.runner(args);
+          },
+        }),
+      /crossed the UTC billing-day boundary/,
+    );
+    assert.equal(runnerCalls, 0);
+    assert.equal(readD1ReleaseBudgetLedger(lateFixture.ledgerPath).revision, 1);
+    assert.equal(readD1ReleaseBudgetLedger(rolloverFixture.ledgerPath).revision, 1);
+    assert.equal(
+      refineAbortedPrewriteTranslationRepairReservation(
+        {
+          ...recoveryInvocation(runBoundFixture),
+          now: new Date("2026-07-12T09:12:00.000Z"),
+        },
+      ).status,
+      "complete",
+    );
+  } finally {
+    lateFixture.close();
+    rolloverFixture.close();
+    runBoundFixture.close();
+  }
+});
+
+test("prewrite-abort recovery rejects an exact reservation without prepared evidence", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  const exactRowsRead =
+    recoveryDriftBilledRowsRead + PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ;
+  try {
+    reserveD1ReleaseBudget({
+      backupDir: fixture.backupDir,
+      operationId: fixture.operationId,
+      operation: "Remote SEO translation repair",
+      candidateVersionId: fixture.candidateVersionId,
+      sourceFingerprint: fixture.sourceIdentity,
+      phase: "exact",
+      rowsRead: exactRowsRead,
+      rowsWritten: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+      observedUsage: recoveryDailyUsage,
+      now: recoveryClock,
+      expectedUtcDay: "2026-07-12",
+    });
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation(recoveryInvocation(fixture)),
+      /requires its matching preliminary recovery evidence/,
+    );
+    assert.equal(fs.existsSync(fixture.refinementEvidencePath), false);
+  } finally {
+    fixture.close();
+  }
+});
+
+test("prewrite-abort recovery fails closed when the candidate or drift proof changed", () => {
+  const candidateFixture = createPrewriteAbortRecoveryFixture();
+  const driftFixture = createPrewriteAbortRecoveryFixture();
+  const otherCandidate = "33333333-3333-4333-8333-333333333333";
+  try {
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(candidateFixture),
+          readActiveWorkerVersion: () => otherCandidate,
+        }),
+      (error) => {
+        assert.match(errorTreeText(error), /no longer the sole active Worker/);
+        return true;
+      },
+    );
+    assert.equal(readD1ReleaseBudgetLedger(candidateFixture.ledgerPath).revision, 1);
+    assert.equal(
+      readRecoveryMetadataValue(candidateFixture.database, PRODUCTION_VALIDATION_LOCK_KEY),
+      null,
+    );
+
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(driftFixture),
+          verifyDrift: recoveryReconciledDriftReport,
+        }),
+      (error) => {
+        assert.match(errorTreeText(error), /requires deterministic read-only proof/);
+        return true;
+      },
+    );
+    assert.equal(readD1ReleaseBudgetLedger(driftFixture.ledgerPath).revision, 1);
+    assert.equal(fs.existsSync(driftFixture.refinementEvidencePath), false);
+  } finally {
+    candidateFixture.close();
+    driftFixture.close();
+  }
+});
+
+test("prewrite-abort recovery survives a lost lock release without replaying D1 drift", () => {
+  const fixture = createPrewriteAbortRecoveryFixture();
+  let failRelease = true;
+  const lostReleaseRunner: ProductionValidationLockRunner = (args) => {
+    const sql = args[6] ?? "";
+    if (
+      failRelease &&
+      /^delete from app_metadata\b/i.test(sql.trim()) &&
+      sql.includes(PRODUCTION_VALIDATION_LOCK_KEY)
+    ) {
+      failRelease = false;
+      throw new Error("synthetic lost lock release");
+    }
+    return fixture.runner(args);
+  };
+  try {
+    assert.throws(
+      () =>
+        refineAbortedPrewriteTranslationRepairReservation({
+          ...recoveryInvocation(fixture),
+          lockRunner: lostReleaseRunner,
+        }),
+      (error) => {
+        assert.match(errorTreeText(error), /failed closed/);
+        assert.match(errorTreeText(error), /synthetic lost lock release|did not exact-release/);
+        return true;
+      },
+    );
+    const exactLedger = readD1ReleaseBudgetLedger(fixture.ledgerPath);
+    assert.equal(exactLedger.reservations[0]?.phase, "exact");
+    assert.equal(readTestJsonRecord(fixture.refinementEvidencePath).status, "prepared");
+    assert.notEqual(
+      readRecoveryMetadataValue(fixture.database, PRODUCTION_VALIDATION_LOCK_KEY),
+      null,
+    );
+
+    fixture.database
+      .prepare('delete from app_metadata where "key" = ?1')
+      .run(PRODUCTION_VALIDATION_LOCK_KEY);
+    let replayCalls = 0;
+    let replayMutations = 0;
+    const replayRunner: ProductionValidationLockRunner = (args) => {
+      replayCalls += 1;
+      if (/^(?:insert|delete|update)\b/i.test((args[6] ?? "").trim())) {
+        replayMutations += 1;
+      }
+      return fixture.runner(args);
+    };
+    const replayed = refineAbortedPrewriteTranslationRepairReservation({
+      ...recoveryInvocation(fixture),
+      lockRunner: replayRunner,
+      verifyDrift: () => {
+        throw new Error("prepared replay must not rerun D1 drift");
+      },
+    });
+    assert.equal(replayed.status, "complete");
+    assert.equal(replayCalls, 2);
+    assert.equal(replayMutations, 0);
+    assert.equal(readTestJsonRecord(fixture.refinementEvidencePath).status, "complete");
+
+    let completeReplayCalls = 0;
+    const completeReplay = refineAbortedPrewriteTranslationRepairReservation({
+      ...recoveryInvocation(fixture),
+      now: new Date("2026-07-13T12:00:00.000Z"),
+      lockRunner: () => {
+        completeReplayCalls += 1;
+        throw new Error("complete replay must be local-only");
+      },
+      readActiveWorkerVersion: () => {
+        throw new Error("complete replay must not probe production");
+      },
+      probeCandidate: () => {
+        throw new Error("complete replay must not probe production");
+      },
+      verifyDrift: () => {
+        throw new Error("complete replay must not rerun D1 drift");
+      },
+    });
+    assert.deepEqual(completeReplay, replayed);
+    assert.equal(completeReplayCalls, 0);
+  } finally {
+    fixture.close();
+  }
+});
+
+function createPrewriteAbortRecoveryFixture(
+  options: {
+    reservationCreatedAt?: string;
+    useRunBoundOperationId?: boolean;
+  } = {},
+) {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-prewrite-recovery-"));
+  const cloudflareDirectory = path.join(backupDir, "cloudflare");
+  fs.mkdirSync(cloudflareDirectory, { recursive: true });
+  const sourceFile = {
+    file: "fixture.txt",
+    bytes: 7,
+    sha256: "a".repeat(64),
+  };
+  const sourceSha256 = crypto
+    .createHash("sha256")
+    .update(`${sourceFile.file}\0${sourceFile.bytes}\0${sourceFile.sha256}\n`)
+    .digest("hex");
+  const sourceIdentity = { sha256: sourceSha256, fileCount: 1 };
+  const operationKey = `${sourceSha256}:${recoveryCandidateVersionId}`;
+  let legacyOperationId = recoveryOperationIds.get(operationKey);
+  if (!legacyOperationId) {
+    legacyOperationId = abortedPrewriteRecoveryOperationId(
+      sourceIdentity,
+      recoveryCandidateVersionId,
+    );
+    recoveryOperationIds.set(operationKey, legacyOperationId);
+  }
+  const operationId = options.useRunBoundOperationId
+    ? `seo-cta-translation-repair:${"9".repeat(64)}`
+    : legacyOperationId;
+  const assetManifest = {
+    root: path.resolve(process.cwd(), ".open-next/assets"),
+    fileCount: 1,
+    bytes: 1,
+    sha256: "b".repeat(64),
+  };
+  const preflightPath = path.join(
+    cloudflareDirectory,
+    `d1-translation-repair-release-preflight-${recoveryReleasePreflightRunId}.json`,
+  );
+  writeTestPrivateJson(preflightPath, {
+    kind: "d1-translation-repair-release-preflight",
+    runId: recoveryReleasePreflightRunId,
+    createdAt: recoveryReleasePreflightCreatedAt,
+    candidateVersionId: recoveryCandidateVersionId,
+    activeVersionId: recoveryCandidateVersionId,
+    gitHead: "c".repeat(40),
+    gitUpstream: "c".repeat(40),
+    sourceFingerprint: {
+      sha256: sourceSha256,
+      fileCount: 1,
+      files: [sourceFile],
+    },
+    workerSourceSha256: "d".repeat(64),
+    wranglerConfigSha256: "e".repeat(64),
+    assetManifest,
+    safetyChecks: [
+      {
+        name: "local build and test gates",
+        status: "pass",
+        detail: {
+          report: "cloudflare/local-gates-report.json",
+          sourceFingerprint: sourceSha256,
+        },
+      },
+      {
+        name: "source secret scan",
+        status: "pass",
+        detail: {
+          report: "cloudflare/source-secret-scan-report.json",
+          sourceFingerprint: sourceSha256,
+        },
+      },
+      {
+        name: "OpenNext build artifact secret scan",
+        status: "pass",
+        detail: {
+          report: "cloudflare/build-artifact-scan-report.json",
+          sourceFingerprint: sourceSha256,
+        },
+      },
+    ],
+    candidateProbe: inactiveRecoveryCandidateProbe(recoveryCandidateVersionId),
+    workerDeployReportPath: path.resolve(backupDir, "cloudflare/worker-deploy-report.json"),
+    workerDeployEvidence: {
+      createdAt: recoveryReleasePreflightCreatedAt,
+      backupDir: path.resolve(backupDir),
+      candidateVersionId: recoveryCandidateVersionId,
+      sourceFingerprintSha256: sourceSha256,
+      sourceFingerprintFileCount: 1,
+      workerSourceSha256: "d".repeat(64),
+      wranglerConfigSha256: "e".repeat(64),
+      assetManifest,
+      activeDeploymentReadAt: recoveryReleasePreflightCreatedAt,
+    },
+  });
+  reserveD1ReleaseBudget({
+    backupDir,
+    operationId,
+    operation: "Remote SEO translation repair",
+    candidateVersionId: recoveryCandidateVersionId,
+    sourceFingerprint: sourceIdentity,
+    phase: "maximum",
+    rowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+    rowsWritten: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+    observedUsage: recoveryDailyUsage,
+    now: new Date(options.reservationCreatedAt ?? recoveryReservationCreatedAt),
+  });
+  const database = recoveryLockDatabase();
+  const runner = recoverySqliteWranglerRunner(database);
+  const ledgerPath = path.join(
+    cloudflareDirectory,
+    "d1-release-budget-ledger-2026-07-12.json",
+  );
+  const refinementEvidencePath = path.join(
+    cloudflareDirectory,
+    `d1-translation-repair-prewrite-abort-refinement-${recoveryReleasePreflightRunId}.json`,
+  );
+  return {
+    backupDir,
+    buildRecoveryPlan: () => ({
+      translations: new Map<SupportedLanguage, string>(),
+      curatedRepairRows: [],
+      mainAppRepairRows: [],
+      operationId,
+      legacyOperationId,
+    }),
+    candidateVersionId: recoveryCandidateVersionId,
+    database,
+    ledgerPath,
+    operationId,
+    preflightPath,
+    refinementEvidencePath,
+    runId: recoveryReleasePreflightRunId,
+    runner,
+    sourceIdentity,
+    close() {
+      database.close();
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    },
+  };
+}
+
+function recoveryInvocation(fixture: ReturnType<typeof createPrewriteAbortRecoveryFixture>) {
+  return {
+    backupDir: fixture.backupDir,
+    releasePreflightRunId: fixture.runId,
+    confirmed: true,
+    prewriteAbortConfirmed: true,
+    dailyUsage: recoveryDailyUsage,
+    now: recoveryClock,
+    lockRunner: fixture.runner,
+    assertRecoverySource: () => {},
+    buildRecoveryPlan: fixture.buildRecoveryPlan,
+    readActiveWorkerVersion: () => fixture.candidateVersionId,
+    probeCandidate: inactiveRecoveryCandidateProbe,
+    verifyDrift: recoveryRepairRequiredDriftReport,
+  };
+}
+
+function recoveryRepairRequiredDriftReport(): RemoteTranslationDriftReport {
+  const issue = {
+    scope: "source-snapshot" as const,
+    code: "exact-source-snapshot-drift",
+    message: "fixture drift remains",
+  };
+  return {
+    createdAt: recoveryClock.toISOString(),
+    mode: "remote-verify-only",
+    database: "inspirlearning-prod",
+    ok: false,
+    status: "repair-required",
+    repairRequired: true,
+    issues: [issue],
+    expected: {
+      sourceNamespaces: 125,
+      curatedRows: 691,
+      mainAppRows: 69,
+      supportedTargetLanguages: 69,
+    },
+    sourceSnapshot: {
+      status: "repair-required",
+      expectedSourceNamespaces: 125,
+      expectedSourceStrings: 1_000,
+      reconciliationStatements: 6,
+      reconciliationLogicalRowWrites: 6,
+      snapshotBilledRowReads: recoveryDriftBilledRowsRead,
+      projectedBilledRowReads: 151_024,
+    },
+    payloadSnapshot: { status: "repair-required", issues: [issue] },
+    readOnly: {
+      remoteQueries: 4,
+      billedRowsRead: recoveryDriftBilledRowsRead,
+      workerUploads: 0,
+      workerDeployments: 0,
+      maintenanceActivations: 0,
+      timeTravelReads: 0,
+      sqlImports: 0,
+      databaseWrites: 0,
+      unresolvedMarkersCreated: 0,
+      preWriteEvidenceCreated: 0,
+      reportsWritten: 0,
+    },
+  };
+}
+
+function recoveryReconciledDriftReport(): RemoteTranslationDriftReport {
+  const report = recoveryRepairRequiredDriftReport();
+  return {
+    ...report,
+    ok: true,
+    status: "reconciled",
+    repairRequired: false,
+    issues: [],
+    sourceSnapshot: {
+      ...report.sourceSnapshot,
+      status: "reconciled",
+      reconciliationStatements: 0,
+      reconciliationLogicalRowWrites: 0,
+    },
+    payloadSnapshot: { status: "reconciled", issues: [] },
+  };
+}
+
+function inactiveRecoveryCandidateProbe(candidateVersionId: string) {
+  return {
+    active: false,
+    healthStatus: 200,
+    mutationStatus: 403,
+    delivery: "lean-api-worker",
+    runtime: "cloudflare-workers",
+    openNext: false,
+    maintenance: false,
+    versionId: candidateVersionId,
+  };
+}
+
+function recoveryLockDatabase() {
+  const database = new DatabaseSync(":memory:");
+  database.exec(`create table app_metadata (
+    "key" text primary key not null,
+    value text not null,
+    updated_at integer not null
+  )`);
+  return database;
+}
+
+function recoverySqliteWranglerRunner(
+  database: DatabaseSync,
+): ProductionValidationLockRunner {
+  return (args) => {
+    assert.deepEqual(args.slice(0, 5), [
+      "d1",
+      "execute",
+      "inspirlearning-prod",
+      "--remote",
+      "--json",
+    ]);
+    assert.equal(args[5], "--command");
+    const sql = args[6] ?? "";
+    const rows = database.prepare(sql).all();
+    const mutating = /^(?:insert|delete)\b/i.test(sql.trim());
+    const changes = database.prepare("select changes() as changes").get()?.changes;
+    if (typeof changes !== "number") throw new Error("SQLite changes() fixture is invalid.");
+    return JSON.stringify([
+      {
+        success: true,
+        results: rows,
+        meta: {
+          rows_read: Math.min(4, rows.length + 1),
+          rows_written: mutating ? changes * 2 : 0,
+        },
+      },
+    ]);
+  };
+}
+
+function readRecoveryMetadataValue(database: DatabaseSync, key: string) {
+  const value = database
+    .prepare('select value from app_metadata where "key" = ?1')
+    .get(key)?.value;
+  assert.ok(value === undefined || typeof value === "string");
+  return value ?? null;
+}
+
+function writeTestPrivateJson(file: string, value: unknown) {
+  fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, { mode: 0o600 });
+  fs.chmodSync(file, 0o600);
+}
+
+function readTestJsonRecord(file: string): Record<string, unknown> {
+  const value: unknown = JSON.parse(fs.readFileSync(file, "utf8"));
+  assert.ok(isTestRecord(value));
+  return value;
+}
+
+function isTestRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function errorTreeText(error: unknown): string {
+  if (error instanceof AggregateError) {
+    return [error.message, ...error.errors.map(errorTreeText)].join("\n");
+  }
+  return error instanceof Error ? error.message : String(error);
 }

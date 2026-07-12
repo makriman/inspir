@@ -96,7 +96,7 @@ pnpm translations:status -- --all-languages \
 
 If the audited SEO source hashes changed, do not run the remote repair from an unvalidated working tree. Finish every local gate, commit and push the exact source, and deploy the candidate first; then use the post-deploy translation reconciliation section below. The repair binds itself to that candidate UUID, the pushed commit, fresh source-scoped gate reports, the native Worker hash, and a deterministic Static Assets manifest before it can upload maintenance code.
 
-The repair must fail closed unless source extraction, all tracked curated packs, Unicode normalization, field validation, D1 statement/file limits, and the account-wide Free-plan budget all pass. Before its first target/snapshot D1 read it reserves the conservative maximum in the one cumulative UTC-day release ledger under a reservation bound to the exact source fingerprint; after the exact plan is known it refines that reservation and revalidates the candidate, source, immutable repair plan, ledger, and UTC day immediately before import. It never uses `d1 export`, because exports block database requests. Instead it validates a current Time Travel bookmark and writes a unique mode-`0600`, exclusively-created, fsynced diagnostic record plus an unresolved-operation marker before its first import. It applies one atomic SQL file and byte-verifies every resulting row. A definite mismatch or indeterminate outcome leaves maintenance active and requires a reviewed forward correction. Destructive whole-D1 Time Travel restore is unsupported on Free because the runtime cannot prove cross-store quiescence. A new repair refuses to start while an unresolved marker exists. Never run it routinely when the same hashes already pass.
+The repair must fail closed unless source extraction, all tracked curated packs, Unicode normalization, field validation, D1 statement/file limits, and the account-wide Free-plan budget all pass. Before its first target/snapshot D1 read it reserves the conservative maximum in the one cumulative UTC-day release ledger under a reservation bound to the exact source fingerprint, candidate, immutable plan, and release-preflight run ID; after the exact plan is known it refines that reservation and revalidates the candidate, source, immutable repair plan, ledger, and UTC day immediately before import. It never uses `d1 export`, because exports block database requests. Instead it validates a current Time Travel bookmark and writes a unique mode-`0600`, exclusively-created, fsynced diagnostic record plus an unresolved-operation marker before its first import. It applies one atomic SQL file and byte-verifies every resulting row. A definite mismatch or indeterminate outcome leaves maintenance active and requires a reviewed forward correction. Destructive whole-D1 Time Travel restore is unsupported on Free because the runtime cannot prove cross-store quiescence. A new repair refuses to start while an unresolved marker exists. Never run it routinely when the same hashes already pass.
 
 The repair also persists an exact cross-workspace maintenance marker in production D1 while it still owns the global exclusion and before it activates the maintenance Worker. Ordinary deploy, validation, rollback, and release-maintenance wrappers refuse that marker even after the original lease expires. After a reviewed forward correction (or when evidence proves no D1 write occurred), resolve only the exact recorded run with:
 
@@ -212,6 +212,18 @@ pnpm cf:d1:repair-seo-translations -- \
   --verify-only \
   --confirm-production
 ```
+
+If a repair already reserved its maximum but failed before durable prewrite evidence, maintenance-state creation, maintenance activation, Time Travel, or import, do not delete or edit the UTC-day ledger. While the original candidate is still the sole healthy version and the same UTC billing day is active, refine only that exact aborted preflight:
+
+```bash
+pnpm cf:d1:repair-seo-translations -- \
+  --refine-aborted-prewrite-reservation \
+  <exact-release-preflight-timestamp-and-uuid> \
+  --confirm-production \
+  --confirm-prewrite-abort
+```
+
+This recovery requires a clean pushed tree and owner-only, nofollow release evidence. It recomputes the immutable plan; accepts only the exact run-bound reservation (or a tightly timestamp-bound legacy reservation); rejects any prewrite/unresolved/maintenance evidence; holds the shared production exclusion; proves the original candidate healthy and unfrozen before and after a deterministic read-only drift check; requires `rows_written` to be exactly zero in every D1 result; and retains the summed billed reads plus the full validation-lock read/write allowance when refining the maximum. It writes mode-`0600` prepared evidence before the ledger transition and promotes it only after exact lock release. A prepared crash replay performs one bounded read-only maintenance/lock-absence check before the remaining local ledger/evidence transition; a complete replay is local-only and idempotent, including after UTC rollover. If any prerequisite is not exact, leave the conservative maximum in place and wait for the next UTC day; never hand-edit the ledger. Run this recovery before deploying a different candidate or collecting new source-bound release evidence.
 
 Only when that detector reports exact, determinate drift, run the guarded repair against the already deployed and committed candidate:
 

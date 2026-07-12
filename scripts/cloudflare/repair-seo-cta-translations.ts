@@ -31,7 +31,13 @@ import {
 import {
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
+  d1ReleaseBudgetLedgerPath,
+  readD1ReleaseBudgetLedger,
+  readPrivateJsonNoFollow,
   reserveD1ReleaseBudget,
+  writePrivateJsonDurably,
+  type D1ReleaseBudgetLedger,
+  type D1ReleaseBudgetLedgerReservation,
   type D1ReleaseBudgetReservationResult,
   type D1ReleaseSourceIdentity,
 } from "./d1-release-budget-ledger";
@@ -56,15 +62,19 @@ import {
   writeTemporarySqlFile,
 } from "./sync-site-translation-sources";
 import {
+  PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+  PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
   acquireProductionValidationExclusion,
   assertProductionValidationExclusionCommandWindow,
   assertNoLiveProductionValidationLock,
   attestProductionValidationExclusion,
   clearProductionMaintenanceState,
   createProductionMaintenanceState,
+  readProductionMaintenanceState,
   releaseProductionValidationExclusion,
   type ProductionMaintenanceState,
   type ProductionValidationExclusion,
+  type ProductionValidationLockRunner,
 } from "./production-validation-lock";
 import type { SourceFingerprint } from "./source-fingerprint";
 import {
@@ -137,6 +147,8 @@ const expectedSourceHashes = {
   "route:schools": "2c3294f27d9887dd9fbb10d0ad2147c31960a75ace708d1b3fc750416e6adabe",
 } as const;
 const projectedBilledWritesPerRepairTranslationRow = 2;
+const releasePreflightRunIdPattern =
+  /^\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])T(?:[01]\d|2[0-3])-[0-5]\d-[0-5]\d-\d{3}Z-([0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/;
 
 type RepairNamespace = keyof typeof expectedSourceHashes;
 
@@ -183,6 +195,17 @@ export type RemoteRepairReleasePreflight = {
   workerDeployEvidence: WorkerDeployRepairEvidence;
   evidencePath: string;
 };
+
+export function productionMaintenanceRepairRunId(releasePreflightRunId: string) {
+  const match = releasePreflightRunIdPattern.exec(releasePreflightRunId);
+  if (!match?.[1]) {
+    throw new Error(
+      "Translation repair release-preflight run ID must be an exact UTC timestamp followed by a lowercase RFC UUID.",
+    );
+  }
+  releasePreflightRunTimestamp(releasePreflightRunId);
+  return match[1];
+}
 
 export type ImportVerificationState =
   | "not-attempted"
@@ -383,6 +406,7 @@ export type RemoteTranslationDriftReport = {
   };
   readOnly: {
     remoteQueries: number;
+    billedRowsRead: number;
     workerUploads: 0;
     workerDeployments: 0;
     maintenanceActivations: 0;
@@ -393,6 +417,67 @@ export type RemoteTranslationDriftReport = {
     preWriteEvidenceCreated: 0;
     reportsWritten: 0;
   };
+};
+
+export type AbortedPrewriteReservationRefinementReport = {
+  kind: "d1-translation-repair-prewrite-abort-refinement-v1";
+  status: "complete";
+  createdAt: string;
+  ok: true;
+  releasePreflightRunId: string;
+  repairRunId: string;
+  releasePreflightEvidencePath: string;
+  candidateVersionId: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
+  operationId: string;
+  proof: {
+    candidateVersionBefore: string;
+    candidateVersionAfter: string;
+    candidateUnfrozenBefore: true;
+    candidateUnfrozenAfter: true;
+    productionMaintenanceStateAbsent: true;
+    preWriteEvidenceAbsent: true;
+    unresolvedMarkerAbsent: true;
+    importAttempted: false;
+    driftStatus: "repair-required";
+    driftRemoteQueries: number;
+    driftBilledRowsRead: number;
+    validationLockRowsReadReserved: number;
+    validationLockRowsWrittenReserved: number;
+    driftDatabaseWrites: 0;
+  };
+  ledger: {
+    path: string;
+    utcDay: string;
+    revisionBefore: number;
+    revisionAfter: number;
+    phaseBefore: "maximum";
+    phaseAfter: "exact";
+    maximumRowsRead: number;
+    maximumRowsWritten: number;
+    exactRowsRead: number;
+    exactRowsWritten: number;
+  };
+};
+
+type RefineAbortedPrewriteReservationOptions = {
+  backupDir: string;
+  releasePreflightRunId: string;
+  confirmed: boolean;
+  prewriteAbortConfirmed: boolean;
+  dailyUsage?: D1DailyUsage;
+  now?: Date;
+  clock?: () => Date;
+  lockRunner?: ProductionValidationLockRunner;
+  assertRecoverySource?: () => void;
+  buildRecoveryPlan?: (
+    sourceFingerprint: D1ReleaseSourceIdentity,
+    candidateVersionId: string,
+    releasePreflightRunId: string,
+  ) => ReturnType<typeof buildAbortedPrewriteRecoveryPlan>;
+  readActiveWorkerVersion?: () => string;
+  probeCandidate?: (candidateVersionId: string) => NativeMaintenanceProbe;
+  verifyDrift?: () => RemoteTranslationDriftReport;
 };
 
 type RepairSeoCtaTranslationOptions = {
@@ -409,16 +494,1029 @@ type RepairSeoCtaTranslationOptions = {
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const report = repairSeoCtaTranslations({
-    remote: process.argv.includes("--remote"),
-    confirmed: process.argv.includes("--confirm-production"),
-    verifyOnly: process.argv.includes("--verify-only"),
-    nativeWriteFreezeConfirmed: process.argv.includes("--confirm-native-write-freeze"),
-    candidateVersion: getArg("--candidate-version"),
-    backupDir: resolveBackupDir(),
-  });
+  const refinementRequested = process.argv.includes("--refine-aborted-prewrite-reservation");
+  const releasePreflightRunId = refinementRequested
+    ? requireCliArgument(
+        getArg("--refine-aborted-prewrite-reservation"),
+        "--refine-aborted-prewrite-reservation",
+      )
+    : null;
+  const report = releasePreflightRunId
+    ? refineAbortedPrewriteTranslationRepairReservation({
+        backupDir: resolveBackupDir(),
+        releasePreflightRunId,
+        confirmed: process.argv.includes("--confirm-production"),
+        prewriteAbortConfirmed: process.argv.includes("--confirm-prewrite-abort"),
+      })
+    : repairSeoCtaTranslations({
+        remote: process.argv.includes("--remote"),
+        confirmed: process.argv.includes("--confirm-production"),
+        verifyOnly: process.argv.includes("--verify-only"),
+        nativeWriteFreezeConfirmed: process.argv.includes("--confirm-native-write-freeze"),
+        candidateVersion: getArg("--candidate-version"),
+        backupDir: resolveBackupDir(),
+      });
   console.log(JSON.stringify(report, null, 2));
-  if (report.mode === "remote-verify-only" && report.repairRequired) process.exitCode = 1;
+  if ("mode" in report && report.mode === "remote-verify-only" && report.repairRequired) {
+    process.exitCode = 1;
+  }
+}
+
+export function refineAbortedPrewriteTranslationRepairReservation(
+  input: RefineAbortedPrewriteReservationOptions,
+): AbortedPrewriteReservationRefinementReport {
+  if (!input.confirmed) {
+    throw new Error("Prewrite-abort reservation refinement requires --confirm-production.");
+  }
+  if (!input.prewriteAbortConfirmed) {
+    throw new Error("Prewrite-abort reservation refinement requires --confirm-prewrite-abort.");
+  }
+  const fixedNow = input.now;
+  const refinementClock = input.clock ?? (fixedNow
+    ? () => new Date(fixedNow.getTime())
+    : () => new Date());
+  const startedAt = readPrewriteAbortRefinementClock(refinementClock, "start");
+  (input.assertRecoverySource ?? assertCleanPushedPrewriteAbortRecoverySource)();
+  const evidence = readAbortedPrewriteReleasePreflight(
+    input.backupDir,
+    input.releasePreflightRunId,
+  );
+  assertAbortedPrewriteArtifactsAbsent(input.backupDir, evidence.runId);
+  const refinementEvidencePath = path.join(
+    cloudflareDir(input.backupDir),
+    `d1-translation-repair-prewrite-abort-refinement-${evidence.runId}.json`,
+  );
+
+  const plan = (input.buildRecoveryPlan ?? buildAbortedPrewriteRecoveryPlan)(
+    evidence.sourceFingerprint,
+    evidence.candidateVersionId,
+    evidence.runId,
+  );
+  const ledgerPath = d1ReleaseBudgetLedgerPath(
+    input.backupDir,
+    evidence.createdAt.slice(0, 10),
+  );
+  const ledgerBefore = readD1ReleaseBudgetLedger(ledgerPath);
+  const acceptedOperationIds = new Set([plan.operationId, plan.legacyOperationId]);
+  const matchingReservations = ledgerBefore.reservations.filter(
+    (reservation) =>
+      acceptedOperationIds.has(reservation.operationId) &&
+      reservation.sourceFingerprint.sha256 === evidence.sourceFingerprint.sha256 &&
+      reservation.sourceFingerprint.fileCount === evidence.sourceFingerprint.fileCount,
+  );
+  if (matchingReservations.length !== 1) {
+    throw new Error(
+      "Prewrite-abort refinement requires exactly one source-bound translation repair reservation.",
+    );
+  }
+  const reservationBefore = matchingReservations[0]!;
+  const budgetOperationId = reservationBefore.operationId;
+  const reservationCreatedAt = exactIsoTimestamp(
+    reservationBefore.createdAt,
+    "translation repair reservation creation timestamp",
+  );
+  const reservationDelayMs = Date.parse(reservationCreatedAt) - Date.parse(evidence.createdAt);
+  const maximumReservationDelayMs =
+    budgetOperationId === plan.legacyOperationId
+      ? 5_000
+      : CLOUDFLARE_CLI_TIMEOUT_MS + 5_000;
+  if (reservationDelayMs < 0 || reservationDelayMs > maximumReservationDelayMs) {
+    throw new Error(
+      "The translation repair reservation is not tightly bound to the selected release preflight.",
+    );
+  }
+  const isUnreducedMaximum =
+    reservationBefore.phase === "maximum" &&
+    reservationBefore.updatedAt === reservationBefore.createdAt &&
+    reservationBefore.rowsRead === MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS &&
+    reservationBefore.rowsWritten === MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES;
+  const isRecoveredExactReadOnly =
+    reservationBefore.phase === "exact" &&
+    reservationBefore.rowsRead > 0 &&
+    reservationBefore.rowsRead <= MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS &&
+    reservationBefore.rowsWritten === PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN;
+  if (
+    reservationBefore.operation !== "Remote SEO translation repair" ||
+    reservationBefore.candidateVersionId !== evidence.candidateVersionId ||
+    reservationBefore.maximumRowsRead !== MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+    reservationBefore.maximumRowsWritten !== MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES ||
+    (!isUnreducedMaximum && !isRecoveredExactReadOnly)
+  ) {
+    throw new Error(
+      "Prewrite-abort refinement requires the exact unreduced translation repair maximum reservation.",
+    );
+  }
+  if (isUnreducedMaximum) {
+    assertD1ReleaseBudgetUtcDay(ledgerBefore.utcDay, startedAt);
+  }
+  const existingRefinementEvidence = pathEntryExistsNoFollow(refinementEvidencePath)
+    ? readPrewriteAbortRefinementEvidence(refinementEvidencePath, {
+        runId: evidence.runId,
+        candidateVersionId: evidence.candidateVersionId,
+        sourceFingerprint: evidence.sourceFingerprint,
+        operationId: budgetOperationId,
+        ledgerPath,
+        utcDay: ledgerBefore.utcDay,
+        repairRunId: evidence.repairRunId,
+        releasePreflightEvidencePath: evidence.evidencePath,
+        currentLedgerRevision: ledgerBefore.revision,
+      })
+    : null;
+  if (isUnreducedMaximum && existingRefinementEvidence?.status === "complete") {
+    throw new Error(
+      "Completed prewrite-abort evidence cannot accompany an unreduced maximum reservation.",
+    );
+  }
+  if (isRecoveredExactReadOnly && existingRefinementEvidence === null) {
+    throw new Error(
+      "An exact read-only translation repair reservation requires its matching preliminary recovery evidence.",
+    );
+  }
+  if (
+    isRecoveredExactReadOnly &&
+    existingRefinementEvidence?.exactRowsRead !== reservationBefore.rowsRead
+  ) {
+    throw new Error(
+      "The exact read-only reservation does not match its prewrite-abort recovery evidence.",
+    );
+  }
+  if (
+    isRecoveredExactReadOnly &&
+    existingRefinementEvidence &&
+    ledgerBefore.revision <= existingRefinementEvidence.revisionBefore
+  ) {
+    throw new Error(
+      "The exact read-only reservation does not postdate its prepared recovery evidence.",
+    );
+  }
+  if (isRecoveredExactReadOnly && existingRefinementEvidence?.completeReport) {
+    return existingRefinementEvidence.completeReport;
+  }
+
+  const readActiveWorkerVersion = input.readActiveWorkerVersion ?? requireSoleActiveWorkerVersion;
+  const probeCandidate =
+    input.probeCandidate ??
+    ((candidateVersionId: string) => probeNativeWriteFreeze(false, candidateVersionId));
+  const verifyDrift =
+    input.verifyDrift ??
+    (() =>
+      verifyRemoteTranslationDrift({
+        translations: plan.translations,
+        curatedRepairRows: plan.curatedRepairRows,
+        mainAppRepairRows: plan.mainAppRepairRows,
+      }));
+
+  let exclusion: ProductionValidationExclusion | null = null;
+  let refined: D1ReleaseBudgetReservationResult | null = null;
+  let candidateVersionBefore = "";
+  let candidateVersionAfter = "";
+  let exactRowsRead = existingRefinementEvidence?.exactRowsRead ?? 0;
+  const exactRowsWritten = PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN;
+  let driftRemoteQueries = existingRefinementEvidence?.driftRemoteQueries ?? 0;
+  let driftBilledRowsRead = existingRefinementEvidence
+    ? existingRefinementEvidence.exactRowsRead - PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ
+    : 0;
+  let reservationAt: Date | null = null;
+  let operationError: unknown = null;
+  let releaseError: unknown = null;
+  try {
+    if (existingRefinementEvidence) {
+      assertAbortedPrewriteArtifactsAbsent(input.backupDir, evidence.runId);
+      // Prepared evidence was durably written only after both original live
+      // candidate probes. A replay performs one bounded read-only D1 check so
+      // an unresolved lock or maintenance marker can never be promoted to a
+      // completed recovery, then finishes only the local ledger/evidence step.
+      assertNoLiveProductionValidationLock({ runner: input.lockRunner });
+      candidateVersionBefore = assertAbortedCandidateUnfrozen({
+        expectedVersionId: evidence.candidateVersionId,
+        readActiveWorkerVersion,
+        probeCandidate,
+      });
+      candidateVersionAfter = candidateVersionBefore;
+    } else {
+      exclusion = acquireProductionValidationExclusion({
+        candidateVersionId: evidence.candidateVersionId,
+        sourceFingerprintSha256: evidence.sourceFingerprint.sha256,
+        runner: input.lockRunner,
+      });
+      exclusion = attestProductionValidationExclusion(exclusion, input.lockRunner);
+      assertProductionValidationExclusionCommandWindow(exclusion);
+      assertAbortedPrewriteArtifactsAbsent(input.backupDir, evidence.runId);
+      if (readProductionMaintenanceState({ runner: input.lockRunner }) !== null) {
+        throw new Error("Prewrite-abort refinement found a production maintenance state.");
+      }
+      candidateVersionBefore = assertAbortedCandidateUnfrozen({
+        expectedVersionId: evidence.candidateVersionId,
+        readActiveWorkerVersion,
+        probeCandidate,
+      });
+
+      const verifiedDrift = verifyDrift();
+      assertReadOnlyRepairRequiredDrift(verifiedDrift);
+      driftBilledRowsRead = verifiedDrift.readOnly.billedRowsRead;
+      exactRowsRead = safeAddBilledRowsRead(
+        driftBilledRowsRead,
+        PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+      );
+      if (exactRowsRead > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS) {
+        throw new Error(
+          "Prewrite-abort recovery reads plus validation-lock allowance exceed the original maximum.",
+        );
+      }
+      driftRemoteQueries = verifiedDrift.readOnly.remoteQueries;
+
+      exclusion = attestProductionValidationExclusion(exclusion, input.lockRunner);
+      assertProductionValidationExclusionCommandWindow(exclusion);
+      assertAbortedPrewriteArtifactsAbsent(input.backupDir, evidence.runId);
+      if (readProductionMaintenanceState({ runner: input.lockRunner }) !== null) {
+        throw new Error(
+          "Prewrite-abort refinement found a production maintenance state after drift proof.",
+        );
+      }
+      candidateVersionAfter = assertAbortedCandidateUnfrozen({
+        expectedVersionId: evidence.candidateVersionId,
+        readActiveWorkerVersion,
+        probeCandidate,
+      });
+
+      writePrivateJsonDurably(
+        refinementEvidencePath,
+        {
+          kind: "d1-translation-repair-prewrite-abort-refinement-v1",
+          status: "prepared",
+          createdAt: readPrewriteAbortRefinementClock(
+            refinementClock,
+            "preliminary evidence",
+          ).toISOString(),
+          releasePreflightRunId: evidence.runId,
+          repairRunId: evidence.repairRunId,
+          releasePreflightEvidencePath: evidence.evidencePath,
+          candidateVersionId: evidence.candidateVersionId,
+          sourceFingerprint: evidence.sourceFingerprint,
+          operationId: budgetOperationId,
+          proof: {
+            candidateVersionBefore,
+            candidateVersionAfter,
+            candidateUnfrozenBefore: true,
+            candidateUnfrozenAfter: true,
+            productionMaintenanceStateAbsent: true,
+            preWriteEvidenceAbsent: true,
+            unresolvedMarkerAbsent: true,
+            importAttempted: false,
+            driftStatus: "repair-required",
+            driftRemoteQueries,
+            driftBilledRowsRead,
+            validationLockRowsReadReserved: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+            validationLockRowsWrittenReserved:
+              PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+            driftDatabaseWrites: 0,
+          },
+          ledger: {
+            path: ledgerPath,
+            utcDay: ledgerBefore.utcDay,
+            revisionBefore: ledgerBefore.revision,
+            phaseBefore: "maximum",
+            maximumRowsRead: reservationBefore.maximumRowsRead,
+            maximumRowsWritten: reservationBefore.maximumRowsWritten,
+            intendedExactRowsRead: exactRowsRead,
+            intendedExactRowsWritten: exactRowsWritten,
+          },
+        },
+        { replace: false },
+      );
+    }
+    if (isUnreducedMaximum) {
+      reservationAt = readPrewriteAbortRefinementClock(
+        refinementClock,
+        "exact read-only reservation",
+      );
+      refined = reserveD1ReleaseBudget({
+        backupDir: input.backupDir,
+        operationId: budgetOperationId,
+        operation: "Remote SEO translation repair",
+        candidateVersionId: evidence.candidateVersionId,
+        sourceFingerprint: evidence.sourceFingerprint,
+        phase: "exact",
+        rowsRead: exactRowsRead,
+        rowsWritten: exactRowsWritten,
+        observedUsage: input.dailyUsage ?? loadAccountD1DailyUsage(startedAt),
+        now: reservationAt,
+        expectedUtcDay: ledgerBefore.utcDay,
+      });
+    } else {
+      reservationAt = new Date(
+        exactIsoTimestamp(
+          reservationBefore.updatedAt,
+          "exact read-only reservation update timestamp",
+        ),
+      );
+      refined = existingExactReservationResult({
+        ledgerPath,
+        ledger: ledgerBefore,
+        reservation: reservationBefore,
+      });
+    }
+  } catch (error) {
+    operationError = error;
+  } finally {
+    if (exclusion) {
+      try {
+        releaseProductionValidationExclusion(exclusion, input.lockRunner);
+      } catch (error) {
+        releaseError = error;
+      }
+    }
+  }
+  if (operationError || releaseError) {
+    throw new AggregateError(
+      [operationError, releaseError]
+        .filter((error): error is NonNullable<unknown> => error !== null)
+        .map(asError),
+      "Prewrite-abort reservation refinement failed closed.",
+    );
+  }
+  if (!refined || !isPositiveSafeInteger(exactRowsRead) || !isPositiveSafeInteger(driftRemoteQueries)) {
+    throw new Error("Prewrite-abort reservation refinement omitted its exact evidence.");
+  }
+  if (!reservationAt) {
+    throw new Error("Prewrite-abort reservation refinement omitted its reservation timestamp.");
+  }
+  if (
+    refined.reservation.phase !== "exact" ||
+    refined.reservation.rowsRead !== exactRowsRead ||
+    refined.reservation.rowsWritten !== exactRowsWritten
+  ) {
+    throw new Error("Prewrite-abort reservation refinement did not exact-verify read-only work.");
+  }
+
+  const report: AbortedPrewriteReservationRefinementReport = {
+    kind: "d1-translation-repair-prewrite-abort-refinement-v1",
+    status: "complete",
+    createdAt: reservationAt.toISOString(),
+    ok: true,
+    releasePreflightRunId: evidence.runId,
+    repairRunId: evidence.repairRunId,
+    releasePreflightEvidencePath: evidence.evidencePath,
+    candidateVersionId: evidence.candidateVersionId,
+    sourceFingerprint: evidence.sourceFingerprint,
+    operationId: budgetOperationId,
+    proof: {
+      candidateVersionBefore,
+      candidateVersionAfter,
+      candidateUnfrozenBefore: true,
+      candidateUnfrozenAfter: true,
+      productionMaintenanceStateAbsent: true,
+      preWriteEvidenceAbsent: true,
+      unresolvedMarkerAbsent: true,
+      importAttempted: false,
+      driftStatus: "repair-required",
+      driftRemoteQueries,
+      driftBilledRowsRead,
+      validationLockRowsReadReserved: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+      validationLockRowsWrittenReserved: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+      driftDatabaseWrites: 0,
+    },
+    ledger: {
+      path: refined.ledgerPath,
+      utcDay: refined.utcDay,
+      revisionBefore:
+        existingRefinementEvidence?.revisionBefore ?? ledgerBefore.revision,
+      revisionAfter: refined.revision,
+      phaseBefore: "maximum",
+      phaseAfter: "exact",
+      maximumRowsRead: reservationBefore.maximumRowsRead,
+      maximumRowsWritten: reservationBefore.maximumRowsWritten,
+      exactRowsRead,
+      exactRowsWritten,
+    },
+  };
+  writePrivateJsonDurably(
+    refinementEvidencePath,
+    report,
+    { replace: true },
+  );
+  return report;
+}
+
+type AbortedPrewriteReleasePreflightEvidence = {
+  runId: string;
+  repairRunId: string;
+  createdAt: string;
+  candidateVersionId: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
+  evidencePath: string;
+};
+
+type ExistingPrewriteAbortRefinementEvidence = {
+  status: "prepared" | "complete";
+  revisionBefore: number;
+  exactRowsRead: number;
+  driftRemoteQueries: number;
+  completeReport: AbortedPrewriteReservationRefinementReport | null;
+};
+
+function readPrewriteAbortRefinementEvidence(
+  evidencePath: string,
+  expected: {
+    runId: string;
+    candidateVersionId: string;
+    sourceFingerprint: D1ReleaseSourceIdentity;
+    operationId: string;
+    ledgerPath: string;
+    utcDay: string;
+    repairRunId: string;
+    releasePreflightEvidencePath: string;
+    currentLedgerRevision: number;
+  },
+): ExistingPrewriteAbortRefinementEvidence {
+  const value = readPrivateJsonNoFollow(evidencePath);
+  const expectedTopLevelKeys = value && isRecord(value) && value.status === "complete"
+    ? [
+        "candidateVersionId",
+        "createdAt",
+        "kind",
+        "ledger",
+        "ok",
+        "operationId",
+        "proof",
+        "releasePreflightEvidencePath",
+        "releasePreflightRunId",
+        "repairRunId",
+        "sourceFingerprint",
+        "status",
+      ]
+    : [
+        "candidateVersionId",
+        "createdAt",
+        "kind",
+        "ledger",
+        "operationId",
+        "proof",
+        "releasePreflightEvidencePath",
+        "releasePreflightRunId",
+        "repairRunId",
+        "sourceFingerprint",
+        "status",
+      ];
+  if (
+    !isRecord(value) ||
+    !hasExactObjectKeys(value, expectedTopLevelKeys) ||
+    value.kind !== "d1-translation-repair-prewrite-abort-refinement-v1" ||
+    (value.status !== "prepared" && value.status !== "complete") ||
+    value.releasePreflightRunId !== expected.runId ||
+    value.repairRunId !== expected.repairRunId ||
+    value.releasePreflightEvidencePath !== expected.releasePreflightEvidencePath ||
+    value.candidateVersionId !== expected.candidateVersionId ||
+    value.operationId !== expected.operationId
+  ) {
+    throw new Error("Existing prewrite-abort refinement evidence has the wrong identity.");
+  }
+  const createdAt = exactIsoTimestamp(
+    value.createdAt,
+    "prewrite-abort refinement evidence timestamp",
+  );
+  const source = requireEvidenceRecord(
+    value.sourceFingerprint,
+    "prewrite-abort refinement source fingerprint",
+  );
+  const proof = requireEvidenceRecord(value.proof, "prewrite-abort refinement proof");
+  const ledger = requireEvidenceRecord(value.ledger, "prewrite-abort refinement ledger proof");
+  const expectedProofKeys = [
+    "candidateUnfrozenAfter",
+    "candidateUnfrozenBefore",
+    "candidateVersionAfter",
+    "candidateVersionBefore",
+    "driftDatabaseWrites",
+    "driftBilledRowsRead",
+    "driftRemoteQueries",
+    "driftStatus",
+    "importAttempted",
+    "preWriteEvidenceAbsent",
+    "productionMaintenanceStateAbsent",
+    "unresolvedMarkerAbsent",
+    "validationLockRowsReadReserved",
+    "validationLockRowsWrittenReserved",
+  ];
+  const expectedLedgerKeys = value.status === "prepared"
+    ? [
+        "intendedExactRowsRead",
+        "intendedExactRowsWritten",
+        "maximumRowsRead",
+        "maximumRowsWritten",
+        "path",
+        "phaseBefore",
+        "revisionBefore",
+        "utcDay",
+      ]
+    : [
+        "exactRowsRead",
+        "exactRowsWritten",
+        "maximumRowsRead",
+        "maximumRowsWritten",
+        "path",
+        "phaseAfter",
+        "phaseBefore",
+        "revisionAfter",
+        "revisionBefore",
+        "utcDay",
+      ];
+  const exactRowsRead = value.status === "prepared"
+    ? ledger.intendedExactRowsRead
+    : ledger.exactRowsRead;
+  const revisionBefore = requirePositiveSafeInteger(
+    ledger.revisionBefore,
+    "prewrite-abort refinement revision-before",
+  );
+  const completeRevisionAfter = value.status === "complete"
+    ? requirePositiveSafeInteger(
+        ledger.revisionAfter,
+        "prewrite-abort refinement revision-after",
+      )
+    : null;
+  if (
+    !hasExactObjectKeys(source, ["fileCount", "sha256"]) ||
+    !hasExactObjectKeys(proof, expectedProofKeys) ||
+    !hasExactObjectKeys(ledger, expectedLedgerKeys) ||
+    createdAt.slice(0, 10) !== expected.utcDay ||
+    source.sha256 !== expected.sourceFingerprint.sha256 ||
+    source.fileCount !== expected.sourceFingerprint.fileCount ||
+    proof.candidateVersionBefore !== expected.candidateVersionId ||
+    proof.candidateVersionAfter !== expected.candidateVersionId ||
+    proof.candidateUnfrozenBefore !== true ||
+    proof.candidateUnfrozenAfter !== true ||
+    proof.productionMaintenanceStateAbsent !== true ||
+    proof.preWriteEvidenceAbsent !== true ||
+    proof.unresolvedMarkerAbsent !== true ||
+    proof.importAttempted !== false ||
+    proof.driftStatus !== "repair-required" ||
+    !isPositiveSafeInteger(proof.driftRemoteQueries) ||
+    !isPositiveSafeInteger(proof.driftBilledRowsRead) ||
+    proof.validationLockRowsReadReserved !== PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ ||
+    proof.validationLockRowsWrittenReserved !==
+      PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN ||
+    proof.driftBilledRowsRead + PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ !==
+      exactRowsRead ||
+    proof.driftDatabaseWrites !== 0 ||
+    ledger.path !== expected.ledgerPath ||
+    ledger.utcDay !== expected.utcDay ||
+    ledger.phaseBefore !== "maximum" ||
+    ledger.maximumRowsRead !== MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+    ledger.maximumRowsWritten !== MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES ||
+    revisionBefore > expected.currentLedgerRevision
+  ) {
+    throw new Error("Existing prewrite-abort refinement evidence is not exact read-only proof.");
+  }
+  if (
+    !isPositiveSafeInteger(exactRowsRead) ||
+    exactRowsRead > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS
+  ) {
+    throw new Error("Existing prewrite-abort refinement evidence has an invalid read charge.");
+  }
+  if (
+    value.status === "prepared" &&
+    ledger.intendedExactRowsWritten !== PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN
+  ) {
+    throw new Error("Prepared prewrite-abort refinement evidence has the wrong lock allowance.");
+  }
+  if (
+    value.status === "complete" &&
+    (value.ok !== true ||
+      ledger.phaseAfter !== "exact" ||
+      ledger.exactRowsWritten !== PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN ||
+      completeRevisionAfter === null ||
+      completeRevisionAfter <= revisionBefore ||
+      completeRevisionAfter > expected.currentLedgerRevision)
+  ) {
+    throw new Error("Completed prewrite-abort refinement evidence is malformed.");
+  }
+  const completeReport: AbortedPrewriteReservationRefinementReport | null =
+    value.status === "complete" && completeRevisionAfter !== null
+      ? {
+          kind: "d1-translation-repair-prewrite-abort-refinement-v1",
+          status: "complete",
+          createdAt,
+          ok: true,
+          releasePreflightRunId: expected.runId,
+          repairRunId: expected.repairRunId,
+          releasePreflightEvidencePath: expected.releasePreflightEvidencePath,
+          candidateVersionId: expected.candidateVersionId,
+          sourceFingerprint: expected.sourceFingerprint,
+          operationId: expected.operationId,
+          proof: {
+            candidateVersionBefore: expected.candidateVersionId,
+            candidateVersionAfter: expected.candidateVersionId,
+            candidateUnfrozenBefore: true,
+            candidateUnfrozenAfter: true,
+            productionMaintenanceStateAbsent: true,
+            preWriteEvidenceAbsent: true,
+            unresolvedMarkerAbsent: true,
+            importAttempted: false,
+            driftStatus: "repair-required",
+            driftRemoteQueries: proof.driftRemoteQueries,
+            driftBilledRowsRead:
+              exactRowsRead - PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+            validationLockRowsReadReserved: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
+            validationLockRowsWrittenReserved:
+              PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+            driftDatabaseWrites: 0,
+          },
+          ledger: {
+            path: expected.ledgerPath,
+            utcDay: expected.utcDay,
+            revisionBefore,
+            revisionAfter: completeRevisionAfter,
+            phaseBefore: "maximum",
+            phaseAfter: "exact",
+            maximumRowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+            maximumRowsWritten: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+            exactRowsRead,
+            exactRowsWritten: PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN,
+          },
+        }
+      : null;
+  return {
+    status: value.status,
+    revisionBefore,
+    exactRowsRead,
+    driftRemoteQueries: proof.driftRemoteQueries,
+    completeReport,
+  };
+}
+
+function readAbortedPrewriteReleasePreflight(
+  backupDir: string,
+  releasePreflightRunId: string,
+): AbortedPrewriteReleasePreflightEvidence {
+  const repairRunId = productionMaintenanceRepairRunId(releasePreflightRunId);
+  const evidencePath = path.join(
+    cloudflareDir(backupDir),
+    `d1-translation-repair-release-preflight-${releasePreflightRunId}.json`,
+  );
+  const value = readPrivateJsonNoFollow(evidencePath);
+  if (
+    !isRecord(value) ||
+    !hasExactObjectKeys(value, [
+      "activeVersionId",
+      "assetManifest",
+      "candidateProbe",
+      "candidateVersionId",
+      "createdAt",
+      "gitHead",
+      "gitUpstream",
+      "kind",
+      "runId",
+      "safetyChecks",
+      "sourceFingerprint",
+      "workerDeployEvidence",
+      "workerDeployReportPath",
+      "workerSourceSha256",
+      "wranglerConfigSha256",
+    ]) ||
+    value.kind !== "d1-translation-repair-release-preflight" ||
+    value.runId !== releasePreflightRunId
+  ) {
+    throw new Error("Prewrite-abort refinement release-preflight evidence has the wrong contract.");
+  }
+  const createdAt = exactIsoTimestamp(value.createdAt, "release-preflight creation timestamp");
+  const runStartedAt = releasePreflightRunTimestamp(releasePreflightRunId);
+  const evidenceDelayMs = Date.parse(createdAt) - Date.parse(runStartedAt);
+  if (evidenceDelayMs < 0 || evidenceDelayMs > 5_000) {
+    throw new Error("Release-preflight run ID is not bound to its bounded creation timestamp.");
+  }
+  const candidateVersionId = requireLowercaseWorkerVersion(
+    value.candidateVersionId,
+    "release-preflight candidate version",
+  );
+  if (value.activeVersionId !== candidateVersionId) {
+    throw new Error("Release-preflight evidence was not captured against its exact active candidate.");
+  }
+  if (
+    typeof value.gitHead !== "string" ||
+    !/^[a-f0-9]{40}$/.test(value.gitHead) ||
+    value.gitUpstream !== value.gitHead ||
+    typeof value.workerSourceSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(value.workerSourceSha256) ||
+    typeof value.wranglerConfigSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(value.wranglerConfigSha256) ||
+    value.workerDeployReportPath !== path.resolve(backupDir, WORKER_DEPLOY_REPORT)
+  ) {
+    throw new Error("Release-preflight source/deploy evidence is malformed.");
+  }
+  const sourceFingerprint = parseEvidenceSourceFingerprint(value.sourceFingerprint);
+  validateAbortedPrewriteSafetyChecks(value.safetyChecks, sourceFingerprint.sha256);
+  const candidateProbe = validateNativeMaintenanceProbe(value.candidateProbe, false);
+  if (candidateProbe.versionId !== candidateVersionId) {
+    throw new Error("Release-preflight candidate probe is not bound to its candidate version.");
+  }
+  const assetManifest = parseAbortedPrewriteArtifactManifest(
+    value.assetManifest,
+    "release-preflight asset manifest",
+  );
+  const workerDeployEvidence = requireEvidenceRecord(
+    value.workerDeployEvidence,
+    "release-preflight Worker deploy evidence",
+  );
+  if (
+    !hasExactObjectKeys(workerDeployEvidence, [
+      "activeDeploymentReadAt",
+      "assetManifest",
+      "backupDir",
+      "candidateVersionId",
+      "createdAt",
+      "sourceFingerprintFileCount",
+      "sourceFingerprintSha256",
+      "workerSourceSha256",
+      "wranglerConfigSha256",
+    ])
+  ) {
+    throw new Error("Release-preflight Worker deploy evidence has the wrong schema.");
+  }
+  const nestedAssetManifest = parseAbortedPrewriteArtifactManifest(
+    workerDeployEvidence.assetManifest,
+    "release-preflight nested asset manifest",
+  );
+  const workerEvidenceCreatedAt = exactIsoTimestamp(
+    workerDeployEvidence.createdAt,
+    "release-preflight Worker evidence creation timestamp",
+  );
+  const activeDeploymentReadAt = exactIsoTimestamp(
+    workerDeployEvidence.activeDeploymentReadAt,
+    "release-preflight active-deployment timestamp",
+  );
+  if (
+    workerDeployEvidence.candidateVersionId !== candidateVersionId ||
+    workerDeployEvidence.sourceFingerprintSha256 !== sourceFingerprint.sha256 ||
+    workerDeployEvidence.sourceFingerprintFileCount !== sourceFingerprint.fileCount ||
+    workerDeployEvidence.workerSourceSha256 !== value.workerSourceSha256 ||
+    workerDeployEvidence.wranglerConfigSha256 !== value.wranglerConfigSha256 ||
+    workerDeployEvidence.backupDir !== path.resolve(backupDir) ||
+    assetManifest.root !== path.resolve(process.cwd(), ".open-next/assets") ||
+    assetManifest.root !== nestedAssetManifest.root ||
+    assetManifest.sha256 !== nestedAssetManifest.sha256 ||
+    assetManifest.fileCount !== nestedAssetManifest.fileCount ||
+    assetManifest.bytes !== nestedAssetManifest.bytes ||
+    Date.parse(activeDeploymentReadAt) > Date.parse(workerEvidenceCreatedAt) ||
+    Date.parse(workerEvidenceCreatedAt) > Date.parse(createdAt)
+  ) {
+    throw new Error("Release-preflight Worker deploy evidence is not exactly source-bound.");
+  }
+  return {
+    runId: releasePreflightRunId,
+    repairRunId,
+    createdAt,
+    candidateVersionId,
+    sourceFingerprint,
+    evidencePath,
+  };
+}
+
+function parseEvidenceSourceFingerprint(value: unknown): D1ReleaseSourceIdentity {
+  if (
+    !isRecord(value) ||
+    !hasExactObjectKeys(value, ["fileCount", "files", "sha256"]) ||
+    typeof value.sha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(value.sha256) ||
+    !isPositiveSafeInteger(value.fileCount) ||
+    !Array.isArray(value.files) ||
+    value.files.length !== value.fileCount
+  ) {
+    throw new Error("Release-preflight source fingerprint is malformed.");
+  }
+  const digest = crypto.createHash("sha256");
+  let previousFile = "";
+  for (const entry of value.files) {
+    const bytes = isRecord(entry) ? entry.bytes : undefined;
+    if (
+      !isRecord(entry) ||
+      !hasExactObjectKeys(entry, ["bytes", "file", "sha256"]) ||
+      typeof entry.file !== "string" ||
+      !entry.file ||
+      entry.file.includes("\0") ||
+      path.posix.isAbsolute(entry.file) ||
+      path.posix.normalize(entry.file) !== entry.file ||
+      entry.file.startsWith("../") ||
+      entry.file <= previousFile ||
+      typeof bytes !== "number" ||
+      !Number.isSafeInteger(bytes) ||
+      bytes < 0 ||
+      typeof entry.sha256 !== "string" ||
+      !/^[a-f0-9]{64}$/.test(entry.sha256)
+    ) {
+      throw new Error("Release-preflight source fingerprint contains a malformed file entry.");
+    }
+    previousFile = entry.file;
+    digest.update(`${entry.file}\0${bytes}\0${entry.sha256}\n`);
+  }
+  if (digest.digest("hex") !== value.sha256) {
+    throw new Error("Release-preflight source fingerprint digest does not match its file inventory.");
+  }
+  return { sha256: value.sha256, fileCount: value.fileCount };
+}
+
+function validateAbortedPrewriteSafetyChecks(value: unknown, sourceSha256: string) {
+  const expected = [
+    ["local build and test gates", "cloudflare/local-gates-report.json"],
+    ["source secret scan", "cloudflare/source-secret-scan-report.json"],
+    ["OpenNext build artifact secret scan", "cloudflare/build-artifact-scan-report.json"],
+  ] as const;
+  if (!Array.isArray(value) || value.length !== expected.length) {
+    throw new Error("Release-preflight evidence omitted its exact passing safety checks.");
+  }
+  for (const [index, [name, report]] of expected.entries()) {
+    const check = value[index];
+    const detail = isRecord(check) ? check.detail : undefined;
+    if (
+      !isRecord(check) ||
+      !hasExactObjectKeys(check, ["detail", "name", "status"]) ||
+      check.name !== name ||
+      check.status !== "pass" ||
+      !isRecord(detail) ||
+      !hasExactObjectKeys(detail, ["report", "sourceFingerprint"]) ||
+      detail.report !== report ||
+      detail.sourceFingerprint !== sourceSha256
+    ) {
+      throw new Error("Release-preflight evidence contains a malformed safety check.");
+    }
+  }
+}
+
+function parseAbortedPrewriteArtifactManifest(
+  value: unknown,
+  label: string,
+): WorkerDeployArtifactManifest {
+  if (
+    !isRecord(value) ||
+    !hasExactObjectKeys(value, ["bytes", "fileCount", "root", "sha256"]) ||
+    typeof value.root !== "string" ||
+    !path.isAbsolute(value.root) ||
+    !isPositiveSafeInteger(value.fileCount) ||
+    !isPositiveSafeInteger(value.bytes) ||
+    typeof value.sha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(value.sha256)
+  ) {
+    throw new Error(`${label} is malformed.`);
+  }
+  return {
+    root: value.root,
+    fileCount: value.fileCount,
+    bytes: value.bytes,
+    sha256: value.sha256,
+  };
+}
+
+function buildAbortedPrewriteRecoveryPlan(
+  sourceFingerprint: D1ReleaseSourceIdentity,
+  candidateVersionId: string,
+  releasePreflightRunId?: string,
+) {
+  const translations = loadAndValidateTranslationSeed();
+  const curatedRepairRows = loadCuratedNamespaceRepairRows();
+  const curatedRepairPlan = buildCuratedNamespaceRepairPlan(curatedRepairRows);
+  const mainAppRepairRows = loadMainAppRepairRows();
+  const mainAppRepairPlan = buildMainAppRepairPlan(mainAppRepairRows);
+  validateSiteSourceManifestFreshness();
+  const sourceHashes = validateSourceContract();
+  const repairSql = fs.readFileSync(repairSqlPath, "utf8");
+  validateRepairSql(repairSql, translations, sourceHashes);
+  const completeRepairSql = buildAtomicSeoCtaRepairSql(
+    curatedRepairPlan.legacyPrerequisiteSql,
+    repairSql,
+    curatedRepairPlan.postLegacyCanonicalSql,
+    mainAppRepairPlan.sql,
+  );
+  const coldSourceSync = buildSiteTranslationSourceSyncPlan();
+  const planSha256 = translationRepairBudgetPlanSha256({
+    candidateVersionId,
+    sourceFingerprint,
+    repairSqlSha256: sha256(completeRepairSql),
+    sourceSyncSha256: coldSourceSync.sha256,
+    curatedCorpusSha256: curatedRepairPlan.corpusSha256,
+  });
+  const legacyOperationId = translationRepairBudgetOperationId({
+    candidateVersionId,
+    sourceFingerprint,
+    planSha256,
+  });
+  return {
+    translations,
+    curatedRepairRows,
+    mainAppRepairRows,
+    operationId: translationRepairBudgetOperationId({
+      candidateVersionId,
+      sourceFingerprint,
+      planSha256,
+      ...(releasePreflightRunId ? { releasePreflightRunId } : {}),
+    }),
+    legacyOperationId,
+  };
+}
+
+export function abortedPrewriteRecoveryOperationId(
+  sourceFingerprint: D1ReleaseSourceIdentity,
+  candidateVersionId: string,
+) {
+  return buildAbortedPrewriteRecoveryPlan(
+    releaseBudgetSourceIdentity(sourceFingerprint),
+    requireLowercaseWorkerVersion(candidateVersionId, "recovery candidate version"),
+  ).operationId;
+}
+
+function existingExactReservationResult(input: {
+  ledgerPath: string;
+  ledger: D1ReleaseBudgetLedger;
+  reservation: D1ReleaseBudgetLedgerReservation;
+}): D1ReleaseBudgetReservationResult {
+  const reservation = input.reservation;
+  return {
+    ledgerPath: input.ledgerPath,
+    utcDay: input.ledger.utcDay,
+    revision: input.ledger.revision,
+    idempotent: true,
+    reservation: {
+      operationId: reservation.operationId,
+      operation: reservation.operation,
+      candidateVersionId: reservation.candidateVersionId,
+      phase: reservation.phase,
+      rowsRead: reservation.rowsRead,
+      rowsWritten: reservation.rowsWritten,
+      maximumRowsRead: reservation.maximumRowsRead,
+      maximumRowsWritten: reservation.maximumRowsWritten,
+      createdAt: reservation.createdAt,
+      updatedAt: reservation.updatedAt,
+    },
+    totals: input.ledger.totals,
+    accountedUsage: input.ledger.accountedUsage,
+  };
+}
+
+function assertAbortedPrewriteArtifactsAbsent(backupDir: string, runId: string) {
+  const unresolvedMarkerPath = path.join(cloudflareDir(backupDir), unresolvedRepairMarkerFile);
+  if (pathEntryExistsNoFollow(unresolvedMarkerPath)) {
+    throw new Error(
+      `An unresolved D1 translation repair already exists at ${unresolvedMarkerPath}. Resolve it explicitly before starting another run.`,
+    );
+  }
+  const prewriteEvidencePath = path.join(
+    cloudflareDir(backupDir),
+    `d1-translation-repair-prewrite-${runId}.json`,
+  );
+  if (pathEntryExistsNoFollow(prewriteEvidencePath)) {
+    throw new Error("Prewrite-abort refinement found durable prewrite evidence; zero work is unproven.");
+  }
+}
+
+function assertAbortedCandidateUnfrozen(input: {
+  expectedVersionId: string;
+  readActiveWorkerVersion: () => string;
+  probeCandidate: (candidateVersionId: string) => NativeMaintenanceProbe;
+}) {
+  const activeVersion = requireLowercaseWorkerVersion(
+    input.readActiveWorkerVersion(),
+    "active Worker version",
+  );
+  if (activeVersion !== input.expectedVersionId) {
+    throw new Error("Prewrite-abort refinement candidate is no longer the sole active Worker.");
+  }
+  const probe = validateNativeMaintenanceProbe(
+    input.probeCandidate(input.expectedVersionId),
+    false,
+  );
+  if (probe.versionId !== input.expectedVersionId) {
+    throw new Error("Prewrite-abort refinement candidate probe returned a different Worker version.");
+  }
+  return activeVersion;
+}
+
+function assertReadOnlyRepairRequiredDrift(report: RemoteTranslationDriftReport) {
+  const readOnly = report.readOnly;
+  if (
+    report.mode !== "remote-verify-only" ||
+    report.database !== D1_DATABASE_NAME ||
+    report.ok ||
+    !report.repairRequired ||
+    report.status !== "repair-required" ||
+    report.issues.length === 0 ||
+    readOnly.remoteQueries !== 4 ||
+    !Number.isSafeInteger(readOnly.billedRowsRead) ||
+    readOnly.billedRowsRead <= 0 ||
+    readOnly.billedRowsRead > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+    !Number.isSafeInteger(report.sourceSnapshot.snapshotBilledRowReads) ||
+    report.sourceSnapshot.snapshotBilledRowReads < 0 ||
+    readOnly.billedRowsRead < report.sourceSnapshot.snapshotBilledRowReads ||
+    readOnly.workerUploads !== 0 ||
+    readOnly.workerDeployments !== 0 ||
+    readOnly.maintenanceActivations !== 0 ||
+    readOnly.timeTravelReads !== 0 ||
+    readOnly.sqlImports !== 0 ||
+    readOnly.databaseWrites !== 0 ||
+    readOnly.unresolvedMarkersCreated !== 0 ||
+    readOnly.preWriteEvidenceCreated !== 0 ||
+    readOnly.reportsWritten !== 0
+  ) {
+    throw new Error(
+      "Prewrite-abort refinement requires deterministic read-only proof that repair drift remains.",
+    );
+  }
 }
 
 export function repairSeoCtaTranslations(
@@ -565,6 +1663,7 @@ export function repairSeoCtaTranslations(
     backupDir: options.backupDir,
     candidateVersionId: remoteCandidateVersion,
   });
+  const maintenanceRepairRunId = productionMaintenanceRepairRunId(releasePreflight.runId);
   const budgetClock = translationRepairClock(options);
   const budgetStartedAt = readTranslationRepairClock(
     budgetClock,
@@ -584,6 +1683,7 @@ export function repairSeoCtaTranslations(
     candidateVersionId: releasePreflight.candidateVersionId,
     sourceFingerprint: budgetSourceFingerprint,
     planSha256: budgetPlanSha256,
+    releasePreflightRunId: releasePreflight.runId,
   });
   const accountDailyUsage =
     options.dailyUsage ?? loadAccountD1DailyUsage(budgetStartedAt);
@@ -637,7 +1737,7 @@ export function repairSeoCtaTranslations(
       candidateVersionId: releasePreflight.candidateVersionId,
       lockRunId: maintenanceExclusion.owner.runId,
       maintenanceVersionId,
-      repairRunId: releasePreflight.runId,
+      repairRunId: maintenanceRepairRunId,
       sourceFingerprintSha256: releasePreflight.sourceFingerprint.sha256,
       startedAt: Date.now(),
     };
@@ -752,6 +1852,7 @@ export function repairSeoCtaTranslations(
         candidateVersionId: releasePreflight.candidateVersionId,
         sourceFingerprint: liveSourceFingerprint,
         planSha256: livePlanSha256,
+        releasePreflightRunId: releasePreflight.runId,
       });
       if (livePlanSha256 !== budgetPlanSha256 || liveOperationId !== budgetOperationId) {
         throw new Error("Remote translation repair plan drifted before its D1 write.");
@@ -1042,7 +2143,7 @@ function uploadNativeMaintenanceVersion(preflight: RemoteRepairReleasePreflight)
     path.join(path.resolve(process.cwd(), "tmp"), "native-d1-maintenance-"),
   );
   const entryPath = path.join(temporaryDirectory, "worker.mjs");
-  const versionTag = `d1-maint-${preflight.runId.slice(-36)}`;
+  const versionTag = `d1-maint-${productionMaintenanceRepairRunId(preflight.runId)}`;
   let uploadError: unknown;
   try {
     fs.writeFileSync(entryPath, nativeD1MaintenanceWorkerSource(), { mode: 0o600 });
@@ -1397,14 +2498,15 @@ export function assertRemoteRepairReleasePreflight(input: {
     candidateVersionId,
     currentArtifactEvidence,
   });
-  const runId = `${new Date().toISOString().replace(/[:.]/g, "-")}-${crypto.randomUUID()}`;
+  const createdAt = new Date().toISOString();
+  const runId = `${createdAt.replace(/[:.]/g, "-")}-${crypto.randomUUID()}`;
   const evidencePath = path.join(
     cloudflareDir(input.backupDir),
     `d1-translation-repair-release-preflight-${runId}.json`,
   );
   const base = {
     runId,
-    createdAt: new Date().toISOString(),
+    createdAt,
     candidateVersionId,
     activeVersionId,
     gitHead,
@@ -2740,20 +3842,33 @@ export function translationRepairBudgetOperationId(input: {
   candidateVersionId: string;
   sourceFingerprint: D1ReleaseSourceIdentity;
   planSha256: string;
+  releasePreflightRunId?: string;
 }) {
   const candidateVersionId = requireWorkerVersion(input.candidateVersionId);
   const sourceFingerprint = releaseBudgetSourceIdentity(input.sourceFingerprint);
   if (!/^[a-f0-9]{64}$/.test(input.planSha256)) {
     throw new Error("Translation repair budget requires an exact plan SHA-256.");
   }
-  const binding = sha256(
-    JSON.stringify({
-      kind: "remote-seo-cta-translation-repair",
-      candidateVersionId,
-      sourceFingerprint,
-      planSha256: input.planSha256,
-    }),
-  );
+  const releasePreflightRunId = input.releasePreflightRunId;
+  if (releasePreflightRunId !== undefined) {
+    productionMaintenanceRepairRunId(releasePreflightRunId);
+  }
+  const binding = sha256(JSON.stringify(
+    releasePreflightRunId === undefined
+      ? {
+          kind: "remote-seo-cta-translation-repair",
+          candidateVersionId,
+          sourceFingerprint,
+          planSha256: input.planSha256,
+        }
+      : {
+          kind: "remote-seo-cta-translation-repair-v2",
+          candidateVersionId,
+          sourceFingerprint,
+          planSha256: input.planSha256,
+          releasePreflightRunId,
+        },
+  ));
   return `seo-cta-translation-repair:${binding}`;
 }
 
@@ -3258,13 +4373,58 @@ export function assertReadOnlyRemoteTranslationVerificationArgs(args: readonly s
 
 function readOnlyRemoteVerificationRunner(
   runner: WranglerRunner,
-  counter: { queries: number },
+  counter: { queries: number; billedRowsRead: number },
 ): WranglerRunner {
   return (args, options = {}) => {
     assertReadOnlyRemoteTranslationVerificationArgs(args);
     counter.queries += 1;
-    return runner(args, options);
+    const output = runner(args, options);
+    counter.billedRowsRead = safeAddBilledRowsRead(
+      counter.billedRowsRead,
+      readOnlyD1BilledRowsRead(output),
+    );
+    return output;
   };
+}
+
+function readOnlyD1BilledRowsRead(output: string) {
+  const value = parseJsonFromOutput(output);
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new RemoteVerificationIndeterminateError(
+      "Read-only D1 verification omitted its billed-row metadata.",
+    );
+  }
+  let total = 0;
+  for (const entry of value) {
+    const meta = isRecord(entry) ? entry.meta : undefined;
+    if (
+      !isRecord(entry) ||
+      entry.success !== true ||
+      !isRecord(meta) ||
+      typeof meta.rows_read !== "number" ||
+      !Number.isSafeInteger(meta.rows_read) ||
+      meta.rows_read < 0 ||
+      typeof meta.rows_written !== "number" ||
+      !Number.isSafeInteger(meta.rows_written) ||
+      meta.rows_written !== 0
+    ) {
+      throw new RemoteVerificationIndeterminateError(
+        "Read-only D1 verification returned malformed or mutating billing metadata.",
+      );
+    }
+    total = safeAddBilledRowsRead(total, meta.rows_read);
+  }
+  return total;
+}
+
+function safeAddBilledRowsRead(left: number, right: number) {
+  const total = left + right;
+  if (!Number.isSafeInteger(total) || total < 0) {
+    throw new RemoteVerificationIndeterminateError(
+      "Read-only D1 billed-row accounting overflowed.",
+    );
+  }
+  return total;
 }
 
 export function verifyRemoteTranslationDrift(input: {
@@ -3274,7 +4434,7 @@ export function verifyRemoteTranslationDrift(input: {
   runner?: WranglerRunner;
   now?: number;
 }): RemoteTranslationDriftReport {
-  const counter = { queries: 0 };
+  const counter = { queries: 0, billedRowsRead: 0 };
   const runner = readOnlyRemoteVerificationRunner(input.runner ?? runWrangler, counter);
   let sourcePlan: ReturnType<typeof planSiteTranslationSourceSync>;
   try {
@@ -3338,6 +4498,7 @@ export function verifyRemoteTranslationDrift(input: {
     },
     readOnly: {
       remoteQueries: counter.queries,
+      billedRowsRead: counter.billedRowsRead,
       workerUploads: 0,
       workerDeployments: 0,
       maintenanceActivations: 0,
@@ -4005,6 +5166,86 @@ function sha256(value: string) {
 function getArg(name: string) {
   const index = process.argv.indexOf(name);
   return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
+function requireCliArgument(value: string | undefined, name: string) {
+  if (!value || value.startsWith("--")) {
+    throw new Error(`${name} requires its exact release-preflight run ID.`);
+  }
+  return value;
+}
+
+function readPrewriteAbortRefinementClock(clock: () => Date, label: string) {
+  const value = clock();
+  if (!(value instanceof Date) || !Number.isFinite(value.getTime())) {
+    throw new Error(`Prewrite-abort reservation refinement ${label} clock is invalid.`);
+  }
+  return new Date(value.getTime());
+}
+
+function assertCleanPushedPrewriteAbortRecoverySource() {
+  if (runGit(["status", "--porcelain=v1", "--untracked-files=all"]).trim()) {
+    throw new Error("Prewrite-abort reservation refinement requires a clean git working tree.");
+  }
+  const head = runGit(["rev-parse", "HEAD"]).trim();
+  const upstream = runGit(["rev-parse", "@{upstream}"]).trim();
+  if (!/^[a-f0-9]{40}$/.test(head) || head !== upstream) {
+    throw new Error("Prewrite-abort reservation refinement requires HEAD to equal its pushed upstream.");
+  }
+}
+
+function releasePreflightRunTimestamp(runId: string) {
+  const match = /^(\d{4}-\d{2}-\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z-/.exec(runId);
+  if (!match) throw new Error("Release-preflight run timestamp is malformed.");
+  return exactIsoTimestamp(
+    `${match[1]}T${match[2]}:${match[3]}:${match[4]}.${match[5]}Z`,
+    "release-preflight run timestamp",
+  );
+}
+
+function exactIsoTimestamp(value: unknown, label: string) {
+  if (typeof value !== "string") throw new Error(`${label} is malformed.`);
+  const parsed = new Date(value);
+  if (!Number.isFinite(parsed.getTime()) || parsed.toISOString() !== value) {
+    throw new Error(`${label} is malformed.`);
+  }
+  return value;
+}
+
+function requireLowercaseWorkerVersion(value: unknown, label: string) {
+  if (!isWorkerVersionId(value) || value !== value.toLowerCase()) {
+    throw new Error(`${label} must be a lowercase Worker version UUID.`);
+  }
+  return value;
+}
+
+function hasExactObjectKeys(value: Record<string, unknown>, keys: readonly string[]) {
+  const actual = Object.keys(value).sort();
+  const expected = [...keys].sort();
+  return actual.length === expected.length && actual.every((key, index) => key === expected[index]);
+}
+
+function isPositiveSafeInteger(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
+}
+
+function requirePositiveSafeInteger(value: unknown, label: string) {
+  if (!isPositiveSafeInteger(value)) throw new Error(`${label} is malformed.`);
+  return value;
+}
+
+function pathEntryExistsNoFollow(file: string) {
+  try {
+    fs.lstatSync(file);
+    return true;
+  } catch (error) {
+    if (isRecord(error) && error.code === "ENOENT") return false;
+    throw error;
+  }
+}
+
+function asError(value: unknown) {
+  return value instanceof Error ? value : new Error("Unknown prewrite-abort refinement failure.");
 }
 
 function isWorkerVersionId(value: unknown): value is string {
