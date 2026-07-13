@@ -7,7 +7,7 @@ import path from "node:path";
 import test from "node:test";
 import {
   FREE_PLAN_WORKER_FIRST_ROUTES,
-  buildSteadyStateDeployPreflightReport,
+  buildSteadyStateDeployPreflightReport as buildProductionSteadyStateDeployPreflightReport,
   hasOpenNextRequestRuntimeImport,
 } from "../scripts/cloudflare/deploy-preflight";
 import {
@@ -38,8 +38,18 @@ import {
   type HistoricalDataBaselineReport,
   type HistoricalDatasetName,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
+import {
+  HISTORICAL_DATA_CONTINUITY_POLICY,
+  HISTORICAL_DATA_CONTINUITY_POLICY_SHA256,
+} from "../scripts/cloudflare/historical-data-continuity-policy";
+import {
+  HISTORICAL_DATA_CONTINUITY_KIND,
+  historicalDataContinuityArchiveManifestPath,
+  historicalDataContinuityReportPath,
+} from "../scripts/cloudflare/verify-historical-data-continuity";
 
 const HISTORICAL_BASELINE_CHECK = "historical production data preservation baseline";
+const HISTORICAL_CONTINUITY_CHECK = "budget-rollover historical data continuity";
 const PREFLIGHT_NOW_MS = Date.parse("2026-06-26T12:00:00Z");
 const HISTORICAL_FIXTURE_CREATED_AT = new Date("2026-06-26T11:45:00.000Z");
 const HISTORICAL_FIXTURE_SECRET = "deploy-preflight-historical-fixture-secret";
@@ -51,6 +61,25 @@ const HISTORICAL_FIXTURE_USAGE: D1DailyUsage = {
   executions: 0,
   windowMinutes: 721,
 };
+const historicalContinuityPredecessorFixtures = new Map<
+  string,
+  HistoricalDataBaselineReport
+>();
+
+function buildSteadyStateDeployPreflightReport(
+  options: Parameters<typeof buildProductionSteadyStateDeployPreflightReport>[0],
+) {
+  return buildProductionSteadyStateDeployPreflightReport({
+    ...options,
+    historicalDataContinuityPredecessorLoader: (backupDir) => {
+      const predecessor = historicalContinuityPredecessorFixtures.get(path.resolve(backupDir));
+      if (!predecessor) {
+        throw new Error("Missing historical continuity predecessor fixture.");
+      }
+      return structuredClone(predecessor);
+    },
+  });
+}
 
 test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
   const { backupDir, repoDir } = makeFixture();
@@ -73,6 +102,7 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["OpenNext build artifact secret scan", "pass"],
       ["D1 runtime migrations 0013-0015", "pass"],
       [HISTORICAL_BASELINE_CHECK, "pass"],
+      [HISTORICAL_CONTINUITY_CHECK, "pass"],
       ["Wrangler production config", "pass"],
       ["Free static and native account architecture", "pass"],
     ],
@@ -87,7 +117,7 @@ test("steady-state deploy preflight rejects dirty and unpushed release identitie
       runGit(repoDir, ["add", "."]);
       runGit(repoDir, ["commit", "-m", "unpushed release"]);
     }
-    writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+    writeLocalEvidence(backupDir, repoDir, buildRepoSourceFingerprint(repoDir));
 
     const report = buildSteadyStateDeployPreflightReport({
       backupDir,
@@ -370,6 +400,171 @@ test("steady-state deploy preflight rejects a missing historical preservation ba
   const baseline = report.checks.find((check) => check.name === HISTORICAL_BASELINE_CHECK);
   assert.equal(baseline?.status, "fail");
   assert.match(historicalBaselineFailureReason(baseline), /regular owner-only mode-0600 file/);
+});
+
+test("steady-state deploy preflight rejects missing budget-rollover continuity evidence", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.rmSync(historicalDataContinuityReportPath(backupDir));
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const continuity = report.checks.find((check) => check.name === HISTORICAL_CONTINUITY_CHECK);
+  assert.equal(continuity?.status, "fail");
+  assert.match(JSON.stringify(continuity?.detail), /mode-0600/);
+});
+
+test("steady-state deploy preflight rejects continuity evidence for another successor", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const reportPath = historicalDataContinuityReportPath(backupDir);
+  const continuity: unknown = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  assert.ok(continuity && typeof continuity === "object" && "successor" in continuity);
+  const successor = continuity.successor;
+  assert.ok(successor && typeof successor === "object" && "source" in successor);
+  const source = successor.source;
+  assert.ok(source && typeof source === "object");
+  Object.assign(source, { sha256: "0".repeat(64) });
+  writePrivateFixtureJson(reportPath, continuity);
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(JSON.stringify(check?.detail), /source identity changed/);
+});
+
+for (const scenario of [
+  {
+    name: "a false count-preservation claim",
+    mutate(decision: Record<string, unknown>) {
+      decision.countsPreserved = false;
+    },
+  },
+  {
+    name: "a false column-preservation claim",
+    mutate(decision: Record<string, unknown>) {
+      decision.columnsPreserved = false;
+    },
+  },
+  {
+    name: "a false sentinel-preservation claim",
+    mutate(decision: Record<string, unknown>) {
+      decision.sentinelsPreserved = false;
+    },
+  },
+  {
+    name: "a hidden successor row-count regression",
+    mutate(decision: Record<string, unknown>) {
+      decision.predecessorRows = 2;
+      decision.successorRows = 1;
+      decision.countsPreserved = true;
+    },
+  },
+] satisfies ReadonlyArray<{
+  name: string;
+  mutate: (decision: Record<string, unknown>) => void;
+}>) {
+  test(`steady-state deploy preflight rejects continuity evidence with ${scenario.name}`, () => {
+    const { backupDir, repoDir } = makeFixture();
+    mutateHistoricalContinuityEvidence(backupDir, (report) => {
+      const datasets = requireJsonObject(report.datasets, "continuity datasets");
+      const users = requireJsonObject(datasets.users, "users continuity decision");
+      scenario.mutate(users);
+    });
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: PREFLIGHT_NOW_MS,
+    });
+
+    assert.equal(report.ok, false);
+    const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+    assert.equal(check?.status, "fail");
+    assert.match(
+      JSON.stringify(check?.detail),
+      /users dataset decision is failed or inconsistent with the immutable baselines/,
+    );
+  });
+}
+
+for (const scenario of [
+  {
+    name: "canonical successor column drift",
+    mutate(baseline: HistoricalDataBaselineReport) {
+      baseline.datasets.users.columns[0].type = "integer";
+      baseline.datasets.users.schemaSha256 = historicalSchemaSha256(
+        baseline.datasets.users.columns,
+      );
+    },
+  },
+  {
+    name: "canonical successor sentinel drift",
+    mutate(baseline: HistoricalDataBaselineReport) {
+      baseline.datasets.users.sentinels[0] = "f".repeat(64);
+    },
+  },
+] satisfies ReadonlyArray<{
+  name: string;
+  mutate: (baseline: HistoricalDataBaselineReport) => void;
+}>) {
+  test(`steady-state deploy preflight rejects continuity evidence with ${scenario.name}`, () => {
+    const { backupDir, repoDir } = makeFixture();
+    mutateHistoricalBaseline(backupDir, scenario.mutate);
+    const baselineSha256 = createHash("sha256")
+      .update(fs.readFileSync(historicalBaselinePath(backupDir)))
+      .digest("hex");
+    mutateHistoricalContinuityEvidence(backupDir, (report) => {
+      const successor = requireJsonObject(report.successor, "continuity successor");
+      successor.baselineSha256 = baselineSha256;
+    });
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: PREFLIGHT_NOW_MS,
+    });
+
+    assert.equal(report.ok, false);
+    const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+    assert.equal(check?.status, "fail");
+    assert.match(
+      JSON.stringify(check?.detail),
+      /users dataset decision is failed or inconsistent with the immutable baselines/,
+    );
+  });
+}
+
+test("steady-state deploy preflight rejects continuity evidence from another Git head", () => {
+  const { backupDir, repoDir } = makeFixture();
+  mutateHistoricalContinuityEvidence(backupDir, (report) => {
+    report.gitHead = "f".repeat(40);
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(JSON.stringify(check?.detail), /current clean pushed Git HEAD/);
 });
 
 for (const scenario of [
@@ -738,7 +933,7 @@ test("steady-state deploy preflight rejects broad or incomplete Worker-first rou
 test("steady-state deploy preflight rejects a missing zero-CPU legal redirect", () => {
   const { backupDir, repoDir } = makeFixture();
   fs.rmSync(path.join(repoDir, "public/_redirects"));
-  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+  writeLocalEvidence(backupDir, repoDir, buildRepoSourceFingerprint(repoDir));
 
   const report = buildSteadyStateDeployPreflightReport({
     backupDir,
@@ -789,7 +984,7 @@ test("steady-state deploy preflight rejects an OpenNext main Worker", () => {
     path.join(repoDir, "cloudflare-worker.ts"),
     'import handler from "./.open-next/worker.js";\nexport default handler;\n',
   );
-  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+  writeLocalEvidence(backupDir, repoDir, buildRepoSourceFingerprint(repoDir));
 
   const report = buildSteadyStateDeployPreflightReport({
     backupDir,
@@ -851,7 +1046,7 @@ function makeFixture() {
   configurePushedFixtureRepository(repoDir);
 
   const fingerprint = buildRepoSourceFingerprint(repoDir);
-  writeLocalEvidence(backupDir, fingerprint);
+  writeLocalEvidence(backupDir, repoDir, fingerprint);
 
   return { repoDir, backupDir };
 }
@@ -865,7 +1060,7 @@ function replaceWranglerConfig(
   mutate(config);
   fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(config, null, 2)}\n`);
   commitAndPushFixture(repoDir, "update Wrangler fixture");
-  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+  writeLocalEvidence(backupDir, repoDir, buildRepoSourceFingerprint(repoDir));
 }
 
 function configurePushedFixtureRepository(repoDir: string) {
@@ -885,7 +1080,11 @@ function commitAndPushFixture(repoDir: string, message: string) {
   runGit(repoDir, ["push"]);
 }
 
-function writeLocalEvidence(backupDir: string, fingerprint: SourceFingerprint) {
+function writeLocalEvidence(
+  backupDir: string,
+  repoDir: string,
+  fingerprint: SourceFingerprint,
+) {
   const createdAt = "2026-06-26T11:45:00Z";
   writeJson(backupDir, "cloudflare/local-gates-report.json", {
     ok: true,
@@ -930,7 +1129,97 @@ function writeLocalEvidence(backupDir: string, fingerprint: SourceFingerprint) {
     checks: RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.map((id) => ({ id, ok: true })),
   });
   fs.chmodSync(path.join(backupDir, RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH), 0o600);
-  writeHistoricalBaselineEvidence(backupDir, fingerprint, HISTORICAL_FIXTURE_CREATED_AT);
+  const baseline = writeHistoricalBaselineEvidence(
+    backupDir,
+    fingerprint,
+    HISTORICAL_FIXTURE_CREATED_AT,
+  );
+  historicalContinuityPredecessorFixtures.set(
+    path.resolve(backupDir),
+    historicalContinuityPredecessorFixture(backupDir, baseline),
+  );
+  writeHistoricalContinuityEvidence(
+    backupDir,
+    fingerprint,
+    baseline,
+    runGit(repoDir, ["rev-parse", "--verify", "HEAD"]),
+  );
+}
+
+function historicalContinuityPredecessorFixture(
+  backupDir: string,
+  successor: HistoricalDataBaselineReport,
+): HistoricalDataBaselineReport {
+  const predecessor = structuredClone(successor);
+  predecessor.createdAt = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineCreatedAt;
+  predecessor.utcDay = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineUtcDay;
+  predecessor.operationId = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineOperationId;
+  predecessor.backupDir = path.resolve(backupDir);
+  predecessor.sourceFingerprint.sha256 =
+    HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceSha256;
+  predecessor.sourceFingerprint.fileCount =
+    HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceFileCount;
+  return predecessor;
+}
+
+function writeHistoricalContinuityEvidence(
+  backupDir: string,
+  fingerprint: SourceFingerprint,
+  baseline: HistoricalDataBaselineReport,
+  gitHead: string,
+) {
+  const archiveManifestPath = historicalDataContinuityArchiveManifestPath(backupDir);
+  fs.mkdirSync(path.dirname(archiveManifestPath), { recursive: true, mode: 0o700 });
+  fs.chmodSync(path.dirname(archiveManifestPath), 0o700);
+  fs.writeFileSync(archiveManifestPath, "{}\n", { mode: 0o600 });
+  fs.chmodSync(archiveManifestPath, 0o600);
+  const archiveManifestSha256 = createHash("sha256")
+    .update(fs.readFileSync(archiveManifestPath))
+    .digest("hex");
+  const baselineSha256 = createHash("sha256")
+    .update(fs.readFileSync(historicalBaselinePath(backupDir)))
+    .digest("hex");
+  const datasets = Object.fromEntries(
+    HISTORICAL_DATASET_NAMES.map((name) => [name, {
+      predecessorRows: baseline.datasets[name].rowCount,
+      successorRows: baseline.datasets[name].rowCount,
+      countsPreserved: true,
+      columnsPreserved: true,
+      sentinelsPreserved: true,
+    }]),
+  );
+  writePrivateFixtureJson(historicalDataContinuityReportPath(backupDir), {
+    kind: HISTORICAL_DATA_CONTINUITY_KIND,
+    schemaVersion: 1,
+    createdAt: "2026-06-26T11:45:00.000Z",
+    backupDir,
+    ok: true,
+    policyId: HISTORICAL_DATA_CONTINUITY_POLICY.policyId,
+    policySha256: HISTORICAL_DATA_CONTINUITY_POLICY_SHA256,
+    gitHead,
+    predecessor: {
+      source: {
+        sha256: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceSha256,
+        fileCount: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceFileCount,
+      },
+      baselineCreatedAt: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineCreatedAt,
+      baselineOperationId: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineOperationId,
+      baselineSha256: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineSha256,
+      ledgerSha256: HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.ledgerSha256,
+      archiveManifestSha256,
+    },
+    successor: {
+      source: { sha256: fingerprint.sha256, fileCount: fingerprint.fileCount },
+      baselineCreatedAt: baseline.createdAt,
+      baselineOperationId: baseline.operationId,
+      baselineSha256,
+      utcDay: HISTORICAL_DATA_CONTINUITY_POLICY.successor.requiredUtcDay,
+    },
+    sameHmacKey: true,
+    gapMs: 1,
+    datasets,
+    problems: [],
+  });
 }
 
 function writeHistoricalBaselineEvidence(
@@ -976,6 +1265,28 @@ function mutateHistoricalBaseline(
   writePrivateFixtureJson(historicalBaselinePath(backupDir), baseline);
 }
 
+function mutateHistoricalContinuityEvidence(
+  backupDir: string,
+  mutate: (report: Record<string, unknown>) => void,
+) {
+  const reportPath = historicalDataContinuityReportPath(backupDir);
+  const parsed: unknown = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  const report = requireJsonObject(parsed, "historical continuity report");
+  mutate(report);
+  writePrivateFixtureJson(reportPath, report);
+}
+
+function requireJsonObject(value: unknown, label: string): Record<string, unknown> {
+  if (!isJsonObject(value)) {
+    throw new TypeError(`${label} must be an object.`);
+  }
+  return value;
+}
+
+function isJsonObject(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
 function writePrivateFixtureJson(filePath: string, value: unknown) {
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
   fs.chmodSync(filePath, 0o600);
@@ -1003,6 +1314,15 @@ function makeHistoricalFixtureSource(content: string): SourceFingerprint {
     fileCount: 1,
     files: [file],
   };
+}
+
+function historicalSchemaSha256(
+  columns: HistoricalDataBaselineReport["datasets"][HistoricalDatasetName]["columns"],
+) {
+  const identities = columns.map(
+    (column) => `${column.name}\0${column.type}\0${column.notNull}\0${column.primaryKey}`,
+  );
+  return createHash("sha256").update(JSON.stringify(identities)).digest("hex");
 }
 
 type HistoricalDatabaseFixture = {
@@ -1256,4 +1576,5 @@ function writeJson(root: string, relativePath: string, value: unknown) {
 function runGit(cwd: string, args: string[]) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
+  return (result.stdout ?? "").trim();
 }

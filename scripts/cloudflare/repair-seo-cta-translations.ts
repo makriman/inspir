@@ -47,6 +47,7 @@ import {
   cloudflareDir,
   commandEnv,
   D1_DATABASE_NAME,
+  isValidD1TimeTravelBookmark,
   parseD1TimeTravelBookmark,
   resolveBackupDir,
   runWrangler,
@@ -2874,7 +2875,7 @@ export function writePreWriteDiagnosticEvidence(input: {
   projectedBilledRowWrites: number;
   d1ReleaseBudget?: D1ReleaseBudgetReservationResult;
 }) {
-  if (!/^\S{8,}$/.test(input.bookmark)) {
+  if (!isValidD1TimeTravelBookmark(input.bookmark)) {
     throw new Error("Pre-write diagnostic evidence requires a valid Time Travel bookmark.");
   }
   if (!/^[A-Za-z0-9._:-]{16,160}$/.test(input.runId)) {
@@ -4364,6 +4365,7 @@ export function buildRemoteRepairVerificationSql(
     "FROM app_translations AS target",
     "JOIN app_translations AS home ON home.namespace = 'route:home' AND home.language = target.language",
     "WHERE target.namespace IN ('route:about', 'route:media')",
+    `  AND target.language NOT IN (${bootstrapCuratedLanguages.map(sqlString).join(", ")})`,
     "GROUP BY target.namespace ORDER BY target.namespace;",
     "SELECT namespace, model, COUNT(*) AS rows FROM app_translations",
     "WHERE namespace IN ('route:about', 'route:media', 'route:schools')",

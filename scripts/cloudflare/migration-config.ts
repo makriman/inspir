@@ -191,10 +191,14 @@ export function parseD1TimeTravelBookmark(output: string) {
     throw new Error("Wrangler D1 Time Travel did not return a valid bookmark.");
   }
   const bookmark = parsed.bookmark;
-  if (typeof bookmark !== "string" || !/^\S{8,}$/.test(bookmark)) {
+  if (!isValidD1TimeTravelBookmark(bookmark)) {
     throw new Error("Wrangler D1 Time Travel did not return a valid bookmark.");
   }
   return bookmark;
+}
+
+export function isValidD1TimeTravelBookmark(value: unknown): value is string {
+  return typeof value === "string" && /^\S{8,}$/.test(value);
 }
 
 export function stableStringify(value: unknown): string {

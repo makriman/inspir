@@ -564,6 +564,161 @@ test("remote verification separates exact source freshness from audited payload 
   assert.doesNotMatch(sql, /AS site_rows|AS site_namespaces/);
 });
 
+test("start-learning verification preserves canonical bootstrap context variants", () => {
+  const summarySql = buildRemoteRepairVerificationSql(loadAndValidateTranslationSeed());
+  const mismatchSql = splitSqlStatements(summarySql).find((statement) =>
+    statement.includes("AS mismatches"),
+  );
+  assert.ok(mismatchSql);
+  assert.match(
+    mismatchSql,
+    /target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/,
+  );
+
+  const database = new DatabaseSync(":memory:");
+  try {
+    database.exec(`CREATE TABLE app_translations (
+      namespace TEXT NOT NULL,
+      language TEXT NOT NULL,
+      payload TEXT NOT NULL,
+      source_hash TEXT NOT NULL,
+      model TEXT NOT NULL,
+      updated_at INTEGER NOT NULL,
+      PRIMARY KEY (namespace, language)
+    )`);
+    const insert = database.prepare(
+      "INSERT INTO app_translations(namespace, language, payload, source_hash, model, updated_at) " +
+        "VALUES (?1, ?2, ?3, ?4, ?5, 1)",
+    );
+    const startLearning = "site.02d279ce2f7b58c890";
+    const curatedRows = loadCuratedNamespaceRepairRows();
+    const bootstrapLanguages = ["Arabic", "Hindi", "Malayalam", "Spanish"] as const;
+    const namespaces = ["route:home", "route:about", "route:media"] as const;
+    const exactRow = (namespace: (typeof namespaces)[number], language: string) => {
+      const row = curatedRows.find(
+        (candidate) => candidate.namespace === namespace && candidate.language === language,
+      );
+      assert.ok(row, `Missing curated fixture ${namespace}/${language}.`);
+      assert.equal(typeof row.payload[startLearning], "string");
+      return row;
+    };
+    for (const language of bootstrapLanguages) {
+      for (const namespace of namespaces) {
+        const row = exactRow(namespace, language);
+        insert.run(
+          namespace,
+          language,
+          JSON.stringify(row.payload),
+          row.sourceHash,
+          "codex-curated-free-static-no-games-v6",
+        );
+      }
+    }
+    const afrikaansHome = exactRow("route:home", "Afrikaans");
+    insert.run(
+      "route:home",
+      "Afrikaans",
+      JSON.stringify(afrikaansHome.payload),
+      afrikaansHome.sourceHash,
+      "codex-curated-free-static-no-games-v6",
+    );
+    for (const namespace of ["route:about", "route:media"] as const) {
+      insert.run(
+        namespace,
+        "Afrikaans",
+        JSON.stringify({ [startLearning]: "stale" }),
+        "stale",
+        "stale",
+      );
+    }
+
+    const legacySql = fs.readFileSync(
+      path.resolve("scripts/cloudflare/seo-cta-translation-repair.sql"),
+      "utf8",
+    );
+    assert.equal(
+      legacySql.match(/target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/g)
+        ?.length,
+      2,
+    );
+    database.exec(legacySql);
+
+    const readStartLearning = database.prepare(
+      "SELECT json_extract(payload, '$.\"site.02d279ce2f7b58c890\"') AS value " +
+        "FROM app_translations WHERE namespace = ?1 AND language = ?2",
+    );
+    for (const language of bootstrapLanguages) {
+      for (const namespace of ["route:about", "route:media"] as const) {
+        assert.equal(
+          readStartLearning.get(namespace, language)?.value,
+          exactRow(namespace, language).payload[startLearning],
+        );
+      }
+    }
+    for (const namespace of ["route:about", "route:media"] as const) {
+      assert.equal(
+        readStartLearning.get(namespace, "Afrikaans")?.value,
+        afrikaansHome.payload[startLearning],
+      );
+    }
+
+    const applyCanonical = database.prepare(
+      "UPDATE app_translations SET payload = ?1, source_hash = ?2, model = ?3 " +
+        "WHERE namespace = ?4 AND language = ?5",
+    );
+    for (const language of bootstrapLanguages) {
+      for (const namespace of ["route:about", "route:media"] as const) {
+        const row = exactRow(namespace, language);
+        applyCanonical.run(
+          JSON.stringify(row.payload),
+          row.sourceHash,
+          "codex-curated-free-static-no-games-v6",
+          namespace,
+          language,
+        );
+      }
+    }
+
+    const oldUnfilteredSql = mismatchSql.replace(
+      /\n\s*AND target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/,
+      "",
+    );
+    assert.deepEqual(
+      database.prepare(oldUnfilteredSql).all().map((row) => ({
+        namespace: row.namespace,
+        mismatches: row.mismatches,
+      })),
+      [
+        { namespace: "route:about", mismatches: 3 },
+        { namespace: "route:media", mismatches: 3 },
+      ],
+    );
+
+    const canonicalRows = database.prepare(mismatchSql).all();
+    assert.deepEqual(
+      canonicalRows.map((row) => ({ namespace: row.namespace, mismatches: row.mismatches })),
+      [
+        { namespace: "route:about", mismatches: 0 },
+        { namespace: "route:media", mismatches: 0 },
+      ],
+    );
+
+    database.prepare(
+      "UPDATE app_translations SET payload = ?1 WHERE namespace = 'route:about' AND language = 'Afrikaans'",
+    ).run(JSON.stringify({ [startLearning]: "Begin nou leer" }));
+    const driftRows = database.prepare(mismatchSql).all();
+    assert.deepEqual(
+      driftRows.map((row) => ({ namespace: row.namespace, mismatches: row.mismatches })),
+      [
+        { namespace: "route:about", mismatches: 1 },
+        { namespace: "route:media", mismatches: 0 },
+      ],
+    );
+  } finally {
+    database.close();
+  }
+});
+
 test("verify-only production drift detection is exact, structured, and mutation-free", () => {
   const expected = buildSyntheticRemoteTranslationExpectations();
   const reconciled = buildRemoteTranslationVerificationRunner(expected);

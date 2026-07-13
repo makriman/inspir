@@ -456,7 +456,7 @@ function captureHistoricalDataSnapshot(options: {
   return {
     rowsRead,
     rowsWritten: 0,
-    hmacKeyId: createHmac("sha256", secret).update("inspir-preservation-key-id-v1").digest("hex"),
+    hmacKeyId: historicalDataHmacKeyId(secret),
     datasets,
   };
 }
@@ -955,6 +955,23 @@ function publicDatasets(datasets: Record<HistoricalDatasetName, CapturedDataset>
   return result;
 }
 
+export function parseHistoricalDataBaselineReport(
+  value: unknown,
+): HistoricalDataBaselineReport {
+  const parsed = historicalBaselineSchema.parse(value);
+  assertValidSourceFingerprint(parsed.sourceFingerprint);
+  const expectedOperationId = historicalDataBudgetOperationId(
+    "baseline",
+    compactSourceFingerprint(parsed.sourceFingerprint),
+  );
+  if (parsed.operationId !== expectedOperationId) {
+    throw new Error("Historical preservation baseline has the wrong source-bound operation ID.");
+  }
+  validateHistoricalDatasets(parsed.datasets);
+  validateHistoricalBaselineLedger(parsed, path.resolve(parsed.backupDir));
+  return parsed;
+}
+
 function validateHistoricalDataBaselineReport(
   value: unknown,
   options: {
@@ -984,18 +1001,9 @@ function validateHistoricalDataBaselineReport(
   if (parsed.createdAt.slice(0, 10) !== parsed.utcDay) {
     throw new Error("Historical preservation baseline UTC day does not match its timestamp.");
   }
-  assertValidSourceFingerprint(parsed.sourceFingerprint);
   assertValidSourceFingerprint(options.expectedSourceFingerprint);
   assertSameSource(parsed.sourceFingerprint, options.expectedSourceFingerprint);
-  const expectedOperationId = historicalDataBudgetOperationId(
-    "baseline",
-    compactSourceFingerprint(parsed.sourceFingerprint),
-  );
-  if (parsed.operationId !== expectedOperationId) {
-    throw new Error("Historical preservation baseline has the wrong source-bound operation ID.");
-  }
-  validateHistoricalDatasets(parsed.datasets);
-  validateHistoricalBaselineLedger(parsed, backupDir);
+  parseHistoricalDataBaselineReport(parsed);
   if (options.requireLiveLedger) {
     assertD1ReleaseBudgetReservation({
       ledgerPath: parsed.ledger.ledgerPath,
@@ -1112,6 +1120,13 @@ function requireHistoricalHmacSecret(value: string) {
     throw new Error("HISTORICAL_DATA_PRESERVATION_HMAC_SECRET must contain 32 to 512 UTF-8 bytes.");
   }
   return value;
+}
+
+export function historicalDataHmacKeyId(value: string) {
+  const secret = requireHistoricalHmacSecret(value);
+  return createHmac("sha256", secret)
+    .update("inspir-preservation-key-id-v1")
+    .digest("hex");
 }
 
 function ensureHistoricalEvidenceDirectory(directory: string) {

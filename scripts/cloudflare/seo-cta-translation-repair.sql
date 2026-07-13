@@ -64,6 +64,7 @@ SET
   model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE target.namespace = 'route:about'
+  AND target.language NOT IN ('Arabic', 'Hindi', 'Malayalam', 'Spanish')
   AND EXISTS (
     SELECT 1
     FROM app_translations AS source
@@ -91,6 +92,7 @@ SET
   model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE target.namespace = 'route:media'
+  AND target.language NOT IN ('Arabic', 'Hindi', 'Malayalam', 'Spanish')
   AND EXISTS (
     SELECT 1
     FROM app_translations AS source

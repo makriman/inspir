@@ -24,6 +24,10 @@ import {
   RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS,
 } from "./verify-d1-runtime-migrations";
 import { readAndValidateHistoricalDataBaseline } from "./verify-historical-data-preservation";
+import {
+  readAndValidateHistoricalDataContinuityReport,
+  type HistoricalDataContinuityPredecessorLoader,
+} from "./verify-historical-data-continuity";
 
 type CheckStatus = "pass" | "fail";
 
@@ -176,6 +180,7 @@ export function buildSteadyStateDeployPreflightReport(options: {
   cwd?: string;
   nowMs?: number;
   runWranglerDryRun?: boolean;
+  historicalDataContinuityPredecessorLoader?: HistoricalDataContinuityPredecessorLoader;
 }): DeployPreflightReport {
   const cwd = options.cwd ?? process.cwd();
   const checks: DeployPreflightCheck[] = [];
@@ -187,6 +192,13 @@ export function buildSteadyStateDeployPreflightReport(options: {
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(runtimeMigrationEvidenceCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(historicalDataBaselineCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
+  checks.push(historicalDataContinuityCheck(
+    options.backupDir,
+    cwd,
+    currentSourceFingerprint,
+    options.nowMs,
+    options.historicalDataContinuityPredecessorLoader,
+  ));
   checks.push(wranglerConfigCheck(cwd));
   checks.push(leanWorkerArchitectureCheck(cwd));
 
@@ -515,6 +527,43 @@ function historicalDataBaselineCheck(
   } catch (error) {
     return {
       name: "historical production data preservation baseline",
+      status: "fail",
+      detail: {
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+}
+
+function historicalDataContinuityCheck(
+  backupDir: string,
+  cwd: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+  predecessorLoader?: HistoricalDataContinuityPredecessorLoader,
+): DeployPreflightCheck {
+  try {
+    const report = readAndValidateHistoricalDataContinuityReport({
+      backupDir,
+      cwd,
+      expectedSourceFingerprint: currentSourceFingerprint,
+      predecessorLoader,
+      now: new Date(nowMs ?? Date.now()),
+    });
+    return {
+      name: "budget-rollover historical data continuity",
+      status: "pass",
+      detail: {
+        policyId: report.policyId,
+        predecessorSource: report.predecessor.source.sha256,
+        successorSource: report.successor.source.sha256,
+        successorBaselineCreatedAt: report.successor.baselineCreatedAt,
+        gapMs: report.gapMs,
+      },
+    };
+  } catch (error) {
+    return {
+      name: "budget-rollover historical data continuity",
       status: "fail",
       detail: {
         reason: error instanceof Error ? error.message : String(error),

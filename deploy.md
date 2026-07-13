@@ -57,6 +57,34 @@ unset HISTORICAL_DATA_PRESERVATION_HMAC_SECRET
 
 Do not unset or lose the HMAC secret before the final verification. A failed or indeterminate verification means the release is incomplete; do not replace its baseline or conceal the mismatch.
 
+### One-release 2026-07-13 budget-rollover continuity bridge
+
+The SEO translation import completed after the `2026-07-13T01:10:08.863Z` historical baseline, but its direct final preservation check was rejected before D1 execution: current account reads plus the cumulative release ledger and the verifier's conservative reservation projected `5,333,906` reads against the `4,000,000` lag-safe ceiling. Do not retry around the ledger, lower the reservation, generate a new HMAC secret, or overwrite the predecessor evidence. This release has one tracked, fail-closed rollover policy bound to commit `054ecb541cacec420f09e535ed4b5e79c46d1dfe`, source fingerprint `ecafef85eedc234608d5034801a24167339abc2a2026ca425a2d6c056277382f`, the exact baseline and ledger hashes, candidate `73a5299f-fd1f-47df-84a1-adf4bae573ce`, and repair run `5cde8cb4-87d5-4bc9-8f05-cc93ade2e446`.
+
+Archive the predecessor while its original ledger day and 12-hour evidence window are still live. This phase reads only owner-local evidence and Git objects. It never invokes Wrangler, D1, or a Cloudflare API; a byte-exact replay is idempotent, while partial or divergent evidence fails closed:
+
+```bash
+pnpm cf:verify:historical-data-continuity -- \
+  --archive-predecessor \
+  --confirm-production \
+  --confirm-budget-blocked-rollover
+```
+
+Retain the original `HISTORICAL_DATA_PRESERVATION_HMAC_SECRET` in the protected terminal across the UTC reset. Finish, commit, push, and locally validate the exact successor source before recapture. On `2026-07-14`, capture the successor as soon as the D1 budget resets and no later than `01:10:08.863Z`, so the two snapshots remain at most 24 hours apart. The ordinary capture replaces the canonical baseline only after the predecessor archive is durable:
+
+```bash
+pnpm cf:verify:d1-runtime-migrations -- --confirm-production
+pnpm cf:verify:historical-data-preservation -- \
+  --capture-baseline \
+  --confirm-production
+pnpm cf:verify:historical-data-continuity -- \
+  --verify-rollover \
+  --confirm-production
+pnpm cf:preflight:deploy
+```
+
+The rollover verifier requires a clean pushed successor, the exact next UTC day, a fresh live-ledger successor baseline, the retained HMAC key, byte-exact predecessor archive evidence, and a gap no longer than 24 hours. For every protected dataset it applies the direct verifier's same guarantees: counts cannot decrease, every predecessor column identity must remain, and every predecessor HMAC sentinel must still occur in the successor's bounded identity set. It writes a private source- and baseline-bound continuity report. Deploy preflight rejects a missing, stale, failed, wrong-source, wrong-baseline, wrong-policy, wrong-manifest, symlinked, or broad-permission report. This bridge is not a general bypass and must not be copied to another incident.
+
 ## Additive D1 runtime migrations 0013-0015
 
 Before deploying this revision, apply all three tracked supplemental migrations in order. `0013` adds the bounded runtime indexes on `rate_limit_windows(reset_at)`, `ai_runs(created_at)`, and `ops_events(user_id)`; the last one keeps disposable validation cleanup from scanning the operations table. `0014` reads the durable all-time user, chat, message, and AI-run counts once and upserts the single `native-admin-totals-v1` `app_metadata` row. It excludes only the reserved `@inspirlearning.invalid` validation owner while retaining NULL/orphan historical chats and their child rows. `0015` adds nullable `completion_token` and `completion_message_id` columns to `activity_runs` plus one exact unique partial index for each non-NULL receipt. It does not replay or backfill historical completions. Local preview setup applies every unapplied supplemental migration automatically.
@@ -105,10 +133,21 @@ The repair also persists an exact cross-workspace maintenance marker in producti
 ```bash
 pnpm cf:resolve:production-maintenance -- \
   --confirm-production \
+  --confirm-reviewed-forward-correction \
   --repair-run-id <exact-repair-run-uuid>
 ```
 
-The resolver is the sole marker bypass: it exact-reads the D1 state, acquires a recovery exclusion without stealing a live owner, accepts only the recorded candidate or maintenance version, restores the recorded candidate to 100%, proves that exact version healthy and unfrozen, durably writes fail-closed evidence, atomically clears the exact marker while still owning the lock, releases, and only then promotes the report to success. Never delete the D1 marker or deploy around it by hand.
+The resolver is the sole marker bypass: it exact-reads the D1 state, acquires a recovery exclusion without stealing a live owner, accepts only the recorded candidate or maintenance version, restores the recorded candidate to 100%, proves that exact version healthy and unfrozen, durably writes fail-closed evidence, atomically clears the exact marker while still owning the lock, releases, and only then promotes the report to success. The explicit reviewed-forward-correction confirmation is required even when review proves that the imported canonical payload is already correct and the failed invariant itself needs correction. After production resolution succeeds, the resolver binds the successful production report, exact unresolved marker, and prewrite evidence before retiring the local unresolved marker. If a process using an older resolver (or a crash after production resolution) leaves only that local marker behind, finish the same evidence-bound step with:
+
+```bash
+pnpm cf:resolve:production-maintenance -- \
+  --finalize-local-resolution \
+  --confirm-production \
+  --confirm-reviewed-forward-correction \
+  --repair-run-id <exact-repair-run-uuid>
+```
+
+This continuation never changes translation or user rows. If a successful resolution report already exists, it requires authoritative absence of both production maintenance and the validation lock before retiring local evidence. If only the durable preliminary report exists because the prior resolver stopped after clearing the maintenance marker, it acquires a fresh candidate/source-bound recovery exclusion. A still-live crashed owner is never stolen; after D1 declares that lease expired, the normal compare-and-swap acquisition may replace it. The continuation then proves the recorded candidate is sole, healthy, and unfrozen, exact-releases its recovery exclusion, promotes the production report, and retires the matching local marker idempotently. Every path requires matching mode-`0600` unresolved, prewrite, release-preflight, and resolution evidence. Never delete either the D1 or local marker or deploy around it by hand.
 
 If source rows alone need reconciliation, run the guarded standalone synchronizer:
 

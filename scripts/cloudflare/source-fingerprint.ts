@@ -26,6 +26,46 @@ export function buildRepoSourceFingerprint(cwd = process.cwd()): SourceFingerpri
   };
 }
 
+export function buildGitCommitSourceFingerprint(
+  commit: string,
+  cwd = process.cwd(),
+): SourceFingerprint {
+  if (!/^[a-f0-9]{40,64}$/i.test(commit)) {
+    throw new Error("Source fingerprint requires an exact Git commit object ID.");
+  }
+  const listed = spawnSync(
+    "git",
+    ["ls-tree", "-r", "--name-only", "-z", commit],
+    { cwd, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
+  );
+  if (listed.status !== 0) {
+    throw new Error(`Could not list Git commit source files: ${listed.stderr || listed.error}`);
+  }
+  const files = listed.stdout
+    .split("\0")
+    .filter(Boolean)
+    .filter((file) => !isVolatileSourceFile(file))
+    .sort()
+    .map((file) => {
+      const shown = spawnSync(
+        "git",
+        ["show", `${commit}:${file}`],
+        { cwd, encoding: null, maxBuffer: 64 * 1024 * 1024 },
+      );
+      if (shown.status !== 0 || !Buffer.isBuffer(shown.stdout)) {
+        throw new Error(`Could not read Git commit source file ${file}.`);
+      }
+      return {
+        file,
+        bytes: shown.stdout.byteLength,
+        sha256: createHash().update(shown.stdout).digest("hex"),
+      };
+    });
+  const hash = createHash();
+  for (const file of files) hash.update(`${file.file}\0${file.bytes}\0${file.sha256}\n`);
+  return { sha256: hash.digest("hex"), fileCount: files.length, files };
+}
+
 export function fingerprintFile(baseDir: string, filePath: string): SourceFileFingerprint {
   const content = fs.readFileSync(filePath);
   return {
