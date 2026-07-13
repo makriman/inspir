@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "language": "Spanish",
+  "locale": "es",
+  "namespace": "blog:homework-coach-prompts-and-study-loop",
+  "sourceHash": "e66209ea3b13effae484a176bc2197b39decc9ecbb4463e3a3c9e02c38af9b01",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "Caminos de aprendizaje relacionados"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "habilidades de estudio"
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"Consulta mi respuesta antes de dar la tuya\"."
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "Prueba uno de estos aperitivos:"
+    },
+    {
+      "key": "site.327c6c47082f6e0457",
+      "source": "For Homework Coach, a useful practice loop is:",
+      "value": "Para el entrenador de tareas, un bucle de práctica útil es:"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "Pida una pequeña primera tarea."
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "Pida comentarios sobre la parte que se sintió insegura."
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "Si la respuesta parece demasiado amplia, estrecha la. Pida un ejemplo, un concepto erróneo, una pregunta de comprobación o un siguiente paso. Si te parece demasiado fácil, pide un reto. Si te parece demasiado difícil, pide un puente con lo que ya sabes."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Práctica"
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"Manténgalo amigable para principiantes\"."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "Leer una respuesta de IA no es lo mismo que aprender. Después de la primera respuesta, pídele al modo que te haga hacer algo con la idea."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Las mejores sesiones de aprendizaje son ajustables. El entrenador apoya tu pensamiento sin tomar el relevo de la tarea, así que el trabajo final sigue siendo tuyo."
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"Dame una versión más dura después de que lo intente\"."
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "Empieza con una petición clara."
+    },
+    {
+      "key": "site.7289c50293ffe86821",
+      "source": "Use Homework Coach when this is the right mode for the job. If you want a related path, try Explain My Answer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Usa el entrenador de tareas cuando este es el modo adecuado para el trabajo. Si quieres una ruta relacionada, prueba Explicar mi respuesta. También puedes navegar por el blog de aprendizaje de IA para métodos de estudio, aprendizaje socrático, tarjetas flash, juegos de rol y recuerdo activo."
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "Indique el objetivo en una frase."
+    },
+    {
+      "key": "site.85e24421e08fce72b3",
+      "source": "For this mode, the job is simple: Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Para este modo, el trabajo es simple: desprenderse de la tarea con consejos éticos, ejemplos, comprobaciones y entrenamiento paso a paso."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "La forma más rápida de obtener valor del entrenador de tareas es darle a la IA un trabajo de aprendizaje, no solo un tema. Un tema dice lo que le interesa. Un trabajo de aprendizaje dice qué tipo de ayuda necesitas."
+    },
+    {
+      "key": "site.ae851fff68c130fe90",
+      "source": "\"Give me a hint for this physics problem\"",
+      "value": "\"Dame una pista para este problema de física\""
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "Hacer que la salida sea más útil"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "Las buenas sugerencias suelen incluir tres cosas: el tema, el nivel actual y el tipo de ayuda que desea. No necesitas palabras perfectas. Sólo necesitas el contexto suficiente para que la sesión comience."
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "Las instrucciones de IA"
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "Termina con un resumen que escribiste tú mismo."
+    },
+    {
+      "key": "site.ca7b798ce80eba0e84",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Homework Coach on inspir.",
+      "value": "Ideas para indicaciones y un ciclo de estudio repetible con los que obtener resultados de aprendizaje útiles del Tutor de tareas en inspir."
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "Responda antes de pedir la solución."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Ese resumen final es importante. Cuando explicas la idea, revelas lo que es sólido y lo que todavía está prestado de la IA."
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "Luego añade una restricción que haga la sesión más personal:"
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"Usa ejemplos de mi examen, proyecto o vida diaria\"."
+    },
+    {
+      "key": "site.f41d6a56bf9f66e73a",
+      "source": "\"Check my essay thesis\"",
+      "value": "\"Revisa mi tesis de ensayo\""
+    },
+    {
+      "key": "site.f9570116511bd9f5a0",
+      "source": "Homework Coach prompts and study loop",
+      "value": "Tarea de trabajo de casa, instrucciones del entrenador y ciclo de estudio"
+    },
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"Pregúntame antes de explicarme demasiado\"."
+    },
+    {
+      "key": "site.fd2156a47f3ce6d24a",
+      "source": "\"Help me start this word problem\"",
+      "value": "\"Ayúdame a empezar este problema de palabras\""
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "Convierta el modo en práctica"
+    }
+  ]
+}

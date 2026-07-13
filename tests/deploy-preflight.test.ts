@@ -626,6 +626,12 @@ test("steady-state deploy preflight rejects missing or retired native memory bin
     (config) => {
       Object.assign(config, { triggers: { crons: [] } });
     },
+    (config) => {
+      if (config.queues?.consumers?.[0]) config.queues.consumers[0].max_batch_size = 5;
+    },
+    (config) => {
+      Object.assign(config, { triggers: { crons: ["0 3 * * *", "* * * * *"] } });
+    },
   ];
 
   for (const mutate of mutations) {
@@ -1150,7 +1156,7 @@ function wranglerConfig() {
       producers: [{ binding: "MEMORY_POST_TURN_QUEUE", queue: MEMORY_POST_TURN_QUEUE_NAME }],
       consumers: [{
         queue: MEMORY_POST_TURN_QUEUE_NAME,
-        max_batch_size: 5,
+        max_batch_size: 1,
         max_batch_timeout: 10,
         max_retries: 5,
         retry_delay: 60,

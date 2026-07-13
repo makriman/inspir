@@ -52,6 +52,7 @@
     "cf:verify:production": "tsx scripts/cloudflare/verify-production.ts",
     "cf:verify:authenticated-production": "tsx scripts/cloudflare/run-authenticated-production-validation.ts",
     "cf:verify:worker-outcomes": "tsx scripts/cloudflare/verify-production-worker-outcomes.ts",
+    "cf:verify:background-outcomes": "tsx scripts/cloudflare/verify-production-background-outcomes.ts",
     "cf:test:e2e:production": "tsx scripts/cloudflare/run-production-playwright.ts",
     "start": "next start",
     "lint": "eslint",

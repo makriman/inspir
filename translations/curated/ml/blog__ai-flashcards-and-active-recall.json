@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "കഠിനമായി. ഒരു ചെറിയ കാലതാമസം കഴിഞ്ഞതിനു ശേഷം അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "നുറുങ്ങ്: \"മറന്നു കളയുന്നതിനെക്കുറിച്ചും തിരിച്ചുപിടിക്കുന്നതിനെക്കുറിച്ചും ചിന്തിക്കുക\"."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "ഉദാഹരണത്തിന്:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "ഒരു ഉപയോഗപ്രദമായ കാർഡ് ഒരു കാര്യം മാത്രം ചോദിക്കുന്നു. ഒരു പ്രോംപ്റ്റിന് റെ ഉള്ളില് അഞ്ചു ചോദ്യങ്ങള് ഒളിപ്പിച്ചു വയ്ക്കരുത്. ഉത്തരം നല് കാൻ വേണ്ടത്ര വ്യക്തമായിരിക്കണം, പക്ഷെ അർത്ഥശൂന്യമാകുന്നത്ര ചുരുക്കമായിരിക്കരുത്."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "ഈ ലൂപ്പ് ഉപയോഗിക്കുക:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "പഠന കഴിവുകൾ"
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "വിവേകത്തോടുകൂടിയ ഫ്ലാഷ് കാർഡുകൾ"
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "ഉപദേശം നല് കുന്നത് പ്രയോജനകരമാണ് ഒരു മോശം സൂചനയാണ് പ്രതികരണം. നല്ല സൂചന തിരച്ചിൽ പരിധി കുറയ്ക്കും."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "എ.ഐ.ക്ക് പരുക്കന് കുറിപ്പുകള് വൃത്തിയുള്ള തിരയൽ പ്രോംപ്റ്റുകളാക്കി മാറ്റാന് കഴിയും. പ്രധാന ആശയങ്ങളെ ചെറിയ കാർഡുകളായി വിഭജിക്കാനും ഉദാഹരണങ്ങൾ ചേര് ക്കാനും"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "ഒരു കാർഡ് പരാജയപ്പെട്ടാൽ, അത് ആവർത്തിക്കുക മാത്രം ചെയ്യരുത്. എന്തിന് ബുദ്ധിമുട്ടുന്നു എന്ന് ചോദിക്കുക. തെറ്റായ ധാരണകൾ കണ്ടെത്താൻ സോക്രട്ടിക്കൽ ഇൻസ്ട്രക്ഷൻ ഉപയോഗിക്കുക, നടപടിക്രമത്തിലെ വിടവുകൾക്ക് മാത്തമാറ്റിക്സ് സ്റ്റെപ്പ് കോച്ച് ഉപയോഗിക്കുക, അല്ലെങ്കിൽ മികച്ച പഠന പ്രോംപ്റ്റ് കണ്ടെത്താൻ AI പഠന പ്രോമ്പ്റ്റ് ലൈബ്രറി ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AIക്ക് വേഗത്തിൽ ഫ്ലാഷ് കാർഡുകൾ നിർമ്മിക്കാൻ സഹായിക്കാനാകും, പക്ഷേ പഠനം ഇപ്പോഴും വീണ്ടെടുക്കലിൽ നിന്നാണ് വരുന്നത്. ആ ഉപകരണം കാർഡുകൾ എഴുതുകയും പഠിക്കുന്നയാൾക്ക് അവയ്ക്ക് ഉത്തരം നല് കാന് ബുദ്ധിമുട്ട് തോന്നാതിരിക്കുകയും ചെയ്താല് , കാര്യങ്ങള് ഏറെക്കുറെ മാറിയിട്ടില്ല. ഉപയോഗപ്രദമായ പതിപ്പ്, കുഴപ്പമില്ലാത്ത കുറിപ്പുകളെ ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്ന നിർദ്ദേശങ്ങളാക്കി മാറ്റുന്നു, തുടർന്ന് ഉത്തരം വെളിപ്പെടുത്തുന്നതിന് മുമ്പ് പഠിക്കുന്നയാളെ ഓർമ്മിപ്പിക്കുന്നു."
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "ഒരു ചെറിയ ഉദാഹരണത്തിന് ഒരു ആശയം പ്രയോഗിക്കുക."
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "പിന്നിലേക്കു നോക്കാതെ അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "സജീവമായ തിരിച്ചുവിളിക്കൽ"
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "ഒരു സാധാരണ പിഴവ് തിരിച്ചറിയുക;"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI ഫ്ലാഷ് കാർഡുകളും സജീവമായ തിരിച്ചുവിളിയും: കൂടുതൽ എങ്ങനെ ഓർക്കാം"
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "ഫ്ലാഷ് കാർഡുകൾ വളരെ ശക്തമാണ്, പക്ഷേ അവ പഠന പ്രക്രിയയുടെ മുഴുവൻ ഭാഗമല്ല. അവ തിരികെ ലഭിക്കുന്നതിനും പദസമ്പത്ത്, നിർവചനങ്ങൾ, സൂത്രവാക്യങ്ങൾ, വ്യത്യാസങ്ങൾ, പ്രധാന ഉദാഹരണങ്ങൾ എന്നിവയ്ക്കായി ഏറ്റവും മികച്ചതാണ്. പഠിക്കുന്നവന് ആദ്യം തന്നെ ആശയത്തെ മനസ്സിലാക്കിയിട്ടില്ലെങ്കിൽ അവ ദുർബലമാണ്."
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "മൂന്ന് റേറ്റിംഗ് ഉപയോഗിക്കുക:"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "ഒരു സമയത്ത് ഒരു ആശയം പരീക്ഷിച്ചുനോക്കുമ്പോൾ, ശ്രമം കഴിഞ്ഞ് മാത്രമേ ഉത്തരം വെളിപ്പെടുത്തൂ, നഷ്ടപ്പെട്ട കാർഡുകൾ നേരത്തെ പരിശോധിച്ചാൽ ഫ്ലാഷ് കാർഡുകൾ ഏറ്റവും നന്നായി പ്രവർത്തിക്കും."
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "ഉത്തരം പറയാതെ സൂചനകൾ ചേർക്കുക"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "ശക്തമായ ഒരു കാർഡ് തിരിച്ചുവിളിക്കാൻ ആവശ്യപ്പെടുന്നു:"
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "മിസ് ചെയ്തു. ഉടനെ തന്നെ അവലോകനം ചെയ്യാം."
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "ഇത് സങ്കീർണമായിരിക്കേണ്ടതില്ല. പ്രധാനപ്പെട്ട കാര്യം നിങ്ങളുടെ അവലോകന ഷെഡ്യൂൾ ഒരു സ്റ്റാറ്റിക് ലിസ്റ്റായി കണക്കാക്കുന്നതിനു പകരം മെമ്മറിക്ക് അനുസൃതമായി പ്രവർത്തിക്കുന്നു എന്നതാണ്."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "AI സഹായിക്കുന്നിടത്ത്"
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "ഒരു അവലോകന ചോയ്സ്, അങ്ങനെ നഷ്ടപ്പെട്ട കാർഡുകൾ നേരത്തെ തിരിച്ചുവരും."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "അതുകൊണ്ടാണ് സജീവമായ ഓർമ്മപ്പെടുത്തൽ പ്രധാനം. ഉത്തരം നോക്കുന്നതിനു പകരം, അത് ഓർമ്മയിൽ നിന്നും നീക്കം ചെയ്യാൻ ശ്രമിക്കുന്നു. പരിശ്രമം ഓർമ്മയെ ശക്തിപ്പെടുത്തുകയും ഇനിയും ചെയ്യേണ്ട കാര്യങ്ങൾ വെളിപ്പെടുത്തുകയും ചെയ്യുന്നു."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "എല്ലാം വെളിപ്പെടുത്താതെ സഹായിക്കുന്ന ഒരു സൂചന."
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "ശാന്തമായി. അത് പിന്നീട് നീക്കിക്കോളൂ."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "രണ്ടാമത്തെ കാർഡ് വിദ്യാർത്ഥിയെ ഒരു ബന്ധം കണ്ടെത്താൻ പ്രേരിപ്പിക്കുന്നു, ഒരു വാചകം തിരിച്ചറിയുക മാത്രമല്ല. നല്ല കാർഡുകൾ സാധാരണയായി ഈ ജോലികളിൽ ഒന്നിന് ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്നു:"
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "ലളിതമായ ഫ്ലാഷ് കാർഡ് വർക്ക്ഫ്ലോ"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "ഫോട്ടോസിന്തസിസിൽ ക്ലോറോഫിൽ എന്തു പങ്ക് വഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "ശക്തമായ കാർഡുകൾ പലപ്പോഴും ഇവയാണ്ഃ"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "ഒരു ചെറിയ കുറിപ്പുകൾ ഫ്ലാഷ്കാർഡ് ബിൽഡറിൽ ഒട്ടിക്കുക."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "ഒരു കാരണം വിശദീകരിക്കുക;"
+    },
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "ഒരു ആശയം മാത്രം ആവശ്യപ്പെടുന്ന ഒരു വ്യക്തമായ മുന്നണി."
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "നിങ്ങൾ കുറിപ്പുകൾ AI-യിൽ ഒട്ടിക്കുമ്പോൾ, ആ ജോലികളിൽ വിശാലമായ ആശയങ്ങൾ വിഭജിക്കാൻ ആവശ്യപ്പെടുക. ഒരു ഡെക്ക് 18 പ്രത്യേക കാർഡുകൾ സാധാരണയായി ഒരു ഡെക്ക് നല്ലതു 5 ഓരോന്നും ഒരു ഖണ്ഡിക മുഴുവന് അടങ്ങുന്ന വമ്പൻ കാർഡുകൾ."
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "ഫ്ലാഷ് കാർഡുകൾ ഇത് ചെയ്യാനുള്ള ഏറ്റവും ലളിതമായ വഴികളിലൊന്നാണ്."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "ഒരു ക്രമം ഓര് ക്കാന്;"
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "കൂടുതൽ ആഴത്തിലുള്ള റൂട്ടിനായി, ഫ്ലാഷ്കാർഡ് ബിൽഡർ ഗൈഡും ഫ്ലാശ്കാർഡ് നിർമ്മാതാവ് പ്രോംപ്റ്റുകളും പഠന ലൂപ്പും വായിക്കുക. ലക്ഷ്യം മനോഹരമായ ഡെക്ക് അല്ല. നോട്ടുകൾ ഇല്ലാതായിപ്പോയാൽ കൂടുതൽ കാര്യങ്ങൾ ഓർമ്മിക്കുക എന്നതാണ് ലക്ഷ്യം."
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "ആവർത്തിച്ചുള്ള മിസ്സുകൾ പഠിക്കാന് ഒരു ചോദ്യമായി മാറ്റുക."
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "വളരെ വിശാലമോ വ്യക്തമോ ആയ കാർഡുകൾ മായ്ക്കുക."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "കുറിപ്പുകളെ നല്ല കാർഡുകളാക്കി മാറ്റുക"
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "സത്യസന്ധമായി റേറ്റ് ഓർക്കുക."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "ഒരു ദുർബലമായ AI ഫ്ലാഷ് കാർഡ് പറയുന്നു:"
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "എല്ലാ കാര്യങ്ങളും തുല്യമായി അവലോകനം ചെയ്യരുത്"
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "ഒരു സാധാരണ കെണി ഒരു സാധ്യതയുള്ള പിഴവിനെക്കുറിച്ച് മുന്നറിയിപ്പ് നല് കുന്ന ഒരു പൊതു കെണി."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "ഈ സൂചന പഠിക്കുന്നവന് ഓർമ്മപ്പെടുത്തൽ പ്രക്രിയ ഇല്ലാതാക്കാതെ തന്നെ ആരംഭിക്കാൻ സഹായിക്കുന്നു. inspir ഫ്ലാഷ്കാർഡ് ബിൽഡർ ഈ വെളിപ്പെടുത്തലും റേറ്റും ലൂപ്പിനു വേണ്ടിയാണ് രൂപകല് പിച്ചിരിക്കുന്നത്: ആദ്യം ശ്രമിക്കുക, രണ്ടാമതായി വെളിപ്പെടുത്തുക, സത്യസന്ധമായി റേറ്റുചെയ്യുക, എന്നിട്ട് ദുർബലമായ കാർഡുകൾ നേരത്തെ തിരികെ കൊണ്ടുവരിക."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "സൂചനകളും പൊതുവായ കെണികളും ഉള്ള ഒരൊറ്റ ഐഡിയ കാർഡുകൾ ആവശ്യപ്പെടുക."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "ഫ്ലാഷ്കാർഡ് ബിൽഡറിൽ ശ്രമിക്കുക. കാർഡുകൾ ഉണ്ടാക്കുന്നതിനു മുമ്പ് വിഷയം മനസ്സിലാക്കണമെങ്കിൽ, എല്ലാം പഠിക്കുക എന്നതിൽ തുടങ്ങുക. കാർഡുകൾ പരിശോധിച്ചതിനു ശേഷം സമ്മർദ്ദം വേണമെങ്കിൽ, ക്വിസ് ഓൺ ട്രിവിയയിലേക്കോ വിവ പ്രാക്ടീസിലേക്കോ മാറുക."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "കുറിപ്പുകൾ വായിക്കുന്നത് ഉൽപ്പാദനക്ഷമതയുള്ളതായി തോന്നുന്നു. പിന്നീട് അവരെ ഓർക്കുക എന്നത് തന്നെയാണ് യഥാർത്ഥ പരീക്ഷണം."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "ഫോട്ടോസിന്തസിസ്: സസ്യങ്ങൾ ഭക്ഷണം ഉണ്ടാക്കുന്ന പ്രക്രിയ."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "ഒരു സംക്ഷിപ്തമായ പിൻഭാഗം, അത് ചിന്തയെ പൂർത്തിയാക്കുന്നു."
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "നല്ല ഒരു ഫ്ലാഷ് കാർഡ് എന്തായിരിക്കും?"
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "രണ്ടു ആശയങ്ങള് താരതമ്യം ചെയ്യുക;"
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "പഠിക്കുന്നവര് ചെയ്യുന്ന ഒരു തെറ്റ് ഓരോ കാർഡും ഒരേപോലെ കാണുക എന്നതാണ്. ഒരു കാർഡ് പെട്ടെന്ന് തിരിച്ചറിയുന്നെങ്കിൽ നാളെ വീണ്ടും പരിശോധിക്കുന്നത് സമയം പാഴാക്കും. ഒരു കാർഡ് നഷ്ടപ്പെട്ടാല് ഒരാഴ്ച കാത്തിരിക്കാന് വളരെ നീണ്ട സമയമായിരിക്കാം."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "പിന്നോട്ട്: \"അൽപം മറന്നു കഴിഞ്ഞതിനു ശേഷം ഉത്തരം പുനർനിർമ്മിക്കാൻ സ്പേസിംഗ് മെമ്മറിക്ക് നിർബന്ധം വരുത്തുന്നു, ഇത് പിന്നീട് ഓർമ്മപ്പെടുത്തൽ ശക്തിപ്പെടുത്തുന്നു\"."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "inspir ഫ്ലാഷ്കാർഡ് ബിൽഡർ ആക്റ്റീവ് റീമോൾ ലൂപ്പിനു ചുറ്റും രൂപകൽപ്പന ചെയ്തിരിക്കുന്നു: ഒരു ഡെക്ക് നിർമ്മിക്കുക, മുന്നിൽ പരീക്ഷിക്കുക, ഉത്തരം വെളിപ്പെടുത്തുക, നിങ്ങളുടെ റീമോർഡ് റേറ്റുചെയ്യുക, ആശയം പറ്റിക്കിടക്കുന്നതുവരെ മിസ്സുകൾ അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "പഠിക്കുന്നവന് ഇപ്പോഴും ഓർമ്മപ്പെടുത്തല് ചെയ്യണം. അതാണ് കാര്യം."
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "മുന്നിൽ: \"എന്തുകൊണ്ട് ഇടവേളയുള്ള അവലോകനം പഠനത്തെക്കാൾ നല്ലതാണ്?\""
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "ഒരു പദത്തിന്റെ നിർവചനം;"
+    }
+  ]
+}

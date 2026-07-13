@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "blog:ai-feynman-tutor-guide",
+  "sourceHash": "ed094a64cdabc059b49a53957df622d8b78aa539cbeb8ff05bbb640108d623e4",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "अब कहाँ जाना है?"
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "ध्यान केंद्रित करना महत्वपूर्ण है। एक सामान्य चैटबॉट लगभग कुछ भी जवाब दे सकता है, लेकिन एक सीखने का मोड बातचीत को आकार देता है। यह आपको उस तरह की सोच, अभ्यास, प्रतिक्रिया या खोज की ओर धकेलता है जो विचार को पकड़ने में मदद करता है।"
+    },
+    {
+      "key": "site.0c144a354468dbee40",
+      "source": "Ask the AI to check your reasoning, not just the result.",
+      "value": "एआई से अपने तर्क की जाँच करने के लिए कहें, न कि केवल परिणाम की।"
+    },
+    {
+      "key": "site.171a3417d8d145eb71",
+      "source": "This mode is especially useful for learners who want to:",
+      "value": "यह मोड विशेष रूप से उन शिक्षार्थियों के लिए उपयोगी है जोः"
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "आप अपनी वास्तविक समस्या के एक मोटे संस्करण के साथ भी शुरू कर सकते हैं। एक गड़बड़ पहला संकेत ठीक है। सत्र में स्तर, दर्शकों, समय सीमा और शैली को स्पष्ट किया जा सकता है एक बार जब आप शुरू करते हैं।"
+    },
+    {
+      "key": "site.1d42dc0bfb9b08e820",
+      "source": "\"Help me simplify recursion\"",
+      "value": "\"मेरे पुनरावृत्ति को सरल बनाने में मदद करें\""
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "इस मोड से क्या मदद मिलती है"
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "यह अंतर प्रवाह में दिखाई देता है। एक विशाल प्रतिक्रिया के बजाय, सबसे अच्छा सत्र एक लूप के माध्यम से चलता हैः एक लक्ष्य निर्धारित करें, कुछ कोशिश करें, प्रतिक्रिया प्राप्त करें, कमजोर जगह को ठीक करें, और अगली कार्रवाई चुनें।"
+    },
+    {
+      "key": "site.279ca6d181ad9f793f",
+      "source": "Adapt the session to your goal.",
+      "value": "अपने लक्ष्य के अनुसार सत्र को अनुकूलित करें।"
+    },
+    {
+      "key": "site.41e68830003eff69b8",
+      "source": "A stronger study loop",
+      "value": "एक मजबूत अध्ययन चक्र"
+    },
+    {
+      "key": "site.4ad90215ccef01e1b6",
+      "source": "\"Test my understanding of inflation\"",
+      "value": "\"मुद्रास्फीति के बारे में मेरी समझ का परीक्षण करें\""
+    },
+    {
+      "key": "site.4b3235b45a6ed42d8f",
+      "source": "Start with example prompts.",
+      "value": "उदाहरण संकेतों से शुरू करें।"
+    },
+    {
+      "key": "site.67ad0ccec8a0f07868",
+      "source": "\"I'll explain gravity\"",
+      "value": "\"मैं गुरुत्वाकर्षण समझाऊंगा\""
+    },
+    {
+      "key": "site.7330955fa80ccf7a2f",
+      "source": "This is the same habit behind studying with AI without cheating yourself: keep the learner active. AI is most useful when it gives you feedback on your thinking.",
+      "value": "यह वही आदत है जो खुद को धोखा देने के बिना एआई के साथ अध्ययन करने के पीछे हैः शिक्षार्थी को सक्रिय रखें। एआई सबसे उपयोगी तब होता है जब यह आपको आपकी सोच पर प्रतिक्रिया देता है।"
+    },
+    {
+      "key": "site.760192fa018e64f166",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "यह मोड अपने स्वयं के संकेतों, उदाहरणों और सीखने के प्रवाह के साथ फेनमैन ट्यूटर के लिए ट्यून किया गया है।"
+    },
+    {
+      "key": "site.76506817436f2576b3",
+      "source": "Feynman Tutor AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "फेनमैन ट्यूटर एआई लर्निंग मोड निष्क्रिय उत्तर संग्रह के बजाय सीखने के लिए एआई का उपयोग करने का एक केंद्रित तरीका है। यह मोड एक विशिष्ट कार्य के आसपास बनाया गया हैः एक अवधारणा को सरलता से समझाने का प्रयास करें। आपके शिक्षक को आपके द्वारा कही गई बात में कोई कमी आती है, वह आपसे सवाल पूछता है और आपको समझाया गया विषय फिर से बनाने में मदद करता है।"
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "मोड को बताएं कि आप क्या सीखने या उत्पादन करने की कोशिश कर रहे हैं।"
+    },
+    {
+      "key": "site.809d1e1957710315a3",
+      "source": "AI tutor",
+      "value": "एआई शिक्षक"
+    },
+    {
+      "key": "site.82dafae3ecf0c1a75d",
+      "source": "Explain it simply until it sticks.",
+      "value": "इसे सरलता से समझाइए जब तक यह चिपके नहीं।"
+    },
+    {
+      "key": "site.87ac07848c5b41bf9a",
+      "source": "Try the step in your own words.",
+      "value": "अपने शब्दों में कदम का प्रयास करें।"
+    },
+    {
+      "key": "site.88f39658d8034604e0",
+      "source": "Finish by writing the idea back from memory.",
+      "value": "अपने विचार को याद से लिखकर समाप्त करें।"
+    },
+    {
+      "key": "site.88f5c0e5ca5c0b3eea",
+      "source": "Start the live mode at Feynman Tutor. If you want a neighboring learning format, try Case Study Simulator. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "Feynman ट्यूटर पर लाइव मोड शुरू करो। यदि आप एक पड़ोसी सीखने के प्रारूप चाहते हैं, तो केस स्टडी सिम्युलेटर का प्रयास करें। मंच के व्यापक दृश्य के लिए, पढ़ें कि एक एआई सीखने के साथी को सभी के लिए क्या करना चाहिए।"
+    },
+    {
+      "key": "site.8d436f99bc40e1c969",
+      "source": "Use Feynman Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Feynman Tutor का प्रयोग करें जब आप एक सत्र चाहते हैं जो जल्दी से शुरू होता है लेकिन फिर भी आपको अनुकूलित करता है। पहला लक्ष्य है कि आप किसी को प्रभावित न करें। पहला लक्ष्य अगले कदम को संभव बनाना है।"
+    },
+    {
+      "key": "site.a8886ce543382c3c18",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "विचारशील विषयों की खोज करने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "सोच"
+    },
+    {
+      "key": "site.d5b76ff0a85f514d76",
+      "source": "Feynman Tutor AI Learning Mode: practical guide",
+      "value": "फेनमैन ट्यूटोर एआई लर्निंग मोडः व्यावहारिक गाइड"
+    },
+    {
+      "key": "site.dbcf9226ece7ca14bc",
+      "source": "Ask for a small first step rather than a final answer.",
+      "value": "अंतिम उत्तर के बजाय एक छोटा पहला कदम पूछें।"
+    },
+    {
+      "key": "site.e432ca14e7c051fcc6",
+      "source": "Feynman Tutor",
+      "value": "फेनमैन शिक्षक"
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "प्रयास करने के लिए संकेत"
+    },
+    {
+      "key": "site.f5d5fc41b94da149a0",
+      "source": "A practical guide to using Feynman Tutor on inspir for thinking learning, with prompts, study loops, and safer AI habits.",
+      "value": "Feynman Tutor का उपयोग करने के लिए एक व्यावहारिक गाइड inspir सोचने के लिए सीखने के लिए, संकेतों के साथ, अध्ययन लूप, और सुरक्षित एआई आदतें।"
+    }
+  ]
+}

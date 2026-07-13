@@ -51,6 +51,17 @@ data/raw/*.csv
 translations/curated/*
 !translations/curated/*/
 translations/curated/*/*
+# The four bootstrap languages carry the complete audited site corpus. They
+# are release inputs and must be reproducible from a clean checkout.
+!translations/curated/ar/*.json
+!translations/curated/hi/*.json
+!translations/curated/ml/*.json
+!translations/curated/es/*.json
+# Main-app editing packs stay local; the compact tracked static-main-app corpus
+# is the canonical deploy input.
+translations/curated/*/main-app.json
+translations/curated/*/main-app.part-*.json
+# Other languages publish only the globally materialized Free-plan surfaces.
 !translations/curated/*/marketing-shell.json
 !translations/curated/*/marketing-shell.part-*.json
 !translations/curated/*/route__home.json

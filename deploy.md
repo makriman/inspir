@@ -8,7 +8,7 @@ Production is intentionally limited to the product that can run reliably on Clou
 - guest and authenticated tutors stream through native handlers and enforce D1-backed per-learner quotas plus the fail-closed global budget; authenticated provider bytes pass through untouched and a small ownership-checked finalize request saves the completed answer;
 - games remain completely removed.
 
-Next and OpenNext are build tools only. The deployed request handler must not import Next or the OpenNext server runtime. The old `DOQueueHandler` binding, migration tag, and self binding remain solely to keep the existing Durable Object migration rollback-safe; they are dormant in normal traffic. Memory uses its existing D1, Vectorize, profile R2, Queue, DLQ, and daily cron bindings.
+Next and OpenNext are build tools only. The deployed request handler must not import Next or the OpenNext server runtime. The old `DOQueueHandler` binding, migration tag, and self binding remain solely to keep the existing Durable Object migration rollback-safe; they are dormant in normal traffic. Memory uses its existing D1, Vectorize, profile R2, Queue, DLQ, and daily cron bindings. The Queue consumer deliberately processes one message per invocation so a burst cannot multiply deterministic memory work past the Workers Free 10 ms CPU ceiling.
 
 ## Release invariants
 
@@ -84,6 +84,8 @@ All three migrations are additive. A Worker rollback leaves their columns, index
 
 The repository owns the curated translation bundles used at build time. D1 mirrors every current source namespace and stores the audited payload repairs used by the former runtime. Run the read-only repair verifier and require complete bundles for every language on the surfaces this Free deployment publishes globally:
 
+The four bootstrap-language site corpora are tracked in full. Other languages track the three globally materialized site surfaces, and main-app translations use the compact tracked `translations/static-main-app` representation. Full main-app editing packs remain ignored workbench files and must never affect release identity. A clean checkout must reproduce the exact 691 site rows plus 69 main-app rows used by the repair.
+
 ```bash
 pnpm cf:d1:repair-seo-translations
 pnpm translations:static-main-app:check
@@ -96,7 +98,7 @@ pnpm translations:status -- --all-languages \
 
 If the audited SEO source hashes changed, do not run the remote repair from an unvalidated working tree. Finish every local gate, commit and push the exact source, and deploy the candidate first; then use the post-deploy translation reconciliation section below. The repair binds itself to that candidate UUID, the pushed commit, fresh source-scoped gate reports, the native Worker hash, and a deterministic Static Assets manifest before it can upload maintenance code.
 
-The repair must fail closed unless source extraction, all tracked curated packs, Unicode normalization, field validation, D1 statement/file limits, and the account-wide Free-plan budget all pass. Before its first target/snapshot D1 read it reserves the conservative maximum in the one cumulative UTC-day release ledger under a reservation bound to the exact source fingerprint, candidate, immutable plan, and release-preflight run ID; after the exact plan is known it refines that reservation and revalidates the candidate, source, immutable repair plan, ledger, and UTC day immediately before import. It never uses `d1 export`, because exports block database requests. Instead it validates a current Time Travel bookmark and writes a unique mode-`0600`, exclusively-created, fsynced diagnostic record plus an unresolved-operation marker before its first import. It applies one atomic SQL file and byte-verifies every resulting row. A definite mismatch or indeterminate outcome leaves maintenance active and requires a reviewed forward correction. Destructive whole-D1 Time Travel restore is unsupported on Free because the runtime cannot prove cross-store quiescence. A new repair refuses to start while an unresolved marker exists. Never run it routinely when the same hashes already pass.
+The repair must fail closed unless source extraction, all tracked curated packs, Unicode normalization, field validation, D1 statement/file limits, and the account-wide Free-plan budget all pass. Before its first target/snapshot D1 read it reserves the conservative maximum in the one cumulative UTC-day release ledger under a reservation bound to the exact source fingerprint, candidate, immutable plan, and release-preflight run ID. It deliberately retains that maximum through target discovery, source planning, import, byte-exact post-import verification, candidate restoration, maintenance-marker cleanup, and exclusion release; the lower planning forecast must never be presented as exact billing. Wrangler JSON metadata meters every read-only query and a confirmed import, while missing import metadata keeps the maximum reservation rather than guessing. Immediately before import the repair revalidates the candidate, source, immutable repair plan, unchanged maximum ledger reservation, and UTC day. It never uses `d1 export`, because exports block database requests. Instead it validates a current Time Travel bookmark and writes a unique mode-`0600`, exclusively-created, fsynced diagnostic record plus an unresolved-operation marker before its first import. It applies one atomic SQL file and byte-verifies every resulting row. A definite mismatch, billing overflow, or indeterminate verification leaves maintenance active and requires a reviewed forward correction. Destructive whole-D1 Time Travel restore is unsupported on Free because the runtime cannot prove cross-store quiescence. A new repair refuses to start while an unresolved marker exists. Never run it routinely when the same hashes already pass.
 
 The repair also persists an exact cross-workspace maintenance marker in production D1 while it still owns the global exclusion and before it activates the maintenance Worker. Ordinary deploy, validation, rollback, and release-maintenance wrappers refuse that marker even after the original lease expires. After a reviewed forward correction (or when evidence proves no D1 write occurred), resolve only the exact recorded run with:
 
@@ -283,6 +285,25 @@ Recovery revalidates the current source fingerprint, deploy evidence, immutable 
 
 The outcome soak authenticates through the hidden migration route, verifies the exact admin identity without changing that user, and keeps its returned session cookie only in memory. Historical-account production probes are GET-only for profile, chat list/detail, account topics, memory, and admin state. The wrapper then authenticates the candidate/run-bound disposable user and production-proves profile mutation, current SSE chat plus explicit finalization, legacy text chat plus server-side persistence, memory create/update/list/delete, completed quiz and flashcard result experiences, and saved result readback. Its `finally` path transactionally deletes the disposable user's exact D1 graph, suppresses disposable queue/Vectorize work, and requires an authoritative all-zero inventory readback bound to the exact candidate/run/user/email identity and the actual invoked Worker version. An ignored version override, identity substitution, indeterminate readback, or nonzero cleanup fails the release. Every correlated invocation must have one exact `ok` tail event, no exception/resource-limit signal, a finite non-negative CPU sample, and less than 8 ms CPU. If the wrapper exits nonzero, treat the release as failed: use the private manifest and `--recover` when present, and independently inspect `wrangler secret list --name inspirlearning` for all five names: `E2E_TEST_AUTH_SECRET`, `E2E_TEST_AUTH_EMAIL`, `E2E_TEST_MUTATION_RUN_ID`, `E2E_TEST_AUTH_EXPIRES_AT`, and `E2E_TEST_AUTH_REQUIRE_EXISTING`.
 
+HTTP evidence alone is insufficient because Queue and Scheduled invocations have separate Free-plan CPU limits. After the final secret-free version is active, run the Queue probe below. It starts a version-only tail without HTTP filters, resolves the existing Queue ID read-only, and pushes one syntactically valid job whose random user/chat IDs cannot exist. The consumer performs only its normal indexed ownership/settings reads, acknowledges `stale_job`, and writes no D1 row. The evaluator requires the exact Queue, batch size one, version, structured correlation log, clean outcome, no exceptions/resource-limit logs, and CPU below 8 ms.
+
+```bash
+pnpm cf:verify:background-outcomes -- \
+  --queue \
+  --expected-version <final-secret-free-worker-version-uuid> \
+  --confirm-production
+```
+
+Observe—not manufacture—the real daily Scheduled invocation. Start this shortly before 03:00 UTC and leave the steady-state cron set unchanged. The evaluator requires the exact `0 3 * * *` event on the requested UTC day, the final version, the bounded scheduled-success log, all cleanup tasks free of caught failures, and CPU below 8 ms. There is no production-only manual Scheduled dispatch, and this runbook never installs a temporary cron.
+
+```bash
+pnpm cf:verify:background-outcomes -- \
+  --scheduled \
+  --scheduled-day <YYYY-MM-DD> \
+  --expected-version <final-secret-free-worker-version-uuid> \
+  --confirm-production
+```
+
 Automated migration authentication does not validate Google's callback. Start `pnpm exec wrangler tail inspirlearning --format json`, then complete one real Google sign-in in a private browser window against the exact candidate version: start from the chat shell, select Google, finish consent, return to the expected chat URL, confirm `/api/me` shows the same historical user ID/email, and open an existing saved chat. Record the callback tail event and require an `ok` outcome, no exception or resource-limit event, and CPU below 8 ms. A functional callback without CPU evidence is not sufficient for this Free-plan release.
 
 The production gates must prove:
@@ -295,6 +316,7 @@ The production gates must prove:
 - unknown/deep topic routes and games are `404`; a UUID chat route returns only the shell, while unowned/private API access remains `401`/`404`;
 - static requests produce no main Worker tail event, API/RSC bootstrap, Next cache header, or private cache policy;
 - tail events have `ok` outcomes, no exceptions or resource-limit logs, complete CPU samples, and no unexpected invocation;
+- the batch-size-one Queue consumer and real daily Scheduled invocation each have exact final-version `ok` tail evidence below 8 ms CPU;
 - `www` preserves path/query in one redirect hop.
 
 The wrapper's reported secret-free version is the final release version. It must remain the only version at 100%, keep the real Google callback working, and have none of the five temporary names in `wrangler secret list --name inspirlearning`. Never leave any E2E validation secret configured after release. An interrupted operator must run `--recover`, perform an independent secret-list check, and rerun the complete validation before accepting the release.

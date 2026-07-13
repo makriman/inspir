@@ -603,9 +603,11 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
       queueProducer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
       queueConsumer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
       queueConsumer.dead_letter_queue === MEMORY_POST_TURN_DLQ_NAME &&
+      Number(queueConsumer.max_batch_size) === 1 &&
+      Number(queueConsumer.max_batch_timeout) <= 10 &&
       Number(queueConsumer.max_retries) >= 1 &&
       Array.isArray(configuredCrons) &&
-      configuredCrons.includes("0 3 * * *"),
+      sameStringSet(configuredCrons.filter(isString), ["0 3 * * *"]),
     serviceOk: services?.service === "inspirlearning",
     versionMetadataOk: versionMetadata.binding === "CF_VERSION_METADATA",
     cacheRevalidationDoOk: cacheQueueDo?.class_name === "DOQueueHandler",

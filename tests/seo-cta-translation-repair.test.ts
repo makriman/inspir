@@ -27,6 +27,7 @@ import {
   assertD1SqlStatementSize,
   assertD1TranslationPayloadSize,
   assertRepairArtifactEvidenceUnchanged,
+  assertRemoteRepairBillingWithinMaximum,
   buildAtomicSeoCtaRepairSql,
   buildRepairArtifactManifest,
   buildNativeMaintenanceUploadArgs,
@@ -39,12 +40,14 @@ import {
   decideImportRecovery,
   confirmPinnedWorkerVersion,
   getExactCuratedPackIdentifiers,
+  isMainAppWorkbenchPackFile,
   largestSqlStatementBytes,
   loadAndValidateTranslationSeed,
   loadCuratedNamespaceRepairRows,
   loadMainAppRepairRows,
   nativeD1MaintenanceWorkerSource,
   nativeWranglerDeployEnv,
+  parseD1Billing,
   projectRepairBilledRowReads,
   projectRepairBilledRowWrites,
   productionMaintenanceRepairRunId,
@@ -963,7 +966,7 @@ test("remote repair budget identities bind candidate, source, and immutable plan
   );
 });
 
-test("remote repair ledger reservation and live validation bracket every D1 mutation", () => {
+test("remote repair retains and revalidates its maximum ledger reservation through D1 verification", () => {
   const source = fs.readFileSync(
     path.resolve("scripts/cloudflare/repair-seo-cta-translations.ts"),
     "utf8",
@@ -973,23 +976,111 @@ test("remote repair ledger reservation and live validation bracket every D1 muta
   );
   const maximumPhase = source.indexOf('phase: "maximum"', maximumReservation);
   const firstD1Read = source.indexOf("staticRepairRows = validateRemoteRepairTargets(");
-  const exactReservation = source.indexOf(
-    "budgetReservation = reserveD1ReleaseBudget({",
-    maximumReservation + 1,
-  );
-  const exactPhase = source.indexOf('phase: "exact"', exactReservation);
   const liveValidation = source.indexOf(
     "budgetReservation = assertD1ReleaseBudgetReservation({",
   );
+  const retainedMaximumPhase = source.indexOf('phase: "maximum"', liveValidation);
   const importAttempt = source.indexOf("importAttempted = true;", liveValidation);
+  const postImportVerification = source.indexOf(
+    "productionVerification = verifyRemoteRepair(",
+    importAttempt,
+  );
+  const reportDisposition = source.indexOf(
+    '? "maximum-retained-metered"',
+    postImportVerification,
+  );
   assert.ok(
     maximumReservation >= 0 &&
       maximumReservation < maximumPhase &&
       maximumPhase < firstD1Read,
   );
-  assert.ok(firstD1Read < exactReservation);
-  assert.ok(exactReservation < exactPhase && exactPhase < liveValidation);
-  assert.ok(liveValidation < importAttempt);
+  assert.ok(firstD1Read < liveValidation);
+  assert.ok(liveValidation < retainedMaximumPhase && retainedMaximumPhase < importAttempt);
+  assert.ok(importAttempt < postImportVerification && postImportVerification < reportDisposition);
+  assert.equal(
+    source.slice(maximumReservation, reportDisposition).includes('phase: "exact"'),
+    false,
+  );
+  const remoteFlow = source.slice(maximumReservation, reportDisposition);
+  assert.match(
+    remoteFlow,
+    /validateRemoteRepairTargets\([\s\S]*?meteredReadOnlyRunner[\s\S]*?planSiteTranslationSourceSync\("remote", meteredReadOnlyRunner\)/,
+  );
+  assert.match(
+    remoteFlow,
+    /"--file",[\s\S]*?"--yes",[\s\S]*?"--json",[\s\S]*?parseD1Billing\(importOutput/,
+  );
+  assert.match(
+    remoteFlow,
+    /verifyRemoteRepair\([\s\S]*?meteredReadOnlyRunner[\s\S]*?readOnlyCommands: readOnlyBilling\.queries/,
+  );
+});
+
+test("D1 billing metadata is exact, overflow-safe, and read-only aware", () => {
+  const billing = parseD1Billing(
+    JSON.stringify([
+      { success: true, results: [], meta: { rows_read: 706_246, rows_written: 0 } },
+      { success: true, results: [], meta: { rows_read: 12_345, rows_written: 42_532 } },
+    ]),
+    { label: "test billing", expectedResultSets: 2 },
+  );
+  assert.deepEqual(billing, { rowsRead: 718_591, rowsWritten: 42_532 });
+  assert.deepEqual(
+    assertRemoteRepairBillingWithinMaximum({
+      readOnlyRowsRead: 706_246,
+      importBilling: { rowsRead: 12_345, rowsWritten: 42_532 },
+    }),
+    { rowsRead: 719_719, rowsWritten: 42_604 },
+  );
+  assert.throws(
+    () =>
+      parseD1Billing(
+        JSON.stringify([
+          { success: true, results: [], meta: { rows_read: 1, rows_written: 1 } },
+        ]),
+        { label: "read-only test", readOnly: true },
+      ),
+    /unexpectedly mutating billing metadata/,
+  );
+  assert.throws(
+    () =>
+      parseD1Billing(
+        JSON.stringify([{ success: false, meta: { rows_read: 1, rows_written: 0 } }]),
+        { label: "failed test" },
+      ),
+    /malformed or unexpectedly mutating billing metadata/,
+  );
+  assert.throws(
+    () =>
+      parseD1Billing(
+        JSON.stringify([
+          {
+            success: true,
+            results: [],
+            meta: { rows_read: Number.MAX_SAFE_INTEGER, rows_written: 0 },
+          },
+          { success: true, results: [], meta: { rows_read: 1, rows_written: 0 } },
+        ]),
+        { label: "overflow test" },
+      ),
+    /accounting overflowed/,
+  );
+  assert.throws(
+    () =>
+      assertRemoteRepairBillingWithinMaximum({
+        readOnlyRowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+        importBilling: null,
+      }),
+    /exceeded its retained maximum reservation/,
+  );
+});
+
+test("main-app editing packs cannot alter the tracked repair corpus", () => {
+  assert.equal(isMainAppWorkbenchPackFile("main-app.json"), true);
+  assert.equal(isMainAppWorkbenchPackFile("main-app.part-001.json"), true);
+  assert.equal(isMainAppWorkbenchPackFile("main-app.part-final.json"), true);
+  assert.equal(isMainAppWorkbenchPackFile("main-app.part-001.txt"), false);
+  assert.equal(isMainAppWorkbenchPackFile("route__home.json"), false);
 });
 
 test("SEO CTA repair refuses an unconfirmed production mutation", () => {
@@ -1390,6 +1481,25 @@ test("commit followed by a lost Wrangler response releases only after exact veri
 test("Time Travel diagnostic evidence is fsynced at 0600 before import and serializes no restore recipe", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-translation-prewrite-"));
   try {
+    const maximumReservation = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "translation-prewrite-maximum-test",
+      operation: "Remote SEO translation repair",
+      candidateVersionId: "11111111-1111-4111-8111-111111111111",
+      sourceFingerprint: { sha256: "a".repeat(64), fileCount: 1 },
+      phase: "maximum",
+      rowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+      rowsWritten: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+      observedUsage: {
+        databaseCount: 1,
+        queryGroups: 0,
+        rowsRead: 0,
+        rowsWritten: 0,
+        executions: 0,
+        windowMinutes: 1,
+      },
+      now: new Date("2026-07-11T19:00:00.000Z"),
+    });
     const evidencePath = writePreWriteDiagnosticEvidence({
       backupDir,
       runId: "2026-07-11T19-00-00-000Z-11111111-1111-4111-8111-111111111111",
@@ -1415,6 +1525,7 @@ test("Time Travel diagnostic evidence is fsynced at 0600 before import and seria
       },
       projectedBilledRowReads: 100,
       projectedBilledRowWrites: 10,
+      d1ReleaseBudget: maximumReservation,
     });
     const stat = fs.statSync(evidencePath);
     assert.equal(stat.mode & 0o777, 0o600);
@@ -1432,6 +1543,15 @@ test("Time Travel diagnostic evidence is fsynced at 0600 before import and seria
     assert.equal(evidence.recoveryPreference, "reviewed-forward-correction");
     assert.equal(evidence.destructiveRestoreSupported, false);
     assert.equal(evidence.timeTravelBookmark, "00000085-0000024c-00004c6d-prewrite");
+    assert.deepEqual(evidence.d1ReleaseBudget, {
+      ledgerPath: maximumReservation.ledgerPath,
+      utcDay: "2026-07-11",
+      operationId: "translation-prewrite-maximum-test",
+      revision: maximumReservation.revision,
+      phase: "maximum",
+      rowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+      rowsWritten: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+    });
     assert.equal(Object.hasOwn(evidence, "restoreCommand"), false);
     assert.equal(Object.hasOwn(evidence, "restoreCommandStdin"), false);
     assert.equal(Object.hasOwn(evidence, "restoreRequiresSeparateApproval"), false);

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "language": "Spanish",
+  "locale": "es",
+  "namespace": "blog:socratic-ai-tutor",
+  "sourceHash": "7e26072fe4e5588a56a328afafd717b6d39cf2b49f4b52b85924df79ac569af7",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.018311ea100e46db7a",
+      "source": "Third, the tutor reads the answer. A useful AI tutor should not merely say \"correct\" or \"incorrect.\" It should identify the claim, the assumption, the gap, or the misconception.",
+      "value": "Tercero, el tutor lee la respuesta. Un tutor de IA útil no debería simplemente decir \"correcto\" o \"incorrecto\". Debe identificar la afirmación, la suposición, la brecha o el concepto erróneo."
+    },
+    {
+      "key": "site.07e374866d8070f138",
+      "source": "Use these prompts in Socratic Instruction:",
+      "value": "Utilice estas indicaciones en la Instrucción Socrática:"
+    },
+    {
+      "key": "site.12172064ab44019034",
+      "source": "Good Socratic prompts ask:",
+      "value": "Las buenas sugerencias socráticas preguntan:"
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Esa es la fuerza del aprendizaje socrático. En lugar de dar la respuesta completa de inmediato, el tutor hace una pregunta específica. El estudiante hace una suposición. El tutor prueba esa suposición, le da una pista y ayuda al alumno a notar qué cambió."
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "¿Qué suposición está haciendo más trabajo?"
+    },
+    {
+      "key": "site.18abb6aff0f8a17d0a",
+      "source": "The point is not to make every lesson a puzzle. The point is to choose the right amount of struggle.",
+      "value": "El punto no es hacer de cada lección un rompecabezas. El punto es elegir la cantidad correcta de lucha."
+    },
+    {
+      "key": "site.239a1681ee458f631a",
+      "source": "First, the tutor identifies the target. \"I want to understand opportunity cost\" is different from \"I need to solve this economics homework question\" or \"I need to defend a position in debate.\" The target shapes the questions.",
+      "value": "Primero, el tutor identifica el objetivo. \"Quiero entender el costo de oportunidad\" es diferente de \"Necesito resolver esta pregunta de tarea de economía\" o \"Necesita defender una posición en el debate\"."
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "Cuando la tutoría socrática es la herramienta equivocada"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "Por qué las preguntas ayudan"
+    },
+    {
+      "key": "site.299200dd7de534cd1a",
+      "source": "Try it directly in Socratic Instruction. If you want a gentler explanation first, start with Learn Anything, then move into Socratic questions once you know the basic vocabulary.",
+      "value": "Prueba directamente en la Instrucción Socrática. Si quieres una explicación más suave primero, empieza con Aprender cualquier cosa, luego pasa a las preguntas socráticas una vez que conozcas el vocabulario básico."
+    },
+    {
+      "key": "site.2d24058f88b11ae757",
+      "source": "How to know it worked",
+      "value": "¿Cómo saber si funcionó?"
+    },
+    {
+      "key": "site.352966c547ac088b1a",
+      "source": "\"Help me understand opportunity cost by asking one question at a time.\"",
+      "value": "\"Ayúdame a entender el costo de oportunidad haciendo una pregunta a la vez\"."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "Donde la IA puede ayudar"
+    },
+    {
+      "key": "site.4af2ce3751dcec34b4",
+      "source": "The work happens in the learner's mind.",
+      "value": "El trabajo ocurre en la mente del alumno."
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "¿Qué evidencia apoya eso?"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "La tutoría socrática utiliza preguntas, hipótesis, sugerencias y reflexión para construir una comprensión más profunda que la lectura pasiva de respuestas."
+    },
+    {
+      "key": "site.51320c3214deb3e7cc",
+      "source": "Apply the idea to a new example.",
+      "value": "Aplique la idea a un ejemplo nuevo."
+    },
+    {
+      "key": "site.5418fe11c499220291",
+      "source": "\"Help me reason through this ethical dilemma without pushing me to a hidden conclusion.\"",
+      "value": "\"Ayúdame a razonar sobre este dilema ético sin empujarme a una conclusión oculta\"."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Ese ritmo es especialmente útil para temas abstractos: costo de oportunidad, causalidad en la historia, interpretación literaria, compensaciones éticas, prueba, probabilidad y estructura de argumentos. También puede apoyar el trabajo práctico. Un alumno puede usar Debate Any Topic después de una sesión socrática para probar si su razonamiento sobrevive a la presión."
+    },
+    {
+      "key": "site.55e96beff0827173d3",
+      "source": "Second, the tutor asks a diagnostic question. It should be simple enough to answer but revealing enough to expose the learner's current model.",
+      "value": "En segundo lugar, el tutor hace una pregunta de diagnóstico. Debe ser lo suficientemente simple como para responder pero lo suficientemente revelador como para exponer el modelo actual del alumno."
+    },
+    {
+      "key": "site.5767a106a35eac9d22",
+      "source": "For more practice, pair this with the Socratic Instruction guide, the Socratic prompts and study loop, or the broader guide on studying with AI without cheating yourself.",
+      "value": "Para más práctica, empareja esto con la guía de instrucciones socráticas, las sugerencias y el bucle de estudio socráticos, o la guía más amplia sobre cómo estudiar con IA sin engañarse."
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "¿Qué te haría cambiar de opinión?"
+    },
+    {
+      "key": "site.6b301fd9e1520bf0c0",
+      "source": "Socratic learning",
+      "value": "aprendizaje socrático"
+    },
+    {
+      "key": "site.70bc8bc72d32fcb39d",
+      "source": "Questions reveal the shape of confusion. A learner might know a formula but not when to use it. They might remember a historical fact but not understand the cause. They might have a strong opinion but weak evidence.",
+      "value": "Las preguntas revelan la forma de la confusión. Un estudiante puede saber una fórmula pero no cuándo usarla. Tal vez recuerden un hecho histórico pero no entienden la causa. Podrían tener una opinión fuerte pero pruebas débiles."
+    },
+    {
+      "key": "site.7a0d3765af27915bc5",
+      "source": "A strong session usually has four stages.",
+      "value": "Una sesión fuerte suele tener cuatro etapas."
+    },
+    {
+      "key": "site.7c86fb8a96c6cb04ac",
+      "source": "State the idea more clearly than at the start.",
+      "value": "Expresar la idea más claramente que al principio."
+    },
+    {
+      "key": "site.809d1e1957710315a3",
+      "source": "AI tutor",
+      "value": "Tutor de inteligencia artificial"
+    },
+    {
+      "key": "site.847d04773c3bdcbdd4",
+      "source": "Name the misconception or assumption that changed.",
+      "value": "Nombre el concepto erróneo o suposición que cambió."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Eso es lo que inspir El modo de instrucción socrática de la escuela de la ciencia es construido para: una pregunta a la vez, con sugerencias antes de las respuestas y síntesis después de un pensamiento genuino."
+    },
+    {
+      "key": "site.87b0c467ed80ade449",
+      "source": "A Socratic tutor can surface those gaps without turning the session into a lecture.",
+      "value": "Un tutor socrático puede sacar a la superficie esos vacíos sin convertir la sesión en una conferencia."
+    },
+    {
+      "key": "site.87d186c70c40994969",
+      "source": "Fourth, the tutor asks one next-best question. Not five questions. Not a lecture. One move that keeps the learner thinking.",
+      "value": "Cuarto, el tutor hace una pregunta muy buena. No cinco preguntas. No es una conferencia. Un movimiento que mantiene al alumno pensando."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Es por eso que un tutor de IA socrática puede sentirse más lento al principio y más poderoso más tarde. Intercambia la comodidad de una explicación terminada por la evidencia de que el alumno está construyendo la idea."
+    },
+    {
+      "key": "site.88f15ed7c65ba44840",
+      "source": "Socratic tutoring is not always the answer. If a learner has no background at all, a short explanation may be kinder than a question. If they are in crisis before a deadline, a planning mode like Exam Prep Planner or a hint mode like Homework Coach may be better. If the goal is remembering terms, Flashcard Builder is more direct.",
+      "value": "La tutoría socrática no siempre es la respuesta. Si el estudiante no tiene ningún conocimiento previo, una breve explicación puede ser más amable que una pregunta. Si está en apuros antes de una fecha límite, puede ser mejor usar un modo de planificación como el Planificador para preparar exámenes o un modo de pistas como el Tutor de tareas. Si el objetivo es recordar términos, el Creador de tarjetas didácticas es más directo."
+    },
+    {
+      "key": "site.9413c5736b4da64196",
+      "source": "Can you test that idea with a simple example?",
+      "value": "¿Puedes probar esa idea con un ejemplo simple?"
+    },
+    {
+      "key": "site.964b9d6e727c2dd845",
+      "source": "\"Make me summarize the final insight in my own words.\"",
+      "value": "\"Déjame resumir la última idea en mis propias palabras\"."
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Por qué un tutor de IA socrático puede hacer que las ideas se peguen"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "¿Qué crees que está pasando?"
+    },
+    {
+      "key": "site.994f12f48c17151b99",
+      "source": "The last prompt matters. Socratic learning should end with synthesis. After the questions, the learner should be able to say what changed in their thinking.",
+      "value": "El último aviso es importante. El aprendizaje socrático debería terminar con la síntesis. Después de las preguntas, el estudiante debe poder decir qué cambió en su modo de pensar."
+    },
+    {
+      "key": "site.9a219773d3070c6b37",
+      "source": "The important constraint is restraint. A Socratic AI tutor should not dump the answer at the first sign of struggle. It should make effort easier to sustain.",
+      "value": "La restricción importante es la moderación. Un tutor de IA socrática no debería deshacerse de la respuesta a la primera señal de lucha. Debería hacer que el esfuerzo sea más fácil de sostener."
+    },
+    {
+      "key": "site.c773f2a3284acba81b",
+      "source": "\"I think I understand photosynthesis. Ask questions until you find the weak spot.\"",
+      "value": "\"Creo que entiendo la fotosíntesis. Haz preguntas hasta que encuentres el punto débil\"."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "¿Saben que un tutor de IA socrática trabajó cuando el alumno puede hacer tres cosas:"
+    },
+    {
+      "key": "site.d73813ec75bef0b1f5",
+      "source": "critical thinking",
+      "value": "Pensamiento crítico"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "Qué buena sesión de Sócrates se ve"
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "Instrucciones para intentar"
+    },
+    {
+      "key": "site.eaaffc61ea520eb649",
+      "source": "A direct explanation can be useful. But sometimes the best way to understand an idea is to wrestle with it.",
+      "value": "Una explicación directa puede ser útil. Pero a veces la mejor manera de entender una idea es luchar con ella."
+    },
+    {
+      "key": "site.f7fd15ce0e15c12b54",
+      "source": "\"Test whether my argument is valid. Do not give me the answer too quickly.\"",
+      "value": "\"Prueba si mi argumento es válido. No me des una respuesta demasiado rápido\"."
+    },
+    {
+      "key": "site.ff43fb5c5c0f826844",
+      "source": "AI is well suited to patient repetition. It can ask the next question, rephrase a hint, change the difficulty, and wait while the learner tries.",
+      "value": "La IA es muy adecuada para la repetición paciente. Puede hacer la siguiente pregunta, reformulación de una sugerencia, cambiar la dificultad, y esperar mientras el alumno intenta."
+    }
+  ]
+}

@@ -567,7 +567,7 @@ test("native state runtime excludes OpenNext and scopes every private data looku
   assert.match(source, /else \$\{MAX_QUEUED_ASSISTANT_MESSAGE_READ_CHARS\}/);
   assert.doesNotMatch(source, /substr\(content, 1, 120001\)/);
   const queueBatchSize = wrangler.queues?.consumers?.[0]?.max_batch_size;
-  assert.equal(queueBatchSize, 5);
+  assert.equal(queueBatchSize, 1);
   assert.ok(
     queueBatchSize *
       (MAX_QUEUED_USER_MESSAGE_READ_CHARS + MAX_QUEUED_ASSISTANT_MESSAGE_READ_CHARS) <

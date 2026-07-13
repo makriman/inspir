@@ -130,6 +130,9 @@ const maximumD1FileImportBytes = 5_000_000_000;
 const maximumD1TranslationPayloadBytes = 2_000_000;
 const maximumWorkerDeployEvidenceBytes = 16 * 1024 * 1024;
 const repairPatchStatementTargetBytes = 90_000;
+const remoteRepairControlRowsReadReservation = 1_128;
+const remoteRepairControlRowsWrittenReservation =
+  PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN + 8;
 const startLearningKey = "site.02d279ce2f7b58c890";
 const tryPublicModesKey = "site.fc4ad9c971ade5617d";
 const retiredGameTranslationKeys = [
@@ -347,6 +350,15 @@ type RepairReport = {
     phase: "maximum" | "exact";
     rowsRead: number;
     rowsWritten: number;
+  };
+  d1Billing?: {
+    readOnlyCommands: number;
+    readOnlyRowsRead: number;
+    importRowsRead?: number;
+    importRowsWritten?: number;
+    controlRowsReadReserved: number;
+    controlRowsWrittenReserved: number;
+    disposition: "maximum-retained-metered" | "maximum-retained-import-unmetered";
   };
   productionVerification?: {
     expectedSourceNamespaces: number;
@@ -1724,6 +1736,9 @@ export function repairSeoCtaTranslations(
   let remoteAtomicSql = "";
   let maintenanceExclusion: ProductionValidationExclusion | null = null;
   let maintenanceState: ProductionMaintenanceState | null = null;
+  const readOnlyBilling = { queries: 0, billedRowsRead: 0 };
+  const meteredReadOnlyRunner = readOnlyRemoteVerificationRunner(runWrangler, readOnlyBilling);
+  let importBilling: D1Billing | null = null;
 
   try {
     assertNoLiveProductionValidationLock();
@@ -1766,8 +1781,9 @@ export function repairSeoCtaTranslations(
       translations,
       curatedRepairRows,
       mainAppRepairRows,
+      meteredReadOnlyRunner,
     );
-    sourceSync = planSiteTranslationSourceSync("remote");
+    sourceSync = planSiteTranslationSourceSync("remote", meteredReadOnlyRunner);
     assertSourceSyncReadBudget(sourceSync);
     projectedBilledRowWrites = projectRepairBilledRowWrites(
       sourceSync.projectedBilledRowWrites,
@@ -1788,23 +1804,6 @@ export function repairSeoCtaTranslations(
       rowsRead: projectedBilledRowReads,
       rowsWritten: projectedBilledRowWrites,
     });
-    budgetReservation = reserveD1ReleaseBudget({
-      backupDir: options.backupDir,
-      operationId: budgetOperationId,
-      operation: "Remote SEO translation repair",
-      candidateVersionId: releasePreflight.candidateVersionId,
-      sourceFingerprint: budgetSourceFingerprint,
-      phase: "exact",
-      rowsRead: projectedBilledRowReads,
-      rowsWritten: projectedBilledRowWrites,
-      observedUsage: accountDailyUsage,
-      now: readTranslationRepairClock(
-        budgetClock,
-        "translation-repair exact reservation",
-      ),
-      expectedUtcDay: budgetReservation.utcDay,
-    });
-
     remoteAtomicSql = buildAtomicSeoCtaRepairSql(sourceSync.sql, completeRepairSql);
     timeTravelBookmark = parseD1TimeTravelBookmark(
       runWrangler([
@@ -1863,9 +1862,9 @@ export function repairSeoCtaTranslations(
         operationId: budgetOperationId,
         candidateVersionId: releasePreflight.candidateVersionId,
         sourceFingerprint: liveSourceFingerprint,
-        phase: "exact",
-        rowsRead: projectedBilledRowReads,
-        rowsWritten: projectedBilledRowWrites,
+        phase: "maximum",
+        rowsRead: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
+        rowsWritten: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
         now: readTranslationRepairClock(
           budgetClock,
           "translation-repair pre-write ledger validation",
@@ -1886,7 +1885,7 @@ export function repairSeoCtaTranslations(
       importAttempted = true;
       let importTransportError: unknown;
       try {
-        runBoundedMutationWrangler(
+        const importOutput = runBoundedMutationWrangler(
           [
             "d1",
             "execute",
@@ -1895,9 +1894,14 @@ export function repairSeoCtaTranslations(
             "--file",
             atomicSqlPath,
             "--yes",
+            "--json",
           ],
           { maxBuffer: 128 * 1024 * 1024 },
         );
+        importBilling = parseD1Billing(importOutput, {
+          label: "atomic translation import",
+          expectedResultSets: 1,
+        });
         importResponseConfirmed = true;
       } catch (error) {
         // The ingestion may have committed even if Wrangler lost its final
@@ -1911,6 +1915,18 @@ export function repairSeoCtaTranslations(
           translations,
           curatedRepairRows,
           mainAppRepairRows,
+          meteredReadOnlyRunner,
+        );
+        assertRemoteRepairBillingWithinMaximum({
+          readOnlyRowsRead: readOnlyBilling.billedRowsRead,
+          importBilling,
+        });
+        assertD1ReleaseBudgetUtcDay(
+          budgetReservation.utcDay,
+          readTranslationRepairClock(
+            budgetClock,
+            "translation-repair post-verification UTC day",
+          ),
         );
         importVerification = "verified";
       } catch (error) {
@@ -2073,6 +2089,21 @@ export function repairSeoCtaTranslations(
       phase: budgetReservation.reservation.phase,
       rowsRead: budgetReservation.reservation.rowsRead,
       rowsWritten: budgetReservation.reservation.rowsWritten,
+    },
+    d1Billing: {
+      readOnlyCommands: readOnlyBilling.queries,
+      readOnlyRowsRead: readOnlyBilling.billedRowsRead,
+      ...(importBilling
+        ? {
+            importRowsRead: importBilling.rowsRead,
+            importRowsWritten: importBilling.rowsWritten,
+          }
+        : {}),
+      controlRowsReadReserved: remoteRepairControlRowsReadReservation,
+      controlRowsWrittenReserved: remoteRepairControlRowsWrittenReservation,
+      disposition: importBilling
+        ? "maximum-retained-metered"
+        : "maximum-retained-import-unmetered",
     },
     productionVerification,
   };
@@ -2860,11 +2891,15 @@ export function writePreWriteDiagnosticEvidence(input: {
   }
   if (
     input.d1ReleaseBudget &&
-    (input.d1ReleaseBudget.reservation.phase !== "exact" ||
-      input.d1ReleaseBudget.reservation.rowsRead !== input.projectedBilledRowReads ||
-      input.d1ReleaseBudget.reservation.rowsWritten !== input.projectedBilledRowWrites)
+    (input.d1ReleaseBudget.reservation.phase !== "maximum" ||
+      input.d1ReleaseBudget.reservation.rowsRead !==
+        MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+      input.d1ReleaseBudget.reservation.rowsWritten !==
+        MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES)
   ) {
-    throw new Error("Pre-write diagnostic evidence requires its exact D1 budget reservation.");
+    throw new Error(
+      "Pre-write diagnostic evidence requires the full D1 maximum reservation through import and verification.",
+    );
   }
   assertNoUnresolvedTranslationRepair(input.backupDir);
   const createdAt = new Date().toISOString();
@@ -2894,6 +2929,7 @@ export function writePreWriteDiagnosticEvidence(input: {
           utcDay: input.d1ReleaseBudget.utcDay,
           operationId: input.d1ReleaseBudget.reservation.operationId,
           revision: input.d1ReleaseBudget.revision,
+          phase: input.d1ReleaseBudget.reservation.phase,
           rowsRead: input.d1ReleaseBudget.reservation.rowsRead,
           rowsWritten: input.d1ReleaseBudget.reservation.rowsWritten,
         }
@@ -3094,8 +3130,17 @@ function assertExactCuratedPackFileInventory(
   if (!fs.existsSync(curatedRoot) || !fs.statSync(curatedRoot).isDirectory()) {
     throw new Error(`Curated pack root is unavailable: ${curatedRoot}.`);
   }
-  const expectedFiles = new Set(expectedIdentifiers.map((identifier) => identifier.file));
-  const actualFiles = collectCuratedJsonFiles(curatedRoot).sort();
+  // Main-app repair rows come from the compact tracked static-main-app corpus.
+  // Full main-app editing packs are intentionally ignored local workbench
+  // files, so neither their presence nor absence may change release identity.
+  const expectedFiles = new Set(
+    expectedIdentifiers
+      .filter((identifier) => identifier.namespace !== mainAppTranslationNamespace)
+      .map((identifier) => identifier.file),
+  );
+  const actualFiles = collectCuratedJsonFiles(curatedRoot)
+    .filter((file) => !isMainAppWorkbenchPackFile(path.basename(file)))
+    .sort();
   if (actualFiles.length !== expectedFiles.size) {
     throw new Error(
       `Curated pack file inventory cardinality failed: ${actualFiles.length}/${expectedFiles.size}.`,
@@ -3110,6 +3155,11 @@ function assertExactCuratedPackFileInventory(
     const missing = path.relative(curatedRoot, Array.from(expectedFiles).sort()[0] ?? curatedRoot);
     throw new Error(`Missing curated pack file ${missing}.`);
   }
+}
+
+export function isMainAppWorkbenchPackFile(fileName: string) {
+  return fileName === `${mainAppTranslationNamespace}.json` ||
+    (fileName.startsWith(`${mainAppTranslationNamespace}.part-`) && fileName.endsWith(".json"));
 }
 
 function collectCuratedJsonFiles(directory: string): string[] {
@@ -4067,6 +4117,7 @@ function validateRemoteRepairTargets(
   translations: ReadonlyMap<SupportedLanguage, string>,
   curatedRows: readonly CuratedNamespaceRepairRow[],
   mainAppRows: readonly MainAppRepairRow[],
+  runner: WranglerRunner = runWrangler,
 ) {
   const curatedValues = curatedRows
     .map((row) => `(${sqlString(row.namespace)}, ${sqlString(row.language)})`)
@@ -4090,7 +4141,7 @@ function validateRemoteRepairTargets(
     "ORDER BY language;",
   ].join("\n");
   assertD1SqlStatementSize(sql);
-  const output = runWrangler([
+  const output = runner([
     "d1",
     "execute",
     D1_DATABASE_NAME,
@@ -4388,13 +4439,37 @@ function readOnlyRemoteVerificationRunner(
 }
 
 function readOnlyD1BilledRowsRead(output: string) {
+  return parseD1Billing(output, {
+    label: "read-only D1 verification",
+    readOnly: true,
+  }).rowsRead;
+}
+
+export type D1Billing = {
+  rowsRead: number;
+  rowsWritten: number;
+};
+
+export function parseD1Billing(
+  output: string,
+  options: {
+    label: string;
+    expectedResultSets?: number;
+    readOnly?: boolean;
+  },
+): D1Billing {
   const value = parseJsonFromOutput(output);
-  if (!Array.isArray(value) || value.length === 0) {
+  if (
+    !Array.isArray(value) ||
+    value.length === 0 ||
+    (options.expectedResultSets !== undefined && value.length !== options.expectedResultSets)
+  ) {
     throw new RemoteVerificationIndeterminateError(
-      "Read-only D1 verification omitted its billed-row metadata.",
+      `${options.label} omitted or returned the wrong number of billed-row result sets.`,
     );
   }
-  let total = 0;
+  let rowsRead = 0;
+  let rowsWritten = 0;
   for (const entry of value) {
     const meta = isRecord(entry) ? entry.meta : undefined;
     if (
@@ -4406,25 +4481,75 @@ function readOnlyD1BilledRowsRead(output: string) {
       meta.rows_read < 0 ||
       typeof meta.rows_written !== "number" ||
       !Number.isSafeInteger(meta.rows_written) ||
-      meta.rows_written !== 0
+      meta.rows_written < 0 ||
+      (options.readOnly === true && meta.rows_written !== 0)
     ) {
       throw new RemoteVerificationIndeterminateError(
-        "Read-only D1 verification returned malformed or mutating billing metadata.",
+        `${options.label} returned malformed or unexpectedly mutating billing metadata.`,
       );
     }
-    total = safeAddBilledRowsRead(total, meta.rows_read);
+    rowsRead = safeAddD1Billing(rowsRead, meta.rows_read, `${options.label} rows read`);
+    rowsWritten = safeAddD1Billing(
+      rowsWritten,
+      meta.rows_written,
+      `${options.label} rows written`,
+    );
+  }
+  return { rowsRead, rowsWritten };
+}
+
+function safeAddBilledRowsRead(left: number, right: number) {
+  return safeAddD1Billing(left, right, "Read-only D1 billed rows read");
+}
+
+function safeAddD1Billing(left: number, right: number, label: string) {
+  if (
+    !Number.isSafeInteger(left) ||
+    left < 0 ||
+    !Number.isSafeInteger(right) ||
+    right < 0
+  ) {
+    throw new RemoteVerificationIndeterminateError(
+      `${label} inputs were not non-negative safe integers.`,
+    );
+  }
+  const total = left + right;
+  if (!Number.isSafeInteger(total) || total < 0) {
+    throw new RemoteVerificationIndeterminateError(
+      `${label} accounting overflowed.`,
+    );
   }
   return total;
 }
 
-function safeAddBilledRowsRead(left: number, right: number) {
-  const total = left + right;
-  if (!Number.isSafeInteger(total) || total < 0) {
+export function assertRemoteRepairBillingWithinMaximum(input: {
+  readOnlyRowsRead: number;
+  importBilling: D1Billing | null;
+}) {
+  const observedRowsRead = safeAddD1Billing(
+    input.readOnlyRowsRead,
+    input.importBilling?.rowsRead ?? 0,
+    "Remote translation repair observed rows read",
+  );
+  const reservedRowsRead = safeAddD1Billing(
+    observedRowsRead,
+    remoteRepairControlRowsReadReservation,
+    "Remote translation repair reserved rows read",
+  );
+  const reservedRowsWritten = safeAddD1Billing(
+    input.importBilling?.rowsWritten ?? 0,
+    remoteRepairControlRowsWrittenReservation,
+    "Remote translation repair reserved rows written",
+  );
+  if (
+    reservedRowsRead > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+    reservedRowsWritten > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES
+  ) {
     throw new RemoteVerificationIndeterminateError(
-      "Read-only D1 billed-row accounting overflowed.",
+      "Observed remote translation repair billing exceeded its retained maximum reservation.",
     );
   }
-  return total;
+  return { rowsRead: reservedRowsRead, rowsWritten: reservedRowsWritten };
 }
 
 export function verifyRemoteTranslationDrift(input: {

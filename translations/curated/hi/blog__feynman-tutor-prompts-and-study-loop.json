@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "blog:feynman-tutor-prompts-and-study-loop",
+  "sourceHash": "6b7520e7377252680efcd790b849d380475d7f64160b55f2350cd1c3c5c57c2a",
+  "model": "curated-quality-repair-v3",
+  "entries": [
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "संबंधित शिक्षण मार्ग"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "अध्ययन करने की क्षमता"
+    },
+    {
+      "key": "site.18dcb876cb96e9cee5",
+      "source": "For this mode, the job is simple: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "इस मोड के लिए, कार्य सरल हैः एक अवधारणा को सरलता से समझाने का प्रयास करें। आपके शिक्षक को आपके द्वारा कही गई बात में कोई कमी आती है, वह आपसे सवाल पूछता है और आपको समझाया गया विषय फिर से बनाने में मदद करता है।"
+    },
+    {
+      "key": "site.1d42dc0bfb9b08e820",
+      "source": "\"Help me simplify recursion\"",
+      "value": "\"मेरे पुनरावृत्ति को सरल बनाने में मदद करें\""
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Feynman ट्यूटर का उपयोग करें जब यह काम के लिए सही मोड है। यदि आप एक संबंधित पथ चाहते हैं, तो गलत धारणा डॉक्टर का प्रयास करें। आप अध्ययन विधियों, सुकरातिक सीखने, फ्लैशकार्ड, भूमिका निभाने और सक्रिय याद के लिए एआई सीखने के ब्लॉग को भी ब्राउज़ कर सकते हैं।"
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"अपने देने से पहले मेरे जवाब की जाँच करें। \""
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "इन स्टार्टर्स में से एक की कोशिश करोः"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "एक छोटा सा पहला कार्य पूछें।"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "उस भाग पर प्रतिक्रिया मांगें जो अनिश्चित महसूस किया गया था।"
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "यदि उत्तर बहुत व्यापक लगता है, तो इसे संकीर्ण करें। एक उदाहरण, एक गलत धारणा, एक चेक प्रश्न या एक अगला कदम पूछें। अगर यह बहुत आसान लगता है, तो चुनौती के लिए पूछें। अगर यह बहुत कठिन लगता है, तो आप जो जानते हैं उससे पुल के लिए पूछें।"
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Feynman Tutor से मूल्य प्राप्त करने का सबसे तेज़ तरीका है एआई को सीखने का काम देना, न कि सिर्फ एक विषय। एक विषय बताता है कि आप किसमें रुचि रखते हैं। सीखने का काम बताता है कि आपको किस तरह की मदद की ज़रूरत है।"
+    },
+    {
+      "key": "site.4ad90215ccef01e1b6",
+      "source": "\"Test my understanding of inflation\"",
+      "value": "\"मुद्रास्फीति के बारे में मेरी समझ का परीक्षण करें\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"यह शुरुआती के अनुकूल रखें. \""
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "एआई प्रतिक्रिया पढ़ना सीखने के समान नहीं है। पहले उत्तर के बाद, मोड से पूछें कि आपको विचार के साथ कुछ करने के लिए।"
+    },
+    {
+      "key": "site.67ad0ccec8a0f07868",
+      "source": "\"I'll explain gravity\"",
+      "value": "\"मैं गुरुत्वाकर्षण समझाऊंगा\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"मुझे एक कठिन संस्करण दे दो जब मैं कोशिश कर रहा हूँ। \""
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "एक स्पष्ट अनुरोध के साथ शुरू करें"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "एक वाक्य में लक्ष्य बताइए।"
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "आउटपुट को अधिक उपयोगी बनाएं"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "अच्छे संकेतों में आमतौर पर तीन बातें शामिल होती हैंः विषय, आपकी वर्तमान स्थिति और आप किस तरह की मदद चाहते हैं। आपको सही शब्द की जरूरत नहीं है। आपको सत्र शुरू होने के लिए पर्याप्त संदर्भ की आवश्यकता है।"
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "एआई संकेत"
+    },
+    {
+      "key": "site.c39efca26acbacc063",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Feynman Tutor on inspir.",
+      "value": "त्वरित विचार और फेनमैन ट्यूटर से उपयोगी सीखने के परिणाम प्राप्त करने के लिए एक दोहराए जाने योग्य अध्ययन लूप inspir."
+    },
+    {
+      "key": "site.c77b422a4c9fb1ca67",
+      "source": "For Feynman Tutor, a useful practice loop is:",
+      "value": "फेनमैन ट्यूटर के लिए, एक उपयोगी अभ्यास लूप हैः"
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "एक सारांश के साथ समाप्त आप खुद लिखते हैं।"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "सोच"
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "समाधान के लिए पूछने से पहले उत्तर दें।"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "यह अंतिम सारांश महत्वपूर्ण है। जब आप विचार को वापस समझाते हैं, तो आप प्रकट करते हैं कि क्या ठोस है और क्या अभी भी एआई से उधार लिया गया है।"
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "फिर एक बाधा जोड़ें जो सत्र को अधिक व्यक्तिगत बनाता हैः"
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"मेरी परीक्षा, प्रोजेक्ट या रोजमर्रा की जिंदगी से उदाहरणों का इस्तेमाल करें।\""
+    },
+    {
+      "key": "site.f8b5d22910d6837d65",
+      "source": "Feynman Tutor prompts and study loop",
+      "value": "फेनमैन ट्यूटोरियल संकेत और अध्ययन लूप"
+    },
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"बहुत कुछ बताने से पहले मुझसे सवाल पूछो। \""
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "मोड को अभ्यास में बदल दें"
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "सर्वोत्तम सीखने के सत्र समायोज्य होते हैं। यह मोड अपने स्वयं के संकेतों, उदाहरणों और सीखने के प्रवाह के साथ फेनमैन ट्यूटर के लिए ट्यून किया गया है।"
+    }
+  ]
+}
