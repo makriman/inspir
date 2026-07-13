@@ -13,11 +13,13 @@ const maxVectorIdBytes = 64;
 
 const reserveGlobalProviderCallSql = `insert into llm_usage_daily_shards (day, shard, call_count, created_at, updated_at)
 select ?1, 0, 1, ?2, ?2
-where coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
+where exists (select 1 from users where id = ?4)
+  and coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
 on conflict (day, shard) do update
   set call_count = llm_usage_daily_shards.call_count + 1,
       updated_at = excluded.updated_at
-where coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
+where exists (select 1 from users where id = ?4)
+  and coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
 returning call_count as callCount`;
 
 export type NativeMemoryVectorNamespace = "user_memories" | "chat_memory_turns";
@@ -87,7 +89,10 @@ export async function upsertNativeMemoryVectors(
   env: NativeMemoryVectorEnv,
   candidates: readonly NativeMemoryVectorRecord[],
 ): Promise<NativeIndexedMemoryVector[] | null> {
+  const ownerUserId = singleBoundedVectorCandidateOwner(candidates);
+  if (!ownerUserId) return null;
   const revisionedRecords = await prepareNativeMemoryVectors(candidates);
+  if (revisionedRecords.some(({ record }) => record.userId !== ownerUserId)) return null;
   return upsertPreparedNativeMemoryVectors(env, revisionedRecords);
 }
 
@@ -120,7 +125,14 @@ export async function upsertPreparedNativeMemoryVectors(
   const index = env.MEMORY_VECTORIZE;
   const provider = embeddingProviderSettings(env);
   if (!index || !provider || revisionedRecords.length === 0) return null;
-  if (!(await reserveGlobalProviderCall(env, "memory_vector_write"))) return null;
+  const userId = boundedText(revisionedRecords[0]?.record.userId, 1, 120);
+  if (
+    !userId ||
+    revisionedRecords.some(({ record }) => record.userId !== userId) ||
+    !(await reserveGlobalProviderCall(env, "memory_vector_write", userId))
+  ) {
+    return null;
+  }
 
   try {
     const embeddings = await requestEmbeddingBatch(
@@ -174,7 +186,8 @@ export async function queryNativeMemoryVectorIds(
   const userId = boundedText(input.userId, 1, 120);
   const message = boundedText(input.message, 2, MAX_NATIVE_MEMORY_VECTOR_TEXT_CHARS);
   if (!index || !provider || !userId || !message) return null;
-  if (!(await reserveGlobalProviderCall(env, "memory_vector_query"))) return null;
+  if (input.includeMemories === false && input.includeTurns === false) return null;
+  if (!(await reserveGlobalProviderCall(env, "memory_vector_query", userId))) return null;
 
   try {
     const [embedding] = await requestEmbeddingBatch(provider, [message]);
@@ -249,9 +262,35 @@ function normalizeVectorRecords(candidates: readonly NativeMemoryVectorRecord[])
   return records;
 }
 
+function singleBoundedVectorCandidateOwner(
+  candidates: readonly NativeMemoryVectorRecord[],
+) {
+  let ownerUserId: string | null = null;
+  for (const candidate of candidates) {
+    const rowId = boundedVectorRowId(candidate.rowId);
+    const userId = boundedText(candidate.userId, 1, 120);
+    const text = boundedText(candidate.text, 2, MAX_NATIVE_MEMORY_VECTOR_TEXT_CHARS);
+    const rowRevision = candidate.namespace === "user_memories"
+      ? positiveSafeInteger(candidate.rowRevision)
+      : undefined;
+    if (
+      !rowId ||
+      !userId ||
+      !text ||
+      (candidate.namespace === "user_memories" && rowRevision === null)
+    ) {
+      continue;
+    }
+    if (ownerUserId && ownerUserId !== userId) return null;
+    ownerUserId = userId;
+  }
+  return ownerUserId;
+}
+
 async function reserveGlobalProviderCall(
   env: Pick<NativeMemoryVectorEnv, "DB" | "LLM_GLOBAL_DAILY_CALL_LIMIT">,
   reason: "memory_vector_query" | "memory_vector_write",
+  userId: string,
 ) {
   const limit = globalDailyCallLimitFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT);
   if (limit <= 0) {
@@ -265,7 +304,7 @@ async function reserveGlobalProviderCall(
   const nowMs = now.getTime();
   try {
     const reservation = await env.DB.prepare(reserveGlobalProviderCallSql)
-      .bind(now.toISOString().slice(0, 10), nowMs, limit)
+      .bind(now.toISOString().slice(0, 10), nowMs, limit, userId)
       .first();
     if (reservation && positiveInteger(reservation.callCount) !== null) return true;
     console.error(

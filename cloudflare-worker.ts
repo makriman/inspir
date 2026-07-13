@@ -74,6 +74,7 @@ const handler = {
   },
 
   async scheduled(controller, env, ctx) {
+    controller.noRetry();
     await handleMemoryScheduled(controller, env, ctx);
   },
 

@@ -20,6 +20,13 @@ import {
   type NativeMemoryVectorMatches,
 } from "./native-memory-vector";
 import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
+import {
+  disposableAdminCleanupFenceToken,
+  disposableAdminTopicOwnershipToken,
+  resolveDisposableAdminValidationScope,
+  type DisposableAdminTopicFixture,
+  type DisposableAdminValidationScope,
+} from "./disposable-admin-validation";
 
 export const PROTECTED_AI_API_DELIVERY = "lean-api-worker";
 export const MAX_PROTECTED_API_BODY_BYTES = 20 * 1024;
@@ -313,20 +320,24 @@ end`;
 
 const globalBudgetSql = `insert into llm_usage_daily_shards (day, shard, call_count, created_at, updated_at)
 select ?1, 0, 1, ?2, ?2
-where coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
+where exists (select 1 from users where id = ?4)
+  and coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
 on conflict (day, shard) do update
   set call_count = llm_usage_daily_shards.call_count + 1,
       updated_at = excluded.updated_at
-where coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
+where exists (select 1 from users where id = ?4)
+  and coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?1), 0) < ?3
 returning call_count as callCount`;
 
 const quotaSql = `insert into rate_limit_windows ("key", count, reset_at, created_at, updated_at)
-values (?1, 1, ?2, ?3, ?3)
+select ?1, 1, ?2, ?3, ?3
+where exists (select 1 from users where id = ?5)
 on conflict ("key") do update
 set count = case when rate_limit_windows.reset_at <= ?3 then 1 else rate_limit_windows.count + 1 end,
     reset_at = case when rate_limit_windows.reset_at <= ?3 then excluded.reset_at else rate_limit_windows.reset_at end,
     updated_at = excluded.updated_at
-where rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4
+where (rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4)
+  and exists (select 1 from users where id = ?5)
 returning count, reset_at as resetAt`;
 
 export type ProtectedApiExecutionContext = Pick<ExecutionContext, "waitUntil">;
@@ -707,6 +718,7 @@ async function handleAuthenticatedChat(
 
   const admission = await consumeAiAdmission(
     env,
+    session.user.id,
     `chat:user:${session.user.id}`,
     nonNegativeIntegerFromEnv(env.RATE_LIMIT_USER_CHAT_DAILY, 20),
     "Daily message limit reached",
@@ -985,10 +997,16 @@ async function handleAuthenticatedChatFinalize(
     return sessionJson({ error: "Chat completion could not be saved" }, 409, session);
   }
 
+  const validationScope = session.user.email
+    ? await resolveDisposableAdminValidationScope(
+        { id: session.user.id, email: session.user.email },
+        env,
+      )
+    : { kind: "ordinary" as const };
   deferPostTurnMemory(ctx, env, {
     aiRunId: input.aiRunId,
     userId: session.user.id,
-    skipQueue: session.user.email?.endsWith("@inspirlearning.invalid") === true,
+    skipQueue: validationScope.kind !== "ordinary",
     chatId: input.chatId,
     topicId: run.topicId,
     topicName: run.topicName,
@@ -1159,6 +1177,7 @@ async function handleQuizCreate(
   if (!provider) return sessionJson({ error: "The activity could not be built right now." }, 503, session);
   const admission = await consumeAiAdmission(
     env,
+    session.user.id,
     `activity:quiz:${session.user.id}`,
     nonNegativeIntegerFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, 10),
     "Daily activity limit reached",
@@ -1349,6 +1368,7 @@ async function handleFlashcardsCreate(
   if (!provider) return sessionJson({ error: "The activity could not be built right now." }, 503, session);
   const admission = await consumeAiAdmission(
     env,
+    session.user.id,
     `activity:flashcards:${session.user.id}`,
     nonNegativeIntegerFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, 10),
     "Daily activity limit reached",
@@ -1500,13 +1520,242 @@ async function handleFlashcardReview(
   );
 }
 
+async function nativeAdminScope(
+  session: NativeAuthenticatedSession,
+  env: CloudflareEnv,
+): Promise<Exclude<DisposableAdminValidationScope, { kind: "invalid" }> | null> {
+  if (!(await isNativeAdmin(session, env))) return null;
+  if (!session.user.email) return null;
+  const scope = await resolveDisposableAdminValidationScope(
+    { id: session.user.id, email: session.user.email },
+    env,
+  );
+  return scope.kind === "invalid" ? null : scope;
+}
+
+function sameAdminTopicInput(
+  input: {
+    name: string;
+    subText: string;
+    description: string;
+    inputboxText: string;
+    systemPrompt: string;
+  },
+  fixture: DisposableAdminTopicFixture,
+) {
+  return input.name === fixture.name &&
+    input.subText === fixture.subText &&
+    input.description === fixture.description &&
+    input.inputboxText === fixture.inputboxText &&
+    input.systemPrompt === fixture.systemPrompt;
+}
+
+type ActiveDisposableAdminValidationScope = Extract<
+  DisposableAdminValidationScope,
+  { kind: "validation" }
+>;
+
+function disposableValidationAdminOpsStatement(
+  db: D1Database,
+  scope: ActiveDisposableAdminValidationScope,
+  eventName: "admin_user_added" | "admin_user_removed",
+  now: number,
+) {
+  return db.prepare(
+    `insert into ops_events
+       (id, event_name, severity, surface, user_id, message, metadata, created_at)
+     select ?1, ?2, 'info', 'admin', ?3, null, ?4, ?5
+     where exists (select 1 from users where id = ?3 and email = ?6)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?6 and token = ?7 and expires > ?5
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?6 and token = ?8
+       )
+       and exists (
+         select 1 from admin_users
+         where email = ?6 and added_by_user_id = ?3 and added_by_email = ?6
+       )`,
+  ).bind(
+    crypto.randomUUID(),
+    eventName,
+    scope.identity.userId,
+    JSON.stringify({ email: scope.identity.email }),
+    now,
+    scope.identity.email,
+    scope.identity.markerToken,
+    disposableAdminCleanupFenceToken(scope.identity),
+  );
+}
+
+function disposableValidationAdminUpsertStatement(
+  db: D1Database,
+  scope: ActiveDisposableAdminValidationScope,
+  now: number,
+) {
+  return db.prepare(
+    `insert into admin_users (email, added_by_user_id, added_by_email, created_at)
+     select ?1, ?2, ?1, ?3
+     where exists (select 1 from users where id = ?2 and email = ?1)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?1 and token = ?4 and expires > ?3
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?1 and token = ?5
+       )
+       and exists (
+         select 1 from admin_users
+         where email = ?1 and added_by_user_id = ?2 and added_by_email = ?1
+       )
+     on conflict (email) do update
+     set added_by_user_id = excluded.added_by_user_id,
+         added_by_email = excluded.added_by_email
+     returning email,
+               added_by_user_id as addedByUserId,
+               added_by_email as addedByEmail,
+               created_at as createdAt`,
+  ).bind(
+    scope.identity.email,
+    scope.identity.userId,
+    now,
+    scope.identity.markerToken,
+    disposableAdminCleanupFenceToken(scope.identity),
+  );
+}
+
+function disposableValidationAdminDeleteStatement(
+  db: D1Database,
+  scope: ActiveDisposableAdminValidationScope,
+  now: number,
+) {
+  return db.prepare(
+    `delete from admin_users
+     where email = ?1 and added_by_user_id = ?2 and added_by_email = ?1
+       and exists (select 1 from users where id = ?2 and email = ?1)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?1 and token = ?3 and expires > ?4
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?1 and token = ?5
+       )`,
+  ).bind(
+    scope.identity.email,
+    scope.identity.userId,
+    scope.identity.markerToken,
+    now,
+    disposableAdminCleanupFenceToken(scope.identity),
+  );
+}
+
+function disposableValidationTopicInsertStatement(
+  db: D1Database,
+  scope: ActiveDisposableAdminValidationScope,
+  input: {
+    name: string;
+    subText: string;
+    description: string;
+    inputboxText: string;
+    systemPrompt: string;
+  },
+  topicId: string,
+  slug: string,
+  now: number,
+) {
+  return db.prepare(
+    `insert into topics
+       (id, slug, name, sub_text, description, inputbox_text, system_prompt,
+        sort_order, status, metadata, created_at, updated_at)
+     select ?1, ?2, ?3, ?4, ?5, ?6, ?7, 100, 'active', '{}', ?8, ?8
+     where exists (select 1 from users where id = ?9 and email = ?10)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?10 and token = ?11 and expires > ?8
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?10 and token = ?12
+       )
+       and exists (
+         select 1 from admin_users
+         where email = ?10 and added_by_user_id = ?9 and added_by_email = ?10
+       )
+       and exists (
+         select 1 from verification_tokens
+         where id = ?1 and identifier = ?10 and token = ?13 and expires = ?14
+           and created_at = ?8 and updated_at = ?8
+       )
+       and not exists (select 1 from topics where slug = ?2)`,
+  ).bind(
+    topicId,
+    slug,
+    input.name,
+    input.subText,
+    input.description,
+    input.inputboxText,
+    input.systemPrompt,
+    now,
+    scope.identity.userId,
+    scope.identity.email,
+    scope.identity.markerToken,
+    disposableAdminCleanupFenceToken(scope.identity),
+    disposableAdminTopicOwnershipToken(scope.identity),
+    scope.expiresAt,
+  );
+}
+
+function disposableValidationTopicOwnershipInsertStatement(
+  db: D1Database,
+  scope: ActiveDisposableAdminValidationScope,
+  topicId: string,
+  slug: string,
+  now: number,
+) {
+  const ownershipToken = disposableAdminTopicOwnershipToken(scope.identity);
+  return db.prepare(
+    `insert into verification_tokens
+       (id, identifier, token, expires, created_at, updated_at)
+     select ?1, ?2, ?3, ?4, ?5, ?5
+     where exists (select 1 from users where id = ?6 and email = ?2)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?2 and token = ?7 and expires > ?5
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?2 and token = ?8
+       )
+       and exists (
+         select 1 from admin_users
+         where email = ?2 and added_by_user_id = ?6 and added_by_email = ?2
+       )
+       and not exists (
+         select 1 from verification_tokens where id = ?1 or (identifier = ?2 and token = ?3)
+       )
+       and not exists (select 1 from topics where id = ?1 or slug = ?9)`,
+  ).bind(
+    topicId,
+    scope.identity.email,
+    ownershipToken,
+    scope.expiresAt,
+    now,
+    scope.identity.userId,
+    scope.identity.markerToken,
+    disposableAdminCleanupFenceToken(scope.identity),
+    slug,
+  );
+}
+
 async function handleAdminDashboard(
   request: Request,
   env: CloudflareEnv,
   session: NativeAuthenticatedSession,
 ) {
   if (request.method !== "GET") return methodNotAllowed("GET", session);
-  if (!(await isNativeAdmin(session, env))) return sessionJson({ error: "Forbidden" }, 403, session);
+  const adminScope = await nativeAdminScope(session, env);
+  if (!adminScope || adminScope.kind !== "ordinary") {
+    return sessionJson({ error: "Forbidden" }, 403, session);
+  }
   const daysParam = Number(new URL(request.url).searchParams.get("days") ?? "14");
   const days = Number.isFinite(daysParam) ? Math.max(1, Math.min(90, Math.floor(daysParam))) : 14;
   const since = Date.now() - days * 24 * 60 * 60 * 1_000;
@@ -1698,7 +1947,8 @@ async function handleAdminUsers(
   if (request.method !== "POST" && request.method !== "DELETE") {
     return methodNotAllowed("POST, DELETE", session);
   }
-  if (!(await isNativeAdmin(session, env))) return sessionJson({ error: "Forbidden" }, 403, session);
+  const adminScope = await nativeAdminScope(session, env);
+  if (!adminScope) return sessionJson({ error: "Forbidden" }, 403, session);
   const freeze = writeFreezeResponse(env, "admin-users", session);
   if (freeze) return freeze;
 
@@ -1707,22 +1957,53 @@ async function handleAdminUsers(
     if (!json.ok) return sessionJson({ error: json.error }, json.status, session);
     const email = parseAdminEmailPayload(json.value);
     if (!email) return sessionJson({ error: "Enter a valid email." }, 400, session);
+    if (adminScope.kind === "validation" && email !== adminScope.identity.email) {
+      return sessionJson({ error: "Forbidden" }, 403, session);
+    }
     const now = Date.now();
-    const admin = await env.DB.prepare(
-      `insert into admin_users (email, added_by_user_id, added_by_email, created_at)
-       values (?1, ?2, ?3, ?4)
-       on conflict (email) do update
-       set added_by_user_id = excluded.added_by_user_id,
-           added_by_email = excluded.added_by_email
-       returning email,
-                 added_by_user_id as addedByUserId,
-                 added_by_email as addedByEmail,
-                 created_at as createdAt`,
-    )
-      .bind(email, session.user.id, session.user.email, now)
-      .first<AdminRow>();
+    let admin: AdminRow | undefined | null;
+    if (adminScope.kind === "validation") {
+      const results = await env.DB.batch<AdminRow>([
+        disposableValidationAdminOpsStatement(
+          env.DB,
+          adminScope,
+          "admin_user_added",
+          now,
+        ),
+        disposableValidationAdminUpsertStatement(env.DB, adminScope, now),
+      ]);
+      admin = results[1]?.results[0];
+      if (
+        results.length !== 2 ||
+        results[0]?.meta.changes !== 1 ||
+        results[1]?.meta.changes !== 1 ||
+        !admin
+      ) {
+        return sessionJson(
+          { error: "Disposable validation authority is unavailable." },
+          409,
+          session,
+        );
+      }
+    } else {
+      admin = await env.DB.prepare(
+        `insert into admin_users (email, added_by_user_id, added_by_email, created_at)
+         values (?1, ?2, ?3, ?4)
+         on conflict (email) do update
+         set added_by_user_id = excluded.added_by_user_id,
+             added_by_email = excluded.added_by_email
+         returning email,
+                   added_by_user_id as addedByUserId,
+                   added_by_email as addedByEmail,
+                   created_at as createdAt`,
+      )
+        .bind(email, session.user.id, session.user.email, now)
+        .first<AdminRow>();
+    }
     if (!admin) throw new Error("Admin upsert did not return a row");
-    await recordOpsEvent(env, "admin_user_added", session.user.id, { email });
+    if (adminScope.kind === "ordinary") {
+      await recordOpsEvent(env, "admin_user_added", session.user.id, { email });
+    }
     return sessionJson(
       {
         admin: {
@@ -1740,11 +2021,38 @@ async function handleAdminUsers(
 
   const email = normalizeEmail(new URL(request.url).searchParams.get("email"));
   if (!email) return sessionJson({ error: "Enter a valid email." }, 400, session);
+  if (adminScope.kind === "validation" && email !== adminScope.identity.email) {
+    return sessionJson({ error: "Forbidden" }, 403, session);
+  }
   if (isBootstrapAdmin(email, env.ADMIN_EMAILS)) {
     return sessionJson({ error: "Bootstrap admins are controlled by code or environment." }, 409, session);
   }
-  await env.DB.prepare("delete from admin_users where email = ?1").bind(email).run();
-  await recordOpsEvent(env, "admin_user_removed", session.user.id, { email });
+  if (adminScope.kind === "validation") {
+    const now = Date.now();
+    const results = await env.DB.batch([
+      disposableValidationAdminOpsStatement(
+        env.DB,
+        adminScope,
+        "admin_user_removed",
+        now,
+      ),
+      disposableValidationAdminDeleteStatement(env.DB, adminScope, now),
+    ]);
+    if (
+      results.length !== 2 ||
+      results[0]?.meta.changes !== 1 ||
+      results[1]?.meta.changes !== 1
+    ) {
+      return sessionJson(
+        { error: "Disposable validation authority is unavailable." },
+        409,
+        session,
+      );
+    }
+  } else {
+    await env.DB.prepare("delete from admin_users where email = ?1").bind(email).run();
+    await recordOpsEvent(env, "admin_user_removed", session.user.id, { email });
+  }
   return sessionJson({ ok: true }, 200, session);
 }
 
@@ -1754,7 +2062,8 @@ async function handleAdminTopics(
   session: NativeAuthenticatedSession,
 ) {
   if (request.method !== "POST") return methodNotAllowed("POST", session);
-  if (!(await isNativeAdmin(session, env))) return sessionJson({ error: "Forbidden" }, 403, session);
+  const adminScope = await nativeAdminScope(session, env);
+  if (!adminScope) return sessionJson({ error: "Forbidden" }, 403, session);
   const freeze = writeFreezeResponse(env, "admin-topics", session);
   if (freeze) return freeze;
   const json = await readBoundedJson(request);
@@ -1763,6 +2072,12 @@ async function handleAdminTopics(
   if (!input) return sessionJson({ error: "Invalid topic" }, 400, session);
   const slug = slugify(input.name);
   if (!slug) return sessionJson({ error: "Invalid topic" }, 400, session);
+  if (
+    adminScope.kind === "validation" &&
+    (slug !== adminScope.topic.slug || !sameAdminTopicInput(input, adminScope.topic))
+  ) {
+    return sessionJson({ error: "Forbidden" }, 403, session);
+  }
   const existing = await env.DB.prepare("select id from topics where slug = ?1 limit 1")
     .bind(slug)
     .first<{ id: string }>();
@@ -1771,13 +2086,50 @@ async function handleAdminTopics(
   }
   const now = Date.now();
   const id = crypto.randomUUID();
-  await env.DB.prepare(
-    `insert into topics
-       (id, slug, name, sub_text, description, inputbox_text, system_prompt, sort_order, status, metadata, created_at, updated_at)
-     values (?1, ?2, ?3, ?4, ?5, ?6, ?7, 100, 'active', '{}', ?8, ?8)`,
-  )
-    .bind(id, slug, input.name, input.subText, input.description, input.inputboxText, input.systemPrompt, now)
-    .run();
+  if (adminScope.kind === "validation") {
+    const results = await env.DB.batch([
+      disposableValidationTopicOwnershipInsertStatement(
+        env.DB,
+        adminScope,
+        id,
+        slug,
+        now,
+      ),
+      disposableValidationTopicInsertStatement(
+        env.DB,
+        adminScope,
+        input,
+        id,
+        slug,
+        now,
+      ),
+    ]);
+    if (results.length !== 2 || results.some((result) => result.meta.changes !== 1)) {
+      return sessionJson(
+        { error: "Disposable validation authority is unavailable." },
+        409,
+        session,
+      );
+    }
+  } else {
+    await env.DB.prepare(
+      `insert into topics
+         (id, slug, name, sub_text, description, inputbox_text, system_prompt,
+          sort_order, status, metadata, created_at, updated_at)
+       values (?1, ?2, ?3, ?4, ?5, ?6, ?7, 100, 'active', '{}', ?8, ?8)`,
+    )
+      .bind(
+        id,
+        slug,
+        input.name,
+        input.subText,
+        input.description,
+        input.inputboxText,
+        input.systemPrompt,
+        now,
+      )
+      .run();
+  }
   return sessionJson(
     {
       topic: {
@@ -1911,6 +2263,7 @@ async function generateStructuredObject(
 
 export async function consumeAiAdmission(
   env: Pick<CloudflareEnv, "DB"> & { LLM_GLOBAL_DAILY_CALL_LIMIT?: string },
+  userId: string,
   quotaKey: string,
   quotaLimit: number,
   quotaError: string,
@@ -1923,7 +2276,7 @@ export async function consumeAiAdmission(
   else {
     try {
       const quota = await env.DB.prepare(quotaSql)
-        .bind(quotaKey, resetAtMs, nowMs, quotaLimit)
+        .bind(quotaKey, resetAtMs, nowMs, quotaLimit, userId)
         .first<{ count: number; resetAt: number }>();
       quotaAllowed = Boolean(quota && positiveInteger(quota.count) !== null);
     } catch (error) {
@@ -1959,7 +2312,7 @@ export async function consumeAiAdmission(
   }
   try {
     const budget = await env.DB.prepare(globalBudgetSql)
-      .bind(now.toISOString().slice(0, 10), nowMs, globalLimit)
+      .bind(now.toISOString().slice(0, 10), nowMs, globalLimit, userId)
       .first<{ callCount: number }>();
     if (!budget || positiveInteger(budget.callCount) === null) {
       logCritical("llm_budget_denied", { reason: "daily_limit_reached" });

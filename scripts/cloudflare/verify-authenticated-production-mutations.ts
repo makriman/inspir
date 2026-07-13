@@ -2,6 +2,7 @@ import { createHash, createHmac, randomUUID } from "node:crypto";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { performance } from "node:perf_hooks";
 import { pathToFileURL } from "node:url";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
@@ -12,8 +13,14 @@ import {
 } from "../../lib/free-runtime/native-memory-vector";
 import type { MemoryVectorCleanupQueueMessage } from "../../lib/free-runtime/memory-queue-contract";
 import { buildNativeMemoryTurnSearchableText } from "../../lib/free-runtime/state-api";
+import { disposableAdminTopicFixture } from "../../lib/free-runtime/disposable-admin-validation";
 import { readCloudflareApiToken } from "./cloudflare-api-token";
 import { readPrivateJsonNoFollow, writePrivateJsonDurably } from "./d1-release-budget-ledger";
+import {
+  backgroundQueueSettlementQuietPeriodMs,
+  captureTail as captureProductionTail,
+  parseTailJsonStream,
+} from "./verify-production-background-outcomes";
 import {
   CLOUDFLARE_ACCOUNT_ID,
   MEMORY_POST_TURN_QUEUE_NAME,
@@ -29,12 +36,17 @@ const defaultBaseUrl = "https://inspirlearning.com";
 const tailSessionHeader = "x-inspir-tail-session";
 const versionOverrideHeader = "Cloudflare-Workers-Version-Overrides";
 const mutationProbeParameter = "authenticated_mutation_probe";
+const tailReadinessProbeParameter = "authenticated_tail_ready";
 const tailWaitTimeoutMs = 45_000;
-const tailOutputLimit = 16 * 1024 * 1024;
+const tailReadinessRequestTimeoutMs = 15_000;
+const tailReadinessMaximumResponseBytes = 64 * 1024;
 const requestTimeoutMs = 75_000;
 const maximumResponseBytes = 768 * 1024;
 const cleanupAttemptLimit = 3;
-const queueCaptureTimeoutMs = 60_000;
+const queueCaptureTimeoutMs = 5 * 60_000;
+export const authenticatedCleanupQueueSettlementTimeoutMs = 10 * 60_000;
+export const authenticatedQueueSettlementQuietPeriodMs =
+  backgroundQueueSettlementQuietPeriodMs;
 // Vectorize mutations are asynchronous. Production evidence must wait beyond
 // the observed p99 visibility window and prove two genuinely spaced absence
 // reads, matching the runtime outbox fence instead of accepting fast stale
@@ -51,6 +63,8 @@ const cloudflareApiResponseLimit = 64 * 1024;
 export const authenticatedMemoryRecoveryEvidenceName =
   "authenticated-production-memory-recovery.json";
 export const authenticatedMutationCpuThresholdMs = 8;
+export const captureAuthenticatedTail = captureProductionTail;
+export const parseAuthenticatedTailJsonStream = parseTailJsonStream;
 export const authenticatedMutationInventoryNames = [
   "users",
   "profile_photo_pointers",
@@ -59,6 +73,7 @@ export const authenticatedMutationInventoryNames = [
   "verification_tokens",
   "rate_limit_windows",
   "admin_users",
+  "topics",
   "product_events",
   "ops_events",
   "chats",
@@ -80,6 +95,7 @@ export const authenticatedMutationInventoryNames = [
 export type AuthenticatedMutationTrace = {
   label: string;
   probe: string;
+  origin: string;
   requestKey: string;
   routeTemplate: string;
   method: string;
@@ -89,14 +105,24 @@ export type AuthenticatedMutationTrace = {
 export type AuthenticatedMutationTailSample = {
   label: string;
   probe: string;
+  origin: string;
   requestKey: string;
+  urlEnvelopeValid: boolean;
+  eventShapeValid: boolean;
   path: string;
   routeTemplate: string;
   method: string | null;
   status: number | null;
   outcome: string | null;
   cpuTimeMs: number | null;
-  exceptionCount: number;
+  wallTimeMs: number | null;
+  eventTimestamp: number | null;
+  scriptName: string | null;
+  scriptVersionId: string | null;
+  truncated: boolean | null;
+  exceptionCount: number | null;
+  logArrayValid: boolean;
+  warningOrErrorLogCount: number;
 };
 
 export type AuthenticatedMutationTailEvaluation = {
@@ -107,10 +133,59 @@ export type AuthenticatedMutationTailEvaluation = {
 
 export type AuthenticatedMemoryQueueTailEvaluation = {
   ok: boolean;
+  fatal: boolean;
+  settled: boolean;
   authenticatedValidationVersionId: string;
+  captureOutputOffset: number;
+  observationEndedAt: number | null;
+  successObservedAt: number | null;
+  settledLivenessProbe: string | null;
   matchedEvents: number;
+  successfulEvents: number;
   cpuTimeMs: number | null;
   indexedVectorCount: number | null;
+  problems: string[];
+};
+
+export type AuthenticatedMemoryVectorCleanupQueueTailEvaluation = {
+  ok: boolean;
+  fatal: boolean;
+  settled: boolean;
+  chainComplete: boolean;
+  reason: string;
+  captureOutputOffset: number;
+  observationEndedAt: number | null;
+  successObservedAt: number | null;
+  settledLivenessProbe: string | null;
+  authenticatedValidationVersionId: string;
+  matchedEvents: number;
+  processedEvents: number;
+  deferredEvents: number;
+  failedEvents: number;
+  maximumCpuTimeMs: number | null;
+  samples: AuthenticatedMemoryVectorCleanupQueueTailSample[];
+  problems: string[];
+};
+
+export type AuthenticatedMemoryVectorCleanupQueueTailSample = {
+  reason: string;
+  messageId: string | null;
+  attempts: number | null;
+  eventTimestamp: number | null;
+  outcome: string | null;
+  cpuTimeMs: number | null;
+  terminal: "processed" | "deferred" | "failed" | "missing" | "multiple";
+  pending: number | null;
+  nextDelaySeconds: number | null;
+};
+
+export type AuthenticatedMemoryQueueResourceWindowEvaluation = {
+  ok: boolean;
+  authenticatedValidationVersionId: string;
+  captureOutputOffset: number;
+  matchedEvents: number;
+  maximumCpuTimeMs: number | null;
+  tailCaptureLoss: boolean;
   problems: string[];
 };
 
@@ -273,29 +348,49 @@ async function main() {
     ["tail", workerName, "--format", "json", "--version-id", expectedVersion],
     { cwd: process.cwd(), env: commandEnv(), stdio: ["ignore", "pipe", "pipe"] },
   );
-  const httpCapture = captureTail(httpTail);
-  const versionCapture = captureTail(versionTail);
+  const httpCapture = captureAuthenticatedTail(httpTail);
+  const versionCapture = captureAuthenticatedTail(versionTail);
   const traces: AuthenticatedMutationTrace[] = [];
   const hotPathEvidence: {
     queue: AuthenticatedMemoryQueueTailEvaluation | null;
     semantic: AuthenticatedSemanticRetrievalTailEvaluation | null;
-  } = { queue: null, semantic: null };
+    cleanupWakes: AuthenticatedMemoryVectorCleanupQueueTailEvaluation[];
+    cleanupAggregate: AuthenticatedMemoryQueueResourceWindowEvaluation | null;
+  } = { queue: null, semantic: null, cleanupWakes: [], cleanupAggregate: null };
+  let storedMemoryUserId: string | null = null;
+  let semanticTrace: AuthenticatedMutationTrace | null = null;
   let memoryRecoveryEvidence: AuthenticatedMemoryRecoveryEvidence | null = null;
   try {
-    await Promise.all([
-      waitForTailReadiness({
-        tail: httpTail,
-        output: httpCapture.output,
-        diagnostics: httpCapture.diagnostics,
-      }),
-      waitForTailReadiness({
-        tail: versionTail,
-        output: versionCapture.output,
-        diagnostics: versionCapture.diagnostics,
-      }),
-    ]);
+    const initialLivenessProbe = await waitForTailReadiness({
+      tails: [
+        {
+          label: "HTTP-filtered",
+          tail: httpTail,
+          output: httpCapture.output,
+          diagnostics: httpCapture.diagnostics,
+        },
+        {
+          label: "version-only",
+          tail: versionTail,
+          output: versionCapture.output,
+          diagnostics: versionCapture.diagnostics,
+        },
+      ],
+      baseUrl,
+      expectedVersion,
+      tailSessionToken,
+      markerLabel: "ready",
+      retryMissedMarker: true,
+    });
     const apiToken = requireCloudflareApiToken();
     const queueId = readQueueId(wrangler);
+    const cleanupValidationStartedAt = Date.now();
+    const cleanupValidationOutputOffset = await waitForCompleteTailOutputCheckpoint(
+      versionTail,
+      versionCapture.output,
+    );
+    const cleanupReasonPrefix = `e2e-cleanup-${runId.replaceAll("-", "")}`;
+    let cleanupWakeIndex = 0;
     const memoryHotPath: AuthenticatedMemoryHotPathHooks = {
       publishPostTurnAndRequireStored: async (job, turnVectorId) => {
         requireActiveDeployment(wrangler, expectedVersion);
@@ -319,15 +414,21 @@ async function main() {
         });
         writePrivateJsonDurably(memoryRecoveryEvidencePath, evidence, { replace: false });
         memoryRecoveryEvidence = evidence;
-        const captureStartedAt = Date.now();
+        const captureOutputOffset = await waitForCompleteTailOutputCheckpoint(
+          versionTail,
+          versionCapture.output,
+        );
         await pushAuthenticatedMemoryPostTurn(apiToken, queueId, job);
         hotPathEvidence.queue = await waitForAuthenticatedMemoryQueueEvidence({
           tail: versionTail,
           output: versionCapture.output,
+          diagnostics: versionCapture.diagnostics,
+          baseUrl,
           authenticatedValidationVersionId: expectedVersion,
           userId: job.userId,
-          captureStartedAt,
+          captureOutputOffset,
         });
+        storedMemoryUserId = job.userId;
         if (!hotPathEvidence.queue.ok) {
           throw new Error(
             `Authenticated stored-memory Queue evidence failed (${hotPathEvidence.queue.problems.join("; ")}).`,
@@ -346,9 +447,11 @@ async function main() {
       },
       requireSemanticTurnHydrated: async (trace) => {
         requireActiveDeployment(wrangler, expectedVersion);
+        semanticTrace = trace;
         hotPathEvidence.semantic = await waitForAuthenticatedSemanticRetrievalEvidence({
           tail: httpTail,
           output: httpCapture.output,
+          diagnostics: httpCapture.diagnostics,
           trace,
           authenticatedValidationVersionId: expectedVersion,
         });
@@ -361,11 +464,32 @@ async function main() {
       },
       requestVectorCleanupDrain: async () => {
         requireActiveDeployment(wrangler, expectedVersion);
+        cleanupWakeIndex += 1;
+        const reason = `${cleanupReasonPrefix}-${cleanupWakeIndex}`;
+        const captureOutputOffset = await waitForCompleteTailOutputCheckpoint(
+          versionTail,
+          versionCapture.output,
+        );
         await pushAuthenticatedMemoryVectorCleanupWake(
           apiToken,
           queueId,
-          "authenticated-production-validation",
+          reason,
         );
+        const evidence = await waitForAuthenticatedMemoryVectorCleanupQueueEvidence({
+          tail: versionTail,
+          output: versionCapture.output,
+          diagnostics: versionCapture.diagnostics,
+          baseUrl,
+          authenticatedValidationVersionId: expectedVersion,
+          captureOutputOffset,
+          reason,
+        });
+        hotPathEvidence.cleanupWakes.push(evidence);
+        if (!evidence.ok) {
+          throw new Error(
+            `Authenticated Vectorize cleanup Queue evidence failed (${evidence.problems.join("; ")}).`,
+          );
+        }
         requireActiveDeployment(wrangler, expectedVersion);
       },
       requireKnownVectorAbsent: async (vectorId) => {
@@ -397,14 +521,131 @@ async function main() {
       traceSink: traces,
     });
     await waitForTailProbes(httpTail, httpCapture.output, traces.map((trace) => trace.probe));
-    await stopTail(httpTail, httpCapture.closed);
-    await stopTail(versionTail, versionCapture.closed);
-    const evaluation = evaluateAuthenticatedMutationTail(httpCapture.output(), traces);
+    const settledLivenessProbe = await waitForTailReadiness({
+      tails: [
+        {
+          label: "HTTP-filtered",
+          tail: httpTail,
+          output: httpCapture.output,
+          diagnostics: httpCapture.diagnostics,
+        },
+        {
+          label: "version-only",
+          tail: versionTail,
+          output: versionCapture.output,
+          diagnostics: versionCapture.diagnostics,
+        },
+      ],
+      baseUrl,
+      expectedVersion,
+      tailSessionToken,
+      markerLabel: "settled",
+      retryMissedMarker: false,
+    });
+    for (const entry of [
+      { label: "HTTP-filtered", tail: httpTail },
+      { label: "version-only", tail: versionTail },
+    ]) {
+      if (hasChildExited(entry.tail)) {
+        throw new Error(`${entry.label} Wrangler JSON tail exited before intentional shutdown.`);
+      }
+    }
+    httpCapture.beginIntentionalShutdown();
+    versionCapture.beginIntentionalShutdown();
+    if (!await stopTail(httpTail, httpCapture.closed)) {
+      httpCapture.cancelIntentionalShutdown();
+      throw new Error("HTTP-filtered Wrangler JSON tail exited unexpectedly.");
+    }
+    if (!await stopTail(versionTail, versionCapture.closed)) {
+      versionCapture.cancelIntentionalShutdown();
+      throw new Error("Version-only Wrangler JSON tail exited unexpectedly.");
+    }
+    const finalHttpTailOutput = httpCapture.output();
+    const finalHttpTailDiagnostics = httpCapture.diagnosticsForEvaluation();
+    const finalVersionTailOutput = versionCapture.output();
+    const finalVersionTailDiagnostics = versionCapture.diagnosticsForEvaluation();
+    if (!authenticatedTailReadinessIsCapturedByEveryTail(
+      [finalHttpTailOutput, finalVersionTailOutput],
+      settledLivenessProbe,
+      expectedVersion,
+      true,
+    )) {
+      throw new Error("The settled authenticated Tail liveness marker was missing after shutdown.");
+    }
+    if (
+      !storedMemoryUserId ||
+      !hotPathEvidence.queue ||
+      !hotPathEvidence.queue.settledLivenessProbe
+    ) {
+      throw new Error("Authenticated stored-memory Queue evidence was not captured.");
+    }
+    if (
+      hotPathEvidence.cleanupWakes.length === 0 ||
+      hotPathEvidence.cleanupWakes.some((entry) => !entry.settledLivenessProbe)
+    ) {
+      throw new Error("Authenticated cleanup Queue liveness evidence was not captured.");
+    }
+    hotPathEvidence.queue = evaluateAuthenticatedMemoryQueueTail(finalVersionTailOutput, {
+      authenticatedValidationVersionId: expectedVersion,
+      userId: storedMemoryUserId,
+      captureOutputOffset: hotPathEvidence.queue.captureOutputOffset,
+      observationEndedAt: hotPathEvidence.queue.observationEndedAt ?? undefined,
+      successObservedAt: hotPathEvidence.queue.successObservedAt ?? undefined,
+      settledLivenessProbe: hotPathEvidence.queue.settledLivenessProbe ?? undefined,
+      tailDiagnostics: finalVersionTailDiagnostics,
+      tailOutputClosed: true,
+    });
+    hotPathEvidence.cleanupWakes = hotPathEvidence.cleanupWakes.map((entry) =>
+      evaluateAuthenticatedMemoryVectorCleanupQueueTail(finalVersionTailOutput, {
+        authenticatedValidationVersionId: expectedVersion,
+        captureOutputOffset: entry.captureOutputOffset,
+        reason: entry.reason,
+        observationEndedAt: entry.observationEndedAt ?? undefined,
+        successObservedAt: entry.successObservedAt ?? undefined,
+        settledLivenessProbe: entry.settledLivenessProbe ?? undefined,
+        tailDiagnostics: finalVersionTailDiagnostics,
+        tailOutputClosed: true,
+      })
+    );
+    const cleanupAggregate = evaluateAuthenticatedMemoryQueueResourceWindow(
+      finalVersionTailOutput,
+      {
+        authenticatedValidationVersionId: expectedVersion,
+        captureOutputOffset: cleanupValidationOutputOffset,
+        tailDiagnostics: finalVersionTailDiagnostics,
+        tailOutputClosed: true,
+      },
+    );
+    hotPathEvidence.cleanupAggregate = cleanupAggregate;
+    const evaluation = evaluateAuthenticatedMutationTail(
+      finalHttpTailOutput,
+      traces,
+      expectedVersion,
+      {
+        tailDiagnostics: finalHttpTailDiagnostics,
+        tailOutputClosed: true,
+      },
+    );
+    if (!semanticTrace || !hotPathEvidence.semantic) {
+      throw new Error("Authenticated semantic retrieval evidence was not captured.");
+    }
+    hotPathEvidence.semantic = evaluateAuthenticatedSemanticRetrievalTail(
+      finalHttpTailOutput,
+      {
+        authenticatedValidationVersionId: expectedVersion,
+        trace: semanticTrace,
+        tailDiagnostics: finalHttpTailDiagnostics,
+        tailOutputClosed: true,
+      },
+    );
+    requireActiveDeployment(wrangler, expectedVersion);
     const report = {
       kind: "authenticated-production-mutation-validation-v2",
       createdAt: new Date().toISOString(),
       ok:
         evaluation.ok &&
+        flow.adminUsersMutationVerified &&
+        flow.adminTopicsMutationVerified &&
         flow.cleanupVerified &&
         flow.queueStored &&
         flow.knownVectorPresentBeforeRecall &&
@@ -412,10 +653,19 @@ async function main() {
         flow.sourceChatDeleted &&
         flow.knownVectorAbsentAfterCleanup &&
         hotPathEvidence.queue?.ok === true &&
-        hotPathEvidence.semantic?.ok === true,
+        hotPathEvidence.semantic?.ok === true &&
+        hotPathEvidence.cleanupWakes.length > 0 &&
+        hotPathEvidence.cleanupWakes.every((entry) => entry.ok) &&
+        cleanupAggregate.ok,
       workerName,
       expectedVersion,
+      runId,
       authenticatedValidationVersionId: expectedVersion,
+      cleanupValidationStartedAt,
+      cleanupValidationStartedAtIso: new Date(cleanupValidationStartedAt).toISOString(),
+      cleanupValidationOutputOffset,
+      initialLivenessProbe,
+      settledLivenessProbe,
       evidenceVersionRole: "authenticated-validation-version",
       releaseBinding: {
         candidateVersionId,
@@ -428,8 +678,12 @@ async function main() {
       traces,
       tail: evaluation,
       storedMemoryQueueTail: hotPathEvidence.queue,
+      vectorCleanupQueueTail: cleanupAggregate,
+      vectorCleanupWakeTail: hotPathEvidence.cleanupWakes,
       semanticRetrievalTail: hotPathEvidence.semantic,
       outcomes: {
+        adminUsersMutationVerified: flow.adminUsersMutationVerified,
+        adminTopicsMutationVerified: flow.adminTopicsMutationVerified,
         chatFinalized: flow.chatFinalized,
         profileMutationVerified: flow.profileMutationVerified,
         spanishActivityBundleVerified: flow.spanishActivityBundleVerified,
@@ -444,6 +698,7 @@ async function main() {
         semanticTurnHydrated: flow.semanticTurnHydrated,
         sourceChatDeleted: flow.sourceChatDeleted,
         knownVectorAbsentAfterCleanup: flow.knownVectorAbsentAfterCleanup,
+        cleanupQueueInvocationsVerified: cleanupAggregate.matchedEvents,
         cleanupVerified: flow.cleanupVerified,
         sharedGlobalAiBudgetCalls: 7,
       },
@@ -458,6 +713,8 @@ async function main() {
         `Authenticated mutation validation failed (${[
           ...evaluation.problems,
           ...(hotPathEvidence.queue?.problems ?? []),
+          ...cleanupAggregate.problems,
+          ...hotPathEvidence.cleanupWakes.flatMap((entry) => entry.problems),
           ...(hotPathEvidence.semantic?.problems ?? []),
         ].join("; ") || "cleanup residue"}).`,
       );
@@ -472,6 +729,7 @@ async function main() {
         0,
         ...evaluation.samples.map((sample) => sample.cpuTimeMs ?? 0),
         hotPathEvidence.queue?.cpuTimeMs ?? 0,
+        cleanupAggregate.maximumCpuTimeMs ?? 0,
         hotPathEvidence.semantic?.cpuTimeMs ?? 0,
       ),
       reportPath,
@@ -479,12 +737,16 @@ async function main() {
   } finally {
     const shutdownErrors: Error[] = [];
     for (const entry of [
-      { tail: httpTail, closed: httpCapture.closed },
-      { tail: versionTail, closed: versionCapture.closed },
+      { tail: httpTail, capture: httpCapture },
+      { tail: versionTail, capture: versionCapture },
     ]) {
       if (hasChildExited(entry.tail)) continue;
       try {
-        await stopTail(entry.tail, entry.closed);
+        entry.capture.beginIntentionalShutdown();
+        if (!await stopTail(entry.tail, entry.capture.closed)) {
+          entry.capture.cancelIntentionalShutdown();
+          throw new Error("Wrangler JSON tail exited before intentional shutdown.");
+        }
       } catch (error) {
         shutdownErrors.push(error instanceof Error ? error : new Error("Wrangler tail shutdown failed."));
       }
@@ -523,6 +785,8 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   let sourceChatDeleted = false;
   let knownVectorAbsentAfterCleanup = false;
   let cleanupVerified = false;
+  let adminUsersMutationVerified = false;
+  let adminTopicsMutationVerified = false;
 
   const request = async (
     label: string,
@@ -550,6 +814,7 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     const trace = {
       label,
       probe,
+      origin: url.origin,
       requestKey: `${url.pathname}${url.search}`,
       routeTemplate: normalizeAuthenticatedMutationRoute(url.pathname),
       method: init.method ?? "GET",
@@ -612,6 +877,199 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
       user.email !== expectedIdentity.email
     ) {
       throw new Error("Disposable authentication did not return a non-admin isolated user.");
+    }
+
+    const grantResponse = await request(
+      "grant-disposable-admin",
+      "/api/migration/e2e-auth",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-migration-e2e-auth-secret": options.authSecret,
+        },
+        body: mutationBody("grant-disposable-admin", expectedIdentity.userId),
+      },
+    );
+    const grant = assertAuthenticatedMutationResponseProof(
+      grantResponse.value,
+      {
+        candidateVersionId: options.expectedVersion,
+        runId: options.runId,
+        runtimeVersionId: options.expectedVersion,
+      },
+      "disposable admin grant",
+    ).payload;
+    const grantBefore = exactDisposableInventory(grant.before);
+    const grantAfter = exactDisposableInventory(grant.after);
+    const grantedAdmin = requiredRecord(grant.admin, "disposable admin grant row");
+    if (
+      grant.ok !== true ||
+      grantBefore.admin_users !== 0 ||
+      grantBefore.topics !== 0 ||
+      grantAfter.admin_users !== 1 ||
+      grantAfter.topics !== 0 ||
+      grantedAdmin.email !== expectedIdentity.email ||
+      grantedAdmin.addedByUserId !== expectedIdentity.userId ||
+      grantedAdmin.addedByEmail !== expectedIdentity.email ||
+      grantedAdmin.source !== "database" ||
+      !isIsoTimestamp(grantedAdmin.createdAt)
+    ) {
+      throw new Error("Disposable admin grant did not preserve its exact isolated contract.");
+    }
+
+    const adminUpsert = requiredRecord((await request(
+      "admin-users-upsert",
+      "/api/admin/users",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: expectedIdentity.email }),
+      },
+    )).value, "admin users upsert");
+    const upsertedAdmin = requiredRecord(adminUpsert.admin, "admin users upsert row");
+    if (
+      upsertedAdmin.email !== expectedIdentity.email ||
+      upsertedAdmin.addedByUserId !== expectedIdentity.userId ||
+      upsertedAdmin.addedByEmail !== expectedIdentity.email ||
+      upsertedAdmin.source !== "database" ||
+      !isIsoTimestamp(upsertedAdmin.createdAt)
+    ) {
+      throw new Error("Admin users success path returned the wrong disposable grant.");
+    }
+
+    const topicFixture = disposableAdminTopicFixture(expectedIdentity);
+    const adminTopicResponse = requiredRecord((await request(
+      "admin-topics-create",
+      "/api/admin/topics",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: topicFixture.name,
+          subText: topicFixture.subText,
+          description: topicFixture.description,
+          inputboxText: topicFixture.inputboxText,
+          systemPrompt: topicFixture.systemPrompt,
+        }),
+      },
+    )).value, "admin topic creation");
+    const adminTopic = requiredRecord(adminTopicResponse.topic, "admin topic row");
+    const adminTopicId = requiredUuid(adminTopic.id, "admin topic ID");
+    const adminTopicMetadata = requiredRecord(adminTopic.metadata, "admin topic metadata");
+    if (
+      adminTopic.slug !== topicFixture.slug ||
+      adminTopic.name !== topicFixture.name ||
+      adminTopic.subText !== topicFixture.subText ||
+      adminTopic.description !== topicFixture.description ||
+      adminTopic.inputboxText !== topicFixture.inputboxText ||
+      adminTopic.systemPrompt !== topicFixture.systemPrompt ||
+      adminTopic.iconUrl !== null ||
+      adminTopic.sortOrder !== 100 ||
+      adminTopic.status !== "active" ||
+      Object.keys(adminTopicMetadata).length !== 0 ||
+      !isIsoTimestamp(adminTopic.createdAt) ||
+      adminTopic.updatedAt !== adminTopic.createdAt
+    ) {
+      throw new Error("Admin topics success path returned the wrong disposable topic.");
+    }
+
+    const accountTopics = requiredRecord((await request(
+      "admin-topic-account-readback",
+      "/api/account/topics",
+      { method: "GET" },
+    )).value, "admin topic account readback");
+    const matchingTopics = requiredArray(accountTopics.topics, "admin topic account rows")
+      .flatMap((value) => {
+        const topic = optionalRecord(value);
+        return topic?.id === adminTopicId && topic.slug === topicFixture.slug ? [topic] : [];
+      });
+    const readbackTopic = matchingTopics[0];
+    const readbackMetadata = requiredRecord(
+      readbackTopic?.metadata,
+      "admin topic account readback metadata",
+    );
+    if (
+      matchingTopics.length !== 1 ||
+      readbackTopic?.name !== topicFixture.name ||
+      readbackTopic.subText !== topicFixture.subText ||
+      readbackTopic.description !== topicFixture.description ||
+      readbackTopic.inputboxText !== topicFixture.inputboxText ||
+      readbackTopic.iconUrl !== null ||
+      readbackTopic.sortOrder !== 100 ||
+      Object.keys(readbackMetadata).length !== 0
+    ) {
+      throw new Error("Disposable admin topic did not survive independent account-topic readback.");
+    }
+
+    const topicCleanupResponse = await request(
+      "cleanup-disposable-topic",
+      "/api/migration/e2e-auth",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-migration-e2e-auth-secret": options.authSecret,
+        },
+        body: mutationBody("cleanup-disposable-topic", expectedIdentity.userId),
+      },
+    );
+    const topicCleanup = assertAuthenticatedMutationResponseProof(
+      topicCleanupResponse.value,
+      {
+        candidateVersionId: options.expectedVersion,
+        runId: options.runId,
+        runtimeVersionId: options.expectedVersion,
+      },
+      "disposable topic cleanup",
+    ).payload;
+    const cleanedTopic = requiredRecord(topicCleanup.topic, "cleaned disposable topic");
+    const topicCleanupBefore = exactDisposableInventory(topicCleanup.before);
+    const topicCleanupAfter = exactDisposableInventory(topicCleanup.after);
+    adminTopicsMutationVerified =
+      topicCleanup.ok === true &&
+      cleanedTopic.id === adminTopicId &&
+      cleanedTopic.slug === topicFixture.slug &&
+      topicCleanupBefore.topics === 1 &&
+      topicCleanupAfter.topics === 0 &&
+      topicCleanupAfter.admin_users === 1;
+    if (!adminTopicsMutationVerified) {
+      throw new Error("Disposable admin topic was not exact-read and immediately cleaned.");
+    }
+
+    const adminDelete = requiredRecord((await request(
+      "admin-users-delete",
+      `/api/admin/users?email=${encodeURIComponent(expectedIdentity.email)}`,
+      { method: "DELETE" },
+    )).value, "admin users delete");
+    const adminInventoryResponse = await request(
+      "verify-admin-cleanup-inventory",
+      "/api/migration/e2e-auth",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-migration-e2e-auth-secret": options.authSecret,
+        },
+        body: mutationBody("verify-disposable-cleanup", expectedIdentity.userId),
+      },
+    );
+    const adminInventoryProof = assertAuthenticatedMutationResponseProof(
+      adminInventoryResponse.value,
+      {
+        candidateVersionId: options.expectedVersion,
+        runId: options.runId,
+        runtimeVersionId: options.expectedVersion,
+      },
+      "disposable admin cleanup inventory",
+    ).payload;
+    const adminInventory = exactDisposableInventory(adminInventoryProof.inventory);
+    adminUsersMutationVerified =
+      adminDelete.ok === true &&
+      adminInventory.admin_users === 0 &&
+      adminInventory.topics === 0;
+    if (!adminUsersMutationVerified) {
+      throw new Error("Admin users delete did not revoke the disposable grant.");
     }
 
     const me = requiredRecord((await request("profile", "/api/me", { method: "GET" })).value, "profile");
@@ -1122,6 +1580,8 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     throw new AggregateError(failures, "Authenticated mutation flow did not complete safely.");
   }
   return {
+    adminUsersMutationVerified,
+    adminTopicsMutationVerified,
     chatFinalized,
     profileMutationVerified,
     spanishActivityBundleVerified,
@@ -1244,10 +1704,22 @@ export function resolveAuthenticatedMemoryRecoveryVersion(input: {
 export function evaluateAuthenticatedMutationTail(
   source: string,
   expected: readonly AuthenticatedMutationTrace[],
+  authenticatedValidationVersionId: string,
+  input: {
+    tailDiagnostics?: string;
+    tailOutputClosed?: boolean;
+  } = {},
 ): AuthenticatedMutationTailEvaluation {
-  const invocations = extractJsonObjects(source).flatMap((value) => {
+  const parsed = parseTailJsonStream(source, input.tailOutputClosed !== false);
+  const problems: string[] = [];
+  if (parsed.problem) problems.push(parsed.problem);
+  if (authenticatedTailCaptureHasLoss(parsed.records, input.tailDiagnostics ?? "")) {
+    problems.push("tail-capture-loss");
+  }
+  const invocations = parsed.records.flatMap((value) => {
     const record = optionalRecord(value);
     const event = optionalRecord(record?.event);
+    const fetchEvent = parseAuthenticatedTailFetchEvent(event);
     const request = optionalRecord(event?.request);
     const response = optionalRecord(event?.response);
     if (typeof request?.url !== "string") return [];
@@ -1257,22 +1729,43 @@ export function evaluateAuthenticatedMutationTail(
     } catch {
       return [];
     }
-    const exceptions = Array.isArray(record?.exceptions) ? record.exceptions : [];
+    const exceptions = Array.isArray(record?.exceptions) ? record.exceptions : null;
+    const scriptVersion = optionalRecord(record?.scriptVersion);
+    const logArrayValid = authenticatedTailLogsHaveValidShape(record?.logs);
+    const logs = logArrayValid && Array.isArray(record?.logs) ? record.logs : [];
+    const warningOrErrorLogCount = logs.filter((value) => {
+      const level = authenticatedTailLogLevel(value);
+      return level === "warn" || level === "error";
+    }).length;
     return [{
       probe: url.searchParams.get(mutationProbeParameter),
+      origin: url.origin,
       requestKey: `${url.pathname}${url.search}`,
+      urlEnvelopeValid: url.username === "" &&
+        url.password === "" &&
+        url.hash === "",
+      eventShapeValid: fetchEvent !== null,
       path: url.pathname,
       routeTemplate: normalizeAuthenticatedMutationRoute(url.pathname),
       method: typeof request.method === "string" ? request.method : null,
       status: finiteNumber(response?.status),
       outcome: typeof record?.outcome === "string" ? record.outcome : null,
       cpuTimeMs: finiteNumber(record?.cpuTime),
-      exceptionCount: exceptions.length,
+      wallTimeMs: finiteNumber(record?.wallTime),
+      eventTimestamp: nonNegativeSafeInteger(record?.eventTimestamp),
+      scriptName: typeof record?.scriptName === "string" ? record.scriptName : null,
+      scriptVersionId: typeof scriptVersion?.id === "string" ? scriptVersion.id : null,
+      truncated: typeof record?.truncated === "boolean" ? record.truncated : null,
+      exceptionCount: exceptions?.length ?? null,
+      logArrayValid,
+      warningOrErrorLogCount,
     }];
   });
   const samples: AuthenticatedMutationTailSample[] = [];
-  const problems: string[] = [];
-  if (/exceededCpu|exceededMemory|Dummy queue is not implemented/i.test(source)) {
+  if (parsed.records.some((value) => {
+    const outcome = optionalRecord(value)?.outcome;
+    return typeof outcome === "string" && /^(?:exceededCpu|exceededMemory)$/i.test(outcome);
+  })) {
     problems.push("forbidden-resource-event");
   }
   for (const trace of expected) {
@@ -1289,14 +1782,39 @@ export function evaluateAuthenticatedMutationTail(
     };
     samples.push(sample);
     if (invocation.routeTemplate !== trace.routeTemplate) problems.push(`${trace.label}:tail-route`);
+    if (!invocation.urlEnvelopeValid) problems.push(`${trace.label}:tail-url-envelope`);
+    if (!invocation.eventShapeValid) problems.push(`${trace.label}:tail-event-shape`);
+    if (invocation.origin !== trace.origin) problems.push(`${trace.label}:tail-origin`);
+    const redactedRequestKey = authenticatedMutationRedactedRequestKey(trace.requestKey);
+    if (
+      invocation.requestKey !== trace.requestKey &&
+      invocation.requestKey !== redactedRequestKey
+    ) {
+      problems.push(`${trace.label}:tail-request-key`);
+    }
     if (invocation.method !== trace.method) problems.push(`${trace.label}:tail-method`);
     if (invocation.status !== trace.status) problems.push(`${trace.label}:tail-status`);
+    if (invocation.scriptName !== workerName) problems.push(`${trace.label}:script`);
+    if (invocation.scriptVersionId !== authenticatedValidationVersionId) {
+      problems.push(`${trace.label}:version`);
+    }
+    if (invocation.truncated !== false) problems.push(`${trace.label}:truncated`);
     if (invocation.outcome !== "ok") problems.push(`${trace.label}:outcome`);
     if (invocation.exceptionCount !== 0) problems.push(`${trace.label}:exception`);
+    if (!invocation.logArrayValid) problems.push(`${trace.label}:log-shape`);
+    if (invocation.warningOrErrorLogCount !== 0) {
+      problems.push(`${trace.label}:warning-or-error-log`);
+    }
     if (invocation.cpuTimeMs === null) problems.push(`${trace.label}:missing-cpu`);
     else if (invocation.cpuTimeMs < 0) problems.push(`${trace.label}:cpu<0`);
     else if (invocation.cpuTimeMs >= authenticatedMutationCpuThresholdMs) {
       problems.push(`${trace.label}:cpu>=${authenticatedMutationCpuThresholdMs}`);
+    }
+    if (invocation.wallTimeMs === null || invocation.wallTimeMs < 0) {
+      problems.push(`${trace.label}:missing-or-negative-wall-time`);
+    }
+    if (invocation.eventTimestamp === null) {
+      problems.push(`${trace.label}:invalid-event-timestamp`);
     }
   }
   return { ok: problems.length === 0, samples, problems };
@@ -1307,25 +1825,40 @@ export function evaluateAuthenticatedMemoryQueueTail(
   input: {
     authenticatedValidationVersionId: string;
     userId: string;
-    captureStartedAt?: number;
+    captureOutputOffset?: number;
+    observationEndedAt?: number;
+    successObservedAt?: number;
+    settledLivenessProbe?: string;
+    tailDiagnostics?: string;
+    tailOutputClosed?: boolean;
   },
 ): AuthenticatedMemoryQueueTailEvaluation {
-  const problems: string[] = [];
-  const queueRecords = extractJsonObjects(source).flatMap((value) => {
+  const captureOutputOffset = input.captureOutputOffset ?? 0;
+  const resourceWindow = evaluateAuthenticatedMemoryQueueResourceWindow(source, {
+    authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    captureOutputOffset,
+    tailDiagnostics: input.tailDiagnostics,
+    tailOutputClosed: input.tailOutputClosed,
+  });
+  const problems = new Set(resourceWindow.problems);
+  const parsed = parseAuthenticatedTailWindow(
+    source,
+    captureOutputOffset,
+    input.tailOutputClosed !== false,
+  );
+  const queueRecords = parsed.records.flatMap((value) => {
     const record = optionalRecord(value);
     const event = optionalRecord(record?.event);
-    if (!record || !event || !hasExactRecordKeys(event, ["batchSize", "queue"])) return [];
-    if (event.queue !== MEMORY_POST_TURN_QUEUE_NAME) return [];
+    if (!record) return [];
     const logs = structuredTailLogRecords(record.logs);
     const correlated = logs.some((log) =>
       log.userId === input.userId &&
-      log.type === "memory.post_turn.v2" &&
-      typeof log.event === "string" &&
-      log.event.startsWith("native_memory_queue_")
+      log.type === "memory.post_turn.v2"
     );
+    if (event?.queue !== MEMORY_POST_TURN_QUEUE_NAME && !correlated) return [];
     return correlated ? [{ record, event, logs }] : [];
   });
-  if (queueRecords.length !== 1) problems.push(`matched-events=${queueRecords.length}`);
+  if (queueRecords.length !== 1) problems.add(`matched-events=${queueRecords.length}`);
   const match = queueRecords.length === 1 ? queueRecords[0] : undefined;
   const record = match?.record;
   const event = match?.event;
@@ -1335,50 +1868,665 @@ export function evaluateAuthenticatedMemoryQueueTail(
   const processed = logs.filter((log) =>
     log.event === "native_memory_queue_processed" &&
     log.type === "memory.post_turn.v2" &&
-    log.userId === input.userId &&
-    log.outcome === "stored"
+    log.userId === input.userId
   );
   const indexed = logs.filter((log) => log.event === "native_memory_vectors_indexed");
-  const indexedVectorCount = indexed.length === 1
-    ? nonNegativeSafeInteger(indexed[0]?.count)
-    : null;
+  const storedLogValid = processed.length === 1 &&
+    validStoredMemoryProcessedLog(processed[0], input.userId);
+  const indexedLogValid = indexed.length === 1 && validStoredMemoryIndexedLog(indexed[0]);
+  const indexedVectorCount = indexedLogValid ? nonNegativeSafeInteger(indexed[0]?.count) : null;
 
   if (record) {
-    if (record.scriptName !== workerName) problems.push("wrong-script");
+    if (record.scriptName !== workerName) problems.add("wrong-script");
     if (scriptVersion?.id !== input.authenticatedValidationVersionId) {
-      problems.push("wrong-authenticated-validation-version");
+      problems.add("wrong-authenticated-validation-version");
     }
-    if (record.outcome !== "ok") problems.push("outcome");
-    if (record.truncated !== false) problems.push("truncated");
+    if (record.outcome !== "ok") problems.add("outcome");
+    if (record.truncated !== false) problems.add("truncated");
     if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
-      problems.push("exceptions");
+      problems.add("exceptions");
     }
-    if (cpuTimeMs === null || cpuTimeMs < 0) problems.push("missing-or-negative-cpu");
-    else if (cpuTimeMs >= authenticatedMutationCpuThresholdMs) problems.push("cpu>=8");
-    const eventTimestamp = finiteNumber(record.eventTimestamp);
-    if (
-      input.captureStartedAt !== undefined &&
-      (eventTimestamp === null || eventTimestamp < input.captureStartedAt)
-    ) {
-      problems.push("stale-event-timestamp");
-    }
-    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.push("failure-log");
+    if (cpuTimeMs === null || cpuTimeMs < 0) problems.add("missing-or-negative-cpu");
+    else if (cpuTimeMs >= authenticatedMutationCpuThresholdMs) problems.add("cpu>=8");
+    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.add("failure-log");
   }
-  if (event?.batchSize !== 1) problems.push("queue-batch-size");
-  if (processed.length !== 1) problems.push(`stored-log-count=${processed.length}`);
-  if (indexed.length !== 1) problems.push(`indexed-log-count=${indexed.length}`);
+  if (event && event.batchSize !== 1) problems.add("queue-batch-size");
+  if (processed.length !== 1) problems.add(`stored-log-count=${processed.length}`);
+  else if (!storedLogValid) problems.add("malformed-stored-log");
+  if (indexed.length !== 1) problems.add(`indexed-log-count=${indexed.length}`);
+  else if (!indexedLogValid) problems.add("malformed-indexed-log");
   if (indexedVectorCount === null || indexedVectorCount < 1) {
-    problems.push("indexed-vector-count");
+    problems.add("indexed-vector-count");
   }
+  const contentProblems = [...problems];
+  const successfulEvents = queueRecords.length === 1 && contentProblems.length === 0 ? 1 : 0;
+  const quietWindow = authenticatedLocalQuietWindow(input);
+  for (const problem of quietWindow.problems) problems.add(problem);
+  const settledLivenessProbe = input.settledLivenessProbe ?? null;
+  if (
+    input.settledLivenessProbe !== undefined &&
+    !authenticatedTailHasReadinessProbe(
+      source.slice(captureOutputOffset),
+      input.settledLivenessProbe,
+      input.authenticatedValidationVersionId,
+      input.tailOutputClosed !== false,
+    )
+  ) {
+    problems.add("settled-liveness-marker");
+  }
+  const nonFatalProblems = new Set([
+    "matched-events=0",
+    "stored-log-count=0",
+    "indexed-log-count=0",
+    "indexed-vector-count",
+  ]);
+  const fatal = [...problems].some((problem) => !nonFatalProblems.has(problem));
+  const settled = !fatal && successfulEvents === 1 && quietWindow.settled;
+  if (successfulEvents === 1 && !settled && !fatal) {
+    problems.add("queue-observation-not-settled");
+  }
+  const exactProblems = [...problems];
 
   return {
-    ok: problems.length === 0,
+    ok: settled && exactProblems.length === 0,
+    fatal,
+    settled,
     authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    captureOutputOffset,
+    observationEndedAt: quietWindow.observationEndedAt,
+    successObservedAt: quietWindow.successObservedAt,
+    settledLivenessProbe,
     matchedEvents: queueRecords.length,
+    successfulEvents,
     cpuTimeMs,
     indexedVectorCount,
+    problems: exactProblems,
+  };
+}
+
+export function evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+  source: string,
+  input: {
+    authenticatedValidationVersionId: string;
+    captureOutputOffset?: number;
+    reason: string;
+    observationEndedAt?: number;
+    successObservedAt?: number;
+    settledLivenessProbe?: string;
+    tailDiagnostics?: string;
+    tailOutputClosed?: boolean;
+  },
+): AuthenticatedMemoryVectorCleanupQueueTailEvaluation {
+  const captureOutputOffset = input.captureOutputOffset ?? 0;
+  const resourceWindow = evaluateAuthenticatedMemoryQueueResourceWindow(source, {
+    ...input,
+    captureOutputOffset,
+  });
+  const fatalProblems = new Set(
+    resourceWindow.problems.filter((problem) => problem !== "matched-events=0"),
+  );
+  if (!/^[a-z0-9-]{1,80}$/.test(input.reason)) fatalProblems.add("invalid-cleanup-reason");
+
+  const parsed = parseAuthenticatedTailWindow(
+    source,
+    captureOutputOffset,
+    input.tailOutputClosed !== false,
+  );
+  const queueRecords = parsed.records.flatMap((value, sourceOrder) => {
+    const record = optionalRecord(value);
+    const event = optionalRecord(record?.event);
+    if (!record) return [];
+    const eventTimestamp = nonNegativeSafeInteger(record.eventTimestamp);
+    const logs = structuredTailLogRecords(record.logs);
+    const starts = logs.filter((log) =>
+      log.event === "native_memory_vector_cleanup_started" && log.reason === input.reason
+    );
+    const terminals = logs.filter((log) =>
+      log.reason === input.reason &&
+      (log.event === "native_memory_queue_processed" ||
+        log.event === "native_memory_vector_cleanup_lease_deferred" ||
+        log.event === "native_memory_queue_failed")
+    );
+    if (
+      event?.queue !== MEMORY_POST_TURN_QUEUE_NAME &&
+      starts.length === 0 &&
+      terminals.length === 0
+    ) return [];
+    return starts.length > 0 || terminals.length > 0
+      ? [{ record, logs, starts, terminals, eventTimestamp, sourceOrder }]
+      : [];
+  });
+
+  let processedEvents = 0;
+  let deferredEvents = 0;
+  let failedEvents = 0;
+  const correlatedSamples: Array<{
+    sample: AuthenticatedMemoryVectorCleanupQueueTailSample;
+    sourceOrder: number;
+  }> = [];
+  for (const { record, starts, terminals, eventTimestamp, sourceOrder } of queueRecords) {
+    const cpuTimeMs = finiteNumber(record.cpuTime);
+    processedEvents += terminals.filter((log) => log.event === "native_memory_queue_processed").length;
+    deferredEvents += terminals.filter(
+      (log) => log.event === "native_memory_vector_cleanup_lease_deferred",
+    ).length;
+    failedEvents += terminals.filter((log) => log.event === "native_memory_queue_failed").length;
+
+    const start = starts.length === 1 ? starts[0] : undefined;
+    const terminalLog = terminals.length === 1 ? terminals[0] : undefined;
+    if (starts.length !== 1) fatalProblems.add(`cleanup-start-log-count=${starts.length}`);
+    if (terminals.length !== 1) {
+      fatalProblems.add(`cleanup-terminal-log-count=${terminals.length}`);
+    }
+    if (start && !validVectorCleanupStartLog(start, input.reason)) {
+      fatalProblems.add("malformed-cleanup-start-log");
+    }
+
+    let terminal: AuthenticatedMemoryVectorCleanupQueueTailSample["terminal"] =
+      terminals.length === 0 ? "missing" : terminals.length > 1 ? "multiple" : "missing";
+    let pending: number | null = null;
+    let nextDelaySeconds: number | null = null;
+    if (terminalLog?.event === "native_memory_queue_processed") {
+      terminal = "processed";
+      const outcome = parsedProcessedVectorCleanupOutcome(terminalLog, input.reason);
+      if (!outcome) fatalProblems.add("malformed-cleanup-processed-log");
+      else {
+        pending = outcome.pending;
+        nextDelaySeconds = outcome.nextDelaySeconds;
+      }
+    } else if (terminalLog?.event === "native_memory_vector_cleanup_lease_deferred") {
+      terminal = "deferred";
+      if (!validDeferredVectorCleanupLog(terminalLog, input.reason)) {
+        fatalProblems.add("malformed-cleanup-deferred-log");
+      } else {
+        nextDelaySeconds = nonNegativeSafeInteger(terminalLog.delaySeconds);
+      }
+    } else if (terminalLog?.event === "native_memory_queue_failed") {
+      terminal = "failed";
+      fatalProblems.add("failure-log");
+      if (!validFailedVectorCleanupLog(terminalLog, input.reason)) {
+        fatalProblems.add("malformed-cleanup-failed-log");
+      }
+    }
+
+    const startMessageId = isNonEmptyString(start?.messageId) ? start.messageId : null;
+    const terminalMessageId = isNonEmptyString(terminalLog?.messageId)
+      ? terminalLog.messageId
+      : null;
+    const startAttempts = positiveSafeInteger(start?.attempts) ? start.attempts : null;
+    const terminalAttempts = positiveSafeInteger(terminalLog?.attempts)
+      ? terminalLog.attempts
+      : null;
+    if (
+      start && terminalLog &&
+      (startMessageId === null || terminalMessageId !== startMessageId ||
+        startAttempts === null || terminalAttempts !== startAttempts)
+    ) {
+      fatalProblems.add("cleanup-start-terminal-identity");
+    }
+    correlatedSamples.push({
+      sourceOrder,
+      sample: {
+        reason: input.reason,
+        messageId: startMessageId ?? terminalMessageId,
+        attempts: startAttempts ?? terminalAttempts,
+        eventTimestamp,
+        outcome: typeof record.outcome === "string" ? record.outcome : null,
+        cpuTimeMs,
+        terminal,
+        pending,
+        nextDelaySeconds,
+      },
+    });
+  }
+
+  correlatedSamples.sort((left, right) => left.sourceOrder - right.sourceOrder);
+  const samples = correlatedSamples.map(({ sample }) => sample);
+  const lastAttemptByMessageId = new Map<string, number>();
+  for (const [index, sample] of samples.entries()) {
+    if (!sample.messageId || sample.attempts === null) {
+      fatalProblems.add("cleanup-attempt-sequence");
+      continue;
+    }
+    const previous = lastAttemptByMessageId.get(sample.messageId);
+    if (
+      (previous === undefined && sample.attempts !== 1) ||
+      (previous !== undefined && sample.attempts !== previous + 1)
+    ) {
+      fatalProblems.add("cleanup-attempt-sequence");
+    }
+    lastAttemptByMessageId.set(sample.messageId, sample.attempts);
+    const previousSample = samples[index - 1];
+    if (!previousSample) continue;
+    if (previousSample.terminal === "processed" && previousSample.pending === 0) {
+      fatalProblems.add("cleanup-event-after-settlement");
+    } else if (
+      previousSample.terminal === "deferred" &&
+      (sample.messageId !== previousSample.messageId ||
+        sample.attempts !== (previousSample.attempts ?? 0) + 1)
+    ) {
+      fatalProblems.add("cleanup-retry-discontinuity");
+    } else if (
+      previousSample.terminal === "processed" &&
+      previousSample.pending === 1 &&
+      (sample.messageId === previousSample.messageId || sample.attempts !== 1)
+    ) {
+      fatalProblems.add("cleanup-continuation-discontinuity");
+    }
+  }
+  const quietWindow = authenticatedLocalQuietWindow(input);
+  for (const problem of quietWindow.problems) fatalProblems.add(problem);
+  const settledLivenessProbe = input.settledLivenessProbe ?? null;
+  if (
+    input.settledLivenessProbe !== undefined &&
+    !authenticatedTailHasReadinessProbe(
+      source.slice(captureOutputOffset),
+      input.settledLivenessProbe,
+      input.authenticatedValidationVersionId,
+      input.tailOutputClosed !== false,
+    )
+  ) {
+    fatalProblems.add("settled-liveness-marker");
+  }
+  const fatal = fatalProblems.size > 0;
+  const latest = samples.at(-1);
+  const chainComplete = !fatal &&
+    latest?.terminal === "processed" &&
+    latest.pending === 0 &&
+    latest.nextDelaySeconds === null;
+  const settled = chainComplete && quietWindow.settled;
+  const problems = [...fatalProblems];
+  if (samples.length === 0) problems.push("matched-events=0");
+  if (!chainComplete) problems.push("cleanup-chain-not-settled");
+  else if (!settled) problems.push("cleanup-observation-not-settled");
+  return {
+    ok: settled && problems.length === 0,
+    fatal,
+    settled,
+    chainComplete,
+    reason: input.reason,
+    captureOutputOffset,
+    observationEndedAt: quietWindow.observationEndedAt,
+    successObservedAt: quietWindow.successObservedAt,
+    settledLivenessProbe,
+    authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    matchedEvents: samples.length,
+    processedEvents,
+    deferredEvents,
+    failedEvents,
+    maximumCpuTimeMs: resourceWindow.maximumCpuTimeMs,
+    samples,
     problems,
   };
+}
+
+export function evaluateAuthenticatedMemoryQueueResourceWindow(
+  source: string,
+  input: {
+    authenticatedValidationVersionId: string;
+    captureOutputOffset?: number;
+    tailDiagnostics?: string;
+    tailOutputClosed?: boolean;
+  },
+): AuthenticatedMemoryQueueResourceWindowEvaluation {
+  const problems = new Set<string>();
+  const captureOutputOffset = input.captureOutputOffset ?? 0;
+  const parsed = parseAuthenticatedTailWindow(
+    source,
+    captureOutputOffset,
+    input.tailOutputClosed !== false,
+  );
+  if (parsed.offsetProblem) problems.add(parsed.offsetProblem);
+  if (parsed.problem) problems.add(parsed.problem);
+  const fullCapture = parseTailJsonStream(source, input.tailOutputClosed !== false);
+  if (fullCapture.problem) problems.add(fullCapture.problem);
+  const tailCaptureLoss = authenticatedTailCaptureHasLoss(
+    fullCapture.records,
+    input.tailDiagnostics ?? "",
+  );
+  if (tailCaptureLoss) problems.add("tail-capture-loss");
+  for (const value of parsed.records) {
+    const record = optionalRecord(value);
+    if (!record) continue;
+    const event = optionalRecord(record.event);
+    const logs = structuredTailLogRecords(record.logs);
+    const memoryQueueLog = logs.some((log) =>
+      log.type === "memory.post_turn.v2" ||
+      log.type === "memory.vector_cleanup.v1" ||
+      log.type === "memory.daily_synthesis.v1"
+    );
+    const triggerLike = event !== null && [
+      "batchSize",
+      "cron",
+      "consumedEvents",
+      "getWebSocketEvent",
+      "mailFrom",
+      "queue",
+      "rawSize",
+      "rcptTo",
+      "request",
+      "response",
+      "rpcMethod",
+      "scheduledTime",
+    ].some((field) => Object.prototype.hasOwnProperty.call(event, field));
+    const invocationLike = triggerLike || memoryQueueLog || [
+      "cpuTime",
+      "eventTimestamp",
+      "exceptions",
+      "logs",
+      "outcome",
+      "scriptName",
+      "scriptVersion",
+      "truncated",
+      "wallTime",
+    ].some((field) => Object.prototype.hasOwnProperty.call(record, field));
+    if (!invocationLike) continue;
+    const fetchLike = parseAuthenticatedTailFetchEvent(event) !== null;
+    const scheduledLike = event !== null &&
+      hasExactRecordKeys(event, ["cron", "scheduledTime"]) &&
+      event.cron === "0 3 * * *" &&
+      nonNegativeSafeInteger(event.scheduledTime) !== null;
+    const queueLike = event !== null && (
+      Object.prototype.hasOwnProperty.call(event, "batchSize") ||
+      Object.prototype.hasOwnProperty.call(event, "queue")
+    );
+    if (!fetchLike && !scheduledLike && !queueLike && !memoryQueueLog) {
+      problems.add("unclassified-invocation");
+    }
+    const scriptVersion = optionalRecord(record.scriptVersion);
+    if (record.scriptName !== workerName) problems.add("wrong-script");
+    if (scriptVersion?.id !== input.authenticatedValidationVersionId) {
+      problems.add("wrong-authenticated-validation-version");
+    }
+    const cpuTimeMs = finiteNumber(record.cpuTime);
+    const wallTimeMs = finiteNumber(record.wallTime);
+    if (record.outcome !== "ok") problems.add("outcome");
+    if (record.truncated !== false) problems.add("truncated");
+    if (!Array.isArray(record.exceptions) || record.exceptions.length > 0) {
+      problems.add("exceptions");
+    }
+    if (cpuTimeMs === null || cpuTimeMs < 0) {
+      problems.add("missing-or-negative-cpu");
+    } else if (cpuTimeMs >= authenticatedMutationCpuThresholdMs) {
+      problems.add("cpu>=8");
+    }
+    if (wallTimeMs === null || wallTimeMs < 0) {
+      problems.add("missing-or-negative-wall-time");
+    }
+    if (nonNegativeSafeInteger(record.eventTimestamp) === null) {
+      problems.add("invalid-event-timestamp");
+    }
+    if (!authenticatedTailLogsHaveValidShape(record.logs)) problems.add("log-shape");
+    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.add("failure-log");
+  }
+  const cpuTimes: number[] = [];
+  let matchedEvents = 0;
+  for (const value of parsed.records) {
+    const record = optionalRecord(value);
+    const event = optionalRecord(record?.event);
+    if (!record) continue;
+    const logs = structuredTailLogRecords(record.logs);
+    const memoryQueueLog = logs.some((log) =>
+      log.type === "memory.post_turn.v2" ||
+      log.type === "memory.vector_cleanup.v1" ||
+      log.type === "memory.daily_synthesis.v1"
+    );
+    const queueLikeEvent = event !== null && (
+      Object.prototype.hasOwnProperty.call(event, "queue") ||
+      Object.prototype.hasOwnProperty.call(event, "batchSize")
+    );
+    if (!queueLikeEvent && !memoryQueueLog) continue;
+    matchedEvents += 1;
+    if (!event || !hasExactRecordKeys(event, ["batchSize", "queue"])) {
+      problems.add("queue-event-shape");
+    }
+    if (event?.queue !== MEMORY_POST_TURN_QUEUE_NAME) problems.add("queue-name");
+    const eventTimestamp = nonNegativeSafeInteger(record.eventTimestamp);
+    if (eventTimestamp === null) {
+      problems.add("invalid-event-timestamp");
+    }
+    const scriptVersion = optionalRecord(record.scriptVersion);
+    const cpuTimeMs = finiteNumber(record.cpuTime);
+    if (record.scriptName !== workerName) problems.add("wrong-script");
+    if (scriptVersion?.id !== input.authenticatedValidationVersionId) {
+      problems.add("wrong-authenticated-validation-version");
+    }
+    if (record.outcome !== "ok") problems.add("outcome");
+    if (record.truncated !== false) problems.add("truncated");
+    if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
+      problems.add("exceptions");
+    }
+    if (cpuTimeMs === null || cpuTimeMs < 0) {
+      problems.add("missing-or-negative-cpu");
+    } else {
+      cpuTimes.push(cpuTimeMs);
+      if (cpuTimeMs >= authenticatedMutationCpuThresholdMs) problems.add("cpu>=8");
+    }
+    if (event?.batchSize !== 1) problems.add("queue-batch-size");
+    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.add("failure-log");
+  }
+  if (matchedEvents === 0) problems.add("matched-events=0");
+  const exactProblems = [...problems];
+  return {
+    ok: exactProblems.length === 0,
+    authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    captureOutputOffset,
+    matchedEvents,
+    maximumCpuTimeMs: cpuTimes.length > 0 ? Math.max(...cpuTimes) : null,
+    tailCaptureLoss,
+    problems: exactProblems,
+  };
+}
+
+function authenticatedTailCaptureHasLoss(records: readonly unknown[], diagnostics = "") {
+  const controlEventLoss = records.some((value) => {
+    const event = optionalRecord(optionalRecord(value)?.event);
+    return typeof event?.type === "string" &&
+      /^(?:overload|sampling|sampled|dropped)(?:$|[-_:.])/i.test(event.type);
+  });
+  const diagnosticLoss = diagnostics
+    .replace(/\u001b\[[0-9;]*m/g, "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .some((line) =>
+      /^Tail connection lost: the Worker did not respond to a keep-alive ping within \d+ms\.$/i.test(
+        line,
+      ) ||
+      /^Tail connection lost\. Reconnecting \(attempt \d+ of \d+\)(?: in \d+(?:\.\d+)?s)?(?:\.\.\.)?$/i.test(
+        line,
+      ) ||
+      /^Unable to reconnect to the tail for .+ after \d+ attempts\./i.test(line) ||
+      /^Tail: reconnect attempt failed:/i.test(line) ||
+      /^Tail (?:is |event )?(?:sampling|sampled|dropped)(?: events?)?(?: detected)?[.!]?$/i.test(
+        line,
+      )
+    );
+  return controlEventLoss || diagnosticLoss;
+}
+
+function parseAuthenticatedTailWindow(
+  source: string,
+  captureOutputOffset: number,
+  closed: boolean,
+) {
+  if (
+    !Number.isSafeInteger(captureOutputOffset) ||
+    captureOutputOffset < 0 ||
+    captureOutputOffset > source.length
+  ) {
+    return {
+      records: [] as unknown[],
+      complete: false,
+      consumedLength: 0,
+      problem: null,
+      offsetProblem: "invalid-capture-output-offset",
+    };
+  }
+  if (captureOutputOffset > 0) {
+    const prefix = parseTailJsonStream(source.slice(0, captureOutputOffset), true);
+    if (
+      prefix.problem ||
+      !prefix.complete ||
+      prefix.consumedLength !== captureOutputOffset
+    ) {
+      return {
+        records: [] as unknown[],
+        complete: false,
+        consumedLength: 0,
+        problem: null,
+        offsetProblem: "invalid-capture-output-offset",
+      };
+    }
+  }
+  return {
+    ...parseTailJsonStream(source.slice(captureOutputOffset), closed),
+    offsetProblem: null,
+  };
+}
+
+function authenticatedLocalQuietWindow(input: {
+  observationEndedAt?: number;
+  successObservedAt?: number;
+}) {
+  const observationEndedAt = nonNegativeFiniteNumber(input.observationEndedAt);
+  const successObservedAt = nonNegativeFiniteNumber(input.successObservedAt);
+  const problems: string[] = [];
+  if (input.observationEndedAt !== undefined && observationEndedAt === null) {
+    problems.push("invalid-observation-end");
+  }
+  if (input.successObservedAt !== undefined && successObservedAt === null) {
+    problems.push("invalid-success-observation");
+  }
+  if (
+    observationEndedAt !== null &&
+    successObservedAt !== null &&
+    observationEndedAt < successObservedAt
+  ) {
+    problems.push("invalid-local-observation-window");
+  }
+  return {
+    observationEndedAt,
+    successObservedAt,
+    settled: problems.length === 0 &&
+      observationEndedAt !== null &&
+      successObservedAt !== null &&
+      observationEndedAt - successObservedAt >= authenticatedQueueSettlementQuietPeriodMs,
+    problems,
+  };
+}
+
+function validStoredMemoryProcessedLog(log: Record<string, unknown>, userId: string) {
+  return hasExactRecordKeys(
+    log,
+    ["attempts", "event", "messageId", "outcome", "type", "userId"],
+  ) &&
+    log.event === "native_memory_queue_processed" &&
+    log.type === "memory.post_turn.v2" &&
+    log.userId === userId &&
+    log.outcome === "stored" &&
+    isNonEmptyString(log.messageId) &&
+    log.attempts === 1;
+}
+
+function validStoredMemoryIndexedLog(log: Record<string, unknown>) {
+  const count = nonNegativeSafeInteger(log.count);
+  return hasExactRecordKeys(log, ["count", "event", "superseded"]) &&
+    log.event === "native_memory_vectors_indexed" &&
+    count !== null &&
+    count >= 1 &&
+    nonNegativeSafeInteger(log.superseded) !== null;
+}
+
+function validVectorCleanupStartLog(log: Record<string, unknown>, reason: string) {
+  return hasExactRecordKeys(log, ["attempts", "event", "messageId", "reason", "type"]) &&
+    log.event === "native_memory_vector_cleanup_started" &&
+    log.type === "memory.vector_cleanup.v1" &&
+    log.reason === reason &&
+    isNonEmptyString(log.messageId) &&
+    positiveSafeInteger(log.attempts);
+}
+
+function parsedProcessedVectorCleanupOutcome(
+  log: Record<string, unknown>,
+  reason: string,
+): { pending: number; nextDelaySeconds: number | null } | null {
+  if (
+    !hasExactRecordKeys(
+      log,
+      ["attempts", "event", "messageId", "outcome", "reason", "type", "userId"],
+    ) ||
+    log.event !== "native_memory_queue_processed" ||
+    log.type !== "memory.vector_cleanup.v1" ||
+    log.reason !== reason ||
+    log.userId !== null ||
+    !isNonEmptyString(log.messageId) ||
+    !positiveSafeInteger(log.attempts)
+  ) {
+    return null;
+  }
+  const outcome = optionalRecord(log.outcome);
+  if (
+    !outcome ||
+    !hasExactRecordKeys(outcome, [
+      "claimed",
+      "deleteRequested",
+      "nextDelaySeconds",
+      "pending",
+      "verifiedAbsent",
+    ])
+  ) {
+    return null;
+  }
+  const claimed = nonNegativeSafeInteger(outcome.claimed);
+  const deleteRequested = nonNegativeSafeInteger(outcome.deleteRequested);
+  const verifiedAbsent = nonNegativeSafeInteger(outcome.verifiedAbsent);
+  const pending = nonNegativeSafeInteger(outcome.pending);
+  const nextDelaySeconds = nonNegativeSafeInteger(outcome.nextDelaySeconds);
+  if (
+    claimed === null || deleteRequested === null || verifiedAbsent === null ||
+    pending === null || pending > 1 || deleteRequested + verifiedAbsent > claimed ||
+    !((pending === 0 && outcome.nextDelaySeconds === null) ||
+      (pending === 1 && nextDelaySeconds !== null))
+  ) {
+    return null;
+  }
+  return { pending, nextDelaySeconds };
+}
+
+function validDeferredVectorCleanupLog(log: Record<string, unknown>, reason: string) {
+  const attempts = nonNegativeSafeInteger(log.attempts);
+  const delaySeconds = nonNegativeSafeInteger(log.delaySeconds);
+  return hasExactRecordKeys(
+    log,
+    ["attempts", "delaySeconds", "event", "messageId", "reason", "type"],
+  ) &&
+    log.event === "native_memory_vector_cleanup_lease_deferred" &&
+    log.type === "memory.vector_cleanup.v1" &&
+    log.reason === reason &&
+    isNonEmptyString(log.messageId) &&
+    attempts !== null &&
+    attempts >= 1 &&
+    delaySeconds !== null &&
+    delaySeconds >= 60 &&
+    delaySeconds <= 5 * 60;
+}
+
+function validFailedVectorCleanupLog(log: Record<string, unknown>, reason: string) {
+  return hasExactRecordKeys(
+    log,
+    ["attempts", "error", "event", "messageId", "reason", "type", "userId"],
+  ) &&
+    log.event === "native_memory_queue_failed" &&
+    log.type === "memory.vector_cleanup.v1" &&
+    log.reason === reason &&
+    log.userId === null &&
+    isNonEmptyString(log.messageId) &&
+    positiveSafeInteger(log.attempts) &&
+    isNonEmptyString(log.error);
+}
+
+function positiveSafeInteger(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 1;
 }
 
 export function evaluateAuthenticatedSemanticRetrievalTail(
@@ -1386,11 +2534,19 @@ export function evaluateAuthenticatedSemanticRetrievalTail(
   input: {
     authenticatedValidationVersionId: string;
     trace: AuthenticatedMutationTrace;
+    tailDiagnostics?: string;
+    tailOutputClosed?: boolean;
   },
 ): AuthenticatedSemanticRetrievalTailEvaluation {
-  const base = evaluateAuthenticatedMutationTail(source, [input.trace]);
+  const base = evaluateAuthenticatedMutationTail(
+    source,
+    [input.trace],
+    input.authenticatedValidationVersionId,
+    input,
+  );
   const problems = [...base.problems];
-  const matches = extractJsonObjects(source).flatMap((value) => {
+  const parsed = parseTailJsonStream(source, input.tailOutputClosed !== false);
+  const matches = parsed.records.flatMap((value) => {
     const record = optionalRecord(value);
     const event = optionalRecord(record?.event);
     const request = optionalRecord(event?.request);
@@ -1411,8 +2567,13 @@ export function evaluateAuthenticatedSemanticRetrievalTail(
   const retrievalLogs = structuredTailLogRecords(record?.logs).filter(
     (log) => log.event === "native_memory_vector_retrieval_completed",
   );
-  const hydratedTurnCount = retrievalLogs.length === 1
-    ? nonNegativeSafeInteger(retrievalLogs[0]?.turnMatches)
+  const retrievalLog = retrievalLogs.length === 1 ? retrievalLogs[0] : undefined;
+  const retrievalLogValid = retrievalLog !== undefined &&
+    hasExactRecordKeys(retrievalLog, ["event", "memoryMatches", "turnMatches"]) &&
+    nonNegativeSafeInteger(retrievalLog.memoryMatches) !== null &&
+    nonNegativeSafeInteger(retrievalLog.turnMatches) !== null;
+  const hydratedTurnCount = retrievalLogValid
+    ? nonNegativeSafeInteger(retrievalLog.turnMatches)
     : null;
 
   if (record) {
@@ -1425,6 +2586,8 @@ export function evaluateAuthenticatedSemanticRetrievalTail(
   }
   if (retrievalLogs.length !== 1) {
     problems.push(`semantic-retrieval-log-count=${retrievalLogs.length}`);
+  } else if (!retrievalLogValid) {
+    problems.push("semantic-retrieval-log-malformed");
   }
   if (hydratedTurnCount === null || hydratedTurnCount < 1) {
     problems.push("semantic-hydrated-turn-count");
@@ -1438,6 +2601,87 @@ export function evaluateAuthenticatedSemanticRetrievalTail(
     hydratedTurnCount,
     problems,
   };
+}
+
+function authenticatedTailLogLevel(value: unknown) {
+  const entry = optionalRecord(value);
+  const level = typeof entry?.level === "string" ? entry.level : null;
+  return level === "debug" ||
+      level === "info" ||
+      level === "log" ||
+      level === "warn" ||
+      level === "error"
+    ? level
+    : null;
+}
+
+function parseAuthenticatedTailFetchEvent(value: unknown) {
+  const event = optionalRecord(value);
+  if (!event || !hasExactRecordKeys(event, ["request", "response"])) return null;
+  const request = optionalRecord(event.request);
+  const response = optionalRecord(event.response);
+  if (
+    !request ||
+    !response ||
+    !hasExactRecordKeys(request, ["cf", "headers", "method", "url"]) ||
+    !hasExactRecordKeys(response, ["status"])
+  ) {
+    return null;
+  }
+  const cf = optionalRecord(request.cf);
+  const headers = optionalRecord(request.headers);
+  const status = nonNegativeSafeInteger(response.status);
+  if (
+    !cf ||
+    !headers ||
+    Object.values(headers).some((header) => typeof header !== "string") ||
+    typeof request.method !== "string" ||
+    !/^[A-Z]{1,32}$/.test(request.method) ||
+    typeof request.url !== "string" ||
+    request.url.length === 0 ||
+    request.url.length > 8_192 ||
+    status === null ||
+    status < 100 ||
+    status > 599
+  ) {
+    return null;
+  }
+  try {
+    const url = new URL(request.url);
+    if (
+      (url.protocol !== "https:" && url.protocol !== "http:") ||
+      request.url !== url.href ||
+      url.username !== "" ||
+      url.password !== "" ||
+      url.hash !== ""
+    ) {
+      return null;
+    }
+    return { event, request, response, url, status };
+  } catch {
+    return null;
+  }
+}
+
+function authenticatedTailLogsHaveValidShape(logs: unknown) {
+  if (!Array.isArray(logs)) return false;
+  return logs.every((value) => {
+    const entry = optionalRecord(value);
+    if (
+      !entry ||
+      !hasExactRecordKeys(entry, ["level", "message", "timestamp"]) ||
+      authenticatedTailLogLevel(entry) === null ||
+      nonNegativeSafeInteger(entry.timestamp) === null ||
+      !Object.prototype.hasOwnProperty.call(entry, "message")
+    ) {
+      return false;
+    }
+    return Array.isArray(entry.message) &&
+      entry.message.length <= 100 &&
+      entry.message.every((message) =>
+        typeof message === "string" && message.length <= 32 * 1024
+      );
+  });
 }
 
 function structuredTailLogRecords(logs: unknown) {
@@ -1458,19 +2702,16 @@ function structuredTailLogRecords(logs: unknown) {
 function tailInvocationHasForbiddenMemoryWarning(record: Record<string, unknown>) {
   const logs = Array.isArray(record.logs) ? record.logs : [];
   const warningLevel = logs.some((value) => {
-    const entry = optionalRecord(value);
-    const level = typeof entry?.level === "string"
-      ? entry.level
-      : typeof entry?.logLevel === "string"
-      ? entry.logLevel
-      : "";
-    return /^(?:warn|warning|error|critical)$/i.test(level);
+    const level = authenticatedTailLogLevel(value);
+    return level === "warn" || level === "error";
   });
-  const serialized = JSON.stringify(logs);
-  return warningLevel ||
-    /exceededCpu|exceededMemory|resource\s+limit|cpu\s+time\s+limit|memory\s+limit|Dummy queue is not implemented|native_memory_(?:queue_(?:failed|deferred|invalid_message)|vector_[a-z0-9_]*failed|retrieval_failed)|memory_post_turn_(?:dropped|enqueue_failed)|llm_budget_(?:denied|check_failed)/i.test(
-      serialized,
-    );
+  const structuredFailure = structuredTailLogRecords(logs).some((log) =>
+    typeof log.event === "string" &&
+    /^(?:native_memory_(?:queue_(?:failed|deferred|invalid_message)|vector_[a-z0-9_]*failed|retrieval_failed)|memory_post_turn_(?:dropped|enqueue_failed)|llm_budget_(?:denied|check_failed))$/.test(
+      log.event,
+    )
+  );
+  return warningLevel || structuredFailure;
 }
 
 async function createChat(
@@ -1803,6 +3044,12 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isIsoTimestamp(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) && new Date(timestamp).toISOString() === value;
+}
+
 export function parseCompleteAuthenticatedOpenAiSse(source: string) {
   const chunks: string[] = [];
   let terminalSeen = false;
@@ -2110,22 +3357,109 @@ function updatedSessionCookie(current: string, headers: Headers) {
 }
 
 async function waitForTailReadiness(input: {
-  tail: ChildProcess;
-  output: () => string;
-  diagnostics: () => string;
+  tails: ReadonlyArray<{
+    label: string;
+    tail: ChildProcess;
+    output: () => string;
+    diagnostics: () => string;
+  }>;
+  baseUrl: string;
+  expectedVersion: string;
+  tailSessionToken: string;
+  markerLabel: "ready" | "settled";
+  retryMissedMarker: boolean;
 }) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < tailWaitTimeoutMs) {
-    if (wranglerTailDiagnosticIsConnected(`${input.output()}\n${input.diagnostics()}`)) return;
-    if (hasChildExited(input.tail)) throw new Error("Wrangler tail exited before mutation readiness.");
-    await delay(100);
+  if (input.tails.length !== 2) {
+    throw new Error("Authenticated mutation readiness requires both JSON tails.");
   }
-  throw new Error("Wrangler tail did not report a connected mutation-validation session.");
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < tailWaitTimeoutMs) {
+    const probe = createAuthenticatedTailReadinessProbe();
+    const exited = input.tails.find(({ tail }) => hasChildExited(tail));
+    if (exited) {
+      throw new Error(
+        `${exited.label} Wrangler JSON tail exited before the ${input.markerLabel} marker.`,
+      );
+    }
+    const url = new URL("/api/health", input.baseUrl);
+    url.searchParams.set(tailReadinessProbeParameter, probe);
+    const remainingMs = tailWaitTimeoutMs - (performance.now() - startedAt);
+    const response = await fetch(url, {
+      method: "GET",
+      redirect: "manual",
+      headers: {
+        "cache-control": "no-cache",
+        [versionOverrideHeader]: `${workerName}="${input.expectedVersion}"`,
+        [tailSessionHeader]: input.tailSessionToken,
+      },
+      signal: AbortSignal.timeout(Math.max(1, Math.min(tailReadinessRequestTimeoutMs, remainingMs))),
+    });
+    const responseText = await readBoundedResponseText(
+      response,
+      tailReadinessMaximumResponseBytes,
+    );
+    const health = requiredRecord(parseJson(responseText), "tail readiness health response");
+    const healthVersion = requiredRecord(health.version, "tail readiness health version");
+    if (
+      response.status !== 200 ||
+      health.ok !== true ||
+      healthVersion.id !== input.expectedVersion
+    ) {
+      throw new Error(
+        `Authenticated tail readiness health probe did not return the exact expected version (HTTP ${response.status}).`,
+      );
+    }
+    const markerStartedAt = performance.now();
+    const markerTimeoutMs = input.retryMissedMarker
+      ? Math.min(2_000, tailWaitTimeoutMs - (markerStartedAt - startedAt))
+      : tailWaitTimeoutMs - (markerStartedAt - startedAt);
+    while (performance.now() - markerStartedAt < markerTimeoutMs) {
+      const sources = input.tails.map(({ output }) => output());
+      for (const source of sources) {
+        if (parseTailJsonStream(source, false).problem) {
+          throw new Error("Authenticated Wrangler JSON Tail output became malformed.");
+        }
+      }
+      if (authenticatedTailReadinessIsCapturedByEveryTail(
+        sources,
+        probe,
+        input.expectedVersion,
+      )) {
+        const captureWithLoss = input.tails.find(({ output, diagnostics }) => {
+          const parsed = parseTailJsonStream(output(), false);
+          return authenticatedTailCaptureHasLoss(parsed.records, diagnostics());
+        });
+        if (captureWithLoss) {
+          throw new Error(
+            `${captureWithLoss.label} Wrangler JSON tail reported capture loss before validation.`,
+          );
+        }
+        const exitedAfterCapture = input.tails.find(({ tail }) => hasChildExited(tail));
+        if (exitedAfterCapture) {
+          throw new Error(
+            `${exitedAfterCapture.label} Wrangler JSON tail exited after its ${input.markerLabel} marker.`,
+          );
+        }
+        return probe;
+      }
+      const exitedWhileWaiting = input.tails.find(({ tail }) => hasChildExited(tail));
+      if (exitedWhileWaiting) {
+        throw new Error(
+          `${exitedWhileWaiting.label} Wrangler JSON tail exited before its ${input.markerLabel} marker arrived.`,
+        );
+      }
+      await delay(250);
+    }
+    if (!input.retryMissedMarker) break;
+  }
+  throw new Error(
+    `Every Wrangler JSON tail did not capture the bounded public ${input.markerLabel} marker.`,
+  );
 }
 
 async function waitForTailProbes(tail: ChildProcess, output: () => string, probes: readonly string[]) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < tailWaitTimeoutMs) {
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < tailWaitTimeoutMs) {
     const captured = new Set(tailRequestProbes(output()));
     if (probes.every((probe) => captured.has(probe))) return;
     if (hasChildExited(tail)) throw new Error("Wrangler tail exited before mutation evidence completed.");
@@ -2134,47 +3468,255 @@ async function waitForTailProbes(tail: ChildProcess, output: () => string, probe
   throw new Error("Wrangler tail did not capture every authenticated mutation request.");
 }
 
+async function waitForCompleteTailOutputCheckpoint(
+  tail: ChildProcess,
+  output: () => string,
+) {
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < 5_000) {
+    const source = output();
+    const parsed = parseTailJsonStream(source, false);
+    if (parsed.problem) {
+      throw new Error("Wrangler version Tail output was malformed before Queue publication.");
+    }
+    if (parsed.complete && parsed.consumedLength === source.length) return source.length;
+    if (hasChildExited(tail)) {
+      throw new Error("Wrangler version Tail exited before its Queue stream checkpoint.");
+    }
+    await delay(25);
+  }
+  throw new Error("Wrangler version Tail never reached a complete JSON boundary before publication.");
+}
+
 async function waitForAuthenticatedMemoryQueueEvidence(input: {
   tail: ChildProcess;
   output: () => string;
+  diagnostics: () => string;
+  baseUrl: string;
   authenticatedValidationVersionId: string;
   userId: string;
-  captureStartedAt: number;
+  captureOutputOffset: number;
 }) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < queueCaptureTimeoutMs) {
-    const evaluation = evaluateAuthenticatedMemoryQueueTail(input.output(), input);
-    if (evaluation.matchedEvents > 0) {
-      await delay(2_000);
-      return evaluateAuthenticatedMemoryQueueTail(input.output(), input);
+  const startedAt = performance.now();
+  let successObservedAt: number | undefined;
+  const evaluateAt = (observationEndedAt: number) => {
+    const source = input.output();
+    const tailDiagnostics = input.diagnostics();
+    let evaluation = evaluateAuthenticatedMemoryQueueTail(source, {
+      ...input,
+      ...(successObservedAt === undefined
+        ? {}
+        : { observationEndedAt, successObservedAt }),
+      tailDiagnostics,
+      tailOutputClosed: false,
+    });
+    if (successObservedAt === undefined && evaluation.successfulEvents === 1) {
+      successObservedAt = observationEndedAt;
+      evaluation = evaluateAuthenticatedMemoryQueueTail(source, {
+        ...input,
+        observationEndedAt,
+        successObservedAt,
+        tailDiagnostics,
+        tailOutputClosed: false,
+      });
     }
+    return evaluation;
+  };
+  while (performance.now() - startedAt < queueCaptureTimeoutMs) {
+    const evaluation = evaluateAt(performance.now());
     if (hasChildExited(input.tail)) {
       throw new Error("Wrangler version Tail exited before stored-memory Queue evidence arrived.");
     }
-    await delay(500);
+    if (evaluation.fatal) return evaluation;
+    if (evaluation.settled) {
+      const settledLivenessProbe = await waitForSingleTailPostSettlementLiveness({
+        tail: input.tail,
+        output: input.output,
+        expectedVersion: input.authenticatedValidationVersionId,
+        captureOutputOffset: input.captureOutputOffset,
+        baseUrl: input.baseUrl,
+      });
+      return evaluateAuthenticatedMemoryQueueTail(input.output(), {
+        ...input,
+        observationEndedAt: performance.now(),
+        successObservedAt,
+        settledLivenessProbe,
+        tailDiagnostics: input.diagnostics(),
+        tailOutputClosed: false,
+      });
+    }
+    await delay(1_000);
   }
-  return evaluateAuthenticatedMemoryQueueTail(input.output(), input);
+  const evaluation = evaluateAt(performance.now());
+  if (hasChildExited(input.tail)) {
+    throw new Error("Wrangler version Tail exited before stored-memory Queue evidence arrived.");
+  }
+  return evaluation;
+}
+
+async function waitForAuthenticatedMemoryVectorCleanupQueueEvidence(input: {
+  tail: ChildProcess;
+  output: () => string;
+  diagnostics: () => string;
+  baseUrl: string;
+  authenticatedValidationVersionId: string;
+  captureOutputOffset: number;
+  reason: string;
+}) {
+  const startedAt = performance.now();
+  let successObservedAt: number | undefined;
+  const evaluateAt = (observationEndedAt: number) => {
+    const source = input.output();
+    const tailDiagnostics = input.diagnostics();
+    let evaluation = evaluateAuthenticatedMemoryVectorCleanupQueueTail(source, {
+      ...input,
+      ...(successObservedAt === undefined
+        ? {}
+        : { observationEndedAt, successObservedAt }),
+      tailDiagnostics,
+      tailOutputClosed: false,
+    });
+    if (successObservedAt === undefined && evaluation.chainComplete) {
+      successObservedAt = observationEndedAt;
+      evaluation = evaluateAuthenticatedMemoryVectorCleanupQueueTail(source, {
+        ...input,
+        observationEndedAt,
+        successObservedAt,
+        tailDiagnostics,
+        tailOutputClosed: false,
+      });
+    }
+    return evaluation;
+  };
+  while (performance.now() - startedAt < authenticatedCleanupQueueSettlementTimeoutMs) {
+    const evaluation = evaluateAt(performance.now());
+    if (hasChildExited(input.tail)) {
+      throw new Error("Wrangler version Tail exited before Vectorize cleanup Queue evidence arrived.");
+    }
+    if (evaluation.fatal) return evaluation;
+    if (evaluation.settled) {
+      const settledLivenessProbe = await waitForSingleTailPostSettlementLiveness({
+        tail: input.tail,
+        output: input.output,
+        expectedVersion: input.authenticatedValidationVersionId,
+        captureOutputOffset: input.captureOutputOffset,
+        baseUrl: input.baseUrl,
+      });
+      return evaluateAuthenticatedMemoryVectorCleanupQueueTail(input.output(), {
+        ...input,
+        observationEndedAt: performance.now(),
+        successObservedAt,
+        settledLivenessProbe,
+        tailDiagnostics: input.diagnostics(),
+        tailOutputClosed: false,
+      });
+    }
+    await delay(1_000);
+  }
+  const evaluation = evaluateAt(performance.now());
+  if (hasChildExited(input.tail)) {
+    throw new Error("Wrangler version Tail exited before Vectorize cleanup Queue evidence arrived.");
+  }
+  return evaluation;
+}
+
+async function waitForSingleTailPostSettlementLiveness(input: {
+  tail: ChildProcess;
+  output: () => string;
+  baseUrl: string;
+  expectedVersion: string;
+  captureOutputOffset: number;
+}) {
+  const probe = createAuthenticatedTailReadinessProbe();
+  if (hasChildExited(input.tail)) {
+    throw new Error("Wrangler version Tail exited before its post-settlement marker.");
+  }
+  const url = new URL("/api/health", input.baseUrl);
+  url.searchParams.set(tailReadinessProbeParameter, probe);
+  const response = await fetch(url, {
+    method: "GET",
+    redirect: "manual",
+    headers: {
+      "cache-control": "no-cache",
+      [versionOverrideHeader]: `${workerName}="${input.expectedVersion}"`,
+    },
+    signal: AbortSignal.timeout(tailReadinessRequestTimeoutMs),
+  });
+  const responseText = await readBoundedResponseText(
+    response,
+    tailReadinessMaximumResponseBytes,
+  );
+  const health = requiredRecord(parseJson(responseText), "post-settlement health response");
+  const healthVersion = requiredRecord(
+    health.version,
+    "post-settlement health response version",
+  );
+  if (
+    response.status !== 200 ||
+    health.ok !== true ||
+    healthVersion.id !== input.expectedVersion
+  ) {
+    throw new Error(
+      `Authenticated post-settlement health marker returned the wrong version (HTTP ${response.status}).`,
+    );
+  }
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < tailWaitTimeoutMs) {
+    const source = input.output();
+    const parsed = parseAuthenticatedTailWindow(source, input.captureOutputOffset, false);
+    if (parsed.offsetProblem || parsed.problem) {
+      throw new Error("Wrangler version Tail output became malformed after Queue settlement.");
+    }
+    if (authenticatedTailHasReadinessProbe(
+      source.slice(input.captureOutputOffset),
+      probe,
+      input.expectedVersion,
+    )) {
+      if (hasChildExited(input.tail)) {
+        throw new Error("Wrangler version Tail exited after its post-settlement marker.");
+      }
+      return probe;
+    }
+    if (hasChildExited(input.tail)) {
+      throw new Error("Wrangler version Tail exited before its post-settlement marker arrived.");
+    }
+    await delay(250);
+  }
+  throw new Error("Wrangler version Tail did not capture its one-shot post-settlement marker.");
 }
 
 async function waitForAuthenticatedSemanticRetrievalEvidence(input: {
   tail: ChildProcess;
   output: () => string;
+  diagnostics: () => string;
   authenticatedValidationVersionId: string;
   trace: AuthenticatedMutationTrace;
 }) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < tailWaitTimeoutMs) {
-    const evaluation = evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < tailWaitTimeoutMs) {
+    const evaluation = evaluateAuthenticatedSemanticRetrievalTail(input.output(), {
+      ...input,
+      tailDiagnostics: input.diagnostics(),
+      tailOutputClosed: false,
+    });
     if (evaluation.matchedEvents > 0) {
       await delay(1_000);
-      return evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+      return evaluateAuthenticatedSemanticRetrievalTail(input.output(), {
+        ...input,
+        tailDiagnostics: input.diagnostics(),
+        tailOutputClosed: false,
+      });
     }
     if (hasChildExited(input.tail)) {
       throw new Error("Wrangler HTTP Tail exited before semantic retrieval evidence arrived.");
     }
     await delay(250);
   }
-  return evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+  return evaluateAuthenticatedSemanticRetrievalTail(input.output(), {
+    ...input,
+    tailDiagnostics: input.diagnostics(),
+    tailOutputClosed: false,
+  });
 }
 
 function readQueueId(wrangler: string) {
@@ -2433,7 +3975,11 @@ function hasExactCloudflareEnvelopeShape(value: Record<string, unknown>) {
 }
 
 function tailRequestProbes(source: string) {
-  return extractJsonObjects(source).flatMap((value) => {
+  const parsed = parseTailJsonStream(source, false);
+  if (parsed.problem) {
+    throw new Error("Wrangler HTTP Tail output was malformed while awaiting mutation evidence.");
+  }
+  return parsed.records.flatMap((value) => {
     const record = optionalRecord(value);
     const request = optionalRecord(optionalRecord(record?.event)?.request);
     if (typeof request?.url !== "string") return [];
@@ -2447,9 +3993,91 @@ function tailRequestProbes(source: string) {
   });
 }
 
-export function wranglerTailDiagnosticIsConnected(source: string) {
-  const normalized = source.replace(/\u001b\[[0-9;]*m/g, "");
-  return /(?:^|\r?\n)Connected to [^\r\n]+, waiting for logs\.\.\.(?:\r?\n|$)/.test(normalized);
+export function createAuthenticatedTailReadinessProbe(
+  now = Date.now(),
+  pid = process.pid,
+) {
+  if (
+    !Number.isSafeInteger(now) || now < 0 ||
+    !Number.isSafeInteger(pid) || pid < 0
+  ) {
+    throw new Error("Authenticated tail readiness probe identity is invalid.");
+  }
+  return `inspir-auth-tail-ready-${now}-${pid}`;
+}
+
+export function authenticatedTailHasReadinessProbe(
+  source: string,
+  probe: string,
+  expectedVersion: string,
+  closed = false,
+) {
+  if (
+    !/^inspir-auth-tail-ready-[0-9]+-[0-9]+$/.test(probe) ||
+    !uuidPattern().test(expectedVersion)
+  ) {
+    return false;
+  }
+  const parsed = parseTailJsonStream(source, closed);
+  if (parsed.problem) return false;
+  const matches = parsed.records.filter((value) => {
+    const record = optionalRecord(value);
+    const event = optionalRecord(record?.event);
+    const fetchEvent = parseAuthenticatedTailFetchEvent(event);
+    const request = optionalRecord(event?.request);
+    const response = optionalRecord(event?.response);
+    const scriptVersion = optionalRecord(record?.scriptVersion);
+    const cpuTimeMs = finiteNumber(record?.cpuTime);
+    const wallTimeMs = finiteNumber(record?.wallTime);
+    if (
+      !record ||
+      !fetchEvent ||
+      record.scriptName !== workerName ||
+      scriptVersion?.id !== expectedVersion ||
+      record.outcome !== "ok" ||
+      record.truncated !== false ||
+      nonNegativeSafeInteger(record.eventTimestamp) === null ||
+      !Array.isArray(record.exceptions) ||
+      record.exceptions.length !== 0 ||
+      !authenticatedTailLogsHaveValidShape(record.logs) ||
+      cpuTimeMs === null ||
+      cpuTimeMs < 0 ||
+      cpuTimeMs >= authenticatedMutationCpuThresholdMs ||
+      wallTimeMs === null ||
+      wallTimeMs < 0 ||
+      tailInvocationHasForbiddenMemoryWarning(record) ||
+      request?.method !== "GET" ||
+      response?.status !== 200 ||
+      typeof request.url !== "string"
+    ) {
+      return false;
+    }
+    try {
+      const url = new URL(request.url);
+      return url.origin === defaultBaseUrl &&
+        url.username === "" &&
+        url.password === "" &&
+        url.hash === "" &&
+        url.pathname === "/api/health" &&
+        url.searchParams.size === 1 &&
+        url.searchParams.get(tailReadinessProbeParameter) === probe;
+    } catch {
+      return false;
+    }
+  });
+  return matches.length === 1;
+}
+
+export function authenticatedTailReadinessIsCapturedByEveryTail(
+  sources: readonly string[],
+  probe: string,
+  expectedVersion: string,
+  closed = false,
+) {
+  return sources.length > 0 &&
+    sources.every((source) =>
+      authenticatedTailHasReadinessProbe(source, probe, expectedVersion, closed)
+    );
 }
 
 export function normalizeAuthenticatedMutationRoute(pathname: string) {
@@ -2459,6 +4087,14 @@ export function normalizeAuthenticatedMutationRoute(pathname: string) {
   return normalized || "/";
 }
 
+function authenticatedMutationRedactedRequestKey(requestKey: string) {
+  const url = new URL(requestKey, defaultBaseUrl);
+  url.pathname = url.pathname.split("/").map((segment) =>
+    uuidPattern().test(segment) ? "REDACTED" : segment
+  ).join("/");
+  return `${url.pathname}${url.search}`;
+}
+
 export function createAuthenticatedMutationProbe(label: string, requestIndex: number) {
   if (!Number.isSafeInteger(requestIndex) || requestIndex < 0) {
     throw new Error("Authenticated mutation probe index is invalid.");
@@ -2466,49 +4102,18 @@ export function createAuthenticatedMutationProbe(label: string, requestIndex: nu
   return `inspir-mutation-${Date.now()}-${process.pid}-${requestIndex}-${safeProbeLabel(label)}`;
 }
 
-function captureTail(child: ChildProcess) {
-  let output = "";
-  let diagnostics = "";
-  let truncated = false;
-  const closed = Promise.all([
-    streamClosed(child.stdout, (value) => {
-      if (Buffer.byteLength(output) + Buffer.byteLength(value) > tailOutputLimit) truncated = true;
-      else output += value;
-    }),
-    streamClosed(child.stderr, (value) => {
-      if (Buffer.byteLength(diagnostics) + Buffer.byteLength(value) <= tailOutputLimit) diagnostics += value;
-    }),
-  ]);
-  return {
-    output: () => {
-      if (truncated) throw new Error("Wrangler tail output exceeded its bounded capture size.");
-      return output;
-    },
-    diagnostics: () => diagnostics,
-    closed,
-  };
-}
-
-function streamClosed(
-  stream: NodeJS.ReadableStream | null,
-  append: (value: string) => void,
-) {
-  if (!stream) return Promise.resolve();
-  stream.setEncoding("utf8");
-  stream.on("data", append);
-  return new Promise<void>((resolve) => {
-    stream.once("close", resolve);
-    stream.once("end", resolve);
-  });
-}
-
-async function stopTail(child: ChildProcess, closed: Promise<unknown>) {
-  if (!hasChildExited(child)) child.kill("SIGINT");
-  if (await resolvesWithin(closed, 5_000)) return;
-  if (!hasChildExited(child)) child.kill("SIGTERM");
-  if (await resolvesWithin(closed, 5_000)) return;
-  if (!hasChildExited(child)) child.kill("SIGKILL");
-  if (!await resolvesWithin(closed, 5_000)) throw new Error("Wrangler tail did not stop cleanly.");
+async function stopTail(child: ChildProcess, closed: Promise<void>) {
+  if (hasChildExited(child)) return false;
+  for (const signal of ["SIGINT", "SIGTERM"] as const) {
+    if (!child.kill(signal)) {
+      if (hasChildExited(child)) return false;
+      throw new Error(`Wrangler JSON tail rejected ${signal}.`);
+    }
+    if (await resolvesWithin(closed, 5_000)) return true;
+  }
+  const forced = child.kill("SIGKILL");
+  if (forced) await resolvesWithin(closed, 5_000);
+  throw new Error("Wrangler JSON Tail required SIGKILL; authenticated proof is invalid.");
 }
 
 function extractJsonObjects(source: string) {
@@ -2624,6 +4229,12 @@ function parseJson(value: string): unknown {
 
 function finiteNumber(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function nonNegativeFiniteNumber(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0
+    ? value
+    : null;
 }
 
 function nonNegativeSafeInteger(value: unknown) {

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -7,6 +8,9 @@ import { buildStaticMainAppBundleAsset } from "../lib/i18n/main-app-static-asset
 import {
   authenticatedOutboxDrainMaximumAttempts,
   authenticatedOutboxDrainRetryDelayMs,
+  authenticatedQueueSettlementQuietPeriodMs,
+  authenticatedTailHasReadinessProbe,
+  authenticatedTailReadinessIsCapturedByEveryTail,
   authenticatedMutationCpuThresholdMs,
   authenticatedMutationInventoryNames,
   authenticatedTurnVectorId,
@@ -15,8 +19,12 @@ import {
   assertCompleteFlashcardResult,
   assertCompleteQuizResult,
   cleanupDisposableMutationState,
+  captureAuthenticatedTail,
+  createAuthenticatedTailReadinessProbe,
   createAuthenticatedMutationProbe,
   evaluateAuthenticatedMemoryQueueTail,
+  evaluateAuthenticatedMemoryQueueResourceWindow,
+  evaluateAuthenticatedMemoryVectorCleanupQueueTail,
   evaluateAuthenticatedMutationTail,
   evaluateAuthenticatedSemanticRetrievalTail,
   expectedAuthenticatedMutationDisposableIdentity,
@@ -24,6 +32,7 @@ import {
   hasSpanishLanguageSignal,
   isPredominantlySpanishText,
   normalizeAuthenticatedMutationRoute,
+  parseAuthenticatedTailJsonStream,
   parseCompleteAuthenticatedOpenAiSse,
   parseAuthenticatedMemoryRecoveryEvidence,
   runAuthenticatedProductionMutationFlow,
@@ -32,9 +41,10 @@ import {
   vectorAbsenceVerificationSpacingMs,
   vectorCleanupMinimumSettleMs,
   vectorStateTimeoutMs,
-  wranglerTailDiagnosticIsConnected,
   type AuthenticatedMutationTrace,
 } from "../scripts/cloudflare/verify-authenticated-production-mutations";
+
+const MUTATION_TAIL_VERSION_ID = "11111111-1111-4111-8111-111111111111";
 
 test("disposable response proof requires the exact deterministic email, identity, and runtime", () => {
   const candidateVersionId = "11111111-1111-4111-8111-111111111111";
@@ -84,7 +94,8 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
     {
       label: "chat-finalize",
       probe: "inspir-mutation-one",
-      requestKey: "/api/chat/finalize?authenticated_mutation_probe=one",
+      origin: "https://inspirlearning.com",
+      requestKey: "/api/chat/finalize?authenticated_mutation_probe=inspir-mutation-one",
       routeTemplate: "/api/chat/finalize",
       method: "POST",
       status: 200,
@@ -92,7 +103,8 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
     {
       label: "quiz-result",
       probe: "inspir-mutation-two",
-      requestKey: "/api/chats/11111111-1111-4111-8111-111111111111?authenticated_mutation_probe=two",
+      origin: "https://inspirlearning.com",
+      requestKey: "/api/chats/11111111-1111-4111-8111-111111111111?authenticated_mutation_probe=inspir-mutation-two",
       routeTemplate: "/api/chats/:uuid",
       method: "GET",
       status: 200,
@@ -102,7 +114,7 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
     tailRecord(traces[0], 7.999),
     tailRecord(traces[1], 1.25, "/api/chats/REDACTED"),
   ].map((record) => JSON.stringify(record)).join("\n");
-  const accepted = evaluateAuthenticatedMutationTail(source, traces);
+  const accepted = evaluateAuthenticatedMutationTail(source, traces, MUTATION_TAIL_VERSION_ID);
   assert.equal(accepted.ok, true);
   assert.equal(accepted.samples.length, 2);
   assert.equal(accepted.samples[1]?.routeTemplate, "/api/chats/:uuid");
@@ -113,6 +125,7 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
       .map((record) => JSON.stringify(record))
       .join("\n"),
     traces,
+    MUTATION_TAIL_VERSION_ID,
   );
   assert.equal(atLimit.ok, false);
   assert.ok(atLimit.problems.includes("chat-finalize:cpu>=8"));
@@ -122,6 +135,7 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
       .map((record) => JSON.stringify(record))
       .join("\n"),
     traces,
+    MUTATION_TAIL_VERSION_ID,
   );
   assert.equal(negative.ok, false);
   assert.ok(negative.problems.includes("chat-finalize:cpu<0"));
@@ -129,6 +143,7 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
   const missing = evaluateAuthenticatedMutationTail(
     JSON.stringify(tailRecord(traces[0], 1)),
     traces,
+    MUTATION_TAIL_VERSION_ID,
   );
   assert.equal(missing.ok, false);
   assert.ok(missing.problems.includes("quiz-result:tail-count=0"));
@@ -139,17 +154,165 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
   const rejected = evaluateAuthenticatedMutationTail(
     [exceptional, tailRecord(traces[1], 1)].map((record) => JSON.stringify(record)).join("\n"),
     traces,
+    MUTATION_TAIL_VERSION_ID,
   );
   assert.equal(rejected.ok, false);
   assert.ok(rejected.problems.includes("chat-finalize:outcome"));
   assert.ok(rejected.problems.includes("chat-finalize:exception"));
 
-  const resourceEvent = evaluateAuthenticatedMutationTail(
-    `${source}\n${JSON.stringify({ logs: ["exceededMemory"] })}`,
+  const missingExceptions = Object.fromEntries(
+    Object.entries(tailRecord(traces[0], 1)).filter(([key]) => key !== "exceptions"),
+  );
+  const missingExceptionsEvaluation = evaluateAuthenticatedMutationTail(
+    [missingExceptions, tailRecord(traces[1], 1)]
+      .map((record) => JSON.stringify(record))
+      .join("\n"),
     traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(missingExceptionsEvaluation.problems.includes("chat-finalize:exception"));
+
+  const resourceEvent = evaluateAuthenticatedMutationTail(
+    `${source}\n${JSON.stringify({ outcome: "exceededMemory", logs: [] })}`,
+    traces,
+    MUTATION_TAIL_VERSION_ID,
   );
   assert.equal(resourceEvent.ok, false);
   assert.ok(resourceEvent.problems.includes("forbidden-resource-event"));
+
+  const applicationWords = evaluateAuthenticatedMutationTail(
+    `${source}\n${JSON.stringify({
+      outcome: "ok",
+      event: { request: { url: "https://inspirlearning.com/note?q=exceededMemory" } },
+      logs: [{
+        level: "log",
+        message: ["exceededCpu overload sampled dropped"],
+        timestamp: 1_783_921_234_567,
+      }],
+    })}`,
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(applicationWords.ok, true);
+
+  const wrongVersion = tailRecord(traces[0], 1);
+  wrongVersion.scriptVersion.id = "22222222-2222-4222-8222-222222222222";
+  const wrongVersionEvaluation = evaluateAuthenticatedMutationTail(
+    [wrongVersion, tailRecord(traces[1], 1)].map((record) => JSON.stringify(record)).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(wrongVersionEvaluation.problems.includes("chat-finalize:version"));
+
+  const wrongScript = tailRecord(traces[0], 1);
+  wrongScript.scriptName = "other-worker";
+  const wrongScriptEvaluation = evaluateAuthenticatedMutationTail(
+    [wrongScript, tailRecord(traces[1], 1)]
+      .map((record) => JSON.stringify(record))
+      .join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(wrongScriptEvaluation.problems.includes("chat-finalize:script"));
+
+  const truncated = tailRecord(traces[0], 1);
+  truncated.truncated = true;
+  const truncatedEvaluation = evaluateAuthenticatedMutationTail(
+    [truncated, tailRecord(traces[1], 1)].map((record) => JSON.stringify(record)).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(truncatedEvaluation.problems.includes("chat-finalize:truncated"));
+
+  const warned = tailRecord(traces[0], 1);
+  warned.logs.push({
+    level: "warn",
+    message: ["validation warning"],
+    timestamp: 1_783_921_234_567,
+  });
+  const warnedEvaluation = evaluateAuthenticatedMutationTail(
+    [warned, tailRecord(traces[1], 1)].map((record) => JSON.stringify(record)).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(warnedEvaluation.problems.includes("chat-finalize:warning-or-error-log"));
+
+  const invalidLogs = { ...tailRecord(traces[0], 1), logs: null };
+  const invalidLogsEvaluation = evaluateAuthenticatedMutationTail(
+    [invalidLogs, tailRecord(traces[1], 1)].map((record) => JSON.stringify(record)).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(invalidLogsEvaluation.problems.includes("chat-finalize:log-shape"));
+
+  const invalidWallTime = { ...tailRecord(traces[0], 1), wallTime: -1 };
+  const invalidWallTimeEvaluation = evaluateAuthenticatedMutationTail(
+    [invalidWallTime, tailRecord(traces[1], 1)]
+      .map((record) => JSON.stringify(record))
+      .join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.ok(
+    invalidWallTimeEvaluation.problems.includes("chat-finalize:missing-or-negative-wall-time"),
+  );
+
+  for (const [url, expectedProblem] of [
+    [
+      "http://inspirlearning.com/api/chats/11111111-1111-4111-8111-111111111111?authenticated_mutation_probe=inspir-mutation-two",
+      "quiz-result:tail-origin",
+    ],
+    [
+      "https://evil.example/api/chats/11111111-1111-4111-8111-111111111111?authenticated_mutation_probe=inspir-mutation-two",
+      "quiz-result:tail-origin",
+    ],
+    [
+      "https://inspirlearning.com/api/chats/22222222-2222-4222-8222-222222222222?authenticated_mutation_probe=inspir-mutation-two",
+      "quiz-result:tail-request-key",
+    ],
+  ] as const) {
+    const variant = structuredClone(tailRecord(traces[1], 1));
+    variant.event.request.url = url;
+    const evaluation = evaluateAuthenticatedMutationTail(
+      [tailRecord(traces[0], 1), variant]
+        .map((record) => JSON.stringify(record))
+        .join("\n"),
+      traces,
+      MUTATION_TAIL_VERSION_ID,
+    );
+    assert.ok(evaluation.problems.includes(expectedProblem));
+  }
+
+  const queryTrace: AuthenticatedMutationTrace = {
+    label: "query-bound",
+    probe: "inspir-mutation-query-bound",
+    origin: "https://inspirlearning.com",
+    requestKey:
+      "/api/chat/finalize?mode=full&authenticated_mutation_probe=inspir-mutation-query-bound",
+    routeTemplate: "/api/chat/finalize",
+    method: "POST",
+    status: 200,
+  };
+  assert.equal(
+    evaluateAuthenticatedMutationTail(
+      JSON.stringify(tailRecord(queryTrace, 1)),
+      [queryTrace],
+      MUTATION_TAIL_VERSION_ID,
+    ).ok,
+    true,
+  );
+  for (const mode of [null, "changed"] as const) {
+    const variant = structuredClone(tailRecord(queryTrace, 1));
+    const url = new URL(variant.event.request.url);
+    if (mode === null) url.searchParams.delete("mode");
+    else url.searchParams.set("mode", mode);
+    variant.event.request.url = url.href;
+    assert.ok(evaluateAuthenticatedMutationTail(
+      JSON.stringify(variant),
+      [queryTrace],
+      MUTATION_TAIL_VERSION_ID,
+    ).problems.includes("query-bound:tail-request-key"));
+  }
 });
 
 test("stored-memory Queue evidence requires one authenticated-version invocation with indexed vectors", () => {
@@ -164,11 +327,23 @@ test("stored-memory Queue evidence requires one authenticated-version invocation
   const accepted = evaluateAuthenticatedMemoryQueueTail(JSON.stringify(acceptedRecord), {
     authenticatedValidationVersionId,
     userId,
-    captureStartedAt: 1_000,
+    successObservedAt: 1_000,
+    observationEndedAt: 1_000 + authenticatedQueueSettlementQuietPeriodMs,
   });
   assert.equal(accepted.ok, true);
   assert.equal(accepted.matchedEvents, 1);
   assert.equal(accepted.indexedVectorCount, 1);
+  assert.ok(authenticatedQueueSettlementQuietPeriodMs >= 65_000);
+
+  const tooEarly = evaluateAuthenticatedMemoryQueueTail(JSON.stringify(acceptedRecord), {
+    authenticatedValidationVersionId,
+    userId,
+    successObservedAt: 1_000,
+    observationEndedAt: 1_000 + authenticatedQueueSettlementQuietPeriodMs - 1,
+  });
+  assert.equal(tooEarly.ok, false);
+  assert.equal(tooEarly.fatal, false);
+  assert.ok(tooEarly.problems.includes("queue-observation-not-settled"));
 
   const wrongBatch = structuredClone(acceptedRecord);
   wrongBatch.event.batchSize = 2;
@@ -193,12 +368,827 @@ test("stored-memory Queue evidence requires one authenticated-version invocation
     userId,
   }).problems.includes("matched-events=2"));
 
+  const conflictingTerminal = structuredClone(acceptedRecord);
+  conflictingTerminal.logs.push(tailStructuredLog("log", {
+    event: "native_memory_queue_processed",
+    type: "memory.post_turn.v2",
+    userId,
+    messageId: "queue-message-id",
+    attempts: 1,
+    outcome: "stale_job",
+  }));
+  assert.ok(evaluateAuthenticatedMemoryQueueTail(JSON.stringify(conflictingTerminal), {
+    authenticatedValidationVersionId,
+    userId,
+  }).problems.includes("stored-log-count=2"));
+
   const atLimit = structuredClone(acceptedRecord);
   atLimit.cpuTime = 8;
   assert.ok(evaluateAuthenticatedMemoryQueueTail(JSON.stringify(atLimit), {
     authenticatedValidationVersionId,
     userId,
   }).problems.includes("cpu>=8"));
+
+  const missingQueue = structuredClone(acceptedRecord);
+  delete (missingQueue.event as Partial<typeof missingQueue.event>).queue;
+  const missingQueueEvaluation = evaluateAuthenticatedMemoryQueueTail(
+    JSON.stringify(missingQueue),
+    {
+      authenticatedValidationVersionId,
+      userId,
+      successObservedAt: 1_000,
+      observationEndedAt: 1_000 + authenticatedQueueSettlementQuietPeriodMs,
+    },
+  );
+  assert.equal(missingQueueEvaluation.matchedEvents, 1);
+  assert.ok(missingQueueEvaluation.problems.includes("queue-event-shape"));
+  assert.ok(missingQueueEvaluation.problems.includes("queue-name"));
+});
+
+test("Vectorize cleanup Queue evidence requires a reason-bound settled chain without capture loss", () => {
+  const authenticatedValidationVersionId = "11111111-1111-4111-8111-111111111111";
+  const reason = "e2e-cleanup-22222222222242228222222222222222-1";
+  const eventTimestampBase = 1_783_921_234_000;
+  const settledWindow = {
+    successObservedAt: 1_000,
+    observationEndedAt: 1_000 + authenticatedQueueSettlementQuietPeriodMs,
+  };
+  const processed = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 7.999,
+    eventTimestamp: eventTimestampBase + 1_000,
+    reason,
+    terminal: "processed",
+    pending: 0,
+  });
+  const accepted = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    JSON.stringify(processed),
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.fatal, false);
+  assert.equal(accepted.settled, true);
+  assert.equal(accepted.matchedEvents, 1);
+  assert.equal(accepted.processedEvents, 1);
+  assert.equal(accepted.maximumCpuTimeMs, 7.999);
+  assert.equal(accepted.samples[0]?.reason, reason);
+  assert.equal(accepted.samples[0]?.pending, 0);
+
+  const wrongVersion = structuredClone(processed);
+  wrongVersion.scriptVersion.id = "33333333-3333-4333-8333-333333333333";
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(wrongVersion), {
+    authenticatedValidationVersionId,
+    reason,
+    ...settledWindow,
+  }).problems.includes("wrong-authenticated-validation-version"));
+
+  const atCpuLimit = structuredClone(processed);
+  atCpuLimit.cpuTime = 8;
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(atCpuLimit), {
+    authenticatedValidationVersionId,
+    reason,
+    ...settledWindow,
+  }).problems.includes("cpu>=8"));
+
+  const wrongReason = evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(processed), {
+    authenticatedValidationVersionId,
+    reason: `${reason}-wrong`,
+    ...settledWindow,
+  });
+  assert.equal(wrongReason.matchedEvents, 0);
+  assert.equal(wrongReason.settled, false);
+  assert.equal(wrongReason.fatal, false);
+
+  const deferred = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 2.5,
+    eventTimestamp: eventTimestampBase + 2_000,
+    reason,
+    terminal: "deferred",
+  });
+  const deferredOnly = evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(deferred), {
+    authenticatedValidationVersionId,
+    reason,
+    ...settledWindow,
+  });
+  assert.equal(deferredOnly.ok, false);
+  assert.equal(deferredOnly.fatal, false);
+  assert.equal(deferredOnly.settled, false);
+  assert.ok(deferredOnly.problems.includes("cleanup-chain-not-settled"));
+
+  const deferredThenSettled = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(deferred)}\n${JSON.stringify(vectorCleanupQueueTailRecord({
+      authenticatedValidationVersionId,
+      cpuTimeMs: 2.25,
+      eventTimestamp: eventTimestampBase + 3_000,
+      reason,
+      terminal: "processed",
+      pending: 0,
+      attempts: 2,
+    }))}`,
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(deferredThenSettled.ok, true);
+  assert.equal(deferredThenSettled.deferredEvents, 1);
+
+  const pending = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 2,
+    eventTimestamp: eventTimestampBase + 4_000,
+    reason,
+    terminal: "processed",
+    pending: 1,
+  });
+  const continuedThenSettled = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(pending)}\n${JSON.stringify(vectorCleanupQueueTailRecord({
+      authenticatedValidationVersionId,
+      cpuTimeMs: 2,
+      eventTimestamp: eventTimestampBase + 5_000,
+      reason,
+      terminal: "processed",
+      pending: 0,
+      messageId: "cleanup-continuation-message-id",
+    }))}`,
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(continuedThenSettled.ok, true);
+  assert.equal(continuedThenSettled.processedEvents, 2);
+
+  const cpuKilled = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 7.5,
+    eventTimestamp: eventTimestampBase + 6_000,
+    reason,
+    terminal: "none",
+    outcome: "exceededCpu",
+  });
+  const killedThenSuccessful = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(cpuKilled)}\n${JSON.stringify(vectorCleanupQueueTailRecord({
+      authenticatedValidationVersionId,
+      cpuTimeMs: 2,
+      eventTimestamp: eventTimestampBase + 7_000,
+      reason,
+      terminal: "processed",
+      pending: 0,
+      attempts: 2,
+    }))}`,
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(killedThenSuccessful.ok, false);
+  assert.equal(killedThenSuccessful.fatal, true);
+  assert.ok(killedThenSuccessful.problems.includes("outcome"));
+  assert.ok(killedThenSuccessful.problems.includes("cleanup-terminal-log-count=0"));
+
+  const failedThenSuccessful = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(vectorCleanupQueueTailRecord({
+      authenticatedValidationVersionId,
+      cpuTimeMs: 2,
+      eventTimestamp: eventTimestampBase + 8_000,
+      reason,
+      terminal: "failed",
+    }))}\n${JSON.stringify(vectorCleanupQueueTailRecord({
+      authenticatedValidationVersionId,
+      cpuTimeMs: 2,
+      eventTimestamp: eventTimestampBase + 9_000,
+      reason,
+      terminal: "processed",
+      pending: 0,
+      attempts: 2,
+    }))}`,
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(failedThenSuccessful.ok, false);
+  assert.ok(failedThenSuccessful.problems.includes("failure-log"));
+
+  const malformed = structuredClone(processed);
+  const terminal = JSON.parse(malformed.logs[1]?.message[0] ?? "null") as Record<string, unknown>;
+  terminal.outcome = {
+    claimed: 1,
+    deleteRequested: 1,
+    verifiedAbsent: 1,
+    pending: 0,
+    nextDelaySeconds: null,
+  };
+  malformed.logs[1] = tailStructuredLog("log", terminal);
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(malformed), {
+    authenticatedValidationVersionId,
+    reason,
+    ...settledWindow,
+  }).problems.includes("malformed-cleanup-processed-log"));
+
+  const missingStart = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 2,
+    eventTimestamp: eventTimestampBase + 10_000,
+    reason,
+    terminal: "processed",
+    pending: 0,
+    includeStart: false,
+  });
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(JSON.stringify(missingStart), {
+    authenticatedValidationVersionId,
+    reason,
+    ...settledWindow,
+  }).problems.includes("cleanup-start-log-count=0"));
+
+  const overload = JSON.stringify({
+    event: { type: "overload", message: "Tail overloaded; events were dropped." },
+  });
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(processed)}\n${overload}`,
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  ).problems.includes("tail-capture-loss"));
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    JSON.stringify(processed),
+    {
+      authenticatedValidationVersionId,
+      reason,
+      ...settledWindow,
+      tailDiagnostics: "Tail is sampling events",
+    },
+  ).problems.includes("tail-capture-loss"));
+  assert.ok(evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    JSON.stringify(processed),
+    {
+      authenticatedValidationVersionId,
+      reason,
+      ...settledWindow,
+      tailDiagnostics: "Tail connection lost. Reconnecting (attempt 1 of 3)",
+    },
+  ).problems.includes("tail-capture-loss"));
+
+  const secondsTimestamp = structuredClone(processed);
+  secondsTimestamp.eventTimestamp = 1_783_921_235;
+  const secondsEvaluation = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    JSON.stringify(secondsTimestamp),
+    { authenticatedValidationVersionId, reason, ...settledWindow },
+  );
+  assert.equal(secondsEvaluation.matchedEvents, 1);
+  assert.equal(secondsEvaluation.settled, true);
+});
+
+test("authenticated Queue windows are offset-scoped, resource-complete, and liveness-bound", () => {
+  const authenticatedValidationVersionId = MUTATION_TAIL_VERSION_ID;
+  const userId = "22222222-2222-4222-8222-222222222222";
+  const reason = "e2e-cleanup-22222222222242228222222222222222-1";
+  const successObservedAt = 1_000;
+  const observationEndedAt = successObservedAt + authenticatedQueueSettlementQuietPeriodMs;
+  const prefix = `${JSON.stringify(authenticatedReadinessTailRecord({
+    expectedVersion: authenticatedValidationVersionId,
+    probe: "inspir-auth-tail-ready-1783921234567-42",
+  }))}\n`;
+  const stored = storedMemoryQueueTailRecord({
+    authenticatedValidationVersionId,
+    userId,
+    cpuTimeMs: 2,
+    indexedVectorCount: 1,
+  });
+  const settledProbe = "inspir-auth-tail-ready-1783921234568-42";
+  const settledMarker = authenticatedReadinessTailRecord({
+    expectedVersion: authenticatedValidationVersionId,
+    probe: settledProbe,
+  });
+  const source = `${prefix}${JSON.stringify(stored)}\n${JSON.stringify(settledMarker)}`;
+  const accepted = evaluateAuthenticatedMemoryQueueTail(source, {
+    authenticatedValidationVersionId,
+    userId,
+    captureOutputOffset: prefix.length,
+    successObservedAt,
+    observationEndedAt,
+    settledLivenessProbe: settledProbe,
+  });
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.captureOutputOffset, prefix.length);
+  assert.equal(accepted.settledLivenessProbe, settledProbe);
+
+  const missingMarker = evaluateAuthenticatedMemoryQueueTail(
+    `${prefix}${JSON.stringify(stored)}`,
+    {
+      authenticatedValidationVersionId,
+      userId,
+      captureOutputOffset: prefix.length,
+      successObservedAt,
+      observationEndedAt,
+      settledLivenessProbe: settledProbe,
+    },
+  );
+  assert.ok(missingMarker.problems.includes("settled-liveness-marker"));
+
+  const queueLikeWithoutName = {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: authenticatedValidationVersionId },
+    outcome: "ok",
+    truncated: false,
+    cpuTime: 1,
+    wallTime: 2,
+    eventTimestamp: 1_783_921_234_999,
+    exceptions: [] as Array<{ message: string }>,
+    event: { batchSize: 1 },
+    logs: [] as Array<{ level: string; message: string[]; timestamp: number }>,
+  };
+  const resourceOnly = evaluateAuthenticatedMemoryQueueResourceWindow(
+    `${prefix}${JSON.stringify(queueLikeWithoutName)}`,
+    {
+      authenticatedValidationVersionId,
+      captureOutputOffset: prefix.length,
+    },
+  );
+  assert.equal(resourceOnly.matchedEvents, 1);
+  assert.ok(resourceOnly.problems.includes("queue-event-shape"));
+  assert.ok(resourceOnly.problems.includes("queue-name"));
+  for (const queue of [null, "other-queue", 42]) {
+    const wrongQueue = evaluateAuthenticatedMemoryQueueResourceWindow(
+      JSON.stringify({
+        ...queueLikeWithoutName,
+        event: { queue, batchSize: 1 },
+      }),
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(wrongQueue.matchedEvents, 1);
+    assert.ok(wrongQueue.problems.includes("queue-name"));
+  }
+
+  const overloadPrefix = `${JSON.stringify({ event: { type: "overload-stop" } })}\n`;
+  const fullCaptureLoss = evaluateAuthenticatedMemoryQueueResourceWindow(
+    `${overloadPrefix}${JSON.stringify({
+      ...queueLikeWithoutName,
+      event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+    })}`,
+    {
+      authenticatedValidationVersionId,
+      captureOutputOffset: overloadPrefix.length,
+    },
+  );
+  assert.equal(fullCaptureLoss.matchedEvents, 1);
+  assert.ok(fullCaptureLoss.problems.includes("tail-capture-loss"));
+
+  const unclassifiableResourceFailure = evaluateAuthenticatedMemoryQueueResourceWindow(
+    `${JSON.stringify({
+      ...queueLikeWithoutName,
+      event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+    })}\n${JSON.stringify({
+      scriptName: "inspirlearning",
+      scriptVersion: { id: authenticatedValidationVersionId },
+      outcome: "exceededCpu",
+      truncated: false,
+      cpuTime: 8,
+      eventTimestamp: 1_783_921_235_000,
+      exceptions: [] as Array<{ message: string }>,
+      event: {},
+      logs: [] as Array<{ level: string; message: string[] }>,
+    })}`,
+    { authenticatedValidationVersionId },
+  );
+  assert.equal(unclassifiableResourceFailure.ok, false);
+  assert.ok(unclassifiableResourceFailure.problems.includes("outcome"));
+  assert.ok(unclassifiableResourceFailure.problems.includes("cpu>=8"));
+  const healthyButUnclassified = evaluateAuthenticatedMemoryQueueResourceWindow(
+    `${JSON.stringify({
+      ...queueLikeWithoutName,
+      event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+    })}\n${JSON.stringify({
+      scriptName: "inspirlearning",
+      scriptVersion: { id: authenticatedValidationVersionId },
+      outcome: "ok",
+      truncated: false,
+      cpuTime: 1,
+      eventTimestamp: 1_783_921_235_000,
+      exceptions: [] as Array<{ message: string }>,
+      event: {},
+      logs: [] as Array<{ level: string; message: string[] }>,
+    })}`,
+    { authenticatedValidationVersionId },
+  );
+  assert.equal(healthyButUnclassified.ok, false);
+  assert.ok(healthyButUnclassified.problems.includes("unclassified-invocation"));
+  const healthyOtherHandlers = evaluateAuthenticatedMemoryQueueResourceWindow(
+    [
+      {
+        ...queueLikeWithoutName,
+        event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+      },
+      {
+        ...queueLikeWithoutName,
+        event: authenticatedFetchTailEvent(),
+      },
+      {
+        ...queueLikeWithoutName,
+        event: { cron: "0 3 * * *", scheduledTime: 1_783_900_800_000 },
+      },
+    ].map((record) => JSON.stringify(record)).join("\n"),
+    { authenticatedValidationVersionId },
+  );
+  assert.equal(healthyOtherHandlers.ok, true);
+  assert.equal(healthyOtherHandlers.matchedEvents, 1);
+  for (const event of [
+    authenticatedFetchTailEvent(),
+    { cron: "0 3 * * *", scheduledTime: 1_783_900_800_000 },
+  ]) {
+    for (const [mutation, expectedProblem] of [
+      [{ eventTimestamp: null }, "invalid-event-timestamp"],
+      [{ eventTimestamp: -1 }, "invalid-event-timestamp"],
+      [{ wallTime: null }, "missing-or-negative-wall-time"],
+      [{ wallTime: -1 }, "missing-or-negative-wall-time"],
+      [{ logs: null }, "log-shape"],
+    ] as const) {
+      const incompleteResourceRecord = evaluateAuthenticatedMemoryQueueResourceWindow(
+        `${JSON.stringify({
+          ...queueLikeWithoutName,
+          event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+        })}\n${JSON.stringify({ ...queueLikeWithoutName, event, ...mutation })}`,
+        { authenticatedValidationVersionId },
+      );
+      assert.equal(incompleteResourceRecord.ok, false);
+      assert.ok(incompleteResourceRecord.problems.includes(expectedProblem));
+    }
+  }
+  for (const record of [
+    {
+      ...queueLikeWithoutName,
+      scriptName: "other-worker",
+      event: authenticatedFetchTailEvent(),
+    },
+    {
+      ...queueLikeWithoutName,
+      scriptVersion: { id: "33333333-3333-4333-8333-333333333333" },
+      event: authenticatedFetchTailEvent(),
+    },
+    {
+      ...queueLikeWithoutName,
+      scriptName: null,
+      scriptVersion: null,
+      event: { cron: "0 3 * * *", scheduledTime: 1_783_900_800_000 },
+    },
+  ]) {
+    const wrongHandlerIdentity = evaluateAuthenticatedMemoryQueueResourceWindow(
+      `${JSON.stringify({
+        ...queueLikeWithoutName,
+        event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+      })}\n${JSON.stringify(record)}`,
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(wrongHandlerIdentity.ok, false);
+    assert.ok(
+      wrongHandlerIdentity.problems.includes("wrong-script") ||
+        wrongHandlerIdentity.problems.includes("wrong-authenticated-validation-version"),
+    );
+  }
+  for (const event of [
+    { request: {} },
+    { request: { method: 42, url: null } },
+    { request: { method: "GET", url: "not-a-url" } },
+    { request: { method: "get", url: "https://inspirlearning.com/" }, response: { status: 200 } },
+    { request: { method: "GET", url: "/relative" }, response: { status: 200 } },
+    { request: { method: "GET", url: "https://inspirlearning.com/" } },
+    {
+      request: { method: "GET", url: "https://inspirlearning.com/" },
+      response: { status: "200" },
+    },
+    {
+      request: { method: "GET", url: "https://inspirlearning.com/" },
+      response: { status: 99 },
+    },
+    { cron: null },
+    { scheduledTime: "bad" },
+    { cron: "0 3 * * *" },
+    { scheduledTime: 1_783_900_800_000 },
+    { cron: "*/5 * * * *", scheduledTime: 1_783_900_800_000 },
+    { cron: "0 3 * * *", scheduledTime: 1_783_900_800_000, extra: true },
+  ]) {
+    const malformedOtherHandler = evaluateAuthenticatedMemoryQueueResourceWindow(
+      [
+        {
+          ...queueLikeWithoutName,
+          event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+        },
+        { ...queueLikeWithoutName, event },
+      ].map((record) => JSON.stringify(record)).join("\n"),
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(malformedOtherHandler.ok, false);
+    assert.ok(malformedOtherHandler.problems.includes("unclassified-invocation"));
+  }
+  const nestedFetchVariants = [
+    {
+      request: {
+        cf: {},
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+      },
+      response: { status: 200 },
+    },
+    {
+      request: {
+        cf: {},
+        headers: null,
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+      },
+      response: { status: 200 },
+    },
+    {
+      request: {
+        cf: {},
+        headers: [],
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+      },
+      response: { status: 200 },
+    },
+    {
+      request: {
+        cf: {},
+        headers: { accept: 42 },
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+      },
+      response: { status: 200 },
+    },
+    {
+      request: {
+        cf: {},
+        headers: {},
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+        extra: true,
+      },
+      response: { status: 200 },
+    },
+    {
+      request: {
+        cf: {},
+        headers: {},
+        method: "GET",
+        url: "https://inspirlearning.com/api/health",
+      },
+      response: { status: 200, extra: true },
+    },
+  ];
+  for (const event of nestedFetchVariants) {
+    const malformedNestedFetch = evaluateAuthenticatedMemoryQueueResourceWindow(
+      [
+        {
+          ...queueLikeWithoutName,
+          event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+        },
+        { ...queueLikeWithoutName, event },
+      ].map((record) => JSON.stringify(record)).join("\n"),
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(malformedNestedFetch.ok, false);
+    assert.ok(malformedNestedFetch.problems.includes("unclassified-invocation"));
+  }
+  for (const event of [
+    { request: {} },
+    authenticatedFetchTailEvent("https://inspirlearning.com/"),
+    { cron: "0 3 * * *", scheduledTime: 1_783_900_800_000 },
+  ]) {
+    const eventOnlyInvocation = evaluateAuthenticatedMemoryQueueResourceWindow(
+      `${JSON.stringify({
+        ...queueLikeWithoutName,
+        event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+      })}\n${JSON.stringify({ event })}`,
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(eventOnlyInvocation.ok, false);
+    assert.ok(eventOnlyInvocation.problems.includes("outcome"));
+    assert.ok(eventOnlyInvocation.problems.includes("missing-or-negative-cpu"));
+  }
+  for (const event of [
+    { mailFrom: "a@example.com", rcptTo: "b@example.com", rawSize: 1 },
+    { rpcMethod: "x" },
+    { consumedEvents: [] },
+    { getWebSocketEvent: { webSocketEventType: "message" } },
+  ]) {
+    const unsupportedTrigger = evaluateAuthenticatedMemoryQueueResourceWindow(
+      `${JSON.stringify({
+        ...queueLikeWithoutName,
+        event: { queue: "inspirlearning-memory-post-turn-prod", batchSize: 1 },
+      })}\n${JSON.stringify({ event })}`,
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(unsupportedTrigger.ok, false);
+    assert.ok(unsupportedTrigger.problems.includes("unclassified-invocation"));
+  }
+  for (const identity of [
+    {},
+    { scriptName: null },
+    { scriptName: null, scriptVersion: null },
+  ]) {
+    const missingIdentityResourceFailure = evaluateAuthenticatedMemoryQueueResourceWindow(
+      JSON.stringify({
+        ...identity,
+        outcome: "exceededCpu",
+        truncated: false,
+        cpuTime: 8,
+        eventTimestamp: 1_783_921_235_000,
+        exceptions: [] as Array<{ message: string }>,
+        event: {},
+        logs: [] as Array<{ level: string; message: string[] }>,
+      }),
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(missingIdentityResourceFailure.ok, false);
+    assert.ok(missingIdentityResourceFailure.problems.includes("outcome"));
+    assert.ok(missingIdentityResourceFailure.problems.includes("cpu>=8"));
+  }
+  const unclassifiableBase = {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: authenticatedValidationVersionId },
+    outcome: "ok",
+    truncated: false,
+    cpuTime: 1 as number | undefined,
+    eventTimestamp: 1_783_921_235_001,
+    exceptions: [] as Array<{ message: string }>,
+    event: {},
+    logs: [] as Array<{ level: string; message: string[] }>,
+  };
+  for (const [mutation, expectedProblem] of [
+    [{ cpuTime: undefined }, "missing-or-negative-cpu"],
+    [{ cpuTime: -0.1 }, "missing-or-negative-cpu"],
+    [{ truncated: true }, "truncated"],
+    [{ exceptions: [{ message: "redacted" }] }, "exceptions"],
+    [{
+      logs: [{
+        level: "warn",
+        message: ["redacted"],
+        timestamp: 1_783_921_234_567,
+      }],
+    }, "failure-log"],
+  ] as const) {
+    const evaluation = evaluateAuthenticatedMemoryQueueResourceWindow(
+      JSON.stringify({ ...unclassifiableBase, ...mutation }),
+      { authenticatedValidationVersionId },
+    );
+    assert.equal(evaluation.ok, false);
+    assert.ok(evaluation.problems.includes(expectedProblem));
+  }
+
+  const cleanup = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 2,
+    eventTimestamp: 1_783_921_235_000,
+    reason,
+    terminal: "processed",
+    pending: 0,
+  });
+  delete (cleanup.event as Partial<typeof cleanup.event>).queue;
+  const missingCleanupQueue = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    JSON.stringify(cleanup),
+    { authenticatedValidationVersionId, reason, successObservedAt, observationEndedAt },
+  );
+  assert.equal(missingCleanupQueue.matchedEvents, 1);
+  assert.ok(missingCleanupQueue.problems.includes("queue-event-shape"));
+  assert.ok(missingCleanupQueue.problems.includes("queue-name"));
+});
+
+test("authenticated cleanup Queue evidence rejects retry and continuation discontinuities", () => {
+  const authenticatedValidationVersionId = MUTATION_TAIL_VERSION_ID;
+  const reason = "e2e-cleanup-22222222222242228222222222222222-1";
+  const window = {
+    successObservedAt: 1_000,
+    observationEndedAt: 1_000 + authenticatedQueueSettlementQuietPeriodMs,
+  };
+  const deferred = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 1,
+    eventTimestamp: 1_783_921_235_001,
+    reason,
+    terminal: "deferred",
+  });
+  const skippedRetry = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 1,
+    eventTimestamp: 1_783_921_235_002,
+    reason,
+    terminal: "processed",
+    pending: 0,
+    attempts: 3,
+  });
+  const retryGap = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(deferred)}\n${JSON.stringify(skippedRetry)}`,
+    { authenticatedValidationVersionId, reason, ...window },
+  );
+  assert.ok(retryGap.problems.includes("cleanup-attempt-sequence"));
+  assert.ok(retryGap.problems.includes("cleanup-retry-discontinuity"));
+
+  const pending = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 1,
+    eventTimestamp: 1_783_921_235_003,
+    reason,
+    terminal: "processed",
+    pending: 1,
+  });
+  const sameMessageContinuation = vectorCleanupQueueTailRecord({
+    authenticatedValidationVersionId,
+    cpuTimeMs: 1,
+    eventTimestamp: 1_783_921_235_004,
+    reason,
+    terminal: "processed",
+    pending: 0,
+  });
+  const continuationGap = evaluateAuthenticatedMemoryVectorCleanupQueueTail(
+    `${JSON.stringify(pending)}\n${JSON.stringify(sameMessageContinuation)}`,
+    { authenticatedValidationVersionId, reason, ...window },
+  );
+  assert.ok(continuationGap.problems.includes("cleanup-attempt-sequence"));
+  assert.ok(continuationGap.problems.includes("cleanup-continuation-discontinuity"));
+});
+
+test("authenticated Tail uses lossless closed JSON framing and UTF-8-safe shared capture", async () => {
+  const complete = JSON.stringify({ event: { type: "note", message: "🙂" } });
+  const live = parseAuthenticatedTailJsonStream(`${complete}\n{"event":`, false);
+  assert.equal(live.records.length, 1);
+  assert.equal(live.problem, null);
+  assert.equal(live.complete, false);
+  assert.equal(
+    parseAuthenticatedTailJsonStream(`${complete}\n{"event":`, true).problem,
+    "tail-output-incomplete",
+  );
+  for (const malformed of [`${complete}\n[]`, `${complete}\nnot-json`, `${complete}}`]) {
+    assert.equal(parseAuthenticatedTailJsonStream(malformed, true).problem, "tail-output-malformed");
+  }
+
+  const program = [
+    'const text = JSON.stringify({ event: { type: "note", message: "🙂" } }) + "\\n";',
+    'const bytes = Buffer.from(text, "utf8");',
+    'const emoji = Buffer.from("🙂", "utf8");',
+    "const split = bytes.indexOf(emoji) + 2;",
+    "process.stdout.write(bytes.subarray(0, split));",
+    "setTimeout(() => process.stdout.write(bytes.subarray(split)), 10);",
+  ].join("\n");
+  const child = spawn(process.execPath, ["-e", program], {
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const capture = captureAuthenticatedTail(child);
+  await capture.closed;
+  assert.match(capture.output(), /🙂/);
+  assert.equal(parseAuthenticatedTailJsonStream(capture.output(), true).problem, null);
+});
+
+test("authenticated Tail rejects malformed or ambiguous log entries on every acceptance path", () => {
+  const trace: AuthenticatedMutationTrace = {
+    label: "log-shape",
+    probe: "inspir-mutation-log-shape",
+    origin: "https://inspirlearning.com",
+    requestKey: "/api/me?authenticated_mutation_probe=inspir-mutation-log-shape",
+    routeTemplate: "/api/me",
+    method: "GET",
+    status: 200,
+  };
+  const userId = "22222222-2222-4222-8222-222222222222";
+  const readinessProbe = "inspir-auth-tail-ready-1783921234567-42";
+  const malformedLogs: unknown[][] = [
+    [null],
+    [42],
+    [{}],
+    [{ message: ["missing level"], timestamp: 1_783_921_235_000 }],
+    [{ level: null, message: ["null level"], timestamp: 1_783_921_235_000 }],
+    [{ level: "fatal", message: ["fatal"], timestamp: 1_783_921_235_000 }],
+    [{ level: "mystery", message: ["unknown"], timestamp: 1_783_921_235_000 }],
+    [{ level: "info", message: null, timestamp: 1_783_921_235_000 }],
+    [{ level: "info", message: [42], timestamp: 1_783_921_235_000 }],
+    [{ level: "info", message: ["bad timestamp"], timestamp: -1 }],
+    [{
+      level: "info",
+      logLevel: "error",
+      message: ["hidden error"],
+      timestamp: 1_783_921_235_000,
+    }],
+  ];
+  for (const logs of malformedLogs) {
+    const mutation = evaluateAuthenticatedMutationTail(
+      JSON.stringify({ ...tailRecord(trace, 1), logs }),
+      [trace],
+      MUTATION_TAIL_VERSION_ID,
+    );
+    assert.ok(mutation.problems.includes("log-shape:log-shape"));
+
+    const resource = evaluateAuthenticatedMemoryQueueResourceWindow(
+      `${JSON.stringify(storedMemoryQueueTailRecord({
+        authenticatedValidationVersionId: MUTATION_TAIL_VERSION_ID,
+        userId,
+        cpuTimeMs: 1,
+        indexedVectorCount: 1,
+      }))}\n${JSON.stringify({ ...tailRecord(trace, 1), logs })}`,
+      { authenticatedValidationVersionId: MUTATION_TAIL_VERSION_ID },
+    );
+    assert.ok(resource.problems.includes("log-shape"));
+
+    const readiness = authenticatedTailHasReadinessProbe(
+      JSON.stringify({
+        ...authenticatedReadinessTailRecord({
+          expectedVersion: MUTATION_TAIL_VERSION_ID,
+          probe: readinessProbe,
+        }),
+        logs,
+      }),
+      readinessProbe,
+      MUTATION_TAIL_VERSION_ID,
+    );
+    assert.equal(readiness, false);
+  }
 });
 
 test("semantic recall evidence requires a hydrated prior turn in the exact HTTP invocation", () => {
@@ -206,6 +1196,7 @@ test("semantic recall evidence requires a hydrated prior turn in the exact HTTP 
   const trace: AuthenticatedMutationTrace = {
     label: "chat-semantic-recall-provider",
     probe: "inspir-mutation-semantic-recall",
+    origin: "https://inspirlearning.com",
     requestKey:
       "/api/chat?authenticated_mutation_probe=inspir-mutation-semantic-recall",
     routeTemplate: "/api/chat",
@@ -240,6 +1231,18 @@ test("semantic recall evidence requires a hydrated prior turn in the exact HTTP 
     JSON.stringify(noHydratedTurn),
     { authenticatedValidationVersionId, trace },
   ).problems.includes("semantic-hydrated-turn-count"));
+
+  const malformedRetrieval = structuredClone(acceptedRecord);
+  malformedRetrieval.logs = [tailStructuredLog("log", {
+    event: "native_memory_vector_retrieval_completed",
+    memoryMatches: 0,
+    turnMatches: 1,
+    extra: true,
+  })];
+  assert.ok(evaluateAuthenticatedSemanticRetrievalTail(
+    JSON.stringify(malformedRetrieval),
+    { authenticatedValidationVersionId, trace },
+  ).problems.includes("semantic-retrieval-log-malformed"));
 
   const warned = structuredClone(acceptedRecord);
   warned.logs.push(tailStructuredLog("warn", {
@@ -354,16 +1357,129 @@ test("interruption recovery cleans vectors before D1 and never finalizes after a
   );
 });
 
-test("mutation Tail readiness uses only Wrangler diagnostics and public probes survive URL redaction", () => {
+test("both JSON tails require one exact-version public health readiness capture", () => {
+  const expectedVersion = "11111111-1111-4111-8111-111111111111";
+  const probe = createAuthenticatedTailReadinessProbe(1_783_921_234_567, 42);
+  assert.equal(probe, "inspir-auth-tail-ready-1783921234567-42");
+  assert.throws(
+    () => createAuthenticatedTailReadinessProbe(Number.NaN, 42),
+    /probe identity is invalid/,
+  );
+  const accepted = {
+    eventTimestamp: 1_783_921_234_568,
+    scriptName: "inspirlearning",
+    scriptVersion: { id: expectedVersion },
+    outcome: "ok",
+    truncated: false,
+    cpuTime: 1,
+    wallTime: 2,
+    exceptions: [] as Array<{ message: string }>,
+    logs: [] as Array<{ level: string; message: string[] }>,
+    event: {
+      request: {
+        cf: {},
+        headers: {},
+        method: "GET",
+        url: `https://inspirlearning.com/api/health?authenticated_tail_ready=${probe}`,
+      },
+      response: { status: 200 },
+    },
+  };
+  const acceptedSource = JSON.stringify(accepted);
+  assert.equal(authenticatedTailHasReadinessProbe(acceptedSource, probe, expectedVersion), true);
+  for (const origin of ["http://inspirlearning.com", "https://evil.example"]) {
+    const wrongOrigin = structuredClone(accepted);
+    const url = new URL(wrongOrigin.event.request.url);
+    wrongOrigin.event.request.url = `${origin}${url.pathname}${url.search}`;
+    assert.equal(
+      authenticatedTailHasReadinessProbe(JSON.stringify(wrongOrigin), probe, expectedVersion),
+      false,
+    );
+  }
   assert.equal(
-    wranglerTailDiagnosticIsConnected("Connected to inspirlearning, waiting for logs...\n"),
+    authenticatedTailHasReadinessProbe(
+      `${acceptedSource}\n${acceptedSource}`,
+      probe,
+      expectedVersion,
+    ),
+    false,
+  );
+  assert.equal(
+    authenticatedTailHasReadinessProbe(`${acceptedSource}\n{`, probe, expectedVersion, true),
+    false,
+  );
+  assert.equal(
+    authenticatedTailReadinessIsCapturedByEveryTail(
+      [acceptedSource, acceptedSource],
+      probe,
+      expectedVersion,
+    ),
     true,
   );
   assert.equal(
-    wranglerTailDiagnosticIsConnected("\u001b[32mConnected to inspirlearning, waiting for logs...\u001b[0m\n"),
-    true,
+    authenticatedTailReadinessIsCapturedByEveryTail(
+      [acceptedSource, "Connected to inspirlearning, waiting for logs...\n"],
+      probe,
+      expectedVersion,
+    ),
+    false,
   );
-  assert.equal(wranglerTailDiagnosticIsConnected("Creating tail...\n"), false);
+  assert.equal(
+    authenticatedTailReadinessIsCapturedByEveryTail([], probe, expectedVersion),
+    false,
+  );
+
+  const wrongVersion = structuredClone(accepted);
+  wrongVersion.scriptVersion.id = "22222222-2222-4222-8222-222222222222";
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(wrongVersion), probe, expectedVersion),
+    false,
+  );
+  const wrongStatus = structuredClone(accepted);
+  wrongStatus.event.response.status = 503;
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(wrongStatus), probe, expectedVersion),
+    false,
+  );
+  const extraQuery = structuredClone(accepted);
+  extraQuery.event.request.url += "&lookalike=1";
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(extraQuery), probe, expectedVersion),
+    false,
+  );
+  const exceptional = structuredClone(accepted);
+  exceptional.exceptions = [{ message: "redacted" }];
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(exceptional), probe, expectedVersion),
+    false,
+  );
+  const truncated = structuredClone(accepted);
+  truncated.truncated = true;
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(truncated), probe, expectedVersion),
+    false,
+  );
+  const failedOutcome = structuredClone(accepted);
+  failedOutcome.outcome = "exception";
+  assert.equal(
+    authenticatedTailHasReadinessProbe(JSON.stringify(failedOutcome), probe, expectedVersion),
+    false,
+  );
+  assert.equal(
+    authenticatedTailHasReadinessProbe(
+      JSON.stringify({ ...accepted, logs: null }),
+      probe,
+      expectedVersion,
+    ),
+    false,
+  );
+  assert.equal(
+    authenticatedTailHasReadinessProbe(acceptedSource, `${probe}-wrong`, expectedVersion),
+    false,
+  );
+});
+
+test("public mutation probes survive URL redaction", () => {
   assert.equal(
     normalizeAuthenticatedMutationRoute("/api/activities/quiz/11111111-1111-4111-8111-111111111111/answer"),
     "/api/activities/quiz/:uuid/answer",
@@ -649,8 +1765,8 @@ test("flow always invokes cleanup and authoritative zero readback when its first
   ]);
 });
 
-test("disposable cleanup inventory requires the independent exact 23-key schema", () => {
-  assert.equal(authenticatedMutationInventoryNames.length, 23);
+test("disposable cleanup inventory requires the independent exact 24-key schema", () => {
+  assert.equal(authenticatedMutationInventoryNames.length, 24);
   assert.deepEqual(exactDisposableInventory(emptyDisposableInventory()), emptyDisposableInventory());
   const omitted = emptyDisposableInventory();
   delete omitted.memory_events;
@@ -671,6 +1787,15 @@ test("production mutation verifier covers chat provider/finalize, completed acti
     "utf8",
   );
   assert.match(source, /action: "create-disposable"|mutationBody\("create-disposable"\)/);
+  assert.match(source, /mutationBody\("grant-disposable-admin"/);
+  assert.match(source, /"admin-users-upsert",[\s\S]{0,80}"\/api\/admin\/users"/);
+  assert.match(source, /"admin-topics-create",[\s\S]{0,80}"\/api\/admin\/topics"/);
+  assert.match(source, /admin-topic-account-readback/);
+  assert.match(source, /mutationBody\("cleanup-disposable-topic"/);
+  assert.match(source, /"admin-users-delete"/);
+  assert.match(source, /verify-admin-cleanup-inventory/);
+  assert.match(source, /adminInventory\.admin_users === 0/);
+  assert.match(source, /adminInventory\.topics === 0/);
   assert.match(source, /"profile-update", "\/api\/me"/);
   assert.match(source, /profile-after-update/);
   assert.match(source, /profileImageHash === null/);
@@ -709,6 +1834,33 @@ test("production mutation verifier covers chat provider/finalize, completed acti
     source,
     /const versionTail = spawn\([\s\S]{0,220}\["tail", workerName, "--format", "json", "--version-id", expectedVersion\]/,
   );
+  const httpTailSpawn = source.slice(
+    source.indexOf("const httpTail = spawn("),
+    source.indexOf("const versionTail = spawn("),
+  );
+  assert.match(httpTailSpawn, /"--format",[\s\S]*"json"/);
+  assert.match(httpTailSpawn, /"--version-id",[\s\S]*expectedVersion/);
+  assert.match(httpTailSpawn, /"--header",[\s\S]*tailSessionHeader/);
+  const readinessCallIndex = source.indexOf("await waitForTailReadiness({");
+  const apiTokenIndex = source.indexOf("const apiToken = requireCloudflareApiToken()", readinessCallIndex);
+  const readinessHelper = source.slice(
+    source.indexOf("async function waitForTailReadiness("),
+    source.indexOf("async function waitForTailProbes("),
+  );
+  assert.ok(readinessCallIndex >= 0);
+  assert.ok(apiTokenIndex > readinessCallIndex);
+  assert.match(readinessHelper, /tails\.length !== 2/);
+  assert.match(readinessHelper, /new URL\("\/api\/health", input\.baseUrl\)/);
+  assert.match(readinessHelper, /\[versionOverrideHeader\]: `\$\{workerName\}="\$\{input\.expectedVersion\}"`/);
+  assert.match(readinessHelper, /\[tailSessionHeader\]: input\.tailSessionToken/);
+  assert.match(readinessHelper, /healthVersion\.id !== input\.expectedVersion/);
+  assert.match(readinessHelper, /authenticatedTailReadinessIsCapturedByEveryTail/);
+  assert.doesNotMatch(source, /wranglerTailDiagnosticIsConnected/);
+  assert.match(readinessHelper, /authenticatedTailCaptureHasLoss/);
+  assert.doesNotMatch(readinessHelper, /waiting for logs|console\./);
+  assert.match(readinessHelper, /const probe = createAuthenticatedTailReadinessProbe\(\)/);
+  assert.match(readinessHelper, /input\.retryMissedMarker/);
+  assert.match(readinessHelper, /if \(!input\.retryMissedMarker\) break/);
   assert.match(
     source,
     /Refusing hidden disposable D1 cleanup before owned source-chat deletion is proven/,
@@ -740,6 +1892,56 @@ test("production mutation verifier covers chat provider/finalize, completed acti
   );
   assert.match(source, /type: "memory\.vector_cleanup\.v1"/);
   assert.match(source, /memory_vector_cleanup_outbox/);
+  const cleanupValidationStartIndex = source.indexOf("const cleanupValidationStartedAt = Date.now()");
+  const mutationFlowIndex = source.indexOf("runAuthenticatedProductionMutationFlow({");
+  const cleanupAggregateIndex = source.indexOf(
+    "const cleanupAggregate = evaluateAuthenticatedMemoryQueueResourceWindow(",
+  );
+  const versionTailStopIndex = source.indexOf("await stopTail(versionTail, versionCapture.closed)");
+  assert.ok(cleanupValidationStartIndex >= 0);
+  assert.ok(cleanupValidationStartIndex < mutationFlowIndex);
+  assert.ok(cleanupAggregateIndex > mutationFlowIndex);
+  assert.ok(cleanupAggregateIndex > versionTailStopIndex);
+  assert.match(source, /const cleanupReasonPrefix = `e2e-cleanup-/);
+  assert.match(source, /cleanupWakeIndex \+= 1/);
+  assert.match(source, /reason: entry\.reason/);
+  assert.match(source, /tailDiagnostics: finalVersionTailDiagnostics/);
+  assert.match(source, /authenticatedCleanupQueueSettlementTimeoutMs = 10 \* 60_000/);
+  assert.match(source, /authenticatedQueueSettlementQuietPeriodMs =\s*backgroundQueueSettlementQuietPeriodMs/);
+  assert.match(source, /waitForCompleteTailOutputCheckpoint\(/);
+  assert.match(publishHook, /captureOutputOffset = await waitForCompleteTailOutputCheckpoint/);
+  assert.ok(
+    publishHook.indexOf("waitForCompleteTailOutputCheckpoint") <
+      publishHook.indexOf("pushAuthenticatedMemoryPostTurn"),
+  );
+  const cleanupHook = source.slice(
+    source.indexOf("requestVectorCleanupDrain: async"),
+    source.indexOf("requireKnownVectorAbsent: async"),
+  );
+  assert.ok(
+    cleanupHook.indexOf("waitForCompleteTailOutputCheckpoint") <
+      cleanupHook.indexOf("pushAuthenticatedMemoryVectorCleanupWake"),
+  );
+  assert.match(source, /waitForSingleTailPostSettlementLiveness/);
+  assert.match(source, /successObservedAt = observationEndedAt/);
+  assert.match(source, /observationEndedAt - successObservedAt >= authenticatedQueueSettlementQuietPeriodMs/);
+  assert.match(source, /settledLivenessProbe: hotPathEvidence\.queue\.settledLivenessProbe/);
+  assert.match(source, /settledLivenessProbe: entry\.settledLivenessProbe/);
+  assert.match(source, /tailOutputClosed: true/);
+  assert.match(source, /diagnosticsForEvaluation\(\)/);
+  assert.match(source, /captureAuthenticatedTail\(httpTail\)/);
+  assert.match(source, /captureAuthenticatedTail\(versionTail\)/);
+  assert.doesNotMatch(source, /function captureTail\(/);
+  const stopTailSource = source.slice(
+    source.indexOf("async function stopTail("),
+    source.indexOf("function extractJsonObjects("),
+  );
+  assert.match(stopTailSource, /\["SIGINT", "SIGTERM"\]/);
+  assert.match(stopTailSource, /child\.kill\("SIGKILL"\)/);
+  assert.match(stopTailSource, /required SIGKILL; authenticated proof is invalid/);
+  assert.match(source, /vectorCleanupQueueTail: cleanupAggregate/);
+  assert.match(source, /cleanupAggregate\.ok/);
+  assert.match(source, /cleanupAggregate\.maximumCpuTimeMs/);
   assert.doesNotMatch(source, /mutation_tail_ready/);
   assert.doesNotMatch(source, /console\.(?:log|error)\([^\n]*(?:authSecret|cookie|userId)/);
 
@@ -747,7 +1949,10 @@ test("production mutation verifier covers chat provider/finalize, completed acti
     path.resolve("lib/free-runtime/protected-ai-api.ts"),
     "utf8",
   );
-  assert.match(protectedSource, /skipQueue: session\.user\.email\?\.endsWith\("@inspirlearning\.invalid"\) === true/);
+  assert.match(
+    protectedSource,
+    /const validationScope = session\.user\.email[\s\S]{0,260}resolveDisposableAdminValidationScope[\s\S]{0,260}skipQueue: validationScope\.kind !== "ordinary"/,
+  );
   const stateSource = fs.readFileSync(
     path.resolve("lib/free-runtime/state-api.ts"),
     "utf8",
@@ -757,13 +1962,23 @@ test("production mutation verifier covers chat provider/finalize, completed acti
     stateSource.indexOf("async function deleteMemoryItem"),
   );
   assert.match(updateMemorySource, /embedding = null/);
-  assert.match(updateMemorySource, /const outboxStatements = isDisposableValidationSession\(session\)/);
-  assert.match(updateMemorySource, /if \(!isDisposableValidationSession\(session\)\)/);
+  assert.match(
+    updateMemorySource,
+    /const suppressAutomaticQueue = await isDisposableValidationSession\(session, env\)/,
+  );
+  assert.match(updateMemorySource, /const outboxStatements = obsoleteVectors\.map/);
+  assert.match(updateMemorySource, /if \(!suppressAutomaticQueue\) \{\s+scheduleMemorySynthesis/);
   assert.match(updateMemorySource, /scheduleVectorCleanupWake/);
   assert.doesNotMatch(updateMemorySource, /deleteNativeMemoryVectorsBestEffort/);
   assert.match(protectedSource, /if \(input\.skipQueue\) return/);
-  assert.match(stateSource, /function isDisposableValidationSession/);
-  assert.equal((stateSource.match(/!isDisposableValidationSession\(session\)/g) ?? []).length, 3);
+  assert.match(stateSource, /async function isDisposableValidationSession/);
+  assert.match(stateSource, /resolveDisposableAdminValidationScope/);
+  assert.match(stateSource, /event: "native_memory_vector_cleanup_started"/);
+  assert.match(
+    stateSource,
+    /job\.type === "memory\.vector_cleanup\.v1" \? \{ reason: job\.reason \} : \{\}/,
+  );
+  assert.doesNotMatch(stateSource, /email\?\.endsWith\("@inspirlearning\.invalid"\)/);
 
   const wrapper = fs.readFileSync(
     path.resolve("scripts/cloudflare/run-authenticated-production-validation.ts"),
@@ -788,6 +2003,17 @@ test("production mutation verifier covers chat provider/finalize, completed acti
   assert.ok(finalLockReleaseIndex > finalSecretFreeIndex);
 });
 
+function authenticatedFetchTailEvent(
+  url = "https://inspirlearning.com/api/health",
+  method = "GET",
+  status = 200,
+) {
+  return {
+    request: { cf: {}, headers: {}, method, url },
+    response: { status },
+  };
+}
+
 function tailRecord(
   trace: AuthenticatedMutationTrace,
   cpuTime: number,
@@ -797,11 +2023,19 @@ function tailRecord(
   url.pathname = pathname;
   url.searchParams.set("authenticated_mutation_probe", trace.probe);
   return {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: MUTATION_TAIL_VERSION_ID },
+    truncated: false,
     outcome: "ok",
     cpuTime,
+    wallTime: Math.max(0, cpuTime),
+    eventTimestamp: 1_783_921_234_567,
     exceptions: [] as Array<{ message: string }>,
+    logs: [] as Array<{ level: string; message: string[]; timestamp: number }>,
     event: {
       request: {
+        cf: {},
+        headers: {},
         method: trace.method,
         url: url.href,
       },
@@ -814,7 +2048,11 @@ function tailStructuredLog(
   level: "log" | "warn" | "error",
   message: Record<string, unknown>,
 ) {
-  return { level, message: [JSON.stringify(message)] };
+  return {
+    level,
+    message: [JSON.stringify(message)],
+    timestamp: 1_783_921_234_567,
+  };
 }
 
 function storedMemoryQueueTailRecord(input: {
@@ -830,6 +2068,7 @@ function storedMemoryQueueTailRecord(input: {
     outcome: "ok",
     truncated: false,
     cpuTime: input.cpuTimeMs,
+    wallTime: input.cpuTimeMs,
     eventTimestamp: 2_000,
     exceptions,
     event: {
@@ -848,8 +2087,116 @@ function storedMemoryQueueTailRecord(input: {
       tailStructuredLog("log", {
         event: "native_memory_vectors_indexed",
         count: input.indexedVectorCount,
+        superseded: 0,
       }),
     ],
+  };
+}
+
+function vectorCleanupQueueTailRecord(input: {
+  authenticatedValidationVersionId: string;
+  cpuTimeMs: number;
+  eventTimestamp: number;
+  reason: string;
+  terminal: "processed" | "deferred" | "failed" | "none";
+  pending?: 0 | 1;
+  messageId?: string;
+  attempts?: number;
+  includeStart?: boolean;
+  outcome?: string;
+}) {
+  const exceptions: Array<{ message: string }> = [];
+  const messageId = input.messageId ?? "cleanup-message-id";
+  const attempts = input.attempts ?? 1;
+  const pending = input.pending ?? 0;
+  const terminal = input.terminal === "processed"
+    ? {
+        event: "native_memory_queue_processed",
+        type: "memory.vector_cleanup.v1",
+        userId: null,
+        reason: input.reason,
+        messageId,
+        attempts,
+        outcome: {
+          claimed: 1,
+          deleteRequested: 1,
+          verifiedAbsent: 0,
+          pending,
+          nextDelaySeconds: pending === 1 ? 180 : null,
+        },
+      }
+    : input.terminal === "deferred"
+    ? {
+        event: "native_memory_vector_cleanup_lease_deferred",
+        type: "memory.vector_cleanup.v1",
+        reason: input.reason,
+        messageId,
+        attempts,
+        delaySeconds: 60,
+      }
+    : input.terminal === "failed"
+    ? {
+        event: "native_memory_queue_failed",
+        type: "memory.vector_cleanup.v1",
+        userId: null,
+        reason: input.reason,
+        messageId,
+        attempts,
+        error: "TypeError",
+      }
+    : null;
+  const logs = input.includeStart === false
+    ? []
+    : [tailStructuredLog("log", {
+        event: "native_memory_vector_cleanup_started",
+        type: "memory.vector_cleanup.v1",
+        reason: input.reason,
+        messageId,
+        attempts,
+      })];
+  if (terminal) {
+    logs.push(tailStructuredLog(input.terminal === "failed" ? "warn" : "log", terminal));
+  }
+  return {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: input.authenticatedValidationVersionId },
+    outcome: input.outcome ?? "ok",
+    truncated: false,
+    cpuTime: input.cpuTimeMs,
+    wallTime: input.cpuTimeMs,
+    eventTimestamp: input.eventTimestamp,
+    exceptions,
+    event: {
+      queue: "inspirlearning-memory-post-turn-prod",
+      batchSize: 1,
+    },
+    logs,
+  };
+}
+
+function authenticatedReadinessTailRecord(input: {
+  expectedVersion: string;
+  probe: string;
+}) {
+  return {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: input.expectedVersion },
+    outcome: "ok",
+    truncated: false,
+    cpuTime: 1,
+    wallTime: 2,
+    eventTimestamp: 1_783_921_234_567,
+    exceptions: [] as Array<{ message: string }>,
+    logs: [] as Array<{ level: string; message: string[] }>,
+    event: {
+      request: {
+        cf: {},
+        headers: {},
+        method: "GET",
+        url: `https://inspirlearning.com/api/health?authenticated_tail_ready=${input.probe}`,
+      },
+      response: { status: 200 },
+    },
   };
 }
 

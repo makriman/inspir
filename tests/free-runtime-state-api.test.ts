@@ -37,6 +37,7 @@ import {
   nativeMemoryVectorId,
   nativeMemoryVectorRevision,
 } from "../lib/free-runtime/native-memory-vector";
+import { buildNativeSessionCookie } from "../lib/free-runtime/native-session";
 
 const localizedStudyMemoryRequests: Record<SupportedLanguage, string> = {
   English: "Remember the planets.",
@@ -347,6 +348,53 @@ test("signed-in analytics quota keys are stable HMAC identities without persiste
   assert.equal(repeated, first);
   assert.equal(first.includes(userId), false);
   assert.match(first, /^analytics:signed:[a-f0-9]{32}$/);
+});
+
+test("a delayed signed-in analytics write cannot survive account deletion", async () => {
+  const secret = "state-api-test-secret-that-is-long-enough";
+  const userId = "11111111-1111-4111-8111-111111111111";
+  const token = "delayed-analytics-session-token";
+  const now = Date.now();
+  const database = new DelayedAnalyticsD1Database({
+    token,
+    userId,
+    updatedAt: now,
+    expiresAt: now + 60 * 60 * 1_000,
+  });
+  const cookie = await buildNativeSessionCookie(
+    token,
+    secret,
+    "https://inspirlearning.com/api/analytics/events",
+    database.expiresAt,
+  );
+  const pending: Promise<unknown>[] = [];
+  const response = await handleStateApiRequest(
+    new Request("https://inspirlearning.com/api/analytics/events", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        cookie: cookie.split(";", 1)[0],
+        "user-agent": "delayed-analytics-test",
+      },
+      body: JSON.stringify({ name: "page_view", route: "/en/chat" }),
+    }),
+    testEnv({ DB: database, AUTH_SECRET: secret }),
+    {
+      waitUntil(promise) {
+        pending.push(promise);
+      },
+    },
+  );
+
+  assert.ok(response);
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { ok: true, recorded: true });
+  assert.equal(pending.length, 1);
+  await database.productRunEntered;
+  database.deleteUserAndReleaseProductRun();
+  await Promise.all(pending);
+  assert.equal(database.productInsertAttempts, 1);
+  assert.equal(database.productRows, 0);
 });
 
 test("chat message cursors round-trip stable created-at and id fields", () => {
@@ -779,6 +827,55 @@ class EmptyD1Database implements D1Database {
   }
 }
 
+class DelayedAnalyticsD1Database extends EmptyD1Database {
+  readonly token: string;
+  readonly userId: string;
+  readonly updatedAt: number;
+  readonly expiresAt: number;
+  userExists = true;
+  productInsertAttempts = 0;
+  productRows = 0;
+  private resolveProductRunEntered: () => void = () => undefined;
+  readonly productRunEntered = new Promise<void>((resolve) => {
+    this.resolveProductRunEntered = resolve;
+  });
+  private resolveProductRunRelease: () => void = () => undefined;
+  private readonly productRunRelease = new Promise<void>((resolve) => {
+    this.resolveProductRunRelease = resolve;
+  });
+
+  constructor(input: {
+    token: string;
+    userId: string;
+    updatedAt: number;
+    expiresAt: number;
+  }) {
+    super();
+    this.token = input.token;
+    this.userId = input.userId;
+    this.updatedAt = input.updatedAt;
+    this.expiresAt = input.expiresAt;
+  }
+
+  prepare(query: string) {
+    this.preparedQueries.push(query);
+    return new DelayedAnalyticsD1Statement(query, this);
+  }
+
+  markProductRunEntered() {
+    this.resolveProductRunEntered();
+  }
+
+  waitForProductRunRelease() {
+    return this.productRunRelease;
+  }
+
+  deleteUserAndReleaseProductRun() {
+    this.userExists = false;
+    this.resolveProductRunRelease();
+  }
+}
+
 class EmptyD1Session implements D1DatabaseSession {
   prepare(query: string) {
     return new EmptyD1Statement(query);
@@ -823,6 +920,63 @@ class EmptyD1Statement implements D1PreparedStatement {
     }
     const rows: T[] = [];
     return rows;
+  }
+}
+
+class DelayedAnalyticsD1Statement extends EmptyD1Statement {
+  private boundValues: unknown[] = [];
+
+  constructor(query: string, private readonly database: DelayedAnalyticsD1Database) {
+    super(query);
+  }
+
+  bind(...values: unknown[]) {
+    this.boundValues = values;
+    return this;
+  }
+
+  first<T = unknown>(_colName: string): Promise<T | null>;
+  first<T = Record<string, unknown>>(): Promise<T | null>;
+  async first() {
+    if (this.query.includes("from sessions s")) {
+      return {
+        session_id: "delayed-analytics-session-id",
+        session_token: this.database.token,
+        user_id: this.database.userId,
+        expires: this.database.expiresAt,
+        session_created_at: this.database.updatedAt,
+        session_updated_at: this.database.updatedAt,
+        ip_address: null,
+        user_agent: "delayed-analytics-test",
+        user_name: "Delayed analytics learner",
+        user_email: "delayed.analytics@example.com",
+        user_email_verified: 1,
+        user_image: null,
+        user_created_at: this.database.updatedAt,
+        user_updated_at: this.database.updatedAt,
+      };
+    }
+    if (this.query.includes("insert into rate_limit_windows")) {
+      assert.match(this.query, /where exists \(select 1 from users where id = \?5\)/);
+      assert.match(this.query, /and exists \(select 1 from users where id = \?5\)/);
+      assert.equal(this.boundValues[4], this.database.userId);
+      return this.database.userExists ? { count: 1 } : null;
+    }
+    return null;
+  }
+
+  async run<T = Record<string, unknown>>() {
+    if (!this.query.includes("insert into product_events")) return super.run<T>();
+    this.database.productInsertAttempts += 1;
+    this.database.markProductRunEntered();
+    await this.database.waitForProductRunRelease();
+    assert.match(
+      this.query,
+      /where \?3 is null or exists \(select 1 from users where id = \?3\)/,
+    );
+    assert.equal(this.boundValues[2], this.database.userId);
+    if (this.database.userExists) this.database.productRows += 1;
+    return emptyD1Result<T>();
   }
 }
 

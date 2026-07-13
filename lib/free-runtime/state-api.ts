@@ -20,6 +20,10 @@ import {
   type NativeMemoryVectorRecord,
 } from "./native-memory-vector";
 import type { MemoryVectorCleanupQueueMessage } from "./memory-queue-contract";
+import {
+  deriveDisposableAdminValidationIdentity,
+  resolveDisposableAdminValidationScope,
+} from "./disposable-admin-validation";
 
 // The schema uses JSON text. New rows store the exact revisioned Vectorize ID;
 // historical arrays and the v1 marker remain readable as the legacy identity.
@@ -256,6 +260,10 @@ export type StateApiEnv = NativeSessionEnv & {
   WRITE_FREEZE?: string;
   RATE_LIMIT_MEMORY_DAILY?: string;
   CRON_SECRET?: string;
+  CF_VERSION_METADATA?: Pick<WorkerVersionMetadata, "id">;
+  E2E_TEST_AUTH_SECRET?: string;
+  E2E_TEST_MUTATION_RUN_ID?: string;
+  E2E_TEST_AUTH_EXPIRES_AT?: string;
 };
 
 export type StateApiExecutionContext = Pick<ExecutionContext, "waitUntil">;
@@ -553,7 +561,7 @@ export async function handleStateApiRequest(
       return handleOwnedMessageContent(request, env, chatMessagePath);
     }
     const chatId = pathIdentifier(pathname, "/api/chats/");
-    if (chatId !== null) return handleOwnedChat(request, env, ctx, chatId);
+    if (chatId !== null) return await handleOwnedChat(request, env, ctx, chatId);
 
     if (pathname === "/api/memory") return handleMemory(request, env, ctx);
     if (pathname === "/api/memory/source-feedback") {
@@ -856,6 +864,18 @@ export async function handleMemoryQueue(
       continue;
     }
 
+    if (job.type === "memory.vector_cleanup.v1") {
+      console.log(
+        JSON.stringify({
+          event: "native_memory_vector_cleanup_started",
+          type: job.type,
+          reason: job.reason,
+          messageId: message.id,
+          attempts: message.attempts,
+        }),
+      );
+    }
+
     try {
       const outcome =
         job.type === "memory.vector_cleanup.v1"
@@ -877,6 +897,8 @@ export async function handleMemoryQueue(
         console.log(
           JSON.stringify({
             event: "native_memory_vector_cleanup_lease_deferred",
+            type: job.type,
+            reason: job.reason,
             messageId: message.id,
             attempts: message.attempts,
             delaySeconds,
@@ -892,6 +914,7 @@ export async function handleMemoryQueue(
           userId: "userId" in job ? job.userId : null,
           messageId: message.id,
           attempts: message.attempts,
+          ...(job.type === "memory.vector_cleanup.v1" ? { reason: job.reason } : {}),
           outcome,
         }),
       );
@@ -905,6 +928,7 @@ export async function handleMemoryQueue(
           userId: "userId" in job ? job.userId : null,
           messageId: message.id,
           attempts: message.attempts,
+          ...(job.type === "memory.vector_cleanup.v1" ? { reason: job.reason } : {}),
           error: error instanceof Error ? error.name : "UnknownError",
         }),
       );
@@ -913,6 +937,7 @@ export async function handleMemoryQueue(
 }
 
 async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurnJob) {
+  const suppressAutomaticQueue = await isDisposableValidationUserId(job.userId, env);
   const [ownedChat, settings] = await Promise.all([
     env.DB.prepare(
       `select
@@ -1273,7 +1298,7 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
     vectorRecords.push(pendingMemoryVector);
   }
   await persistNativeMemoryVectorsBestEffort(env, vectorRecords);
-  if (memoryCreated) {
+  if (memoryCreated && !suppressAutomaticQueue) {
     await sendMemorySynthesisWake(env, job.userId, "explicit_chat_memory_created").catch((error) => {
       console.warn(JSON.stringify({
         event: "native_memory_synthesis_queue_failed",
@@ -1286,16 +1311,21 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
     ? false
     : Boolean(results[forgetMutationStatementIndex]?.results.length);
   if (forgotten) {
-    await Promise.all([
-      drainAndContinueNativeVectorCleanup(env, "explicit_chat_forget"),
-      sendMemorySynthesisWake(env, job.userId, "explicit_chat_forget").catch((error) => {
-        console.warn(JSON.stringify({
-          event: "native_memory_synthesis_queue_failed",
-          reason: "explicit_chat_forget",
-          error: error instanceof Error ? error.name : "UnknownError",
-        }));
-      }),
-    ]);
+    const cleanup = drainAndContinueNativeVectorCleanup(env, "explicit_chat_forget");
+    if (suppressAutomaticQueue) {
+      await cleanup;
+    } else {
+      await Promise.all([
+        cleanup,
+        sendMemorySynthesisWake(env, job.userId, "explicit_chat_forget").catch((error) => {
+          console.warn(JSON.stringify({
+            event: "native_memory_synthesis_queue_failed",
+            reason: "explicit_chat_forget",
+            error: error instanceof Error ? error.name : "UnknownError",
+          }));
+        }),
+      ]);
+    }
   }
   return "stored";
 }
@@ -1982,7 +2012,9 @@ async function createChat(request: Request, env: StateApiEnv, session: NativeAut
     `insert into chats (
        id, user_id, topic_id, topic_name_snapshot, title,
        is_archived, created_at, updated_at
-     ) values (?1, ?2, ?3, ?4, ?4, 0, ?5, ?5)
+     )
+     select ?1, ?2, ?3, ?4, ?4, 0, ?5, ?5
+     where exists (select 1 from users where id = ?2)
      returning
        id, user_id as userId, user_email_snapshot as userEmailSnapshot,
        topic_id as topicId, topic_name_snapshot as topicNameSnapshot,
@@ -2179,6 +2211,7 @@ async function deleteOwnedChat(
 ) {
   const freeze = writeFreezeResponse(env, "chats", session);
   if (freeze) return freeze;
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
 
   const owned = await env.DB.prepare(
     "select id from chats where id = ?1 and user_id = ?2 limit 1",
@@ -2229,7 +2262,9 @@ async function deleteOwnedChat(
     ?.results[0];
   if (!deleted) return jsonResponse({ error: "Not found" }, 404, session);
   scheduleVectorCleanupWake(ctx, env, "chat_deleted");
-  scheduleMemorySynthesis(ctx, env, session.user.id, "chat_deleted");
+  if (!suppressAutomaticQueue) {
+    scheduleMemorySynthesis(ctx, env, session.user.id, "chat_deleted");
+  }
   return jsonResponse({ ok: true }, 200, session);
 }
 
@@ -2263,6 +2298,7 @@ async function createMemory(
 ) {
   const freeze = writeFreezeResponse(env, "memory", session);
   if (freeze) return freeze;
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
   const json = await readBoundedJson(request);
   if (!json.ok) return jsonResponse({ error: json.error }, json.status, session);
   const parsed = parseMemoryCreate(json.value);
@@ -2274,7 +2310,11 @@ async function createMemory(
   if (!toBoolean(settings.enabled)) {
     return jsonResponse({ error: "Memory is turned off." }, 409, session);
   }
-  const quota = await consumeMemoryQuota(env, `memory:create:${session.user.id}`);
+  const quota = await consumeMemoryQuota(
+    env,
+    session.user.id,
+    `memory:create:${session.user.id}`,
+  );
   if (!quota.ok) {
     return jsonResponse(
       { error: "Daily memory limit reached" },
@@ -2327,7 +2367,7 @@ async function createMemory(
   const memory = results[derivedInvalidationStatements.length + 1]?.results[0];
   if (!memory) throw new Error("Native memory insert returned no row");
 
-  if (!isDisposableValidationSession(session)) {
+  if (!suppressAutomaticQueue) {
     scheduleMemorySynthesis(ctx, env, session.user.id, "manual_memory_created");
   }
   const incremental = { ok: true, memory: serializeMemory(memory) } as const;
@@ -2346,13 +2386,18 @@ async function updateMemorySettings(
 ) {
   const freeze = writeFreezeResponse(env, "memory", session);
   if (freeze) return freeze;
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
   const json = await readBoundedJson(request);
   if (!json.ok) return jsonResponse({ error: json.error }, json.status, session);
   const patch = parseMemorySettingsPatch(json.value);
   if (!patch) return jsonResponse({ error: "Invalid memory settings" }, 400, session);
 
   if (patch.refreshSummary || patch.correction) {
-    const quota = await consumeMemoryQuota(env, `memory:update:${session.user.id}`);
+    const quota = await consumeMemoryQuota(
+      env,
+      session.user.id,
+      `memory:update:${session.user.id}`,
+    );
     if (!quota.ok) {
       return jsonResponse(
         { error: "Daily memory limit reached" },
@@ -2484,7 +2529,10 @@ async function updateMemorySettings(
   if (outboxStatements.length) {
     scheduleVectorCleanupWake(ctx, env, "chat_history_disabled");
   }
-  if (disablingChatHistory || patch.refreshSummary || patch.correction) {
+  if (
+    !suppressAutomaticQueue &&
+    (disablingChatHistory || patch.refreshSummary || patch.correction)
+  ) {
     scheduleMemorySynthesis(
       ctx,
       env,
@@ -2688,9 +2736,8 @@ async function updateMemoryItem(
     existing.updatedAt,
     existing.content,
   );
-  const outboxStatements = isDisposableValidationSession(session)
-    ? []
-    : obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
+  const outboxStatements = obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
         entry,
         ownerUserId: session.user.id,
         sourceNamespace: "user_memories",
@@ -2737,7 +2784,7 @@ async function updateMemoryItem(
   if (outboxStatements.length) {
     scheduleVectorCleanupWake(ctx, env, "memory_item_updated");
   }
-  if (!isDisposableValidationSession(session)) {
+  if (!suppressAutomaticQueue) {
     scheduleMemorySynthesis(ctx, env, session.user.id, "manual_memory_updated");
   }
   return jsonResponse({ memory: serializeMemory(memory) }, 200, session);
@@ -2762,9 +2809,8 @@ async function deleteMemoryItem(
     existing.updatedAt,
   );
   const now = Math.max(Date.now(), existing.updatedAt + 1);
-  const outboxStatements = isDisposableValidationSession(session)
-    ? []
-    : obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
+  const outboxStatements = obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
         entry,
         ownerUserId: session.user.id,
         sourceNamespace: "user_memories",
@@ -2826,7 +2872,7 @@ async function deleteMemoryItem(
   if (outboxStatements.length) {
     scheduleVectorCleanupWake(ctx, env, "memory_item_deleted");
   }
-  if (!isDisposableValidationSession(session)) {
+  if (!suppressAutomaticQueue) {
     scheduleMemorySynthesis(ctx, env, session.user.id, "manual_memory_deleted");
   }
   return jsonResponse({ ok: true }, 200, session);
@@ -2842,6 +2888,7 @@ async function handleMemorySourceFeedback(
   if (request.method !== "POST") return methodNotAllowed(["POST"], session);
   const freeze = writeFreezeResponse(env, "memory-feedback", session);
   if (freeze) return freeze;
+  const suppressAutomaticQueue = await isDisposableValidationSession(session, env);
   const json = await readBoundedJson(request);
   if (!json.ok) return jsonResponse({ error: json.error }, json.status, session);
   const feedback = parseMemoryFeedback(json.value);
@@ -3283,6 +3330,7 @@ async function handleMemorySourceFeedback(
     scheduleVectorCleanupWake(ctx, env, "source_feedback_suppressed");
   }
   if (
+    !suppressAutomaticQueue &&
     suppressesSource &&
     (feedback.memoryId || feedback.chatTurnId || feedback.summarySectionId)
   ) {
@@ -3318,7 +3366,9 @@ async function handleAnalyticsEvent(
     `insert into product_events (
        id, name, user_id, user_email_snapshot, route,
        session_id, user_agent_hash, properties, created_at
-     ) values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`,
+     )
+     select ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9
+     where ?3 is null or exists (select 1 from users where id = ?3)`,
   ).bind(
     crypto.randomUUID(),
     event.name,
@@ -3996,13 +4046,16 @@ async function knownNativeMemoryCleanupEntriesForText(
 // identity. Clearing its token prevents the writer from shortening the stale
 // fence after Vectorize has accepted an asynchronously visible upsert.
 const vectorCleanupOutboxConflictSql = `on conflict(vector_id) do update set
-  owner_user_id = excluded.owner_user_id,
-  source_namespace = excluded.source_namespace,
-  source_row_id = excluded.source_row_id,
   source_row_revision = excluded.source_row_revision,
   write_token = null,
   reason = excluded.reason,
-  state = excluded.state,
+  state = case
+    when memory_vector_cleanup_outbox.owner_user_id = excluded.owner_user_id
+      and memory_vector_cleanup_outbox.source_namespace is excluded.source_namespace
+      and memory_vector_cleanup_outbox.source_row_id is excluded.source_row_id
+      then excluded.state
+    else '__ownership_conflict__'
+  end,
   write_fence_expires_at = excluded.write_fence_expires_at,
   absence_count = 0,
   lease_token = null,
@@ -4557,7 +4610,11 @@ async function sendMemorySynthesisWake(
   );
 }
 
-async function consumeMemoryQuota(env: StateApiEnv, key: string): Promise<QuotaDecision> {
+async function consumeMemoryQuota(
+  env: StateApiEnv,
+  userId: string,
+  key: string,
+): Promise<QuotaDecision> {
   const limit = nonNegativeInteger(env.RATE_LIMIT_MEMORY_DAILY, 60);
   const now = Date.now();
   const resetAt = now + oneDayMs;
@@ -4565,15 +4622,17 @@ async function consumeMemoryQuota(env: StateApiEnv, key: string): Promise<QuotaD
   try {
     const result = await env.DB.prepare(
       `insert into rate_limit_windows ("key", count, reset_at, created_at, updated_at)
-       values (?1, 1, ?2, ?3, ?3)
+       select ?1, 1, ?2, ?3, ?3
+       where exists (select 1 from users where id = ?5)
        on conflict ("key") do update set
          count = case when rate_limit_windows.reset_at <= ?3 then 1 else rate_limit_windows.count + 1 end,
          reset_at = case when rate_limit_windows.reset_at <= ?3 then excluded.reset_at else rate_limit_windows.reset_at end,
          updated_at = excluded.updated_at
-       where rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4
+       where (rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4)
+         and exists (select 1 from users where id = ?5)
        returning count, reset_at as resetAt`,
     )
-      .bind(key, resetAt, now, limit)
+      .bind(key, resetAt, now, limit, userId)
       .all<{ count: number; resetAt: number }>();
     const row = result.results[0];
     if (row) return { ok: true };
@@ -4962,7 +5021,7 @@ async function admitAnonymousAnalytics(request: Request, env: StateApiEnv) {
     env,
     identity.quotaKey,
     anonymousAnalyticsHourlyLimit,
-    "anonymous",
+    { kind: "anonymous" },
   );
 }
 
@@ -4985,7 +5044,7 @@ async function admitSignedInAnalytics(env: StateApiEnv, userId: string) {
     env,
     quotaKey,
     signedInAnalyticsHourlyLimit,
-    "signed_in",
+    { kind: "signed_in", userId },
   );
 }
 
@@ -4993,29 +5052,39 @@ async function consumeAnalyticsFixedWindow(
   env: StateApiEnv,
   quotaKey: string,
   limit: number,
-  scope: "anonymous" | "signed_in",
+  scope: { kind: "anonymous" } | { kind: "signed_in"; userId: string },
 ) {
   const now = Date.now();
   const resetAt = Math.floor(now / oneHourMs) * oneHourMs + oneHourMs;
   try {
-    const admitted = await env.DB.prepare(
+    const authenticatedInsertGuard = scope.kind === "signed_in"
+      ? "where exists (select 1 from users where id = ?5)"
+      : "";
+    const authenticatedUpdateGuard = scope.kind === "signed_in"
+      ? "and exists (select 1 from users where id = ?5)"
+      : "";
+    const statement = env.DB.prepare(
       `insert into rate_limit_windows ("key", count, reset_at, created_at, updated_at)
-       values (?1, 1, ?2, ?3, ?3)
+       select ?1, 1, ?2, ?3, ?3
+       ${authenticatedInsertGuard}
        on conflict ("key") do update set
          count = case when rate_limit_windows.reset_at <= ?3 then 1 else rate_limit_windows.count + 1 end,
          reset_at = case when rate_limit_windows.reset_at <= ?3 then excluded.reset_at else rate_limit_windows.reset_at end,
          updated_at = excluded.updated_at
-       where rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4
+       where (rate_limit_windows.reset_at <= ?3 or rate_limit_windows.count < ?4)
+         ${authenticatedUpdateGuard}
        returning count`,
-    )
-      .bind(quotaKey, resetAt, now, limit)
+    );
+    const admitted = await (scope.kind === "signed_in"
+      ? statement.bind(quotaKey, resetAt, now, limit, scope.userId)
+      : statement.bind(quotaKey, resetAt, now, limit))
       .first<{ count: number }>();
     return Boolean(admitted);
   } catch (error) {
     console.warn(
       JSON.stringify({
         event: "native_analytics_admission_failed",
-        scope,
+        scope: scope.kind,
         posture: "drop_event",
         error: error instanceof Error ? error.name : "UnknownError",
       }),
@@ -5559,8 +5628,24 @@ function isUsefulMemoryContent(value: string) {
   );
 }
 
-function isDisposableValidationSession(session: NativeAuthenticatedSession) {
-  return session.user.email?.endsWith("@inspirlearning.invalid") === true;
+async function isDisposableValidationUserId(userId: string, env: StateApiEnv) {
+  const versionId = env.CF_VERSION_METADATA?.id;
+  const runId = env.E2E_TEST_MUTATION_RUN_ID;
+  if (!versionId || !runId) return false;
+  const identity = await deriveDisposableAdminValidationIdentity(versionId, runId);
+  return identity?.userId === userId;
+}
+
+async function isDisposableValidationSession(
+  session: NativeAuthenticatedSession,
+  env: StateApiEnv,
+) {
+  if (!session.user.email) return false;
+  const scope = await resolveDisposableAdminValidationScope(
+    { id: session.user.id, email: session.user.email },
+    env,
+  );
+  return scope.kind !== "ordinary";
 }
 
 function appendVary(current: string | null, value: string) {

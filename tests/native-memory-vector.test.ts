@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { Miniflare } from "miniflare";
 import {
   MAX_NATIVE_MEMORY_VECTOR_INPUTS,
   NATIVE_MEMORY_VECTOR_DIMENSIONS,
@@ -7,8 +8,11 @@ import {
   nativeMemoryVectorId,
   nativeMemoryVectorRevision,
   parseNativeMemoryVectorId,
+  prepareNativeMemoryVectors,
   queryNativeMemoryVectorIds,
+  upsertPreparedNativeMemoryVectors,
   upsertNativeMemoryVectors,
+  type NativeMemoryVectorRecord,
   type NativeMemoryVectorEnv,
 } from "../lib/free-runtime/native-memory-vector";
 
@@ -82,6 +86,7 @@ test("native memory vector writes batch bounded 512-dimensional embeddings with 
   });
 
   assert.equal(budget.bindings.length, 1);
+  assert.equal(budget.bindings[0]?.[3], "user-1");
   assert.equal(upserts.length, 1);
   assert.equal(
     upserts[0]?.every((vector) => vector.values.length === NATIVE_MEMORY_VECTOR_DIMENSIONS),
@@ -169,6 +174,7 @@ test("native memory vector queries pre-filter both namespaces by user and return
     }],
   });
   assert.equal(budget.bindings.length, 1);
+  assert.equal(budget.bindings[0]?.[3], "user-1");
   assert.equal(queries.length, 2);
   for (const query of queries) {
     assert.equal(query.topK, 20);
@@ -277,6 +283,165 @@ test("native memory vector writes reserve exactly once and cap each provider bat
   assert.equal(upserts[0]?.length, MAX_NATIVE_MEMORY_VECTOR_INPUTS);
 });
 
+test("mixed-owner vector writes fail before budget, provider, or Vectorize work", async () => {
+  const mixedCases: ReadonlyArray<readonly NativeMemoryVectorRecord[]> = [
+    [
+      {
+        namespace: "user_memories",
+        rowId: "11111111-1111-4111-8111-111111111111",
+        userId: "user-a",
+        text: "Same-row owner A",
+        rowRevision: 100,
+      },
+      {
+        namespace: "user_memories",
+        rowId: "11111111-1111-4111-8111-111111111111",
+        userId: "user-b",
+        text: "Same-row owner B",
+        rowRevision: 100,
+      },
+    ],
+    [
+      {
+        namespace: "user_memories",
+        rowId: "22222222-2222-4222-8222-222222222222",
+        userId: "user-a",
+        text: "Distinct-row owner A",
+        rowRevision: 200,
+      },
+      {
+        namespace: "chat_memory_turns",
+        rowId: "33333333-3333-4333-8333-333333333333",
+        userId: "user-b",
+        text: "Distinct-row owner B",
+      },
+    ],
+  ];
+
+  for (const candidates of mixedCases) {
+    for (const entrypoint of ["public", "prepared"] as const) {
+      const budget = budgetDatabase({ callCount: 1 });
+      let fetchCalls = 0;
+      let upsertCalls = 0;
+      const index = {
+        async query() {
+          return { matches: [], count: 0 };
+        },
+        async upsert(vectors: VectorizeVector[]) {
+          upsertCalls += 1;
+          return { ids: vectors.map((vector) => vector.id), count: vectors.length };
+        },
+      } satisfies NonNullable<NativeMemoryVectorEnv["MEMORY_VECTORIZE"]>;
+      const result = await withEmbeddingFetch(async () => {
+        fetchCalls += 1;
+        return Response.json({ data: [] });
+      }, async () => {
+        if (entrypoint === "public") {
+          return upsertNativeMemoryVectors(vectorEnv(budget.db, index), candidates);
+        }
+        const prepared = (
+          await Promise.all(candidates.map((candidate) => prepareNativeMemoryVectors([candidate])))
+        ).flat();
+        return upsertPreparedNativeMemoryVectors(vectorEnv(budget.db, index), prepared);
+      });
+      assert.equal(result, null, entrypoint);
+      assert.equal(budget.bindings.length, 0, entrypoint);
+      assert.equal(fetchCalls, 0, entrypoint);
+      assert.equal(upsertCalls, 0, entrypoint);
+    }
+  }
+});
+
+test("disabled semantic namespaces perform no budget, provider, or Vectorize work", async () => {
+  const budget = budgetDatabase({ callCount: 1 });
+  let fetchCalls = 0;
+  let queryCalls = 0;
+  const index = {
+    async query() {
+      queryCalls += 1;
+      return { matches: [], count: 0 };
+    },
+    async upsert(vectors: VectorizeVector[]) {
+      return { ids: vectors.map((vector) => vector.id), count: vectors.length };
+    },
+  } satisfies NonNullable<NativeMemoryVectorEnv["MEMORY_VECTORIZE"]>;
+  const result = await withEmbeddingFetch(async () => {
+    fetchCalls += 1;
+    return Response.json({ data: [] });
+  }, () => queryNativeMemoryVectorIds(vectorEnv(budget.db, index), {
+    userId: "user-1",
+    message: "Nothing should be searched.",
+    includeMemories: false,
+    includeTurns: false,
+  }));
+  assert.equal(result, null);
+  assert.equal(budget.bindings.length, 0);
+  assert.equal(fetchCalls, 0);
+  assert.equal(queryCalls, 0);
+});
+
+test("a deleted user cannot reserve embedding budget or call provider and Vectorize", async () => {
+  const miniflare = new Miniflare({
+    modules: true,
+    script: "export default {}",
+    d1Databases: { DB: `native-vector-budget-${crypto.randomUUID()}` },
+  });
+  const database = await miniflare.getD1Database("DB");
+  try {
+    await database.batch([
+      database.prepare("create table users (id text primary key not null)"),
+      database.prepare(
+        `create table llm_usage_daily_shards (
+           day text not null, shard integer not null, call_count integer not null,
+           created_at integer not null, updated_at integer not null,
+           primary key (day, shard)
+         )`,
+      ),
+    ]);
+    let fetchCalls = 0;
+    let queryCalls = 0;
+    let upsertCalls = 0;
+    const index = {
+      async query() {
+        queryCalls += 1;
+        return { matches: [], count: 0 };
+      },
+      async upsert(vectors: VectorizeVector[]) {
+        upsertCalls += 1;
+        return { ids: vectors.map((vector) => vector.id), count: vectors.length };
+      },
+    } satisfies NonNullable<NativeMemoryVectorEnv["MEMORY_VECTORIZE"]>;
+    const env = vectorEnv(nativeBudgetDatabase(database), index);
+
+    await withEmbeddingFetch(async () => {
+      fetchCalls += 1;
+      return Response.json({ data: [] });
+    }, async () => {
+      assert.equal(await queryNativeMemoryVectorIds(env, {
+        userId: "deleted-user",
+        message: "Recall deleted memory.",
+      }), null);
+      assert.equal(await upsertNativeMemoryVectors(env, [{
+        namespace: "user_memories",
+        rowId: "44444444-4444-4444-8444-444444444444",
+        userId: "deleted-user",
+        text: "Deleted user memory.",
+        rowRevision: 300,
+      }]), null);
+    });
+
+    const usage = await database.prepare(
+      "select count(*) as rows, coalesce(sum(call_count), 0) as calls from llm_usage_daily_shards",
+    ).first<{ rows: number; calls: number }>();
+    assert.deepEqual(usage, { rows: 0, calls: 0 });
+    assert.equal(fetchCalls, 0);
+    assert.equal(queryCalls, 0);
+    assert.equal(upsertCalls, 0);
+  } finally {
+    await miniflare.dispose();
+  }
+});
+
 test("configured zero embedding budget performs no D1 reservation, fetch, or Vectorize work", async () => {
   let fetched = false;
   let queried = false;
@@ -367,6 +532,38 @@ test("embedding spend fails closed before fetch or Vectorize when the shared bud
   assert.equal(queried, false);
 });
 
+test("embedding write spend fails closed before fetch or Vectorize when budget verification errors", async () => {
+  let fetched = false;
+  let upserted = false;
+  const budget = budgetDatabase(new Error("D1 unavailable"));
+  const index = {
+    async query() {
+      return { matches: [], count: 0 };
+    },
+    async upsert(vectors: VectorizeVector[]) {
+      upserted = true;
+      return { ids: vectors.map((vector) => vector.id), count: vectors.length };
+    },
+  } satisfies NonNullable<NativeMemoryVectorEnv["MEMORY_VECTORIZE"]>;
+
+  const result = await withEmbeddingFetch(async () => {
+    fetched = true;
+    return Response.json({ data: [{ index: 0, embedding: embedding(1) }] });
+  }, () => upsertNativeMemoryVectors(vectorEnv(budget.db, index), [{
+    namespace: "user_memories",
+    rowId: "55555555-5555-4555-8555-555555555555",
+    userId: "user-1",
+    text: "A write that must fail before provider spend.",
+    rowRevision: 400,
+  }]));
+
+  assert.equal(result, null);
+  assert.equal(budget.bindings.length, 1);
+  assert.equal(budget.bindings[0]?.[3], "user-1");
+  assert.equal(fetched, false);
+  assert.equal(upserted, false);
+});
+
 test("malformed provider vectors never reach Vectorize", async () => {
   let upserted = false;
   const budget = budgetDatabase({ callCount: 2 });
@@ -415,6 +612,10 @@ function budgetDatabase(result: Record<string, unknown> | Error) {
   const db: NativeMemoryVectorEnv["DB"] = {
     prepare(query: string) {
       assert.match(query, /llm_usage_daily_shards/);
+      assert.equal(
+        query.match(/exists \(select 1 from users where id = \?4\)/g)?.length,
+        2,
+      );
       return {
         bind(...values: unknown[]) {
           bindings.push(values);
@@ -428,6 +629,24 @@ function budgetDatabase(result: Record<string, unknown> | Error) {
     },
   };
   return { db, bindings };
+}
+
+function nativeBudgetDatabase(database: D1Database): NativeMemoryVectorEnv["DB"] {
+  return {
+    prepare(query: string) {
+      let statement = database.prepare(query);
+      const budgetStatement = {
+        bind(...values: unknown[]) {
+          statement = statement.bind(...values);
+          return budgetStatement;
+        },
+        first() {
+          return statement.first<Record<string, unknown>>();
+        },
+      };
+      return budgetStatement;
+    },
+  };
 }
 
 async function withEmbeddingFetch<T>(

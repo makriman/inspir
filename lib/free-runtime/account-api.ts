@@ -23,6 +23,18 @@ import {
   type NativeAuthenticatedSession,
   type NativeSessionEnv,
 } from "@/lib/free-runtime/native-session";
+import {
+  deriveDisposableAdminValidationIdentity,
+  disposableAdminCleanupFenceToken,
+  disposableAdminTopicFixture,
+  disposableAdminTopicOwnershipToken,
+  resolveDisposableAdminValidationScope,
+  type DisposableAdminTopicFixture,
+} from "@/lib/free-runtime/disposable-admin-validation";
+import {
+  disposableOwnerVectorCaptureReadySql,
+  disposableOwnerVectorCleanupStatements,
+} from "@/lib/free-runtime/native-owner-vector-cleanup";
 
 export type NativeAuthEnv = NativeSessionEnv &
   Pick<
@@ -37,7 +49,7 @@ export type NativeAuthEnv = NativeSessionEnv &
   >;
 
 export type AccountApiEnv = NativeAuthEnv &
-  Pick<CloudflareEnv, "PROFILE_IMAGES_R2_BUCKET"> & {
+  Pick<CloudflareEnv, "CF_VERSION_METADATA" | "PROFILE_IMAGES_R2_BUCKET"> & {
     E2E_TEST_AUTH_SECRET?: string;
     E2E_TEST_AUTH_EMAIL?: string;
     E2E_TEST_AUTH_REQUIRE_EXISTING?: string;
@@ -45,6 +57,8 @@ export type AccountApiEnv = NativeAuthEnv &
     E2E_TEST_MUTATION_RUN_ID?: string;
     E2E_TEST_AUTH_EXPIRES_AT?: string;
   };
+
+export type AccountApiExecutionContext = Pick<ExecutionContext, "waitUntil">;
 
 export type MigrationE2EAuthEnv = NativeSessionEnv &
   Pick<AccountApiEnv, "APP_WRITE_FREEZE" | "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS"> & {
@@ -111,7 +125,11 @@ type E2EAuthPayload =
     }
   | { action: "create-disposable"; runId: string; candidateVersionId: string }
   | {
-      action: "cleanup-disposable" | "verify-disposable-cleanup";
+      action:
+        | "cleanup-disposable"
+        | "verify-disposable-cleanup"
+        | "grant-disposable-admin"
+        | "cleanup-disposable-topic";
       runId: string;
       candidateVersionId: string;
       userId: string;
@@ -223,7 +241,6 @@ const googleJwksResponseLimit = 128 * 1_024;
 const e2eAuthBodyLimit = 8_192;
 const e2eSessionDurationMs = 60 * 60 * 1_000;
 const e2eCapabilityMaximumFutureMs = 2 * 60 * 60 * 1_000;
-const e2eDisposableDomain = "inspirlearning.invalid";
 const e2eDisposableInventoryLimit = 500;
 const oauthInitiationWindowMs = 60 * 60 * 1_000;
 const oauthInitiationLimit = 20;
@@ -243,6 +260,7 @@ export const E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES = [
   "verification_tokens",
   "rate_limit_windows",
   "admin_users",
+  "topics",
   "product_events",
   "ops_events",
   "chats",
@@ -272,7 +290,7 @@ export type E2EDisposableMutationInventory = Record<
 export async function handleAccountApiRequest(
   request: Request,
   env: AccountApiEnv,
-  ctx: ExecutionContext,
+  ctx: AccountApiExecutionContext,
 ): Promise<Response | null> {
   const pathname = new URL(request.url).pathname;
   if (pathname === "/api/auth" || pathname.startsWith("/api/auth/")) {
@@ -1124,7 +1142,7 @@ export async function handleMigrationE2EAuthRequest(request: Request, env: Migra
   }
   if (
     !localRequest &&
-    isE2EAuthMintAction(payload.action) &&
+    requiresLiveE2ECapability(payload.action) &&
     (capabilityExpiresAt === null || capabilityExpiresAt <= now)
   ) {
     return hiddenE2EAuthResponse();
@@ -1265,6 +1283,98 @@ export async function handleMigrationE2EAuthRequest(request: Request, env: Migra
     return hiddenE2EAuthResponse();
   }
 
+  if (payload.action === "grant-disposable-admin") {
+    if (!await isExactDisposableSessionOwner(request, env, identity)) {
+      return unauthorizedResponse();
+    }
+    const beforeSnapshot = await loadDisposableMutationInventory(env, identity);
+    if (
+      beforeSnapshot.cleanupMarkerCount !== 1 ||
+      beforeSnapshot.activeCleanupMarkerCount !== 1 ||
+      !isExpectedDisposableCreationInventory(beforeSnapshot.inventory)
+    ) {
+      return jsonResponse(
+        { ok: false, error: "Disposable admin grant prerequisites are not exact." },
+        409,
+      );
+    }
+    const granted = await grantDisposableAdmin(env.DB, identity, now);
+    if (!granted) {
+      return jsonResponse({ ok: false, error: "Disposable admin grant did not commit." }, 409);
+    }
+    const { inventory: after } = await loadDisposableMutationInventory(env, identity);
+    if (!isExpectedDisposableAdminGrantInventory(after)) {
+      throw new Error("Disposable admin grant produced an unexpected inventory.");
+    }
+    return jsonResponse({
+      ok: true,
+      ...runtimeVersionProof,
+      identity: publicDisposableIdentity(identity),
+      before: beforeSnapshot.inventory,
+      after,
+      admin: granted,
+    }, 200);
+  }
+
+  if (payload.action === "cleanup-disposable-topic") {
+    if (!await isExactDisposableSessionOwner(request, env, identity)) {
+      return unauthorizedResponse();
+    }
+    const beforeSnapshot = await loadDisposableMutationInventory(env, identity);
+    if (
+      beforeSnapshot.cleanupMarkerCount !== 1 ||
+      beforeSnapshot.inventory.topics !== 1 ||
+      beforeSnapshot.topicOwnershipMarkerCount !== 1 ||
+      !beforeSnapshot.topicOwnershipTopicId
+    ) {
+      return jsonResponse(
+        { ok: false, error: "Disposable topic cleanup prerequisites are not exact." },
+        409,
+      );
+    }
+    const fixture = disposableAdminTopicFixture(identity);
+    const topicId = beforeSnapshot.topicOwnershipTopicId;
+    const topic = await loadDisposableAdminTopic(env.DB, fixture, topicId);
+    if (!topic || !isExactDisposableAdminTopic(topic, fixture, topicId)) {
+      return jsonResponse(
+        { ok: false, error: "Disposable topic cleanup target is missing or mismatched." },
+        409,
+      );
+    }
+    if (disposableAdminTopicHasReferences(topic)) {
+      return jsonResponse(
+        { ok: false, error: "Disposable topic cleanup target is still referenced." },
+        409,
+      );
+    }
+    const deletion = await deleteDisposableAdminTopic(env.DB, identity, fixture, topicId);
+    if (
+      deletion.length !== 2 ||
+      deletion[0]?.meta.changes !== 1 ||
+      deletion[1]?.meta.changes !== 1 ||
+      await loadDisposableAdminTopic(env.DB, fixture, topicId)
+    ) {
+      throw new Error("Disposable topic cleanup was not exact.");
+    }
+    const afterSnapshot = await loadDisposableMutationInventory(env, identity);
+    const after = afterSnapshot.inventory;
+    if (
+      after.topics !== 0 ||
+      afterSnapshot.topicOwnershipMarkerCount !== 0 ||
+      afterSnapshot.topicOwnershipTopicId !== null
+    ) {
+      throw new Error("Disposable topic cleanup left residue.");
+    }
+    return jsonResponse({
+      ok: true,
+      ...runtimeVersionProof,
+      identity: publicDisposableIdentity(identity),
+      topic: { id: topic.id, slug: topic.slug },
+      before: beforeSnapshot.inventory,
+      after,
+    }, 200);
+  }
+
   if (payload.action === "verify-disposable-cleanup") {
     const { inventory } = await loadDisposableMutationInventory(env, identity);
     return jsonResponse({
@@ -1385,6 +1495,26 @@ type DisposableMutationIdentity = {
 
 type DisposableMutationInventoryRow = Record<string, unknown>;
 
+type DisposableAdminTopicRow = {
+  id: string;
+  slug: string;
+  name: string;
+  subText: string;
+  description: string;
+  inputboxText: string;
+  systemPrompt: string;
+  iconUrl: string | null;
+  sortOrder: number;
+  status: string;
+  metadata: string;
+  createdAt: number;
+  updatedAt: number;
+  chatReferences: number;
+  summaryReferences: number;
+  turnReferences: number;
+  cacheReferences: number;
+};
+
 export const E2E_DISPOSABLE_MUTATION_INVENTORY_SQL = `select
   (select count(*) from users where id = ?1 and email = ?2) as users,
   (select count(*) from users where id = ?1 and email = ?2 and (
@@ -1395,9 +1525,16 @@ export const E2E_DISPOSABLE_MUTATION_INVENTORY_SQL = `select
   (select count(*) from accounts where user_id = ?1) as accounts,
   (select count(*) from sessions where user_id = ?1) as sessions,
   (select count(*) from verification_tokens where identifier = ?2) as verification_tokens,
-  (select count(*) from verification_tokens where identifier = ?2 and token = ?9) as cleanup_marker,
+  (select count(*) from verification_tokens where identifier = ?2 and token in (?9, ?12)) as cleanup_marker,
+  (select count(*) from verification_tokens where identifier = ?2 and token = ?9) as active_cleanup_marker,
+  (select count(*) from verification_tokens where identifier = ?2 and token = ?12) as fenced_cleanup_marker,
+  (select count(*) from verification_tokens where identifier = ?2 and token = ?11) as topic_ownership_marker,
+  (select id from verification_tokens where identifier = ?2 and token = ?11 limit 1) as topic_ownership_topic_id,
   (select count(*) from rate_limit_windows where "key" in (?3, ?4, ?5, ?6, ?7, ?8)) as rate_limit_windows,
   (select count(*) from admin_users where email = ?2 or added_by_user_id = ?1) as admin_users,
+  (select count(*) from topics where slug = ?10 or id in (
+    select id from verification_tokens where identifier = ?2 and token = ?11
+  )) as topics,
   (select count(*) from product_events where user_id = ?1) as product_events,
   (select count(*) from ops_events where user_id = ?1) as ops_events,
   (select count(*) from chats where user_id = ?1) as chats,
@@ -1419,24 +1556,10 @@ async function disposableMutationIdentity(
   candidateVersionId: string,
   runId: string,
 ): Promise<DisposableMutationIdentity> {
-  const digest = new Uint8Array(await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(`inspir-disposable-mutation-v1\0${candidateVersionId}\0${runId}`),
-  ));
-  const uuidBytes = digest.slice(0, 16);
-  uuidBytes[6] = ((uuidBytes[6] ?? 0) & 0x0f) | 0x40;
-  uuidBytes[8] = ((uuidBytes[8] ?? 0) & 0x3f) | 0x80;
-  const uuidHex = bytesToHex(uuidBytes);
-  const userId = `${uuidHex.slice(0, 8)}-${uuidHex.slice(8, 12)}-${uuidHex.slice(12, 16)}-${uuidHex.slice(16, 20)}-${uuidHex.slice(20)}`;
-  const runSlug = runId.replaceAll("-", "");
-  const candidateSlug = candidateVersionId.replaceAll("-", "").slice(0, 12);
-  const email = `e2e-${candidateSlug}-${runSlug}@${e2eDisposableDomain}`;
+  const identity = await deriveDisposableAdminValidationIdentity(candidateVersionId, runId);
+  if (!identity) throw new Error("Disposable mutation identity binding is invalid.");
   return {
-    candidateVersionId,
-    runId,
-    userId,
-    email,
-    markerToken: `inspir-disposable-mutation-v1:${bytesToHex(digest)}`,
+    ...identity,
     quotaKeys: [],
   };
 }
@@ -1462,14 +1585,245 @@ async function identityWithRuntimeQuotaKeys(
   } satisfies DisposableMutationIdentity;
 }
 
+async function isExactDisposableSessionOwner(
+  request: Request,
+  env: MigrationE2EAuthEnv,
+  identity: DisposableMutationIdentity,
+) {
+  const session = await requireNativeSession(request, env, { refresh: false });
+  return session?.user.id === identity.userId && session.user.email === identity.email;
+}
+
+async function grantDisposableAdmin(
+  db: D1Database,
+  identity: DisposableMutationIdentity,
+  now: number,
+) {
+  const row = await db.prepare(
+    `insert into admin_users (email, added_by_user_id, added_by_email, created_at)
+     select ?1, ?2, ?1, ?3
+     where exists (select 1 from users where id = ?2 and email = ?1)
+       and exists (
+         select 1 from verification_tokens
+         where identifier = ?1 and token = ?4 and expires > ?3
+       )
+       and not exists (
+         select 1 from verification_tokens where identifier = ?1 and token = ?5
+       )
+     on conflict(email) do nothing
+     returning email,
+               added_by_user_id as addedByUserId,
+               added_by_email as addedByEmail,
+               created_at as createdAt`,
+  )
+    .bind(
+      identity.email,
+      identity.userId,
+      now,
+      identity.markerToken,
+      disposableAdminCleanupFenceToken(identity),
+    )
+    .first<{
+      email: string;
+      addedByUserId: string | null;
+      addedByEmail: string | null;
+      createdAt: number;
+    }>();
+  if (
+    !row ||
+    row.email !== identity.email ||
+    row.addedByUserId !== identity.userId ||
+    row.addedByEmail !== identity.email ||
+    !Number.isSafeInteger(row.createdAt) ||
+    row.createdAt !== now
+  ) {
+    return null;
+  }
+  return {
+    email: row.email,
+    addedByUserId: row.addedByUserId,
+    addedByEmail: row.addedByEmail,
+    createdAt: new Date(row.createdAt).toISOString(),
+    source: "database" as const,
+  };
+}
+
+async function loadDisposableAdminTopic(
+  db: D1Database,
+  fixture: DisposableAdminTopicFixture,
+  topicId: string,
+) {
+  return db.prepare(
+    `select t.id,
+            t.slug,
+            t.name,
+            t.sub_text as subText,
+            t.description,
+            t.inputbox_text as inputboxText,
+            t.system_prompt as systemPrompt,
+            t.icon_url as iconUrl,
+            t.sort_order as sortOrder,
+            t.status,
+            t.metadata,
+            t.created_at as createdAt,
+            t.updated_at as updatedAt,
+            (select count(*) from chats where topic_id = t.id) as chatReferences,
+            (select count(*) from chat_memory_summaries where topic_id = t.id) as summaryReferences,
+            (select count(*) from chat_memory_turns where topic_id = t.id) as turnReferences,
+            (select count(*) from ai_response_cache
+             where topic_id = t.id or topic_slug = t.slug) as cacheReferences
+     from topics t where t.id = ?1 and t.slug = ?2 limit 1`,
+  )
+    .bind(topicId, fixture.slug)
+    .first<DisposableAdminTopicRow>();
+}
+
+function isExactDisposableAdminTopic(
+  row: DisposableAdminTopicRow,
+  fixture: DisposableAdminTopicFixture,
+  topicId: string,
+) {
+  return exactUuid(row.id) === topicId &&
+    row.slug === fixture.slug &&
+    row.name === fixture.name &&
+    row.subText === fixture.subText &&
+    row.description === fixture.description &&
+    row.inputboxText === fixture.inputboxText &&
+    row.systemPrompt === fixture.systemPrompt &&
+    row.iconUrl === null &&
+    row.sortOrder === 100 &&
+    row.status === "active" &&
+    row.metadata === "{}" &&
+    Number.isSafeInteger(row.createdAt) &&
+    row.createdAt > 0 &&
+    row.updatedAt === row.createdAt &&
+    nonNegativeSafeInteger(row.chatReferences) !== null &&
+    nonNegativeSafeInteger(row.summaryReferences) !== null &&
+    nonNegativeSafeInteger(row.turnReferences) !== null &&
+    nonNegativeSafeInteger(row.cacheReferences) !== null;
+}
+
+function disposableAdminTopicHasReferences(row: DisposableAdminTopicRow) {
+  return row.chatReferences !== 0 ||
+    row.summaryReferences !== 0 ||
+    row.turnReferences !== 0 ||
+    row.cacheReferences !== 0;
+}
+
+function disposableAdminTopicDeleteStatement(
+  db: D1Database,
+  identity: DisposableMutationIdentity,
+  fixture: DisposableAdminTopicFixture,
+  topicId: string,
+  cleanupMarkerToken: string,
+) {
+  const ownershipToken = disposableAdminTopicOwnershipToken(identity);
+  return db.prepare(
+    `delete from topics
+     where id = ?1
+       and slug = ?2
+       and name = ?3
+       and sub_text = ?4
+       and description = ?5
+       and inputbox_text = ?6
+       and system_prompt = ?7
+       and icon_url is null
+       and sort_order = 100
+       and status = 'active'
+       and metadata = '{}'
+       and created_at = updated_at
+       and exists (
+         select 1 from verification_tokens where identifier = ?8 and token = ?9
+       )
+       and exists (
+         select 1 from verification_tokens where id = ?1 and identifier = ?8 and token = ?10
+       )
+       and not exists (select 1 from chats where topic_id = ?1)
+       and not exists (select 1 from chat_memory_summaries where topic_id = ?1)
+       and not exists (select 1 from chat_memory_turns where topic_id = ?1)
+       and not exists (
+         select 1 from ai_response_cache where topic_id = ?1 or topic_slug = ?2
+       )`,
+  ).bind(
+    topicId,
+    fixture.slug,
+    fixture.name,
+    fixture.subText,
+    fixture.description,
+    fixture.inputboxText,
+    fixture.systemPrompt,
+    identity.email,
+    cleanupMarkerToken,
+    ownershipToken,
+  );
+}
+
+function disposableAdminTopicOwnershipDeleteStatement(
+  db: D1Database,
+  identity: DisposableMutationIdentity,
+  fixture: DisposableAdminTopicFixture,
+  topicId: string,
+  cleanupMarkerToken: string,
+) {
+  return db.prepare(
+    `delete from verification_tokens
+     where id = ?1 and identifier = ?2 and token = ?3
+       and exists (
+         select 1 from verification_tokens where identifier = ?2 and token = ?4
+       )
+       and not exists (select 1 from topics where id = ?1 or slug = ?5)`,
+  ).bind(
+    topicId,
+    identity.email,
+    disposableAdminTopicOwnershipToken(identity),
+    cleanupMarkerToken,
+    fixture.slug,
+  );
+}
+
+async function deleteDisposableAdminTopic(
+  db: D1Database,
+  identity: DisposableMutationIdentity,
+  fixture: DisposableAdminTopicFixture,
+  topicId: string,
+) {
+  return db.batch([
+    disposableAdminTopicDeleteStatement(
+      db,
+      identity,
+      fixture,
+      topicId,
+      identity.markerToken,
+    ),
+    disposableAdminTopicOwnershipDeleteStatement(
+      db,
+      identity,
+      fixture,
+      topicId,
+      identity.markerToken,
+    ),
+  ]);
+}
+
 async function loadDisposableMutationInventory(
   env: MigrationE2EAuthEnv,
   baseIdentity: DisposableMutationIdentity,
 ) {
   if (!env.AUTH_SECRET) throw new Error("Disposable mutation inventory requires auth configuration.");
   const identity = await identityWithRuntimeQuotaKeys(baseIdentity, env.AUTH_SECRET);
+  const topic = disposableAdminTopicFixture(identity);
+  const topicOwnershipToken = disposableAdminTopicOwnershipToken(identity);
+  const cleanupFenceToken = disposableAdminCleanupFenceToken(identity);
   const row = await env.DB.prepare(E2E_DISPOSABLE_MUTATION_INVENTORY_SQL)
-    .bind(identity.userId, identity.email, ...identity.quotaKeys, identity.markerToken)
+    .bind(
+      identity.userId,
+      identity.email,
+      ...identity.quotaKeys,
+      identity.markerToken,
+      topic.slug,
+      topicOwnershipToken,
+      cleanupFenceToken,
+    )
     .first<DisposableMutationInventoryRow>();
   if (!row) throw new Error("Disposable mutation inventory was unavailable.");
   const inventory: Partial<E2EDisposableMutationInventory> = {};
@@ -1483,7 +1837,36 @@ async function loadDisposableMutationInventory(
   if (cleanupMarkerCount === null || cleanupMarkerCount > 1) {
     throw new Error("Disposable mutation cleanup marker inventory is invalid.");
   }
-  return { inventory, cleanupMarkerCount };
+  const activeCleanupMarkerCount = nonNegativeSafeInteger(row.active_cleanup_marker);
+  const fencedCleanupMarkerCount = nonNegativeSafeInteger(row.fenced_cleanup_marker);
+  if (
+    activeCleanupMarkerCount === null ||
+    activeCleanupMarkerCount > 1 ||
+    fencedCleanupMarkerCount === null ||
+    fencedCleanupMarkerCount > 1 ||
+    activeCleanupMarkerCount + fencedCleanupMarkerCount !== cleanupMarkerCount
+  ) {
+    throw new Error("Disposable mutation cleanup marker state is invalid.");
+  }
+  const topicOwnershipMarkerCount = nonNegativeSafeInteger(row.topic_ownership_marker);
+  if (topicOwnershipMarkerCount === null || topicOwnershipMarkerCount > 1) {
+    throw new Error("Disposable topic ownership marker inventory is invalid.");
+  }
+  const topicOwnershipTopicId = exactUuid(row.topic_ownership_topic_id);
+  if (
+    (topicOwnershipMarkerCount === 0 && row.topic_ownership_topic_id !== null) ||
+    (topicOwnershipMarkerCount === 1 && !topicOwnershipTopicId)
+  ) {
+    throw new Error("Disposable topic ownership marker identity is invalid.");
+  }
+  return {
+    inventory,
+    cleanupMarkerCount,
+    activeCleanupMarkerCount,
+    fencedCleanupMarkerCount,
+    topicOwnershipMarkerCount,
+    topicOwnershipTopicId,
+  };
 }
 
 async function createDisposableMutationUser(
@@ -1558,6 +1941,191 @@ async function createDisposableMutationUser(
   return { user, session };
 }
 
+const disposableFinalizationReadySql = `exists (
+  select 1 from users
+  where id = ?1 and email = ?2
+    and profile_image_mime is null
+    and profile_image_hash is null
+    and profile_image_r2_key is null
+    and profile_image_r2_etag is null
+    and profile_image_size is null
+)
+and exists (
+  select 1 from verification_tokens where identifier = ?2 and token = ?3
+)
+and not exists (
+  select 1 from rate_limit_windows where "key" in (?4, ?5, ?6, ?7, ?8, ?9)
+)
+and not exists (
+  select 1 from admin_users where email = ?2 or added_by_user_id = ?1
+)
+and not exists (
+  select 1 from topics where slug = ?10 or id in (
+    select id from verification_tokens where identifier = ?2 and token = ?11
+  )
+)
+and not exists (select 1 from product_events where user_id = ?1)
+and not exists (select 1 from ops_events where user_id = ?1)
+and not exists (select 1 from chats where user_id = ?1)
+and not exists (
+  select 1 from messages where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (
+  select 1 from activity_runs where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (
+  select 1 from ai_runs where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (select 1 from user_memory_settings where user_id = ?1)
+and not exists (select 1 from user_memories where user_id = ?1)
+and not exists (select 1 from chat_memory_summaries where user_id = ?1)
+and not exists (select 1 from chat_memory_turns where user_id = ?1)
+and not exists (select 1 from user_memory_profiles where user_id = ?1)
+and not exists (select 1 from user_memory_summaries where user_id = ?1)
+and not exists (select 1 from memory_synthesis_runs where user_id = ?1)
+and not exists (select 1 from memory_source_feedback where user_id = ?1)
+and not exists (select 1 from memory_events where user_id = ?1)
+and not exists (select 1 from memory_vector_cleanup_outbox where owner_user_id = ?1)`;
+
+const disposablePostUserNonTokenZeroResidueSql = `not exists (
+  select 1 from users where id = ?1 or email = ?2
+)
+and not exists (select 1 from accounts where user_id = ?1)
+and not exists (select 1 from sessions where user_id = ?1)
+and not exists (
+  select 1 from rate_limit_windows where "key" in (?4, ?5, ?6, ?7, ?8, ?9)
+)
+and not exists (
+  select 1 from admin_users where email = ?2 or added_by_user_id = ?1
+)
+and not exists (
+  select 1 from topics where slug = ?10 or id in (
+    select id from verification_tokens where identifier = ?2 and token = ?11
+  )
+)
+and not exists (select 1 from product_events where user_id = ?1)
+and not exists (select 1 from ops_events where user_id = ?1)
+and not exists (select 1 from chats where user_id = ?1)
+and not exists (
+  select 1 from messages where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (
+  select 1 from activity_runs where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (
+  select 1 from ai_runs where chat_id in (select id from chats where user_id = ?1)
+)
+and not exists (select 1 from user_memory_settings where user_id = ?1)
+and not exists (select 1 from user_memories where user_id = ?1)
+and not exists (select 1 from chat_memory_summaries where user_id = ?1)
+and not exists (select 1 from chat_memory_turns where user_id = ?1)
+and not exists (select 1 from user_memory_profiles where user_id = ?1)
+and not exists (select 1 from user_memory_summaries where user_id = ?1)
+and not exists (select 1 from memory_synthesis_runs where user_id = ?1)
+and not exists (select 1 from memory_source_feedback where user_id = ?1)
+and not exists (select 1 from memory_events where user_id = ?1)
+and not exists (select 1 from memory_vector_cleanup_outbox where owner_user_id = ?1)`;
+
+const disposableFinalMarkerZeroResidueSql = `${disposablePostUserNonTokenZeroResidueSql}
+and not exists (
+  select 1 from verification_tokens where identifier = ?2 and token <> ?3
+)`;
+
+function disposableFinalizationBindings(
+  identity: DisposableMutationIdentity,
+  topicFixture: DisposableAdminTopicFixture,
+  cleanupFenceToken: string,
+) {
+  return [
+    identity.userId,
+    identity.email,
+    cleanupFenceToken,
+    ...identity.quotaKeys,
+    topicFixture.slug,
+    disposableAdminTopicOwnershipToken(identity),
+  ];
+}
+
+function disposableOwnedDataCleanupStatements(
+  db: D1Database,
+  identity: DisposableMutationIdentity,
+  topicFixture: DisposableAdminTopicFixture,
+  topicId: string | null,
+  cleanupFenceToken: string,
+) {
+  const userId = identity.userId;
+  const markerGuard =
+    "exists (select 1 from verification_tokens where identifier = ?2 and token = ?3)";
+  const ownerCleanupGuard =
+    `${markerGuard} and (${disposableOwnerVectorCaptureReadySql})`;
+  return [
+    db.prepare(`delete from memory_source_feedback where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from memory_events where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from memory_synthesis_runs where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from user_memory_profiles where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from user_memory_summaries where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from chat_memory_summaries where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from chat_memory_turns where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from user_memories where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(
+      `delete from activity_runs
+       where chat_id in (select id from chats where user_id = ?1) and ${ownerCleanupGuard}`,
+    ).bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(
+      `delete from ai_runs
+       where chat_id in (select id from chats where user_id = ?1) and ${ownerCleanupGuard}`,
+    ).bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(
+      `delete from messages
+       where chat_id in (select id from chats where user_id = ?1) and ${ownerCleanupGuard}`,
+    ).bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from product_events where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(`delete from ops_events where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(
+      `delete from admin_users
+       where (email = ?1 or added_by_user_id = ?2)
+         and exists (select 1 from verification_tokens where identifier = ?1 and token = ?3)`,
+    ).bind(identity.email, userId, cleanupFenceToken),
+    db.prepare(`delete from user_memory_settings where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    db.prepare(
+      `delete from rate_limit_windows
+       where "key" in (?1, ?2, ?3, ?4, ?5, ?6)
+         and exists (select 1 from verification_tokens where identifier = ?7 and token = ?8)`,
+    ).bind(...identity.quotaKeys, identity.email, cleanupFenceToken),
+    db.prepare(`delete from chats where user_id = ?1 and ${ownerCleanupGuard}`)
+      .bind(userId, identity.email, cleanupFenceToken),
+    ...(topicId
+      ? [
+          disposableAdminTopicDeleteStatement(
+            db,
+            identity,
+            topicFixture,
+            topicId,
+            cleanupFenceToken,
+          ),
+          disposableAdminTopicOwnershipDeleteStatement(
+            db,
+            identity,
+            topicFixture,
+            topicId,
+            cleanupFenceToken,
+          ),
+        ]
+      : []),
+  ];
+}
+
 async function cleanupDisposableMutationUser(
   env: MigrationE2EAuthEnv,
   baseIdentity: DisposableMutationIdentity,
@@ -1565,96 +2133,87 @@ async function cleanupDisposableMutationUser(
   if (!env.AUTH_SECRET) throw new Error("Disposable mutation cleanup requires auth configuration.");
   const identity = await identityWithRuntimeQuotaKeys(baseIdentity, env.AUTH_SECRET);
   const userId = identity.userId;
-  const markerGuard =
-    "exists (select 1 from verification_tokens where identifier = ?2 and token = ?3)";
+  const topicFixture = disposableAdminTopicFixture(identity);
+  const cleanupFenceToken = disposableAdminCleanupFenceToken(identity);
+  const cleanupStartedAt = Date.now();
   await env.DB.batch([
-    env.DB.prepare(`delete from memory_source_feedback where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from memory_events where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from memory_synthesis_runs where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from user_memory_profiles where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from user_memory_summaries where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from chat_memory_summaries where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from chat_memory_turns where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from user_memories where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
     env.DB.prepare(
-      `delete from activity_runs
-       where chat_id in (select id from chats where user_id = ?1) and ${markerGuard}`,
-    ).bind(userId, identity.email, identity.markerToken),
+      `update verification_tokens
+       set token = ?3, expires = 1, updated_at = ?4
+       where identifier = ?1 and token = ?2
+         and exists (select 1 from users where id = ?5 and email = ?1)
+         and not exists (
+           select 1 from verification_tokens where identifier = ?1 and token = ?3
+         )`,
+    ).bind(
+      identity.email,
+      identity.markerToken,
+      cleanupFenceToken,
+      cleanupStartedAt,
+      userId,
+    ),
     env.DB.prepare(
-      `delete from ai_runs
-       where chat_id in (select id from chats where user_id = ?1) and ${markerGuard}`,
-    ).bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(
-      `delete from messages
-       where chat_id in (select id from chats where user_id = ?1) and ${markerGuard}`,
-    ).bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from product_events where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from ops_events where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(
-      `delete from admin_users
-       where (email = ?1 or added_by_user_id = ?2)
-         and exists (select 1 from verification_tokens where identifier = ?1 and token = ?3)`,
-    ).bind(identity.email, userId, identity.markerToken),
-    env.DB.prepare(`delete from user_memory_settings where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(
-      `delete from rate_limit_windows
-       where "key" in (?1, ?2, ?3, ?4, ?5, ?6)
-         and exists (select 1 from verification_tokens where identifier = ?7 and token = ?8)`,
-    ).bind(...identity.quotaKeys, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from chats where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
+      `delete from sessions
+       where user_id = ?1
+         and exists (select 1 from users where id = ?1 and email = ?2)
+         and exists (
+           select 1 from verification_tokens where identifier = ?2 and token = ?3
+         )`,
+    ).bind(userId, identity.email, cleanupFenceToken),
   ]);
-
-  // The Vectorize cleanup outbox is an operational durability record, not
-  // disposable account data. Its owner-scoped rows are removed only by the
-  // runtime drain after delayed Vectorize absence verification. Keep the
-  // identity and its cleanup marker alive so an authenticated or HMAC-bound
-  // retry remains possible while that external cleanup is still pending.
-  const afterOwnedDataCleanup = (await loadDisposableMutationInventory(env, identity)).inventory;
-  if (!disposableIdentityCanBeFinalized(afterOwnedDataCleanup)) return;
-
+  const topicSnapshot = await loadDisposableMutationInventory(env, identity);
+  if (
+    topicSnapshot.cleanupMarkerCount !== 1 ||
+    topicSnapshot.activeCleanupMarkerCount !== 0 ||
+    topicSnapshot.fencedCleanupMarkerCount !== 1
+  ) {
+    throw new Error("Disposable mutation cleanup authority could not be fenced.");
+  }
+  const topicId = topicSnapshot.topicOwnershipTopicId;
+  const finalizationBindings = disposableFinalizationBindings(
+    identity,
+    topicFixture,
+    cleanupFenceToken,
+  );
   await env.DB.batch([
-    env.DB.prepare(`delete from accounts where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from sessions where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
+    // D1 serializes this entire transaction after the session fence. Capture
+    // every legacy/exact source identity first, including null and pending
+    // markers, then sweep the graph and finalize only when no owner outbox row
+    // remains. A foreign vector-id collision makes the capture-ready guard
+    // false, retaining the source, chat parent, user, and cleanup authority.
+    ...disposableOwnerVectorCleanupStatements(env.DB, {
+      userId,
+      now: cleanupStartedAt,
+    }),
+    ...disposableOwnedDataCleanupStatements(
+      env.DB,
+      identity,
+      topicFixture,
+      topicId,
+      cleanupFenceToken,
+    ),
+    env.DB.prepare(
+      `delete from accounts where user_id = ?1 and ${disposableFinalizationReadySql}`,
+    ).bind(...finalizationBindings),
+    env.DB.prepare(
+      `delete from sessions where user_id = ?1 and ${disposableFinalizationReadySql}`,
+    ).bind(...finalizationBindings),
     env.DB.prepare(
       `delete from users
        where id = ?1 and email = ?2
-         and exists (select 1 from verification_tokens where identifier = ?2 and token = ?3)`,
-    ).bind(userId, identity.email, identity.markerToken),
+         and ${disposableFinalizationReadySql}`,
+    ).bind(...finalizationBindings),
     env.DB.prepare(
       `delete from verification_tokens
-       where identifier = ?1 and token <> ?2
-         and exists (select 1 from verification_tokens where identifier = ?1 and token = ?2)`,
-    ).bind(identity.email, identity.markerToken),
-    env.DB.prepare("delete from verification_tokens where identifier = ?1 and token = ?2")
-      .bind(identity.email, identity.markerToken),
+       where identifier = ?2 and token <> ?3
+         and ${disposablePostUserNonTokenZeroResidueSql}`,
+    ).bind(...finalizationBindings),
+    env.DB.prepare(
+      `delete from verification_tokens
+       where identifier = ?2 and token = ?3
+         and ${disposableFinalMarkerZeroResidueSql}`,
+    ).bind(...finalizationBindings),
   ]);
-}
-
-const disposableIdentityControlRows = new Set<E2EDisposableMutationInventoryName>([
-  "users",
-  "accounts",
-  "sessions",
-  "verification_tokens",
-]);
-
-function disposableIdentityCanBeFinalized(inventory: E2EDisposableMutationInventory) {
-  return E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES.every((name) => (
-    disposableIdentityControlRows.has(name) || inventory[name] === 0
-  ));
 }
 
 async function authorizedDisposableCleanup(
@@ -1701,6 +2260,21 @@ function isExpectedDisposableCreationInventory(inventory: E2EDisposableMutationI
       name === "sessions" ||
       name === "verification_tokens" ||
       name === "user_memory_settings"
+      ? 1
+      : 0;
+    return inventory[name] === expected;
+  });
+}
+
+function isExpectedDisposableAdminGrantInventory(
+  inventory: E2EDisposableMutationInventory,
+) {
+  return E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES.every((name) => {
+    const expected = name === "users" ||
+        name === "sessions" ||
+        name === "verification_tokens" ||
+        name === "user_memory_settings" ||
+        name === "admin_users"
       ? 1
       : 0;
     return inventory[name] === expected;
@@ -2070,7 +2644,12 @@ async function readE2EAuthPayload(request: Request): Promise<E2EAuthPayload | nu
     const candidateVersionId = exactUuid(value.candidateVersionId);
     return runId && candidateVersionId ? { action, runId, candidateVersionId } : null;
   }
-  if (action === "cleanup-disposable" || action === "verify-disposable-cleanup") {
+  if (
+    action === "cleanup-disposable" ||
+    action === "verify-disposable-cleanup" ||
+    action === "grant-disposable-admin" ||
+    action === "cleanup-disposable-topic"
+  ) {
     if (
       Object.keys(value).some(
         (key) => !["action", "runId", "candidateVersionId", "userId"].includes(key),
@@ -2113,6 +2692,12 @@ function isE2EAuthMintAction(action: E2EAuthPayload["action"]) {
   return action === "authenticate-existing" || action === "create-disposable";
 }
 
+function requiresLiveE2ECapability(action: E2EAuthPayload["action"]) {
+  return isE2EAuthMintAction(action) ||
+    action === "grant-disposable-admin" ||
+    action === "cleanup-disposable-topic";
+}
+
 function isE2EAuthCleanupAction(action: E2EAuthPayload["action"]) {
   return action === "cleanup-existing-session" ||
     action === "verify-existing-session-cleanup" ||
@@ -2123,7 +2708,9 @@ function isE2EAuthCleanupAction(action: E2EAuthPayload["action"]) {
 function isE2EAuthMutationAction(action: E2EAuthPayload["action"]) {
   return isE2EAuthMintAction(action) ||
     action === "cleanup-existing-session" ||
-    action === "cleanup-disposable";
+    action === "cleanup-disposable" ||
+    action === "grant-disposable-admin" ||
+    action === "cleanup-disposable-topic";
 }
 
 function exactExistingSessionPurpose(value: unknown): E2EExistingSessionPurpose | null {
@@ -2202,12 +2789,6 @@ function trustedConnectingIp(value: string | null) {
   }
 }
 
-function bytesToHex(bytes: Uint8Array) {
-  let value = "";
-  for (const byte of bytes) value += byte.toString(16).padStart(2, "0");
-  return value;
-}
-
 function normalizeE2EEmail(value: unknown) {
   if (typeof value !== "string") return null;
   const normalized = value.trim().toLowerCase();
@@ -2263,7 +2844,11 @@ async function handleProfile(request: Request, env: AccountApiEnv) {
   return jsonResponse({ user: await serializeProfile(user, session, env) }, 200, session);
 }
 
-async function handleProfilePhoto(request: Request, env: AccountApiEnv, ctx: ExecutionContext) {
+async function handleProfilePhoto(
+  request: Request,
+  env: AccountApiEnv,
+  ctx: AccountApiExecutionContext,
+) {
   if (request.method !== "GET" && request.method !== "PATCH" && request.method !== "DELETE") {
     return methodNotAllowed("GET, PATCH, DELETE");
   }
@@ -2271,6 +2856,14 @@ async function handleProfilePhoto(request: Request, env: AccountApiEnv, ctx: Exe
   if (!session) return unauthorizedResponse();
 
   if (request.method === "GET") return getProfilePhoto(env, session);
+  if (!session.user.email) return jsonResponse({ error: "Forbidden" }, 403, session);
+  const validationScope = await resolveDisposableAdminValidationScope(
+    { id: session.user.id, email: session.user.email },
+    env,
+  );
+  if (validationScope.kind !== "ordinary") {
+    return jsonResponse({ error: "Forbidden" }, 403, session);
+  }
   if (!isAllowedSameOrigin(request, env)) return jsonResponse({ error: "Forbidden" }, 403, session);
   const freeze = writeFreezeResponse(env, "profile-photo", session);
   if (freeze) return freeze;
@@ -2302,7 +2895,7 @@ async function putProfilePhoto(
   request: Request,
   env: AccountApiEnv,
   session: NativeAuthenticatedSession,
-  ctx: ExecutionContext,
+  ctx: AccountApiExecutionContext,
 ) {
   if (isOversizedProfileImageUpload(request.headers.get("content-length"))) {
     return jsonResponse({ error: "Choose an image under 1 MB." }, 413, session);
@@ -2419,7 +3012,7 @@ async function putProfilePhoto(
 async function deleteProfilePhoto(
   env: AccountApiEnv,
   session: NativeAuthenticatedSession,
-  ctx: ExecutionContext,
+  ctx: AccountApiExecutionContext,
 ) {
   const mutationDb = env.DB.withSession("first-primary");
   const previous = await getProfile(mutationDb, session.user.id);
@@ -2524,7 +3117,7 @@ async function deleteUncommittedProfileImageObject(env: AccountApiEnv, key: stri
 
 function scheduleObsoleteProfileImageDelete(
   env: AccountApiEnv,
-  ctx: ExecutionContext,
+  ctx: AccountApiExecutionContext,
   key: string | null,
 ) {
   if (!key || !isValidProfileImageObjectKey(key)) return;

@@ -6,6 +6,7 @@ import { makeSignature } from "better-auth/crypto";
 import {
   createNativeOAuthSession,
   linkVerifiedGoogleIdentity,
+  handleAccountApiRequest,
   handleLogout,
   handleMigrationE2EAuthRequest,
   handleNativeAuthRequest,
@@ -15,6 +16,7 @@ import {
   type MigrationE2EAuthEnv,
   type NativeAuthEnv,
 } from "../lib/free-runtime/account-api";
+import { deriveDisposableAdminValidationIdentity } from "../lib/free-runtime/disposable-admin-validation";
 import {
   buildNativeSessionCookie,
   privateNoStoreHeaders,
@@ -222,6 +224,63 @@ test("native profile photo mutations use create-only objects and pointer compare
   assert.match(source, /pointer\.known && pointer\.key === key/);
   assert.match(source, /if \(!pointer\.known\) \{[\s\S]*?throw error;/);
   assert.match(source, /code: "profile_photo_conflict"/);
+});
+
+test("disposable validation profile photo mutations are denied before any R2 access", async () => {
+  const now = Date.now();
+  const identity = await deriveDisposableAdminValidationIdentity(
+    configuredE2EVersionId,
+    configuredE2ERunId,
+  );
+  assert.ok(identity);
+  const database = new SessionD1Database({
+    updatedAt: now,
+    expiresAt: now + 60 * 60 * 1_000,
+    userId: identity.userId,
+    userEmail: identity.email,
+  });
+  const cookie = await buildNativeSessionCookie(
+    testToken,
+    testSecret,
+    "https://inspirlearning.com/api/me/photo",
+    database.expiresAt,
+  );
+  let r2BindingReads = 0;
+  let waitUntilCalls = 0;
+  const env = {
+    ...oauthEnv(database),
+    CF_VERSION_METADATA: {
+      id: configuredE2EVersionId,
+      tag: "profile-photo-validation-test",
+      timestamp: new Date(now).toISOString(),
+    },
+    E2E_TEST_AUTH_SECRET: configuredE2ESecret,
+    E2E_TEST_MUTATION_RUN_ID: configuredE2ERunId,
+    E2E_TEST_AUTH_EXPIRES_AT: String(now + 60 * 60 * 1_000),
+    get PROFILE_IMAGES_R2_BUCKET(): CloudflareEnv["PROFILE_IMAGES_R2_BUCKET"] {
+      r2BindingReads += 1;
+      throw new Error("Disposable validation unexpectedly accessed PROFILE_IMAGES_R2_BUCKET");
+    },
+  };
+
+  for (const method of ["PATCH", "DELETE"] as const) {
+    const response = await handleAccountApiRequest(
+      new Request("https://inspirlearning.com/api/me/photo", {
+        method,
+        headers: {
+          cookie: cookie.split(";", 1)[0],
+          origin: "https://inspirlearning.com",
+          "sec-fetch-site": "same-origin",
+        },
+      }),
+      env,
+      { waitUntil() { waitUntilCalls += 1; } },
+    );
+    assert.equal(response?.status, 403, method);
+    assert.deepEqual(await response?.json(), { error: "Forbidden" }, method);
+  }
+  assert.equal(r2BindingReads, 0);
+  assert.equal(waitUntilCalls, 0);
 });
 
 test("native Google initiation preserves the Better Auth client contract with signed short-lived PKCE state", async () => {
@@ -964,8 +1023,14 @@ test("native account runtime excludes Next and preserves migrated Google account
     source,
     /insert into verification_tokens \([\s\S]{0,260}identity\.markerToken/,
   );
-  assert.doesNotMatch(source, /update verification_tokens/i);
-  assert.match(source, /delete from verification_tokens where identifier = \?1/);
+  assert.match(
+    source,
+    /update verification_tokens[\s\S]{0,260}set token = \?3, expires = 1[\s\S]{0,260}not exists/,
+  );
+  assert.match(
+    source,
+    /delete from verification_tokens\s+where identifier = \?2 and token <> \?3[\s\S]{0,160}disposablePostUserNonTokenZeroResidueSql/,
+  );
   assert.match(source, /parseNativeOAuthStateCookie/);
   assert.match(source, /constantTimeStringEqual\(clientId, expectedClientId\)/);
   assert.match(source, /crypto\.subtle\.verify/);
@@ -995,7 +1060,16 @@ test("native account runtime excludes Next and preserves migrated Google account
   assert.match(source, /insert into rate_limit_windows/);
   assert.match(source, /rate_limit_windows\.count < \?4/);
   assert.doesNotMatch(source, /recordFailedE2EAuthAttempt|failedE2EAuthRateLimitKey/);
-  assert.doesNotMatch(source, /insert into admin_users|upsertE2EAdmin|E2E_TEST_AUTH_IS_ADMIN/);
+  assert.equal((source.match(/insert into admin_users/g) ?? []).length, 1);
+  assert.match(
+    source,
+    /payload\.action === "grant-disposable-admin"[\s\S]{0,260}isExactDisposableSessionOwner/,
+  );
+  assert.match(
+    source,
+    /insert into admin_users[\s\S]{0,500}verification_tokens[\s\S]{0,220}on conflict\(email\) do nothing/,
+  );
+  assert.doesNotMatch(source, /upsertE2EAdmin|E2E_TEST_AUTH_IS_ADMIN/);
   assert.match(source, /findOrCreateE2EAuthUser/);
   assert.match(source, /E2E_TEST_AUTH_REQUIRE_EXISTING/);
   assert.match(source, /E2E_TEST_AUTH_ALLOW_LOCAL_CREATE/);
@@ -1256,11 +1330,20 @@ class SessionD1Database extends GuardD1Database {
   sessionRefreshUpdates = 0;
   readonly updatedAt: number;
   readonly expiresAt: number;
+  readonly userId: string;
+  readonly userEmail: string;
 
-  constructor(input: { updatedAt: number; expiresAt: number }) {
+  constructor(input: {
+    updatedAt: number;
+    expiresAt: number;
+    userId?: string;
+    userEmail?: string;
+  }) {
     super();
     this.updatedAt = input.updatedAt;
     this.expiresAt = input.expiresAt;
+    this.userId = input.userId ?? "user-row-id";
+    this.userEmail = input.userEmail ?? "test@example.com";
   }
 
   prepare(query: string) {
@@ -1602,14 +1685,14 @@ class SessionD1Statement extends EmptyD1Statement {
     return {
       session_id: "session-row-id",
       session_token: testToken,
-      user_id: "user-row-id",
+      user_id: this.database.userId,
       expires: this.database.expiresAt,
       session_created_at: this.database.updatedAt - 1_000,
       session_updated_at: this.database.updatedAt,
       ip_address: null,
       user_agent: "account-api-test",
       user_name: "Test Learner",
-      user_email: "test@example.com",
+      user_email: this.database.userEmail,
       user_email_verified: 1,
       user_image: null,
       user_created_at: this.database.updatedAt - 2_000,

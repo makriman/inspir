@@ -2,6 +2,8 @@ import { randomUUID } from "node:crypto";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { performance } from "node:perf_hooks";
+import { StringDecoder } from "node:string_decoder";
 import { pathToFileURL } from "node:url";
 import { readCloudflareApiToken } from "./cloudflare-api-token";
 import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
@@ -16,8 +18,12 @@ import {
 
 const workerName = "inspirlearning";
 const cpuHeadroomExclusiveMs = 8;
+const maxDailySynthesisUsers = 25;
+const maxVectorCleanupDrainIds = 13;
 const tailReadyTimeoutMs = 60_000;
-const queueCaptureTimeoutMs = 60_000;
+const queueCaptureTimeoutMs = 2 * 60_000;
+export const backgroundQueueSettlementQuietPeriodMs = 65_000;
+export const backgroundScheduledSettlementQuietPeriodMs = 65_000;
 const scheduledCaptureTimeoutMs = 30 * 60_000;
 const tailOutputLimitBytes = 16 * 1024 * 1024;
 const workerVersionPattern =
@@ -27,9 +33,13 @@ export type BackgroundOutcomeMode = "queue" | "scheduled";
 
 export type BackgroundOutcomeEvaluation = {
   ok: boolean;
+  fatal: boolean;
+  settled: boolean;
   mode: BackgroundOutcomeMode;
   expectedVersion: string;
   matchedEvents: number;
+  successfulEvents: number;
+  lastEventTimestamp: number | null;
   cpuTimeMs: number | null;
   wallTimeMs: number | null;
   problems: string[];
@@ -40,13 +50,31 @@ type EvaluationInput = {
   expectedVersion: string;
   correlationId?: string;
   expectedScheduledDay?: string;
-  captureStartedAt?: number;
+  observationEndedAt?: number;
+  successObservedAt?: number;
+  tailDiagnostics?: string;
+  tailOutputClosed?: boolean;
 };
 
 type QueueProbe = {
   correlationId: string;
   userId: string;
   chatId: string;
+};
+
+type BackgroundOutcomeObservation = {
+  evaluation: BackgroundOutcomeEvaluation;
+  observationEndedAt: number;
+  successObservedAt: number | null;
+};
+
+export type TailJsonStreamProblem = "tail-output-incomplete" | "tail-output-malformed";
+
+export type TailJsonStreamResult = {
+  records: unknown[];
+  complete: boolean;
+  consumedLength: number;
+  problem: TailJsonStreamProblem | null;
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -74,44 +102,108 @@ async function main() {
     { cwd: process.cwd(), env: commandEnv(), stdio: ["ignore", "pipe", "pipe"] },
   );
   const capture = captureTail(tail);
+  let outcomeCaptureStartedAt = captureStartedAt;
+  let outcomeCaptureOutputOffset = 0;
   let correlationId: string | undefined;
+  let initialLivenessProbe: string | undefined;
+  let settledLivenessProbe: string | undefined;
   let queuePushAttempted = false;
+  let observation: BackgroundOutcomeObservation | null = null;
   let evaluation: BackgroundOutcomeEvaluation | null = null;
   let operationError: unknown;
   let shutdownError: unknown;
+  let unexpectedTailExit = false;
   try {
-    await waitForTailReadiness(tail, capture.output, expectedVersion);
+    initialLivenessProbe = await waitForTailHealthProbe(
+      tail,
+      capture.output,
+      expectedVersion,
+      "ready",
+      true,
+    );
     if (mode === "queue") {
       assertSoleActiveVersion(wrangler, expectedVersion);
       const probe = buildQueueProbe();
       correlationId = probe.userId;
       assertQueueProbeAbsent(wrangler, probe);
       const queueId = readQueueId(wrangler);
+      outcomeCaptureStartedAt = Date.now();
+      outcomeCaptureOutputOffset = await waitForCompleteTailOutputCheckpoint(tail, capture.output);
       queuePushAttempted = true;
       await pushStaleQueueProbe(queueId, probe);
     }
-    evaluation = await waitForBackgroundOutcome(
+    observation = await waitForBackgroundOutcome(
       tail,
-      capture.output,
+      () => capture.output().slice(outcomeCaptureOutputOffset),
+      capture.diagnostics,
       {
         mode,
         expectedVersion,
         ...(correlationId ? { correlationId } : {}),
         ...(expectedScheduledDay ? { expectedScheduledDay } : {}),
-        captureStartedAt,
       },
       mode === "queue" ? queueCaptureTimeoutMs : scheduledCaptureTimeoutMs,
     );
-    if (mode === "queue") assertSoleActiveVersion(wrangler, expectedVersion);
+    evaluation = observation.evaluation;
+    if (evaluation.ok) {
+      settledLivenessProbe = await waitForTailHealthProbe(
+        tail,
+        capture.output,
+        expectedVersion,
+        "settled",
+        false,
+      );
+    }
+    assertSoleActiveVersion(wrangler, expectedVersion);
   } catch (error) {
     operationError = error;
   } finally {
-    if (!hasExited(tail)) {
+    if (hasExited(tail)) {
+      unexpectedTailExit = true;
+    } else {
+      capture.beginIntentionalShutdown();
       try {
-        await stopTail(tail, capture.closed);
+        const stoppedIntentionally = await stopTail(tail, capture.closed);
+        if (!stoppedIntentionally) {
+          unexpectedTailExit = true;
+          capture.cancelIntentionalShutdown();
+        }
       } catch (error) {
         shutdownError = error;
       }
+    }
+  }
+  if (observation) {
+    try {
+      evaluation = evaluateProductionBackgroundTail(
+        capture.output().slice(outcomeCaptureOutputOffset),
+        {
+          mode,
+          expectedVersion,
+          ...(correlationId ? { correlationId } : {}),
+          ...(expectedScheduledDay ? { expectedScheduledDay } : {}),
+          observationEndedAt: observation.observationEndedAt,
+          ...(observation.successObservedAt === null
+            ? {}
+            : { successObservedAt: observation.successObservedAt }),
+          tailDiagnostics: capture.diagnosticsForEvaluation(),
+          tailOutputClosed: hasExited(tail),
+        },
+      );
+      if (
+        !settledLivenessProbe ||
+        !tailHasReadinessProbe(
+          capture.output(),
+          settledLivenessProbe,
+          expectedVersion,
+          true,
+        )
+      ) {
+        throw new Error("The settled Tail liveness marker was missing or malformed after shutdown.");
+      }
+      assertSoleActiveVersion(wrangler, expectedVersion);
+    } catch (error) {
+      if (!operationError) operationError = error;
     }
   }
   let tailOutputBytes = 0;
@@ -123,9 +215,13 @@ async function main() {
   }
   const result = evaluation ?? {
     ok: false,
+    fatal: true,
+    settled: false,
     mode,
     expectedVersion,
     matchedEvents: 0,
+    successfulEvents: 0,
+    lastEventTimestamp: null,
     cpuTimeMs: null,
     wallTimeMs: null,
     problems: ["missing-evaluation"],
@@ -133,6 +229,7 @@ async function main() {
   const failureKinds = [
     ...(operationError ? ["operation"] : []),
     ...(shutdownError ? ["tail-shutdown"] : []),
+    ...(unexpectedTailExit ? ["unexpected-tail-exit"] : []),
     ...(!tailOutputBounded ? ["tail-output-overflow"] : []),
   ];
   const report = {
@@ -144,11 +241,20 @@ async function main() {
     cron: mode === "scheduled" ? "0 3 * * *" : undefined,
     expectedScheduledDay,
     correlationId,
+    initialLivenessProbe,
+    settledLivenessProbe,
     queuePushAttempted,
+    captureStartedAt,
+    outcomeCaptureStartedAt,
+    outcomeCaptureOutputOffset,
     cpuThresholdExclusiveMs: cpuHeadroomExclusiveMs,
     tailOutputBytes,
     tailOutputBounded,
+    tailOutputClosed: hasExited(tail),
     tailDiagnosticsBytes: Buffer.byteLength(capture.diagnostics()),
+    evaluatedTailDiagnosticsBytes: Buffer.byteLength(capture.diagnosticsForEvaluation()),
+    finalEvaluationPerformed: observation !== null,
+    successObservedAt: observation?.successObservedAt ?? null,
     failureKinds,
   };
   const reportPath = path.join(
@@ -175,67 +281,75 @@ export function evaluateProductionBackgroundTail(
   source: string,
   input: EvaluationInput,
 ): BackgroundOutcomeEvaluation {
-  const problems: string[] = [];
-  const records = extractJsonObjects(source).flatMap((value) => {
+  const parsed = parseTailJsonStream(source, input.tailOutputClosed === true);
+  if (input.mode === "queue") return evaluateProductionQueueTail(parsed, input);
+  return evaluateProductionScheduledTail(parsed, input);
+}
+
+function evaluateProductionScheduledTail(
+  parsed: TailJsonStreamResult,
+  input: EvaluationInput,
+): BackgroundOutcomeEvaluation {
+  const fatalProblems = new Set<string>();
+  if (parsed.problem) fatalProblems.add(parsed.problem);
+  if (backgroundTailCaptureHasLoss(parsed.records, input.tailDiagnostics ?? "")) {
+    fatalProblems.add("tail-capture-loss");
+  }
+  const records = parsed.records.flatMap((value) => {
     const record = asRecord(value);
     const event = asRecord(record?.event);
-    if (!record || !event || !exactBackgroundEventKind(event, input.mode)) return [];
-    if (input.mode === "queue") {
-      return event.queue === MEMORY_POST_TURN_QUEUE_NAME ? [{ record, event }] : [];
-    }
-    return event.cron === "0 3 * * *" ? [{ record, event }] : [];
+    if (!record || !event || event.cron !== "0 3 * * *") return [];
+    const eventTimestamp = nonNegativeSafeInteger(record.eventTimestamp);
+    return [{ record, event, eventTimestamp }];
   });
-  const correlated = records.filter(({ record }) => {
-    if (input.mode === "queue") {
-      return queueLogMatches(record.logs, input.correlationId ?? "");
-    }
-    return scheduledLogMatches(record.logs);
-  });
-  if (correlated.length !== 1) problems.push(`matched-events=${correlated.length}`);
-  const match = correlated.length === 1 ? correlated[0] : undefined;
-  const record = match?.record;
-  const event = match?.event;
-  const scriptVersion = asRecord(record?.scriptVersion);
-  const cpuTimeMs = finiteNumber(record?.cpuTime);
-  const wallTimeMs = finiteNumber(record?.wallTime);
-  const eventTimestamp = finiteNumber(record?.eventTimestamp);
-
-  if (record) {
-    if (record.scriptName !== workerName) problems.push("wrong-script");
-    if (scriptVersion?.id !== input.expectedVersion) problems.push("wrong-version");
-    if (record.outcome !== "ok") problems.push("outcome");
-    if (record.truncated !== false) problems.push("truncated");
-    if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
-      problems.push("exceptions");
-    }
-    if (cpuTimeMs === null || cpuTimeMs < 0) problems.push("missing-or-negative-cpu");
-    else if (cpuTimeMs >= cpuHeadroomExclusiveMs) problems.push("cpu>=8");
-    if (wallTimeMs === null || wallTimeMs < 0) problems.push("missing-or-negative-wall-time");
-    if (
-      eventTimestamp === null ||
-      (input.captureStartedAt !== undefined && eventTimestamp < input.captureStartedAt)
-    ) {
-      problems.push("stale-event-timestamp");
-    }
-    if (forbiddenBackgroundLog(record.logs)) problems.push("failure-log");
-  }
-
-  if (event && input.mode === "queue") {
-    if (event.queue !== MEMORY_POST_TURN_QUEUE_NAME) problems.push("wrong-queue");
-    if (event.batchSize !== 1) problems.push("queue-batch-size");
-    if (!input.correlationId || !queueLogMatches(record?.logs, input.correlationId)) {
-      problems.push("queue-correlation");
-    }
-  }
-  if (event && input.mode === "scheduled") {
+  if (records.length > 1) fatalProblems.add(`scheduled-attempt-count=${records.length}`);
+  let matchedEvents = 0;
+  let successfulEvents = 0;
+  const cpuTimes: number[] = [];
+  const wallTimes: number[] = [];
+  const eventTimestamps: number[] = [];
+  for (const { record, event, eventTimestamp } of records) {
+    let recordValid = true;
+    const addRecordProblem = (problem: string) => {
+      fatalProblems.add(problem);
+      recordValid = false;
+    };
+    const scriptVersion = asRecord(record.scriptVersion);
+    const cpuTimeMs = finiteNumber(record.cpuTime);
+    const wallTimeMs = finiteNumber(record.wallTime);
     const scheduledTime = finiteNumber(event.scheduledTime);
-    if (event.cron !== "0 3 * * *") problems.push("wrong-cron");
+    const enqueueSuccess = scheduledLogMatches(record.logs);
+    const cleanupSuccess = scheduledCleanupLogMatches(record.logs);
+
+    if (!exactBackgroundEventKind(event, "scheduled")) {
+      addRecordProblem("scheduled-event-shape");
+    }
+    if (record.scriptName !== workerName) addRecordProblem("wrong-script");
+    if (scriptVersion?.id !== input.expectedVersion) addRecordProblem("wrong-version");
+    if (record.outcome !== "ok") addRecordProblem("outcome");
+    if (record.truncated !== false) addRecordProblem("truncated");
+    if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
+      addRecordProblem("exceptions");
+    }
+    if (cpuTimeMs === null || cpuTimeMs < 0) {
+      addRecordProblem("missing-or-negative-cpu");
+    } else {
+      cpuTimes.push(cpuTimeMs);
+      if (cpuTimeMs >= cpuHeadroomExclusiveMs) addRecordProblem("cpu>=8");
+    }
+    if (wallTimeMs === null || wallTimeMs < 0) {
+      addRecordProblem("missing-or-negative-wall-time");
+    } else {
+      wallTimes.push(wallTimeMs);
+    }
+    if (eventTimestamp === null) addRecordProblem("stale-event-timestamp");
+    else eventTimestamps.push(eventTimestamp);
     if (
       scheduledTime === null ||
       !input.expectedScheduledDay ||
       !scheduledTimeMatchesUtcDay(scheduledTime, input.expectedScheduledDay)
     ) {
-      problems.push("wrong-scheduled-time");
+      addRecordProblem("wrong-scheduled-time");
     }
     if (
       scheduledTime !== null &&
@@ -243,39 +357,307 @@ export function evaluateProductionBackgroundTail(
         eventTimestamp < scheduledTime ||
         eventTimestamp > scheduledTime + 15 * 60_000)
     ) {
-      problems.push("scheduled-event-window");
+      addRecordProblem("scheduled-event-window");
     }
-    if (!scheduledLogMatches(record?.logs)) problems.push("scheduled-success-log");
+    if (!enqueueSuccess) addRecordProblem("scheduled-success-log");
+    if (!cleanupSuccess) addRecordProblem("scheduled-cleanup-success-log");
+    if (forbiddenBackgroundLog(record.logs)) addRecordProblem("failure-log");
+
+    if (enqueueSuccess && cleanupSuccess) {
+      matchedEvents += 1;
+      if (recordValid) successfulEvents += 1;
+    }
   }
+  if (matchedEvents > 1) fatalProblems.add(`matched-events=${matchedEvents}`);
+
+  const lastEventTimestamp = eventTimestamps.length > 0
+    ? Math.max(...eventTimestamps)
+    : null;
+  const observationEndedAt = nonNegativeNumber(input.observationEndedAt);
+  if (input.observationEndedAt !== undefined && observationEndedAt === null) {
+    fatalProblems.add("invalid-observation-end");
+  }
+  const successObservedAt = nonNegativeNumber(input.successObservedAt);
+  if (input.successObservedAt !== undefined && successObservedAt === null) {
+    fatalProblems.add("invalid-success-observation");
+  }
+  if (
+    observationEndedAt !== null &&
+    successObservedAt !== null &&
+    observationEndedAt < successObservedAt
+  ) {
+    fatalProblems.add("invalid-local-observation-window");
+  }
+  const fatal = fatalProblems.size > 0;
+  const settled = !fatal &&
+    matchedEvents === 1 &&
+    successfulEvents === 1 &&
+    successObservedAt !== null &&
+    observationEndedAt !== null &&
+    observationEndedAt - successObservedAt >= backgroundScheduledSettlementQuietPeriodMs;
+  const problemList = [...fatalProblems];
+  if (matchedEvents === 0) problemList.push("matched-events=0");
+  if (!settled && !fatal) problemList.push("scheduled-observation-not-settled");
 
   return {
-    ok: problems.length === 0,
-    mode: input.mode,
+    ok: settled && problemList.length === 0,
+    fatal,
+    settled,
+    mode: "scheduled",
     expectedVersion: input.expectedVersion,
-    matchedEvents: correlated.length,
-    cpuTimeMs,
-    wallTimeMs,
+    matchedEvents,
+    successfulEvents,
+    lastEventTimestamp,
+    cpuTimeMs: cpuTimes.length > 0 ? Math.max(...cpuTimes) : null,
+    wallTimeMs: wallTimes.length > 0 ? Math.max(...wallTimes) : null,
+    problems: problemList,
+  };
+}
+
+function evaluateProductionQueueTail(
+  parsed: TailJsonStreamResult,
+  input: EvaluationInput,
+): BackgroundOutcomeEvaluation {
+  const fatalProblems = new Set<string>();
+  const correlationId = input.correlationId ?? "";
+  if (!correlationId) fatalProblems.add("missing-queue-correlation-id");
+  if (parsed.problem) fatalProblems.add(parsed.problem);
+  if (backgroundTailCaptureHasLoss(parsed.records, input.tailDiagnostics ?? "")) {
+    fatalProblems.add("tail-capture-loss");
+  }
+
+  const queueRecords: Array<{
+    record: Record<string, unknown>;
+    event: Record<string, unknown>;
+    eventTimestamp: number | null;
+    logs: Record<string, unknown>[];
+  }> = [];
+  for (const value of parsed.records) {
+    const record = asRecord(value);
+    const event = asRecord(record?.event);
+    if (!record || !event || event.queue !== MEMORY_POST_TURN_QUEUE_NAME) continue;
+    const logs = structuredLogRecords(record.logs);
+    const eventTimestamp = nonNegativeSafeInteger(record.eventTimestamp);
+    if (eventTimestamp === null) fatalProblems.add("invalid-event-timestamp");
+    queueRecords.push({ record, event, eventTimestamp, logs });
+  }
+
+  let successfulEvents = 0;
+  let matchedEvents = 0;
+  const cpuTimes: number[] = [];
+  const wallTimes: number[] = [];
+  const probeEventTimestamps: number[] = [];
+  for (const { record, event, eventTimestamp, logs } of queueRecords) {
+    const scriptVersion = asRecord(record.scriptVersion);
+    const cpuTimeMs = finiteNumber(record.cpuTime);
+    const wallTimeMs = finiteNumber(record.wallTime);
+    const probeLogs = queueProbeLogs(logs, correlationId);
+    const terminals = queueProbeTerminalLogs(logs, correlationId);
+    const successes = terminals.filter((log) => log.event === "native_memory_queue_processed");
+    const failures = terminals.filter((log) => log.event === "native_memory_queue_failed");
+
+    if (!hasExactRecordKeys(event, ["batchSize", "queue"])) {
+      fatalProblems.add("queue-event-shape");
+    }
+    if (event.batchSize !== 1) fatalProblems.add("queue-batch-size");
+    if (record.scriptName !== workerName) fatalProblems.add("wrong-script");
+    if (scriptVersion?.id !== input.expectedVersion) fatalProblems.add("wrong-version");
+    if (record.outcome !== "ok") fatalProblems.add("outcome");
+    if (record.truncated !== false) fatalProblems.add("truncated");
+    if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
+      fatalProblems.add("exceptions");
+    }
+    if (cpuTimeMs === null || cpuTimeMs < 0) {
+      fatalProblems.add("missing-or-negative-cpu");
+    } else {
+      cpuTimes.push(cpuTimeMs);
+      if (cpuTimeMs >= cpuHeadroomExclusiveMs) fatalProblems.add("cpu>=8");
+    }
+    if (wallTimeMs === null || wallTimeMs < 0) {
+      fatalProblems.add("missing-or-negative-wall-time");
+    } else {
+      wallTimes.push(wallTimeMs);
+    }
+    if (forbiddenBackgroundLog(record.logs)) fatalProblems.add("failure-log");
+
+    if (probeLogs.length === 0) continue;
+    matchedEvents += 1;
+    if (eventTimestamp !== null) probeEventTimestamps.push(eventTimestamp);
+    if (probeLogs.length !== terminals.length) fatalProblems.add("queue-attempt-correlation");
+    if (terminals.length === 0) fatalProblems.add("queue-attempt-correlation");
+    else if (terminals.length !== 1) {
+      fatalProblems.add(`queue-terminal-log-count=${terminals.length}`);
+    }
+    if (successes.length === 1) {
+      if (validQueueProbeSuccessLog(successes[0], correlationId)) successfulEvents += 1;
+      else fatalProblems.add("malformed-stale-success-log");
+    }
+    if (failures.length > 0) {
+      fatalProblems.add("failure-log");
+      if (failures.some((log) => !validQueueProbeFailureLog(log, correlationId))) {
+        fatalProblems.add("malformed-queue-failure-log");
+      }
+    }
+  }
+
+  if (matchedEvents > 0 && successfulEvents !== 1) {
+    fatalProblems.add(`stale-success-log-count=${successfulEvents}`);
+  }
+  const lastEventTimestamp = probeEventTimestamps.length > 0
+    ? Math.max(...probeEventTimestamps)
+    : null;
+  const observationEndedAt = nonNegativeNumber(input.observationEndedAt);
+  if (input.observationEndedAt !== undefined && observationEndedAt === null) {
+    fatalProblems.add("invalid-observation-end");
+  }
+  const successObservedAt = nonNegativeNumber(input.successObservedAt);
+  if (input.successObservedAt !== undefined && successObservedAt === null) {
+    fatalProblems.add("invalid-success-observation");
+  }
+  if (
+    observationEndedAt !== null &&
+    successObservedAt !== null &&
+    observationEndedAt < successObservedAt
+  ) {
+    fatalProblems.add("invalid-local-observation-window");
+  }
+  const fatal = fatalProblems.size > 0;
+  const settled = !fatal &&
+    successfulEvents === 1 &&
+    successObservedAt !== null &&
+    observationEndedAt !== null &&
+    observationEndedAt - successObservedAt >= backgroundQueueSettlementQuietPeriodMs;
+  const problems = [...fatalProblems];
+  if (matchedEvents === 0) problems.push("matched-events=0");
+  if (matchedEvents === 0 && successfulEvents === 0) {
+    problems.push("stale-success-log-count=0");
+  }
+  if (!settled && !fatal) problems.push("queue-observation-not-settled");
+
+  return {
+    ok: settled && problems.length === 0,
+    fatal,
+    settled,
+    mode: "queue",
+    expectedVersion: input.expectedVersion,
+    matchedEvents,
+    successfulEvents,
+    lastEventTimestamp,
+    cpuTimeMs: cpuTimes.length > 0 ? Math.max(...cpuTimes) : null,
+    wallTimeMs: wallTimes.length > 0 ? Math.max(...wallTimes) : null,
     problems,
   };
 }
 
-async function waitForBackgroundOutcome(
+function queueProbeLogs(logs: readonly Record<string, unknown>[], correlationId: string) {
+  if (!correlationId) return [];
+  return logs.filter((log) => log.userId === correlationId);
+}
+
+function queueProbeTerminalLogs(logs: readonly Record<string, unknown>[], correlationId: string) {
+  if (!correlationId) return [];
+  return logs.filter((log) =>
+    log.type === "memory.post_turn.v2" &&
+    log.userId === correlationId &&
+    (log.event === "native_memory_queue_processed" || log.event === "native_memory_queue_failed")
+  );
+}
+
+function validQueueProbeSuccessLog(log: Record<string, unknown>, correlationId: string) {
+  return hasExactRecordKeys(
+    log,
+    ["attempts", "event", "messageId", "outcome", "type", "userId"],
+  ) &&
+    log.event === "native_memory_queue_processed" &&
+    log.type === "memory.post_turn.v2" &&
+    log.userId === correlationId &&
+    log.outcome === "stale_job" &&
+    isNonEmptyString(log.messageId) &&
+    log.attempts === 1;
+}
+
+function validQueueProbeFailureLog(log: Record<string, unknown>, correlationId: string) {
+  return hasExactRecordKeys(
+    log,
+    ["attempts", "error", "event", "messageId", "type", "userId"],
+  ) &&
+    log.event === "native_memory_queue_failed" &&
+    log.type === "memory.post_turn.v2" &&
+    log.userId === correlationId &&
+    isNonEmptyString(log.messageId) &&
+    positiveSafeInteger(log.attempts) &&
+    isNonEmptyString(log.error);
+}
+
+function backgroundTailCaptureHasLoss(records: readonly unknown[], diagnostics: string) {
+  const controlEventLoss = records.some((value) => {
+    const event = asRecord(asRecord(value)?.event);
+    return typeof event?.type === "string" &&
+      /^(?:overload|sampling|sampled|dropped)(?:$|[-_:.])/i.test(event.type);
+  });
+  const diagnosticLoss = diagnostics
+    .replace(/\u001b\[[0-9;]*m/g, "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .some((line) =>
+      /^Tail connection lost: the Worker did not respond to a keep-alive ping within \d+ms\.$/i.test(
+        line,
+      ) ||
+      /^Tail connection lost\. Reconnecting \(attempt \d+ of \d+\)(?: in \d+(?:\.\d+)?s)?\.\.\.$/i.test(
+        line,
+      ) ||
+      /^Unable to reconnect to the tail for .+ after \d+ attempts\./i.test(line) ||
+      /^Tail: reconnect attempt failed:/i.test(line) ||
+      /^Tail (?:event )?(?:sampling|sampled|dropped)(?: events?)?(?: detected)?[.!]?$/i.test(
+        line,
+      )
+    );
+  return controlEventLoss || diagnosticLoss;
+}
+
+export async function waitForBackgroundOutcome(
   tail: ChildProcess,
   output: () => string,
+  diagnostics: () => string,
   input: EvaluationInput,
   timeoutMs: number,
 ) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < timeoutMs) {
-    const evaluation = evaluateProductionBackgroundTail(output(), input);
-    if (evaluation.matchedEvents > 0) {
-      await delay(2_000);
-      return evaluateProductionBackgroundTail(output(), input);
+  const startedAt = performance.now();
+  let successObservedAt: number | undefined;
+  const evaluateAt = (observationEndedAt: number) => {
+    const source = output();
+    const tailDiagnostics = diagnostics();
+    let evaluation = evaluateProductionBackgroundTail(source, {
+      ...input,
+      observationEndedAt,
+      ...(successObservedAt === undefined ? {} : { successObservedAt }),
+      tailDiagnostics,
+    });
+    if (
+      successObservedAt === undefined &&
+      evaluation.successfulEvents === 1
+    ) {
+      successObservedAt = observationEndedAt;
+      evaluation = evaluateProductionBackgroundTail(source, {
+        ...input,
+        observationEndedAt,
+        successObservedAt,
+        tailDiagnostics,
+      });
     }
+    return { evaluation, observationEndedAt };
+  };
+  while (performance.now() - startedAt < timeoutMs) {
+    const observation = evaluateAt(performance.now());
     if (hasExited(tail)) throw new Error("Wrangler tail exited before background evidence arrived.");
+    if (observation.evaluation.fatal || observation.evaluation.settled) {
+      return { ...observation, successObservedAt: successObservedAt ?? null };
+    }
     await delay(1_000);
   }
-  return evaluateProductionBackgroundTail(output(), input);
+  const observation = evaluateAt(performance.now());
+  if (hasExited(tail)) throw new Error("Wrangler tail exited before background evidence arrived.");
+  return { ...observation, successObservedAt: successObservedAt ?? null };
 }
 
 function readQueueId(wrangler: string) {
@@ -313,6 +695,13 @@ function exactBackgroundEventKind(
   return mode === "queue"
     ? keys.length === 2 && keys[0] === "batchSize" && keys[1] === "queue"
     : keys.length === 2 && keys[0] === "cron" && keys[1] === "scheduledTime";
+}
+
+function hasExactRecordKeys(record: Record<string, unknown>, names: readonly string[]) {
+  const actual = Object.keys(record).sort();
+  const expected = [...names].sort();
+  return actual.length === expected.length &&
+    actual.every((name, index) => name === expected[index]);
 }
 
 function assertQueueProbeAbsent(wrangler: string, probe: QueueProbe) {
@@ -431,32 +820,85 @@ async function pushStaleQueueProbe(queueId: string, probe: QueueProbe) {
   }
 }
 
-function queueLogMatches(logs: unknown, correlationId: string) {
-  if (!correlationId) return false;
-  return structuredLogRecords(logs).some((log) =>
-    log.event === "native_memory_queue_processed" &&
-    log.type === "memory.post_turn.v2" &&
-    log.userId === correlationId &&
-    log.outcome === "stale_job"
-  );
-}
-
 function scheduledLogMatches(logs: unknown) {
-  return structuredLogRecords(logs).some((log) =>
-    log.event === "native_memory_scheduled_enqueued" &&
-    nonNegativeSafeInteger(log.due) !== null &&
-    log.queued === log.due &&
+  const matches = structuredLogRecords(logs).filter(
+    (log) => log.event === "native_memory_scheduled_enqueued",
+  );
+  if (matches.length !== 1) return false;
+  const log = matches[0];
+  if (
+    !log ||
+    !hasExactRecordKeys(log, ["cron", "due", "event", "failed", "queued", "skipped"])
+  ) {
+    return false;
+  }
+  const due = nonNegativeSafeInteger(log.due);
+  return due !== null &&
+    due <= maxDailySynthesisUsers &&
+    log.queued === due &&
     log.failed === 0 &&
     log.skipped === null &&
-    log.cron === "0 3 * * *"
+    log.cron === "0 3 * * *";
+}
+
+function scheduledCleanupLogMatches(logs: unknown) {
+  const matches = structuredLogRecords(logs).filter(
+    (log) => log.event === "native_memory_vector_cleanup_scheduled",
   );
+  if (matches.length !== 1) return false;
+  const log = matches[0];
+  if (
+    !log ||
+    !hasExactRecordKeys(log, [
+      "claimed",
+      "deleteRequested",
+      "event",
+      "nextDelaySeconds",
+      "pending",
+      "verifiedAbsent",
+    ])
+  ) {
+    return false;
+  }
+  const claimed = nonNegativeSafeInteger(log.claimed);
+  const deleteRequested = nonNegativeSafeInteger(log.deleteRequested);
+  const verifiedAbsent = nonNegativeSafeInteger(log.verifiedAbsent);
+  const pending = nonNegativeSafeInteger(log.pending);
+  const nextDelaySeconds = nonNegativeSafeInteger(log.nextDelaySeconds);
+  if (
+    claimed === null ||
+    deleteRequested === null ||
+    verifiedAbsent === null ||
+    pending === null ||
+    claimed > maxVectorCleanupDrainIds ||
+    pending > 1
+  ) {
+    return false;
+  }
+  if (pending === 0) {
+    return log.nextDelaySeconds === null &&
+      deleteRequested === 0 &&
+      claimed === verifiedAbsent;
+  }
+  return deleteRequested + verifiedAbsent <= claimed &&
+    (log.nextDelaySeconds === null || nextDelaySeconds !== null);
 }
 
 function forbiddenBackgroundLog(logs: unknown) {
+  const warningLevel = Array.isArray(logs) && logs.some((value) => {
+    const log = asRecord(value);
+    const level = typeof log?.level === "string"
+      ? log.level
+      : typeof log?.logLevel === "string"
+      ? log.logLevel
+      : "";
+    return /^(?:warn|warning|error|critical)$/i.test(level);
+  });
   const serialized = JSON.stringify(logs ?? null);
-  return /exceededCpu|exceededMemory|native_memory_queue_failed|native_rate_limit_cleanup_failed|native_admin_totals_refresh_failed|native_stale_ai_run_cleanup_failed/i.test(
-    serialized,
-  );
+  return warningLevel ||
+    /exceededCpu|exceededMemory|native_memory_queue_failed|native_memory_vector_cleanup_scheduled_failed|native_rate_limit_cleanup_failed|native_admin_totals_refresh_failed|native_stale_ai_run_cleanup_failed/i.test(
+      serialized,
+    );
 }
 
 function structuredLogRecords(logs: unknown) {
@@ -489,23 +931,53 @@ function scheduledTimeMatchesUtcDay(value: number, expectedDay: string) {
     date.getUTCMilliseconds() === 0;
 }
 
-function captureTail(tail: ChildProcess) {
+export function captureTail(tail: ChildProcess) {
   let output = "";
   let diagnostics = "";
+  let intentionalShutdownStarted = false;
   let overflowed = false;
-  const append = (target: "output" | "diagnostics", chunk: Buffer | string) => {
-    const text = chunk.toString();
-    if (Buffer.byteLength(output) + Buffer.byteLength(diagnostics) + Buffer.byteLength(text) > tailOutputLimitBytes) {
-      overflowed = true;
-      return;
-    }
+  let capturedBytes = 0;
+  let outputFlushed = false;
+  let diagnosticsFlushed = false;
+  const outputDecoder = new StringDecoder("utf8");
+  const diagnosticsDecoder = new StringDecoder("utf8");
+  const appendText = (target: "output" | "diagnostics", text: string) => {
     if (target === "output") output += text;
     else diagnostics += text;
   };
+  const append = (target: "output" | "diagnostics", chunk: Buffer | string) => {
+    const bytes = typeof chunk === "string" ? Buffer.from(chunk) : chunk;
+    if (capturedBytes + bytes.byteLength > tailOutputLimitBytes) {
+      overflowed = true;
+      return;
+    }
+    capturedBytes += bytes.byteLength;
+    appendText(
+      target,
+      target === "output" ? outputDecoder.write(bytes) : diagnosticsDecoder.write(bytes),
+    );
+  };
+  const flush = (target: "output" | "diagnostics") => {
+    if (target === "output") {
+      if (outputFlushed) return;
+      outputFlushed = true;
+      appendText(target, outputDecoder.end());
+      return;
+    }
+    if (diagnosticsFlushed) return;
+    diagnosticsFlushed = true;
+    appendText(target, diagnosticsDecoder.end());
+  };
   tail.stdout?.on("data", (chunk: Buffer | string) => append("output", chunk));
   tail.stderr?.on("data", (chunk: Buffer | string) => append("diagnostics", chunk));
+  tail.stdout?.on("end", () => flush("output"));
+  tail.stderr?.on("end", () => flush("diagnostics"));
   const closed = new Promise<void>((resolve) => {
-    tail.once("close", () => resolve());
+    tail.once("close", () => {
+      flush("output");
+      flush("diagnostics");
+      resolve();
+    });
   });
   return {
     output: () => {
@@ -513,19 +985,39 @@ function captureTail(tail: ChildProcess) {
       return output;
     },
     diagnostics: () => diagnostics,
+    diagnosticsForEvaluation: () => intentionalShutdownStarted
+      ? withoutBenignIntentionalShutdownDiagnostics(diagnostics)
+      : diagnostics,
+    beginIntentionalShutdown: () => {
+      intentionalShutdownStarted = true;
+    },
+    cancelIntentionalShutdown: () => {
+      intentionalShutdownStarted = false;
+    },
     closed,
   };
 }
 
-async function waitForTailReadiness(
+export function withoutBenignIntentionalShutdownDiagnostics(diagnostics: string) {
+  return diagnostics
+    .split(/\r?\n/)
+    .filter((line) => line.replace(/\u001b\[[0-9;]*m/g, "").trim() !== "Stopping tail...")
+    .join("\n");
+}
+
+async function waitForTailHealthProbe(
   tail: ChildProcess,
   output: () => string,
   expectedVersion: string,
+  label: string,
+  retryMissedMarker: boolean,
 ) {
-  const probe = createPublicBackgroundProbe("ready");
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < tailReadyTimeoutMs) {
-    if (hasExited(tail)) throw new Error("Wrangler tail exited before it became ready.");
+  const startedAt = performance.now();
+  let attempt = 0;
+  while (performance.now() - startedAt < tailReadyTimeoutMs) {
+    attempt += 1;
+    const probe = createPublicBackgroundProbe(`${label}-${attempt}`);
+    if (hasExited(tail)) throw new Error("Wrangler tail exited before its health marker.");
     const url = new URL("/api/health", "https://inspirlearning.com");
     url.searchParams.set("background_tail_ready", probe);
     const response = await fetch(url, {
@@ -537,12 +1029,23 @@ async function waitForTailReadiness(
     });
     await response.body?.cancel();
     if (response.status !== 200) {
-      throw new Error(`Background tail readiness health probe returned HTTP ${response.status}.`);
+      throw new Error(`Background Tail health marker returned HTTP ${response.status}.`);
     }
-    await delay(500);
-    if (tailHasReadinessProbe(output(), probe, expectedVersion)) return;
+    const markerStartedAt = performance.now();
+    const markerTimeoutMs = retryMissedMarker
+      ? Math.min(2_000, tailReadyTimeoutMs - (markerStartedAt - startedAt))
+      : tailReadyTimeoutMs - (markerStartedAt - startedAt);
+    while (performance.now() - markerStartedAt < markerTimeoutMs) {
+      if (tailHasReadinessProbe(output(), probe, expectedVersion)) {
+        if (hasExited(tail)) throw new Error("Wrangler tail exited after its health marker.");
+        return probe;
+      }
+      if (hasExited(tail)) throw new Error("Wrangler tail exited before its health marker arrived.");
+      await delay(250);
+    }
+    if (!retryMissedMarker) break;
   }
-  throw new Error("Wrangler tail did not become ready before the bounded timeout.");
+  throw new Error("Wrangler Tail did not capture its health marker before the bounded timeout.");
 }
 
 export function createPublicBackgroundProbe(label: string, now = Date.now(), pid = process.pid) {
@@ -557,17 +1060,32 @@ export function tailHasReadinessProbe(
   source: string,
   probe: string,
   expectedVersion: string,
+  closed = false,
 ) {
-  return extractJsonObjects(source).some((value) => {
+  const parsed = parseTailJsonStream(source, closed);
+  if (parsed.problem) return false;
+  const matches = parsed.records.filter((value) => {
     const record = asRecord(value);
     const event = asRecord(record?.event);
     const request = asRecord(event?.request);
     const response = asRecord(event?.response);
     const scriptVersion = asRecord(record?.scriptVersion);
+    const cpuTimeMs = finiteNumber(record?.cpuTime);
+    const wallTimeMs = finiteNumber(record?.wallTime);
     if (
       record?.outcome !== "ok" ||
       record.scriptName !== workerName ||
       scriptVersion?.id !== expectedVersion ||
+      record.truncated !== false ||
+      !Array.isArray(record.exceptions) ||
+      record.exceptions.length !== 0 ||
+      cpuTimeMs === null ||
+      cpuTimeMs < 0 ||
+      cpuTimeMs >= cpuHeadroomExclusiveMs ||
+      wallTimeMs === null ||
+      wallTimeMs < 0 ||
+      nonNegativeSafeInteger(record.eventTimestamp) === null ||
+      forbiddenBackgroundLog(record.logs) ||
       request?.method !== "GET" ||
       response?.status !== 200 ||
       typeof request.url !== "string"
@@ -581,48 +1099,109 @@ export function tailHasReadinessProbe(
       return false;
     }
   });
+  return matches.length === 1;
 }
 
 async function stopTail(tail: ChildProcess, closed: Promise<void>) {
-  if (hasExited(tail)) return;
-  for (const signal of ["SIGINT", "SIGTERM", "SIGKILL"] as const) {
-    tail.kill(signal);
-    if (await resolvesWithin(closed, 5_000)) return;
+  if (hasExited(tail)) return false;
+  for (const signal of ["SIGINT", "SIGTERM"] as const) {
+    if (!tail.kill(signal)) {
+      if (hasExited(tail)) return false;
+      throw new Error(`Wrangler tail rejected ${signal}.`);
+    }
+    if (await resolvesWithin(closed, 5_000)) return true;
   }
-  throw new Error("Wrangler tail did not stop cleanly.");
+  const forced = tail.kill("SIGKILL");
+  if (forced) await resolvesWithin(closed, 5_000);
+  throw new Error("Wrangler Tail required SIGKILL; production proof is invalid.");
 }
 
-function extractJsonObjects(source: string) {
-  const parsed: unknown[] = [];
-  let start = -1;
-  let depth = 0;
-  let quoted = false;
-  let escaped = false;
-  for (let index = 0; index < source.length; index += 1) {
-    const character = source[index];
-    if (quoted) {
-      if (escaped) escaped = false;
-      else if (character === "\\") escaped = true;
-      else if (character === '"') quoted = false;
-      continue;
+export function parseTailJsonStream(source: string, closed: boolean): TailJsonStreamResult {
+  const records: unknown[] = [];
+  let index = 0;
+  while (index < source.length) {
+    while (index < source.length && /\s/.test(source[index] ?? "")) index += 1;
+    if (index === source.length) {
+      return { records, complete: true, consumedLength: source.length, problem: null };
     }
-    if (character === '"') quoted = true;
-    else if (character === "{") {
-      if (depth === 0) start = index;
-      depth += 1;
-    } else if (character === "}" && depth > 0) {
-      depth -= 1;
-      if (depth === 0 && start >= 0) {
-        try {
-          parsed.push(JSON.parse(source.slice(start, index + 1)) as unknown);
-        } catch {
-          // Wrangler diagnostics may contain braces; only valid JSON records count.
+    if (source[index] !== "{") {
+      return {
+        records,
+        complete: false,
+        consumedLength: index,
+        problem: "tail-output-malformed",
+      };
+    }
+    const start = index;
+    let depth = 0;
+    let quoted = false;
+    let escaped = false;
+    let end = -1;
+    for (; index < source.length; index += 1) {
+      const character = source[index];
+      if (quoted) {
+        if (escaped) escaped = false;
+        else if (character === "\\") escaped = true;
+        else if (character === '"') quoted = false;
+        continue;
+      }
+      if (character === '"') quoted = true;
+      else if (character === "{") depth += 1;
+      else if (character === "}") {
+        depth -= 1;
+        if (depth < 0) {
+          return {
+            records,
+            complete: false,
+            consumedLength: start,
+            problem: "tail-output-malformed",
+          };
         }
-        start = -1;
+        if (depth === 0) {
+          end = index + 1;
+          break;
+        }
       }
     }
+    if (end < 0) {
+      return {
+        records,
+        complete: false,
+        consumedLength: start,
+        problem: closed ? "tail-output-incomplete" : null,
+      };
+    }
+    try {
+      const value = JSON.parse(source.slice(start, end)) as unknown;
+      if (!asRecord(value)) throw new Error("Tail record was not an object.");
+      records.push(value);
+    } catch {
+      return {
+        records,
+        complete: false,
+        consumedLength: start,
+        problem: "tail-output-malformed",
+      };
+    }
+    index = end;
   }
-  return parsed;
+  return { records, complete: true, consumedLength: source.length, problem: null };
+}
+
+async function waitForCompleteTailOutputCheckpoint(
+  tail: ChildProcess,
+  output: () => string,
+) {
+  const startedAt = performance.now();
+  while (performance.now() - startedAt < 5_000) {
+    const source = output();
+    const parsed = parseTailJsonStream(source, false);
+    if (parsed.problem) throw new Error("Wrangler Tail output was malformed before Queue publish.");
+    if (parsed.complete && parsed.consumedLength === source.length) return source.length;
+    if (hasExited(tail)) throw new Error("Wrangler Tail exited before the Queue checkpoint.");
+    await delay(25);
+  }
+  throw new Error("Wrangler Tail never reached a complete JSON boundary before Queue publish.");
 }
 
 async function readBoundedText(response: Response, maximumBytes: number) {
@@ -685,6 +1264,18 @@ function getArg(name: string) {
 
 function nonNegativeSafeInteger(value: unknown) {
   return typeof value === "number" && Number.isSafeInteger(value) && value >= 0 ? value : null;
+}
+
+function nonNegativeNumber(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
+}
+
+function positiveSafeInteger(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 1;
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.trim().length > 0;
 }
 
 function finiteNumber(value: unknown) {

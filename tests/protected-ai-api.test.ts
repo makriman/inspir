@@ -83,6 +83,7 @@ test("protected AI admission defaults only when the global limit is absent and d
   try {
     const db = await miniflare.getD1Database("DB");
     await db.batch([
+      db.prepare("create table users (id text primary key)"),
       db.prepare(`create table rate_limit_windows (
         "key" text primary key,
         count integer not null,
@@ -98,10 +99,12 @@ test("protected AI admission defaults only when the global limit is absent and d
         updated_at integer not null,
         primary key (day, shard)
       )`),
+      db.prepare("insert into users (id) values ('admission-user')"),
     ]);
 
     const absentLimit = await consumeAiAdmission(
       { DB: db, LLM_GLOBAL_DAILY_CALL_LIMIT: undefined },
+      "admission-user",
       "chat:user:absent-limit",
       20,
       "Daily message limit reached",
@@ -112,6 +115,7 @@ test("protected AI admission defaults only when the global limit is absent and d
     for (const [index, limit] of invalidLimits.entries()) {
       const decision = await consumeAiAdmission(
         { DB: db, LLM_GLOBAL_DAILY_CALL_LIMIT: limit },
+        "admission-user",
         `chat:user:invalid-limit-${index}`,
         20,
         "Daily message limit reached",
@@ -121,6 +125,21 @@ test("protected AI admission defaults only when the global limit is absent and d
       assert.equal(decision.status, 429, limit);
       assert.equal(decision.error, "Daily AI usage limit reached", limit);
     }
+
+    const missingUser = await consumeAiAdmission(
+      { DB: db, LLM_GLOBAL_DAILY_CALL_LIMIT: undefined },
+      "deleted-user",
+      "chat:user:deleted-user",
+      20,
+      "Daily message limit reached",
+    );
+    assert.equal(missingUser.ok, false);
+    if (missingUser.ok) assert.fail("A deleted user was admitted");
+    assert.equal(missingUser.error, "Daily message limit reached");
+    const deletedUserQuota = await db.prepare(
+      "select count(*) as count from rate_limit_windows where \"key\" = 'chat:user:deleted-user'",
+    ).first<{ count: number }>();
+    assert.deepEqual(deletedUserQuota, { count: 0 });
 
     const globalUsage = await db
       .prepare("select coalesce(sum(call_count), 0) as callCount from llm_usage_daily_shards")

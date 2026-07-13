@@ -281,6 +281,58 @@ test("Miniflare D1 rolls cleanup capture and the domain mutation back together",
   }
 });
 
+test("a foreign outbox owner collision aborts chat deletion with source and ownership unchanged", async () => {
+  const fixture = await createFixture();
+  try {
+    const chatId = "44444444-4444-4444-8444-444444444444";
+    const vectorId = `chat_memory_turns:${TURN_ID}`;
+    await fixture.database.batch([
+      fixture.database.prepare(
+        "insert into chats (id, user_id) values (?1, ?2)",
+      ).bind(chatId, USER_ID),
+      fixture.database.prepare(
+        `insert into chat_memory_turns (
+           id, user_id, chat_id, searchable_text, embedding, created_at, updated_at
+         ) values (?1, ?2, ?3, 'Foreign collision turn', null, ?4, ?4)`,
+      ).bind(TURN_ID, USER_ID, chatId, fixture.now),
+      fixture.database.prepare(
+        `insert into memory_vector_cleanup_outbox (
+           vector_id, owner_user_id, source_namespace, source_row_id,
+           reason, state, next_attempt_at, created_at, updated_at
+         ) values (?1, 'foreign-owner', 'chat_memory_turns', ?2,
+                   'foreign_collision_fixture', 'cleanup_ready', ?3, ?3, ?3)`,
+      ).bind(vectorId, TURN_ID, fixture.now),
+    ]);
+    const foreignOutboxBefore = await fixture.database.prepare(
+      "select * from memory_vector_cleanup_outbox where vector_id = ?1",
+    ).bind(vectorId).first<Record<string, unknown>>();
+    assert.ok(foreignOutboxBefore);
+
+    const response = await fixture.request(`/api/chats/${chatId}`, { method: "DELETE" });
+    assert.equal(response.status, 500);
+    assert.equal(
+      await scalar(fixture.database, "select count(*) as value from chats where id = ?1", chatId),
+      1,
+    );
+    assert.equal(
+      await scalar(
+        fixture.database,
+        "select count(*) as value from chat_memory_turns where id = ?1 and chat_id = ?2",
+        TURN_ID,
+        chatId,
+      ),
+      1,
+    );
+    const foreignOutboxAfter = await fixture.database.prepare(
+      "select * from memory_vector_cleanup_outbox where vector_id = ?1",
+    ).bind(vectorId).first<Record<string, unknown>>();
+    assert.deepEqual(foreignOutboxAfter, foreignOutboxBefore);
+    assert.deepEqual(fixture.queue.messages, []);
+  } finally {
+    await fixture.dispose();
+  }
+});
+
 test("concurrent bounded drains claim disjoint rows and fence delayed Vectorize resurrection", async () => {
   const fixture = await createFixture();
   try {
