@@ -6,6 +6,7 @@ import {
   RUNTIME_MIGRATION_BUDGET_MAX_AGE_MS,
   RUNTIME_MIGRATION_BUDGET_OPERATION_ID,
   RUNTIME_MIGRATION_BUDGET_REPORT,
+  RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ,
   RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES,
   projectRuntimeMigrationUsage,
   type RuntimeMigrationCardinalities,
@@ -45,13 +46,13 @@ import {
 } from "./verify-d1-runtime-migrations";
 
 export const D1_RUNTIME_MIGRATION_PREWRITE_EVIDENCE_KIND =
-  "d1-runtime-migrations-0013-0015-prewrite" as const;
+  "d1-runtime-migrations-0013-0016-prewrite" as const;
 export const D1_RUNTIME_MIGRATION_OUTCOME_KIND =
-  "d1-runtime-migrations-0013-0015-apply-outcome" as const;
+  "d1-runtime-migrations-0013-0016-apply-outcome" as const;
 export const D1_RUNTIME_MIGRATION_OUTCOME_REPORT =
-  "d1-runtime-migrations-0013-0015-apply-outcome.json" as const;
+  "d1-runtime-migrations-0013-0016-apply-outcome.json" as const;
 
-type RuntimeMigrationId = "0013" | "0014" | "0015";
+type RuntimeMigrationId = "0013" | "0014" | "0015" | "0016";
 type RuntimeMigrationGroupState = "absent" | "applied" | "partial";
 
 export type RuntimeMigrationFileEvidence = {
@@ -123,7 +124,7 @@ type RuntimeMigrationBudgetEvidence = {
   ledgerPath: string;
 };
 
-const migrationIds = ["0013", "0014", "0015"] as const;
+const migrationIds = ["0013", "0014", "0015", "0016"] as const;
 const migrationCheckIds: Record<RuntimeMigrationId, readonly string[]> = {
   "0013": [
     "0013-rate-limit-windows-index",
@@ -136,6 +137,13 @@ const migrationCheckIds: Record<RuntimeMigrationId, readonly string[]> = {
     "0015-completion-message-id-column",
     "0015-completion-token-unique-partial-index",
     "0015-completion-message-id-unique-partial-index",
+  ],
+  "0016": [
+    "0016-memory-summary-suppression-mask-column",
+    "0016-memory-vector-cleanup-outbox-columns",
+    "0016-memory-vector-cleanup-outbox-checks",
+    "0016-memory-vector-cleanup-outbox-due-index",
+    "0016-completion-marker",
   ],
 };
 
@@ -312,8 +320,14 @@ export function applyD1RuntimeMigrations(
           `${migration} ${ambiguity} and remained unapplied; it was not retried automatically. Rerun only after reviewing exact read-only state and the fsynced bookmark.`,
         );
       }
-      if (transportError !== undefined && migration === "0015" && !recoveredByVerification) {
-        throw new Error("Ambiguous 0015 was not exact-verified and must never be blindly retried.");
+      if (
+        transportError !== undefined &&
+        (migration === "0015" || migration === "0016") &&
+        !recoveredByVerification
+      ) {
+        throw new Error(
+          `Ambiguous ${migration} was not exact-verified and must never be blindly retried.`,
+        );
       }
     }
 
@@ -407,6 +421,7 @@ export function classifyRuntimeMigrationState(input: {
     "0013": requiredGroupState(groups["0013"], "0013"),
     "0014": requiredGroupState(groups["0014"], "0014"),
     "0015": requiredGroupState(groups["0015"], "0015"),
+    "0016": requiredGroupState(groups["0016"], "0016"),
   };
   const sequence = migrationIds.map((migration) => typedGroups[migration]);
   const firstAbsent = sequence.indexOf("absent");
@@ -444,9 +459,9 @@ function readRuntimeMigrationBudgetEvidence(input: {
     report.ok !== true ||
     report.exact !== true ||
     report.operationId !== RUNTIME_MIGRATION_BUDGET_OPERATION_ID ||
-    report.operation !== "Production D1 runtime migrations 0013-0015"
+    report.operation !== "Production D1 runtime migrations 0013-0016"
   ) {
-    throw new Error("Runtime migration budget evidence is not an exact successful 0013-0015 report.");
+    throw new Error("Runtime migration budget evidence is not an exact successful 0013-0016 report.");
   }
   const createdAt = requiredIsoTimestamp(report.createdAt, "budget evidence creation timestamp");
   const createdMs = Date.parse(createdAt);
@@ -486,7 +501,9 @@ function readRuntimeMigrationBudgetEvidence(input: {
   const cardinalityRowsRead = projection.rowsRead -
     projection.indexedRows * 4 -
     projection.snapshotRows * RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES -
-    5_000;
+    projection.suppressionBackfillRowsRead -
+    projection.outboxSchemaRowsRead -
+    RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ;
   if (!Number.isSafeInteger(cardinalityRowsRead) || cardinalityRowsRead < 0) {
     throw new Error("Runtime migration budget evidence has an impossible cardinality read count.");
   }
@@ -684,6 +701,18 @@ function parseCardinalities(value: unknown): RuntimeMigrationCardinalities {
     ),
     opsEvents: nonNegativeInteger(record.opsEvents, "ops events cardinality"),
     activityRuns: nonNegativeInteger(record.activityRuns, "activity runs cardinality"),
+    userMemorySettings: nonNegativeInteger(
+      record.userMemorySettings,
+      "user memory settings cardinality",
+    ),
+    memorySourceFeedback: nonNegativeInteger(
+      record.memorySourceFeedback,
+      "memory source feedback cardinality",
+    ),
+    suppressionBackfillUsers: nonNegativeInteger(
+      record.suppressionBackfillUsers,
+      "suppression backfill users cardinality",
+    ),
   };
 }
 
@@ -702,6 +731,22 @@ function parseProjection(value: unknown): RuntimeMigrationProjection {
       "projected activity index rows",
     ),
     snapshotRows: nonNegativeInteger(record.snapshotRows, "projected snapshot rows"),
+    suppressionBackfillRowsRead: nonNegativeInteger(
+      record.suppressionBackfillRowsRead,
+      "projected suppression backfill reads",
+    ),
+    suppressionBackfillRowsWritten: nonNegativeInteger(
+      record.suppressionBackfillRowsWritten,
+      "projected suppression backfill writes",
+    ),
+    outboxSchemaRowsRead: nonNegativeInteger(
+      record.outboxSchemaRowsRead,
+      "projected 0016 fixed reads",
+    ),
+    outboxSchemaRowsWritten: nonNegativeInteger(
+      record.outboxSchemaRowsWritten,
+      "projected 0016 fixed writes",
+    ),
   };
 }
 

@@ -683,14 +683,18 @@ test("start-learning verification preserves canonical bootstrap context variants
       /\n\s*AND target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/,
       "",
     );
+    // The reviewed Arabic and Malayalam packs now intentionally share the
+    // home label. Hindi retains the one route-specific canonical variant that
+    // proves an unfiltered legacy copy would still clobber audited bootstrap
+    // payloads.
     assert.deepEqual(
       database.prepare(oldUnfilteredSql).all().map((row) => ({
         namespace: row.namespace,
         mismatches: row.mismatches,
       })),
       [
-        { namespace: "route:about", mismatches: 3 },
-        { namespace: "route:media", mismatches: 3 },
+        { namespace: "route:about", mismatches: 1 },
+        { namespace: "route:media", mismatches: 1 },
       ],
     );
 
@@ -825,9 +829,14 @@ test("verify-only repair exits before ledger admission and never alters ledger e
       "let budgetReservation: D1ReleaseBudgetReservationResult = reserveD1ReleaseBudget({",
     );
     assert.ok(verifyOnlyExit >= 0 && verifyOnlyExit < ledgerAdmission);
-    assert.match(
-      source.slice(verifyOnlyExit, ledgerAdmission),
-      /return verifyRemoteTranslationDrift\(/,
+    const verifyOnlyBranch = source.slice(verifyOnlyExit, ledgerAdmission);
+    assert.match(verifyOnlyBranch, /writeTranslationReconciliationPending\(/);
+    assert.match(verifyOnlyBranch, /const drift = verifyRemoteTranslationDrift\(/);
+    assert.match(verifyOnlyBranch, /writeTranslationReconciliationSuccess\(/);
+    assert.match(verifyOnlyBranch, /return drift;/);
+    assert.ok(
+      verifyOnlyBranch.indexOf("writeTranslationReconciliationPending(") <
+        verifyOnlyBranch.indexOf("verifyRemoteTranslationDrift("),
     );
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
@@ -903,6 +912,16 @@ test("verify-only CLI contract requires explicit remote production confirmation"
           backupDir,
         }),
       /requires --confirm-production/,
+    );
+    assert.throws(
+      () =>
+        repairSeoCtaTranslations({
+          remote: true,
+          confirmed: true,
+          verifyOnly: true,
+          backupDir,
+        }),
+      /requires --candidate-version/,
     );
     assert.deepEqual(fs.readdirSync(backupDir), []);
   } finally {

@@ -290,6 +290,9 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
       {
         readGitIdentity: () => gitIdentity,
         buildArtifactEvidence: () => artifactEvidence,
+        validateVectorizeReadiness: () => ({
+          createdAt: "2026-07-12T00:02:00.000Z",
+        }),
         readActiveVersion: () => {
           activeReads += 1;
           return candidateVersionId;
@@ -317,6 +320,9 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
           {
             readGitIdentity: () => gitIdentity,
             buildArtifactEvidence: () => artifactEvidence,
+            validateVectorizeReadiness: () => ({
+              createdAt: "2026-07-12T00:02:00.000Z",
+            }),
             readActiveVersion: () => candidateVersionId,
           },
         ),
@@ -339,6 +345,9 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
           {
             readGitIdentity: () => gitIdentity,
             buildArtifactEvidence: () => artifactEvidence,
+            validateVectorizeReadiness: () => ({
+              createdAt: "2026-07-12T00:02:00.000Z",
+            }),
             readActiveVersion: () => {
               changedActiveReads += 1;
               return changedActiveReads === 1
@@ -1096,6 +1105,7 @@ function topicReleaseIdentity(
       "cloudflare/worker-deploy-report.json",
     ),
     workerDeployEvidenceCreatedAt: "2026-07-12T00:01:00.000Z",
+    vectorizeReadinessCreatedAt: "2026-07-12T00:02:00.000Z",
   };
 }
 

@@ -3,8 +3,11 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { DatabaseSync } from "node:sqlite";
 import test from "node:test";
 import {
+  RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+  RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE,
   RUNTIME_MIGRATION_EVIDENCE_KIND,
   RUNTIME_MIGRATION_FILES,
   RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS,
@@ -16,7 +19,7 @@ import {
 } from "../scripts/cloudflare/verify-d1-runtime-migrations";
 import { D1_DATABASE_NAME } from "../scripts/cloudflare/migration-config";
 
-test("read-only verifier proves exact 0013-0015 schema and snapshot state", () => {
+test("read-only verifier proves exact 0013-0016 schema and snapshot state", () => {
   const { backupDir, repoDir } = makeFixture();
   const calls: string[][] = [];
   const report = verifyD1RuntimeMigrations({
@@ -34,7 +37,7 @@ test("read-only verifier proves exact 0013-0015 schema and snapshot state", () =
   assert.deepEqual(report.migrations, [...RUNTIME_MIGRATION_FILES]);
   assert.equal(report.ok, true);
   assert.equal(report.sourceFingerprintStable, true);
-  assert.equal(report.rowsRead, 31);
+  assert.equal(report.rowsRead, 33);
   assert.equal(report.rowsWritten, 0);
   assert.deepEqual(
     report.checks.map((check) => check.id),
@@ -58,6 +61,22 @@ test("verification SQL is bounded, read-only, and inspects exact columns and ind
   assert.match(RUNTIME_MIGRATION_VERIFICATION_SQL, /pragma_index_list\('ops_events'\)/);
   assert.match(
     RUNTIME_MIGRATION_VERIFICATION_SQL,
+    /pragma_table_info\('memory_vector_cleanup_outbox'\)/,
+  );
+  assert.match(
+    RUNTIME_MIGRATION_VERIFICATION_SQL,
+    /pragma_table_info\('user_memory_settings'\)/,
+  );
+  assert.match(
+    RUNTIME_MIGRATION_VERIFICATION_SQL,
+    /pragma_index_list\('memory_vector_cleanup_outbox'\)/,
+  );
+  assert.match(
+    RUNTIME_MIGRATION_VERIFICATION_SQL,
+    /pragma_index_info\('memory_vector_cleanup_outbox_due_idx'\)/,
+  );
+  assert.match(
+    RUNTIME_MIGRATION_VERIFICATION_SQL,
     /pragma_index_info\('activity_runs_completion_token_uidx'\)/,
   );
   assert.match(
@@ -65,6 +84,10 @@ test("verification SQL is bounded, read-only, and inspects exact columns and ind
     /pragma_index_info\('activity_runs_completion_message_id_uidx'\)/,
   );
   assert.match(RUNTIME_MIGRATION_VERIFICATION_SQL, /native-admin-totals-v1/);
+  assert.match(
+    RUNTIME_MIGRATION_VERIFICATION_SQL,
+    new RegExp(RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY),
+  );
   assert.doesNotMatch(
     RUNTIME_MIGRATION_VERIFICATION_SQL,
     /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH)\b/i,
@@ -76,6 +99,175 @@ test("verification SQL is bounded, read-only, and inspects exact columns and ind
   );
   assert.match(source, /--confirm-production/);
   assert.doesNotMatch(source, /d1["',\s]+export|\bd1 export\b/i);
+});
+
+test("0016 exact schema checks stay aligned with the tracked migration SQL", () => {
+  const migration = fs.readFileSync(
+    path.resolve("drizzle-d1/0016_memory_vector_cleanup_outbox.sql"),
+    "utf8",
+  );
+  const statements = migration.split("--> statement-breakpoint");
+  assert.equal(statements.length, 5);
+  const settingsAlterSql = statements[0]?.trim();
+  const tableSql = statements[1]?.trim().replace(
+    "CREATE TABLE IF NOT EXISTS",
+    "CREATE TABLE",
+  );
+  const indexSql = statements[2]?.trim().replace(
+    "CREATE INDEX IF NOT EXISTS",
+    "CREATE INDEX",
+  );
+  const backfillSql = statements[3]?.trim();
+  const completionMarkerSql = statements[4]?.trim();
+  assert.match(settingsAlterSql ?? "", /ADD COLUMN `summary_suppression_mask` integer DEFAULT 0 NOT NULL/);
+  assert.match(
+    settingsAlterSql ?? "",
+    /CONSTRAINT `user_memory_settings_summary_suppression_mask_check`/,
+  );
+  assert.match(settingsAlterSql ?? "", /BETWEEN 0 AND 511/);
+  assert.ok(tableSql);
+  assert.ok(indexSql);
+  assert.match(backfillSql ?? "", /INSERT INTO `user_memory_settings`/);
+  assert.match(backfillSql ?? "", /ON CONFLICT\(`user_id`\) DO UPDATE/);
+  assert.match(
+    completionMarkerSql ?? "",
+    new RegExp(RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY),
+  );
+  assert.match(
+    completionMarkerSql ?? "",
+    new RegExp(RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE),
+  );
+  const rows = validVerificationRows();
+  requiredRow(rows, "memory_vector_cleanup_outbox").table_sql = tableSql;
+  for (const row of rows.filter(
+    (candidate) => candidate.name === "memory_vector_cleanup_outbox_due_idx",
+  )) {
+    row.index_sql = indexSql;
+  }
+
+  const checks = evaluateRuntimeMigrationVerificationRows(rows);
+  assert.equal(
+    checks.find((check) => check.id === "0016-memory-summary-suppression-mask-column")?.ok,
+    true,
+  );
+  assert.equal(
+    checks.find((check) => check.id === "0016-memory-vector-cleanup-outbox-columns")?.ok,
+    true,
+  );
+  assert.equal(
+    checks.find((check) => check.id === "0016-memory-vector-cleanup-outbox-checks")?.ok,
+    true,
+  );
+  assert.equal(
+    checks.find((check) => check.id === "0016-memory-vector-cleanup-outbox-due-index")?.ok,
+    true,
+  );
+  assert.equal(
+    checks.find((check) => check.id === "0016-completion-marker")?.ok,
+    true,
+  );
+});
+
+test("0016 backfills bounded feedback-only suppression masks without scanning summary JSON", () => {
+  const database = new DatabaseSync(":memory:");
+  try {
+    database.exec(`
+      create table users (
+        id text primary key not null,
+        created_at integer not null,
+        updated_at integer not null
+      );
+      create table user_memory_settings (
+        user_id text primary key not null,
+        enabled integer default 1 not null,
+        saved_memory_enabled integer default 1 not null,
+        chat_history_enabled integer default 1 not null,
+        dreaming_enabled integer default 1 not null,
+        capture_scope text default 'broad' not null,
+        retrieval_mode text default 'need_based' not null,
+        notice_seen_at integer,
+        created_at integer not null,
+        updated_at integer not null
+      );
+      create table memory_source_feedback (
+        id text primary key not null,
+        user_id text not null,
+        summary_section_id text,
+        action text not null,
+        created_at integer not null
+      );
+      create table user_memory_summaries (
+        user_id text primary key not null,
+        sections text not null
+      );
+      create table app_metadata (
+        key text primary key not null,
+        value text not null,
+        updated_at integer not null
+      );
+      insert into users (id, created_at, updated_at) values
+        ('feedback-user', 100, 200),
+        ('feedback-no-settings', 100, 200),
+        ('arbitrary-user', 100, 200),
+        ('primitive-user', 100, 200),
+        ('malformed-user', 100, 200);
+      insert into user_memory_settings (user_id, created_at, updated_at) values
+        ('feedback-user', 100, 200),
+        ('primitive-user', 100, 200),
+        ('malformed-user', 100, 200);
+      insert into memory_source_feedback (
+        id, user_id, summary_section_id, action, created_at
+      ) values
+        (
+          'feedback-row', 'feedback-user', 'native-memory-preferences',
+          'dont_mention', 150
+        ),
+        (
+          'feedback-row-no-settings', 'feedback-no-settings', 'goals',
+          'not_relevant', 150
+        );
+      insert into user_memory_summaries (user_id, sections) values
+        (
+          'arbitrary-user',
+          '[{"id":"legacy-arbitrary","title":"Goals","category":"goals","summary":"Hidden","doNotMention":true}]'
+        ),
+        ('primitive-user', '["legacy-primitive"]'),
+        ('malformed-user', 'not-json');
+    `);
+    const migration = fs.readFileSync(
+      path.resolve("drizzle-d1/0016_memory_vector_cleanup_outbox.sql"),
+      "utf8",
+    );
+    assert.doesNotMatch(migration, /json_each|FROM `user_memory_summaries`/);
+    database.exec(migration.replaceAll("--> statement-breakpoint", ""));
+
+    const rows = database.prepare(
+      `select user_id as userId, summary_suppression_mask as mask,
+              enabled, capture_scope as captureScope
+       from user_memory_settings order by user_id`,
+    ).all().map(parseSummarySettingsRow);
+    assert.deepEqual(rows.map((row) => ({ ...row })), [
+      { userId: "feedback-no-settings", mask: 16, enabled: 1, captureScope: "broad" },
+      { userId: "feedback-user", mask: 2, enabled: 1, captureScope: "broad" },
+      { userId: "malformed-user", mask: 0, enabled: 1, captureScope: "broad" },
+      { userId: "primitive-user", mask: 0, enabled: 1, captureScope: "broad" },
+    ]);
+    assert.throws(
+      () => database.exec("update user_memory_settings set summary_suppression_mask = 512"),
+      /constraint/i,
+    );
+    const marker: unknown = database.prepare(
+      `select key, value, updated_at as updatedAt
+       from app_metadata where key = ?`,
+    ).get(RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY);
+    assert.ok(isRecord(marker));
+    assert.equal(marker.key, RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY);
+    assert.equal(marker.value, RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE);
+    assert.equal(typeof marker.updatedAt, "number");
+    assert.ok(Number(marker.updatedAt) > 0);
+  } finally {
+    database.close();
+  }
 });
 
 test("verifier fails closed for missing columns, altered index definitions, and invalid snapshots", () => {
@@ -108,6 +300,49 @@ test("verifier fails closed for missing columns, altered index definitions, and 
       const snapshot = requiredRow(rows, "native-admin-totals-v1");
       snapshot.snapshot_updated_at = 0;
     },
+    (rows) => {
+      rows.splice(rows.findIndex((row) => row.name === "summary_suppression_mask"), 1);
+    },
+    (rows) => {
+      const settings = requiredRow(rows, "summary_suppression_mask");
+      settings.table_sql = String(settings.table_sql).replace(
+        "BETWEEN 0 AND 511",
+        "BETWEEN 0 AND 512",
+      );
+    },
+    (rows) => {
+      rows.splice(
+        rows.findIndex(
+          (row) => row.name === RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+        ),
+        1,
+      );
+    },
+    (rows) => {
+      requiredRow(rows, RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY).table_sql =
+        "wrong-marker-value";
+    },
+    (rows) => {
+      rows.splice(rows.findIndex((row) => row.name === "source_row_revision"), 1);
+    },
+    (rows) => {
+      const table = requiredRow(rows, "memory_vector_cleanup_outbox");
+      table.table_sql = String(table.table_sql).replace(
+        "'verifying_absence'",
+        "'verified_absence'",
+      );
+    },
+    (rows) => {
+      const table = requiredRow(rows, "memory_vector_cleanup_outbox");
+      table.custom_index_count = 2;
+    },
+    (rows) => {
+      const dueColumn = rows.find(
+        (row) => row.name === "memory_vector_cleanup_outbox_due_idx" && row.index_seqno === 1,
+      );
+      assert.ok(dueColumn);
+      dueColumn.index_column = "updated_at";
+    },
   ];
 
   for (const mutate of mutations) {
@@ -126,7 +361,7 @@ test("verifier rejects write metadata and source changes during the query", () =
         JSON.stringify([
           {
             results: validVerificationRows(),
-            meta: { rows_read: 31, rows_written: 1 },
+            meta: { rows_read: 33, rows_written: 1 },
           },
         ]),
       ),
@@ -232,6 +467,29 @@ function validVerificationRows(): Array<Record<string, unknown>> {
       partial: 1,
     }),
     {
+      kind: "memory-settings-column",
+      name: "summary_suppression_mask",
+      table_name: "user_memory_settings",
+      column_type: "INTEGER",
+      column_not_null: 1,
+      column_default: "0",
+      column_primary_key: 0,
+      table_sql: `CREATE TABLE user_memory_settings (
+        user_id text PRIMARY KEY NOT NULL,
+        summary_suppression_mask integer DEFAULT 0 NOT NULL
+          CONSTRAINT user_memory_settings_summary_suppression_mask_check
+          CHECK (summary_suppression_mask BETWEEN 0 AND 511)
+      )`,
+    },
+    {
+      kind: "migration-marker",
+      name: RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+      table_name: "app_metadata",
+      table_sql: RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE,
+      snapshot_updated_at: 1_752_000_000_000,
+    },
+    ...outboxRows(),
+    {
       kind: "admin-snapshot",
       name: "native-admin-totals-v1",
       table_name: "app_metadata",
@@ -246,6 +504,80 @@ function validVerificationRows(): Array<Record<string, unknown>> {
       snapshot_ai_runs: 500,
       snapshot_updated_at: 1_752_000_000_000,
     },
+  ];
+}
+
+function outboxRows(): Array<Record<string, unknown>> {
+  const columnSpecs = [
+    ["vector_id", "TEXT", 1, null, 1],
+    ["owner_user_id", "TEXT", 0, null, 0],
+    ["source_namespace", "TEXT", 0, null, 0],
+    ["source_row_id", "TEXT", 0, null, 0],
+    ["source_row_revision", "INTEGER", 0, null, 0],
+    ["write_token", "TEXT", 0, null, 0],
+    ["reason", "TEXT", 1, null, 0],
+    ["state", "TEXT", 1, "'cleanup_ready'", 0],
+    ["write_fence_expires_at", "INTEGER", 0, null, 0],
+    ["absence_count", "INTEGER", 1, "0", 0],
+    ["attempt_count", "INTEGER", 1, "0", 0],
+    ["lease_token", "TEXT", 0, null, 0],
+    ["lease_until", "INTEGER", 1, "0", 0],
+    ["next_attempt_at", "INTEGER", 1, null, 0],
+    ["last_attempt_at", "INTEGER", 0, null, 0],
+    ["last_error", "TEXT", 0, null, 0],
+    ["created_at", "INTEGER", 1, null, 0],
+    ["updated_at", "INTEGER", 1, null, 0],
+  ] as const;
+  const tableSql = `CREATE TABLE memory_vector_cleanup_outbox (
+    vector_id text PRIMARY KEY NOT NULL CHECK (length(vector_id) BETWEEN 1 AND 64 AND vector_id NOT GLOB '*[^A-Za-z0-9:._-]*'),
+    owner_user_id text CHECK (owner_user_id IS NULL OR length(owner_user_id) BETWEEN 1 AND 120),
+    source_namespace text CHECK (source_namespace IS NULL OR source_namespace IN ('user_memories', 'chat_memory_turns')),
+    source_row_id text CHECK (source_row_id IS NULL OR length(source_row_id) BETWEEN 1 AND 120),
+    source_row_revision integer CHECK (source_row_revision IS NULL OR source_row_revision BETWEEN 1 AND 9007199254740991),
+    write_token text CHECK (write_token IS NULL OR length(write_token) BETWEEN 1 AND 120),
+    reason text NOT NULL CHECK (length(reason) BETWEEN 1 AND 80),
+    state text DEFAULT 'cleanup_ready' NOT NULL CHECK (state IN ('write_pending', 'cleanup_fenced', 'cleanup_ready', 'verifying_absence')),
+    write_fence_expires_at integer CHECK (write_fence_expires_at IS NULL OR write_fence_expires_at >= 0),
+    absence_count integer DEFAULT 0 NOT NULL CHECK (absence_count >= 0 AND absence_count <= 2),
+    attempt_count integer DEFAULT 0 NOT NULL CHECK (attempt_count >= 0),
+    lease_token text CHECK (lease_token IS NULL OR length(lease_token) BETWEEN 1 AND 120),
+    lease_until integer DEFAULT 0 NOT NULL CHECK (lease_until >= 0),
+    next_attempt_at integer NOT NULL CHECK (next_attempt_at >= 0),
+    last_attempt_at integer CHECK (last_attempt_at IS NULL OR last_attempt_at >= 0),
+    last_error text CHECK (last_error IS NULL OR length(last_error) <= 160),
+    created_at integer NOT NULL CHECK (created_at >= 0),
+    updated_at integer NOT NULL CHECK (updated_at >= 0)
+  )`;
+  const indexSql =
+    "CREATE INDEX memory_vector_cleanup_outbox_due_idx ON memory_vector_cleanup_outbox (next_attempt_at, created_at, vector_id)";
+  return [
+    ...columnSpecs.map(([name, type, notNull, defaultValue, primaryKey]) => ({
+      kind: "outbox-column",
+      name,
+      table_name: "memory_vector_cleanup_outbox",
+      column_type: type,
+      column_not_null: notNull,
+      column_default: defaultValue,
+      column_primary_key: primaryKey,
+    })),
+    {
+      kind: "outbox-table",
+      name: "memory_vector_cleanup_outbox",
+      table_name: "memory_vector_cleanup_outbox",
+      table_sql: tableSql,
+      custom_index_count: 1,
+    },
+    ...["next_attempt_at", "created_at", "vector_id"].map((columnName, index) => ({
+      kind: "index",
+      name: "memory_vector_cleanup_outbox_due_idx",
+      table_name: "memory_vector_cleanup_outbox",
+      index_sql: indexSql,
+      index_unique: 0,
+      index_origin: "c",
+      index_partial: 0,
+      index_seqno: index,
+      index_column: columnName,
+    })),
   ];
 }
 
@@ -286,7 +618,7 @@ function wranglerResult(rows: Array<Record<string, unknown>>) {
   return JSON.stringify([
     {
       results: rows,
-      meta: { rows_read: 31, rows_written: 0 },
+      meta: { rows_read: 33, rows_written: 0 },
     },
   ]);
 }
@@ -295,6 +627,28 @@ function requiredRow(rows: Array<Record<string, unknown>>, name: string) {
   const row = rows.find((candidate) => candidate.name === name);
   assert.ok(row);
   return row;
+}
+
+function parseSummarySettingsRow(value: unknown, index: number) {
+  if (
+    !isRecord(value) ||
+    typeof value.userId !== "string" ||
+    typeof value.mask !== "number" ||
+    typeof value.enabled !== "number" ||
+    typeof value.captureScope !== "string"
+  ) {
+    throw new Error(`Invalid summary settings row at index ${index}.`);
+  }
+  return {
+    userId: value.userId,
+    mask: value.mask,
+    enabled: value.enabled,
+    captureScope: value.captureScope,
+  };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function makeFixture() {

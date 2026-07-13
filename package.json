@@ -50,6 +50,7 @@
     "cf:verify:historical-data-continuity": "tsx scripts/cloudflare/verify-historical-data-continuity.ts",
     "cf:preflight:deploy": "tsx scripts/cloudflare/deploy-preflight.ts",
     "cf:verify:cloudflare-token": "tsx scripts/cloudflare/verify-cloudflare-api-token.ts",
+    "cf:verify:vectorize-readiness": "tsx scripts/cloudflare/verify-vectorize-readiness.ts",
     "cf:verify:production": "tsx scripts/cloudflare/verify-production.ts",
     "cf:verify:authenticated-production": "tsx scripts/cloudflare/run-authenticated-production-validation.ts",
     "cf:verify:worker-outcomes": "tsx scripts/cloudflare/verify-production-worker-outcomes.ts",

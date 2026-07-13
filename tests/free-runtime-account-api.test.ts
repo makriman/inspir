@@ -4,10 +4,14 @@ import path from "node:path";
 import test from "node:test";
 import { makeSignature } from "better-auth/crypto";
 import {
+  createNativeOAuthSession,
+  linkVerifiedGoogleIdentity,
   handleLogout,
   handleMigrationE2EAuthRequest,
   handleNativeAuthRequest,
   findUniqueGoogleEmailUser,
+  type GoogleIdentity,
+  type GoogleTokenSet,
   type MigrationE2EAuthEnv,
   type NativeAuthEnv,
 } from "../lib/free-runtime/account-api";
@@ -450,6 +454,45 @@ test("Google linking fails closed before account or session writes for ambiguous
   assert.ok(database.statements.some((statement) => statement.query.includes("where lower(email) = ?1")));
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into accounts")));
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into sessions")));
+});
+
+test("Google linking and OAuth session creation preserve an existing historical user ID", async () => {
+  const database = new ExistingGoogleLinkD1Database();
+  const identity = {
+    subject: "google-subject-for-historical-user",
+    email: database.historicalEmail,
+    name: "Historical learner",
+    image: "https://images.example/historical-learner.png",
+  } satisfies GoogleIdentity;
+  const tokenSet = {
+    accessToken: "bounded-access-token",
+    refreshToken: "bounded-refresh-token",
+    idToken: "bounded-id-token",
+    accessTokenExpiresAt: Date.now() + 60 * 60 * 1_000,
+    scope: "email profile openid",
+  } satisfies GoogleTokenSet;
+
+  const userId = await linkVerifiedGoogleIdentity(database, identity, tokenSet);
+  assert.equal(userId, database.historicalUserId);
+  assert.equal(database.accountUserId, database.historicalUserId);
+  assert.equal(database.updatedUserId, database.historicalUserId);
+
+  const session = await createNativeOAuthSession(
+    new Request("https://inspirlearning.com/api/auth/callback/google", {
+      headers: {
+        "cf-connecting-ip": trustedTestIp,
+        "user-agent": "historical-google-link-test",
+      },
+    }),
+    database,
+    userId,
+  );
+  assert.equal(session.userId, database.historicalUserId);
+  assert.equal(database.session?.userId, database.historicalUserId);
+  assert.equal(database.session?.ipAddress, trustedTestIp);
+  assert.equal(database.session?.userAgent, "historical-google-link-test");
+  assert.ok(database.statements.every((statement) => !statement.query.includes("insert into users")));
+  assert.ok(database.statements.every((statement) => !statement.query.includes("where lower(email)")));
 });
 
 test("migration E2E auth requires a 32-byte secret and a trusted Cloudflare client IP", async () => {
@@ -1147,6 +1190,32 @@ class AmbiguousGoogleEmailD1Database extends GuardD1Database {
   }
 }
 
+type StoredOAuthSession = {
+  id: string;
+  token: string;
+  userId: string;
+  expiresAt: number;
+  createdAt: number;
+  ipAddress: string | null;
+  userAgent: string | null;
+};
+
+class ExistingGoogleLinkD1Database extends GuardD1Database {
+  readonly historicalUserId = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+  readonly historicalEmail = "historical.learner@example.com";
+  accountSubject: string | null = null;
+  accountUserId: string | null = null;
+  updatedUserId: string | null = null;
+  session: StoredOAuthSession | null = null;
+
+  prepare(query: string) {
+    this.prepareCalls += 1;
+    const statement = new ExistingGoogleLinkD1Statement(query, this);
+    this.statements.push(statement);
+    return statement;
+  }
+}
+
 class SuccessfulE2ED1Database extends GuardD1Database {
   prepare(query: string) {
     if (query.includes("rate_limit_windows")) {
@@ -1428,6 +1497,96 @@ class AmbiguousGoogleEmailD1Statement extends EmptyD1Statement {
         { id: "legacy-lower", email: "LEARNER@example.com" },
       ],
     };
+  }
+}
+
+class ExistingGoogleLinkD1Statement extends EmptyD1Statement {
+  constructor(
+    query: string,
+    private readonly database: ExistingGoogleLinkD1Database,
+  ) {
+    super(query);
+  }
+
+  first<T = unknown>(_columnName: string): Promise<T | null>;
+  first<T = Record<string, unknown>>(): Promise<T | null>;
+  async first() {
+    if (this.query.includes("from accounts a")) {
+      assert.deepEqual(this.boundValues, ["google-subject-for-historical-user"]);
+      return this.database.accountSubject === this.boundValues[0]
+        ? { user_id: this.database.accountUserId }
+        : null;
+    }
+    if (this.query.includes("from users") && this.query.includes("where email = ?1")) {
+      assert.deepEqual(this.boundValues, [this.database.historicalEmail]);
+      return {
+        id: this.database.historicalUserId,
+        email: this.database.historicalEmail,
+      };
+    }
+    throw new Error(`Unexpected Google-link first() query: ${this.query}`);
+  }
+
+  async run<T = Record<string, unknown>>() {
+    if (this.query.includes("insert into users")) {
+      throw new Error("An existing historical user must never be recreated.");
+    }
+    if (this.query.includes("insert into accounts")) {
+      assert.equal(this.boundValues.length, 9);
+      assert.equal(this.boundValues[1], this.database.historicalUserId);
+      assert.equal(this.boundValues[2], "google-subject-for-historical-user");
+      assert.doesNotMatch(
+        this.query,
+        /on conflict\(provider, provider_account_id\) do update set[\s\S]{0,500}user_id\s*=/,
+      );
+      this.database.accountSubject = String(this.boundValues[2]);
+      this.database.accountUserId = String(this.boundValues[1]);
+      return emptyD1Result<T>(1);
+    }
+    if (this.query.includes("update users set")) {
+      assert.equal(this.boundValues.length, 6);
+      assert.equal(this.boundValues[5], this.database.historicalUserId);
+      assert.match(this.query, /where id = \?6/);
+      this.database.updatedUserId = String(this.boundValues[5]);
+      return emptyD1Result<T>(1);
+    }
+    if (this.query.includes("insert into sessions")) {
+      assert.match(
+        this.query,
+        /values \(\?1, \?2, \?3, \?4, \?5, \?5, \?6, \?7\)/,
+      );
+      assert.equal(this.boundValues.length, 7);
+      const [id, token, userId, expiresAt, createdAt, ipAddress, userAgent] = this.boundValues;
+      assert.equal(typeof id, "string");
+      assert.equal(typeof token, "string");
+      assert.equal(userId, this.database.historicalUserId);
+      assert.equal(typeof expiresAt, "number");
+      assert.equal(typeof createdAt, "number");
+      assert.equal(ipAddress, trustedTestIp);
+      assert.equal(userAgent, "historical-google-link-test");
+      if (
+        typeof id !== "string" ||
+        typeof token !== "string" ||
+        typeof userId !== "string" ||
+        typeof expiresAt !== "number" ||
+        typeof createdAt !== "number" ||
+        (ipAddress !== null && typeof ipAddress !== "string") ||
+        (userAgent !== null && typeof userAgent !== "string")
+      ) {
+        throw new Error("Invalid OAuth session binding.");
+      }
+      this.database.session = {
+        id,
+        token,
+        userId,
+        expiresAt,
+        createdAt,
+        ipAddress,
+        userAgent,
+      };
+      return emptyD1Result<T>(1);
+    }
+    throw new Error(`Unexpected Google-link run() query: ${this.query}`);
   }
 }
 

@@ -1,4 +1,5 @@
 import { topicSeeds, type TopicSeed } from "../content/topics";
+import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
 import {
   acceptsOpenAiSse,
   readBoundedOpenAiChatCompletionText,
@@ -625,7 +626,7 @@ async function consumeGuestAdmission(
   cookieUsage: number,
   runtime: FreeGuestChatRuntime,
 ): Promise<GuestAdmissionDecision> {
-  const globalLimit = nonNegativeIntegerFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT, 1_000);
+  const globalLimit = globalDailyCallLimitFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT);
   if (globalLimit <= 0) {
     emitLog(runtime, {
       event: "llm_budget_denied",
@@ -808,7 +809,7 @@ async function consumeGlobalBudget(
   day: string,
   runtime: FreeGuestChatRuntime,
 ): Promise<GlobalBudgetDecision> {
-  const limit = nonNegativeIntegerFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT, 1_000);
+  const limit = globalDailyCallLimitFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT);
   if (limit <= 0) {
     emitLog(runtime, {
       event: "llm_budget_denied",

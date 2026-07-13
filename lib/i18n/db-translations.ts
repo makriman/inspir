@@ -59,7 +59,7 @@ export function translationStringsFromDbPayload(
     const translated = payload[key];
     const value = typeof translated === "string" ? translated : undefined;
     if (value === undefined) continue;
-    if (!isValidFieldTranslation(sourceText, value, language)) continue;
+    if (!isValidFieldTranslation(sourceText, value, language, key)) continue;
     strings[key] = value;
   }
   return strings;

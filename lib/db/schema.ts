@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  check,
   index,
   integer,
   primaryKey,
@@ -16,6 +17,14 @@ const timestampMsNow = (name: string) =>
     .$defaultFn(() => new Date());
 const booleanInt = (name: string) => integer(name, { mode: "boolean" });
 const jsonText = <T>(name: string) => text(name, { mode: "json" }).$type<T>();
+type StoredMemoryEmbedding =
+  | number[]
+  | "vectorize:512:v1"
+  | `m:${string}`
+  | `t:${string}`
+  | `p:m:${string}`
+  | `p:t:${string}`
+  | null;
 
 export const users = sqliteTable("users", {
   id: uuidText("id").primaryKey(),
@@ -365,20 +374,30 @@ export const aiResponseCache = sqliteTable(
   }),
 );
 
-export const userMemorySettings = sqliteTable("user_memory_settings", {
-  userId: text("user_id")
-    .primaryKey()
-    .references(() => users.id, { onDelete: "cascade" }),
-  enabled: booleanInt("enabled").notNull().default(true),
-  savedMemoryEnabled: booleanInt("saved_memory_enabled").notNull().default(true),
-  chatHistoryEnabled: booleanInt("chat_history_enabled").notNull().default(true),
-  dreamingEnabled: booleanInt("dreaming_enabled").notNull().default(true),
-  captureScope: text("capture_scope").notNull().default("broad"),
-  retrievalMode: text("retrieval_mode").notNull().default("need_based"),
-  noticeSeenAt: timestampMs("notice_seen_at"),
-  createdAt: timestampMsNow("created_at"),
-  updatedAt: timestampMsNow("updated_at"),
-});
+export const userMemorySettings = sqliteTable(
+  "user_memory_settings",
+  {
+    userId: text("user_id")
+      .primaryKey()
+      .references(() => users.id, { onDelete: "cascade" }),
+    enabled: booleanInt("enabled").notNull().default(true),
+    savedMemoryEnabled: booleanInt("saved_memory_enabled").notNull().default(true),
+    chatHistoryEnabled: booleanInt("chat_history_enabled").notNull().default(true),
+    dreamingEnabled: booleanInt("dreaming_enabled").notNull().default(true),
+    captureScope: text("capture_scope").notNull().default("broad"),
+    retrievalMode: text("retrieval_mode").notNull().default("need_based"),
+    summarySuppressionMask: integer("summary_suppression_mask").notNull().default(0),
+    noticeSeenAt: timestampMs("notice_seen_at"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+  },
+  (table) => ({
+    summarySuppressionMaskCheck: check(
+      "user_memory_settings_summary_suppression_mask_check",
+      sql`${table.summarySuppressionMask} between 0 and 511`,
+    ),
+  }),
+);
 
 export const userMemories = sqliteTable(
   "user_memories",
@@ -406,7 +425,7 @@ export const userMemories = sqliteTable(
     sourceChatId: text("source_chat_id").references(() => chats.id, { onDelete: "set null" }),
     sourceMessageId: text("source_message_id").references(() => messages.id, { onDelete: "set null" }),
     supersededByMemoryId: text("superseded_by_memory_id"),
-    embedding: jsonText<number[] | null>("embedding"),
+    embedding: jsonText<StoredMemoryEmbedding>("embedding"),
     validFrom: timestampMs("valid_from"),
     validUntil: timestampMs("valid_until"),
     freshnessStatus: text("freshness_status").notNull().default("current"),
@@ -483,7 +502,7 @@ export const chatMemoryTurns = sqliteTable(
     topics: jsonText<string[]>("topics")
       .notNull()
       .$defaultFn(() => []),
-    embedding: jsonText<number[] | null>("embedding"),
+    embedding: jsonText<StoredMemoryEmbedding>("embedding"),
     createdAt: timestampMsNow("created_at"),
     updatedAt: timestampMsNow("updated_at"),
   },
@@ -493,6 +512,116 @@ export const chatMemoryTurns = sqliteTable(
     chatIdx: index("chat_memory_turns_chat_idx").on(table.chatId),
     topicIdx: index("chat_memory_turns_topic_idx").on(table.topicId),
     userMessageIdx: uniqueIndex("chat_memory_turns_user_message_idx").on(table.userMessageId),
+  }),
+);
+
+/**
+ * Durable, source-independent exact-ID cleanup. Deliberately has no foreign
+ * keys: privacy cleanup must survive deletion of every owning D1 row/user.
+ */
+export const memoryVectorCleanupOutbox = sqliteTable(
+  "memory_vector_cleanup_outbox",
+  {
+    vectorId: text("vector_id").primaryKey(),
+    ownerUserId: text("owner_user_id"),
+    sourceNamespace: text("source_namespace"),
+    sourceRowId: text("source_row_id"),
+    sourceRowRevision: integer("source_row_revision"),
+    writeToken: text("write_token"),
+    reason: text("reason").notNull(),
+    state: text("state").notNull().default("cleanup_ready"),
+    writeFenceExpiresAt: integer("write_fence_expires_at"),
+    absenceCount: integer("absence_count").notNull().default(0),
+    attemptCount: integer("attempt_count").notNull().default(0),
+    leaseToken: text("lease_token"),
+    leaseUntil: integer("lease_until").notNull().default(0),
+    nextAttemptAt: integer("next_attempt_at").notNull(),
+    lastAttemptAt: integer("last_attempt_at"),
+    lastError: text("last_error"),
+    createdAt: integer("created_at").notNull(),
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (table) => ({
+    vectorIdCheck: check(
+      "memory_vector_cleanup_outbox_vector_id_check",
+      sql`length(${table.vectorId}) between 1 and 64
+          and ${table.vectorId} not glob '*[^A-Za-z0-9:._-]*'`,
+    ),
+    ownerUserIdCheck: check(
+      "memory_vector_cleanup_outbox_owner_user_id_check",
+      sql`${table.ownerUserId} is null or length(${table.ownerUserId}) between 1 and 120`,
+    ),
+    sourceNamespaceCheck: check(
+      "memory_vector_cleanup_outbox_source_namespace_check",
+      sql`${table.sourceNamespace} is null
+          or ${table.sourceNamespace} in ('user_memories', 'chat_memory_turns')`,
+    ),
+    sourceRowIdCheck: check(
+      "memory_vector_cleanup_outbox_source_row_id_check",
+      sql`${table.sourceRowId} is null or length(${table.sourceRowId}) between 1 and 120`,
+    ),
+    sourceRowRevisionCheck: check(
+      "memory_vector_cleanup_outbox_source_row_revision_check",
+      sql`${table.sourceRowRevision} is null
+          or ${table.sourceRowRevision} between 1 and 9007199254740991`,
+    ),
+    writeTokenCheck: check(
+      "memory_vector_cleanup_outbox_write_token_check",
+      sql`${table.writeToken} is null or length(${table.writeToken}) between 1 and 120`,
+    ),
+    reasonCheck: check(
+      "memory_vector_cleanup_outbox_reason_check",
+      sql`length(${table.reason}) between 1 and 80`,
+    ),
+    stateCheck: check(
+      "memory_vector_cleanup_outbox_state_check",
+      sql`${table.state} in ('write_pending', 'cleanup_fenced', 'cleanup_ready', 'verifying_absence')`,
+    ),
+    writeFenceCheck: check(
+      "memory_vector_cleanup_outbox_write_fence_check",
+      sql`${table.writeFenceExpiresAt} is null or ${table.writeFenceExpiresAt} >= 0`,
+    ),
+    absenceCountCheck: check(
+      "memory_vector_cleanup_outbox_absence_count_check",
+      sql`${table.absenceCount} between 0 and 2`,
+    ),
+    attemptCountCheck: check(
+      "memory_vector_cleanup_outbox_attempt_count_check",
+      sql`${table.attemptCount} >= 0`,
+    ),
+    leaseTokenCheck: check(
+      "memory_vector_cleanup_outbox_lease_token_check",
+      sql`${table.leaseToken} is null or length(${table.leaseToken}) between 1 and 120`,
+    ),
+    leaseUntilCheck: check(
+      "memory_vector_cleanup_outbox_lease_until_check",
+      sql`${table.leaseUntil} >= 0`,
+    ),
+    nextAttemptCheck: check(
+      "memory_vector_cleanup_outbox_next_attempt_check",
+      sql`${table.nextAttemptAt} >= 0`,
+    ),
+    lastAttemptCheck: check(
+      "memory_vector_cleanup_outbox_last_attempt_check",
+      sql`${table.lastAttemptAt} is null or ${table.lastAttemptAt} >= 0`,
+    ),
+    lastErrorCheck: check(
+      "memory_vector_cleanup_outbox_last_error_check",
+      sql`${table.lastError} is null or length(${table.lastError}) <= 160`,
+    ),
+    createdAtCheck: check(
+      "memory_vector_cleanup_outbox_created_at_check",
+      sql`${table.createdAt} >= 0`,
+    ),
+    updatedAtCheck: check(
+      "memory_vector_cleanup_outbox_updated_at_check",
+      sql`${table.updatedAt} >= 0`,
+    ),
+    dueIdx: index("memory_vector_cleanup_outbox_due_idx").on(
+      table.nextAttemptAt,
+      table.createdAt,
+      table.vectorId,
+    ),
   }),
 );
 

@@ -27,18 +27,24 @@ import {
 } from "./migration-config";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 
-export const HISTORICAL_DATA_PRESERVATION_KIND =
+export const HISTORICAL_DATA_LEGACY_PRESERVATION_KIND =
   "inspir-historical-data-preservation-v1" as const;
+export const HISTORICAL_DATA_PRESERVATION_KIND =
+  "inspir-historical-data-preservation-v2" as const;
 export const HISTORICAL_DATA_BASELINE_RELATIVE_PATH =
   "cloudflare/historical-data-preservation-baseline.json" as const;
 export const HISTORICAL_DATA_VERIFICATION_RELATIVE_PATH =
   "cloudflare/historical-data-preservation-verification.json" as const;
 export const HISTORICAL_SENTINEL_LIMIT = 16;
 export const HISTORICAL_CORE_ROW_LIMIT = 350_000;
+export const HISTORICAL_SUPPLEMENTAL_ROW_LIMIT = 125_000;
+export const HISTORICAL_OPERATIONAL_ROW_LIMIT = 10_000;
+export const HISTORICAL_SCHEMA_COLUMN_LIMIT = 256;
+export const HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT = 750_000;
 export const HISTORICAL_BILLED_READ_LIMIT = 750_000;
-export const HISTORICAL_DATA_COUNT_RESULT_SET_COUNT = 10;
-export const HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT = 9;
-export const HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT = 10;
+export const HISTORICAL_DATA_COUNT_RESULT_SET_COUNT = 21;
+export const HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT = 19;
+export const HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT = 20;
 export const HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT =
   HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
   HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT +
@@ -70,6 +76,38 @@ export const HISTORICAL_DATASET_NAMES = [
 
 export type HistoricalDatasetName = (typeof HISTORICAL_DATASET_NAMES)[number];
 
+// Kept separate from HISTORICAL_DATASET_NAMES so the immutable one-release
+// rollover bridge can compare its older ten-dataset V1 baseline. Every newly
+// captured V2 baseline requires this extended learner-data graph.
+export const HISTORICAL_SUPPLEMENTAL_DATASET_NAMES = [
+  "ai_runs",
+  "user_memory_graph_edges",
+  "user_memory_settings",
+  "chat_memory_summaries",
+  "chat_memory_turns",
+  "user_memory_profiles",
+  "user_memory_summaries",
+  "memory_synthesis_runs",
+  "memory_source_feedback",
+  "memory_events",
+] as const;
+
+export type HistoricalSupplementalDatasetName =
+  (typeof HISTORICAL_SUPPLEMENTAL_DATASET_NAMES)[number];
+
+export const HISTORICAL_OPERATIONAL_DATASET_NAMES = [
+  "memory_vector_cleanup_outbox",
+] as const;
+
+export type HistoricalOperationalDatasetName =
+  (typeof HISTORICAL_OPERATIONAL_DATASET_NAMES)[number];
+type HistoricalProtectedDatasetName =
+  | HistoricalDatasetName
+  | HistoricalSupplementalDatasetName;
+type HistoricalSnapshotDatasetName =
+  | HistoricalProtectedDatasetName
+  | HistoricalOperationalDatasetName;
+
 type HistoricalColumnIdentity = {
   name: string;
   type: string;
@@ -85,9 +123,17 @@ export type HistoricalDatasetEvidence = {
   sentinels: string[];
 };
 
+export type HistoricalOperationalDatasetEvidence = {
+  lifecycle: "mutable-drainable-outbox";
+  rowCount: number;
+  schemaTable: "memory_vector_cleanup_outbox";
+  schemaSha256: string;
+  columns: HistoricalColumnIdentity[];
+};
+
 export type HistoricalDataBaselineReport = {
   kind: typeof HISTORICAL_DATA_PRESERVATION_KIND;
-  schemaVersion: 1;
+  schemaVersion: 2;
   phase: "baseline";
   createdAt: string;
   utcDay: string;
@@ -104,15 +150,38 @@ export type HistoricalDataBaselineReport = {
   ledger: D1ReleaseBudgetReservationResult;
   limits: {
     coreRows: number;
+    supplementalRows: number;
+    operationalRows: number;
     billedReads: number;
     sentinelsPerDataset: number;
   };
   datasets: Record<HistoricalDatasetName, HistoricalDatasetEvidence>;
+  supplementalDatasets: Record<
+    HistoricalSupplementalDatasetName,
+    HistoricalDatasetEvidence
+  >;
+  operationalDatasets: Record<
+    HistoricalOperationalDatasetName,
+    HistoricalOperationalDatasetEvidence
+  >;
+};
+
+export type HistoricalDataLegacyBaselineReport = Omit<
+  HistoricalDataBaselineReport,
+  "kind" | "schemaVersion" | "limits" | "supplementalDatasets" | "operationalDatasets"
+> & {
+  kind: typeof HISTORICAL_DATA_LEGACY_PRESERVATION_KIND;
+  schemaVersion: 1;
+  limits: {
+    coreRows: number;
+    billedReads: number;
+    sentinelsPerDataset: number;
+  };
 };
 
 export type HistoricalDataVerificationReport = {
   kind: typeof HISTORICAL_DATA_PRESERVATION_KIND;
-  schemaVersion: 1;
+  schemaVersion: 2;
   phase: "verification";
   createdAt: string;
   utcDay: string;
@@ -130,6 +199,14 @@ export type HistoricalDataVerificationReport = {
   ledger: D1ReleaseBudgetReservationResult;
   problems: string[];
   datasets: Record<HistoricalDatasetName, HistoricalDatasetEvidence>;
+  supplementalDatasets: Record<
+    HistoricalSupplementalDatasetName,
+    HistoricalDatasetEvidence
+  >;
+  operationalDatasets: Record<
+    HistoricalOperationalDatasetName,
+    HistoricalOperationalDatasetEvidence
+  >;
 };
 
 type CapturedDataset = HistoricalDatasetEvidence & {
@@ -141,6 +218,11 @@ type HistoricalCapture = {
   rowsWritten: 0;
   hmacKeyId: string;
   datasets: Record<HistoricalDatasetName, CapturedDataset>;
+  supplementalDatasets: Record<HistoricalSupplementalDatasetName, CapturedDataset>;
+  operationalDatasets: Record<
+    HistoricalOperationalDatasetName,
+    HistoricalOperationalDatasetEvidence
+  >;
 };
 
 type HistoricalClock = () => Date;
@@ -170,12 +252,18 @@ export type ReadHistoricalDataBaselineOptions = {
   maximumAgeMs?: number;
 };
 
-type DatasetSpec = {
-  name: HistoricalDatasetName;
+type DatasetSpec<Name extends HistoricalSnapshotDatasetName = HistoricalSnapshotDatasetName> = {
+  name: Name;
   table: string;
   cap: number;
-  identityArity: 1 | 2 | 3 | 4;
+  identityArity: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   identitySql: string;
+};
+
+type CountDatasetSpec<Name extends HistoricalSnapshotDatasetName = HistoricalSnapshotDatasetName> = {
+  name: Name;
+  table: string;
+  cap: number;
 };
 
 const coreTableNames = [
@@ -190,25 +278,152 @@ const coreTableNames = [
   "product_events",
 ] as const;
 
-const datasetSpecs: readonly DatasetSpec[] = [
-  { name: "users", table: "users", cap: 100_000, identityArity: 1, identitySql: "SELECT id AS identity_1 FROM users ORDER BY rowid LIMIT 16;" },
-  { name: "accounts", table: "accounts", cap: 150_000, identityArity: 3, identitySql: "SELECT provider AS identity_1, provider_account_id AS identity_2, user_id AS identity_3 FROM accounts ORDER BY rowid LIMIT 16;" },
-  { name: "sessions", table: "sessions", cap: 150_000, identityArity: 2, identitySql: "SELECT session_token AS identity_1, user_id AS identity_2 FROM sessions ORDER BY rowid LIMIT 16;" },
-  { name: "chats", table: "chats", cap: 100_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM chats ORDER BY rowid LIMIT 16;" },
-  { name: "messages", table: "messages", cap: 250_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM messages ORDER BY rowid LIMIT 16;" },
+const supplementalTableNames = [
+  "ai_runs",
+  "user_memory_settings",
+  "chat_memory_summaries",
+  "chat_memory_turns",
+  "user_memory_profiles",
+  "user_memory_summaries",
+  "memory_synthesis_runs",
+  "memory_source_feedback",
+  "memory_events",
+] as const;
+
+const operationalTableNames = ["memory_vector_cleanup_outbox"] as const;
+
+const historicalUsersRowLimit = 100_000;
+
+const coreDatasetSpecs: readonly DatasetSpec<HistoricalDatasetName>[] = [
+  { name: "users", table: "users", cap: historicalUsersRowLimit, identityArity: 1, identitySql: "SELECT id AS identity_1 FROM users ORDER BY rowid LIMIT 16;" },
+  { name: "accounts", table: "accounts", cap: 25_000, identityArity: 3, identitySql: "SELECT provider AS identity_1, provider_account_id AS identity_2, user_id AS identity_3 FROM accounts ORDER BY rowid LIMIT 16;" },
+  { name: "sessions", table: "sessions", cap: 25_000, identityArity: 2, identitySql: "SELECT session_token AS identity_1, user_id AS identity_2 FROM sessions ORDER BY rowid LIMIT 16;" },
+  { name: "chats", table: "chats", cap: 25_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM chats ORDER BY rowid LIMIT 16;" },
+  { name: "messages", table: "messages", cap: 75_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM messages ORDER BY rowid LIMIT 16;" },
   { name: "admin_users", table: "admin_users", cap: 1_000, identityArity: 1, identitySql: "SELECT email AS identity_1 FROM admin_users ORDER BY rowid LIMIT 16;" },
-  { name: "user_memories", table: "user_memories", cap: 100_000, identityArity: 2, identitySql: "SELECT id AS identity_1, user_id AS identity_2 FROM user_memories ORDER BY rowid LIMIT 16;" },
-  { name: "activity_runs", table: "activity_runs", cap: 75_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM activity_runs ORDER BY rowid LIMIT 16;" },
-  { name: "product_events", table: "product_events", cap: 250_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM product_events ORDER BY rowid LIMIT 16;" },
+  { name: "user_memories", table: "user_memories", cap: 25_000, identityArity: 2, identitySql: "SELECT id AS identity_1, user_id AS identity_2 FROM user_memories ORDER BY rowid LIMIT 16;" },
+  { name: "activity_runs", table: "activity_runs", cap: 24_000, identityArity: 2, identitySql: "SELECT id AS identity_1, chat_id AS identity_2 FROM activity_runs ORDER BY rowid LIMIT 16;" },
+  { name: "product_events", table: "product_events", cap: 50_000, identityArity: 2, identitySql: "SELECT id AS identity_1, coalesce(user_id, '') AS identity_2 FROM product_events ORDER BY rowid LIMIT 16;" },
   {
     name: "profile_photo_pointers",
     table: "users",
-    cap: 100_000,
+    cap: historicalUsersRowLimit,
     identityArity: 4,
     identitySql:
-      "SELECT id AS identity_1, coalesce(profile_image_r2_key, '') AS identity_2, coalesce(profile_image_hash, '') AS identity_3, coalesce(profile_image_r2_etag, '') AS identity_4 FROM users WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL ORDER BY rowid LIMIT 16;",
+      `SELECT id AS identity_1, coalesce(profile_image_r2_key, '') AS identity_2, coalesce(profile_image_hash, '') AS identity_3, coalesce(profile_image_r2_etag, '') AS identity_4 FROM (SELECT rowid AS bounded_rowid, id, profile_image_r2_key, profile_image_hash, profile_image_r2_etag FROM users ORDER BY rowid LIMIT ${historicalUsersRowLimit + 1}) WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL ORDER BY bounded_rowid LIMIT 16;`,
   },
 ] as const;
+
+const supplementalDatasetSpecs: readonly DatasetSpec<HistoricalSupplementalDatasetName>[] = [
+  {
+    name: "ai_runs",
+    table: "ai_runs",
+    cap: 20_000,
+    identityArity: 3,
+    identitySql: "SELECT id AS identity_1, chat_id AS identity_2, coalesce(user_message_id, '') AS identity_3 FROM ai_runs ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "user_memory_graph_edges",
+    table: "user_memories",
+    cap: 25_000,
+    identityArity: 7,
+    identitySql: "SELECT id AS identity_1, user_id AS identity_2, source_turn_ids AS identity_3, source_memory_ids AS identity_4, coalesce(source_chat_id, '') AS identity_5, coalesce(source_message_id, '') AS identity_6, coalesce(superseded_by_memory_id, '') AS identity_7 FROM user_memories ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "user_memory_settings",
+    table: "user_memory_settings",
+    cap: 10_000,
+    identityArity: 1,
+    identitySql: "SELECT user_id AS identity_1 FROM user_memory_settings ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "chat_memory_summaries",
+    table: "chat_memory_summaries",
+    cap: 10_000,
+    identityArity: 2,
+    identitySql: "SELECT chat_id AS identity_1, user_id AS identity_2 FROM chat_memory_summaries ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "chat_memory_turns",
+    table: "chat_memory_turns",
+    cap: 20_000,
+    identityArity: 6,
+    identitySql: "SELECT id AS identity_1, user_id AS identity_2, chat_id AS identity_3, coalesce(topic_id, '') AS identity_4, user_message_id AS identity_5, assistant_message_id AS identity_6 FROM chat_memory_turns ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "user_memory_profiles",
+    table: "user_memory_profiles",
+    cap: 10_000,
+    identityArity: 2,
+    identitySql: "SELECT user_id AS identity_1, category AS identity_2 FROM user_memory_profiles ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "user_memory_summaries",
+    table: "user_memory_summaries",
+    cap: 5_000,
+    identityArity: 1,
+    identitySql: "SELECT user_id AS identity_1 FROM user_memory_summaries ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "memory_synthesis_runs",
+    table: "memory_synthesis_runs",
+    cap: 10_000,
+    identityArity: 2,
+    identitySql: "SELECT id AS identity_1, user_id AS identity_2 FROM memory_synthesis_runs ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "memory_source_feedback",
+    table: "memory_source_feedback",
+    cap: 5_000,
+    identityArity: 6,
+    identitySql: "SELECT id AS identity_1, user_id AS identity_2, coalesce(ai_run_id, '') AS identity_3, coalesce(memory_id, '') AS identity_4, coalesce(chat_turn_id, '') AS identity_5, coalesce(summary_section_id, '') AS identity_6 FROM memory_source_feedback ORDER BY rowid LIMIT 16;",
+  },
+  {
+    name: "memory_events",
+    table: "memory_events",
+    cap: 10_000,
+    identityArity: 5,
+    identitySql: "SELECT id AS identity_1, user_id AS identity_2, coalesce(memory_id, '') AS identity_3, coalesce(chat_id, '') AS identity_4, coalesce(message_id, '') AS identity_5 FROM memory_events ORDER BY rowid LIMIT 16;",
+  },
+] as const;
+
+const datasetSpecs: readonly DatasetSpec<HistoricalProtectedDatasetName>[] = [
+  ...coreDatasetSpecs,
+  ...supplementalDatasetSpecs,
+];
+const operationalDatasetSpecs: readonly CountDatasetSpec<HistoricalOperationalDatasetName>[] = [
+  {
+    name: "memory_vector_cleanup_outbox",
+    table: "memory_vector_cleanup_outbox",
+    cap: HISTORICAL_OPERATIONAL_ROW_LIMIT,
+  },
+] as const;
+const countDatasetSpecs: readonly CountDatasetSpec[] = [
+  ...datasetSpecs,
+  ...operationalDatasetSpecs,
+];
+const snapshotTableNames = [
+  ...coreTableNames,
+  ...supplementalTableNames,
+  ...operationalTableNames,
+] as const;
+const usersDatasetSpec = coreDatasetSpecs.find((spec) => spec.name === "users");
+if (!usersDatasetSpec) {
+  throw new Error("Historical preservation snapshot plan is missing the users dataset.");
+}
+const countedCoreCap = coreDatasetSpecs
+  .filter((spec) => spec.name !== "profile_photo_pointers")
+  .reduce((sum, spec) => sum + spec.cap, 0);
+const countedSupplementalCap = supplementalDatasetSpecs.reduce(
+  (sum, spec) => sum + spec.cap,
+  0,
+);
+if (
+  countedCoreCap !== HISTORICAL_CORE_ROW_LIMIT ||
+  countedSupplementalCap !== HISTORICAL_SUPPLEMENTAL_ROW_LIMIT
+) {
+  throw new Error("Historical preservation row caps do not match the V2 aggregate limits.");
+}
 
 const safeNonnegativeIntegerSchema = z.number().refine(
   (value) => Number.isSafeInteger(value) && value >= 0,
@@ -240,6 +455,13 @@ const historicalDatasetSchema = z.object({
   columns: z.array(historicalColumnSchema).min(1).max(256),
   sentinels: z.array(sha256Schema).max(HISTORICAL_SENTINEL_LIMIT),
 }).strict();
+const historicalOperationalDatasetSchema = historicalDatasetSchema
+  .omit({ sentinels: true })
+  .extend({
+    lifecycle: z.literal("mutable-drainable-outbox"),
+    schemaTable: z.literal("memory_vector_cleanup_outbox"),
+  })
+  .strict();
 const sourceFileSchema = z.object({
   file: z.string().min(1).max(2_048),
   bytes: safeNonnegativeIntegerSchema,
@@ -270,6 +492,9 @@ const historicalLedgerReservationSchema = z.object({
   createdAt: canonicalTimestampSchema,
   updatedAt: canonicalTimestampSchema,
 }).strict();
+const historicalLegacyLedgerReservationSchema = historicalLedgerReservationSchema.extend({
+  maximumRowsRead: z.literal(HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT),
+}).strict();
 const historicalLedgerResultSchema = z.object({
   ledgerPath: z.string().min(1).max(4_096),
   utcDay: utcDaySchema,
@@ -285,9 +510,12 @@ const historicalLedgerResultSchema = z.object({
     rowsWritten: safeNonnegativeIntegerSchema,
   }).strict(),
 }).strict();
+const historicalLegacyLedgerResultSchema = historicalLedgerResultSchema.extend({
+  reservation: historicalLegacyLedgerReservationSchema,
+}).strict();
 const historicalBaselineSchema = z.object({
   kind: z.literal(HISTORICAL_DATA_PRESERVATION_KIND),
-  schemaVersion: z.literal(1),
+  schemaVersion: z.literal(2),
   phase: z.literal("baseline"),
   createdAt: canonicalTimestampSchema,
   utcDay: utcDaySchema,
@@ -304,21 +532,51 @@ const historicalBaselineSchema = z.object({
   ledger: historicalLedgerResultSchema,
   limits: z.object({
     coreRows: z.literal(HISTORICAL_CORE_ROW_LIMIT),
+    supplementalRows: z.literal(HISTORICAL_SUPPLEMENTAL_ROW_LIMIT),
+    operationalRows: z.literal(HISTORICAL_OPERATIONAL_ROW_LIMIT),
     billedReads: z.literal(HISTORICAL_BILLED_READ_LIMIT),
     sentinelsPerDataset: z.literal(HISTORICAL_SENTINEL_LIMIT),
   }).strict(),
   datasets: z.record(z.enum(HISTORICAL_DATASET_NAMES), historicalDatasetSchema),
+  supplementalDatasets: z.record(
+    z.enum(HISTORICAL_SUPPLEMENTAL_DATASET_NAMES),
+    historicalDatasetSchema,
+  ),
+  operationalDatasets: z.record(
+    z.enum(HISTORICAL_OPERATIONAL_DATASET_NAMES),
+    historicalOperationalDatasetSchema,
+  ),
 }).strict();
+const historicalLegacyBaselineSchema = historicalBaselineSchema
+  .omit({
+    kind: true,
+    schemaVersion: true,
+    limits: true,
+    ledger: true,
+    supplementalDatasets: true,
+    operationalDatasets: true,
+  })
+  .extend({
+    kind: z.literal(HISTORICAL_DATA_LEGACY_PRESERVATION_KIND),
+    schemaVersion: z.literal(1),
+    ledger: historicalLegacyLedgerResultSchema,
+    limits: z.object({
+      coreRows: z.literal(HISTORICAL_CORE_ROW_LIMIT),
+      billedReads: z.literal(HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT),
+      sentinelsPerDataset: z.literal(HISTORICAL_SENTINEL_LIMIT),
+    }).strict(),
+  })
+  .strict();
 
-const historicalDataCountStatements = datasetSpecs.map((spec) =>
+const historicalDataCountStatements = countDatasetSpecs.map((spec) =>
   spec.name === "profile_photo_pointers"
-    ? `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM users WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL;`
-    : `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM ${spec.table};`,
+    ? `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM (SELECT profile_image_r2_key, profile_image_hash, profile_image_r2_etag FROM users ORDER BY rowid LIMIT ${usersDatasetSpec.cap + 1}) WHERE profile_image_r2_key IS NOT NULL OR profile_image_hash IS NOT NULL OR profile_image_r2_etag IS NOT NULL;`
+    : `SELECT '${spec.name}' AS dataset, count(*) AS row_count FROM (SELECT 1 FROM ${spec.table} ORDER BY rowid LIMIT ${spec.cap + 1});`,
 );
 
-const historicalDataSchemaStatements = coreTableNames.map(
+const historicalDataSchemaStatements = snapshotTableNames.map(
   (table) =>
-    `SELECT '${table}' AS table_name, name, lower(type) AS type, "notnull" AS not_null, pk AS primary_key FROM pragma_table_info('${table}') ORDER BY primary_key DESC, name;`,
+    `SELECT '${table}' AS table_name, name, lower(type) AS type, "notnull" AS not_null, pk AS primary_key FROM pragma_table_info('${table}') ORDER BY primary_key DESC, name LIMIT ${HISTORICAL_SCHEMA_COLUMN_LIMIT + 1};`,
 );
 
 const historicalDataIdentityStatements = datasetSpecs.map((spec) => spec.identitySql);
@@ -343,6 +601,37 @@ export const HISTORICAL_DATA_SNAPSHOT_SQL = [
   HISTORICAL_DATA_IDENTITIES_SQL,
 ].join("\n");
 
+const historicalCountScanMaximum = countDatasetSpecs.reduce(
+  (sum, spec) =>
+    sum + (spec.name === "profile_photo_pointers" ? usersDatasetSpec.cap + 1 : spec.cap + 1),
+  0,
+);
+const historicalSchemaScanMaximum =
+  snapshotTableNames.length * (HISTORICAL_SCHEMA_COLUMN_LIMIT + 1);
+const historicalIdentityScanMaximum = datasetSpecs.reduce(
+  (sum, spec) =>
+    sum + (spec.name === "profile_photo_pointers" ? usersDatasetSpec.cap + 1 : HISTORICAL_SENTINEL_LIMIT),
+  0,
+);
+export const HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ =
+  historicalCountScanMaximum +
+  historicalSchemaScanMaximum +
+  historicalIdentityScanMaximum;
+if (HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ > HISTORICAL_BILLED_READ_LIMIT) {
+  throw new Error(
+    `Historical preservation V2 snapshot bound exceeds its pre-read reservation: ${HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ} > ${HISTORICAL_BILLED_READ_LIMIT}.`,
+  );
+}
+
+export const HISTORICAL_DATA_SNAPSHOT_PLAN_SHA256 = createHash()
+  .update(stableStringify({
+    kind: HISTORICAL_DATA_PRESERVATION_KIND,
+    schemaVersion: 2,
+    snapshotSql: HISTORICAL_DATA_SNAPSHOT_SQL,
+    maximumRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+  }))
+  .digest("hex");
+
 assertHistoricalDataSnapshotSql(HISTORICAL_DATA_SNAPSHOT_SQL);
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -365,7 +654,7 @@ function captureHistoricalDataSnapshot(options: {
   const schemaResultSets = snapshot.resultSets.slice(schemaStart, schemaEnd);
   const identityResultSets = snapshot.resultSets.slice(schemaEnd);
   const countRows = countResultSets.map((rows, index) => {
-    const expected = datasetSpecs[index];
+    const expected = countDatasetSpecs[index];
     if (rows.length !== 1) {
       throw new Error(
         `Historical preservation ${expected?.name ?? "unknown"} count returned an unexpected row count.`,
@@ -382,8 +671,12 @@ function captureHistoricalDataSnapshot(options: {
     return row;
   });
   for (const [index, rows] of schemaResultSets.entries()) {
-    const expectedTable = coreTableNames[index];
-    if (!expectedTable || rows.length === 0) {
+    const expectedTable = snapshotTableNames[index];
+    if (
+      !expectedTable ||
+      rows.length === 0 ||
+      rows.length > HISTORICAL_SCHEMA_COLUMN_LIMIT
+    ) {
       throw new Error("Historical preservation schema result order or cardinality is invalid.");
     }
     for (const row of rows) {
@@ -403,6 +696,15 @@ function captureHistoricalDataSnapshot(options: {
       `Historical preservation core rows exceed the Free-plan cap: ${coreRows} > ${HISTORICAL_CORE_ROW_LIMIT}.`,
     );
   }
+  const supplementalRows = HISTORICAL_SUPPLEMENTAL_DATASET_NAMES.reduce(
+    (sum, name) => sum + counts[name],
+    0,
+  );
+  if (supplementalRows > HISTORICAL_SUPPLEMENTAL_ROW_LIMIT) {
+    throw new Error(
+      `Historical preservation supplemental rows exceed the Free-plan cap: ${supplementalRows} > ${HISTORICAL_SUPPLEMENTAL_ROW_LIMIT}.`,
+    );
+  }
   for (const spec of datasetSpecs) {
     if (counts[spec.name] > spec.cap) {
       throw new Error(
@@ -410,14 +712,21 @@ function captureHistoricalDataSnapshot(options: {
       );
     }
   }
+  for (const spec of operationalDatasetSpecs) {
+    if (counts[spec.name] > spec.cap) {
+      throw new Error(
+        `Historical preservation ${spec.name} rows exceed its operational cap: ${counts[spec.name]} > ${spec.cap}.`,
+      );
+    }
+  }
   const rowsRead = snapshot.rowsRead;
-  if (rowsRead > HISTORICAL_BILLED_READ_LIMIT) {
+  if (rowsRead > HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ) {
     throw new Error(
-      `Historical preservation billed reads exceed the Free-plan cap: ${rowsRead} > ${HISTORICAL_BILLED_READ_LIMIT}.`,
+      `Historical preservation billed reads exceed the proven V2 snapshot bound: ${rowsRead} > ${HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ}.`,
     );
   }
 
-  const datasets: Partial<Record<HistoricalDatasetName, CapturedDataset>> = {};
+  const datasets: Partial<Record<HistoricalProtectedDatasetName, CapturedDataset>> = {};
   for (const [index, spec] of datasetSpecs.entries()) {
     const rows = identityResultSets[index] ?? [];
     const expectedRows = Math.min(counts[spec.name], HISTORICAL_SENTINEL_LIMIT);
@@ -453,11 +762,17 @@ function captureHistoricalDataSnapshot(options: {
     };
   }
   assertCompleteCapturedDatasets(datasets);
+  const core = coreCapturedDatasets(datasets);
+  const supplemental = supplementalCapturedDatasets(datasets);
+  const operational = operationalDatasetEvidence(counts, columns);
+  validateHistoricalCrossDatasetInvariants(core, supplemental);
   return {
     rowsRead,
     rowsWritten: 0,
     hmacKeyId: historicalDataHmacKeyId(secret),
-    datasets,
+    datasets: core,
+    supplementalDatasets: supplemental,
+    operationalDatasets: operational,
   };
 }
 
@@ -483,7 +798,7 @@ export function createHistoricalDataBaseline(
   const createdAt = operation.completedAt.toISOString();
   return {
     kind: HISTORICAL_DATA_PRESERVATION_KIND,
-    schemaVersion: 1,
+    schemaVersion: 2,
     phase: "baseline",
     createdAt,
     utcDay: operation.utcDay,
@@ -500,10 +815,14 @@ export function createHistoricalDataBaseline(
     ledger,
     limits: {
       coreRows: HISTORICAL_CORE_ROW_LIMIT,
+      supplementalRows: HISTORICAL_SUPPLEMENTAL_ROW_LIMIT,
+      operationalRows: HISTORICAL_OPERATIONAL_ROW_LIMIT,
       billedReads: HISTORICAL_BILLED_READ_LIMIT,
       sentinelsPerDataset: HISTORICAL_SENTINEL_LIMIT,
     },
     datasets: publicDatasets(captured.datasets),
+    supplementalDatasets: publicSupplementalDatasets(captured.supplementalDatasets),
+    operationalDatasets: captured.operationalDatasets,
   };
 }
 
@@ -549,9 +868,37 @@ export function verifyHistoricalDataPreservation(options: {
       }
     }
   }
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
+    const baselineDataset = baseline.supplementalDatasets[name];
+    const current = captured.supplementalDatasets[name];
+    if (current.rowCount < baselineDataset.rowCount) {
+      problems.push(`${name} row count decreased: ${current.rowCount} < ${baselineDataset.rowCount}.`);
+    }
+    const currentColumns = new Set(current.columns.map(columnIdentity));
+    for (const column of baselineDataset.columns) {
+      if (!currentColumns.has(columnIdentity(column))) {
+        problems.push(`${name} lost or changed baseline column ${column.name}.`);
+      }
+    }
+    for (const sentinel of baselineDataset.sentinels) {
+      if (!current.identityHashes.has(sentinel)) {
+        problems.push(`${name} is missing a baseline identity sentinel.`);
+      }
+    }
+  }
+  for (const name of HISTORICAL_OPERATIONAL_DATASET_NAMES) {
+    const baselineDataset = baseline.operationalDatasets[name];
+    const current = captured.operationalDatasets[name];
+    const currentColumns = new Set(current.columns.map(columnIdentity));
+    for (const column of baselineDataset.columns) {
+      if (!currentColumns.has(columnIdentity(column))) {
+        problems.push(`${name} lost or changed baseline operational column ${column.name}.`);
+      }
+    }
+  }
   return {
     kind: HISTORICAL_DATA_PRESERVATION_KIND,
-    schemaVersion: 1,
+    schemaVersion: 2,
     phase: "verification",
     createdAt: operation.completedAt.toISOString(),
     utcDay: operation.utcDay,
@@ -569,6 +916,8 @@ export function verifyHistoricalDataPreservation(options: {
     ledger,
     problems,
     datasets: publicDatasets(captured.datasets),
+    supplementalDatasets: publicSupplementalDatasets(captured.supplementalDatasets),
+    operationalDatasets: captured.operationalDatasets,
   };
 }
 
@@ -583,7 +932,27 @@ export function historicalDataBudgetOperationId(
     throw new Error("Historical preservation budget identity requires a positive source file count.");
   }
   const binding = createHash()
-    .update(stableStringify({ kind: HISTORICAL_DATA_PRESERVATION_KIND, phase, sourceFingerprint }))
+    .update(stableStringify({
+      kind: HISTORICAL_DATA_PRESERVATION_KIND,
+      schemaVersion: 2,
+      snapshotPlanSha256: HISTORICAL_DATA_SNAPSHOT_PLAN_SHA256,
+      phase,
+      sourceFingerprint,
+    }))
+    .digest("hex");
+  return `historical-data-preservation-${phase}:${binding}`;
+}
+
+function historicalDataLegacyBudgetOperationId(
+  phase: "baseline" | "verification",
+  sourceFingerprint: D1ReleaseSourceIdentity,
+) {
+  const binding = createHash()
+    .update(stableStringify({
+      kind: HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+      phase,
+      sourceFingerprint,
+    }))
     .digest("hex");
   return `historical-data-preservation-${phase}:${binding}`;
 }
@@ -614,6 +983,14 @@ export function readAndValidateHistoricalDataBaseline(
   const backupDir = path.resolve(options.backupDir);
   const file = historicalDataReportPath(backupDir, "baseline");
   const value = readPrivateJsonNoFollow(file, HISTORICAL_DATA_REPORT_MAX_BYTES);
+  return validateHistoricalDataBaselineValue(value, options);
+}
+
+export function validateHistoricalDataBaselineValue(
+  value: unknown,
+  options: ReadHistoricalDataBaselineOptions,
+): HistoricalDataBaselineReport {
+  const backupDir = path.resolve(options.backupDir);
   const expectedSource = options.expectedSourceFingerprint ??
     buildRepoSourceFingerprint(path.resolve(options.cwd ?? process.cwd()));
   return validateHistoricalDataBaselineReport(value, {
@@ -841,11 +1218,16 @@ function assertHistoricalDataSnapshotSql(sql: string) {
   if (trailing?.trim() !== "" || parts.length !== HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT) {
     throw new Error("Historical preservation snapshot SQL has an invalid statement count.");
   }
-  for (const statement of parts) {
+  const expectedStatements = [
+    ...historicalDataCountStatements,
+    ...historicalDataSchemaStatements,
+    ...historicalDataIdentityStatements,
+  ].map((statement) => statement.slice(0, -1));
+  for (const [index, statement] of parts.entries()) {
     const trimmed = statement.trim();
     if (
+      trimmed !== expectedStatements[index] ||
       !/^SELECT\b/i.test(trimmed) ||
-      (trimmed.match(/\bSELECT\b/gi) ?? []).length !== 1 ||
       /\b(?:UNION|INTERSECT|EXCEPT)\b/i.test(trimmed) ||
       /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH|PRAGMA)\b/i.test(trimmed)
     ) {
@@ -862,9 +1244,9 @@ function safeAddBillingRows(current: number, addition: number, label: "read" | "
 }
 
 function parseDatasetCounts(rows: Array<Record<string, unknown>>) {
-  const counts: Partial<Record<HistoricalDatasetName, number>> = {};
+  const counts: Partial<Record<HistoricalSnapshotDatasetName, number>> = {};
   for (const row of rows) {
-    if (!isHistoricalDatasetName(row.dataset)) {
+    if (!isHistoricalSnapshotDatasetName(row.dataset)) {
       throw new Error("Historical preservation summary returned an unknown dataset.");
     }
     const name = row.dataset;
@@ -875,7 +1257,7 @@ function parseDatasetCounts(rows: Array<Record<string, unknown>>) {
     if (count === null) throw new Error(`Historical preservation ${name} count is invalid.`);
     counts[name] = count;
   }
-  for (const name of HISTORICAL_DATASET_NAMES) {
+  for (const name of snapshotDatasetNames()) {
     if (!Object.hasOwn(counts, name)) throw new Error(`Historical preservation summary omitted ${name}.`);
   }
   assertCompleteDatasetCounts(counts);
@@ -885,7 +1267,7 @@ function parseDatasetCounts(rows: Array<Record<string, unknown>>) {
 function parseSchemaColumns(rows: Array<Record<string, unknown>>) {
   const schemas: Record<string, HistoricalColumnIdentity[]> = {};
   for (const row of rows) {
-    if (!isCoreTableName(row.table_name)) {
+    if (!isSnapshotTableName(row.table_name)) {
       throw new Error("Historical preservation schema returned an unknown table.");
     }
     if (typeof row.name !== "string" || typeof row.type !== "string") {
@@ -908,7 +1290,7 @@ function parseSchemaColumns(rows: Array<Record<string, unknown>>) {
 
 function identityValues(row: Record<string, unknown>) {
   const values: string[] = [];
-  for (let index = 1; index <= 4; index += 1) {
+  for (let index = 1; index <= 7; index += 1) {
     const key = `identity_${index}`;
     if (!Object.hasOwn(row, key)) continue;
     const value = row[key];
@@ -928,7 +1310,7 @@ function hasExactKeys(row: Record<string, unknown>, expected: readonly string[])
     actual.every((key, index) => key === sortedExpected[index]);
 }
 
-function hmacIdentity(secret: string, dataset: HistoricalDatasetName, values: string[]) {
+function hmacIdentity(secret: string, dataset: HistoricalSnapshotDatasetName, values: string[]) {
   return createHmac("sha256", secret)
     .update(dataset)
     .update("\0")
@@ -955,6 +1337,46 @@ function publicDatasets(datasets: Record<HistoricalDatasetName, CapturedDataset>
   return result;
 }
 
+function publicSupplementalDatasets(
+  datasets: Record<HistoricalSupplementalDatasetName, CapturedDataset>,
+) {
+  const result: Partial<
+    Record<HistoricalSupplementalDatasetName, HistoricalDatasetEvidence>
+  > = {};
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
+    const { identityHashes: _identityHashes, ...evidence } = datasets[name];
+    void _identityHashes;
+    result[name] = evidence;
+  }
+  assertCompleteSupplementalPublicDatasets(result);
+  return result;
+}
+
+function operationalDatasetEvidence(
+  counts: Record<HistoricalSnapshotDatasetName, number>,
+  columns: Record<string, HistoricalColumnIdentity[]>,
+) {
+  const result: Partial<
+    Record<HistoricalOperationalDatasetName, HistoricalOperationalDatasetEvidence>
+  > = {};
+  for (const spec of operationalDatasetSpecs) {
+    const schemaColumns = columns[spec.table];
+    if (!schemaColumns?.length) {
+      throw new Error(`Historical preservation schema is missing ${spec.table}.`);
+    }
+    result[spec.name] = {
+      lifecycle: "mutable-drainable-outbox",
+      rowCount: counts[spec.name],
+      schemaTable: "memory_vector_cleanup_outbox",
+      schemaSha256: schemaHash(schemaColumns),
+      columns: schemaColumns,
+    };
+  }
+  assertCompleteOperationalPublicDatasets(result);
+  validateHistoricalOperationalDatasets(result);
+  return result;
+}
+
 export function parseHistoricalDataBaselineReport(
   value: unknown,
 ): HistoricalDataBaselineReport {
@@ -966,6 +1388,44 @@ export function parseHistoricalDataBaselineReport(
   );
   if (parsed.operationId !== expectedOperationId) {
     throw new Error("Historical preservation baseline has the wrong source-bound operation ID.");
+  }
+  validateHistoricalDatasets(parsed.datasets);
+  validateHistoricalSupplementalDatasets(parsed.supplementalDatasets);
+  validateHistoricalOperationalDatasets(parsed.operationalDatasets);
+  validateHistoricalCrossDatasetInvariants(parsed.datasets, parsed.supplementalDatasets);
+  validateHistoricalBaselineLedger(parsed, path.resolve(parsed.backupDir));
+  return parsed;
+}
+
+export type HistoricalDataLegacyBaselineIdentity = {
+  sourceSha256: string;
+  sourceFileCount: number;
+  createdAt: string;
+  utcDay: string;
+  operationId: string;
+};
+
+export function parseHistoricalDataLegacyBaselineReportForContinuity(
+  value: unknown,
+  expected: HistoricalDataLegacyBaselineIdentity,
+): HistoricalDataLegacyBaselineReport {
+  const parsed = historicalLegacyBaselineSchema.parse(value);
+  assertValidSourceFingerprint(parsed.sourceFingerprint);
+  const expectedOperationId = historicalDataLegacyBudgetOperationId(
+    "baseline",
+    compactSourceFingerprint(parsed.sourceFingerprint),
+  );
+  if (parsed.operationId !== expectedOperationId) {
+    throw new Error("Historical preservation V1 baseline has the wrong source-bound operation ID.");
+  }
+  if (
+    parsed.sourceFingerprint.sha256 !== expected.sourceSha256 ||
+    parsed.sourceFingerprint.fileCount !== expected.sourceFileCount ||
+    parsed.createdAt !== expected.createdAt ||
+    parsed.utcDay !== expected.utcDay ||
+    parsed.operationId !== expected.operationId
+  ) {
+    throw new Error("Historical preservation V1 baseline is not the exact continuity predecessor.");
   }
   validateHistoricalDatasets(parsed.datasets);
   validateHistoricalBaselineLedger(parsed, path.resolve(parsed.backupDir));
@@ -1022,7 +1482,7 @@ function validateHistoricalDataBaselineReport(
 function validateHistoricalDatasets(
   datasets: Record<HistoricalDatasetName, HistoricalDatasetEvidence>,
 ) {
-  for (const spec of datasetSpecs) {
+  for (const spec of coreDatasetSpecs) {
     const dataset = datasets[spec.name];
     if (dataset.schemaTable !== spec.table) {
       throw new Error(`Historical preservation baseline ${spec.name} targets the wrong schema table.`);
@@ -1057,8 +1517,147 @@ function validateHistoricalDatasets(
   }
 }
 
+function validateHistoricalSupplementalDatasets(
+  datasets: Record<HistoricalSupplementalDatasetName, HistoricalDatasetEvidence>,
+) {
+  for (const spec of supplementalDatasetSpecs) {
+    const dataset = datasets[spec.name];
+    if (dataset.schemaTable !== spec.table) {
+      throw new Error(
+        `Historical preservation baseline ${spec.name} targets the wrong schema table.`,
+      );
+    }
+    if (dataset.rowCount > spec.cap) {
+      throw new Error(`Historical preservation baseline ${spec.name} exceeds its row cap.`);
+    }
+    if (new Set(dataset.columns.map((column) => column.name)).size !== dataset.columns.length) {
+      throw new Error(
+        `Historical preservation baseline ${spec.name} has duplicate schema columns.`,
+      );
+    }
+    if (schemaHash(dataset.columns) !== dataset.schemaSha256) {
+      throw new Error(
+        `Historical preservation baseline ${spec.name} schema identity is invalid.`,
+      );
+    }
+    const expectedSentinels = Math.min(dataset.rowCount, HISTORICAL_SENTINEL_LIMIT);
+    if (
+      dataset.sentinels.length !== expectedSentinels ||
+      new Set(dataset.sentinels).size !== dataset.sentinels.length
+    ) {
+      throw new Error(
+        `Historical preservation baseline ${spec.name} sentinels are incomplete.`,
+      );
+    }
+  }
+  const supplementalRows = HISTORICAL_SUPPLEMENTAL_DATASET_NAMES.reduce(
+    (sum, name) => sum + datasets[name].rowCount,
+    0,
+  );
+  if (supplementalRows > HISTORICAL_SUPPLEMENTAL_ROW_LIMIT) {
+    throw new Error("Historical preservation baseline exceeds its supplemental-row limit.");
+  }
+}
+
+const requiredMemoryVectorCleanupOutboxColumns: readonly HistoricalColumnIdentity[] = [
+  { name: "vector_id", type: "text", notNull: 1, primaryKey: 1 },
+  { name: "absence_count", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "attempt_count", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "created_at", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "last_attempt_at", type: "integer", notNull: 0, primaryKey: 0 },
+  { name: "last_error", type: "text", notNull: 0, primaryKey: 0 },
+  { name: "lease_token", type: "text", notNull: 0, primaryKey: 0 },
+  { name: "lease_until", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "next_attempt_at", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "owner_user_id", type: "text", notNull: 0, primaryKey: 0 },
+  { name: "reason", type: "text", notNull: 1, primaryKey: 0 },
+  { name: "source_namespace", type: "text", notNull: 0, primaryKey: 0 },
+  { name: "source_row_id", type: "text", notNull: 0, primaryKey: 0 },
+  { name: "source_row_revision", type: "integer", notNull: 0, primaryKey: 0 },
+  { name: "state", type: "text", notNull: 1, primaryKey: 0 },
+  { name: "updated_at", type: "integer", notNull: 1, primaryKey: 0 },
+  { name: "write_fence_expires_at", type: "integer", notNull: 0, primaryKey: 0 },
+  { name: "write_token", type: "text", notNull: 0, primaryKey: 0 },
+] as const;
+
+export function hasRequiredHistoricalMemoryVectorCleanupOutboxSchema(
+  dataset: HistoricalOperationalDatasetEvidence,
+) {
+  if (
+    dataset.lifecycle !== "mutable-drainable-outbox" ||
+    dataset.schemaTable !== "memory_vector_cleanup_outbox"
+  ) {
+    return false;
+  }
+  const actualColumns = new Set(dataset.columns.map(columnIdentity));
+  return requiredMemoryVectorCleanupOutboxColumns.every((column) =>
+    actualColumns.has(columnIdentity(column))
+  );
+}
+
+function validateHistoricalOperationalDatasets(
+  datasets: Record<
+    HistoricalOperationalDatasetName,
+    HistoricalOperationalDatasetEvidence
+  >,
+) {
+  const dataset = datasets.memory_vector_cleanup_outbox;
+  if (
+    dataset.lifecycle !== "mutable-drainable-outbox" ||
+    dataset.schemaTable !== "memory_vector_cleanup_outbox"
+  ) {
+    throw new Error("Historical preservation outbox has the wrong operational lifecycle.");
+  }
+  if (dataset.rowCount > HISTORICAL_OPERATIONAL_ROW_LIMIT) {
+    throw new Error("Historical preservation outbox exceeds its operational row cap.");
+  }
+  if (new Set(dataset.columns.map((column) => column.name)).size !== dataset.columns.length) {
+    throw new Error("Historical preservation outbox has duplicate schema columns.");
+  }
+  if (schemaHash(dataset.columns) !== dataset.schemaSha256) {
+    throw new Error("Historical preservation outbox schema identity is invalid.");
+  }
+  const actualColumns = new Set(dataset.columns.map(columnIdentity));
+  for (const column of requiredMemoryVectorCleanupOutboxColumns) {
+    if (!actualColumns.has(columnIdentity(column))) {
+      throw new Error(
+        `Historical preservation outbox is missing required operational column ${column.name}.`,
+      );
+    }
+  }
+  if (!hasRequiredHistoricalMemoryVectorCleanupOutboxSchema(dataset)) {
+    throw new Error("Historical preservation outbox operational schema is incomplete.");
+  }
+}
+
+function validateHistoricalCrossDatasetInvariants(
+  datasets: Record<HistoricalDatasetName, HistoricalDatasetEvidence>,
+  supplementalDatasets: Record<
+    HistoricalSupplementalDatasetName,
+    HistoricalDatasetEvidence
+  >,
+) {
+  const memories = datasets.user_memories;
+  const graph = supplementalDatasets.user_memory_graph_edges;
+  if (
+    graph.rowCount !== memories.rowCount ||
+    graph.schemaTable !== memories.schemaTable ||
+    graph.schemaSha256 !== memories.schemaSha256 ||
+    stableStringify(graph.columns) !== stableStringify(memories.columns)
+  ) {
+    throw new Error(
+      "Historical preservation user-memory graph evidence does not match user_memories.",
+    );
+  }
+  if (datasets.profile_photo_pointers.rowCount > datasets.users.rowCount) {
+    throw new Error(
+      "Historical preservation profile-photo pointers exceed the users dataset.",
+    );
+  }
+}
+
 function validateHistoricalBaselineLedger(
-  baseline: HistoricalDataBaselineReport,
+  baseline: HistoricalDataBaselineReport | HistoricalDataLegacyBaselineReport,
   backupDir: string,
 ) {
   const reservation = baseline.ledger.reservation;
@@ -1149,9 +1748,43 @@ function pathEntryExists(file: string) {
 }
 
 function assertCompleteCapturedDatasets(
+  datasets: Partial<Record<HistoricalProtectedDatasetName, CapturedDataset>>,
+): asserts datasets is Record<HistoricalProtectedDatasetName, CapturedDataset> {
+  for (const name of protectedDatasetNames()) {
+    if (!datasets[name]) throw new Error(`Historical preservation capture omitted ${name}.`);
+  }
+}
+
+function coreCapturedDatasets(
+  datasets: Record<HistoricalProtectedDatasetName, CapturedDataset>,
+) {
+  const result: Partial<Record<HistoricalDatasetName, CapturedDataset>> = {};
+  for (const name of HISTORICAL_DATASET_NAMES) result[name] = datasets[name];
+  assertCompleteCoreCapturedDatasets(result);
+  return result;
+}
+
+function supplementalCapturedDatasets(
+  datasets: Record<HistoricalProtectedDatasetName, CapturedDataset>,
+) {
+  const result: Partial<Record<HistoricalSupplementalDatasetName, CapturedDataset>> = {};
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) result[name] = datasets[name];
+  assertCompleteSupplementalCapturedDatasets(result);
+  return result;
+}
+
+function assertCompleteCoreCapturedDatasets(
   datasets: Partial<Record<HistoricalDatasetName, CapturedDataset>>,
 ): asserts datasets is Record<HistoricalDatasetName, CapturedDataset> {
   for (const name of HISTORICAL_DATASET_NAMES) {
+    if (!datasets[name]) throw new Error(`Historical preservation capture omitted ${name}.`);
+  }
+}
+
+function assertCompleteSupplementalCapturedDatasets(
+  datasets: Partial<Record<HistoricalSupplementalDatasetName, CapturedDataset>>,
+): asserts datasets is Record<HistoricalSupplementalDatasetName, CapturedDataset> {
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
     if (!datasets[name]) throw new Error(`Historical preservation capture omitted ${name}.`);
   }
 }
@@ -1164,22 +1797,59 @@ function assertCompletePublicDatasets(
   }
 }
 
+function assertCompleteSupplementalPublicDatasets(
+  datasets: Partial<
+    Record<HistoricalSupplementalDatasetName, HistoricalDatasetEvidence>
+  >,
+): asserts datasets is Record<HistoricalSupplementalDatasetName, HistoricalDatasetEvidence> {
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
+    if (!datasets[name]) throw new Error(`Historical preservation evidence omitted ${name}.`);
+  }
+}
+
+function assertCompleteOperationalPublicDatasets(
+  datasets: Partial<
+    Record<HistoricalOperationalDatasetName, HistoricalOperationalDatasetEvidence>
+  >,
+): asserts datasets is Record<
+  HistoricalOperationalDatasetName,
+  HistoricalOperationalDatasetEvidence
+> {
+  for (const name of HISTORICAL_OPERATIONAL_DATASET_NAMES) {
+    if (!datasets[name]) throw new Error(`Historical preservation evidence omitted ${name}.`);
+  }
+}
+
 function assertCompleteDatasetCounts(
-  counts: Partial<Record<HistoricalDatasetName, number>>,
-): asserts counts is Record<HistoricalDatasetName, number> {
-  for (const name of HISTORICAL_DATASET_NAMES) {
+  counts: Partial<Record<HistoricalSnapshotDatasetName, number>>,
+): asserts counts is Record<HistoricalSnapshotDatasetName, number> {
+  for (const name of snapshotDatasetNames()) {
     if (counts[name] === undefined) {
       throw new Error(`Historical preservation summary omitted ${name}.`);
     }
   }
 }
 
-function isHistoricalDatasetName(value: unknown): value is HistoricalDatasetName {
-  return typeof value === "string" && HISTORICAL_DATASET_NAMES.some((name) => name === value);
+function snapshotDatasetNames(): readonly HistoricalSnapshotDatasetName[] {
+  return [
+    ...HISTORICAL_DATASET_NAMES,
+    ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+    ...HISTORICAL_OPERATIONAL_DATASET_NAMES,
+  ];
 }
 
-function isCoreTableName(value: unknown): value is (typeof coreTableNames)[number] {
-  return typeof value === "string" && coreTableNames.some((name) => name === value);
+function protectedDatasetNames(): readonly HistoricalProtectedDatasetName[] {
+  return [...HISTORICAL_DATASET_NAMES, ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES];
+}
+
+function isHistoricalSnapshotDatasetName(
+  value: unknown,
+): value is HistoricalSnapshotDatasetName {
+  return typeof value === "string" && snapshotDatasetNames().some((name) => name === value);
+}
+
+function isSnapshotTableName(value: unknown): value is (typeof snapshotTableNames)[number] {
+  return typeof value === "string" && snapshotTableNames.some((name) => name === value);
 }
 
 function parseJsonOutput(output: string): unknown {

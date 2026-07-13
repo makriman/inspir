@@ -8,12 +8,13 @@ import {
   evaluateHistoricalDataContinuity,
 } from "../scripts/cloudflare/verify-historical-data-continuity";
 import {
+  HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
   HISTORICAL_DATA_PRESERVATION_KIND,
   HISTORICAL_DATASET_NAMES,
   historicalDataBudgetOperationId,
   historicalDataHmacKeyId,
   type HistoricalDataBaselineReport,
-  type HistoricalDatasetName,
+  type HistoricalDataLegacyBaselineReport,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
 import type { SourceFingerprint } from "../scripts/cloudflare/source-fingerprint";
 
@@ -22,7 +23,7 @@ const predecessorTime = "2026-07-13T01:10:08.863Z";
 const successorTime = "2026-07-14T00:10:08.863Z";
 
 test("rollover continuity preserves counts, columns, and HMAC sentinels across source changes", () => {
-  const predecessor = baseline("predecessor", predecessorTime, "2026-07-13", retainedSecret);
+  const predecessor = legacyBaseline("predecessor", predecessorTime, "2026-07-13", retainedSecret);
   const successor = baseline("successor", successorTime, "2026-07-14", retainedSecret);
   successor.datasets.users.rowCount += 1;
   successor.datasets.users.columns.push({
@@ -48,12 +49,23 @@ test("rollover continuity preserves counts, columns, and HMAC sentinels across s
     result.datasets[name].columnsPreserved &&
     result.datasets[name].sentinelsPreserved
   ));
+  assert.deepEqual(result.operationalDatasets.memory_vector_cleanup_outbox, {
+    lifecycle: "mutable-drainable-outbox",
+    predecessorEvidence: "not-captured-by-pinned-v1-baseline",
+    successorRows: 0,
+    successorSchemaPresent: true,
+    successorEmptyBeforeFirstActivation: true,
+    rowPreservationRequired: false,
+  });
 });
 
 test("rollover continuity rejects count, schema, sentinel, HMAC, day, and time drift", () => {
   const scenarios: Array<{
     name: string;
-    mutate: (predecessor: HistoricalDataBaselineReport, successor: HistoricalDataBaselineReport) => void;
+    mutate: (
+      predecessor: HistoricalDataLegacyBaselineReport,
+      successor: HistoricalDataBaselineReport,
+    ) => void;
     expected: RegExp;
   }> = [
     {
@@ -103,10 +115,27 @@ test("rollover continuity rejects count, schema, sentinel, HMAC, day, and time d
       },
       expected: /too long/,
     },
+    {
+      name: "incomplete first-release outbox schema",
+      mutate: (_predecessor, successor) => {
+        successor.operationalDatasets.memory_vector_cleanup_outbox.columns =
+          successor.operationalDatasets.memory_vector_cleanup_outbox.columns.filter(
+            (column) => column.name !== "write_token",
+          );
+      },
+      expected: /schema is absent from the successor baseline/,
+    },
+    {
+      name: "nonempty first-release outbox",
+      mutate: (_predecessor, successor) => {
+        successor.operationalDatasets.memory_vector_cleanup_outbox.rowCount = 1;
+      },
+      expected: /not empty before the first 0016 Worker activation/,
+    },
   ];
 
   for (const scenario of scenarios) {
-    const predecessor = baseline("predecessor", predecessorTime, "2026-07-13", retainedSecret);
+    const predecessor = legacyBaseline("predecessor", predecessorTime, "2026-07-13", retainedSecret);
     const successor = baseline("successor", successorTime, "2026-07-14", retainedSecret);
     scenario.mutate(predecessor, successor);
     const result = evaluateHistoricalDataContinuity({
@@ -146,7 +175,7 @@ function baseline(
   const operationId = historicalDataBudgetOperationId("baseline", sourceFingerprint);
   return {
     kind: HISTORICAL_DATA_PRESERVATION_KIND,
-    schemaVersion: 1,
+    schemaVersion: 2,
     phase: "baseline",
     createdAt,
     utcDay,
@@ -189,10 +218,53 @@ function baseline(
     },
     limits: {
       coreRows: 350_000,
+      supplementalRows: 125_000,
+      operationalRows: 10_000,
       billedReads: 750_000,
       sentinelsPerDataset: 16,
     },
     datasets: datasets(),
+    supplementalDatasets: supplementalDatasets(),
+    operationalDatasets: {
+      memory_vector_cleanup_outbox: operationalOutboxDataset(),
+    },
+  };
+}
+
+function legacyBaseline(
+  sourceLabel: string,
+  createdAt: string,
+  utcDay: string,
+  secret: string,
+): HistoricalDataLegacyBaselineReport {
+  const current = baseline(sourceLabel, createdAt, utcDay, secret);
+  const {
+    supplementalDatasets: _supplementalDatasets,
+    operationalDatasets: _operationalDatasets,
+    limits: _limits,
+    ...core
+  } = current;
+  void _supplementalDatasets;
+  void _operationalDatasets;
+  void _limits;
+  const operationId = `legacy-baseline:${sourceLabel}`;
+  return {
+    ...core,
+    kind: HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+    schemaVersion: 1,
+    operationId,
+    ledger: {
+      ...core.ledger,
+      reservation: {
+        ...core.ledger.reservation,
+        operationId,
+      },
+    },
+    limits: {
+      coreRows: 350_000,
+      billedReads: 750_000,
+      sentinelsPerDataset: 16,
+    },
   };
 }
 
@@ -211,7 +283,22 @@ function datasets() {
   } satisfies HistoricalDataBaselineReport["datasets"];
 }
 
-function dataset(name: HistoricalDatasetName, table = name) {
+function supplementalDatasets() {
+  return {
+    ai_runs: dataset("ai_runs"),
+    user_memory_graph_edges: dataset("user_memory_graph_edges", "user_memories"),
+    user_memory_settings: dataset("user_memory_settings"),
+    chat_memory_summaries: dataset("chat_memory_summaries"),
+    chat_memory_turns: dataset("chat_memory_turns"),
+    user_memory_profiles: dataset("user_memory_profiles"),
+    user_memory_summaries: dataset("user_memory_summaries"),
+    memory_synthesis_runs: dataset("memory_synthesis_runs"),
+    memory_source_feedback: dataset("memory_source_feedback"),
+    memory_events: dataset("memory_events"),
+  } satisfies HistoricalDataBaselineReport["supplementalDatasets"];
+}
+
+function dataset(name: string, table = name) {
   const columns = [{ name: "id", type: "text", notNull: 1 as const, primaryKey: 1 }];
   return {
     rowCount: 1,
@@ -221,6 +308,40 @@ function dataset(name: HistoricalDatasetName, table = name) {
       .digest("hex"),
     columns,
     sentinels: [createHash("sha256").update(`sentinel:${name}`).digest("hex")],
+  };
+}
+
+function operationalOutboxDataset() {
+  const columns = [
+    { name: "vector_id", type: "text", notNull: 1 as const, primaryKey: 1 },
+    { name: "absence_count", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "attempt_count", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "created_at", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "last_attempt_at", type: "integer", notNull: 0 as const, primaryKey: 0 },
+    { name: "last_error", type: "text", notNull: 0 as const, primaryKey: 0 },
+    { name: "lease_token", type: "text", notNull: 0 as const, primaryKey: 0 },
+    { name: "lease_until", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "next_attempt_at", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "owner_user_id", type: "text", notNull: 0 as const, primaryKey: 0 },
+    { name: "reason", type: "text", notNull: 1 as const, primaryKey: 0 },
+    { name: "source_namespace", type: "text", notNull: 0 as const, primaryKey: 0 },
+    { name: "source_row_id", type: "text", notNull: 0 as const, primaryKey: 0 },
+    { name: "source_row_revision", type: "integer", notNull: 0 as const, primaryKey: 0 },
+    { name: "state", type: "text", notNull: 1 as const, primaryKey: 0 },
+    { name: "updated_at", type: "integer", notNull: 1 as const, primaryKey: 0 },
+    { name: "write_fence_expires_at", type: "integer", notNull: 0 as const, primaryKey: 0 },
+    { name: "write_token", type: "text", notNull: 0 as const, primaryKey: 0 },
+  ];
+  return {
+    lifecycle: "mutable-drainable-outbox" as const,
+    rowCount: 0,
+    schemaTable: "memory_vector_cleanup_outbox" as const,
+    schemaSha256: createHash("sha256")
+      .update(JSON.stringify(columns.map((column) =>
+        `${column.name}\0${column.type}\0${column.notNull}\0${column.primaryKey}`
+      )))
+      .digest("hex"),
+    columns,
   };
 }
 

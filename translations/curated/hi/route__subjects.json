@@ -19,7 +19,7 @@
     {
       "key": "site.00409f6901c6ae8ecc",
       "source": "Yes. Use Time Travel for context, History Cause and Effect for argument structure, Debate for counterarguments, and Source Critic for evidence boundaries.",
-      "value": "हाँ, मैं जानता हूँ। संदर्भ के लिए समय यात्रा, तर्क संरचना के लिए इतिहास कारण और प्रभाव, प्रतिवाद के लिए बहस और साक्ष्य सीमाओं के लिए स्रोत महत्वपूर्ण का उपयोग करें।"
+      "value": "हाँ। संदर्भ के लिए समय यात्रा, तर्क संरचना के लिए इतिहास: कारण और प्रभाव, प्रतिवादों के लिए बहस और साक्ष्य की सीमाओं के लिए स्रोत समीक्षक उपयोग करें।"
     },
     {
       "key": "site.007a06574cb0fb9586",
@@ -494,7 +494,7 @@
     {
       "key": "site.0ff0563a0a6c4919be",
       "source": "Turn study into a challenge",
-      "value": "अध्ययन को a चुनौती दें में बदलें"
+      "value": "पढ़ाई को एक चुनौती में बदलें"
     },
     {
       "key": "site.1061fe635e2351374f",
@@ -539,7 +539,7 @@
     {
       "key": "site.1286b1cf29ceb48cec",
       "source": "AI Writing Tutor",
-      "value": "ए.एल. लेखन शिक्षक"
+      "value": "AI लेखन ट्यूटर"
     },
     {
       "key": "site.12ea4eefabcfd1e4e8",
@@ -604,7 +604,7 @@
     {
       "key": "site.16a47c23ca93ec95ab",
       "source": "Yes. Reading Companion can simplify passages, ask questions, explain vocabulary, and help you identify the main claim and supporting evidence.",
-      "value": "हाँ, मैं जानता हूँ। पढ़ना साथी आपको एक पाठ को सरल बनाने, प्रश्न पूछने, शब्दावली समझाने और मुख्य तर्क और समर्थन करने वाले साक्ष्य की पहचान करने में मदद कर सकता है।"
+      "value": "हाँ। पठन साथी अनुच्छेद सरल कर सकता है, प्रश्न पूछ सकता है, शब्दावली समझा सकता है और मुख्य दावा व सहायक साक्ष्य पहचानने में मदद कर सकता है।"
     },
     {
       "key": "site.16ca7ae85fc38b08f3",
@@ -664,7 +664,7 @@
     {
       "key": "site.193cb603180a74c92e",
       "source": "Convert the user goal into a rough shared artifact before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\" Ask at most one practical context question if needed, but still create the starter structure.",
-      "value": "सलाह देने से पहले उपयोगकर्ता लक्ष्य को एक साधारण साझा कलाकृतियों में परिवर्तित करें। शुरू करेंः \"मैंने पहली कच्ची संरचना बनाई। कुछ भी संपादित करें। यदि आवश्यक हो तो अधिकतम एक व्यावहारिक संदर्भ प्रश्न पूछें, लेकिन फिर भी स्टार्टर संरचना बनाएं।"
+      "value": "सलाह देने से पहले उपयोगकर्ता के लक्ष्य को एक शुरुआती साझा मसौदे में बदलें। शुरुआत करें: \"मैंने पहला शुरुआती ढाँचा बना दिया है। आप कुछ भी बदल सकते हैं। मैं आपके बदलावों के अनुसार प्रतिक्रिया दूँगा।\" ज़रूरत हो तो संदर्भ से जुड़ा अधिकतम एक व्यावहारिक सवाल पूछें, लेकिन शुरुआती ढाँचा फिर भी बनाएँ।"
     },
     {
       "key": "site.1977bf3ff0ffb5a140",
@@ -789,7 +789,7 @@
     {
       "key": "site.1dd47797c770018e8a",
       "source": "What are you writing?",
-      "value": "are आप लेखन क्या है?"
+      "value": "आप क्या लिख रहे हैं?"
     },
     {
       "key": "site.1dd6a17cb4033f4f74",
@@ -799,7 +799,7 @@
     {
       "key": "site.1ddd54c7aba2982859",
       "source": "What do you need to study?",
-      "value": "do आप need के लिए अध्ययन क्या है?"
+      "value": "आपको क्या पढ़ना है?"
     },
     {
       "key": "site.1dea1b5f0836bda6a0",
@@ -1114,7 +1114,7 @@
     {
       "key": "site.295f0745e8dec6b80c",
       "source": "Turn a syllabus into a study plan",
-      "value": "a syllabus को a अध्ययन योजना में बदलें"
+      "value": "पाठ्यक्रम को अध्ययन योजना में बदलें"
     },
     {
       "key": "site.29837ed214670ed8a9",
@@ -1224,7 +1224,7 @@
     {
       "key": "site.2db8868061f2f29045",
       "source": "Guardrails: {value1}",
-      "value": "गार्डरील: {value1}"
+      "value": "सुरक्षा सीमाएँ: {value1}"
     },
     {
       "key": "site.2dc3f387c57a6f6069",
@@ -1259,7 +1259,7 @@
     {
       "key": "site.2ef392362b103e9ea8",
       "source": "Help me understand this paragraph",
-      "value": "मुझे this अनुच्छेद समझने में मदद करें"
+      "value": "इस अनुच्छेद को समझने में मेरी मदद करें"
     },
     {
       "key": "site.2efa1e7572ca417851",
@@ -1479,7 +1479,7 @@
     {
       "key": "site.369689fd6bf52783fc",
       "source": "Passport into a historical world",
-      "value": "पासपोर्ट में a ऐतिहासिक दुनिया"
+      "value": "एक ऐतिहासिक दुनिया में प्रवेश करें"
     },
     {
       "key": "site.36cdf8f564373991da",
@@ -1579,7 +1579,7 @@
     {
       "key": "site.3bd26d858050aafb5b",
       "source": "Make a 7 day math challenge",
-      "value": "a 7 day गणित चुनौती दें बनाएं"
+      "value": "7 दिनों की गणित चुनौती बनाएँ"
     },
     {
       "key": "site.3c46a0b4d80a98cf5c",
@@ -1839,7 +1839,7 @@
     {
       "key": "site.46ed64970bbf5f828e",
       "source": "What learning strategy fits me?",
-      "value": "सीखना रणनीति fits मुझे क्या है?"
+      "value": "सीखने की कौन-सी रणनीति मेरे लिए उपयुक्त है?"
     },
     {
       "key": "site.4716c697251a6f7672",
@@ -2089,7 +2089,7 @@
     {
       "key": "site.5419b0585afa54c629",
       "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
-      "value": "प्रयोग inspir गणित में कदम दर कदम मदद, होमवर्क के सुझाव, सुकरात तर्क, क्विज़, फ्लैश कार्ड, और उत्तर-नकल किए बिना परीक्षा तैयारी के लिए।"
+      "value": "उत्तर की नकल किए बिना चरण-दर-चरण गणित सहायता, गृहकार्य संकेत, सॉक्रेटिक तर्क, प्रश्नोत्तरी, स्मरण-पत्र और परीक्षा तैयारी के लिए inspir का उपयोग करें।"
     },
     {
       "key": "site.542dfbf74c9c6a64ef",
@@ -2139,7 +2139,7 @@
     {
       "key": "site.56035a314152165c65",
       "source": "Yes. Exam Prep Planner can turn your topics, date, and available time into a practical revision sequence with practice and review.",
-      "value": "हाँ, मैं जानता हूँ। परीक्षा तैयारी योजनाकार आपके विषयों, दिनांक और उपलब्ध समय को अभ्यास और समीक्षा के साथ एक व्यावहारिक संशोधन अनुक्रम में बदल सकता है।"
+      "value": "हाँ। परीक्षा तैयारी योजनाकार आपके विषयों, तारीख और उपलब्ध समय को अभ्यास व समीक्षा वाले व्यावहारिक दोहराई क्रम में बदल सकता है।"
     },
     {
       "key": "site.5620cd199441280f68",
@@ -2454,7 +2454,7 @@
     {
       "key": "site.620eba277318f87eee",
       "source": "Yes. The public Homework Coach is available at /chat/homework-coach, and this subject hub links to the supporting modes and guides.",
-      "value": "हाँ, मैं जानता हूँ। सार्वजनिक होमवर्क कोच पर उपलब्ध है /chat/homework-coach, और यह विषय केंद्र सहायक मोड और गाइड से लिंक करता है।"
+      "value": "हाँ। सार्वजनिक गृहकार्य मार्गदर्शक /chat/homework-coach पर उपलब्ध है और यह विषय केंद्र सहायक विधाओं व मार्गदर्शिकाओं से जुड़ता है।"
     },
     {
       "key": "site.62563ae4f4175234eb",
@@ -2549,7 +2549,7 @@
     {
       "key": "site.66115753297dc12bf0",
       "source": "Yes. The recommended use is hints, explanations, step checks, feedback, and review prompts rather than final answers you cannot explain.",
-      "value": "हाँ, मैं जानता हूँ। अनुशंसित उपयोग सुझाव, स्पष्टीकरण, चरण जांच, प्रतिक्रिया और समीक्षा संकेत हैं, न कि अंतिम उत्तर जिन्हें आप समझा नहीं सकते हैं।"
+      "value": "हाँ। अनुशंसित उपयोग ऐसे संकेत, व्याख्याएँ, चरण-जाँच, प्रतिक्रिया और समीक्षा संकेत-वाक्य हैं—ऐसे अंतिम उत्तर नहीं जिन्हें आप समझा न सकें।"
     },
     {
       "key": "site.662605cea1c14c8a36",
@@ -2639,7 +2639,7 @@
     {
       "key": "site.6868e8f33e9bf25463",
       "source": "Help me plan an essay",
-      "value": "योजना an निबंध में मेरी मदद करें"
+      "value": "निबंध की योजना बनाने में मेरी मदद करें"
     },
     {
       "key": "site.687ec4d42423624fb0",
@@ -2689,7 +2689,7 @@
     {
       "key": "site.6aada9efddc2925e91",
       "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
-      "value": "प्रयोग inspir होमवर्क के लिए सुझाव, गणित चरण की जांच, लेखन प्रतिक्रिया, स्रोत आलोचना, सुकरात प्रश्न, और फ्लैशकार्ड निजी चैट को उजागर किए बिना।"
+      "value": "निजी चैट उजागर किए बिना गृहकार्य संकेत, गणित चरण-जाँच, लेखन प्रतिक्रिया, स्रोत-समीक्षा, सॉक्रेटिक प्रश्न और स्मरण-पत्रों के लिए inspir का उपयोग करें।"
     },
     {
       "key": "site.6b00fbf582244ec519",
@@ -2759,7 +2759,7 @@
     {
       "key": "site.6dc1da75c795daff11",
       "source": "Yes. Subject hubs are public pages built for learners. They expose only public learning guidance and public guest-mode links, not private saved chats.",
-      "value": "हाँ, मैं जानता हूँ। विषय केंद्र शिक्षार्थियों के लिए बनाए गए सार्वजनिक पृष्ठ हैं। वे केवल सार्वजनिक शिक्षा मार्गदर्शन और सार्वजनिक अतिथि-मोड लिंक को उजागर करते हैं, निजी सहेजी गई चैट नहीं।"
+      "value": "हाँ। विषय केंद्र सीखने वालों के लिए बने सार्वजनिक पृष्ठ हैं। वे केवल सार्वजनिक शिक्षण मार्गदर्शन और सार्वजनिक अतिथि-विधा लिंक दिखाते हैं, निजी सहेजी गई चैट नहीं।"
     },
     {
       "key": "site.6e12d1f31894cfcd22",
@@ -2814,7 +2814,7 @@
     {
       "key": "site.70d29b088409926f17",
       "source": "Plan my week for math",
-      "value": "योजना मेरा week के लिए गणित"
+      "value": "गणित के लिए मेरे सप्ताह की योजना बनाएँ"
     },
     {
       "key": "site.70e08eef9e8898741f",
@@ -2874,12 +2874,12 @@
     {
       "key": "site.7365f708ac121cec86",
       "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
-      "value": "प्रयोग inspir निबंध प्रतिक्रिया, पढ़ने का समर्थन, बोलने का अभ्यास, स्रोत आलोचना और संशोधन लूप के लिए जो सीखने वाले की आवाज को प्रतिस्थापित किए बिना संरचना में सुधार करते हैं।"
+      "value": "सीखने वाले की आवाज़ बदले बिना संरचना सुधारने वाली निबंध प्रतिक्रिया, पठन सहायता, बोलने का अभ्यास, स्रोत-समीक्षा और दोहराई चक्रों के लिए inspir का उपयोग करें।"
     },
     {
       "key": "site.737b9a139c968691f8",
       "source": "Yes. Code Tutor can explain concepts, walk through examples, ask you to predict behavior, and help you practice without turning learning into copy-paste.",
-      "value": "हाँ, मैं जानता हूँ। कोड ट्यूटर अवधारणाओं को समझा सकता है, उदाहरणों के माध्यम से चल सकता है, आपको व्यवहार की भविष्यवाणी करने के लिए कह सकता है, और सीखने को कॉपी-पेस्ट में बदलने के बिना अभ्यास करने में आपकी मदद कर सकता है।"
+      "value": "हाँ। कोड ट्यूटर अवधारणाएँ समझा सकता है, उदाहरण दिखा सकता है, आपसे परिणाम का अनुमान लगवा सकता है और सीखने को नकल-चिपकाने में बदले बिना अभ्यास करा सकता है।"
     },
     {
       "key": "site.73ad590b59591d428a",
@@ -3059,7 +3059,7 @@
     {
       "key": "site.7a17c6674aba6f483f",
       "source": "What are we reading?",
-      "value": "are हम पठन क्या है?"
+      "value": "हम क्या पढ़ रहे हैं?"
     },
     {
       "key": "site.7a4fd3d4db10921f4a",
@@ -3234,7 +3234,7 @@
     {
       "key": "site.81e4d09d2a59c87143",
       "source": "What do you do next in this world?",
-      "value": "do आप do अगला में this दुनिया क्या है?"
+      "value": "इस दुनिया में आप आगे क्या करेंगे?"
     },
     {
       "key": "site.823514cc3e398c5616",
@@ -3459,7 +3459,7 @@
     {
       "key": "site.8cbf9d86ad725e44c4",
       "source": "Do we have free will?",
-      "value": "Do हम have मुफ्त होगा?"
+      "value": "क्या हमारे पास स्वतंत्र इच्छा है?"
     },
     {
       "key": "site.8cdc078e1b87cd1314",
@@ -3644,7 +3644,7 @@
     {
       "key": "site.94e5736baf016ce277",
       "source": "Can inspir teach programming from scratch?",
-      "value": "कर सकते हैं inspir खरोंच से प्रोग्रामिंग सिखाओ?"
+      "value": "क्या inspir शुरुआत से प्रोग्रामिंग सिखा सकता है?"
     },
     {
       "key": "site.94f5d91179af362e71",
@@ -3829,7 +3829,7 @@
     {
       "key": "site.9977d64c4c448bb15a",
       "source": "Ethics Dilemmas",
-      "value": "नैतिकता की समस्याएं"
+      "value": "नैतिक दुविधाएँ"
     },
     {
       "key": "site.99b20ef1b4d828a984",
@@ -3854,7 +3854,7 @@
     {
       "key": "site.99f395fa005717000f",
       "source": "Yes. Quiz, Flashcard Builder, and Spaced Review are public modes designed for active recall and mistake repair.",
-      "value": "हाँ, मैं जानता हूँ। क्विज़, फ्लैशकार्ड बिल्डर और स्पेस्ड रिव्यू सक्रिय याद और त्रुटि मरम्मत के लिए डिज़ाइन किए गए सार्वजनिक मोड हैं।"
+      "value": "हाँ। प्रश्नोत्तरी, स्मरण-पत्र निर्माता और अंतराल-आधारित समीक्षा सक्रिय स्मरण और गलती सुधार के लिए बनी सार्वजनिक विधाएँ हैं।"
     },
     {
       "key": "site.9a490168399d934cbc",
@@ -4214,7 +4214,7 @@
     {
       "key": "site.a915d691c6ae16cfbc",
       "source": "Why is my algebra answer wrong?",
-      "value": "is मेरा बीजगणित उत्तर गलत क्यों?"
+      "value": "मेरा बीजगणित का उत्तर गलत क्यों है?"
     },
     {
       "key": "site.a924d6055c51e5fa88",
@@ -4419,7 +4419,7 @@
     {
       "key": "site.b14eb0fd5eea14f803",
       "source": "Explore inspir AI learning by subject: math, writing, coding, history, homework, and exam prep, each connected to public guest modes, guides, prompts, and review loops.",
-      "value": "खोजें inspir एआई विषय के अनुसार सीखनाः गणित, लेखन, कोडिंग, इतिहास, होमवर्क, और परीक्षा तैयारी, प्रत्येक सार्वजनिक अतिथि मोड, गाइड, संकेत और समीक्षा लूप से जुड़ा हुआ है।"
+      "value": "विषय के अनुसार inspir की AI सीखने की सामग्री खोजें: गणित, लेखन, कोडिंग, इतिहास, गृहकार्य और परीक्षा तैयारी—हर विषय सार्वजनिक अतिथि विधाओं, मार्गदर्शिकाओं, संकेत-वाक्यों और समीक्षा चक्रों से जुड़ा है।"
     },
     {
       "key": "site.b167c5ba5f867e823b",
@@ -4644,7 +4644,7 @@
     {
       "key": "site.bb0ea7371e270cb4c1",
       "source": "Can inspir help with homework without cheating?",
-      "value": "कर सकते हैं inspir धोखा न देकर होमवर्क में मदद करना?"
+      "value": "क्या inspir नकल कराए बिना गृहकार्य में मदद कर सकता है?"
     },
     {
       "key": "site.bb2825214fc1d21e26",
@@ -5079,7 +5079,7 @@
     {
       "key": "site.cc39cd12f9730cfe7e",
       "source": "Map a history essay",
-      "value": "मैप a इतिहास निबंध"
+      "value": "इतिहास निबंध की रूपरेखा बनाएँ"
     },
     {
       "key": "site.cc3d6dadac2cca67fa",
@@ -5099,7 +5099,7 @@
     {
       "key": "site.ccfef258be21678f73",
       "source": "Does inspir expose private homework chats to Google?",
-      "value": "करता है inspir निजी होमवर्क चैट को उजागर करने के लिए Google?"
+      "value": "क्या inspir निजी गृहकार्य चैट Google को दिखाता है?"
     },
     {
       "key": "site.cd274de0abe7f242cf",
@@ -5454,7 +5454,7 @@
     {
       "key": "site.da400d3b29e0ba369d",
       "source": "Yes. The historical person mode is a learning simulation for perspective and questioning. It should not be cited as an authenticated quotation.",
-      "value": "हाँ, मैं जानता हूँ। ऐतिहासिक व्यक्ति मोड परिप्रेक्ष्य और प्रश्न के लिए एक सीखने का अनुकरण है। इसे प्रमाणित उद्धरण के रूप में उद्धृत नहीं किया जाना चाहिए।"
+      "value": "हाँ। ऐतिहासिक व्यक्ति विधा दृष्टिकोण और प्रश्नों के लिए सीखने का अनुकरण है। इसे प्रमाणित उद्धरण की तरह उद्धृत नहीं करना चाहिए।"
     },
     {
       "key": "site.da4b7b46a4c5ec68f8",
@@ -5554,7 +5554,7 @@
     {
       "key": "site.dcb78e2d7020a2929b",
       "source": "Can inspir make an exam study plan?",
-      "value": "कर सकते हैं inspir परीक्षा की अध्ययन योजना बनाओ?"
+      "value": "क्या inspir परीक्षा की अध्ययन योजना बना सकता है?"
     },
     {
       "key": "site.dcbc3d94a036c706cc",
@@ -5619,7 +5619,7 @@
     {
       "key": "site.dec92fd0ee6f4742e9",
       "source": "Quiz me on vocabulary again",
-      "value": "क्विज़ मुझे पर शब्दावली again"
+      "value": "शब्दावली पर फिर से मेरी प्रश्नोत्तरी लें"
     },
     {
       "key": "site.ded45628bcad4e1a1a",
@@ -5634,7 +5634,7 @@
     {
       "key": "site.dfb957acc42e99196a",
       "source": "Build a map of democracy",
-      "value": "a मैप का लोकतंत्र बनाएं"
+      "value": "लोकतंत्र का मानचित्र बनाएँ"
     },
     {
       "key": "site.dffb24a52581df29bd",
@@ -5674,7 +5674,7 @@
     {
       "key": "site.e16d86f80344bff4aa",
       "source": "Can inspir help with history essays?",
-      "value": "कर सकते हैं inspir इतिहास निबंध के साथ मदद?"
+      "value": "क्या inspir इतिहास के निबंधों में मदद कर सकता है?"
     },
     {
       "key": "site.e1860601a25415104f",
@@ -5759,7 +5759,7 @@
     {
       "key": "site.e437151092cddf2c83",
       "source": "Make a 7-day review plan",
-      "value": "a 7-day समीक्षा योजना बनाएं"
+      "value": "7 दिनों की समीक्षा योजना बनाएँ"
     },
     {
       "key": "site.e45b977cc4d0643316",
@@ -5789,7 +5789,7 @@
     {
       "key": "site.e61a20ed03ef5f151c",
       "source": "Use Speaking Practice or Viva Practice to defend a claim out loud and find weak spots.",
-      "value": "किसी दावे का जोर से बचाव करने और कमजोर बिंदुओं को खोजने के लिए बोलने का अभ्यास या जीवन अभ्यास का उपयोग करें।"
+      "value": "किसी दावे का बोलकर बचाव करने और कमजोरियाँ खोजने के लिए बोलने का अभ्यास या मौखिक परीक्षा अभ्यास उपयोग करें।"
     },
     {
       "key": "site.e626ff47ddc92dfe6c",
@@ -6104,7 +6104,7 @@
     {
       "key": "site.f452e762401f9cd4da",
       "source": "Can inspir solve math problems step by step?",
-      "value": "कर सकते हैं inspir गणित की समस्याओं को कदम से कदम मिलाकर हल करें?"
+      "value": "क्या inspir गणित की समस्याएँ चरण-दर-चरण हल करने में मदद कर सकता है?"
     },
     {
       "key": "site.f4c13f2c7594216665",
@@ -6159,7 +6159,7 @@
     {
       "key": "site.f64151e5fbb7a90449",
       "source": "What progress should we review?",
-      "value": "progress चाहिए हम समीक्षा क्या है?"
+      "value": "हमें किस प्रगति की समीक्षा करनी चाहिए?"
     },
     {
       "key": "site.f64afd68f46c590398",
@@ -6264,7 +6264,7 @@
     {
       "key": "site.fade81bae60e35ebef",
       "source": "What task should we time?",
-      "value": "कार्य चाहिए हम time क्या है?"
+      "value": "हमें किस कार्य का समय मापना चाहिए?"
     },
     {
       "key": "site.fb6db6b2a3c1a5b24d",
@@ -6379,7 +6379,7 @@
     {
       "key": "site.ff412deb70e1a3844a",
       "source": "What will you explain back to me?",
-      "value": "होगा आप समझाएं back के लिए मुझे क्या है?"
+      "value": "आप मुझे क्या समझाकर बताएँगे?"
     },
     {
       "key": "site.ff7bb65608584ee316",

@@ -890,7 +890,7 @@ export function isTranslationBundleFieldValid(
     if (typeof translated !== "string" || translated !== translated.normalize("NFC")) return false;
     return language === defaultLanguage
       ? translated === sourceText
-      : isValidFieldTranslation(sourceText, translated, language);
+      : isValidFieldTranslation(sourceText, translated, language, key);
   });
 }
 
@@ -917,7 +917,8 @@ export function isTranslationFieldLikelyFluent(
 ) {
   if (language === defaultLanguage) return Boolean(translated?.trim());
   if (!translated?.trim()) return false;
-  if (!isValidFieldTranslation(sourceText, translated, language)) return false;
+  if (!isValidFieldTranslation(sourceText, translated, language, context?.key)) return false;
+  if (hasStructuralTranslationCorruption(sourceText, translated, language)) return false;
   if (isReviewedTranslationPreserve(translated, language, context)) return true;
 
   const normalizedSource = comparableText(sourceText);
@@ -936,6 +937,67 @@ export function isTranslationFieldLikelyFluent(
   if (hasConservativeSourceLeakage(sourceText, translated, language)) return false;
 
   return !hasLikelyEnglishLeakage(sourceText, translated, language);
+}
+
+function hasStructuralTranslationCorruption(
+  sourceText: string,
+  translated: string,
+  language: SupportedLanguage,
+) {
+  if (translated.includes("\u00ad")) return true;
+
+  if (
+    hasConsecutiveTokenRun(translated, 3) &&
+    !hasConsecutiveTokenRun(sourceText, 3)
+  ) {
+    return true;
+  }
+
+  const sourceLetters = sourceText.match(/\p{L}/gu)?.length ?? 0;
+  const translatedLetters = translated.match(/\p{L}/gu)?.length ?? 0;
+  if (sourceLetters >= 8 && translatedLetters < 2) return true;
+
+  if (hasUnbalancedDelimiters(translated) && !hasUnbalancedDelimiters(sourceText)) {
+    return true;
+  }
+
+  return (
+    language === "Spanish" &&
+    hasMalformedSpanishPunctuation(translated) &&
+    !hasMalformedSpanishPunctuation(sourceText)
+  );
+}
+
+function hasConsecutiveTokenRun(value: string, minimumRun: number) {
+  const tokens =
+    maskProtectedTranslationLiterals(value)
+      .normalize("NFKC")
+      .toLocaleLowerCase("en-US")
+      .match(/[\p{L}\p{M}\p{N}]+(?:['’-][\p{L}\p{M}\p{N}]+)*/gu) ?? [];
+  let run = 1;
+  for (let index = 1; index < tokens.length; index += 1) {
+    run = tokens[index] === tokens[index - 1] ? run + 1 : 1;
+    if (run >= minimumRun) return true;
+  }
+  return false;
+}
+
+function hasUnbalancedDelimiters(value: string) {
+  for (const [opening, closing] of [
+    ["(", ")"],
+    ["[", "]"],
+  ] as const) {
+    if (countOccurrences(value, opening) !== countOccurrences(value, closing)) return true;
+  }
+  return countOccurrences(value, '"') % 2 !== 0;
+}
+
+function countOccurrences(value: string, token: string) {
+  return value.split(token).length - 1;
+}
+
+function hasMalformedSpanishPunctuation(value: string) {
+  return /\s+[,.!?;:](?!\d)/u.test(value) || /[¿¡]\s/u.test(value);
 }
 
 function hasConservativeSourceLeakage(

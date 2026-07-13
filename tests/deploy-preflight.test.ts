@@ -31,12 +31,18 @@ import {
 } from "../scripts/cloudflare/verify-d1-runtime-migrations";
 import {
   HISTORICAL_DATA_BASELINE_RELATIVE_PATH,
+  HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
   HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATASET_NAMES,
+  HISTORICAL_OPERATIONAL_DATASET_NAMES,
+  HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
   createHistoricalDataBaseline,
   writeHistoricalDataReport,
   type HistoricalDataBaselineReport,
+  type HistoricalDataLegacyBaselineReport,
   type HistoricalDatasetName,
+  type HistoricalOperationalDatasetName,
+  type HistoricalSupplementalDatasetName,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
 import {
   HISTORICAL_DATA_CONTINUITY_POLICY,
@@ -63,7 +69,7 @@ const HISTORICAL_FIXTURE_USAGE: D1DailyUsage = {
 };
 const historicalContinuityPredecessorFixtures = new Map<
   string,
-  HistoricalDataBaselineReport
+  HistoricalDataLegacyBaselineReport
 >();
 
 function buildSteadyStateDeployPreflightReport(
@@ -100,7 +106,7 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["local build and test gates", "pass"],
       ["source secret scan", "pass"],
       ["OpenNext build artifact secret scan", "pass"],
-      ["D1 runtime migrations 0013-0015", "pass"],
+      ["D1 runtime migrations 0013-0016", "pass"],
       [HISTORICAL_BASELINE_CHECK, "pass"],
       [HISTORICAL_CONTINUITY_CHECK, "pass"],
       ["Wrangler production config", "pass"],
@@ -269,7 +275,7 @@ test("steady-state deploy preflight rejects build artifact scan from a different
   assert.equal((artifactScan?.detail as { sourceFingerprintOk?: boolean } | undefined)?.sourceFingerprintOk, false);
 });
 
-test("steady-state deploy preflight rejects absent D1 0013-0015 verification evidence", () => {
+test("steady-state deploy preflight rejects absent D1 0013-0016 verification evidence", () => {
   const { backupDir, repoDir } = makeFixture();
   fs.rmSync(path.join(backupDir, RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH));
 
@@ -281,11 +287,11 @@ test("steady-state deploy preflight rejects absent D1 0013-0015 verification evi
   });
 
   assert.equal(report.ok, false);
-  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0015");
+  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0016");
   assert.equal(migration?.status, "fail");
 });
 
-test("steady-state deploy preflight rejects stale D1 0013-0015 verification evidence", () => {
+test("steady-state deploy preflight rejects stale D1 0013-0016 verification evidence", () => {
   const { backupDir, repoDir } = makeFixture();
   mutateRuntimeMigrationEvidence(backupDir, (report) => {
     report.createdAt = "2026-06-26T10:45:00Z";
@@ -299,7 +305,7 @@ test("steady-state deploy preflight rejects stale D1 0013-0015 verification evid
   });
 
   assert.equal(report.ok, false);
-  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0015");
+  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0016");
   assert.equal(migration?.status, "fail");
 });
 
@@ -317,7 +323,7 @@ test("steady-state deploy preflight rejects D1 migration evidence from the wrong
   });
 
   assert.equal(report.ok, false);
-  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0015");
+  const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0016");
   assert.equal(migration?.status, "fail");
   assert.equal(
     (migration?.detail as { sourceFingerprintOk?: boolean } | undefined)?.sourceFingerprintOk,
@@ -348,7 +354,7 @@ test("steady-state deploy preflight rejects non-ok or incomplete D1 migration ev
     });
 
     assert.equal(report.ok, false);
-    const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0015");
+    const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0016");
     assert.equal(migration?.status, "fail");
   }
 });
@@ -376,7 +382,7 @@ test("steady-state deploy preflight requires regular non-symlink mode-0600 D1 mi
     });
 
     assert.equal(report.ok, false);
-    const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0015");
+    const migration = report.checks.find((check) => check.name === "D1 runtime migrations 0013-0016");
     assert.equal(migration?.status, "fail");
     assert.equal(
       (migration?.detail as { fileSecurity?: { ok?: boolean } } | undefined)?.fileSecurity?.ok,
@@ -499,6 +505,75 @@ for (const scenario of [
     );
   });
 }
+
+test("steady-state deploy preflight rejects a tampered first-release outbox decision", () => {
+  const { backupDir, repoDir } = makeFixture();
+  mutateHistoricalContinuityEvidence(backupDir, (report) => {
+    const operational = requireJsonObject(
+      report.operationalDatasets,
+      "continuity operational datasets",
+    );
+    const outbox = requireJsonObject(
+      operational.memory_vector_cleanup_outbox,
+      "outbox continuity decision",
+    );
+    outbox.successorRows = 1;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(
+    JSON.stringify(check?.detail),
+    /operational outbox decision is failed or inconsistent/,
+  );
+});
+
+test("steady-state deploy preflight rejects a populated first-release outbox baseline", () => {
+  const { backupDir, repoDir } = makeFixture();
+  mutateHistoricalBaseline(backupDir, (baseline) => {
+    baseline.operationalDatasets.memory_vector_cleanup_outbox.rowCount = 1;
+  });
+  const baselineSha256 = createHash("sha256")
+    .update(fs.readFileSync(historicalBaselinePath(backupDir)))
+    .digest("hex");
+  mutateHistoricalContinuityEvidence(backupDir, (report) => {
+    const successor = requireJsonObject(report.successor, "continuity successor");
+    successor.baselineSha256 = baselineSha256;
+    const operational = requireJsonObject(
+      report.operationalDatasets,
+      "continuity operational datasets",
+    );
+    const outbox = requireJsonObject(
+      operational.memory_vector_cleanup_outbox,
+      "outbox continuity decision",
+    );
+    outbox.successorRows = 1;
+    outbox.successorEmptyBeforeFirstActivation = false;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === HISTORICAL_CONTINUITY_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(
+    JSON.stringify(check?.detail),
+    /operational outbox decision is failed or inconsistent/,
+  );
+});
 
 for (const scenario of [
   {
@@ -786,6 +861,50 @@ test("steady-state deploy preflight rejects missing guest quota runtime vars", (
       "RATE_LIMIT_GUEST_SESSION_DAILY",
     ),
   );
+});
+
+test("steady-state deploy preflight rejects malformed global AI budget limits", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const invalidLimits = ["invalid", "-1", "1.5", "1e3", "9007199254740992"];
+
+  for (const limit of invalidLimits) {
+    replaceWranglerConfig(repoDir, backupDir, (config) => {
+      config.vars.LLM_GLOBAL_DAILY_CALL_LIMIT = limit;
+    });
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: Date.parse("2026-06-26T12:00:00Z"),
+    });
+
+    assert.equal(report.ok, false, limit);
+    const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+    assert.equal(wrangler?.status, "fail", limit);
+    assert.ok(wrangler?.detail && typeof wrangler.detail === "object", limit);
+    assert.equal(Reflect.get(wrangler.detail, "globalDailyCallLimitOk"), false, limit);
+  }
+});
+
+test("steady-state deploy preflight pins the 512-dimensional embedding model", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.vars.OPENAI_EMBEDDING_MODEL = "text-embedding-3-large";
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.ok(wrangler?.detail && typeof wrangler.detail === "object");
+  assert.equal(Reflect.get(wrangler.detail, "embeddingModelCompatible"), false);
 });
 
 test("steady-state deploy preflight rejects a direct OpenAI secret in Gateway BYOK production", () => {
@@ -1149,8 +1268,26 @@ function writeLocalEvidence(
 function historicalContinuityPredecessorFixture(
   backupDir: string,
   successor: HistoricalDataBaselineReport,
-): HistoricalDataBaselineReport {
-  const predecessor = structuredClone(successor);
+): HistoricalDataLegacyBaselineReport {
+  const {
+    supplementalDatasets: _supplementalDatasets,
+    operationalDatasets: _operationalDatasets,
+    limits: _limits,
+    ...currentCore
+  } = structuredClone(successor);
+  void _supplementalDatasets;
+  void _operationalDatasets;
+  void _limits;
+  const predecessor: HistoricalDataLegacyBaselineReport = {
+    ...currentCore,
+    kind: HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+    schemaVersion: 1,
+    limits: {
+      coreRows: successor.limits.coreRows,
+      billedReads: successor.limits.billedReads,
+      sentinelsPerDataset: successor.limits.sentinelsPerDataset,
+    },
+  };
   predecessor.createdAt = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineCreatedAt;
   predecessor.utcDay = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineUtcDay;
   predecessor.operationId = HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.baselineOperationId;
@@ -1159,6 +1296,7 @@ function historicalContinuityPredecessorFixture(
     HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceSha256;
   predecessor.sourceFingerprint.fileCount =
     HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceFileCount;
+  predecessor.ledger.reservation.operationId = predecessor.operationId;
   return predecessor;
 }
 
@@ -1218,6 +1356,16 @@ function writeHistoricalContinuityEvidence(
     sameHmacKey: true,
     gapMs: 1,
     datasets,
+    operationalDatasets: {
+      memory_vector_cleanup_outbox: {
+        lifecycle: "mutable-drainable-outbox",
+        predecessorEvidence: "not-captured-by-pinned-v1-baseline",
+        successorRows: 0,
+        successorSchemaPresent: true,
+        successorEmptyBeforeFirstActivation: true,
+        rowPreservationRequired: false,
+      },
+    },
     problems: [],
   });
 }
@@ -1326,8 +1474,14 @@ function historicalSchemaSha256(
 }
 
 type HistoricalDatabaseFixture = {
-  counts: Record<HistoricalDatasetName, number>;
-  identities: Record<HistoricalDatasetName, Array<Record<string, unknown>>>;
+  counts: Record<
+    HistoricalDatasetName | HistoricalSupplementalDatasetName | HistoricalOperationalDatasetName,
+    number
+  >;
+  identities: Record<
+    HistoricalDatasetName | HistoricalSupplementalDatasetName,
+    Array<Record<string, unknown>>
+  >;
 };
 
 function historicalDatabaseFixture(): HistoricalDatabaseFixture {
@@ -1343,6 +1497,17 @@ function historicalDatabaseFixture(): HistoricalDatabaseFixture {
       activity_runs: 0,
       product_events: 0,
       profile_photo_pointers: 0,
+      ai_runs: 1,
+      user_memory_graph_edges: 1,
+      user_memory_settings: 1,
+      chat_memory_summaries: 1,
+      chat_memory_turns: 1,
+      user_memory_profiles: 1,
+      user_memory_summaries: 1,
+      memory_synthesis_runs: 1,
+      memory_source_feedback: 1,
+      memory_events: 1,
+      memory_vector_cleanup_outbox: 0,
     },
     identities: {
       users: [{ identity_1: "historical-user-id" }],
@@ -1362,6 +1527,48 @@ function historicalDatabaseFixture(): HistoricalDatabaseFixture {
       activity_runs: [],
       product_events: [],
       profile_photo_pointers: [],
+      ai_runs: [{
+        identity_1: "ai-run-id",
+        identity_2: "chat-id",
+        identity_3: "user-message-id",
+      }],
+      user_memory_graph_edges: [{
+        identity_1: "memory-id",
+        identity_2: "historical-user-id",
+        identity_3: "[]",
+        identity_4: "[]",
+        identity_5: "",
+        identity_6: "",
+        identity_7: "",
+      }],
+      user_memory_settings: [{ identity_1: "historical-user-id" }],
+      chat_memory_summaries: [{ identity_1: "chat-id", identity_2: "historical-user-id" }],
+      chat_memory_turns: [{
+        identity_1: "memory-turn-id",
+        identity_2: "historical-user-id",
+        identity_3: "chat-id",
+        identity_4: "topic-id",
+        identity_5: "user-message-id",
+        identity_6: "assistant-message-id",
+      }],
+      user_memory_profiles: [{ identity_1: "historical-user-id", identity_2: "goals" }],
+      user_memory_summaries: [{ identity_1: "historical-user-id" }],
+      memory_synthesis_runs: [{ identity_1: "synthesis-run-id", identity_2: "historical-user-id" }],
+      memory_source_feedback: [{
+        identity_1: "memory-feedback-id",
+        identity_2: "historical-user-id",
+        identity_3: "",
+        identity_4: "memory-id",
+        identity_5: "memory-turn-id",
+        identity_6: "",
+      }],
+      memory_events: [{
+        identity_1: "memory-event-id",
+        identity_2: "historical-user-id",
+        identity_3: "memory-id",
+        identity_4: "chat-id",
+        identity_5: "message-id",
+      }],
     },
   };
 }
@@ -1371,21 +1578,32 @@ function historicalFixtureRunner(): WranglerRunner {
   return (args) => {
     const sql = args.at(-1);
     if (sql === HISTORICAL_DATA_SNAPSHOT_SQL) {
-      const countSets = HISTORICAL_DATASET_NAMES.map((name) => ({
+      const datasetNames = [
+        ...HISTORICAL_DATASET_NAMES,
+        ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+        ...HISTORICAL_OPERATIONAL_DATASET_NAMES,
+      ] as const;
+      const protectedDatasetNames = [
+        ...HISTORICAL_DATASET_NAMES,
+        ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+      ] as const;
+      const countSets = datasetNames.map((name) => ({
         rows: [{ dataset: name, row_count: fixture.counts[name] }],
         rowsRead: fixture.counts[name],
       }));
-      const schemaSets = historicalSchemaTableNames().map((table) => ({
-        rows: [{
-          table_name: table,
-          name: table === "admin_users" ? "email" : "id",
-          type: "text",
-          not_null: 1,
-          primary_key: 1,
-        }],
-        rowsRead: 1,
-      }));
-      const identitySets = HISTORICAL_DATASET_NAMES.map((name) => ({
+      const schemaSets = historicalSchemaTableNames().map((table) => {
+        const rows = table === "memory_vector_cleanup_outbox"
+          ? historicalOutboxSchemaRows()
+          : [{
+              table_name: table,
+              name: table === "admin_users" ? "email" : "id",
+              type: "text",
+              not_null: 1,
+              primary_key: 1,
+            }];
+        return { rows, rowsRead: rows.length };
+      });
+      const identitySets = protectedDatasetNames.map((name) => ({
         rows: fixture.identities[name],
         rowsRead: fixture.identities[name].length,
       }));
@@ -1416,7 +1634,47 @@ function historicalSchemaTableNames() {
     "user_memories",
     "activity_runs",
     "product_events",
+    "ai_runs",
+    "user_memory_settings",
+    "chat_memory_summaries",
+    "chat_memory_turns",
+    "user_memory_profiles",
+    "user_memory_summaries",
+    "memory_synthesis_runs",
+    "memory_source_feedback",
+    "memory_events",
+    "memory_vector_cleanup_outbox",
   ] as const;
+}
+
+function historicalOutboxSchemaRows() {
+  const columns = [
+    ["vector_id", "text", 1, 1],
+    ["absence_count", "integer", 1, 0],
+    ["attempt_count", "integer", 1, 0],
+    ["created_at", "integer", 1, 0],
+    ["last_attempt_at", "integer", 0, 0],
+    ["last_error", "text", 0, 0],
+    ["lease_token", "text", 0, 0],
+    ["lease_until", "integer", 1, 0],
+    ["next_attempt_at", "integer", 1, 0],
+    ["owner_user_id", "text", 0, 0],
+    ["reason", "text", 1, 0],
+    ["source_namespace", "text", 0, 0],
+    ["source_row_id", "text", 0, 0],
+    ["source_row_revision", "integer", 0, 0],
+    ["state", "text", 1, 0],
+    ["updated_at", "integer", 1, 0],
+    ["write_fence_expires_at", "integer", 0, 0],
+    ["write_token", "text", 0, 0],
+  ] as const;
+  return columns.map(([name, type, notNull, primaryKey]) => ({
+    table_name: "memory_vector_cleanup_outbox",
+    name,
+    type,
+    not_null: notNull,
+    primary_key: primaryKey,
+  }));
 }
 
 type RuntimeMigrationFixtureReport = {

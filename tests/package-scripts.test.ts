@@ -1,9 +1,95 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { FREE_PLAN_WORKER_FIRST_ROUTES } from "../scripts/cloudflare/deploy-preflight";
 import { LOCAL_GATE_IDS } from "../scripts/cloudflare/migration-config";
+import { assertSafeStaticMainAppOutputRoot } from "../scripts/static-main-app-output-safety";
+
+test("static main-app translation generator fails closed on unsafe CLI arguments", (t) => {
+  const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-translation-cli-"));
+  const generator = path.resolve("scripts/generate-static-main-app-translations.ts");
+  const tsx = path.resolve("node_modules/.bin/tsx");
+  t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
+
+  const runGenerator = (args: string[]) =>
+    spawnSync(tsx, [generator, ...args], {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      env: { ...process.env, NO_COLOR: "1" },
+    });
+  const output = (result: ReturnType<typeof runGenerator>) => `${result.stdout}\n${result.stderr}`;
+
+  const unknownFlag = runGenerator([
+    "--output-dir",
+    path.join(temporaryRoot, "ignored-output"),
+    "--source-dir",
+    path.join(temporaryRoot, "missing-source"),
+  ]);
+  assert.notEqual(unknownFlag.status, 0);
+  assert.match(output(unknownFlag), /Unknown static main-app translation argument: --output-dir/);
+
+  const missingValue = runGenerator(["--out-dir", "--check"]);
+  assert.notEqual(missingValue.status, 0);
+  assert.match(output(missingValue), /--out-dir requires a non-empty path/);
+
+  const emptyInlineValue = runGenerator(["--source-dir="]);
+  assert.notEqual(emptyInlineValue.status, 0);
+  assert.match(output(emptyInlineValue), /--source-dir requires a non-empty path/);
+
+  const conflictingModes = runGenerator([
+    "--out-dir",
+    path.join(temporaryRoot, "conflicting-output"),
+    "--check",
+    "--clean",
+  ]);
+  assert.notEqual(conflictingModes.status, 0);
+  assert.match(output(conflictingModes), /--check and --clean cannot be used together/);
+  assert.deepEqual(fs.readdirSync(temporaryRoot), [], "invalid arguments must not mutate output files");
+});
+
+test("static main-app translation output cannot delete source or workspace paths", (t) => {
+  const temporaryRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-translation-output-"));
+  const workspaceRoot = path.join(temporaryRoot, "workspace");
+  const sourceRoot = path.join(workspaceRoot, "translations/curated");
+  const trackedOutputRoot = path.join(workspaceRoot, "translations/static-main-app");
+  const externalOutputRoot = path.join(temporaryRoot, "generated-output");
+  const workspaceLink = path.join(temporaryRoot, "workspace-link");
+  fs.mkdirSync(sourceRoot, { recursive: true });
+  fs.mkdirSync(trackedOutputRoot, { recursive: true });
+  fs.symlinkSync(workspaceRoot, workspaceLink, "dir");
+  t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
+
+  const assertSafe = (outputRoot: string) =>
+    assertSafeStaticMainAppOutputRoot({ workspaceRoot, sourceRoot, outputRoot });
+
+  assert.doesNotThrow(() => assertSafe(trackedOutputRoot));
+  assert.doesNotThrow(() => assertSafe(externalOutputRoot));
+  assert.throws(() => assertSafe(workspaceRoot), /workspace root or one of its ancestors/);
+  assert.throws(() => assertSafe(path.dirname(workspaceRoot)), /workspace root or one of its ancestors/);
+  assert.throws(() => assertSafe(sourceRoot), /must not overlap the curated source/);
+  assert.throws(() => assertSafe(path.dirname(sourceRoot)), /must not overlap the curated source/);
+  assert.throws(() => assertSafe(path.join(sourceRoot, "nested")), /must not overlap the curated source/);
+  assert.throws(
+    () => assertSafe(path.join(workspaceRoot, "node_modules")),
+    /inside the workspace must be translations\/static-main-app/,
+  );
+  assert.throws(
+    () => assertSafe(path.join(workspaceLink, "node_modules")),
+    /inside the workspace must be translations\/static-main-app/,
+  );
+  assert.throws(
+    () =>
+      assertSafeStaticMainAppOutputRoot({
+        workspaceRoot: process.cwd(),
+        sourceRoot: path.resolve("translations/curated"),
+        outputRoot: os.tmpdir(),
+      }),
+    /workspace root or one of its ancestors|isolated OS-temporary subdirectory/,
+  );
+});
 
 test("Cloudflare package scripts avoid nested pnpm invocations", () => {
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
@@ -254,6 +340,10 @@ test("public delivery is Static Assets with exact native account Worker routes",
   assert.equal(
     packageJson.scripts?.["cf:verify:authenticated-production"],
     "tsx scripts/cloudflare/run-authenticated-production-validation.ts",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:verify:vectorize-readiness"],
+    "tsx scripts/cloudflare/verify-vectorize-readiness.ts",
   );
   assert.equal(
     packageJson.scripts?.["cf:apply:d1-runtime-migrations"],

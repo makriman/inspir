@@ -34,18 +34,38 @@ import {
 } from "./verify-production-worker-outcomes";
 import {
   assertAuthenticatedMutationResponseProof,
+  authenticatedMemoryRecoveryEvidenceName,
+  authenticatedOutboxDrainMaximumAttempts,
+  authenticatedOutboxDrainRetryDelayMs,
   authenticatedMutationInventoryNames,
   cleanupDisposableMutationState,
+  deleteAuthenticatedValidationVectorAndRequireAbsent,
+  enqueueAuthenticatedMemoryVectorCleanupWake,
   exactDisposableInventory,
+  readAuthenticatedMemoryRecoveryEvidence,
+  removeAuthenticatedMemoryRecoveryEvidence,
+  resolveAuthenticatedMemoryRecoveryVersion,
+  runAuthenticatedMemoryRecoveryCleanup,
+  type AuthenticatedMemoryRecoveryEvidence,
 } from "./verify-authenticated-production-mutations";
 import {
   buildWorkerDeployArtifactEvidence,
+  readSoleActiveWorkerVersion,
   WORKER_DEPLOY_REPORT,
 } from "./worker-deploy-evidence";
 import {
   readPrivateWorkerDeployEvidence,
   validateWorkerDeployEvidenceForRepair,
 } from "./repair-seo-cta-translations";
+import {
+  assertFreshProductionTranslationReconciliation,
+  assertProductionTranslationReconciliationReleaseBinding,
+} from "./release-sequence-attestations";
+import { assertGitReleaseIdentity } from "./git-release-identity";
+import {
+  assertFreshProductionVectorizeReadiness,
+  assertProductionVectorizeReadinessReleaseBinding,
+} from "./vectorize-readiness-evidence";
 import {
   boundedReleaseChildCommand,
   runBoundedReleaseChildSync,
@@ -153,8 +173,9 @@ async function main() {
   const secret = requireE2ESecret(process.env.E2E_TEST_AUTH_SECRET);
   const email = requireExactE2EEmail(process.env.E2E_TEST_AUTH_EMAIL);
   const manifestPath = recoveryManifestPath();
+  const memoryRecoveryPath = authenticatedMemoryRecoveryEvidencePath();
   if (process.argv.includes("--recover")) {
-    await recoverInterruptedValidation({ manifestPath, secret, email });
+    await recoverInterruptedValidation({ manifestPath, memoryRecoveryPath, secret, email });
     return;
   }
   if (process.env.REQUIRE_LIVE_AI !== "1") {
@@ -164,6 +185,7 @@ async function main() {
   const candidateVersion = requireWorkerVersion(getArg("--candidate-version"));
   assertNoUnresolvedProductionMaintenance();
   assertRecoveryManifestAbsent(manifestPath);
+  assertRecoveryManifestAbsent(memoryRecoveryPath);
   requireActiveVersion(candidateVersion);
   assertTemporarySecretsAbsent();
   const releaseEvidence = assertCandidateReleaseEvidence(candidateVersion);
@@ -213,6 +235,7 @@ async function main() {
   let validationError: unknown = null;
   let cleanupErrors: string[] = [];
   let authenticatedVersion: string | null = null;
+  let authenticatedVersionSnapshot: ProductionValidationVersionSnapshot | null = null;
   let preSecretPreparationFailed = false;
   try {
     try {
@@ -270,6 +293,7 @@ async function main() {
     putSecret(authCapabilitySecretName, secret, sequence);
 
     authenticatedVersion = sequence.current.versionId;
+    authenticatedVersionSnapshot = sequence.current;
     updateRecoveryManifest({ authenticatedVersionId: authenticatedVersion });
     const validationEnv = {
       E2E_TEST_AUTH_SECRET: secret,
@@ -307,6 +331,14 @@ async function main() {
         "scripts/cloudflare/verify-authenticated-production-mutations.ts",
         "--expected-version",
         authenticatedVersion,
+        "--candidate-version",
+        candidateVersion,
+        "--source-fingerprint-sha256",
+        releaseEvidence.sourceFingerprintSha256,
+        "--immutable-release-identity-sha256",
+        createHash("sha256").update(baseline.immutableReleaseIdentity).digest("hex"),
+        "--memory-recovery-evidence-path",
+        memoryRecoveryPath,
         "--confirm-production",
       ],
       validationEnv,
@@ -318,15 +350,49 @@ async function main() {
       const configured = listedSecretNames();
       if (configured.has(authCapabilitySecretName)) {
         const requestVersion = readAttestedActiveValidationVersion(sequence);
-        await runWithActiveProductionValidationLockAsync(
-          "validation residue sweep",
-          () => sweepAllValidationResidue({
-            requestVersion,
-            identityCandidateVersion: authenticatedVersion ?? requestVersion,
+        const memoryEvidence = readBoundAuthenticatedMemoryRecoveryEvidence(
+          memoryRecoveryPath,
+          {
+            releaseCandidateVersionId: candidateVersion,
+            authenticatedValidationVersionId: authenticatedVersion ?? requestVersion,
             runId: mutationRunId,
-            secret,
-          }),
+            sourceFingerprintSha256: releaseEvidence.sourceFingerprintSha256,
+            immutableReleaseIdentitySha256: createHash("sha256")
+              .update(baseline.immutableReleaseIdentity)
+              .digest("hex"),
+          },
         );
+        await runAuthenticatedMemoryRecoveryCleanup({
+          ...(memoryEvidence
+            ? {
+                preD1VectorCleanup: () => runWithActiveProductionValidationLockAsync(
+                  "pre-D1 authenticated memory vector recovery cleanup",
+                  () => deleteAuthenticatedValidationVectorAndRequireAbsent({
+                    vectorId: memoryEvidence.turnVectorId,
+                  }),
+                ),
+                postD1VectorCleanup: () => runWithActiveProductionValidationLockAsync(
+                  "post-D1 authenticated memory vector recovery cleanup",
+                  async () => {
+                    await deleteAuthenticatedValidationVectorAndRequireAbsent({
+                      vectorId: memoryEvidence.turnVectorId,
+                      minimumSettleMs: 25_000,
+                    });
+                    removeAuthenticatedMemoryRecoveryEvidence(memoryRecoveryPath, memoryEvidence);
+                  },
+                ),
+              }
+            : {}),
+          authoritativeD1Cleanup: () => runWithActiveProductionValidationLockAsync(
+            "validation residue sweep",
+            () => sweepAllValidationResidue({
+              requestVersion,
+              identityCandidateVersion: authenticatedVersion ?? requestVersion,
+              runId: mutationRunId,
+              secret,
+            }),
+          ),
+        });
       } else if (
         authenticatedVersion ||
         activeRecoveryManifest?.capabilityInstallationAttemptedAt
@@ -373,6 +439,17 @@ async function main() {
       );
       await runLockedPnpm(
         [
+          "cf:verify:background-outcomes",
+          "--",
+          "--queue",
+          "--expected-version",
+          finalVersion,
+          "--confirm-production",
+        ],
+        { REQUIRE_LIVE_AI: "1", REQUIRE_RESOURCE_SOAK: "1" },
+      );
+      await runLockedPnpm(
+        [
           "cf:verify:worker-outcomes",
           "--",
           "--expected-version",
@@ -395,9 +472,49 @@ async function main() {
         "hidden authentication disablement probe",
         () => assertHiddenAuthDisabled(secret, email),
       );
+      if (
+        !authenticatedVersion ||
+        !authenticatedVersionSnapshot ||
+        authenticatedVersionSnapshot.versionId !== authenticatedVersion ||
+        authenticatedVersionSnapshot.immutableReleaseIdentity !== baseline.immutableReleaseIdentity ||
+        sequence.current.immutableReleaseIdentity !== baseline.immutableReleaseIdentity
+      ) {
+        throw new Error(
+          "Authenticated and secret-free validation versions do not share one immutable release identity.",
+        );
+      }
       releaseActiveProductionValidationLock();
+      const sequenceReportPath = path.join(
+        cloudflareDir(resolveBackupDir()),
+        "authenticated-production-validation-sequence-report.json",
+      );
+      writePrivateJsonDurably(sequenceReportPath, {
+        kind: "authenticated-production-validation-sequence-v1",
+        createdAt: new Date().toISOString(),
+        ok: true,
+        candidateVersionId: candidateVersion,
+        authenticatedValidationVersionId: authenticatedVersion,
+        finalSecretFreeVersionId: finalVersion,
+        sourceFingerprintSha256: releaseEvidence.sourceFingerprintSha256,
+        sourceFingerprintFileCount: releaseEvidence.sourceFingerprintFileCount,
+        immutableReleaseIdentitySha256: createHash("sha256")
+          .update(baseline.immutableReleaseIdentity)
+          .digest("hex"),
+        immutableSourceAndArtifactIdentityShared: true,
+        runtimeConfiguration: {
+          authenticatedValidationVersion: "temporary validation secrets present",
+          finalSecretFreeVersion: "temporary validation secrets absent",
+        },
+        evidenceVersions: {
+          realStoredQueueAndSemanticRetrieval: authenticatedVersion,
+          staleJobQueueProbe: finalVersion,
+        },
+      }, { replace: pathEntryExists(sequenceReportPath) });
       removeRecoveryManifest();
-      console.log(`Authenticated production validation passed; final secret-free version: ${finalVersion}`);
+      console.log(
+        `Authenticated production validation passed; stored Queue/semantic evidence version: ${authenticatedVersion}; ` +
+          `final secret-free stale-Queue evidence version: ${finalVersion}; shared immutable source/artifact identity: yes.`,
+      );
     } catch (error) {
       postCleanupError = error;
     }
@@ -410,19 +527,93 @@ async function main() {
   }
 }
 
-function assertCandidateReleaseEvidence(candidateVersionId: string) {
+function assertCandidateReleaseEvidence(
+  candidateVersionId: string,
+  options: { recovery?: boolean } = {},
+) {
   const backupDir = resolveBackupDir();
   const currentArtifactEvidence = buildWorkerDeployArtifactEvidence(process.cwd());
-  return validateWorkerDeployEvidenceForRepair({
+  const deployEvidence = validateWorkerDeployEvidenceForRepair({
     report: readPrivateWorkerDeployEvidence(path.resolve(backupDir, WORKER_DEPLOY_REPORT)),
     backupDir,
     candidateVersionId,
     currentArtifactEvidence,
   });
+  const git = assertGitReleaseIdentity({ cwd: process.cwd() });
+  const currentRelease = {
+    candidateVersionId,
+    activeVersionId: candidateVersionId,
+    git,
+    artifactEvidence: currentArtifactEvidence,
+  };
+  if (options.recovery) {
+    assertProductionVectorizeReadinessReleaseBinding({
+      backupDir,
+      currentRelease,
+    });
+    assertProductionTranslationReconciliationReleaseBinding({
+      backupDir,
+      currentRelease,
+    });
+    return deployEvidence;
+  }
+  const activeVersionId = readSoleActiveWorkerVersion();
+  if (activeVersionId !== candidateVersionId) {
+    throw new Error(
+      `Authenticated production validation expected candidate ${candidateVersionId} alone at 100%; received ${activeVersionId}.`,
+    );
+  }
+  assertFreshProductionVectorizeReadiness({
+    backupDir,
+    currentRelease,
+  });
+  assertFreshProductionTranslationReconciliation({
+    backupDir,
+    currentRelease,
+  });
+  return deployEvidence;
 }
 
 function recoveryManifestPath() {
   return path.join(cloudflareDir(resolveBackupDir()), recoveryManifestName);
+}
+
+function authenticatedMemoryRecoveryEvidencePath() {
+  return path.join(
+    cloudflareDir(resolveBackupDir()),
+    authenticatedMemoryRecoveryEvidenceName,
+  );
+}
+
+function readBoundAuthenticatedMemoryRecoveryEvidence(
+  filePath: string,
+  expected: {
+    releaseCandidateVersionId: string;
+    authenticatedValidationVersionId: string;
+    runId: string;
+    sourceFingerprintSha256: string;
+    immutableReleaseIdentitySha256: string;
+  },
+): AuthenticatedMemoryRecoveryEvidence | null {
+  try {
+    fs.lstatSync(filePath);
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") return null;
+    throw error;
+  }
+  const evidence = readAuthenticatedMemoryRecoveryEvidence(filePath);
+  if (
+    evidence.releaseCandidateVersionId !== expected.releaseCandidateVersionId ||
+    evidence.authenticatedValidationVersionId !== expected.authenticatedValidationVersionId ||
+    evidence.runId !== expected.runId ||
+    evidence.sourceFingerprintSha256 !== expected.sourceFingerprintSha256 ||
+    evidence.immutableReleaseIdentitySha256 !== expected.immutableReleaseIdentitySha256
+  ) {
+    throw new Error(
+      "Authenticated memory recovery evidence is not bound to the active candidate/run/source identity.",
+    );
+  }
+  return evidence;
 }
 
 function assertRecoveryManifestAbsent(file: string) {
@@ -611,13 +802,16 @@ function removeRecoveryManifest() {
 
 async function recoverInterruptedValidation(input: {
   manifestPath: string;
+  memoryRecoveryPath: string;
   secret: string;
   email: string;
 }) {
   const manifest = parseRecoveryManifest(readPrivateJsonNoFollow(input.manifestPath));
   activeRecoveryManifest = manifest;
   activeRecoveryManifestPath = input.manifestPath;
-  const releaseEvidence = assertCandidateReleaseEvidence(manifest.candidateVersionId);
+  const releaseEvidence = assertCandidateReleaseEvidence(manifest.candidateVersionId, {
+    recovery: true,
+  });
   if (
     releaseEvidence.sourceFingerprintSha256 !== manifest.sourceFingerprintSha256 ||
     releaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount
@@ -664,7 +858,9 @@ async function recoverInterruptedValidation(input: {
     );
   }
   attestActiveProductionValidationLock();
-  const lockedReleaseEvidence = assertCandidateReleaseEvidence(manifest.candidateVersionId);
+  const lockedReleaseEvidence = assertCandidateReleaseEvidence(manifest.candidateVersionId, {
+    recovery: true,
+  });
   if (
     lockedReleaseEvidence.sourceFingerprintSha256 !== manifest.sourceFingerprintSha256 ||
     lockedReleaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount
@@ -702,15 +898,60 @@ async function recoverInterruptedValidation(input: {
             "Recovery found the route capability without the complete bound secret set; refusing ambiguous cleanup.",
           );
         }
-        await runWithActiveProductionValidationLockAsync(
-          "recovery validation residue sweep",
-          () => sweepAllValidationResidue({
-            requestVersion: current.versionId,
-            identityCandidateVersion: manifest.authenticatedVersionId ?? current.versionId,
-            runId: manifest.mutationRunId,
-            secret: input.secret,
-          }),
-        );
+        const memoryRecoveryExists = pathEntryExists(input.memoryRecoveryPath);
+        const memoryRecoveryVersionId = resolveAuthenticatedMemoryRecoveryVersion({
+          manifestAuthenticatedVersionId: manifest.authenticatedVersionId,
+          currentVersionId: current.versionId,
+          memoryRecoveryEvidenceExists: memoryRecoveryExists,
+        });
+        const memoryEvidence = memoryRecoveryExists
+          ? readBoundAuthenticatedMemoryRecoveryEvidence(
+              input.memoryRecoveryPath,
+              {
+                releaseCandidateVersionId: manifest.candidateVersionId,
+                authenticatedValidationVersionId: memoryRecoveryVersionId,
+                runId: manifest.mutationRunId,
+                sourceFingerprintSha256: manifest.sourceFingerprintSha256,
+                immutableReleaseIdentitySha256: createHash("sha256")
+                  .update(manifest.immutableReleaseIdentity)
+                  .digest("hex"),
+              },
+            )
+          : null;
+        await runAuthenticatedMemoryRecoveryCleanup({
+          ...(memoryEvidence
+            ? {
+                preD1VectorCleanup: () => runWithActiveProductionValidationLockAsync(
+                  "recovery pre-D1 authenticated memory vector cleanup",
+                  () => deleteAuthenticatedValidationVectorAndRequireAbsent({
+                    vectorId: memoryEvidence.turnVectorId,
+                  }),
+                ),
+                postD1VectorCleanup: () => runWithActiveProductionValidationLockAsync(
+                  "recovery post-D1 authenticated memory vector cleanup",
+                  async () => {
+                    await deleteAuthenticatedValidationVectorAndRequireAbsent({
+                      vectorId: memoryEvidence.turnVectorId,
+                      minimumSettleMs: 25_000,
+                    });
+                    removeAuthenticatedMemoryRecoveryEvidence(
+                      input.memoryRecoveryPath,
+                      memoryEvidence,
+                    );
+                  },
+                ),
+              }
+            : {}),
+          authoritativeD1Cleanup: () => runWithActiveProductionValidationLockAsync(
+            "recovery validation residue sweep",
+            () => sweepAllValidationResidue({
+              requestVersion: current.versionId,
+              identityCandidateVersion: manifest.authenticatedVersionId ?? current.versionId,
+              runId: manifest.mutationRunId,
+              secret: input.secret,
+            }),
+          ),
+        });
       } else if (
         manifest.authenticatedVersionId ||
         manifest.capabilityInstallationAttemptedAt
@@ -1025,14 +1266,20 @@ async function sweepAllValidationResidue(input: {
         },
         "Disposable cleanup readback",
       );
-      if (!payload || payload.ok !== true) {
-        throw new Error("Disposable cleanup parent readback did not return ok=true.");
-      }
       const inventory = exactDisposableInventory(payload.inventory);
       return {
-        ok: authenticatedMutationInventoryNames.every((name) => inventory[name] === 0),
+        ok:
+          payload.ok === true &&
+          authenticatedMutationInventoryNames.every((name) => inventory[name] === 0),
         inventory,
       };
+    },
+    outboxDrain: {
+      wake: () => enqueueAuthenticatedMemoryVectorCleanupWake(
+        "authenticated-production-recovery",
+      ),
+      maximumAttempts: authenticatedOutboxDrainMaximumAttempts,
+      retryDelayMs: authenticatedOutboxDrainRetryDelayMs,
     },
   });
 }
@@ -1633,6 +1880,16 @@ function optionalIsoTimestamp(value: unknown): value is string | null {
 
 function isNodeError(value: unknown): value is NodeJS.ErrnoException {
   return value instanceof Error && "code" in value;
+}
+
+function pathEntryExists(filePath: string) {
+  try {
+    fs.lstatSync(filePath);
+    return true;
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") return false;
+    throw error;
+  }
 }
 
 function asError(value: unknown) {

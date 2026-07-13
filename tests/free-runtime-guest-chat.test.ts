@@ -355,6 +355,43 @@ test("global D1 budget failures fail closed without contacting the provider", as
   );
 });
 
+test("guest AI admission defaults only when the global limit is absent and denies malformed limits", async () => {
+  const defaultDatabase = createMockDatabase();
+  const defaultEnv = baseEnv(defaultDatabase.db);
+  delete defaultEnv.LLM_GLOBAL_DAILY_CALL_LIMIT;
+  let defaultProviderCalls = 0;
+  const defaultResponse = await handleFreeGuestChat(
+    jsonRequest({ topicId: "learn-anything", content: "Explain gravity" }),
+    defaultEnv,
+    runtime(async () => {
+      defaultProviderCalls += 1;
+      return sseResponse();
+    }),
+  );
+  assert.equal(defaultResponse.status, 200);
+  assert.equal(defaultProviderCalls, 1);
+  assert.equal(defaultDatabase.globalWrites, 1);
+
+  const invalidLimits = ["", "invalid", "-1", "1.5", "1e3", "9007199254740992"];
+  for (const limit of invalidLimits) {
+    const database = createMockDatabase();
+    let providerCalls = 0;
+    const response = await handleFreeGuestChat(
+      jsonRequest({ topicId: "learn-anything", content: "Explain gravity" }),
+      { ...baseEnv(database.db), LLM_GLOBAL_DAILY_CALL_LIMIT: limit },
+      runtime(async () => {
+        providerCalls += 1;
+        return sseResponse();
+      }),
+    );
+    assert.equal(response.status, 429, limit);
+    assert.equal(response.headers.get("x-guest-rate-limit-bucket"), "global-ai-budget", limit);
+    assert.equal(database.batchRuns, 0, limit);
+    assert.equal(database.globalWrites, 0, limit);
+    assert.equal(providerCalls, 0, limit);
+  }
+});
+
 test("a thrown batch cannot bypass an exhausted fallback global budget", async () => {
   const database = createMockDatabase({
     batchError: new Error("Guest admission statement failed"),

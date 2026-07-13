@@ -12,13 +12,18 @@ import {
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 
 export const RUNTIME_MIGRATION_EVIDENCE_KIND =
-  "d1-runtime-migrations-0013-0015-verification" as const;
+  "d1-runtime-migrations-0013-0016-verification" as const;
 export const RUNTIME_MIGRATION_EVIDENCE_RELATIVE_PATH =
-  "cloudflare/d1-runtime-migrations-0013-0015-report.json" as const;
+  "cloudflare/d1-runtime-migrations-0013-0016-report.json" as const;
+export const RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY =
+  "runtime-migration-0016-complete" as const;
+export const RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE =
+  "summary-suppression-mask-backfill-v1" as const;
 export const RUNTIME_MIGRATION_FILES = [
   "drizzle-d1/0013_runtime_query_indexes.sql",
   "drizzle-d1/0014_admin_totals_snapshot.sql",
   "drizzle-d1/0015_atomic_activity_completion.sql",
+  "drizzle-d1/0016_memory_vector_cleanup_outbox.sql",
 ] as const;
 export const RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS = [
   "0013-rate-limit-windows-index",
@@ -29,6 +34,11 @@ export const RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS = [
   "0015-completion-message-id-column",
   "0015-completion-token-unique-partial-index",
   "0015-completion-message-id-unique-partial-index",
+  "0016-memory-summary-suppression-mask-column",
+  "0016-memory-vector-cleanup-outbox-columns",
+  "0016-memory-vector-cleanup-outbox-checks",
+  "0016-memory-vector-cleanup-outbox-due-index",
+  "0016-completion-marker",
 ] as const;
 
 type RuntimeMigrationVerificationCheckId =
@@ -114,6 +124,78 @@ const indexSpecs: readonly IndexSpec[] = [
   },
 ];
 
+type ColumnSpec = {
+  name: string;
+  type: "integer" | "text";
+  notNull: 0 | 1;
+  defaultValue: string | null;
+  primaryKey: 0 | 1;
+};
+
+const outboxColumnSpecs: readonly ColumnSpec[] = [
+  { name: "vector_id", type: "text", notNull: 1, defaultValue: null, primaryKey: 1 },
+  { name: "owner_user_id", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "source_namespace", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "source_row_id", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "source_row_revision", type: "integer", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "write_token", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "reason", type: "text", notNull: 1, defaultValue: null, primaryKey: 0 },
+  { name: "state", type: "text", notNull: 1, defaultValue: "'cleanup_ready'", primaryKey: 0 },
+  { name: "write_fence_expires_at", type: "integer", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "absence_count", type: "integer", notNull: 1, defaultValue: "0", primaryKey: 0 },
+  { name: "attempt_count", type: "integer", notNull: 1, defaultValue: "0", primaryKey: 0 },
+  { name: "lease_token", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "lease_until", type: "integer", notNull: 1, defaultValue: "0", primaryKey: 0 },
+  { name: "next_attempt_at", type: "integer", notNull: 1, defaultValue: null, primaryKey: 0 },
+  { name: "last_attempt_at", type: "integer", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "last_error", type: "text", notNull: 0, defaultValue: null, primaryKey: 0 },
+  { name: "created_at", type: "integer", notNull: 1, defaultValue: null, primaryKey: 0 },
+  { name: "updated_at", type: "integer", notNull: 1, defaultValue: null, primaryKey: 0 },
+] as const;
+
+const expectedOutboxTableSql = `
+CREATE TABLE memory_vector_cleanup_outbox (
+  vector_id text PRIMARY KEY NOT NULL
+    CHECK (
+      length(vector_id) BETWEEN 1 AND 64
+      AND vector_id NOT GLOB '*[^A-Za-z0-9:._-]*'
+    ),
+  owner_user_id text
+    CHECK (owner_user_id IS NULL OR length(owner_user_id) BETWEEN 1 AND 120),
+  source_namespace text
+    CHECK (source_namespace IS NULL OR source_namespace IN ('user_memories', 'chat_memory_turns')),
+  source_row_id text
+    CHECK (source_row_id IS NULL OR length(source_row_id) BETWEEN 1 AND 120),
+  source_row_revision integer
+    CHECK (source_row_revision IS NULL OR source_row_revision BETWEEN 1 AND 9007199254740991),
+  write_token text
+    CHECK (write_token IS NULL OR length(write_token) BETWEEN 1 AND 120),
+  reason text NOT NULL
+    CHECK (length(reason) BETWEEN 1 AND 80),
+  state text DEFAULT 'cleanup_ready' NOT NULL
+    CHECK (state IN ('write_pending', 'cleanup_fenced', 'cleanup_ready', 'verifying_absence')),
+  write_fence_expires_at integer
+    CHECK (write_fence_expires_at IS NULL OR write_fence_expires_at >= 0),
+  absence_count integer DEFAULT 0 NOT NULL
+    CHECK (absence_count >= 0 AND absence_count <= 2),
+  attempt_count integer DEFAULT 0 NOT NULL
+    CHECK (attempt_count >= 0),
+  lease_token text
+    CHECK (lease_token IS NULL OR length(lease_token) BETWEEN 1 AND 120),
+  lease_until integer DEFAULT 0 NOT NULL CHECK (lease_until >= 0),
+  next_attempt_at integer NOT NULL CHECK (next_attempt_at >= 0),
+  last_attempt_at integer
+    CHECK (last_attempt_at IS NULL OR last_attempt_at >= 0),
+  last_error text
+    CHECK (last_error IS NULL OR length(last_error) <= 160),
+  created_at integer NOT NULL CHECK (created_at >= 0),
+  updated_at integer NOT NULL CHECK (updated_at >= 0)
+)
+`;
+
+const expectedOutboxDueIndexSql =
+  "CREATE INDEX memory_vector_cleanup_outbox_due_idx ON memory_vector_cleanup_outbox (next_attempt_at, created_at, vector_id)";
+
 export const RUNTIME_MIGRATION_VERIFICATION_SQL = `
 WITH index_catalog AS (
   SELECT 'activity_runs' AS table_name, name, "unique" AS index_unique, origin AS index_origin, partial AS index_partial
@@ -127,6 +209,9 @@ WITH index_catalog AS (
   UNION ALL
   SELECT 'ops_events', name, "unique", origin, partial
   FROM pragma_index_list('ops_events')
+  UNION ALL
+  SELECT 'memory_vector_cleanup_outbox', name, "unique", origin, partial
+  FROM pragma_index_list('memory_vector_cleanup_outbox')
 ), index_columns AS (
   SELECT 'activity_runs_completion_token_uidx' AS index_name, seqno AS index_seqno, name AS index_column
   FROM pragma_index_info('activity_runs_completion_token_uidx')
@@ -142,6 +227,9 @@ WITH index_catalog AS (
   UNION ALL
   SELECT 'ops_events_user_id_idx', seqno, name
   FROM pragma_index_info('ops_events_user_id_idx')
+  UNION ALL
+  SELECT 'memory_vector_cleanup_outbox_due_idx', seqno, name
+  FROM pragma_index_info('memory_vector_cleanup_outbox_due_idx')
 )
 SELECT
   'activity-column' AS kind,
@@ -166,7 +254,9 @@ SELECT
   NULL AS snapshot_messages,
   NULL AS snapshot_ai_runs_type,
   NULL AS snapshot_ai_runs,
-  NULL AS snapshot_updated_at
+  NULL AS snapshot_updated_at,
+  NULL AS table_sql,
+  NULL AS custom_index_count
 FROM pragma_table_info('activity_runs') AS column_info
 WHERE column_info.name IN ('completion_token', 'completion_message_id')
 UNION ALL
@@ -193,6 +283,8 @@ SELECT
   NULL,
   NULL,
   NULL,
+  NULL,
+  NULL,
   NULL
 FROM sqlite_master AS schema_index
 JOIN index_catalog AS catalog
@@ -204,7 +296,8 @@ WHERE schema_index.type = 'index'
     'ai_runs_created_idx',
     'ops_events_user_id_idx',
     'activity_runs_completion_token_uidx',
-    'activity_runs_completion_message_id_uidx'
+    'activity_runs_completion_message_id_uidx',
+    'memory_vector_cleanup_outbox_due_idx'
   )
 UNION ALL
 SELECT
@@ -230,9 +323,136 @@ SELECT
   CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.messages') ELSE NULL END,
   CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.aiRuns') ELSE NULL END,
   CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.aiRuns') ELSE NULL END,
-  metadata.updated_at
+  metadata.updated_at,
+  NULL,
+  NULL
 FROM app_metadata AS metadata
 WHERE metadata."key" = 'native-admin-totals-v1'
+UNION ALL
+SELECT
+  'migration-marker',
+  metadata."key",
+  'app_metadata',
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  metadata.updated_at,
+  metadata.value,
+  NULL
+FROM app_metadata AS metadata
+WHERE metadata."key" = '${RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY}'
+UNION ALL
+SELECT
+  'memory-settings-column',
+  column_info.name,
+  'user_memory_settings',
+  column_info.type,
+  column_info."notnull",
+  column_info.dflt_value,
+  column_info.pk,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  (
+    SELECT settings_schema.sql
+    FROM sqlite_master AS settings_schema
+    WHERE settings_schema.type = 'table'
+      AND settings_schema.name = 'user_memory_settings'
+  ),
+  NULL
+FROM pragma_table_info('user_memory_settings') AS column_info
+WHERE column_info.name = 'summary_suppression_mask'
+UNION ALL
+SELECT
+  'outbox-column',
+  column_info.name,
+  'memory_vector_cleanup_outbox',
+  column_info.type,
+  column_info."notnull",
+  column_info.dflt_value,
+  column_info.pk,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+FROM pragma_table_info('memory_vector_cleanup_outbox') AS column_info
+UNION ALL
+SELECT
+  'outbox-table',
+  schema_table.name,
+  schema_table.tbl_name,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  NULL,
+  schema_table.sql,
+  (
+    SELECT count(*)
+    FROM pragma_index_list('memory_vector_cleanup_outbox') AS outbox_index
+    WHERE outbox_index.origin = 'c'
+  )
+FROM sqlite_master AS schema_table
+WHERE schema_table.type = 'table'
+  AND schema_table.name = 'memory_vector_cleanup_outbox'
 ORDER BY kind, name, index_seqno;
 `.trim();
 
@@ -297,6 +517,11 @@ export function evaluateRuntimeMigrationVerificationRows(
     verifyColumn(rows, "completion_message_id", "0015-completion-message-id-column"),
     ...indexSpecs.map((spec) => verifyIndex(rows, spec)),
     verifyAdminSnapshot(rows),
+    verifyMemorySuppressionMaskColumn(rows),
+    verifyOutboxColumns(rows),
+    verifyOutboxChecks(rows),
+    verifyOutboxDueIndex(rows),
+    verifyMigration0016CompletionMarker(rows),
   ];
   const byId = new Map(checks.map((check) => [check.id, check]));
   return RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.map(
@@ -499,6 +724,185 @@ function verifyAdminSnapshot(
   };
 }
 
+function verifyMemorySuppressionMaskColumn(
+  rows: Array<Record<string, unknown>>,
+): RuntimeMigrationVerificationCheck {
+  const matches = rows.filter(
+    (row) =>
+      row.kind === "memory-settings-column" &&
+      row.name === "summary_suppression_mask",
+  );
+  const row = matches[0];
+  const normalizedTableSql =
+    typeof row?.table_sql === "string" ? normalizeSchemaSql(row.table_sql) : null;
+  const normalizedConstraintSql = normalizeSchemaSql(`
+    CONSTRAINT user_memory_settings_summary_suppression_mask_check
+    CHECK (summary_suppression_mask BETWEEN 0 AND 511)
+  `);
+  const constraintMatches = normalizedTableSql === null
+    ? 0
+    : normalizedTableSql.split(normalizedConstraintSql).length - 1;
+  const ok =
+    matches.length === 1 &&
+    row?.table_name === "user_memory_settings" &&
+    typeof row.column_type === "string" &&
+    row.column_type.toLowerCase() === "integer" &&
+    row.column_not_null === 1 &&
+    row.column_default === "0" &&
+    row.column_primary_key === 0 &&
+    constraintMatches === 1;
+  return {
+    id: "0016-memory-summary-suppression-mask-column",
+    ok,
+    detail: {
+      rows: matches.length,
+      table: row?.table_name ?? null,
+      type: row?.column_type ?? null,
+      notNull: row?.column_not_null ?? null,
+      defaultValue: row?.column_default ?? null,
+      primaryKey: row?.column_primary_key ?? null,
+      exactNamedCheck: constraintMatches === 1,
+    },
+  };
+}
+
+function verifyOutboxColumns(
+  rows: Array<Record<string, unknown>>,
+): RuntimeMigrationVerificationCheck {
+  const matches = rows.filter(
+    (row) => row.kind === "outbox-column" &&
+      row.table_name === "memory_vector_cleanup_outbox",
+  );
+  const columnResults = outboxColumnSpecs.map((spec) => {
+    const columnMatches = matches.filter((row) => row.name === spec.name);
+    const row = columnMatches[0];
+    return {
+      name: spec.name,
+      ok:
+        columnMatches.length === 1 &&
+        typeof row?.column_type === "string" &&
+        row.column_type.toLowerCase() === spec.type &&
+        row.column_not_null === spec.notNull &&
+        row.column_default === spec.defaultValue &&
+        row.column_primary_key === spec.primaryKey,
+    };
+  });
+  const ok =
+    matches.length === outboxColumnSpecs.length &&
+    columnResults.every((column) => column.ok);
+  return {
+    id: "0016-memory-vector-cleanup-outbox-columns",
+    ok,
+    detail: {
+      rows: matches.length,
+      expectedRows: outboxColumnSpecs.length,
+      mismatchedColumns: columnResults.filter((column) => !column.ok).map((column) => column.name),
+    },
+  };
+}
+
+function verifyOutboxChecks(
+  rows: Array<Record<string, unknown>>,
+): RuntimeMigrationVerificationCheck {
+  const matches = rows.filter(
+    (row) => row.kind === "outbox-table" &&
+      row.name === "memory_vector_cleanup_outbox",
+  );
+  const row = matches[0];
+  const actualSql = typeof row?.table_sql === "string" ? normalizeSchemaSql(row.table_sql) : null;
+  const expectedSql = normalizeSchemaSql(expectedOutboxTableSql);
+  const ok =
+    matches.length === 1 &&
+    row?.table_name === "memory_vector_cleanup_outbox" &&
+    actualSql === expectedSql;
+  return {
+    id: "0016-memory-vector-cleanup-outbox-checks",
+    ok,
+    detail: {
+      rows: matches.length,
+      table: row?.table_name ?? null,
+      exactTableSql: actualSql === expectedSql,
+    },
+  };
+}
+
+function verifyOutboxDueIndex(
+  rows: Array<Record<string, unknown>>,
+): RuntimeMigrationVerificationCheck {
+  const matches = rows
+    .filter(
+      (row) => row.kind === "index" &&
+        row.name === "memory_vector_cleanup_outbox_due_idx",
+    )
+    .sort((left, right) => Number(left.index_seqno) - Number(right.index_seqno));
+  const expectedColumns = ["next_attempt_at", "created_at", "vector_id"] as const;
+  const tableRows = rows.filter(
+    (row) => row.kind === "outbox-table" &&
+      row.name === "memory_vector_cleanup_outbox",
+  );
+  const actualSql = typeof matches[0]?.index_sql === "string"
+    ? normalizeSchemaSql(matches[0].index_sql)
+    : null;
+  const expectedSql = normalizeSchemaSql(expectedOutboxDueIndexSql);
+  const ok =
+    matches.length === expectedColumns.length &&
+    matches.every(
+      (row, index) =>
+        row.table_name === "memory_vector_cleanup_outbox" &&
+        row.index_unique === 0 &&
+        row.index_origin === "c" &&
+        row.index_partial === 0 &&
+        row.index_seqno === index &&
+        row.index_column === expectedColumns[index] &&
+        typeof row.index_sql === "string" &&
+        normalizeSchemaSql(row.index_sql) === expectedSql,
+    ) &&
+    tableRows.length === 1 &&
+    tableRows[0]?.custom_index_count === 1 &&
+    actualSql === expectedSql;
+  return {
+    id: "0016-memory-vector-cleanup-outbox-due-index",
+    ok,
+    detail: {
+      rows: matches.length,
+      table: matches[0]?.table_name ?? null,
+      columns: matches.map((row) => row.index_column),
+      customIndexes: tableRows[0]?.custom_index_count ?? null,
+      exactIndexSql: actualSql === expectedSql,
+    },
+  };
+}
+
+function verifyMigration0016CompletionMarker(
+  rows: Array<Record<string, unknown>>,
+): RuntimeMigrationVerificationCheck {
+  const matches = rows.filter(
+    (row) =>
+      row.kind === "migration-marker" &&
+      row.name === RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+  );
+  const row = matches[0];
+  const updatedAtOk =
+    isNonNegativeSafeInteger(row?.snapshot_updated_at) &&
+    row.snapshot_updated_at > 0;
+  const ok =
+    matches.length === 1 &&
+    row?.table_name === "app_metadata" &&
+    row.table_sql === RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE &&
+    updatedAtOk;
+  return {
+    id: "0016-completion-marker",
+    ok,
+    detail: {
+      rows: matches.length,
+      table: row?.table_name ?? null,
+      valueMatches:
+        row?.table_sql === RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE,
+      updatedAtIsPositiveInteger: updatedAtOk,
+    },
+  };
+}
+
 function parseD1VerificationQueryResult(output: string): D1VerificationQueryResult {
   const value = parseWranglerJson(output);
   if (!Array.isArray(value) || value.length !== 1 || !isRecord(value[0])) {
@@ -549,6 +953,10 @@ function normalizedExpectedIndexSql(spec: IndexSpec): string {
 }
 
 function normalizeIndexSql(sql: string): string {
+  return normalizeSchemaSql(sql);
+}
+
+function normalizeSchemaSql(sql: string): string {
   return sql
     .trim()
     .replace(/;$/, "")

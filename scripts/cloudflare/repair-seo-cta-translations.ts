@@ -41,7 +41,17 @@ import {
   type D1ReleaseBudgetReservationResult,
   type D1ReleaseSourceIdentity,
 } from "./d1-release-budget-ledger";
+import {
+  assertGitReleaseIdentity,
+  type GitReleaseIdentity,
+} from "./git-release-identity";
 import { buildReleaseArtifactSafetyChecks } from "./release-artifact-safety";
+import {
+  assertProductionTopicReconciliationReleaseBinding,
+  writeTranslationReconciliationPending,
+  writeTranslationReconciliationSuccess,
+  type TopicReconciliationAttestation,
+} from "./release-sequence-attestations";
 import {
   CLOUDFLARE_CLI_TIMEOUT_MS,
   cloudflareDir,
@@ -85,6 +95,11 @@ import {
   type WorkerDeployArtifactEvidence,
   type WorkerDeployArtifactManifest,
 } from "./worker-deploy-evidence";
+import {
+  assertFreshProductionVectorizeReadiness,
+  type VectorizeReadinessCurrentRelease,
+  type VectorizeReadinessReport,
+} from "./vectorize-readiness-evidence";
 import { runBoundedReleaseChildSync } from "./run-production-release-operation";
 
 const seedPath = path.resolve(
@@ -504,6 +519,24 @@ type RepairSeoCtaTranslationOptions = {
   runner?: WranglerRunner;
   now?: number;
   clock?: () => Date;
+  releaseSequenceGate?: typeof assertRemoteTranslationSequenceGate;
+  attestationClock?: () => Date;
+};
+
+export type RemoteTranslationSequenceGateResult = {
+  currentRelease: VectorizeReadinessCurrentRelease;
+  vectorizeReadiness: VectorizeReadinessReport;
+  topicAttestation: TopicReconciliationAttestation;
+};
+
+export type RemoteTranslationSequenceGateDependencies = {
+  readGitIdentity?: (cwd: string) => GitReleaseIdentity;
+  buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
+  readDeployReport?: (reportPath: string) => unknown;
+  validateDeployEvidence?: typeof validateWorkerDeployEvidenceForRepair;
+  readActiveVersion?: () => string;
+  validateVectorizeReadiness?: typeof assertFreshProductionVectorizeReadiness;
+  validateTopicReconciliation?: typeof assertProductionTopicReconciliationReleaseBinding;
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -1532,6 +1565,61 @@ function assertReadOnlyRepairRequiredDrift(report: RemoteTranslationDriftReport)
   }
 }
 
+/**
+ * Proves that translation work is operating on the exact clean, pushed,
+ * deployed candidate and consumes both earlier release-stage attestations.
+ * This gate contains no D1 command and must complete before translation code
+ * performs its first production D1 read or write.
+ */
+export function assertRemoteTranslationSequenceGate(
+  input: {
+    backupDir: string;
+    candidateVersionId: string;
+    cwd?: string;
+  },
+  dependencies: RemoteTranslationSequenceGateDependencies = {},
+): RemoteTranslationSequenceGateResult {
+  const candidateVersionId = requireWorkerVersion(input.candidateVersionId);
+  const cwd = path.resolve(input.cwd ?? process.cwd());
+  const backupDir = path.resolve(input.backupDir);
+  const git = (dependencies.readGitIdentity ??
+    ((gitCwd: string) => assertGitReleaseIdentity({ cwd: gitCwd })))(cwd);
+  const artifactEvidence = (
+    dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence
+  )(cwd);
+  const workerDeployReportPath = path.resolve(backupDir, WORKER_DEPLOY_REPORT);
+  (dependencies.validateDeployEvidence ?? validateWorkerDeployEvidenceForRepair)({
+    report: (dependencies.readDeployReport ?? readPrivateWorkerDeployEvidence)(
+      workerDeployReportPath,
+    ),
+    backupDir,
+    candidateVersionId,
+    currentArtifactEvidence: artifactEvidence,
+  });
+  const activeVersionId = requireWorkerVersion(
+    (dependencies.readActiveVersion ?? requireSoleActiveWorkerVersion)(),
+  );
+  if (activeVersionId !== candidateVersionId) {
+    throw new Error(
+      `Translation reconciliation expected candidate ${candidateVersionId} alone at 100%; received ${activeVersionId}.`,
+    );
+  }
+  const currentRelease = {
+    candidateVersionId,
+    activeVersionId,
+    git,
+    artifactEvidence,
+  } satisfies VectorizeReadinessCurrentRelease;
+  const vectorizeReadiness = (
+    dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness
+  )({ backupDir, currentRelease });
+  const topicAttestation = (
+    dependencies.validateTopicReconciliation ??
+    assertProductionTopicReconciliationReleaseBinding
+  )({ backupDir, currentRelease });
+  return { currentRelease, vectorizeReadiness, topicAttestation };
+}
+
 export function repairSeoCtaTranslations(
   options: RepairSeoCtaTranslationOptions & { remote: true; verifyOnly: true },
 ): RemoteTranslationDriftReport;
@@ -1559,13 +1647,15 @@ export function repairSeoCtaTranslations(
       "Remote SEO translation repair requires --confirm-native-write-freeze so the native Worker can enter read-only maintenance.",
     );
   }
-  if (options.remote && !options.verifyOnly && !isWorkerVersionId(options.candidateVersion)) {
+  if (options.remote && !isWorkerVersionId(options.candidateVersion)) {
     throw new Error(
-      "Remote SEO translation repair requires --candidate-version with the exact validated Worker version UUID.",
+      options.verifyOnly
+        ? "Production translation verification requires --candidate-version with the exact validated Worker version UUID."
+        : "Remote SEO translation repair requires --candidate-version with the exact validated Worker version UUID.",
     );
   }
   const candidateVersion =
-    options.remote && !options.verifyOnly
+    options.remote
       ? requireWorkerVersion(options.candidateVersion)
       : undefined;
 
@@ -1577,13 +1667,38 @@ export function repairSeoCtaTranslations(
   const manifestNamespacesVerified = validateSiteSourceManifestFreshness();
   const sourceHashes = validateSourceContract();
   if (options.verifyOnly) {
-    return verifyRemoteTranslationDrift({
+    const sequence = (options.releaseSequenceGate ?? assertRemoteTranslationSequenceGate)({
+      backupDir: options.backupDir,
+      candidateVersionId: requireWorkerVersion(candidateVersion),
+    });
+    writeTranslationReconciliationPending({
+      createdAt: readTranslationAttestationClock(options.attestationClock, "verify-only start"),
+      backupDir: options.backupDir,
+      currentRelease: sequence.currentRelease,
+      vectorizeReadiness: sequence.vectorizeReadiness,
+      topicAttestation: sequence.topicAttestation,
+      method: "read-only-drift",
+    });
+    const drift = verifyRemoteTranslationDrift({
       translations,
       curatedRepairRows,
       mainAppRepairRows,
       runner: options.runner ?? runWrangler,
       now: options.now ?? Date.now(),
     });
+    if (drift.ok && drift.status === "reconciled" && !drift.repairRequired) {
+      writeTranslationReconciliationSuccess({
+        createdAt: readTranslationAttestationClock(options.attestationClock, "verify-only success"),
+        backupDir: options.backupDir,
+        currentRelease: sequence.currentRelease,
+        vectorizeReadiness: sequence.vectorizeReadiness,
+        topicAttestation: sequence.topicAttestation,
+        method: "read-only-drift",
+        remoteQueries: drift.readOnly.remoteQueries,
+        billedRowsRead: drift.readOnly.billedRowsRead,
+      });
+    }
+    return drift;
   }
   const repairSql = fs.readFileSync(repairSqlPath, "utf8");
   validateRepairSql(repairSql, translations, sourceHashes);
@@ -1671,6 +1786,20 @@ export function repairSeoCtaTranslations(
   }
 
   const remoteCandidateVersion = requireWorkerVersion(candidateVersion);
+  const initialReleaseSequence = (
+    options.releaseSequenceGate ?? assertRemoteTranslationSequenceGate
+  )({
+    backupDir: options.backupDir,
+    candidateVersionId: remoteCandidateVersion,
+  });
+  writeTranslationReconciliationPending({
+    createdAt: readTranslationAttestationClock(options.attestationClock, "atomic repair start"),
+    backupDir: options.backupDir,
+    currentRelease: initialReleaseSequence.currentRelease,
+    vectorizeReadiness: initialReleaseSequence.vectorizeReadiness,
+    topicAttestation: initialReleaseSequence.topicAttestation,
+    method: "atomic-repair",
+  });
   assertNoUnresolvedTranslationRepair(options.backupDir);
   const releasePreflight = assertRemoteRepairReleasePreflight({
     backupDir: options.backupDir,
@@ -2109,6 +2238,22 @@ export function repairSeoCtaTranslations(
     productionVerification,
   };
   writeReport(report, options.backupDir);
+  const finalReleaseSequence = (
+    options.releaseSequenceGate ?? assertRemoteTranslationSequenceGate
+  )({
+    backupDir: options.backupDir,
+    candidateVersionId: remoteCandidateVersion,
+  });
+  writeTranslationReconciliationSuccess({
+    createdAt: readTranslationAttestationClock(options.attestationClock, "atomic repair success"),
+    backupDir: options.backupDir,
+    currentRelease: finalReleaseSequence.currentRelease,
+    vectorizeReadiness: finalReleaseSequence.vectorizeReadiness,
+    topicAttestation: finalReleaseSequence.topicAttestation,
+    method: "atomic-repair",
+    remoteQueries: readOnlyBilling.queries,
+    billedRowsRead: readOnlyBilling.billedRowsRead,
+  });
   return report;
 }
 
@@ -2497,7 +2642,19 @@ export function assertRemoteRepairReleasePreflight(input: {
   }
   const gitHead = runGit(["rev-parse", "HEAD"]).trim();
   const gitUpstream = runGit(["rev-parse", "@{upstream}"]).trim();
-  if (!/^[a-f0-9]{40}$/i.test(gitHead) || gitHead !== gitUpstream) {
+  const gitUpstreamRef = runGit([
+    "rev-parse",
+    "--abbrev-ref",
+    "--symbolic-full-name",
+    "@{upstream}",
+  ]).trim();
+  if (
+    !/^[a-f0-9]{40,64}$/i.test(gitHead) ||
+    gitHead !== gitUpstream ||
+    !gitUpstreamRef ||
+    gitUpstreamRef === "@{upstream}" ||
+    /[\u0000-\u001f\u007f]/.test(gitUpstreamRef)
+  ) {
     throw new Error("Remote translation repair requires HEAD to equal its pushed upstream commit.");
   }
 
@@ -2529,6 +2686,24 @@ export function assertRemoteRepairReleasePreflight(input: {
     backupDir: input.backupDir,
     candidateVersionId,
     currentArtifactEvidence,
+  });
+  const currentRelease = {
+    candidateVersionId,
+    activeVersionId,
+    git: {
+      head: gitHead.toLowerCase(),
+      upstream: gitUpstream.toLowerCase(),
+      upstreamRef: gitUpstreamRef,
+    },
+    artifactEvidence: currentArtifactEvidence,
+  } satisfies VectorizeReadinessCurrentRelease;
+  assertFreshProductionVectorizeReadiness({
+    backupDir: input.backupDir,
+    currentRelease,
+  });
+  assertProductionTopicReconciliationReleaseBinding({
+    backupDir: input.backupDir,
+    currentRelease,
   });
   const createdAt = new Date().toISOString();
   const runId = `${createdAt.replace(/[:.]/g, "-")}-${crypto.randomUUID()}`;
@@ -3203,7 +3378,12 @@ function buildExactCuratedPackPayload(
     }
     if (
       entry.value !== entry.value.normalize("NFC") ||
-      !isValidFieldTranslation(entry.source, entry.value, identifier.language)
+      !isValidFieldTranslation(
+        entry.source,
+        entry.value,
+        identifier.language,
+        entry.key,
+      )
     ) {
       throw new Error(
         `Curated pack value is invalid for ${identifier.namespace}/${identifier.language}/${entry.key}.`,
@@ -3318,7 +3498,10 @@ export function loadMainAppRepairRows(): MainAppRepairRow[] {
     for (const key of sourceKeys) {
       const sourceText = sourceStrings[key];
       const value = bundle.strings[key];
-      if (!isValidFieldTranslation(sourceText, value, language) || value !== value.normalize("NFC")) {
+      if (
+        !isValidFieldTranslation(sourceText, value, language, key) ||
+        value !== value.normalize("NFC")
+      ) {
         throw new Error(`Tracked main-app translation is invalid for ${language}/${key}.`);
       }
       payload[key] = value;
@@ -3380,7 +3563,7 @@ export function buildMainAppRepairPlan(rows: readonly MainAppRepairRow[]): MainA
     for (const key of sourceKeys) {
       const value = row.payload[key];
       if (
-        !isValidFieldTranslation(sourceStrings[key], value, row.language) ||
+        !isValidFieldTranslation(sourceStrings[key], value, row.language, key) ||
         value !== value.normalize("NFC")
       ) {
         throw new Error(`Invalid main-app translation payload for ${row.language}/${key}.`);
@@ -3606,7 +3789,7 @@ export function buildCuratedNamespaceRepairPlan(
       const sourceText = source.sourceStrings[key];
       const value = row.payload[key];
       if (
-        !isValidFieldTranslation(sourceText, value, row.language) ||
+        !isValidFieldTranslation(sourceText, value, row.language, key) ||
         value !== value.normalize("NFC")
       ) {
         throw new Error(
@@ -3938,6 +4121,14 @@ function readTranslationRepairClock(clock: () => Date, label: string) {
     throw new Error(`Remote ${label} clock is invalid.`);
   }
   return value;
+}
+
+function readTranslationAttestationClock(clock: (() => Date) | undefined, label: string) {
+  const value = (clock ?? (() => new Date()))();
+  if (!(value instanceof Date) || !Number.isFinite(value.getTime())) {
+    throw new Error(`Remote translation attestation ${label} clock is invalid.`);
+  }
+  return value.toISOString();
 }
 
 function releaseBudgetSourceIdentity(

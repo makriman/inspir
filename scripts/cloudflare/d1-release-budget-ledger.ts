@@ -290,6 +290,10 @@ export function readD1ReleaseBudgetLedger(ledgerPath: string): D1ReleaseBudgetLe
   return parseLedger(value);
 }
 
+export function parseD1ReleaseBudgetLedger(value: unknown): D1ReleaseBudgetLedger {
+  return parseLedger(value);
+}
+
 export function readPrivateJsonNoFollow(file: string, maximumBytes = 16 * 1024 * 1024): unknown {
   const absolute = path.resolve(file);
   const maxBytes = positiveSafeInteger(maximumBytes, "private evidence byte limit");

@@ -51,7 +51,7 @@ function buildCompleteStaticGuestTranslationSubset(
     }
     if (
       bundle.language !== defaultLanguage &&
-      !isValidFieldTranslation(source, translated, bundle.language)
+      !isValidFieldTranslation(source, translated, bundle.language, key)
     ) {
       throw new Error(`Invalid static guest translation for ${locale}: ${key}`);
     }

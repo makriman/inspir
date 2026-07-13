@@ -5,6 +5,9 @@ import { getChatMessagesByIds } from "../db/queries";
 import { listUsersDueForMemorySynthesis } from "../db/memory";
 import { runWithRuntimeCloudflareEnv } from "../runtime/cloudflare";
 import { processMemoryAfterTurn, synthesizeUserMemory } from "./memory";
+import type {
+  MemoryVectorCleanupQueueMessage as MemoryVectorCleanupQueueContract,
+} from "../free-runtime/memory-queue-contract";
 
 export const maxMemoryQueueMessageBytes = 120 * 1024;
 
@@ -53,15 +56,24 @@ const memoryDailySynthesisQueueMessageSchema = z.object({
   reason: z.string().trim().min(1).max(80),
 });
 
+const memoryVectorCleanupQueueMessageSchema = z.object({
+  type: z.literal("memory.vector_cleanup.v1"),
+  enqueuedAt: z.string().datetime(),
+  reason: z.string().trim().min(1).max(80),
+});
+
 const memoryQueueMessageSchema = z.discriminatedUnion("type", [
   memoryPostTurnQueueMessageV1Schema,
   memoryPostTurnQueueMessageV2Schema,
   memoryDailySynthesisQueueMessageSchema,
+  memoryVectorCleanupQueueMessageSchema,
 ]);
 
 export type MemoryPostTurnQueueMessageV1 = z.infer<typeof memoryPostTurnQueueMessageV1Schema>;
 export type MemoryPostTurnQueueMessage = z.infer<typeof memoryPostTurnQueueMessageV2Schema>;
 export type MemoryDailySynthesisQueueMessage = z.infer<typeof memoryDailySynthesisQueueMessageSchema>;
+export type MemoryVectorCleanupQueueMessage =
+  z.infer<typeof memoryVectorCleanupQueueMessageSchema> & MemoryVectorCleanupQueueContract;
 export type MemoryQueueMessage = z.infer<typeof memoryQueueMessageSchema>;
 export type MemoryPostTurnDispatchResult = "queued" | "dropped";
 
@@ -255,8 +267,10 @@ export async function processMemoryQueueBatch(
                 }
               : await postTurnRehydrator(parsed.data);
           await processor(processorInput);
-        } else {
+        } else if (parsed.data.type === "memory.daily_synthesis.v1") {
           await dailySynthesizer(parsed.data.userId, parsed.data.reason);
+        } else {
+          throw new Error("Vector cleanup jobs require the native Queue runtime");
         }
         message.ack();
         logger.log(
@@ -264,7 +278,7 @@ export async function processMemoryQueueBatch(
             event: "memory_queue_message_processed",
             type: parsed.data.type,
             aiRunId: parsed.data.type === "memory.post_turn.v1" ? parsed.data.aiRunId : null,
-            userId: parsed.data.userId,
+            userId: "userId" in parsed.data ? parsed.data.userId : null,
             messageId: message.id,
             attempts: message.attempts,
           }),
@@ -273,7 +287,7 @@ export async function processMemoryQueueBatch(
         logger.warn("memory_queue_message_processing_failed", {
           type: parsed.data.type,
           aiRunId: parsed.data.type === "memory.post_turn.v1" ? parsed.data.aiRunId : null,
-          userId: parsed.data.userId,
+          userId: "userId" in parsed.data ? parsed.data.userId : null,
           messageId: message.id,
           attempts: message.attempts,
           error: error instanceof Error ? error.message : String(error),

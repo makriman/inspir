@@ -7,6 +7,7 @@ import {
   HISTORICAL_DATA_CONTINUITY_POLICY_SHA256,
 } from "./historical-data-continuity-policy";
 import {
+  parseD1ReleaseBudgetLedger,
   readD1ReleaseBudgetLedger,
   readPrivateJsonNoFollow,
   writePrivateJsonDurably,
@@ -23,16 +24,20 @@ import {
   type SourceFingerprint,
 } from "./source-fingerprint";
 import {
-  HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
   HISTORICAL_DATA_BASELINE_MAX_AGE_MS,
   HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
   HISTORICAL_DATA_VERIFICATION_RELATIVE_PATH,
   HISTORICAL_DATASET_NAMES,
+  HISTORICAL_OPERATIONAL_DATASET_NAMES,
+  hasRequiredHistoricalMemoryVectorCleanupOutboxSchema,
   historicalDataHmacKeyId,
   historicalDataReportPath,
   parseHistoricalDataBaselineReport,
-  readAndValidateHistoricalDataBaseline,
+  parseHistoricalDataLegacyBaselineReportForContinuity,
+  validateHistoricalDataBaselineValue,
   type HistoricalDataBaselineReport,
+  type HistoricalDataLegacyBaselineReport,
   type HistoricalDatasetName,
 } from "./verify-historical-data-preservation";
 
@@ -63,6 +68,17 @@ const datasetDecisionsSchema = z.record(
   z.enum(HISTORICAL_DATASET_NAMES),
   datasetDecisionSchema,
 );
+const operationalDatasetDecisionSchema = z.object({
+  lifecycle: z.literal("mutable-drainable-outbox"),
+  predecessorEvidence: z.literal("not-captured-by-pinned-v1-baseline"),
+  successorRows: z.number().int().nonnegative(),
+  successorSchemaPresent: z.boolean(),
+  successorEmptyBeforeFirstActivation: z.boolean(),
+  rowPreservationRequired: z.literal(false),
+}).strict();
+const operationalDatasetDecisionsSchema = z.object({
+  memory_vector_cleanup_outbox: operationalDatasetDecisionSchema,
+}).strict();
 
 const archiveManifestSchema = z.object({
   kind: z.literal(HISTORICAL_DATA_CONTINUITY_ARCHIVE_KIND),
@@ -133,15 +149,19 @@ const continuityReportSchema = z.object({
   sameHmacKey: z.boolean(),
   gapMs: z.number().int().positive(),
   datasets: datasetDecisionsSchema,
+  operationalDatasets: operationalDatasetDecisionsSchema,
   problems: z.array(z.string().min(1).max(1_000)).max(100),
 }).strict();
 
 export type HistoricalDataContinuityArchiveManifest = z.infer<typeof archiveManifestSchema>;
 export type HistoricalDataContinuityReport = z.infer<typeof continuityReportSchema>;
 export type HistoricalDataContinuityDatasetDecision = z.infer<typeof datasetDecisionSchema>;
+export type HistoricalDataContinuityOperationalDatasetDecision = z.infer<
+  typeof operationalDatasetDecisionSchema
+>;
 export type HistoricalDataContinuityPredecessorLoader = (
   backupDir: string,
-) => HistoricalDataBaselineReport;
+) => HistoricalDataLegacyBaselineReport;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCli();
@@ -208,7 +228,9 @@ export function archiveHistoricalDataContinuityPredecessor(options: {
   const baselinePath = historicalDataReportPath(backupDir, "baseline");
   const baselineBytes = readPrivateBytesNoFollow(baselinePath, 2 * 1024 * 1024);
   requireSha256(baselineBytes, policy.predecessor.baselineSha256, "predecessor baseline");
-  const baseline = parseHistoricalDataBaselineReport(parseJsonBytes(baselineBytes, "predecessor baseline"));
+  const baseline = parsePolicyPredecessorBaseline(
+    parseJsonBytes(baselineBytes, "predecessor baseline"),
+  );
   assertPolicyPredecessorBaseline(baseline, backupDir);
 
   const commitSource = buildGitCommitSourceFingerprint(policy.predecessor.gitCommit, cwd);
@@ -220,7 +242,9 @@ export function archiveHistoricalDataContinuityPredecessor(options: {
   const ledgerPath = path.join(backupDir, "cloudflare", policy.predecessor.ledgerFileName);
   const ledgerBytes = readPrivateBytesNoFollow(ledgerPath, 4 * 1024 * 1024);
   requireSha256(ledgerBytes, policy.predecessor.ledgerSha256, "predecessor ledger");
-  const ledger = readD1ReleaseBudgetLedger(ledgerPath);
+  const ledger = parseD1ReleaseBudgetLedger(
+    parseJsonBytes(ledgerBytes, "predecessor ledger"),
+  );
   assertArchivedBaselineReservation(baseline, ledger);
   if (ledger.totals.rowsRead !== policy.budgetBlock.existingReservedRowsRead) {
     throw new Error("The predecessor ledger no longer matches the budget-block incident.");
@@ -322,7 +346,8 @@ export function verifyHistoricalDataContinuityRollover(options: {
   }
   const archiveManifest = readAndValidateArchiveManifest(backupDir);
   const predecessor = readArchivedPredecessorBaseline(backupDir);
-  const successor = readAndValidateHistoricalDataBaseline({
+  const successorEvidence = readSuccessorBaselineEvidence(backupDir);
+  const successor = validateHistoricalDataBaselineValue(successorEvidence.value, {
     backupDir,
     cwd,
     expectedSourceFingerprint: currentSource,
@@ -336,8 +361,6 @@ export function verifyHistoricalDataContinuityRollover(options: {
     requiredSuccessorUtcDay: policy.successor.requiredUtcDay,
     maximumGapMs: policy.successor.maximumGapMs,
   });
-  const successorBaselinePath = historicalDataReportPath(backupDir, "baseline");
-  const successorBaselineSha256 = sha256PrivateFile(successorBaselinePath, 2 * 1024 * 1024);
   const archiveManifestSha256 = sha256PrivateFile(
     historicalDataContinuityArchiveManifestPath(backupDir),
     512 * 1024,
@@ -363,12 +386,13 @@ export function verifyHistoricalDataContinuityRollover(options: {
       source: compactSource(currentSource),
       baselineCreatedAt: successor.createdAt,
       baselineOperationId: successor.operationId,
-      baselineSha256: successorBaselineSha256,
+      baselineSha256: successorEvidence.sha256,
       utcDay: policy.successor.requiredUtcDay,
     },
     sameHmacKey: evaluation.sameHmacKey,
     gapMs: evaluation.gapMs,
     datasets: evaluation.datasets,
+    operationalDatasets: evaluation.operationalDatasets,
     problems: evaluation.problems,
   };
   const reportPath = historicalDataContinuityReportPath(backupDir);
@@ -380,7 +404,7 @@ export function verifyHistoricalDataContinuityRollover(options: {
 }
 
 export function evaluateHistoricalDataContinuity(options: {
-  predecessor: HistoricalDataBaselineReport;
+  predecessor: HistoricalDataLegacyBaselineReport;
   successor: HistoricalDataBaselineReport;
   hmacSecret: string;
   requiredSuccessorUtcDay: string;
@@ -417,7 +441,31 @@ export function evaluateHistoricalDataContinuity(options: {
     if (!decision.columnsPreserved) problems.push(`${name} lost or changed a predecessor column.`);
     if (!decision.sentinelsPreserved) problems.push(`${name} lost a predecessor identity sentinel.`);
   }
-  return { ok: problems.length === 0, sameHmacKey, gapMs, datasets, problems };
+  const operationalDatasets = {
+    memory_vector_cleanup_outbox: historicalDataContinuityOperationalDatasetDecision(
+      options.successor,
+    ),
+  } satisfies Record<
+    (typeof HISTORICAL_OPERATIONAL_DATASET_NAMES)[number],
+    HistoricalDataContinuityOperationalDatasetDecision
+  >;
+  const outbox = operationalDatasets.memory_vector_cleanup_outbox;
+  if (!outbox.successorSchemaPresent) {
+    problems.push("memory_vector_cleanup_outbox schema is absent from the successor baseline.");
+  }
+  if (!outbox.successorEmptyBeforeFirstActivation) {
+    problems.push(
+      "memory_vector_cleanup_outbox was not empty before the first 0016 Worker activation.",
+    );
+  }
+  return {
+    ok: problems.length === 0,
+    sameHmacKey,
+    gapMs,
+    datasets,
+    operationalDatasets,
+    problems,
+  };
 }
 
 export function readAndValidateHistoricalDataContinuityReport(options: {
@@ -450,14 +498,11 @@ export function readAndValidateHistoricalDataContinuityReport(options: {
     throw new Error("Historical continuity report does not bind the current clean pushed Git HEAD.");
   }
   requireSourceIdentity(report.successor.source, compactSource(options.expectedSourceFingerprint), "continuity successor");
-  const baselinePath = historicalDataReportPath(backupDir, "baseline");
-  const baselineSha256 = sha256PrivateFile(baselinePath, 2 * 1024 * 1024);
-  if (baselineSha256 !== report.successor.baselineSha256) {
+  const successorEvidence = readSuccessorBaselineEvidence(backupDir);
+  if (successorEvidence.sha256 !== report.successor.baselineSha256) {
     throw new Error("Historical continuity report does not bind the current successor baseline.");
   }
-  const baseline = parseHistoricalDataBaselineReport(
-    readPrivateJsonNoFollow(baselinePath, 2 * 1024 * 1024),
-  );
+  const baseline = parseHistoricalDataBaselineReport(successorEvidence.value);
   if (
     baseline.createdAt !== report.successor.baselineCreatedAt ||
     baseline.operationId !== report.successor.baselineOperationId
@@ -490,7 +535,7 @@ export function readAndValidateHistoricalDataContinuityReport(options: {
 
 export function assertHistoricalDataContinuityReportDecisions(options: {
   report: HistoricalDataContinuityReport;
-  predecessor: HistoricalDataBaselineReport;
+  predecessor: HistoricalDataLegacyBaselineReport;
   successor: HistoricalDataBaselineReport;
 }) {
   if (
@@ -518,6 +563,26 @@ export function assertHistoricalDataContinuityReportDecisions(options: {
         `Historical continuity ${name} dataset decision is failed or inconsistent with the immutable baselines.`,
       );
     }
+  }
+  const expectedOutbox = historicalDataContinuityOperationalDatasetDecision(
+    options.successor,
+  );
+  const reportedOutbox =
+    options.report.operationalDatasets.memory_vector_cleanup_outbox;
+  if (
+    reportedOutbox.lifecycle !== expectedOutbox.lifecycle ||
+    reportedOutbox.predecessorEvidence !== expectedOutbox.predecessorEvidence ||
+    reportedOutbox.successorRows !== expectedOutbox.successorRows ||
+    reportedOutbox.successorSchemaPresent !== expectedOutbox.successorSchemaPresent ||
+    reportedOutbox.successorEmptyBeforeFirstActivation !==
+      expectedOutbox.successorEmptyBeforeFirstActivation ||
+    reportedOutbox.rowPreservationRequired !== false ||
+    !expectedOutbox.successorSchemaPresent ||
+    !expectedOutbox.successorEmptyBeforeFirstActivation
+  ) {
+    throw new Error(
+      "Historical continuity operational outbox decision is failed or inconsistent with the successor baseline.",
+    );
   }
 }
 
@@ -568,15 +633,22 @@ function readAndValidateArchiveManifest(backupDir: string) {
 function readArchivedPredecessorBaseline(backupDir: string) {
   const manifest = readAndValidateArchiveManifest(backupDir);
   const bytes = readPrivateBytesNoFollow(manifest.baseline.archivePath, 2 * 1024 * 1024);
-  const baseline = parseHistoricalDataBaselineReport(parseJsonBytes(bytes, "archived predecessor baseline"));
+  requireSha256(bytes, policy.predecessor.baselineSha256, "archived predecessor baseline");
+  const baseline = parsePolicyPredecessorBaseline(
+    parseJsonBytes(bytes, "archived predecessor baseline"),
+  );
   assertPolicyPredecessorBaseline(baseline, path.resolve(backupDir));
-  const ledger = readD1ReleaseBudgetLedger(manifest.ledger.archivePath);
+  const ledgerBytes = readPrivateBytesNoFollow(manifest.ledger.archivePath, 4 * 1024 * 1024);
+  requireSha256(ledgerBytes, policy.predecessor.ledgerSha256, "archived predecessor ledger");
+  const ledger = parseD1ReleaseBudgetLedger(
+    parseJsonBytes(ledgerBytes, "archived predecessor ledger"),
+  );
   assertArchivedBaselineReservation(baseline, ledger);
   return baseline;
 }
 
 function assertPolicyPredecessorBaseline(
-  baseline: HistoricalDataBaselineReport,
+  baseline: HistoricalDataLegacyBaselineReport,
   backupDir: string,
 ) {
   requireSourceIdentity(baseline.sourceFingerprint, {
@@ -594,8 +666,18 @@ function assertPolicyPredecessorBaseline(
   }
 }
 
+function parsePolicyPredecessorBaseline(value: unknown) {
+  return parseHistoricalDataLegacyBaselineReportForContinuity(value, {
+    sourceSha256: policy.predecessor.sourceSha256,
+    sourceFileCount: policy.predecessor.sourceFileCount,
+    createdAt: policy.predecessor.baselineCreatedAt,
+    utcDay: policy.predecessor.baselineUtcDay,
+    operationId: policy.predecessor.baselineOperationId,
+  });
+}
+
 function assertArchivedBaselineReservation(
-  baseline: HistoricalDataBaselineReport,
+  baseline: HistoricalDataLegacyBaselineReport,
   ledger: ReturnType<typeof readD1ReleaseBudgetLedger>,
 ) {
   if (ledger.utcDay !== baseline.utcDay) {
@@ -620,7 +702,7 @@ function assertArchivedBaselineReservation(
 
 function assertPolicyBudgetBlock() {
   if (
-    policy.budgetBlock.requestedVerificationRowsRead !== HISTORICAL_BILLED_READ_LIMIT ||
+    policy.budgetBlock.requestedVerificationRowsRead !== HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT ||
     policy.budgetBlock.projectedRowsRead !==
       policy.budgetBlock.observedRowsRead +
       policy.budgetBlock.existingReservedRowsRead +
@@ -669,6 +751,21 @@ function historicalDataContinuityDatasetDecision(
   };
 }
 
+function historicalDataContinuityOperationalDatasetDecision(
+  successor: HistoricalDataBaselineReport,
+): HistoricalDataContinuityOperationalDatasetDecision {
+  const outbox = successor.operationalDatasets.memory_vector_cleanup_outbox;
+  return {
+    lifecycle: "mutable-drainable-outbox",
+    predecessorEvidence: "not-captured-by-pinned-v1-baseline",
+    successorRows: outbox.rowCount,
+    successorSchemaPresent:
+      hasRequiredHistoricalMemoryVectorCleanupOutboxSchema(outbox),
+    successorEmptyBeforeFirstActivation: outbox.rowCount === 0,
+    rowPreservationRequired: false,
+  };
+}
+
 function columnIdentity(column: {
   name: string;
   type: string;
@@ -680,6 +777,15 @@ function columnIdentity(column: {
 
 function compactSource(source: SourceFingerprint) {
   return { sha256: source.sha256, fileCount: source.fileCount };
+}
+
+function readSuccessorBaselineEvidence(backupDir: string) {
+  const baselinePath = historicalDataReportPath(backupDir, "baseline");
+  const bytes = readPrivateBytesNoFollow(baselinePath, 2 * 1024 * 1024);
+  return {
+    value: parseJsonBytes(bytes, "successor baseline"),
+    sha256: createHash().update(bytes).digest("hex"),
+  };
 }
 
 function requireSourceIdentity(

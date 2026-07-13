@@ -20,6 +20,38 @@ test("global LLM budget fails closed when D1 is unavailable", async () => {
   assert.equal(result.resetAt.toISOString(), "2026-07-07T00:00:00.000Z");
 });
 
+test("global LLM budget defaults only for an absent env binding and denies malformed env values", async () => {
+  const previous = process.env.LLM_GLOBAL_DAILY_CALL_LIMIT;
+  const now = new Date("2026-07-06T10:15:00.000Z");
+  try {
+    delete process.env.LLM_GLOBAL_DAILY_CALL_LIMIT;
+    const absent = await withSuppressedConsoleNoise(() =>
+      runWithRuntimeCloudflareEnv(
+        { DB: throwingD1() },
+        () => consumeDailyLlmBudget(undefined, now),
+      ),
+    );
+    assert.equal(absent.limit, 1_000);
+
+    const invalidLimits = ["", "invalid", "-1", "1.5", "1e3", "9007199254740992"];
+    for (const limit of invalidLimits) {
+      process.env.LLM_GLOBAL_DAILY_CALL_LIMIT = limit;
+      const denied = await withSuppressedConsoleNoise(() =>
+        runWithRuntimeCloudflareEnv(
+          { DB: throwingD1() },
+          () => consumeDailyLlmBudget(undefined, now),
+        ),
+      );
+      assert.equal(denied.ok, false, limit);
+      assert.equal(denied.limit, 0, limit);
+      assert.equal(denied.remaining, 0, limit);
+    }
+  } finally {
+    if (previous === undefined) delete process.env.LLM_GLOBAL_DAILY_CALL_LIMIT;
+    else process.env.LLM_GLOBAL_DAILY_CALL_LIMIT = previous;
+  }
+});
+
 test("per-window quota keeps the deliberate availability-biased fail-open posture", async () => {
   const now = new Date("2026-07-06T10:15:00.000Z");
   const result = await withSuppressedConsoleError(() =>
@@ -76,5 +108,18 @@ async function withSuppressedConsoleError<T>(callback: () => T | Promise<T>) {
     return await callback();
   } finally {
     console.error = original;
+  }
+}
+
+async function withSuppressedConsoleNoise<T>(callback: () => T | Promise<T>) {
+  const originalError = console.error;
+  const originalWarn = console.warn;
+  console.error = () => {};
+  console.warn = () => {};
+  try {
+    return await callback();
+  } finally {
+    console.error = originalError;
+    console.warn = originalWarn;
   }
 }

@@ -57,7 +57,7 @@ export function readStaticMainAppTranslations(
       throw invalidPack(language, `translation ${index} is not NFC-normalized`);
     }
     const key = sourceKeys[index];
-    if (!isValidFieldTranslation(source.sourceStrings[key], translated, language)) {
+    if (!isValidFieldTranslation(source.sourceStrings[key], translated, language, key)) {
       throw invalidPack(language, `translation ${index} is invalid for ${key}`);
     }
     strings[key] = translated;

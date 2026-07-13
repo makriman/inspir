@@ -6,6 +6,8 @@ import path from "node:path";
 import test from "node:test";
 import { pathToFileURL } from "node:url";
 import {
+  assertProductionReleaseOperationAllowed,
+  assertTopicSequenceBeforeProductionLock,
   boundedReleaseChildCommand,
   parseRollbackArguments,
   productionReleaseOperationCommand,
@@ -13,6 +15,77 @@ import {
 } from "../scripts/cloudflare/run-production-release-operation";
 
 const targetVersion = "11111111-1111-4111-8111-111111111111";
+
+test("rollover blocks standalone source sync and prevalidates topic readiness before locking", () => {
+  assert.throws(
+    () => assertProductionReleaseOperationAllowed("sync-site-translation-sources"),
+    /blocked for the 2026-07-13 budget-rollover release/,
+  );
+  const cwd = path.resolve("/tmp/inspir-topic-prelock");
+  const backupDir = path.resolve("/tmp/inspir-topic-prelock-evidence");
+  let validated = false;
+  const readiness = { createdAt: "2026-07-13T10:00:00.000Z" };
+  const result = assertTopicSequenceBeforeProductionLock(
+    {
+      args: ["--confirm-production", "--candidate-version", targetVersion],
+      activeVersionId: targetVersion,
+      backupDir,
+      cwd,
+    },
+    {
+      readGitIdentity: () => ({
+        head: "a".repeat(40),
+        upstream: "a".repeat(40),
+        upstreamRef: "origin/codex/release",
+      }),
+      buildArtifactEvidence: () => ({
+        sourceFingerprint: {
+          sha256: "b".repeat(64),
+          fileCount: 1,
+          files: [{ file: "package.json", sha256: "c".repeat(64), bytes: 1 }],
+        },
+        workerSourceSha256: "d".repeat(64),
+        wranglerConfigSha256: "e".repeat(64),
+        assetManifest: {
+          root: path.join(cwd, ".open-next/assets"),
+          sha256: "f".repeat(64),
+          fileCount: 1,
+          bytes: 1,
+        },
+      }),
+      validateVectorizeReadiness: (input) => {
+        validated = true;
+        assert.equal(input.backupDir, backupDir);
+        assert.equal(input.currentRelease.candidateVersionId, targetVersion);
+        return readiness;
+      },
+    },
+  );
+  assert.equal(validated, true);
+  assert.equal(result, readiness);
+  assert.throws(
+    () => assertTopicSequenceBeforeProductionLock({
+      args: ["--confirm-production", "--candidate-version", targetVersion],
+      activeVersionId: "22222222-2222-4222-8222-222222222222",
+      backupDir,
+      cwd,
+    }),
+    /before exclusion acquisition/,
+  );
+
+  const source = fs.readFileSync(
+    path.resolve("scripts/cloudflare/run-production-release-operation.ts"),
+    "utf8",
+  );
+  assert.ok(
+    source.indexOf("assertProductionReleaseOperationAllowed(operation)") <
+      source.indexOf("buildRepoSourceFingerprint(cwd)"),
+  );
+  assert.ok(
+    source.indexOf("assertTopicSequenceBeforeProductionLock({") <
+      source.indexOf("acquireProductionValidationExclusion({"),
+  );
+});
 
 test("guarded rollback accepts one explicit UUID and blocks passthrough overrides", () => {
   assert.deepEqual(
@@ -220,6 +293,63 @@ test("every production D1 release mutator self-requires the guarded child proof"
   }
   assert.equal(fs.existsSync(path.resolve("scripts/cloudflare/activate-write-freeze.ts")), false);
   assert.equal(fs.existsSync(path.resolve("scripts/cloudflare/backup-frozen-cloudflare-production.ts")), false);
+});
+
+test("rollover runbook enforces Vectorize, topic, then translation release order", () => {
+  const runbook = fs.readFileSync(path.resolve("deploy.md"), "utf8");
+  const deploy = runbook.indexOf("## Atomic main deploy");
+  const vectorize = runbook.indexOf("## Post-deploy Vectorize readiness gate");
+  const topics = runbook.indexOf("## Atomic managed-topic reconciliation");
+  const translations = runbook.indexOf("## Post-deploy translation reconciliation");
+  const productionValidation = runbook.indexOf("## Production verification");
+
+  assert.ok(deploy >= 0);
+  assert.ok(vectorize > deploy);
+  assert.ok(topics > vectorize);
+  assert.ok(translations > topics);
+  assert.ok(productionValidation > translations);
+  assert.match(runbook, /2,500,000 reads and 50,000 writes/);
+  assert.match(runbook, /4,000,000-read and 80,000-write lag-safe ceilings/);
+  assert.match(runbook, /standalone source synchronizer is\nexplicitly forbidden/);
+  assert.doesNotMatch(runbook, /pnpm cf:sync:site-translation-sources/);
+});
+
+test("post-deploy stages consume durable readiness and reconciliation predecessors", () => {
+  const topicSync = fs.readFileSync(
+    path.resolve("scripts/cloudflare/sync-topic-seeds.ts"),
+    "utf8",
+  );
+  const translationRepair = fs.readFileSync(
+    path.resolve("scripts/cloudflare/repair-seo-cta-translations.ts"),
+    "utf8",
+  );
+  const authenticatedValidation = fs.readFileSync(
+    path.resolve("scripts/cloudflare/run-authenticated-production-validation.ts"),
+    "utf8",
+  );
+
+  assert.match(topicSync, /assertFreshProductionVectorizeReadiness/);
+  assert.match(
+    topicSync,
+    /verifyTopicSeedSnapshot[\s\S]*createTopicReconciliationAttestation[\s\S]*writeTopicReconciliationAttestation/,
+  );
+  assert.match(
+    translationRepair,
+    /assertRemoteRepairReleasePreflight[\s\S]*assertFreshProductionVectorizeReadiness/,
+  );
+  assert.match(translationRepair, /assertProductionTopicReconciliationReleaseBinding/);
+  assert.match(
+    translationRepair,
+    /writeTranslationReconciliationPending[\s\S]*verifyRemoteTranslationDrift[\s\S]*writeTranslationReconciliationSuccess/,
+  );
+  assert.match(
+    authenticatedValidation,
+    /function assertCandidateReleaseEvidence[\s\S]*assertFreshProductionVectorizeReadiness/,
+  );
+  assert.match(
+    authenticatedValidation,
+    /assertFreshProductionVectorizeReadiness[\s\S]*assertFreshProductionTranslationReconciliation/,
+  );
 });
 
 test("durable maintenance has one confirmed exact-state resolver", () => {

@@ -12,6 +12,7 @@ import {
   handleMemoryScheduled,
   handleStateApiRequest,
   isStateApiPath,
+  knownNativeMemoryVectorIdsForText,
   MAX_QUEUED_ASSISTANT_MESSAGE_READ_CHARS,
   MAX_QUEUED_USER_MESSAGE_READ_CHARS,
   MAX_CHAT_REPLY_COUNT_SCAN,
@@ -32,6 +33,10 @@ import {
   usesIncrementalStateContract,
 } from "../lib/free-runtime/state-api";
 import { supportedLanguages, type SupportedLanguage } from "../lib/content/languages";
+import {
+  nativeMemoryVectorId,
+  nativeMemoryVectorRevision,
+} from "../lib/free-runtime/native-memory-vector";
 
 const localizedStudyMemoryRequests: Record<SupportedLanguage, string> = {
   English: "Remember the planets.",
@@ -394,6 +399,48 @@ test("memory page cursors round-trip bounded stable ordering fields", () => {
   assert.equal(parseMemoryPageCursor(`${"1".repeat(301)}`), null);
 });
 
+test("marker-null pre-read still captures the exact revision a concurrent attestation can commit", async () => {
+  const rowId = "11111111-1111-4111-8111-111111111111";
+  const rowRevision = 1_783_915_200_000;
+  const authoritativeText = "I learn best with diagrams and worked examples.";
+  const historicalMarker = nativeMemoryVectorId(
+    "user_memories",
+    rowId,
+    await nativeMemoryVectorRevision(authoritativeText),
+  );
+  const concurrentMarker = nativeMemoryVectorId(
+    "user_memories",
+    rowId,
+    await nativeMemoryVectorRevision(authoritativeText),
+    { rowRevision },
+  );
+  assert.ok(historicalMarker);
+  assert.ok(concurrentMarker);
+
+  // The mutation read embedding=null before the background writer committed
+  // this marker. Cleanup must nevertheless name that exact revision.
+  const cleanupIds = await knownNativeMemoryVectorIdsForText(
+    "user_memories",
+    rowId,
+    null,
+    authoritativeText,
+    rowRevision,
+  );
+  assert.deepEqual(cleanupIds, [
+    `user_memories:${rowId}`,
+    historicalMarker,
+    concurrentMarker,
+  ]);
+
+  const interveningEditMarker = nativeMemoryVectorId(
+    "user_memories",
+    rowId,
+    await nativeMemoryVectorRevision("I now prefer concise text explanations."),
+    { rowRevision: rowRevision + 1 },
+  );
+  assert.notEqual(interveningEditMarker, concurrentMarker);
+});
+
 test("native queue drops invalid work and defers all writes during a freeze", async () => {
   let acknowledged = false;
   let retried = false;
@@ -490,6 +537,56 @@ test("native state runtime excludes OpenNext and scopes every private data looku
   assert.doesNotMatch(source, /crypto\.subtle\.importKey/);
   assert.match(source, /substr\(users\.preferred_language, 1, 61\) as preferredLanguage/);
   assert.match(source, /extractNativeMemoryIntentAction\(userMessage\.content, settings\.preferredLanguage\)/);
+  const postTurnSource = source.slice(
+    source.indexOf("async function processNativePostTurn"),
+    source.indexOf("async function synthesizeNativeUserMemory"),
+  );
+  assert.match(postTurnSource, /const turnId = existingTurn\?\.id \?\? job\.userMessageId/);
+  assert.match(postTurnSource, /const memoryId = job\.userMessageId/);
+  assert.equal(postTurnSource.match(/returning id, user_id as userId/g)?.length, 2);
+  assert.match(postTurnSource, /confirmedTurn\?\.id === pendingTurnVector\.rowId/);
+  assert.match(postTurnSource, /confirmedMemory\?\.id === pendingMemoryVector\.rowId/);
+  assert.doesNotMatch(postTurnSource, /crypto\.randomUUID\(\)/);
+  assert.match(postTurnSource, /embedding is null or embedding like '\"p:t:%\"/);
+  assert.match(postTurnSource, /embedding is null or embedding like '\"p:m:%\"/);
+  assert.match(postTurnSource, /substr\(searchable_text, 1, 4001\) as searchableText/);
+  assert.match(postTurnSource, /substr\(content, 1, 4001\) as content/);
+  assert.match(postTurnSource, /existingTurn && toBoolean\(existingTurn\.embeddingMissing\)/);
+  assert.match(postTurnSource, /toBoolean\(existingMemory\.embeddingMissing\)/);
+  assert.match(postTurnSource, /text: existingTurnVectorText/);
+  assert.match(postTurnSource, /text: existingMemoryVectorText/);
+  assert.match(
+    postTurnSource,
+    /if \(!statements\.length\) \{\s+if \(!vectorRecords\.length\) return "already_current";\s+await persistNativeMemoryVectorsBestEffort/,
+  );
+  assert.doesNotMatch(postTurnSource, /MEMORY_VECTORIZE\.query|\.query\(/);
+  assert.match(
+    postTurnSource,
+    /chat_memory_summaries\.last_message_id is not excluded\.last_message_id/,
+  );
+  assert.equal(postTurnSource.match(/eventId: queuedMemoryEventId\(job\.userMessageId/g)?.length, 3);
+  assert.match(source, /const nativeMemoryVectorMarkerSql = `case/);
+  assert.match(source, /NATIVE_MEMORY_VECTOR_MARKER/);
+  assert.doesNotMatch(source, /JSON\.stringify\(indexed\.embedding\)/);
+  assert.doesNotMatch(source, /retainAttestedNativeMemoryVectors/);
+  const vectorMarkerSource = source.slice(
+    source.indexOf("export async function persistNativeMemoryVectorsBestEffort"),
+    source.indexOf("async function repairNativeMemoryVectorsBestEffort"),
+  );
+  assert.match(vectorMarkerSource, /nativeVectorWriteIntentStatement/);
+  assert.match(vectorMarkerSource, /nativePendingEmbeddingStatement/);
+  assert.match(vectorMarkerSource, /nativeFinalizeEmbeddingStatement/);
+  assert.match(vectorMarkerSource, /fenceUnfinalizedNativeVectorWrites/);
+  assert.match(vectorMarkerSource, /state = 'write_pending'/);
+  assert.match(vectorMarkerSource, /state in \('write_pending', 'cleanup_fenced'\)/);
+  assert.equal(vectorMarkerSource.match(/JSON\.stringify\(indexed\.marker\)/g)?.length, 3);
+  const memoryEventSource = source.slice(
+    source.indexOf("type QueuedMemoryEventAction"),
+    source.indexOf("function serializeChat"),
+  );
+  assert.match(memoryEventSource, /memory\.post_turn:\$\{action\}:\$\{messageId\}/);
+  assert.match(memoryEventSource, /on conflict\(id\) do nothing/);
+  assert.match(memoryEventSource, /input\.eventId \?\? crypto\.randomUUID\(\)/);
   assert.match(source, /on conflict\(chat_id\) do update set\s+topic_id = excluded\.topic_id,\s+summary = excluded\.summary,\s+topics = excluded\.topics/);
   assert.match(source, /where user_id = \?2\s+and id in \([\s\S]*?where user_id = \?2 and status = 'active'[\s\S]*?limit 10/);
   assert.match(source, /reason: "explicit_chat_forget_request"/);
@@ -589,6 +686,35 @@ test("native state runtime excludes OpenNext and scopes every private data looku
   assert.match(source, /memoryMetadata\.contentNextOffset = contentNextOffset/);
   assert.match(source, /\{ ok: true, memory: serializeMemory\(memory\) \}/);
   assert.match(source, /settings: serializeMemorySettings\(updatedSettings\)/);
+  const updateMemorySource = source.slice(
+    source.indexOf("async function updateMemoryItem"),
+    source.indexOf("async function deleteMemoryItem"),
+  );
+  assert.match(updateMemorySource, /embedding = null/);
+  assert.match(updateMemorySource, /scheduleVectorCleanupWake/);
+  assert.match(updateMemorySource, /knownNativeMemoryCleanupEntriesForText/);
+  assert.match(updateMemorySource, /existing\.cleanupVectorId \?\? existing\.vectorMarker[\s\S]*existing\.content/);
+  assert.match(updateMemorySource, /vectorCleanupOutboxValueStatement/);
+  assert.match(updateMemorySource, /and updated_at = \?12 and content = \?13/);
+  assert.match(updateMemorySource, /onlyAfterChange: true/);
+  assert.doesNotMatch(updateMemorySource, /existing\.embedding|nextEmbedding/);
+  const memorySelectSource = source.slice(
+    source.indexOf("function memorySelectSql"),
+    source.indexOf("export async function persistNativeMemoryVectorsBestEffort"),
+  );
+  assert.match(memorySelectSource, /nativeMemoryVectorMarkerSql/);
+  assert.match(memorySelectSource, /as vectorMarker/);
+  assert.match(memorySelectSource, /as cleanupVectorId/);
+  assert.match(memorySelectSource, /as vectorPending/);
+  const deleteMemorySource = source.slice(
+    source.indexOf("async function deleteMemoryItem"),
+    source.indexOf("async function handleMemorySourceFeedback"),
+  );
+  assert.match(deleteMemorySource, /scheduleVectorCleanupWake/);
+  assert.match(deleteMemorySource, /knownNativeMemoryCleanupEntriesForText/);
+  assert.match(deleteMemorySource, /vectorCleanupOutboxValueStatement/);
+  assert.match(deleteMemorySource, /and updated_at = \?4 and content = \?5/);
+  assert.match(deleteMemorySource, /onlyAfterChange: true/);
 });
 
 function testEnv(overrides: Partial<StateApiEnv> = {}): StateApiEnv {

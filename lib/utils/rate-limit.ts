@@ -1,4 +1,8 @@
 import { d1All, d1First, d1Run } from "@/lib/db/client";
+import {
+  DEFAULT_GLOBAL_DAILY_CALL_LIMIT,
+  globalDailyCallLimitFromEnv,
+} from "@/lib/free-runtime/global-ai-budget";
 import { recordOpsEvent } from "@/lib/observability/events";
 
 const oneDayMs = 24 * 60 * 60 * 1000;
@@ -26,7 +30,7 @@ export const quotaDefaults = {
   guestIpDaily: 150,
   activityDaily: 150,
   memoryDaily: 60,
-  llmGlobalDaily: 1000,
+  llmGlobalDaily: DEFAULT_GLOBAL_DAILY_CALL_LIMIT,
   memoryPostTurnSynthesisThreshold: 3,
 } as const;
 
@@ -153,7 +157,7 @@ async function consumeFixedWindowQuotaWithFailureMode(
 }
 
 export async function consumeDailyLlmBudget(
-  limit = numberFromEnv("LLM_GLOBAL_DAILY_CALL_LIMIT", quotaDefaults.llmGlobalDaily),
+  limit = globalDailyCallLimitFromEnv(process.env.LLM_GLOBAL_DAILY_CALL_LIMIT),
   now = new Date(),
 ): Promise<LlmBudgetResult> {
   const day = utcDayKey(now);

@@ -40,6 +40,12 @@ import {
   type WorkerDeployArtifactEvidence,
 } from "./worker-deploy-evidence";
 import { assertProductionReleaseChildExclusion } from "./production-validation-lock";
+import {
+  createTopicReconciliationAttestation,
+  writeTopicReconciliationAttestation,
+  type ReleaseSequenceIdentity,
+} from "./release-sequence-attestations";
+import { assertFreshProductionVectorizeReadiness } from "./vectorize-readiness-evidence";
 
 type SyncMode = "local" | "remote";
 
@@ -92,6 +98,7 @@ export type TopicSeedReleaseIdentity = {
   assetManifestBytes: number;
   workerDeployReportPath: string;
   workerDeployEvidenceCreatedAt: string;
+  vectorizeReadinessCreatedAt: string;
 };
 
 export type TopicSeedReleaseGateInput = {
@@ -113,6 +120,9 @@ export type TopicSeedReleaseGateDependencies = {
   readDeployReport?: (reportPath: string) => unknown;
   validateDeployEvidence?: typeof validateWorkerDeployEvidenceForRepair;
   readActiveVersion?: (runner: WranglerRunner) => string;
+  validateVectorizeReadiness?: (
+    input: Parameters<typeof assertFreshProductionVectorizeReadiness>[0],
+  ) => { createdAt: string };
 };
 
 export type TopicSeedSyncReport = {
@@ -144,6 +154,7 @@ export type TopicSeedSyncReport = {
   accountDailyUsage?: D1DailyUsage;
   releaseIdentity?: TopicSeedReleaseIdentity;
   releaseBudgetReservation?: D1ReleaseBudgetReservationResult;
+  releaseSequenceAttestationPath?: string;
   ok: boolean;
 };
 
@@ -157,6 +168,7 @@ export type TopicSeedSyncOptions = {
   cwd?: string;
   releaseGate?: TopicSeedReleaseGate;
   clock?: () => Date;
+  attestationClock?: () => Date;
 };
 
 const managedSlugsMetadataKey = "topic_seed_slugs";
@@ -405,6 +417,28 @@ export function syncTopicSeeds(
     );
   }
 
+  let releaseSequenceAttestationPath: string | undefined;
+  if (mode === "remote") {
+    const identity = requireTopicSeedReleaseIdentity(releaseIdentity);
+    const attestationNow = (options.attestationClock ?? (() => new Date()))();
+    if (!(attestationNow instanceof Date) || !Number.isFinite(attestationNow.getTime())) {
+      throw new Error("Topic reconciliation attestation clock is invalid.");
+    }
+    const attestation = createTopicReconciliationAttestation({
+      createdAt: attestationNow.toISOString(),
+      backupDir,
+      release: topicReleaseSequenceIdentity(identity),
+      vectorizeReadinessCreatedAt: identity.vectorizeReadinessCreatedAt,
+      seedSha256: sha256,
+      verifiedTopics: verification.verifiedTopics,
+      verifiedArchivedTopics: verification.verifiedArchivedTopics,
+    });
+    releaseSequenceAttestationPath = writeTopicReconciliationAttestation(
+      attestation,
+      backupDir,
+    );
+  }
+
   const report: TopicSeedSyncReport = {
     createdAt: new Date(now).toISOString(),
     mode,
@@ -434,6 +468,7 @@ export function syncTopicSeeds(
     accountDailyUsage,
     releaseIdentity,
     releaseBudgetReservation,
+    releaseSequenceAttestationPath,
     ok: seeds.length > 0,
   };
   fs.writeFileSync(
@@ -442,6 +477,29 @@ export function syncTopicSeeds(
     { mode: 0o600 },
   );
   return report;
+}
+
+function topicReleaseSequenceIdentity(
+  identity: TopicSeedReleaseIdentity,
+): ReleaseSequenceIdentity {
+  return {
+    candidateVersionId: identity.candidateVersionId,
+    activeVersionId: identity.activeVersionId,
+    git: {
+      head: identity.gitHead,
+      upstream: identity.gitUpstream,
+      upstreamRef: identity.gitUpstreamRef,
+    },
+    artifactEvidence: {
+      sourceFingerprintSha256: identity.sourceFingerprintSha256,
+      sourceFingerprintFileCount: identity.sourceFingerprintFileCount,
+      workerSourceSha256: identity.workerSourceSha256,
+      wranglerConfigSha256: identity.wranglerConfigSha256,
+      assetManifestSha256: identity.assetManifestSha256,
+      assetManifestFileCount: identity.assetManifestFileCount,
+      assetManifestBytes: identity.assetManifestBytes,
+    },
+  };
 }
 
 export function assertRemoteTopicSeedReleaseGate(
@@ -500,6 +558,17 @@ export function assertRemoteTopicSeedReleaseGate(
       `Remote topic synchronization candidate changed during ${input.phase}: expected ${candidateVersionId}, received ${activeVersionId}.`,
     );
   }
+  const vectorizeReadiness = (
+    dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness
+  )({
+    backupDir,
+    currentRelease: {
+      candidateVersionId,
+      activeVersionId,
+      git: gitAfter,
+      artifactEvidence: artifactAfter,
+    },
+  });
   return {
     candidateVersionId,
     activeVersionId,
@@ -516,6 +585,7 @@ export function assertRemoteTopicSeedReleaseGate(
     assetManifestBytes: artifactAfter.assetManifest.bytes,
     workerDeployReportPath,
     workerDeployEvidenceCreatedAt: deployEvidenceAfter.createdAt,
+    vectorizeReadinessCreatedAt: vectorizeReadiness.createdAt,
   };
 }
 
@@ -577,7 +647,8 @@ function validateTopicSeedReleaseIdentity(
   }
   if (
     !path.isAbsolute(identity.workerDeployReportPath) ||
-    !Number.isFinite(Date.parse(identity.workerDeployEvidenceCreatedAt))
+    !Number.isFinite(Date.parse(identity.workerDeployEvidenceCreatedAt)) ||
+    !Number.isFinite(Date.parse(identity.vectorizeReadinessCreatedAt))
   ) {
     throw new Error("Remote topic synchronization release gate returned invalid deploy evidence.");
   }

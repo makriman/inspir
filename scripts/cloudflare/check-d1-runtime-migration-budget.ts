@@ -27,19 +27,29 @@ import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fin
 
 // The cardinality query itself must be bounded. These caps keep its worst-case
 // table scans below this reserve and force a manual re-plan before the five
-// index builds or admin snapshot can become too large for the Free allowance.
+// data-dependent index builds, admin snapshot, or 0016 suppression backfill
+// can become too large for the Free allowance.
 const snapshotTableScanLimit = 90_001;
 const indexedTableScanLimit = 16_662;
-const preCardinalityReadReserve = 350_000;
+const suppressionFeedbackScanLimit = 16_662;
+const preCardinalityReadReserve = 600_000;
 export const MAXIMUM_PROJECTED_RUNTIME_MIGRATION_READS = 1_000_000;
 export const MAXIMUM_PROJECTED_RUNTIME_MIGRATION_WRITES = 50_000;
 export const RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES = 3;
+export const RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ = 5_000;
+export const RUNTIME_MIGRATION_FIXED_DDL_ROWS_WRITTEN = 16;
+// This fixed 0016 reserve is deliberately inclusive: the settings-column
+// addition, empty cleanup-outbox table/index, and final app_metadata completion
+// sentinel all fit inside it. The populated suppression backfill is projected
+// separately from measured cardinalities below.
+export const RUNTIME_MIGRATION_0016_FIXED_ROWS_READ = 1_000;
+export const RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN = 32;
 export const RUNTIME_MIGRATION_BUDGET_EVIDENCE_KIND =
-  "d1-runtime-migrations-0013-0015-budget" as const;
+  "d1-runtime-migrations-0013-0016-budget" as const;
 export const RUNTIME_MIGRATION_BUDGET_REPORT =
   "d1-runtime-migration-budget.json" as const;
 export const RUNTIME_MIGRATION_BUDGET_OPERATION_ID =
-  "d1-runtime-migrations-0013-0015" as const;
+  "d1-runtime-migrations-0013-0016" as const;
 export const RUNTIME_MIGRATION_BUDGET_MAX_AGE_MS = 15 * 60 * 1000;
 
 export type RuntimeMigrationCardinalities = {
@@ -50,6 +60,9 @@ export type RuntimeMigrationCardinalities = {
   rateLimitWindows: number;
   opsEvents: number;
   activityRuns: number;
+  userMemorySettings: number;
+  memorySourceFeedback: number;
+  suppressionBackfillUsers: number;
 };
 
 export type RuntimeMigrationProjection = {
@@ -59,6 +72,10 @@ export type RuntimeMigrationProjection = {
   runtimeIndexRows: number;
   activityPartialUniqueIndexRows: number;
   snapshotRows: number;
+  suppressionBackfillRowsRead: number;
+  suppressionBackfillRowsWritten: number;
+  outboxSchemaRowsRead: number;
+  outboxSchemaRowsWritten: number;
 };
 
 export type D1CardinalityResult = {
@@ -80,7 +97,7 @@ export type RuntimeMigrationBudgetReport = {
   utcDay: string;
   ok: true;
   exact: true;
-  operation: "Production D1 runtime migrations 0013-0015";
+  operation: "Production D1 runtime migrations 0013-0016";
   operationId: typeof RUNTIME_MIGRATION_BUDGET_OPERATION_ID;
   backupDir: string;
   database: {
@@ -134,7 +151,7 @@ export function runRuntimeMigrationBudgetCheck(
   reserveD1ReleaseBudget({
     backupDir,
     operationId: RUNTIME_MIGRATION_BUDGET_OPERATION_ID,
-    operation: "Production D1 runtime migrations 0013-0015",
+    operation: "Production D1 runtime migrations 0013-0016",
     sourceFingerprint: compactFingerprint(sourceFingerprintBefore),
     phase: "maximum",
     rowsRead: MAXIMUM_PROJECTED_RUNTIME_MIGRATION_READS,
@@ -153,7 +170,7 @@ export function runRuntimeMigrationBudgetCheck(
   const ledger = reserveD1ReleaseBudget({
     backupDir,
     operationId: RUNTIME_MIGRATION_BUDGET_OPERATION_ID,
-    operation: "Production D1 runtime migrations 0013-0015",
+    operation: "Production D1 runtime migrations 0013-0016",
     sourceFingerprint: compactFingerprint(sourceFingerprintBefore),
     phase: "exact",
     rowsRead: evaluation.projection.rowsRead,
@@ -173,7 +190,7 @@ export function runRuntimeMigrationBudgetCheck(
     utcDay,
     ok: true,
     exact: true,
-    operation: "Production D1 runtime migrations 0013-0015",
+    operation: "Production D1 runtime migrations 0013-0016",
     operationId: RUNTIME_MIGRATION_BUDGET_OPERATION_ID,
     backupDir,
     database: { id: D1_DATABASE_ID, name: D1_DATABASE_NAME },
@@ -212,7 +229,7 @@ export function evaluateRuntimeMigrationBudget(
   // This assertion intentionally precedes cardinalityLoader: an exhausted
   // account must not execute even the bounded, read-only cardinality SQL.
   assertD1FreeDailyBudget(usage, {
-    operation: "Production D1 migrations 0013-0015 cardinality preflight",
+    operation: "Production D1 migrations 0013-0016 cardinality preflight",
     rowsRead: preCardinalityReadReserve,
     rowsWritten: 0,
   });
@@ -222,7 +239,7 @@ export function evaluateRuntimeMigrationBudget(
   }
   const projection = projectRuntimeMigrationUsage(measured.cardinalities, measured.rowsRead);
   const after = assertD1FreeDailyBudget(usage, {
-    operation: "Production D1 runtime migrations 0013-0015",
+    operation: "Production D1 runtime migrations 0013-0016",
     rowsRead: projection.rowsRead,
     rowsWritten: projection.rowsWritten,
   });
@@ -248,6 +265,24 @@ export function projectRuntimeMigrationUsage(
   );
   assertCardinalityBelowScanLimit(counts.opsEvents, indexedTableScanLimit, "ops events");
   assertCardinalityBelowScanLimit(counts.activityRuns, indexedTableScanLimit, "activity runs");
+  assertCardinalityBelowScanLimit(
+    counts.userMemorySettings,
+    snapshotTableScanLimit,
+    "user memory settings",
+  );
+  assertCardinalityBelowScanLimit(
+    counts.memorySourceFeedback,
+    suppressionFeedbackScanLimit,
+    "memory source feedback",
+  );
+  assertCardinalityBelowScanLimit(
+    counts.suppressionBackfillUsers,
+    suppressionFeedbackScanLimit,
+    "suppression backfill users",
+  );
+  if (counts.suppressionBackfillUsers > counts.memorySourceFeedback) {
+    throw new Error("Suppression backfill users exceed source feedback rows.");
+  }
   const runtimeIndexRows = safeSum(
     [counts.rateLimitWindows, counts.aiRuns, counts.opsEvents],
     "0013 runtime index rows",
@@ -263,12 +298,37 @@ export function projectRuntimeMigrationUsage(
   );
   const indexedRows = safeSum(
     [runtimeIndexRows, activityPartialUniqueIndexRows],
-    "0013-0015 indexed rows",
+    "0013-0016 populated index rows",
   );
   const snapshotRows = safeSum(
     [counts.users, counts.chats, counts.messages, counts.aiRuns],
     "snapshot rows",
   );
+  // 0016 adds the settings mask, scans only the capped feedback table once to
+  // recover canonical/bare tombstones, and mutates at most one settings row per
+  // affected user. A missing settings row writes both the table row and the
+  // implicit TEXT PRIMARY KEY index entry, so conservatively reserve two billed
+  // writes for every affected user even though the existing-row conflict path
+  // is cheaper. Reserve extra read passes for DISTINCT/grouping, the users PK join,
+  // conflict lookup, and column-addition constraint validation. Current summary
+  // JSON is deliberately excluded and is preserved lazily by the bounded runtime.
+  const suppressionBackfillRowsRead = safeSum(
+    [
+      counts.userMemorySettings,
+      safeMultiply(counts.memorySourceFeedback, 2, "suppression feedback reads"),
+      safeMultiply(counts.suppressionBackfillUsers, 3, "suppression user lookup reads"),
+    ],
+    "0016 suppression backfill reads",
+  );
+  const suppressionBackfillRowsWritten = safeMultiply(
+    counts.suppressionBackfillUsers,
+    2,
+    "0016 suppression backfill table and primary-key writes",
+  );
+  // Keep these evidence keys stable even though the fixed reserve also covers
+  // the mask column addition and completion sentinel, not only the outbox schema.
+  const outboxSchemaRowsRead = RUNTIME_MIGRATION_0016_FIXED_ROWS_READ;
+  const outboxSchemaRowsWritten = RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN;
   // DDL accounting is platform-dependent. Reserve four reads and three writes
   // per indexed row, then three full snapshot passes for the reserved-domain
   // exclusion lookups in 0014 plus fixed verification room.
@@ -281,12 +341,19 @@ export function projectRuntimeMigrationUsage(
         RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES,
         "snapshot reads",
       ),
-      5_000,
+      RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ,
+      suppressionBackfillRowsRead,
+      outboxSchemaRowsRead,
     ],
     "projected migration reads",
   );
   const rowsWritten = safeSum(
-    [safeMultiply(indexedRows, 3, "indexed-row writes"), 16],
+    [
+      safeMultiply(indexedRows, 3, "indexed-row writes"),
+      RUNTIME_MIGRATION_FIXED_DDL_ROWS_WRITTEN,
+      suppressionBackfillRowsWritten,
+      outboxSchemaRowsWritten,
+    ],
     "projected migration writes",
   );
   if (rowsRead > MAXIMUM_PROJECTED_RUNTIME_MIGRATION_READS) {
@@ -306,6 +373,10 @@ export function projectRuntimeMigrationUsage(
     runtimeIndexRows,
     activityPartialUniqueIndexRows,
     snapshotRows,
+    suppressionBackfillRowsRead,
+    suppressionBackfillRowsWritten,
+    outboxSchemaRowsRead,
+    outboxSchemaRowsWritten,
   };
 }
 
@@ -320,7 +391,29 @@ export function loadRuntimeMigrationCardinalities(
     `  (SELECT count(*) FROM (SELECT 1 FROM ai_runs LIMIT ${indexedTableScanLimit})) AS ai_runs,`,
     `  (SELECT count(*) FROM (SELECT 1 FROM rate_limit_windows LIMIT ${indexedTableScanLimit})) AS rate_limit_windows,`,
     `  (SELECT count(*) FROM (SELECT 1 FROM ops_events LIMIT ${indexedTableScanLimit})) AS ops_events,`,
-    `  (SELECT count(*) FROM (SELECT 1 FROM activity_runs LIMIT ${indexedTableScanLimit})) AS activity_runs;`,
+    `  (SELECT count(*) FROM (SELECT 1 FROM activity_runs LIMIT ${indexedTableScanLimit})) AS activity_runs,`,
+    `  (SELECT count(*) FROM (SELECT 1 FROM user_memory_settings LIMIT ${snapshotTableScanLimit})) AS user_memory_settings,`,
+    `  (SELECT count(*) FROM (SELECT 1 FROM memory_source_feedback LIMIT ${suppressionFeedbackScanLimit})) AS memory_source_feedback,`,
+    "  (SELECT count(*) FROM (",
+    "     SELECT DISTINCT feedback.user_id",
+    "     FROM (",
+    `       SELECT user_id, summary_section_id, action FROM memory_source_feedback LIMIT ${suppressionFeedbackScanLimit}`,
+    "     ) AS feedback",
+    "     INNER JOIN users ON users.id = feedback.user_id",
+    "     WHERE feedback.action IN ('dont_mention', 'not_relevant')",
+    "       AND feedback.summary_section_id IN (",
+    "         'identity', 'native-memory-identity',",
+    "         'preferences', 'native-memory-preferences',",
+    "         'learning_style', 'native-memory-learning_style',",
+    "         'projects', 'native-memory-projects',",
+    "         'goals', 'native-memory-goals',",
+    "         'knowledge', 'native-memory-knowledge',",
+    "         'constraints', 'native-memory-constraints',",
+    "         'interaction', 'native-memory-interaction', 'native-recent-learning',",
+    "         'general', 'native-memory-general'",
+    "       )",
+    `     LIMIT ${suppressionFeedbackScanLimit}`,
+    "  )) AS suppression_backfill_users;",
   ].join("\n");
   const value = parseWranglerJson(
     runner([
@@ -350,6 +443,18 @@ export function loadRuntimeMigrationCardinalities(
     rateLimitWindows: requiredNonNegativeInteger(row.rate_limit_windows, "rate-limit windows"),
     opsEvents: requiredNonNegativeInteger(row.ops_events, "ops events"),
     activityRuns: requiredNonNegativeInteger(row.activity_runs, "activity runs"),
+    userMemorySettings: requiredNonNegativeInteger(
+      row.user_memory_settings,
+      "user memory settings",
+    ),
+    memorySourceFeedback: requiredNonNegativeInteger(
+      row.memory_source_feedback,
+      "memory source feedback",
+    ),
+    suppressionBackfillUsers: requiredNonNegativeInteger(
+      row.suppression_backfill_users,
+      "suppression backfill users",
+    ),
   };
   assertCardinalityBelowScanLimit(cardinalities.users, snapshotTableScanLimit, "users");
   assertCardinalityBelowScanLimit(cardinalities.chats, snapshotTableScanLimit, "chats");
@@ -369,6 +474,21 @@ export function loadRuntimeMigrationCardinalities(
     cardinalities.activityRuns,
     indexedTableScanLimit,
     "activity runs",
+  );
+  assertCardinalityBelowScanLimit(
+    cardinalities.userMemorySettings,
+    snapshotTableScanLimit,
+    "user memory settings",
+  );
+  assertCardinalityBelowScanLimit(
+    cardinalities.memorySourceFeedback,
+    suppressionFeedbackScanLimit,
+    "memory source feedback",
+  );
+  assertCardinalityBelowScanLimit(
+    cardinalities.suppressionBackfillUsers,
+    suppressionFeedbackScanLimit,
+    "suppression backfill users",
   );
   const rowsRead = requiredNonNegativeInteger(result.meta.rows_read, "cardinality rows read");
   const rowsWritten = requiredNonNegativeInteger(

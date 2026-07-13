@@ -5,8 +5,24 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
-import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
-import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
+import {
+  NATIVE_MEMORY_VECTOR_REVISION_HEX_CHARS,
+  nativeMemoryVectorId,
+  parseNativeMemoryVectorId,
+} from "../../lib/free-runtime/native-memory-vector";
+import type { MemoryVectorCleanupQueueMessage } from "../../lib/free-runtime/memory-queue-contract";
+import { buildNativeMemoryTurnSearchableText } from "../../lib/free-runtime/state-api";
+import { readCloudflareApiToken } from "./cloudflare-api-token";
+import { readPrivateJsonNoFollow, writePrivateJsonDurably } from "./d1-release-budget-ledger";
+import {
+  CLOUDFLARE_ACCOUNT_ID,
+  MEMORY_POST_TURN_QUEUE_NAME,
+  VECTORIZE_INDEX_NAME,
+  cloudflareDir,
+  commandEnv,
+  resolveBackupDir,
+  stableStringify,
+} from "./migration-config";
 
 const workerName = "inspirlearning";
 const defaultBaseUrl = "https://inspirlearning.com";
@@ -18,6 +34,22 @@ const tailOutputLimit = 16 * 1024 * 1024;
 const requestTimeoutMs = 75_000;
 const maximumResponseBytes = 768 * 1024;
 const cleanupAttemptLimit = 3;
+const queueCaptureTimeoutMs = 60_000;
+// Vectorize mutations are asynchronous. Production evidence must wait beyond
+// the observed p99 visibility window and prove two genuinely spaced absence
+// reads, matching the runtime outbox fence instead of accepting fast stale
+// reads as authoritative deletion.
+export const vectorStateTimeoutMs = 8 * 60_000;
+export const vectorCleanupMinimumSettleMs = 3 * 60_000;
+export const vectorAbsenceVerificationSpacingMs = 3 * 60_000;
+export const authenticatedOutboxDrainRetryDelayMs = 30_000;
+// A crashed writer can retain a 15-minute write fence before the runtime can
+// begin its two delayed absence reads. Keep the operator wait bounded while
+// covering that complete recovery window with margin.
+export const authenticatedOutboxDrainMaximumAttempts = 60;
+const cloudflareApiResponseLimit = 64 * 1024;
+export const authenticatedMemoryRecoveryEvidenceName =
+  "authenticated-production-memory-recovery.json";
 export const authenticatedMutationCpuThresholdMs = 8;
 export const authenticatedMutationInventoryNames = [
   "users",
@@ -42,6 +74,7 @@ export const authenticatedMutationInventoryNames = [
   "memory_synthesis_runs",
   "memory_source_feedback",
   "memory_events",
+  "memory_vector_cleanup_outbox",
 ] as const;
 
 export type AuthenticatedMutationTrace = {
@@ -72,6 +105,82 @@ export type AuthenticatedMutationTailEvaluation = {
   problems: string[];
 };
 
+export type AuthenticatedMemoryQueueTailEvaluation = {
+  ok: boolean;
+  authenticatedValidationVersionId: string;
+  matchedEvents: number;
+  cpuTimeMs: number | null;
+  indexedVectorCount: number | null;
+  problems: string[];
+};
+
+export type AuthenticatedSemanticRetrievalTailEvaluation = {
+  ok: boolean;
+  authenticatedValidationVersionId: string;
+  matchedEvents: number;
+  cpuTimeMs: number | null;
+  hydratedTurnCount: number | null;
+  problems: string[];
+};
+
+export type AuthenticatedMemoryPostTurnJob = {
+  type: "memory.post_turn.v2";
+  enqueuedAt: string;
+  aiRunId: string;
+  userId: string;
+  chatId: string;
+  topic: { id: string; name: string; slug: string };
+  userMessageId: string;
+  assistantMessageId: string;
+  contextMessageIds: string[];
+};
+
+export type AuthenticatedMemoryHotPathHooks = {
+  publishPostTurnAndRequireStored: (
+    job: AuthenticatedMemoryPostTurnJob,
+    turnVectorId: string,
+  ) => Promise<void>;
+  requireKnownVectorPresent: (vectorId: string) => Promise<void>;
+  requireSemanticTurnHydrated: (trace: AuthenticatedMutationTrace) => Promise<void>;
+  requestVectorCleanupDrain: () => Promise<void>;
+  requireKnownVectorAbsent: (vectorId: string) => Promise<void>;
+};
+
+export type AuthenticatedMemoryRecoveryEvidence = {
+  kind: "authenticated-production-memory-recovery-v2";
+  createdAt: string;
+  releaseCandidateVersionId: string;
+  authenticatedValidationVersionId: string;
+  runId: string;
+  userId: string;
+  sourceChatId: string;
+  userMessageId: string;
+  turnVectorId: string;
+  sourceFingerprintSha256: string;
+  immutableReleaseIdentitySha256: string;
+  queuePushPreparedAt: string;
+};
+
+export function authenticatedTurnVectorId(
+  userMessageId: string,
+  userContent: string,
+  assistantContent: string,
+) {
+  const searchableText = buildNativeMemoryTurnSearchableText(userContent, assistantContent);
+  if (!searchableText) {
+    throw new Error("Authenticated memory validation turn text is empty.");
+  }
+  const revision = createHash("sha256")
+    .update(searchableText, "utf8")
+    .digest("hex")
+    .slice(0, NATIVE_MEMORY_VECTOR_REVISION_HEX_CHARS);
+  const vectorId = nativeMemoryVectorId("chat_memory_turns", userMessageId, revision);
+  if (!vectorId) {
+    throw new Error("Authenticated memory validation turn vector ID is invalid.");
+  }
+  return vectorId;
+}
+
 type MutationFetcher = typeof fetch;
 
 type MutationFlowOptions = {
@@ -80,6 +189,7 @@ type MutationFlowOptions = {
   authSecret: string;
   runId: string;
   tailSessionToken: string;
+  memoryHotPath: AuthenticatedMemoryHotPathHooks;
   fetcher?: MutationFetcher;
   traceSink?: AuthenticatedMutationTrace[];
 };
@@ -95,6 +205,7 @@ type MutationRequestResult = {
   response: Response;
   text: string;
   value: unknown;
+  trace: AuthenticatedMutationTrace;
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -115,6 +226,25 @@ async function main() {
     getArg("--expected-version") ?? process.env.EXPECTED_WORKER_VERSION,
     "expected Worker version",
   );
+  const candidateVersionId = requireUuid(
+    getArg("--candidate-version") ?? process.env.E2E_VALIDATION_CANDIDATE_VERSION,
+    "candidate Worker version",
+  );
+  const sourceFingerprintSha256 = requireSha256(
+    getArg("--source-fingerprint-sha256") ??
+      process.env.E2E_VALIDATION_SOURCE_FINGERPRINT_SHA256,
+    "source fingerprint",
+  );
+  const immutableReleaseIdentitySha256 = requireSha256(
+    getArg("--immutable-release-identity-sha256") ??
+      process.env.E2E_VALIDATION_IMMUTABLE_RELEASE_IDENTITY_SHA256,
+    "immutable release identity",
+  );
+  const memoryRecoveryEvidencePath = requireMemoryRecoveryEvidencePath(
+    getArg("--memory-recovery-evidence-path") ??
+      process.env.E2E_VALIDATION_MEMORY_RECOVERY_EVIDENCE_PATH,
+  );
+  assertPathAbsent(memoryRecoveryEvidencePath, "authenticated memory recovery evidence");
   const runId = requireUuid(process.env.E2E_TEST_MUTATION_RUN_ID, "mutation run ID");
   const authSecret = requireSecret(process.env.E2E_TEST_AUTH_SECRET);
   const baseUrl = normalizeBaseUrl(
@@ -124,7 +254,7 @@ async function main() {
   requireActiveDeployment(wrangler, expectedVersion);
 
   const tailSessionToken = randomUUID();
-  const tail = spawn(
+  const httpTail = spawn(
     wrangler,
     [
       "tail",
@@ -138,35 +268,167 @@ async function main() {
     ],
     { cwd: process.cwd(), env: commandEnv(), stdio: ["ignore", "pipe", "pipe"] },
   );
-  const capture = captureTail(tail);
+  const versionTail = spawn(
+    wrangler,
+    ["tail", workerName, "--format", "json", "--version-id", expectedVersion],
+    { cwd: process.cwd(), env: commandEnv(), stdio: ["ignore", "pipe", "pipe"] },
+  );
+  const httpCapture = captureTail(httpTail);
+  const versionCapture = captureTail(versionTail);
   const traces: AuthenticatedMutationTrace[] = [];
+  const hotPathEvidence: {
+    queue: AuthenticatedMemoryQueueTailEvaluation | null;
+    semantic: AuthenticatedSemanticRetrievalTailEvaluation | null;
+  } = { queue: null, semantic: null };
+  let memoryRecoveryEvidence: AuthenticatedMemoryRecoveryEvidence | null = null;
   try {
-    await waitForTailReadiness({
-      tail,
-      output: capture.output,
-      diagnostics: capture.diagnostics,
-    });
+    await Promise.all([
+      waitForTailReadiness({
+        tail: httpTail,
+        output: httpCapture.output,
+        diagnostics: httpCapture.diagnostics,
+      }),
+      waitForTailReadiness({
+        tail: versionTail,
+        output: versionCapture.output,
+        diagnostics: versionCapture.diagnostics,
+      }),
+    ]);
+    const apiToken = requireCloudflareApiToken();
+    const queueId = readQueueId(wrangler);
+    const memoryHotPath: AuthenticatedMemoryHotPathHooks = {
+      publishPostTurnAndRequireStored: async (job, turnVectorId) => {
+        requireActiveDeployment(wrangler, expectedVersion);
+        if (memoryRecoveryEvidence) {
+          throw new Error("Authenticated memory Queue publish was attempted more than once.");
+        }
+        const preparedAt = new Date().toISOString();
+        const evidence = parseAuthenticatedMemoryRecoveryEvidence({
+          kind: "authenticated-production-memory-recovery-v2",
+          createdAt: preparedAt,
+          releaseCandidateVersionId: candidateVersionId,
+          authenticatedValidationVersionId: expectedVersion,
+          runId,
+          userId: job.userId,
+          sourceChatId: job.chatId,
+          userMessageId: job.userMessageId,
+          turnVectorId,
+          sourceFingerprintSha256,
+          immutableReleaseIdentitySha256,
+          queuePushPreparedAt: preparedAt,
+        });
+        writePrivateJsonDurably(memoryRecoveryEvidencePath, evidence, { replace: false });
+        memoryRecoveryEvidence = evidence;
+        const captureStartedAt = Date.now();
+        await pushAuthenticatedMemoryPostTurn(apiToken, queueId, job);
+        hotPathEvidence.queue = await waitForAuthenticatedMemoryQueueEvidence({
+          tail: versionTail,
+          output: versionCapture.output,
+          authenticatedValidationVersionId: expectedVersion,
+          userId: job.userId,
+          captureStartedAt,
+        });
+        if (!hotPathEvidence.queue.ok) {
+          throw new Error(
+            `Authenticated stored-memory Queue evidence failed (${hotPathEvidence.queue.problems.join("; ")}).`,
+          );
+        }
+        requireActiveDeployment(wrangler, expectedVersion);
+      },
+      requireKnownVectorPresent: async (vectorId) => {
+        requireActiveDeployment(wrangler, expectedVersion);
+        await waitForKnownVectorState({
+          apiToken,
+          vectorId,
+          expectedPresent: true,
+        });
+        requireActiveDeployment(wrangler, expectedVersion);
+      },
+      requireSemanticTurnHydrated: async (trace) => {
+        requireActiveDeployment(wrangler, expectedVersion);
+        hotPathEvidence.semantic = await waitForAuthenticatedSemanticRetrievalEvidence({
+          tail: httpTail,
+          output: httpCapture.output,
+          trace,
+          authenticatedValidationVersionId: expectedVersion,
+        });
+        if (!hotPathEvidence.semantic.ok) {
+          throw new Error(
+            `Authenticated semantic retrieval evidence failed (${hotPathEvidence.semantic.problems.join("; ")}).`,
+          );
+        }
+        requireActiveDeployment(wrangler, expectedVersion);
+      },
+      requestVectorCleanupDrain: async () => {
+        requireActiveDeployment(wrangler, expectedVersion);
+        await pushAuthenticatedMemoryVectorCleanupWake(
+          apiToken,
+          queueId,
+          "authenticated-production-validation",
+        );
+        requireActiveDeployment(wrangler, expectedVersion);
+      },
+      requireKnownVectorAbsent: async (vectorId) => {
+        requireActiveDeployment(wrangler, expectedVersion);
+        await waitForKnownVectorState({
+          apiToken,
+          vectorId,
+          expectedPresent: false,
+          minimumSettleMs: vectorCleanupMinimumSettleMs,
+        });
+        requireActiveDeployment(wrangler, expectedVersion);
+        if (!memoryRecoveryEvidence || memoryRecoveryEvidence.turnVectorId !== vectorId) {
+          throw new Error("Authenticated memory recovery evidence does not match the cleaned vector.");
+        }
+        removeAuthenticatedMemoryRecoveryEvidence(
+          memoryRecoveryEvidencePath,
+          memoryRecoveryEvidence,
+        );
+        memoryRecoveryEvidence = null;
+      },
+    };
     const flow = await runAuthenticatedProductionMutationFlow({
       baseUrl,
       expectedVersion,
       authSecret,
       runId,
       tailSessionToken,
+      memoryHotPath,
       traceSink: traces,
     });
-    await waitForTailProbes(tail, capture.output, traces.map((trace) => trace.probe));
-    await stopTail(tail, capture.closed);
-    const evaluation = evaluateAuthenticatedMutationTail(capture.output(), traces);
+    await waitForTailProbes(httpTail, httpCapture.output, traces.map((trace) => trace.probe));
+    await stopTail(httpTail, httpCapture.closed);
+    await stopTail(versionTail, versionCapture.closed);
+    const evaluation = evaluateAuthenticatedMutationTail(httpCapture.output(), traces);
     const report = {
-      kind: "authenticated-production-mutation-validation-v1",
+      kind: "authenticated-production-mutation-validation-v2",
       createdAt: new Date().toISOString(),
-      ok: evaluation.ok && flow.cleanupVerified,
+      ok:
+        evaluation.ok &&
+        flow.cleanupVerified &&
+        flow.queueStored &&
+        flow.knownVectorPresentBeforeRecall &&
+        flow.semanticTurnHydrated &&
+        flow.sourceChatDeleted &&
+        flow.knownVectorAbsentAfterCleanup &&
+        hotPathEvidence.queue?.ok === true &&
+        hotPathEvidence.semantic?.ok === true,
       workerName,
       expectedVersion,
+      authenticatedValidationVersionId: expectedVersion,
+      evidenceVersionRole: "authenticated-validation-version",
+      releaseBinding: {
+        candidateVersionId,
+        sourceFingerprintSha256,
+        immutableReleaseIdentitySha256,
+        immutableSourceAndArtifactIdentity: "parent-attested-shared-across-secret-configuration-versions",
+      },
       cpuThresholdExclusiveMs: authenticatedMutationCpuThresholdMs,
       requestCount: traces.length,
       traces,
       tail: evaluation,
+      storedMemoryQueueTail: hotPathEvidence.queue,
+      semanticRetrievalTail: hotPathEvidence.semantic,
       outcomes: {
         chatFinalized: flow.chatFinalized,
         profileMutationVerified: flow.profileMutationVerified,
@@ -177,8 +439,13 @@ async function main() {
         flashcardsCompleted: flow.flashcardsCompleted,
         savedQuizResultVerified: flow.savedQuizResultVerified,
         savedFlashcardResultVerified: flow.savedFlashcardResultVerified,
+        queueStored: flow.queueStored,
+        knownVectorPresentBeforeRecall: flow.knownVectorPresentBeforeRecall,
+        semanticTurnHydrated: flow.semanticTurnHydrated,
+        sourceChatDeleted: flow.sourceChatDeleted,
+        knownVectorAbsentAfterCleanup: flow.knownVectorAbsentAfterCleanup,
         cleanupVerified: flow.cleanupVerified,
-        sharedGlobalAiBudgetCalls: 4,
+        sharedGlobalAiBudgetCalls: 7,
       },
     };
     const reportPath = path.join(
@@ -188,20 +455,43 @@ async function main() {
     writePrivateJsonDurably(reportPath, report, { replace: pathEntryExists(reportPath) });
     if (!report.ok) {
       throw new Error(
-        `Authenticated mutation validation failed (${evaluation.problems.join("; ") || "cleanup residue"}).`,
+        `Authenticated mutation validation failed (${[
+          ...evaluation.problems,
+          ...(hotPathEvidence.queue?.problems ?? []),
+          ...(hotPathEvidence.semantic?.problems ?? []),
+        ].join("; ") || "cleanup residue"}).`,
       );
     }
     console.log(JSON.stringify({
       kind: report.kind,
       ok: report.ok,
       createdAt: report.createdAt,
-      expectedVersion,
+      authenticatedValidationVersionId: expectedVersion,
       requestCount: report.requestCount,
-      maximumCpuTimeMs: Math.max(0, ...evaluation.samples.map((sample) => sample.cpuTimeMs ?? 0)),
+      maximumCpuTimeMs: Math.max(
+        0,
+        ...evaluation.samples.map((sample) => sample.cpuTimeMs ?? 0),
+        hotPathEvidence.queue?.cpuTimeMs ?? 0,
+        hotPathEvidence.semantic?.cpuTimeMs ?? 0,
+      ),
       reportPath,
     }, null, 2));
   } finally {
-    if (!hasChildExited(tail)) await stopTail(tail, capture.closed);
+    const shutdownErrors: Error[] = [];
+    for (const entry of [
+      { tail: httpTail, closed: httpCapture.closed },
+      { tail: versionTail, closed: versionCapture.closed },
+    ]) {
+      if (hasChildExited(entry.tail)) continue;
+      try {
+        await stopTail(entry.tail, entry.closed);
+      } catch (error) {
+        shutdownErrors.push(error instanceof Error ? error : new Error("Wrangler tail shutdown failed."));
+      }
+    }
+    if (shutdownErrors.length) {
+      throw new AggregateError(shutdownErrors, "Authenticated mutation tails did not stop safely.");
+    }
   }
 }
 
@@ -215,7 +505,9 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   let cookie = "";
   let requestIndex = 0;
   let primaryError: unknown = null;
-  let cleanupError: unknown = null;
+  const cleanupErrors: unknown[] = [];
+  let sourceChatId: string | null = null;
+  let knownTurnVectorId: string | null = null;
   let chatFinalized = false;
   let profileMutationVerified = false;
   let spanishActivityBundleVerified = false;
@@ -225,6 +517,12 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   let flashcardsCompleted = false;
   let savedQuizResultVerified = false;
   let savedFlashcardResultVerified = false;
+  let queueStored = false;
+  let knownVectorPresentBeforeRecall = false;
+  let semanticTurnHydrated = false;
+  let sourceChatDeleted = false;
+  let knownVectorAbsentAfterCleanup = false;
+  let cleanupVerified = false;
 
   const request = async (
     label: string,
@@ -249,14 +547,15 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     });
     cookie = updatedSessionCookie(cookie, response.headers);
     const text = await readBoundedResponseText(response, maximumResponseBytes);
-    traceSink.push({
+    const trace = {
       label,
       probe,
       requestKey: `${url.pathname}${url.search}`,
       routeTemplate: normalizeAuthenticatedMutationRoute(url.pathname),
       method: init.method ?? "GET",
       status: response.status,
-    });
+    } satisfies AuthenticatedMutationTrace;
+    traceSink.push(trace);
     if (response.status !== expectedStatus) {
       throw new Error(`${label} returned HTTP ${response.status}; expected ${expectedStatus}.`);
     }
@@ -268,7 +567,7 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
         `${label} response`,
       );
     }
-    return { response, text, value };
+    return { response, text, value, trace };
   };
 
   const mutationBody = (action: string, userId?: string) => JSON.stringify({
@@ -355,7 +654,10 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     }
 
     const chatId = await createChat(request, "learn-anything", "chat-create");
+    sourceChatId = chatId;
+    const recallMarker = `cobalt lantern orbit ${options.runId.replaceAll("-", "")}`;
     const streamedPrompt =
+      `In this learning example, the unique phrase is "${recallMarker}". ` +
       "Explain why retrieval practice helps durable learning in two concise sentences.";
     const streamed = await request("chat-provider", "/api/chat", {
       method: "POST",
@@ -405,6 +707,111 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     if (!chatFinalized) {
       throw new Error("Authenticated chat finalization did not survive exact message readback.");
     }
+
+    const streamTopic = requiredRecord(streamDetail.topic, "streamed saved chat topic");
+    const memoryPostTurnJob: AuthenticatedMemoryPostTurnJob = {
+      type: "memory.post_turn.v2",
+      enqueuedAt: new Date().toISOString(),
+      aiRunId,
+      userId: expectedIdentity.userId,
+      chatId,
+      topic: {
+        id: requiredNonEmptyString(streamTopic.id, "streamed saved chat topic ID"),
+        name: requiredNonEmptyString(streamTopic.name, "streamed saved chat topic name"),
+        slug: requiredNonEmptyString(streamTopic.slug, "streamed saved chat topic slug"),
+      },
+      userMessageId,
+      assistantMessageId,
+      contextMessageIds: [],
+    };
+    knownTurnVectorId = authenticatedTurnVectorId(
+      userMessageId,
+      streamedPrompt,
+      content,
+    );
+    await options.memoryHotPath.publishPostTurnAndRequireStored(
+      memoryPostTurnJob,
+      knownTurnVectorId,
+    );
+    queueStored = true;
+    await options.memoryHotPath.requireKnownVectorPresent(knownTurnVectorId);
+    knownVectorPresentBeforeRecall = true;
+
+    const recallChatId = await createChat(request, "learn-anything", "semantic-recall-chat-create");
+    const recallPrompt =
+      `Use previous-chat context containing the exact phrase "${recallMarker}" ` +
+      "and explain the learning method it described in one concise sentence.";
+    const recalled = await request("chat-semantic-recall-provider", "/api/chat", {
+      method: "POST",
+      headers: { accept: "text/event-stream", "content-type": "application/json" },
+      body: JSON.stringify({
+        chatId: recallChatId,
+        content: recallPrompt,
+      }),
+    });
+    if (!recalled.response.headers.get("content-type")?.includes("text/event-stream")) {
+      throw new Error("Authenticated semantic recall response did not stream SSE.");
+    }
+    const recalledContent = parseCompleteAuthenticatedOpenAiSse(recalled.text);
+    const recalledAiRunId = requireResponseUuid(recalled.response, "x-inspir-ai-run-id");
+    const recalledUserMessageId = requireResponseUuid(
+      recalled.response,
+      "x-inspir-user-message-id",
+    );
+    if (
+      recalled.response.headers.get("x-inspir-chat-id") !== recallChatId ||
+      !recalledContent
+    ) {
+      throw new Error("Authenticated semantic recall stream metadata is incomplete.");
+    }
+    const recalledFinalized = requiredRecord((await request(
+      "chat-semantic-recall-finalize",
+      "/api/chat/finalize",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          aiRunId: recalledAiRunId,
+          chatId: recallChatId,
+          userMessageId: recalledUserMessageId,
+          content: recalledContent,
+        }),
+      },
+    )).value, "semantic recall finalization");
+    const recalledAssistantMessageId = requiredUuid(
+      recalledFinalized.assistantMessageId,
+      "semantic recall assistant message ID",
+    );
+    const recalledDetail = requiredRecord((await request(
+      "chat-semantic-recall-result",
+      `/api/chats/${recallChatId}`,
+      { method: "GET" },
+    )).value, "semantic recall saved chat");
+    const recalledMessages = requiredArray(
+      recalledDetail.messages,
+      "semantic recall saved messages",
+    );
+    const recalledUserIndex = recalledMessages.findIndex((value) => {
+      const message = optionalRecord(value);
+      return message?.id === recalledUserMessageId &&
+        message.role === "user" &&
+        message.content === recallPrompt;
+    });
+    const recalledAssistantIndex = recalledMessages.findIndex((value) => {
+      const message = optionalRecord(value);
+      return message?.id === recalledAssistantMessageId &&
+        message.role === "assistant" &&
+        message.content === recalledContent;
+    });
+    if (
+      recalledFinalized.ok !== true ||
+      recalledUserIndex < 0 ||
+      recalledAssistantIndex !== recalledUserIndex + 1
+    ) {
+      throw new Error("Authenticated semantic recall did not survive exact message readback.");
+    }
+    await options.memoryHotPath.requireSemanticTurnHydrated(recalled.trace);
+    semanticTurnHydrated = true;
 
     const legacyPrompt = "Give one concise example of retrieval practice in a history lesson.";
     const legacy = await request("chat-legacy-provider", "/api/chat", {
@@ -597,66 +1004,118 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   } catch (error) {
     primaryError = error;
   } finally {
-    try {
-      await cleanupDisposableMutationState({
-        cleanup: async () => {
-          const proof = cleanupProof(
-            options.authSecret,
-            options.expectedVersion,
-            options.runId,
-            expectedIdentity.userId,
-          );
-          const cleanup = await request("cleanup-disposable", "/api/migration/e2e-auth", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              "x-migration-e2e-auth-secret": options.authSecret,
-              "x-migration-e2e-cleanup-proof": proof,
-            },
-            body: mutationBody("cleanup-disposable", expectedIdentity.userId),
-          });
-          assertAuthenticatedMutationResponseProof(
-            cleanup.value,
-            {
-              candidateVersionId: options.expectedVersion,
-              runId: options.runId,
-              runtimeVersionId: options.expectedVersion,
-            },
-            "disposable cleanup",
-          );
-        },
-        inspect: async () => {
-          const inspectedResponse = await request(
-            "verify-disposable-cleanup",
-            "/api/migration/e2e-auth",
-            {
+    if (sourceChatId) {
+      let deletionMutationError: unknown = null;
+      try {
+        const deleted = requiredRecord((await request(
+          "delete-stored-memory-source-chat",
+          `/api/chats/${sourceChatId}`,
+          { method: "DELETE" },
+        )).value, "stored-memory source chat deletion");
+        if (deleted.ok !== true) {
+          throw new Error("Owned source chat deletion did not return its success contract.");
+        }
+      } catch (error) {
+        deletionMutationError = error;
+      }
+      try {
+        await request(
+          "verify-stored-memory-source-chat-deleted",
+          `/api/chats/${sourceChatId}`,
+          { method: "GET" },
+          404,
+        );
+        sourceChatDeleted = true;
+      } catch (error) {
+        if (deletionMutationError) cleanupErrors.push(deletionMutationError);
+        cleanupErrors.push(error);
+      }
+    }
+    if (sourceChatId && !sourceChatDeleted) {
+      cleanupErrors.push(new Error(
+        "Refusing hidden disposable D1 cleanup before owned source-chat deletion is proven.",
+      ));
+    } else {
+      try {
+        await options.memoryHotPath.requestVectorCleanupDrain();
+      } catch (error) {
+        cleanupErrors.push(error);
+      }
+      if (knownTurnVectorId) {
+        try {
+          await options.memoryHotPath.requireKnownVectorAbsent(knownTurnVectorId);
+          knownVectorAbsentAfterCleanup = true;
+        } catch (error) {
+          cleanupErrors.push(error);
+        }
+      }
+      try {
+        await cleanupDisposableMutationState({
+          cleanup: async () => {
+            const proof = cleanupProof(
+              options.authSecret,
+              options.expectedVersion,
+              options.runId,
+              expectedIdentity.userId,
+            );
+            const cleanup = await request("cleanup-disposable", "/api/migration/e2e-auth", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
                 "x-migration-e2e-auth-secret": options.authSecret,
+                "x-migration-e2e-cleanup-proof": proof,
               },
-              body: mutationBody("verify-disposable-cleanup", expectedIdentity.userId),
-            },
-          );
-          const inspected = assertAuthenticatedMutationResponseProof(
-            inspectedResponse.value,
-            {
-              candidateVersionId: options.expectedVersion,
-              runId: options.runId,
-              runtimeVersionId: options.expectedVersion,
-            },
-            "cleanup verification",
-          ).payload;
-          const inventory = exactDisposableInventory(inspected.inventory);
-          return { ok: inspected.ok === true && inventoryIsZero(inventory), inventory };
-        },
-      });
-    } catch (error) {
-      cleanupError = error;
+              body: mutationBody("cleanup-disposable", expectedIdentity.userId),
+            });
+            assertAuthenticatedMutationResponseProof(
+              cleanup.value,
+              {
+                candidateVersionId: options.expectedVersion,
+                runId: options.runId,
+                runtimeVersionId: options.expectedVersion,
+              },
+              "disposable cleanup",
+            );
+          },
+          inspect: async () => {
+            const inspectedResponse = await request(
+              "verify-disposable-cleanup",
+              "/api/migration/e2e-auth",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                  "x-migration-e2e-auth-secret": options.authSecret,
+                },
+                body: mutationBody("verify-disposable-cleanup", expectedIdentity.userId),
+              },
+            );
+            const inspected = assertAuthenticatedMutationResponseProof(
+              inspectedResponse.value,
+              {
+                candidateVersionId: options.expectedVersion,
+                runId: options.runId,
+                runtimeVersionId: options.expectedVersion,
+              },
+              "cleanup verification",
+            ).payload;
+            const inventory = exactDisposableInventory(inspected.inventory);
+            return { ok: inspected.ok === true && inventoryIsZero(inventory), inventory };
+          },
+          outboxDrain: {
+            wake: options.memoryHotPath.requestVectorCleanupDrain,
+            maximumAttempts: authenticatedOutboxDrainMaximumAttempts,
+            retryDelayMs: authenticatedOutboxDrainRetryDelayMs,
+          },
+        });
+        cleanupVerified = true;
+      } catch (error) {
+        cleanupErrors.push(error);
+      }
     }
   }
 
-  const failures = [primaryError, cleanupError].filter(
+  const failures = [primaryError, ...cleanupErrors].filter(
     (value): value is NonNullable<typeof value> => value !== null,
   );
   if (failures.length) {
@@ -672,7 +1131,12 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     flashcardsCompleted,
     savedQuizResultVerified,
     savedFlashcardResultVerified,
-    cleanupVerified: true,
+    queueStored,
+    knownVectorPresentBeforeRecall,
+    semanticTurnHydrated,
+    sourceChatDeleted,
+    knownVectorAbsentAfterCleanup,
+    cleanupVerified,
   };
 }
 
@@ -680,12 +1144,33 @@ export async function cleanupDisposableMutationState(options: {
   cleanup: () => Promise<void>;
   inspect: () => Promise<{ ok: boolean; inventory: Record<string, unknown> }>;
   maximumAttempts?: number;
+  outboxDrain?: {
+    wake: () => Promise<void>;
+    maximumAttempts: number;
+    retryDelayMs: number;
+    wait?: (milliseconds: number) => Promise<void>;
+  };
 }) {
   const maximumAttempts = options.maximumAttempts ?? cleanupAttemptLimit;
   if (!Number.isSafeInteger(maximumAttempts) || maximumAttempts < 1 || maximumAttempts > 5) {
     throw new Error("Disposable cleanup attempt limit is invalid.");
   }
+  if (
+    options.outboxDrain &&
+    (
+      !Number.isSafeInteger(options.outboxDrain.maximumAttempts) ||
+      options.outboxDrain.maximumAttempts < 1 ||
+      options.outboxDrain.maximumAttempts > 360 ||
+      !Number.isSafeInteger(options.outboxDrain.retryDelayMs) ||
+      options.outboxDrain.retryDelayMs < 1 ||
+      options.outboxDrain.retryDelayMs > 60_000
+    )
+  ) {
+    throw new Error("Disposable Vectorize outbox drain bounds are invalid.");
+  }
   let cleanupAttempts = 0;
+  let ordinaryResidueAttempts = 0;
+  let outboxDrainAttempts = 0;
   for (;;) {
     cleanupAttempts += 1;
     try {
@@ -700,13 +1185,60 @@ export async function cleanupDisposableMutationState(options: {
     } catch {
       throw new Error("Disposable cleanup is indeterminate because authoritative readback failed.");
     }
-    if (readback.ok && inventoryIsZero(readback.inventory)) {
-      return { cleanupAttempts, inventory: readback.inventory };
+    const inventory = exactDisposableInventory(readback.inventory);
+    if (readback.ok && inventoryIsZero(inventory)) {
+      return { cleanupAttempts, inventory };
     }
-    if (cleanupAttempts >= maximumAttempts) {
+    if (inventory.memory_vector_cleanup_outbox > 0 && options.outboxDrain) {
+      outboxDrainAttempts += 1;
+      if (outboxDrainAttempts >= options.outboxDrain.maximumAttempts) {
+        throw new Error(
+          "Disposable cleanup could not drain owner-scoped Vectorize cleanup residue.",
+        );
+      }
+      const wakeEveryAttempts = Math.max(
+        1,
+        Math.ceil(vectorCleanupMinimumSettleMs / options.outboxDrain.retryDelayMs),
+      );
+      if (outboxDrainAttempts === 1 || outboxDrainAttempts % wakeEveryAttempts === 0) {
+        await options.outboxDrain.wake();
+      }
+      await (options.outboxDrain.wait ?? delay)(options.outboxDrain.retryDelayMs);
+      continue;
+    }
+    ordinaryResidueAttempts += 1;
+    if (ordinaryResidueAttempts >= maximumAttempts) {
       throw new Error("Disposable cleanup left nonzero production residue.");
     }
   }
+}
+
+export async function runAuthenticatedMemoryRecoveryCleanup(input: {
+  preD1VectorCleanup?: () => Promise<void>;
+  authoritativeD1Cleanup: () => Promise<void>;
+  postD1VectorCleanup?: () => Promise<void>;
+}) {
+  const hasPreCleanup = input.preD1VectorCleanup !== undefined;
+  const hasPostCleanup = input.postD1VectorCleanup !== undefined;
+  if (hasPreCleanup !== hasPostCleanup) {
+    throw new Error("Authenticated memory recovery requires both pre- and post-D1 vector cleanup.");
+  }
+  if (input.preD1VectorCleanup) await input.preD1VectorCleanup();
+  await input.authoritativeD1Cleanup();
+  if (input.postD1VectorCleanup) await input.postD1VectorCleanup();
+}
+
+export function resolveAuthenticatedMemoryRecoveryVersion(input: {
+  manifestAuthenticatedVersionId: string | null;
+  currentVersionId: string;
+  memoryRecoveryEvidenceExists: boolean;
+}) {
+  if (input.memoryRecoveryEvidenceExists && !input.manifestAuthenticatedVersionId) {
+    throw new Error(
+      "Recovery found memory Queue evidence without its bound authenticated validation version.",
+    );
+  }
+  return input.manifestAuthenticatedVersionId ?? input.currentVersionId;
 }
 
 export function evaluateAuthenticatedMutationTail(
@@ -768,6 +1300,177 @@ export function evaluateAuthenticatedMutationTail(
     }
   }
   return { ok: problems.length === 0, samples, problems };
+}
+
+export function evaluateAuthenticatedMemoryQueueTail(
+  source: string,
+  input: {
+    authenticatedValidationVersionId: string;
+    userId: string;
+    captureStartedAt?: number;
+  },
+): AuthenticatedMemoryQueueTailEvaluation {
+  const problems: string[] = [];
+  const queueRecords = extractJsonObjects(source).flatMap((value) => {
+    const record = optionalRecord(value);
+    const event = optionalRecord(record?.event);
+    if (!record || !event || !hasExactRecordKeys(event, ["batchSize", "queue"])) return [];
+    if (event.queue !== MEMORY_POST_TURN_QUEUE_NAME) return [];
+    const logs = structuredTailLogRecords(record.logs);
+    const correlated = logs.some((log) =>
+      log.userId === input.userId &&
+      log.type === "memory.post_turn.v2" &&
+      typeof log.event === "string" &&
+      log.event.startsWith("native_memory_queue_")
+    );
+    return correlated ? [{ record, event, logs }] : [];
+  });
+  if (queueRecords.length !== 1) problems.push(`matched-events=${queueRecords.length}`);
+  const match = queueRecords.length === 1 ? queueRecords[0] : undefined;
+  const record = match?.record;
+  const event = match?.event;
+  const logs = match?.logs ?? [];
+  const scriptVersion = optionalRecord(record?.scriptVersion);
+  const cpuTimeMs = finiteNumber(record?.cpuTime);
+  const processed = logs.filter((log) =>
+    log.event === "native_memory_queue_processed" &&
+    log.type === "memory.post_turn.v2" &&
+    log.userId === input.userId &&
+    log.outcome === "stored"
+  );
+  const indexed = logs.filter((log) => log.event === "native_memory_vectors_indexed");
+  const indexedVectorCount = indexed.length === 1
+    ? nonNegativeSafeInteger(indexed[0]?.count)
+    : null;
+
+  if (record) {
+    if (record.scriptName !== workerName) problems.push("wrong-script");
+    if (scriptVersion?.id !== input.authenticatedValidationVersionId) {
+      problems.push("wrong-authenticated-validation-version");
+    }
+    if (record.outcome !== "ok") problems.push("outcome");
+    if (record.truncated !== false) problems.push("truncated");
+    if (!Array.isArray(record.exceptions) || record.exceptions.length !== 0) {
+      problems.push("exceptions");
+    }
+    if (cpuTimeMs === null || cpuTimeMs < 0) problems.push("missing-or-negative-cpu");
+    else if (cpuTimeMs >= authenticatedMutationCpuThresholdMs) problems.push("cpu>=8");
+    const eventTimestamp = finiteNumber(record.eventTimestamp);
+    if (
+      input.captureStartedAt !== undefined &&
+      (eventTimestamp === null || eventTimestamp < input.captureStartedAt)
+    ) {
+      problems.push("stale-event-timestamp");
+    }
+    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.push("failure-log");
+  }
+  if (event?.batchSize !== 1) problems.push("queue-batch-size");
+  if (processed.length !== 1) problems.push(`stored-log-count=${processed.length}`);
+  if (indexed.length !== 1) problems.push(`indexed-log-count=${indexed.length}`);
+  if (indexedVectorCount === null || indexedVectorCount < 1) {
+    problems.push("indexed-vector-count");
+  }
+
+  return {
+    ok: problems.length === 0,
+    authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    matchedEvents: queueRecords.length,
+    cpuTimeMs,
+    indexedVectorCount,
+    problems,
+  };
+}
+
+export function evaluateAuthenticatedSemanticRetrievalTail(
+  source: string,
+  input: {
+    authenticatedValidationVersionId: string;
+    trace: AuthenticatedMutationTrace;
+  },
+): AuthenticatedSemanticRetrievalTailEvaluation {
+  const base = evaluateAuthenticatedMutationTail(source, [input.trace]);
+  const problems = [...base.problems];
+  const matches = extractJsonObjects(source).flatMap((value) => {
+    const record = optionalRecord(value);
+    const event = optionalRecord(record?.event);
+    const request = optionalRecord(event?.request);
+    if (!record || typeof request?.url !== "string") return [];
+    try {
+      const url = new URL(request.url);
+      return url.searchParams.get(mutationProbeParameter) === input.trace.probe
+        ? [{ record }]
+        : [];
+    } catch {
+      return [];
+    }
+  });
+  if (matches.length !== 1) problems.push(`semantic-tail-count=${matches.length}`);
+  const record = matches.length === 1 ? matches[0]?.record : undefined;
+  const scriptVersion = optionalRecord(record?.scriptVersion);
+  const cpuTimeMs = finiteNumber(record?.cpuTime);
+  const retrievalLogs = structuredTailLogRecords(record?.logs).filter(
+    (log) => log.event === "native_memory_vector_retrieval_completed",
+  );
+  const hydratedTurnCount = retrievalLogs.length === 1
+    ? nonNegativeSafeInteger(retrievalLogs[0]?.turnMatches)
+    : null;
+
+  if (record) {
+    if (record.scriptName !== workerName) problems.push("semantic-wrong-script");
+    if (scriptVersion?.id !== input.authenticatedValidationVersionId) {
+      problems.push("semantic-wrong-authenticated-validation-version");
+    }
+    if (record.truncated !== false) problems.push("semantic-truncated");
+    if (tailInvocationHasForbiddenMemoryWarning(record)) problems.push("semantic-failure-log");
+  }
+  if (retrievalLogs.length !== 1) {
+    problems.push(`semantic-retrieval-log-count=${retrievalLogs.length}`);
+  }
+  if (hydratedTurnCount === null || hydratedTurnCount < 1) {
+    problems.push("semantic-hydrated-turn-count");
+  }
+
+  return {
+    ok: problems.length === 0,
+    authenticatedValidationVersionId: input.authenticatedValidationVersionId,
+    matchedEvents: matches.length,
+    cpuTimeMs,
+    hydratedTurnCount,
+    problems,
+  };
+}
+
+function structuredTailLogRecords(logs: unknown) {
+  if (!Array.isArray(logs)) return [];
+  const records: Record<string, unknown>[] = [];
+  for (const value of logs) {
+    const entry = optionalRecord(value);
+    const messages = Array.isArray(entry?.message) ? entry.message : [entry?.message];
+    for (const message of messages) {
+      if (typeof message !== "string" || message.length > 32 * 1024) continue;
+      const parsed = optionalRecord(parseJson(message));
+      if (parsed) records.push(parsed);
+    }
+  }
+  return records;
+}
+
+function tailInvocationHasForbiddenMemoryWarning(record: Record<string, unknown>) {
+  const logs = Array.isArray(record.logs) ? record.logs : [];
+  const warningLevel = logs.some((value) => {
+    const entry = optionalRecord(value);
+    const level = typeof entry?.level === "string"
+      ? entry.level
+      : typeof entry?.logLevel === "string"
+      ? entry.logLevel
+      : "";
+    return /^(?:warn|warning|error|critical)$/i.test(level);
+  });
+  const serialized = JSON.stringify(logs);
+  return warningLevel ||
+    /exceededCpu|exceededMemory|resource\s+limit|cpu\s+time\s+limit|memory\s+limit|Dummy queue is not implemented|native_memory_(?:queue_(?:failed|deferred|invalid_message)|vector_[a-z0-9_]*failed|retrieval_failed)|memory_post_turn_(?:dropped|enqueue_failed)|llm_budget_(?:denied|check_failed)/i.test(
+      serialized,
+    );
 }
 
 async function createChat(
@@ -1179,6 +1882,109 @@ export function expectedAuthenticatedMutationDisposableIdentity(
   };
 }
 
+export function parseAuthenticatedMemoryRecoveryEvidence(
+  value: unknown,
+): AuthenticatedMemoryRecoveryEvidence {
+  const evidence = requiredRecord(value, "authenticated memory recovery evidence");
+  const keys = [
+    "authenticatedValidationVersionId",
+    "createdAt",
+    "immutableReleaseIdentitySha256",
+    "kind",
+    "queuePushPreparedAt",
+    "releaseCandidateVersionId",
+    "runId",
+    "sourceChatId",
+    "sourceFingerprintSha256",
+    "turnVectorId",
+    "userId",
+    "userMessageId",
+  ] as const;
+  if (!hasExactRecordKeys(evidence, keys)) {
+    throw new Error("Authenticated memory recovery evidence has the wrong exact contract.");
+  }
+  const releaseCandidateVersionId = requiredUuid(
+    evidence.releaseCandidateVersionId,
+    "memory recovery release candidate version",
+  );
+  const authenticatedValidationVersionId = requiredUuid(
+    evidence.authenticatedValidationVersionId,
+    "memory recovery authenticated validation version",
+  );
+  const runId = requiredUuid(evidence.runId, "memory recovery run ID");
+  const userId = requiredUuid(evidence.userId, "memory recovery user ID");
+  const sourceChatId = requiredUuid(evidence.sourceChatId, "memory recovery source chat ID");
+  const userMessageId = requiredUuid(
+    evidence.userMessageId,
+    "memory recovery user message ID",
+  );
+  const turnVectorId = requiredNonEmptyString(
+    evidence.turnVectorId,
+    "memory recovery turn vector ID",
+  );
+  const createdAt = requiredIsoTimestamp(evidence.createdAt, "memory recovery creation time");
+  const queuePushPreparedAt = requiredIsoTimestamp(
+    evidence.queuePushPreparedAt,
+    "memory recovery Queue preparation time",
+  );
+  const sourceFingerprintSha256 = requireSha256(
+    typeof evidence.sourceFingerprintSha256 === "string"
+      ? evidence.sourceFingerprintSha256
+      : undefined,
+    "memory recovery source fingerprint",
+  );
+  const immutableReleaseIdentitySha256 = requireSha256(
+    typeof evidence.immutableReleaseIdentitySha256 === "string"
+      ? evidence.immutableReleaseIdentitySha256
+      : undefined,
+    "memory recovery immutable release identity",
+  );
+  const expectedIdentity = expectedAuthenticatedMutationDisposableIdentity(
+    authenticatedValidationVersionId,
+    runId,
+  );
+  if (
+    evidence.kind !== "authenticated-production-memory-recovery-v2" ||
+    userId !== expectedIdentity.userId ||
+    parseNativeMemoryVectorId("chat_memory_turns", turnVectorId)?.rowId !== userMessageId ||
+    parseNativeMemoryVectorId("chat_memory_turns", turnVectorId)?.marker !== turnVectorId ||
+    turnVectorId === nativeMemoryVectorId("chat_memory_turns", userMessageId) ||
+    Date.parse(queuePushPreparedAt) < Date.parse(createdAt)
+  ) {
+    throw new Error("Authenticated memory recovery evidence has inconsistent bound identities.");
+  }
+  return {
+    kind: "authenticated-production-memory-recovery-v2",
+    createdAt,
+    releaseCandidateVersionId,
+    authenticatedValidationVersionId,
+    runId,
+    userId,
+    sourceChatId,
+    userMessageId,
+    turnVectorId,
+    sourceFingerprintSha256,
+    immutableReleaseIdentitySha256,
+    queuePushPreparedAt,
+  };
+}
+
+export function readAuthenticatedMemoryRecoveryEvidence(filePath: string) {
+  return parseAuthenticatedMemoryRecoveryEvidence(readPrivateJsonNoFollow(filePath));
+}
+
+export function removeAuthenticatedMemoryRecoveryEvidence(
+  filePath: string,
+  expected: AuthenticatedMemoryRecoveryEvidence,
+) {
+  const actual = readAuthenticatedMemoryRecoveryEvidence(filePath);
+  if (stableStringify(actual) !== stableStringify(expected)) {
+    throw new Error("Authenticated memory recovery evidence changed before safe removal.");
+  }
+  fs.rmSync(filePath);
+  fsyncParentDirectory(filePath);
+}
+
 export function assertAuthenticatedMutationDisposableIdentity(
   value: unknown,
   expected: Pick<AuthenticatedMutationDisposableIdentity, "candidateVersionId" | "runId">,
@@ -1326,6 +2132,304 @@ async function waitForTailProbes(tail: ChildProcess, output: () => string, probe
     await delay(750);
   }
   throw new Error("Wrangler tail did not capture every authenticated mutation request.");
+}
+
+async function waitForAuthenticatedMemoryQueueEvidence(input: {
+  tail: ChildProcess;
+  output: () => string;
+  authenticatedValidationVersionId: string;
+  userId: string;
+  captureStartedAt: number;
+}) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < queueCaptureTimeoutMs) {
+    const evaluation = evaluateAuthenticatedMemoryQueueTail(input.output(), input);
+    if (evaluation.matchedEvents > 0) {
+      await delay(2_000);
+      return evaluateAuthenticatedMemoryQueueTail(input.output(), input);
+    }
+    if (hasChildExited(input.tail)) {
+      throw new Error("Wrangler version Tail exited before stored-memory Queue evidence arrived.");
+    }
+    await delay(500);
+  }
+  return evaluateAuthenticatedMemoryQueueTail(input.output(), input);
+}
+
+async function waitForAuthenticatedSemanticRetrievalEvidence(input: {
+  tail: ChildProcess;
+  output: () => string;
+  authenticatedValidationVersionId: string;
+  trace: AuthenticatedMutationTrace;
+}) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < tailWaitTimeoutMs) {
+    const evaluation = evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+    if (evaluation.matchedEvents > 0) {
+      await delay(1_000);
+      return evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+    }
+    if (hasChildExited(input.tail)) {
+      throw new Error("Wrangler HTTP Tail exited before semantic retrieval evidence arrived.");
+    }
+    await delay(250);
+  }
+  return evaluateAuthenticatedSemanticRetrievalTail(input.output(), input);
+}
+
+function readQueueId(wrangler: string) {
+  const result = spawnSync(
+    wrangler,
+    ["queues", "info", MEMORY_POST_TURN_QUEUE_NAME],
+    {
+      cwd: process.cwd(),
+      env: commandEnv(),
+      encoding: "utf8",
+      maxBuffer: 1024 * 1024,
+      timeout: 60_000,
+    },
+  );
+  if (result.status !== 0) throw new Error("Could not resolve the production memory Queue ID.");
+  const match = /^Queue ID:\s*([a-f0-9]{32})\s*$/im.exec(`${result.stdout}${result.stderr}`);
+  if (!match?.[1]) throw new Error("Wrangler returned an invalid production memory Queue ID.");
+  return match[1];
+}
+
+function requireCloudflareApiToken() {
+  const credential = readCloudflareApiToken();
+  if (credential.error || credential.token.length < 20 || credential.token.length > 2_048) {
+    throw new Error(
+      "Authenticated Queue and Vectorize validation requires a valid Cloudflare API token.",
+    );
+  }
+  return credential.token;
+}
+
+async function pushAuthenticatedMemoryPostTurn(
+  apiToken: string,
+  queueId: string,
+  job: AuthenticatedMemoryPostTurnJob,
+) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/queues/${queueId}/messages`,
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${apiToken}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ body: job, content_type: "json" }),
+      signal: AbortSignal.timeout(30_000),
+    },
+  );
+  const value = parseCloudflareApiEnvelope(
+    await readBoundedResponseText(response, cloudflareApiResponseLimit),
+    "Cloudflare Queue publish",
+  );
+  if (!response.ok || value.success !== true) {
+    throw new Error(`Cloudflare Queue publish failed with HTTP ${response.status}.`);
+  }
+}
+
+export async function enqueueAuthenticatedMemoryVectorCleanupWake(reason: string) {
+  const wrangler = path.resolve(process.cwd(), "node_modules/.bin/wrangler");
+  await pushAuthenticatedMemoryVectorCleanupWake(
+    requireCloudflareApiToken(),
+    readQueueId(wrangler),
+    reason,
+  );
+}
+
+async function pushAuthenticatedMemoryVectorCleanupWake(
+  apiToken: string,
+  queueId: string,
+  reason: string,
+) {
+  const boundedReason = reason.trim();
+  if (
+    boundedReason.length < 1 ||
+    boundedReason.length > 80 ||
+    !/^[a-z0-9-]+$/.test(boundedReason)
+  ) {
+    throw new Error("Authenticated Vectorize cleanup wake reason is invalid.");
+  }
+  const message = {
+    type: "memory.vector_cleanup.v1",
+    enqueuedAt: new Date().toISOString(),
+    reason: boundedReason,
+  } satisfies MemoryVectorCleanupQueueMessage;
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/queues/${queueId}/messages`,
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${apiToken}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ body: message, content_type: "json" }),
+      signal: AbortSignal.timeout(30_000),
+    },
+  );
+  const value = parseCloudflareApiEnvelope(
+    await readBoundedResponseText(response, cloudflareApiResponseLimit),
+    "Cloudflare Vectorize cleanup Queue publish",
+  );
+  if (!response.ok || value.success !== true) {
+    throw new Error(
+      `Cloudflare Vectorize cleanup Queue publish failed with HTTP ${response.status}.`,
+    );
+  }
+}
+
+async function readKnownVectorIds(apiToken: string, vectorId: string) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/vectorize/v2/indexes/${VECTORIZE_INDEX_NAME}/get_by_ids`,
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${apiToken}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ids: [vectorId] }),
+      signal: AbortSignal.timeout(30_000),
+    },
+  );
+  const envelope = parseCloudflareApiEnvelope(
+    await readBoundedResponseText(response, cloudflareApiResponseLimit),
+    "Cloudflare Vectorize get-by-IDs",
+  );
+  if (!response.ok || envelope.success !== true || !Array.isArray(envelope.result)) {
+    throw new Error(`Cloudflare Vectorize get-by-IDs failed with HTTP ${response.status}.`);
+  }
+  const ids = envelope.result.map((value) => {
+    const vector = requiredRecord(value, "Cloudflare Vectorize get-by-IDs result");
+    return requiredNonEmptyString(vector.id, "Cloudflare Vectorize result ID");
+  });
+  if (ids.length > 1 || ids.some((id) => id !== vectorId)) {
+    throw new Error("Cloudflare Vectorize get-by-IDs returned an unexpected vector identity.");
+  }
+  return ids;
+}
+
+async function deleteKnownVector(apiToken: string, vectorId: string) {
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/vectorize/v2/indexes/${VECTORIZE_INDEX_NAME}/delete_by_ids`,
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${apiToken}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ ids: [vectorId] }),
+      signal: AbortSignal.timeout(30_000),
+    },
+  );
+  const envelope = parseCloudflareApiEnvelope(
+    await readBoundedResponseText(response, cloudflareApiResponseLimit),
+    "Cloudflare Vectorize delete-by-IDs",
+  );
+  if (!response.ok || envelope.success !== true) {
+    throw new Error(`Cloudflare Vectorize delete-by-IDs failed with HTTP ${response.status}.`);
+  }
+}
+
+async function waitForKnownVectorState(input: {
+  apiToken: string;
+  vectorId: string;
+  expectedPresent: boolean;
+  minimumSettleMs?: number;
+}) {
+  const startedAt = Date.now();
+  const minimumSettleMs = input.minimumSettleMs ?? 0;
+  let firstAbsentReadAt: number | null = null;
+  let lastError: unknown = null;
+  while (Date.now() - startedAt < vectorStateTimeoutMs) {
+    try {
+      const ids = await readKnownVectorIds(input.apiToken, input.vectorId);
+      const present = ids.length === 1;
+      if (input.expectedPresent && present) return;
+      if (!input.expectedPresent && !present) {
+        const checkedAt = Date.now();
+        firstAbsentReadAt ??= checkedAt;
+        if (
+          checkedAt - startedAt >= minimumSettleMs &&
+          checkedAt - firstAbsentReadAt >= vectorAbsenceVerificationSpacingMs
+        ) {
+          return;
+        }
+      } else {
+        firstAbsentReadAt = null;
+      }
+      lastError = null;
+    } catch (error) {
+      lastError = error;
+      firstAbsentReadAt = null;
+    }
+    await delay(vectorStatePollDelayMs(firstAbsentReadAt));
+  }
+  const expected = input.expectedPresent ? "presence" : "absence";
+  const suffix = lastError instanceof Error ? ` Last error: ${lastError.message}` : "";
+  throw new Error(`Authoritative Vectorize ${expected} was not proven for the known turn ID.${suffix}`);
+}
+
+export async function deleteAuthenticatedValidationVectorAndRequireAbsent(input: {
+  vectorId: string;
+  minimumSettleMs?: number;
+}) {
+  const apiToken = requireCloudflareApiToken();
+  const startedAt = Date.now();
+  const minimumSettleMs = input.minimumSettleMs ?? 0;
+  let firstAbsentReadAt: number | null = null;
+  let lastError: unknown = null;
+  await deleteKnownVector(apiToken, input.vectorId);
+  while (Date.now() - startedAt < vectorStateTimeoutMs) {
+    try {
+      const ids = await readKnownVectorIds(apiToken, input.vectorId);
+      if (ids.length === 0) {
+        const checkedAt = Date.now();
+        firstAbsentReadAt ??= checkedAt;
+        if (
+          checkedAt - startedAt >= minimumSettleMs &&
+          checkedAt - firstAbsentReadAt >= vectorAbsenceVerificationSpacingMs
+        ) {
+          return;
+        }
+      } else {
+        firstAbsentReadAt = null;
+        await deleteKnownVector(apiToken, input.vectorId);
+      }
+      lastError = null;
+    } catch (error) {
+      lastError = error;
+      firstAbsentReadAt = null;
+    }
+    await delay(vectorStatePollDelayMs(firstAbsentReadAt));
+  }
+  const suffix = lastError instanceof Error ? ` Last error: ${lastError.message}` : "";
+  throw new Error(
+    `Recovery could not prove authoritative absence of the known validation vector.${suffix}`,
+  );
+}
+
+function vectorStatePollDelayMs(firstAbsentReadAt: number | null) {
+  if (firstAbsentReadAt === null) return 1_000;
+  const remaining = vectorAbsenceVerificationSpacingMs - (Date.now() - firstAbsentReadAt);
+  return Math.max(1_000, Math.min(30_000, remaining));
+}
+
+function parseCloudflareApiEnvelope(source: string, label: string) {
+  const value = requiredRecord(parseJson(source), label);
+  if (!hasExactCloudflareEnvelopeShape(value)) {
+    throw new Error(`${label} returned a malformed API envelope.`);
+  }
+  return value;
+}
+
+function hasExactCloudflareEnvelopeShape(value: Record<string, unknown>) {
+  return typeof value.success === "boolean" &&
+    Array.isArray(value.errors) &&
+    Array.isArray(value.messages) &&
+    Object.prototype.hasOwnProperty.call(value, "result");
 }
 
 function tailRequestProbes(source: string) {
@@ -1520,6 +2624,62 @@ function parseJson(value: string): unknown {
 
 function finiteNumber(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function nonNegativeSafeInteger(value: unknown) {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0
+    ? value
+    : null;
+}
+
+function requireSha256(value: string | undefined, label: string) {
+  if (!value || !/^[a-f0-9]{64}$/.test(value)) {
+    throw new Error(`Authenticated mutation validation requires an exact lowercase ${label} SHA-256.`);
+  }
+  return value;
+}
+
+function requiredIsoTimestamp(value: unknown, label: string) {
+  if (typeof value !== "string") throw new Error(`${label} is malformed.`);
+  const parsed = new Date(value);
+  if (!Number.isFinite(parsed.getTime()) || parsed.toISOString() !== value) {
+    throw new Error(`${label} is malformed.`);
+  }
+  return value;
+}
+
+function requireMemoryRecoveryEvidencePath(value: string | undefined) {
+  if (!value) {
+    throw new Error("Authenticated mutation validation requires its owner-only memory recovery path.");
+  }
+  const resolved = path.resolve(value);
+  const expectedDirectory = cloudflareDir(resolveBackupDir());
+  if (
+    path.dirname(resolved) !== expectedDirectory ||
+    path.basename(resolved) !== authenticatedMemoryRecoveryEvidenceName
+  ) {
+    throw new Error("Authenticated memory recovery evidence must use the private report directory.");
+  }
+  return resolved;
+}
+
+function assertPathAbsent(filePath: string, label: string) {
+  try {
+    fs.lstatSync(filePath);
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") return;
+    throw error;
+  }
+  throw new Error(`${label} already exists; run authenticated validation recovery first.`);
+}
+
+function fsyncParentDirectory(filePath: string) {
+  const descriptor = fs.openSync(path.dirname(filePath), "r");
+  try {
+    fs.fsyncSync(descriptor);
+  } finally {
+    fs.closeSync(descriptor);
+  }
 }
 
 function safeProbeLabel(value: string) {

@@ -79,7 +79,7 @@ function invalidEntriesForLanguage(lexicon: LexiconPack, language: SupportedLang
   for (const source of namespaces.map(sourceForNamespace)) {
     for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
       const currentValue = valueBySource.get(sourceText) ?? "";
-      if (isValidFieldTranslation(sourceText, currentValue, language)) continue;
+      if (isValidFieldTranslation(sourceText, currentValue, language, key)) continue;
       const existing =
         invalidBySource.get(sourceText) ??
         ({

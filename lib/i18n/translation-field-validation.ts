@@ -31,7 +31,7 @@ const languageSpecificIdenticalTranslations: Record<string, ReadonlySet<string>>
   Azerbaijani: new Set(["Media"]),
 };
 
-const globalIdenticalTranslations = new Set(["GitHub", "inspir", "STEM"]);
+const globalIdenticalTranslations = new Set(["GitHub", "Harvard", "inspir", "STEM"]);
 const historicalProperNameLiterals = new Set([
   "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
   "B. R. Ambedkar",
@@ -45,6 +45,25 @@ const historicalProperNameLiterals = new Set([
   "Stoa Basileios",
   "West Market",
   "Winston Churchill",
+]);
+const reviewedCaseOnlyTranslations = new Map<string, string>([
+  ["Albanian\u0000component.081a9237b493\u0000Stoa Basileios", "stoa Basileios"],
+  ["Danish\u0000component.cdf2d39e903c\u0000September 1857", "september 1857"],
+  ["Dutch\u0000component.7929b59ace63\u00002 September 1666", "2 september 1666"],
+  ["Norwegian\u0000activity.quiz.start.action\u0000Start", "start"],
+  ["Slovak\u0000component.cdf2d39e903c\u0000September 1857", "september 1857"],
+  ["Slovak\u0000component.081a9237b493\u0000Stoa Basileios", "stoa Basileios"],
+  ["Swedish\u0000component.7929b59ace63\u00002 September 1666", "2 september 1666"],
+  ["Welsh\u0000component.081a9237b493\u0000Stoa Basileios", "stoa Basileios"],
+]);
+const reviewedIdenticalTranslations = new Set([
+  "Afrikaans\u0000site.0b9d2b2362bc33581b\u0000Blog\u0000Blog",
+  "Afrikaans\u0000site.0c77aeece8c2581131\u0000Media\u0000Media",
+  "Azerbaijani\u0000site.0c77aeece8c2581131\u0000Media\u0000Media",
+  "Norwegian\u0000site.0c77aeece8c2581131\u0000Media\u0000Media",
+  "Norwegian\u0000site.952f375412e89ff213\u0000Start\u0000Start",
+  "Slovak\u0000site.0b9d2b2362bc33581b\u0000Blog\u0000Blog",
+  "Slovenian\u0000site.0b9d2b2362bc33581b\u0000Blog\u0000Blog",
 ]);
 const mustTranslatePhrases = new Set([
   "AI Homework Coach With Hints, Not Answer Dumping",
@@ -85,14 +104,82 @@ const mustTranslateSingleWords = new Set([
   "Trust",
 ]);
 
-export function isValidFieldTranslation(source: string, value: string | undefined, language?: string) {
+export function isValidFieldTranslation(
+  source: string,
+  value: string | undefined,
+  language?: string,
+  key?: string,
+) {
   if (!value?.trim()) return false;
   const sourcePlaceholders = placeholdersIn(source).sort().join("|");
   const valuePlaceholders = placeholdersIn(value).sort().join("|");
   if (sourcePlaceholders !== valuePlaceholders) return false;
   if (hasLikelyExtraneousTranslationArtifact(source, value, language)) return false;
-  if (source.trim() === value.trim() && !canRemainUntranslated(source, language)) return false;
+  if (
+    source.trim() === value.trim() &&
+    !canRemainUntranslated(source, language) &&
+    !isReviewedIdenticalTranslation(source, value, language, key)
+  ) {
+    return false;
+  }
+  if (isCaseOnlyPseudoTranslation(source, value, language, key)) return false;
   return true;
+}
+
+function isReviewedIdenticalTranslation(
+  source: string,
+  value: string,
+  language?: string,
+  key?: string,
+) {
+  return reviewedIdenticalTranslations.has(
+    `${language ?? ""}\u0000${key ?? ""}\u0000${source.trim()}\u0000${value.trim()}`,
+  );
+}
+
+/**
+ * Detects source copy that only changes letter case. This is not a
+ * translation, but previously escaped the exact-equality guard. Deliberately
+ * preserved names, identifiers, and language-specific literals remain valid.
+ */
+export function isCaseOnlyPseudoTranslation(
+  source: string,
+  value: string | undefined,
+  language?: string,
+  key?: string,
+) {
+  if (!value?.trim()) return false;
+  const normalizedSource = source.trim().normalize("NFKC");
+  const normalizedValue = value.trim().normalize("NFKC");
+  if (normalizedSource === normalizedValue) return false;
+  if (
+    normalizedSource.toLocaleLowerCase("und") !==
+    normalizedValue.toLocaleLowerCase("und")
+  ) {
+    return false;
+  }
+  return (
+    reviewedCaseOnlyTranslations.get(
+      `${language ?? ""}\u0000${key ?? ""}\u0000${source.trim()}`,
+    ) !== value.trim()
+  );
+}
+
+export function listCaseOnlyPseudoTranslations(
+  sourceStrings: Readonly<Record<string, string>>,
+  translatedStrings: Readonly<Record<string, string>>,
+  language?: string,
+) {
+  return Object.keys(sourceStrings)
+    .sort()
+    .flatMap((key) => {
+      const source = sourceStrings[key];
+      const value = translatedStrings[key];
+      if (typeof value !== "string") return [];
+      return isCaseOnlyPseudoTranslation(source, value, language, key)
+        ? [{ key, source, value }]
+        : [];
+    });
 }
 
 /**

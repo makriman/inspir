@@ -8,6 +8,37 @@ import {
 } from "./native-session";
 import { languageConfigs, normalizeLanguage, type SupportedLanguage } from "../content/languages";
 import { refreshNativeAdminTotals } from "./admin-metrics";
+import {
+  NATIVE_MEMORY_VECTOR_MARKER,
+  nativeMemoryVectorId,
+  nativeMemoryPendingVectorMarker,
+  nativeMemoryVectorRevision,
+  parseNativeMemoryVectorId,
+  prepareNativeMemoryVectors,
+  upsertPreparedNativeMemoryVectors,
+  type NativeIndexedMemoryVector,
+  type NativeMemoryVectorRecord,
+} from "./native-memory-vector";
+import type { MemoryVectorCleanupQueueMessage } from "./memory-queue-contract";
+
+// The schema uses JSON text. New rows store the exact revisioned Vectorize ID;
+// historical arrays and the v1 marker remain readable as the legacy identity.
+const nativeMemoryExactVectorIdSql = `case
+  when embedding like '"p:m:%"' or embedding like '"p:t:%"'
+    then substr(embedding, 4, length(embedding) - 4)
+  when embedding like '"m:%"' or embedding like '"t:%"'
+    then substr(embedding, 2, length(embedding) - 2)
+  else null
+end`;
+
+const nativeMemoryVectorMarkerSql = `case
+  when embedding like '"p:m:%"' or embedding like '"p:t:%"'
+    then null
+  when embedding like '"m:%"' or embedding like '"t:%"'
+    then substr(embedding, 2, length(embedding) - 2)
+  when embedding is not null then '${NATIVE_MEMORY_VECTOR_MARKER}'
+  else null
+end`;
 
 export const NATIVE_STATE_API_DELIVERY = "lean-api-worker";
 // Queue jobs only retain a 2,000-character question and 1,000-character answer.
@@ -40,7 +71,8 @@ export const MAX_MEMORY_SUMMARY_SECTION_SOURCE_ID_CHARS = 120;
 // before it crosses the D1 boundary. The extra character is a truncation
 // sentinel: response parsing either caps plain text or rejects incomplete JSON.
 export const NATIVE_BOUNDED_MEMORY_SECTIONS_SQL = `select
-  substr(sections, 1, ${MAX_MEMORY_SUMMARY_SECTIONS_JSON_CHARS + 1}) as sections
+  substr(sections, 1, ${MAX_MEMORY_SUMMARY_SECTIONS_JSON_CHARS + 1}) as sections,
+  updated_at as updatedAt
 from user_memory_summaries
 where user_id = ?1
 limit 1`;
@@ -71,7 +103,15 @@ const maxSavedMessageOffset = 16_000_000;
 const maxJsonColumnChars = 128 * 1024;
 const maxMemoryDisplayChars = 2_000;
 const maxMemoryDashboardItems = 50;
-const maxVectorCleanupRows = 2_000;
+// Cloudflare Free permits 50 D1 queries per Worker invocation and counts each
+// statement inside DB.batch(). A stale row can require three recovery
+// statements; the drain also uses one claim and at most two remaining-row
+// lookups. Thirteen rows therefore cap the drain at 42 D1 queries; even the
+// Scheduled handler's four other D1 operations stay at 46/50 with headroom.
+const MAX_VECTOR_CLEANUP_DRAIN_IDS = 13;
+const VECTOR_CLEANUP_VERIFY_DELAY_MS = 3 * 60 * 1_000;
+const VECTOR_PENDING_WRITE_STALE_MS = 15 * 60 * 1_000;
+const requiredVectorCleanupAbsences = 2;
 const maxDailySynthesisUsers = 25;
 const maxSynthesisMemories = 40;
 const maxSynthesisTurns = 12;
@@ -101,6 +141,18 @@ const memoryCategories = new Set([
   "interaction",
   "general",
 ]);
+const memoryCategorySuppressionBits = new Map<string, number>([
+  ["identity", 1 << 0],
+  ["preferences", 1 << 1],
+  ["learning_style", 1 << 2],
+  ["projects", 1 << 3],
+  ["goals", 1 << 4],
+  ["knowledge", 1 << 5],
+  ["constraints", 1 << 6],
+  ["interaction", 1 << 7],
+  ["general", 1 << 8],
+]);
+const allMemoryCategorySuppressionBits = (1 << memoryCategorySuppressionBits.size) - 1;
 
 export type MemoryIntentLexicon = {
   rememberPrefix: string;
@@ -194,6 +246,11 @@ const publicTopicMetadataKeys = new Set([
 export type StateApiEnv = NativeSessionEnv & {
   MEMORY_POST_TURN_QUEUE?: Pick<CloudflareEnv["MEMORY_POST_TURN_QUEUE"], "send" | "sendBatch">;
   MEMORY_VECTORIZE?: CloudflareEnv["MEMORY_VECTORIZE"];
+  CLOUDFLARE_AI_GATEWAY_BASE_URL?: string;
+  CLOUDFLARE_AI_GATEWAY_TOKEN?: string;
+  CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS?: string;
+  OPENAI_EMBEDDING_MODEL?: string;
+  LLM_GLOBAL_DAILY_CALL_LIMIT?: string;
   APP_WRITE_FREEZE?: string;
   APP_WRITE_FREEZE_RETRY_AFTER_SECONDS?: string;
   WRITE_FREEZE?: string;
@@ -301,7 +358,6 @@ type MemoryRow = {
   sourceMemoryIds: unknown;
   sourceChatId: string | null;
   sourceMessageId: string | null;
-  embedding: unknown;
   validFrom: number | null;
   validUntil: number | null;
   freshnessStatus: string;
@@ -311,6 +367,9 @@ type MemoryRow = {
   updatedAt: number;
   lastUsedAt: number | null;
   deletedAt: number | null;
+  vectorMarker?: unknown;
+  cleanupVectorId?: unknown;
+  vectorPending?: number;
 };
 
 type MemoryProfileRow = {
@@ -326,15 +385,7 @@ type MemorySummaryRow = {
   updatedAt: number;
 };
 
-type MemorySummarySectionsRow = Pick<MemorySummaryRow, "sections">;
-
-type VectorIdRow = { id: string };
-
-type MemoryVectorIds = {
-  memories: string[];
-  summaries: string[];
-  turns: string[];
-};
+type MemorySummarySectionsRow = Pick<MemorySummaryRow, "sections" | "updatedAt">;
 
 type ReadJsonResult =
   | { ok: true; value: unknown }
@@ -375,7 +426,15 @@ type NativeMemoryDailyJob = {
   reason: string;
 };
 
-type NativeMemoryQueueJob = NativeMemoryPostTurnJob | NativeMemoryDailyJob;
+type NativeMemoryVectorCleanupJob = Pick<
+  MemoryVectorCleanupQueueMessage,
+  "type" | "reason"
+>;
+
+type NativeMemoryQueueJob =
+  | NativeMemoryPostTurnJob
+  | NativeMemoryDailyJob
+  | NativeMemoryVectorCleanupJob;
 
 type OwnedQueuedChatRow = {
   id: string;
@@ -398,13 +457,43 @@ type QueuedMemorySettingsRow = {
   savedMemoryEnabled: number;
   chatHistoryEnabled: number;
   dreamingEnabled: number;
+  summarySuppressionMask: number;
+  sourceGeneration: number;
 };
 
 export type NativeMemoryIntentAction =
   | { type: "create"; category: "general" | "preferences" | "identity"; content: string }
   | { type: "forget"; query: string };
 
-type ExistingTurnRow = { id: string };
+type ExistingTurnRow = {
+  id: string;
+  embeddingMissing: number;
+  searchableText: string;
+};
+
+type ExistingMemoryRow = {
+  id: string;
+  embeddingMissing: number;
+  content: string;
+  updatedAt: number;
+};
+
+type VectorCleanupOutboxRow = {
+  vectorId: string;
+  ownerUserId: string | null;
+  state: string;
+  sourceNamespace: string | null;
+  sourceRowId: string | null;
+  sourceRowRevision: number | null;
+  writeToken: string | null;
+  writeFenceExpiresAt: number | null;
+  absenceCount: number;
+  attemptCount: number;
+  leaseToken: string | null;
+  leaseUntil: number;
+  nextAttemptAt: number;
+  updatedAt: number;
+};
 
 type SynthesisMemoryRow = {
   id: string;
@@ -428,6 +517,19 @@ export type NativeSummarySection = {
 };
 
 type DueSynthesisUserRow = { userId: string };
+
+type UnindexedMemoryRow = {
+  id: string;
+  text: string;
+  rowRevision: number;
+};
+
+type UnindexedTurnRow = {
+  id: string;
+  chatId: string;
+  topicId: string | null;
+  text: string;
+};
 
 /**
  * Handles only the saved-state routes owned by this native module. Returning
@@ -455,7 +557,7 @@ export async function handleStateApiRequest(
 
     if (pathname === "/api/memory") return handleMemory(request, env, ctx);
     if (pathname === "/api/memory/source-feedback") {
-      return handleMemorySourceFeedback(request, env);
+      return handleMemorySourceFeedback(request, env, ctx);
     }
     const memoryId = pathIdentifier(pathname, "/api/memory/");
     if (memoryId !== null) return handleMemoryItem(request, env, ctx, memoryId);
@@ -505,6 +607,21 @@ export async function handleMemoryScheduled(
       }),
     );
     return;
+  }
+
+  try {
+    const cleanup = await drainAndContinueNativeVectorCleanup(
+      env,
+      "scheduled_recovery",
+    );
+    console.log(JSON.stringify({ event: "native_memory_vector_cleanup_scheduled", ...cleanup }));
+  } catch (error) {
+    // The outbox is the durability boundary; a failed scheduled attempt must
+    // never discard or acknowledge its rows.
+    console.warn(JSON.stringify({
+      event: "native_memory_vector_cleanup_scheduled_failed",
+      error: error instanceof Error ? error.name : "UnknownError",
+    }));
   }
 
   const stats = await enqueueDueNativeMemorySynthesis(env, {
@@ -741,15 +858,38 @@ export async function handleMemoryQueue(
 
     try {
       const outcome =
-        job.type === "memory.daily_synthesis.v1"
+        job.type === "memory.vector_cleanup.v1"
+          ? await drainAndContinueNativeVectorCleanup(env, job.reason)
+          : job.type === "memory.daily_synthesis.v1"
           ? await synthesizeNativeUserMemory(env, job)
           : await processNativePostTurn(env, job);
+      if (
+        job.type === "memory.vector_cleanup.v1" &&
+        typeof outcome === "object" &&
+        outcome.pending > 0 &&
+        outcome.nextDelaySeconds === null
+      ) {
+        // Another delivery owns every remaining row. Keep this delivery alive
+        // until that bounded lease expires instead of acknowledging the only
+        // crash-recovery wake or publishing an amplifying duplicate chain.
+        const delaySeconds = Math.min(5 * 60, Math.max(60, message.attempts * 60));
+        message.retry({ delaySeconds });
+        console.log(
+          JSON.stringify({
+            event: "native_memory_vector_cleanup_lease_deferred",
+            messageId: message.id,
+            attempts: message.attempts,
+            delaySeconds,
+          }),
+        );
+        continue;
+      }
       message.ack();
       console.log(
         JSON.stringify({
           event: "native_memory_queue_processed",
           type: job.type,
-          userId: job.userId,
+          userId: "userId" in job ? job.userId : null,
           messageId: message.id,
           attempts: message.attempts,
           outcome,
@@ -762,7 +902,7 @@ export async function handleMemoryQueue(
         JSON.stringify({
           event: "native_memory_queue_failed",
           type: job.type,
-          userId: job.userId,
+          userId: "userId" in job ? job.userId : null,
           messageId: message.id,
           attempts: message.attempts,
           error: error instanceof Error ? error.name : "UnknownError",
@@ -817,7 +957,10 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
   const savedMemoryEnabled = toBoolean(settings.savedMemoryEnabled);
   const existingTurn = chatHistoryEnabled
     ? await env.DB.prepare(
-        `select id from chat_memory_turns
+        `select id,
+                (embedding is null or embedding like '"p:t:%"') as embeddingMissing,
+                substr(searchable_text, 1, 4001) as searchableText
+         from chat_memory_turns
          where user_message_id = ?1 and user_id = ?2 and chat_id = ?3
          limit 1`,
       )
@@ -829,28 +972,86 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
     : null;
   const existingMemory = memoryAction?.type === "create"
     ? await env.DB.prepare(
-        `select id from user_memories
+        `select id,
+                ((embedding is null or embedding like '"p:m:%"')
+                  and do_not_mention = 0 and freshness_status <> 'expired')
+                  as embeddingMissing,
+                substr(content, 1, 4001) as content,
+                updated_at as updatedAt
+         from user_memories
          where user_id = ?1 and status = 'active'
-           and lower(content) = lower(?2)
+           and (id = ?2 or lower(content) = lower(?3))
+         order by case when id = ?2 then 0 else 1 end
          limit 1`,
       )
-        .bind(job.userId, memoryAction.content)
-        .first<{ id: string }>()
+        .bind(job.userId, job.userMessageId, memoryAction.content)
+        .first<ExistingMemoryRow>()
     : null;
 
   const now = Date.now();
   const statements: D1PreparedStatement[] = [];
-  const turnId = existingTurn?.id ?? crypto.randomUUID();
+  const vectorRecords: NativeMemoryVectorRecord[] = [];
+  let forgetMutationStatementIndex: number | null = null;
+  let turnInsertStatementIndex: number | null = null;
+  let memoryInsertStatementIndex: number | null = null;
+  let pendingTurnVector: NativeMemoryVectorRecord | null = null;
+  let pendingMemoryVector: NativeMemoryVectorRecord | null = null;
+  const turnId = existingTurn?.id ?? job.userMessageId;
   const topicName = boundedQueueText(ownedChat.topicName ?? job.topic.name, 120);
   const topicSlug = boundedQueueText(ownedChat.topicSlug ?? job.topic.slug, 120);
   const topicTags = uniqueStrings([topicSlug, topicName].filter(Boolean), 4);
   const question = boundedQueueText(visibleMessageContent(userMessage.content), 2_000);
   const answerExcerpt = boundedQueueText(assistantMessage.content, 1_000);
+  const searchableText = buildNativeMemoryTurnSearchableText(
+    userMessage.content,
+    assistantMessage.content,
+  );
   const shouldStoreTurn = Boolean(
     chatHistoryEnabled && !existingTurn && question && answerExcerpt,
   );
+  const mayMutateMemorySources =
+    shouldStoreTurn ||
+    (memoryAction?.type === "create" && !existingMemory) ||
+    memoryAction?.type === "forget";
+  if (mayMutateMemorySources) {
+    statements.push(memorySourceGenerationStatement(env, job.userId, now));
+  }
+  const existingTurnVectorText = existingTurn
+    ? boundedQueueText(existingTurn.searchableText, 4_000)
+    : "";
+  const existingMemoryVectorText = existingMemory
+    ? boundedQueueText(existingMemory.content, 4_000)
+    : "";
+
+  if (existingTurn && toBoolean(existingTurn.embeddingMissing) && existingTurnVectorText) {
+    vectorRecords.push({
+      namespace: "chat_memory_turns",
+      rowId: existingTurn.id,
+      userId: job.userId,
+      text: existingTurnVectorText,
+      chatId: job.chatId,
+      topicId: ownedChat.topicId,
+    });
+  }
+  if (
+    memoryAction?.type === "create" &&
+    existingMemory &&
+    toBoolean(existingMemory.embeddingMissing) &&
+    existingMemoryVectorText
+  ) {
+    vectorRecords.push({
+      namespace: "user_memories",
+      rowId: existingMemory.id,
+      userId: job.userId,
+      text: existingMemoryVectorText,
+      rowRevision: existingMemory.updatedAt,
+      chatId: job.chatId,
+      topicId: ownedChat.topicId,
+    });
+  }
 
   if (shouldStoreTurn) {
+    turnInsertStatementIndex = statements.length;
     statements.push(
       env.DB.prepare(
         `insert into chat_memory_turns (
@@ -858,7 +1059,8 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
            assistant_message_id, question, answer_excerpt,
            searchable_text, topics, embedding, created_at, updated_at
          ) values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, null, ?11, ?11)
-         on conflict(user_message_id) do nothing`,
+         on conflict(user_message_id) do nothing
+         returning id, user_id as userId`,
       ).bind(
         turnId,
         job.userId,
@@ -868,7 +1070,7 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
         job.assistantMessageId,
         question,
         answerExcerpt,
-        boundedQueueText(`${question}\n${answerExcerpt}`, 3_200),
+        searchableText,
         JSON.stringify(topicTags),
         now,
       ),
@@ -898,7 +1100,8 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
            last_message_id = excluded.last_message_id,
            embedding = null,
            updated_at = excluded.updated_at
-         where chat_memory_summaries.user_id = excluded.user_id`,
+         where chat_memory_summaries.user_id = excluded.user_id
+           and chat_memory_summaries.last_message_id is not excluded.last_message_id`,
       ).bind(
         job.chatId,
         job.userId,
@@ -909,6 +1112,7 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
         now,
       ),
       memoryEventStatement(env, {
+        eventId: queuedMemoryEventId(job.userMessageId, "chat_turn_indexed"),
         userId: job.userId,
         chatId: job.chatId,
         messageId: job.userMessageId,
@@ -917,10 +1121,20 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
         now,
       }),
     );
+    pendingTurnVector = {
+      namespace: "chat_memory_turns",
+      rowId: turnId,
+      userId: job.userId,
+      text: searchableText,
+      chatId: job.chatId,
+      topicId: ownedChat.topicId,
+    };
   }
 
   if (memoryAction?.type === "create" && !existingMemory) {
-    const memoryId = crypto.randomUUID();
+    const memoryId = job.userMessageId;
+    statements.push(...derivedMemoryInvalidationStatements(env, { userId: job.userId }));
+    memoryInsertStatementIndex = statements.length;
     statements.push(
       env.DB.prepare(
         `insert into user_memories (
@@ -933,7 +1147,9 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
            ?1, ?2, 'explicit', ?3, ?4, ?5,
            95, 90, 'active', 'prior_chat', ?6, '[]', ?7,
            ?8, null, 'current', 0, 0, ?9, ?9
-         )`,
+         )
+         on conflict(id) do nothing
+         returning id, user_id as userId`,
       ).bind(
         memoryId,
         job.userId,
@@ -946,6 +1162,7 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
         now,
       ),
       memoryEventStatement(env, {
+        eventId: queuedMemoryEventId(job.userMessageId, "memory_created"),
         userId: job.userId,
         memoryId,
         chatId: job.chatId,
@@ -956,13 +1173,48 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
         now,
       }),
     );
+    pendingMemoryVector = {
+      namespace: "user_memories",
+      rowId: memoryId,
+      userId: job.userId,
+      text: memoryAction.content,
+      rowRevision: now,
+      chatId: job.chatId,
+      topicId: ownedChat.topicId,
+    };
   }
 
   if (memoryAction?.type === "forget") {
+    const forgetOutboxStatements = userMemoryVectorCleanupStatements(env, {
+      userId: job.userId,
+      reason: "explicit_chat_forget",
+      now,
+      filterSql: `and id in (
+        select id from user_memories
+        where user_id = ?4 and status = 'active'
+          and (content = ?5 collate nocase or instr(content, ?5) > 0)
+        order by pinned desc, salience desc, updated_at desc
+        limit 10
+      )`,
+      filterBindings: [memoryAction.query],
+    });
+    const derivedInvalidationStatements = derivedMemoryInvalidationStatements(env, {
+      userId: job.userId,
+      guardSql: `exists (
+        select 1 from user_memories
+        where user_id = ?1 and status = 'active'
+          and (content = ?2 collate nocase or instr(content, ?2) > 0)
+      )`,
+      guardBindings: [memoryAction.query],
+    });
+    forgetMutationStatementIndex =
+      statements.length + forgetOutboxStatements.length + derivedInvalidationStatements.length;
     statements.push(
+      ...forgetOutboxStatements,
+      ...derivedInvalidationStatements,
       env.DB.prepare(
         `update user_memories
-         set status = 'deleted', deleted_at = ?1, updated_at = ?1
+         set status = 'deleted', deleted_at = ?1, embedding = null, updated_at = ?1
          where user_id = ?2
            and id in (
              select id from user_memories
@@ -970,12 +1222,14 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
                and (
                  content = ?3 collate nocase
                  or instr(content, ?3) > 0
-               )
+             )
              order by pinned desc, salience desc, updated_at desc
              limit 10
-           )`,
+           )
+         returning id, ${nativeMemoryVectorMarkerSql} as vectorMarker`,
       ).bind(now, job.userId, memoryAction.query),
       memoryEventStatement(env, {
+        eventId: queuedMemoryEventId(job.userMessageId, "memory_forgotten"),
         userId: job.userId,
         chatId: job.chatId,
         messageId: job.userMessageId,
@@ -987,14 +1241,70 @@ async function processNativePostTurn(env: StateApiEnv, job: NativeMemoryPostTurn
     );
   }
 
-  if (!statements.length) return "already_current";
-  await env.DB.batch(statements);
+  if (!statements.length) {
+    if (!vectorRecords.length) return "already_current";
+    await persistNativeMemoryVectorsBestEffort(env, vectorRecords);
+    return "stored";
+  }
+  const results = await env.DB.batch<{
+    id: string;
+    userId?: string;
+    vectorMarker?: unknown;
+  }>(statements);
+  const confirmedTurn = turnInsertStatementIndex === null
+    ? null
+    : results[turnInsertStatementIndex]?.results[0];
+  if (
+    pendingTurnVector &&
+    confirmedTurn?.id === pendingTurnVector.rowId &&
+    confirmedTurn.userId === pendingTurnVector.userId
+  ) {
+    vectorRecords.push(pendingTurnVector);
+  }
+  const confirmedMemory = memoryInsertStatementIndex === null
+    ? null
+    : results[memoryInsertStatementIndex]?.results[0];
+  const memoryCreated = Boolean(
+    pendingMemoryVector &&
+    confirmedMemory?.id === pendingMemoryVector.rowId &&
+    confirmedMemory.userId === pendingMemoryVector.userId
+  );
+  if (memoryCreated && pendingMemoryVector) {
+    vectorRecords.push(pendingMemoryVector);
+  }
+  await persistNativeMemoryVectorsBestEffort(env, vectorRecords);
+  if (memoryCreated) {
+    await sendMemorySynthesisWake(env, job.userId, "explicit_chat_memory_created").catch((error) => {
+      console.warn(JSON.stringify({
+        event: "native_memory_synthesis_queue_failed",
+        reason: "explicit_chat_memory_created",
+        error: error instanceof Error ? error.name : "UnknownError",
+      }));
+    });
+  }
+  const forgotten = forgetMutationStatementIndex === null
+    ? false
+    : Boolean(results[forgetMutationStatementIndex]?.results.length);
+  if (forgotten) {
+    await Promise.all([
+      drainAndContinueNativeVectorCleanup(env, "explicit_chat_forget"),
+      sendMemorySynthesisWake(env, job.userId, "explicit_chat_forget").catch((error) => {
+        console.warn(JSON.stringify({
+          event: "native_memory_synthesis_queue_failed",
+          reason: "explicit_chat_forget",
+          error: error instanceof Error ? error.name : "UnknownError",
+        }));
+      }),
+    ]);
+  }
   return "stored";
 }
 
 async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDailyJob) {
   const settings = await loadQueuedMemorySettings(env, job.userId);
   if (!settings) return "stale_job";
+  const sourceGeneration = settings.sourceGeneration;
+  if (!Number.isSafeInteger(sourceGeneration) || sourceGeneration <= 0) return "stale_job";
   if (!toBoolean(settings.enabled) || !toBoolean(settings.savedMemoryEnabled)) {
     return "memory_disabled";
   }
@@ -1044,22 +1354,26 @@ async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDai
     );
     return "legacy_summary_sections_unreadable";
   }
-  const hiddenCategories = new Set(
-    priorSections
+  const persistedSuppressionMask = boundedMemorySuppressionMask(
+    settings.summarySuppressionMask,
+  );
+  const hiddenCategories = new Set([
+    ...memoryCategoriesFromSuppressionMask(persistedSuppressionMask),
+    ...priorSections
       .filter((section) => section.doNotMention === true)
       .flatMap((section) => {
-        const category = boundedTrimmedString(section.category, 1, 60);
-        return category ? [category] : [];
+        return [normalizedMemorySuppressionCategory(section.category)];
       }),
-  );
-  const hiddenSectionIds = new Set(
-    priorSections
+  ]);
+  const hiddenSectionIds = new Set([
+    ...priorSections
       .filter((section) => section.doNotMention === true)
       .flatMap((section) => {
         const id = boundedTrimmedString(section.id, 1, 120);
         return id ? [id] : [];
       }),
-  );
+  ]);
+  const suppressionMask = memorySuppressionMaskForCategories(hiddenCategories);
 
   const byCategory = new Map<string, SynthesisMemoryRow[]>();
   for (const memory of memories.results) {
@@ -1132,37 +1446,74 @@ async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDai
     maxSynthesisTurns,
   );
   const now = Date.now();
-  const statements: D1PreparedStatement[] = [
-    env.DB.prepare("delete from user_memory_profiles where user_id = ?1").bind(job.userId),
-  ];
+  const statements: D1PreparedStatement[] = [];
+  const newSuppressionBits = suppressionMask & ~persistedSuppressionMask;
+  if (newSuppressionBits) {
+    statements.push(
+      env.DB.prepare(
+        `update user_memory_settings
+         set summary_suppression_mask = summary_suppression_mask | ?1
+         where user_id = ?2 and updated_at = ?3
+           and (summary_suppression_mask & ?1) <> ?1`,
+      ).bind(newSuppressionBits, job.userId, sourceGeneration),
+    );
+  }
+  statements.push(
+    env.DB.prepare(
+      `delete from user_memory_profiles
+       where user_id = ?1
+         and exists (
+           select 1 from user_memory_settings
+           where user_id = ?1 and updated_at = ?2
+         )`,
+    ).bind(job.userId, sourceGeneration),
+  );
+  let profileStatementCount = 0;
   for (const section of visibleSections.filter((value) => value.sourceMemoryIds?.length)) {
+    profileStatementCount += 1;
     statements.push(
       env.DB.prepare(
         `insert into user_memory_profiles (
            user_id, category, summary, source_memory_ids,
            last_compiled_at, created_at, updated_at
-         ) values (?1, ?2, ?3, ?4, ?5, ?5, ?5)
+         )
+         select ?1, ?2, ?3, ?4, ?5, ?5, ?5
+         where exists (
+           select 1 from user_memory_settings
+           where user_id = ?1 and updated_at = ?6
+         )
          on conflict(user_id, category) do update set
            summary = excluded.summary,
            source_memory_ids = excluded.source_memory_ids,
            last_compiled_at = excluded.last_compiled_at,
-           updated_at = excluded.updated_at`,
+           updated_at = excluded.updated_at
+         where exists (
+           select 1 from user_memory_settings
+           where user_id = excluded.user_id and updated_at = ?6
+         )`,
       ).bind(
         job.userId,
         section.category,
         section.summary,
         JSON.stringify(section.sourceMemoryIds ?? []),
         now,
+        sourceGeneration,
       ),
     );
   }
+  const summaryStatementIndex = statements.length;
   statements.push(
     env.DB.prepare(
       `insert into user_memory_summaries (
          user_id, summary, sections, source_memory_ids,
          source_turn_ids, version, last_synthesized_at,
          created_at, updated_at
-       ) values (?1, ?2, ?3, ?4, ?5, 1, ?6, ?6, ?6)
+       )
+       select ?1, ?2, ?3, ?4, ?5, 1, ?6, ?6, ?6
+       where exists (
+         select 1 from user_memory_settings
+         where user_id = ?1 and updated_at = ?7
+       )
        on conflict(user_id) do update set
          summary = excluded.summary,
          sections = excluded.sections,
@@ -1170,7 +1521,12 @@ async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDai
          source_turn_ids = excluded.source_turn_ids,
          version = user_memory_summaries.version + 1,
          last_synthesized_at = excluded.last_synthesized_at,
-         updated_at = excluded.updated_at`,
+         updated_at = excluded.updated_at
+       where exists (
+         select 1 from user_memory_settings
+         where user_id = excluded.user_id and updated_at = ?7
+       )
+       returning user_id as userId`,
     ).bind(
       job.userId,
       summary,
@@ -1178,19 +1534,26 @@ async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDai
       JSON.stringify(sourceMemoryIds),
       JSON.stringify(sourceTurnIds),
       now,
+      sourceGeneration,
     ),
     env.DB.prepare(
       `insert into memory_synthesis_runs (
          id, user_id, reason, status, input_counts,
          output_counts, error, started_at, finished_at, created_at
-       ) values (?1, ?2, ?3, 'completed', ?4, ?5, null, ?6, ?6, ?6)`,
+       )
+       select ?1, ?2, ?3, 'completed', ?4, ?5, null, ?6, ?6, ?6
+       where exists (
+         select 1 from user_memory_settings
+         where user_id = ?2 and updated_at = ?7
+       )`,
     ).bind(
       crypto.randomUUID(),
       job.userId,
       job.reason,
       JSON.stringify({ memories: memories.results.length, turns: turns.results.length }),
-      JSON.stringify({ sections: sections.length, profiles: statements.length - 1 }),
+      JSON.stringify({ sections: sections.length, profiles: profileStatementCount }),
       now,
+      sourceGeneration,
     ),
     memoryEventStatement(env, {
       userId: job.userId,
@@ -1203,9 +1566,14 @@ async function synthesizeNativeUserMemory(env: StateApiEnv, job: NativeMemoryDai
         runtime: NATIVE_STATE_API_DELIVERY,
       },
       now,
+      onlyAfterChange: true,
     }),
   );
-  await env.DB.batch(statements);
+  const results = await env.DB.batch<{ userId?: string }>(statements);
+  if (results[summaryStatementIndex]?.results[0]?.userId !== job.userId) {
+    return "stale_job";
+  }
+  await repairNativeMemoryVectorsBestEffort(env, job.userId);
   return "synthesized";
 }
 
@@ -1217,7 +1585,9 @@ async function loadQueuedMemorySettings(env: StateApiEnv, userId: string) {
        coalesce(settings.enabled, 1) as enabled,
        coalesce(settings.saved_memory_enabled, 1) as savedMemoryEnabled,
        coalesce(settings.chat_history_enabled, 1) as chatHistoryEnabled,
-       coalesce(settings.dreaming_enabled, 1) as dreamingEnabled
+       coalesce(settings.dreaming_enabled, 1) as dreamingEnabled,
+       coalesce(settings.summary_suppression_mask, 0) as summarySuppressionMask,
+       coalesce(settings.updated_at, 0) as sourceGeneration
      from users
      left join user_memory_settings settings on settings.user_id = users.id
      where users.id = ?1
@@ -1227,8 +1597,29 @@ async function loadQueuedMemorySettings(env: StateApiEnv, userId: string) {
     .first<QueuedMemorySettingsRow>();
 }
 
+function memorySourceGenerationStatement(
+  env: StateApiEnv,
+  userId: string,
+  now: number,
+) {
+  return env.DB.prepare(
+    `insert into user_memory_settings (
+       user_id, enabled, saved_memory_enabled, chat_history_enabled,
+       dreaming_enabled, capture_scope, retrieval_mode, notice_seen_at,
+       created_at, updated_at
+     ) values (?1, 1, 1, 1, 1, 'broad', 'need_based', null, ?2, ?2)
+     on conflict(user_id) do update set
+       updated_at = max(user_memory_settings.updated_at + 1, excluded.updated_at)
+     returning updated_at as sourceGeneration`,
+  ).bind(userId, now);
+}
+
 function parseNativeMemoryQueueJob(value: unknown): NativeMemoryQueueJob | null {
   if (!isRecord(value) || !validQueueTimestamp(value.enqueuedAt)) return null;
+  if (value.type === "memory.vector_cleanup.v1") {
+    const reason = boundedTrimmedString(value.reason, 1, 80);
+    return reason ? { type: value.type, reason } : null;
+  }
   const userId = boundedTrimmedString(value.userId, 1, 120);
   if (!userId) return null;
 
@@ -1378,6 +1769,17 @@ function boundedQueueText(value: string, maxLength: number) {
   return value.replace(/\s+/g, " ").trim().slice(0, maxLength).trim();
 }
 
+export function buildNativeMemoryTurnSearchableText(
+  userContent: string,
+  assistantContent: string,
+) {
+  const question = boundedQueueText(visibleMessageContent(userContent), 2_000);
+  const answerExcerpt = boundedQueueText(assistantContent, 1_000);
+  return question && answerExcerpt
+    ? boundedQueueText(`${question}\n${answerExcerpt}`, 3_200)
+    : "";
+}
+
 function memoryCategoryTitle(category: string) {
   switch (category) {
     case "identity":
@@ -1399,6 +1801,38 @@ function memoryCategoryTitle(category: string) {
     default:
       return "Other details";
   }
+}
+
+function normalizedMemorySuppressionCategory(category: string) {
+  return memoryCategories.has(category) ? category : "general";
+}
+
+function boundedMemorySuppressionMask(value: unknown) {
+  const parsed = finiteInteger(value, 0);
+  if (parsed < 0) return 0;
+  return parsed & allMemoryCategorySuppressionBits;
+}
+
+function memorySuppressionBitForCategory(category: string) {
+  return memoryCategorySuppressionBits.get(
+    normalizedMemorySuppressionCategory(category),
+  ) ?? 0;
+}
+
+function memoryCategoriesFromSuppressionMask(mask: number) {
+  const categories: string[] = [];
+  for (const [category, bit] of memoryCategorySuppressionBits) {
+    if ((mask & bit) === bit) categories.push(category);
+  }
+  return categories;
+}
+
+function memorySuppressionMaskForCategories(categories: Iterable<string>) {
+  let mask = 0;
+  for (const category of categories) {
+    mask |= memorySuppressionBitForCategory(category);
+  }
+  return boundedMemorySuppressionMask(mask);
 }
 
 function isWriteFreezeEnabled(env: StateApiEnv) {
@@ -1753,29 +2187,49 @@ async function deleteOwnedChat(
     .first<{ id: string }>();
   if (!owned) return jsonResponse({ error: "Not found" }, 404, session);
 
-  const turns = env.MEMORY_VECTORIZE
-    ? await env.DB.prepare(
-        `select id from chat_memory_turns
-         where chat_id = ?1 and user_id = ?2
-         limit ${maxVectorCleanupRows}`,
-      )
-        .bind(chatId, session.user.id)
-        .all<VectorIdRow>()
-    : null;
-  const deleted = await env.DB.prepare(
-    `delete from chats
-     where id = ?1 and user_id = ?2
-     returning id`,
-  )
-    .bind(chatId, session.user.id)
-    .first<{ id: string }>();
-  if (!deleted) return jsonResponse({ error: "Not found" }, 404, session);
-
-  scheduleVectorCleanup(ctx, env, {
-    memories: [],
-    summaries: [chatId],
-    turns: turns?.results.map((row) => row.id) ?? [],
+  const now = Date.now();
+  const outboxStatements = [
+    ...chatTurnVectorCleanupStatements(env, {
+      userId: session.user.id,
+      reason: "chat_deleted",
+      now,
+      filterSql: "and chat_id = ?5",
+      filterBindings: [chatId],
+    }),
+    chatSummaryVectorCleanupStatement(env, {
+      userId: session.user.id,
+      chatId,
+      reason: "chat_deleted",
+      now,
+    }),
+  ];
+  const derivedInvalidationStatements = derivedMemoryInvalidationStatements(env, {
+    userId: session.user.id,
+    guardSql: "exists (select 1 from chats where id = ?2 and user_id = ?1)",
+    guardBindings: [chatId],
   });
+  const sourceGenerationStatement = memorySourceGenerationStatement(
+    env,
+    session.user.id,
+    now,
+  );
+  // Exact identities are inserted set-wise without a row cap in the same D1
+  // transaction as the cascade that removes their source rows.
+  const results = await env.DB.batch<{ id: string }>([
+    ...outboxStatements,
+    sourceGenerationStatement,
+    ...derivedInvalidationStatements,
+    env.DB.prepare(
+      `delete from chats
+       where id = ?1 and user_id = ?2
+       returning id`,
+    ).bind(chatId, session.user.id),
+  ]);
+  const deleted = results[outboxStatements.length + derivedInvalidationStatements.length + 1]
+    ?.results[0];
+  if (!deleted) return jsonResponse({ error: "Not found" }, 404, session);
+  scheduleVectorCleanupWake(ctx, env, "chat_deleted");
+  scheduleMemorySynthesis(ctx, env, session.user.id, "chat_deleted");
   return jsonResponse({ ok: true }, 200, session);
 }
 
@@ -1832,7 +2286,12 @@ async function createMemory(
 
   const now = Date.now();
   const memoryId = crypto.randomUUID();
+  const derivedInvalidationStatements = derivedMemoryInvalidationStatements(env, {
+    userId: session.user.id,
+  });
   const statements = [
+    memorySourceGenerationStatement(env, session.user.id, now),
+    ...derivedInvalidationStatements,
     env.DB.prepare(
       `insert into user_memories (
          id, user_id, kind, category, content, tags, confidence,
@@ -1850,7 +2309,7 @@ async function createMemory(
          source_memory_ids as sourceMemoryIds,
          source_chat_id as sourceChatId,
          source_message_id as sourceMessageId,
-         embedding, valid_from as validFrom, valid_until as validUntil,
+         valid_from as validFrom, valid_until as validUntil,
          freshness_status as freshnessStatus, pinned,
          do_not_mention as doNotMention,
          created_at as createdAt, updated_at as updatedAt,
@@ -1865,7 +2324,7 @@ async function createMemory(
     }),
   ];
   const results = await env.DB.batch<MemoryRow>(statements);
-  const memory = results[0]?.results[0];
+  const memory = results[derivedInvalidationStatements.length + 1]?.results[0];
   if (!memory) throw new Error("Native memory insert returned no row");
 
   if (!isDisposableValidationSession(session)) {
@@ -1905,7 +2364,7 @@ async function updateMemorySettings(
   }
 
   const current = await loadMemorySettings(env, session.user.id);
-  const now = Date.now();
+  const now = Math.max(Date.now(), current.updatedAt + 1);
   const next = {
     enabled: patch.enabled ?? toBoolean(current.enabled),
     savedMemoryEnabled: patch.savedMemoryEnabled ?? toBoolean(current.savedMemoryEnabled),
@@ -1916,9 +2375,26 @@ async function updateMemorySettings(
     noticeSeenAt: patch.noticeSeen ? now : current.noticeSeenAt,
   };
   const disablingChatHistory = toBoolean(current.chatHistoryEnabled) && !next.chatHistoryEnabled;
-  const vectorIds = disablingChatHistory
-    ? await loadMemoryVectorIds(env, session.user.id, { priorChatOnly: true })
-    : null;
+  const outboxStatements = disablingChatHistory
+    ? [
+        ...userMemoryVectorCleanupStatements(env, {
+          userId: session.user.id,
+          reason: "chat_history_disabled",
+          now,
+          filterSql: "and status = 'active' and source_type in ('prior_chat', 'synthesized')",
+        }),
+        ...chatTurnVectorCleanupStatements(env, {
+          userId: session.user.id,
+          reason: "chat_history_disabled",
+          now,
+        }),
+        chatSummaryVectorCleanupStatement(env, {
+          userId: session.user.id,
+          reason: "chat_history_disabled",
+          now,
+        }),
+      ]
+    : [];
   const statements: D1PreparedStatement[] = [
     env.DB.prepare(
       `insert into user_memory_settings (
@@ -1934,7 +2410,7 @@ async function updateMemorySettings(
          capture_scope = excluded.capture_scope,
          retrieval_mode = excluded.retrieval_mode,
          notice_seen_at = excluded.notice_seen_at,
-         updated_at = excluded.updated_at`,
+         updated_at = max(user_memory_settings.updated_at + 1, excluded.updated_at)`,
     ).bind(
       session.user.id,
       next.enabled ? 1 : 0,
@@ -1959,6 +2435,7 @@ async function updateMemorySettings(
     const memoryId = crypto.randomUUID();
     correctionMemoryId = memoryId;
     statements.push(
+      ...derivedMemoryInvalidationStatements(env, { userId: session.user.id }),
       env.DB.prepare(
         `insert into user_memories (
            id, user_id, kind, category, content, tags, confidence,
@@ -1982,13 +2459,13 @@ async function updateMemorySettings(
 
   if (disablingChatHistory) {
     statements.push(
+      ...derivedMemoryInvalidationStatements(env, { userId: session.user.id }),
       env.DB.prepare(
         `update user_memories
-         set status = 'deleted', deleted_at = ?1, updated_at = ?1
+         set status = 'deleted', deleted_at = ?1, embedding = null, updated_at = ?1
          where user_id = ?2 and status = 'active'
            and source_type in ('prior_chat', 'synthesized')`,
       ).bind(now, session.user.id),
-      env.DB.prepare("delete from user_memory_summaries where user_id = ?1").bind(session.user.id),
       env.DB.prepare("delete from chat_memory_summaries where user_id = ?1").bind(session.user.id),
       env.DB.prepare("delete from chat_memory_turns where user_id = ?1").bind(session.user.id),
       memoryEventStatement(env, {
@@ -2000,14 +2477,23 @@ async function updateMemorySettings(
     );
   }
 
-  await env.DB.batch(statements);
-  if (vectorIds) scheduleVectorCleanup(ctx, env, vectorIds);
-  if (patch.refreshSummary || patch.correction) {
+  await env.DB.batch([
+    ...outboxStatements,
+    ...statements,
+  ]);
+  if (outboxStatements.length) {
+    scheduleVectorCleanupWake(ctx, env, "chat_history_disabled");
+  }
+  if (disablingChatHistory || patch.refreshSummary || patch.correction) {
     scheduleMemorySynthesis(
       ctx,
       env,
       session.user.id,
-      patch.correction ? "user_correction" : "manual_refresh",
+      patch.correction
+        ? "user_correction"
+        : disablingChatHistory
+          ? "chat_history_disabled"
+          : "manual_refresh",
     );
   }
   const updatedSettings: MemorySettingsRow = {
@@ -2049,18 +2535,41 @@ async function clearMemories(
   const freeze = writeFreezeResponse(env, "memory", session);
   if (freeze) return freeze;
   const now = Date.now();
-  const [settings, vectorIds] = await Promise.all([
-    loadMemorySettings(env, session.user.id),
-    loadMemoryVectorIds(env, session.user.id),
-  ]);
+  const settings = await loadMemorySettings(env, session.user.id);
+  const outboxStatements = [
+    ...userMemoryVectorCleanupStatements(env, {
+      userId: session.user.id,
+      reason: "memory_cleared",
+      now,
+    }),
+    ...chatTurnVectorCleanupStatements(env, {
+      userId: session.user.id,
+      reason: "memory_cleared",
+      now,
+    }),
+    chatSummaryVectorCleanupStatement(env, {
+      userId: session.user.id,
+      reason: "memory_cleared",
+      now,
+    }),
+  ];
   await env.DB.batch([
+    ...outboxStatements,
+    memorySourceGenerationStatement(env, session.user.id, now),
+    env.DB.prepare(
+      "update user_memory_settings set summary_suppression_mask = 0 where user_id = ?1",
+    ).bind(session.user.id),
     env.DB.prepare(
       `update user_memories
-       set status = 'deleted', deleted_at = ?1, updated_at = ?1
+       set status = 'deleted', deleted_at = ?1, embedding = null, updated_at = ?1
        where user_id = ?2 and status = 'active'`,
     ).bind(now, session.user.id),
     env.DB.prepare("delete from user_memory_profiles where user_id = ?1").bind(session.user.id),
     env.DB.prepare("delete from user_memory_summaries where user_id = ?1").bind(session.user.id),
+    // "Clear all" is also the explicit reset boundary for durable summary
+    // suppression tombstones. Keeping them would invisibly suppress memories
+    // the learner creates after the reset.
+    env.DB.prepare("delete from memory_source_feedback where user_id = ?1").bind(session.user.id),
     env.DB.prepare("delete from chat_memory_summaries where user_id = ?1").bind(session.user.id),
     env.DB.prepare("delete from chat_memory_turns where user_id = ?1").bind(session.user.id),
     memoryEventStatement(env, {
@@ -2069,7 +2578,7 @@ async function clearMemories(
       now,
     }),
   ]);
-  scheduleVectorCleanup(ctx, env, vectorIds);
+  scheduleVectorCleanupWake(ctx, env, "memory_cleared");
   return jsonResponse(
     {
       settings: serializeMemorySettings(settings),
@@ -2126,8 +2635,19 @@ async function updateMemoryItem(
   const nextCategory = patch.category ?? existing.category;
   const nextPinned = patch.pinned ?? (userEdited ? true : toBoolean(existing.pinned));
   const nextDoNotMention = patch.doNotMention ?? toBoolean(existing.doNotMention);
-  const nextEmbedding = patch.content !== undefined ? null : existing.embedding;
-  const now = Date.now();
+  // updated_at is part of the user-memory vector identity, so every accepted
+  // mutation supersedes the prior vector even when content is unchanged.
+  const obsoleteVectors = await knownNativeMemoryCleanupEntriesForText(
+    "user_memories",
+    memoryId,
+    existing.cleanupVectorId ?? existing.vectorMarker,
+    toBoolean(existing.vectorPending),
+    existing.content,
+    existing.updatedAt,
+  );
+  // updated_at is the row version for user mutations. Advancing it by at
+  // least one prevents two same-millisecond writers from sharing a version.
+  const now = Math.max(Date.now(), existing.updatedAt + 1);
   const update = env.DB.prepare(
     `update user_memories set
        kind = ?1,
@@ -2138,9 +2658,10 @@ async function updateMemoryItem(
        pinned = ?6,
        do_not_mention = ?7,
        salience = 90,
-       embedding = ?8,
-       updated_at = ?9
-     where id = ?10 and user_id = ?11 and status = 'active'
+       embedding = null,
+       updated_at = ?8
+     where id = ?9 and user_id = ?10 and status = 'active'
+       and updated_at = ?11 and content = ?12
      returning
        id, user_id as userId, kind, category, content, tags,
        confidence, salience, status, source_type as sourceType,
@@ -2148,7 +2669,7 @@ async function updateMemoryItem(
        source_memory_ids as sourceMemoryIds,
        source_chat_id as sourceChatId,
        source_message_id as sourceMessageId,
-       embedding, valid_from as validFrom, valid_until as validUntil,
+       valid_from as validFrom, valid_until as validUntil,
        freshness_status as freshnessStatus, pinned,
        do_not_mention as doNotMention,
        created_at as createdAt, updated_at as updatedAt,
@@ -2161,12 +2682,43 @@ async function updateMemoryItem(
     userEdited ? "manual" : existing.sourceType,
     nextPinned ? 1 : 0,
     nextDoNotMention ? 1 : 0,
-    serializeJsonColumn(nextEmbedding),
     now,
     memoryId,
     session.user.id,
+    existing.updatedAt,
+    existing.content,
   );
+  const outboxStatements = isDisposableValidationSession(session)
+    ? []
+    : obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
+        entry,
+        ownerUserId: session.user.id,
+        sourceNamespace: "user_memories",
+        sourceRowId: memoryId,
+        sourceRowRevision: existing.updatedAt,
+        reason: "memory_item_updated",
+        now,
+        guardSql: `exists (
+          select 1 from user_memories
+          where id = ?10 and user_id = ?11 and status = 'active'
+            and updated_at = ?12 and content = ?13
+        )`,
+        guardBindings: [memoryId, session.user.id, existing.updatedAt, existing.content],
+      }));
+  const derivedInvalidationStatements = derivedMemoryInvalidationStatements(env, {
+    userId: session.user.id,
+    guardSql: `exists (
+      select 1 from user_memories
+      where id = ?2 and user_id = ?1 and status = 'active'
+        and updated_at = ?3 and content = ?4
+    )`,
+    guardBindings: [memoryId, existing.updatedAt, existing.content],
+  });
+  const updateStatementIndex = outboxStatements.length + derivedInvalidationStatements.length + 1;
   const results = await env.DB.batch<MemoryRow>([
+    ...outboxStatements,
+    memorySourceGenerationStatement(env, session.user.id, now),
+    ...derivedInvalidationStatements,
     update,
     memoryEventStatement(env, {
       userId: session.user.id,
@@ -2174,15 +2726,18 @@ async function updateMemoryItem(
       eventType: "updated",
       metadata: { fields: Object.keys(patch) },
       now,
+      onlyAfterChange: true,
     }),
   ]);
-  const memory = results[0]?.results[0];
-  if (!memory) return jsonResponse({ error: "Memory not found" }, 404, session);
-
-  if (patch.content !== undefined && !isDisposableValidationSession(session)) {
-    scheduleVectorCleanup(ctx, env, { memories: [memoryId], summaries: [], turns: [] });
+  const memory = results[updateStatementIndex]?.results[0];
+  if (!memory) {
+    return jsonResponse({ error: "Memory changed; retry the update." }, 409, session);
   }
-  if (userEdited && !isDisposableValidationSession(session)) {
+
+  if (outboxStatements.length) {
+    scheduleVectorCleanupWake(ctx, env, "memory_item_updated");
+  }
+  if (!isDisposableValidationSession(session)) {
     scheduleMemorySynthesis(ctx, env, session.user.id, "manual_memory_updated");
   }
   return jsonResponse({ memory: serializeMemory(memory) }, 200, session);
@@ -2196,25 +2751,80 @@ async function deleteMemoryItem(
 ) {
   const freeze = writeFreezeResponse(env, "memory", session);
   if (freeze) return freeze;
-  const existing = await getOwnedMemory(env, session.user.id, memoryId, false);
+  const existing = await getOwnedMemory(env, session.user.id, memoryId, true);
   if (!existing) return jsonResponse({ error: "Memory not found" }, 404, session);
-  const now = Date.now();
-  await env.DB.batch([
+  const obsoleteVectors = await knownNativeMemoryCleanupEntriesForText(
+    "user_memories",
+    memoryId,
+    existing.cleanupVectorId ?? existing.vectorMarker,
+    toBoolean(existing.vectorPending),
+    existing.content,
+    existing.updatedAt,
+  );
+  const now = Math.max(Date.now(), existing.updatedAt + 1);
+  const outboxStatements = isDisposableValidationSession(session)
+    ? []
+    : obsoleteVectors.map((entry) => vectorCleanupOutboxValueStatement(env, {
+        entry,
+        ownerUserId: session.user.id,
+        sourceNamespace: "user_memories",
+        sourceRowId: memoryId,
+        sourceRowRevision: existing.updatedAt,
+        reason: "memory_item_deleted",
+        now,
+        guardSql: `exists (
+          select 1 from user_memories
+          where id = ?10 and user_id = ?11 and status = 'active'
+            and updated_at = ?12 and content = ?13
+        )`,
+        guardBindings: [memoryId, session.user.id, existing.updatedAt, existing.content],
+      }));
+  const derivedInvalidationStatements = derivedMemoryInvalidationStatements(env, {
+    userId: session.user.id,
+    guardSql: `exists (
+      select 1 from user_memories
+      where id = ?2 and user_id = ?1 and status = 'active'
+        and updated_at = ?3 and content = ?4
+    )`,
+    guardBindings: [memoryId, existing.updatedAt, existing.content],
+  });
+  const deleteStatementIndex = outboxStatements.length + derivedInvalidationStatements.length + 1;
+  const results = await env.DB.batch<MemoryRow>([
+    ...outboxStatements,
+    memorySourceGenerationStatement(env, session.user.id, now),
+    ...derivedInvalidationStatements,
     env.DB.prepare(
       `update user_memories
-       set status = 'deleted', deleted_at = ?1, updated_at = ?1
-       where id = ?2 and user_id = ?3`,
-    ).bind(now, memoryId, session.user.id),
+       set status = 'deleted', deleted_at = ?1, embedding = null, updated_at = ?1
+       where id = ?2 and user_id = ?3
+         and status = 'active' and updated_at = ?4 and content = ?5
+       returning
+         id, user_id as userId, kind, category, content, tags,
+         confidence, salience, status, source_type as sourceType,
+         source_turn_ids as sourceTurnIds,
+         source_memory_ids as sourceMemoryIds,
+         source_chat_id as sourceChatId,
+         source_message_id as sourceMessageId,
+         valid_from as validFrom, valid_until as validUntil,
+         freshness_status as freshnessStatus, pinned,
+         do_not_mention as doNotMention,
+         created_at as createdAt, updated_at as updatedAt,
+         last_used_at as lastUsedAt, deleted_at as deletedAt`,
+    ).bind(now, memoryId, session.user.id, existing.updatedAt, existing.content),
     memoryEventStatement(env, {
       userId: session.user.id,
       memoryId,
       eventType: "deleted",
       metadata: { fields: ["status", "deletedAt"] },
       now,
+      onlyAfterChange: true,
     }),
   ]);
-  if (!isDisposableValidationSession(session)) {
-    scheduleVectorCleanup(ctx, env, { memories: [memoryId], summaries: [], turns: [] });
+  if (!results[deleteStatementIndex]?.results[0]) {
+    return jsonResponse({ error: "Memory changed; retry the deletion." }, 409, session);
+  }
+  if (outboxStatements.length) {
+    scheduleVectorCleanupWake(ctx, env, "memory_item_deleted");
   }
   if (!isDisposableValidationSession(session)) {
     scheduleMemorySynthesis(ctx, env, session.user.id, "manual_memory_deleted");
@@ -2222,7 +2832,11 @@ async function deleteMemoryItem(
   return jsonResponse({ ok: true }, 200, session);
 }
 
-async function handleMemorySourceFeedback(request: Request, env: StateApiEnv) {
+async function handleMemorySourceFeedback(
+  request: Request,
+  env: StateApiEnv,
+  ctx: StateApiExecutionContext,
+) {
   const session = await requireNativeSession(request, env);
   if (!session) return unauthorizedResponse();
   if (request.method !== "POST") return methodNotAllowed(["POST"], session);
@@ -2232,6 +2846,7 @@ async function handleMemorySourceFeedback(request: Request, env: StateApiEnv) {
   if (!json.ok) return jsonResponse({ error: json.error }, json.status, session);
   const feedback = parseMemoryFeedback(json.value);
   if (!feedback) return jsonResponse({ error: "Invalid feedback" }, 400, session);
+  const suppressesSource = feedback.action === "dont_mention" || feedback.action === "not_relevant";
 
   const [ownedRun, ownedMemory, ownedTurn, summary] = await Promise.all([
     feedback.aiRunId
@@ -2253,7 +2868,7 @@ async function handleMemorySourceFeedback(request: Request, env: StateApiEnv) {
           .bind(feedback.chatTurnId, session.user.id)
           .first<{ id: string }>()
       : Promise.resolve(null),
-    feedback.summarySectionId && feedback.action === "dont_mention"
+    feedback.summarySectionId && suppressesSource
       ? env.DB.prepare(NATIVE_BOUNDED_MEMORY_SECTIONS_SQL)
           .bind(session.user.id)
           .first<MemorySummarySectionsRow>()
@@ -2262,64 +2877,419 @@ async function handleMemorySourceFeedback(request: Request, env: StateApiEnv) {
   if (feedback.aiRunId && !ownedRun) return jsonResponse({ error: "AI run not found" }, 404, session);
   if (feedback.memoryId && !ownedMemory) return jsonResponse({ error: "Memory not found" }, 404, session);
   if (feedback.chatTurnId && !ownedTurn) return jsonResponse({ error: "Source not found" }, 404, session);
+  if (feedback.summarySectionId && suppressesSource && !summary) {
+    return jsonResponse({ error: "Summary source not found" }, 404, session);
+  }
 
-  const now = Date.now();
+  const now = ownedMemory
+    ? Math.max(Date.now(), ownedMemory.updatedAt + 1)
+    : summary
+      ? Math.max(Date.now(), summary.updatedAt + 1)
+      : Date.now();
+  const feedbackId = crypto.randomUUID();
   const statements: D1PreparedStatement[] = [];
-  if (feedback.memoryId && (feedback.action === "dont_mention" || feedback.action === "not_relevant")) {
+  if (suppressesSource) {
+    statements.push(memorySourceGenerationStatement(env, session.user.id, now));
+  }
+  let memorySuppressionIndex: number | null = null;
+  let turnSuppressionIndex: number | null = null;
+  let summarySuppressionIndex: number | null = null;
+  let summarySuppressionBit = 0;
+  let feedbackHandled = false;
+  let cleanupEnqueued = false;
+  if (feedback.memoryId && ownedMemory && suppressesSource) {
+    const cleanupEntries = await knownNativeMemoryCleanupEntriesForText(
+      "user_memories",
+      feedback.memoryId,
+      ownedMemory.cleanupVectorId ?? ownedMemory.vectorMarker,
+      toBoolean(ownedMemory.vectorPending),
+      ownedMemory.content,
+      ownedMemory.updatedAt,
+    );
+    statements.push(...cleanupEntries.map((entry) => vectorCleanupOutboxValueStatement(env, {
+      entry,
+      ownerUserId: session.user.id,
+      sourceNamespace: "user_memories",
+      sourceRowId: feedback.memoryId,
+      sourceRowRevision: ownedMemory.updatedAt,
+      reason: "memory_source_suppressed",
+      now,
+      guardSql: `exists (
+        select 1 from user_memories
+        where id = ?10 and user_id = ?11
+          and updated_at = ?12 and content = ?13
+      )`,
+      guardBindings: [
+        feedback.memoryId,
+        session.user.id,
+        ownedMemory.updatedAt,
+        ownedMemory.content,
+      ],
+    })));
+    statements.push(...derivedMemoryInvalidationStatements(env, {
+      userId: session.user.id,
+      guardSql: `exists (
+        select 1 from user_memories
+        where id = ?2 and user_id = ?1
+          and updated_at = ?3 and content = ?4
+      )`,
+      guardBindings: [feedback.memoryId, ownedMemory.updatedAt, ownedMemory.content],
+    }));
+    memorySuppressionIndex = statements.length;
     statements.push(
       env.DB.prepare(
-        `update user_memories set do_not_mention = 1, updated_at = ?1
-         where id = ?2 and user_id = ?3`,
-      ).bind(now, feedback.memoryId, session.user.id),
+        `update user_memories
+         set do_not_mention = 1, embedding = null, updated_at = ?1
+         where id = ?2 and user_id = ?3
+           and updated_at = ?4 and content = ?5
+         returning id`,
+      ).bind(
+        now,
+        feedback.memoryId,
+        session.user.id,
+        ownedMemory.updatedAt,
+        ownedMemory.content,
+      ),
     );
+    statements.push(
+      env.DB.prepare(
+        `insert into memory_source_feedback (
+           id, user_id, ai_run_id, memory_id, chat_turn_id,
+           summary_section_id, action, note, created_at
+         )
+         select ?1, ?2, ?3, ?4, null, null, ?5, ?6, ?7
+         where changes() > 0`,
+      ).bind(
+        feedbackId,
+        session.user.id,
+        feedback.aiRunId,
+        feedback.memoryId,
+        feedback.action,
+        feedback.note,
+        now,
+      ),
+      memoryEventStatement(env, {
+        userId: session.user.id,
+        memoryId: feedback.memoryId,
+        eventType: "feedback",
+        metadata: {
+          aiRunId: feedback.aiRunId,
+          chatTurnId: null,
+          summarySectionId: null,
+          action: feedback.action,
+        },
+        now,
+        onlyAfterChange: true,
+      }),
+    );
+    feedbackHandled = true;
+    cleanupEnqueued = true;
   }
-  if (summary && feedback.summarySectionId) {
+  if (feedback.chatTurnId && suppressesSource) {
+    statements.push(
+      ...chatTurnVectorCleanupStatements(env, {
+        userId: session.user.id,
+        reason: "chat_turn_source_suppressed",
+        now,
+        filterSql: "and id = ?5",
+        filterBindings: [feedback.chatTurnId],
+      }),
+      ...derivedMemoryInvalidationStatements(env, {
+        userId: session.user.id,
+        guardSql: `exists (
+          select 1 from chat_memory_turns where id = ?2 and user_id = ?1
+        )`,
+        guardBindings: [feedback.chatTurnId],
+      }),
+    );
+    cleanupEnqueued = true;
+  }
+  if (summary && feedback.summarySectionId && suppressesSource) {
     const parsedSections = parseRewritableBoundedMemorySummarySections(summary.sections);
-    if (parsedSections?.some((section) => section.id === feedback.summarySectionId)) {
-      const sections = parsedSections.map((section) =>
-        section.id === feedback.summarySectionId ? { ...section, doNotMention: true } : section,
-      );
+    const suppressedSection = parsedSections?.find(
+      (section) => section.id === feedback.summarySectionId,
+    );
+    if (!parsedSections || !suppressedSection) {
+      return jsonResponse({ error: "Summary source not found" }, 404, session);
+    }
+    const sourceMemoryIds = uniqueStrings(suppressedSection.sourceMemoryIds ?? [], 20);
+    const sourceTurnIds = uniqueStrings(suppressedSection.sourceTurnIds ?? [], 20);
+    const suppressedCategory = boundedTrimmedString(suppressedSection.category, 1, 60);
+    summarySuppressionBit = memorySuppressionBitForCategory(
+      suppressedCategory ?? "general",
+    );
+    const memoryFilter: { sql: string; bindings: readonly unknown[] } | null = sourceMemoryIds.length
+      ? {
+          sql: `and status = 'active'
+            and id in (${sourceMemoryIds.map((_, index) => `?${index + 5}`).join(", ")})
+            and exists (
+              select 1 from user_memory_summaries
+              where user_id = ?4 and updated_at = ?${sourceMemoryIds.length + 5}
+            )`,
+          bindings: [...sourceMemoryIds, summary.updatedAt],
+        }
+      : suppressedCategory && suppressedCategory !== "interaction"
+        ? {
+            sql: `and status = 'active' and category = ?5
+              and exists (
+                select 1 from user_memory_summaries
+                where user_id = ?4 and updated_at = ?6
+              )`,
+            bindings: [suppressedCategory, summary.updatedAt],
+          }
+        : null;
+    if (memoryFilter) {
+      statements.push(...userMemoryVectorCleanupStatements(env, {
+        userId: session.user.id,
+        reason: "summary_source_suppressed",
+        now,
+        filterSql: memoryFilter.sql,
+        filterBindings: memoryFilter.bindings,
+      }));
+      const idPredicate = sourceMemoryIds.length
+        ? `id in (${sourceMemoryIds.map((_, index) => `?${index + 3}`).join(", ")})`
+        : "category = ?3";
+      const sourceBindings = sourceMemoryIds.length
+        ? sourceMemoryIds
+        : suppressedCategory
+          ? [suppressedCategory]
+          : [];
       statements.push(
         env.DB.prepare(
-          `update user_memory_summaries
-           set sections = ?1, updated_at = ?2
-           where user_id = ?3`,
-        ).bind(JSON.stringify(sections), now, session.user.id),
+          `update user_memories
+           set do_not_mention = 1, embedding = null, updated_at = ?1
+           where user_id = ?2 and status = 'active' and ${idPredicate}
+             and exists (
+               select 1 from user_memory_summaries
+               where user_id = ?2 and updated_at = ?${sourceBindings.length + 3}
+             )`,
+        ).bind(now, session.user.id, ...sourceBindings, summary.updatedAt),
+      );
+      cleanupEnqueued = true;
+    }
+    // Only the dedicated recent-learning section is allowed to represent all
+    // retained turns when legacy data omitted explicit turn IDs. A normal
+    // interaction-category memory must never erase unrelated chat history.
+    const suppressAllTurns =
+      sourceTurnIds.length === 0 &&
+      suppressedSection.id === "native-recent-learning";
+    if (sourceTurnIds.length || suppressAllTurns) {
+      const turnFilterSql = sourceTurnIds.length
+        ? `and id in (${sourceTurnIds.map((_, index) => `?${index + 5}`).join(", ")})
+          and exists (
+            select 1 from user_memory_summaries
+            where user_id = ?4 and updated_at = ?${sourceTurnIds.length + 5}
+          )`
+        : `and exists (
+            select 1 from user_memory_summaries
+            where user_id = ?4 and updated_at = ?5
+          )`;
+      statements.push(...chatTurnVectorCleanupStatements(env, {
+        userId: session.user.id,
+        reason: "summary_source_suppressed",
+        now,
+        filterSql: turnFilterSql,
+        filterBindings: [...sourceTurnIds, summary.updatedAt],
+      }));
+      const turnIdPredicate = sourceTurnIds.length
+        ? `and id in (${sourceTurnIds.map((_, index) => `?${index + 3}`).join(", ")})`
+        : "";
+      statements.push(
+        env.DB.prepare(
+          `delete from chat_memory_turns
+           where user_id = ?2 ${turnIdPredicate}
+             and exists (
+               select 1 from user_memory_summaries
+               where user_id = ?2 and updated_at = ?${sourceTurnIds.length + 3}
+             )`,
+        ).bind(now, session.user.id, ...sourceTurnIds, summary.updatedAt),
+      );
+      cleanupEnqueued = true;
+    }
+    const sections = parsedSections.map((section) =>
+      section.id === feedback.summarySectionId ? { ...section, doNotMention: true } : section,
+    );
+    summarySuppressionIndex = statements.length;
+    statements.push(
+      env.DB.prepare(
+        `update user_memory_summaries
+         set sections = ?1, updated_at = ?2
+         where user_id = ?3 and updated_at = ?4
+         returning user_id as id`,
+      ).bind(JSON.stringify(sections), now, session.user.id, summary.updatedAt),
+    );
+    // `updated_at` is millisecond-based, so two contenders can independently
+    // choose the same successor timestamp. Mint a transaction-local success
+    // token immediately from SQLite's changes() value; every post-CAS effect
+    // below is scoped to this exact random feedback row rather than timestamp.
+    statements.push(
+      env.DB.prepare(
+        `insert into memory_source_feedback (
+           id, user_id, ai_run_id, memory_id, chat_turn_id,
+           summary_section_id, action, note, created_at
+         )
+         select ?1, ?2, ?3, null, null, ?4, ?5, ?6, ?7
+         where changes() > 0`,
+      ).bind(
+        feedbackId,
+        session.user.id,
+        feedback.aiRunId,
+        feedback.summarySectionId,
+        feedback.action,
+        feedback.note,
+        now,
+      ),
+      memoryEventStatement(env, {
+        userId: session.user.id,
+        eventType: "feedback",
+        metadata: {
+          aiRunId: feedback.aiRunId,
+          chatTurnId: null,
+          summarySectionId: feedback.summarySectionId,
+          action: feedback.action,
+        },
+        now,
+        onlyAfterChange: true,
+      }),
+    );
+    feedbackHandled = true;
+    statements.push(
+      env.DB.prepare(
+        `update user_memory_settings
+         set summary_suppression_mask = summary_suppression_mask | ?1
+         where user_id = ?2
+           and exists (
+             select 1 from memory_source_feedback
+             where id = ?3 and user_id = ?2
+           )`,
+      ).bind(summarySuppressionBit, session.user.id, feedbackId),
+    );
+    if (suppressedCategory) {
+      statements.push(
+        env.DB.prepare(
+          `delete from user_memory_profiles
+           where user_id = ?1 and category = ?2
+             and exists (
+               select 1 from memory_source_feedback
+               where id = ?3 and user_id = ?1
+             )`,
+        ).bind(session.user.id, suppressedCategory, feedbackId),
       );
     }
   }
-  const feedbackId = crypto.randomUUID();
-  statements.push(
-    env.DB.prepare(
-      `insert into memory_source_feedback (
-         id, user_id, ai_run_id, memory_id, chat_turn_id,
-         summary_section_id, action, note, created_at
-       ) values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`,
-    ).bind(
-      feedbackId,
-      session.user.id,
-      feedback.aiRunId,
-      feedback.memoryId,
-      feedback.chatTurnId,
-      feedback.summarySectionId,
-      feedback.action,
-      feedback.note,
-      now,
-    ),
-    memoryEventStatement(env, {
-      userId: session.user.id,
-      memoryId: feedback.memoryId,
-      eventType: "feedback",
-      metadata: {
-        aiRunId: feedback.aiRunId,
-        chatTurnId: feedback.chatTurnId,
-        summarySectionId: feedback.summarySectionId,
-        action: feedback.action,
-      },
-      now,
-    }),
-  );
-  await env.DB.batch(statements);
+  const feedbackInsert = feedback.memoryId && suppressesSource
+    ? env.DB.prepare(
+        `insert into memory_source_feedback (
+           id, user_id, ai_run_id, memory_id, chat_turn_id,
+           summary_section_id, action, note, created_at
+         )
+         select ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9
+         where exists (
+           select 1 from user_memories
+           where id = ?4 and user_id = ?2 and updated_at = ?10
+             and do_not_mention = 1
+         )`,
+      ).bind(
+        feedbackId,
+        session.user.id,
+        feedback.aiRunId,
+        feedback.memoryId,
+        feedback.chatTurnId,
+        feedback.summarySectionId,
+        feedback.action,
+        feedback.note,
+        now,
+        now,
+      )
+    : feedback.chatTurnId && suppressesSource
+      ? env.DB.prepare(
+          `insert into memory_source_feedback (
+             id, user_id, ai_run_id, memory_id, chat_turn_id,
+             summary_section_id, action, note, created_at
+           )
+           select ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9
+           where exists (
+             select 1 from chat_memory_turns
+             where id = ?5 and user_id = ?2
+           )`,
+        ).bind(
+          feedbackId,
+          session.user.id,
+          feedback.aiRunId,
+          feedback.memoryId,
+          feedback.chatTurnId,
+          feedback.summarySectionId,
+          feedback.action,
+          feedback.note,
+          now,
+        )
+      : env.DB.prepare(
+        `insert into memory_source_feedback (
+           id, user_id, ai_run_id, memory_id, chat_turn_id,
+           summary_section_id, action, note, created_at
+         ) values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`,
+      ).bind(
+        feedbackId,
+        session.user.id,
+        feedback.aiRunId,
+        feedback.memoryId,
+        feedback.chatTurnId,
+        feedback.summarySectionId,
+        feedback.action,
+        feedback.note,
+        now,
+      );
+  if (!feedbackHandled) {
+    statements.push(
+      feedbackInsert,
+      memoryEventStatement(env, {
+        userId: session.user.id,
+        memoryId: feedback.memoryId,
+        eventType: "feedback",
+        metadata: {
+          aiRunId: feedback.aiRunId,
+          chatTurnId: feedback.chatTurnId,
+          summarySectionId: feedback.summarySectionId,
+          action: feedback.action,
+        },
+        now,
+        // The feedback insert is conditional for every suppressive source
+        // action. Keep the audit row coupled to that successful CAS.
+        onlyAfterChange: true,
+      }),
+    );
+  }
+  if (feedback.chatTurnId && suppressesSource) {
+    turnSuppressionIndex = statements.length;
+    statements.push(
+      env.DB.prepare(
+        `delete from chat_memory_turns
+         where id = ?1 and user_id = ?2
+         returning id`,
+      ).bind(feedback.chatTurnId, session.user.id),
+    );
+  }
+  const results = await env.DB.batch<{ id?: string }>(statements);
+  if (memorySuppressionIndex !== null && !results[memorySuppressionIndex]?.results[0]?.id) {
+    return jsonResponse({ error: "Memory changed; retry the feedback." }, 409, session);
+  }
+  if (summarySuppressionIndex !== null && !results[summarySuppressionIndex]?.results[0]?.id) {
+    return jsonResponse({ error: "Summary changed; retry the feedback." }, 409, session);
+  }
+  if (turnSuppressionIndex !== null && !results[turnSuppressionIndex]?.results[0]?.id) {
+    return jsonResponse({ error: "Source changed; retry the feedback." }, 409, session);
+  }
+  if (cleanupEnqueued) {
+    scheduleVectorCleanupWake(ctx, env, "source_feedback_suppressed");
+  }
+  if (
+    suppressesSource &&
+    (feedback.memoryId || feedback.chatTurnId || feedback.summarySectionId)
+  ) {
+    // Rebuild the derived summary as well as retiring direct lexical/vector
+    // sources, otherwise an older summary can continue to mention the source.
+    scheduleMemorySynthesis(ctx, env, session.user.id, "source_feedback_suppressed");
+  }
   return jsonResponse({ ok: true }, 200, session);
 }
 
@@ -2499,76 +3469,1050 @@ function memorySelectSql(options: { boundedContent?: boolean } = {}) {
     source_memory_ids as sourceMemoryIds,
     source_chat_id as sourceChatId,
     source_message_id as sourceMessageId,
-    embedding, valid_from as validFrom, valid_until as validUntil,
+    valid_from as validFrom, valid_until as validUntil,
     freshness_status as freshnessStatus, pinned,
     do_not_mention as doNotMention,
     created_at as createdAt, updated_at as updatedAt,
-    last_used_at as lastUsedAt, deleted_at as deletedAt
+    last_used_at as lastUsedAt, deleted_at as deletedAt,
+    ${nativeMemoryVectorMarkerSql} as vectorMarker,
+    ${nativeMemoryExactVectorIdSql} as cleanupVectorId,
+    embedding like '"p:%"' as vectorPending
   from user_memories`;
 }
 
-async function loadMemoryVectorIds(
+export async function persistNativeMemoryVectorsBestEffort(
   env: StateApiEnv,
-  userId: string,
-  options: { priorChatOnly?: boolean } = {},
-): Promise<MemoryVectorIds> {
-  const memoryFilter = options.priorChatOnly
-    ? "and status = 'active' and source_type in ('prior_chat', 'synthesized')"
-    : "";
-  const [memories, summaries, turns] = await Promise.all([
+  records: readonly NativeMemoryVectorRecord[],
+) {
+  if (!env.MEMORY_VECTORIZE || !records.length) return;
+  const intended = await prepareNativeMemoryVectors(records);
+  if (!intended.length) return;
+  const claimNow = Date.now();
+  const claims = intended.map((entry) => ({ entry, writeToken: crypto.randomUUID() }));
+  let pending: typeof claims = [];
+  try {
+    const pendingResults = await env.DB.batch<{ id?: string; vectorId?: string }>(
+      claims.flatMap((claim) => [
+        nativeVectorWriteIntentStatement(env, claim, claimNow),
+        nativePendingEmbeddingStatement(env, claim),
+      ]),
+    );
+    pending = claims.filter((_, index) => (
+      pendingResults[index * 2]?.results[0]?.vectorId &&
+      pendingResults[index * 2 + 1]?.results[0]?.id
+    ));
+    if (!pending.length) return;
+    const indexed = await upsertPreparedNativeMemoryVectors(
+      env,
+      pending.map((claim) => claim.entry),
+    );
+    if (!indexed?.length) {
+      await fenceUnfinalizedNativeVectorWrites(env, pending, Date.now());
+      return;
+    }
+    const indexedById = new Set(indexed.map((entry) => entry.vectorId));
+    const completedClaims = pending.filter((claim) => indexedById.has(claim.entry.vectorId));
+    const finalized = await env.DB.batch<{ id?: string; vectorId?: string }>(
+      completedClaims.flatMap((claim) => [
+        nativeFinalizeEmbeddingStatement(env, claim),
+        nativeCompleteVectorWriteIntentStatement(env, claim),
+      ]),
+    );
+    const finalizedCount = completedClaims.filter((_, index) => (
+      finalized[index * 2]?.results[0]?.id &&
+      finalized[index * 2 + 1]?.results[0]?.vectorId
+    )).length;
+    const unfinalized = completedClaims.filter((_, index) => (
+      !finalized[index * 2]?.results[0]?.id ||
+      !finalized[index * 2 + 1]?.results[0]?.vectorId
+    ));
+    await fenceUnfinalizedNativeVectorWrites(env, unfinalized, Date.now());
+    console.log(
+      JSON.stringify({
+        event: "native_memory_vectors_indexed",
+        count: finalizedCount,
+        superseded: indexed.length - finalizedCount,
+      }),
+    );
+  } catch (error) {
+    // A pending D1 identity is committed before the remote call. If the source
+    // was concurrently removed, its transaction copied that identity to the
+    // durable outbox. Promotion makes it immediately eligible after the writer
+    // settles; a stale write_pending fence is the crash fallback.
+    await fenceUnfinalizedNativeVectorWrites(env, pending, Date.now()).catch(() => undefined);
+    console.warn(
+      JSON.stringify({
+        event: "native_memory_vector_markers_failed",
+        count: pending.length,
+        error: error instanceof Error ? error.name : "UnknownError",
+      }),
+    );
+  }
+}
+
+type NativeVectorWriteClaim = {
+  entry: NativeIndexedMemoryVector;
+  writeToken: string;
+};
+
+function nativeVectorWriteIntentStatement(
+  env: StateApiEnv,
+  claim: NativeVectorWriteClaim,
+  now: number,
+) {
+  const { entry, writeToken } = claim;
+  const sourcePredicate = entry.record.namespace === "user_memories"
+    ? `exists (
+         select 1 from user_memories
+         where id = ?2 and user_id = ?3
+           and status = 'active' and do_not_mention = 0
+           and freshness_status <> 'expired'
+           and updated_at = ?4
+           and embedding is null
+           and substr(trim(content), 1, 4000) = ?5
+       )`
+    : `exists (
+         select 1 from chat_memory_turns
+         where id = ?2 and user_id = ?3
+           and embedding is null
+           and substr(trim(searchable_text), 1, 4000) = ?5
+       )`;
+  return env.DB.prepare(
+    `insert into memory_vector_cleanup_outbox (
+       vector_id, owner_user_id, source_namespace, source_row_id,
+       source_row_revision, write_token, reason, state,
+       write_fence_expires_at, absence_count, attempt_count,
+       next_attempt_at, last_attempt_at, last_error, created_at, updated_at
+     )
+     select ?1, ?3, ?6, ?2, ?4, ?7, 'vector_write_intent', 'write_pending',
+            ?8, 0, 0, ?8, null, null, ?9, ?9
+     where ${sourcePredicate}
+     on conflict(vector_id) do nothing
+     returning vector_id as vectorId`,
+  ).bind(
+    entry.vectorId,
+    entry.record.rowId,
+    entry.record.userId,
+    entry.record.rowRevision ?? null,
+    entry.record.text,
+    entry.record.namespace,
+    writeToken,
+    now + VECTOR_PENDING_WRITE_STALE_MS,
+    now,
+  );
+}
+
+function nativePendingEmbeddingStatement(
+  env: StateApiEnv,
+  claim: NativeVectorWriteClaim,
+) {
+  const indexed = claim.entry;
+  const pendingMarker = nativeMemoryPendingVectorMarker(indexed.vectorId);
+  if (!pendingMarker) throw new Error("Native memory vector pending marker is invalid");
+  if (indexed.record.namespace === "user_memories") {
+    return env.DB.prepare(
+      `update user_memories
+       set embedding = ?1
+       where id = ?2 and user_id = ?3
+         and status = 'active'
+         and do_not_mention = 0
+         and freshness_status <> 'expired'
+         and updated_at = ?5
+         and embedding is null
+         and substr(trim(content), 1, 4000) = ?4
+         and exists (
+           select 1 from memory_vector_cleanup_outbox
+           where vector_id = ?6 and state = 'write_pending' and write_token = ?7
+         )
+       returning id`,
+    ).bind(
+      JSON.stringify(pendingMarker),
+      indexed.record.rowId,
+      indexed.record.userId,
+      indexed.record.text,
+      indexed.record.rowRevision,
+      indexed.vectorId,
+      claim.writeToken,
+    );
+  }
+  return env.DB.prepare(
+    `update chat_memory_turns
+     set embedding = ?1
+     where id = ?2 and user_id = ?3
+       and embedding is null
+       and substr(trim(searchable_text), 1, 4000) = ?4
+       and exists (
+         select 1 from memory_vector_cleanup_outbox
+         where vector_id = ?5 and state = 'write_pending' and write_token = ?6
+       )
+     returning id`,
+  ).bind(
+    JSON.stringify(pendingMarker),
+    indexed.record.rowId,
+    indexed.record.userId,
+    indexed.record.text,
+    indexed.vectorId,
+    claim.writeToken,
+  );
+}
+
+function nativeFinalizeEmbeddingStatement(
+  env: StateApiEnv,
+  claim: NativeVectorWriteClaim,
+) {
+  const indexed = claim.entry;
+  const pendingMarker = nativeMemoryPendingVectorMarker(indexed.vectorId);
+  if (!pendingMarker) throw new Error("Native memory vector pending marker is invalid");
+  if (indexed.record.namespace === "user_memories") {
+    return env.DB.prepare(
+      `update user_memories
+       set embedding = ?1
+       where id = ?2 and user_id = ?3
+         and status = 'active'
+         and do_not_mention = 0
+         and freshness_status <> 'expired'
+         and updated_at = ?6
+         and embedding in (?1, ?5)
+         and substr(trim(content), 1, 4000) = ?4
+       returning id`,
+    ).bind(
+      JSON.stringify(indexed.marker),
+      indexed.record.rowId,
+      indexed.record.userId,
+      indexed.record.text,
+      JSON.stringify(pendingMarker),
+      indexed.record.rowRevision,
+    );
+  }
+  return env.DB.prepare(
+    `update chat_memory_turns
+     set embedding = ?1
+     where id = ?2 and user_id = ?3
+       and embedding in (?1, ?5)
+       and substr(trim(searchable_text), 1, 4000) = ?4
+     returning id`,
+  ).bind(
+    JSON.stringify(indexed.marker),
+    indexed.record.rowId,
+    indexed.record.userId,
+    indexed.record.text,
+    JSON.stringify(pendingMarker),
+  );
+}
+
+function nativeCompleteVectorWriteIntentStatement(
+  env: StateApiEnv,
+  claim: NativeVectorWriteClaim,
+) {
+  const indexed = claim.entry;
+  const sourcePredicate = indexed.record.namespace === "user_memories"
+    ? `exists (
+         select 1 from user_memories
+         where id = ?2 and user_id = ?3 and updated_at = ?5 and embedding = ?4
+       )`
+    : `exists (
+         select 1 from chat_memory_turns
+         where id = ?2 and user_id = ?3 and embedding = ?4
+       )`;
+  return env.DB.prepare(
+    `delete from memory_vector_cleanup_outbox
+     where vector_id = ?1 and state = 'write_pending' and write_token = ?6
+       and ${sourcePredicate}
+     returning vector_id as vectorId`,
+  ).bind(
+    indexed.vectorId,
+    indexed.record.rowId,
+    indexed.record.userId,
+    JSON.stringify(indexed.marker),
+    indexed.record.rowRevision ?? null,
+    claim.writeToken,
+  );
+}
+
+async function fenceUnfinalizedNativeVectorWrites(
+  env: StateApiEnv,
+  claims: readonly NativeVectorWriteClaim[],
+  now: number,
+) {
+  if (!claims.length) return;
+  await env.DB.batch(claims.flatMap((claim) => {
+    const indexed = claim.entry;
+    const pendingMarker = nativeMemoryPendingVectorMarker(indexed.vectorId);
+    if (!pendingMarker) throw new Error("Native memory vector pending marker is invalid");
+    const reset = indexed.record.namespace === "user_memories"
+      ? env.DB.prepare(
+          `update user_memories set embedding = null
+           where id = ?1 and user_id = ?2 and updated_at = ?3 and embedding = ?4`,
+        ).bind(
+          indexed.record.rowId,
+          indexed.record.userId,
+          indexed.record.rowRevision,
+          JSON.stringify(pendingMarker),
+        )
+      : env.DB.prepare(
+          `update chat_memory_turns set embedding = null
+           where id = ?1 and user_id = ?2 and embedding = ?3`,
+        ).bind(indexed.record.rowId, indexed.record.userId, JSON.stringify(pendingMarker));
+    return [
+      reset,
+      env.DB.prepare(
+        `update memory_vector_cleanup_outbox
+         set state = 'cleanup_ready', write_token = null,
+             write_fence_expires_at = null, absence_count = 0,
+             next_attempt_at = ?1, last_error = null, updated_at = ?1
+         where vector_id = ?2 and write_token = ?3
+           and state in ('write_pending', 'cleanup_fenced')`,
+      ).bind(now, indexed.vectorId, claim.writeToken),
+    ];
+  }));
+}
+
+async function repairNativeMemoryVectorsBestEffort(env: StateApiEnv, userId: string) {
+  if (
+    !env.MEMORY_VECTORIZE ||
+    !env.CLOUDFLARE_AI_GATEWAY_BASE_URL?.trim() ||
+    !env.CLOUDFLARE_AI_GATEWAY_TOKEN?.trim() ||
+    !env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS?.trim()
+  ) {
+    return;
+  }
+  // A non-null D1 marker cannot prove that Vectorize still contains the row.
+  // Detecting that drift here would add remote index reads to normal queue
+  // work, so non-null reconciliation remains a bounded operator backfill.
+  try {
+    const [memories, turns] = await Promise.all([
+      env.DB.prepare(
+        `select id, substr(content, 1, 4000) as text,
+                updated_at as rowRevision
+         from user_memories
+         where user_id = ?1
+           and status = 'active'
+           and do_not_mention = 0
+           and freshness_status <> 'expired'
+           and (embedding is null or embedding like '"p:m:%"')
+         order by pinned desc, salience desc, updated_at desc
+         limit 2`,
+      )
+        .bind(userId)
+        .all<UnindexedMemoryRow>(),
+      env.DB.prepare(
+        `select id,
+                chat_id as chatId,
+                topic_id as topicId,
+                substr(searchable_text, 1, 4000) as text
+         from chat_memory_turns
+         where user_id = ?1
+           and (embedding is null or embedding like '"p:t:%"')
+         order by updated_at desc
+         limit 2`,
+      )
+        .bind(userId)
+        .all<UnindexedTurnRow>(),
+    ]);
+    await persistNativeMemoryVectorsBestEffort(env, [
+      ...memories.results.map((row) => ({
+        namespace: "user_memories" as const,
+        rowId: row.id,
+        userId,
+        text: row.text,
+        rowRevision: row.rowRevision,
+      })),
+      ...turns.results.map((row) => ({
+        namespace: "chat_memory_turns" as const,
+        rowId: row.id,
+        userId,
+        text: row.text,
+        chatId: row.chatId,
+        topicId: row.topicId,
+      })),
+    ]);
+  } catch (error) {
+    console.warn(
+      JSON.stringify({
+        event: "native_memory_vector_repair_failed",
+        error: error instanceof Error ? error.name : "UnknownError",
+      }),
+    );
+  }
+}
+
+function knownNativeMemoryVectorIds(
+  namespace: "user_memories" | "chat_memory_turns",
+  rowId: string,
+  vectorMarker: unknown,
+) {
+  const ids: string[] = [];
+  const legacyId = nativeMemoryVectorId(namespace, rowId);
+  if (legacyId) ids.push(legacyId);
+  const revisionedId = boundedTrimmedString(vectorMarker, 1, 64);
+  const parsed = revisionedId
+    ? parseNativeMemoryVectorId(namespace, revisionedId)
+    : null;
+  if (parsed?.rowId === rowId && parsed.marker === revisionedId && revisionedId !== legacyId) {
+    ids.push(revisionedId);
+  }
+  return ids;
+}
+
+/**
+ * Returns only identities proven by the authoritative pre-mutation row: the
+ * legacy ID, its recorded v2 marker, and the exact v2 revision derived from
+ * the text an in-flight attestation is allowed to accept. Deriving the last
+ * identity closes the marker-null window without any prefix or metadata scan.
+ */
+export async function knownNativeMemoryVectorIdsForText(
+  namespace: "user_memories" | "chat_memory_turns",
+  rowId: string,
+  vectorMarker: unknown,
+  authoritativeText: string,
+  rowRevision?: number,
+) {
+  const ids = knownNativeMemoryVectorIds(namespace, rowId, vectorMarker);
+  const indexedText = authoritativeText.trim().slice(0, 4_000).trim();
+  if (indexedText.length >= 2) {
+    const revision = await nativeMemoryVectorRevision(indexedText);
+    const historicalId = nativeMemoryVectorId(namespace, rowId, revision);
+    if (historicalId) ids.push(historicalId);
+    if (namespace === "user_memories") {
+      const revisionedId = nativeMemoryVectorId(
+        namespace,
+        rowId,
+        revision,
+        { rowRevision },
+      );
+      if (revisionedId) ids.push(revisionedId);
+    }
+  }
+  return [...new Set(ids)];
+}
+
+type VectorCleanupState = "cleanup_ready" | "cleanup_fenced";
+
+type ExactVectorCleanupEntry = {
+  vectorId: string;
+  state: VectorCleanupState;
+};
+
+function derivedMemoryInvalidationStatements(
+  env: StateApiEnv,
+  input: {
+    userId: string;
+    guardSql?: string;
+    guardBindings?: readonly unknown[];
+  },
+) {
+  const guardSql = input.guardSql ?? "1 = 1";
+  const bindings = [input.userId, ...(input.guardBindings ?? [])];
+  return [
     env.DB.prepare(
-      `select id from user_memories where user_id = ?1 ${memoryFilter} limit ${maxVectorCleanupRows}`,
-    )
-      .bind(userId)
-      .all<VectorIdRow>(),
+      `with summary_state as (
+         select sections,
+           case
+             when length(sections) <= ${MAX_MEMORY_SUMMARY_SECTIONS_JSON_CHARS}
+               and json_valid(sections)
+             then case when json_type(sections) = 'array' then 1 else 0 end
+             else 0
+           end as readable
+         from user_memory_summaries
+         where user_id = ?1
+         limit 1
+       ), hidden_bits as (
+         select distinct case case
+           when section.type = 'object'
+             then json_extract(section.value, '$.category')
+           else null
+         end
+           when 'identity' then 1
+           when 'preferences' then 2
+           when 'learning_style' then 4
+           when 'projects' then 8
+           when 'goals' then 16
+           when 'knowledge' then 32
+           when 'constraints' then 64
+           when 'interaction' then 128
+           when 'general' then 256
+           else 256
+         end as bit
+         from summary_state,
+           json_each(case when readable = 1 then sections else '[]' end) as section
+         where case
+           when section.type = 'object'
+             then json_extract(section.value, '$.doNotMention')
+           else 0
+         end = 1
+       ), hidden as (
+         select case
+           when exists (select 1 from summary_state where readable = 0)
+             then ${allMemoryCategorySuppressionBits}
+           else coalesce((select sum(bit) from hidden_bits), 0)
+         end as mask
+       )
+       update user_memory_settings
+       set summary_suppression_mask = summary_suppression_mask | (select mask from hidden)
+       where user_id = ?1 and (${guardSql})
+         and (select mask from hidden) > 0
+         and (summary_suppression_mask & (select mask from hidden))
+           <> (select mask from hidden)`,
+    ).bind(...bindings),
     env.DB.prepare(
-      `select chat_id as id from chat_memory_summaries
-       where user_id = ?1 limit ${maxVectorCleanupRows}`,
-    )
-      .bind(userId)
-      .all<VectorIdRow>(),
+      `delete from user_memory_summaries
+       where user_id = ?1 and (${guardSql})`,
+    ).bind(...bindings),
     env.DB.prepare(
-      `select id from chat_memory_turns where user_id = ?1 limit ${maxVectorCleanupRows}`,
-    )
-      .bind(userId)
-      .all<VectorIdRow>(),
-  ]);
+      `delete from user_memory_profiles
+       where user_id = ?1 and (${guardSql})`,
+    ).bind(...bindings),
+  ];
+}
+
+async function knownNativeMemoryCleanupEntriesForText(
+  namespace: "user_memories" | "chat_memory_turns",
+  rowId: string,
+  vectorMarker: unknown,
+  vectorPending: boolean,
+  authoritativeText: string,
+  rowRevision?: number,
+) {
+  const ids = await knownNativeMemoryVectorIdsForText(
+    namespace,
+    rowId,
+    vectorMarker,
+    authoritativeText,
+    rowRevision,
+  );
+  return ids.map((vectorId): ExactVectorCleanupEntry => ({
+    vectorId,
+    // The pre-upsert protocol records a p:<exact-id> marker while a writer can
+    // still complete remotely. Only that exact pending identity needs the
+    // stale-writer fence. A finalized marker (and derived/legacy identities)
+    // cannot be resurrected by a writer and is ready for deletion immediately.
+    state: vectorPending && vectorId === vectorMarker
+      ? "cleanup_fenced"
+      : "cleanup_ready",
+  }));
+}
+
+// A destructive mutation supersedes any in-flight writer for the same exact
+// identity. Clearing its token prevents the writer from shortening the stale
+// fence after Vectorize has accepted an asynchronously visible upsert.
+const vectorCleanupOutboxConflictSql = `on conflict(vector_id) do update set
+  owner_user_id = excluded.owner_user_id,
+  source_namespace = excluded.source_namespace,
+  source_row_id = excluded.source_row_id,
+  source_row_revision = excluded.source_row_revision,
+  write_token = null,
+  reason = excluded.reason,
+  state = excluded.state,
+  write_fence_expires_at = excluded.write_fence_expires_at,
+  absence_count = 0,
+  lease_token = null,
+  lease_until = 0,
+  next_attempt_at = excluded.next_attempt_at,
+  last_error = null,
+  updated_at = excluded.updated_at`;
+
+function vectorCleanupOutboxValueStatement(
+  env: StateApiEnv,
+  input: {
+    entry: ExactVectorCleanupEntry;
+    ownerUserId: string;
+    sourceNamespace: "user_memories" | "chat_memory_turns" | null;
+    sourceRowId: string | null;
+    sourceRowRevision: number | null;
+    reason: string;
+    now: number;
+    guardSql: string;
+    guardBindings: readonly unknown[];
+  },
+) {
+  const fenceExpiresAt = input.now + VECTOR_PENDING_WRITE_STALE_MS;
+  return env.DB.prepare(
+    `insert into memory_vector_cleanup_outbox (
+       vector_id, owner_user_id, source_namespace, source_row_id,
+       source_row_revision, write_token, reason, state,
+       write_fence_expires_at, absence_count, attempt_count,
+       next_attempt_at, last_attempt_at, last_error, created_at, updated_at
+     )
+     select ?1, ?2, ?3, ?4, ?5, null, ?6, ?7,
+            case when ?7 = 'cleanup_fenced' then ?8 else null end,
+            0, 0, case when ?7 = 'cleanup_fenced' then ?8 else ?9 end,
+            null, null, ?9, ?9
+     where length(?1) between 1 and 64 and (${input.guardSql})
+     ${vectorCleanupOutboxConflictSql}`,
+  ).bind(
+    input.entry.vectorId,
+    input.ownerUserId,
+    input.sourceNamespace,
+    input.sourceRowId,
+    input.sourceRowRevision,
+    input.reason,
+    input.entry.state,
+    fenceExpiresAt,
+    input.now,
+    ...input.guardBindings,
+  );
+}
+
+function vectorCleanupOutboxSelectStatement(
+  env: StateApiEnv,
+  input: {
+    selectionSql: string;
+    selectionBindings: readonly unknown[];
+    reason: string;
+    now: number;
+  },
+) {
+  const fenceExpiresAt = input.now + VECTOR_PENDING_WRITE_STALE_MS;
+  return env.DB.prepare(
+    `insert into memory_vector_cleanup_outbox (
+       vector_id, owner_user_id, source_namespace, source_row_id,
+       source_row_revision, write_token, reason, state,
+       write_fence_expires_at, absence_count, attempt_count,
+       next_attempt_at, last_attempt_at, last_error, created_at, updated_at
+     )
+     select selected.vectorId, selected.ownerUserId,
+            selected.sourceNamespace, selected.sourceRowId,
+            selected.sourceRowRevision, null, ?1, selected.state,
+            case when selected.state = 'cleanup_fenced' then ?3 else null end,
+            0, 0,
+            case when selected.state = 'cleanup_fenced' then ?3 else ?2 end,
+            null, null, ?2, ?2
+     from (${input.selectionSql}) selected
+     where length(selected.vectorId) between 1 and 64
+     ${vectorCleanupOutboxConflictSql}`,
+  ).bind(input.reason, input.now, fenceExpiresAt, ...input.selectionBindings);
+}
+
+function userMemoryVectorCleanupStatements(
+  env: StateApiEnv,
+  input: {
+    userId: string;
+    reason: string;
+    now: number;
+    filterSql?: string;
+    filterBindings?: readonly unknown[];
+  },
+) {
+  const filterSql = input.filterSql ?? "";
+  const bindings = [input.userId, ...(input.filterBindings ?? [])];
+  const common = `from user_memories
+    where user_id = ?4 ${filterSql}`;
+  return [
+    vectorCleanupOutboxSelectStatement(env, {
+      reason: input.reason,
+      now: input.now,
+      selectionBindings: bindings,
+      selectionSql: `select 'user_memories:' || id as vectorId,
+        user_id as ownerUserId, 'user_memories' as sourceNamespace,
+        id as sourceRowId, updated_at as sourceRowRevision,
+        'cleanup_ready' as state ${common}`,
+    }),
+    vectorCleanupOutboxSelectStatement(env, {
+      reason: input.reason,
+      now: input.now,
+      selectionBindings: bindings,
+      selectionSql: `select ${nativeMemoryExactVectorIdSql} as vectorId,
+        user_id as ownerUserId, 'user_memories' as sourceNamespace,
+        id as sourceRowId, updated_at as sourceRowRevision,
+        case when embedding like '"p:m:%"'
+          then 'cleanup_fenced' else 'cleanup_ready' end as state
+        ${common} and ${nativeMemoryExactVectorIdSql} is not null`,
+    }),
+  ];
+}
+
+function chatTurnVectorCleanupStatements(
+  env: StateApiEnv,
+  input: {
+    userId: string;
+    reason: string;
+    now: number;
+    filterSql?: string;
+    filterBindings?: readonly unknown[];
+  },
+) {
+  const filterSql = input.filterSql ?? "";
+  const bindings = [input.userId, ...(input.filterBindings ?? [])];
+  const common = `from chat_memory_turns
+    where user_id = ?4 ${filterSql}`;
+  return [
+    vectorCleanupOutboxSelectStatement(env, {
+      reason: input.reason,
+      now: input.now,
+      selectionBindings: bindings,
+      selectionSql: `select 'chat_memory_turns:' || id as vectorId,
+        user_id as ownerUserId, 'chat_memory_turns' as sourceNamespace,
+        id as sourceRowId, null as sourceRowRevision,
+        'cleanup_ready' as state ${common}`,
+    }),
+    vectorCleanupOutboxSelectStatement(env, {
+      reason: input.reason,
+      now: input.now,
+      selectionBindings: bindings,
+      selectionSql: `select ${nativeMemoryExactVectorIdSql} as vectorId,
+        user_id as ownerUserId, 'chat_memory_turns' as sourceNamespace,
+        id as sourceRowId, null as sourceRowRevision,
+        case when embedding like '"p:t:%"'
+          then 'cleanup_fenced' else 'cleanup_ready' end as state
+        ${common} and ${nativeMemoryExactVectorIdSql} is not null`,
+    }),
+  ];
+}
+
+function chatSummaryVectorCleanupStatement(
+  env: StateApiEnv,
+  input: { userId: string; reason: string; now: number; chatId?: string },
+) {
+  return vectorCleanupOutboxSelectStatement(env, {
+    reason: input.reason,
+    now: input.now,
+    selectionBindings: input.chatId ? [input.userId, input.chatId] : [input.userId],
+    selectionSql: `select 'chat_memory_summaries:' || chat_id as vectorId,
+      user_id as ownerUserId, null as sourceNamespace,
+      chat_id as sourceRowId, null as sourceRowRevision,
+      'cleanup_ready' as state
+      from chat_memory_summaries where user_id = ?4${input.chatId ? " and chat_id = ?5" : ""}`,
+  });
+}
+
+const vectorCleanupLeaseMs = 5 * 60_000;
+
+export type NativeVectorCleanupDrainResult = {
+  claimed: number;
+  deleteRequested: number;
+  verifiedAbsent: number;
+  pending: number;
+  nextDelaySeconds: number | null;
+};
+
+export async function drainNativeMemoryVectorCleanupOutbox(
+  env: StateApiEnv,
+  now = Date.now(),
+): Promise<NativeVectorCleanupDrainResult> {
+  const index = env.MEMORY_VECTORIZE;
+  if (!index) throw new Error("Native vector cleanup requires the Vectorize binding");
+  const leaseToken = crypto.randomUUID();
+  const claimed = await env.DB.prepare(
+    `update memory_vector_cleanup_outbox
+     set lease_token = ?1,
+         lease_until = ?2,
+         next_attempt_at = ?2,
+         attempt_count = attempt_count + 1,
+         last_attempt_at = ?3,
+         updated_at = ?3
+     where vector_id in (
+       select vector_id from memory_vector_cleanup_outbox
+       where next_attempt_at <= ?3 and lease_until <= ?3
+       order by next_attempt_at asc, created_at asc, vector_id asc
+       limit ${MAX_VECTOR_CLEANUP_DRAIN_IDS}
+     )
+     returning
+       vector_id as vectorId, owner_user_id as ownerUserId, state,
+       source_namespace as sourceNamespace,
+       source_row_id as sourceRowId,
+       source_row_revision as sourceRowRevision,
+       write_token as writeToken,
+       write_fence_expires_at as writeFenceExpiresAt,
+       absence_count as absenceCount,
+       attempt_count as attemptCount,
+       lease_token as leaseToken,
+       lease_until as leaseUntil,
+       next_attempt_at as nextAttemptAt,
+       updated_at as updatedAt`,
+  )
+    .bind(leaseToken, now + vectorCleanupLeaseMs, now)
+    .all<VectorCleanupOutboxRow>();
+  const rows = claimed.results;
+  if (!rows.length) return vectorCleanupDrainResult(env, now, 0, 0, 0);
+
+  const invalid = rows.filter((row) => !isKnownNativeVectorCleanupId(row.vectorId));
+  if (invalid.length) {
+    await releaseNativeVectorCleanupLease(
+      env,
+      leaseToken,
+      now,
+      "invalid_exact_vector_id",
+    );
+    throw new Error("Native vector cleanup outbox contained an invalid exact ID");
+  }
+
+  const staleWrites = rows.filter(
+    (row) => row.state === "write_pending" || row.state === "cleanup_fenced",
+  );
+  if (staleWrites.length) {
+    await recoverStaleNativeVectorWriteIntents(env, staleWrites, leaseToken, now);
+  }
+
+  let deleteRequested = 0;
+  const cleanupReady = rows.filter((row) => row.state === "cleanup_ready");
+  if (cleanupReady.length) {
+    try {
+      await index.deleteByIds(cleanupReady.map((row) => row.vectorId));
+      deleteRequested += cleanupReady.length;
+      await env.DB.prepare(
+        `update memory_vector_cleanup_outbox
+         set state = 'verifying_absence', absence_count = 0,
+             next_attempt_at = ?1, lease_token = null, lease_until = 0,
+             last_error = null, updated_at = ?2
+         where lease_token = ?3 and state = 'cleanup_ready'`,
+      ).bind(now + VECTOR_CLEANUP_VERIFY_DELAY_MS, now, leaseToken).run();
+    } catch (error) {
+      await releaseNativeVectorCleanupLease(
+        env,
+        leaseToken,
+        now,
+        error instanceof Error ? error.name : "UnknownError",
+      );
+      throw error;
+    }
+  }
+
+  let verifiedAbsent = 0;
+  const verifying = rows.filter((row) => row.state === "verifying_absence");
+  if (verifying.length) {
+    try {
+      const visible = await index.getByIds(verifying.map((row) => row.vectorId));
+      const visibleIds = new Set(visible.map((vector) => vector.id));
+      const statements: D1PreparedStatement[] = [];
+      const visibleRows = verifying.filter((row) => visibleIds.has(row.vectorId));
+      const absentRows = verifying.filter((row) => !visibleIds.has(row.vectorId));
+      if (visibleRows.length) {
+        await index.deleteByIds(visibleRows.map((row) => row.vectorId));
+        deleteRequested += visibleRows.length;
+        statements.push(...visibleRows.map((row) => env.DB.prepare(
+          `update memory_vector_cleanup_outbox
+           set absence_count = 0, next_attempt_at = ?1,
+               lease_token = null, lease_until = 0,
+               last_error = null, updated_at = ?2
+           where vector_id = ?3 and lease_token = ?4`,
+        ).bind(now + VECTOR_CLEANUP_VERIFY_DELAY_MS, now, row.vectorId, leaseToken)));
+      }
+      for (const row of absentRows) {
+        if (row.absenceCount + 1 >= requiredVectorCleanupAbsences) {
+          verifiedAbsent += 1;
+          statements.push(
+            env.DB.prepare(
+              `delete from memory_vector_cleanup_outbox
+               where vector_id = ?1 and lease_token = ?2
+               returning vector_id`,
+            ).bind(row.vectorId, leaseToken),
+          );
+        } else {
+          statements.push(
+            env.DB.prepare(
+              `update memory_vector_cleanup_outbox
+               set absence_count = absence_count + 1,
+                   next_attempt_at = ?1,
+                   lease_token = null, lease_until = 0,
+                   last_error = null, updated_at = ?2
+               where vector_id = ?3 and lease_token = ?4`,
+            ).bind(now + VECTOR_CLEANUP_VERIFY_DELAY_MS, now, row.vectorId, leaseToken),
+          );
+        }
+      }
+      if (statements.length) await env.DB.batch(statements);
+    } catch (error) {
+      await releaseNativeVectorCleanupLease(
+        env,
+        leaseToken,
+        now,
+        error instanceof Error ? error.name : "UnknownError",
+      );
+      throw error;
+    }
+  }
+
+  return vectorCleanupDrainResult(env, now, rows.length, deleteRequested, verifiedAbsent);
+}
+
+async function recoverStaleNativeVectorWriteIntents(
+  env: StateApiEnv,
+  rows: readonly VectorCleanupOutboxRow[],
+  leaseToken: string,
+  now: number,
+) {
+  const statements: D1PreparedStatement[] = [];
+  for (const row of rows) {
+    const exactEmbedding = JSON.stringify(row.vectorId);
+    const pendingEmbedding = JSON.stringify(`p:${row.vectorId}`);
+    if (row.sourceNamespace === "user_memories" && row.sourceRowId) {
+      statements.push(
+        env.DB.prepare(
+          `delete from memory_vector_cleanup_outbox
+           where vector_id = ?1 and lease_token = ?2
+             and exists (
+               select 1 from user_memories
+               where id = ?3 and user_id = ?4
+                 and updated_at = ?5 and embedding = ?6
+             )`,
+        ).bind(
+          row.vectorId,
+          leaseToken,
+          row.sourceRowId,
+          row.ownerUserId,
+          row.sourceRowRevision,
+          exactEmbedding,
+        ),
+        env.DB.prepare(
+          `update user_memories set embedding = null
+           where id = ?1 and user_id = ?2
+             and updated_at = ?3 and embedding = ?4
+             and exists (
+               select 1 from memory_vector_cleanup_outbox
+               where vector_id = ?5 and lease_token = ?6
+             )`,
+        ).bind(
+          row.sourceRowId,
+          row.ownerUserId,
+          row.sourceRowRevision,
+          pendingEmbedding,
+          row.vectorId,
+          leaseToken,
+        ),
+      );
+    } else if (row.sourceNamespace === "chat_memory_turns" && row.sourceRowId) {
+      statements.push(
+        env.DB.prepare(
+          `delete from memory_vector_cleanup_outbox
+           where vector_id = ?1 and lease_token = ?2
+             and exists (
+               select 1 from chat_memory_turns
+               where id = ?3 and user_id = ?4 and embedding = ?5
+             )`,
+        ).bind(row.vectorId, leaseToken, row.sourceRowId, row.ownerUserId, exactEmbedding),
+        env.DB.prepare(
+          `update chat_memory_turns set embedding = null
+           where id = ?1 and user_id = ?2 and embedding = ?3
+             and exists (
+               select 1 from memory_vector_cleanup_outbox
+               where vector_id = ?4 and lease_token = ?5
+             )`,
+        ).bind(row.sourceRowId, row.ownerUserId, pendingEmbedding, row.vectorId, leaseToken),
+      );
+    }
+    statements.push(
+      env.DB.prepare(
+        `update memory_vector_cleanup_outbox
+         set state = 'cleanup_ready', write_token = null,
+             write_fence_expires_at = null, absence_count = 0,
+             next_attempt_at = ?1, lease_token = null, lease_until = 0,
+             last_error = null, updated_at = ?1
+         where vector_id = ?2 and lease_token = ?3
+           and state in ('write_pending', 'cleanup_fenced')`,
+      ).bind(now, row.vectorId, leaseToken),
+    );
+  }
+  if (statements.length) await env.DB.batch(statements);
+}
+
+async function releaseNativeVectorCleanupLease(
+  env: StateApiEnv,
+  leaseToken: string,
+  now: number,
+  error: string,
+) {
+  await env.DB.prepare(
+    `update memory_vector_cleanup_outbox
+     set lease_token = null, lease_until = 0,
+         next_attempt_at = ?1,
+         last_error = substr(?2, 1, 160), updated_at = ?3
+     where lease_token = ?4`,
+  ).bind(now + Math.min(VECTOR_CLEANUP_VERIFY_DELAY_MS, 60_000), error, now, leaseToken).run();
+}
+
+async function vectorCleanupDrainResult(
+  env: StateApiEnv,
+  now: number,
+  claimed: number,
+  deleteRequested: number,
+  verifiedAbsent: number,
+): Promise<NativeVectorCleanupDrainResult> {
+  // Prefer the next row that is not owned by another worker. A duplicate
+  // Queue delivery must not create another wake chain while a live/crashed
+  // worker holds a lease: the original unacked delivery will retry, and the
+  // daily Scheduled handler remains the lost-wake backstop.
+  const remaining = await env.DB.prepare(
+    `select vector_id as vectorId, next_attempt_at as nextAt
+     from memory_vector_cleanup_outbox
+     where lease_until <= ?1
+     order by next_attempt_at asc, created_at asc, vector_id asc
+     limit 1`,
+  ).bind(now).first<{ vectorId: string; nextAt: number }>();
+  const anyRemaining = remaining
+    ? remaining
+    : await env.DB.prepare(
+        `select vector_id as vectorId, next_attempt_at as nextAt
+         from memory_vector_cleanup_outbox
+         order by next_attempt_at asc, created_at asc, vector_id asc
+         limit 1`,
+      ).first<{ vectorId: string; nextAt: number }>();
+  const pending = anyRemaining ? 1 : 0;
+  const nextAt = remaining ? finiteInteger(remaining.nextAt, now) : null;
   return {
-    memories: memories.results.map((row) => row.id),
-    summaries: summaries.results.map((row) => row.id),
-    turns: turns.results.map((row) => row.id),
+    claimed,
+    deleteRequested,
+    verifiedAbsent,
+    pending,
+    nextDelaySeconds: nextAt === null
+      ? null
+      : Math.max(0, Math.ceil((nextAt - now) / 1_000)),
   };
 }
 
-function scheduleVectorCleanup(
+function isKnownNativeVectorCleanupId(vectorId: string) {
+  if (new TextEncoder().encode(vectorId).byteLength > 64) return false;
+  if (parseNativeMemoryVectorId("user_memories", vectorId)) return true;
+  if (parseNativeMemoryVectorId("chat_memory_turns", vectorId)) return true;
+  return /^chat_memory_summaries:[a-zA-Z0-9._-]+$/.test(vectorId);
+}
+
+async function drainAndContinueNativeVectorCleanup(
+  env: StateApiEnv,
+  reason: string,
+) {
+  const result = await drainNativeMemoryVectorCleanupOutbox(env);
+  if (result.pending && result.nextDelaySeconds !== null) {
+    await sendVectorCleanupWake(env, reason, result.nextDelaySeconds);
+  }
+  return result;
+}
+
+function scheduleVectorCleanupWake(
   ctx: StateApiExecutionContext,
   env: StateApiEnv,
-  ids: MemoryVectorIds,
+  reason: string,
 ) {
-  if (!env.MEMORY_VECTORIZE) return;
-  const vectorIds = [
-    ...ids.memories.map((id) => `user_memories:${id}`),
-    ...ids.summaries.map((id) => `chat_memory_summaries:${id}`),
-    ...ids.turns.map((id) => `chat_memory_turns:${id}`),
-  ];
-  if (!vectorIds.length) return;
   ctx.waitUntil(
-    deleteVectorChunks(env.MEMORY_VECTORIZE, vectorIds).catch((error) => {
-      console.warn(
-        JSON.stringify({
-          event: "native_memory_vector_cleanup_failed",
-          count: vectorIds.length,
-          error: error instanceof Error ? error.name : "UnknownError",
-        }),
-      );
+    sendVectorCleanupWake(env, reason, 0).catch((error) => {
+      console.warn(JSON.stringify({
+        event: "native_memory_vector_cleanup_wake_failed",
+        reason,
+        error: error instanceof Error ? error.name : "UnknownError",
+      }));
     }),
   );
 }
 
-async function deleteVectorChunks(index: VectorizeIndex, ids: string[]) {
-  for (let offset = 0; offset < ids.length; offset += 1_000) {
-    await index.deleteByIds(ids.slice(offset, offset + 1_000));
+async function sendVectorCleanupWake(
+  env: StateApiEnv,
+  reason: string,
+  delaySeconds: number,
+) {
+  if (!env.MEMORY_POST_TURN_QUEUE) {
+    throw new Error("Native vector cleanup wake requires the Queue binding");
   }
+  const message = {
+    type: "memory.vector_cleanup.v1" as const,
+    enqueuedAt: new Date().toISOString(),
+    reason: reason.slice(0, 80),
+  } satisfies MemoryVectorCleanupQueueMessage;
+  const boundedDelay = Math.min(12 * 60 * 60, Math.max(0, Math.ceil(delaySeconds)));
+  await env.MEMORY_POST_TURN_QUEUE.send(
+    message,
+    boundedDelay > 0
+      ? { contentType: "json", delaySeconds: boundedDelay }
+      : { contentType: "json" },
+  );
 }
 
 function scheduleMemorySynthesis(
@@ -2581,14 +4525,8 @@ function scheduleMemorySynthesis(
     console.warn(JSON.stringify({ event: "native_memory_synthesis_not_queued", reason: "missing_binding" }));
     return;
   }
-  const message = {
-    type: "memory.daily_synthesis.v1" as const,
-    enqueuedAt: new Date().toISOString(),
-    userId,
-    reason: reason.slice(0, 80),
-  };
   ctx.waitUntil(
-    env.MEMORY_POST_TURN_QUEUE.send(message, { contentType: "json" }).catch((error) => {
+    sendMemorySynthesisWake(env, userId, reason).catch((error) => {
       console.warn(
         JSON.stringify({
           event: "native_memory_synthesis_queue_failed",
@@ -2597,6 +4535,25 @@ function scheduleMemorySynthesis(
         }),
       );
     }),
+  );
+}
+
+async function sendMemorySynthesisWake(
+  env: StateApiEnv,
+  userId: string,
+  reason: string,
+) {
+  if (!env.MEMORY_POST_TURN_QUEUE) {
+    throw new Error("Native memory synthesis requires the Queue binding");
+  }
+  await env.MEMORY_POST_TURN_QUEUE.send(
+    {
+      type: "memory.daily_synthesis.v1" as const,
+      enqueuedAt: new Date().toISOString(),
+      userId,
+      reason: reason.slice(0, 80),
+    },
+    { contentType: "json" },
   );
 }
 
@@ -2641,9 +4598,19 @@ async function consumeMemoryQuota(env: StateApiEnv, key: string): Promise<QuotaD
   }
 }
 
+type QueuedMemoryEventAction =
+  | "chat_turn_indexed"
+  | "memory_created"
+  | "memory_forgotten";
+
+function queuedMemoryEventId(messageId: string, action: QueuedMemoryEventAction) {
+  return `memory.post_turn:${action}:${messageId}`;
+}
+
 function memoryEventStatement(
   env: StateApiEnv,
   input: {
+    eventId?: string;
     userId: string;
     memoryId?: string | null;
     chatId?: string | null;
@@ -2652,15 +4619,20 @@ function memoryEventStatement(
     reason?: string | null;
     metadata?: JsonObject;
     now: number;
+    onlyAfterChange?: boolean;
   },
 ) {
+  const conflictClause = input.eventId ? " on conflict(id) do nothing" : "";
+  const insertion = input.onlyAfterChange
+    ? "select ?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9 where changes() > 0"
+    : "values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)";
   return env.DB.prepare(
     `insert into memory_events (
        id, user_id, memory_id, chat_id, message_id,
        event_type, reason, metadata, created_at
-     ) values (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`,
+     ) ${insertion}${conflictClause}`,
   ).bind(
-    crypto.randomUUID(),
+    input.eventId ?? crypto.randomUUID(),
     input.userId,
     input.memoryId ?? null,
     input.chatId ?? null,
@@ -2934,6 +4906,7 @@ function parseMemoryFeedback(value: unknown) {
   if (value.chatTurnId !== undefined && !chatTurnId) return null;
   if (value.summarySectionId !== undefined && !summarySectionId) return null;
   if (value.note !== undefined && note === null) return null;
+  if ([memoryId, chatTurnId, summarySectionId].filter(Boolean).length > 1) return null;
   if (action !== "relevant" && action !== "not_relevant" && action !== "dont_mention" && action !== "correction") {
     return null;
   }
@@ -3492,11 +5465,6 @@ function parseJson(value: string): unknown {
   } catch {
     return null;
   }
-}
-
-function serializeJsonColumn(value: unknown) {
-  if (value === null || value === undefined) return null;
-  return typeof value === "string" ? value : JSON.stringify(value);
 }
 
 function isRecord(value: unknown): value is JsonObject {

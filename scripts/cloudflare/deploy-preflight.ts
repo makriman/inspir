@@ -28,6 +28,7 @@ import {
   readAndValidateHistoricalDataContinuityReport,
   type HistoricalDataContinuityPredecessorLoader,
 } from "./verify-historical-data-continuity";
+import { parseConfiguredGlobalDailyCallLimit } from "../../lib/free-runtime/global-ai-budget";
 
 type CheckStatus = "pass" | "fail";
 
@@ -477,7 +478,7 @@ function runtimeMigrationEvidenceCheck(
     sourceFingerprintOk &&
     reportShapeOk;
   return {
-    name: "D1 runtime migrations 0013-0015",
+    name: "D1 runtime migrations 0013-0016",
     status: ok ? "pass" : "fail",
     detail: ok
       ? {
@@ -641,6 +642,9 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
 
   const problems = {
     missingVars: REQUIRED_WRANGLER_VARS.filter((key) => vars[key] === undefined || vars[key] === ""),
+    globalDailyCallLimitOk:
+      parseConfiguredGlobalDailyCallLimit(vars.LLM_GLOBAL_DAILY_CALL_LIMIT) !== null,
+    embeddingModelCompatible: vars.OPENAI_EMBEDDING_MODEL === "text-embedding-3-small",
     leakedSecretVars: SECRET_KEYS_THAT_MUST_NOT_BE_VARS.filter((key) => vars[key] !== undefined),
     requiredSecretsOk: sameStringSet(requiredSecrets, REQUIRED_SECRET_KEYS),
     d1Ok: d1?.database_name === D1_DATABASE_NAME && d1?.database_id === D1_DATABASE_ID,
@@ -692,6 +696,8 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   };
   const ok =
     !problems.missingVars.length &&
+    problems.globalDailyCallLimitOk &&
+    problems.embeddingModelCompatible &&
     !problems.leakedSecretVars.length &&
     problems.requiredSecretsOk &&
     problems.d1Ok &&

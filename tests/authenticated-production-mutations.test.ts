@@ -5,22 +5,33 @@ import test from "node:test";
 import { getCuratedMainAppTranslationBundle } from "../lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "../lib/i18n/main-app-static-asset";
 import {
+  authenticatedOutboxDrainMaximumAttempts,
+  authenticatedOutboxDrainRetryDelayMs,
   authenticatedMutationCpuThresholdMs,
   authenticatedMutationInventoryNames,
+  authenticatedTurnVectorId,
   assertAuthenticatedMutationDisposableIdentity,
   assertAuthenticatedMutationResponseProof,
   assertCompleteFlashcardResult,
   assertCompleteQuizResult,
   cleanupDisposableMutationState,
   createAuthenticatedMutationProbe,
+  evaluateAuthenticatedMemoryQueueTail,
   evaluateAuthenticatedMutationTail,
+  evaluateAuthenticatedSemanticRetrievalTail,
   expectedAuthenticatedMutationDisposableIdentity,
   exactDisposableInventory,
   hasSpanishLanguageSignal,
   isPredominantlySpanishText,
   normalizeAuthenticatedMutationRoute,
   parseCompleteAuthenticatedOpenAiSse,
+  parseAuthenticatedMemoryRecoveryEvidence,
   runAuthenticatedProductionMutationFlow,
+  runAuthenticatedMemoryRecoveryCleanup,
+  resolveAuthenticatedMemoryRecoveryVersion,
+  vectorAbsenceVerificationSpacingMs,
+  vectorCleanupMinimumSettleMs,
+  vectorStateTimeoutMs,
   wranglerTailDiagnosticIsConnected,
   type AuthenticatedMutationTrace,
 } from "../scripts/cloudflare/verify-authenticated-production-mutations";
@@ -139,6 +150,208 @@ test("tail evaluator requires one exact ok CPU sample below 8ms for every mutati
   );
   assert.equal(resourceEvent.ok, false);
   assert.ok(resourceEvent.problems.includes("forbidden-resource-event"));
+});
+
+test("stored-memory Queue evidence requires one authenticated-version invocation with indexed vectors", () => {
+  const authenticatedValidationVersionId = "11111111-1111-4111-8111-111111111111";
+  const userId = "22222222-2222-4222-8222-222222222222";
+  const acceptedRecord = storedMemoryQueueTailRecord({
+    authenticatedValidationVersionId,
+    userId,
+    cpuTimeMs: 7.999,
+    indexedVectorCount: 1,
+  });
+  const accepted = evaluateAuthenticatedMemoryQueueTail(JSON.stringify(acceptedRecord), {
+    authenticatedValidationVersionId,
+    userId,
+    captureStartedAt: 1_000,
+  });
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.matchedEvents, 1);
+  assert.equal(accepted.indexedVectorCount, 1);
+
+  const wrongBatch = structuredClone(acceptedRecord);
+  wrongBatch.event.batchSize = 2;
+  assert.ok(evaluateAuthenticatedMemoryQueueTail(JSON.stringify(wrongBatch), {
+    authenticatedValidationVersionId,
+    userId,
+  }).problems.includes("queue-batch-size"));
+
+  const warned = structuredClone(acceptedRecord);
+  warned.logs.push(tailStructuredLog("warn", {
+    event: "native_memory_vector_write_failed",
+    error: "TypeError",
+  }));
+  assert.ok(evaluateAuthenticatedMemoryQueueTail(JSON.stringify(warned), {
+    authenticatedValidationVersionId,
+    userId,
+  }).problems.includes("failure-log"));
+
+  const duplicate = `${JSON.stringify(acceptedRecord)}\n${JSON.stringify(acceptedRecord)}`;
+  assert.ok(evaluateAuthenticatedMemoryQueueTail(duplicate, {
+    authenticatedValidationVersionId,
+    userId,
+  }).problems.includes("matched-events=2"));
+
+  const atLimit = structuredClone(acceptedRecord);
+  atLimit.cpuTime = 8;
+  assert.ok(evaluateAuthenticatedMemoryQueueTail(JSON.stringify(atLimit), {
+    authenticatedValidationVersionId,
+    userId,
+  }).problems.includes("cpu>=8"));
+});
+
+test("semantic recall evidence requires a hydrated prior turn in the exact HTTP invocation", () => {
+  const authenticatedValidationVersionId = "11111111-1111-4111-8111-111111111111";
+  const trace: AuthenticatedMutationTrace = {
+    label: "chat-semantic-recall-provider",
+    probe: "inspir-mutation-semantic-recall",
+    requestKey:
+      "/api/chat?authenticated_mutation_probe=inspir-mutation-semantic-recall",
+    routeTemplate: "/api/chat",
+    method: "POST",
+    status: 200,
+  };
+  const acceptedRecord = {
+    ...tailRecord(trace, 2.5),
+    scriptName: "inspirlearning",
+    scriptVersion: { id: authenticatedValidationVersionId },
+    truncated: false,
+    logs: [tailStructuredLog("log", {
+      event: "native_memory_vector_retrieval_completed",
+      memoryMatches: 0,
+      turnMatches: 1,
+    })],
+  };
+  const accepted = evaluateAuthenticatedSemanticRetrievalTail(
+    JSON.stringify(acceptedRecord),
+    { authenticatedValidationVersionId, trace },
+  );
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.hydratedTurnCount, 1);
+
+  const noHydratedTurn = structuredClone(acceptedRecord);
+  noHydratedTurn.logs = [tailStructuredLog("log", {
+    event: "native_memory_vector_retrieval_completed",
+    memoryMatches: 0,
+    turnMatches: 0,
+  })];
+  assert.ok(evaluateAuthenticatedSemanticRetrievalTail(
+    JSON.stringify(noHydratedTurn),
+    { authenticatedValidationVersionId, trace },
+  ).problems.includes("semantic-hydrated-turn-count"));
+
+  const warned = structuredClone(acceptedRecord);
+  warned.logs.push(tailStructuredLog("warn", {
+    event: "native_memory_vector_query_failed",
+    error: "TypeError",
+  }));
+  assert.ok(evaluateAuthenticatedSemanticRetrievalTail(
+    JSON.stringify(warned),
+    { authenticatedValidationVersionId, trace },
+  ).problems.includes("semantic-failure-log"));
+});
+
+test("memory recovery evidence binds the deterministic turn before Queue publication", () => {
+  const releaseCandidateVersionId = "11111111-1111-4111-8111-111111111111";
+  const authenticatedValidationVersionId = "22222222-2222-4222-8222-222222222222";
+  const runId = "33333333-3333-4333-8333-333333333333";
+  const userId = expectedAuthenticatedMutationDisposableIdentity(
+    authenticatedValidationVersionId,
+    runId,
+  ).userId;
+  const userMessageId = "44444444-4444-4444-8444-444444444444";
+  const turnVectorId = authenticatedTurnVectorId(
+    userMessageId,
+    "Remember this exact production validation prompt.",
+    "This is the exact finalized validation answer.",
+  );
+  const value = {
+    kind: "authenticated-production-memory-recovery-v2",
+    createdAt: "2026-07-13T12:00:00.000Z",
+    releaseCandidateVersionId,
+    authenticatedValidationVersionId,
+    runId,
+    userId,
+    sourceChatId: "55555555-5555-4555-8555-555555555555",
+    userMessageId,
+    turnVectorId,
+    sourceFingerprintSha256: "a".repeat(64),
+    immutableReleaseIdentitySha256: "b".repeat(64),
+    queuePushPreparedAt: "2026-07-13T12:00:00.000Z",
+  };
+  assert.deepEqual(parseAuthenticatedMemoryRecoveryEvidence(value), value);
+  assert.throws(
+    () => parseAuthenticatedMemoryRecoveryEvidence({
+      ...value,
+      turnVectorId: "chat_memory_turns:wrong",
+    }),
+    /inconsistent bound identities/,
+  );
+  assert.throws(
+    () => parseAuthenticatedMemoryRecoveryEvidence({ ...value, userId: value.sourceChatId }),
+    /inconsistent bound identities/,
+  );
+});
+
+test("interruption recovery cleans vectors before D1 and never finalizes after a D1 failure", async () => {
+  assert.equal(vectorCleanupMinimumSettleMs, 3 * 60_000);
+  assert.equal(vectorAbsenceVerificationSpacingMs, 3 * 60_000);
+  assert.ok(vectorStateTimeoutMs >= 8 * 60_000);
+  assert.equal(resolveAuthenticatedMemoryRecoveryVersion({
+    manifestAuthenticatedVersionId: null,
+    currentVersionId: "11111111-1111-4111-8111-111111111111",
+    memoryRecoveryEvidenceExists: false,
+  }), "11111111-1111-4111-8111-111111111111");
+  assert.throws(() => resolveAuthenticatedMemoryRecoveryVersion({
+    manifestAuthenticatedVersionId: null,
+    currentVersionId: "11111111-1111-4111-8111-111111111111",
+    memoryRecoveryEvidenceExists: true,
+  }), /without its bound authenticated validation version/);
+  assert.equal(resolveAuthenticatedMemoryRecoveryVersion({
+    manifestAuthenticatedVersionId: "22222222-2222-4222-8222-222222222222",
+    currentVersionId: "11111111-1111-4111-8111-111111111111",
+    memoryRecoveryEvidenceExists: true,
+  }), "22222222-2222-4222-8222-222222222222");
+
+  const events: string[] = [];
+  await runAuthenticatedMemoryRecoveryCleanup({
+    preD1VectorCleanup: async () => {
+      events.push("vector-pre");
+    },
+    authoritativeD1Cleanup: async () => {
+      events.push("d1");
+    },
+    postD1VectorCleanup: async () => {
+      events.push("vector-post-and-remove-evidence");
+    },
+  });
+  assert.deepEqual(events, ["vector-pre", "d1", "vector-post-and-remove-evidence"]);
+
+  events.length = 0;
+  await assert.rejects(
+    () => runAuthenticatedMemoryRecoveryCleanup({
+      preD1VectorCleanup: async () => {
+        events.push("vector-pre");
+      },
+      authoritativeD1Cleanup: async () => {
+        events.push("d1-failed");
+        throw new Error("simulated hidden cleanup failure");
+      },
+      postD1VectorCleanup: async () => {
+        events.push("must-not-remove-evidence");
+      },
+    }),
+    /simulated hidden cleanup failure/,
+  );
+  assert.deepEqual(events, ["vector-pre", "d1-failed"]);
+  await assert.rejects(
+    () => runAuthenticatedMemoryRecoveryCleanup({
+      preD1VectorCleanup: async () => undefined,
+      authoritativeD1Cleanup: async () => undefined,
+    }),
+    /requires both pre- and post-D1 vector cleanup/,
+  );
 });
 
 test("mutation Tail readiness uses only Wrangler diagnostics and public probes survive URL redaction", () => {
@@ -311,6 +524,51 @@ test("cleanup fails indeterminate without blindly retrying after a readback fail
   assert.deepEqual(events, ["cleanup", "inspect"]);
 });
 
+test("cleanup wakes and waits for owner-scoped vector outbox drain before final zero proof", async () => {
+  assert.equal(authenticatedOutboxDrainRetryDelayMs, 30_000);
+  assert.equal(authenticatedOutboxDrainMaximumAttempts, 60);
+  const events: string[] = [];
+  let vectorOutboxRows = 1;
+  let identityRows = 1;
+  const result = await cleanupDisposableMutationState({
+    cleanup: async () => {
+      events.push("cleanup");
+      if (vectorOutboxRows === 0) identityRows = 0;
+    },
+    inspect: async () => {
+      events.push("inspect");
+      return {
+        ok: vectorOutboxRows === 0 && identityRows === 0,
+        inventory: {
+          ...emptyDisposableInventory(),
+          users: identityRows,
+          memory_vector_cleanup_outbox: vectorOutboxRows,
+        },
+      };
+    },
+    outboxDrain: {
+      wake: async () => {
+        events.push("wake-global-cleanup");
+      },
+      maximumAttempts: 3,
+      retryDelayMs: 1,
+      wait: async () => {
+        events.push("wait-for-runtime-absence-proof");
+        vectorOutboxRows = 0;
+      },
+    },
+  });
+  assert.equal(result.cleanupAttempts, 2);
+  assert.deepEqual(events, [
+    "cleanup",
+    "inspect",
+    "wake-global-cleanup",
+    "wait-for-runtime-absence-proof",
+    "cleanup",
+    "inspect",
+  ]);
+});
+
 test("flow always invokes cleanup and authoritative zero readback when its first probe fails", async () => {
   const actions: string[] = [];
   const candidateVersionId = "11111111-1111-4111-8111-111111111111";
@@ -364,6 +622,21 @@ test("flow always invokes cleanup and authoritative zero readback when its first
       authSecret: "mutation-flow-test-secret-at-least-32-bytes",
       runId,
       tailSessionToken: "tail-session-test-token",
+      memoryHotPath: {
+        publishPostTurnAndRequireStored: async () => {
+          throw new Error("memory hot path should not run after the first probe fails");
+        },
+        requireKnownVectorPresent: async () => {
+          throw new Error("memory hot path should not run after the first probe fails");
+        },
+        requireSemanticTurnHydrated: async () => {
+          throw new Error("memory hot path should not run after the first probe fails");
+        },
+        requestVectorCleanupDrain: async () => undefined,
+        requireKnownVectorAbsent: async () => {
+          throw new Error("memory hot path should not run after the first probe fails");
+        },
+      },
       fetcher,
     }),
     /did not complete safely/,
@@ -376,8 +649,8 @@ test("flow always invokes cleanup and authoritative zero readback when its first
   ]);
 });
 
-test("disposable cleanup inventory requires the independent exact 22-key schema", () => {
-  assert.equal(authenticatedMutationInventoryNames.length, 22);
+test("disposable cleanup inventory requires the independent exact 23-key schema", () => {
+  assert.equal(authenticatedMutationInventoryNames.length, 23);
   assert.deepEqual(exactDisposableInventory(emptyDisposableInventory()), emptyDisposableInventory());
   const omitted = emptyDisposableInventory();
   delete omitted.memory_events;
@@ -427,6 +700,46 @@ test("production mutation verifier covers chat provider/finalize, completed acti
   assert.match(source, /verify-disposable-cleanup/);
   assert.match(source, /cpuTimeMs < 0/);
   assert.match(source, /cpuTimeMs >= authenticatedMutationCpuThresholdMs/);
+  assert.match(source, /evidenceVersionRole: "authenticated-validation-version"/);
+  assert.match(source, /sharedGlobalAiBudgetCalls: 7/);
+  assert.match(source, /type: "memory\.post_turn\.v2"/);
+  assert.match(source, /knownTurnVectorId = authenticatedTurnVectorId\(/);
+  assert.match(source, /chat-semantic-recall-provider/);
+  assert.match(
+    source,
+    /const versionTail = spawn\([\s\S]{0,220}\["tail", workerName, "--format", "json", "--version-id", expectedVersion\]/,
+  );
+  assert.match(
+    source,
+    /Refusing hidden disposable D1 cleanup before owned source-chat deletion is proven/,
+  );
+  const publishHook = source.slice(
+    source.indexOf("publishPostTurnAndRequireStored: async"),
+    source.indexOf("requireKnownVectorPresent: async"),
+  );
+  assert.ok(publishHook.indexOf("writePrivateJsonDurably") >= 0);
+  assert.ok(
+    publishHook.indexOf("writePrivateJsonDurably") <
+      publishHook.indexOf("pushAuthenticatedMemoryPostTurn"),
+  );
+  const flowFinally = source.slice(
+    source.indexOf("} finally {", source.indexOf("runAuthenticatedProductionMutationFlow")),
+    source.indexOf("const failures =", source.indexOf("runAuthenticatedProductionMutationFlow")),
+  );
+  assert.ok(
+    flowFinally.indexOf("delete-stored-memory-source-chat") <
+      flowFinally.indexOf("requestVectorCleanupDrain"),
+  );
+  assert.ok(
+    flowFinally.indexOf("requestVectorCleanupDrain") <
+      flowFinally.indexOf("requireKnownVectorAbsent"),
+  );
+  assert.ok(
+    flowFinally.indexOf("requireKnownVectorAbsent") <
+      flowFinally.indexOf("cleanupDisposableMutationState"),
+  );
+  assert.match(source, /type: "memory\.vector_cleanup\.v1"/);
+  assert.match(source, /memory_vector_cleanup_outbox/);
   assert.doesNotMatch(source, /mutation_tail_ready/);
   assert.doesNotMatch(source, /console\.(?:log|error)\([^\n]*(?:authSecret|cookie|userId)/);
 
@@ -439,17 +752,40 @@ test("production mutation verifier covers chat provider/finalize, completed acti
     path.resolve("lib/free-runtime/state-api.ts"),
     "utf8",
   );
-  assert.match(
-    stateSource,
-    /patch\.content !== undefined && !isDisposableValidationSession\(session\)/,
+  const updateMemorySource = stateSource.slice(
+    stateSource.indexOf("async function updateMemoryItem"),
+    stateSource.indexOf("async function deleteMemoryItem"),
   );
-  assert.match(
-    stateSource,
-    /if \(!isDisposableValidationSession\(session\)\) \{\s*scheduleVectorCleanup\(ctx, env, \{ memories: \[memoryId\]/,
-  );
+  assert.match(updateMemorySource, /embedding = null/);
+  assert.match(updateMemorySource, /const outboxStatements = isDisposableValidationSession\(session\)/);
+  assert.match(updateMemorySource, /if \(!isDisposableValidationSession\(session\)\)/);
+  assert.match(updateMemorySource, /scheduleVectorCleanupWake/);
+  assert.doesNotMatch(updateMemorySource, /deleteNativeMemoryVectorsBestEffort/);
   assert.match(protectedSource, /if \(input\.skipQueue\) return/);
   assert.match(stateSource, /function isDisposableValidationSession/);
-  assert.equal((stateSource.match(/!isDisposableValidationSession\(session\)/g) ?? []).length, 5);
+  assert.equal((stateSource.match(/!isDisposableValidationSession\(session\)/g) ?? []).length, 3);
+
+  const wrapper = fs.readFileSync(
+    path.resolve("scripts/cloudflare/run-authenticated-production-validation.ts"),
+    "utf8",
+  );
+  assert.match(wrapper, /cf:verify:background-outcomes/);
+  assert.match(wrapper, /"--queue"/);
+  assert.match(wrapper, /realStoredQueueAndSemanticRetrieval: authenticatedVersion/);
+  assert.match(wrapper, /staleJobQueueProbe: finalVersion/);
+  assert.match(wrapper, /immutableSourceAndArtifactIdentityShared: true/);
+  assert.match(wrapper, /runAuthenticatedMemoryRecoveryCleanup/);
+  const finalVersionIndex = wrapper.indexOf("const finalVersion =");
+  const staleQueueIndex = wrapper.indexOf('"cf:verify:background-outcomes"', finalVersionIndex);
+  const finalSecretFreeIndex = wrapper.indexOf('"--secret-free"', staleQueueIndex);
+  const finalLockReleaseIndex = wrapper.indexOf(
+    "releaseActiveProductionValidationLock();",
+    finalSecretFreeIndex,
+  );
+  assert.ok(finalVersionIndex >= 0);
+  assert.ok(staleQueueIndex > finalVersionIndex);
+  assert.ok(finalSecretFreeIndex > staleQueueIndex);
+  assert.ok(finalLockReleaseIndex > finalSecretFreeIndex);
 });
 
 function tailRecord(
@@ -471,6 +807,49 @@ function tailRecord(
       },
       response: { status: trace.status },
     },
+  };
+}
+
+function tailStructuredLog(
+  level: "log" | "warn" | "error",
+  message: Record<string, unknown>,
+) {
+  return { level, message: [JSON.stringify(message)] };
+}
+
+function storedMemoryQueueTailRecord(input: {
+  authenticatedValidationVersionId: string;
+  userId: string;
+  cpuTimeMs: number;
+  indexedVectorCount: number;
+}) {
+  const exceptions: Array<{ message: string }> = [];
+  return {
+    scriptName: "inspirlearning",
+    scriptVersion: { id: input.authenticatedValidationVersionId },
+    outcome: "ok",
+    truncated: false,
+    cpuTime: input.cpuTimeMs,
+    eventTimestamp: 2_000,
+    exceptions,
+    event: {
+      queue: "inspirlearning-memory-post-turn-prod",
+      batchSize: 1,
+    },
+    logs: [
+      tailStructuredLog("log", {
+        event: "native_memory_queue_processed",
+        type: "memory.post_turn.v2",
+        userId: input.userId,
+        messageId: "queue-message-id",
+        attempts: 1,
+        outcome: "stored",
+      }),
+      tailStructuredLog("log", {
+        event: "native_memory_vectors_indexed",
+        count: input.indexedVectorCount,
+      }),
+    ],
   };
 }
 

@@ -387,7 +387,7 @@ function buildRepairJobs(
           typeof existing === "string" &&
           existing === existing.normalize("NFC") &&
           hasExactProtectedTranslationLiterals(sourceText, existing) &&
-          isValidFieldTranslation(sourceText, existing, language) &&
+          isValidFieldTranslation(sourceText, existing, language, key) &&
           isTranslationFieldLikelyFluent(
             sourceText,
             existing,
@@ -397,7 +397,7 @@ function buildRepairJobs(
         ) {
           strings[key] = existing;
         } else if (
-          isValidFieldTranslation(sourceText, sourceText, language) &&
+          isValidFieldTranslation(sourceText, sourceText, language, key) &&
           isTranslationFieldLikelyFluent(
             sourceText,
             sourceText,
@@ -446,7 +446,7 @@ function candidateFailureReasons(
   if (!hasExactProtectedTranslationLiterals(sourceText, value)) {
     reasons.push("protected-literal");
   }
-  if (!isValidFieldTranslation(sourceText, value, language)) reasons.push("field-invalid");
+  if (!isValidFieldTranslation(sourceText, value, language, key)) reasons.push("field-invalid");
   if (
     !isTranslationFieldLikelyFluent(
       sourceText,
@@ -817,7 +817,7 @@ function manualCandidateFailureReasons(
   if (value !== value.normalize("NFC")) reasons.push("non-nfc");
   if (/ZXQK\d{4}I18NQXZ/.test(value)) reasons.push("unrestored-sentinel");
   if (!protectText(sourceText).validateRestored(value)) reasons.push("protected-literal");
-  if (!isValidFieldTranslation(sourceText, value, language)) reasons.push("field-invalid");
+  if (!isValidFieldTranslation(sourceText, value, language, key)) reasons.push("field-invalid");
   if (
     !isTranslationFieldLikelyFluent(
       sourceText,
@@ -1060,7 +1060,7 @@ function exactFailures(
         typeof value !== "string" ||
         value !== value.normalize("NFC") ||
         !hasExactProtectedTranslationLiterals(sourceText, value) ||
-        !isValidFieldTranslation(sourceText, value, language) ||
+        !isValidFieldTranslation(sourceText, value, language, key) ||
         !isTranslationFieldLikelyFluent(
           sourceText,
           value,

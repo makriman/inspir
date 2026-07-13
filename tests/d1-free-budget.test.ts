@@ -10,6 +10,8 @@ import {
   utcUsageWindowMinutes,
 } from "../scripts/cloudflare/d1-free-budget";
 import {
+  RUNTIME_MIGRATION_0016_FIXED_ROWS_READ,
+  RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN,
   evaluateRuntimeMigrationBudget,
   loadRuntimeMigrationCardinalities,
   projectRuntimeMigrationUsage,
@@ -184,16 +186,23 @@ test("runtime migration projection is conservative and bounded", () => {
         rateLimitWindows: 1_000,
         opsEvents: 250,
         activityRuns: 300,
+        userMemorySettings: 40_000,
+        memorySourceFeedback: 1_200,
+        suppressionBackfillUsers: 200,
       },
       48_307,
     ),
     {
-      rowsRead: 202_978,
-      rowsWritten: 7_066,
+      rowsRead: 246_978,
+      rowsWritten: 7_498,
       indexedRows: 2_350,
       runtimeIndexRows: 1_750,
       activityPartialUniqueIndexRows: 600,
       snapshotRows: 46_757,
+      suppressionBackfillRowsRead: 43_000,
+      suppressionBackfillRowsWritten: 400,
+      outboxSchemaRowsRead: RUNTIME_MIGRATION_0016_FIXED_ROWS_READ,
+      outboxSchemaRowsWritten: RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN,
     },
   );
   assert.throws(
@@ -207,6 +216,9 @@ test("runtime migration projection is conservative and bounded", () => {
           rateLimitWindows: 9_000,
           opsEvents: 0,
           activityRuns: 1,
+          userMemorySettings: 0,
+          memorySourceFeedback: 0,
+          suppressionBackfillUsers: 0,
         },
         65_757,
       ),
@@ -223,10 +235,51 @@ test("runtime migration projection is conservative and bounded", () => {
           rateLimitWindows: 1,
           opsEvents: 1,
           activityRuns: 1,
+          userMemorySettings: 0,
+          memorySourceFeedback: 0,
+          suppressionBackfillUsers: 0,
         },
         1,
       ),
     /bounded scan cap/,
+  );
+  assert.throws(
+    () =>
+      projectRuntimeMigrationUsage(
+        {
+          users: 1,
+          chats: 1,
+          messages: 1,
+          aiRuns: 1,
+          rateLimitWindows: 1,
+          opsEvents: 1,
+          activityRuns: 1,
+          userMemorySettings: 1,
+          memorySourceFeedback: 16_662,
+          suppressionBackfillUsers: 1,
+        },
+        1,
+      ),
+    /memory source feedback cardinality reached its bounded scan cap/,
+  );
+  assert.throws(
+    () =>
+      projectRuntimeMigrationUsage(
+        {
+          users: 1,
+          chats: 1,
+          messages: 1,
+          aiRuns: 1,
+          rateLimitWindows: 1,
+          opsEvents: 1,
+          activityRuns: 1,
+          userMemorySettings: 1,
+          memorySourceFeedback: 2,
+          suppressionBackfillUsers: 3,
+        },
+        1,
+      ),
+    /Suppression backfill users exceed source feedback rows/,
   );
 
   const source = fs.readFileSync("scripts/cloudflare/check-d1-runtime-migration-budget.ts", "utf8");
@@ -234,8 +287,15 @@ test("runtime migration projection is conservative and bounded", () => {
   assert.match(source, /loadAccountD1DailyUsage/);
   assert.match(source, /SELECT 1 FROM users LIMIT/);
   assert.match(source, /SELECT 1 FROM activity_runs LIMIT/);
+  assert.match(source, /SELECT 1 FROM user_memory_settings LIMIT/);
+  assert.match(source, /SELECT 1 FROM memory_source_feedback LIMIT/);
+  assert.match(source, /SELECT DISTINCT feedback\.user_id/);
+  assert.match(source, /native-memory-general/);
   assert.match(source, /counts\.activityRuns[\s\S]*?2,[\s\S]*?0015 activity partial unique index rows/);
-  assert.match(source, /Production D1 runtime migrations 0013-0015/);
+  assert.match(source, /Production D1 runtime migrations 0013-0016/);
+  assert.match(source, /final app_metadata completion[\s\S]*?sentinel all fit inside it/);
+  assert.match(source, /populated suppression backfill is projected[\s\S]*?separately/);
+  assert.doesNotMatch(source, /FROM memory_vector_cleanup_outbox/);
   assert.doesNotMatch(source, /(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE)\s/i);
 });
 
@@ -263,6 +323,9 @@ test("runtime migration budget refuses exhausted usage before any D1 SQL", () =>
               rateLimitWindows: 0,
               opsEvents: 0,
               activityRuns: 0,
+              userMemorySettings: 0,
+              memorySourceFeedback: 0,
+              suppressionBackfillUsers: 0,
             },
             rowsRead: 0,
             rowsWritten: 0,
@@ -290,6 +353,9 @@ test("runtime cardinality SQL is capped and rejects write metadata", () => {
             rate_limit_windows: 1_000,
             ops_events: 250,
             activity_runs: 300,
+            user_memory_settings: 40_000,
+            memory_source_feedback: 1_200,
+            suppression_backfill_users: 200,
           },
         ],
         meta: { rows_read: 48_307, rows_written: 0 },
@@ -297,10 +363,27 @@ test("runtime cardinality SQL is capped and rejects write metadata", () => {
     ]);
   });
   assert.equal(result.rowsWritten, 0);
+  assert.deepEqual(result.cardinalities, {
+    users: 40_467,
+    chats: 1_240,
+    messages: 4_550,
+    aiRuns: 500,
+    rateLimitWindows: 1_000,
+    opsEvents: 250,
+    activityRuns: 300,
+    userMemorySettings: 40_000,
+    memorySourceFeedback: 1_200,
+    suppressionBackfillUsers: 200,
+  });
   assert.match(sql, /SELECT 1 FROM users LIMIT 90001/);
   assert.match(sql, /SELECT 1 FROM ai_runs LIMIT 16662/);
   assert.match(sql, /SELECT 1 FROM ops_events LIMIT 16662/);
   assert.match(sql, /SELECT 1 FROM activity_runs LIMIT 16662/);
+  assert.match(sql, /SELECT 1 FROM user_memory_settings LIMIT 90001/);
+  assert.match(sql, /SELECT 1 FROM memory_source_feedback LIMIT 16662/);
+  assert.match(sql, /SELECT DISTINCT feedback\.user_id/);
+  assert.match(sql, /FROM memory_source_feedback LIMIT 16662/);
+  assert.match(sql, /INNER JOIN users ON users\.id = feedback\.user_id/);
 
   assert.throws(
     () =>
@@ -316,6 +399,9 @@ test("runtime cardinality SQL is capped and rejects write metadata", () => {
                 rate_limit_windows: 1,
                 ops_events: 1,
                 activity_runs: 1,
+                user_memory_settings: 1,
+                memory_source_feedback: 1,
+                suppression_backfill_users: 1,
               },
             ],
             meta: { rows_read: 5, rows_written: 1 },

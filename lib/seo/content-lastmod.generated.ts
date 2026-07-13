@@ -7,7 +7,7 @@ export const sitemapContentLastModified = {
   schools: "2026-07-07",
   trust: "2026-07-07",
   media: "2026-07-07",
-  topics: "2026-07-07",
+  topics: "2026-07-11",
   subjects: "2026-07-07",
   prompts: "2026-07-07",
   learningMap: "2026-07-07",

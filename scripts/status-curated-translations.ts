@@ -195,13 +195,18 @@ function getCuratedTranslationPartial(source: TranslationSource, language: Suppo
 
     for (const [key, value] of Object.entries(pack.translations ?? {})) {
       const sourceText = source.sourceStrings[key];
-      if (sourceText && isValidFieldTranslation(sourceText, value, language)) valuesByKey.set(key, value);
+      if (sourceText && isValidFieldTranslation(sourceText, value, language, key)) {
+        valuesByKey.set(key, value);
+      }
     }
 
     for (const entry of pack.entries ?? []) {
       if (!entry.key) continue;
       const sourceText = source.sourceStrings[entry.key];
-      if (sourceText && isValidFieldTranslation(sourceText, entry.value, language)) {
+      if (
+        sourceText &&
+        isValidFieldTranslation(sourceText, entry.value, language, entry.key)
+      ) {
         valuesByKey.set(entry.key, entry.value ?? "");
       }
     }

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "kind": "site-case-semantic-corrections",
+  "packCount": 6,
+  "correctionCount": 18,
+  "packs": {
+    "af/marketing-shell.json": {
+      "language": "Afrikaans",
+      "locale": "af",
+      "namespace": "marketing-shell",
+      "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
+      "corrections": {
+        "site.0b9d2b2362bc33581b": {
+          "source": "Blog",
+          "value": "Blog"
+        },
+        "site.0c77aeece8c2581131": {
+          "source": "Media",
+          "value": "Media"
+        },
+        "site.eea5311d723f2493a5": {
+          "source": "Prompts",
+          "value": "Opdragte"
+        }
+      }
+    },
+    "az/marketing-shell.json": {
+      "language": "Azerbaijani",
+      "locale": "az",
+      "namespace": "marketing-shell",
+      "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
+      "corrections": {
+        "site.0c77aeece8c2581131": {
+          "source": "Media",
+          "value": "Media"
+        }
+      }
+    },
+    "ne/route__mission.json": {
+      "language": "Nepali",
+      "locale": "ne",
+      "namespace": "route:mission",
+      "sourceHash": "46969c0630b4acedc5064c912b7eadffda90c595d635e6d4a3f8e6fb6c4ad753",
+      "corrections": {
+        "site.4917b456b4aeba9ffc": {
+          "source": "Consumer AI launch",
+          "value": "उपभोक्ताका लागि एआई सुरुवात"
+        },
+        "site.4cd884de984a99bd04": {
+          "source": "School angle",
+          "value": "विद्यालयका लागि दृष्टिकोण"
+        },
+        "site.6dc60d3e04c92e4fe6": {
+          "source": "Product angle",
+          "value": "उत्पादनको दृष्टिकोण"
+        },
+        "site.790d6791323a475c39": {
+          "source": "White-labelled AI chat",
+          "value": "आफ्नै ब्रान्डअन्तर्गतको एआई च्याट"
+        },
+        "site.87164ea45313b56015": {
+          "source": "Primary audience",
+          "value": "मुख्य दर्शकसमूह"
+        },
+        "site.8f5393039e3b0b5dcd": {
+          "source": "Reference page",
+          "value": "सन्दर्भ पृष्ठ"
+        },
+        "site.99f6b1b76e10895d1b": {
+          "source": "Mode-specific learning",
+          "value": "मोडअनुसारको सिकाइ"
+        },
+        "site.f48c8862cd0cb4f9cc": {
+          "source": "Media notes",
+          "value": "सञ्चारमाध्यमका टिपोटहरू"
+        },
+        "site.fb8a562ed5a2ef48b1": {
+          "source": "School leaders",
+          "value": "विद्यालयका नेतृत्वकर्ताहरू"
+        }
+      }
+    },
+    "no/marketing-shell.json": {
+      "language": "Norwegian",
+      "locale": "no",
+      "namespace": "marketing-shell",
+      "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
+      "corrections": {
+        "site.0c77aeece8c2581131": {
+          "source": "Media",
+          "value": "Media"
+        },
+        "site.7afef6c780a2c65e1b": {
+          "source": "Prompt guide",
+          "value": "Veiledning i promptutforming"
+        },
+        "site.952f375412e89ff213": {
+          "source": "Start",
+          "value": "Start"
+        }
+      }
+    },
+    "sk/marketing-shell.json": {
+      "language": "Slovak",
+      "locale": "sk",
+      "namespace": "marketing-shell",
+      "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
+      "corrections": {
+        "site.0b9d2b2362bc33581b": {
+          "source": "Blog",
+          "value": "Blog"
+        }
+      }
+    },
+    "sl/marketing-shell.json": {
+      "language": "Slovenian",
+      "locale": "sl",
+      "namespace": "marketing-shell",
+      "sourceHash": "975a0cb9c0a4bb5df9c13ece6f77200464d7922afd2235e8d4fbecbaa2d9d0bf",
+      "corrections": {
+        "site.0b9d2b2362bc33581b": {
+          "source": "Blog",
+          "value": "Blog"
+        }
+      }
+    }
+  }
+}

@@ -168,7 +168,7 @@ type OAuthRateLimitRow = {
   count: number;
 };
 
-type GoogleTokenSet = {
+export type GoogleTokenSet = {
   accessToken: string;
   refreshToken: string | null;
   idToken: string;
@@ -176,7 +176,7 @@ type GoogleTokenSet = {
   scope: string | null;
 };
 
-type GoogleIdentity = {
+export type GoogleIdentity = {
   subject: string;
   email: string;
   name: string | null;
@@ -258,6 +258,7 @@ export const E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES = [
   "memory_synthesis_runs",
   "memory_source_feedback",
   "memory_events",
+  "memory_vector_cleanup_outbox",
 ] as const;
 
 export type E2EDisposableMutationInventoryName =
@@ -905,7 +906,7 @@ function normalizeGoogleImage(value: unknown) {
   }
 }
 
-async function linkVerifiedGoogleIdentity(
+export async function linkVerifiedGoogleIdentity(
   db: D1Database,
   identity: GoogleIdentity,
   tokenSet: GoogleTokenSet,
@@ -1040,7 +1041,11 @@ async function upsertGoogleAccount(
     .run();
 }
 
-async function createNativeOAuthSession(request: Request, db: D1Database, userId: string) {
+export async function createNativeOAuthSession(
+  request: Request,
+  db: D1Database,
+  userId: string,
+) {
   const now = Date.now();
   const session = {
     id: crypto.randomUUID(),
@@ -1407,7 +1412,8 @@ export const E2E_DISPOSABLE_MUTATION_INVENTORY_SQL = `select
   (select count(*) from user_memory_summaries where user_id = ?1) as user_memory_summaries,
   (select count(*) from memory_synthesis_runs where user_id = ?1) as memory_synthesis_runs,
   (select count(*) from memory_source_feedback where user_id = ?1) as memory_source_feedback,
-  (select count(*) from memory_events where user_id = ?1) as memory_events`;
+  (select count(*) from memory_events where user_id = ?1) as memory_events,
+  (select count(*) from memory_vector_cleanup_outbox where owner_user_id = ?1) as memory_vector_cleanup_outbox`;
 
 async function disposableMutationIdentity(
   candidateVersionId: string,
@@ -1606,11 +1612,22 @@ async function cleanupDisposableMutationUser(
        where "key" in (?1, ?2, ?3, ?4, ?5, ?6)
          and exists (select 1 from verification_tokens where identifier = ?7 and token = ?8)`,
     ).bind(...identity.quotaKeys, identity.email, identity.markerToken),
+    env.DB.prepare(`delete from chats where user_id = ?1 and ${markerGuard}`)
+      .bind(userId, identity.email, identity.markerToken),
+  ]);
+
+  // The Vectorize cleanup outbox is an operational durability record, not
+  // disposable account data. Its owner-scoped rows are removed only by the
+  // runtime drain after delayed Vectorize absence verification. Keep the
+  // identity and its cleanup marker alive so an authenticated or HMAC-bound
+  // retry remains possible while that external cleanup is still pending.
+  const afterOwnedDataCleanup = (await loadDisposableMutationInventory(env, identity)).inventory;
+  if (!disposableIdentityCanBeFinalized(afterOwnedDataCleanup)) return;
+
+  await env.DB.batch([
     env.DB.prepare(`delete from accounts where user_id = ?1 and ${markerGuard}`)
       .bind(userId, identity.email, identity.markerToken),
     env.DB.prepare(`delete from sessions where user_id = ?1 and ${markerGuard}`)
-      .bind(userId, identity.email, identity.markerToken),
-    env.DB.prepare(`delete from chats where user_id = ?1 and ${markerGuard}`)
       .bind(userId, identity.email, identity.markerToken),
     env.DB.prepare(
       `delete from users
@@ -1625,6 +1642,19 @@ async function cleanupDisposableMutationUser(
     env.DB.prepare("delete from verification_tokens where identifier = ?1 and token = ?2")
       .bind(identity.email, identity.markerToken),
   ]);
+}
+
+const disposableIdentityControlRows = new Set<E2EDisposableMutationInventoryName>([
+  "users",
+  "accounts",
+  "sessions",
+  "verification_tokens",
+]);
+
+function disposableIdentityCanBeFinalized(inventory: E2EDisposableMutationInventory) {
+  return E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES.every((name) => (
+    disposableIdentityControlRows.has(name) || inventory[name] === 0
+  ));
 }
 
 async function authorizedDisposableCleanup(

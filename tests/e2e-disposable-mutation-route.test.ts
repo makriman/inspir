@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
 import test from "node:test";
 import {
+  E2E_DISPOSABLE_MUTATION_INVENTORY_SQL,
   E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES,
   handleMigrationE2EAuthRequest,
   type E2EDisposableMutationInventory,
@@ -185,6 +186,50 @@ test("partial cleanup is reported as residue and can be authoritatively retried"
   assert.deepEqual(database.inventory, emptyInventory());
 });
 
+test("disposable identity survives until the owner-scoped vector outbox is drained", async () => {
+  const database = new DisposableD1Database();
+  const env = disposableEnv(database);
+  const created = await handleMigrationE2EAuthRequest(mutationRequest("create-disposable"), env);
+  const userId = requiredString(recordValue((await jsonRecord(created)).identity).userId);
+  database.inventory.chats = 1;
+  database.inventory.messages = 1;
+  database.inventory.chat_memory_turns = 1;
+  database.inventory.memory_vector_cleanup_outbox = 1;
+
+  const fenced = await handleMigrationE2EAuthRequest(
+    mutationRequest("cleanup-disposable", userId, {
+      "x-migration-e2e-cleanup-proof": cleanupProof(userId),
+    }),
+    env,
+  );
+  const fencedBody = await jsonRecord(fenced);
+  assert.equal(fencedBody.ok, false);
+  assert.equal(database.inventory.chats, 0);
+  assert.equal(database.inventory.messages, 0);
+  assert.equal(database.inventory.chat_memory_turns, 0);
+  assert.equal(database.inventory.memory_vector_cleanup_outbox, 1);
+  assert.equal(database.inventory.users, 1);
+  assert.equal(database.inventory.sessions, 1);
+  assert.equal(database.inventory.verification_tokens, 1);
+  assert.ok(database.cleanupMarkerPresent);
+  assert.ok(
+    database.cleanupQueries.every((query) => !/^delete from memory_vector_cleanup_outbox\b/i.test(query)),
+  );
+
+  // Only the runtime Vectorize drain may remove this operational row after
+  // its delayed absence checks. The hidden account route can then finalize
+  // the still-authenticated deterministic identity on an exact retry.
+  database.inventory.memory_vector_cleanup_outbox = 0;
+  const finalized = await handleMigrationE2EAuthRequest(
+    mutationRequest("cleanup-disposable", userId, {
+      "x-migration-e2e-cleanup-proof": cleanupProof(userId),
+    }),
+    env,
+  );
+  assert.equal((await jsonRecord(finalized)).ok, true);
+  assert.deepEqual(database.inventory, emptyInventory());
+});
+
 test("disposable cleanup refuses profile-photo pointers so it cannot orphan an R2 object", async () => {
   const database = new DisposableD1Database();
   const env = disposableEnv(database);
@@ -261,7 +306,16 @@ test("inventory names cover every learner-owned native mutation table and pointe
     "memory_synthesis_runs",
     "memory_source_feedback",
     "memory_events",
+    "memory_vector_cleanup_outbox",
   ]);
+  assert.match(
+    E2E_DISPOSABLE_MUTATION_INVENTORY_SQL,
+    /from memory_vector_cleanup_outbox where owner_user_id = \?1/,
+  );
+  assert.doesNotMatch(
+    E2E_DISPOSABLE_MUTATION_INVENTORY_SQL,
+    /from memory_vector_cleanup_outbox(?! where owner_user_id = \?1)/,
+  );
 });
 
 function mutationRequest(
@@ -331,6 +385,7 @@ function emptyInventory(): E2EDisposableMutationInventory {
     memory_synthesis_runs: 0,
     memory_source_feedback: 0,
     memory_events: 0,
+    memory_vector_cleanup_outbox: 0,
   };
 }
 
@@ -401,13 +456,23 @@ class DisposableD1Database implements D1Database {
       !userDelete?.query.includes("name = 'Inspir mutation validation'") ||
       this.disposableUserName === "Inspir mutation validation"
     );
-    for (const name of E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES) {
-      if (
-        this.leavePartialCleanup &&
-        (name === "ai_runs" || name === "verification_tokens")
-      ) continue;
-      if (name === "users" || name === "profile_photo_pointers") continue;
-      this.inventory[name] = 0;
+    if (userDelete) {
+      this.inventory.accounts = 0;
+      this.inventory.sessions = 0;
+      this.inventory.verification_tokens = 0;
+    } else {
+      for (const name of E2E_DISPOSABLE_MUTATION_INVENTORY_NAMES) {
+        if (this.leavePartialCleanup && name === "ai_runs") continue;
+        if (
+          name === "users" ||
+          name === "profile_photo_pointers" ||
+          name === "accounts" ||
+          name === "sessions" ||
+          name === "verification_tokens" ||
+          name === "memory_vector_cleanup_outbox"
+        ) continue;
+        this.inventory[name] = 0;
+      }
     }
     if (userDeleteMatches) {
       this.inventory.users = 0;

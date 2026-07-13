@@ -73,7 +73,11 @@ test("memory daily synthesis enqueuer sends due users to Cloudflare Queues", asy
     { due: 2, queued: 2, failed: 0, skipped: null },
   );
   assert.deepEqual(
-    sent.map((entry) => [entry.message.type, entry.message.userId, entry.contentType]),
+    sent.map((entry) => [
+      entry.message.type,
+      "userId" in entry.message ? entry.message.userId : null,
+      entry.contentType,
+    ]),
     [
       ["memory.daily_synthesis.v1", "user-a", "json"],
       ["memory.daily_synthesis.v1", "user-b", "json"],

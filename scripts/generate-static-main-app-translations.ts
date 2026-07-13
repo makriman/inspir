@@ -20,6 +20,7 @@ import {
 } from "@/lib/i18n/main-app-source";
 import { readStaticMainAppTranslations } from "@/lib/i18n/static-main-app-translations";
 import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
+import { assertSafeStaticMainAppOutputRoot } from "./static-main-app-output-safety";
 
 type Args = {
   sourceDir: string;
@@ -61,6 +62,11 @@ if (args.check) {
 } else {
   const sourceRoot = resolve(process.cwd(), args.sourceDir);
   const outputRoot = resolve(process.cwd(), args.outputDir);
+  assertSafeStaticMainAppOutputRoot({
+    workspaceRoot: process.cwd(),
+    sourceRoot,
+    outputRoot,
+  });
   if (!existsSync(sourceRoot)) {
     throw new Error(`Curated translation source directory does not exist: ${sourceRoot}`);
   }
@@ -161,7 +167,7 @@ function validateTranslations(language: SupportedLanguage, strings: Record<strin
     if (translated !== translated.normalize("NFC")) {
       throw new Error(`Non-NFC ${language} main-app translation for ${key}.`);
     }
-    if (!isValidFieldTranslation(sourceStrings[key], translated, language)) {
+    if (!isValidFieldTranslation(sourceStrings[key], translated, language, key)) {
       throw new Error(`Invalid ${language} main-app translation for ${key}.`);
     }
   }
@@ -180,22 +186,41 @@ function parseArgs(rawArgs: string[]): Args {
   for (let index = 0; index < rawArgs.length; index += 1) {
     const arg = rawArgs[index];
     if (arg === "--source-dir") {
-      sourceDir = rawArgs[index + 1] ?? sourceDir;
+      sourceDir = requiredFlagValue(rawArgs, index, arg);
       index += 1;
     } else if (arg.startsWith("--source-dir=")) {
-      sourceDir = arg.slice("--source-dir=".length);
+      sourceDir = requiredInlineFlagValue(arg, "--source-dir");
     } else if (arg === "--out-dir") {
-      outputDir = rawArgs[index + 1] ?? outputDir;
+      outputDir = requiredFlagValue(rawArgs, index, arg);
       index += 1;
     } else if (arg.startsWith("--out-dir=")) {
-      outputDir = arg.slice("--out-dir=".length);
+      outputDir = requiredInlineFlagValue(arg, "--out-dir");
     } else if (arg === "--check") {
       check = true;
     } else if (arg === "--clean") {
       clean = true;
+    } else {
+      throw new Error(`Unknown static main-app translation argument: ${arg}`);
     }
   }
+  if (check && clean) {
+    throw new Error("--check and --clean cannot be used together.");
+  }
   return { sourceDir, outputDir, check, clean };
+}
+
+function requiredFlagValue(rawArgs: string[], index: number, flag: string) {
+  const value = rawArgs[index + 1];
+  if (!value || value.startsWith("--")) {
+    throw new Error(`${flag} requires a non-empty path.`);
+  }
+  return value;
+}
+
+function requiredInlineFlagValue(arg: string, flag: string) {
+  const value = arg.slice(`${flag}=`.length);
+  if (!value) throw new Error(`${flag} requires a non-empty path.`);
+  return value;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

@@ -2,12 +2,15 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { Miniflare } from "miniflare";
 import {
   applyFlashcardReview,
   applyQuizAnswer,
   buildAuthenticatedSystemPrompt,
   buildNativeMemoryRunMetadata,
+  consumeAiAdmission,
   consumeLegacyFinalizationResponse,
+  currentNativeMemoryVectorRows,
   encodeNativeMemorySourcesHeader,
   flashcardCompletedMessageContent,
   fallbackFlashcards,
@@ -15,6 +18,7 @@ import {
   fallbackQuiz,
   fallbackQuizForLanguage,
   flashcardStartedMessageContent,
+  hasNativePriorChatRecallCue,
   isProtectedAiApiPath,
   LOCALIZED_ACTIVITY_RETRY_STATUS,
   MAX_AUTHENTICATED_CHAT_COMPLETION_TOKENS,
@@ -31,6 +35,7 @@ import {
   PROTECTED_AI_API_DELIVERY,
   sanitizeFlashcardState,
   sanitizeQuizState,
+  shouldQueryNativeMemoryVectors,
   quizCompletedMessageContent,
   quizStartedMessageContent,
   type NativeMemoryPromptSource,
@@ -67,6 +72,63 @@ test("protected API routing is exact and never captures game or public paths", (
   ];
   for (const pathname of excludedPaths) assert.equal(isProtectedAiApiPath(pathname), false, pathname);
   assert.equal(PROTECTED_AI_API_DELIVERY, "lean-api-worker");
+});
+
+test("protected AI admission defaults only when the global limit is absent and denies malformed limits", async () => {
+  const miniflare = new Miniflare({
+    modules: true,
+    script: "export default {}",
+    d1Databases: { DB: `protected-budget-${crypto.randomUUID()}` },
+  });
+  try {
+    const db = await miniflare.getD1Database("DB");
+    await db.batch([
+      db.prepare(`create table rate_limit_windows (
+        "key" text primary key,
+        count integer not null,
+        reset_at integer not null,
+        created_at integer not null,
+        updated_at integer not null
+      )`),
+      db.prepare(`create table llm_usage_daily_shards (
+        day text not null,
+        shard integer not null,
+        call_count integer not null,
+        created_at integer not null,
+        updated_at integer not null,
+        primary key (day, shard)
+      )`),
+    ]);
+
+    const absentLimit = await consumeAiAdmission(
+      { DB: db, LLM_GLOBAL_DAILY_CALL_LIMIT: undefined },
+      "chat:user:absent-limit",
+      20,
+      "Daily message limit reached",
+    );
+    assert.deepEqual(absentLimit, { ok: true });
+
+    const invalidLimits = ["", "invalid", "-1", "1.5", "1e3", "9007199254740992"];
+    for (const [index, limit] of invalidLimits.entries()) {
+      const decision = await consumeAiAdmission(
+        { DB: db, LLM_GLOBAL_DAILY_CALL_LIMIT: limit },
+        `chat:user:invalid-limit-${index}`,
+        20,
+        "Daily message limit reached",
+      );
+      assert.equal(decision.ok, false, limit);
+      if (decision.ok) assert.fail(`Malformed global limit ${limit} was admitted`);
+      assert.equal(decision.status, 429, limit);
+      assert.equal(decision.error, "Daily AI usage limit reached", limit);
+    }
+
+    const globalUsage = await db
+      .prepare("select coalesce(sum(call_count), 0) as callCount from llm_usage_daily_shards")
+      .first<{ callCount: number }>();
+    assert.deepEqual(globalUsage, { callCount: 1 });
+  } finally {
+    await miniflare.dispose();
+  }
 });
 
 test("authenticated chat finalization is strict and keeps provider streaming off Worker CPU", () => {
@@ -150,6 +212,7 @@ test("legacy authenticated chat fails closed when server finalization does not c
 
 test("native memory SQL is bounded, settings-gated, current-chat-safe, and index-shaped", () => {
   assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /coalesce\(s\.enabled, 1\) as enabled/);
+  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /s\.retrieval_mode, 'need_based'/);
   assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /substr\(coalesce\(ms\.summary, ''\),1,4001\)/);
   assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /substr\(coalesce\(ms\.sections, '\[\]'\),1,16001\)/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /substr\(m\.content,1,601\) as content/);
@@ -158,7 +221,9 @@ test("native memory SQL is bounded, settings-gated, current-chat-safe, and index
     NATIVE_SAVED_MEMORY_PROMPT_SQL,
     /s\.user_id is null or \(s\.enabled = 1 and s\.saved_memory_enabled = 1\)/,
   );
-  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /m\.kind = 'explicit'/);
+  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /case when m\.kind = 'explicit' then 0 else 1 end/);
+  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /coalesce\(m\.pinned, 0\) as pinned/);
+  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /coalesce\(m\.salience, 0\) as salience/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /m\.do_not_mention = 0/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /m\.freshness_status <> 'expired'/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /limit 5$/);
@@ -198,6 +263,159 @@ test("bounded native memory context restores explicit, summary, profile, and ran
   assert.ok(context.sources.some((source) => source.memoryId === "memory-1"));
   assert.ok(context.sources.some((source) => source.summarySectionId === "summary-visible"));
   assert.ok(context.sources.some((source) => source.chatTurnId === "turn-same-topic"));
+});
+
+test("trusted memories retain priority while strong semantic matches can fill remaining capacity", () => {
+  const fixture = memoryFixture();
+  fixture.memoryRows = fixture.memoryRows.map((row) =>
+    row.id === "memory-5" || row.id === "memory-6"
+      ? { ...row, kind: "inferred", sourceType: "prior_chat", pinned: 0 }
+      : row,
+  );
+  fixture.semanticMemoryMatches = [{
+    rowId: "memory-6",
+    vectorId: "m:memory-6:0123456789abcdef",
+    marker: "m:memory-6:0123456789abcdef",
+    score: 0.96,
+  }];
+  // The semantic turn sits beyond the eight-row lexical SQL bound. This
+  // proves hydrated Vectorize matches are considered instead of being
+  // appended and then silently sliced away.
+  fixture.semanticTurnMatches = [{
+    rowId: "turn-semantic-ninth",
+    vectorId: "t:turn-semantic-ninth:fedcba9876543210",
+    marker: "t:turn-semantic-ninth:fedcba9876543210",
+    score: 0.93,
+  }];
+
+  const context = normalizeNativeMemoryPromptContext(fixture);
+  assert.equal(context.memories[0]?.id, "memory-1");
+  assert.equal(context.memories.at(-1)?.id, "memory-6");
+  assert.equal(context.memories.at(-1)?.kind, "inferred");
+  assert.equal(context.priorChatTurns[0]?.id, "turn-semantic-ninth");
+  assert.ok(context.sources.some((source) => source.memoryId === "memory-6"));
+  assert.ok(context.sources.some((source) => source.chatTurnId === "turn-semantic-ninth"));
+});
+
+test("semantic hydration rejects pending markers and accepts only the exact revision attested by current D1", () => {
+  const currentVectorId = "m:memory-1:fedcba9876543210";
+  const staleVectorId = "m:memory-1:0123456789abcdef";
+  const selected = currentNativeMemoryVectorRows(
+    [{
+      rowKind: "memory" as const,
+      id: "memory-1",
+      kind: "explicit",
+      category: "general",
+      sourceType: "manual",
+      content: "Current content",
+      pinned: 1,
+      salience: 95,
+      vectorMarker: currentVectorId,
+    }],
+    [
+      { rowId: "memory-1", vectorId: staleVectorId, marker: staleVectorId, score: 0.99 },
+      { rowId: "memory-1", vectorId: currentVectorId, marker: currentVectorId, score: 0.91 },
+    ],
+  );
+  assert.deepEqual(selected.matches, [
+    { rowId: "memory-1", vectorId: currentVectorId, marker: currentVectorId, score: 0.91 },
+  ]);
+  assert.equal(selected.rows.length, 1);
+  assert.deepEqual(
+    currentNativeMemoryVectorRows(
+      [{ id: "memory-1", vectorMarker: null }],
+      [{ rowId: "memory-1", vectorId: staleVectorId, marker: staleVectorId, score: 0.99 }],
+    ),
+    { rows: [], matches: [] },
+  );
+
+  for (const [rowId, pendingMarker] of [
+    ["memory-1", `p:${currentVectorId}`],
+    ["turn-1", "p:t:turn-1:fedcba9876543210"],
+  ] as const) {
+    assert.deepEqual(
+      currentNativeMemoryVectorRows(
+        [{ id: rowId, vectorMarker: pendingMarker }],
+        [{ rowId, vectorId: pendingMarker, marker: pendingMarker, score: 0.99 }],
+      ),
+      { rows: [], matches: [] },
+    );
+  }
+
+  const source = fs.readFileSync(path.resolve("lib/free-runtime/protected-ai-api.ts"), "utf8");
+  const markerSql = source.slice(
+    source.indexOf("const nativeMemoryVectorMarkerSql"),
+    source.indexOf("const globalBudgetSql"),
+  );
+  assert.match(
+    markerSql,
+    /when embedding like '\"p:m:%\"' or embedding like '\"p:t:%\"'\s+then null/,
+  );
+  assert.ok(markerSql.indexOf('"p:m:%"') < markerSql.indexOf("when embedding is not null"));
+});
+
+test("persisted retrieval modes and Unicode need-based overlap gate semantic spend deterministically", () => {
+  const fixture = memoryFixture();
+  const candidates = {
+    memoryRows: fixture.memoryRows,
+    turnRows: fixture.turnRows,
+  };
+  assert.equal(shouldQueryNativeMemoryVectors({
+    ...candidates,
+    retrievalMode: "always",
+    currentMessage: "A completely new question",
+  }), true);
+  assert.equal(shouldQueryNativeMemoryVectors({
+    ...candidates,
+    retrievalMode: "off",
+    currentMessage: fixture.currentMessage,
+  }), false);
+  const recallWithoutCandidateOverlap = [
+    "What did I ask in our previous conversation?",
+    "Do you remember what we discussed?",
+    "¿Recuerdas nuestra conversación anterior?",
+    "هل تتذكر محادثتنا السابقة؟",
+    "क्या आपको हमारी पिछली बातचीत याद है?",
+    "നമ്മുടെ മുമ്പത്തെ സംഭാഷണം ഓർമ്മയുണ്ടോ?",
+  ];
+  for (const currentMessage of recallWithoutCandidateOverlap) {
+    assert.equal(hasNativePriorChatRecallCue(currentMessage), true, currentMessage);
+    assert.equal(shouldQueryNativeMemoryVectors({
+      ...candidates,
+      retrievalMode: "need_based",
+      currentMessage,
+    }), true, currentMessage);
+  }
+  for (const studyPrompt of [
+    "Remember the planets.",
+    "Recuerda los planetas.",
+    "تذكّر الكواكب.",
+    "ग्रहों को याद रखें।",
+    "ഗ്രഹങ്ങളെ ഓർക്കുക.",
+  ]) {
+    assert.equal(hasNativePriorChatRecallCue(studyPrompt), false, studyPrompt);
+  }
+  assert.equal(shouldQueryNativeMemoryVectors({
+    ...candidates,
+    retrievalMode: "need_based",
+    currentMessage: "Remember this about me: I enjoy pottery.",
+  }), false);
+  assert.equal(shouldQueryNativeMemoryVectors({
+    ...candidates,
+    retrievalMode: "need_based",
+    currentMessage: fixture.currentMessage,
+  }), true);
+  assert.equal(shouldQueryNativeMemoryVectors({
+    ...candidates,
+    retrievalMode: "need_based",
+    currentMessage: "Teach me a brand new subject",
+  }), false);
+  assert.equal(shouldQueryNativeMemoryVectors({
+    retrievalMode: "always",
+    currentMessage: fixture.currentMessage,
+    memoryRows: [],
+    turnRows: [],
+  }), false);
 });
 
 test("native memory settings fail closed and independently gate past-chat retrieval", () => {
@@ -443,7 +661,31 @@ test("protected runtime stays framework-neutral and preserves security invariant
   const loaderSource = source.slice(loaderStart, loaderEnd);
   assert.equal(loaderSource.match(/env\.DB\.batch<NativeMemoryBatchRow>/g)?.length, 1);
   assert.equal(loaderSource.match(/env\.DB\.prepare\(NATIVE_/g)?.length, 4);
-  assert.doesNotMatch(loaderSource, /MEMORY_VECTORIZE|embedText|embedding/i);
+  assert.match(loaderSource, /queryNativeMemoryVectorIds\(env/);
+  assert.match(loaderSource, /hydrateNativeMemoryVectorMatches/);
+  assert.match(loaderSource, /where user_id = \?1[\s\S]*id in \(\$\{memoryPlaceholders\}\)/);
+  assert.match(loaderSource, /where user_id = \?1[\s\S]*chat_id <> \?2[\s\S]*id in \(\$\{turnPlaceholders\}\)/);
+  assert.match(loaderSource, /retrievalMode: settings\.retrievalMode/);
+  assert.match(loaderSource, /semanticMemoryMatches: semanticMatches\?\.memoryMatches \?\? \[\]/);
+  assert.match(loaderSource, /semanticTurnMatches: semanticMatches\?\.turnMatches \?\? \[\]/);
+  const retrievalGateSource = source.slice(
+    source.indexOf("export function shouldQueryNativeMemoryVectors"),
+    source.indexOf("function unicodeLexicalTerms"),
+  );
+  assert.match(retrievalGateSource, /\.toLowerCase\(\)/);
+  assert.doesNotMatch(retrievalGateSource, /toLocaleLowerCase/);
+  assert.match(retrievalGateSource, /hasNativePriorChatRecallCue\(message\)/);
+
+  const vectorSource = fs.readFileSync(
+    path.join(process.cwd(), "lib/free-runtime/native-memory-vector.ts"),
+    "utf8",
+  );
+  assert.doesNotMatch(vectorSource, /from ["']next(?:\/|["'])|@opennextjs|from ["']zod["']/);
+  assert.doesNotMatch(vectorSource, /@ts-ignore|@ts-expect-error|:\s*any\b|\bas any\b/);
+  assert.match(vectorSource, /NATIVE_MEMORY_VECTOR_DIMENSIONS = 512/);
+  assert.match(vectorSource, /MAX_NATIVE_MEMORY_VECTOR_INPUTS = 4/);
+  assert.match(vectorSource, /filter: \{ userId \}/);
+  assert.match(vectorSource, /posture: "fail_closed"/);
 
   const adminUsersStart = source.indexOf("async function handleAdminUsers");
   const adminUsersEnd = source.indexOf("async function handleAdminTopics", adminUsersStart);
@@ -482,6 +724,7 @@ function settingsRow(
     enabled: 1,
     savedMemoryEnabled: 1,
     chatHistoryEnabled: 1,
+    retrievalMode: "need_based",
     summaryId: "user-memory-summary-row",
     summary: "Fallback learner summary.",
     sections: JSON.stringify([
@@ -511,6 +754,8 @@ function memoryFixture(): MemoryFixtureInput {
     category: index === 0 ? "preferences" : "general",
     sourceType: index === 0 ? "manual" : "chat",
     content: index === 0 ? "a".repeat(601) : `Durable learner fact ${index + 1}`,
+    pinned: index === 0 ? 1 : 0,
+    salience: 100 - index,
   }));
   const profileRows: NativeMemoryProfileBatchRow[] = Array.from({ length: 5 }, (_, index) => ({
     rowKind: "profile",
@@ -526,7 +771,7 @@ function memoryFixture(): MemoryFixtureInput {
     turnRow("turn-five", "chat-five", "history-topic", "Compare two empires", 300),
     turnRow("turn-six", "chat-six", "music-topic", "How does rhythm work?", 200),
     turnRow("turn-seven", "chat-seven", "art-topic", "How can I shade a sphere?", 100),
-    turnRow("turn-ignored-ninth", "chat-nine", "math-topic", "This ninth candidate is outside the SQL bound", 2_000),
+    turnRow("turn-semantic-ninth", "chat-nine", "math-topic", "A semantically restored older fractions discussion", 2_000),
   ];
   return {
     userId: "user-1",

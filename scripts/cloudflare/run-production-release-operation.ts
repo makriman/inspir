@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { readPrivateJsonNoFollow, writePrivateJsonDurably } from "./d1-release-budget-ledger";
+import { assertGitReleaseIdentity } from "./git-release-identity";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 import {
   acquireProductionValidationExclusion,
@@ -19,13 +20,19 @@ import {
   type ProductionValidationExclusion,
 } from "./production-validation-lock";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
-import { readSoleActiveWorkerVersion } from "./worker-deploy-evidence";
+import {
+  buildWorkerDeployArtifactEvidence,
+  readSoleActiveWorkerVersion,
+  type WorkerDeployArtifactEvidence,
+} from "./worker-deploy-evidence";
+import { assertFreshProductionVectorizeReadiness } from "./vectorize-readiness-evidence";
 
 const workerName = "inspirlearning";
 const heartbeatIntervalMs = 10 * 60 * 1_000;
 const defaultBoundedChildOutputBytes = 128 * 1024 * 1024;
 const boundedChildOuterTimeoutGraceMs = 60_000;
 const rollbackMessage = "Guarded rollback failed inspir release";
+export const STANDALONE_SOURCE_SYNC_BLOCKED_FOR_ROLLOVER = true as const;
 const operationScripts: Record<Exclude<ProductionReleaseOperationName, "rollback">, string> = {
   "apply-d1-runtime-migrations": "scripts/cloudflare/apply-d1-runtime-migrations.ts",
   "sync-site-translation-sources": "scripts/cloudflare/sync-site-translation-sources.ts",
@@ -90,11 +97,20 @@ export async function runProductionReleaseOperation(
     readActiveVersion?: () => string;
   } = {},
 ) {
+  assertProductionReleaseOperationAllowed(operation);
   const cwd = path.resolve(options.cwd ?? process.cwd());
   const backupDir = path.resolve(options.backupDir ?? resolveBackupDir());
   const readActiveVersion = options.readActiveVersion ?? readSoleActiveWorkerVersion;
   const sourceFingerprintBefore = buildRepoSourceFingerprint(cwd);
   const activeVersionBefore = readActiveVersion();
+  if (operation === "sync-topic-seeds") {
+    assertTopicSequenceBeforeProductionLock({
+      args,
+      activeVersionId: activeVersionBefore,
+      backupDir,
+      cwd,
+    });
+  }
   const expectedActiveVersionAfter = operation === "rollback"
     ? parseRollbackArguments(args).targetVersionId
     : activeVersionBefore;
@@ -243,6 +259,53 @@ export async function runProductionReleaseOperation(
     );
   }
   return report;
+}
+
+export function assertProductionReleaseOperationAllowed(
+  operation: ProductionReleaseOperationName,
+) {
+  if (operation === "sync-site-translation-sources" && STANDALONE_SOURCE_SYNC_BLOCKED_FOR_ROLLOVER) {
+    throw new Error(
+      "Standalone production translation-source synchronization is blocked for the 2026-07-13 budget-rollover release; use the candidate-bound atomic translation repair.",
+    );
+  }
+}
+
+export function assertTopicSequenceBeforeProductionLock(
+  input: {
+    args: readonly string[];
+    activeVersionId: string;
+    backupDir: string;
+    cwd: string;
+  },
+  dependencies: {
+    readGitIdentity?: typeof assertGitReleaseIdentity;
+    buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
+    validateVectorizeReadiness?: (
+      input: Parameters<typeof assertFreshProductionVectorizeReadiness>[0],
+    ) => { createdAt: string };
+  } = {},
+) {
+  const candidateVersionId = requireUniqueCandidateVersion(input.args);
+  if (candidateVersionId !== input.activeVersionId) {
+    throw new Error(
+      `Topic reconciliation expected active candidate ${candidateVersionId} before exclusion acquisition; received ${input.activeVersionId}.`,
+    );
+  }
+  const readGitIdentity = dependencies.readGitIdentity ?? assertGitReleaseIdentity;
+  const buildArtifactEvidence =
+    dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence;
+  const validateVectorizeReadiness =
+    dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness;
+  return validateVectorizeReadiness({
+    backupDir: path.resolve(input.backupDir),
+    currentRelease: {
+      candidateVersionId,
+      activeVersionId: input.activeVersionId,
+      git: readGitIdentity({ cwd: path.resolve(input.cwd) }),
+      artifactEvidence: buildArtifactEvidence(path.resolve(input.cwd)),
+    },
+  });
 }
 
 export function productionReleaseOperationCommand(
@@ -686,6 +749,18 @@ function requireVersionId(value: string | undefined) {
     throw new Error("Worker version must be a lowercase UUID.");
   }
   return value;
+}
+
+function requireUniqueCandidateVersion(args: readonly string[]) {
+  const positions = args
+    .map((argument, index) => argument === "--candidate-version" ? index : -1)
+    .filter((index) => index >= 0);
+  if (positions.length !== 1) {
+    throw new Error(
+      "Topic reconciliation requires exactly one --candidate-version before exclusion acquisition.",
+    );
+  }
+  return requireVersionId(args[positions[0]! + 1]);
 }
 
 function requireExclusion(value: ProductionValidationExclusion | null) {

@@ -917,10 +917,12 @@ for (const language of languages) {
     const value = values[language];
     if (!value?.trim()) return [];
     if (!keys.length) throw new Error(`Missing main-app source string: ${source}`);
-    if (!isValidFieldTranslation(source, value, language)) {
-      throw new Error(`Invalid ${language} translation for ${source}: ${value}`);
-    }
-    return keys.map((key) => ({ key, source, value }));
+    return keys.map((key) => {
+      if (!isValidFieldTranslation(source, value, language, key)) {
+        throw new Error(`Invalid ${language} translation for ${key}/${source}: ${value}`);
+      }
+      return { key, source, value };
+    });
   });
 
   const locale = languageConfigs[language].prefix || languageConfigs[language].locale;

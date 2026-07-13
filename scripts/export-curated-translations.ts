@@ -183,14 +183,21 @@ function readExistingValuesForNamespace(
       }
       if (isSameNamespace && entry?.key && typeof entry.value === "string" && entry.value.trim()) {
         const source = sourceStrings[entry.key];
-        if (source && isValidFieldTranslation(source, entry.value, language)) values.set(entry.key, entry.value);
+        if (source && isValidFieldTranslation(source, entry.value, language, entry.key)) {
+          values.set(entry.key, entry.value);
+        }
       }
     }
 
     if (!isSameNamespace) continue;
     for (const [key, value] of Object.entries(parsed.translations ?? {})) {
       const source = sourceStrings[key];
-      if (source && typeof value === "string" && value.trim() && isValidFieldTranslation(source, value, language)) {
+      if (
+        source &&
+        typeof value === "string" &&
+        value.trim() &&
+        isValidFieldTranslation(source, value, language, key)
+      ) {
         values.set(key, value);
       }
     }

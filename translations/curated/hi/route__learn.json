@@ -289,7 +289,7 @@
     {
       "key": "site.09b147c2709a66e103",
       "source": "Does inspir support schools?",
-      "value": "करता है inspir स्कूलों का समर्थन?"
+      "value": "क्या inspir स्कूलों का समर्थन करता है?"
     },
     {
       "key": "site.09b33dcc0178d5e42b",
@@ -484,7 +484,7 @@
     {
       "key": "site.0ff0563a0a6c4919be",
       "source": "Turn study into a challenge",
-      "value": "अध्ययन को a चुनौती दें में बदलें"
+      "value": "पढ़ाई को एक चुनौती में बदलें"
     },
     {
       "key": "site.1034eb0dcf6fc1230d",
@@ -659,7 +659,7 @@
     {
       "key": "site.193cb603180a74c92e",
       "source": "Convert the user goal into a rough shared artifact before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\" Ask at most one practical context question if needed, but still create the starter structure.",
-      "value": "सलाह देने से पहले उपयोगकर्ता लक्ष्य को एक साधारण साझा कलाकृतियों में परिवर्तित करें। शुरू करेंः \"मैंने पहली कच्ची संरचना बनाई। कुछ भी संपादित करें। यदि आवश्यक हो तो अधिकतम एक व्यावहारिक संदर्भ प्रश्न पूछें, लेकिन फिर भी स्टार्टर संरचना बनाएं।"
+      "value": "सलाह देने से पहले उपयोगकर्ता के लक्ष्य को एक शुरुआती साझा मसौदे में बदलें। शुरुआत करें: \"मैंने पहला शुरुआती ढाँचा बना दिया है। आप कुछ भी बदल सकते हैं। मैं आपके बदलावों के अनुसार प्रतिक्रिया दूँगा।\" ज़रूरत हो तो संदर्भ से जुड़ा अधिकतम एक व्यावहारिक सवाल पूछें, लेकिन शुरुआती ढाँचा फिर भी बनाएँ।"
     },
     {
       "key": "site.19a7a8f10b577a32ef",
@@ -764,12 +764,12 @@
     {
       "key": "site.1dd47797c770018e8a",
       "source": "What are you writing?",
-      "value": "are आप लेखन क्या है?"
+      "value": "आप क्या लिख रहे हैं?"
     },
     {
       "key": "site.1ddd54c7aba2982859",
       "source": "What do you need to study?",
-      "value": "do आप need के लिए अध्ययन क्या है?"
+      "value": "आपको क्या पढ़ना है?"
     },
     {
       "key": "site.1dea1b5f0836bda6a0",
@@ -1064,7 +1064,7 @@
     {
       "key": "site.295f0745e8dec6b80c",
       "source": "Turn a syllabus into a study plan",
-      "value": "a syllabus को a अध्ययन योजना में बदलें"
+      "value": "पाठ्यक्रम को अध्ययन योजना में बदलें"
     },
     {
       "key": "site.2971751b66a7852c51",
@@ -1199,7 +1199,7 @@
     {
       "key": "site.2db8868061f2f29045",
       "source": "Guardrails: {value1}",
-      "value": "गार्डरील: {value1}"
+      "value": "सुरक्षा सीमाएँ: {value1}"
     },
     {
       "key": "site.2dc3f387c57a6f6069",
@@ -1234,7 +1234,7 @@
     {
       "key": "site.2ef392362b103e9ea8",
       "source": "Help me understand this paragraph",
-      "value": "मुझे this अनुच्छेद समझने में मदद करें"
+      "value": "इस अनुच्छेद को समझने में मेरी मदद करें"
     },
     {
       "key": "site.2efa1e7572ca417851",
@@ -1454,7 +1454,7 @@
     {
       "key": "site.369689fd6bf52783fc",
       "source": "Passport into a historical world",
-      "value": "पासपोर्ट में a ऐतिहासिक दुनिया"
+      "value": "एक ऐतिहासिक दुनिया में प्रवेश करें"
     },
     {
       "key": "site.36cdf8f564373991da",
@@ -1564,7 +1564,7 @@
     {
       "key": "site.3bd26d858050aafb5b",
       "source": "Make a 7 day math challenge",
-      "value": "a 7 day गणित चुनौती दें बनाएं"
+      "value": "7 दिनों की गणित चुनौती बनाएँ"
     },
     {
       "key": "site.3c46a0b4d80a98cf5c",
@@ -1789,7 +1789,7 @@
     {
       "key": "site.46ed64970bbf5f828e",
       "source": "What learning strategy fits me?",
-      "value": "सीखना रणनीति fits मुझे क्या है?"
+      "value": "सीखने की कौन-सी रणनीति मेरे लिए उपयुक्त है?"
     },
     {
       "key": "site.4716c697251a6f7672",
@@ -1939,7 +1939,7 @@
     {
       "key": "site.4eb7825da66025f6ae",
       "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
-      "value": "हाँ, मैं जानता हूँ। सार्वजनिक विषय चैट जैसे कि कुछ भी सीखें, सुकरात निर्देश, होमवर्क कोच, क्विज़ और फ्लैशकार्ड सीधे अतिथि मोड में खुलते हैं।"
+      "value": "हाँ। कुछ भी सीखें, सॉक्रेटिक शिक्षण, गृहकार्य मार्गदर्शक, प्रश्नोत्तरी और स्मरण-पत्र जैसी सार्वजनिक विषय चैट सीधे अतिथि मोड में खुलती हैं।"
     },
     {
       "key": "site.4f2746faadb683dd56",
@@ -2569,7 +2569,7 @@
     {
       "key": "site.6868e8f33e9bf25463",
       "source": "Help me plan an essay",
-      "value": "योजना an निबंध में मेरी मदद करें"
+      "value": "निबंध की योजना बनाने में मेरी मदद करें"
     },
     {
       "key": "site.686e30fa1304a39944",
@@ -2734,7 +2734,7 @@
     {
       "key": "site.70d29b088409926f17",
       "source": "Plan my week for math",
-      "value": "योजना मेरा week के लिए गणित"
+      "value": "गणित के लिए मेरे सप्ताह की योजना बनाएँ"
     },
     {
       "key": "site.70dd69cdf6df4ac427",
@@ -2994,7 +2994,7 @@
     {
       "key": "site.7a17c6674aba6f483f",
       "source": "What are we reading?",
-      "value": "are हम पठन क्या है?"
+      "value": "हम क्या पढ़ रहे हैं?"
     },
     {
       "key": "site.7a4fd3d4db10921f4a",
@@ -3049,7 +3049,7 @@
     {
       "key": "site.7d575017a3f23cd39a",
       "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
-      "value": "जिन वाक्यों को आप अभी तक अपने शब्दों में नहीं समझा सकते, उन वाक्यों से flashcards मत बनाओ।"
+      "value": "जिन वाक्यों को आप अभी अपने शब्दों में नहीं समझा सकते, उनसे स्मरण-पत्र न बनाएँ।"
     },
     {
       "key": "site.7d8d64050664cc9693",
@@ -3069,7 +3069,7 @@
     {
       "key": "site.7e0d4a8f0b3a3c531c",
       "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
-      "value": "हाँ, मैं जानता हूँ। सार्वजनिक अतिथि शिक्षण मोड मुफ्त पहुंच के लिए डिज़ाइन किए गए हैं, इसलिए शिक्षार्थी स्कूल की तैनाती या भुगतान किए गए खाते की आवश्यकता के बिना शुरू कर सकते हैं।"
+      "value": "हाँ। सार्वजनिक अतिथि शिक्षण विधाएँ मुफ़्त पहुँच के लिए बनी हैं, इसलिए सीखने वाले स्कूल क्रियान्वयन या सशुल्क खाते के बिना शुरू कर सकते हैं।"
     },
     {
       "key": "site.7e2e70fef6cf5a71bd",
@@ -3169,7 +3169,7 @@
     {
       "key": "site.81e4d09d2a59c87143",
       "source": "What do you do next in this world?",
-      "value": "do आप do अगला में this दुनिया क्या है?"
+      "value": "इस दुनिया में आप आगे क्या करेंगे?"
     },
     {
       "key": "site.823514cc3e398c5616",
@@ -3279,7 +3279,7 @@
     {
       "key": "site.881de22882ac1fbed1",
       "source": "Can I use inspir without signing in?",
-      "value": "मैं उपयोग कर सकते हैं inspir बिना साइन इन किए?"
+      "value": "क्या मैं साइन इन किए बिना inspir का उपयोग कर सकता हूँ?"
     },
     {
       "key": "site.884bdf7600ff57f01f",
@@ -3374,7 +3374,7 @@
     {
       "key": "site.8a7aa2b153eb463026",
       "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
-      "value": "हाँ, मैं जानता हूँ। स्कूल पहले सार्वजनिक उत्पाद का उपयोग कर सकते हैं, फिर स्कूल-विशिष्ट वर्कफ़्लो, गोपनीयता और वित्त पोषित पहुंच विकल्पों के साथ कस्टम एआई सीखने के स्थानों पर चर्चा कर सकते हैं।"
+      "value": "हाँ। स्कूल पहले सार्वजनिक उत्पाद उपयोग कर सकते हैं, फिर स्कूल-विशिष्ट कार्यप्रवाहों, गोपनीयता और वित्तपोषित पहुँच विकल्पों वाले अनुकूलित AI शिक्षण स्थानों पर चर्चा कर सकते हैं।"
     },
     {
       "key": "site.8ad1dbe78b350d2166",
@@ -3424,7 +3424,7 @@
     {
       "key": "site.8cbf9d86ad725e44c4",
       "source": "Do we have free will?",
-      "value": "Do हम have मुफ्त होगा?"
+      "value": "क्या हमारे पास स्वतंत्र इच्छा है?"
     },
     {
       "key": "site.8cdc078e1b87cd1314",
@@ -3819,7 +3819,7 @@
     {
       "key": "site.9977d64c4c448bb15a",
       "source": "Ethics Dilemmas",
-      "value": "नैतिकता की समस्याएं"
+      "value": "नैतिक दुविधाएँ"
     },
     {
       "key": "site.99b20ef1b4d828a984",
@@ -4019,7 +4019,7 @@
     {
       "key": "site.a06fbb33165c168d14",
       "source": "How is inspir different from a generic AI chatbot?",
-      "value": "कैसा है inspir एक सामान्य एआई चैटबॉट से अलग?"
+      "value": "inspir किसी सामान्य AI चैटबॉट से कैसे अलग है?"
     },
     {
       "key": "site.a071bf6407d100dd55",
@@ -4209,7 +4209,7 @@
     {
       "key": "site.a71f0be5382364e0d7",
       "source": "Can inspir help with homework without encouraging cheating?",
-      "value": "कर सकते हैं inspir बिना किसी को धोखा देने के लिए प्रोत्साहित किए होमवर्क में मदद करना?"
+      "value": "क्या inspir नकल को बढ़ावा दिए बिना गृहकार्य में मदद कर सकता है?"
     },
     {
       "key": "site.a73b33aff646400025",
@@ -4254,7 +4254,7 @@
     {
       "key": "site.a915d691c6ae16cfbc",
       "source": "Why is my algebra answer wrong?",
-      "value": "is मेरा बीजगणित उत्तर गलत क्यों?"
+      "value": "मेरा बीजगणित का उत्तर गलत क्यों है?"
     },
     {
       "key": "site.a924d6055c51e5fa88",
@@ -4539,7 +4539,7 @@
     {
       "key": "site.b5e2de3d24523bd9d5",
       "source": "AI Socratic tutor",
-      "value": "ए.एल. सुकरात शिक्षक"
+      "value": "AI सोक्रेटिक ट्यूटर"
     },
     {
       "key": "site.b5eb36c5449ff4f87b",
@@ -5069,7 +5069,7 @@
     {
       "key": "site.cc39cd12f9730cfe7e",
       "source": "Map a history essay",
-      "value": "मैप a इतिहास निबंध"
+      "value": "इतिहास निबंध की रूपरेखा बनाएँ"
     },
     {
       "key": "site.cc49ee10ba4346698c",
@@ -5609,7 +5609,7 @@
     {
       "key": "site.dec92fd0ee6f4742e9",
       "source": "Quiz me on vocabulary again",
-      "value": "क्विज़ मुझे पर शब्दावली again"
+      "value": "शब्दावली पर फिर से मेरी प्रश्नोत्तरी लें"
     },
     {
       "key": "site.ded45628bcad4e1a1a",
@@ -5624,7 +5624,7 @@
     {
       "key": "site.dfb957acc42e99196a",
       "source": "Build a map of democracy",
-      "value": "a मैप का लोकतंत्र बनाएं"
+      "value": "लोकतंत्र का मानचित्र बनाएँ"
     },
     {
       "key": "site.dffb24a52581df29bd",
@@ -5754,7 +5754,7 @@
     {
       "key": "site.e437151092cddf2c83",
       "source": "Make a 7-day review plan",
-      "value": "a 7-day समीक्षा योजना बनाएं"
+      "value": "7 दिनों की समीक्षा योजना बनाएँ"
     },
     {
       "key": "site.e45b977cc4d0643316",
@@ -5869,7 +5869,7 @@
     {
       "key": "site.e92b2222fa496b32ce",
       "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
-      "value": "फिल्म प्रेरणा से व्यावहारिक वादा में बदल जाती हैः एक रोगी एआई सीखने वाला साथी।"
+      "value": "फ़िल्म प्रेरणा से एक व्यावहारिक वादे की ओर बढ़ती है: धैर्यवान AI सीखने का साथी।"
     },
     {
       "key": "site.e966950cb177a995ae",
@@ -6139,7 +6139,7 @@
     {
       "key": "site.f64151e5fbb7a90449",
       "source": "What progress should we review?",
-      "value": "progress चाहिए हम समीक्षा क्या है?"
+      "value": "हमें किस प्रगति की समीक्षा करनी चाहिए?"
     },
     {
       "key": "site.f64afd68f46c590398",
@@ -6249,7 +6249,7 @@
     {
       "key": "site.fade81bae60e35ebef",
       "source": "What task should we time?",
-      "value": "कार्य चाहिए हम time क्या है?"
+      "value": "हमें किस कार्य का समय मापना चाहिए?"
     },
     {
       "key": "site.fb20c41b44bd1ba56d",
@@ -6359,7 +6359,7 @@
     {
       "key": "site.ff412deb70e1a3844a",
       "source": "What will you explain back to me?",
-      "value": "होगा आप समझाएं back के लिए मुझे क्या है?"
+      "value": "आप मुझे क्या समझाकर बताएँगे?"
     },
     {
       "key": "site.ff7bb65608584ee316",

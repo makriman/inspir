@@ -67,7 +67,7 @@ for (const language of args.languages) {
         missing.push(key);
         continue;
       }
-      if (!isValidFieldTranslation(sourceText, value, language)) {
+      if (!isValidFieldTranslation(sourceText, value, language, key)) {
         invalid.push({ key, source: sourceText, value });
         continue;
       }

@@ -12,6 +12,14 @@ import {
   acceptsOpenAiSse,
   readBoundedOpenAiChatCompletionText,
 } from "./openai-chat-contract";
+import {
+  NATIVE_MEMORY_VECTOR_MARKER,
+  queryNativeMemoryVectorIds,
+  type NativeMemoryVectorEnv,
+  type NativeMemoryVectorMatch,
+  type NativeMemoryVectorMatches,
+} from "./native-memory-vector";
+import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
 
 export const PROTECTED_AI_API_DELIVERY = "lean-api-worker";
 export const MAX_PROTECTED_API_BODY_BYTES = 20 * 1024;
@@ -222,6 +230,7 @@ export const NATIVE_MEMORY_SETTINGS_SUMMARY_SQL = `select
   coalesce(s.enabled, 1) as enabled,
   coalesce(s.saved_memory_enabled, 1) as savedMemoryEnabled,
   coalesce(s.chat_history_enabled, 1) as chatHistoryEnabled,
+  substr(coalesce(s.retrieval_mode, 'need_based'),1,41) as retrievalMode,
   substr(ms.user_id,1,121) as summaryId,
   substr(coalesce(ms.summary, ''),1,4001) as summary,
   substr(coalesce(ms.sections, '[]'),1,16001) as sections
@@ -237,16 +246,18 @@ export const NATIVE_SAVED_MEMORY_PROMPT_SQL = `select
   substr(m.kind,1,41) as kind,
   substr(m.category,1,61) as category,
   substr(m.source_type,1,61) as sourceType,
-  substr(m.content,1,601) as content
+  substr(m.content,1,601) as content,
+  coalesce(m.pinned, 0) as pinned,
+  coalesce(m.salience, 0) as salience
 from user_memories m
 left join user_memory_settings s on s.user_id = m.user_id
 where m.user_id = ?1
   and (s.user_id is null or (s.enabled = 1 and s.saved_memory_enabled = 1))
   and m.status = 'active'
-  and m.kind = 'explicit'
   and m.do_not_mention = 0
   and m.freshness_status <> 'expired'
-order by m.pinned desc, m.salience desc, m.updated_at desc
+order by case when m.kind = 'explicit' then 0 else 1 end,
+         m.pinned desc, m.salience desc, m.updated_at desc
 limit 5`;
 
 export const NATIVE_MEMORY_PROFILES_SQL = `select
@@ -291,6 +302,14 @@ const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const truthyValues = new Set(["1", "true", "yes", "on"]);
 const bootstrapAdminEmails = new Set(["makridroid@gmail.com"]);
+const nativeMemoryVectorMarkerSql = `case
+  when embedding like '"p:m:%"' or embedding like '"p:t:%"'
+    then null
+  when embedding like '"m:%"' or embedding like '"t:%"'
+    then substr(embedding, 2, length(embedding) - 2)
+  when embedding is not null then '${NATIVE_MEMORY_VECTOR_MARKER}'
+  else null
+end`;
 
 const globalBudgetSql = `insert into llm_usage_daily_shards (day, shard, call_count, created_at, updated_at)
 select ?1, 0, 1, ?2, ?2
@@ -349,6 +368,7 @@ export type NativeMemorySettingsBatchRow = {
   enabled: unknown;
   savedMemoryEnabled: unknown;
   chatHistoryEnabled: unknown;
+  retrievalMode: unknown;
   summaryId: unknown;
   summary: unknown;
   sections: unknown;
@@ -361,6 +381,9 @@ export type NativeSavedMemoryBatchRow = {
   category: unknown;
   sourceType: unknown;
   content: unknown;
+  pinned: unknown;
+  salience: unknown;
+  vectorMarker?: unknown;
 };
 
 export type NativeMemoryProfileBatchRow = {
@@ -378,6 +401,7 @@ export type NativeRecentChatTurnBatchRow = {
   answerExcerpt: unknown;
   topics: unknown;
   updatedAt: unknown;
+  vectorMarker?: unknown;
 };
 
 type NativeMemoryBatchRow =
@@ -581,7 +605,7 @@ type JsonReadResult =
   | { ok: true; value: unknown }
   | { ok: false; status: 400 | 413 | 415; error: string };
 
-type AdmissionResult =
+export type AdmissionResult =
   | { ok: true }
   | { ok: false; status: 429 | 503; error: string; retryAfterSeconds: number };
 
@@ -1885,8 +1909,8 @@ async function generateStructuredObject(
   }
 }
 
-async function consumeAiAdmission(
-  env: CloudflareEnv,
+export async function consumeAiAdmission(
+  env: Pick<CloudflareEnv, "DB"> & { LLM_GLOBAL_DAILY_CALL_LIMIT?: string },
   quotaKey: string,
   quotaLimit: number,
   quotaError: string,
@@ -1923,7 +1947,7 @@ async function consumeAiAdmission(
     };
   }
 
-  const globalLimit = nonNegativeIntegerFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT, 1_000);
+  const globalLimit = globalDailyCallLimitFromEnv(env.LLM_GLOBAL_DAILY_CALL_LIMIT);
   if (globalLimit <= 0) {
     logCritical("llm_budget_denied", { reason: "configured_zero" });
     return {
@@ -1990,7 +2014,7 @@ async function getContextMessages(env: CloudflareEnv, chatId: string) {
 }
 
 export async function loadNativeMemoryPromptContext(
-  env: Pick<CloudflareEnv, "DB">,
+  env: Omit<NativeMemoryVectorEnv, "DB"> & Pick<CloudflareEnv, "DB">,
   input: {
     userId: string;
     chatId: string;
@@ -2022,17 +2046,173 @@ export async function loadNativeMemoryPromptContext(
     const turnRows = (results[3]?.results ?? []).flatMap((row) =>
       row.rowKind === "turn" ? [row] : [],
     );
+    const settings = settingsRows[0];
+    let semanticMemoryRows: NativeSavedMemoryBatchRow[] = [];
+    let semanticTurnRows: NativeRecentChatTurnBatchRow[] = [];
+    let semanticMatches: NativeMemoryVectorMatches | null = null;
+    if (
+      settings &&
+      nativeMemoryBoolean(settings.enabled) &&
+      nativeMemoryBoolean(settings.savedMemoryEnabled) &&
+      shouldQueryNativeMemoryVectors({
+        retrievalMode: settings.retrievalMode,
+        currentMessage: input.currentMessage,
+        memoryRows,
+        turnRows,
+      })
+    ) {
+      semanticMatches = await queryNativeMemoryVectorIds(env, {
+        userId: input.userId,
+        message: input.currentMessage,
+        includeMemories: memoryRows.length > 0,
+        includeTurns: turnRows.length > 0,
+      });
+      if (semanticMatches?.memoryMatches.length || semanticMatches?.turnMatches.length) {
+        try {
+          const hydrated = await hydrateNativeMemoryVectorMatches(
+            env.DB,
+            input.userId,
+            input.chatId,
+            semanticMatches,
+          );
+          semanticMemoryRows = hydrated.memoryRows;
+          semanticTurnRows = hydrated.turnRows;
+          semanticMatches = hydrated.matches;
+          console.log(
+            JSON.stringify({
+              event: "native_memory_vector_retrieval_completed",
+              memoryMatches: semanticMemoryRows.length,
+              turnMatches: semanticTurnRows.length,
+            }),
+          );
+        } catch (error) {
+          console.warn(
+            JSON.stringify({
+              event: "native_memory_vector_hydration_failed",
+              error: errorName(error),
+            }),
+          );
+        }
+      }
+    }
     return normalizeNativeMemoryPromptContext({
       ...input,
       settingsRows,
-      memoryRows,
+      memoryRows: [...memoryRows, ...semanticMemoryRows],
       profileRows,
-      turnRows,
+      turnRows: [...turnRows, ...semanticTurnRows],
+      semanticMemoryMatches: semanticMatches?.memoryMatches ?? [],
+      semanticTurnMatches: semanticMatches?.turnMatches ?? [],
     });
   } catch (error) {
     console.warn(JSON.stringify({ event: "native_memory_retrieval_failed", error: errorName(error) }));
     return emptyNativeMemoryPromptContext(false, false, false);
   }
+}
+
+async function hydrateNativeMemoryVectorMatches(
+  db: D1Database,
+  userId: string,
+  currentChatId: string,
+  matches: NativeMemoryVectorMatches,
+) {
+  const memoryIds = matches.memoryMatches.slice(0, 20).map((match) => match.rowId);
+  const turnIds = matches.turnMatches.slice(0, 20).map((match) => match.rowId);
+  const memoryPlaceholders = positionalPlaceholders(memoryIds.length || 1, 2);
+  const turnPlaceholders = positionalPlaceholders(turnIds.length || 1, 3);
+  const results = await db.batch<NativeMemoryBatchRow>([
+    db.prepare(
+      `select
+         'memory' as rowKind,
+         substr(id,1,121) as id,
+         substr(kind,1,41) as kind,
+         substr(category,1,61) as category,
+         substr(source_type,1,61) as sourceType,
+         substr(content,1,601) as content,
+         coalesce(pinned, 0) as pinned,
+         coalesce(salience, 0) as salience,
+         ${nativeMemoryVectorMarkerSql} as vectorMarker
+       from user_memories
+       where user_id = ?1
+         and status = 'active'
+         and do_not_mention = 0
+         and freshness_status <> 'expired'
+         and id in (${memoryPlaceholders})
+       limit 20`,
+    ).bind(userId, ...(memoryIds.length ? memoryIds : ["__no_memory_match__"])),
+    db.prepare(
+      `select
+         'turn' as rowKind,
+         substr(id,1,121) as id,
+         substr(chat_id,1,121) as chatId,
+         substr(coalesce(topic_id, ''),1,121) as topicId,
+         substr(question,1,601) as question,
+         substr(answer_excerpt,1,801) as answerExcerpt,
+         substr(topics,1,1001) as topics,
+         updated_at as updatedAt,
+         ${nativeMemoryVectorMarkerSql} as vectorMarker
+       from chat_memory_turns
+       where user_id = ?1
+         and chat_id <> ?2
+         and id in (${turnPlaceholders})
+       limit 20`,
+    ).bind(userId, currentChatId, ...(turnIds.length ? turnIds : ["__no_turn_match__"])),
+  ]);
+  if (results.length !== 2 || results.some((result) => !result.success)) {
+    throw new Error("Native vector hydration batch was incomplete");
+  }
+  const memories = currentNativeMemoryVectorRows(
+    (results[0]?.results ?? []).flatMap((row) => row.rowKind === "memory" ? [row] : []),
+    matches.memoryMatches,
+  );
+  const turns = currentNativeMemoryVectorRows(
+    (results[1]?.results ?? []).flatMap((row) => row.rowKind === "turn" ? [row] : []),
+    matches.turnMatches,
+  );
+  return {
+    memoryRows: memories.rows,
+    turnRows: turns.rows,
+    matches: {
+      memoryMatches: memories.matches,
+      turnMatches: turns.matches,
+    },
+  };
+}
+
+function positionalPlaceholders(count: number, firstPosition: number) {
+  return Array.from({ length: count }, (_, index) => `?${firstPosition + index}`).join(", ");
+}
+
+export function currentNativeMemoryVectorRows<
+  T extends { id: unknown; vectorMarker?: unknown },
+>(
+  rows: readonly T[],
+  matches: readonly NativeMemoryVectorMatch[],
+) {
+  const rowsById = new Map<string, T>();
+  for (const row of rows) {
+    const id = boundedString(row.id, 1, 120);
+    if (id && !rowsById.has(id)) rowsById.set(id, row);
+  }
+  const currentRows: T[] = [];
+  const currentMatches: NativeMemoryVectorMatch[] = [];
+  const seen = new Set<string>();
+  for (const match of matches) {
+    if (seen.has(match.rowId)) continue;
+    const row = rowsById.get(match.rowId);
+    const marker = boundedString(row?.vectorMarker, 1, 64);
+    if (
+      !row ||
+      !marker ||
+      marker.startsWith("p:m:") ||
+      marker.startsWith("p:t:") ||
+      marker !== match.marker
+    ) continue;
+    seen.add(match.rowId);
+    currentRows.push(row);
+    currentMatches.push(match);
+  }
+  return { rows: currentRows, matches: currentMatches };
 }
 
 export function normalizeNativeMemoryPromptContext(input: {
@@ -2046,6 +2226,8 @@ export function normalizeNativeMemoryPromptContext(input: {
   memoryRows: readonly NativeSavedMemoryBatchRow[];
   profileRows: readonly NativeMemoryProfileBatchRow[];
   turnRows: readonly NativeRecentChatTurnBatchRow[];
+  semanticMemoryMatches?: readonly NativeMemoryVectorMatch[];
+  semanticTurnMatches?: readonly NativeMemoryVectorMatch[];
 }): NativeMemoryPromptContext {
   const settings = input.settingsRows[0];
   if (!settings) return emptyNativeMemoryPromptContext(false, false, false);
@@ -2056,7 +2238,10 @@ export function normalizeNativeMemoryPromptContext(input: {
     return emptyNativeMemoryPromptContext(enabled, savedMemoryEnabled, chatHistoryEnabled);
   }
 
-  const memories = normalizeNativeSavedMemories(input.memoryRows);
+  const memories = normalizeNativeSavedMemories(
+    input.memoryRows,
+    input.semanticMemoryMatches ?? [],
+  );
   const summaries = normalizeNativeMemorySummaries(settings);
   const profiles = normalizeNativeMemoryProfiles(input.profileRows);
   const priorChatTurns = chatHistoryEnabled
@@ -2066,6 +2251,7 @@ export function normalizeNativeMemoryPromptContext(input: {
         topicId: input.topicId,
         topicName: input.topicName,
         topicSlug: input.topicSlug,
+        semanticTurnMatches: input.semanticTurnMatches ?? [],
       })
     : [];
   const sources = buildNativeMemorySources({ memories, summaries, priorChatTurns });
@@ -2090,20 +2276,59 @@ export function normalizeNativeMemoryPromptContext(input: {
   };
 }
 
-function normalizeNativeSavedMemories(rows: readonly NativeSavedMemoryBatchRow[]) {
-  const memories: NativePromptMemory[] = [];
+function normalizeNativeSavedMemories(
+  rows: readonly NativeSavedMemoryBatchRow[],
+  semanticMemoryMatches: readonly NativeMemoryVectorMatch[],
+) {
+  const candidates: Array<{
+    memory: NativePromptMemory;
+    semanticScore: number;
+    trusted: boolean;
+    explicit: boolean;
+    manual: boolean;
+    pinned: boolean;
+    salience: number;
+    inputIndex: number;
+  }> = [];
+  const semanticScores = new Map(
+    semanticMemoryMatches.slice(0, 20).map((match) => [match.rowId, match.score]),
+  );
   const seen = new Set<string>();
-  for (const row of rows.slice(0, 5)) {
+  for (const [inputIndex, row] of rows.slice(0, 25).entries()) {
     const id = boundedString(row.id, 1, 120);
     const kind = boundedString(row.kind, 1, 40);
     const category = boundedString(row.category, 1, 60);
     const sourceType = boundedString(row.sourceType, 1, 60);
     const content = normalizeSqlBoundedText(row.content, 600);
-    if (!id || kind !== "explicit" || !category || !sourceType || !content || seen.has(id)) continue;
+    if (!id || !kind || !category || !sourceType || !content || seen.has(id)) continue;
     seen.add(id);
-    memories.push({ id, kind, category, sourceType, content });
+    const explicit = kind === "explicit";
+    const manual = sourceType === "manual";
+    const pinned = nativeMemoryBoolean(row.pinned);
+    candidates.push({
+      memory: { id, kind, category, sourceType, content },
+      semanticScore: semanticScores.get(id) ?? 0,
+      trusted: explicit || manual || pinned,
+      explicit,
+      manual,
+      pinned,
+      salience: nonNegativeSafeInteger(row.salience),
+      inputIndex,
+    });
   }
-  return memories;
+  return candidates
+    .toSorted(
+      (left, right) =>
+        Number(right.trusted) - Number(left.trusted) ||
+        Number(right.manual) - Number(left.manual) ||
+        Number(right.explicit) - Number(left.explicit) ||
+        Number(right.pinned) - Number(left.pinned) ||
+        right.semanticScore - left.semanticScore ||
+        right.salience - left.salience ||
+        left.inputIndex - right.inputIndex,
+    )
+    .slice(0, 5)
+    .map((candidate) => candidate.memory);
 }
 
 function normalizeNativeMemorySummaries(settings: NativeMemorySettingsBatchRow) {
@@ -2161,6 +2386,7 @@ function rankNativeRecentChatTurns(
     topicId: string;
     topicName: string;
     topicSlug: string;
+    semanticTurnMatches: readonly NativeMemoryVectorMatch[];
   },
 ) {
   const queryTerms = unicodeLexicalTerms(input.currentMessage);
@@ -2172,14 +2398,23 @@ function rankNativeRecentChatTurns(
   );
   const candidates: Array<{
     turn: NativePromptPastChatTurn;
+    semanticScore: number;
     sameTopic: boolean;
     overlap: number;
     updatedAt: number;
     index: number;
   }> = [];
+  const semanticScores = new Map(
+    input.semanticTurnMatches.slice(0, 20).map((match) => [match.rowId, match.score]),
+  );
   const seen = new Set<string>();
-  for (const [index, row] of rows.slice(0, 8).entries()) {
+  // The first eight rows are the bounded lexical/recency candidates from D1.
+  // Up to twenty additional rows may have been hydrated from Vectorize. Only
+  // accept rows beyond the SQL bound when their ID was actually returned by
+  // the semantic query, so callers cannot expand prompt input accidentally.
+  for (const [index, row] of rows.slice(0, 28).entries()) {
     const id = boundedString(row.id, 1, 120);
+    if (id && index >= 8 && !semanticScores.has(id)) continue;
     const chatId = boundedString(row.chatId, 1, 120);
     const rawTopicId = boundedString(row.topicId, 0, 120);
     const question = normalizeSqlBoundedText(row.question, 600);
@@ -2204,6 +2439,7 @@ function rankNativeRecentChatTurns(
         answerExcerpt,
         topics,
       },
+      semanticScore: semanticScores.get(id) ?? 0,
       sameTopic,
       overlap,
       updatedAt: nonNegativeSafeInteger(row.updatedAt),
@@ -2213,6 +2449,7 @@ function rankNativeRecentChatTurns(
   return candidates
     .toSorted(
       (left, right) =>
+        right.semanticScore - left.semanticScore ||
         Number(right.sameTopic) - Number(left.sameTopic) ||
         right.overlap - left.overlap ||
         right.updatedAt - left.updatedAt ||
@@ -2239,6 +2476,136 @@ function normalizeNativeMemoryTopics(value: unknown) {
   return topics;
 }
 
+/**
+ * Keeps the default retrieval mode free of embedding work unless the current
+ * turn has a strong Unicode-aware overlap with the already bounded D1
+ * candidates. Persisted always/off modes remain authoritative.
+ */
+export function shouldQueryNativeMemoryVectors(input: {
+  retrievalMode: unknown;
+  currentMessage: string;
+  memoryRows: readonly NativeSavedMemoryBatchRow[];
+  turnRows: readonly NativeRecentChatTurnBatchRow[];
+}) {
+  const hasCandidates = input.memoryRows.length > 0 || input.turnRows.length > 0;
+  if (!hasCandidates) return false;
+
+  const persistedMode = boundedString(input.retrievalMode, 1, 40)
+    ?.toLowerCase()
+    .replaceAll("-", "_");
+  if (persistedMode === "always") return true;
+  if (
+    persistedMode === "off" ||
+    persistedMode === "never" ||
+    persistedMode === "disabled"
+  ) {
+    return false;
+  }
+
+  const message = boundedString(input.currentMessage, 2, 4_000);
+  if (!message) return false;
+  if (hasNativePriorChatRecallCue(message)) return true;
+  const queryTerms = unicodeLexicalTerms(message).filter(
+    (term) => Array.from(term).length >= 4,
+  );
+  if (!queryTerms.length) return false;
+
+  const candidateTexts = [
+    ...input.memoryRows.slice(0, 5).flatMap((row) => {
+      const content = normalizeSqlBoundedText(row.content, 600);
+      return content ? [content] : [];
+    }),
+    ...input.turnRows.slice(0, 8).flatMap((row) => {
+      const question = normalizeSqlBoundedText(row.question, 600);
+      const answer = normalizeSqlBoundedText(row.answerExcerpt, 800);
+      const topics = boundedString(row.topics, 2, 1_000);
+      const text = normalizeLexicalText(`${question ?? ""} ${answer ?? ""} ${topics ?? ""}`);
+      return text ? [text] : [];
+    }),
+  ].map(normalizeLexicalText);
+
+  let overlapCount = 0;
+  for (const term of queryTerms) {
+    if (!candidateTexts.some((candidate) => candidate.includes(term))) continue;
+    overlapCount += 1;
+    if (Array.from(term).length >= 7 || overlapCount >= 2) return true;
+  }
+  return false;
+}
+
+const reviewedMultilingualPriorChatRecallCues = [
+  // English direct cues retained from the pre-native memory heuristic.
+  "past chat",
+  "previous chat",
+  "chat history",
+  "conversation history",
+  "what did i ask",
+  "what have i asked",
+  "we discussed",
+  "we talked",
+  "do you remember",
+  // Spanish
+  "recuerdas",
+  "chat anterior",
+  "conversación anterior",
+  "historial de chat",
+  "historial de conversación",
+  "qué te pregunté antes",
+  "qué hablamos antes",
+  "qué discutimos antes",
+  "la última vez que hablamos",
+  "recuerdas nuestra conversación",
+  // Arabic
+  "هل تتذكر",
+  "المحادثة السابقة",
+  "الدردشة السابقة",
+  "سجل المحادثة",
+  "ماذا سألتك من قبل",
+  "ماذا ناقشنا من قبل",
+  "تحدثنا سابقا",
+  "تحدثنا سابقًا",
+  "هل تتذكر محادثتنا",
+  "المرة الماضية",
+  // Hindi
+  "क्या आपको याद है",
+  "क्या तुम्हें याद है",
+  "पिछली बातचीत",
+  "पिछली चैट",
+  "चैट इतिहास",
+  "बातचीत का इतिहास",
+  "मैंने पहले क्या पूछा",
+  "हमने पहले क्या चर्चा की",
+  "हमने पिछली बार",
+  "क्या आपको हमारी बातचीत याद है",
+  // Malayalam
+  "ഓർമ്മയുണ്ടോ",
+  "മുമ്പത്തെ സംഭാഷണം",
+  "മുമ്പത്തെ ചാറ്റ്",
+  "ചാറ്റ് ചരിത്രം",
+  "സംഭാഷണ ചരിത്രം",
+  "ഞാൻ മുമ്പ് എന്താണ് ചോദിച്ചത്",
+  "നമ്മൾ മുമ്പ് എന്താണ് ചർച്ച ചെയ്തത്",
+  "കഴിഞ്ഞ തവണ നമ്മൾ",
+  "നമ്മുടെ സംഭാഷണം ഓർമ്മയുണ്ടോ",
+] as const;
+
+export function hasNativePriorChatRecallCue(value: string) {
+  const bounded = boundedString(value, 2, 4_000);
+  if (!bounded) return false;
+  const normalized = normalizeLexicalText(bounded);
+  return (
+    /\b(previous|past|earlier|last)\s+(chat|conversation|question|topic|lesson|session)s?\b/i.test(normalized) ||
+    /\b(chat|conversation)\s+history\b/i.test(normalized) ||
+    /\bwhat\s+(?:did|have)\s+i\s+(?:ask|say|tell|mention|learn|study|discuss|talk)(?:ed)?\b.*\b(before|previously|earlier|last time|past)\b/i.test(
+      normalized,
+    ) ||
+    /\b(?:we|i)\s+(?:talked|discussed|covered|studied|learned)\b.*\b(before|previously|earlier|last time|past)\b/i.test(
+      normalized,
+    ) ||
+    reviewedMultilingualPriorChatRecallCues.some((cue) => normalized.includes(cue))
+  );
+}
+
 function unicodeLexicalTerms(value: string) {
   const terms = normalizeLexicalText(value).match(/[\p{L}\p{N}]+/gu) ?? [];
   const unique = new Set<string>();
@@ -2251,7 +2618,7 @@ function unicodeLexicalTerms(value: string) {
 }
 
 function normalizeLexicalText(value: string) {
-  return value.normalize("NFKC").toLocaleLowerCase().replace(/\s+/g, " ").trim();
+  return value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
 }
 
 function buildNativeMemorySources(input: {

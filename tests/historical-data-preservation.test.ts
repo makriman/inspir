@@ -4,8 +4,10 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { Miniflare } from "miniflare";
 import {
   HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
   HISTORICAL_DATA_COUNT_RESULT_SET_COUNT,
   HISTORICAL_DATA_BASELINE_MAX_AGE_MS,
   HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
@@ -13,22 +15,34 @@ import {
   HISTORICAL_DATA_IDENTITIES_SQL,
   HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT,
   HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT,
+  HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
   HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATA_SUMMARY_SQL,
   HISTORICAL_DATASET_NAMES,
+  HISTORICAL_OPERATIONAL_DATASET_NAMES,
+  HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
   createHistoricalDataBaseline,
   historicalDataBudgetOperationId,
+  parseHistoricalDataBaselineReport,
+  parseHistoricalDataLegacyBaselineReportForContinuity,
   readAndValidateHistoricalDataBaseline,
   verifyHistoricalDataPreservation,
   writeHistoricalDataReport,
+  type HistoricalDataBaselineReport,
   type HistoricalDatasetName,
+  type HistoricalDataLegacyBaselineReport,
+  type HistoricalOperationalDatasetName,
+  type HistoricalSupplementalDatasetName,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
 import {
   readD1ReleaseBudgetLedger,
   reserveD1ReleaseBudget,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
 import type { D1DailyUsage } from "../scripts/cloudflare/d1-free-budget";
-import type { WranglerRunner } from "../scripts/cloudflare/migration-config";
+import {
+  stableStringify,
+  type WranglerRunner,
+} from "../scripts/cloudflare/migration-config";
 import type { SourceFingerprint } from "../scripts/cloudflare/source-fingerprint";
 
 const secret = "preservation-test-secret-with-at-least-32-bytes";
@@ -69,12 +83,57 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
         WRANGLER_WRITE_LOGS: "false",
       },
     });
-    assert.equal(baseline.rowsRead, 21);
+    assert.equal(baseline.rowsRead, 68);
+    assert.deepEqual(
+      Object.keys(baseline.supplementalDatasets).sort(),
+      [...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES].sort(),
+    );
+    const {
+      supplementalDatasets: _omittedSupplementalDatasets,
+      ...downgradedCurrentBaseline
+    } = structuredClone(baseline);
+    void _omittedSupplementalDatasets;
+    assert.throws(
+      () => parseHistoricalDataBaselineReport(downgradedCurrentBaseline),
+      /supplementalDatasets|invalid_type/,
+      "a V2 baseline cannot be downgraded by stripping supplemental evidence",
+    );
+    const legacyTenDatasetBaseline = legacyBaselineFixture(baseline);
+    assert.deepEqual(
+      parseHistoricalDataLegacyBaselineReportForContinuity(
+        legacyTenDatasetBaseline,
+        {
+          sourceSha256: legacyTenDatasetBaseline.sourceFingerprint.sha256,
+          sourceFileCount: legacyTenDatasetBaseline.sourceFingerprint.fileCount,
+          createdAt: legacyTenDatasetBaseline.createdAt,
+          utcDay: legacyTenDatasetBaseline.utcDay,
+          operationId: legacyTenDatasetBaseline.operationId,
+        },
+      ),
+      legacyTenDatasetBaseline,
+      "the isolated V1 parser retains the immutable predecessor format",
+    );
 
     const reportPath = writeHistoricalDataReport(backupDir, baseline);
     assert.equal(fs.statSync(reportPath).mode & 0o777, 0o600);
     const serialized = fs.readFileSync(reportPath, "utf8");
-    assert.doesNotMatch(serialized, /historical-user-id|private-session-token|owner@example\.com/);
+    assert.doesNotMatch(
+      serialized,
+      /historical-user-id|private-session-token|owner@example\.com|memory-turn-id|user-message-id|assistant-message-id|memory-feedback-id|memory-event-id/,
+    );
+    fs.writeFileSync(reportPath, `${JSON.stringify(legacyTenDatasetBaseline)}\n`, { mode: 0o600 });
+    fs.chmodSync(reportPath, 0o600);
+    assert.throws(
+      () => readAndValidateHistoricalDataBaseline({
+        backupDir,
+        expectedSourceFingerprint: source,
+        now,
+      }),
+      /inspir-historical-data-preservation-v2|Invalid input/,
+      "the direct reader accepts V2 only",
+    );
+    fs.writeFileSync(reportPath, serialized, { mode: 0o600 });
+    fs.chmodSync(reportPath, 0o600);
     const loaded = readAndValidateHistoricalDataBaseline({
       backupDir,
       expectedSourceFingerprint: source,
@@ -149,11 +208,266 @@ test("verifier rejects count loss and a replaced stable identity sentinel", () =
   }
 });
 
+test("verifier preserves the complete saved-memory and AI-run graph", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-memory-loss-"));
+  try {
+    const source = makeSource("memory graph source");
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(databaseFixture()),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    const current = databaseFixture();
+    current.counts.chat_memory_turns = 0;
+    current.identities.chat_memory_turns = [];
+    const memoryEventIdentity = current.identities.memory_events[0];
+    assert.ok(memoryEventIdentity);
+    memoryEventIdentity.identity_1 = "replacement-memory-event";
+    const verification = verifyHistoricalDataPreservation({
+      baseline,
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(current),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    assert.equal(verification.ok, false);
+    assert.ok(verification.problems.some((problem) => /chat_memory_turns row count decreased/.test(problem)));
+    assert.ok(verification.problems.some((problem) => /memory_events is missing/.test(problem)));
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("V2 parsing requires every supplemental dataset", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-v2-required-"));
+  try {
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: makeSource("required supplemental source"),
+      runner: fixtureRunner(databaseFixture()),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
+      const incomplete = structuredClone(baseline);
+      Reflect.deleteProperty(incomplete.supplementalDatasets, name);
+      assert.throws(
+        () => parseHistoricalDataBaselineReport(incomplete),
+        new RegExp(name),
+      );
+    }
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("V2 parsing requires explicit operational outbox evidence", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-v2-outbox-"));
+  try {
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: makeSource("required operational outbox source"),
+      runner: fixtureRunner(databaseFixture()),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    const incomplete = structuredClone(baseline);
+    Reflect.deleteProperty(
+      incomplete.operationalDatasets,
+      "memory_vector_cleanup_outbox",
+    );
+    assert.throws(
+      () => parseHistoricalDataBaselineReport(incomplete),
+      /memory_vector_cleanup_outbox|Invalid input/,
+    );
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("operational outbox rows may drain while its schema remains protected", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-outbox-drain-"));
+  try {
+    const source = makeSource("mutable operational outbox source");
+    const before = databaseFixture();
+    before.counts.memory_vector_cleanup_outbox = 2;
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(before),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    assert.equal(
+      baseline.operationalDatasets.memory_vector_cleanup_outbox.rowCount,
+      2,
+    );
+    const after = databaseFixture();
+    after.counts.memory_vector_cleanup_outbox = 0;
+    const verification = verifyHistoricalDataPreservation({
+      baseline,
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(after),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    assert.equal(verification.ok, true);
+    assert.equal(
+      verification.operationalDatasets.memory_vector_cleanup_outbox.rowCount,
+      0,
+    );
+    assert.doesNotMatch(verification.problems.join("\n"), /outbox.*row count/i);
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("operational outbox capture rejects a missing required 0016 column", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-outbox-schema-"));
+  try {
+    assert.throws(
+      () => createHistoricalDataBaseline({
+        backupDir,
+        hmacSecret: secret,
+        sourceFingerprint: makeSource("invalid operational outbox schema"),
+        runner: fixtureRunner(databaseFixture(), [], (sets) => {
+          const outboxSchemaIndex =
+            HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
+            HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT -
+            1;
+          const outboxSchema = sets[outboxSchemaIndex];
+          assert.ok(outboxSchema);
+          outboxSchema.rows = outboxSchema.rows.filter(
+            (row) => row.name !== "write_token",
+          );
+        }),
+        usageLoader: () => emptyUsage,
+        clock: () => now,
+      }),
+      /missing required operational column write_token/,
+    );
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("every supplemental dataset rejects count loss and sentinel replacement", () => {
+  for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
+    for (const mode of ["count", "sentinel"] as const) {
+      const backupDir = fs.mkdtempSync(
+        path.join(os.tmpdir(), `inspir-history-${mode}-${name}-`),
+      );
+      try {
+        const source = makeSource(`${mode} ${name} preservation source`);
+        const baseline = createHistoricalDataBaseline({
+          backupDir,
+          hmacSecret: secret,
+          sourceFingerprint: source,
+          runner: fixtureRunner(databaseFixture()),
+          usageLoader: () => emptyUsage,
+          clock: () => now,
+        });
+        const changed = databaseFixture();
+        if (mode === "count") {
+          changed.counts[name] = 0;
+          changed.identities[name] = [];
+        } else {
+          const identity = changed.identities[name][0];
+          assert.ok(identity);
+          identity.identity_1 = `replacement-${name}`;
+        }
+        const verify = () => verifyHistoricalDataPreservation({
+          baseline,
+          backupDir,
+          hmacSecret: secret,
+          sourceFingerprint: source,
+          runner: fixtureRunner(changed),
+          usageLoader: () => emptyUsage,
+          clock: () => now,
+        });
+        if (mode === "count" && name === "user_memory_graph_edges") {
+          assert.throws(verify, /user-memory graph evidence does not match/);
+          continue;
+        }
+        const report = verify();
+        assert.equal(report.ok, false, `${name} ${mode} loss must fail`);
+        assert.ok(
+          report.problems.some((problem) => problem.includes(
+            mode === "count" ? `${name} row count decreased` : `${name} is missing`,
+          )),
+          `${name} ${mode} loss must be named`,
+        );
+      } finally {
+        fs.rmSync(backupDir, { recursive: true, force: true });
+      }
+    }
+  }
+});
+
+test("same-row memory graph edge rewiring is detected", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-edge-rewire-"));
+  try {
+    const source = makeSource("memory edge source");
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(databaseFixture()),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    const rewired = databaseFixture();
+    const mutations = [
+      ["user_memory_graph_edges", "identity_5", "different-chat-id"],
+      ["chat_memory_turns", "identity_5", "different-user-message-id"],
+      ["memory_source_feedback", "identity_4", "different-memory-id"],
+      ["memory_events", "identity_4", "different-event-chat-id"],
+    ] as const;
+    for (const [dataset, field, value] of mutations) {
+      const identity = rewired.identities[dataset][0];
+      assert.ok(identity);
+      identity[field] = value;
+    }
+    const report = verifyHistoricalDataPreservation({
+      baseline,
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(rewired),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    assert.equal(report.ok, false);
+    for (const [dataset] of mutations) {
+      assert.ok(
+        report.problems.some((problem) => problem.includes(`${dataset} is missing`)),
+        `${dataset} edge rewiring must be named`,
+      );
+    }
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
 test("baseline refuses an empty or wrong production database", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-empty-"));
   try {
     const fixture = databaseFixture();
     for (const name of HISTORICAL_DATASET_NAMES) {
+      fixture.counts[name] = 0;
+      fixture.identities[name] = [];
+    }
+    for (const name of HISTORICAL_SUPPLEMENTAL_DATASET_NAMES) {
       fixture.counts[name] = 0;
       fixture.identities[name] = [];
     }
@@ -358,18 +672,26 @@ test("final verification permits the guarded release window while preflight fres
 });
 
 test("preservation SQL is bounded and read-only", () => {
-  assert.equal(HISTORICAL_DATA_COUNT_RESULT_SET_COUNT, 10);
-  assert.equal(HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT, 9);
-  assert.equal(HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT, 10);
-  assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 29);
+  assert.equal(HISTORICAL_DATA_COUNT_RESULT_SET_COUNT, 21);
+  assert.equal(HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT, 19);
+  assert.equal(HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT, 20);
+  assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 60);
+  assert.equal(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ, 690_209);
+  assert.ok(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ <= HISTORICAL_BILLED_READ_LIMIT);
   const statements = HISTORICAL_DATA_SNAPSHOT_SQL
     .split(";")
     .map((statement) => statement.trim())
     .filter(Boolean);
   assert.equal(statements.length, HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT);
-  for (const statement of statements) {
+  for (const [index, statement] of statements.entries()) {
     assert.match(statement, /^SELECT\b/i);
-    assert.equal((statement.match(/\bSELECT\b/gi) ?? []).length, 1);
+    const nestedCountOrProfileIdentity: boolean =
+      index < HISTORICAL_DATA_COUNT_RESULT_SET_COUNT ||
+      statement.includes("bounded_rowid");
+    assert.equal(
+      (statement.match(/\bSELECT\b/gi) ?? []).length,
+      nestedCountOrProfileIdentity ? 2 : 1,
+    );
     assert.doesNotMatch(statement, /\b(?:UNION|INTERSECT|EXCEPT)\b/i);
     assert.doesNotMatch(
       statement,
@@ -377,9 +699,16 @@ test("preservation SQL is bounded and read-only", () => {
     );
   }
   assert.doesNotMatch(HISTORICAL_DATA_SNAPSHOT_SQL, /\bUNION\b/i);
-  assert.equal((HISTORICAL_DATA_IDENTITIES_SQL.match(/ORDER BY rowid LIMIT 16/g) ?? []).length, 10);
-  assert.doesNotMatch(HISTORICAL_DATA_IDENTITIES_SQL, /LIMIT 1\d{3,}/);
+  assert.equal((HISTORICAL_DATA_IDENTITIES_SQL.match(/ORDER BY rowid LIMIT 16/g) ?? []).length, 19);
+  assert.equal(
+    (HISTORICAL_DATA_SUMMARY_SQL.match(/AS row_count FROM \(SELECT/g) ?? []).length,
+    21,
+  );
+  assert.match(HISTORICAL_DATA_IDENTITIES_SQL, /bounded_rowid[\s\S]*LIMIT 100001/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /profile_photo_pointers/);
+  assert.match(HISTORICAL_DATA_SUMMARY_SQL, /chat_memory_turns/);
+  assert.match(HISTORICAL_DATA_SUMMARY_SQL, /memory_source_feedback/);
+  assert.match(HISTORICAL_DATA_SUMMARY_SQL, /memory_vector_cleanup_outbox/);
 });
 
 test("snapshot result partitions and billing metadata fail closed", () => {
@@ -463,9 +792,110 @@ test("snapshot result partitions and billing metadata fail closed", () => {
   }
 });
 
+test("snapshot accepts its exact proven read bound and rejects one row beyond it", () => {
+  for (const overage of [0, 1] as const) {
+    const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-read-bound-"));
+    try {
+      const run = () => createHistoricalDataBaseline({
+        backupDir,
+        hmacSecret: secret,
+        sourceFingerprint: makeSource(`snapshot bound ${overage}`),
+        runner: fixtureRunner(databaseFixture(), [], (sets) => {
+          const billed = sets.reduce((sum, set) => sum + set.rowsRead, 0);
+          const first = sets[0];
+          assert.ok(first);
+          first.rowsRead += HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ + overage - billed;
+        }),
+        usageLoader: () => emptyUsage,
+        clock: () => now,
+      });
+      if (overage === 0) {
+        assert.equal(run().rowsRead, HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ);
+      } else {
+        assert.throws(run, /exceed the proven V2 snapshot bound/);
+      }
+    } finally {
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
+});
+
+test("generated snapshot SQL executes on D1 and oversized sparse users scans stop at cap plus one", async () => {
+  const miniflare = new Miniflare({
+    modules: true,
+    script: "export default {}",
+    d1Databases: { DB: `historical-snapshot-${crypto.randomUUID()}` },
+  });
+  try {
+    const database = await miniflare.getD1Database("DB");
+    const schemaStatements = HISTORICAL_SNAPSHOT_TEST_SCHEMA_SQL
+      .split(";")
+      .map((statement) => statement.trim())
+      .filter(Boolean)
+      .map((statement) => database.prepare(statement));
+    await database.batch(schemaStatements);
+    const statements = HISTORICAL_DATA_SNAPSHOT_SQL
+      .split(";")
+      .map((statement) => statement.trim())
+      .filter(Boolean);
+    assert.equal(statements.length, HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT);
+    for (const statement of statements) {
+      await database.prepare(statement).all();
+    }
+
+    await database.prepare(
+      `with recursive generated(value) as (
+         select 1
+         union all
+         select value + 1 from generated where value < 100002
+       )
+       insert into users (
+         id, profile_image_r2_key, profile_image_hash, profile_image_r2_etag
+       )
+       select
+         printf('user-%06d', value),
+         case when value = 100002 then 'outside-bounded-scan' else null end,
+         null,
+         null
+       from generated;`,
+    ).run();
+    const countStatements = HISTORICAL_DATA_SUMMARY_SQL
+      .split(";")
+      .map((statement) => statement.trim())
+      .filter(Boolean);
+    const usersCount = await database.prepare(countStatements[0] ?? "").first<{
+      row_count: number;
+    }>();
+    const profileCount = await database.prepare(countStatements[9] ?? "").first<{
+      row_count: number;
+    }>();
+    const profileIdentityStatement = HISTORICAL_DATA_IDENTITIES_SQL
+      .split(";")
+      .map((statement) => statement.trim())
+      .filter(Boolean)[9];
+    assert.equal(usersCount?.row_count, 100_001);
+    assert.equal(profileCount?.row_count, 0);
+    assert.ok(profileIdentityStatement);
+    const profileIdentities = await database.prepare(profileIdentityStatement).all();
+    assert.deepEqual(profileIdentities.results, []);
+  } finally {
+    await miniflare.dispose();
+  }
+});
+
+type HistoricalProtectedFixtureDatasetName =
+  | HistoricalDatasetName
+  | HistoricalSupplementalDatasetName;
+type HistoricalFixtureDatasetName =
+  | HistoricalProtectedFixtureDatasetName
+  | HistoricalOperationalDatasetName;
+
 type DatabaseFixture = {
-  counts: Record<HistoricalDatasetName, number>;
-  identities: Record<HistoricalDatasetName, Array<Record<string, unknown>>>;
+  counts: Record<HistoricalFixtureDatasetName, number>;
+  identities: Record<
+    HistoricalProtectedFixtureDatasetName,
+    Array<Record<string, unknown>>
+  >;
 };
 
 function databaseFixture(): DatabaseFixture {
@@ -481,6 +911,17 @@ function databaseFixture(): DatabaseFixture {
       activity_runs: 0,
       product_events: 0,
       profile_photo_pointers: 0,
+      ai_runs: 1,
+      user_memory_graph_edges: 1,
+      user_memory_settings: 1,
+      chat_memory_summaries: 1,
+      chat_memory_turns: 1,
+      user_memory_profiles: 1,
+      user_memory_summaries: 1,
+      memory_synthesis_runs: 1,
+      memory_source_feedback: 1,
+      memory_events: 1,
+      memory_vector_cleanup_outbox: 0,
     },
     identities: {
       users: [{ identity_1: "historical-user-id" }],
@@ -500,6 +941,48 @@ function databaseFixture(): DatabaseFixture {
       activity_runs: [],
       product_events: [],
       profile_photo_pointers: [],
+      ai_runs: [{
+        identity_1: "ai-run-id",
+        identity_2: "chat-id",
+        identity_3: "user-message-id",
+      }],
+      user_memory_graph_edges: [{
+        identity_1: "memory-id",
+        identity_2: "historical-user-id",
+        identity_3: '["memory-turn-id"]',
+        identity_4: "[]",
+        identity_5: "chat-id",
+        identity_6: "user-message-id",
+        identity_7: "",
+      }],
+      user_memory_settings: [{ identity_1: "historical-user-id" }],
+      chat_memory_summaries: [{ identity_1: "chat-id", identity_2: "historical-user-id" }],
+      chat_memory_turns: [{
+        identity_1: "memory-turn-id",
+        identity_2: "historical-user-id",
+        identity_3: "chat-id",
+        identity_4: "topic-id",
+        identity_5: "user-message-id",
+        identity_6: "assistant-message-id",
+      }],
+      user_memory_profiles: [{ identity_1: "historical-user-id", identity_2: "goals" }],
+      user_memory_summaries: [{ identity_1: "historical-user-id" }],
+      memory_synthesis_runs: [{ identity_1: "synthesis-run-id", identity_2: "historical-user-id" }],
+      memory_source_feedback: [{
+        identity_1: "memory-feedback-id",
+        identity_2: "historical-user-id",
+        identity_3: "ai-run-id",
+        identity_4: "memory-id",
+        identity_5: "memory-turn-id",
+        identity_6: "summary-section-id",
+      }],
+      memory_events: [{
+        identity_1: "memory-event-id",
+        identity_2: "historical-user-id",
+        identity_3: "memory-id",
+        identity_4: "chat-id",
+        identity_5: "message-id",
+      }],
     },
   };
 }
@@ -513,21 +996,32 @@ function fixtureRunner(
     calls.push({ args, options });
     const sql = args.at(-1);
     if (sql === HISTORICAL_DATA_SNAPSHOT_SQL) {
-      const countSets = HISTORICAL_DATASET_NAMES.map((name) => ({
+      const datasetNames = [
+        ...HISTORICAL_DATASET_NAMES,
+        ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+        ...HISTORICAL_OPERATIONAL_DATASET_NAMES,
+      ] as const;
+      const protectedDatasetNames = [
+        ...HISTORICAL_DATASET_NAMES,
+        ...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+      ] as const;
+      const countSets = datasetNames.map((name) => ({
         rows: [{ dataset: name, row_count: fixture.counts[name] }],
         rowsRead: fixture.counts[name],
       }));
-      const schemaSets = schemaTableNames().map((table) => ({
-        rows: [{
-          table_name: table,
-          name: table === "admin_users" ? "email" : "id",
-          type: "text",
-          not_null: 1,
-          primary_key: 1,
-        }],
-        rowsRead: 1,
-      }));
-      const identitySets = HISTORICAL_DATASET_NAMES.map((name) => ({
+      const schemaSets = schemaTableNames().map((table) => {
+        const rows = table === "memory_vector_cleanup_outbox"
+          ? memoryVectorCleanupOutboxSchemaRows()
+          : [{
+              table_name: table,
+              name: table === "admin_users" ? "email" : "id",
+              type: "text",
+              not_null: 1,
+              primary_key: 1,
+            }];
+        return { rows, rowsRead: rows.length };
+      });
+      const identitySets = protectedDatasetNames.map((name) => ({
         rows: fixture.identities[name],
         rowsRead: fixture.identities[name].length,
       }));
@@ -571,7 +1065,47 @@ function schemaTableNames() {
     "user_memories",
     "activity_runs",
     "product_events",
+    "ai_runs",
+    "user_memory_settings",
+    "chat_memory_summaries",
+    "chat_memory_turns",
+    "user_memory_profiles",
+    "user_memory_summaries",
+    "memory_synthesis_runs",
+    "memory_source_feedback",
+    "memory_events",
+    "memory_vector_cleanup_outbox",
   ] as const;
+}
+
+function memoryVectorCleanupOutboxSchemaRows() {
+  const columns = [
+    ["vector_id", "text", 1, 1],
+    ["absence_count", "integer", 1, 0],
+    ["attempt_count", "integer", 1, 0],
+    ["created_at", "integer", 1, 0],
+    ["last_attempt_at", "integer", 0, 0],
+    ["last_error", "text", 0, 0],
+    ["lease_token", "text", 0, 0],
+    ["lease_until", "integer", 1, 0],
+    ["next_attempt_at", "integer", 1, 0],
+    ["owner_user_id", "text", 0, 0],
+    ["reason", "text", 1, 0],
+    ["source_namespace", "text", 0, 0],
+    ["source_row_id", "text", 0, 0],
+    ["source_row_revision", "integer", 0, 0],
+    ["state", "text", 1, 0],
+    ["updated_at", "integer", 1, 0],
+    ["write_fence_expires_at", "integer", 0, 0],
+    ["write_token", "text", 0, 0],
+  ] as const;
+  return columns.map(([name, type, notNull, primaryKey]) => ({
+    table_name: "memory_vector_cleanup_outbox",
+    name,
+    type,
+    not_null: notNull,
+    primary_key: primaryKey,
+  }));
 }
 
 function makeSource(content: string): SourceFingerprint {
@@ -588,3 +1122,121 @@ function makeSource(content: string): SourceFingerprint {
     files: [file],
   };
 }
+
+function legacyBaselineFixture(
+  baseline: HistoricalDataBaselineReport,
+): HistoricalDataLegacyBaselineReport {
+  const sourceIdentity = {
+    sha256: baseline.sourceFingerprint.sha256,
+    fileCount: baseline.sourceFingerprint.fileCount,
+  };
+  const operationBinding = createHash("sha256")
+    .update(stableStringify({
+      kind: HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+      phase: "baseline",
+      sourceFingerprint: sourceIdentity,
+    }))
+    .digest("hex");
+  const operationId = `historical-data-preservation-baseline:${operationBinding}`;
+  const {
+    supplementalDatasets: _supplementalDatasets,
+    operationalDatasets: _operationalDatasets,
+    limits: _limits,
+    ...core
+  } = structuredClone(baseline);
+  void _supplementalDatasets;
+  void _operationalDatasets;
+  void _limits;
+  return {
+    ...core,
+    kind: HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+    schemaVersion: 1,
+    operationId,
+    ledger: {
+      ...core.ledger,
+      reservation: {
+        ...core.ledger.reservation,
+        operationId,
+      },
+    },
+    limits: {
+      coreRows: baseline.limits.coreRows,
+      billedReads: baseline.limits.billedReads,
+      sentinelsPerDataset: baseline.limits.sentinelsPerDataset,
+    },
+  };
+}
+
+const HISTORICAL_SNAPSHOT_TEST_SCHEMA_SQL = `
+  create table users (
+    id text primary key,
+    profile_image_r2_key text,
+    profile_image_hash text,
+    profile_image_r2_etag text
+  );
+  create table accounts (provider text, provider_account_id text, user_id text);
+  create table sessions (session_token text, user_id text);
+  create table chats (id text, user_id text);
+  create table messages (id text, chat_id text);
+  create table admin_users (email text);
+  create table user_memories (
+    id text,
+    user_id text,
+    source_turn_ids text,
+    source_memory_ids text,
+    source_chat_id text,
+    source_message_id text,
+    superseded_by_memory_id text
+  );
+  create table activity_runs (id text, chat_id text);
+  create table product_events (id text, user_id text);
+  create table ai_runs (id text, chat_id text, user_message_id text);
+  create table user_memory_settings (user_id text);
+  create table chat_memory_summaries (chat_id text, user_id text);
+  create table chat_memory_turns (
+    id text,
+    user_id text,
+    chat_id text,
+    topic_id text,
+    user_message_id text,
+    assistant_message_id text
+  );
+  create table user_memory_profiles (user_id text, category text);
+  create table user_memory_summaries (user_id text);
+  create table memory_synthesis_runs (id text, user_id text);
+  create table memory_source_feedback (
+    id text,
+    user_id text,
+    ai_run_id text,
+    memory_id text,
+    chat_turn_id text,
+    summary_section_id text
+  );
+  create table memory_events (
+    id text,
+    user_id text,
+    memory_id text,
+    chat_id text,
+    message_id text
+  );
+  create table memory_vector_cleanup_outbox (
+    vector_id text primary key not null,
+    owner_user_id text,
+    source_namespace text,
+    source_row_id text,
+    source_row_revision integer,
+    write_token text,
+    reason text not null,
+    state text not null,
+    write_fence_expires_at integer,
+    absence_count integer not null,
+    attempt_count integer not null,
+    lease_token text,
+    lease_until integer not null,
+    next_attempt_at integer not null,
+    last_attempt_at integer,
+    last_error text,
+    created_at integer not null,
+    updated_at integer not null
+  );
+`;

@@ -13,7 +13,11 @@ import {
   writeRuntimeMigrationBudgetReport,
 } from "../scripts/cloudflare/check-d1-runtime-migration-budget";
 import { D1_DATABASE_ID, D1_DATABASE_NAME, type WranglerRunner } from "../scripts/cloudflare/migration-config";
-import { RUNTIME_MIGRATION_FILES } from "../scripts/cloudflare/verify-d1-runtime-migrations";
+import {
+  RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+  RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE,
+  RUNTIME_MIGRATION_FILES,
+} from "../scripts/cloudflare/verify-d1-runtime-migrations";
 
 const clockValue = new Date("2026-07-12T12:00:00.000Z");
 const bookmark = "00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683";
@@ -25,6 +29,9 @@ const cardinalities = {
   rateLimitWindows: 3,
   opsEvents: 1,
   activityRuns: 4,
+  userMemorySettings: 8,
+  memorySourceFeedback: 3,
+  suppressionBackfillUsers: 2,
 };
 const usage = {
   databaseCount: 1,
@@ -35,7 +42,7 @@ const usage = {
   windowMinutes: 721,
 };
 
-test("migration wrapper durably captures diagnostic evidence before applying 0013-0015 in order", () => {
+test("migration wrapper durably captures diagnostic evidence before applying 0013-0016 in order", () => {
   const fixture = makeReleaseFixture();
   let appliedThrough = 0;
   const migrationCalls: string[] = [];
@@ -76,22 +83,24 @@ test("migration wrapper durably captures diagnostic evidence before applying 001
     );
     assert.deepEqual(
       outcome.attempts.map((attempt) => attempt.migration),
-      ["0013", "0014", "0015"],
+      ["0013", "0014", "0015", "0016"],
     );
     assert.ok(outcome.attempts.every((attempt) => attempt.responseConfirmed));
     assert.equal(outcome.stateAfter?.nextMigration, null);
     assert.ok(outcome.preWriteEvidencePath);
     const evidence = readJson(outcome.preWriteEvidencePath);
-    assert.equal(evidence.kind, "d1-runtime-migrations-0013-0015-prewrite");
+    assert.equal(evidence.kind, "d1-runtime-migrations-0013-0016-prewrite");
     assert.deepEqual(evidence.database, { id: D1_DATABASE_ID, name: D1_DATABASE_NAME });
     assert.equal(evidence.timeTravelBookmark, bookmark);
     assert.ok(Array.isArray(evidence.migrationFiles));
-    assert.equal(evidence.migrationFiles.length, 3);
+    assert.equal(evidence.migrationFiles.length, 4);
     const projection = requiredRecordValue(evidence.projection);
     assert.equal(
       projection.rowsRead,
       fixture.report.projection.rowsRead,
     );
+    assert.equal(projection.suppressionBackfillRowsRead, 20);
+    assert.equal(projection.suppressionBackfillRowsWritten, 4);
     assert.equal(evidence.recoveryPreference, "reviewed-forward-correction");
     assert.equal(evidence.destructiveRestoreSupported, false);
     assert.equal(Object.hasOwn(evidence, "restoreCommand"), false);
@@ -133,6 +142,8 @@ test("ambiguous 0015 is never retried and successful exact read-only state recov
         migration0015Calls += 1;
         appliedThrough = 3;
         throw new Error("simulated transport loss after 0015 committed");
+      } else if (file.startsWith("0016_")) {
+        appliedThrough = 4;
       } else {
         throw new Error(`Unexpected migration file: ${file}`);
       }
@@ -158,6 +169,59 @@ test("ambiguous 0015 is never retried and successful exact read-only state recov
     assert.match(attempt.transportError ?? "", /transport loss/);
     assert.ok(attempt.stateAfter);
     assert.equal(attempt.stateAfter.groups["0015"], "applied");
+  } finally {
+    cleanupFixture(fixture);
+  }
+});
+
+test("ambiguous unapplied 0016 stops after one attempt instead of retrying blindly", () => {
+  const fixture = makeReleaseFixture();
+  let appliedThrough = 0;
+  let migration0016Calls = 0;
+  const runner: WranglerRunner = (args) => {
+    if (args[1] === "time-travel") return JSON.stringify({ bookmark });
+    if (args[1] === "execute" && args.includes("--command")) {
+      return verificationOutput(verificationRows(appliedThrough));
+    }
+    if (args[1] === "execute" && args.includes("--file")) {
+      const file = path.basename(requiredArg(args, "--file"));
+      if (file.startsWith("0013_")) appliedThrough = 1;
+      else if (file.startsWith("0014_")) appliedThrough = 2;
+      else if (file.startsWith("0015_")) appliedThrough = 3;
+      else if (file.startsWith("0016_")) {
+        migration0016Calls += 1;
+        throw new Error("simulated transport loss before 0016 commit");
+      }
+      return JSON.stringify([{ success: true }]);
+    }
+    throw new Error(`Unexpected fake Wrangler command: ${args.join(" ")}`);
+  };
+
+  try {
+    assert.throws(
+      () =>
+        applyD1RuntimeMigrations({
+          confirmed: true,
+          backupDir: fixture.backupDir,
+          cwd: fixture.repoDir,
+          runner,
+          clock: () => clockValue,
+        }),
+      /0016 had an ambiguous response and remained unapplied; it was not retried automatically/,
+    );
+    assert.equal(migration0016Calls, 1);
+    const outcome = readJson(
+      path.join(fixture.backupDir, "cloudflare", D1_RUNTIME_MIGRATION_OUTCOME_REPORT),
+    );
+    assert.equal(outcome.ok, false);
+    assert.ok(Array.isArray(outcome.attempts));
+    const attempt = outcome.attempts.find(
+      (entry) => isRecord(entry) && entry.migration === "0016",
+    );
+    assert.ok(attempt);
+    assert.ok(isRecord(attempt));
+    assert.equal(attempt.responseConfirmed, false);
+    assert.equal(attempt.recoveredByVerification, false);
   } finally {
     cleanupFixture(fixture);
   }
@@ -268,6 +332,47 @@ test("partial pre-existing state refuses bookmarks and every migration write", (
   }
 });
 
+test("0016 is partial until its completion marker exact-verifies", () => {
+  const fixture = makeReleaseFixture();
+  let timeTravelCalls = 0;
+  const runner: WranglerRunner = (args) => {
+    if (args[1] === "time-travel") {
+      timeTravelCalls += 1;
+      return JSON.stringify({ bookmark });
+    }
+    if (args[1] === "execute" && args.includes("--command")) {
+      return verificationOutput(
+        verificationRows(4).filter((row) => row.kind !== "migration-marker"),
+      );
+    }
+    throw new Error(`Unexpected fake Wrangler command: ${args.join(" ")}`);
+  };
+
+  try {
+    assert.throws(
+      () =>
+        applyD1RuntimeMigrations({
+          confirmed: true,
+          backupDir: fixture.backupDir,
+          cwd: fixture.repoDir,
+          runner,
+          clock: () => clockValue,
+        }),
+      /partial or out-of-order state/,
+    );
+    assert.equal(timeTravelCalls, 0);
+    const outcome = readJson(
+      path.join(fixture.backupDir, "cloudflare", D1_RUNTIME_MIGRATION_OUTCOME_REPORT),
+    );
+    assert.equal(outcome.ok, false);
+    assert.ok(isRecord(outcome.stateBefore));
+    assert.ok(isRecord(outcome.stateBefore.groups));
+    assert.equal(outcome.stateBefore.groups["0016"], "partial");
+  } finally {
+    cleanupFixture(fixture);
+  }
+});
+
 test("migration wrapper requires explicit production confirmation before any runner call", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-d1-apply-confirm-"));
   let calls = 0;
@@ -286,6 +391,39 @@ test("migration wrapper requires explicit production confirmation before any run
     assert.equal(calls, 0);
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("budget evidence parser round-trips a nonzero 0016 suppression backfill projection", () => {
+  const fixture = makeReleaseFixture();
+  const runner: WranglerRunner = (args) => {
+    if (args[1] === "execute" && args.includes("--command")) {
+      return verificationOutput(verificationRows(4));
+    }
+    throw new Error(`Unexpected fake Wrangler command: ${args.join(" ")}`);
+  };
+
+  try {
+    assert.deepEqual(
+      {
+        reads: fixture.report.projection.suppressionBackfillRowsRead,
+        writes: fixture.report.projection.suppressionBackfillRowsWritten,
+      },
+      { reads: 20, writes: 4 },
+    );
+    const outcome = applyD1RuntimeMigrations({
+      confirmed: true,
+      backupDir: fixture.backupDir,
+      cwd: fixture.repoDir,
+      runner,
+      clock: () => clockValue,
+    });
+    assert.equal(outcome.ok, true);
+    assert.equal(outcome.status, "already-applied");
+    assert.deepEqual(outcome.attempts, []);
+    assert.equal(outcome.stateBefore?.groups["0016"], "applied");
+  } finally {
+    cleanupFixture(fixture);
   }
 });
 
@@ -346,7 +484,108 @@ function verificationRows(appliedThrough: number): Array<Record<string, unknown>
       }),
     );
   }
+  if (appliedThrough >= 4) {
+    rows.push(
+      {
+        kind: "memory-settings-column",
+        name: "summary_suppression_mask",
+        table_name: "user_memory_settings",
+        column_type: "INTEGER",
+        column_not_null: 1,
+        column_default: "0",
+        column_primary_key: 0,
+        table_sql: `CREATE TABLE user_memory_settings (
+          user_id text PRIMARY KEY NOT NULL,
+          summary_suppression_mask integer DEFAULT 0 NOT NULL
+            CONSTRAINT user_memory_settings_summary_suppression_mask_check
+            CHECK (summary_suppression_mask BETWEEN 0 AND 511)
+        )`,
+      },
+      ...outboxRows(),
+      {
+        kind: "migration-marker",
+        name: RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY,
+        table_name: "app_metadata",
+        table_sql: RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE,
+        snapshot_updated_at: 1_752_000_000_000,
+      },
+    );
+  }
   return rows;
+}
+
+function outboxRows(): Array<Record<string, unknown>> {
+  const columnSpecs = [
+    ["vector_id", "TEXT", 1, null, 1],
+    ["owner_user_id", "TEXT", 0, null, 0],
+    ["source_namespace", "TEXT", 0, null, 0],
+    ["source_row_id", "TEXT", 0, null, 0],
+    ["source_row_revision", "INTEGER", 0, null, 0],
+    ["write_token", "TEXT", 0, null, 0],
+    ["reason", "TEXT", 1, null, 0],
+    ["state", "TEXT", 1, "'cleanup_ready'", 0],
+    ["write_fence_expires_at", "INTEGER", 0, null, 0],
+    ["absence_count", "INTEGER", 1, "0", 0],
+    ["attempt_count", "INTEGER", 1, "0", 0],
+    ["lease_token", "TEXT", 0, null, 0],
+    ["lease_until", "INTEGER", 1, "0", 0],
+    ["next_attempt_at", "INTEGER", 1, null, 0],
+    ["last_attempt_at", "INTEGER", 0, null, 0],
+    ["last_error", "TEXT", 0, null, 0],
+    ["created_at", "INTEGER", 1, null, 0],
+    ["updated_at", "INTEGER", 1, null, 0],
+  ] as const;
+  const tableSql = `CREATE TABLE memory_vector_cleanup_outbox (
+    vector_id text PRIMARY KEY NOT NULL CHECK (length(vector_id) BETWEEN 1 AND 64 AND vector_id NOT GLOB '*[^A-Za-z0-9:._-]*'),
+    owner_user_id text CHECK (owner_user_id IS NULL OR length(owner_user_id) BETWEEN 1 AND 120),
+    source_namespace text CHECK (source_namespace IS NULL OR source_namespace IN ('user_memories', 'chat_memory_turns')),
+    source_row_id text CHECK (source_row_id IS NULL OR length(source_row_id) BETWEEN 1 AND 120),
+    source_row_revision integer CHECK (source_row_revision IS NULL OR source_row_revision BETWEEN 1 AND 9007199254740991),
+    write_token text CHECK (write_token IS NULL OR length(write_token) BETWEEN 1 AND 120),
+    reason text NOT NULL CHECK (length(reason) BETWEEN 1 AND 80),
+    state text DEFAULT 'cleanup_ready' NOT NULL CHECK (state IN ('write_pending', 'cleanup_fenced', 'cleanup_ready', 'verifying_absence')),
+    write_fence_expires_at integer CHECK (write_fence_expires_at IS NULL OR write_fence_expires_at >= 0),
+    absence_count integer DEFAULT 0 NOT NULL CHECK (absence_count >= 0 AND absence_count <= 2),
+    attempt_count integer DEFAULT 0 NOT NULL CHECK (attempt_count >= 0),
+    lease_token text CHECK (lease_token IS NULL OR length(lease_token) BETWEEN 1 AND 120),
+    lease_until integer DEFAULT 0 NOT NULL CHECK (lease_until >= 0),
+    next_attempt_at integer NOT NULL CHECK (next_attempt_at >= 0),
+    last_attempt_at integer CHECK (last_attempt_at IS NULL OR last_attempt_at >= 0),
+    last_error text CHECK (last_error IS NULL OR length(last_error) <= 160),
+    created_at integer NOT NULL CHECK (created_at >= 0),
+    updated_at integer NOT NULL CHECK (updated_at >= 0)
+  )`;
+  const indexSql =
+    "CREATE INDEX memory_vector_cleanup_outbox_due_idx ON memory_vector_cleanup_outbox (next_attempt_at, created_at, vector_id)";
+  return [
+    ...columnSpecs.map(([name, type, notNull, defaultValue, primaryKey]) => ({
+      kind: "outbox-column",
+      name,
+      table_name: "memory_vector_cleanup_outbox",
+      column_type: type,
+      column_not_null: notNull,
+      column_default: defaultValue,
+      column_primary_key: primaryKey,
+    })),
+    {
+      kind: "outbox-table",
+      name: "memory_vector_cleanup_outbox",
+      table_name: "memory_vector_cleanup_outbox",
+      table_sql: tableSql,
+      custom_index_count: 1,
+    },
+    ...["next_attempt_at", "created_at", "vector_id"].map((columnName, index) => ({
+      kind: "index",
+      name: "memory_vector_cleanup_outbox_due_idx",
+      table_name: "memory_vector_cleanup_outbox",
+      index_sql: indexSql,
+      index_unique: 0,
+      index_origin: "c",
+      index_partial: 0,
+      index_seqno: index,
+      index_column: columnName,
+    })),
+  ];
 }
 
 function rateLimitIndexRow() {

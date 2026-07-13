@@ -397,7 +397,11 @@ test("production verification covers the resource-outage contracts", () => {
   );
   assert.match(
     authenticatedProductionWrapper,
-    /assertCandidateReleaseEvidence\(manifest\.candidateVersionId\)[\s\S]{0,500}sourceFingerprintSha256 !== manifest\.sourceFingerprintSha256/,
+    /assertCandidateReleaseEvidence\(manifest\.candidateVersionId, \{\s*recovery: true,\s*\}\)[\s\S]{0,500}sourceFingerprintSha256 !== manifest\.sourceFingerprintSha256/,
+  );
+  assert.match(
+    authenticatedProductionWrapper,
+    /if \(options\.recovery\)[\s\S]{0,180}assertProductionVectorizeReadinessReleaseBinding/,
   );
   assert.ok(
     authenticatedProductionWrapper.match(/E2E_TEST_GUEST_QUOTA_SCOPE: mutationRunId/g)?.length === 2,
