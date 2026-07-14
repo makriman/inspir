@@ -167,7 +167,7 @@ test("main app translation source has stable keys and validates placeholders", (
   assert.equal(validateTranslationPayload(bundle.sourceStrings, broken), false);
 });
 
-test("database translation payloads can serve partial verified strings", () => {
+test("database translation payloads fail closed unless every expected string is verified", () => {
   const source = {
     sourceStrings: {
       title: "Learn Anything",
@@ -187,11 +187,24 @@ test("database translation payloads can serve partial verified strings", () => {
       empty: "",
       unknown: "Ignored",
     }, "Spanish"),
+    {},
+  );
+
+  assert.deepEqual(
+    translationStringsFromDbPayload(source, {
+      title: "Aprende cualquier cosa",
+      action: "Continuar",
+      unchanged: "inspir",
+      languageSpecific: "Blog",
+      empty: "Guardado",
+      unknown: "Ignored",
+    }, "Spanish"),
     {
       title: "Aprende cualquier cosa",
       action: "Continuar",
       unchanged: "inspir",
       languageSpecific: "Blog",
+      empty: "Guardado",
     },
   );
 });

@@ -5,6 +5,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { supportedLanguages } from "../lib/content/languages";
+import {
+  getPublishedLegacySiteTranslationPairs,
+  legacyTranslationAssetPath,
+} from "../lib/i18n/legacy-api-compat";
 import {
   FREE_PLAN_WORKER_FIRST_ROUTES,
   buildSteadyStateDeployPreflightReport as buildProductionSteadyStateDeployPreflightReport,
@@ -31,6 +36,7 @@ import {
 } from "../scripts/cloudflare/verify-d1-runtime-migrations";
 import {
   HISTORICAL_DATA_BASELINE_RELATIVE_PATH,
+  HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
   HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
   HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATASET_NAMES,
@@ -53,9 +59,12 @@ import {
   historicalDataContinuityArchiveManifestPath,
   historicalDataContinuityReportPath,
 } from "../scripts/cloudflare/verify-historical-data-continuity";
+import { STATIC_ASSET_RELEASE_FILE_LIMIT } from "../scripts/cloudflare/materialize-static-marketing-assets";
+import { buildWorkerDeployArtifactManifest } from "../scripts/cloudflare/worker-deploy-evidence";
 
 const HISTORICAL_BASELINE_CHECK = "historical production data preservation baseline";
 const HISTORICAL_CONTINUITY_CHECK = "budget-rollover historical data continuity";
+const STATIC_ASSET_RELEASE_CHECK = "Static Asset release and legacy translation report";
 const PREFLIGHT_NOW_MS = Date.parse("2026-06-26T12:00:00Z");
 const HISTORICAL_FIXTURE_CREATED_AT = new Date("2026-06-26T11:45:00.000Z");
 const HISTORICAL_FIXTURE_SECRET = "deploy-preflight-historical-fixture-secret";
@@ -71,6 +80,36 @@ const historicalContinuityPredecessorFixtures = new Map<
   string,
   HistoricalDataLegacyBaselineReport
 >();
+type StaticMarketingAssetFixtureReport = {
+  createdAt: string;
+  buildId: string;
+  assetFiles: number;
+  assetManifestBytes: number;
+  assetManifestSha256: string;
+  legacyTranslationApiAssets: number;
+  legacyMainAppTranslationResponses: number;
+  legacySiteTranslationResponses: number;
+  legacyCompleteTranslationResponses: number;
+  legacyIncompleteTranslationResponses: number;
+  outputSha256: string;
+  generatedPaths: string[];
+};
+type StaticAssetReleaseCountDetailKey =
+  | "missingLegacyPathCount"
+  | "extraLegacyPathCount"
+  | "duplicateLegacyPathCount"
+  | "incompleteLegacyPathCount";
+const expectedLegacyMainAppTranslationPaths = supportedLanguages.map((language) =>
+  legacyTranslationAssetPath({ kind: "main-app", language }),
+);
+const expectedLegacySiteTranslationPaths = getPublishedLegacySiteTranslationPairs().map(
+  ({ language, namespace }) =>
+    legacyTranslationAssetPath({ kind: "site", language, namespace }),
+);
+const expectedLegacyTranslationPaths = [
+  ...expectedLegacyMainAppTranslationPaths,
+  ...expectedLegacySiteTranslationPaths,
+].sort();
 
 function buildSteadyStateDeployPreflightReport(
   options: Parameters<typeof buildProductionSteadyStateDeployPreflightReport>[0],
@@ -106,6 +145,7 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["local build and test gates", "pass"],
       ["source secret scan", "pass"],
       ["OpenNext build artifact secret scan", "pass"],
+      [STATIC_ASSET_RELEASE_CHECK, "pass"],
       ["D1 runtime migrations 0013-0016", "pass"],
       [HISTORICAL_BASELINE_CHECK, "pass"],
       [HISTORICAL_CONTINUITY_CHECK, "pass"],
@@ -113,6 +153,271 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["Free static and native account architecture", "pass"],
     ],
   );
+});
+
+test("legacy translation release paths derive the exact 70 + 210 = 280 contract", () => {
+  assert.equal(supportedLanguages.length, 70);
+  assert.equal(expectedLegacyMainAppTranslationPaths.length, 70);
+  assert.equal(expectedLegacySiteTranslationPaths.length, 210);
+  assert.equal(expectedLegacyTranslationPaths.length, 280);
+  assert.equal(new Set(expectedLegacyTranslationPaths).size, 280);
+});
+
+test("steady-state deploy preflight rejects every incorrect legacy translation report count", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const pristine = readStaticMarketingAssetFixtureReport(repoDir);
+  const scenarios = [
+    {
+      name: "total",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.legacyTranslationApiAssets = 279;
+      },
+    },
+    {
+      name: "main-app",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.legacyMainAppTranslationResponses = 69;
+      },
+    },
+    {
+      name: "site",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.legacySiteTranslationResponses = 209;
+      },
+    },
+    {
+      name: "complete",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.legacyCompleteTranslationResponses = 279;
+      },
+    },
+    {
+      name: "incomplete",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.legacyIncompleteTranslationResponses = 1;
+      },
+    },
+  ] satisfies ReadonlyArray<{
+    name: string;
+    mutate: (report: StaticMarketingAssetFixtureReport) => void;
+  }>;
+
+  for (const scenario of scenarios) {
+    const candidate = structuredClone(pristine);
+    scenario.mutate(candidate);
+    writeStaticMarketingAssetFixtureReport(repoDir, candidate);
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: PREFLIGHT_NOW_MS,
+    });
+
+    assert.equal(report.ok, false, scenario.name);
+    const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+    assert.equal(check?.status, "fail", scenario.name);
+    assert.equal(staticAssetReleaseDetail(check).reportCountsOk, false, scenario.name);
+  }
+});
+
+test("steady-state deploy preflight rejects missing, extra, duplicate, and incomplete legacy paths", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const pristine = readStaticMarketingAssetFixtureReport(repoDir);
+  const firstPath = expectedLegacyTranslationPaths[0];
+  assert.ok(firstPath);
+  const scenarios = [
+    {
+      name: "missing",
+      expectedDetail: "missingLegacyPathCount",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.generatedPaths = report.generatedPaths.filter((entry) => entry !== firstPath);
+      },
+    },
+    {
+      name: "extra",
+      expectedDetail: "extraLegacyPathCount",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.generatedPaths.push(
+          "i18n/legacy-api/site/hi/route~about.complete.json",
+        );
+      },
+    },
+    {
+      name: "duplicate",
+      expectedDetail: "duplicateLegacyPathCount",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.generatedPaths.push(firstPath);
+      },
+    },
+    {
+      name: "incomplete",
+      expectedDetail: "incompleteLegacyPathCount",
+      mutate(report: StaticMarketingAssetFixtureReport) {
+        report.generatedPaths = report.generatedPaths.map((entry) =>
+          entry === firstPath ? entry.replace(".complete.json", ".incomplete.json") : entry,
+        );
+      },
+    },
+  ] satisfies ReadonlyArray<{
+    name: string;
+    expectedDetail: StaticAssetReleaseCountDetailKey;
+    mutate: (report: StaticMarketingAssetFixtureReport) => void;
+  }>;
+
+  for (const scenario of scenarios) {
+    const candidate = structuredClone(pristine);
+    scenario.mutate(candidate);
+    writeStaticMarketingAssetFixtureReport(repoDir, candidate);
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: PREFLIGHT_NOW_MS,
+    });
+
+    assert.equal(report.ok, false, scenario.name);
+    const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+    assert.equal(check?.status, "fail", scenario.name);
+    assert.ok(Number(staticAssetReleaseDetail(check)[scenario.expectedDetail]) > 0, scenario.name);
+  }
+});
+
+test("steady-state deploy preflight rejects a report above the internal 5,000-file ceiling", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const reportFixture = readStaticMarketingAssetFixtureReport(repoDir);
+  reportFixture.assetFiles = STATIC_ASSET_RELEASE_FILE_LIMIT + 1;
+  writeStaticMarketingAssetFixtureReport(repoDir, reportFixture);
+
+  const overLimitReport = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+  assert.equal(overLimitReport.ok, false);
+  const check = overLimitReport.checks.find(
+    (entry) => entry.name === STATIC_ASSET_RELEASE_CHECK,
+  );
+  assert.equal(check?.status, "fail");
+  assert.equal(staticAssetReleaseDetail(check).assetFileCountOk, false);
+});
+
+test("steady-state deploy preflight fails closed without a materialization report", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.rmSync(staticMarketingAssetFixtureReportPath(repoDir));
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(JSON.stringify(check?.detail), /static-marketing-assets-report\.json/);
+});
+
+test("steady-state deploy preflight rejects a report without its Static Asset tree", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.rmSync(staticMarketingAssetFixtureRoot(repoDir), { recursive: true, force: true });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(staticAssetReleaseError(check), /release tree is missing or unreadable/);
+});
+
+test("steady-state deploy preflight rejects an underreported real asset count", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const reportFixture = readStaticMarketingAssetFixtureReport(repoDir);
+  reportFixture.assetFiles -= 1;
+  writeStaticMarketingAssetFixtureReport(repoDir, reportFixture);
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(staticAssetReleaseError(check), /declares 280 asset files.*contains 281/);
+});
+
+test("steady-state deploy preflight rejects a materialized legacy path tamper", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const firstPath = expectedLegacyTranslationPaths[0];
+  assert.ok(firstPath);
+  const sourcePath = path.join(staticMarketingAssetFixtureRoot(repoDir), firstPath);
+  const tamperedPath = path.join(
+    staticMarketingAssetFixtureRoot(repoDir),
+    "i18n/legacy-api/main-app/unexpected.complete.json",
+  );
+  fs.renameSync(sourcePath, tamperedPath);
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(staticAssetReleaseError(check), /materialized legacy translation paths.*missing=1, extra=1/);
+});
+
+test("steady-state deploy preflight rejects Static Asset content tampering", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.writeFileSync(
+    path.join(staticMarketingAssetFixtureRoot(repoDir), "_next/static/release-fixture.js"),
+    "tampered non-generated chunk\n",
+  );
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(staticAssetReleaseError(check), /release tree manifest does not match/);
+});
+
+test("steady-state deploy preflight rejects a stale Static Asset report", () => {
+  const { backupDir, repoDir } = makeFixture();
+  const reportFixture = readStaticMarketingAssetFixtureReport(repoDir);
+  reportFixture.createdAt = "2026-06-26T10:59:59.000Z";
+  writeStaticMarketingAssetFixtureReport(repoDir, reportFixture);
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: PREFLIGHT_NOW_MS,
+  });
+
+  assert.equal(report.ok, false);
+  const check = report.checks.find((entry) => entry.name === STATIC_ASSET_RELEASE_CHECK);
+  assert.equal(check?.status, "fail");
+  assert.match(staticAssetReleaseError(check), /report is stale or from the future/);
 });
 
 test("steady-state deploy preflight rejects dirty and unpushed release identities", () => {
@@ -1151,6 +1456,7 @@ function makeFixture() {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-backup-"));
   fs.mkdirSync(path.join(backupDir, "cloudflare"), { recursive: true });
   runGit(repoDir, ["init"]);
+  fs.writeFileSync(path.join(repoDir, ".gitignore"), ".open-next/\n");
   fs.writeFileSync(path.join(repoDir, "app.ts"), "export const ok = true;\n");
   fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(wranglerConfig(), null, 2)}\n`);
   fs.writeFileSync(path.join(repoDir, "cloudflare-worker.ts"), leanWorkerSource());
@@ -1163,6 +1469,7 @@ function makeFixture() {
   fs.writeFileSync(path.join(repoDir, "public/_redirects"), "/tnc /terms 308\n");
 
   configurePushedFixtureRepository(repoDir);
+  createStaticMarketingAssetFixture(repoDir);
 
   const fingerprint = buildRepoSourceFingerprint(repoDir);
   writeLocalEvidence(backupDir, repoDir, fingerprint);
@@ -1284,7 +1591,7 @@ function historicalContinuityPredecessorFixture(
     schemaVersion: 1,
     limits: {
       coreRows: successor.limits.coreRows,
-      billedReads: successor.limits.billedReads,
+      billedReads: HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
       sentinelsPerDataset: successor.limits.sentinelsPerDataset,
     },
   };
@@ -1297,6 +1604,8 @@ function historicalContinuityPredecessorFixture(
   predecessor.sourceFingerprint.fileCount =
     HISTORICAL_DATA_CONTINUITY_POLICY.predecessor.sourceFileCount;
   predecessor.ledger.reservation.operationId = predecessor.operationId;
+  predecessor.ledger.reservation.maximumRowsRead =
+    HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT;
   return predecessor;
 }
 
@@ -1619,7 +1928,7 @@ function historicalWranglerResult(
   return JSON.stringify(sets.map((set) => ({
     success: true,
     results: set.rows,
-    meta: { rows_read: set.rowsRead, rows_written: 0 },
+    meta: { rows_read: set.rowsRead, rows_written: 0, total_attempts: 1 },
   })));
 }
 
@@ -1706,6 +2015,139 @@ function mutateLocalGatesReport(
   };
   mutate(report);
   fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+}
+
+function staticMarketingAssetFixtureReportPath(repoDir: string) {
+  return path.join(repoDir, ".open-next/static-marketing-assets-report.json");
+}
+
+function staticMarketingAssetFixtureRoot(repoDir: string) {
+  return path.join(repoDir, ".open-next/assets");
+}
+
+function createStaticMarketingAssetFixture(repoDir: string) {
+  const assetsRoot = staticMarketingAssetFixtureRoot(repoDir);
+  fs.mkdirSync(path.join(repoDir, ".open-next/cache/build-test"), { recursive: true });
+  for (const relativePath of expectedLegacyTranslationPaths) {
+    const filePath = path.join(assetsRoot, relativePath);
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.writeFileSync(filePath, `fixture:${relativePath}\n`);
+  }
+  const staticChunkPath = path.join(assetsRoot, "_next/static/release-fixture.js");
+  fs.mkdirSync(path.dirname(staticChunkPath), { recursive: true });
+  fs.writeFileSync(staticChunkPath, "untouched non-generated chunk\n");
+  const assetManifest = buildWorkerDeployArtifactManifest(assetsRoot);
+  writeStaticMarketingAssetFixtureReport(repoDir, {
+    createdAt: HISTORICAL_FIXTURE_CREATED_AT.toISOString(),
+    buildId: "build-test",
+    assetFiles: assetManifest.fileCount,
+    assetManifestBytes: assetManifest.bytes,
+    assetManifestSha256: assetManifest.sha256,
+    legacyTranslationApiAssets: 280,
+    legacyMainAppTranslationResponses: 70,
+    legacySiteTranslationResponses: 210,
+    legacyCompleteTranslationResponses: 280,
+    legacyIncompleteTranslationResponses: 0,
+    outputSha256: hashStaticFixtureGeneratedOutput(assetsRoot),
+    generatedPaths: [...expectedLegacyTranslationPaths],
+  });
+}
+
+function hashStaticFixtureGeneratedOutput(assetsRoot: string) {
+  const hash = createHash("sha256");
+  for (const relativePath of expectedLegacyTranslationPaths) {
+    hash.update(relativePath);
+    hash.update("\0");
+    hash.update(fs.readFileSync(path.join(assetsRoot, relativePath)));
+    hash.update("\0");
+  }
+  return hash.digest("hex");
+}
+
+function writeStaticMarketingAssetFixtureReport(
+  repoDir: string,
+  report: StaticMarketingAssetFixtureReport,
+) {
+  const reportPath = staticMarketingAssetFixtureReportPath(repoDir);
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+}
+
+function readStaticMarketingAssetFixtureReport(
+  repoDir: string,
+): StaticMarketingAssetFixtureReport {
+  const parsed: unknown = JSON.parse(
+    fs.readFileSync(staticMarketingAssetFixtureReportPath(repoDir), "utf8"),
+  );
+  const report = requireJsonObject(parsed, "static marketing asset fixture report");
+  const generatedPaths = report.generatedPaths;
+  if (
+    !Array.isArray(generatedPaths) ||
+    !generatedPaths.every((entry): entry is string => typeof entry === "string")
+  ) {
+    throw new TypeError("Static marketing asset fixture paths must be strings.");
+  }
+  return {
+    createdAt: requireFixtureString(report.createdAt, "createdAt"),
+    buildId: requireFixtureString(report.buildId, "buildId"),
+    assetFiles: requireFixtureNumber(report.assetFiles, "assetFiles"),
+    assetManifestBytes: requireFixtureNumber(
+      report.assetManifestBytes,
+      "assetManifestBytes",
+    ),
+    assetManifestSha256: requireFixtureString(
+      report.assetManifestSha256,
+      "assetManifestSha256",
+    ),
+    legacyTranslationApiAssets: requireFixtureNumber(
+      report.legacyTranslationApiAssets,
+      "legacyTranslationApiAssets",
+    ),
+    legacyMainAppTranslationResponses: requireFixtureNumber(
+      report.legacyMainAppTranslationResponses,
+      "legacyMainAppTranslationResponses",
+    ),
+    legacySiteTranslationResponses: requireFixtureNumber(
+      report.legacySiteTranslationResponses,
+      "legacySiteTranslationResponses",
+    ),
+    legacyCompleteTranslationResponses: requireFixtureNumber(
+      report.legacyCompleteTranslationResponses,
+      "legacyCompleteTranslationResponses",
+    ),
+    legacyIncompleteTranslationResponses: requireFixtureNumber(
+      report.legacyIncompleteTranslationResponses,
+      "legacyIncompleteTranslationResponses",
+    ),
+    outputSha256: requireFixtureString(report.outputSha256, "outputSha256"),
+    generatedPaths: [...generatedPaths],
+  };
+}
+
+function requireFixtureNumber(value: unknown, label: string) {
+  if (typeof value !== "number") {
+    throw new TypeError(`Static marketing asset fixture ${label} must be a number.`);
+  }
+  return value;
+}
+
+function requireFixtureString(value: unknown, label: string) {
+  if (typeof value !== "string") {
+    throw new TypeError(`Static marketing asset fixture ${label} must be a string.`);
+  }
+  return value;
+}
+
+function staticAssetReleaseDetail(check: { detail?: unknown } | undefined) {
+  return requireJsonObject(check?.detail, "static asset release check detail");
+}
+
+function staticAssetReleaseError(check: { detail?: unknown } | undefined) {
+  const error = staticAssetReleaseDetail(check).releaseValidationError;
+  if (typeof error !== "string") {
+    throw new TypeError("Static Asset release failure did not contain a validation error.");
+  }
+  return error;
 }
 
 function localGateDetail(check: { detail?: unknown } | undefined) {

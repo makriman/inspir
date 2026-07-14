@@ -10,6 +10,7 @@ import {
   writePrivateJsonDurably,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
 import { HISTORICAL_DATA_CONTINUITY_POLICY } from "../scripts/cloudflare/historical-data-continuity-policy";
+import { classifyHistoricalSuccessorCaptureState } from "../scripts/cloudflare/historical-data-successor-capture-state";
 import {
   D1_DATABASE_NAME,
   stableStringify,
@@ -20,8 +21,12 @@ import {
   type SourceFingerprint,
 } from "../scripts/cloudflare/source-fingerprint";
 import {
+  HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
   HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+  HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
   HISTORICAL_DATA_PRESERVATION_KIND,
+  HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
   historicalDataBudgetOperationId,
   historicalDataHmacKeyId,
   historicalDataReportPath,
@@ -33,9 +38,10 @@ const predecessorCreatedAt = "2026-07-13T01:10:08.863Z";
 const predecessorArchiveAt = new Date("2026-07-13T01:11:08.863Z");
 const successorCreatedAt = "2026-07-14T00:10:08.863Z";
 const successorVerifyAt = new Date("2026-07-14T00:11:08.863Z");
+const successorReplayAfterWindow = new Date("2026-07-14T01:11:08.863Z");
 const hmacSecret = "historical-continuity-lifecycle-secret-32-bytes";
 const rowsRead = 20;
-const maximumRowsRead = 750_000;
+const maximumRowsRead = HISTORICAL_BILLED_READ_LIMIT;
 const emptyUsage = {
   databaseCount: 1,
   queryGroups: 0,
@@ -133,6 +139,8 @@ test("archive and rollover bind copied predecessor bytes and one successor byte 
       sourceFingerprint: successorSource,
       createdAt: new Date("2026-07-14T00:09:08.863Z"),
       updatedAt: new Date("2026-07-14T00:09:09.863Z"),
+      maximumReservationRowsRead:
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
     });
     const successor = currentBaseline({
       backupDir,
@@ -140,7 +148,237 @@ test("archive and rollover bind copied predecessor bytes and one successor byte 
       sourceFingerprint: successorSource,
       ledger: successorLedger,
     });
-    writePrivateJsonDurably(baselinePath, successor, { replace: true });
+    let keyLoads = 0;
+    let baselineCreations = 0;
+    let releaseKeyLoad: ((value: { hmacKeyId: string; secret: string }) => void) | undefined;
+    const keyLoad = new Promise<{ hmacKeyId: string; secret: string }>((resolve) => {
+      releaseKeyLoad = resolve;
+    });
+    const captureOptions = {
+      backupDir,
+      cwd: repoDir,
+      dependencies: {
+        clock: () => successorVerifyAt,
+        hmacKeyLoader: async () => {
+          keyLoads += 1;
+          return await keyLoad;
+        },
+        baselineCreator: (options) => {
+          baselineCreations += 1;
+          options.beforeSnapshot?.({
+            phase: "baseline",
+            backupDir,
+            startedAt: new Date("2026-07-14T00:09:08.863Z"),
+            utcDay: "2026-07-14",
+            operationId: successorOperationId,
+            sourceFingerprint: compactSource(successorSource),
+            maximumRowsRead,
+            maximumAutomaticReadAttempts:
+              HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+            maximumBillableRowsRead:
+              HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+          });
+          return structuredClone(successor);
+        },
+      },
+    } satisfies Parameters<typeof continuity.captureHistoricalDataContinuitySuccessor>[0];
+    let signalKeyLoaderEntered: (() => void) | undefined;
+    let rejectKeyLoad: ((reason: Error) => void) | undefined;
+    const keyLoaderEntered = new Promise<void>((resolve) => {
+      signalKeyLoaderEntered = resolve;
+    });
+    const deniedKeyLoad = new Promise<never>((_resolve, reject) => {
+      rejectKeyLoad = reject;
+    });
+    const deniedCapture = continuity.captureHistoricalDataContinuitySuccessor({
+        backupDir,
+        cwd: repoDir,
+        dependencies: {
+          clock: () => successorVerifyAt,
+          hmacKeyLoader: async () => {
+            signalKeyLoaderEntered?.();
+            return await deniedKeyLoad;
+          },
+          baselineCreator: () => {
+            throw new Error("D1 baseline creation must not start without the key");
+          },
+        },
+      });
+    await keyLoaderEntered;
+    const pendingState = classifyHistoricalSuccessorCaptureState({
+      stateDirectory: manifest.archiveDir,
+    });
+    assert.equal(pendingState.status, "claimed-pre-scan");
+    if (pendingState.status !== "claimed-pre-scan") {
+      throw new Error("Expected an exact retained pre-scan claim.");
+    }
+    const retainedRunId = pendingState.claim.value.runId;
+    await assert.rejects(
+      continuity.captureHistoricalDataContinuitySuccessor({
+        backupDir,
+        cwd: repoDir,
+        resumePreScanRunId: retainedRunId,
+        dependencies: {
+          clock: () => successorVerifyAt,
+          hmacKeyLoader: async () => {
+            throw new Error("Concurrent resume must not load the Keychain.");
+          },
+          baselineCreator: () => {
+            throw new Error("Concurrent resume must not scan D1.");
+          },
+        },
+      }),
+      /already active in this process/,
+    );
+    assert.ok(rejectKeyLoad);
+    rejectKeyLoad(new Error("simulated Keychain denial before D1 scan"));
+    await assert.rejects(
+      deniedCapture,
+      /simulated Keychain denial before D1 scan/,
+    );
+    let invalidRetryAccountingCallbacks = 0;
+    let invalidRetryAccountingRunnerCalls = 0;
+    for (const retryAccounting of [
+      {
+        maximumAutomaticReadAttempts:
+          HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS - 1,
+        maximumBillableRowsRead:
+          HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+      },
+      {
+        maximumAutomaticReadAttempts:
+          HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+        maximumBillableRowsRead: HISTORICAL_BILLED_READ_LIMIT,
+      },
+    ]) {
+      await assert.rejects(
+        continuity.captureHistoricalDataContinuitySuccessor({
+          backupDir,
+          cwd: repoDir,
+          resumePreScanRunId: retainedRunId,
+          dependencies: {
+            clock: () => successorVerifyAt,
+            hmacKeyLoader: async () => ({
+              hmacKeyId: historicalDataHmacKeyId(hmacSecret),
+              secret: hmacSecret,
+            }),
+            baselineCreator: (options) => {
+              invalidRetryAccountingCallbacks += 1;
+              const validContext = {
+                phase: "baseline",
+                backupDir,
+                startedAt: new Date("2026-07-14T00:09:08.863Z"),
+                utcDay: "2026-07-14",
+                operationId: successorOperationId,
+                sourceFingerprint: compactSource(successorSource),
+                maximumRowsRead,
+                maximumAutomaticReadAttempts:
+                  HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+                maximumBillableRowsRead:
+                  HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+              } as const;
+              const invalidContext = new Proxy(validContext, {
+                get: (target, property, receiver) => {
+                  if (property === "maximumAutomaticReadAttempts") {
+                    return retryAccounting.maximumAutomaticReadAttempts;
+                  }
+                  if (property === "maximumBillableRowsRead") {
+                    return retryAccounting.maximumBillableRowsRead;
+                  }
+                  return Reflect.get(target, property, receiver);
+                },
+              });
+              options.beforeSnapshot?.(invalidContext);
+              invalidRetryAccountingRunnerCalls += 1;
+              throw new Error(
+                "Invalid retry accounting reached the D1 snapshot runner.",
+              );
+            },
+          },
+        }),
+        /scan authorization does not match its exact claim/,
+      );
+      assert.equal(
+        classifyHistoricalSuccessorCaptureState({
+          stateDirectory: manifest.archiveDir,
+        }).status,
+        "claimed-pre-scan",
+      );
+    }
+    assert.equal(invalidRetryAccountingCallbacks, 2);
+    assert.equal(invalidRetryAccountingRunnerCalls, 0);
+    const resumedCaptureOptions = {
+      ...captureOptions,
+      resumePreScanRunId: retainedRunId,
+    } satisfies Parameters<typeof continuity.captureHistoricalDataContinuitySuccessor>[0];
+    const firstCapture = continuity.captureHistoricalDataContinuitySuccessor(
+      resumedCaptureOptions,
+    );
+    await assert.rejects(
+      continuity.captureHistoricalDataContinuitySuccessor({
+        ...resumedCaptureOptions,
+        dependencies: {
+          ...captureOptions.dependencies,
+          hmacKeyLoader: async () => {
+            throw new Error("Concurrent loser must not load the Keychain or scan D1.");
+          },
+        },
+      }),
+      /already active in this process/,
+    );
+    assert.ok(releaseKeyLoad);
+    releaseKeyLoad({
+      hmacKeyId: historicalDataHmacKeyId(hmacSecret),
+      secret: hmacSecret,
+    });
+    const captured = await firstCapture;
+    assert.equal(captured.replayed, false);
+    assert.deepEqual(captured.report, successor);
+    assert.equal(keyLoads, 1);
+    assert.equal(baselineCreations, 1);
+
+    let driftReplayClockCalls = 0;
+    await assert.rejects(
+      continuity.captureHistoricalDataContinuitySuccessor({
+        backupDir,
+        cwd: repoDir,
+        dependencies: {
+          clock: () => {
+            driftReplayClockCalls += 1;
+            if (driftReplayClockCalls === 2) {
+              fs.writeFileSync(path.join(repoDir, "source.txt"), "drifted during replay\n");
+            }
+            return successorReplayAfterWindow;
+          },
+          hmacKeyLoader: async () => {
+            throw new Error("Completed replay must not load the Keychain.");
+          },
+          baselineCreator: () => {
+            throw new Error("Completed replay must not scan D1.");
+          },
+        },
+      }),
+      /clean Git working tree/,
+    );
+    fs.writeFileSync(path.join(repoDir, "source.txt"), "successor\n");
+
+    const replayed = await continuity.captureHistoricalDataContinuitySuccessor({
+      backupDir,
+      cwd: repoDir,
+      dependencies: {
+        clock: () => successorReplayAfterWindow,
+        hmacKeyLoader: async () => {
+          throw new Error("Completed replay must not load the Keychain.");
+        },
+        baselineCreator: () => {
+          throw new Error("Completed replay must not scan D1.");
+        },
+      },
+    });
+    assert.equal(replayed.replayed, true);
+    assert.deepEqual(replayed.report, successor);
+    assert.equal(keyLoads, 1);
+    assert.equal(baselineCreations, 1);
     const successorBaselineBytes = fs.readFileSync(baselinePath);
     const successorBaselineStat = fs.statSync(baselinePath);
     const swappedBytes = Buffer.from('{"swappedAfterDescriptorRead":true}\n', "utf8");
@@ -206,14 +444,17 @@ function createExactBaselineReservation(options: {
   sourceFingerprint: SourceFingerprint;
   createdAt: Date;
   updatedAt: Date;
+  maximumReservationRowsRead?: number;
 }) {
+  const maximumReservationRowsRead =
+    options.maximumReservationRowsRead ?? maximumRowsRead;
   reserveD1ReleaseBudget({
     backupDir: options.backupDir,
     operationId: options.operationId,
     operation: "Historical production data baseline capture",
     sourceFingerprint: compactSource(options.sourceFingerprint),
     phase: "maximum",
-    rowsRead: maximumRowsRead,
+    rowsRead: maximumReservationRowsRead,
     rowsWritten: 0,
     observedUsage: emptyUsage,
     now: options.createdAt,
@@ -260,7 +501,12 @@ function currentBaseline(options: {
       coreRows: 350_000,
       supplementalRows: 125_000,
       operationalRows: 10_000,
-      billedReads: maximumRowsRead,
+      logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+      logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
+      maximumAutomaticReadAttempts:
+        HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+      billableRowsReadReservation:
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
       sentinelsPerDataset: 16,
     },
     datasets: coreDatasets,

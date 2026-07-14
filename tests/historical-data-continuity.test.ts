@@ -1,15 +1,25 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import test from "node:test";
 import {
   HISTORICAL_DATA_CONTINUITY_POLICY,
 } from "../scripts/cloudflare/historical-data-continuity-policy";
 import {
   evaluateHistoricalDataContinuity,
+  readRecoveredHistoricalHmacSecretFromFile,
 } from "../scripts/cloudflare/verify-historical-data-continuity";
 import {
+  HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+  HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
   HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+  HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
   HISTORICAL_DATA_PRESERVATION_KIND,
+  HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
   HISTORICAL_DATASET_NAMES,
   historicalDataBudgetOperationId,
   historicalDataHmacKeyId,
@@ -21,6 +31,33 @@ import type { SourceFingerprint } from "../scripts/cloudflare/source-fingerprint
 const retainedSecret = "historical-continuity-retained-secret-32-bytes";
 const predecessorTime = "2026-07-13T01:10:08.863Z";
 const successorTime = "2026-07-14T00:10:08.863Z";
+
+test("recovered HMAC input rejects extended ACLs despite mode 0600", {
+  skip: process.platform !== "darwin",
+}, () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-recovered-hmac-acl-"));
+  const file = path.join(root, "recovered-key");
+  const secret = "ab".repeat(32);
+  fs.writeFileSync(file, `${secret}\n`, { mode: 0o600 });
+  fs.chmodSync(file, 0o600);
+  try {
+    assert.equal(readRecoveredHistoricalHmacSecretFromFile(file), secret);
+    const acl = spawnSync(
+      "/bin/chmod",
+      ["+a", "everyone allow read", file],
+      { encoding: "utf8", timeout: 5_000 },
+    );
+    assert.equal(acl.status, 0);
+    assert.equal(fs.statSync(file).mode & 0o777, 0o600);
+    assert.throws(
+      () => readRecoveredHistoricalHmacSecretFromFile(file),
+      /without ACLs/,
+    );
+  } finally {
+    spawnSync("/bin/chmod", ["-N", file], { timeout: 5_000 });
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test("rollover continuity preserves counts, columns, and HMAC sentinels across source changes", () => {
   const predecessor = legacyBaseline("predecessor", predecessorTime, "2026-07-13", retainedSecret);
@@ -208,7 +245,7 @@ function baseline(
         phase: "exact",
         rowsRead: 20,
         rowsWritten: 0,
-        maximumRowsRead: 750_000,
+        maximumRowsRead: HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
         maximumRowsWritten: 0,
         createdAt,
         updatedAt: createdAt,
@@ -220,7 +257,12 @@ function baseline(
       coreRows: 350_000,
       supplementalRows: 125_000,
       operationalRows: 10_000,
-      billedReads: 750_000,
+      logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+      logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
+      maximumAutomaticReadAttempts:
+        HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+      billableRowsReadReservation:
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
       sentinelsPerDataset: 16,
     },
     datasets: datasets(),
@@ -258,6 +300,7 @@ function legacyBaseline(
       reservation: {
         ...core.ledger.reservation,
         operationId,
+        maximumRowsRead: HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
       },
     },
     limits: {

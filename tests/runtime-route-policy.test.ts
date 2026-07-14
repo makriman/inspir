@@ -24,6 +24,18 @@ test("marketing rendering is documented as coverage-scoped and deploy-time immut
   assert.doesNotMatch(docs, /future static-marketing project/);
 });
 
+test("legacy translation routing documents the complete release matrix and fail-closed errors", () => {
+  const docs = read("docs/runtime-routes.md");
+
+  assert.match(docs, /70 \+ \(70 × 3\) = 280 complete release assets/);
+  assert.match(docs, /performs one Static Assets lookup for a published pair/);
+  assert.match(docs, /known namespace outside that language's published matrix returns a private\/no-store `404`/);
+  assert.match(docs, /unknown namespace returns a private\/no-store `400`/);
+  assert.match(docs, /missing advertised asset is logged and fails closed with a private\/no-store `503`/);
+  assert.match(docs, /Incomplete responses are never materialized or served/);
+  assert.match(docs, /content-addressed `\/i18n\/main-app\/\*` bundles/);
+});
+
 test("static SEO and AI discovery routes stay explicitly static or cached", () => {
   const staticRoutes = [
     "app/sitemap/route.ts",

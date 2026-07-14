@@ -211,6 +211,25 @@ test("production verification covers the resource-outage contracts", () => {
   assert.doesNotMatch(source, /removed auth session API|removed account API|removed memory API/);
   assert.doesNotMatch(source, /checkCacheRevalidation|findStableCachePair|\/api\/cache-health/);
   assert.match(source, /checkLegacyTranslationApis/);
+  assert.match(source, /\/api\/main-app-translations\?language=English/);
+  assert.match(source, /\/api\/main-app-translations\?language=Hindi/);
+  assert.match(
+    source,
+    /\/api\/site-translations\?language=English&namespace=route%3Ahome/,
+  );
+  assert.match(
+    source,
+    /\/api\/site-translations\?language=Hindi&namespace=route%3Amission/,
+  );
+  assert.match(
+    source,
+    /\/api\/site-translations\?language=Hindi&namespace=route%3Aabout/,
+  );
+  assert.match(source, /legacy known unpublished site pair/);
+  assert.match(source, /Translation bundle is not published/);
+  assert.match(source, /\/api\/site-translations\?language=English&namespace=unknown/);
+  assert.match(source, /Unsupported namespace/);
+  assert.match(source, /checkLegacyTranslationError/);
   assert.match(source, /checkLocaleResourceSoak/);
   assert.match(source, /checkStaticAssetDelivery/);
   assert.match(source, /checkStaticNotFound/);
@@ -539,6 +558,29 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(workerRoutes, /nativeGet/);
   assert.match(workerRoutes, /nativePost/);
   assert.match(workerRoutes, /legacyTranslationGet/);
+  assert.match(
+    workerRoutes,
+    /main-app-translations\?language=Hindi&resource_soak=.*main-app-translations-hi-0/,
+  );
+  assert.match(
+    workerRoutes,
+    /site-translations\?language=English&namespace=route%3Ahome&resource_soak=/,
+  );
+  assert.match(
+    workerRoutes,
+    /site-translations\?language=Hindi&namespace=route%3Amission&resource_soak=/,
+  );
+  assert.match(
+    workerRoutes,
+    /site-translations\?language=Hindi&namespace=route%3Aabout&resource_soak=/,
+  );
+  assert.match(
+    workerRoutes,
+    /site-translations\?language=English&namespace=unknown&resource_soak=/,
+  );
+  assert.match(workerRoutes, /legacyTranslationErrorGet/);
+  assert.match(outcomes, /function legacyTranslationErrorGet/);
+  assert.match(outcomes, /expectedBody: JSON\.stringify\(\{ error \}\)/);
   assert.match(workerRoutes, /expectedBody: "null"/);
   assert.match(workerRoutes, /204/);
   assert.match(workerRoutes, /403/);
@@ -591,6 +633,14 @@ test("production Playwright proves authenticated data access without mutating le
   assert.match(e2e, /production validation never changes disabled history consent/i);
   assert.doesNotMatch(e2e, /chatHistoryEnabled: false/);
   assert.match(e2e, /Production queue consumer has a 10-second maximum batch timeout/i);
+  assert.match(e2e, /buildStaticMainAppBundleAsset/);
+  assert.match(e2e, /\/api\/main-app-translations\?language=\$\{language\}/);
+  assert.match(e2e, /\{ language: "Hindi", namespace: "route:mission" \}/);
+  assert.match(e2e, /language=Hindi&namespace=route%3Aabout/);
+  assert.match(e2e, /Translation bundle is not published/);
+  assert.match(e2e, /language=English&namespace=unknown/);
+  assert.match(e2e, /hindiMainAppAsset\.publicPath/);
+  assert.match(e2e, /expectStaticAssetDelivery\([\s\S]{0,160}"immutable"/);
   assert.match(e2e, /authAttempted = true;[\s\S]{0,120}authenticateMigrationE2E\(request\)/);
   assert.match(e2e, /if \(authAttempted\) \{[\s\S]*x-inspir-session-cleanup[\s\S]*disableRefresh=true/);
   assert.match(e2e, /test\.beforeEach[\s\S]*\/api\/analytics\/events/);

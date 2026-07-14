@@ -449,32 +449,56 @@ async function checkLegacyTranslationApis() {
 
   for (const probe of [
     {
-      name: "legacy main-app translations",
+      name: "legacy English main-app translations",
       route: "/api/main-app-translations?language=English",
+      language: "English",
       namespace: "main-app",
     },
     {
-      name: "legacy site translations",
+      name: "legacy Hindi main-app translations",
+      route: "/api/main-app-translations?language=Hindi",
+      language: "Hindi",
+      namespace: "main-app",
+    },
+    {
+      name: "legacy English site home translations",
       route: "/api/site-translations?language=English&namespace=route%3Ahome",
+      language: "English",
       namespace: "route:home",
     },
-  ]) {
+    {
+      name: "legacy Hindi site mission translations",
+      route: "/api/site-translations?language=Hindi&namespace=route%3Amission",
+      language: "Hindi",
+      namespace: "route:mission",
+    },
+  ] as const) {
     const result = await request(probe.route);
     checkExpectedStatus(probe.name, result, 200);
     checkWorkerDelivery(probe.name, result);
     checkCacheControl(probe.name, result, [/\bpublic\b/i, /\bmax-age=300\b/i, /\bs-maxage=3600\b/i]);
     const payload = parseJsonObject(result.body);
     const bundle = objectValue(payload?.bundle);
+    const translatedCount = payload?.translatedCount;
+    const totalCount = payload?.totalCount;
+    const containsExpectedScript =
+      probe.language !== "Hindi" ||
+      Object.values(objectValue(bundle.strings)).some(
+        (value) => typeof value === "string" && /[\u0900-\u097f]/u.test(value),
+      );
     if (
       payload?.complete === true &&
-      typeof payload.translatedCount === "number" &&
-      payload.translatedCount === payload.totalCount &&
-      bundle.language === "English" &&
-      bundle.namespace === probe.namespace
+      typeof translatedCount === "number" &&
+      translatedCount > 0 &&
+      translatedCount === totalCount &&
+      bundle.language === probe.language &&
+      bundle.namespace === probe.namespace &&
+      containsExpectedScript
     ) {
       pass(`${probe.name} result envelope`, {
+        language: bundle.language,
         namespace: bundle.namespace,
-        translatedCount: payload.translatedCount,
+        translatedCount,
       });
     } else {
       fail(`${probe.name} result envelope`, {
@@ -485,16 +509,49 @@ async function checkLegacyTranslationApis() {
               totalCount: payload.totalCount,
               language: bundle.language,
               namespace: bundle.namespace,
+              containsExpectedScript,
             }
           : null,
       });
     }
   }
 
-  const invalid = await request("/api/site-translations?language=English&namespace=unknown");
-  checkExpectedStatus("legacy site translations reject unknown namespace", invalid, 400);
-  checkWorkerDelivery("legacy site translations reject unknown namespace", invalid);
-  checkPrivateNoStore("legacy site translations reject unknown namespace", invalid);
+  const unpublished = await request(
+    "/api/site-translations?language=Hindi&namespace=route%3Aabout",
+  );
+  checkLegacyTranslationError(
+    "legacy known unpublished site pair",
+    unpublished,
+    404,
+    "Translation bundle is not published",
+  );
+
+  const unknown = await request(
+    "/api/site-translations?language=English&namespace=unknown",
+  );
+  checkLegacyTranslationError(
+    "legacy site translations reject unknown namespace",
+    unknown,
+    400,
+    "Unsupported namespace",
+  );
+}
+
+function checkLegacyTranslationError(
+  name: string,
+  result: FetchResult,
+  expectedStatus: 400 | 404,
+  expectedError: string,
+) {
+  checkExpectedStatus(name, result, expectedStatus);
+  checkWorkerDelivery(name, result);
+  checkPrivateNoStore(name, result);
+  const error = parseJsonObject(result.body)?.error;
+  if (error === expectedError) {
+    pass(`${name} error contract`, { error });
+  } else {
+    fail(`${name} error contract`, { expectedError, actual: error ?? null });
+  }
 }
 
 async function checkLocaleResourceSoak() {

@@ -7,7 +7,10 @@ import test from "node:test";
 import { Miniflare } from "miniflare";
 import {
   HISTORICAL_BILLED_READ_LIMIT,
+  HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+  HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
   HISTORICAL_DATA_LEGACY_PRESERVATION_KIND,
+  HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
   HISTORICAL_DATA_COUNT_RESULT_SET_COUNT,
   HISTORICAL_DATA_BASELINE_MAX_AGE_MS,
   HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
@@ -23,6 +26,7 @@ import {
   HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
   createHistoricalDataBaseline,
   historicalDataBudgetOperationId,
+  historicalDataReportPath,
   parseHistoricalDataBaselineReport,
   parseHistoricalDataLegacyBaselineReportForContinuity,
   readAndValidateHistoricalDataBaseline,
@@ -35,6 +39,7 @@ import {
   type HistoricalSupplementalDatasetName,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
 import {
+  d1ReleaseBudgetLedgerPath,
   readD1ReleaseBudgetLedger,
   reserveD1ReleaseBudget,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
@@ -56,6 +61,65 @@ const emptyUsage: D1DailyUsage = {
   windowMinutes: 721,
 };
 
+test("baseline beforeSnapshot hook fails before the D1 snapshot runner", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-history-before-snapshot-"),
+  );
+  try {
+    const source = makeSource("before snapshot source");
+    let runnerCalls = 0;
+    let hookCalls = 0;
+    const runner: WranglerRunner = () => {
+      runnerCalls += 1;
+      throw new Error("The D1 snapshot runner must not execute.");
+    };
+
+    assert.throws(
+      () => createHistoricalDataBaseline({
+        backupDir,
+        hmacSecret: secret,
+        sourceFingerprint: source,
+        runner,
+        usageLoader: () => emptyUsage,
+        clock: () => now,
+        beforeSnapshot: (context) => {
+          hookCalls += 1;
+          assert.equal(context.phase, "baseline");
+          assert.equal(context.backupDir, path.resolve(backupDir));
+          assert.equal(context.startedAt.toISOString(), now.toISOString());
+          assert.equal(context.utcDay, "2026-07-11");
+          assert.equal(
+            context.operationId,
+            historicalDataBudgetOperationId("baseline", {
+              sha256: source.sha256,
+              fileCount: source.fileCount,
+            }),
+          );
+          assert.deepEqual(context.sourceFingerprint, {
+            sha256: source.sha256,
+            fileCount: source.fileCount,
+          });
+          assert.equal(context.maximumRowsRead, HISTORICAL_BILLED_READ_LIMIT);
+          assert.equal(
+            context.maximumAutomaticReadAttempts,
+            HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+          );
+          assert.equal(
+            context.maximumBillableRowsRead,
+            HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+          );
+          throw new Error("Durable scan authorization failed.");
+        },
+      }),
+      /Durable scan authorization failed/,
+    );
+    assert.equal(hookCalls, 1);
+    assert.equal(runnerCalls, 0);
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
 test("private baseline and verifier preserve HMAC sentinels while allowing concurrent inserts", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-ok-"));
   try {
@@ -73,8 +137,24 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
 
     assert.equal(baseline.ok, true);
     assert.equal(baseline.rowsWritten, 0);
-    assert.equal(baseline.ledger.reservation.maximumRowsRead, HISTORICAL_BILLED_READ_LIMIT);
+    assert.equal(
+      baseline.ledger.reservation.maximumRowsRead,
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+    );
     assert.equal(baseline.ledger.reservation.phase, "exact");
+    assert.equal(baseline.ledger.reservation.rowsRead, 68);
+    assert.deepEqual(baseline.limits, {
+      coreRows: 350_000,
+      supplementalRows: 125_000,
+      operationalRows: 10_000,
+      logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+      logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
+      maximumAutomaticReadAttempts:
+        HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+      billableRowsReadReservation:
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+      sentinelsPerDataset: 16,
+    });
     assert.equal(baselineCalls.length, 1);
     assert.equal(baselineCalls[0]?.args.at(-1), HISTORICAL_DATA_SNAPSHOT_SQL);
     assert.deepEqual(baselineCalls[0]?.options, {
@@ -520,7 +600,7 @@ test("cumulative ledger overflow rejects baseline before its first D1 execute", 
   }
 });
 
-test("operation reservation is idempotent and UTC rollover fails closed", () => {
+test("operation reservation replay and UTC rollover fail closed", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-history-replay-"));
   try {
     const source = makeSource("replay source");
@@ -532,9 +612,16 @@ test("operation reservation is idempotent and UTC rollover fails closed", () => 
       clock: () => now,
     };
     const first = createHistoricalDataBaseline({ ...options, runner: fixtureRunner(databaseFixture()) });
-    const replay = createHistoricalDataBaseline({ ...options, runner: fixtureRunner(databaseFixture()) });
-    assert.equal(replay.operationId, first.operationId);
-    const ledger = readD1ReleaseBudgetLedger(replay.ledger.ledgerPath);
+    const replayCalls: WranglerCall[] = [];
+    assert.throws(
+      () => createHistoricalDataBaseline({
+        ...options,
+        runner: fixtureRunner(databaseFixture(), replayCalls),
+      }),
+      /refuses to replay an existing D1 reservation before another snapshot/,
+    );
+    assert.equal(replayCalls.length, 0, "reservation replay must fail before d1 execute");
+    const ledger = readD1ReleaseBudgetLedger(first.ledger.ledgerPath);
     assert.equal(
       ledger.reservations.filter((reservation) => reservation.operationId === first.operationId).length,
       1,
@@ -563,6 +650,62 @@ test("operation reservation is idempotent and UTC rollover fails closed", () => 
     );
   } finally {
     fs.rmSync(rolloverDir, { recursive: true, force: true });
+  }
+});
+
+test("ordinary replay of a retained maximum reservation fails before D1", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-history-maximum-replay-"),
+  );
+  try {
+    const source = makeSource("maximum replay source");
+    const options = {
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    };
+    const firstCalls: WranglerCall[] = [];
+    assert.throws(
+      () => createHistoricalDataBaseline({
+        ...options,
+        runner: fixtureRunner(databaseFixture(), firstCalls),
+        beforeSnapshot: () => {
+          throw new Error("Retain the maximum reservation before D1.");
+        },
+      }),
+      /Retain the maximum reservation before D1/,
+    );
+    assert.equal(firstCalls.length, 0, "the interrupted attempt must stop before d1 execute");
+
+    const operationId = historicalDataBudgetOperationId("baseline", {
+      sha256: source.sha256,
+      fileCount: source.fileCount,
+    });
+    const ledger = readD1ReleaseBudgetLedger(
+      d1ReleaseBudgetLedgerPath(backupDir, "2026-07-11"),
+    );
+    const retained = ledger.reservations.find(
+      (reservation) => reservation.operationId === operationId,
+    );
+    assert.equal(retained?.phase, "maximum");
+    assert.equal(
+      retained?.rowsRead,
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+    );
+
+    const replayCalls: WranglerCall[] = [];
+    assert.throws(
+      () => createHistoricalDataBaseline({
+        ...options,
+        runner: fixtureRunner(databaseFixture(), replayCalls),
+      }),
+      /refuses to replay an existing D1 reservation before another snapshot/,
+    );
+    assert.equal(replayCalls.length, 0, "reservation replay must fail before d1 execute");
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
   }
 });
 
@@ -678,6 +821,8 @@ test("preservation SQL is bounded and read-only", () => {
   assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 60);
   assert.equal(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ, 690_209);
   assert.ok(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ <= HISTORICAL_BILLED_READ_LIMIT);
+  assert.equal(HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS, 3);
+  assert.equal(HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT, 2_250_000);
   const statements = HISTORICAL_DATA_SNAPSHOT_SQL
     .split(";")
     .map((statement) => statement.trim())
@@ -785,6 +930,77 @@ test("snapshot result partitions and billing metadata fail closed", () => {
           clock: () => now,
         }),
         fixtureCase.pattern,
+      );
+    } finally {
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
+});
+
+test("missing, invalid, or retried D1 attempt metadata retains the maximum reservation", () => {
+  const cases = [
+    {
+      name: "missing",
+      totalAttempts: null,
+      pattern: /lacks valid automatic-attempt metadata/,
+    },
+    {
+      name: "invalid",
+      totalAttempts: 1.5,
+      pattern: /lacks valid automatic-attempt metadata/,
+    },
+    {
+      name: "retried",
+      totalAttempts: 2,
+      pattern: /used 2 automatic attempts/,
+    },
+  ] as const;
+
+  for (const fixtureCase of cases) {
+    const backupDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), `inspir-history-attempt-${fixtureCase.name}-`),
+    );
+    try {
+      const source = makeSource(`attempt metadata ${fixtureCase.name}`);
+      const operationId = historicalDataBudgetOperationId("baseline", {
+        sha256: source.sha256,
+        fileCount: source.fileCount,
+      });
+      assert.throws(
+        () => createHistoricalDataBaseline({
+          backupDir,
+          hmacSecret: secret,
+          sourceFingerprint: source,
+          runner: fixtureRunner(databaseFixture(), [], (sets) => {
+            const first = sets[0];
+            assert.ok(first);
+            first.totalAttempts = fixtureCase.totalAttempts;
+          }),
+          usageLoader: () => emptyUsage,
+          clock: () => now,
+        }),
+        fixtureCase.pattern,
+      );
+
+      const ledger = readD1ReleaseBudgetLedger(
+        d1ReleaseBudgetLedgerPath(backupDir, "2026-07-11"),
+      );
+      const reservation = ledger.reservations.find(
+        (entry) => entry.operationId === operationId,
+      );
+      assert.ok(reservation);
+      assert.equal(reservation.phase, "maximum");
+      assert.equal(
+        reservation.rowsRead,
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+      );
+      assert.equal(
+        reservation.maximumRowsRead,
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+      );
+      assert.equal(
+        fs.existsSync(historicalDataReportPath(backupDir, "baseline")),
+        false,
       );
     } finally {
       fs.rmSync(backupDir, { recursive: true, force: true });
@@ -1042,6 +1258,7 @@ type FixtureResultSet = {
   rows: Array<Record<string, unknown>>;
   rowsRead: number;
   rowsWritten?: number;
+  totalAttempts?: number | null;
 };
 
 function wranglerResult(
@@ -1050,7 +1267,13 @@ function wranglerResult(
   return JSON.stringify(sets.map((set) => ({
     success: true,
     results: set.rows,
-    meta: { rows_read: set.rowsRead, rows_written: set.rowsWritten ?? 0 },
+    meta: {
+      rows_read: set.rowsRead,
+      rows_written: set.rowsWritten ?? 0,
+      ...(set.totalAttempts === null
+        ? {}
+        : { total_attempts: set.totalAttempts ?? 1 }),
+    },
   })));
 }
 
@@ -1157,11 +1380,12 @@ function legacyBaselineFixture(
       reservation: {
         ...core.ledger.reservation,
         operationId,
+        maximumRowsRead: HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT,
       },
     },
     limits: {
       coreRows: baseline.limits.coreRows,
-      billedReads: baseline.limits.billedReads,
+      billedReads: baseline.limits.logicalRowsReadLimit,
       sentinelsPerDataset: baseline.limits.sentinelsPerDataset,
     },
   };

@@ -6,7 +6,12 @@ import path from "node:path";
 import test from "node:test";
 import { defaultLanguage, languageConfigs, supportedLanguages } from "../lib/content/languages";
 import { topicSeeds } from "../lib/content/topics";
-import { materializeStaticMarketingAssets } from "../scripts/cloudflare/materialize-static-marketing-assets";
+import {
+  STATIC_ASSET_RELEASE_FILE_LIMIT,
+  assertStaticAssetReleaseFileCount,
+  materializeStaticMarketingAssets,
+  validateStaticMarketingAssetRelease,
+} from "../scripts/cloudflare/materialize-static-marketing-assets";
 
 const fixtureIcon = Buffer.from("89504e470d0a1a0a0000000d49484452", "hex");
 
@@ -26,14 +31,16 @@ test("OpenNext prerenders become direct Free-plan static assets", () => {
     assert.equal(report.legacyTranslationApiAssets, 4);
     assert.equal(report.legacyMainAppTranslationResponses, 2);
     assert.equal(report.legacySiteTranslationResponses, 2);
+    assert.equal(report.legacyCompleteTranslationResponses, 4);
+    assert.equal(report.legacyIncompleteTranslationResponses, 0);
     assert.equal(
-      report.legacyCompleteTranslationResponses + report.legacyIncompleteTranslationResponses,
-      4,
+      report.generatedPaths.some((entry) => entry.includes(".incomplete.json")),
+      false,
     );
     assert.ok(report.legacyTranslationApiBytes > 0);
     assert.equal(report.routeDocuments, 9);
     assert.equal(report.skippedEntries, 5);
-    assert.ok(report.assetFiles < 20_000);
+    assert.ok(report.assetFiles <= STATIC_ASSET_RELEASE_FILE_LIMIT);
     assert.match(report.outputSha256, /^[a-f0-9]{64}$/);
     assert.equal(fs.readFileSync(path.join(cwd, ".open-next/assets/index.html"), "utf8"), "<h1>Home</h1>");
     assert.equal(fs.readFileSync(path.join(cwd, ".open-next/assets/about-0/index.html"), "utf8"), "<h1>0</h1>");
@@ -90,6 +97,57 @@ test("OpenNext prerenders become direct Free-plan static assets", () => {
     assert.equal(fs.existsSync(path.join(cwd, ".open-next/assets/hi/games/index.html")), false);
     assert.equal(fs.existsSync(path.join(cwd, ".open-next/assets/hi/admin/index.html")), false);
     assert.equal(fs.existsSync(path.join(cwd, ".open-next/assets/hi/chat/private/index.html")), false);
+  } finally {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("default release materialization seals the exact complete legacy contract", () => {
+  const cwd = makeFixture();
+  try {
+    const report = materializeStaticMarketingAssets(cwd);
+    const validation = validateStaticMarketingAssetRelease(cwd, {
+      nowMs: Date.parse(report.createdAt),
+    });
+
+    assert.equal(report.legacyTranslationApiAssets, 280);
+    assert.equal(report.legacyMainAppTranslationResponses, 70);
+    assert.equal(report.legacySiteTranslationResponses, 210);
+    assert.equal(report.legacyCompleteTranslationResponses, 280);
+    assert.equal(report.legacyIncompleteTranslationResponses, 0);
+    assert.equal(validation.assetFiles, report.assetFiles);
+    assert.equal(validation.legacyTranslationPaths, 280);
+    assert.equal(validation.assetManifest.bytes, report.assetManifestBytes);
+    assert.equal(validation.assetManifest.sha256, report.assetManifestSha256);
+    assert.equal(validation.outputSha256, report.outputSha256);
+  } finally {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("static materialization enforces the internal 5,000-file release limit", () => {
+  assert.equal(STATIC_ASSET_RELEASE_FILE_LIMIT, 5_000);
+  assert.doesNotThrow(() =>
+    assertStaticAssetReleaseFileCount(STATIC_ASSET_RELEASE_FILE_LIMIT),
+  );
+  assert.throws(
+    () => assertStaticAssetReleaseFileCount(STATIC_ASSET_RELEASE_FILE_LIMIT + 1),
+    /Static asset count 5001 exceeds the internal release limit 5000/,
+  );
+});
+
+test("static materialization refuses an actual release output above 5,000 files", () => {
+  const cwd = makeFixture();
+  try {
+    const retainedAssets = path.join(cwd, ".open-next/assets/release-cap-fixture");
+    fs.mkdirSync(retainedAssets, { recursive: true });
+    for (let index = 0; index < STATIC_ASSET_RELEASE_FILE_LIMIT; index += 1) {
+      fs.writeFileSync(path.join(retainedAssets, `${index}.txt`), "x");
+    }
+    assert.throws(
+      () => materializeFixture(cwd),
+      /Static asset count \d+ exceeds the internal release limit 5000/,
+    );
   } finally {
     fs.rmSync(cwd, { recursive: true, force: true });
   }
@@ -227,8 +285,11 @@ function makeFixture() {
 function materializeFixture(cwd: string) {
   return materializeStaticMarketingAssets(cwd, {
     legacyTranslationApi: {
-      languages: ["English", "Hindi"],
-      siteNamespaces: ["route:home"],
+      mainAppLanguages: ["English", "Hindi"],
+      sitePairs: [
+        { language: "English", namespace: "route:home" },
+        { language: "Hindi", namespace: "route:home" },
+      ],
     },
   });
 }

@@ -12,11 +12,20 @@ import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-cura
 import { getMainAppSourceHash } from "../../lib/i18n/main-app-source";
 import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
 import {
+  getPublishedLegacySiteTranslationPairs,
+  legacyTranslationAssetPath,
+} from "../../lib/i18n/legacy-api-compat";
+import {
   materializeLegacyTranslationApiAssets,
   type LegacyTranslationApiAssetOptions,
 } from "./materialize-legacy-translation-api-assets";
+import {
+  buildWorkerDeployArtifactManifest,
+  type WorkerDeployArtifactManifest,
+} from "./worker-deploy-evidence";
 
-const maxAssetFiles = 20_000;
+export const STATIC_ASSET_RELEASE_FILE_LIMIT = 5_000;
+export const STATIC_ASSET_RELEASE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
 const maxAssetBytes = 25 * 1024 * 1024;
 const maxStaticRedirectRules = 2_000;
 const maxDynamicRedirectRules = 100;
@@ -61,6 +70,25 @@ const binaryRouteContentTypes: ReadonlyMap<string, string> = new Map([
   ["icon.png", "image/png"],
 ]);
 const pngSignature = Buffer.from("89504e470d0a1a0a", "hex");
+const expectedLegacyTranslationReportCounts = {
+  total: 280,
+  mainApp: 70,
+  site: 210,
+  complete: 280,
+  incomplete: 0,
+} as const;
+const expectedLegacyMainAppTranslationPaths = supportedLanguages.map((language) =>
+  legacyTranslationAssetPath({ kind: "main-app", language }),
+);
+const expectedLegacySiteTranslationPaths = getPublishedLegacySiteTranslationPairs().map(
+  ({ language, namespace }) =>
+    legacyTranslationAssetPath({ kind: "site", language, namespace }),
+);
+const expectedLegacyTranslationPaths = [
+  ...expectedLegacyMainAppTranslationPaths,
+  ...expectedLegacySiteTranslationPaths,
+].sort();
+const expectedLegacyTranslationPathSet = new Set(expectedLegacyTranslationPaths);
 
 type AppCacheEntry = {
   type: "app";
@@ -93,6 +121,8 @@ export type StaticMarketingAssetReport = {
   routeDocuments: number;
   skippedEntries: number;
   assetFiles: number;
+  assetManifestBytes: number;
+  assetManifestSha256: string;
   largestAssetBytes: number;
   outputSha256: string;
   generatedPaths: string[];
@@ -102,9 +132,38 @@ export type StaticMarketingAssetOptions = {
   legacyTranslationApi?: LegacyTranslationApiAssetOptions;
 };
 
+export type StaticMarketingAssetReleaseValidation = {
+  createdAt: string;
+  buildId: string;
+  assetFiles: number;
+  generatedPaths: number;
+  legacyTranslationPaths: number;
+  mainAppTranslationPaths: number;
+  siteTranslationPaths: number;
+  incompleteTranslationPaths: number;
+  outputSha256: string;
+  assetManifest: WorkerDeployArtifactManifest;
+};
+
+export type StaticMarketingAssetReleaseValidationOptions = {
+  nowMs?: number;
+  maxAgeMs?: number;
+};
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const report = materializeStaticMarketingAssets(process.cwd());
   console.log(JSON.stringify(report, null, 2));
+}
+
+export function assertStaticAssetReleaseFileCount(assetFileCount: number) {
+  if (!Number.isSafeInteger(assetFileCount) || assetFileCount < 0) {
+    throw new Error(`Static asset count must be a non-negative safe integer; received ${assetFileCount}.`);
+  }
+  if (assetFileCount > STATIC_ASSET_RELEASE_FILE_LIMIT) {
+    throw new Error(
+      `Static asset count ${assetFileCount} exceeds the internal release limit ${STATIC_ASSET_RELEASE_FILE_LIMIT}.`,
+    );
+  }
 }
 
 export function materializeStaticMarketingAssets(
@@ -114,7 +173,7 @@ export function materializeStaticMarketingAssets(
   const openNextRoot = path.join(cwd, ".open-next");
   const assetsRoot = path.join(openNextRoot, "assets");
   const cacheRoot = path.join(openNextRoot, "cache");
-  const buildRoot = findBuildRoot(cacheRoot);
+  const buildRoot = findReleaseBuildRoot(cacheRoot);
   const buildId = path.basename(buildRoot);
 
   if (!fs.existsSync(assetsRoot) || !fs.statSync(assetsRoot).isDirectory()) {
@@ -193,9 +252,7 @@ export function materializeStaticMarketingAssets(
     );
   }
   const largestAssetBytes = Math.max(0, ...assetFiles.map((file) => fs.statSync(file).size));
-  if (assetFiles.length > maxAssetFiles) {
-    throw new Error(`Static asset count ${assetFiles.length} exceeds the Workers Free limit ${maxAssetFiles}.`);
-  }
+  assertStaticAssetReleaseFileCount(assetFiles.length);
   if (largestAssetBytes > maxAssetBytes) {
     throw new Error(`Largest static asset ${largestAssetBytes} bytes exceeds the ${maxAssetBytes}-byte limit.`);
   }
@@ -226,9 +283,16 @@ export function materializeStaticMarketingAssets(
   ]) {
     if (!generatedPaths.includes(required)) throw new Error(`Required static document was not materialized: ${required}`);
   }
+  const assetManifest = buildWorkerDeployArtifactManifest(assetsRoot);
+  if (assetManifest.fileCount !== assetFiles.length) {
+    throw new Error(
+      `Static Asset tree changed during materialization: counted ${assetFiles.length} files, then ${assetManifest.fileCount}.`,
+    );
+  }
   const outputSha256 = hashGeneratedOutput(assetsRoot, generatedPaths);
+  const createdAt = new Date().toISOString();
   const report: StaticMarketingAssetReport = {
-    createdAt: new Date().toISOString(),
+    createdAt,
     buildId,
     cacheEntries: cacheFiles.length,
     htmlDocuments,
@@ -247,6 +311,8 @@ export function materializeStaticMarketingAssets(
     routeDocuments,
     skippedEntries,
     assetFiles: assetFiles.length,
+    assetManifestBytes: assetManifest.bytes,
+    assetManifestSha256: assetManifest.sha256,
     largestAssetBytes,
     outputSha256,
     generatedPaths,
@@ -255,19 +321,155 @@ export function materializeStaticMarketingAssets(
     path.join(openNextRoot, "static-marketing-assets-report.json"),
     `${JSON.stringify(report, null, 2)}\n`,
   );
+  const partialLegacyTranslationFixture =
+    options.legacyTranslationApi?.mainAppLanguages !== undefined ||
+    options.legacyTranslationApi?.sitePairs !== undefined;
+  if (!partialLegacyTranslationFixture) {
+    validateStaticMarketingAssetRelease(cwd, { nowMs: Date.parse(createdAt) });
+  }
   return report;
 }
 
-function findBuildRoot(cacheRoot: string) {
-  if (!fs.existsSync(cacheRoot)) throw new Error("OpenNext cache directory is missing.");
-  const directories = fs
-    .readdirSync(cacheRoot)
-    .map((entry) => path.join(cacheRoot, entry))
-    .filter((entry) => fs.statSync(entry).isDirectory());
-  if (directories.length !== 1) {
-    throw new Error(`Expected exactly one OpenNext cache build, found ${directories.length}.`);
+export function validateStaticMarketingAssetRelease(
+  cwd: string,
+  options: StaticMarketingAssetReleaseValidationOptions = {},
+): StaticMarketingAssetReleaseValidation {
+  const openNextRoot = path.join(cwd, ".open-next");
+  const assetsRoot = path.join(openNextRoot, "assets");
+  const reportPath = path.join(openNextRoot, "static-marketing-assets-report.json");
+  const reportStat = lstatRequiredReleasePath(reportPath, "Static Asset materialization report");
+  if (reportStat.isSymbolicLink() || !reportStat.isFile()) {
+    throw new Error("Static Asset materialization report must be a regular non-symlink file.");
   }
-  return directories[0];
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  } catch (error) {
+    throw new Error(
+      `Static Asset materialization report is not valid JSON: ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
+  if (!isRecord(parsed)) {
+    throw new Error("Static Asset materialization report must be a JSON object.");
+  }
+
+  const nowMs = options.nowMs ?? Date.now();
+  const maxAgeMs = options.maxAgeMs ?? STATIC_ASSET_RELEASE_REPORT_MAX_AGE_MS;
+  if (!Number.isFinite(nowMs) || !Number.isSafeInteger(maxAgeMs) || maxAgeMs < 0) {
+    throw new Error("Static Asset release validation requires a finite clock and non-negative safe max age.");
+  }
+  const createdAt = requireReleaseReportString(parsed, "createdAt");
+  const createdAtMs = Date.parse(createdAt);
+  if (!Number.isFinite(createdAtMs) || new Date(createdAtMs).toISOString() !== createdAt) {
+    throw new Error("Static Asset materialization report createdAt must be a canonical ISO timestamp.");
+  }
+  const reportAgeMs = nowMs - createdAtMs;
+  if (reportAgeMs < 0 || reportAgeMs > maxAgeMs) {
+    throw new Error(
+      `Static Asset materialization report is stale or from the future: age ${reportAgeMs}ms, maximum ${maxAgeMs}ms.`,
+    );
+  }
+
+  const buildId = requireReleaseReportString(parsed, "buildId");
+  const currentBuildId = path.basename(findReleaseBuildRoot(path.join(openNextRoot, "cache")));
+  if (buildId !== currentBuildId) {
+    throw new Error(
+      `Static Asset materialization report buildId ${buildId} does not match the current OpenNext build ${currentBuildId}.`,
+    );
+  }
+
+  assertExpectedLegacyTranslationContract();
+  const generatedPaths = requireReleaseReportStringArray(parsed, "generatedPaths");
+  for (const generatedPath of generatedPaths) assertSafeReleaseAssetPath(generatedPath);
+  if (!sameStringSequence(generatedPaths, [...generatedPaths].sort())) {
+    throw new Error("Static Asset materialization report generatedPaths must be sorted.");
+  }
+  if (new Set(generatedPaths).size !== generatedPaths.length) {
+    throw new Error("Static Asset materialization report generatedPaths must not contain duplicates.");
+  }
+
+  const reportCounts = {
+    total: requireReleaseReportInteger(parsed, "legacyTranslationApiAssets"),
+    mainApp: requireReleaseReportInteger(parsed, "legacyMainAppTranslationResponses"),
+    site: requireReleaseReportInteger(parsed, "legacySiteTranslationResponses"),
+    complete: requireReleaseReportInteger(parsed, "legacyCompleteTranslationResponses"),
+    incomplete: requireReleaseReportInteger(parsed, "legacyIncompleteTranslationResponses"),
+  };
+  for (const key of ["total", "mainApp", "site", "complete", "incomplete"] as const) {
+    if (reportCounts[key] !== expectedLegacyTranslationReportCounts[key]) {
+      throw new Error(
+        `Static Asset materialization report legacy ${key} count ${reportCounts[key]} must equal ${expectedLegacyTranslationReportCounts[key]}.`,
+      );
+    }
+  }
+
+  const reportLegacyPaths = generatedPaths.filter((entry) =>
+    entry.startsWith("i18n/legacy-api/"),
+  );
+  assertNoIncompleteLegacyPaths(reportLegacyPaths, "reported");
+  assertExactLegacyTranslationPaths(reportLegacyPaths, "reported");
+
+  const actualPaths = listReleaseAssetPaths(assetsRoot);
+  const assetFiles = requireReleaseReportInteger(parsed, "assetFiles");
+  assertStaticAssetReleaseFileCount(actualPaths.length);
+  if (assetFiles !== actualPaths.length) {
+    throw new Error(
+      `Static Asset materialization report declares ${assetFiles} asset files but the release tree contains ${actualPaths.length}.`,
+    );
+  }
+  const actualLegacyPaths = actualPaths.filter((entry) =>
+    entry.startsWith("i18n/legacy-api/"),
+  );
+  assertNoIncompleteLegacyPaths(actualLegacyPaths, "materialized");
+  assertExactLegacyTranslationPaths(actualLegacyPaths, "materialized");
+  const actualPathSet = new Set(actualPaths);
+  const missingGeneratedPaths = generatedPaths.filter((entry) => !actualPathSet.has(entry));
+  if (missingGeneratedPaths.length > 0) {
+    throw new Error(
+      `Static Asset release tree is missing reported generated paths: ${missingGeneratedPaths.slice(0, 10).join(", ")}.`,
+    );
+  }
+
+  const outputSha256 = requireReleaseReportSha256(parsed, "outputSha256");
+  const actualOutputSha256 = hashGeneratedOutput(assetsRoot, generatedPaths);
+  if (outputSha256 !== actualOutputSha256) {
+    throw new Error(
+      `Static Asset generated-output hash does not match its report: expected ${outputSha256}, received ${actualOutputSha256}.`,
+    );
+  }
+
+  const reportedAssetManifestBytes = requireReleaseReportInteger(
+    parsed,
+    "assetManifestBytes",
+  );
+  const reportedAssetManifestSha256 = requireReleaseReportSha256(
+    parsed,
+    "assetManifestSha256",
+  );
+  const assetManifest = buildWorkerDeployArtifactManifest(assetsRoot);
+  if (
+    assetManifest.fileCount !== assetFiles ||
+    assetManifest.bytes !== reportedAssetManifestBytes ||
+    assetManifest.sha256 !== reportedAssetManifestSha256
+  ) {
+    throw new Error(
+      "Static Asset release tree manifest does not match the materialization report.",
+    );
+  }
+
+  return {
+    createdAt,
+    buildId,
+    assetFiles,
+    generatedPaths: generatedPaths.length,
+    legacyTranslationPaths: reportLegacyPaths.length,
+    mainAppTranslationPaths: expectedLegacyMainAppTranslationPaths.length,
+    siteTranslationPaths: expectedLegacySiteTranslationPaths.length,
+    incompleteTranslationPaths: 0,
+    outputSha256,
+    assetManifest,
+  };
 }
 
 function parseCacheEntry(file: string): AppCacheEntry | RouteCacheEntry {
@@ -480,6 +682,161 @@ function hashGeneratedOutput(assetsRoot: string, generatedPaths: string[]) {
   return hash.digest("hex");
 }
 
+function lstatRequiredReleasePath(filePath: string, label: string) {
+  try {
+    return fs.lstatSync(filePath);
+  } catch (error) {
+    throw new Error(`${label} is missing or unreadable: ${filePath}`, { cause: error });
+  }
+}
+
+function findReleaseBuildRoot(cacheRoot: string) {
+  const cacheStat = lstatRequiredReleasePath(cacheRoot, "OpenNext cache directory");
+  if (cacheStat.isSymbolicLink() || !cacheStat.isDirectory()) {
+    throw new Error("OpenNext cache root must be a non-symlink directory.");
+  }
+  const directories: string[] = [];
+  for (const entry of fs.readdirSync(cacheRoot)) {
+    const entryPath = path.join(cacheRoot, entry);
+    const entryStat = lstatRequiredReleasePath(entryPath, "OpenNext cache entry");
+    if (entryStat.isSymbolicLink()) {
+      throw new Error(`OpenNext cache must not contain symlinks: ${entryPath}`);
+    }
+    if (entryStat.isDirectory()) directories.push(entryPath);
+    else if (!entryStat.isFile()) {
+      throw new Error(`OpenNext cache contains an unsupported entry: ${entryPath}`);
+    }
+  }
+  if (directories.length !== 1) {
+    throw new Error(`Expected exactly one OpenNext cache build, found ${directories.length}.`);
+  }
+  return directories[0]!;
+}
+
+function requireReleaseReportString(report: Record<string, unknown>, key: string) {
+  const value = report[key];
+  if (typeof value !== "string" || value.length === 0) {
+    throw new Error(`Static Asset materialization report ${key} must be a non-empty string.`);
+  }
+  return value;
+}
+
+function requireReleaseReportSha256(report: Record<string, unknown>, key: string) {
+  const value = requireReleaseReportString(report, key);
+  if (!/^[a-f0-9]{64}$/.test(value)) {
+    throw new Error(`Static Asset materialization report ${key} must be a lowercase SHA-256 digest.`);
+  }
+  return value;
+}
+
+function requireReleaseReportInteger(report: Record<string, unknown>, key: string) {
+  const value = report[key];
+  if (typeof value !== "number" || !Number.isSafeInteger(value) || value < 0) {
+    throw new Error(`Static Asset materialization report ${key} must be a non-negative safe integer.`);
+  }
+  return value;
+}
+
+function requireReleaseReportStringArray(report: Record<string, unknown>, key: string) {
+  const value = report[key];
+  if (
+    !Array.isArray(value) ||
+    !value.every((entry): entry is string => typeof entry === "string")
+  ) {
+    throw new Error(`Static Asset materialization report ${key} must contain only strings.`);
+  }
+  return [...value];
+}
+
+function assertExpectedLegacyTranslationContract() {
+  if (
+    expectedLegacyMainAppTranslationPaths.length !==
+      expectedLegacyTranslationReportCounts.mainApp ||
+    expectedLegacySiteTranslationPaths.length !== expectedLegacyTranslationReportCounts.site ||
+    expectedLegacyTranslationPaths.length !== expectedLegacyTranslationReportCounts.total ||
+    expectedLegacyTranslationPathSet.size !== expectedLegacyTranslationReportCounts.total
+  ) {
+    throw new Error(
+      "Legacy translation source manifests must derive exactly 70 main-app and 210 site paths (280 unique total).",
+    );
+  }
+}
+
+function assertSafeReleaseAssetPath(relativePath: string) {
+  if (
+    !relativePath ||
+    relativePath.includes("\\") ||
+    relativePath.includes("\0") ||
+    path.posix.isAbsolute(relativePath) ||
+    path.posix.normalize(relativePath) !== relativePath ||
+    relativePath === "." ||
+    relativePath.startsWith("../")
+  ) {
+    throw new Error(`Static Asset release contains an unsafe relative path: ${relativePath || "empty"}.`);
+  }
+}
+
+function listReleaseAssetPaths(assetsRoot: string) {
+  const rootStat = lstatRequiredReleasePath(assetsRoot, "Static Asset release tree");
+  if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
+    throw new Error("Static Asset release tree must be a non-symlink directory.");
+  }
+  const relativePaths: string[] = [];
+  const pending = [assetsRoot];
+  while (pending.length > 0) {
+    const directory = pending.pop();
+    if (!directory) continue;
+    for (const entry of fs.readdirSync(directory)) {
+      const entryPath = path.join(directory, entry);
+      const entryStat = lstatRequiredReleasePath(entryPath, "Static Asset release entry");
+      if (entryStat.isSymbolicLink()) {
+        throw new Error(`Static Asset release tree must not contain symlinks: ${entryPath}`);
+      }
+      if (entryStat.isDirectory()) {
+        pending.push(entryPath);
+        continue;
+      }
+      if (!entryStat.isFile()) {
+        throw new Error(`Static Asset release tree contains an unsupported entry: ${entryPath}`);
+      }
+      const relativePath = path.relative(assetsRoot, entryPath).split(path.sep).join("/");
+      assertSafeReleaseAssetPath(relativePath);
+      relativePaths.push(relativePath);
+    }
+  }
+  relativePaths.sort();
+  if (relativePaths.length === 0) {
+    throw new Error("Static Asset release tree must contain at least one file.");
+  }
+  return relativePaths;
+}
+
+function assertNoIncompleteLegacyPaths(paths: readonly string[], label: string) {
+  const incompletePaths = paths.filter((entry) => entry.includes(".incomplete"));
+  if (incompletePaths.length > 0) {
+    throw new Error(
+      `Static Asset release contains ${label} incomplete legacy translation paths: ${incompletePaths.slice(0, 10).join(", ")}.`,
+    );
+  }
+}
+
+function assertExactLegacyTranslationPaths(paths: readonly string[], label: string) {
+  const actual = new Set(paths);
+  const missing = expectedLegacyTranslationPaths.filter((entry) => !actual.has(entry));
+  const extra = [...actual].filter((entry) => !expectedLegacyTranslationPathSet.has(entry));
+  const duplicateCount = paths.length - actual.size;
+  if (missing.length > 0 || extra.length > 0 || duplicateCount > 0) {
+    throw new Error(
+      `Static Asset release ${label} legacy translation paths must be the exact 280-path contract; missing=${missing.length}, extra=${extra.length}, duplicates=${duplicateCount}.`,
+    );
+  }
+}
+
+function sameStringSequence(actual: readonly string[], expected: readonly string[]) {
+  return actual.length === expected.length &&
+    expected.every((value, index) => actual[index] === value);
+}
+
 function listFiles(root: string) {
   if (!fs.existsSync(root)) return [];
   const files: string[] = [];
@@ -487,7 +844,10 @@ function listFiles(root: string) {
   while (pending.length) {
     const current = pending.pop();
     if (!current) continue;
-    const stats = fs.statSync(current);
+    const stats = fs.lstatSync(current);
+    if (stats.isSymbolicLink()) {
+      throw new Error(`Static Asset materialization must not traverse symlinks: ${current}`);
+    }
     if (stats.isDirectory()) {
       for (const entry of fs.readdirSync(current)) pending.push(path.join(current, entry));
     } else if (stats.isFile()) {

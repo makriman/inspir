@@ -31,20 +31,24 @@ Next and OpenNext are build tools only. The deployed request handler must not im
   450-entry internal-cache guard leaves only deterministic headroom, while the
   exact 207-localized-entry cap and unchanged byte limits fail closed on a
   fourth route family or meaningful artifact growth. Static materialization
-  separately enforces Workers Free's 20,000 final asset-file limit.
+  enforces a 5,000-file internal release ceiling—well below Cloudflare's
+  20,000-file Workers Free platform limit—and binds the complete asset-tree
+  manifest into the materialization and deploy evidence.
 
 ## Historical-data preservation gate
 
-In steady state, capture a privacy-safe production baseline before the first release data mutation. For this one-release rollover, the already archived V1 baseline is the pre-migration predecessor; capture the V2 successor only after the guarded `0016` migration and its read-only schema verification, but before the new Worker can activate or write an outbox job. Use one release-only HMAC secret in the same protected terminal for the final verification; never print, commit, or place it in a command argument:
+In steady state, capture a privacy-safe production baseline before the first release data mutation. For this one-release rollover, the already archived V1 baseline is the pre-migration predecessor; capture the V2 successor only after the guarded `0016` migration and its read-only schema verification, but before the new Worker can activate or write an outbox job. The capture command generates one release-only 256-bit HMAC key, stores it as a non-overwriting macOS login-Keychain item whose account is the non-secret `hmacKeyId`, verifies the readback, and keeps the secret out of arguments, environment variables, reports, and command output. The login Keychain must be unlocked:
 
 ```bash
-export HISTORICAL_DATA_PRESERVATION_HMAC_SECRET="$(openssl rand -hex 32)"
 pnpm cf:verify:historical-data-preservation -- \
   --capture-baseline \
+  --new-hmac-key \
   --confirm-production
 ```
 
-The baseline fails on an empty/wrong database and covers users, OAuth accounts, sessions, chats, messages, admin grants, user memories, activity runs, product events, and profile-photo pointers. Every new V2 baseline also requires `ai_runs` plus the saved-memory storage and provenance graph: memory source edges, settings, chat summaries, indexed turns and their message/topic edges, profiles, user summaries, synthesis runs, source feedback, and memory events. It separately records `memory_vector_cleanup_outbox` as a bounded, mutable operational dataset. Outbox job rows are deliberately not historical learner records: successful cleanup must be allowed to delete them, so direct post-deploy preservation compares its schema but never requires its count or job identities to survive. Direct readers, deploy preflight, and post-deploy verification accept V2 only. The older ten-dataset V1 format is parsed solely for the byte- and SHA-pinned one-release rollover predecessor; it cannot be substituted for a current baseline. Evidence stores only counts, schema identities, and at most 16 HMAC sentinels per protected dataset—never raw IDs, emails, session tokens, chat text, memory text, vector IDs, or outbox ownership. Every count uses an inner `cap + 1` scan, both sparse profile-photo queries bound the underlying users scan before filtering, schemas are capped, the operational outbox scan stops at 10,001 rows, and the checked V2 worst case is 690,209 billed reads against a 750,000 pre-read reservation. The operation ID includes the snapshot-plan hash, observed billing may not exceed that proven bound, and the reservation is refined to exact metadata afterward. Evidence is source-bound, owner-only mode `0600`, nofollow-read, and fsynced. Deploy preflight requires it to be at most 30 minutes old. Final verification may reuse that exact baseline for at most 12 hours so the guarded deploy and live validation can finish, but its reservation remains bound to the exact source inside the one cumulative D1 ledger, which still forbids crossing the UTC billing-day boundary. Preflight rejects a missing, stale, wrong-source, wrong-ledger, malformed, symlinked, or broadly readable baseline.
+The baseline fails on an empty/wrong database and covers users, OAuth accounts, sessions, chats, messages, admin grants, user memories, activity runs, product events, and profile-photo pointers. Every new V2 baseline also requires `ai_runs` plus the saved-memory storage and provenance graph: memory source edges, settings, chat summaries, indexed turns and their message/topic edges, profiles, user summaries, synthesis runs, source feedback, and memory events. It separately records `memory_vector_cleanup_outbox` as a bounded, mutable operational dataset. Outbox job rows are deliberately not historical learner records: successful cleanup must be allowed to delete them, so direct post-deploy preservation compares its schema but never requires its count or job identities to survive. Direct readers, deploy preflight, and post-deploy verification accept V2 only. The older ten-dataset V1 format is parsed solely for the byte- and SHA-pinned one-release rollover predecessor; it cannot be substituted for a current baseline. Evidence stores only counts, schema identities, and at most 16 HMAC sentinels per protected dataset—never raw IDs, emails, session tokens, chat text, memory text, vector IDs, or outbox ownership. Every count uses an inner `cap + 1` scan, both sparse profile-photo queries bound the underlying users scan before filtering, schemas are capped, and the operational outbox scan stops at 10,001 rows. One logical V2 snapshot has a proven 690,209-row bound and retains its 750,000-row logical cushion. Because Cloudflare may transparently execute each read-only statement up to three times, admission reserves the full 2,250,000-row worst-case billable ceiling before D1. Every returned result set must contain an exact integer `meta.total_attempts` of `1`; missing, invalid, or retried-attempt metadata fails closed, retains the maximum reservation, and cannot produce or refine a report. Only a single-attempt response whose summed `rows_read` remains within the logical bound refines that reservation to exact metadata. V2 evidence and the operation's snapshot-plan hash bind all four values: logical snapshot bound, logical cushion, maximum automatic attempts, and worst-case billable reservation. Evidence is source-bound, owner-only mode `0600`, nofollow-read, and fsynced. Deploy preflight requires it to be at most 30 minutes old. Final verification may reuse that exact baseline for at most 12 hours so the guarded deploy and live validation can finish, but its reservation remains bound to the exact source inside the one cumulative D1 ledger, which still forbids crossing the UTC billing-day boundary. Preflight rejects a missing, stale, wrong-source, wrong-ledger, malformed, symlinked, or broadly readable baseline.
+
+An ordinary steady-state capture or verification reservation is single-use. If its source-bound operation already has either a maximum or exact reservation, repeating the command fails before `wrangler d1 execute`; an exact reservation is never widened or treated as permission for another billed snapshot. Only the pinned successor coordinator may reuse a still-maximum reservation, and only after its retained state chain proves the previous attempt stopped before D1 and acquires the exact pre-scan resume lease described below.
 
 After deployment, translation/topic reconciliation, authenticated mutation cleanup, and all other release writes, prove protected-data counts never decreased, every sampled historical identity remains, and baseline columns were not removed. The operational outbox may grow or drain during this interval, but it must remain within its fail-closed capture cap and retain every baseline column:
 
@@ -52,10 +56,9 @@ After deployment, translation/topic reconciliation, authenticated mutation clean
 pnpm cf:verify:historical-data-preservation -- \
   --verify-preservation \
   --confirm-production
-unset HISTORICAL_DATA_PRESERVATION_HMAC_SECRET
 ```
 
-Do not unset or lose the HMAC secret before the final verification. A failed or indeterminate verification means the release is incomplete; do not replace its baseline or conceal the mismatch.
+Verification reads the expected `hmacKeyId` from the fully validated private baseline and retrieves exactly that Keychain item before any D1 operation. A missing, locked, denied, malformed, or mismatched item fails closed. Never generate a replacement for an existing baseline. A failed or indeterminate verification means the release is incomplete; do not replace its baseline or conceal the mismatch.
 
 ### One-release 2026-07-13 budget-rollover continuity bridge
 
@@ -70,20 +73,43 @@ pnpm cf:verify:historical-data-continuity -- \
   --confirm-budget-blocked-rollover
 ```
 
-Retain the original `HISTORICAL_DATA_PRESERVATION_HMAC_SECRET` in the protected terminal across the UTC reset. Finish, commit, push, and locally validate the exact successor source before recapture. On `2026-07-14`, capture the successor as soon as the D1 budget resets and no later than `01:10:08.863Z`, so the two snapshots remain at most 24 hours apart. The ordinary capture replaces the canonical baseline only after the predecessor archive is durable:
+The rollover requires the exact predecessor HMAC key, not merely a new key with the same purpose. Its expected non-secret key ID is pinned in source and the archived predecessor is byte/hash/policy/ledger validated before retrieval. If an approved secure copy of the original 64-character key is recovered, escrow it from an owner-only file; the command validates it against the archived predecessor before a non-overwriting Keychain write and never prints the secret:
+
+```bash
+pnpm cf:verify:historical-data-continuity -- \
+  --escrow-recovered-predecessor-key \
+  --recovered-key-file /absolute/path/to/owner-only-recovered-key \
+  --confirm-production \
+  --confirm-budget-blocked-rollover
+```
+
+Do not use `echo`, a secret-valued command argument, standard input, or an environment variable for recovery input. The normalized absolute file path is non-secret; the command opens it with no-follow semantics, requires current-user ownership and mode `0600`, rejects extended ACLs, validates an unchanged descriptor, and never prints the contents. It deliberately does not delete the file: after exact Keychain readback, retain that plaintext only in approved encrypted recovery storage or remove it through the owner-approved secure disposal process before continuing. The Keychain item explicitly trusts `/usr/bin/security`; keep the login Keychain locked whenever the release operator is unattended and restrict access to the macOS account. If the exact key is unavailable, stop before every production D1 read/write, migration, upload, activation, or deploy; do not generate or substitute a new key. Finish, commit, push, and locally validate the exact successor source before recapture. On `2026-07-14`, capture the successor as soon as the D1 budget resets and no later than `01:10:08.863Z`, so the two snapshots remain at most 24 hours apart. The ordinary capture replaces the canonical baseline only after the predecessor archive is durable:
 
 ```bash
 pnpm cf:check:d1-migration-budget -- --confirm-production
 pnpm cf:apply:d1-runtime-migrations -- --confirm-production
 pnpm cf:verify:d1-runtime-migrations -- --confirm-production
-pnpm cf:verify:historical-data-preservation -- \
-  --capture-baseline \
+pnpm cf:verify:historical-data-continuity -- \
+  --capture-successor \
+  --confirm-budget-blocked-rollover \
   --confirm-production
 pnpm cf:verify:historical-data-continuity -- \
   --verify-rollover \
   --confirm-production
 pnpm cf:preflight:deploy
 ```
+
+Successor capture maintains an owner-only, hash-chained state machine beside the archived predecessor. The exact scan-authorization marker is durably written at the last pre-D1 cut line, after the cumulative read reservation and before the snapshot runner. A retry with prepared or complete evidence finalizes or replays the same report without loading the Keychain and without another D1 scan; finalization may finish just after the capture window, but the ordinary 12-hour final-verification freshness limit still applies. A fresh capture can begin only inside the pinned UTC window. Claims are immutable and are never unlinked or replaced: completion retains the exact claim as permanent chain evidence, eliminating cleanup/acquisition races. A Keychain, validation, or interrupted first-publication-sync failure before D1 retains its exact run ID. After proving the prior owner process is gone (or after the same process has unwound the failed attempt), resume only that claim with:
+
+```bash
+pnpm cf:verify:historical-data-continuity -- \
+  --capture-successor \
+  --resume-successor-pre-scan-run <exact-run-uuid> \
+  --confirm-budget-blocked-rollover \
+  --confirm-production
+```
+
+The failure message prints the non-secret exact run UUID. Resume revalidates the source, predecessor, HMAC key, capture window, owner identity, state inode/hash chain, and existing budget reservation before reaching D1. Cross-process recovery uses a bounded append-only lease chain (`01` through `08`): the latest owner must be this already-unwound process or provably exited, every lease hashes the claim and prior lease, all contenders race for the same deterministic `O_EXCL` slot, and only the exact latest current-process owner may authorize or finalize a scan. An exact `nlink=2` interrupted scan-authorization publication remains explicitly classified as definitely pre-D1; resume first makes that same inode durable and then uses it at the last pre-D1 cut. A normal mode-`0600` scan authorization without prepared evidence remains indeterminate because D1 may already have started, so automatic rescan is forbidden. Never delete, rename, replace, or hand-edit any successor state file.
 
 The rollover verifier requires a clean pushed successor, the exact next UTC day, a fresh live-ledger successor baseline, the retained HMAC key, byte-exact predecessor archive evidence, and a gap no longer than 24 hours. For every protected dataset it applies the direct verifier's same guarantees: counts cannot decrease, every predecessor column identity must remain, and every predecessor HMAC sentinel must still occur in the successor's bounded identity set. The pinned V1 predecessor did not capture the not-yet-introduced operational outbox, so inventing predecessor job-row preservation would be false evidence. Instead, this one-release bridge requires the post-`0016`, pre-activation successor snapshot to prove the complete outbox schema exists and its row count is exactly zero. Its report records that job-row preservation is false by design. Future V2 preservation snapshots may contain live outbox jobs and compare schema only, allowing verified jobs to drain normally. The verifier writes a private source- and baseline-bound continuity report. Deploy preflight rejects a missing, stale, failed, wrong-source, wrong-baseline, wrong-policy, wrong-manifest, nonempty first-release outbox, symlinked, or broad-permission report. This bridge is not a general bypass and must not be copied to another incident.
 
@@ -188,9 +214,14 @@ After those gates pass, commit and push the exact release source. Confirm the wo
 - exact English and localized known-topic `308` redirects into query-based static chat shells, with fewer than Cloudflare's 100 dynamic redirect-rule limit;
 - `index.html`, `404.html`, `/api/topics`, `_redirects`, `manifest.webmanifest`, `robots.txt`, `sitemap.xml`, and `llms.txt`;
 - no game output and no `/_next/image` reference;
-- asset-count, individual-file-size, source-hash, and secret scans all passing.
+- exactly 280 complete legacy translation API assets: 70 main-app responses and
+  210 published site responses, with zero `.incomplete` assets and an exact
+  path-set match to the curated availability manifests;
+- no more than 5,000 total asset files, with the report count, generated-path
+  hash, complete symlink-free asset-tree file/byte/hash manifest, individual
+  file-size bound, source-hash scan, and secret scan all matching.
 
-`pnpm cf:preflight:deploy` rejects dirty or unpushed Git state, stale source-fingerprinted gate evidence, missing or incorrect D1/Vectorize/profile-R2/Queue/cron bindings, any OpenNext incremental-cache R2 binding, an extra Worker-first route, paid CPU configuration, missing Static Asset 404 boundary, missing translation/chat/admin artifacts, missing rollback-safe Durable Object infrastructure, or a main Worker that imports OpenNext.
+`pnpm cf:preflight:deploy` rejects dirty or unpushed Git state, stale source-fingerprinted gate evidence, a missing/stale/mismatched materialization report or actual asset tree, missing or incorrect D1/Vectorize/profile-R2/Queue/cron bindings, any OpenNext incremental-cache R2 binding, an extra Worker-first route, paid CPU configuration, missing Static Asset 404 boundary, missing translation/chat/admin artifacts, missing rollback-safe Durable Object infrastructure, or a main Worker that imports OpenNext. The deploy wrapper validates the freshly rebuilt tree again immediately after materialization and compares that same manifest with the immutable artifact capture immediately before Wrangler runs; a previous build's green report cannot authorize a new deployment.
 
 For local browser coverage:
 

@@ -6,19 +6,20 @@ import {
 } from "../../lib/content/languages";
 import { getCuratedTranslationBundle } from "../../lib/i18n/curated-translations";
 import {
+  getPublishedLegacySiteTranslationPairs,
   isKnownLegacySiteTranslationNamespace,
+  isPublishedLegacySiteTranslationPair,
   legacyTranslationAssetPath,
-  type LegacyTranslationCompletion,
+  type LegacySiteTranslationPair,
 } from "../../lib/i18n/legacy-api-compat";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
 import { getMainAppSourceHash } from "../../lib/i18n/main-app-source";
-import { knownSiteTranslationNamespaces } from "../../lib/i18n/site-namespace-manifest";
 import { getSiteTranslationSource } from "../../lib/i18n/site-source";
 import type { TranslationBundle, TranslationResult } from "../../lib/i18n/translation-types";
 
 export type LegacyTranslationApiAssetOptions = {
-  languages?: readonly SupportedLanguage[];
-  siteNamespaces?: readonly string[];
+  mainAppLanguages?: readonly SupportedLanguage[];
+  sitePairs?: readonly LegacySiteTranslationPair[];
 };
 
 export type LegacyTranslationApiAssetReport = {
@@ -34,20 +35,20 @@ export function materializeLegacyTranslationApiAssets(
   assetsRoot: string,
   options: LegacyTranslationApiAssetOptions = {},
 ): LegacyTranslationApiAssetReport {
-  const languages = [...(options.languages ?? supportedLanguages)];
-  const siteNamespaces = [
-    ...(options.siteNamespaces ?? knownSiteTranslationNamespaces),
-  ];
-  assertUnique(languages, "language");
-  assertUnique(siteNamespaces, "site namespace");
+  const mainAppLanguages = [...(options.mainAppLanguages ?? supportedLanguages)];
+  const sitePairs = [...(options.sitePairs ?? getPublishedLegacySiteTranslationPairs())];
+  assertUnique(mainAppLanguages, "main-app language");
+  assertUnique(
+    sitePairs.map(({ language, namespace }) => `${language}\u0000${namespace}`),
+    "site pair",
+  );
 
   const paths: string[] = [];
   let completeResponses = 0;
-  let incompleteResponses = 0;
   let bytes = 0;
   const mainAppSourceHash = getMainAppSourceHash();
 
-  for (const language of languages) {
+  for (const language of mainAppLanguages) {
     const bundle = getCuratedMainAppTranslationBundle(language);
     if (!bundle || bundle.language !== language || bundle.sourceHash !== mainAppSourceHash) {
       throw new Error(`The legacy main-app translation response is incomplete for ${language}.`);
@@ -62,49 +63,61 @@ export function materializeLegacyTranslationApiAssets(
     completeResponses += 1;
   }
 
-  for (const namespace of siteNamespaces) {
+  for (const { language, namespace } of sitePairs) {
     if (!isKnownLegacySiteTranslationNamespace(namespace)) {
       throw new Error(`Unknown legacy site-translation namespace: ${namespace}`);
+    }
+    if (!isPublishedLegacySiteTranslationPair(language, namespace)) {
+      throw new Error(
+        `Unpublished legacy site-translation pair: ${language}/${namespace}`,
+      );
     }
     const source = getSiteTranslationSource(namespace);
     if (source.namespace !== namespace) {
       throw new Error(`Unknown legacy site-translation namespace: ${namespace}`);
     }
-    for (const language of languages) {
-      const curatedBundle = getCuratedTranslationBundle(source, language);
-      const bundle: TranslationBundle = curatedBundle ?? {
-        namespace,
-        language,
-        sourceHash: source.sourceHash,
-        sourceStrings: source.sourceStrings,
-        strings: {},
-      };
-      const result = buildTranslationResult(bundle);
-      const written = writeResultAsset(assetsRoot, "site", language, namespace, result);
-      paths.push(written.path);
-      bytes += written.bytes;
-      if (result.complete) completeResponses += 1;
-      else incompleteResponses += 1;
+    const bundle = getCuratedTranslationBundle(source, language);
+    if (
+      !bundle ||
+      bundle.namespace !== namespace ||
+      bundle.language !== language ||
+      bundle.sourceHash !== source.sourceHash
+    ) {
+      throw new Error(
+        `The published legacy site-translation response is stale or missing for ${language}/${namespace}.`,
+      );
     }
+    const result = buildTranslationResult(bundle);
+    if (!result.complete) {
+      throw new Error(
+        `The published legacy site-translation response is incomplete for ${language}/${namespace}.`,
+      );
+    }
+    const written = writeResultAsset(assetsRoot, "site", language, namespace, result);
+    paths.push(written.path);
+    bytes += written.bytes;
+    completeResponses += 1;
   }
 
   paths.sort();
   return {
     paths,
-    mainAppResponses: languages.length,
-    siteResponses: languages.length * siteNamespaces.length,
+    mainAppResponses: mainAppLanguages.length,
+    siteResponses: sitePairs.length,
     completeResponses,
-    incompleteResponses,
+    incompleteResponses: 0,
     bytes,
   };
 }
 
 function buildTranslationResult(bundle: TranslationBundle): TranslationResult {
-  const translatedCount = Object.keys(bundle.strings).length;
-  const totalCount = Object.keys(bundle.sourceStrings).length;
+  const sourceKeys = Object.keys(bundle.sourceStrings);
+  const translatedCount = sourceKeys.filter((key) => bundle.strings[key]?.trim()).length;
+  const totalCount = sourceKeys.length;
   return {
     bundle,
-    complete: translatedCount === totalCount,
+    complete:
+      translatedCount === totalCount && Object.keys(bundle.strings).length === totalCount,
     translatedCount,
     totalCount,
   };
@@ -117,11 +130,9 @@ function writeResultAsset(
   namespace: string | undefined,
   result: TranslationResult,
 ) {
-  const completion: LegacyTranslationCompletion = result.complete ? "complete" : "incomplete";
   const relativePath = legacyTranslationAssetPath({
     kind,
     language,
-    completion,
     namespace,
   });
   const destination = path.resolve(assetsRoot, relativePath);

@@ -2,6 +2,12 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { supportedLanguages } from "../../lib/content/languages";
+import {
+  getPublishedLegacySiteTranslationPairs,
+  legacyTranslationAssetPath,
+} from "../../lib/i18n/legacy-api-compat";
+import { parseConfiguredGlobalDailyCallLimit } from "../../lib/free-runtime/global-ai-budget";
 import {
   D1_DATABASE_ID,
   D1_DATABASE_NAME,
@@ -28,7 +34,10 @@ import {
   readAndValidateHistoricalDataContinuityReport,
   type HistoricalDataContinuityPredecessorLoader,
 } from "./verify-historical-data-continuity";
-import { parseConfiguredGlobalDailyCallLimit } from "../../lib/free-runtime/global-ai-budget";
+import {
+  STATIC_ASSET_RELEASE_FILE_LIMIT,
+  validateStaticMarketingAssetRelease,
+} from "./materialize-static-marketing-assets";
 
 type CheckStatus = "pass" | "fail";
 
@@ -133,6 +142,29 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
   "CRON_SECRET",
 ];
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
+const STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH =
+  ".open-next/static-marketing-assets-report.json";
+const EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS = {
+  total: 280,
+  mainApp: 70,
+  site: 210,
+  complete: 280,
+  incomplete: 0,
+} as const;
+const EXPECTED_LEGACY_MAIN_APP_TRANSLATION_PATHS = supportedLanguages.map((language) =>
+  legacyTranslationAssetPath({ kind: "main-app", language }),
+);
+const EXPECTED_LEGACY_SITE_TRANSLATION_PATHS = getPublishedLegacySiteTranslationPairs().map(
+  ({ language, namespace }) =>
+    legacyTranslationAssetPath({ kind: "site", language, namespace }),
+);
+const EXPECTED_LEGACY_TRANSLATION_PATHS = [
+  ...EXPECTED_LEGACY_MAIN_APP_TRANSLATION_PATHS,
+  ...EXPECTED_LEGACY_SITE_TRANSLATION_PATHS,
+].sort();
+const EXPECTED_LEGACY_TRANSLATION_PATH_SET = new Set(
+  EXPECTED_LEGACY_TRANSLATION_PATHS,
+);
 
 export const FREE_PLAN_WORKER_FIRST_ROUTES = [
   "!/_next/static/*",
@@ -191,6 +223,7 @@ export function buildSteadyStateDeployPreflightReport(options: {
   checks.push(localGatesCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
+  checks.push(staticMarketingAssetReleaseCheck(cwd, options.nowMs));
   checks.push(runtimeMigrationEvidenceCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(historicalDataBaselineCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(historicalDataContinuityCheck(
@@ -424,6 +457,140 @@ function buildArtifactScanCheck(backupDir: string, currentSourceFingerprint: Sou
           nextEnvFile: report?.nextEnvFile,
           scannedFiles: report?.scannedFiles,
           findings,
+        },
+  };
+}
+
+function staticMarketingAssetReleaseCheck(cwd: string, nowMs?: number): DeployPreflightCheck {
+  const reportPath = path.join(cwd, STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH);
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+  } catch (error) {
+    return {
+      name: "Static Asset release and legacy translation report",
+      status: "fail",
+      detail: {
+        reportPath: STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH,
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+
+  if (!isRecord(parsed)) {
+    return {
+      name: "Static Asset release and legacy translation report",
+      status: "fail",
+      detail: {
+        reportPath: STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH,
+        reason: "The materialization report must be a JSON object.",
+      },
+    };
+  }
+
+  const generatedPaths = stringArrayValue(parsed.generatedPaths);
+  const safeGeneratedPaths = generatedPaths ?? [];
+  const legacyPaths = safeGeneratedPaths.filter((entry) =>
+    entry.startsWith("i18n/legacy-api/"),
+  );
+  const actualLegacyPathSet = new Set(legacyPaths);
+  const missingLegacyPaths = EXPECTED_LEGACY_TRANSLATION_PATHS.filter(
+    (entry) => !actualLegacyPathSet.has(entry),
+  );
+  const extraLegacyPaths = [...actualLegacyPathSet]
+    .filter((entry) => !EXPECTED_LEGACY_TRANSLATION_PATH_SET.has(entry))
+    .sort();
+  const duplicateLegacyPaths = duplicateStrings(legacyPaths);
+  const incompleteLegacyPaths = [...actualLegacyPathSet]
+    .filter((entry) => entry.includes(".incomplete"))
+    .sort();
+  const manifestCounts = {
+    mainApp: EXPECTED_LEGACY_MAIN_APP_TRANSLATION_PATHS.length,
+    site: EXPECTED_LEGACY_SITE_TRANSLATION_PATHS.length,
+    total: EXPECTED_LEGACY_TRANSLATION_PATHS.length,
+    unique: EXPECTED_LEGACY_TRANSLATION_PATH_SET.size,
+  };
+  const manifestCountsOk =
+    manifestCounts.mainApp === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.mainApp &&
+    manifestCounts.site === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.site &&
+    manifestCounts.total === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.total &&
+    manifestCounts.unique === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.total;
+  const reportCounts = {
+    total: parsed.legacyTranslationApiAssets,
+    mainApp: parsed.legacyMainAppTranslationResponses,
+    site: parsed.legacySiteTranslationResponses,
+    complete: parsed.legacyCompleteTranslationResponses,
+    incomplete: parsed.legacyIncompleteTranslationResponses,
+  };
+  const reportCountsOk =
+    reportCounts.total === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.total &&
+    reportCounts.mainApp === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.mainApp &&
+    reportCounts.site === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.site &&
+    reportCounts.complete === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.complete &&
+    reportCounts.incomplete === EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS.incomplete;
+  const assetFiles = parsed.assetFiles;
+  const assetFileCountOk =
+    typeof assetFiles === "number" &&
+    Number.isSafeInteger(assetFiles) &&
+    assetFiles >= safeGeneratedPaths.length &&
+    assetFiles <= STATIC_ASSET_RELEASE_FILE_LIMIT;
+  const legacyPathsOk =
+    generatedPaths !== null &&
+    sameStringSet(legacyPaths, EXPECTED_LEGACY_TRANSLATION_PATHS) &&
+    incompleteLegacyPaths.length === 0;
+  let releaseValidation: ReturnType<typeof validateStaticMarketingAssetRelease> | null = null;
+  let releaseValidationError: string | null = null;
+  try {
+    releaseValidation = validateStaticMarketingAssetRelease(cwd, { nowMs });
+  } catch (error) {
+    releaseValidationError = error instanceof Error ? error.message : String(error);
+  }
+  const actualReleaseTreeOk = releaseValidation !== null;
+  const ok =
+    manifestCountsOk &&
+    reportCountsOk &&
+    assetFileCountOk &&
+    legacyPathsOk &&
+    actualReleaseTreeOk;
+
+  return {
+    name: "Static Asset release and legacy translation report",
+    status: ok ? "pass" : "fail",
+    detail: ok
+      ? {
+          assetFiles,
+          assetFileLimit: STATIC_ASSET_RELEASE_FILE_LIMIT,
+          legacyTranslationPaths: legacyPaths.length,
+          mainAppTranslationPaths: manifestCounts.mainApp,
+          siteTranslationPaths: manifestCounts.site,
+          incompleteTranslationPaths: 0,
+          assetManifestBytes: releaseValidation?.assetManifest.bytes,
+          assetManifestSha256: releaseValidation?.assetManifest.sha256,
+        }
+      : {
+          reportPath: STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH,
+          manifestCounts,
+          manifestCountsOk,
+          expectedReportCounts: EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS,
+          reportCounts,
+          reportCountsOk,
+          assetFiles,
+          assetFileLimit: STATIC_ASSET_RELEASE_FILE_LIMIT,
+          assetFileCountOk,
+          generatedPathsOk: generatedPaths !== null,
+          generatedPathCount: safeGeneratedPaths.length,
+          legacyPathCount: legacyPaths.length,
+          legacyPathsOk,
+          missingLegacyPathCount: missingLegacyPaths.length,
+          missingLegacyPaths: missingLegacyPaths.slice(0, 20),
+          extraLegacyPathCount: extraLegacyPaths.length,
+          extraLegacyPaths: extraLegacyPaths.slice(0, 20),
+          duplicateLegacyPathCount: duplicateLegacyPaths.length,
+          duplicateLegacyPaths: duplicateLegacyPaths.slice(0, 20),
+          incompleteLegacyPathCount: incompleteLegacyPaths.length,
+          incompleteLegacyPaths: incompleteLegacyPaths.slice(0, 20),
+          actualReleaseTreeOk,
+          releaseValidationError,
         },
   };
 }
@@ -822,8 +989,12 @@ function readRepoJson<T>(cwd: string, relativePath: string): T {
   return JSON.parse(stripJsonComments(fs.readFileSync(path.join(cwd, relativePath), "utf8"))) as T;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
 function objectValue(value: unknown): Record<string, unknown> {
-  return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : {};
+  return isRecord(value) ? value : {};
 }
 
 function arrayValue(value: unknown): Array<Record<string, string>> {
@@ -832,6 +1003,20 @@ function arrayValue(value: unknown): Array<Record<string, string>> {
 
 function isString(value: unknown): value is string {
   return typeof value === "string";
+}
+
+function stringArrayValue(value: unknown): string[] | null {
+  return Array.isArray(value) && value.every(isString) ? value : null;
+}
+
+function duplicateStrings(values: readonly string[]) {
+  const seen = new Set<string>();
+  const duplicates = new Set<string>();
+  for (const value of values) {
+    if (seen.has(value)) duplicates.add(value);
+    else seen.add(value);
+  }
+  return [...duplicates].sort();
 }
 
 function samplingRateAtMost(value: unknown, max: number) {

@@ -449,7 +449,23 @@ async function runResourceSoak(
       `/api/main-app-translations?language=English&resource_soak=${nonce}-main-app-translations-0`,
     ),
     legacyTranslationGet(
+      `/api/main-app-translations?language=Hindi&resource_soak=${nonce}-main-app-translations-hi-0`,
+    ),
+    legacyTranslationGet(
       `/api/site-translations?language=English&namespace=route%3Ahome&resource_soak=${nonce}-site-translations-0`,
+    ),
+    legacyTranslationGet(
+      `/api/site-translations?language=Hindi&namespace=route%3Amission&resource_soak=${nonce}-site-translations-mission-hi-0`,
+    ),
+    legacyTranslationErrorGet(
+      `/api/site-translations?language=Hindi&namespace=route%3Aabout&resource_soak=${nonce}-site-translations-unpublished-hi-0`,
+      404,
+      "Translation bundle is not published",
+    ),
+    legacyTranslationErrorGet(
+      `/api/site-translations?language=English&namespace=unknown&resource_soak=${nonce}-site-translations-unknown-0`,
+      400,
+      "Unsupported namespace",
     ),
     nativeGet(`/api/auth/get-session?resource_soak=${nonce}-auth-session-0`, 200, {
       expectedBody: "null",
@@ -1183,6 +1199,16 @@ function legacyTranslationGet(route: string): SoakRoute {
     expectedContentType: "application/json",
     requireNonEmptyBody: true,
   };
+}
+
+function legacyTranslationErrorGet(
+  route: string,
+  expectedStatus: 400 | 404,
+  error: string,
+): SoakRoute {
+  return nativeGet(route, expectedStatus, {
+    expectedBody: JSON.stringify({ error }),
+  });
 }
 
 function withProbeHeaders(probe: SoakRoute, headers: Record<string, string>): SoakRoute {

@@ -6,6 +6,7 @@ import {
   type Response,
 } from "@playwright/test";
 import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
+import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
 import { parseOpenAiSseText } from "../../components/chat/openai-sse";
 
 type ResponseWithHeaders = Pick<APIResponse, "headers"> | Pick<Response, "headers">;
@@ -338,27 +339,70 @@ test("removed games stay closed while legacy i18n and signed-out account contrac
   });
   expect(languagePreference.headers()["set-cookie"]).toContain("inspir_locale=Hindi");
 
-  const mainAppTranslations = await request.get(
-    "/api/main-app-translations?language=English",
-  );
-  expect(mainAppTranslations.status()).toBe(200);
-  expectLeanWorkerDelivery(mainAppTranslations, "/api/main-app-translations", "public");
-  expect(mainAppTranslations.headers()["cache-control"]).toContain("public");
-  expect(await mainAppTranslations.json()).toMatchObject({
-    bundle: { namespace: "main-app", language: "English" },
-    complete: true,
+  for (const language of ["English", "Hindi"] as const) {
+    const route = `/api/main-app-translations?language=${language}`;
+    const response = await request.get(route);
+    await expectCompleteLegacyTranslation(response, route, language, "main-app");
+  }
+
+  for (const probe of [
+    { language: "English", namespace: "route:home" },
+    { language: "Hindi", namespace: "route:mission" },
+  ] as const) {
+    const route =
+      `/api/site-translations?language=${probe.language}` +
+      `&namespace=${encodeURIComponent(probe.namespace)}`;
+    const response = await request.get(route);
+    await expectCompleteLegacyTranslation(
+      response,
+      route,
+      probe.language,
+      probe.namespace,
+    );
+  }
+
+  const unpublishedRoute =
+    "/api/site-translations?language=Hindi&namespace=route%3Aabout";
+  const unpublished = await request.get(unpublishedRoute);
+  expect(unpublished.status()).toBe(404);
+  expectLeanWorkerDelivery(unpublished, unpublishedRoute);
+  expect(unpublished.headers()["cdn-cache-control"]).toBe("private, no-store");
+  expect(unpublished.headers()["cloudflare-cdn-cache-control"]).toBe("private, no-store");
+  expect(await readJsonRecord(unpublished, unpublishedRoute)).toEqual({
+    error: "Translation bundle is not published",
   });
 
-  const siteTranslations = await request.get(
-    "/api/site-translations?language=English&namespace=route%3Ahome",
-  );
-  expect(siteTranslations.status()).toBe(200);
-  expectLeanWorkerDelivery(siteTranslations, "/api/site-translations", "public");
-  expect(siteTranslations.headers()["cache-control"]).toContain("public");
-  expect(await siteTranslations.json()).toMatchObject({
-    bundle: { namespace: "route:home", language: "English" },
-    complete: true,
+  const unknownRoute =
+    "/api/site-translations?language=English&namespace=unknown";
+  const unknown = await request.get(unknownRoute);
+  expect(unknown.status()).toBe(400);
+  expectLeanWorkerDelivery(unknown, unknownRoute);
+  expect(await readJsonRecord(unknown, unknownRoute)).toEqual({
+    error: "Unsupported namespace",
   });
+
+  const hindiMainAppBundle = getCuratedMainAppTranslationBundle("Hindi");
+  if (!hindiMainAppBundle) throw new Error("Missing curated Hindi main-app bundle.");
+  const hindiMainAppAsset = buildStaticMainAppBundleAsset("hi", hindiMainAppBundle);
+  const immutableHindiMainApp = await request.get(hindiMainAppAsset.publicPath);
+  expect(immutableHindiMainApp.status()).toBe(200);
+  expectStaticAssetDelivery(
+    immutableHindiMainApp,
+    hindiMainAppAsset.publicPath,
+    "immutable",
+  );
+  const immutableHindiPayload = await readJsonRecord(
+    immutableHindiMainApp,
+    hindiMainAppAsset.publicPath,
+  );
+  expect(immutableHindiPayload.namespace).toBe("main-app");
+  expect(immutableHindiPayload.language).toBe("Hindi");
+  expect(immutableHindiPayload.sourceHash).toBe(hindiMainAppAsset.sourceHash);
+  expect(
+    Object.values(requiredRecord(immutableHindiPayload.strings, "Hindi main-app strings")).some(
+      (value) => typeof value === "string" && /[\u0900-\u097f]/u.test(value),
+    ),
+  ).toBe(true);
 
   const writeFreeze = await request.get("/api/migration/write-freeze");
   expect(writeFreeze.status()).toBe(409);
@@ -1501,6 +1545,36 @@ function findMemoryByContent(dashboard: Record<string, unknown>, content: string
 async function readJsonRecord(response: APIResponse, label: string) {
   const value: unknown = await response.json();
   return requiredRecord(value, `${label} JSON`);
+}
+
+async function expectCompleteLegacyTranslation(
+  response: APIResponse,
+  route: string,
+  language: "English" | "Hindi",
+  namespace: "main-app" | "route:home" | "route:mission",
+) {
+  expect(response.status(), route).toBe(200);
+  expectLeanWorkerDelivery(response, route, "public");
+  const payload = await readJsonRecord(response, route);
+  const bundle = requiredRecord(payload.bundle, `${route} bundle`);
+  const translatedCount = requiredNonNegativeInteger(
+    payload.translatedCount,
+    `${route} translatedCount`,
+  );
+  const totalCount = requiredNonNegativeInteger(payload.totalCount, `${route} totalCount`);
+  expect(payload.complete, route).toBe(true);
+  expect(translatedCount, route).toBe(totalCount);
+  expect(totalCount, route).toBeGreaterThan(0);
+  expect(bundle.language, route).toBe(language);
+  expect(bundle.namespace, route).toBe(namespace);
+  if (language === "Hindi") {
+    expect(
+      Object.values(requiredRecord(bundle.strings, `${route} strings`)).some(
+        (value) => typeof value === "string" && /[\u0900-\u097f]/u.test(value),
+      ),
+      route,
+    ).toBe(true);
+  }
 }
 
 async function errorBody(response: APIResponse) {

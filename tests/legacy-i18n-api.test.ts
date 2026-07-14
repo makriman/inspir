@@ -3,11 +3,41 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import { defaultLanguage, supportedLanguages } from "../lib/content/languages";
 import { handleLegacyI18nApiRequest } from "../lib/free-runtime/legacy-i18n-api";
-import { legacyTranslationAssetPath } from "../lib/i18n/legacy-api-compat";
+import {
+  getPublishedLegacySiteTranslationNamespaces,
+  getPublishedLegacySiteTranslationPairs,
+  isPublishedLegacySiteTranslationPair,
+  legacyTranslationAssetPath,
+} from "../lib/i18n/legacy-api-compat";
+import { renderLocalizedSiteTranslationNamespaces } from "../lib/i18n/render-localized-namespaces";
+import { staticSiteTranslationNamespaceAvailability } from "../lib/i18n/site-availability-manifest";
 import { materializeLegacyTranslationApiAssets } from "../scripts/cloudflare/materialize-legacy-translation-api-assets";
 
-test("legacy language preference preserves cookies and locale redirects for cached pre-games clients", async () => {
+test("legacy site compatibility allowlist exactly follows published translation availability", () => {
+  const pairs = getPublishedLegacySiteTranslationPairs();
+  assert.equal(supportedLanguages.length, 70);
+  assert.equal(pairs.length, 210);
+  assert.equal(new Set(pairs.map(({ language, namespace }) => `${language}\u0000${namespace}`)).size, 210);
+
+  for (const language of supportedLanguages) {
+    const expected =
+      language === defaultLanguage
+        ? renderLocalizedSiteTranslationNamespaces
+        : (staticSiteTranslationNamespaceAvailability[language] ?? []);
+    assert.deepEqual(getPublishedLegacySiteTranslationNamespaces(language), expected);
+    assert.deepEqual(
+      pairs.filter((pair) => pair.language === language).map((pair) => pair.namespace),
+      [...expected],
+    );
+  }
+
+  assert.equal(isPublishedLegacySiteTranslationPair("Hindi", "route:home"), true);
+  assert.equal(isPublishedLegacySiteTranslationPair("Hindi", "route:about"), false);
+});
+
+test("legacy language preference redirects only to published localized site paths", async () => {
   const env = fakeAssets();
   const response = await handleLegacyI18nApiRequest(
     new Request("https://inspirlearning.com/api/language-preference", {
@@ -22,7 +52,7 @@ test("legacy language preference preserves cookies and locale redirects for cach
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), {
     language: "Hindi",
-    redirectTo: "/hi/about?ref=legacy",
+    redirectTo: "/about?ref=legacy",
   });
   const cookies = response.headers.get("set-cookie") ?? "";
   assert.match(cookies, /inspir_locale=Hindi/);
@@ -31,6 +61,20 @@ test("legacy language preference preserves cookies and locale redirects for cach
   assert.match(cookies, /SameSite=Lax/);
   assert.match(cookies, /Secure/);
   assert.match(response.headers.get("cache-control") ?? "", /no-store/);
+
+  const published = await handleLegacyI18nApiRequest(
+    new Request("https://inspirlearning.com/api/language-preference", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ language: "Hindi", pathname: "/es/mission?ref=legacy" }),
+    }),
+    env,
+  );
+  assert.ok(published);
+  assert.deepEqual(await published.json(), {
+    language: "Hindi",
+    redirectTo: "/hi/mission?ref=legacy",
+  });
 });
 
 test("legacy language preference bounds input and closes scheme-relative redirects", async () => {
@@ -70,7 +114,6 @@ test("legacy main-app translation API streams complete static envelopes", async 
   const assetPath = legacyTranslationAssetPath({
     kind: "main-app",
     language: "Hindi",
-    completion: "complete",
   });
   const payload = JSON.stringify({
     bundle: { language: "Hindi" },
@@ -89,28 +132,32 @@ test("legacy main-app translation API streams complete static envelopes", async 
   assert.equal(await response.text(), payload);
   assert.equal(response.headers.get("cache-control"), "public, max-age=300, s-maxage=3600");
   assert.deepEqual(env.calls, [`/${assetPath}`]);
+
+  const headResponse = await handleLegacyI18nApiRequest(
+    new Request("https://inspirlearning.com/api/main-app-translations?language=Hindi", {
+      method: "HEAD",
+    }),
+    env,
+  );
+  assert.ok(headResponse);
+  assert.equal(headResponse.status, 200);
+  assert.equal(await headResponse.text(), "");
+  assert.deepEqual(env.calls, [`/${assetPath}`, `/${assetPath}`]);
 });
 
-test("legacy site translation API preserves incomplete no-store results", async () => {
+test("legacy site translation API streams one complete published asset", async () => {
   const completePath = legacyTranslationAssetPath({
     kind: "site",
     language: "Hindi",
     namespace: "route:home",
-    completion: "complete",
-  });
-  const incompletePath = legacyTranslationAssetPath({
-    kind: "site",
-    language: "Hindi",
-    namespace: "route:home",
-    completion: "incomplete",
   });
   const payload = JSON.stringify({
-    bundle: { namespace: "route:home", language: "Hindi", strings: {} },
-    complete: false,
-    translatedCount: 0,
-    totalCount: 2,
+    bundle: { namespace: "route:home", language: "Hindi", strings: { example: "उदाहरण" } },
+    complete: true,
+    translatedCount: 1,
+    totalCount: 1,
   });
-  const env = fakeAssets(new Map([[`/${incompletePath}`, payload]]));
+  const env = fakeAssets(new Map([[`/${completePath}`, payload]]));
   const response = await handleLegacyI18nApiRequest(
     new Request(
       "https://inspirlearning.com/api/site-translations?language=Hindi&namespace=route%3Ahome",
@@ -121,8 +168,66 @@ test("legacy site translation API preserves incomplete no-store results", async 
   assert.ok(response);
   assert.equal(response.status, 200);
   assert.equal(await response.text(), payload);
-  assert.equal(response.headers.get("cache-control"), "no-store");
-  assert.deepEqual(env.calls, [`/${completePath}`, `/${incompletePath}`]);
+  assert.equal(response.headers.get("cache-control"), "public, max-age=300, s-maxage=3600");
+  assert.deepEqual(env.calls, [`/${completePath}`]);
+});
+
+test("known unpublished legacy site pairs return private 404 without an asset lookup", async () => {
+  const env = fakeAssets();
+  const route =
+    "https://inspirlearning.com/api/site-translations?language=Hindi&namespace=route%3Aabout";
+  const response = await handleLegacyI18nApiRequest(new Request(route), env);
+
+  assert.ok(response);
+  assert.equal(response.status, 404);
+  assert.deepEqual(await response.json(), { error: "Translation bundle is not published" });
+  assert.match(response.headers.get("cache-control") ?? "", /no-store/);
+  assert.equal(response.headers.get("cdn-cache-control"), "private, no-store");
+  assert.deepEqual(env.calls, []);
+
+  const headResponse = await handleLegacyI18nApiRequest(
+    new Request(route, { method: "HEAD" }),
+    env,
+  );
+  assert.ok(headResponse);
+  assert.equal(headResponse.status, 404);
+  assert.equal(await headResponse.text(), "");
+  assert.deepEqual(env.calls, []);
+});
+
+test("missing published legacy site assets remain logged private 503 responses", async () => {
+  const completePath = legacyTranslationAssetPath({
+    kind: "site",
+    language: "Hindi",
+    namespace: "route:home",
+  });
+  const env = fakeAssets();
+  const errors: string[] = [];
+  const originalConsoleError = console.error;
+  console.error = (value?: unknown) => {
+    errors.push(String(value));
+  };
+  try {
+    const response = await handleLegacyI18nApiRequest(
+      new Request(
+        "https://inspirlearning.com/api/site-translations?language=Hindi&namespace=route%3Ahome",
+      ),
+      env,
+    );
+
+    assert.ok(response);
+    assert.equal(response.status, 503);
+    assert.deepEqual(await response.json(), {
+      error: "Translation bundle is temporarily unavailable",
+    });
+    assert.match(response.headers.get("cache-control") ?? "", /no-store/);
+  } finally {
+    console.error = originalConsoleError;
+  }
+  assert.deepEqual(env.calls, [`/${completePath}`]);
+  assert.equal(errors.length, 1);
+  assert.match(errors[0] ?? "", /"event":"legacy_translation_asset_missing"/);
+  assert.match(errors[0] ?? "", /"namespace":"route:home"/);
 });
 
 test("legacy translation APIs retain strict parameter and method contracts", async () => {
@@ -177,23 +282,27 @@ test("legacy translation runtime stays dictionary-free and fails closed without 
   assert.match(response.headers.get("cache-control") ?? "", /no-store/);
 });
 
-test("legacy translation response materialization creates exact static result assets", () => {
+test("legacy translation response materialization creates exact complete static result assets", () => {
   const assetsRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-legacy-i18n-"));
   try {
     const report = materializeLegacyTranslationApiAssets(assetsRoot, {
-      languages: ["English", "Hindi"],
-      siteNamespaces: ["route:home"],
+      mainAppLanguages: ["English", "Hindi"],
+      sitePairs: [
+        { language: "English", namespace: "route:home" },
+        { language: "Hindi", namespace: "route:home" },
+      ],
     });
     assert.equal(report.mainAppResponses, 2);
     assert.equal(report.siteResponses, 2);
     assert.equal(report.paths.length, 4);
-    assert.equal(report.completeResponses + report.incompleteResponses, 4);
+    assert.equal(report.completeResponses, 4);
+    assert.equal(report.incompleteResponses, 0);
+    assert.ok(report.paths.every((assetPath) => assetPath.endsWith(".complete.json")));
     assert.ok(report.bytes > 0);
 
     const englishMainPath = legacyTranslationAssetPath({
       kind: "main-app",
       language: "English",
-      completion: "complete",
     });
     const parsed: unknown = JSON.parse(
       fs.readFileSync(path.join(assetsRoot, englishMainPath), "utf8"),
@@ -212,16 +321,51 @@ test("legacy translation response materialization creates exact static result as
   }
 });
 
+test("default legacy materialization emits exactly the 280 complete compatibility assets", () => {
+  const assetsRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-legacy-i18n-full-"));
+  try {
+    const report = materializeLegacyTranslationApiAssets(assetsRoot);
+    assert.equal(report.mainAppResponses, 70);
+    assert.equal(report.siteResponses, 210);
+    assert.equal(report.paths.length, 280);
+    assert.equal(report.completeResponses, 280);
+    assert.equal(report.incompleteResponses, 0);
+    assert.ok(report.paths.every((assetPath) => assetPath.endsWith(".complete.json")));
+    assert.equal(
+      report.paths.some((assetPath) => assetPath.includes(".incomplete.json")),
+      false,
+    );
+  } finally {
+    fs.rmSync(assetsRoot, { recursive: true, force: true });
+  }
+});
+
 test("legacy translation response materialization rejects namespaces outside the generated manifest", () => {
   const assetsRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-legacy-i18n-invalid-"));
   try {
     assert.throws(
       () =>
         materializeLegacyTranslationApiAssets(assetsRoot, {
-          languages: ["English"],
-          siteNamespaces: ["route:retired-game-arena"],
+          mainAppLanguages: ["English"],
+          sitePairs: [{ language: "English", namespace: "route:retired-game-arena" }],
         }),
       /Unknown legacy site-translation namespace/,
+    );
+  } finally {
+    fs.rmSync(assetsRoot, { recursive: true, force: true });
+  }
+});
+
+test("legacy translation response materialization rejects known unpublished pairs", () => {
+  const assetsRoot = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-legacy-i18n-unpublished-"));
+  try {
+    assert.throws(
+      () =>
+        materializeLegacyTranslationApiAssets(assetsRoot, {
+          mainAppLanguages: ["English"],
+          sitePairs: [{ language: "English", namespace: "route:about" }],
+        }),
+      /Unpublished legacy site-translation pair: English\/route:about/,
     );
   } finally {
     fs.rmSync(assetsRoot, { recursive: true, force: true });

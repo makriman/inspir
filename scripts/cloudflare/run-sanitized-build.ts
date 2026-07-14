@@ -12,7 +12,10 @@ import {
   withSanitizedProjectEnvFiles,
 } from "./sanitized-build-env";
 import { inspectOpenNextResourceBudget } from "./check-opennext-resource-budget";
-import { materializeStaticMarketingAssets } from "./materialize-static-marketing-assets";
+import {
+  materializeStaticMarketingAssets,
+  validateStaticMarketingAssetRelease,
+} from "./materialize-static-marketing-assets";
 import {
   acquireProductionValidationExclusion,
   assertProductionValidationExclusionCommandWindow,
@@ -254,9 +257,29 @@ export function runSanitizedBuildCommand(
         }
       }
 
+      let freshStaticAssetRelease: ReturnType<
+        typeof validateStaticMarketingAssetRelease
+      > | null = null;
       let commandArtifactEvidence: WorkerDeployArtifactEvidence | undefined;
       try {
+        if (requiresProductionDeployPreflight(mode)) {
+          freshStaticAssetRelease = validateStaticMarketingAssetRelease(process.cwd());
+        }
         commandArtifactEvidence = deployEvidence.captureCommandArtifacts();
+        if (freshStaticAssetRelease && commandArtifactEvidence) {
+          const validatedManifest = freshStaticAssetRelease.assetManifest;
+          const capturedManifest = commandArtifactEvidence.assetManifest;
+          if (
+            validatedManifest.root !== capturedManifest.root ||
+            validatedManifest.fileCount !== capturedManifest.fileCount ||
+            validatedManifest.bytes !== capturedManifest.bytes ||
+            validatedManifest.sha256 !== capturedManifest.sha256
+          ) {
+            throw new Error(
+              "Static Assets changed between fresh release validation and deploy artifact capture.",
+            );
+          }
+        }
       } catch (error) {
         if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
         return deployEvidence.finish(1, {
@@ -266,7 +289,7 @@ export function runSanitizedBuildCommand(
           resourceBudgetOk: command.buildBefore ? true : undefined,
           scanBeforeOk: command.scanBefore ? true : null,
           scanAfterOk: null,
-          error: `Immutable Worker deploy artifact evidence failed before ${mode}: ${errorMessage(error)}`,
+          error: `Fresh Static Asset release or immutable Worker deploy artifact evidence failed before ${mode}: ${errorMessage(error)}`,
         });
       }
 

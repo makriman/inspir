@@ -25,7 +25,15 @@ import {
   stableStringify,
   type WranglerRunner,
 } from "./migration-config";
+import {
+  createHistoricalDataHmacKey,
+  historicalDataHmacKeyId,
+  readHistoricalDataHmacKey,
+  requireHistoricalHmacSecret,
+} from "./historical-data-hmac-key";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
+
+export { historicalDataHmacKeyId } from "./historical-data-hmac-key";
 
 export const HISTORICAL_DATA_LEGACY_PRESERVATION_KIND =
   "inspir-historical-data-preservation-v1" as const;
@@ -41,7 +49,22 @@ export const HISTORICAL_SUPPLEMENTAL_ROW_LIMIT = 125_000;
 export const HISTORICAL_OPERATIONAL_ROW_LIMIT = 10_000;
 export const HISTORICAL_SCHEMA_COLUMN_LIMIT = 256;
 export const HISTORICAL_DATA_LEGACY_BILLED_READ_LIMIT = 750_000;
+// One logical snapshot is bounded below this cushion. Cloudflare may
+// transparently execute a read-only statement up to three times, so release
+// admission must reserve the separate worst-case billable ceiling below.
 export const HISTORICAL_BILLED_READ_LIMIT = 750_000;
+export const HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS = 3;
+export const HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT = 2_250_000;
+export const HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ = 690_209;
+if (
+  HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT !==
+  HISTORICAL_BILLED_READ_LIMIT *
+    HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS
+) {
+  throw new Error(
+    "Historical preservation automatic-retry reservation is inconsistent.",
+  );
+}
 export const HISTORICAL_DATA_COUNT_RESULT_SET_COUNT = 21;
 export const HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT = 19;
 export const HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT = 20;
@@ -152,7 +175,10 @@ export type HistoricalDataBaselineReport = {
     coreRows: number;
     supplementalRows: number;
     operationalRows: number;
-    billedReads: number;
+    logicalSnapshotRowsRead: number;
+    logicalRowsReadLimit: number;
+    maximumAutomaticReadAttempts: number;
+    billableRowsReadReservation: number;
     sentinelsPerDataset: number;
   };
   datasets: Record<HistoricalDatasetName, HistoricalDatasetEvidence>;
@@ -233,6 +259,18 @@ type HistoricalUsageLoader = (
   clock: HistoricalClock,
 ) => D1DailyUsage;
 
+export type HistoricalBeforeSnapshotContext = Readonly<{
+  phase: "baseline";
+  backupDir: string;
+  startedAt: Date;
+  utcDay: string;
+  operationId: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
+  maximumRowsRead: typeof HISTORICAL_BILLED_READ_LIMIT;
+  maximumAutomaticReadAttempts: typeof HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS;
+  maximumBillableRowsRead: typeof HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT;
+}>;
+
 type HistoricalOperationOptions = {
   backupDir: string;
   hmacSecret: string;
@@ -242,6 +280,8 @@ type HistoricalOperationOptions = {
   usageLoader?: HistoricalUsageLoader;
   sourceFingerprint?: SourceFingerprint;
   sourceFingerprintProvider?: () => SourceFingerprint;
+  beforeSnapshot?: (context: HistoricalBeforeSnapshotContext) => void;
+  allowProvenPreSnapshotReservationReplay?: boolean;
 };
 
 export type ReadHistoricalDataBaselineOptions = {
@@ -487,7 +527,9 @@ const historicalLedgerReservationSchema = z.object({
   phase: z.literal("exact"),
   rowsRead: safeNonnegativeIntegerSchema,
   rowsWritten: z.literal(0),
-  maximumRowsRead: z.literal(HISTORICAL_BILLED_READ_LIMIT),
+  maximumRowsRead: z.literal(
+    HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+  ),
   maximumRowsWritten: z.literal(0),
   createdAt: canonicalTimestampSchema,
   updatedAt: canonicalTimestampSchema,
@@ -534,7 +576,16 @@ const historicalBaselineSchema = z.object({
     coreRows: z.literal(HISTORICAL_CORE_ROW_LIMIT),
     supplementalRows: z.literal(HISTORICAL_SUPPLEMENTAL_ROW_LIMIT),
     operationalRows: z.literal(HISTORICAL_OPERATIONAL_ROW_LIMIT),
-    billedReads: z.literal(HISTORICAL_BILLED_READ_LIMIT),
+    logicalSnapshotRowsRead: z.literal(
+      HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+    ),
+    logicalRowsReadLimit: z.literal(HISTORICAL_BILLED_READ_LIMIT),
+    maximumAutomaticReadAttempts: z.literal(
+      HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+    ),
+    billableRowsReadReservation: z.literal(
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+    ),
     sentinelsPerDataset: z.literal(HISTORICAL_SENTINEL_LIMIT),
   }).strict(),
   datasets: z.record(z.enum(HISTORICAL_DATASET_NAMES), historicalDatasetSchema),
@@ -613,10 +664,18 @@ const historicalIdentityScanMaximum = datasetSpecs.reduce(
     sum + (spec.name === "profile_photo_pointers" ? usersDatasetSpec.cap + 1 : HISTORICAL_SENTINEL_LIMIT),
   0,
 );
-export const HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ =
+const calculatedHistoricalDataSnapshotMaxRowsRead =
   historicalCountScanMaximum +
   historicalSchemaScanMaximum +
   historicalIdentityScanMaximum;
+if (
+  calculatedHistoricalDataSnapshotMaxRowsRead !==
+  HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ
+) {
+  throw new Error(
+    `Historical preservation V2 snapshot bound changed: ${calculatedHistoricalDataSnapshotMaxRowsRead} !== ${HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ}.`,
+  );
+}
 if (HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ > HISTORICAL_BILLED_READ_LIMIT) {
   throw new Error(
     `Historical preservation V2 snapshot bound exceeds its pre-read reservation: ${HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ} > ${HISTORICAL_BILLED_READ_LIMIT}.`,
@@ -628,14 +687,26 @@ export const HISTORICAL_DATA_SNAPSHOT_PLAN_SHA256 = createHash()
     kind: HISTORICAL_DATA_PRESERVATION_KIND,
     schemaVersion: 2,
     snapshotSql: HISTORICAL_DATA_SNAPSHOT_SQL,
-    maximumRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+    logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+    logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
+    maximumAutomaticReadAttempts:
+      HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+    billableRowsReadReservation:
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
   }))
   .digest("hex");
 
 assertHistoricalDataSnapshotSql(HISTORICAL_DATA_SNAPSHOT_SQL);
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  runCli();
+  void runCli().catch((error) => {
+    console.error(
+      error instanceof Error
+        ? error.message
+        : "Historical data preservation failed.",
+    );
+    process.exitCode = 1;
+  });
 }
 
 function captureHistoricalDataSnapshot(options: {
@@ -780,6 +851,19 @@ export function createHistoricalDataBaseline(
   options: HistoricalOperationOptions,
 ): HistoricalDataBaselineReport {
   const operation = startHistoricalOperation("baseline", options);
+  options.beforeSnapshot?.({
+    phase: "baseline",
+    backupDir: operation.backupDir,
+    startedAt: new Date(operation.startedAt),
+    utcDay: operation.utcDay,
+    operationId: operation.operationId,
+    sourceFingerprint: { ...operation.sourceIdentity },
+    maximumRowsRead: HISTORICAL_BILLED_READ_LIMIT,
+    maximumAutomaticReadAttempts:
+      HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+    maximumBillableRowsRead:
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+  });
   const captured = captureHistoricalDataSnapshot({
     hmacSecret: options.hmacSecret,
     runner: operation.runner,
@@ -817,7 +901,12 @@ export function createHistoricalDataBaseline(
       coreRows: HISTORICAL_CORE_ROW_LIMIT,
       supplementalRows: HISTORICAL_SUPPLEMENTAL_ROW_LIMIT,
       operationalRows: HISTORICAL_OPERATIONAL_ROW_LIMIT,
-      billedReads: HISTORICAL_BILLED_READ_LIMIT,
+      logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+      logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
+      maximumAutomaticReadAttempts:
+        HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
+      billableRowsReadReservation:
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
       sentinelsPerDataset: HISTORICAL_SENTINEL_LIMIT,
     },
     datasets: publicDatasets(captured.datasets),
@@ -1038,18 +1127,36 @@ function startHistoricalOperation(
   const sourceIdentity = compactSourceFingerprint(sourceBefore);
   const operationId = historicalDataBudgetOperationId(phase, sourceIdentity);
   const usage = (options.usageLoader ?? loadAccountD1DailyUsage)(startedAt, runner, clock);
-  reserveD1ReleaseBudget({
+  const maximumReservation = reserveD1ReleaseBudget({
     backupDir,
     operationId,
     operation: historicalOperationName(phase),
     sourceFingerprint: sourceIdentity,
     phase: "maximum",
-    rowsRead: HISTORICAL_BILLED_READ_LIMIT,
+    rowsRead: HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
     rowsWritten: 0,
     observedUsage: usage,
     now: startedAt,
     expectedUtcDay: utcDay,
   });
+  if (maximumReservation.idempotent) {
+    const provenPreSnapshotReplay =
+      phase === "baseline" &&
+      options.allowProvenPreSnapshotReservationReplay === true &&
+      typeof options.beforeSnapshot === "function" &&
+      maximumReservation.reservation.phase === "maximum" &&
+      maximumReservation.reservation.rowsRead ===
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT &&
+      maximumReservation.reservation.maximumRowsRead ===
+        HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT &&
+      maximumReservation.reservation.rowsWritten === 0 &&
+      maximumReservation.reservation.maximumRowsWritten === 0;
+    if (!provenPreSnapshotReplay) {
+      throw new Error(
+        "Historical preservation refuses to replay an existing D1 reservation before another snapshot.",
+      );
+    }
+  }
   return {
     phase,
     backupDir,
@@ -1116,15 +1223,26 @@ function readHistoricalClock(clock: HistoricalClock, label: string) {
   return value;
 }
 
-function runCli() {
+async function runCli() {
   if (!hasFlag("--confirm-production")) {
     throw new Error("Historical data preservation requires --confirm-production.");
   }
-  const secret = requireHistoricalHmacSecret(
-    process.env.HISTORICAL_DATA_PRESERVATION_HMAC_SECRET ?? "",
-  );
+  const capture = hasFlag("--capture-baseline");
+  const verify = hasFlag("--verify-preservation");
+  if (capture === verify) {
+    throw new Error("Choose exactly one of --capture-baseline or --verify-preservation.");
+  }
+  const createNewKey = hasFlag("--new-hmac-key");
+  const reuseBaselineKey = hasFlag("--reuse-baseline-hmac-key");
+  const confirmRollover = hasFlag("--confirm-budget-blocked-rollover");
   const backupDir = resolveBackupDir();
-  if (hasFlag("--capture-baseline")) {
+  if (capture) {
+    if (!createNewKey || reuseBaselineKey || confirmRollover) {
+      throw new Error(
+        "Steady-state baseline capture requires --new-hmac-key; the pinned rollover successor must use the continuity orchestrator.",
+      );
+    }
+    const secret = (await createHistoricalDataHmacKey()).secret;
     const report = createHistoricalDataBaseline({ backupDir, hmacSecret: secret });
     console.log(JSON.stringify({
       kind: report.kind,
@@ -1137,31 +1255,31 @@ function runCli() {
     }, null, 2));
     return;
   }
-  if (hasFlag("--verify-preservation")) {
-    const baseline = readAndValidateHistoricalDataBaseline({
-      backupDir,
-      maximumAgeMs: HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
-    });
-    const report = verifyHistoricalDataPreservation({
-      baseline,
-      backupDir,
-      hmacSecret: secret,
-      maximumBaselineAgeMs: HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
-    });
-    console.log(JSON.stringify({
-      kind: report.kind,
-      phase: report.phase,
-      ok: report.ok,
-      createdAt: report.createdAt,
-      utcDay: report.utcDay,
-      operationId: report.operationId,
-      problemCount: report.problems.length,
-      reportPath: writeHistoricalDataReport(backupDir, report),
-    }, null, 2));
-    if (!report.ok) process.exitCode = 1;
-    return;
+  if (createNewKey || reuseBaselineKey || confirmRollover) {
+    throw new Error("Historical-data HMAC capture flags are not valid for preservation verification.");
   }
-  throw new Error("Choose exactly one of --capture-baseline or --verify-preservation.");
+  const baseline = readAndValidateHistoricalDataBaseline({
+    backupDir,
+    maximumAgeMs: HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
+  });
+  const secret = (await readHistoricalDataHmacKey(baseline.hmacKeyId)).secret;
+  const report = verifyHistoricalDataPreservation({
+    baseline,
+    backupDir,
+    hmacSecret: secret,
+    maximumBaselineAgeMs: HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
+  });
+  console.log(JSON.stringify({
+    kind: report.kind,
+    phase: report.phase,
+    ok: report.ok,
+    createdAt: report.createdAt,
+    utcDay: report.utcDay,
+    operationId: report.operationId,
+    problemCount: report.problems.length,
+    reportPath: writeHistoricalDataReport(backupDir, report),
+  }, null, 2));
+  if (!report.ok) process.exitCode = 1;
 }
 
 function executeD1ReadOnly(sql: string, runner: WranglerRunner) {
@@ -1196,8 +1314,19 @@ function executeD1ReadOnly(sql: string, runner: WranglerRunner) {
     const meta = isRecord(entry.meta) ? entry.meta : null;
     const read = nonNegativeInteger(meta?.rows_read);
     const written = nonNegativeInteger(meta?.rows_written);
+    const totalAttempts = nonNegativeInteger(meta?.total_attempts);
     if (read === null || written === null) {
       throw new Error(`Historical preservation D1 result set ${index + 1} lacks billing metadata.`);
+    }
+    if (totalAttempts === null || totalAttempts < 1) {
+      throw new Error(
+        `Historical preservation D1 result set ${index + 1} lacks valid automatic-attempt metadata.`,
+      );
+    }
+    if (totalAttempts !== 1) {
+      throw new Error(
+        `Historical preservation D1 result set ${index + 1} used ${totalAttempts} automatic attempts; the maximum billable-read reservation remains unresolved and no report may be created.`,
+      );
     }
     rowsRead = safeAddBillingRows(rowsRead, read, "read");
     rowsWritten = safeAddBillingRows(rowsWritten, written, "written");
@@ -1711,21 +1840,6 @@ function assertSameSource(left: SourceFingerprint, right: SourceFingerprint) {
   if (left.sha256 !== right.sha256 || left.fileCount !== right.fileCount) {
     throw new Error("Historical preservation evidence source fingerprint changed.");
   }
-}
-
-function requireHistoricalHmacSecret(value: string) {
-  const bytes = Buffer.byteLength(value, "utf8");
-  if (bytes < 32 || bytes > 512) {
-    throw new Error("HISTORICAL_DATA_PRESERVATION_HMAC_SECRET must contain 32 to 512 UTF-8 bytes.");
-  }
-  return value;
-}
-
-export function historicalDataHmacKeyId(value: string) {
-  const secret = requireHistoricalHmacSecret(value);
-  return createHmac("sha256", secret)
-    .update("inspir-preservation-key-id-v1")
-    .digest("hex");
 }
 
 function ensureHistoricalEvidenceDirectory(directory: string) {

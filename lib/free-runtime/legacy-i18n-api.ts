@@ -1,12 +1,12 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import {
   isKnownLegacySiteTranslationNamespace,
+  isPublishedLegacySiteTranslationPair,
   isSupportedLegacyTranslationLanguage,
   legacyLanguagePreferenceApiPath,
   legacyMainAppTranslationsApiPath,
   legacySiteTranslationsApiPath,
   legacyTranslationAssetPath,
-  type LegacyTranslationCompletion,
 } from "@/lib/i18n/legacy-api-compat";
 import {
   localeCookieName,
@@ -14,6 +14,8 @@ import {
   localizeHref,
   removeLocaleFromPath,
 } from "@/lib/i18n/routing";
+import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 
 const nativeWorkerDelivery = "lean-api-worker";
 const maxLanguagePreferenceBodyBytes = 4_096;
@@ -62,8 +64,13 @@ async function handleLanguagePreference(request: Request) {
   const language = normalizeLanguage(payload.language);
   const pathname = safeLegacyPathname(payload.pathname);
   const withoutLocale = safeInternalHref(removeLocaleFromPath(pathname)) ?? "/";
+  const isKnownSitePath = getPotentialSiteTranslationNamespacesForPath(withoutLocale).length > 0;
+  const canLocalizePath =
+    !isKnownSitePath || isStaticSiteLanguageAvailableForPath(withoutLocale, language);
   const localized =
-    language === defaultLanguage ? withoutLocale : localizeHref(withoutLocale, language);
+    language === defaultLanguage || !canLocalizePath
+      ? withoutLocale
+      : localizeHref(withoutLocale, language);
   const redirectTo = safeInternalHref(localized) ?? "/";
   const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
   const headers = responseHeaders();
@@ -93,9 +100,20 @@ async function handleTranslationAssetRequest(
     return jsonResponse({ error: "Unsupported language" }, 400, request.method === "HEAD");
   }
 
-  const namespace = kind === "site" ? url.searchParams.get("namespace") : undefined;
-  if (kind === "site" && !isKnownLegacySiteTranslationNamespace(namespace ?? null)) {
-    return jsonResponse({ error: "Unsupported namespace" }, 400, request.method === "HEAD");
+  let namespace: string | undefined;
+  if (kind === "site") {
+    const namespaceValue = url.searchParams.get("namespace");
+    if (!isKnownLegacySiteTranslationNamespace(namespaceValue)) {
+      return jsonResponse({ error: "Unsupported namespace" }, 400, request.method === "HEAD");
+    }
+    namespace = namespaceValue;
+    if (!isPublishedLegacySiteTranslationPair(languageValue, namespace)) {
+      return jsonResponse(
+        { error: "Translation bundle is not published" },
+        404,
+        request.method === "HEAD",
+      );
+    }
   }
 
   const assets = env.ASSETS;
@@ -107,23 +125,20 @@ async function handleTranslationAssetRequest(
     );
   }
 
-  for (const completion of ["complete", "incomplete"] as const) {
-    const assetPath = legacyTranslationAssetPath({
-      kind,
-      language: languageValue,
-      completion,
-      namespace: namespace ?? undefined,
-    });
-    const assetUrl = new URL(`/${assetPath}`, request.url);
-    assetUrl.search = "";
-    const assetResponse = await assets.fetch(
-      new Request(assetUrl, { method: request.method === "HEAD" ? "HEAD" : "GET" }),
-    );
-    if (assetResponse.status === 200) {
-      return translationAssetResponse(request, assetResponse, completion);
-    }
-    await assetResponse.body?.cancel();
+  const assetPath = legacyTranslationAssetPath({
+    kind,
+    language: languageValue,
+    namespace,
+  });
+  const assetUrl = new URL(`/${assetPath}`, request.url);
+  assetUrl.search = "";
+  const assetResponse = await assets.fetch(
+    new Request(assetUrl, { method: request.method === "HEAD" ? "HEAD" : "GET" }),
+  );
+  if (assetResponse.status === 200) {
+    return translationAssetResponse(request, assetResponse);
   }
+  await assetResponse.body?.cancel();
 
   console.error(
     JSON.stringify({
@@ -143,19 +158,13 @@ async function handleTranslationAssetRequest(
 function translationAssetResponse(
   request: Request,
   assetResponse: Response,
-  completion: LegacyTranslationCompletion,
 ) {
-  const cacheControl = completion === "complete" ? completeCacheControl : "no-store";
   const headers = new Headers({
-    "cache-control": cacheControl,
+    "cache-control": completeCacheControl,
     "content-type": "application/json; charset=utf-8",
     "x-content-type-options": "nosniff",
     "x-inspir-delivery": nativeWorkerDelivery,
   });
-  if (completion === "incomplete") {
-    headers.set("cdn-cache-control", "private, no-store");
-    headers.set("cloudflare-cdn-cache-control", "private, no-store");
-  }
   return new Response(request.method === "HEAD" ? null : assetResponse.body, {
     status: 200,
     headers,

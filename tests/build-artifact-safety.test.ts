@@ -132,6 +132,41 @@ test("fresh OpenNext artifacts must pass the resource budget before upload", () 
   assert.ok(releaseIndex > commandIndex);
 });
 
+test("production upload revalidates the fresh Static Asset tree after stale preflight evidence", () => {
+  const source = fs.readFileSync(path.resolve("scripts/cloudflare/run-sanitized-build.ts"), "utf8");
+  const preflightIndex = source.indexOf("const preflight = deployPreflight(backupDir)");
+  const buildIndex = source.indexOf("const buildResult = spawnSync");
+  const materializeIndex = source.indexOf(
+    "materializeStaticMarketingAssets(process.cwd())",
+    buildIndex,
+  );
+  const scanIndex = source.indexOf("if (command.scanBefore)", materializeIndex);
+  const freshValidationIndex = source.indexOf(
+    "freshStaticAssetRelease = validateStaticMarketingAssetRelease(process.cwd())",
+    scanIndex,
+  );
+  const captureIndex = source.indexOf(
+    "commandArtifactEvidence = deployEvidence.captureCommandArtifacts()",
+    freshValidationIndex,
+  );
+  const commandIndex = source.indexOf(
+    "runBoundedReleaseChildSync(actualCommand",
+    captureIndex,
+  );
+
+  assert.ok(preflightIndex >= 0);
+  assert.ok(buildIndex > preflightIndex);
+  assert.ok(materializeIndex > buildIndex);
+  assert.ok(scanIndex > materializeIndex);
+  assert.ok(freshValidationIndex > scanIndex);
+  assert.ok(captureIndex > freshValidationIndex);
+  assert.ok(commandIndex > captureIndex);
+  assert.match(
+    source.slice(freshValidationIndex, commandIndex),
+    /Static Assets changed between fresh release validation and deploy artifact capture/,
+  );
+});
+
 test("blocked OpenNext deploy writes non-secret Worker deploy evidence", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-worker-deploy-evidence-"));
   const originalArgv = process.argv;
