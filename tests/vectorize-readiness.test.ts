@@ -73,6 +73,13 @@ test("Vectorize readiness parses the exact production shape and fails closed", (
     parseVectorizeMetadataIndexesOutput(JSON.stringify([...metadataIndexes].reverse())),
     metadataIndexes,
   );
+  assert.deepEqual(
+    parseVectorizeMetadataIndexesOutput(JSON.stringify([
+      { propertyName: "userId", indexType: "String" },
+      { propertyName: "chatId", indexType: "String" },
+    ])),
+    metadataIndexes,
+  );
 
   assert.throws(
     () => parseVectorizeIndexConfigurationOutput(JSON.stringify({

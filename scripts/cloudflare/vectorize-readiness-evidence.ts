@@ -178,7 +178,7 @@ export function parseVectorizeMetadataIndexesOutput(output: string): VectorizeMe
     }
     return {
       propertyName: record.propertyName,
-      indexType: record.indexType,
+      indexType: canonicalVectorizeMetadataIndexType(record.indexType),
     };
   });
   indexes.sort(compareMetadataIndexes);
@@ -566,6 +566,10 @@ function sameMetadataIndexes(
     actual[index]?.propertyName === entry.propertyName &&
     actual[index]?.indexType === entry.indexType
   );
+}
+
+function canonicalVectorizeMetadataIndexType(value: string) {
+  return value.toLowerCase();
 }
 
 function sameReleaseIdentity(
