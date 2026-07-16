@@ -529,18 +529,15 @@ test("chat context truncates message rows in D1 before Worker materialization", 
   assert.match(NATIVE_CONTEXT_MESSAGES_SQL, /limit 24/);
 });
 
-test("offline activity fallback is complete only for English and fails closed for every other locale", () => {
+test("offline activity fallback stays complete for every locale with English fallback copy", () => {
   for (const language of supportedLanguages) {
     const quiz = fallbackQuizForLanguage("gravity", language);
     const flashcards = fallbackFlashcardsForLanguage("photosynthesis", "source notes", language);
-    if (language === "English") {
-      assert.equal(quiz?.questions.length, 10);
-      assert.equal(flashcards?.cards.length, 12);
-      assert.equal(flashcards?.source, "source notes");
-    } else {
-      assert.equal(quiz, null, language);
-      assert.equal(flashcards, null, language);
-    }
+    assert.equal(quiz?.questions.length, 10, language);
+    assert.equal(flashcards?.cards.length, 12, language);
+    assert.equal(flashcards?.source, "source notes", language);
+    assert.match(quiz?.questions[0]?.prompt ?? "", /gravity/);
+    assert.match(flashcards?.cards[0]?.front ?? "", /photosynthesis/);
   }
   assert.equal(LOCALIZED_ACTIVITY_RETRY_STATUS, 502);
 });

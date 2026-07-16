@@ -3464,7 +3464,10 @@ export function fallbackQuizForLanguage(
   topic: string,
   language: SupportedLanguage,
 ): NativeQuizState | null {
-  return language === "English" ? fallbackQuiz(topic) : null;
+  // When live localized generation fails, prefer an English fallback activity over
+  // a user-visible outage for every supported locale.
+  if (language !== "English") return fallbackQuiz(topic);
+  return fallbackQuiz(topic);
 }
 
 export function fallbackFlashcardsForLanguage(
@@ -3472,7 +3475,10 @@ export function fallbackFlashcardsForLanguage(
   source: string | undefined,
   language: SupportedLanguage,
 ): NativeFlashcardState | null {
-  return language === "English" ? fallbackFlashcards(topic, source) : null;
+  // When live localized generation fails, prefer an English fallback activity over
+  // a user-visible outage for every supported locale.
+  if (language !== "English") return fallbackFlashcards(topic, source);
+  return fallbackFlashcards(topic, source);
 }
 
 export function fallbackQuiz(topic: string): NativeQuizState {
