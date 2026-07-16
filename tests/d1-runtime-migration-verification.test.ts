@@ -92,6 +92,7 @@ test("verification SQL is bounded, read-only, and inspects exact columns and ind
     RUNTIME_MIGRATION_VERIFICATION_SQL,
     /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE|REPLACE|VACUUM|ATTACH|DETACH)\b/i,
   );
+  assert.doesNotMatch(RUNTIME_MIGRATION_VERIFICATION_SQL, /\bUNION\b/i);
 
   const source = fs.readFileSync(
     path.resolve("scripts/cloudflare/verify-d1-runtime-migrations.ts"),

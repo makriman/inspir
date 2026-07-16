@@ -205,41 +205,8 @@ CREATE TABLE memory_vector_cleanup_outbox (
 const expectedOutboxDueIndexSql =
   "CREATE INDEX memory_vector_cleanup_outbox_due_idx ON memory_vector_cleanup_outbox (next_attempt_at, created_at, vector_id)";
 
-export const RUNTIME_MIGRATION_VERIFICATION_SQL = `
-WITH index_catalog AS (
-  SELECT 'activity_runs' AS table_name, name, "unique" AS index_unique, origin AS index_origin, partial AS index_partial
-  FROM pragma_index_list('activity_runs')
-  UNION ALL
-  SELECT 'rate_limit_windows', name, "unique", origin, partial
-  FROM pragma_index_list('rate_limit_windows')
-  UNION ALL
-  SELECT 'ai_runs', name, "unique", origin, partial
-  FROM pragma_index_list('ai_runs')
-  UNION ALL
-  SELECT 'ops_events', name, "unique", origin, partial
-  FROM pragma_index_list('ops_events')
-  UNION ALL
-  SELECT 'memory_vector_cleanup_outbox', name, "unique", origin, partial
-  FROM pragma_index_list('memory_vector_cleanup_outbox')
-), index_columns AS (
-  SELECT 'activity_runs_completion_token_uidx' AS index_name, seqno AS index_seqno, name AS index_column
-  FROM pragma_index_info('activity_runs_completion_token_uidx')
-  UNION ALL
-  SELECT 'activity_runs_completion_message_id_uidx', seqno, name
-  FROM pragma_index_info('activity_runs_completion_message_id_uidx')
-  UNION ALL
-  SELECT 'rate_limit_windows_reset_at_idx', seqno, name
-  FROM pragma_index_info('rate_limit_windows_reset_at_idx')
-  UNION ALL
-  SELECT 'ai_runs_created_idx', seqno, name
-  FROM pragma_index_info('ai_runs_created_idx')
-  UNION ALL
-  SELECT 'ops_events_user_id_idx', seqno, name
-  FROM pragma_index_info('ops_events_user_id_idx')
-  UNION ALL
-  SELECT 'memory_vector_cleanup_outbox_due_idx', seqno, name
-  FROM pragma_index_info('memory_vector_cleanup_outbox_due_idx')
-)
+export const RUNTIME_MIGRATION_VERIFICATION_SQL_STATEMENTS = Object.freeze([
+  `
 SELECT
   'activity-column' AS kind,
   column_info.name AS name,
@@ -247,223 +214,118 @@ SELECT
   column_info.type AS column_type,
   column_info."notnull" AS column_not_null,
   column_info.dflt_value AS column_default,
-  column_info.pk AS column_primary_key,
-  NULL AS index_sql,
-  NULL AS index_unique,
-  NULL AS index_origin,
-  NULL AS index_partial,
-  NULL AS index_seqno,
-  NULL AS index_column,
-  NULL AS snapshot_json_valid,
-  NULL AS snapshot_users_type,
-  NULL AS snapshot_users,
-  NULL AS snapshot_chats_type,
-  NULL AS snapshot_chats,
-  NULL AS snapshot_messages_type,
-  NULL AS snapshot_messages,
-  NULL AS snapshot_ai_runs_type,
-  NULL AS snapshot_ai_runs,
-  NULL AS snapshot_updated_at,
-  NULL AS table_sql,
-  NULL AS custom_index_count
+  column_info.pk AS column_primary_key
 FROM pragma_table_info('activity_runs') AS column_info
 WHERE column_info.name IN ('completion_token', 'completion_message_id')
-UNION ALL
+ORDER BY column_info.name
+`.trim(),
+  ...indexSpecs.map((spec) => runtimeMigrationIndexVerificationSql(spec)),
+  runtimeMigrationIndexVerificationSql({
+    name: "memory_vector_cleanup_outbox_due_idx",
+    tableName: "memory_vector_cleanup_outbox",
+  }),
+  `
 SELECT
-  'index',
-  catalog.name,
-  schema_index.tbl_name,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  schema_index.sql,
-  catalog.index_unique,
-  catalog.index_origin,
-  catalog.index_partial,
-  index_columns.index_seqno,
-  index_columns.index_column,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL
-FROM sqlite_master AS schema_index
-JOIN index_catalog AS catalog
-  ON catalog.name = schema_index.name AND catalog.table_name = schema_index.tbl_name
-JOIN index_columns ON index_columns.index_name = schema_index.name
-WHERE schema_index.type = 'index'
-  AND schema_index.name IN (
-    'rate_limit_windows_reset_at_idx',
-    'ai_runs_created_idx',
-    'ops_events_user_id_idx',
-    'activity_runs_completion_token_uidx',
-    'activity_runs_completion_message_id_uidx',
-    'memory_vector_cleanup_outbox_due_idx'
-  )
-UNION ALL
-SELECT
-  'admin-snapshot',
-  metadata."key",
-  'app_metadata',
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  json_valid(metadata.value),
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.users') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.users') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.chats') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.chats') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.messages') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.messages') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.aiRuns') ELSE NULL END,
-  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.aiRuns') ELSE NULL END,
-  metadata.updated_at,
-  NULL,
-  NULL
+  'admin-snapshot' AS kind,
+  metadata."key" AS name,
+  'app_metadata' AS table_name,
+  json_valid(metadata.value) AS snapshot_json_valid,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.users') ELSE NULL END AS snapshot_users_type,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.users') ELSE NULL END AS snapshot_users,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.chats') ELSE NULL END AS snapshot_chats_type,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.chats') ELSE NULL END AS snapshot_chats,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.messages') ELSE NULL END AS snapshot_messages_type,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.messages') ELSE NULL END AS snapshot_messages,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_type(metadata.value, '$.aiRuns') ELSE NULL END AS snapshot_ai_runs_type,
+  CASE WHEN json_valid(metadata.value) = 1 THEN json_extract(metadata.value, '$.aiRuns') ELSE NULL END AS snapshot_ai_runs,
+  metadata.updated_at AS snapshot_updated_at
 FROM app_metadata AS metadata
 WHERE metadata."key" = 'native-admin-totals-v1'
-UNION ALL
+`.trim(),
+  `
 SELECT
-  'migration-marker',
-  metadata."key",
-  'app_metadata',
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  metadata.updated_at,
-  metadata.value,
-  NULL
+  'migration-marker' AS kind,
+  metadata."key" AS name,
+  'app_metadata' AS table_name,
+  metadata.updated_at AS snapshot_updated_at,
+  metadata.value AS table_sql
 FROM app_metadata AS metadata
 WHERE metadata."key" = '${RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY}'
-UNION ALL
+`.trim(),
+  `
 SELECT
-  'memory-settings-column',
-  column_info.name,
-  'user_memory_settings',
-  column_info.type,
-  column_info."notnull",
-  column_info.dflt_value,
-  column_info.pk,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
+  'memory-settings-column' AS kind,
+  column_info.name AS name,
+  'user_memory_settings' AS table_name,
+  column_info.type AS column_type,
+  column_info."notnull" AS column_not_null,
+  column_info.dflt_value AS column_default,
+  column_info.pk AS column_primary_key,
   (
     SELECT settings_schema.sql
     FROM sqlite_master AS settings_schema
     WHERE settings_schema.type = 'table'
       AND settings_schema.name = 'user_memory_settings'
-  ),
-  NULL
+  ) AS table_sql
 FROM pragma_table_info('user_memory_settings') AS column_info
 WHERE column_info.name = 'summary_suppression_mask'
-UNION ALL
+`.trim(),
+  `
 SELECT
-  'outbox-column',
-  column_info.name,
-  'memory_vector_cleanup_outbox',
-  column_info.type,
-  column_info."notnull",
-  column_info.dflt_value,
-  column_info.pk,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL
+  'outbox-column' AS kind,
+  column_info.name AS name,
+  'memory_vector_cleanup_outbox' AS table_name,
+  column_info.type AS column_type,
+  column_info."notnull" AS column_not_null,
+  column_info.dflt_value AS column_default,
+  column_info.pk AS column_primary_key
 FROM pragma_table_info('memory_vector_cleanup_outbox') AS column_info
-UNION ALL
+ORDER BY column_info.cid
+`.trim(),
+  `
 SELECT
-  'outbox-table',
-  schema_table.name,
-  schema_table.tbl_name,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  NULL,
-  schema_table.sql,
+  'outbox-table' AS kind,
+  schema_table.name AS name,
+  schema_table.tbl_name AS table_name,
+  schema_table.sql AS table_sql,
   (
     SELECT count(*)
     FROM pragma_index_list('memory_vector_cleanup_outbox') AS outbox_index
     WHERE outbox_index.origin = 'c'
-  )
+  ) AS custom_index_count
 FROM sqlite_master AS schema_table
 WHERE schema_table.type = 'table'
   AND schema_table.name = 'memory_vector_cleanup_outbox'
-ORDER BY kind, name, index_seqno;
+`.trim(),
+]);
+
+export const RUNTIME_MIGRATION_VERIFICATION_SQL =
+  RUNTIME_MIGRATION_VERIFICATION_SQL_STATEMENTS.join(";\n");
+
+function runtimeMigrationIndexVerificationSql(
+  spec: Readonly<Pick<IndexSpec, "name" | "tableName">>,
+) {
+  return `
+SELECT
+  'index' AS kind,
+  schema_index.name AS name,
+  schema_index.tbl_name AS table_name,
+  schema_index.sql AS index_sql,
+  catalog."unique" AS index_unique,
+  catalog.origin AS index_origin,
+  catalog.partial AS index_partial,
+  index_columns.seqno AS index_seqno,
+  index_columns.name AS index_column
+FROM sqlite_master AS schema_index
+JOIN pragma_index_list('${spec.tableName}') AS catalog
+  ON catalog.name = schema_index.name
+JOIN pragma_index_info('${spec.name}') AS index_columns
+WHERE schema_index.type = 'index'
+  AND schema_index.name = '${spec.name}'
+  AND schema_index.tbl_name = '${spec.tableName}'
+ORDER BY index_columns.seqno
 `.trim();
+}
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCli();
@@ -916,39 +778,49 @@ function verifyMigration0016CompletionMarker(
 
 function parseD1VerificationQueryResult(output: string): D1VerificationQueryResult {
   const value = parseWranglerJson(output);
-  if (!Array.isArray(value) || value.length !== 1 || !isRecord(value[0])) {
+  if (!Array.isArray(value) || value.length === 0 || !value.every(isRecord)) {
     throw new Error("D1 runtime migration verification returned an invalid result set.");
   }
-  const result = value[0];
-  if (!Array.isArray(result.results) || !result.results.every(isRecord)) {
-    throw new Error("D1 runtime migration verification returned invalid rows.");
-  }
-  if (!isRecord(result.meta)) {
-    throw new Error("D1 runtime migration verification omitted query metadata.");
-  }
-  const rowsRead = requiredNonNegativeInteger(result.meta.rows_read, "verification rows read");
-  const rowsWritten = requiredNonNegativeInteger(
-    result.meta.rows_written,
-    "verification rows written",
-  );
-  const totalAttempts = requiredNonNegativeInteger(
-    result.meta.total_attempts,
-    "verification total attempts",
-  );
-  if (rowsWritten !== 0) {
-    throw new Error("Read-only D1 runtime migration verification unexpectedly wrote rows.");
-  }
-  if (rowsRead > RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT) {
-    throw new Error(
-      `Read-only D1 runtime migration verification exceeded its logical read bound: ${rowsRead} > ${RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT}.`,
+  const rows: Array<Record<string, unknown>> = [];
+  let rowsRead = 0;
+  let rowsWritten = 0;
+  for (const [index, result] of value.entries()) {
+    if (!Array.isArray(result.results) || !result.results.every(isRecord)) {
+      throw new Error("D1 runtime migration verification returned invalid rows.");
+    }
+    if (!isRecord(result.meta)) {
+      throw new Error("D1 runtime migration verification omitted query metadata.");
+    }
+    const resultRowsRead = requiredNonNegativeInteger(
+      result.meta.rows_read,
+      `verification result set ${index + 1} rows read`,
     );
-  }
-  if (totalAttempts !== 1) {
-    throw new Error(
-      "Read-only D1 runtime migration verification must complete in exactly one automatic attempt.",
+    const resultRowsWritten = requiredNonNegativeInteger(
+      result.meta.rows_written,
+      `verification result set ${index + 1} rows written`,
     );
+    const totalAttempts = requiredNonNegativeInteger(
+      result.meta.total_attempts,
+      `verification total attempts for result set ${index + 1}`,
+    );
+    rowsRead += resultRowsRead;
+    rowsWritten += resultRowsWritten;
+    if (rowsWritten !== 0) {
+      throw new Error("Read-only D1 runtime migration verification unexpectedly wrote rows.");
+    }
+    if (rowsRead > RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT) {
+      throw new Error(
+        `Read-only D1 runtime migration verification exceeded its logical read bound: ${rowsRead} > ${RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT}.`,
+      );
+    }
+    if (totalAttempts !== 1) {
+      throw new Error(
+        "Read-only D1 runtime migration verification must complete in exactly one automatic attempt.",
+      );
+    }
+    rows.push(...result.results);
   }
-  return { rows: result.results, rowsRead, rowsWritten, totalAttempts };
+  return { rows, rowsRead, rowsWritten, totalAttempts: 1 };
 }
 
 function parseWranglerJson(output: string): unknown {
