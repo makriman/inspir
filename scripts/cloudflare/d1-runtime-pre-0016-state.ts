@@ -13,7 +13,7 @@ import {
   type RuntimeMigrationVerificationReport,
 } from "./verify-d1-runtime-migrations";
 
-export const D1_RUNTIME_PRE_0016_STATE_MAX_ROWS_READ = 32 as const;
+export const D1_RUNTIME_PRE_0016_STATE_MAX_ROWS_READ = 512 as const;
 export const D1_RUNTIME_FRESH_0016_MARKER_KEY =
   "runtime-migration-0016-fresh-cutover" as const;
 const D1_RUNTIME_PRE_0016_STATE_MAX_AUTOMATIC_ATTEMPTS = 3 as const;
@@ -316,7 +316,7 @@ if (
   D1_RUNTIME_PRE_0016_APPLIED_CHECK_IDS.length +
       D1_RUNTIME_0016_ABSENT_CHECK_IDS.length !==
     RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.length ||
-  D1_RUNTIME_PRE_0016_VERIFICATION_BILLABLE_ROWS_READ !== 15_096
+  D1_RUNTIME_PRE_0016_VERIFICATION_BILLABLE_ROWS_READ !== 16_536
 ) {
   throw new Error("Pre-0016 runtime-state verification bounds drifted.");
 }

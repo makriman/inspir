@@ -558,7 +558,7 @@ test("source is re-hashed around every runner call and drift prevents a same-liv
 });
 
 test("apply state SQL is one bounded read-only schema-and-marker probe", () => {
-  assert.ok(HISTORICAL_FRESH_0016_APPLY_STATE_MAX_ROWS_READ <= 32);
+  assert.equal(HISTORICAL_FRESH_0016_APPLY_STATE_MAX_ROWS_READ, 512);
   assert.match(HISTORICAL_FRESH_0016_APPLY_STATE_SQL, /^SELECT/);
   assert.match(
     HISTORICAL_FRESH_0016_APPLY_STATE_SQL,

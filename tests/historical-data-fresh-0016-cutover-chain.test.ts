@@ -6,6 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {
+  HISTORICAL_FRESH_0016_APPLY_CALL_BUDGET,
   HISTORICAL_FRESH_0016_APPLY_AUTHORIZATION_KIND,
   HISTORICAL_FRESH_0016_APPLY_COMPLETE_KIND,
   historicalFresh0016ApplyAuthorizationPayloadSchema,
@@ -1211,7 +1212,7 @@ function claimPayload(
         sourceFingerprint,
         workerRelease,
         liveTopology: claimLiveTopology,
-        maximum: { rowsRead: 15_132, rowsWritten: 0 },
+        maximum: { rowsRead: 16_572, rowsWritten: 0 },
         exactState: {
           migrations0013To0015: "applied",
           migration0016: "absent",
@@ -1423,7 +1424,10 @@ function createMigrationBudgetEvidence(
   const runtimeUsage = usage(300, 30);
   const maximumRowsRead =
     HISTORICAL_FRESH_0016_DAY2_MIGRATION_MAXIMUM_ROWS_READ;
-  const exactRowsRead = projection.rowsRead + 20_128;
+  const exactRowsRead =
+    projection.rowsRead +
+    HISTORICAL_FRESH_0016_APPLY_CALL_BUDGET.maximumSameInvocation
+      .projectedRowsRead;
   const migrationLiveTopology = liveTopology(
     fixture.workerRelease,
     "2026-07-15T00:01:50.000Z",
@@ -1499,7 +1503,9 @@ function createMigrationBudgetEvidence(
     },
     projection,
     applyEnvelope: {
-      projectedRowsRead: 20_128,
+      projectedRowsRead:
+        HISTORICAL_FRESH_0016_APPLY_CALL_BUDGET.maximumSameInvocation
+          .projectedRowsRead,
       maximumReadOnlyCalls: 8,
       maximumWriteCapableCalls: 2,
       maximumTotalRunnerCalls: 10,
