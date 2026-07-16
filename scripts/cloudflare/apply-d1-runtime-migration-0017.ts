@@ -1100,7 +1100,7 @@ export function runtimeMigration0017WriteAttemptPath(backupDir: string) {
   );
 }
 
-export function runtimeMigration0017ApplyVerificationPath(backupDir: string) {
+function runtimeMigration0017ApplyVerificationPath(backupDir: string) {
   return path.join(
     cloudflareDir(backupDir),
     D1_RUNTIME_MIGRATION_0017_APPLY_VERIFICATION_REPORT,
@@ -1200,7 +1200,7 @@ function writeRuntimeMigration0017WriteAttemptMarker(input: {
   writePrivateJsonDurably(input.writeAttemptPath, marker, { replace: false });
 }
 
-export function runtimeMigration0017OutcomePath(backupDir: string) {
+function runtimeMigration0017OutcomePath(backupDir: string) {
   return path.join(cloudflareDir(backupDir), D1_RUNTIME_MIGRATION_0017_OUTCOME_REPORT);
 }
 
