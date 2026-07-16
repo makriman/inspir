@@ -3,6 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   RUNTIME_MIGRATION_0017_FILE,
+  RUNTIME_MIGRATION_0017_VERIFICATION_LOGICAL_ROWS_READ_LIMIT,
 } from "./check-d1-runtime-migration-0017-budget";
 import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
 import {
@@ -23,7 +24,7 @@ export const RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH =
   "cloudflare/d1-runtime-migration-0017-report.json" as const;
 export const RUNTIME_MIGRATION_0017_CHECK_ID =
   "0017-users-normalized-email-covering-index" as const;
-export const RUNTIME_MIGRATION_0017_VERIFICATION_LOGICAL_ROWS_READ_LIMIT = 12;
+export { RUNTIME_MIGRATION_0017_VERIFICATION_LOGICAL_ROWS_READ_LIMIT };
 
 const maximumVerificationOutputBytes = 1 * 1024 * 1024;
 const expectedNormalizedIndexSql =

@@ -1212,7 +1212,7 @@ function claimPayload(
         sourceFingerprint,
         workerRelease,
         liveTopology: claimLiveTopology,
-        maximum: { rowsRead: 16_572, rowsWritten: 0 },
+        maximum: { rowsRead: 17_304, rowsWritten: 0 },
         exactState: {
           migrations0013To0015: "applied",
           migration0016: "absent",

@@ -158,7 +158,7 @@ test("fresh 0016 policy freezes the earlier-day 0017 state transition and exact 
     "0017": "applied",
   });
   assert.equal(prerequisite.mutationAfterPredecessorPermitted, false);
-  assert.equal(prerequisite.day2ReadOnlyRefreshBillableRowsRead, 36);
+  assert.equal(prerequisite.day2ReadOnlyRefreshBillableRowsRead, 768);
 
   assert.equal(day2.aggregateRowsRead, 3_900_036);
   assert.equal(day2.maximumObservedUsageAtAdmission.rowsRead, 99_964);
@@ -166,10 +166,10 @@ test("fresh 0016 policy freezes the earlier-day 0017 state transition and exact 
     day2.aggregateRowsRead + day2.maximumObservedUsageAtAdmission.rowsRead,
     4_000_000,
   );
-  assert.equal(day2.allocations.migrationProjectionRowsRead, 805_476);
+  assert.equal(day2.allocations.migrationProjectionRowsRead, 804_744);
   assert.equal(
     day2.allocations.runtimeMigration0017VerificationBillableRowsRead,
-    36,
+    768,
   );
   assert.equal(
     day2.allocations.migrationProjectionRowsRead +

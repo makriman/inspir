@@ -432,7 +432,7 @@ test("fresh-0016 preauthorizes one Day-2 parent, accounts children beneath it, a
     });
     assert.equal(refined.reservation.phase, "exact");
     assert.deepEqual(refined.totals, {
-      rowsRead: 43_780,
+      rowsRead: 44_512,
       rowsWritten: 20_202,
     });
     const replayedRefinement = refineHistoricalFresh0016Day2BudgetAfterFinalProof({

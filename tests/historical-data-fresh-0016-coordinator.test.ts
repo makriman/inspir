@@ -1089,7 +1089,7 @@ function predecessorPrerequisites(
       sourceFingerprint: source,
       workerRelease,
       liveTopology: topology,
-      maximum: { rowsRead: 16_572 as const, rowsWritten: 0 as const },
+      maximum: { rowsRead: 17_304 as const, rowsWritten: 0 as const },
       exactState: {
         migrations0013To0015: "applied" as const,
         migration0016: "absent" as const,
