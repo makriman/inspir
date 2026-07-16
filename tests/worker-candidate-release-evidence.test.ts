@@ -218,6 +218,20 @@ test("versions-view parser binds the exact candidate and canonical resource/conf
     releaseAnnotations(),
   );
   assert.notEqual(first.resourceConfigSha256, changed.resourceConfigSha256);
+  assert.equal(
+    parseWorkerVersionViewOutput(
+      JSON.stringify({
+        ...versionViewRecord(),
+        metadata: {
+          ...versionViewRecord().metadata,
+          created_on: "2026-07-15T10:00:00Z",
+        },
+      }),
+      CANDIDATE_VERSION_ID,
+      releaseAnnotations(),
+    ).createdAt,
+    UPLOAD_EVENT_AT,
+  );
   assert.throws(
     () =>
       parseWorkerVersionViewOutput(

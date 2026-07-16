@@ -30,6 +30,8 @@ const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const SHA256_PATTERN = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_PATTERN = /^[0-9a-f]{40,64}$/;
+const CLOUDFLARE_TIMESTAMP_PATTERN =
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/;
 
 const canonicalTimestampSchema = z.string().refine(
   (value) => {
@@ -585,7 +587,7 @@ export function parseWorkerVersionViewOutput(
     throw new Error("Worker versions-view returned the wrong candidate UUID.");
   }
   const metadata = requireRecord(view.metadata, "Worker versions-view metadata");
-  const createdAt = requireCanonicalTimestamp(
+  const createdAt = requireCloudflareTimestamp(
     metadata.created_on,
     "Worker versions-view creation timestamp",
   );
@@ -1576,8 +1578,18 @@ function requireSha256(value: unknown, label: string) {
   return value;
 }
 
-function requireCanonicalTimestamp(value: unknown, label: string) {
-  return parseSchema(canonicalTimestampSchema, value, label);
+function requireCloudflareTimestamp(value: unknown, label: string) {
+  if (
+    typeof value !== "string" ||
+    !CLOUDFLARE_TIMESTAMP_PATTERN.test(value)
+  ) {
+    throw new Error(`${label} must be a bounded Cloudflare ISO timestamp.`);
+  }
+  const timestamp = new Date(value);
+  if (!Number.isFinite(timestamp.getTime())) {
+    throw new Error(`${label} must be a valid Cloudflare ISO timestamp.`);
+  }
+  return timestamp.toISOString();
 }
 
 function requireSafeText(value: unknown, label: string) {
