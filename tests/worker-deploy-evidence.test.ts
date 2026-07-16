@@ -576,6 +576,20 @@ test("Wrangler structured output is fresh, private, bounded, and symlink-safe", 
     assert.match(evidence.sha256, /^[a-f0-9]{64}$/);
     assert.equal(parseWorkerVersionUploadOutput(evidence.output).versionId, activeVersionId);
 
+    const sessionOutputPath = createPrivateWranglerOutputFile(
+      backupDir,
+      "worker-candidate-upload",
+    );
+    fs.appendFileSync(
+      sessionOutputPath,
+      `${JSON.stringify(wranglerSessionEvent())}\n${JSON.stringify(uploadOutputEvent())}\n`,
+    );
+    const sessionEvidence = readPrivateWranglerOutputFile(sessionOutputPath);
+    assert.equal(
+      parseWorkerVersionUploadOutput(sessionEvidence.output).versionId,
+      activeVersionId,
+    );
+
     fs.chmodSync(outputPath, 0o644);
     assert.throws(
       () => readPrivateWranglerOutputFile(outputPath),
@@ -618,6 +632,17 @@ function uploadOutputEvent() {
     version_id: activeVersionId,
     worker_name_overridden: false,
     timestamp: "2026-07-15T12:00:00.000Z",
+  } as const;
+}
+
+function wranglerSessionEvent() {
+  return {
+    type: "wrangler-session",
+    version: 1,
+    wrangler_version: "4.107.0",
+    command_line_args: ["versions", "upload", "--config", "wrangler.jsonc"],
+    log_file_path: "/tmp/wrangler.log",
+    timestamp: "2026-07-15T11:59:59.000Z",
   } as const;
 }
 

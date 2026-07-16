@@ -1440,17 +1440,64 @@ function singleWranglerOutputEvent(output: string, label: string) {
   }
   const lines = output.split("\n");
   if (
-    lines.length !== 2 ||
-    lines[0]?.trim() !== lines[0] ||
-    !lines[0] ||
-    lines[1] !== ""
+    lines.length < 2 ||
+    lines.length > 3 ||
+    lines[lines.length - 1] !== "" ||
+    lines.slice(0, -1).some((line) => line.trim() !== line || !line)
   ) {
     throw new Error(
       `Wrangler ${label} output must contain exactly one unambiguous JSON event.`,
     );
   }
+  const eventLineIndex = lines.length === 3 ? 1 : 0;
+  if (eventLineIndex === 1) {
+    const session = requireRecord(
+      parseBoundedJson(
+        lines[0] ?? "",
+        MAXIMUM_WRANGLER_OUTPUT_BYTES,
+        "Wrangler session metadata",
+      ),
+      "Wrangler session metadata",
+    );
+    if (session.type !== "wrangler-session") {
+      throw new Error(
+        `Wrangler ${label} output must contain exactly one unambiguous JSON event.`,
+      );
+    }
+    assertExactKeys(
+      session,
+      [
+        "command_line_args",
+        "log_file_path",
+        "timestamp",
+        "type",
+        "version",
+        "wrangler_version",
+      ],
+      [],
+      "Wrangler session metadata",
+    );
+    parseSchema(
+      z
+        .object({
+          type: z.literal("wrangler-session"),
+          version: z.literal(1),
+          wrangler_version: safeTextSchema,
+          command_line_args: z.array(safeTextSchema),
+          log_file_path: safeTextSchema,
+          timestamp: canonicalTimestampSchema,
+        })
+        .strict(),
+      session,
+      "Wrangler session metadata",
+    );
+  }
   return requireRecord(
-    parseBoundedJson(lines[0] ?? "", MAXIMUM_WRANGLER_OUTPUT_BYTES, label),
+    parseBoundedJson(
+      lines[eventLineIndex] ?? "",
+      MAXIMUM_WRANGLER_OUTPUT_BYTES,
+      label,
+    ),
     `Wrangler ${label} output event`,
   );
 }
