@@ -1821,6 +1821,9 @@ function finishWorkerCommandWithExclusion(input: {
       "Production deployment final certification or exclusion release failed.",
     );
     console.error(failure.message);
+    for (const error of certificationErrors) {
+      console.error(`- ${error.message}`);
+    }
     return { ...result, status: 1 };
   }
   return result;

@@ -227,17 +227,20 @@ test("versions-view parser binds the exact candidate and canonical resource/conf
       ),
     /wrong candidate UUID/i,
   );
-  assert.throws(
-    () =>
-      parseWorkerVersionViewOutput(
-        JSON.stringify({
-          ...versionViewRecord(),
-          unknown_provider_field: true,
-        }),
-        CANDIDATE_VERSION_ID,
-        releaseAnnotations(),
-      ),
-    /inexact schema/i,
+  assert.equal(
+    parseWorkerVersionViewOutput(
+      JSON.stringify({
+        ...versionViewRecord(),
+        unknown_provider_field: true,
+        annotations: {
+          ...versionViewRecord().annotations,
+          "workers/triggered_by": "upload",
+        },
+      }),
+      CANDIDATE_VERSION_ID,
+      releaseAnnotations(),
+    ).versionId,
+    CANDIDATE_VERSION_ID,
   );
   assert.throws(
     () =>
@@ -276,15 +279,16 @@ test("versions-view parser binds the exact candidate and canonical resource/conf
         CANDIDATE_VERSION_ID,
         releaseAnnotations(),
       ),
-    /missing workers\/message/i,
+    /workers\/message/i,
   );
 });
 
 test("authoritative deployment parser rejects malformed, duplicate, and non-total traffic", () => {
   const status = parseWorkerDeploymentStatusOutput(
-    statusOutput(BASELINE_DEPLOYMENT_ID, [
-      [BASELINE_VERSION_ID, 100],
-    ]),
+    JSON.stringify({
+      ...statusRecord(BASELINE_DEPLOYMENT_ID, [[BASELINE_VERSION_ID, 100]]),
+      unknown_provider_field: true,
+    }),
   );
   assert.equal(status.deploymentId, BASELINE_DEPLOYMENT_ID);
   assert.deepEqual(status.versions, [
@@ -990,7 +994,14 @@ function statusOutput(
   deploymentId: string,
   versions: readonly (readonly [string, number])[],
 ) {
-  return JSON.stringify({
+  return JSON.stringify(statusRecord(deploymentId, versions));
+}
+
+function statusRecord(
+  deploymentId: string,
+  versions: readonly (readonly [string, number])[],
+) {
+  return {
     id: deploymentId,
     strategy: "percentage",
     source: "wrangler",
@@ -1001,7 +1012,7 @@ function statusOutput(
       version_id: versionId,
       percentage,
     })),
-  });
+  };
 }
 
 function writeTestPreActivationSeal(

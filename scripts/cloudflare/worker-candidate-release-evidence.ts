@@ -576,10 +576,9 @@ export function parseWorkerVersionViewOutput(
     parseBoundedJson(output, MAXIMUM_REMOTE_JSON_BYTES, "Worker versions-view"),
     "Worker versions-view",
   );
-  assertExactKeys(
+  assertRequiredKeys(
     view,
     ["id", "metadata", "resources"],
-    ["annotations", "number"],
     "Worker versions-view",
   );
   if (view.id !== candidate) {
@@ -598,10 +597,9 @@ export function parseWorkerVersionViewOutput(
     view.annotations,
     "Worker versions-view annotations",
   );
-  assertExactKeys(
+  assertRequiredKeys(
     annotations,
     ["workers/message", "workers/tag"],
-    ["workers/alias"],
     "Worker versions-view annotations",
   );
   const releaseTag = parseSchema(
@@ -665,10 +663,9 @@ export function parseWorkerDeploymentStatusOutput(
     ),
     "Worker deployments-status",
   );
-  assertExactKeys(
+  assertRequiredKeys(
     status,
     ["id", "versions"],
-    ["annotations", "author_email", "created_on", "source", "strategy"],
     "Worker deployments-status",
   );
   const deploymentId = requireUuid(
@@ -1533,6 +1530,17 @@ function assertExactKeys(
         missing.length ? `; missing ${missing.join(", ")}` : ""
       }${unexpected.length ? `; unexpected ${unexpected.join(", ")}` : ""}.`,
     );
+  }
+}
+
+function assertRequiredKeys(
+  record: Readonly<Record<string, unknown>>,
+  required: readonly string[],
+  label: string,
+) {
+  const missing = required.filter((key) => !Object.hasOwn(record, key));
+  if (missing.length > 0) {
+    throw new Error(`${label} omitted required key(s): ${missing.join(", ")}.`);
   }
 }
 
