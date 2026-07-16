@@ -106,8 +106,7 @@ test("verify-only staged reconciliation byte-checks every allowed row with read-
       if (sql.includes("observed_rows")) {
         return d1Output([{
           observed_rows: rows.length,
-          missing_rows: 0,
-          extra_rows: 0,
+          present_rows: rows.length,
           duplicate_rows: 0,
         }]);
       }
@@ -126,6 +125,12 @@ test("verify-only staged reconciliation byte-checks every allowed row with read-
   assert.equal(report.exactAlready, true);
   assert.equal(report.cleanupRequiredAfterCandidateActivation, true);
   assert.ok(report.remoteQueries >= 2);
+  const summarySql = observedCommands[0]?.at(-1) ?? "";
+  assert.match(summarySql, /expected_presence AS/);
+  assert.doesNotMatch(
+    summarySql,
+    /FROM app_translations AS target\s+WHERE NOT EXISTS[\s\S]*expected_staged AS expected/,
+  );
   assert.ok(
     observedCommands.every(
       (args) =>
@@ -148,8 +153,7 @@ test("verify-only staged reconciliation reports extras and byte drift without wr
       if (query === 1) {
         return d1Output([{
           observed_rows: rows.length + 1,
-          missing_rows: 0,
-          extra_rows: 1,
+          present_rows: rows.length,
           duplicate_rows: 0,
         }]);
       }

@@ -874,9 +874,16 @@ export function verifyRemoteStagedTranslationD1(input: {
   const summarySets = query(buildStagedTranslationSummarySql(input.plan.rows));
   const summary = requireSingleRow(summarySets[0], "staged translation summary");
   const observedRows = exactCounter(summary.observed_rows, "observed rows");
-  const missingRows = exactCounter(summary.missing_rows, "missing rows");
-  const extraRows = exactCounter(summary.extra_rows, "extra rows");
+  const presentRows = exactCounter(summary.present_rows, "present rows");
   const duplicateRows = exactCounter(summary.duplicate_rows, "duplicate rows");
+  if (
+    presentRows > input.plan.counts.exactRows ||
+    presentRows > observedRows
+  ) {
+    throw new Error("Staged translation summary returned inconsistent row counts.");
+  }
+  const missingRows = input.plan.counts.exactRows - presentRows;
+  const extraRows = observedRows - presentRows;
   const issues: StagedTranslationD1VerificationIssue[] = [];
   if (
     observedRows !== input.plan.counts.exactRows ||
@@ -2684,16 +2691,16 @@ function buildExpectedIdentityCte(rows: readonly StagedTranslationD1Row[]) {
 function buildStagedTranslationSummarySql(rows: readonly StagedTranslationD1Row[]) {
   const sql = [
     buildExpectedIdentityCte(rows),
+    ", expected_presence AS (",
+    "  SELECT COUNT(*) AS present_rows",
+    "  FROM expected_staged AS expected",
+    "  WHERE EXISTS (SELECT 1 FROM app_translations AS target",
+    "    WHERE target.namespace = expected.namespace",
+    "      AND target.language = expected.language)",
+    ")",
     "SELECT",
     "  (SELECT COUNT(*) FROM app_translations) AS observed_rows,",
-    "  (SELECT COUNT(*) FROM expected_staged AS expected",
-    "   WHERE NOT EXISTS (SELECT 1 FROM app_translations AS target",
-    "     WHERE target.namespace = expected.namespace",
-    "       AND target.language = expected.language)) AS missing_rows,",
-    "  (SELECT COUNT(*) FROM app_translations AS target",
-    "   WHERE NOT EXISTS (SELECT 1 FROM expected_staged AS expected",
-    "     WHERE expected.namespace = target.namespace",
-    "       AND expected.language = target.language)) AS extra_rows,",
+    "  (SELECT present_rows FROM expected_presence) AS present_rows,",
     "  (SELECT COUNT(*) FROM (",
     "     SELECT namespace, language FROM app_translations",
     "     GROUP BY namespace, language HAVING COUNT(*) > 1",
