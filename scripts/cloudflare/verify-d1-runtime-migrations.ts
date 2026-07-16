@@ -205,7 +205,7 @@ CREATE TABLE memory_vector_cleanup_outbox (
 const expectedOutboxDueIndexSql =
   "CREATE INDEX memory_vector_cleanup_outbox_due_idx ON memory_vector_cleanup_outbox (next_attempt_at, created_at, vector_id)";
 
-export const RUNTIME_MIGRATION_VERIFICATION_SQL_STATEMENTS = Object.freeze([
+const RUNTIME_MIGRATION_VERIFICATION_SQL_STATEMENTS = Object.freeze([
   `
 SELECT
   'activity-column' AS kind,

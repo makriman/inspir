@@ -739,6 +739,11 @@ test("every required local Cloudflare gate has a runner", () => {
     assert.match(source, new RegExp(`id: "${escapeRegExp(gateId)}"`), `${gateId} should have a local gate runner`);
   }
   assert.match(source, /run-react-doctor-gate\.ts/);
+  assert.match(source, /const backupArgs = \["--backup", backupDir\]/);
+  assert.match(source, /run-react-doctor-gate\.ts", \.\.\.backupArgs/);
+  assert.match(source, /scan-source-secrets\.ts", \.\.\.backupArgs/);
+  assert.match(source, /scan-build-artifacts\.ts", \.\.\.backupArgs/);
+  assert.match(source, /verify-preview-e2e-evidence\.ts", \.\.\.backupArgs/);
 });
 
 function escapeRegExp(value: string) {

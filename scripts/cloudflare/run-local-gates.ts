@@ -30,6 +30,7 @@ type GateResult = Gate & {
 
 const OUTPUT_TAIL_CHARS = 12_000;
 const backupDir = resolveBackupDir();
+const backupArgs = ["--backup", backupDir];
 const cfDir = cloudflareDir(backupDir);
 const reportPath = path.join(cfDir, "local-gates-report.json");
 const startupProfilePath = path.join(cfDir, "worker-startup.cpuprofile");
@@ -53,9 +54,9 @@ const gatesById: Record<LocalGateId, Gate> = {
     ],
   },
   lint: { id: "lint", steps: [{ command: bin("eslint"), args: [] }] },
-  "react-doctor": { id: "react-doctor", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-react-doctor-gate.ts"] }] },
+  "react-doctor": { id: "react-doctor", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-react-doctor-gate.ts", ...backupArgs] }] },
   "unit-tests": { id: "unit-tests", steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...releaseUnitTests] }] },
-  "source-secret-scan": { id: "source-secret-scan", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
+  "source-secret-scan": { id: "source-secret-scan", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts", ...backupArgs] }] },
   "next-build": { id: "next-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
   "opennext-build": { id: "opennext-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
   "opennext-resource-budget": {
@@ -64,7 +65,7 @@ const gatesById: Record<LocalGateId, Gate> = {
   },
   "opennext-artifact-secret-scan": {
     id: "opennext-artifact-secret-scan",
-    steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }],
+    steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts", ...backupArgs] }],
   },
   "wrangler-deploy-dry-run": { id: "wrangler-deploy-dry-run", steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
   "www-redirect-dry-run": {
@@ -80,7 +81,7 @@ const gatesById: Record<LocalGateId, Gate> = {
     steps: [
       {
         command: bin("tsx"),
-        args: ["scripts/cloudflare/verify-preview-e2e-evidence.ts"],
+        args: ["scripts/cloudflare/verify-preview-e2e-evidence.ts", ...backupArgs],
       },
     ],
   },
