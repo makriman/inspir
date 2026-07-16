@@ -3,6 +3,7 @@ import { createHmac } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import "./worker-crypto-test-shim";
 import { Miniflare } from "miniflare";
 import {
   E2E_DISPOSABLE_MUTATION_INVENTORY_SQL,

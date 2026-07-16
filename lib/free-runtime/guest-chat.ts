@@ -106,9 +106,8 @@ on conflict (day, shard) do update
 where coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?), 0) < ?
 returning call_count as "callCount"`;
 
-const twoGuestQuotaRows = `(?, ?, ?, 0),
-    (?, ?, ?, 1)`;
-const threeGuestQuotaRows = `${twoGuestQuotaRows},
+const threeGuestQuotaRows = `(?, ?, ?, 0),
+    (?, ?, ?, 1),
     (?, ?, ?, 2)`;
 
 type AdmissionSqlStatements = {
@@ -178,7 +177,6 @@ end as bucket`,
   };
 }
 
-const admissionSqlWithoutIp = buildAdmissionSql(twoGuestQuotaRows);
 const admissionSqlWithIp = buildAdmissionSql(threeGuestQuotaRows);
 
 export type FreeGuestChatD1Row = {
@@ -335,6 +333,23 @@ export async function handleFreeGuestChat(
     return jsonResponse({ error: "Topic not available for guest chat" }, 404);
   }
 
+  const ip = requestIp(request);
+  if (!ip) {
+    emitLog(runtime, {
+      event: "guest_chat_trusted_ip_unavailable",
+      severity: "critical",
+      posture: "fail_closed",
+      reason: "missing_or_invalid_cf_connecting_ip",
+    });
+    return jsonResponse(
+      {
+        error: "Guest chat is temporarily unavailable.",
+        code: "guest_identity_unavailable",
+      },
+      503,
+    );
+  }
+
   const useOpenAiSse = acceptsOpenAiSse(request);
   const provider = providerSettings(env, useOpenAiSse);
   if (!provider) {
@@ -362,9 +377,8 @@ export async function handleFreeGuestChat(
     readCookie(request.headers, guestUsageCookie),
     sessionLimit,
   );
-  const ip = requestIp(request.headers);
   const [ipHash, fingerprintHash] = await Promise.all([
-    ip ? sha256Hex(`ip:${ip}`) : Promise.resolve(null),
+    sha256Hex(`ip:${ip}`),
     guestFingerprintHash(request.headers, ip),
   ]);
   const guestQuotas: GuestQuotaInput[] = [
@@ -378,15 +392,12 @@ export async function handleFreeGuestChat(
       key: `guest-chat:fingerprint:${fingerprintHash}`,
       limit: nonNegativeIntegerFromEnv(env.RATE_LIMIT_GUEST_FINGERPRINT_DAILY, 10),
     },
-  ];
-
-  if (ipHash) {
-    guestQuotas.push({
+    {
       bucket: "ip",
       key: `guest-chat:ip:${ipHash}`,
       limit: nonNegativeIntegerFromEnv(env.RATE_LIMIT_GUEST_IP_DAILY, 150),
-    });
-  }
+    },
+  ];
 
   const admission = await consumeGuestAdmission(
     env,
@@ -734,7 +745,6 @@ async function consumeGuestAdmission(
 }
 
 function admissionSqlForQuotaCount(quotaCount: number) {
-  if (quotaCount === 2) return admissionSqlWithoutIp;
   if (quotaCount === 3) return admissionSqlWithIp;
   return null;
 }
@@ -1054,19 +1064,51 @@ function readCookie(headers: Headers, name: string) {
   return undefined;
 }
 
-function requestIp(headers: Headers) {
-  const cloudflareIp = coarseHeader(headers.get("cf-connecting-ip"), 80);
-  if (cloudflareIp !== "unknown") return cloudflareIp;
-  const forwarded = headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
-  if (forwarded) return forwarded.slice(0, 80);
-  const realIp = headers.get("x-real-ip")?.trim();
-  return realIp ? realIp.slice(0, 80) : null;
+export function requestIpForGuestQuota(request: Request) {
+  return requestIp(request);
 }
 
-async function guestFingerprintHash(headers: Headers, ip: string | null) {
+function requestIp(request: Request) {
+  const cloudflareIp = normalizedIpAddress(request.headers.get("cf-connecting-ip"));
+  if (cloudflareIp) return cloudflareIp;
+
+  // Cloudflare supplies and overwrites cf-connecting-ip at the production
+  // boundary. Generic proxy headers remain client-controlled there. Local
+  // preview has no Cloudflare boundary, so its loopback URL explicitly opts
+  // into the first valid development-proxy address instead.
+  if (!isLocalPreviewRequest(request)) return null;
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0] ?? null;
+  return normalizedIpAddress(forwarded) ?? normalizedIpAddress(request.headers.get("x-real-ip"));
+}
+
+function isLocalPreviewRequest(request: Request) {
+  const hostname = new URL(request.url).hostname.toLowerCase();
+  return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
+}
+
+function normalizedIpAddress(value: string | null) {
+  if (!value) return null;
+  const candidate = value.trim();
+  if (!candidate || candidate.length > 64) return null;
+  const ipv4Parts = candidate.split(".");
+  if (
+    ipv4Parts.length === 4 &&
+    ipv4Parts.every((part) => /^\d{1,3}$/.test(part) && Number(part) <= 255)
+  ) {
+    return ipv4Parts.map((part) => String(Number(part))).join(".");
+  }
+  if (!candidate.includes(":") || !/^[0-9a-f:.]+$/i.test(candidate)) return null;
+  try {
+    return new URL(`http://[${candidate}]/`).hostname.slice(1, -1).toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+async function guestFingerprintHash(headers: Headers, ip: string) {
   return sha256Hex(
     [
-      ip ? `ip:${ip}` : "ip:unavailable",
+      `ip:${ip}`,
       `ua:${coarseHeader(headers.get("user-agent"), 160)}`,
       `al:${coarseHeader(headers.get("accept-language"), 80)}`,
       `platform:${coarseHeader(headers.get("sec-ch-ua-platform"), 40)}`,

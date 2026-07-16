@@ -97,7 +97,7 @@ test("topic seed synchronization is explicit, deterministic, and local-setup own
 
   assert.equal(
     packageJson.scripts?.["cf:sync:topic-seeds"],
-    "tsx scripts/cloudflare/run-production-release-operation.ts sync-topic-seeds",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:sync:topic-seeds",
   );
   assert.match(setup, /syncTopicSeeds\("local"\)/);
   assert.ok(setup.indexOf('syncTopicSeeds("local")') < setup.indexOf('syncSiteTranslationSources("local")'));

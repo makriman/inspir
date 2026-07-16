@@ -4,13 +4,18 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { renderLocalizedSiteTranslationNamespaces } from "@/lib/i18n/render-localized-namespaces";
 import { staticSiteTranslationNamespaceAvailability } from "@/lib/i18n/site-availability-manifest";
 import { knownSiteTranslationNamespaces } from "@/lib/i18n/site-namespace-manifest";
+import { marketingShellTranslationNamespace } from "@/lib/i18n/site-source-constants";
 
 export const legacyLanguagePreferenceApiPath = "/api/language-preference";
 export const legacyMainAppTranslationsApiPath = "/api/main-app-translations";
 export const legacySiteTranslationsApiPath = "/api/site-translations";
+export const legacySiteTranslationStaticAssetNamespaces = [
+  marketingShellTranslationNamespace,
+  "route:home",
+  "route:mission",
+] as const;
 
 export type LegacyTranslationAssetKind = "main-app" | "site";
 export type LegacySiteTranslationPair = Readonly<{
@@ -20,6 +25,9 @@ export type LegacySiteTranslationPair = Readonly<{
 
 const supportedLanguageNames = new Set<string>(supportedLanguages);
 const knownSiteNamespaces = new Set<string>(knownSiteTranslationNamespaces);
+const legacySiteTranslationStaticAssetNamespaceSet = new Set<string>(
+  legacySiteTranslationStaticAssetNamespaces,
+);
 const safeNamespacePattern = /^[a-z0-9][a-z0-9:-]{0,127}$/;
 
 export function isSupportedLegacyTranslationLanguage(
@@ -37,8 +45,12 @@ export function isKnownLegacySiteTranslationNamespace(
 export function getPublishedLegacySiteTranslationNamespaces(
   language: SupportedLanguage,
 ): readonly string[] {
-  if (language === defaultLanguage) return renderLocalizedSiteTranslationNamespaces;
-  return staticSiteTranslationNamespaceAvailability[language] ?? [];
+  if (language === defaultLanguage) {
+    return legacySiteTranslationStaticAssetNamespaces;
+  }
+  return (staticSiteTranslationNamespaceAvailability[language] ?? []).filter(
+    (namespace) => legacySiteTranslationStaticAssetNamespaceSet.has(namespace),
+  );
 }
 
 export function getPublishedLegacySiteTranslationPairs(): LegacySiteTranslationPair[] {

@@ -36,6 +36,6 @@ test("OpenNext R2 retention targets only a verified retired build prefix", () =>
   assert.match(source, /R2_BUCKET_NAME/);
   assert.equal(
     packageJson.scripts?.["cf:r2:retire-cache-build"],
-    "tsx scripts/cloudflare/retire-next-cache-build.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:r2:retire-cache-build",
   );
 });

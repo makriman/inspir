@@ -1,47 +1,13 @@
-import type { Metadata } from "next";
-import { ContentPage } from "@/components/legal/ContentPage";
-import { extractedPages } from "@/lib/content/extracted-pages";
-import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { siteName, socialImage } from "@/lib/seo/config";
-
-const description =
-  "How inspir describes data use, privacy practices, and user rights for the public learning platform.";
+import { PrivacyPolicyContent } from "@/components/legal/PrivacyPolicyContent";
+import { defaultLanguage } from "@/lib/content/languages";
 
 export const dynamic = "force-static";
 export const revalidate = false;
 
-const pageMetadata: Metadata = {
-  title: "Privacy Policy",
-  description,
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: "Privacy Policy | inspir",
-    description,
-    url: "/privacy",
-    siteName,
-    images: [socialImage({ title: "Privacy Policy", eyebrow: "Privacy", description })],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Privacy Policy | inspir",
-    description,
-    images: [socialImage({ title: "Privacy Policy", eyebrow: "Privacy", description }).url],
-  },
-};
-
 export function generateMetadata() {
-  return localizeMarketingMetadata(pageMetadata, "/privacy");
+  return PrivacyPolicyContent.generateMetadata(defaultLanguage);
 }
 
 export default function PrivacyPage() {
-  return (
-    <ContentPage
-      title="Privacy Policy"
-      blocks={extractedPages.privacy}
-      description={description}
-      eyebrow="Privacy"
-      path="/privacy"
-    />
-  );
+  return <PrivacyPolicyContent language={defaultLanguage} />;
 }

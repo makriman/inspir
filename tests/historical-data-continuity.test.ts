@@ -21,8 +21,10 @@ import {
   HISTORICAL_DATA_PRESERVATION_KIND,
   HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
   HISTORICAL_DATASET_NAMES,
+  HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS,
   historicalDataBudgetOperationId,
   historicalDataHmacKeyId,
+  historicalDataSchemaHash,
   type HistoricalDataBaselineReport,
   type HistoricalDataLegacyBaselineReport,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
@@ -255,7 +257,7 @@ function baseline(
     },
     limits: {
       coreRows: 350_000,
-      supplementalRows: 125_000,
+      supplementalRows: 175_000,
       operationalRows: 10_000,
       logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
       logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
@@ -338,17 +340,18 @@ function supplementalDatasets() {
     memory_synthesis_runs: dataset("memory_synthesis_runs"),
     memory_source_feedback: dataset("memory_source_feedback"),
     memory_events: dataset("memory_events"),
+    game_results: dataset("game_results"),
   } satisfies HistoricalDataBaselineReport["supplementalDatasets"];
 }
 
 function dataset(name: string, table = name) {
-  const columns = [{ name: "id", type: "text", notNull: 1 as const, primaryKey: 1 }];
+  const columns = name === "game_results"
+    ? HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS.map((column) => ({ ...column }))
+    : [{ name: "id", type: "text", notNull: 1 as const, primaryKey: 1 }];
   return {
     rowCount: 1,
     schemaTable: table,
-    schemaSha256: createHash("sha256")
-      .update(`${columns[0].name}\0${columns[0].type}\0${columns[0].notNull}\0${columns[0].primaryKey}`)
-      .digest("hex"),
+    schemaSha256: historicalDataSchemaHash(columns),
     columns,
     sentinels: [createHash("sha256").update(`sentinel:${name}`).digest("hex")],
   };

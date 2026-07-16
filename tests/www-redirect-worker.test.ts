@@ -56,7 +56,7 @@ test("www redirect Worker config stays isolated, Free-plan compatible, and ahead
   assert.ok(mainConfig.routes?.some((route) => route.pattern === "www.inspirlearning.com" && route.custom_domain));
   assert.equal(
     packageJson.scripts?.["cf:deploy:www-redirect"],
-    "wrangler deploy --config wrangler.www-redirect.jsonc",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:deploy:www-redirect",
   );
   assert.equal(
     packageJson.scripts?.["cf:check:www-redirect"],

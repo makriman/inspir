@@ -19,6 +19,13 @@ export const RUNTIME_MIGRATION_0016_COMPLETION_MARKER_KEY =
   "runtime-migration-0016-complete" as const;
 export const RUNTIME_MIGRATION_0016_COMPLETION_MARKER_VALUE =
   "summary-suppression-mask-backfill-v1" as const;
+export const RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT =
+  5_000 as const;
+const RUNTIME_MIGRATION_VERIFICATION_MAX_AUTOMATIC_ATTEMPTS =
+  3 as const;
+export const RUNTIME_MIGRATION_VERIFICATION_BILLABLE_ROWS_READ_LIMIT =
+  RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT *
+  RUNTIME_MIGRATION_VERIFICATION_MAX_AUTOMATIC_ATTEMPTS;
 export const RUNTIME_MIGRATION_FILES = [
   "drizzle-d1/0013_runtime_query_indexes.sql",
   "drizzle-d1/0014_admin_totals_snapshot.sql",
@@ -62,6 +69,7 @@ export type RuntimeMigrationVerificationReport = {
   sourceFingerprintStable: boolean;
   rowsRead: number;
   rowsWritten: number;
+  totalAttempts: 1 | null;
   checks: RuntimeMigrationVerificationCheck[];
   error?: string;
 };
@@ -70,6 +78,7 @@ type D1VerificationQueryResult = {
   rows: Array<Record<string, unknown>>;
   rowsRead: number;
   rowsWritten: number;
+  totalAttempts: 1;
 };
 
 type IndexSpec = {
@@ -490,6 +499,7 @@ export function verifyD1RuntimeMigrations(options: {
     sourceFingerprintStable,
     rowsRead: queryResult.rowsRead,
     rowsWritten: queryResult.rowsWritten,
+    totalAttempts: queryResult.totalAttempts,
     checks,
   };
 }
@@ -617,6 +627,7 @@ function failedVerificationReport(input: {
     sourceFingerprintStable: true,
     rowsRead: 0,
     rowsWritten: 0,
+    totalAttempts: null,
     checks: RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS.map((id) => ({
       id,
       ok: false,
@@ -920,10 +931,24 @@ function parseD1VerificationQueryResult(output: string): D1VerificationQueryResu
     result.meta.rows_written,
     "verification rows written",
   );
+  const totalAttempts = requiredNonNegativeInteger(
+    result.meta.total_attempts,
+    "verification total attempts",
+  );
   if (rowsWritten !== 0) {
     throw new Error("Read-only D1 runtime migration verification unexpectedly wrote rows.");
   }
-  return { rows: result.results, rowsRead, rowsWritten };
+  if (rowsRead > RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT) {
+    throw new Error(
+      `Read-only D1 runtime migration verification exceeded its logical read bound: ${rowsRead} > ${RUNTIME_MIGRATION_VERIFICATION_LOGICAL_ROWS_READ_LIMIT}.`,
+    );
+  }
+  if (totalAttempts !== 1) {
+    throw new Error(
+      "Read-only D1 runtime migration verification must complete in exactly one automatic attempt.",
+    );
+  }
+  return { rows: result.results, rowsRead, rowsWritten, totalAttempts };
 }
 
 function parseWranglerJson(output: string): unknown {

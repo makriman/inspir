@@ -325,22 +325,30 @@ const englishLeakageWords = new Set([
   "and",
   "answer",
   "answers",
+  "artifact",
+  "artifacts",
   "ask",
   "back",
   "better",
   "browse",
   "built",
+  "builder",
   "can",
   "chat",
   "check",
   "clear",
   "coding",
+  "coach",
   "companion",
   "content",
   "custom",
   "debate",
   "design",
   "every",
+  "edit",
+  "edits",
+  "error",
+  "errors",
   "everyone",
   "explain",
   "feedback",
@@ -352,6 +360,7 @@ const englishLeakageWords = new Set([
   "from",
   "guide",
   "guided",
+  "guidance",
   "guides",
   "has",
   "help",
@@ -363,6 +372,8 @@ const englishLeakageWords = new Set([
   "learning",
   "library",
   "live",
+  "log",
+  "logs",
   "map",
   "markers",
   "mode",
@@ -374,6 +385,7 @@ const englishLeakageWords = new Set([
   "path",
   "page",
   "practice",
+  "programming",
   "prompt",
   "prompts",
   "public",
@@ -389,6 +401,8 @@ const englishLeakageWords = new Set([
   "session",
   "start",
   "study",
+  "student",
+  "students",
   "support",
   "that",
   "the",
@@ -480,6 +494,11 @@ const englishFunctionLeakageWords = new Set([
   "your",
 ]);
 
+const englishLeakageSignalWords = new Set([
+  ...englishLeakageWords,
+  ...englishFunctionLeakageWords,
+]);
+
 const mustTranslatePhrases = new Set([
   "Free public AI learning platform",
   "Open guest chat",
@@ -489,11 +508,41 @@ const mustTranslatePhrases = new Set([
   "Transcript",
 ]);
 
-const mustTranslateEmbeddedPhrases = [
+export const translationHistoricalEmbeddedSourcePhrases = Object.freeze([
+  "Code Tutor",
+  "Explain My Answer",
   "Homework Coach",
   "Learn Anything",
   "Socratic Instruction",
-] as const;
+] as const);
+
+export const afrikaansProductCopyHistoricalSource =
+  "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer." as const;
+
+export const afrikaansProductCopyPhraseBindings = Object.freeze([
+  Object.freeze({
+    literal: "Math Step Coach",
+    canonicalSource: "Math Step Coach",
+  }),
+  Object.freeze({
+    literal: "Flashcard Builder",
+    canonicalSource: "Flashcard Builder",
+  }),
+  Object.freeze({
+    literal: "Quiz Me On Trivia",
+    canonicalSource: "Quiz me on Trivia",
+  }),
+  Object.freeze({
+    literal: "Writing Coach",
+    canonicalSource: "Writing Coach",
+  }),
+] as const);
+
+export const translationEmbeddedSourcePhrases = Object.freeze([
+  ...translationHistoricalEmbeddedSourcePhrases,
+  ...afrikaansProductCopyPhraseBindings.map((binding) => binding.literal),
+  "Quiz me on Trivia",
+] as const);
 
 const protectedSourceTrigrams = new Set([
   "ada lovelace cleopatra",
@@ -510,6 +559,8 @@ const protectedSourceTrigrams = new Set([
   "east india company",
   "fatehpur sikri was",
   "free cash flow",
+  "great indian company",
+  "holding partnership firm",
   "house of wisdom",
   "inspir learning community",
   "kashmere gate was",
@@ -523,6 +574,19 @@ const protectedSourceTrigrams = new Set([
   "supply and demand",
   "terms and conditions",
 ]);
+
+const protectedShortSourceSpans = new Set<string>([
+  "american express",
+  "artificial intelligence",
+  "feynman tutor",
+  "machine learning",
+  "media faq",
+  "prompt faq",
+  "social media",
+]);
+
+const protectedInlineLiteralPattern =
+  /\b(?:17 U\.S\.C|29AAWFG7015K1ZQ|Ada Lovelace|American Express|B\.?\s*R\.?\s*Ambedkar|Bahadur Shah Zafar|California Consumer Privacy Act|California Legislative Information|CalOPPA|CCPA|Chandni Chowk|Chang['’]an|ChatGPT|check[- ]in|Dailyhunt|DeepHack|deep work|Digital Millennium Copyright Act|Diwan-i-Khas|DMCA|East India Company|Fatehpur Sikri|Faubourg Saint-Antoine|FAQ|Feynman Tutor|free cash flow|GDPR|Great Indian Company|GitHub|Google|GST|Holding Partnership Firm|Jury['’]s Choice|Kashmere Gate|Khan Academy|Les Invalides|machine learning|Mastercard|multiple[- ]choice|open[- ]source|OpenAI|PCI Security Standards Council|PolicyMaker(?:\.io)?|Porter['’]s Five Forces|Pudding Lane|Rajput|Renaissance Florence|social media|St Paul['’]s(?: Cathedral)?|Stoa Basileios|supply and demand|terms and conditions|U\.S\.C|Visa|West Market|Winston Churchill|World War I)\b/giu;
 
 const citationStandardTerms = new Set(["apa", "chicago", "harvard", "mla"]);
 const citationTechnicalTailTerms = new Set([
@@ -909,63 +973,178 @@ function hasSuspiciousTranslationReuse(source: TranslationSource, bundle: Transl
   return false;
 }
 
+export type TranslationFieldFluencyFailureReason =
+  | "empty"
+  | "field-invalid"
+  | "soft-hyphen"
+  | "repeated-token-run"
+  | "lexical-loss"
+  | "unbalanced-delimiters"
+  | "spanish-punctuation"
+  | "normalized-empty"
+  | "source-equality"
+  | "embedded-source-phrase"
+  | "known-orthography-corruption"
+  | "spanish-corruption"
+  | "source-trigram-leakage"
+  | "distributed-source-leakage"
+  | "short-non-latin-source-overlap"
+  | "unexpected-latin-dominance"
+  | "likely-english-leakage";
+
+export type TranslationFieldFluencyInspection = Readonly<{
+  fluent: boolean;
+  reason: TranslationFieldFluencyFailureReason | null;
+  metrics: Readonly<{
+    sourceCharacters: number;
+    translatedCharacters: number;
+    sourceLetters: number;
+    translatedLetters: number;
+    sourceVisibleLatinWords: number;
+    translatedVisibleLatinWords: number;
+    sourceEnglishWords: number;
+    leakedEnglishWords: number;
+    leakedFunctionWords: number;
+    uniqueLeakedFunctionWords: number;
+    englishLeakageRatio: number;
+    functionLeakageRatio: number;
+    translatedLatinLetters: number;
+    translatedNonLatinLetters: number;
+    sourceRepeatedTokenRun: boolean;
+    translatedRepeatedTokenRun: boolean;
+    sourceUnbalancedDelimiters: boolean;
+    translatedUnbalancedDelimiters: boolean;
+    sourceDelimiterCounts: Readonly<TranslationDelimiterCounts>;
+    translatedDelimiterCounts: Readonly<TranslationDelimiterCounts>;
+  }>;
+}>;
+
+export type TranslationDelimiterCounts = {
+  openingParentheses: number;
+  closingParentheses: number;
+  openingBrackets: number;
+  closingBrackets: number;
+  doubleQuotes: number;
+};
+
+export function inspectTranslationFieldFluency(
+  sourceText: string,
+  translated: string | undefined,
+  language: SupportedLanguage,
+  context?: TranslationFieldReviewContext,
+): TranslationFieldFluencyInspection {
+  const reason = translationFieldFluencyFailureReason(
+    sourceText,
+    translated,
+    language,
+    context,
+  );
+  return Object.freeze({
+    fluent: reason === null,
+    reason,
+    metrics: translationFieldFluencyMetrics(sourceText, translated ?? ""),
+  });
+}
+
 export function isTranslationFieldLikelyFluent(
   sourceText: string,
   translated: string | undefined,
   language: SupportedLanguage,
   context?: TranslationFieldReviewContext,
 ) {
-  if (language === defaultLanguage) return Boolean(translated?.trim());
-  if (!translated?.trim()) return false;
-  if (!isValidFieldTranslation(sourceText, translated, language, context?.key)) return false;
-  if (hasStructuralTranslationCorruption(sourceText, translated, language)) return false;
-  if (isReviewedTranslationPreserve(translated, language, context)) return true;
+  return (
+    translationFieldFluencyFailureReason(
+      sourceText,
+      translated,
+      language,
+      context,
+    ) === null
+  );
+}
+
+function translationFieldFluencyFailureReason(
+  sourceText: string,
+  translated: string | undefined,
+  language: SupportedLanguage,
+  context: TranslationFieldReviewContext | undefined,
+): TranslationFieldFluencyFailureReason | null {
+  if (language === defaultLanguage) return translated?.trim() ? null : "empty";
+  if (!translated?.trim()) return "empty";
+  if (!isValidFieldTranslation(sourceText, translated, language, context?.key)) {
+    return "field-invalid";
+  }
+  const structuralFailure = structuralTranslationFailureReason(
+    sourceText,
+    translated,
+    language,
+  );
+  if (structuralFailure) return structuralFailure;
+  if (isReviewedTranslationPreserve(translated, language, context)) return null;
 
   const normalizedSource = comparableText(sourceText);
   const normalizedTranslated = comparableText(translated);
-  if (!normalizedTranslated) return false;
-  if (isPreservedTranslationLiteral(sourceText, translated, language)) return true;
-  if (normalizedSource === normalizedTranslated && shouldTranslateSourceText(sourceText)) return false;
-  if (
-    mustTranslateEmbeddedPhrases.some(
+  if (isPreservedTranslationLiteral(sourceText, translated, language)) return null;
+  if (!normalizedTranslated) return "normalized-empty";
+  if (normalizedSource === normalizedTranslated && shouldTranslateSourceText(sourceText)) {
+    return "source-equality";
+  }
+  const hasHistoricalEmbeddedSourcePhrase =
+    translationHistoricalEmbeddedSourcePhrases.some(
       (phrase) => sourceText.includes(phrase) && translated.includes(phrase),
-    )
-  ) {
-    return false;
+    );
+  const hasProductCopySourcePhrase = afrikaansProductCopyPhraseBindings.some(
+    ({ literal, canonicalSource }) => {
+      const forms = literal === canonicalSource
+        ? [literal]
+        : [literal, canonicalSource];
+      return forms.some((form) => sourceText.includes(form)) &&
+        forms.some((form) => translated.includes(form));
+    },
+  );
+  if (hasHistoricalEmbeddedSourcePhrase || hasProductCopySourcePhrase) {
+    return "embedded-source-phrase";
   }
 
-  if (hasConservativeSourceLeakage(sourceText, translated, language)) return false;
+  const leakageFailure = conservativeSourceLeakageFailureReason(
+    sourceText,
+    translated,
+    language,
+  );
+  if (leakageFailure) return leakageFailure;
 
-  return !hasLikelyEnglishLeakage(sourceText, translated, language);
+  return likelyEnglishLeakageFailureReason(sourceText, translated, language);
 }
 
-function hasStructuralTranslationCorruption(
+function structuralTranslationFailureReason(
   sourceText: string,
   translated: string,
   language: SupportedLanguage,
-) {
-  if (translated.includes("\u00ad")) return true;
+): TranslationFieldFluencyFailureReason | null {
+  if (translated.includes("\u00ad")) return "soft-hyphen";
 
   if (
     hasConsecutiveTokenRun(translated, 3) &&
     !hasConsecutiveTokenRun(sourceText, 3)
   ) {
-    return true;
+    return "repeated-token-run";
   }
 
   const sourceLetters = sourceText.match(/\p{L}/gu)?.length ?? 0;
   const translatedLetters = translated.match(/\p{L}/gu)?.length ?? 0;
-  if (sourceLetters >= 8 && translatedLetters < 2) return true;
+  if (sourceLetters >= 8 && translatedLetters < 2) return "lexical-loss";
 
   if (hasUnbalancedDelimiters(translated) && !hasUnbalancedDelimiters(sourceText)) {
-    return true;
+    return "unbalanced-delimiters";
   }
 
-  return (
+  if (
     language === "Spanish" &&
     hasMalformedSpanishPunctuation(translated) &&
     !hasMalformedSpanishPunctuation(sourceText)
-  );
+  ) {
+    return "spanish-punctuation";
+  }
+  return null;
 }
 
 function hasConsecutiveTokenRun(value: string, minimumRun: number) {
@@ -1000,42 +1179,115 @@ function hasMalformedSpanishPunctuation(value: string) {
   return /\s+[,.!?;:](?!\d)/u.test(value) || /[¿¡]\s/u.test(value);
 }
 
-function hasConservativeSourceLeakage(
+function conservativeSourceLeakageFailureReason(
+  sourceText: string,
+  translated: string,
+  language: SupportedLanguage,
+): TranslationFieldFluencyFailureReason | null {
+  if (knownOrthographyCorruptionMarkers[language]?.test(translated)) {
+    return "known-orthography-corruption";
+  }
+  if (language === "Spanish" && spanishCorruptionMarkers.test(translated)) {
+    return "spanish-corruption";
+  }
+  if (hasUntranslatedSourceSpan(sourceText, translated, language)) {
+    return "source-trigram-leakage";
+  }
+  if (hasDistributedSourceWordLeakage(sourceText, translated, language)) {
+    return "distributed-source-leakage";
+  }
+  if (hasShortNonLatinSourceOverlap(sourceText, translated, language)) {
+    return "short-non-latin-source-overlap";
+  }
+  return null;
+}
+
+/**
+ * Rejects exact, unprotected English spans copied into otherwise localized
+ * text. Capitalization is intentionally not an exemption: page titles and UI
+ * labels are commonly title-cased, and treating two capitalized words as a
+ * proper name allowed large English fragments to pass in every Latin-script
+ * target. Proper names, product literals, standards, and technical phrases
+ * must instead be covered by the explicit protected policy above.
+ *
+ * Two-token matching is limited to two-token source fields. For Latin-script
+ * targets, ambiguous two-word cognates and technical compounds are left to the
+ * explicit must-translate policy. For targets with non-Latin script evidence,
+ * an exact unprotected pair is sufficient evidence of copied source text.
+ */
+function hasUntranslatedSourceSpan(
   sourceText: string,
   translated: string,
   language: SupportedLanguage,
 ) {
-  if (knownOrthographyCorruptionMarkers[language]?.test(translated)) return true;
-  if (language === "Spanish" && spanishCorruptionMarkers.test(translated)) return true;
-  if (hasUntranslatedSourceTrigram(sourceText, translated)) return true;
-  if (hasDistributedSourceWordLeakage(sourceText, translated, language)) return true;
-  return hasShortNonLatinSourceOverlap(sourceText, translated, language);
+  const sourceWords = sourceLeakageLatinTokens(sourceText);
+  const translatedWords = sourceLeakageLatinTokens(translated).map(
+    (word) => word.normalized,
+  );
+  const hasNonLatinTargetEvidence =
+    predominantlyNonLatinLanguages.has(language) &&
+    countNonLatinLetters(translated) >= 2;
+  const minimumSpanLength = sourceWords.length === 2 ? 2 : 3;
+  if (sourceWords.length < minimumSpanLength) return false;
+
+  for (
+    let index = 0;
+    index <= sourceWords.length - minimumSpanLength;
+    index += 1
+  ) {
+    const words = sourceWords.slice(index, index + minimumSpanLength);
+    const normalizedWords = words.map((word) => word.normalized);
+    const span = normalizedWords.join(" ");
+    if (
+      protectedSourceTrigrams.has(span) ||
+      protectedShortSourceSpans.has(span)
+    ) {
+      continue;
+    }
+    const unprotectedWords = words.filter(
+      (word) => !protectedExactTrigramTerms.has(word.normalized),
+    );
+    const unprotectedWordCount = unprotectedWords.length;
+    if (unprotectedWordCount < 2) continue;
+    if (!containsTokenSpan(translatedWords, normalizedWords)) continue;
+    if (hasNonLatinTargetEvidence) return true;
+    if (minimumSpanLength === 2) continue;
+    if (words.filter((word) => word.capitalized).length >= 2) return true;
+    if (
+      unprotectedWords.some((word) =>
+        englishFunctionLeakageWords.has(word.normalized),
+      )
+    ) {
+      return true;
+    }
+  }
+  return false;
 }
 
-function hasUntranslatedSourceTrigram(sourceText: string, translated: string) {
-  const sourceWords = caseAwareLatinWordTokens(sourceText);
-  const translatedText = ` ${caseAwareLatinWordTokens(translated)
-    .map((word) => word.normalized)
-    .join(" ")} `;
+function sourceLeakageLatinTokens(value: string) {
+  return caseAwareLatinWordTokens(value).flatMap((word) => {
+    const normalizedParts = word.normalized.split(/['-]/u);
+    const rawParts = word.raw.split(/['-]/u);
+    return normalizedParts.flatMap((normalized, index) => {
+      if (!normalized) return [];
+      return [{
+        normalized,
+        capitalized: /^[A-Z]/u.test(rawParts[index] ?? ""),
+      }];
+    });
+  });
+}
 
-  for (let index = 0; index <= sourceWords.length - 3; index += 1) {
-    const words = sourceWords.slice(index, index + 3);
-    const trigram = words.map((word) => word.normalized).join(" ");
-    const capitalizedWords = words.filter((word) => /^[A-Z]/.test(word.raw)).length;
+function containsTokenSpan(
+  tokens: readonly string[],
+  expected: readonly string[],
+) {
+  for (let start = 0; start <= tokens.length - expected.length; start += 1) {
     if (
-      capitalizedWords >= 2 ||
-      protectedSourceTrigrams.has(trigram) ||
-      words.some((word) => protectedExactTrigramTerms.has(word.normalized))
+      expected.every((word, offset) => tokens[start + offset] === word)
     ) {
-      continue;
+      return true;
     }
-    if (
-      !isMostlyNonLatinText(translated) &&
-      !words.some((word) => englishFunctionLeakageWords.has(word.normalized))
-    ) {
-      continue;
-    }
-    if (translatedText.includes(` ${trigram} `)) return true;
   }
   return false;
 }
@@ -1177,37 +1429,122 @@ function shouldTranslateSourceText(sourceText: string) {
   return sourceWords.length >= 4;
 }
 
-function hasLikelyEnglishLeakage(
+function likelyEnglishLeakageFailureReason(
   sourceText: string,
   translated: string,
   language: SupportedLanguage,
-) {
+): TranslationFieldFluencyFailureReason | null {
   const visibleSource = maskProtectedTranslationLiterals(sourceText);
   const visibleTranslated = maskProtectedTranslationLiterals(translated);
-  const sourceWords = latinWordTokens(visibleSource).filter((word) => !protectedTerms.has(word));
-  const translatedWords = latinWordTokens(visibleTranslated).filter((word) => !protectedTerms.has(word));
-  if (sourceWords.length < 5) return false;
+  const sourceWords = latinWordTokens(visibleSource).filter(
+    (word) => !protectedLeakageTerms.has(word),
+  );
+  const translatedWords = latinWordTokens(visibleTranslated).filter(
+    (word) => !protectedLeakageTerms.has(word),
+  );
+  if (sourceWords.length < 5) return null;
 
   if (
     predominantlyNonLatinLanguages.has(language) &&
     hasUnexpectedLatinDominance(visibleTranslated)
   ) {
-    return true;
+    return "unexpected-latin-dominance";
   }
-  if (translatedWords.length < 5) return false;
+  if (translatedWords.length < 5) return null;
 
-  const sourceEnglishCount = sourceWords.filter((word) => englishLeakageWords.has(word)).length;
-  if (sourceEnglishCount < 3) return false;
+  const sourceEnglishCount = sourceWords.filter((word) =>
+    englishLeakageSignalWords.has(word),
+  ).length;
+  if (sourceEnglishCount < 3) return null;
 
-  const sourceEnglishWords = new Set(sourceWords.filter((word) => englishLeakageWords.has(word)));
+  const sourceEnglishWords = new Set(
+    sourceWords.filter((word) => englishLeakageSignalWords.has(word)),
+  );
   const leakedWords = translatedWords.filter((word) => sourceEnglishWords.has(word));
   const leakedFunctionWords = leakedWords.filter((word) => englishFunctionLeakageWords.has(word));
   const leakageRatio = leakedWords.length / translatedWords.length;
   if (!isMostlyNonLatinText(visibleTranslated)) {
     const functionLeakageRatio = leakedFunctionWords.length / translatedWords.length;
-    return new Set(leakedFunctionWords).size >= 2 && functionLeakageRatio >= 0.1;
+    const uniqueLeakedWords = new Set(leakedWords).size;
+    const uniqueLeakedFunctionWords = new Set(leakedFunctionWords).size;
+    if (
+      uniqueLeakedFunctionWords >= 2 &&
+      functionLeakageRatio >= 0.1
+    ) {
+      return "likely-english-leakage";
+    }
+    if (
+      uniqueLeakedWords >= 4 &&
+      leakageRatio >= 0.22
+    ) {
+      return "likely-english-leakage";
+    }
+    return null;
   }
-  return new Set(leakedWords).size >= 3 && leakageRatio >= 0.18;
+  return new Set(leakedWords).size >= 3 && leakageRatio >= 0.18
+    ? "likely-english-leakage"
+    : null;
+}
+
+function translationFieldFluencyMetrics(
+  sourceText: string,
+  translated: string,
+): TranslationFieldFluencyInspection["metrics"] {
+  const sourceWords = latinWordTokens(sourceText).filter(
+    (word) => !protectedLeakageTerms.has(word),
+  );
+  const translatedWords = latinWordTokens(translated).filter(
+    (word) => !protectedLeakageTerms.has(word),
+  );
+  const sourceEnglishWords = sourceWords.filter((word) =>
+    englishLeakageSignalWords.has(word),
+  );
+  const sourceEnglishWordSet = new Set(sourceEnglishWords);
+  const leakedEnglishWords = translatedWords.filter((word) =>
+    sourceEnglishWordSet.has(word),
+  );
+  const leakedFunctionWords = leakedEnglishWords.filter((word) =>
+    englishFunctionLeakageWords.has(word),
+  );
+  const translatedVisibleWordCount = translatedWords.length;
+  return Object.freeze({
+    sourceCharacters: Array.from(sourceText).length,
+    translatedCharacters: Array.from(translated).length,
+    sourceLetters: sourceText.match(/\p{L}/gu)?.length ?? 0,
+    translatedLetters: translated.match(/\p{L}/gu)?.length ?? 0,
+    sourceVisibleLatinWords: sourceWords.length,
+    translatedVisibleLatinWords: translatedVisibleWordCount,
+    sourceEnglishWords: sourceEnglishWords.length,
+    leakedEnglishWords: leakedEnglishWords.length,
+    leakedFunctionWords: leakedFunctionWords.length,
+    uniqueLeakedFunctionWords: new Set(leakedFunctionWords).size,
+    englishLeakageRatio:
+      translatedVisibleWordCount > 0
+        ? leakedEnglishWords.length / translatedVisibleWordCount
+        : 0,
+    functionLeakageRatio:
+      translatedVisibleWordCount > 0
+        ? leakedFunctionWords.length / translatedVisibleWordCount
+        : 0,
+    translatedLatinLetters: translated.match(/[A-Za-z]/g)?.length ?? 0,
+    translatedNonLatinLetters: countNonLatinLetters(translated),
+    sourceRepeatedTokenRun: hasConsecutiveTokenRun(sourceText, 3),
+    translatedRepeatedTokenRun: hasConsecutiveTokenRun(translated, 3),
+    sourceUnbalancedDelimiters: hasUnbalancedDelimiters(sourceText),
+    translatedUnbalancedDelimiters: hasUnbalancedDelimiters(translated),
+    sourceDelimiterCounts: delimiterCounts(sourceText),
+    translatedDelimiterCounts: delimiterCounts(translated),
+  });
+}
+
+function delimiterCounts(value: string): TranslationDelimiterCounts {
+  return Object.freeze({
+    openingParentheses: countOccurrences(value, "("),
+    closingParentheses: countOccurrences(value, ")"),
+    openingBrackets: countOccurrences(value, "["),
+    closingBrackets: countOccurrences(value, "]"),
+    doubleQuotes: countOccurrences(value, '"'),
+  });
 }
 
 function hasUnexpectedLatinDominance(value: string) {
@@ -1276,7 +1613,9 @@ function maskProtectedTranslationLiterals(value: string) {
       /(?<![\p{L}\p{N}_])\/(?:[a-z_][a-z0-9_.-]*\/)*(?:[a-z_][a-z0-9_.?=&%#-]*)/giu,
       " ",
     )
+    .replace(/\([A-Za-z]\)/g, " ")
     .replace(/\{[a-zA-Z0-9_]+\}/g, " ")
+    .replace(protectedInlineLiteralPattern, " ")
     .replace(/\binspir\b/gi, " ");
 }
 

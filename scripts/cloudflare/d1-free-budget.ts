@@ -178,8 +178,14 @@ function parseWranglerJson(output: string): unknown {
   } catch {
     const first = trimmed.indexOf("[");
     const last = trimmed.lastIndexOf("]");
-    if (first === -1 || last <= first) throw new Error("Could not parse Wrangler JSON output.");
-    return JSON.parse(trimmed.slice(first, last + 1)) as unknown;
+    if (first === -1 || last <= first) {
+      throw new Error("Could not parse Wrangler JSON output.");
+    }
+    try {
+      return JSON.parse(trimmed.slice(first, last + 1)) as unknown;
+    } catch {
+      throw new Error("Could not parse Wrangler JSON output.");
+    }
   }
 }
 

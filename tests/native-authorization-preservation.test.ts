@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { Miniflare } from "miniflare";
+import "./worker-crypto-test-shim";
 import {
   handleProtectedAiApiRequest,
   type ProtectedApiExecutionContext,
@@ -128,6 +129,45 @@ test("signed user A cannot read or mutate user B saved chat, message, or memory"
       content: USER_B_MEMORY_SECRET,
       status: "active",
     });
+  } finally {
+    await fixture.miniflare.dispose();
+  }
+});
+
+test("account topic catalog excludes the retired arena even when D1 still marks it active", async () => {
+  const fixture = await createAuthorizationFixture();
+  try {
+    const now = Date.now();
+    await fixture.rawDatabase.prepare(
+      `insert into topics
+         (id, slug, name, sub_text, description, inputbox_text, system_prompt,
+          icon_url, sort_order, status, metadata, created_at, updated_at)
+       values (?1, 'ai-game-arena', 'Retired arena', '', '', '', '', null, 0, 'active', '{}', ?2, ?2)`,
+    ).bind("aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa", now).run();
+
+    const response = await handleProtectedAiApiRequest(
+      new Request("https://inspirlearning.com/api/account/topics", {
+        headers: { cookie: fixture.cookie },
+      }),
+      fixture.cloudflareEnv,
+      protectedContext(),
+    );
+    assert.ok(response);
+    assert.equal(response.status, 200);
+    const payload: unknown = await response.json();
+    assert.ok(isRecord(payload));
+    assert.ok(Array.isArray(payload.topics));
+    const slugs = payload.topics.flatMap((value) =>
+      isRecord(value) && typeof value.slug === "string" ? [value.slug] : []
+    );
+    assert.equal(slugs.includes("private-topic"), true);
+    assert.equal(slugs.includes("ai-game-arena"), false);
+
+    const topicsQuery = fixture.database.executions.find((execution) =>
+      execution.method === "all" && /\bfrom topics\b/.test(normalizeSql(execution.query))
+    );
+    assert.ok(topicsQuery);
+    assert.deepEqual(topicsQuery.bindings, ["ai-game-arena"]);
   } finally {
     await fixture.miniflare.dispose();
   }

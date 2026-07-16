@@ -26,25 +26,35 @@ type StoredMemoryEmbedding =
   | `p:t:${string}`
   | null;
 
-export const users = sqliteTable("users", {
-  id: uuidText("id").primaryKey(),
-  name: text("name"),
-  email: text("email").notNull().unique(),
-  emailVerified: booleanInt("email_verified").notNull().default(false),
-  emailVerifiedAt: timestampMs("email_verified_at"),
-  image: text("image"),
-  score: integer("score").notNull().default(0),
-  profileImageMime: text("profile_image_mime"),
-  profileImageHash: text("profile_image_hash"),
-  profileImageR2Key: text("profile_image_r2_key"),
-  profileImageR2Etag: text("profile_image_r2_etag"),
-  profileImageSize: integer("profile_image_size"),
-  preferredLanguage: text("preferred_language").notNull().default("English"),
-  dateOfBirth: text("date_of_birth"),
-  dateOfBirthSource: text("date_of_birth_source"),
-  createdAt: timestampMsNow("created_at"),
-  updatedAt: timestampMsNow("updated_at"),
-});
+export const users = sqliteTable(
+  "users",
+  {
+    id: uuidText("id").primaryKey(),
+    name: text("name"),
+    email: text("email").notNull().unique(),
+    emailVerified: booleanInt("email_verified").notNull().default(false),
+    emailVerifiedAt: timestampMs("email_verified_at"),
+    image: text("image"),
+    score: integer("score").notNull().default(0),
+    profileImageMime: text("profile_image_mime"),
+    profileImageHash: text("profile_image_hash"),
+    profileImageR2Key: text("profile_image_r2_key"),
+    profileImageR2Etag: text("profile_image_r2_etag"),
+    profileImageSize: integer("profile_image_size"),
+    preferredLanguage: text("preferred_language").notNull().default("English"),
+    dateOfBirth: text("date_of_birth"),
+    dateOfBirthSource: text("date_of_birth_source"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+  },
+  (table) => ({
+    normalizedEmailLookupIdx: index("users_normalized_email_lookup_idx").on(
+      sql`lower(${table.email})`,
+      table.id,
+      table.email,
+    ),
+  }),
+);
 
 export const accounts = sqliteTable(
   "accounts",

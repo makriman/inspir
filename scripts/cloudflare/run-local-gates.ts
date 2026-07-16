@@ -2,6 +2,10 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import {
+  listReleaseUnitTestFiles,
+  releaseUnitTestEnvironment,
+} from "../release-unit-test-contract";
 import { LOCAL_GATE_IDS, cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 import { buildRepoSourceFingerprint, fingerprintFile } from "./source-fingerprint";
 
@@ -34,11 +38,7 @@ const localCliBinDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-local-gates
 process.once("exit", cleanupLocalCliWrappers);
 
 const bin = (name: string) => path.resolve(process.cwd(), "node_modules", ".bin", name);
-const topLevelUnitTests = fs
-  .readdirSync(path.resolve(process.cwd(), "tests"))
-  .filter((file) => file.endsWith(".test.ts"))
-  .sort()
-  .map((file) => path.join("tests", file));
+const releaseUnitTests = listReleaseUnitTestFiles();
 
 const gatesById: Record<LocalGateId, Gate> = {
   typecheck: { id: "typecheck", steps: [{ command: bin("tsc"), args: ["--noEmit"] }] },
@@ -54,7 +54,7 @@ const gatesById: Record<LocalGateId, Gate> = {
   },
   lint: { id: "lint", steps: [{ command: bin("eslint"), args: [] }] },
   "react-doctor": { id: "react-doctor", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-react-doctor-gate.ts"] }] },
-  "unit-tests": { id: "unit-tests", steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...topLevelUnitTests] }] },
+  "unit-tests": { id: "unit-tests", steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...releaseUnitTests] }] },
   "source-secret-scan": { id: "source-secret-scan", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
   "next-build": { id: "next-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
   "opennext-build": { id: "opennext-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
@@ -74,6 +74,15 @@ const gatesById: Record<LocalGateId, Gate> = {
   "wrangler-check-startup": {
     id: "wrangler-check-startup",
     steps: [{ command: bin("wrangler"), args: ["check", "startup", "--outfile", startupProfilePath, "--args=--dry-run"] }],
+  },
+  "cloudflare-preview-live-e2e": {
+    id: "cloudflare-preview-live-e2e",
+    steps: [
+      {
+        command: bin("tsx"),
+        args: ["scripts/cloudflare/verify-preview-e2e-evidence.ts"],
+      },
+    ],
   },
 };
 
@@ -195,7 +204,7 @@ function cleanupLocalCliWrappers() {
 }
 
 function localGateEnv() {
-  const env = commandEnv();
+  const env = releaseUnitTestEnvironment(commandEnv());
   return {
     ...env,
     PATH: [localCliBinDir, env.PATH].join(path.delimiter),

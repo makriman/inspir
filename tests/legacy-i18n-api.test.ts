@@ -9,23 +9,31 @@ import {
   getPublishedLegacySiteTranslationNamespaces,
   getPublishedLegacySiteTranslationPairs,
   isPublishedLegacySiteTranslationPair,
+  legacySiteTranslationStaticAssetNamespaces,
   legacyTranslationAssetPath,
 } from "../lib/i18n/legacy-api-compat";
-import { renderLocalizedSiteTranslationNamespaces } from "../lib/i18n/render-localized-namespaces";
 import { staticSiteTranslationNamespaceAvailability } from "../lib/i18n/site-availability-manifest";
+import { localizeStaticSiteHref } from "../lib/i18n/static-availability";
 import { materializeLegacyTranslationApiAssets } from "../scripts/cloudflare/materialize-legacy-translation-api-assets";
 
-test("legacy site compatibility allowlist exactly follows published translation availability", () => {
+test("legacy site compatibility stays bounded independently of render-localized availability", () => {
   const pairs = getPublishedLegacySiteTranslationPairs();
+  assert.deepEqual(legacySiteTranslationStaticAssetNamespaces, [
+    "marketing-shell",
+    "route:home",
+    "route:mission",
+  ]);
   assert.equal(supportedLanguages.length, 70);
   assert.equal(pairs.length, 210);
   assert.equal(new Set(pairs.map(({ language, namespace }) => `${language}\u0000${namespace}`)).size, 210);
 
   for (const language of supportedLanguages) {
-    const expected =
+    const expected: readonly string[] =
       language === defaultLanguage
-        ? renderLocalizedSiteTranslationNamespaces
-        : (staticSiteTranslationNamespaceAvailability[language] ?? []);
+        ? legacySiteTranslationStaticAssetNamespaces
+        : legacySiteTranslationStaticAssetNamespaces.filter((namespace) =>
+            (staticSiteTranslationNamespaceAvailability[language] ?? []).includes(namespace),
+          );
     assert.deepEqual(getPublishedLegacySiteTranslationNamespaces(language), expected);
     assert.deepEqual(
       pairs.filter((pair) => pair.language === language).map((pair) => pair.namespace),
@@ -52,7 +60,7 @@ test("legacy language preference redirects only to published localized site path
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), {
     language: "Hindi",
-    redirectTo: "/about?ref=legacy",
+    redirectTo: localizeStaticSiteHref("/about?ref=legacy", "Hindi"),
   });
   const cookies = response.headers.get("set-cookie") ?? "";
   assert.match(cookies, /inspir_locale=Hindi/);

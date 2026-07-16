@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import "./worker-crypto-test-shim";
 import {
   buildBoundedMessageContentChunk,
   deriveAnonymousAnalyticsIdentity,
@@ -28,6 +29,7 @@ import {
   parseMemoryPageCursor,
   STATE_API_INCREMENTAL_CONTRACT_HEADER,
   STATE_API_INCREMENTAL_CONTRACT_VALUE,
+  timingSafeCronBearerEquals,
   type StateApiEnv,
   type StateApiExecutionContext,
   usesIncrementalStateContract,
@@ -242,6 +244,20 @@ test("native memory cron preserves the authenticated GET-only contract and bound
   assert.equal(db.preparedQueries.length, 2);
   assert.match(db.preparedQueries[0] ?? "", /limit \?1/);
   assert.match(db.preparedQueries[1] ?? "", new RegExp(`limit ${MAX_RATE_LIMIT_PRUNE_ROWS}`));
+});
+
+test("native memory cron authorization fails closed without Workers timingSafeEqual", async () => {
+  const digestOnlySubtle = {
+    digest: crypto.subtle.digest.bind(crypto.subtle),
+  };
+  assert.equal(
+    await timingSafeCronBearerEquals(
+      "Bearer memory-cron-test-secret",
+      "memory-cron-test-secret",
+      digestOnlySubtle,
+    ),
+    false,
+  );
 });
 
 test("private saved-state routes fail closed without a verified server session", async () => {
@@ -643,6 +659,8 @@ test("native state runtime excludes OpenNext and scopes every private data looku
     source.indexOf("async function enqueueDueNativeMemorySynthesis"),
   );
   assert.match(cronHandler, /timingSafeCronBearerEquals/);
+  assert.match(source, /timingSafeDigestEqual\(authorization \?\? "", `Bearer \$\{secret\}`, subtle\)/);
+  assert.doesNotMatch(source, /function timingSafeBytesEqual|difference \|=/);
   assert.match(cronHandler, /reason: "manual_cron"/);
   assert.doesNotMatch(cronHandler, /synthesizeNativeUserMemory|MEMORY_VECTORIZE|fetch\(/);
   assert.match(source, /where c\.id = \?1 and c\.user_id = \?2/);
@@ -660,7 +678,11 @@ test("native state runtime excludes OpenNext and scopes every private data looku
   assert.match(runtimeIndexMigration, /rate_limit_windows_reset_at_idx[^]*`reset_at`/);
   assert.match(runtimeIndexMigration, /ai_runs_created_idx[^]*`created_at`/);
   assert.match(source, /privateNoStoreHeaders/);
-  assert.match(source, /const maxDailySynthesisUsers = 25/);
+  assert.match(source, /export const NATIVE_SCHEDULED_MEMORY_USER_CAP = 25/);
+  assert.match(
+    source,
+    /const maxDailySynthesisUsers = NATIVE_SCHEDULED_MEMORY_USER_CAP/,
+  );
   assert.match(source, /const maxSavedChatMessages = 30/);
   assert.equal(MAX_RECENT_CHAT_RESULTS, 100);
   assert.equal(MAX_CHAT_SEARCH_CANDIDATES, 200);

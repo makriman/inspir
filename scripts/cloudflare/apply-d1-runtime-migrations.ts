@@ -247,6 +247,17 @@ export function applyD1RuntimeMigrations(
       throw new Error("Exact runtime migration state did not identify a valid next migration.");
     }
     for (const migration of migrationIds.slice(firstMigrationIndex)) {
+      // 0016 is the first migration after the lost predecessor-HMAC incident.
+      // It must be executed only by the fresh-cutover coordinator, which
+      // appends the immutable run marker to the tracked file and preserves
+      // every protected dataset on both sides of the transaction. Keeping this
+      // guard at the final write boundary lets the legacy wrapper finish an
+      // earlier additive migration but makes raw 0016 impossible.
+      if (migration === "0016") {
+        throw new Error(
+          "Generic runtime migration application refuses raw 0016; use the fresh-0016 cutover coordinator so the migration and preservation evidence share one immutable run marker.",
+        );
+      }
       const beforeWrite = validClockValue(clock(), `${migration} write admission`);
       assertLiveMigrationBudgetReservation(budget, beforeWrite);
       assertStableSourceFingerprint(currentSource, buildRepoSourceFingerprint(cwd));
@@ -322,7 +333,7 @@ export function applyD1RuntimeMigrations(
       }
       if (
         transportError !== undefined &&
-        (migration === "0015" || migration === "0016") &&
+        migration === "0015" &&
         !recoveredByVerification
       ) {
         throw new Error(
@@ -388,7 +399,7 @@ export function applyD1RuntimeMigrations(
   }
 }
 
-export function classifyRuntimeMigrationState(input: {
+function classifyRuntimeMigrationState(input: {
   checks: RuntimeMigrationVerificationCheck[];
   rowsRead: number;
   rowsWritten: number;
@@ -503,6 +514,7 @@ function readRuntimeMigrationBudgetEvidence(input: {
     projection.snapshotRows * RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES -
     projection.suppressionBackfillRowsRead -
     projection.outboxSchemaRowsRead -
+    projection.freshCutoverMarkerRowsRead -
     RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ;
   if (!Number.isSafeInteger(cardinalityRowsRead) || cardinalityRowsRead < 0) {
     throw new Error("Runtime migration budget evidence has an impossible cardinality read count.");
@@ -746,6 +758,14 @@ function parseProjection(value: unknown): RuntimeMigrationProjection {
     outboxSchemaRowsWritten: nonNegativeInteger(
       record.outboxSchemaRowsWritten,
       "projected 0016 fixed writes",
+    ),
+    freshCutoverMarkerRowsRead: nonNegativeInteger(
+      record.freshCutoverMarkerRowsRead,
+      "projected fresh 0016 marker reads",
+    ),
+    freshCutoverMarkerRowsWritten: nonNegativeInteger(
+      record.freshCutoverMarkerRowsWritten,
+      "projected fresh 0016 marker writes",
     ),
   };
 }

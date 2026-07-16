@@ -1,3 +1,8 @@
+import {
+  timingSafeFixedBytesEqual,
+  type TimingSafeDigestSubtleCrypto,
+} from "./timing-safe-equal";
+
 const betterAuthCookiePrefix = "better-auth";
 const sessionCookieNames = [
   `__Secure-${betterAuthCookiePrefix}.session_token`,
@@ -218,15 +223,22 @@ export async function signNativeAuthValue(value: string, secret: string) {
   return `${value}.${await makeBetterAuthSignature(value, secret)}`;
 }
 
-export async function verifyNativeAuthValue(signedValue: string, secret: string) {
+export async function verifyNativeAuthValue(
+  signedValue: string,
+  secret: string,
+  subtle: TimingSafeDigestSubtleCrypto = crypto.subtle,
+) {
   if (!secret || signedValue.length > 4_096) return null;
   const separatorIndex = signedValue.lastIndexOf(".");
   if (separatorIndex <= 0 || separatorIndex === signedValue.length - 1) return null;
   const value = signedValue.slice(0, separatorIndex);
   const signature = signedValue.slice(separatorIndex + 1);
   if (!value || signature.length > 256) return null;
-  const expected = await makeBetterAuthSignature(value, secret);
-  return constantTimeStringEqual(signature, expected) ? value : null;
+  const expected = await makeNativeAuthHmac(value, secret);
+  const decoded = decodeBetterAuthSignature(signature);
+  const actual = decoded ?? new Uint8Array(expected.byteLength);
+  const valid = timingSafeFixedBytesEqual(actual, expected, subtle);
+  return decoded && valid ? value : null;
 }
 
 export async function nativeAuthHmacHex(value: string, secret: string) {
@@ -331,15 +343,21 @@ function bytesToBase64(bytes: Uint8Array) {
   return btoa(binary);
 }
 
-function constantTimeStringEqual(left: string, right: string) {
-  const leftBytes = new TextEncoder().encode(left);
-  const rightBytes = new TextEncoder().encode(right);
-  let difference = leftBytes.length ^ rightBytes.length;
-  const length = Math.max(leftBytes.length, rightBytes.length);
-  for (let index = 0; index < length; index += 1) {
-    difference |= (leftBytes[index] ?? 0) ^ (rightBytes[index] ?? 0);
+function decodeBetterAuthSignature(value: string) {
+  if (!/^[A-Za-z0-9+/]{43}=$/.test(value)) return null;
+  let binary: string;
+  try {
+    binary = atob(value);
+  } catch {
+    return null;
   }
-  return difference === 0;
+  if (binary.length !== 32) return null;
+  const bytes = new Uint8Array(32);
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+  if (bytesToBase64(bytes) !== value) return null;
+  return bytes;
 }
 
 function configuredAdminEmails(value: string | undefined) {

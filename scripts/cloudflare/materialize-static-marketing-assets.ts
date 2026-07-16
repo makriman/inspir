@@ -23,10 +23,18 @@ import {
   buildWorkerDeployArtifactManifest,
   type WorkerDeployArtifactManifest,
 } from "./worker-deploy-evidence";
+import {
+  expectedLocalizedStaticAssetPaths,
+  staticAssetLocalizedPathContract,
+  STATIC_ASSET_RELEASE_FILE_LIMIT,
+  STATIC_ASSET_RELEASE_MAX_FILE_BYTES,
+} from "./static-asset-release-contract";
 
-export const STATIC_ASSET_RELEASE_FILE_LIMIT = 5_000;
+export {
+  STATIC_ASSET_RELEASE_FILE_LIMIT,
+  STATIC_ASSET_RELEASE_MAX_FILE_BYTES,
+} from "./static-asset-release-contract";
 export const STATIC_ASSET_RELEASE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
-const maxAssetBytes = 25 * 1024 * 1024;
 const maxStaticRedirectRules = 2_000;
 const maxDynamicRedirectRules = 100;
 const maxTotalRedirectRules = 2_100;
@@ -125,6 +133,11 @@ export type StaticMarketingAssetReport = {
   assetManifestSha256: string;
   largestAssetBytes: number;
   outputSha256: string;
+  translationAvailabilitySha256: string;
+  expectedLocalizedHtmlDocuments: number;
+  expectedLocalizedHtmlPathsSha256: string;
+  localizedHtmlDocuments: number;
+  localizedHtmlPathsSha256: string;
   generatedPaths: string[];
 };
 
@@ -142,6 +155,9 @@ export type StaticMarketingAssetReleaseValidation = {
   siteTranslationPaths: number;
   incompleteTranslationPaths: number;
   outputSha256: string;
+  translationAvailabilitySha256: string;
+  localizedHtmlDocuments: number;
+  localizedHtmlPathsSha256: string;
   assetManifest: WorkerDeployArtifactManifest;
 };
 
@@ -252,9 +268,12 @@ export function materializeStaticMarketingAssets(
     );
   }
   const largestAssetBytes = Math.max(0, ...assetFiles.map((file) => fs.statSync(file).size));
+  const localizedHtmlPaths = localizedHtmlAssetPaths(assetsRoot, assetFiles);
   assertStaticAssetReleaseFileCount(assetFiles.length);
-  if (largestAssetBytes > maxAssetBytes) {
-    throw new Error(`Largest static asset ${largestAssetBytes} bytes exceeds the ${maxAssetBytes}-byte limit.`);
+  if (largestAssetBytes > STATIC_ASSET_RELEASE_MAX_FILE_BYTES) {
+    throw new Error(
+      `Largest static asset ${largestAssetBytes} bytes exceeds the ${STATIC_ASSET_RELEASE_MAX_FILE_BYTES}-byte limit.`,
+    );
   }
   if (htmlDocuments < minimumHtmlDocuments) {
     throw new Error(`Only ${htmlDocuments} public HTML documents were materialized; expected at least ${minimumHtmlDocuments}.`);
@@ -315,6 +334,13 @@ export function materializeStaticMarketingAssets(
     assetManifestSha256: assetManifest.sha256,
     largestAssetBytes,
     outputSha256,
+    translationAvailabilitySha256:
+      staticAssetLocalizedPathContract.availabilitySha256,
+    expectedLocalizedHtmlDocuments: expectedLocalizedStaticAssetPaths.length,
+    expectedLocalizedHtmlPathsSha256:
+      staticAssetLocalizedPathContract.localizedPathsSha256,
+    localizedHtmlDocuments: localizedHtmlPaths.length,
+    localizedHtmlPathsSha256: hashPathSet(localizedHtmlPaths),
     generatedPaths,
   };
   fs.writeFileSync(
@@ -431,6 +457,47 @@ export function validateStaticMarketingAssetRelease(
     );
   }
 
+  const translationAvailabilitySha256 = requireReleaseReportSha256(
+    parsed,
+    "translationAvailabilitySha256",
+  );
+  const expectedLocalizedHtmlDocuments = requireReleaseReportInteger(
+    parsed,
+    "expectedLocalizedHtmlDocuments",
+  );
+  const expectedLocalizedHtmlPathsSha256 = requireReleaseReportSha256(
+    parsed,
+    "expectedLocalizedHtmlPathsSha256",
+  );
+  const localizedHtmlDocuments = requireReleaseReportInteger(
+    parsed,
+    "localizedHtmlDocuments",
+  );
+  const localizedHtmlPathsSha256 = requireReleaseReportSha256(
+    parsed,
+    "localizedHtmlPathsSha256",
+  );
+  const actualLocalizedHtmlPaths = actualPaths
+    .filter(isLocalizedHtmlAssetPath)
+    .sort(compareCodePoints);
+  if (
+    translationAvailabilitySha256 !==
+      staticAssetLocalizedPathContract.availabilitySha256 ||
+    expectedLocalizedHtmlDocuments !== expectedLocalizedStaticAssetPaths.length ||
+    expectedLocalizedHtmlPathsSha256 !==
+      staticAssetLocalizedPathContract.localizedPathsSha256 ||
+    localizedHtmlDocuments !== actualLocalizedHtmlPaths.length ||
+    localizedHtmlPathsSha256 !== hashPathSet(actualLocalizedHtmlPaths) ||
+    !sameStringSequence(
+      actualLocalizedHtmlPaths,
+      expectedLocalizedStaticAssetPaths,
+    )
+  ) {
+    throw new Error(
+      "Static Asset localized HTML tree does not match the exact translation availability contract.",
+    );
+  }
+
   const outputSha256 = requireReleaseReportSha256(parsed, "outputSha256");
   const actualOutputSha256 = hashGeneratedOutput(assetsRoot, generatedPaths);
   if (outputSha256 !== actualOutputSha256) {
@@ -468,8 +535,32 @@ export function validateStaticMarketingAssetRelease(
     siteTranslationPaths: expectedLegacySiteTranslationPaths.length,
     incompleteTranslationPaths: 0,
     outputSha256,
+    translationAvailabilitySha256,
+    localizedHtmlDocuments,
+    localizedHtmlPathsSha256,
     assetManifest,
   };
+}
+
+function localizedHtmlAssetPaths(assetsRoot: string, files: readonly string[]) {
+  return files
+    .map((file) => path.relative(assetsRoot, file).split(path.sep).join("/"))
+    .filter(isLocalizedHtmlAssetPath)
+    .sort(compareCodePoints);
+}
+
+function isLocalizedHtmlAssetPath(assetPath: string) {
+  const firstSegment = assetPath.split("/", 1)[0] ?? "";
+  return assetPath.endsWith("/index.html") &&
+    localizedRoutePrefixes.has(firstSegment);
+}
+
+function hashPathSet(paths: readonly string[]) {
+  return crypto.createHash("sha256").update(paths.join("\n")).digest("hex");
+}
+
+function compareCodePoints(left: string, right: string) {
+  return left < right ? -1 : left > right ? 1 : 0;
 }
 
 function parseCacheEntry(file: string): AppCacheEntry | RouteCacheEntry {

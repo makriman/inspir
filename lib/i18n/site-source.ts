@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import ts from "typescript";
 import { getBlogPosts } from "@/lib/content/blog";
+import { extractedPages } from "@/lib/content/extracted-pages";
 import {
   homepageFaqs,
   homepageFilm,
@@ -114,13 +115,23 @@ export function getSiteSourceStrings(namespace = siteTranslationNamespace, optio
       addSourceValue(values, value);
     }
   }
+  if (namespace === "legal:privacy") {
+    for (const block of extractedPages.privacy) addSourceValue(values, block);
+  }
+  if (namespace === "legal:terms" || namespace === "legal:tnc") {
+    for (const block of extractedPages.tnc) addSourceValue(values, block);
+  }
   if (namespace === "route:home") addHomepageRuntimeSourceValues(values);
 
   return Object.fromEntries(
     Array.from(values)
       .sort((a, b) => a.localeCompare(b))
-      .map((value) => [`site.${hashText(value).slice(0, 18)}`, value]),
+      .map((value) => [getSiteTranslationSourceKey(value), value]),
   );
+}
+
+export function getSiteTranslationSourceKey(value: string) {
+  return `site.${hashText(value).slice(0, 18)}`;
 }
 
 function getExtractedSourceValues(path: string) {
@@ -222,8 +233,14 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
   if (namespace.startsWith("legal:")) {
     const page = namespace.slice("legal:".length);
     if (routePath === `app/${page}/page.tsx`) return true;
-    if (routePath.startsWith("components/legal/")) return true;
-    return page === "privacy" && routePath === "lib/content/extracted-pages.ts";
+    if (routePath === "components/legal/ContentPage.tsx") return true;
+    if (page === "privacy") {
+      return routePath === "components/legal/PrivacyPolicyContent.tsx";
+    }
+    return (
+      (page === "terms" || page === "tnc") &&
+      routePath === "components/legal/TermsAndConditionsContent.tsx"
+    );
   }
   if (!namespace.startsWith("route:")) return false;
 
@@ -247,6 +264,7 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
     return (
       routePath.startsWith("app/blog/") ||
       routePath === "app/blog/page.tsx" ||
+      routePath === "components/marketing/pages/BlogMarketingPage.tsx" ||
       /^lib\/content\/blog(?:-|\.ts)/.test(routePath) ||
       routePath.startsWith("content/blog/")
     );

@@ -27,9 +27,12 @@ import {
   HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS,
   HISTORICAL_DATA_PRESERVATION_KIND,
   HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
+  HISTORICAL_GAME_RESULTS_SCHEMA_OBJECTS,
+  HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS,
   historicalDataBudgetOperationId,
   historicalDataHmacKeyId,
   historicalDataReportPath,
+  historicalDataSchemaHash,
   type HistoricalDataBaselineReport,
   type HistoricalDataLegacyBaselineReport,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
@@ -499,7 +502,7 @@ function currentBaseline(options: {
     ledger: options.ledger,
     limits: {
       coreRows: 350_000,
-      supplementalRows: 125_000,
+      supplementalRows: 175_000,
       operationalRows: 10_000,
       logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
       logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
@@ -521,6 +524,7 @@ function currentBaseline(options: {
       memory_synthesis_runs: dataset("memory_synthesis_runs"),
       memory_source_feedback: dataset("memory_source_feedback"),
       memory_events: dataset("memory_events"),
+      game_results: dataset("game_results"),
     },
     operationalDatasets: {
       memory_vector_cleanup_outbox: operationalOutboxDataset(),
@@ -576,22 +580,23 @@ function datasets(): HistoricalDataBaselineReport["datasets"] {
 }
 
 function dataset(name: string, schemaTable = name) {
-  const columns = [{
-    name: "id",
-    type: "text",
-    notNull: 1 as const,
-    primaryKey: 1,
-  }];
+  const columns = name === "game_results"
+    ? HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS.map((column) => ({ ...column }))
+    : [{
+        name: "id",
+        type: "text",
+        notNull: 1 as const,
+        primaryKey: 1,
+      }];
   return {
     rowCount: 1,
     schemaTable,
-    schemaSha256: createHash("sha256")
-      .update(stableStringify(columns.map((column) =>
-        `${column.name}\0${column.type}\0${column.notNull}\0${column.primaryKey}`
-      )))
-      .digest("hex"),
+    schemaSha256: historicalDataSchemaHash(columns),
     columns,
     sentinels: [createHash("sha256").update(`sentinel:${name}`).digest("hex")],
+    ...(name === "game_results"
+      ? { schemaObjects: { ...HISTORICAL_GAME_RESULTS_SCHEMA_OBJECTS } }
+      : {}),
   };
 }
 

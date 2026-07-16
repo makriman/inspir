@@ -12,6 +12,7 @@ import {
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
   reserveD1ReleaseBudget,
+  writePrivateJsonDurably,
   type D1ReleaseBudgetReservationResult,
   type D1ReleaseSourceIdentity,
 } from "./d1-release-budget-ledger";
@@ -60,6 +61,39 @@ export type SiteTranslationSourceSyncPlan = {
   snapshotBilledRowReads: number;
   projectedBilledRowReads: number;
 };
+
+export type TemporarySqlFileAttestation = Readonly<{
+  path: string;
+  bytes: number;
+  sha256: string;
+  file: Readonly<{
+    device: number;
+    inode: number;
+    mode: number;
+    links: number;
+    owner: number;
+    modifiedAtMs: number;
+    changedAtMs: number;
+  }>;
+  directory: Readonly<{
+    path: string;
+    device: number;
+    inode: number;
+    mode: number;
+    owner: number;
+    modifiedAtMs: number;
+    changedAtMs: number;
+  }>;
+}>;
+
+export class TemporarySqlFileIntegrityError extends Error {
+  readonly code = "TEMPORARY_SQL_FILE_INTEGRITY_FAILURE";
+
+  constructor(message: string, options?: ErrorOptions) {
+    super(message, options);
+    this.name = "TemporarySqlFileIntegrityError";
+  }
+}
 
 export type SiteTranslationSourceSyncReport = {
   createdAt: string;
@@ -281,6 +315,7 @@ export function syncSiteTranslationSources(
       executeSiteTranslationSourceSyncPlan(plan, mode, runner);
       importResponseConfirmed = true;
     } catch (error) {
+      if (error instanceof TemporarySqlFileIntegrityError) throw error;
       // Wrangler can lose its final poll response after D1 commits. Exact
       // verification below, not the transport response, decides success.
       importTransportError = error;
@@ -513,13 +548,15 @@ export function assertSourceSyncReadBudget(plan: SiteTranslationSourceSyncPlan) 
   return plan.projectedBilledRowReads;
 }
 
-function executeSiteTranslationSourceSyncPlan(
+export function executeSiteTranslationSourceSyncPlan(
   plan: SiteTranslationSourceSyncPlan,
   mode: SyncMode,
   runner: WranglerRunner = runWrangler,
 ) {
   if (!plan.sql || plan.statements === 0) return;
   const sqlPath = writeTemporarySqlFile(plan.sql, "site-translation-source-sync.sql");
+  const before = attestTemporarySqlFile(sqlPath, plan.sql);
+  let runnerError: unknown;
   try {
     runner(
       [
@@ -533,17 +570,474 @@ function executeSiteTranslationSourceSyncPlan(
       ],
       { maxBuffer: 128 * 1024 * 1024 },
     );
-  } finally {
-    fs.rmSync(path.dirname(sqlPath), { recursive: true, force: true });
+  } catch (error) {
+    runnerError = error;
   }
+
+  let after: TemporarySqlFileAttestation;
+  try {
+    // Wrangler receives only a path, so an inode cannot be pinned across its
+    // child process. Reopening O_NOFOLLOW immediately on both sides of that
+    // synchronous call is the narrowest portable attestation boundary.
+    after = attestTemporarySqlFile(sqlPath, plan.sql);
+    assertSameTemporarySqlFileAttestation(before, after);
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file changed while Wrangler could consume it; exact database verification is required before any retry.",
+      {
+        cause:
+          runnerError === undefined
+            ? error
+            : new AggregateError(
+                [runnerError, error],
+                "Wrangler and temporary SQL attestation both failed.",
+              ),
+      },
+    );
+  }
+
+  try {
+    removeAttestedTemporarySqlFile(after, plan.sql);
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The attested temporary SQL file could not be removed through its exact private-file identity.",
+      {
+        cause:
+          runnerError === undefined
+            ? error
+            : new AggregateError(
+                [runnerError, error],
+                "Wrangler and temporary SQL cleanup both failed.",
+              ),
+      },
+    );
+  }
+
+  if (runnerError !== undefined) throw runnerError;
 }
 
 export function writeTemporarySqlFile(sql: string, filename: string) {
+  assertSafeTemporarySqlFilename(filename);
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-site-translation-sources-"));
-  fs.chmodSync(tmpDir, 0o700);
   const sqlPath = path.join(tmpDir, filename);
-  fs.writeFileSync(sqlPath, sql, { mode: 0o600 });
-  return sqlPath;
+  const bytes = Buffer.from(sql, "utf8");
+  let descriptor: number | undefined;
+  try {
+    fs.chmodSync(tmpDir, 0o700);
+    const directory = attestPrivateTemporarySqlDirectory(tmpDir);
+    descriptor = fs.openSync(
+      sqlPath,
+      fs.constants.O_WRONLY |
+        fs.constants.O_CREAT |
+        fs.constants.O_EXCL |
+        fs.constants.O_NOFOLLOW,
+      0o600,
+    );
+    fs.fchmodSync(descriptor, 0o600);
+    const before = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlFileStat(before, 0, "new temporary SQL file");
+    fs.writeFileSync(descriptor, bytes);
+    fs.fsyncSync(descriptor);
+    const after = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlFileStat(
+      after,
+      bytes.byteLength,
+      "written temporary SQL file",
+    );
+    if (!sameFileIdentity(before, after)) {
+      throw new TemporarySqlFileIntegrityError(
+        "The temporary SQL inode changed during its exclusive durable write.",
+      );
+    }
+    fs.closeSync(descriptor);
+    descriptor = undefined;
+    fsyncTemporarySqlDirectory(tmpDir, directory);
+    const attestation = attestTemporarySqlFile(sqlPath, sql);
+    if (
+      attestation.file.device !== after.dev ||
+      attestation.file.inode !== after.ino ||
+      attestation.directory.device !== directory.device ||
+      attestation.directory.inode !== directory.inode
+    ) {
+      throw new TemporarySqlFileIntegrityError(
+        "The temporary SQL path changed before its durable readback completed.",
+      );
+    }
+    return sqlPath;
+  } catch (error) {
+    if (descriptor !== undefined) {
+      try {
+        fs.closeSync(descriptor);
+      } catch {
+        // Preserve the original integrity failure.
+      }
+    }
+    removeTemporarySqlDirectoryBestEffort(tmpDir, sqlPath);
+    if (error instanceof TemporarySqlFileIntegrityError) throw error;
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file could not be created exclusively and durably.",
+      { cause: error },
+    );
+  }
+}
+
+export function attestTemporarySqlFile(
+  sqlPath: string,
+  expectedSql: string,
+): TemporarySqlFileAttestation {
+  const absolutePath = path.resolve(sqlPath);
+  const expectedBytes = Buffer.from(expectedSql, "utf8");
+  const directory = attestPrivateTemporarySqlDirectory(path.dirname(absolutePath));
+  let descriptor: number;
+  try {
+    descriptor = fs.openSync(
+      absolutePath,
+      fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW,
+    );
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL path must be a readable regular non-symlink file.",
+      { cause: error },
+    );
+  }
+
+  let before: fs.Stats;
+  let after: fs.Stats;
+  let bytes: Buffer;
+  try {
+    before = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlFileStat(
+      before,
+      expectedBytes.byteLength,
+      "temporary SQL file before readback",
+    );
+    bytes = fs.readFileSync(descriptor);
+    after = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlFileStat(
+      after,
+      expectedBytes.byteLength,
+      "temporary SQL file after readback",
+    );
+  } catch (error) {
+    if (error instanceof TemporarySqlFileIntegrityError) throw error;
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file could not be read through its no-follow descriptor.",
+      { cause: error },
+    );
+  } finally {
+    fs.closeSync(descriptor);
+  }
+
+  if (!sameStableFile(before, after) || !bytes.equals(expectedBytes)) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file changed during readback or does not match the exact expected bytes.",
+    );
+  }
+  const named = readNamedTemporarySqlFileStat(absolutePath, expectedBytes.byteLength);
+  if (!sameStableFile(after, named)) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL filename no longer identifies the no-follow file descriptor.",
+    );
+  }
+  const directoryAfter = attestPrivateTemporarySqlDirectory(path.dirname(absolutePath));
+  if (!sameDirectoryAttestation(directory, directoryAfter)) {
+    throw new TemporarySqlFileIntegrityError(
+      "The private temporary SQL directory changed during file attestation.",
+    );
+  }
+
+  return Object.freeze({
+    path: absolutePath,
+    bytes: bytes.byteLength,
+    sha256: createHash().update(bytes).digest("hex"),
+    file: Object.freeze({
+      device: after.dev,
+      inode: after.ino,
+      mode: after.mode & 0o777,
+      links: after.nlink,
+      owner: after.uid,
+      modifiedAtMs: after.mtimeMs,
+      changedAtMs: after.ctimeMs,
+    }),
+    directory: Object.freeze({ ...directoryAfter }),
+  });
+}
+
+export function assertSameTemporarySqlFileAttestation(
+  before: TemporarySqlFileAttestation,
+  after: TemporarySqlFileAttestation,
+) {
+  if (
+    before.path !== after.path ||
+    before.bytes !== after.bytes ||
+    before.sha256 !== after.sha256 ||
+    before.file.device !== after.file.device ||
+    before.file.inode !== after.file.inode ||
+    before.file.mode !== after.file.mode ||
+    before.file.links !== after.file.links ||
+    before.file.owner !== after.file.owner ||
+    before.file.modifiedAtMs !== after.file.modifiedAtMs ||
+    before.file.changedAtMs !== after.file.changedAtMs ||
+    !sameDirectoryAttestation(before.directory, after.directory)
+  ) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file or its private directory was replaced during Wrangler consumption.",
+    );
+  }
+}
+
+export function removeAttestedTemporarySqlFile(
+  expected: TemporarySqlFileAttestation,
+  expectedSql: string,
+) {
+  const current = attestTemporarySqlFile(expected.path, expectedSql);
+  assertSameTemporarySqlFileAttestation(expected, current);
+  fs.unlinkSync(expected.path);
+  fsyncTemporarySqlDirectory(expected.directory.path, expected.directory);
+  assertPathAbsent(expected.path, "temporary SQL file");
+  fs.rmdirSync(expected.directory.path);
+}
+
+type TemporarySqlDirectoryAttestation = TemporarySqlFileAttestation["directory"];
+
+function attestPrivateTemporarySqlDirectory(
+  directoryPath: string,
+): TemporarySqlDirectoryAttestation {
+  const absolutePath = path.resolve(directoryPath);
+  let descriptor: number;
+  try {
+    descriptor = fs.openSync(
+      absolutePath,
+      fs.constants.O_RDONLY |
+        fs.constants.O_DIRECTORY |
+        fs.constants.O_NOFOLLOW,
+    );
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory must be a real owner-only directory.",
+      { cause: error },
+    );
+  }
+  let descriptorStat: fs.Stats;
+  try {
+    descriptorStat = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlDirectoryStat(descriptorStat);
+  } finally {
+    fs.closeSync(descriptor);
+  }
+  let namedStat: fs.Stats;
+  try {
+    namedStat = fs.lstatSync(absolutePath);
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory could not be inspected by name.",
+      { cause: error },
+    );
+  }
+  assertPrivateTemporarySqlDirectoryStat(namedStat);
+  if (!sameStableDirectory(descriptorStat, namedStat)) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory name no longer identifies its no-follow descriptor.",
+    );
+  }
+  return Object.freeze({
+    path: absolutePath,
+    device: descriptorStat.dev,
+    inode: descriptorStat.ino,
+    mode: descriptorStat.mode & 0o777,
+    owner: descriptorStat.uid,
+    modifiedAtMs: descriptorStat.mtimeMs,
+    changedAtMs: descriptorStat.ctimeMs,
+  });
+}
+
+function assertPrivateTemporarySqlFileStat(
+  stat: fs.Stats,
+  expectedBytes: number,
+  label: string,
+) {
+  if (
+    !stat.isFile() ||
+    stat.isSymbolicLink() ||
+    stat.nlink !== 1 ||
+    (stat.mode & 0o777) !== 0o600 ||
+    stat.size !== expectedBytes ||
+    !ownedByCurrentUser(stat)
+  ) {
+    throw new TemporarySqlFileIntegrityError(
+      `The ${label} has unsafe type, links, mode, ownership, or byte length.`,
+    );
+  }
+}
+
+function assertPrivateTemporarySqlDirectoryStat(stat: fs.Stats) {
+  if (
+    !stat.isDirectory() ||
+    stat.isSymbolicLink() ||
+    (stat.mode & 0o777) !== 0o700 ||
+    !ownedByCurrentUser(stat)
+  ) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory has unsafe type, mode, or ownership.",
+    );
+  }
+}
+
+function readNamedTemporarySqlFileStat(sqlPath: string, expectedBytes: number) {
+  let stat: fs.Stats;
+  try {
+    stat = fs.lstatSync(sqlPath);
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL file could not be inspected by name.",
+      { cause: error },
+    );
+  }
+  assertPrivateTemporarySqlFileStat(stat, expectedBytes, "named temporary SQL file");
+  return stat;
+}
+
+function fsyncTemporarySqlDirectory(
+  directoryPath: string,
+  expected: TemporarySqlDirectoryAttestation,
+) {
+  const before = attestPrivateTemporarySqlDirectory(directoryPath);
+  if (
+    before.device !== expected.device ||
+    before.inode !== expected.inode ||
+    before.mode !== expected.mode ||
+    before.owner !== expected.owner
+  ) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory changed before durable synchronization.",
+    );
+  }
+  let descriptor: number;
+  try {
+    descriptor = fs.openSync(
+      before.path,
+      fs.constants.O_RDONLY |
+        fs.constants.O_DIRECTORY |
+        fs.constants.O_NOFOLLOW,
+    );
+  } catch (error) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL directory could not be opened for durable synchronization.",
+      { cause: error },
+    );
+  }
+  try {
+    const stat = fs.fstatSync(descriptor);
+    assertPrivateTemporarySqlDirectoryStat(stat);
+    if (stat.dev !== expected.device || stat.ino !== expected.inode) {
+      throw new TemporarySqlFileIntegrityError(
+        "The temporary SQL directory changed before fsync.",
+      );
+    }
+    fs.fsyncSync(descriptor);
+  } finally {
+    fs.closeSync(descriptor);
+  }
+}
+
+function assertSafeTemporarySqlFilename(filename: string) {
+  if (
+    !filename ||
+    filename === "." ||
+    filename === ".." ||
+    filename !== path.basename(filename) ||
+    filename.includes("\0")
+  ) {
+    throw new TemporarySqlFileIntegrityError(
+      "The temporary SQL filename must be a plain non-empty basename.",
+    );
+  }
+}
+
+function sameFileIdentity(left: fs.Stats, right: fs.Stats) {
+  return left.dev === right.dev && left.ino === right.ino;
+}
+
+function sameStableFile(left: fs.Stats, right: fs.Stats) {
+  return (
+    sameFileIdentity(left, right) &&
+    left.size === right.size &&
+    left.mode === right.mode &&
+    left.nlink === right.nlink &&
+    left.uid === right.uid &&
+    left.mtimeMs === right.mtimeMs &&
+    left.ctimeMs === right.ctimeMs
+  );
+}
+
+function sameStableDirectory(left: fs.Stats, right: fs.Stats) {
+  return (
+    sameFileIdentity(left, right) &&
+    left.mode === right.mode &&
+    left.uid === right.uid &&
+    left.mtimeMs === right.mtimeMs &&
+    left.ctimeMs === right.ctimeMs
+  );
+}
+
+function sameDirectoryAttestation(
+  left: TemporarySqlDirectoryAttestation,
+  right: TemporarySqlDirectoryAttestation,
+) {
+  return (
+    left.path === right.path &&
+    left.device === right.device &&
+    left.inode === right.inode &&
+    left.mode === right.mode &&
+    left.owner === right.owner &&
+    left.modifiedAtMs === right.modifiedAtMs &&
+    left.changedAtMs === right.changedAtMs
+  );
+}
+
+function ownedByCurrentUser(stat: fs.Stats) {
+  return typeof process.getuid !== "function" || stat.uid === process.getuid();
+}
+
+function assertPathAbsent(file: string, label: string) {
+  try {
+    fs.lstatSync(file);
+  } catch (error) {
+    if (isNodeError(error) && error.code === "ENOENT") return;
+    throw new TemporarySqlFileIntegrityError(
+      `The ${label} absence could not be verified after cleanup.`,
+      { cause: error },
+    );
+  }
+  throw new TemporarySqlFileIntegrityError(
+    `The ${label} still exists after cleanup.`,
+  );
+}
+
+function removeTemporarySqlDirectoryBestEffort(
+  directoryPath: string,
+  sqlPath: string,
+) {
+  try {
+    const directory = fs.lstatSync(directoryPath);
+    if (
+      !directory.isDirectory() ||
+      directory.isSymbolicLink() ||
+      (directory.mode & 0o777) !== 0o700 ||
+      !ownedByCurrentUser(directory)
+    ) {
+      return;
+    }
+    try {
+      fs.unlinkSync(sqlPath);
+    } catch (error) {
+      if (!(isNodeError(error) && error.code === "ENOENT")) return;
+    }
+    fs.rmdirSync(directoryPath);
+  } catch {
+    // The creation error remains authoritative. Never recurse through a path
+    // whose exact file identity was not successfully attested.
+  }
 }
 
 function manifestEntries() {
@@ -552,7 +1046,11 @@ function manifestEntries() {
   );
 }
 
-function readCurrentSnapshot(mode: SyncMode, runner: WranglerRunner) {
+function readCurrentSnapshot(
+  mode: SyncMode,
+  runner: WranglerRunner,
+  options: { requireSingleAttempt?: boolean } = {},
+) {
   const sql = [
     "SELECT namespace, source_hash FROM app_translation_sources ORDER BY namespace;",
     "SELECT namespace, source_key, source_text FROM app_translation_source_strings ORDER BY namespace, source_key;",
@@ -573,6 +1071,8 @@ function readCurrentSnapshot(mode: SyncMode, runner: WranglerRunner) {
   const resultSets = parseD1SourceSnapshotResultSets(output);
   const billedRowReads = parseD1SourceSnapshotBilledRowReads(output, {
     required: mode === "remote",
+    readOnly: mode === "remote" && options.requireSingleAttempt === true,
+    requireSingleAttempt: options.requireSingleAttempt === true,
   });
   const sourceRows = resultSets[0];
   const sourceStringRows = resultSets[1];
@@ -580,25 +1080,59 @@ function readCurrentSnapshot(mode: SyncMode, runner: WranglerRunner) {
   if (!sourceRows || !sourceStringRows || !translationHashRows) {
     throw new Error("Wrangler D1 source snapshot is missing an expected result set.");
   }
-  const snapshot = emptySnapshot();
+  const sourcesByNamespace = new Map<string, string>();
+  const sourceStringsByNamespace = new Map<string, Map<string, string>>();
 
   for (const [index, row] of sourceRows.entries()) {
-    if (typeof row.namespace !== "string" || typeof row.source_hash !== "string") {
-      throw new Error(`Wrangler D1 source snapshot row ${index + 1} has an invalid source contract.`);
+    const namespace = parseSnapshotIdentity(
+      row.namespace,
+      `source row ${index + 1} namespace`,
+    );
+    const sourceHash = parseSnapshotIdentity(
+      row.source_hash,
+      `source row ${index + 1} source hash`,
+    );
+    if (sourcesByNamespace.has(namespace)) {
+      throw new Error(
+        `Wrangler D1 source snapshot contains duplicate namespace ${JSON.stringify(namespace)}.`,
+      );
     }
-    snapshot.sources[row.namespace] = row.source_hash;
+    sourcesByNamespace.set(namespace, sourceHash);
   }
   for (const [index, row] of sourceStringRows.entries()) {
-    if (
-      typeof row.namespace !== "string" ||
-      typeof row.source_key !== "string" ||
-      typeof row.source_text !== "string"
-    ) {
+    const namespace = parseSnapshotIdentity(
+      row.namespace,
+      `source-string row ${index + 1} namespace`,
+    );
+    const sourceKey = parseSnapshotIdentity(
+      row.source_key,
+      `source-string row ${index + 1} source key`,
+    );
+    if (typeof row.source_text !== "string") {
       throw new Error(`Wrangler D1 source-string snapshot row ${index + 1} has an invalid contract.`);
     }
-    snapshot.sourceStrings[row.namespace] ??= {};
-    snapshot.sourceStrings[row.namespace][row.source_key] = row.source_text;
+    let strings = sourceStringsByNamespace.get(namespace);
+    if (!strings) {
+      strings = new Map<string, string>();
+      sourceStringsByNamespace.set(namespace, strings);
+    }
+    if (strings.has(sourceKey)) {
+      throw new Error(
+        "Wrangler D1 source-string snapshot contains duplicate identity " +
+          `${JSON.stringify(namespace)}/${JSON.stringify(sourceKey)}.`,
+      );
+    }
+    strings.set(sourceKey, row.source_text);
   }
+  const snapshot: SiteTranslationSourceSnapshot = {
+    sources: Object.fromEntries(sourcesByNamespace),
+    sourceStrings: Object.fromEntries(
+      Array.from(sourceStringsByNamespace, ([namespace, strings]) => [
+        namespace,
+        Object.fromEntries(strings),
+      ]),
+    ),
+  };
   const translationHashGroups: TranslationSourceHashGroup[] = [];
   const seenTranslationGroups = new Set<string>();
   let translationRowCount = 0;
@@ -620,8 +1154,23 @@ function readCurrentSnapshot(mode: SyncMode, runner: WranglerRunner) {
   return { snapshot, billedRowReads, translationRowCount, translationHashGroups };
 }
 
+/**
+ * Read-only source-catalog snapshot for a release wrapper that already owns
+ * its production authority and budget. This does not grant remote authority
+ * by itself and deliberately performs no mutation.
+ */
+export function readRemoteSiteTranslationSourceSnapshot(
+  runner: WranglerRunner = runWrangler,
+  options: { requireSingleAttempt?: boolean } = {},
+) {
+  return readCurrentSnapshot("remote", runner, options);
+}
+
 function emptySnapshot(): SiteTranslationSourceSnapshot {
-  return { sources: {}, sourceStrings: {} };
+  return {
+    sources: Object.fromEntries([]),
+    sourceStrings: Object.fromEntries([]),
+  };
 }
 
 export function parseD1SourceSnapshotResultSets(output: string) {
@@ -655,7 +1204,11 @@ export function parseD1SourceSnapshotResultSets(output: string) {
 
 export function parseD1SourceSnapshotBilledRowReads(
   output: string,
-  options: { required?: boolean } = {},
+  options: {
+    required?: boolean;
+    readOnly?: boolean;
+    requireSingleAttempt?: boolean;
+  } = {},
 ) {
   const parsed = parseJsonFromOutput(output);
   if (!Array.isArray(parsed) || parsed.length !== 3) {
@@ -663,17 +1216,48 @@ export function parseD1SourceSnapshotBilledRowReads(
   }
   let total = 0;
   for (const [index, entry] of parsed.entries()) {
-    if (!isRecord(entry) || !Array.isArray(entry.results)) {
+    if (
+      !isRecord(entry) ||
+      entry.success !== true ||
+      !Array.isArray(entry.results)
+    ) {
       throw new Error(`Wrangler D1 source snapshot result set ${index + 1} is malformed.`);
     }
-    const rowsRead = isRecord(entry.meta) ? entry.meta.rows_read : undefined;
+    const meta = isRecord(entry.meta) ? entry.meta : undefined;
+    const rowsRead = meta?.rows_read;
+    const rowsWritten = meta?.rows_written;
+    if (options.requireSingleAttempt && meta?.total_attempts !== 1) {
+      throw new Error(
+        `Wrangler D1 source snapshot result set ${index + 1} did not confirm exactly one billed attempt.`,
+      );
+    }
+    if (
+      options.readOnly &&
+      (typeof rowsWritten !== "number" ||
+        !Number.isSafeInteger(rowsWritten) ||
+        rowsWritten !== 0)
+    ) {
+      throw new Error(
+        `Wrangler D1 source snapshot result set ${index + 1} did not confirm zero billed writes.`,
+      );
+    }
     if (typeof rowsRead === "number" && Number.isSafeInteger(rowsRead) && rowsRead >= 0) {
+      if (total > Number.MAX_SAFE_INTEGER - rowsRead) {
+        throw new Error(
+          "Wrangler D1 source snapshot billed rows_read total exceeds a safe integer.",
+        );
+      }
       total += rowsRead;
       continue;
     }
     if (options.required) {
       throw new Error(
         `Wrangler D1 source snapshot result set ${index + 1} is missing billed rows_read metadata.`,
+      );
+    }
+    if (total > Number.MAX_SAFE_INTEGER - entry.results.length) {
+      throw new Error(
+        "Wrangler D1 source snapshot fallback row total exceeds a safe integer.",
       );
     }
     total += entry.results.length;
@@ -818,7 +1402,7 @@ function writeSiteTranslationSourcePreWriteDiagnosticEvidence(input: {
     cloudflareDir(input.backupDir),
     `site-translation-source-sync-prewrite-${timestamp}.json`,
   );
-  writeFsyncedPrivateJson(evidencePath, evidence);
+  writePrivateJsonDurably(evidencePath, evidence, { replace: false });
   return evidencePath;
 }
 
@@ -830,20 +1414,29 @@ function parseTranslationSourceHashGroup(
   row: Record<string, unknown>,
   index: number,
 ): TranslationSourceHashGroup {
-  if (typeof row.namespace !== "string" || !row.namespace) {
-    throw new Error(`Wrangler D1 translation hash group ${index + 1} has an invalid namespace.`);
-  }
-  if (typeof row.source_hash !== "string" || !row.source_hash) {
-    throw new Error(`Wrangler D1 translation hash group ${index + 1} has an invalid source hash.`);
-  }
+  const namespace = parseSnapshotIdentity(
+    row.namespace,
+    `translation hash group ${index + 1} namespace`,
+  );
+  const sourceHash = parseSnapshotIdentity(
+    row.source_hash,
+    `translation hash group ${index + 1} source hash`,
+  );
   if (!Number.isSafeInteger(row.translation_rows) || Number(row.translation_rows) <= 0) {
     throw new Error(`Wrangler D1 translation hash group ${index + 1} has an invalid row count.`);
   }
   return {
-    namespace: row.namespace,
-    sourceHash: row.source_hash,
+    namespace,
+    sourceHash,
     rows: Number(row.translation_rows),
   };
+}
+
+function parseSnapshotIdentity(value: unknown, label: string) {
+  if (typeof value !== "string" || value.length === 0 || value.includes("\0")) {
+    throw new Error(`Wrangler D1 ${label} must be a non-empty NUL-free string.`);
+  }
+  return value;
 }
 
 function changedSourceNamespaces(
@@ -893,17 +1486,6 @@ function assertOperatorLocalEvidenceDirectory(backupDir: string) {
   const root = relative.split(path.sep)[0];
   if (!root || !new Set(["tmp", "backups", "inspirlearning-local-backups"]).has(root)) {
     throw new Error("D1 diagnostic evidence must be written outside the repository or under a gitignored report directory.");
-  }
-}
-
-function writeFsyncedPrivateJson(file: string, value: unknown) {
-  const descriptor = fs.openSync(file, "w", 0o600);
-  try {
-    fs.fchmodSync(descriptor, 0o600);
-    fs.writeFileSync(descriptor, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-    fs.fsyncSync(descriptor);
-  } finally {
-    fs.closeSync(descriptor);
   }
 }
 
@@ -1051,11 +1633,15 @@ function sqlString(value: string) {
 function writeReport(report: SiteTranslationSourceSyncReport, backupDir: string) {
   const cfDir = cloudflareDir(backupDir);
   const file = path.join(cfDir, `site-translation-sources-${report.mode}.json`);
-  fs.writeFileSync(file, `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
+  writePrivateJsonDurably(file, report, { replace: fs.existsSync(file) });
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isNodeError(value: unknown): value is NodeJS.ErrnoException {
+  return value instanceof Error && "code" in value;
 }
 
 function isMainModule() {

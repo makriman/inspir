@@ -13,8 +13,9 @@ import {
 } from "./migration-config";
 
 export const D1_RELEASE_BUDGET_LEDGER_KIND = "d1-release-budget-ledger" as const;
-export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 2 as const;
+export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 3 as const;
 const D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION = 1 as const;
+const D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION = 2 as const;
 const D1_RELEASE_BUDGET_LEDGER_MAX_BYTES = 4 * 1024 * 1024;
 
 export type D1ReleaseSourceIdentity = {
@@ -39,6 +40,7 @@ export type D1ReleaseBudgetReservation = {
 
 export type D1ReleaseBudgetLedgerReservation = D1ReleaseBudgetReservation & {
   sourceFingerprint: D1ReleaseSourceIdentity;
+  accountingParentOperationId: string | null;
 };
 
 export type D1ReleaseBudgetObservedUsageFloor = D1DailyUsage & {
@@ -82,6 +84,7 @@ export type ReserveD1ReleaseBudgetInput = {
   rowsRead: number;
   rowsWritten: number;
   observedUsage: D1DailyUsage;
+  accountingParentOperationId?: string;
   now?: Date;
   expectedUtcDay?: string;
 };
@@ -105,6 +108,7 @@ export type AssertD1ReleaseBudgetReservationInput = {
   phase: D1ReleaseBudgetReservationPhase;
   rowsRead: number;
   rowsWritten: number;
+  accountingParentOperationId?: string;
   now?: Date;
 };
 
@@ -122,6 +126,12 @@ export function reserveD1ReleaseBudget(
   const candidateVersionId = validateCandidateVersion(input.candidateVersionId);
   const rowsRead = nonNegativeSafeInteger(input.rowsRead, "reserved rows read");
   const rowsWritten = nonNegativeSafeInteger(input.rowsWritten, "reserved rows written");
+  const accountingParentOperationId = input.accountingParentOperationId === undefined
+    ? null
+    : validateOperationId(input.accountingParentOperationId);
+  if (accountingParentOperationId === operationId) {
+    throw new Error("A D1 release budget reservation cannot account under itself.");
+  }
   validateObservedUsage(input.observedUsage);
   assertD1FreeDailyBudget(input.observedUsage, {
     operation,
@@ -142,10 +152,23 @@ export function reserveD1ReleaseBudget(
     }
 
     const timestamp = now.toISOString();
+    if (accountingParentOperationId !== null && !existing) {
+      throw new Error("A D1 release budget child requires an existing aggregate envelope.");
+    }
     const observedUsageFloor = existing
-      ? mergeObservedUsageFloor(existing.observedUsageFloor, input.observedUsage, timestamp)
+      ? accountingParentOperationId === null
+        ? mergeObservedUsageFloor(existing.observedUsageFloor, input.observedUsage, timestamp)
+        : existing.observedUsageFloor
       : { ...input.observedUsage, observedAt: timestamp };
     const reservations = existing ? [...existing.reservations] : [];
+    if (accountingParentOperationId !== null) {
+      assertLiveAccountingParent({
+        reservations,
+        accountingParentOperationId,
+        sourceFingerprint,
+        candidateVersionId,
+      });
+    }
     const reservationIndex = reservations.findIndex((reservation) =>
       sameReservationIdentity(reservation, operationId, sourceFingerprint),
     );
@@ -156,6 +179,7 @@ export function reserveD1ReleaseBudget(
       operation,
       sourceFingerprint,
       candidateVersionId,
+      accountingParentOperationId,
       phase: input.phase,
       rowsRead,
       rowsWritten,
@@ -164,6 +188,10 @@ export function reserveD1ReleaseBudget(
     if (reservationIndex >= 0) reservations[reservationIndex] = transition.reservation;
     else reservations.push(transition.reservation);
     reservations.sort(compareReservationIdentity);
+    assertAggregateRefinementCoversChildren(
+      transition.reservation,
+      reservations,
+    );
 
     const totals = sumReservations(reservations);
     const accountedUsage = {
@@ -248,6 +276,10 @@ export function assertD1ReleaseBudgetReservation(
   const reservation = outwardReservation(storedReservation);
   const candidateVersionId = validateCandidateVersion(input.candidateVersionId);
   if (
+    storedReservation.accountingParentOperationId !==
+      (input.accountingParentOperationId === undefined
+        ? null
+        : validateOperationId(input.accountingParentOperationId)) ||
     reservation.candidateVersionId !== candidateVersionId ||
     reservation.phase !== input.phase ||
     reservation.rowsRead !== nonNegativeSafeInteger(input.rowsRead, "expected rows read") ||
@@ -311,6 +343,7 @@ export function readPrivateJsonNoFollow(file: string, maximumBytes = 16 * 1024 *
     if (
       !stat.isFile() ||
       (stat.mode & 0o777) !== 0o600 ||
+      stat.nlink !== 1 ||
       stat.size <= 0 ||
       stat.size > maxBytes ||
       (typeof process.getuid === "function" && stat.uid !== process.getuid())
@@ -323,11 +356,20 @@ export function readPrivateJsonNoFollow(file: string, maximumBytes = 16 * 1024 *
     const statAfterRead = fs.fstatSync(descriptor);
     const contentBytes = Buffer.byteLength(content, "utf8");
     if (
-      statAfterRead.size !== stat.size ||
+      !sameStablePrivateFile(stat, statAfterRead) ||
       contentBytes !== stat.size ||
       contentBytes <= 0 ||
       contentBytes > maxBytes
     ) {
+      throw new Error(`Private release evidence changed while it was being read: ${absolute}.`);
+    }
+    let namedStat: fs.Stats;
+    try {
+      namedStat = fs.lstatSync(absolute);
+    } catch {
+      throw new Error(`Private release evidence changed while it was being read: ${absolute}.`);
+    }
+    if (!sameStablePrivateFile(statAfterRead, namedStat)) {
       throw new Error(`Private release evidence changed while it was being read: ${absolute}.`);
     }
     let value: unknown;
@@ -387,6 +429,7 @@ function transitionReservation(input: {
   operation: string;
   sourceFingerprint: D1ReleaseSourceIdentity;
   candidateVersionId: string | null;
+  accountingParentOperationId: string | null;
   phase: D1ReleaseBudgetReservationPhase;
   rowsRead: number;
   rowsWritten: number;
@@ -400,6 +443,7 @@ function transitionReservation(input: {
         operationId: input.operationId,
         operation: input.operation,
         sourceFingerprint: input.sourceFingerprint,
+        accountingParentOperationId: input.accountingParentOperationId,
         candidateVersionId: input.candidateVersionId,
         phase: input.phase,
         rowsRead: input.rowsRead,
@@ -413,7 +457,8 @@ function transitionReservation(input: {
   }
   if (
     prior.operation !== input.operation ||
-    prior.candidateVersionId !== input.candidateVersionId
+    prior.candidateVersionId !== input.candidateVersionId ||
+    prior.accountingParentOperationId !== input.accountingParentOperationId
   ) {
     throw new Error("D1 release budget operation ID was reused for a different release operation.");
   }
@@ -458,6 +503,7 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   if (
     value.kind !== D1_RELEASE_BUDGET_LEDGER_KIND ||
     (schemaVersion !== D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION &&
+      schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION &&
       schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION)
   ) {
     throw new Error("D1 release budget ledger has an unsupported schema.");
@@ -469,11 +515,11 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
         )
       : undefined;
   if (
-    schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION &&
+    schemaVersion !== D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION &&
     Object.hasOwn(value, "sourceFingerprint")
   ) {
     throw new Error(
-      "D1 release budget ledger schema v2 must bind source fingerprints only to reservations.",
+      "D1 release budget ledger schema v2+ must bind source fingerprints only to reservations.",
     );
   }
   const database = requiredRecord(value.database, "ledger database");
@@ -505,7 +551,7 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
     throw new Error("D1 release budget ledger must contain at least one reservation.");
   }
   const reservations = value.reservations.map((reservation, index) =>
-    parseReservation(reservation, index, legacySourceFingerprint),
+    parseReservation(reservation, index, legacySourceFingerprint, schemaVersion),
   );
   if (
     new Set(reservations.map(reservationIdentityKey)).size !== reservations.length
@@ -514,6 +560,7 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
       "D1 release budget ledger contains duplicate operation-and-source identities.",
     );
   }
+  validateAccountingParents(reservations);
   const totals = sumReservations(reservations);
   const storedTotals = requiredRecord(value.totals, "ledger reservation totals");
   if (storedTotals.rowsRead !== totals.rowsRead || storedTotals.rowsWritten !== totals.rowsWritten) {
@@ -576,6 +623,10 @@ function parseReservation(
   value: unknown,
   index: number,
   legacySourceFingerprint: D1ReleaseSourceIdentity | undefined,
+  schemaVersion:
+    | typeof D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION
+    | typeof D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION
+    | typeof D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION,
 ): D1ReleaseBudgetLedgerReservation {
   if (!isRecord(value)) throw new Error(`D1 release budget reservation ${index} is invalid.`);
   if (legacySourceFingerprint && Object.hasOwn(value, "sourceFingerprint")) {
@@ -616,10 +667,21 @@ function parseReservation(
   if (rowsRead > maximumRowsRead || rowsWritten > maximumRowsWritten) {
     throw new Error(`D1 release budget reservation ${index} exceeds its recorded maximum.`);
   }
+  const accountingParentOperationId = schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION
+    ? value.accountingParentOperationId === null
+      ? null
+      : validateOperationId(
+          requiredString(
+            value.accountingParentOperationId,
+            `reservation ${index} accounting parent`,
+          ),
+        )
+    : null;
   return {
     operationId: validateOperationId(value.operationId),
     operation: validateOperation(value.operation),
     sourceFingerprint,
+    accountingParentOperationId,
     candidateVersionId,
     phase,
     rowsRead,
@@ -682,14 +744,99 @@ function withLedgerLock<T>(ledgerPath: string, now: Date, action: () => T): T {
 }
 
 function writeExclusivePrivateFile(file: string, content: string) {
-  const descriptor = fs.openSync(file, "wx", 0o600);
+  const payload = Buffer.from(content, "utf8");
+  let descriptor: number;
+  try {
+    descriptor = fs.openSync(
+      file,
+      fs.constants.O_WRONLY |
+        fs.constants.O_CREAT |
+        fs.constants.O_EXCL |
+        fs.constants.O_NOFOLLOW,
+      0o600,
+    );
+  } catch {
+    throw new Error(
+      `Private release evidence must be created at a new non-symlink path: ${file}.`,
+    );
+  }
+  let writtenStat: fs.Stats;
   try {
     fs.fchmodSync(descriptor, 0o600);
-    fs.writeFileSync(descriptor, content, "utf8");
+    const emptyStat = fs.fstatSync(descriptor);
+    assertWrittenPrivateFileStat(emptyStat, 0, file);
+    fs.writeFileSync(descriptor, payload);
     fs.fsyncSync(descriptor);
+    writtenStat = fs.fstatSync(descriptor);
+    assertWrittenPrivateFileStat(writtenStat, payload.byteLength, file);
+    if (!samePrivateFileIdentity(emptyStat, writtenStat)) {
+      throw new Error(`Private release evidence changed during its durable write: ${file}.`);
+    }
   } finally {
     fs.closeSync(descriptor);
   }
+
+  let readDescriptor: number;
+  try {
+    readDescriptor = fs.openSync(
+      file,
+      fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW,
+    );
+  } catch {
+    throw new Error(`Private release evidence changed before exact readback: ${file}.`);
+  }
+  try {
+    const beforeRead = fs.fstatSync(readDescriptor);
+    assertWrittenPrivateFileStat(beforeRead, payload.byteLength, file);
+    const readback = fs.readFileSync(readDescriptor);
+    const afterRead = fs.fstatSync(readDescriptor);
+    assertWrittenPrivateFileStat(afterRead, payload.byteLength, file);
+    if (
+      !sameStablePrivateFile(writtenStat, beforeRead) ||
+      !sameStablePrivateFile(beforeRead, afterRead) ||
+      !readback.equals(payload)
+    ) {
+      throw new Error(`Private release evidence failed exact durable readback: ${file}.`);
+    }
+    const namedStat = fs.lstatSync(file);
+    assertWrittenPrivateFileStat(namedStat, payload.byteLength, file);
+    if (!sameStablePrivateFile(afterRead, namedStat)) {
+      throw new Error(`Private release evidence path changed during exact readback: ${file}.`);
+    }
+  } finally {
+    fs.closeSync(readDescriptor);
+  }
+}
+
+function assertWrittenPrivateFileStat(stat: fs.Stats, expectedBytes: number, file: string) {
+  if (
+    !stat.isFile() ||
+    stat.isSymbolicLink() ||
+    stat.nlink !== 1 ||
+    (stat.mode & 0o777) !== 0o600 ||
+    stat.size !== expectedBytes ||
+    (typeof process.getuid === "function" && stat.uid !== process.getuid())
+  ) {
+    throw new Error(
+      `Private release evidence has unsafe type, links, mode, ownership, or bytes: ${file}.`,
+    );
+  }
+}
+
+function samePrivateFileIdentity(left: fs.Stats, right: fs.Stats) {
+  return left.dev === right.dev && left.ino === right.ino;
+}
+
+function sameStablePrivateFile(left: fs.Stats, right: fs.Stats) {
+  return (
+    samePrivateFileIdentity(left, right) &&
+    left.size === right.size &&
+    left.mode === right.mode &&
+    left.nlink === right.nlink &&
+    left.uid === right.uid &&
+    left.mtimeMs === right.mtimeMs &&
+    left.ctimeMs === right.ctimeMs
+  );
 }
 
 function fsyncDirectory(directory: string) {
@@ -772,13 +919,109 @@ function compareReservationIdentity(
 }
 
 function sumReservations(reservations: D1ReleaseBudgetLedgerReservation[]) {
-  return reservations.reduce(
+  return reservations.filter(
+    (reservation) => reservation.accountingParentOperationId === null,
+  ).reduce(
     (total, reservation) => ({
       rowsRead: safeAdd(total.rowsRead, reservation.rowsRead, "reserved rows read"),
       rowsWritten: safeAdd(total.rowsWritten, reservation.rowsWritten, "reserved rows written"),
     }),
     { rowsRead: 0, rowsWritten: 0 },
   );
+}
+
+function assertLiveAccountingParent(input: Readonly<{
+  reservations: readonly D1ReleaseBudgetLedgerReservation[];
+  accountingParentOperationId: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
+  candidateVersionId: string | null;
+}>) {
+  const parents = input.reservations.filter(
+    (reservation) =>
+      reservation.operationId === input.accountingParentOperationId &&
+      sameSourceIdentity(reservation.sourceFingerprint, input.sourceFingerprint),
+  );
+  if (parents.length !== 1) {
+    throw new Error("A D1 release budget child is missing its exact aggregate envelope.");
+  }
+  const parent = parents[0]!;
+  if (
+    parent.accountingParentOperationId !== null ||
+    parent.phase !== "maximum" ||
+    (input.candidateVersionId !== null &&
+      parent.candidateVersionId !== input.candidateVersionId)
+  ) {
+    throw new Error("A D1 release budget child requires one live top-level maximum envelope.");
+  }
+}
+
+function validateAccountingParents(
+  reservations: readonly D1ReleaseBudgetLedgerReservation[],
+) {
+  for (const child of reservations) {
+    if (child.accountingParentOperationId === null) continue;
+    const parents = reservations.filter(
+      (reservation) =>
+        reservation.operationId === child.accountingParentOperationId &&
+        sameSourceIdentity(reservation.sourceFingerprint, child.sourceFingerprint),
+    );
+    if (
+      parents.length !== 1 ||
+      parents[0]!.accountingParentOperationId !== null ||
+      (child.candidateVersionId !== null &&
+        parents[0]!.candidateVersionId !== child.candidateVersionId)
+    ) {
+      throw new Error("D1 release budget child accounting is not bound to one aggregate envelope.");
+    }
+  }
+}
+
+function assertAggregateRefinementCoversChildren(
+  reservation: D1ReleaseBudgetLedgerReservation,
+  reservations: readonly D1ReleaseBudgetLedgerReservation[],
+) {
+  if (
+    reservation.accountingParentOperationId !== null ||
+    reservation.phase !== "exact"
+  ) {
+    return;
+  }
+  const children = reservations.filter(
+    (candidate) =>
+      candidate.accountingParentOperationId === reservation.operationId &&
+      sameSourceIdentity(
+        candidate.sourceFingerprint,
+        reservation.sourceFingerprint,
+      ),
+  );
+  if (children.some((child) => child.phase !== "exact")) {
+    throw new Error(
+      "A D1 release aggregate envelope cannot refine while a bound child remains maximum.",
+    );
+  }
+  const exactChildren = children.reduce(
+    (total, child) => ({
+      rowsRead: safeAdd(
+        total.rowsRead,
+        child.rowsRead,
+        "aggregate child rows read",
+      ),
+      rowsWritten: safeAdd(
+        total.rowsWritten,
+        child.rowsWritten,
+        "aggregate child rows written",
+      ),
+    }),
+    { rowsRead: 0, rowsWritten: 0 },
+  );
+  if (
+    exactChildren.rowsRead > reservation.rowsRead ||
+    exactChildren.rowsWritten > reservation.rowsWritten
+  ) {
+    throw new Error(
+      "An exact D1 release aggregate envelope must cover every bound child exact reservation.",
+    );
+  }
 }
 
 function mergeObservedUsageFloor(

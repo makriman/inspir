@@ -35,6 +35,12 @@ import {
   disposableOwnerVectorCaptureReadySql,
   disposableOwnerVectorCleanupStatements,
 } from "@/lib/free-runtime/native-owner-vector-cleanup";
+import {
+  timingSafeDigestEqual,
+  type TimingSafeDigestSubtleCrypto,
+} from "@/lib/free-runtime/timing-safe-equal";
+
+export { timingSafeDigestEqual };
 
 export type NativeAuthEnv = NativeSessionEnv &
   Pick<
@@ -209,6 +215,14 @@ type GoogleEmailUserRow = {
   id: string;
   email: string;
 };
+
+export const GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX =
+  "users_normalized_email_lookup_idx" as const;
+export const GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL = `select id, email
+       from users indexed by ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX}
+       where lower(email) = lower(?1)
+       order by id
+       limit 2` as const;
 
 class GoogleAccountLinkConflictError extends Error {
   constructor() {
@@ -490,7 +504,7 @@ async function handleNativeGoogleCallback(request: Request, env: NativeAuthEnv) 
     ? await verifyNativeAuthValue(signedState, env.AUTH_SECRET)
     : null;
   const stateData = encodedStateData
-    ? parseNativeOAuthStateCookie(encodedStateData, state, env.AUTH_GOOGLE_ID)
+    ? await parseNativeOAuthStateCookie(encodedStateData, state, env.AUTH_GOOGLE_ID)
     : null;
   if (!stateData) {
     return oauthRedirectResponse(fallbackURL, "invalid_state");
@@ -542,10 +556,11 @@ function parseNativeGoogleSignInPayload(value: unknown): NativeGoogleSignInPaylo
   };
 }
 
-function parseNativeOAuthStateCookie(
+export async function parseNativeOAuthStateCookie(
   encodedStateData: string,
   expectedState: string,
   expectedClientId: string,
+  subtle: TimingSafeDigestSubtleCrypto = crypto.subtle,
 ) {
   const value = parseBase64UrlJson(encodedStateData, 2_048);
   if (!isRecord(value)) return null;
@@ -558,17 +573,17 @@ function parseNativeOAuthStateCookie(
   if (
     !callbackURL ||
     !clientId ||
-    !constantTimeStringEqual(clientId, expectedClientId) ||
+    clientId !== expectedClientId ||
     !codeVerifier ||
     !/^[A-Za-z0-9._~-]+$/.test(codeVerifier) ||
     !expiresAt ||
     expiresAt < now ||
     expiresAt > now + oauthStateDurationMs ||
-    !oauthState ||
-    !constantTimeStringEqual(oauthState, expectedState)
+    !oauthState
   ) {
     return null;
   }
+  if (!(await timingSafeDigestEqual(oauthState, expectedState, subtle))) return null;
   return { callbackURL, clientId, codeVerifier, expiresAt, oauthState } satisfies NativeOAuthState;
 }
 
@@ -992,17 +1007,9 @@ async function findGoogleAccountUser(db: D1Database, subject: string) {
 }
 
 export async function findUniqueGoogleEmailUser(db: D1Database, email: string) {
-  const exact = await findGoogleExactEmailUser(db, email);
-  if (exact) return exact;
   const matches = await db
-    .prepare(
-      `select id, email
-       from users
-       where lower(email) = ?1
-       order by id
-       limit 2`,
-    )
-    .bind(email.toLowerCase())
+    .prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL)
+    .bind(email)
     .all<GoogleEmailUserRow>();
   if (matches.results.length > 1) {
     console.error(JSON.stringify({ event: "native_google_casefold_email_conflict" }));
@@ -1105,7 +1112,7 @@ export async function handleMigrationE2EAuthRequest(request: Request, env: Migra
   const providedSecret = boundedProvidedE2ESecret(
     request.headers.get("x-migration-e2e-auth-secret"),
   );
-  if (!constantTimeStringEqual(providedSecret ?? "", configuredSecret)) {
+  if (!(await timingSafeDigestEqual(providedSecret ?? "", configuredSecret))) {
     return hiddenE2EAuthResponse();
   }
   if (request.method !== "POST") return methodNotAllowed("POST");
@@ -2229,7 +2236,7 @@ async function authorizedDisposableCleanup(
     `disposable-cleanup-v1\0${identity.candidateVersionId}\0${identity.runId}\0${identity.userId}`,
     capabilitySecret,
   );
-  return constantTimeStringEqual(providedProof, expectedProof);
+  return timingSafeDigestEqual(providedProof, expectedProof);
 }
 
 function publicDisposableIdentity(identity: DisposableMutationIdentity) {
@@ -3468,15 +3475,4 @@ function boundedOAuthParameter(value: string | null, minimum: number, maximum: n
 
 function finiteInteger(value: unknown) {
   return typeof value === "number" && Number.isSafeInteger(value) ? value : null;
-}
-
-function constantTimeStringEqual(left: string, right: string) {
-  const leftBytes = new TextEncoder().encode(left);
-  const rightBytes = new TextEncoder().encode(right);
-  let difference = leftBytes.length ^ rightBytes.length;
-  const length = Math.max(leftBytes.length, rightBytes.length);
-  for (let index = 0; index < length; index += 1) {
-    difference |= (leftBytes[index] ?? 0) ^ (rightBytes[index] ?? 0);
-  }
-  return difference === 0;
 }

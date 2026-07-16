@@ -16,10 +16,12 @@ export const PRODUCTION_VALIDATION_LOCK_MAX_PROTECTED_COMMAND_MS = 30 * 60 * 1_0
 export const PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ = 1_024;
 export const PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN = 64;
 export const PRODUCTION_VALIDATION_LOCK_MAX_OPERATIONS = 128;
+export const PRODUCTION_MAINTENANCE_STATE_MAX_BILLED_ROWS_READ = 4;
 export const PRODUCTION_RELEASE_EXCLUSION_OWNER_ENV = "INSPIR_PRODUCTION_RELEASE_EXCLUSION_OWNER";
 export const PRODUCTION_RELEASE_OPERATION_ENV = "INSPIR_PRODUCTION_RELEASE_OPERATION";
 export const productionReleaseOperationNames = [
   "apply-d1-runtime-migrations",
+  "apply-d1-runtime-migration-0017",
   "sync-site-translation-sources",
   "sync-topic-seeds",
   "rollback",
@@ -629,7 +631,10 @@ where "key" = ${sqlString(PRODUCTION_MAINTENANCE_STATE_KEY)}
 limit 1;`,
     input.runner ?? defaultRunner,
   );
-  if (result.rowsRead > 4 || result.rowsWritten !== 0) {
+  if (
+    result.rowsRead > PRODUCTION_MAINTENANCE_STATE_MAX_BILLED_ROWS_READ ||
+    result.rowsWritten !== 0
+  ) {
     throw new Error("Production maintenance state read exceeded its read-only D1 budget.");
   }
   if (result.rows.length === 0) return null;

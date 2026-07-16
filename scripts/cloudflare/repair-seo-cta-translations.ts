@@ -16,18 +16,57 @@ import {
   mainAppTranslationNamespace,
 } from "@/lib/i18n/main-app-source";
 import { siteSourceManifest } from "@/lib/i18n/site-source-manifest";
-import {
-  getAllSiteTranslationNamespaces,
-  getSiteTranslationSource,
-} from "@/lib/i18n/site-source";
+import { getSiteTranslationSource } from "@/lib/i18n/site-source";
 import { siteTranslationNamespace } from "@/lib/i18n/site-source-constants";
+import { validateTranslationCandidateField } from "@/lib/i18n/translation-candidate-quality";
 import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
-import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
+import {
+  isTranslationBundleCompleteAndFluent,
+  isTranslationBundleFieldValid,
+  isTranslationFieldLikelyFluent,
+} from "@/lib/i18n/translation-quality";
+import {
+  LEGACY_MARKETING_SITE_EXPECTED_CURATED_SITE_ROW_COUNT,
+  LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT,
+  LEGACY_MARKETING_SITE_EXPECTED_SOURCE_HASH,
+  LEGACY_MARKETING_SITE_GRANDFATHERED_ENTRY_MODELS,
+  LEGACY_MARKETING_SITE_EXPECTED_SITE_ROW_COUNT,
+  LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT,
+  LEGACY_MARKETING_SITE_NAMESPACE,
+  legacyMarketingSiteContract,
+  legacyMarketingSiteTargetLanguages,
+  validateLegacyMarketingSiteDatabaseRows,
+  type LegacyMarketingSiteComposedCorpus,
+  type LegacyMarketingSiteContract,
+  type LegacyMarketingSiteDatabaseRow,
+  type LegacyMarketingSiteTargetLanguage,
+} from "@/lib/i18n/legacy-marketing-site-contract";
+import {
+  hasExactLongTailInvariantParity,
+  protectLongTailSourceText,
+} from "../generate-long-tail-translations";
+import {
+  LONG_TAIL_NLLB_EXECUTION_PROFILE_SHA256,
+  LONG_TAIL_TRANSLATION_PIPELINE_VERSION,
+} from "../long-tail-nllb-execution-profile";
+import { buildLegacyMarketingSiteComposedCorpusFromRepository } from
+  "../run-legacy-marketing-site-delta-release";
+import { assertCurrentSiteSourceManifestFreshness } from "../verify-site-source-manifest";
 import {
   assertD1FreeDailyBudget,
   loadAccountD1DailyUsage,
   type D1DailyUsage,
 } from "./d1-free-budget";
+import {
+  assertD1FreeStorageAdmission,
+  measureD1TranslationStorageRow,
+  projectD1FreeStorageAdmission,
+  readD1DatabaseStorageInfo,
+  type D1DatabaseStorageInfo,
+  type D1SourceStorageEntry,
+  type D1StorageAdmissionProjection,
+  type D1TranslationStorageRow,
+} from "./d1-free-storage-admission";
 import {
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
@@ -47,14 +86,17 @@ import {
 } from "./git-release-identity";
 import { buildReleaseArtifactSafetyChecks } from "./release-artifact-safety";
 import {
+  assertReleaseSequenceCurrentReleaseBinding,
   assertProductionTopicReconciliationReleaseBinding,
   writeTranslationReconciliationPending,
   writeTranslationReconciliationSuccess,
+  type ReleaseSequenceCurrentRelease,
   type TopicReconciliationAttestation,
 } from "./release-sequence-attestations";
 import {
   CLOUDFLARE_CLI_TIMEOUT_MS,
   cloudflareDir,
+  D1_DATABASE_ID,
   commandEnv,
   D1_DATABASE_NAME,
   isValidD1TimeTravelBookmark,
@@ -65,11 +107,15 @@ import {
   type WranglerRunner,
 } from "./migration-config";
 import {
+  assertSameTemporarySqlFileAttestation,
   assertSourceSyncReadBudget,
+  attestTemporarySqlFile,
   buildSiteTranslationSourceSyncPlan,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
   planSiteTranslationSourceSync,
+  removeAttestedTemporarySqlFile,
+  TemporarySqlFileIntegrityError,
   writeTemporarySqlFile,
 } from "./sync-site-translation-sources";
 import {
@@ -89,7 +135,6 @@ import {
 } from "./production-validation-lock";
 import type { SourceFingerprint } from "./source-fingerprint";
 import {
-  WORKER_DEPLOY_REPORT,
   buildWorkerDeployArtifactEvidence,
   buildWorkerDeployArtifactManifest,
   type WorkerDeployArtifactEvidence,
@@ -101,6 +146,10 @@ import {
   type VectorizeReadinessReport,
 } from "./vectorize-readiness-evidence";
 import { runBoundedReleaseChildSync } from "./run-production-release-operation";
+import {
+  readWorkerCandidateUploadEvidence,
+  workerCandidateUploadEvidencePath,
+} from "./worker-candidate-release-evidence";
 
 const seedPath = path.resolve(
   process.cwd(),
@@ -114,9 +163,14 @@ const unresolvedRepairMarkerFile = "d1-translation-repair-unresolved.json";
 const workerName = "inspirlearning";
 const productionBaseUrl = "https://inspirlearning.com";
 const workerVersionPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const model = "codex-curated-free-static-no-games-v4";
-const curatedRepairModel = "codex-curated-free-static-no-games-v6";
+const curatedRepairModel = "codex-curated-free-static-no-games-v7";
 const mainAppRepairModel = "codex-curated-free-static-no-games-main-app-v1";
+const longTailCandidateKind = "inspir-long-tail-translation-candidate-v1";
+const longTailCuratedProvenanceKind = "inspir-long-tail-curated-provenance-v1";
+const longTailPipelineVersion = LONG_TAIL_TRANSLATION_PIPELINE_VERSION;
+const longTailExecutionProfileSha256 =
+  LONG_TAIL_NLLB_EXECUTION_PROFILE_SHA256;
+const longTailProtectorVersion = "inspir-long-tail-literal-protector-v1";
 export const nativeWranglerDeployEnv = Object.freeze({
   // Wrangler detects open-next.config.ts even when invoked directly. This
   // marker tells the adapter that Wrangler is already performing the native
@@ -124,20 +178,7 @@ export const nativeWranglerDeployEnv = Object.freeze({
   OPEN_NEXT_DEPLOY: "true",
 });
 const curatedRoot = path.resolve(process.cwd(), "translations/curated");
-const fullCoverageCuratedNamespaces = new Set<string>([
-  "marketing-shell",
-  "route:home",
-  "route:mission",
-]);
-const bootstrapCuratedLanguages = ["Arabic", "Hindi", "Malayalam", "Spanish"] as const satisfies
-  readonly SupportedLanguage[];
-const staticRepairNamespaces = [
-  "marketing-site",
-  "route:chat-public",
-  "route:about",
-  "route:media",
-  "route:schools",
-] as const;
+const staticRepairNamespaces = ["marketing-site"] as const;
 const staticRepairNamespaceNames = new Set<string>(staticRepairNamespaces);
 const supportedLanguageNames = new Set<string>(supportedLanguages);
 const publishedSiteNamespaceNames = new Set<string>(Object.keys(siteSourceManifest));
@@ -146,6 +187,13 @@ const maximumD1FileImportBytes = 5_000_000_000;
 const maximumD1TranslationPayloadBytes = 2_000_000;
 const maximumWorkerDeployEvidenceBytes = 16 * 1024 * 1024;
 const repairPatchStatementTargetBytes = 90_000;
+const curatedVerificationTargetPayloadBytes = 4 * 1024 * 1024;
+const curatedVerificationMaximumRowsPerQuery = 256;
+const marketingSiteVerificationMaximumRowsPerQuery = 16;
+const mainAppVerificationMaximumRowsPerQuery = 64;
+const curatedVerificationMinimumBufferBytes = 1 * 1024 * 1024;
+const curatedVerificationMaximumBufferBytes = 16 * 1024 * 1024;
+const remoteTranslationVerificationFixedQueryCount = 2;
 const remoteRepairControlRowsReadReservation = 1_128;
 const remoteRepairControlRowsWrittenReservation =
   PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_WRITTEN + 8;
@@ -156,9 +204,30 @@ const retiredGameTranslationKeys = [
   "site.5121f7306ecc75edb5",
   "site.df499d7c6f44a88703",
 ] as const;
-const previousMarketingSiteHash = "f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0";
+const legacyMarketingCleanupKeys = [
+  ...retiredGameTranslationKeys,
+  "site.19abb1657a1d5e54c2",
+  "site.2ced57f125910a9e8a",
+  "site.649df08a448ee3fa90",
+  "site.2ac5cdad2988ba0c40",
+  "site.b78a38d18d6555118d",
+  "site.4b0412c73bb17a566f",
+  "site.97d1bd7fe820bd7b27",
+] as const;
+const grandfatheredEntryNamespaces = new Set<string>([
+  "marketing-shell",
+  "route:home",
+  "route:mission",
+]);
+const grandfatheredEntryLanguages = new Set<SupportedLanguage>([
+  "Arabic",
+  "Spanish",
+  "Hindi",
+  "Malayalam",
+]);
+const expectedGrandfatheredEntryCuratedPackCount = 691;
 const expectedSourceHashes = {
-  "marketing-site": "8fba4fae8adf717ba9de242b46c5b0f1861b2414209355280f36e25ae6992166",
+  "marketing-site": LEGACY_MARKETING_SITE_EXPECTED_SOURCE_HASH,
   "route:home": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
   "route:about": "6aa44ee2349a660b840519a4fc03037976d4e26ee4ceb55d7d94e2959b211a99",
   "route:chat-public": "f5ef074ab3712ef9b40cb5fcbc794e9b7d42efd2089fc22400aeb280abce8689",
@@ -201,6 +270,8 @@ export type RemoteRepairReleasePreflight = {
   runId: string;
   createdAt: string;
   candidateVersionId: string;
+  serviceBaselineVersionId: string;
+  uploadEvidenceSha256: string;
   activeVersionId: string;
   gitHead: string;
   gitUpstream: string;
@@ -269,6 +340,16 @@ export type CuratedNamespaceRepairRow = {
   payload: Readonly<Record<string, string>>;
 };
 
+export type CuratedRepairVerificationChunk = {
+  index: number;
+  rows: number;
+  expectedPayloadBytes: number;
+  sqlBytes: number;
+  maxBufferBytes: number;
+  expectedRows: readonly CuratedNamespaceRepairRow[];
+  sql: string;
+};
+
 export type CuratedNamespaceRepairPlan = {
   sql: string;
   legacyPrerequisiteSql: string;
@@ -288,6 +369,50 @@ export type MainAppRepairRow = {
   language: SupportedLanguage;
   sourceHash: string;
   payload: Readonly<Record<string, string>>;
+};
+
+export type MarketingSiteRepairRow = LegacyMarketingSiteDatabaseRow & Readonly<{
+  namespace: typeof LEGACY_MARKETING_SITE_NAMESPACE;
+  language: LegacyMarketingSiteTargetLanguage;
+}>;
+
+export type MarketingSiteRepairCorpus = Readonly<{
+  corpus: LegacyMarketingSiteComposedCorpus;
+  rows: readonly MarketingSiteRepairRow[];
+}>;
+
+export type MarketingSiteRepairVerificationChunk = {
+  index: number;
+  rows: number;
+  expectedPayloadBytes: number;
+  sqlBytes: number;
+  maxBufferBytes: number;
+  expectedRows: readonly MarketingSiteRepairRow[];
+  sql: string;
+};
+
+export type MarketingSiteRepairPlan = {
+  sql: string;
+  rows: number;
+  resetStatements: number;
+  patchStatements: number;
+  logicalRowWrites: number;
+  largestStatementBytes: number;
+  payloadBytes: number;
+  largestPayloadBytes: number;
+  corpusSha256: string;
+  deltaCorpusSha256: string;
+  model: string;
+};
+
+export type MainAppRepairVerificationChunk = {
+  index: number;
+  rows: number;
+  expectedPayloadBytes: number;
+  sqlBytes: number;
+  maxBufferBytes: number;
+  expectedRows: readonly MainAppRepairRow[];
+  sql: string;
 };
 
 export type MainAppRepairPlan = {
@@ -314,6 +439,15 @@ type RepairReport = {
   largestCuratedPayloadBytes: number;
   curatedCorpusSha256: string;
   largestCuratedRepairStatementBytes: number;
+  marketingSiteTranslationRows: number;
+  marketingSiteRepairStatements: number;
+  marketingSiteRepairLogicalRowWrites: number;
+  marketingSitePayloadBytes: number;
+  largestMarketingSitePayloadBytes: number;
+  marketingSiteComposedCorpusSha256: string;
+  marketingSiteDeltaCorpusSha256: string;
+  marketingSiteModel: string;
+  largestMarketingSiteRepairStatementBytes: number;
   mainAppTranslationRows: number;
   mainAppRepairStatements: number;
   mainAppRepairLogicalRowWrites: number;
@@ -329,6 +463,13 @@ type RepairReport = {
   largestAtomicSqlStatementBytes: number;
   d1FileImportByteLimit: number;
   executionMode: "single-transaction-wrangler-import";
+  exactTranslationPartitions: {
+    curatedSiteRows: number;
+    marketingSiteRows: number;
+    siteRows: number;
+    mainAppRows: number;
+    finalRows: number;
+  };
   maintenance: {
     runtime: "native-cloudflare-worker";
     openNext: false;
@@ -339,6 +480,8 @@ type RepairReport = {
     importVerification?: ImportVerificationState;
     responseRecoveredByVerification?: boolean;
     candidateVersionId?: string;
+    serviceBaselineVersionId?: string;
+    uploadEvidenceSha256?: string;
     maintenanceVersionId?: string;
     releasePreflightEvidencePath?: string;
     sourceFingerprintSha256?: string;
@@ -350,9 +493,11 @@ type RepairReport = {
   sourceSyncStatements?: number;
   sourceSyncLogicalRowWrites?: number;
   staticRepairRows?: number;
-  projectionBasis: "cold-manifest" | "remote-diff";
+  projectionBasis: "local-static-proof" | "remote-diff";
   projectedBilledRowWrites?: number;
   projectedBilledRowWriteLimit?: number;
+  coldCombinedProjectedBilledRowWrites?: number;
+  coldCombinedWriteBudgetAdmissible?: boolean;
   projectedBilledRowReads?: number;
   projectedBilledRowReadLimit?: number;
   timeTravelVerified: boolean;
@@ -376,6 +521,7 @@ type RepairReport = {
     controlRowsWrittenReserved: number;
     disposition: "maximum-retained-metered" | "maximum-retained-import-unmetered";
   };
+  d1StorageAdmission?: D1StorageAdmissionProjection;
   productionVerification?: {
     expectedSourceNamespaces: number;
     sourceNamespaces: number;
@@ -384,13 +530,15 @@ type RepairReport = {
     observedFreshTranslationRows: number;
     auditedSiteNamespaces: number;
     auditedSiteRows: number;
-    targetNamespaces: number;
-    schoolValuesMatched: number;
     retiredGamePayloads: number;
     curatedRowsMatched: number;
     curatedPayloadBytesMatched: number;
     curatedCorpusSha256: string;
+    marketingSiteRowsMatched: number;
+    marketingSitePayloadBytesMatched: number;
+    marketingSiteCorpusSha256: string;
     mainAppRowsMatched: number;
+    exactFinalRows: number;
   };
 };
 
@@ -399,6 +547,7 @@ export type RemoteTranslationDriftIssue = {
     | "source-snapshot"
     | "translation-summary"
     | "curated-payloads"
+    | "marketing-site-payloads"
     | "main-app-payloads";
   code: string;
   message: string;
@@ -415,8 +564,10 @@ export type RemoteTranslationDriftReport = {
   expected: {
     sourceNamespaces: number;
     curatedRows: number;
+    marketingSiteRows: number;
     mainAppRows: number;
     supportedTargetLanguages: number;
+    remoteQueries: number;
   };
   sourceSnapshot: {
     status: "reconciled" | "repair-required";
@@ -525,22 +676,42 @@ type RepairSeoCtaTranslationOptions = {
 
 export type RemoteTranslationSequenceGateResult = {
   currentRelease: VectorizeReadinessCurrentRelease;
-  vectorizeReadiness: VectorizeReadinessReport;
-  topicAttestation: TopicReconciliationAttestation;
+  vectorizeReadiness: Pick<VectorizeReadinessReport, "createdAt">;
+  topicAttestation: Pick<
+    TopicReconciliationAttestation,
+    "createdAt" | "vectorizeReadinessCreatedAt"
+  >;
 };
 
 export type RemoteTranslationSequenceGateDependencies = {
   readGitIdentity?: (cwd: string) => GitReleaseIdentity;
   buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
-  readDeployReport?: (reportPath: string) => unknown;
-  validateDeployEvidence?: typeof validateWorkerDeployEvidenceForRepair;
+  readUploadEvidence?: typeof readWorkerCandidateUploadEvidence;
+  assertCurrentReleaseBinding?: (
+    input: Parameters<typeof assertReleaseSequenceCurrentReleaseBinding>[0],
+  ) => unknown;
   readActiveVersion?: () => string;
-  validateVectorizeReadiness?: typeof assertFreshProductionVectorizeReadiness;
-  validateTopicReconciliation?: typeof assertProductionTopicReconciliationReleaseBinding;
+  validateVectorizeReadiness?: (
+    input: Parameters<typeof assertFreshProductionVectorizeReadiness>[0],
+  ) => Pick<VectorizeReadinessReport, "createdAt">;
+  validateTopicReconciliation?: (
+    input: Parameters<typeof assertProductionTopicReconciliationReleaseBinding>[0],
+  ) => Pick<
+    TopicReconciliationAttestation,
+    "createdAt" | "vectorizeReadinessCreatedAt"
+  >;
 };
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const refinementRequested = process.argv.includes("--refine-aborted-prewrite-reservation");
+  const remote = process.argv.includes("--remote");
+  const verifyOnly = process.argv.includes("--verify-only");
+  assertTranslationReconciliationCliPhase({
+    argv: process.argv.slice(2),
+    refinementRequested,
+    remote,
+    verifyOnly,
+  });
   const releasePreflightRunId = refinementRequested
     ? requireCliArgument(
         getArg("--refine-aborted-prewrite-reservation"),
@@ -555,9 +726,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
         prewriteAbortConfirmed: process.argv.includes("--confirm-prewrite-abort"),
       })
     : repairSeoCtaTranslations({
-        remote: process.argv.includes("--remote"),
+        remote,
         confirmed: process.argv.includes("--confirm-production"),
-        verifyOnly: process.argv.includes("--verify-only"),
+        verifyOnly,
         nativeWriteFreezeConfirmed: process.argv.includes("--confirm-native-write-freeze"),
         candidateVersion: getArg("--candidate-version"),
         backupDir: resolveBackupDir(),
@@ -566,6 +737,46 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if ("mode" in report && report.mode === "remote-verify-only" && report.repairRequired) {
     process.exitCode = 1;
   }
+}
+
+export function assertTranslationReconciliationCliPhase(input: {
+  argv: readonly string[];
+  refinementRequested: boolean;
+  remote: boolean;
+  verifyOnly: boolean;
+}): "uploaded-inactive" | undefined {
+  const phaseIndexes = input.argv.flatMap((argument, index) =>
+    argument === "--phase" ? [index] : [],
+  );
+  if (phaseIndexes.length > 1) {
+    throw new Error("Production translation reconciliation accepts --phase exactly once.");
+  }
+  const phaseIndex = phaseIndexes[0];
+  const phase = phaseIndex === undefined ? undefined : input.argv[phaseIndex + 1];
+  if (phaseIndex !== undefined && (!phase || phase.startsWith("--"))) {
+    throw new Error("Production translation reconciliation --phase requires an exact value.");
+  }
+
+  if (input.refinementRequested) {
+    if (phase !== undefined) {
+      throw new Error("Prewrite-abort refinement does not accept --phase.");
+    }
+    return undefined;
+  }
+  if (input.remote && input.verifyOnly) {
+    if (phase !== "uploaded-inactive") {
+      throw new Error(
+        "Production translation verification requires --phase uploaded-inactive; candidate-active verification is forbidden.",
+      );
+    }
+    return phase;
+  }
+  if (phase !== undefined) {
+    throw new Error(
+      "Only read-only production translation verification accepts --phase uploaded-inactive.",
+    );
+  }
+  return undefined;
 }
 
 export function refineAbortedPrewriteTranslationRepairReservation(
@@ -709,6 +920,7 @@ export function refineAbortedPrewriteTranslationRepairReservation(
       verifyRemoteTranslationDrift({
         translations: plan.translations,
         curatedRepairRows: plan.curatedRepairRows,
+        marketingSite: plan.marketingSite,
         mainAppRepairRows: plan.mainAppRepairRows,
       }));
 
@@ -734,14 +946,14 @@ export function refineAbortedPrewriteTranslationRepairReservation(
       // completed recovery, then finishes only the local ledger/evidence step.
       assertNoLiveProductionValidationLock({ runner: input.lockRunner });
       candidateVersionBefore = assertAbortedCandidateUnfrozen({
-        expectedVersionId: evidence.candidateVersionId,
+        expectedVersionId: evidence.serviceBaselineVersionId,
         readActiveWorkerVersion,
         probeCandidate,
       });
       candidateVersionAfter = candidateVersionBefore;
     } else {
       exclusion = acquireProductionValidationExclusion({
-        candidateVersionId: evidence.candidateVersionId,
+        candidateVersionId: evidence.serviceBaselineVersionId,
         sourceFingerprintSha256: evidence.sourceFingerprint.sha256,
         runner: input.lockRunner,
       });
@@ -752,7 +964,7 @@ export function refineAbortedPrewriteTranslationRepairReservation(
         throw new Error("Prewrite-abort refinement found a production maintenance state.");
       }
       candidateVersionBefore = assertAbortedCandidateUnfrozen({
-        expectedVersionId: evidence.candidateVersionId,
+        expectedVersionId: evidence.serviceBaselineVersionId,
         readActiveWorkerVersion,
         probeCandidate,
       });
@@ -780,7 +992,7 @@ export function refineAbortedPrewriteTranslationRepairReservation(
         );
       }
       candidateVersionAfter = assertAbortedCandidateUnfrozen({
-        expectedVersionId: evidence.candidateVersionId,
+        expectedVersionId: evidence.serviceBaselineVersionId,
         readActiveWorkerVersion,
         probeCandidate,
       });
@@ -949,6 +1161,7 @@ type AbortedPrewriteReleasePreflightEvidence = {
   repairRunId: string;
   createdAt: string;
   candidateVersionId: string;
+  serviceBaselineVersionId: string;
   sourceFingerprint: D1ReleaseSourceIdentity;
   evidencePath: string;
 };
@@ -1212,7 +1425,9 @@ function readAbortedPrewriteReleasePreflight(
       "kind",
       "runId",
       "safetyChecks",
+      "serviceBaselineVersionId",
       "sourceFingerprint",
+      "uploadEvidenceSha256",
       "workerDeployEvidence",
       "workerDeployReportPath",
       "workerSourceSha256",
@@ -1233,8 +1448,34 @@ function readAbortedPrewriteReleasePreflight(
     value.candidateVersionId,
     "release-preflight candidate version",
   );
-  if (value.activeVersionId !== candidateVersionId) {
-    throw new Error("Release-preflight evidence was not captured against its exact active candidate.");
+  const serviceBaselineVersionId = requireLowercaseWorkerVersion(
+    value.serviceBaselineVersionId,
+    "release-preflight service baseline version",
+  );
+  const uploadEvidenceSha256 =
+    typeof value.uploadEvidenceSha256 === "string"
+      ? value.uploadEvidenceSha256
+      : "";
+  if (
+    candidateVersionId === serviceBaselineVersionId ||
+    value.activeVersionId !== serviceBaselineVersionId ||
+    !/^[a-f0-9]{64}$/.test(uploadEvidenceSha256)
+  ) {
+    throw new Error(
+      "Release-preflight evidence must bind a distinct inactive candidate to its exact active service baseline and upload evidence.",
+    );
+  }
+  const canonicalUpload = readWorkerCandidateUploadEvidence(
+    workerCandidateUploadEvidencePath(backupDir),
+  );
+  if (
+    canonicalUpload.sha256 !== uploadEvidenceSha256 ||
+    canonicalUpload.value.targetCandidateVersionId !== candidateVersionId ||
+    canonicalUpload.value.serviceBaselineVersionId !== serviceBaselineVersionId
+  ) {
+    throw new Error(
+      "Release-preflight evidence does not match the canonical immutable candidate upload.",
+    );
   }
   if (
     typeof value.gitHead !== "string" ||
@@ -1244,15 +1485,15 @@ function readAbortedPrewriteReleasePreflight(
     !/^[a-f0-9]{64}$/.test(value.workerSourceSha256) ||
     typeof value.wranglerConfigSha256 !== "string" ||
     !/^[a-f0-9]{64}$/.test(value.wranglerConfigSha256) ||
-    value.workerDeployReportPath !== path.resolve(backupDir, WORKER_DEPLOY_REPORT)
+    value.workerDeployReportPath !== workerCandidateUploadEvidencePath(backupDir)
   ) {
     throw new Error("Release-preflight source/deploy evidence is malformed.");
   }
   const sourceFingerprint = parseEvidenceSourceFingerprint(value.sourceFingerprint);
   validateAbortedPrewriteSafetyChecks(value.safetyChecks, sourceFingerprint.sha256);
   const candidateProbe = validateNativeMaintenanceProbe(value.candidateProbe, false);
-  if (candidateProbe.versionId !== candidateVersionId) {
-    throw new Error("Release-preflight candidate probe is not bound to its candidate version.");
+  if (candidateProbe.versionId !== serviceBaselineVersionId) {
+    throw new Error("Release-preflight probe is not bound to its service baseline version.");
   }
   const assetManifest = parseAbortedPrewriteArtifactManifest(
     value.assetManifest,
@@ -1296,6 +1537,7 @@ function readAbortedPrewriteReleasePreflight(
     workerDeployEvidence.workerSourceSha256 !== value.workerSourceSha256 ||
     workerDeployEvidence.wranglerConfigSha256 !== value.wranglerConfigSha256 ||
     workerDeployEvidence.backupDir !== path.resolve(backupDir) ||
+    workerEvidenceCreatedAt !== canonicalUpload.value.createdAt ||
     assetManifest.root !== path.resolve(process.cwd(), ".open-next/assets") ||
     assetManifest.root !== nestedAssetManifest.root ||
     assetManifest.sha256 !== nestedAssetManifest.sha256 ||
@@ -1311,6 +1553,7 @@ function readAbortedPrewriteReleasePreflight(
     repairRunId,
     createdAt,
     candidateVersionId,
+    serviceBaselineVersionId,
     sourceFingerprint,
     evidencePath,
   };
@@ -1416,19 +1659,23 @@ function buildAbortedPrewriteRecoveryPlan(
   releasePreflightRunId?: string,
 ) {
   const translations = loadAndValidateTranslationSeed();
+  const marketingSite = loadReleasedMarketingSiteRepairCorpus();
+  const marketingSiteRepairPlan = buildMarketingSiteRepairPlan(marketingSite);
   const curatedRepairRows = loadCuratedNamespaceRepairRows();
   const curatedRepairPlan = buildCuratedNamespaceRepairPlan(curatedRepairRows);
   const mainAppRepairRows = loadMainAppRepairRows();
   const mainAppRepairPlan = buildMainAppRepairPlan(mainAppRepairRows);
   validateSiteSourceManifestFreshness();
-  const sourceHashes = validateSourceContract();
+  validateSourceContract();
   const repairSql = fs.readFileSync(repairSqlPath, "utf8");
-  validateRepairSql(repairSql, translations, sourceHashes);
+  validateRepairSql(repairSql);
   const completeRepairSql = buildAtomicSeoCtaRepairSql(
     curatedRepairPlan.legacyPrerequisiteSql,
     repairSql,
     curatedRepairPlan.postLegacyCanonicalSql,
+    marketingSiteRepairPlan.sql,
     mainAppRepairPlan.sql,
+    buildExactTranslationPartitionGuardSql(),
   );
   const coldSourceSync = buildSiteTranslationSourceSyncPlan();
   const planSha256 = translationRepairBudgetPlanSha256({
@@ -1437,6 +1684,7 @@ function buildAbortedPrewriteRecoveryPlan(
     repairSqlSha256: sha256(completeRepairSql),
     sourceSyncSha256: coldSourceSync.sha256,
     curatedCorpusSha256: curatedRepairPlan.corpusSha256,
+    marketingSiteCorpusSha256: marketingSiteRepairPlan.corpusSha256,
   });
   const legacyOperationId = translationRepairBudgetOperationId({
     candidateVersionId,
@@ -1446,6 +1694,7 @@ function buildAbortedPrewriteRecoveryPlan(
   return {
     translations,
     curatedRepairRows,
+    marketingSite,
     mainAppRepairRows,
     operationId: translationRepairBudgetOperationId({
       candidateVersionId,
@@ -1455,16 +1704,6 @@ function buildAbortedPrewriteRecoveryPlan(
     }),
     legacyOperationId,
   };
-}
-
-export function abortedPrewriteRecoveryOperationId(
-  sourceFingerprint: D1ReleaseSourceIdentity,
-  candidateVersionId: string,
-) {
-  return buildAbortedPrewriteRecoveryPlan(
-    releaseBudgetSourceIdentity(sourceFingerprint),
-    requireLowercaseWorkerVersion(candidateVersionId, "recovery candidate version"),
-  ).operationId;
 }
 
 function existingExactReservationResult(input: {
@@ -1542,7 +1781,9 @@ function assertReadOnlyRepairRequiredDrift(report: RemoteTranslationDriftReport)
     !report.repairRequired ||
     report.status !== "repair-required" ||
     report.issues.length === 0 ||
-    readOnly.remoteQueries !== 4 ||
+    !Number.isSafeInteger(report.expected.remoteQueries) ||
+    report.expected.remoteQueries < remoteTranslationVerificationFixedQueryCount + 2 ||
+    readOnly.remoteQueries !== report.expected.remoteQueries ||
     !Number.isSafeInteger(readOnly.billedRowsRead) ||
     readOnly.billedRowsRead <= 0 ||
     readOnly.billedRowsRead > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
@@ -1582,37 +1823,45 @@ export function assertRemoteTranslationSequenceGate(
   const candidateVersionId = requireWorkerVersion(input.candidateVersionId);
   const cwd = path.resolve(input.cwd ?? process.cwd());
   const backupDir = path.resolve(input.backupDir);
+  const upload = (
+    dependencies.readUploadEvidence ?? readWorkerCandidateUploadEvidence
+  )(workerCandidateUploadEvidencePath(backupDir));
+  if (upload.value.targetCandidateVersionId !== candidateVersionId) {
+    throw new Error(
+      `Translation reconciliation expected uploaded candidate ${candidateVersionId}; canonical upload evidence names ${upload.value.targetCandidateVersionId}.`,
+    );
+  }
   const git = (dependencies.readGitIdentity ??
     ((gitCwd: string) => assertGitReleaseIdentity({ cwd: gitCwd })))(cwd);
   const artifactEvidence = (
     dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence
   )(cwd);
-  const workerDeployReportPath = path.resolve(backupDir, WORKER_DEPLOY_REPORT);
-  (dependencies.validateDeployEvidence ?? validateWorkerDeployEvidenceForRepair)({
-    report: (dependencies.readDeployReport ?? readPrivateWorkerDeployEvidence)(
-      workerDeployReportPath,
-    ),
-    backupDir,
-    candidateVersionId,
-    currentArtifactEvidence: artifactEvidence,
-  });
   const activeVersionId = requireWorkerVersion(
     (dependencies.readActiveVersion ?? requireSoleActiveWorkerVersion)(),
   );
-  if (activeVersionId !== candidateVersionId) {
+  if (activeVersionId !== upload.value.serviceBaselineVersionId) {
     throw new Error(
-      `Translation reconciliation expected candidate ${candidateVersionId} alone at 100%; received ${activeVersionId}.`,
+      `Translation reconciliation requires service baseline ${upload.value.serviceBaselineVersionId} alone at 100% while candidate ${candidateVersionId} remains inactive; received ${activeVersionId}.`,
     );
   }
-  const currentRelease = {
-    candidateVersionId,
-    activeVersionId,
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: upload.value.targetCandidateVersionId,
+    serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    phaseEvidenceSha256: upload.sha256,
+    phaseEvidenceCreatedAt: upload.value.createdAt,
+    soleServingVersionId: upload.value.serviceBaselineVersionId,
     git,
     artifactEvidence,
-  } satisfies VectorizeReadinessCurrentRelease;
+  };
+  (
+    dependencies.assertCurrentReleaseBinding ??
+    assertReleaseSequenceCurrentReleaseBinding
+  )({ backupDir, currentRelease });
   const vectorizeReadiness = (
     dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness
-  )({ backupDir, currentRelease });
+  )({ backupDir, currentRelease, requiredPhase: "uploaded-inactive" });
   const topicAttestation = (
     dependencies.validateTopicReconciliation ??
     assertProductionTopicReconciliationReleaseBinding
@@ -1660,6 +1909,8 @@ export function repairSeoCtaTranslations(
       : undefined;
 
   const translations = loadAndValidateTranslationSeed();
+  const marketingSite = loadReleasedMarketingSiteRepairCorpus();
+  const marketingSiteRepairPlan = buildMarketingSiteRepairPlan(marketingSite);
   const curatedRepairRows = loadCuratedNamespaceRepairRows();
   const curatedRepairPlan = buildCuratedNamespaceRepairPlan(curatedRepairRows);
   const mainAppRepairRows = loadMainAppRepairRows();
@@ -1682,6 +1933,7 @@ export function repairSeoCtaTranslations(
     const drift = verifyRemoteTranslationDrift({
       translations,
       curatedRepairRows,
+      marketingSite,
       mainAppRepairRows,
       runner: options.runner ?? runWrangler,
       now: options.now ?? Date.now(),
@@ -1701,30 +1953,44 @@ export function repairSeoCtaTranslations(
     return drift;
   }
   const repairSql = fs.readFileSync(repairSqlPath, "utf8");
-  validateRepairSql(repairSql, translations, sourceHashes);
-  // Canonical home rows must exist before the legacy copy statements read
-  // their CTA. The remaining exact packs run afterward so legacy v4 cannot
-  // clobber canonical payloads or provenance in overlapping namespaces.
+  validateRepairSql(repairSql);
+  // The v7 curated corpus is authoritative for every site route. The only
+  // intervening legacy statement is the marketing-site retired-key cleanup,
+  // which is forbidden from changing route rows or provenance metadata.
   const completeRepairSql = buildAtomicSeoCtaRepairSql(
     curatedRepairPlan.legacyPrerequisiteSql,
     repairSql,
     curatedRepairPlan.postLegacyCanonicalSql,
+    marketingSiteRepairPlan.sql,
     mainAppRepairPlan.sql,
+    buildExactTranslationPartitionGuardSql(),
   );
   const coldSourceSync = buildSiteTranslationSourceSyncPlan();
   assertSourceSyncReadBudget(coldSourceSync);
   const maximumStaticRepairRows = staticRepairNamespaces.length * translations.size;
-  const coldProjectedBilledRowWrites = projectRepairBilledRowWrites(
+  const localTranslationProjectedBilledRowWrites = projectRepairBilledRowWrites(
+    0,
+    maximumStaticRepairRows,
+    curatedRepairPlan.logicalRowWrites,
+    marketingSiteRepairPlan.logicalRowWrites,
+    mainAppRepairPlan.logicalRowWrites,
+  );
+  assertRepairWriteBudget(localTranslationProjectedBilledRowWrites);
+  const coldCombinedProjectedBilledRowWrites = projectRepairBilledRowWrites(
     coldSourceSync.projectedBilledRowWrites,
     maximumStaticRepairRows,
     curatedRepairPlan.logicalRowWrites,
+    marketingSiteRepairPlan.logicalRowWrites,
     mainAppRepairPlan.logicalRowWrites,
   );
-  assertRepairWriteBudget(coldProjectedBilledRowWrites);
+  const coldCombinedWriteBudgetAdmissible =
+    coldCombinedProjectedBilledRowWrites <=
+    MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES;
   const coldProjectedBilledRowReads = projectRepairBilledRowReads(
     coldSourceSync.projectedBilledRowReads,
     maximumStaticRepairRows,
     curatedRepairRows.length,
+    marketingSite.rows.length,
     mainAppRepairRows.length,
   );
   assertRepairReadBudget(coldProjectedBilledRowReads);
@@ -1741,6 +2007,22 @@ export function repairSeoCtaTranslations(
     largestCuratedPayloadBytes: curatedRepairPlan.largestPayloadBytes,
     curatedCorpusSha256: curatedRepairPlan.corpusSha256,
     largestCuratedRepairStatementBytes: curatedRepairPlan.largestStatementBytes,
+    marketingSiteTranslationRows: marketingSite.rows.length,
+    marketingSiteRepairStatements:
+      marketingSiteRepairPlan.resetStatements +
+      marketingSiteRepairPlan.patchStatements,
+    marketingSiteRepairLogicalRowWrites:
+      marketingSiteRepairPlan.logicalRowWrites,
+    marketingSitePayloadBytes: marketingSiteRepairPlan.payloadBytes,
+    largestMarketingSitePayloadBytes:
+      marketingSiteRepairPlan.largestPayloadBytes,
+    marketingSiteComposedCorpusSha256:
+      marketingSiteRepairPlan.corpusSha256,
+    marketingSiteDeltaCorpusSha256:
+      marketingSiteRepairPlan.deltaCorpusSha256,
+    marketingSiteModel: marketingSiteRepairPlan.model,
+    largestMarketingSiteRepairStatementBytes:
+      marketingSiteRepairPlan.largestStatementBytes,
     mainAppTranslationRows: mainAppRepairRows.length,
     mainAppRepairStatements:
       mainAppRepairPlan.resetStatements + mainAppRepairPlan.patchStatements,
@@ -1757,6 +2039,13 @@ export function repairSeoCtaTranslations(
     largestAtomicSqlStatementBytes: largestSqlStatementBytes(coldAtomicSql),
     d1FileImportByteLimit: maximumD1FileImportBytes,
     executionMode: "single-transaction-wrangler-import" as const,
+    exactTranslationPartitions: {
+      curatedSiteRows: LEGACY_MARKETING_SITE_EXPECTED_CURATED_SITE_ROW_COUNT,
+      marketingSiteRows: LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT,
+      siteRows: LEGACY_MARKETING_SITE_EXPECTED_SITE_ROW_COUNT,
+      mainAppRows: LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT,
+      finalRows: LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT,
+    },
     maintenance: {
       runtime: "native-cloudflare-worker" as const,
       openNext: false as const,
@@ -1767,9 +2056,17 @@ export function repairSeoCtaTranslations(
     sourceSyncStatements: coldSourceSync.statements,
     sourceSyncLogicalRowWrites: coldSourceSync.logicalRowWrites,
     staticRepairRows: maximumStaticRepairRows,
-    projectionBasis: "cold-manifest" as const,
-    projectedBilledRowWrites: coldProjectedBilledRowWrites,
+    // A completely empty D1 cannot fit both the source snapshot and the full
+    // translation corpus into one Free-plan write day. Local verification
+    // proves the immutable corpus and its translation-only ceiling while
+    // reporting that cold combined fact explicitly. Only the remote-diff path
+    // can admit a mutation, after measuring live source drift under the
+    // maximum ledger reservation and the native write freeze.
+    projectionBasis: "local-static-proof" as const,
+    projectedBilledRowWrites: localTranslationProjectedBilledRowWrites,
     projectedBilledRowWriteLimit: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+    coldCombinedProjectedBilledRowWrites,
+    coldCombinedWriteBudgetAdmissible,
     projectedBilledRowReads: coldProjectedBilledRowReads,
     projectedBilledRowReadLimit: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
   };
@@ -1820,6 +2117,7 @@ export function repairSeoCtaTranslations(
     repairSqlSha256: sha256(completeRepairSql),
     sourceSyncSha256: coldSourceSync.sha256,
     curatedCorpusSha256: curatedRepairPlan.corpusSha256,
+    marketingSiteCorpusSha256: marketingSiteRepairPlan.corpusSha256,
   });
   const budgetOperationId = translationRepairBudgetOperationId({
     candidateVersionId: releasePreflight.candidateVersionId,
@@ -1857,6 +2155,7 @@ export function repairSeoCtaTranslations(
   let importResponseConfirmed = false;
   let importVerification: ImportVerificationState = "not-attempted";
   let productionVerification: ReturnType<typeof verifyRemoteRepair> | null = null;
+  let d1StorageAdmission: D1StorageAdmissionProjection | undefined;
   let timeTravelBookmark = "";
   let preWriteEvidencePath = "";
   let staticRepairRows = 0;
@@ -1873,13 +2172,13 @@ export function repairSeoCtaTranslations(
   try {
     assertNoLiveProductionValidationLock();
     maintenanceExclusion = acquireProductionValidationExclusion({
-      candidateVersionId: releasePreflight.candidateVersionId,
+      candidateVersionId: releasePreflight.serviceBaselineVersionId,
       sourceFingerprintSha256: releasePreflight.sourceFingerprint.sha256,
     });
     assertProductionValidationExclusionCommandWindow(maintenanceExclusion);
     maintenanceVersionId = uploadNativeMaintenanceVersion(releasePreflight);
     maintenanceState = {
-      candidateVersionId: releasePreflight.candidateVersionId,
+      candidateVersionId: releasePreflight.serviceBaselineVersionId,
       lockRunId: maintenanceExclusion.owner.runId,
       maintenanceVersionId,
       repairRunId: maintenanceRepairRunId,
@@ -1910,6 +2209,7 @@ export function repairSeoCtaTranslations(
     staticRepairRows = validateRemoteRepairTargets(
       translations,
       curatedRepairRows,
+      marketingSite,
       mainAppRepairRows,
       meteredReadOnlyRunner,
     );
@@ -1919,6 +2219,7 @@ export function repairSeoCtaTranslations(
       sourceSync.projectedBilledRowWrites,
       staticRepairRows,
       curatedRepairPlan.logicalRowWrites,
+      marketingSiteRepairPlan.logicalRowWrites,
       mainAppRepairPlan.logicalRowWrites,
     );
     assertRepairWriteBudget(projectedBilledRowWrites);
@@ -1926,6 +2227,7 @@ export function repairSeoCtaTranslations(
       sourceSync.projectedBilledRowReads,
       staticRepairRows,
       curatedRepairRows.length,
+      marketingSite.rows.length,
       mainAppRepairRows.length,
     );
     assertRepairReadBudget(projectedBilledRowReads);
@@ -1935,6 +2237,20 @@ export function repairSeoCtaTranslations(
       rowsWritten: projectedBilledRowWrites,
     });
     remoteAtomicSql = buildAtomicSeoCtaRepairSql(sourceSync.sql, completeRepairSql);
+    const exactTranslationStorageRows = buildExactTranslationStorageRows({
+      curatedRows: curatedRepairRows,
+      marketingSite,
+      mainAppRows: mainAppRepairRows,
+    });
+    const exactSourceStorageEntries = buildSiteSourceStorageEntries();
+    const initialD1DatabaseStorageInfo = assertExactProductionD1StorageIdentity(
+      readD1DatabaseStorageInfo(runWrangler),
+    );
+    d1StorageAdmission = buildExactD1StorageAdmission({
+      database: initialD1DatabaseStorageInfo,
+      translationRows: exactTranslationStorageRows,
+      sourceEntries: exactSourceStorageEntries,
+    });
     timeTravelBookmark = parseD1TimeTravelBookmark(
       runWrangler([
         "d1",
@@ -1955,6 +2271,7 @@ export function repairSeoCtaTranslations(
       activeProbe,
       projectedBilledRowReads,
       projectedBilledRowWrites,
+      d1StorageAdmission,
       d1ReleaseBudget: budgetReservation,
     });
 
@@ -1962,11 +2279,23 @@ export function repairSeoCtaTranslations(
       remoteAtomicSql,
       "atomic-seo-cta-translation-repair.sql",
     );
+    const initialAtomicSqlAttestation = attestTemporarySqlFile(
+      atomicSqlPath,
+      remoteAtomicSql,
+    );
+    let atomicSqlRemoved = false;
+    let atomicSqlOperationError: unknown;
     try {
       // D1's import path is the one unavoidable database maintenance window.
       // The native Worker is already write-frozen and the diagnostic bookmark is
       // durably recorded before this single transactional import begins.
       const liveArtifacts = assertRepairArtifactEvidenceUnchanged(releasePreflight);
+      assertTranslationRepairPayloadInputsUnchanged({
+        expectedCuratedCorpusSha256: curatedRepairPlan.corpusSha256,
+        expectedMarketingSiteCorpusSha256:
+          marketingSiteRepairPlan.corpusSha256,
+        expectedMainAppRepairSqlSha256: sha256(mainAppRepairPlan.sql),
+      });
       const liveSourceFingerprint = releaseBudgetSourceIdentity(
         liveArtifacts.sourceFingerprint,
       );
@@ -1976,6 +2305,7 @@ export function repairSeoCtaTranslations(
         repairSqlSha256: sha256(completeRepairSql),
         sourceSyncSha256: coldSourceSync.sha256,
         curatedCorpusSha256: curatedRepairPlan.corpusSha256,
+        marketingSiteCorpusSha256: marketingSiteRepairPlan.corpusSha256,
       });
       const liveOperationId = translationRepairBudgetOperationId({
         candidateVersionId: releasePreflight.candidateVersionId,
@@ -2012,10 +2342,33 @@ export function repairSeoCtaTranslations(
       }
       maintenanceExclusion = attestProductionValidationExclusion(maintenanceExclusion);
       assertProductionValidationExclusionCommandWindow(maintenanceExclusion);
+      d1StorageAdmission = revalidateExactD1StorageAdmission({
+        initialDatabase: initialD1DatabaseStorageInfo,
+        currentDatabase: readD1DatabaseStorageInfo(runWrangler),
+        translationRows: exactTranslationStorageRows,
+        sourceEntries: exactSourceStorageEntries,
+      });
+      try {
+        const immediatelyBeforeImport = attestTemporarySqlFile(
+          atomicSqlPath,
+          remoteAtomicSql,
+        );
+        assertSameTemporarySqlFileAttestation(
+          initialAtomicSqlAttestation,
+          immediatelyBeforeImport,
+        );
+      } catch (error) {
+        importVerification = "indeterminate";
+        throw new TemporarySqlFileIntegrityError(
+          "The atomic translation SQL file failed exact attestation immediately before Wrangler could consume it.",
+          { cause: error },
+        );
+      }
       importAttempted = true;
       let importTransportError: unknown;
+      let importOutput: string | undefined;
       try {
-        const importOutput = runBoundedMutationWrangler(
+        importOutput = runBoundedMutationWrangler(
           [
             "d1",
             "execute",
@@ -2028,15 +2381,67 @@ export function repairSeoCtaTranslations(
           ],
           { maxBuffer: 128 * 1024 * 1024 },
         );
-        importBilling = parseD1Billing(importOutput, {
-          label: "atomic translation import",
-          expectedResultSets: 1,
-        });
-        importResponseConfirmed = true;
       } catch (error) {
         // The ingestion may have committed even if Wrangler lost its final
         // poll response. Exact verification below is authoritative.
         importTransportError = error;
+      }
+      let immediatelyAfterImport: ReturnType<typeof attestTemporarySqlFile>;
+      try {
+        immediatelyAfterImport = attestTemporarySqlFile(
+          atomicSqlPath,
+          remoteAtomicSql,
+        );
+        assertSameTemporarySqlFileAttestation(
+          initialAtomicSqlAttestation,
+          immediatelyAfterImport,
+        );
+      } catch (error) {
+        importVerification = "indeterminate";
+        throw new TemporarySqlFileIntegrityError(
+          "The atomic translation SQL file changed while Wrangler could consume it; production state is indeterminate and must be verified before retry.",
+          {
+            cause:
+              importTransportError === undefined
+                ? error
+                : new AggregateError(
+                    [importTransportError, error],
+                    "Wrangler and atomic SQL attestation both failed.",
+                  ),
+          },
+        );
+      }
+      try {
+        removeAttestedTemporarySqlFile(
+          immediatelyAfterImport,
+          remoteAtomicSql,
+        );
+        atomicSqlRemoved = true;
+      } catch (error) {
+        importVerification = "indeterminate";
+        throw new TemporarySqlFileIntegrityError(
+          "The attested atomic translation SQL file could not be removed through its exact private-file identity.",
+          {
+            cause:
+              importTransportError === undefined
+                ? error
+                : new AggregateError(
+                    [importTransportError, error],
+                    "Wrangler and atomic SQL cleanup both failed.",
+                  ),
+          },
+        );
+      }
+      if (importOutput !== undefined) {
+        try {
+          importBilling = parseD1Billing(importOutput, {
+            label: "atomic translation import",
+            expectedResultSets: 1,
+          });
+          importResponseConfirmed = true;
+        } catch (error) {
+          importTransportError = error;
+        }
       }
       maintenanceExclusion = attestProductionValidationExclusion(maintenanceExclusion);
       assertProductionValidationExclusionCommandWindow(maintenanceExclusion);
@@ -2044,6 +2449,7 @@ export function repairSeoCtaTranslations(
         productionVerification = verifyRemoteRepair(
           translations,
           curatedRepairRows,
+          marketingSite,
           mainAppRepairRows,
           meteredReadOnlyRunner,
         );
@@ -2069,8 +2475,34 @@ export function repairSeoCtaTranslations(
             : "Imported translation state could not be verified deterministically.",
         );
       }
-    } finally {
-      fs.rmSync(path.dirname(atomicSqlPath), { recursive: true, force: true });
+    } catch (error) {
+      atomicSqlOperationError = error;
+    }
+    if (!atomicSqlRemoved) {
+      try {
+        removeAttestedTemporarySqlFile(
+          initialAtomicSqlAttestation,
+          remoteAtomicSql,
+        );
+        atomicSqlRemoved = true;
+      } catch (error) {
+        importVerification = "indeterminate";
+        atomicSqlOperationError = new TemporarySqlFileIntegrityError(
+          "The atomic translation SQL file could not be securely cleaned up through its original attestation.",
+          {
+            cause:
+              atomicSqlOperationError === undefined
+                ? error
+                : new AggregateError(
+                    [atomicSqlOperationError, error],
+                    "Atomic SQL operation and exact cleanup both failed.",
+                  ),
+          },
+        );
+      }
+    }
+    if (atomicSqlOperationError !== undefined) {
+      throw atomicSqlOperationError;
     }
   } catch (error) {
     operationError = error;
@@ -2101,12 +2533,12 @@ export function repairSeoCtaTranslations(
           }
           assertProductionValidationExclusionCommandWindow(maintenanceExclusion);
           deployPinnedWorkerVersion(
-            releasePreflight.candidateVersionId,
-            "Restore exact validated Worker after D1 translation maintenance",
+            releasePreflight.serviceBaselineVersionId,
+            "Restore exact service baseline after D1 translation maintenance",
           );
           releasedProbe = probeNativeWriteFreeze(
             false,
-            releasePreflight.candidateVersionId,
+            releasePreflight.serviceBaselineVersionId,
           );
           if (!maintenanceState) {
             throw new Error("Remote translation repair lost its durable maintenance state before resolution.");
@@ -2203,6 +2635,8 @@ export function repairSeoCtaTranslations(
       importVerification,
       responseRecoveredByVerification: importAttempted && !importResponseConfirmed,
       candidateVersionId: releasePreflight.candidateVersionId,
+      serviceBaselineVersionId: releasePreflight.serviceBaselineVersionId,
+      uploadEvidenceSha256: releasePreflight.uploadEvidenceSha256,
       maintenanceVersionId,
       releasePreflightEvidencePath: releasePreflight.evidencePath,
       sourceFingerprintSha256: releasePreflight.sourceFingerprint.sha256,
@@ -2235,6 +2669,7 @@ export function repairSeoCtaTranslations(
         ? "maximum-retained-metered"
         : "maximum-retained-import-unmetered",
     },
+    d1StorageAdmission,
     productionVerification,
   };
   writeReport(report, options.backupDir);
@@ -2314,7 +2749,7 @@ export function buildPinnedWorkerVersionDeployArgs(versionId: string, message: s
   ];
 }
 
-function uploadNativeMaintenanceVersion(preflight: RemoteRepairReleasePreflight) {
+export function uploadNativeMaintenanceVersion(preflight: RemoteRepairReleasePreflight) {
   fs.mkdirSync(path.resolve(process.cwd(), "tmp"), { recursive: true, mode: 0o700 });
   const temporaryDirectory = fs.mkdtempSync(
     path.join(path.resolve(process.cwd(), "tmp"), "native-d1-maintenance-"),
@@ -2394,14 +2829,14 @@ export function assertRepairArtifactEvidenceUnchanged(
 function assertRemoteRepairActivationPreflight(preflight: RemoteRepairReleasePreflight) {
   assertRepairArtifactEvidenceUnchanged(preflight);
   const activeVersionId = requireSoleActiveWorkerVersion();
-  if (activeVersionId !== preflight.candidateVersionId) {
+  if (activeVersionId !== preflight.serviceBaselineVersionId) {
     throw new Error(
-      `Remote translation repair candidate changed before maintenance activation: expected ${preflight.candidateVersionId}, received ${activeVersionId}.`,
+      `Remote translation repair service baseline changed before maintenance activation: expected ${preflight.serviceBaselineVersionId}, received ${activeVersionId}.`,
     );
   }
 }
 
-function deployPinnedWorkerVersion(versionId: string, message: string) {
+export function deployPinnedWorkerVersion(versionId: string, message: string) {
   let deployError: unknown;
   try {
     runBoundedMutationWrangler(buildPinnedWorkerVersionDeployArgs(versionId, message), {
@@ -2423,7 +2858,7 @@ function deployPinnedWorkerVersion(versionId: string, message: string) {
   }
 }
 
-function runBoundedMutationWrangler(
+export function runBoundedMutationWrangler(
   args: string[],
   options: RunCommandOptions = {},
 ) {
@@ -2631,11 +3066,21 @@ export function validateWorkerDeployEvidenceForRepair(input: {
   };
 }
 
-export function assertRemoteRepairReleasePreflight(input: {
+function assertRemoteRepairReleasePreflight(input: {
   backupDir: string;
   candidateVersionId: string;
 }): RemoteRepairReleasePreflight {
   const candidateVersionId = requireWorkerVersion(input.candidateVersionId);
+  const backupDir = path.resolve(input.backupDir);
+  const upload = readWorkerCandidateUploadEvidence(
+    workerCandidateUploadEvidencePath(backupDir),
+  );
+  if (upload.value.targetCandidateVersionId !== candidateVersionId) {
+    throw new Error(
+      `Remote translation repair expected uploaded candidate ${candidateVersionId}; canonical upload evidence names ${upload.value.targetCandidateVersionId}.`,
+    );
+  }
+  const serviceBaselineVersionId = upload.value.serviceBaselineVersionId;
   const dirty = runGit(["status", "--porcelain=v1", "--untracked-files=all"]);
   if (dirty.trim()) {
     throw new Error("Remote translation repair requires a clean git working tree.");
@@ -2672,37 +3117,49 @@ export function assertRemoteRepairReleasePreflight(input: {
   }
 
   const activeVersionId = requireSoleActiveWorkerVersion();
-  if (activeVersionId !== candidateVersionId) {
+  if (activeVersionId !== serviceBaselineVersionId) {
     throw new Error(
-      `Remote translation repair expected candidate ${candidateVersionId} at 100% traffic; received ${activeVersionId}.`,
+      `Remote translation repair requires service baseline ${serviceBaselineVersionId} alone at 100% while candidate ${candidateVersionId} remains inactive; received ${activeVersionId}.`,
     );
   }
-  const candidateProbe = probeNativeWriteFreeze(false, candidateVersionId);
+  const candidateProbe = probeNativeWriteFreeze(false, serviceBaselineVersionId);
   const currentArtifactEvidence = buildWorkerDeployArtifactEvidence(process.cwd());
   const sourceFingerprint = currentArtifactEvidence.sourceFingerprint;
-  const workerDeployReportPath = path.resolve(input.backupDir, WORKER_DEPLOY_REPORT);
-  const workerDeployEvidence = validateWorkerDeployEvidenceForRepair({
-    report: readPrivateWorkerDeployEvidence(workerDeployReportPath),
-    backupDir: input.backupDir,
+  const workerDeployReportPath = upload.path;
+  const workerDeployEvidence: WorkerDeployRepairEvidence = {
+    createdAt: upload.value.createdAt,
+    backupDir,
     candidateVersionId,
-    currentArtifactEvidence,
-  });
-  const currentRelease = {
-    candidateVersionId,
-    activeVersionId,
+    sourceFingerprintSha256: currentArtifactEvidence.sourceFingerprint.sha256,
+    sourceFingerprintFileCount: currentArtifactEvidence.sourceFingerprint.fileCount,
+    workerSourceSha256: currentArtifactEvidence.workerSourceSha256,
+    wranglerConfigSha256: currentArtifactEvidence.wranglerConfigSha256,
+    assetManifest: currentArtifactEvidence.assetManifest,
+    activeDeploymentReadAt: upload.value.createdAt,
+  };
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: candidateVersionId,
+    serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    phaseEvidenceSha256: upload.sha256,
+    phaseEvidenceCreatedAt: upload.value.createdAt,
+    soleServingVersionId: serviceBaselineVersionId,
     git: {
       head: gitHead.toLowerCase(),
       upstream: gitUpstream.toLowerCase(),
       upstreamRef: gitUpstreamRef,
     },
     artifactEvidence: currentArtifactEvidence,
-  } satisfies VectorizeReadinessCurrentRelease;
+  };
+  assertReleaseSequenceCurrentReleaseBinding({ backupDir, currentRelease });
   assertFreshProductionVectorizeReadiness({
-    backupDir: input.backupDir,
+    backupDir,
     currentRelease,
+    requiredPhase: "uploaded-inactive",
   });
   assertProductionTopicReconciliationReleaseBinding({
-    backupDir: input.backupDir,
+    backupDir,
     currentRelease,
   });
   const createdAt = new Date().toISOString();
@@ -2715,6 +3172,8 @@ export function assertRemoteRepairReleasePreflight(input: {
     runId,
     createdAt,
     candidateVersionId,
+    serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
     activeVersionId,
     gitHead,
     gitUpstream,
@@ -2788,7 +3247,7 @@ function resolveWorkerVersionIdByTag(versionTag: string) {
   return matches[0] ?? null;
 }
 
-function requireSoleActiveWorkerVersion() {
+export function requireSoleActiveWorkerVersion() {
   const parsed = objectRecord(
     parseJsonContainer(
       runWrangler(["deployments", "status", "--name", workerName, "--json"]),
@@ -2982,7 +3441,7 @@ export function validateNativeMaintenanceProbe(
   return probe;
 }
 
-function probeNativeWriteFreeze(expectedActive: boolean, expectedVersionId?: string) {
+export function probeNativeWriteFreeze(expectedActive: boolean, expectedVersionId?: string) {
   const probeScript = String.raw`
 const origin = process.argv[1];
 const healthResponse = await fetch(origin + "/api/health", {
@@ -3048,6 +3507,7 @@ export function writePreWriteDiagnosticEvidence(input: {
   activeProbe: NativeMaintenanceProbe;
   projectedBilledRowReads: number;
   projectedBilledRowWrites: number;
+  d1StorageAdmission?: D1StorageAdmissionProjection;
   d1ReleaseBudget?: D1ReleaseBudgetReservationResult;
 }) {
   if (!isValidD1TimeTravelBookmark(input.bookmark)) {
@@ -3078,6 +3538,9 @@ export function writePreWriteDiagnosticEvidence(input: {
     );
   }
   assertNoUnresolvedTranslationRepair(input.backupDir);
+  if (input.d1StorageAdmission) {
+    assertD1FreeStorageAdmission(input.d1StorageAdmission);
+  }
   const createdAt = new Date().toISOString();
   const evidence = {
     kind: "d1-translation-repair-prewrite-evidence",
@@ -3099,6 +3562,7 @@ export function writePreWriteDiagnosticEvidence(input: {
     largestStatementBytes: largestSqlStatementBytes(input.atomicSql),
     projectedBilledRowReads: input.projectedBilledRowReads,
     projectedBilledRowWrites: input.projectedBilledRowWrites,
+    d1StorageAdmission: input.d1StorageAdmission,
     d1ReleaseBudget: input.d1ReleaseBudget
       ? {
           ledgerPath: input.d1ReleaseBudget.ledgerPath,
@@ -3141,7 +3605,7 @@ export function assertNoUnresolvedTranslationRepair(backupDir: string) {
   }
 }
 
-function resolveUnresolvedTranslationRepair(input: {
+export function resolveUnresolvedTranslationRepair(input: {
   backupDir: string;
   evidencePath: string;
   candidateVersionId: string;
@@ -3196,22 +3660,43 @@ function fsyncDirectory(directory: string) {
   }
 }
 
-type CuratedPackEntry = {
+export type CuratedPackEntry = {
   key: string;
   source: string;
   value: string;
 };
 
-type CuratedPack = {
+export type CuratedPackProvenance = {
+  kind: string;
+  pipelineVersion: string;
+  executionProfileSha256: string;
+  protectorVersion: string;
+  protectorSha256: string;
+  masterWorklistSha256: string;
+  packWorklistSha256: string;
+  jobSha256: string;
+  sourceEntriesSha256: string;
+  modelSha256: string;
+  pipelineImplementationSha256: string;
+  workerImplementationSha256: string;
+  validatorPolicySha256: string;
+  candidateSha256: string;
+  provenanceSha256: string;
+};
+
+export type CuratedPack = {
   schemaVersion: number;
   language: string;
   locale: string;
   namespace: string;
   sourceHash: string;
-  entries: CuratedPackEntry[];
+  model?: string;
+  provenance?: CuratedPackProvenance;
+  entries?: readonly CuratedPackEntry[];
+  translations?: Readonly<Record<string, string>>;
 };
 
-type CuratedPackIdentifier = {
+export type CuratedPackIdentifier = {
   namespace: keyof typeof siteSourceManifest | typeof mainAppTranslationNamespace;
   language: SupportedLanguage;
   file: string;
@@ -3223,10 +3708,7 @@ export function getExactCuratedPackIdentifiers(): CuratedPackIdentifier[] {
   for (const namespace of Object.keys(siteSourceManifest)
     .filter((value) => value !== siteTranslationNamespace)
     .sort()) {
-    const languages = fullCoverageCuratedNamespaces.has(namespace)
-      ? targetLanguages
-      : bootstrapCuratedLanguages;
-    for (const language of languages) {
+    for (const language of targetLanguages) {
       siteIdentifiers.push({
         namespace: namespace as keyof typeof siteSourceManifest,
         language,
@@ -3245,6 +3727,29 @@ export function getExactCuratedPackIdentifiers(): CuratedPackIdentifier[] {
     const key = translationIdentifier(identifier.namespace, identifier.language);
     if (seen.has(key)) throw new Error(`Duplicate expected curated pack ${key}.`);
     seen.add(key);
+  }
+  return identifiers;
+}
+
+export function isGrandfatheredEntryCuratedPackIdentifier(
+  identifier: Readonly<{ namespace: string; language: SupportedLanguage }>,
+) {
+  return (
+    identifier.namespace !== mainAppTranslationNamespace &&
+    (grandfatheredEntryNamespaces.has(identifier.namespace) ||
+      grandfatheredEntryLanguages.has(identifier.language))
+  );
+}
+
+export function getGrandfatheredEntryCuratedPackIdentifiers() {
+  const identifiers = getExactCuratedPackIdentifiers().filter(
+    isGrandfatheredEntryCuratedPackIdentifier,
+  );
+  if (identifiers.length !== expectedGrandfatheredEntryCuratedPackCount) {
+    throw new Error(
+      `Grandfathered entry-form curated-pack contract drifted: ` +
+        `${identifiers.length}/${expectedGrandfatheredEntryCuratedPackCount}.`,
+    );
   }
   return identifiers;
 }
@@ -3269,7 +3774,6 @@ export function loadCuratedNamespaceRepairRows(): CuratedNamespaceRepairRow[] {
         `Curated pack metadata is stale or invalid for ${identifier.namespace}/${identifier.language}.`,
       );
     }
-
     const payload = buildExactCuratedPackPayload(parsed, source.sourceStrings, identifier);
     const bundle = {
       namespace: identifier.namespace,
@@ -3354,13 +3858,36 @@ function collectCuratedJsonFiles(directory: string): string[] {
   return files;
 }
 
-function buildExactCuratedPackPayload(
+export function buildExactCuratedPackPayload(
   pack: CuratedPack,
   sourceStrings: Readonly<Record<string, string>>,
   identifier: CuratedPackIdentifier,
 ) {
+  const targetLanguage = identifier.language;
+  if (targetLanguage === defaultLanguage) {
+    throw new Error("Curated translation repair cannot load an English target pack.");
+  }
+  if (pack.entries !== undefined) {
+    if (!isGrandfatheredEntryCuratedPackIdentifier(identifier)) {
+      throw new Error(
+        `Curated pack representation downgrade is forbidden for ` +
+          `${identifier.namespace}/${identifier.language}; immutable compact provenance is required.`,
+      );
+    }
+    if (
+      !pack.model ||
+      !LEGACY_MARKETING_SITE_GRANDFATHERED_ENTRY_MODELS.some(
+        (model) => model === pack.model,
+      )
+    ) {
+      throw new Error(
+        `Curated entry-form pack model is not explicitly grandfathered for ` +
+          `${identifier.namespace}/${identifier.language}.`,
+      );
+    }
+  }
   const values = new Map<string, string>();
-  for (const entry of pack.entries) {
+  for (const entry of pack.entries ?? []) {
     if (!(entry.key in sourceStrings)) {
       throw new Error(
         `Curated pack contains an unexpected key for ${identifier.namespace}/${identifier.language}/${entry.key}.`,
@@ -3392,6 +3919,29 @@ function buildExactCuratedPackPayload(
     values.set(entry.key, entry.value);
   }
 
+  for (const [key, value] of Object.entries(pack.translations ?? {})) {
+    const source = sourceStrings[key];
+    if (source === undefined) {
+      throw new Error(
+        `Curated pack contains an unexpected key for ${identifier.namespace}/${identifier.language}/${key}.`,
+      );
+    }
+    if (values.has(key)) {
+      throw new Error(
+        `Curated pack contains a duplicate key for ${identifier.namespace}/${identifier.language}/${key}.`,
+      );
+    }
+    if (
+      value !== value.normalize("NFC") ||
+      !isValidFieldTranslation(source, value, identifier.language, key)
+    ) {
+      throw new Error(
+        `Curated pack value is invalid for ${identifier.namespace}/${identifier.language}/${key}.`,
+      );
+    }
+    values.set(key, value);
+  }
+
   const sourceKeys = Object.keys(sourceStrings).sort();
   if (values.size !== sourceKeys.length) {
     throw new Error(
@@ -3409,10 +3959,149 @@ function buildExactCuratedPackPayload(
     }
     payload[key] = value;
   }
+  const source = {
+    namespace: identifier.namespace,
+    sourceHash: pack.sourceHash,
+    sourceStrings,
+  };
+  const bundle = {
+    namespace: identifier.namespace,
+    language: identifier.language,
+    sourceHash: pack.sourceHash,
+    sourceStrings,
+    strings: payload,
+  };
+  if (
+    !isTranslationBundleFieldValid(source, bundle, identifier.language) ||
+    !isTranslationBundleCompleteAndFluent(source, bundle, identifier.language)
+  ) {
+    throw new Error(
+      `Curated pack failed exact field or fluent bundle validation for ` +
+        `${identifier.namespace}/${identifier.language}.`,
+    );
+  }
+  if (pack.translations) {
+    for (const key of sourceKeys) {
+      const sourceText = sourceStrings[key];
+      const value = payload[key];
+      const candidateFailures = validateTranslationCandidateField({
+        language: targetLanguage,
+        source: sourceText,
+        value,
+      }).failures;
+      if (
+        candidateFailures.length > 0 ||
+        !hasExactLongTailInvariantParity(sourceText, value) ||
+        !isValidFieldTranslation(sourceText, value, targetLanguage, key) ||
+        !isTranslationFieldLikelyFluent(sourceText, value, targetLanguage, {
+          namespace: identifier.namespace,
+          sourceHash: pack.sourceHash,
+          key,
+        })
+      ) {
+        throw new Error(
+          `Promoted compact pack failed strict candidate preservation for ` +
+            `${identifier.namespace}/${identifier.language}/${key}.`,
+        );
+      }
+    }
+    assertPromotedCompactCuratedPackProvenance(
+      pack,
+      payload,
+      sourceStrings,
+      identifier,
+    );
+  }
   return payload;
 }
 
-function parseCuratedPack(file: string): CuratedPack {
+function assertPromotedCompactCuratedPackProvenance(
+  pack: CuratedPack,
+  payload: Readonly<Record<string, string>>,
+  sourceStrings: Readonly<Record<string, string>>,
+  identifier: CuratedPackIdentifier,
+) {
+  const provenance = pack.provenance;
+  if (!pack.model || !provenance) {
+    throw new Error(
+      `Promoted compact pack is missing immutable provenance for ` +
+        `${identifier.namespace}/${identifier.language}.`,
+    );
+  }
+  const sourceEntries = Object.keys(sourceStrings)
+    .sort()
+    .map((key) => {
+      const source = sourceStrings[key];
+      const protectedText = protectLongTailSourceText(source);
+      return {
+        key,
+        source,
+        sourceSha256: sha256(source),
+        invariantSha256: protectedText.invariantSha256,
+        segments: protectedText.segments,
+      };
+    });
+  if (sha256CanonicalJson(sourceEntries) !== provenance.sourceEntriesSha256) {
+    throw new Error(
+      `Promoted compact pack source-entry provenance drifted for ` +
+        `${identifier.namespace}/${identifier.language}.`,
+    );
+  }
+  const candidate = {
+    schemaVersion: 1,
+    kind: longTailCandidateKind,
+    pipelineVersion: longTailPipelineVersion,
+    executionProfileSha256: longTailExecutionProfileSha256,
+    masterWorklistSha256: provenance.masterWorklistSha256,
+    packWorklistSha256: provenance.packWorklistSha256,
+    jobSha256: provenance.jobSha256,
+    language: identifier.language,
+    locale: pack.locale,
+    namespace: identifier.namespace,
+    sourceHash: pack.sourceHash,
+    sourceEntriesSha256: provenance.sourceEntriesSha256,
+    modelLabel: pack.model,
+    modelSha256: provenance.modelSha256,
+    workerImplementationSha256: provenance.workerImplementationSha256,
+    validatorPolicySha256: provenance.validatorPolicySha256,
+    entries: sourceEntries.map((entry) => ({
+      key: entry.key,
+      source: entry.source,
+      sourceSha256: entry.sourceSha256,
+      value: payload[entry.key],
+    })),
+  };
+  if (sha256CanonicalJson(candidate) !== provenance.candidateSha256) {
+    throw new Error(
+      `Promoted compact pack candidate provenance drifted for ` +
+        `${identifier.namespace}/${identifier.language}.`,
+    );
+  }
+  const provenanceMaterial = {
+    kind: provenance.kind,
+    pipelineVersion: provenance.pipelineVersion,
+    executionProfileSha256: provenance.executionProfileSha256,
+    protectorVersion: provenance.protectorVersion,
+    protectorSha256: provenance.protectorSha256,
+    masterWorklistSha256: provenance.masterWorklistSha256,
+    packWorklistSha256: provenance.packWorklistSha256,
+    jobSha256: provenance.jobSha256,
+    sourceEntriesSha256: provenance.sourceEntriesSha256,
+    modelSha256: provenance.modelSha256,
+    pipelineImplementationSha256: provenance.pipelineImplementationSha256,
+    workerImplementationSha256: provenance.workerImplementationSha256,
+    validatorPolicySha256: provenance.validatorPolicySha256,
+    candidateSha256: provenance.candidateSha256,
+  };
+  if (sha256CanonicalJson(provenanceMaterial) !== provenance.provenanceSha256) {
+    throw new Error(
+      `Promoted compact pack provenance digest drifted for ` +
+        `${identifier.namespace}/${identifier.language}.`,
+    );
+  }
+}
+
+export function parseCuratedPack(file: string): CuratedPack {
   let parsed: unknown;
   try {
     parsed = JSON.parse(fs.readFileSync(file, "utf8")) as unknown;
@@ -3425,12 +4114,29 @@ function parseCuratedPack(file: string): CuratedPack {
     typeof parsed.language !== "string" ||
     typeof parsed.locale !== "string" ||
     typeof parsed.namespace !== "string" ||
-    typeof parsed.sourceHash !== "string" ||
-    !Array.isArray(parsed.entries)
+    typeof parsed.sourceHash !== "string"
   ) {
     throw new Error(`Curated pack schema is invalid: ${path.relative(curatedRoot, file)}.`);
   }
-  const entries = parsed.entries.map((entry, index): CuratedPackEntry => {
+  const rawEntries = parsed.entries;
+  const rawTranslations = parsed.translations;
+  const entriesPresent = rawEntries !== undefined;
+  const translationsPresent = rawTranslations !== undefined;
+  if (entriesPresent === translationsPresent) {
+    throw new Error(
+      `Curated pack must contain exactly one translation representation: ${path.relative(curatedRoot, file)}.`,
+    );
+  }
+  if (entriesPresent && !Array.isArray(rawEntries)) {
+    throw new Error(`Curated pack entries are invalid: ${path.relative(curatedRoot, file)}.`);
+  }
+  if (translationsPresent && !isRecord(rawTranslations)) {
+    throw new Error(`Curated pack translations are invalid: ${path.relative(curatedRoot, file)}.`);
+  }
+  if (parsed.model !== undefined && (typeof parsed.model !== "string" || !parsed.model)) {
+    throw new Error(`Curated pack model is invalid: ${path.relative(curatedRoot, file)}.`);
+  }
+  const entries = Array.isArray(rawEntries) ? rawEntries.map((entry, index): CuratedPackEntry => {
     if (
       !isRecord(entry) ||
       typeof entry.key !== "string" ||
@@ -3442,15 +4148,97 @@ function parseCuratedPack(file: string): CuratedPack {
       );
     }
     return { key: entry.key, source: entry.source, value: entry.value };
-  });
+  }) : undefined;
+  const translations: Record<string, string> | undefined = isRecord(rawTranslations) ? {} : undefined;
+  if (isRecord(rawTranslations) && translations) {
+    for (const [key, value] of Object.entries(rawTranslations)) {
+      if (typeof value !== "string") {
+        throw new Error(
+          `Curated pack compact value is invalid for ${key}: ${path.relative(curatedRoot, file)}.`,
+        );
+      }
+      translations[key] = value;
+    }
+  }
+  const provenance =
+    parsed.provenance === undefined
+      ? undefined
+      : parseCuratedPackProvenance(parsed.provenance, file);
   return {
     schemaVersion: parsed.schemaVersion,
     language: parsed.language,
     locale: parsed.locale,
     namespace: parsed.namespace,
     sourceHash: parsed.sourceHash,
+    model: typeof parsed.model === "string" ? parsed.model : undefined,
+    provenance,
     entries,
+    translations,
   };
+}
+
+function parseCuratedPackProvenance(
+  value: unknown,
+  file: string,
+): CuratedPackProvenance {
+  const keys = [
+    "kind",
+    "pipelineVersion",
+    "executionProfileSha256",
+    "protectorVersion",
+    "protectorSha256",
+    "masterWorklistSha256",
+    "packWorklistSha256",
+    "jobSha256",
+    "sourceEntriesSha256",
+    "modelSha256",
+    "pipelineImplementationSha256",
+    "workerImplementationSha256",
+    "validatorPolicySha256",
+    "candidateSha256",
+    "provenanceSha256",
+  ] as const;
+  if (!isRecord(value) || !hasExactObjectKeys(value, keys)) {
+    throw new Error(`Curated pack provenance is invalid: ${path.relative(curatedRoot, file)}.`);
+  }
+  const read = (key: (typeof keys)[number]) => {
+    const entry = value[key];
+    if (typeof entry !== "string" || !entry) {
+      throw new Error(`Curated pack provenance ${key} is invalid: ${path.relative(curatedRoot, file)}.`);
+    }
+    return entry;
+  };
+  const provenance: CuratedPackProvenance = {
+    kind: read("kind"),
+    pipelineVersion: read("pipelineVersion"),
+    executionProfileSha256: read("executionProfileSha256"),
+    protectorVersion: read("protectorVersion"),
+    protectorSha256: read("protectorSha256"),
+    masterWorklistSha256: read("masterWorklistSha256"),
+    packWorklistSha256: read("packWorklistSha256"),
+    jobSha256: read("jobSha256"),
+    sourceEntriesSha256: read("sourceEntriesSha256"),
+    modelSha256: read("modelSha256"),
+    pipelineImplementationSha256: read("pipelineImplementationSha256"),
+    workerImplementationSha256: read("workerImplementationSha256"),
+    validatorPolicySha256: read("validatorPolicySha256"),
+    candidateSha256: read("candidateSha256"),
+    provenanceSha256: read("provenanceSha256"),
+  };
+  if (
+    provenance.kind !== longTailCuratedProvenanceKind ||
+    provenance.pipelineVersion !== longTailPipelineVersion ||
+    provenance.executionProfileSha256 !==
+      longTailExecutionProfileSha256 ||
+    provenance.protectorVersion !== longTailProtectorVersion ||
+    Object.entries(provenance).some(
+      ([key, entry]) =>
+        key.endsWith("Sha256") && !/^[a-f0-9]{64}$/.test(entry),
+    )
+  ) {
+    throw new Error(`Curated pack provenance contract is invalid: ${path.relative(curatedRoot, file)}.`);
+  }
+  return provenance;
 }
 
 function curatedPackPath(language: SupportedLanguage, namespace: string) {
@@ -3460,6 +4248,287 @@ function curatedPackPath(language: SupportedLanguage, namespace: string) {
     config.prefix || config.locale,
     namespace.replace(/[^a-z0-9.-]+/gi, "__") + ".json",
   );
+}
+
+export function loadReleasedMarketingSiteRepairCorpus(
+  repoRoot = process.cwd(),
+): MarketingSiteRepairCorpus {
+  const corpus = buildLegacyMarketingSiteComposedCorpusFromRepository({
+    repoRoot: path.resolve(repoRoot),
+    contract: legacyMarketingSiteContract,
+  });
+  const rows = Object.freeze(corpus.payloads.map((payload) => Object.freeze({
+    namespace: LEGACY_MARKETING_SITE_NAMESPACE,
+    language: payload.language,
+    source_hash: legacyMarketingSiteContract.marketingSourceHash,
+    payload: payload.payloadJson,
+    model: corpus.identity.model,
+  })));
+  const release = Object.freeze({ corpus, rows });
+  assertExactMarketingSiteRepairCorpus(release);
+  return release;
+}
+
+export function assertExactMarketingSiteRepairCorpus(
+  release: MarketingSiteRepairCorpus,
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+) {
+  if (
+    release.rows.length !== LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT ||
+    release.corpus.payloads.length !==
+      LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT
+  ) {
+    throw new Error(
+      `Marketing-site repair requires ${LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT} exact released rows.`,
+    );
+  }
+  const validated = validateLegacyMarketingSiteDatabaseRows({
+    contract,
+    expectedCorpus: release.corpus,
+    rows: release.rows,
+  });
+  if (
+    validated.rows !== LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT ||
+    validated.corpusSha256 !== release.corpus.identity.corpusSha256 ||
+    validated.model !== release.corpus.identity.model
+  ) {
+    throw new Error("Marketing-site repair corpus identity is not exact.");
+  }
+  return validated;
+}
+
+export function buildMarketingSiteRepairPlan(
+  release: MarketingSiteRepairCorpus,
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+): MarketingSiteRepairPlan {
+  assertExactMarketingSiteRepairCorpus(release, contract);
+  const expectedPayloadByLanguage = new Map(
+    release.corpus.payloads.map((payload) => [payload.language, payload]),
+  );
+  const sourceKeys = Object.keys(contract.marketingSourceStrings).sort();
+  const statements = [
+    buildMarketingSiteCardinalityGuardSql(legacyMarketingSiteTargetLanguages),
+  ];
+  let resetStatements = 0;
+  let patchStatements = 0;
+  let payloadBytes = 0;
+  let largestPayloadBytes = 0;
+  for (const row of [...release.rows].sort((left, right) =>
+    left.language.localeCompare(right.language)
+  )) {
+    const expectedPayload = expectedPayloadByLanguage.get(row.language);
+    if (!expectedPayload || expectedPayload.payloadJson !== row.payload) {
+      throw new Error(
+        `Marketing-site repair payload identity drifted for ${row.language}.`,
+      );
+    }
+    measureD1TranslationStorageRow({
+      namespace: row.namespace,
+      language: row.language,
+      sourceHash: row.source_hash,
+      payloadJson: row.payload,
+      model: row.model,
+    });
+    const rowPayloadBytes = assertD1TranslationPayloadSize(
+      Buffer.byteLength(row.payload, "utf8"),
+      `${LEGACY_MARKETING_SITE_NAMESPACE}/${row.language}`,
+    );
+    payloadBytes += rowPayloadBytes;
+    largestPayloadBytes = Math.max(largestPayloadBytes, rowPayloadBytes);
+    statements.push(buildMarketingSiteResetStatement(row));
+    resetStatements += 1;
+    const patches = buildBoundedJsonPatchStatements({
+      namespace: LEGACY_MARKETING_SITE_NAMESPACE,
+      language: row.language,
+      sourceKeys,
+      payload: expectedPayload.payload,
+      buildStatement: (chunkJson) =>
+        buildMarketingSitePatchStatement(row.language, chunkJson),
+    });
+    statements.push(...patches);
+    patchStatements += patches.length;
+  }
+  const sql = statements.join("\n\n");
+  return {
+    sql,
+    rows: release.rows.length,
+    resetStatements,
+    patchStatements,
+    logicalRowWrites: resetStatements + patchStatements,
+    largestStatementBytes: assertD1SqlStatementSize(sql),
+    payloadBytes,
+    largestPayloadBytes,
+    corpusSha256: release.corpus.identity.corpusSha256,
+    deltaCorpusSha256: release.corpus.identity.deltaCorpusSha256,
+    model: release.corpus.identity.model,
+  };
+}
+
+function buildMarketingSiteCardinalityGuardSql(
+  languages: readonly LegacyMarketingSiteTargetLanguage[],
+) {
+  const allowedLanguages = languages.map(sqlString).join(", ");
+  return [
+    "SELECT CASE",
+    `  WHEN COUNT(*) IN (0, ${languages.length})`,
+    `    AND COALESCE(SUM(CASE WHEN language IN (${allowedLanguages}) THEN 1 ELSE 0 END), 0) = COUNT(*)`,
+    "  THEN json('{}')",
+    "  ELSE json('marketing-site-cardinality-guard-failed')",
+    "END AS marketing_site_cardinality_guard",
+    "FROM app_translations",
+    `WHERE namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)};`,
+  ].join("\n");
+}
+
+function buildMarketingSiteResetStatement(row: MarketingSiteRepairRow) {
+  const now = "CAST(strftime('%s', 'now') AS INTEGER) * 1000";
+  return [
+    "INSERT INTO app_translations",
+    "  (namespace, language, source_hash, payload, model, created_at, updated_at)",
+    "VALUES",
+    `  (${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}, ${sqlString(row.language)}, ${sqlString(row.source_hash)},`,
+    `   json('{}'), ${sqlString(row.model)}, ${now}, ${now})`,
+    "ON CONFLICT(namespace, language) DO UPDATE SET",
+    "  source_hash = excluded.source_hash,",
+    "  payload = excluded.payload,",
+    "  model = excluded.model,",
+    "  updated_at = excluded.updated_at;",
+  ].join("\n");
+}
+
+function buildMarketingSitePatchStatement(
+  language: LegacyMarketingSiteTargetLanguage,
+  chunkJson: string,
+) {
+  return [
+    "UPDATE app_translations",
+    `SET payload = json_patch(payload, json(${sqlString(chunkJson)}))`,
+    `WHERE namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}`,
+    `  AND language = ${sqlString(language)};`,
+  ].join("\n");
+}
+
+export function buildExactTranslationStorageRows(input: {
+  curatedRows: readonly CuratedNamespaceRepairRow[];
+  marketingSite: MarketingSiteRepairCorpus;
+  mainAppRows: readonly MainAppRepairRow[];
+  marketingContract?: LegacyMarketingSiteContract;
+}): D1TranslationStorageRow[] {
+  assertExactCuratedExpectedRows(input.curatedRows);
+  assertExactMarketingSiteRepairCorpus(
+    input.marketingSite,
+    input.marketingContract ?? legacyMarketingSiteContract,
+  );
+  assertExactMainAppExpectedRows(input.mainAppRows);
+  const rows: D1TranslationStorageRow[] = [
+    ...input.curatedRows.map((row) => ({
+      namespace: row.namespace,
+      language: row.language,
+      sourceHash: row.sourceHash,
+      payloadJson: canonicalPayloadJson(row.payload),
+      model: curatedRepairModel,
+    })),
+    ...input.marketingSite.rows.map((row) => ({
+      namespace: row.namespace,
+      language: row.language,
+      sourceHash: row.source_hash,
+      payloadJson: row.payload,
+      model: row.model,
+    })),
+    ...input.mainAppRows.map((row) => ({
+      namespace: row.namespace,
+      language: row.language,
+      sourceHash: row.sourceHash,
+      payloadJson: canonicalPayloadJson(row.payload),
+      model: mainAppRepairModel,
+    })),
+  ];
+  if (
+    rows.length !== LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT
+  ) {
+    throw new Error(
+      `Exact D1 translation storage projection requires ${LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT} rows; received ${rows.length}.`,
+    );
+  }
+  for (const row of rows) measureD1TranslationStorageRow(row);
+  return rows;
+}
+
+export function assertExactProductionD1StorageIdentity(
+  database: D1DatabaseStorageInfo,
+) {
+  if (
+    database.databaseName !== D1_DATABASE_NAME ||
+    database.databaseUuid.toLowerCase() !== D1_DATABASE_ID
+  ) {
+    throw new Error(
+      "D1 storage admission does not identify the configured production database.",
+    );
+  }
+  return database;
+}
+
+export function buildExactD1StorageAdmission(input: {
+  database: D1DatabaseStorageInfo;
+  translationRows: readonly D1TranslationStorageRow[];
+  sourceEntries: readonly D1SourceStorageEntry[];
+}) {
+  assertExactProductionD1StorageIdentity(input.database);
+  if (
+    input.translationRows.length !==
+    LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT
+  ) {
+    throw new Error(
+      `Exact D1 storage admission requires ${LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT} translation rows; received ${input.translationRows.length}.`,
+    );
+  }
+  const identifiers = new Set(
+    input.translationRows.map((row) => `${row.namespace}\0${row.language}`),
+  );
+  if (identifiers.size !== input.translationRows.length) {
+    throw new Error("Exact D1 storage admission contains duplicate translation rows.");
+  }
+  return assertD1FreeStorageAdmission(
+    projectD1FreeStorageAdmission({
+      database: input.database,
+      translationRows: input.translationRows,
+      sourceEntries: input.sourceEntries,
+    }),
+  );
+}
+
+export function revalidateExactD1StorageAdmission(input: {
+  initialDatabase: D1DatabaseStorageInfo;
+  currentDatabase: D1DatabaseStorageInfo;
+  translationRows: readonly D1TranslationStorageRow[];
+  sourceEntries: readonly D1SourceStorageEntry[];
+}) {
+  const initialDatabase = assertExactProductionD1StorageIdentity(
+    input.initialDatabase,
+  );
+  if (
+    input.currentDatabase.databaseName !== initialDatabase.databaseName ||
+    input.currentDatabase.databaseUuid.toLowerCase() !==
+      initialDatabase.databaseUuid.toLowerCase()
+  ) {
+    throw new Error("D1 storage admission database identity changed before import.");
+  }
+  const currentDatabase = assertExactProductionD1StorageIdentity(
+    input.currentDatabase,
+  );
+  return buildExactD1StorageAdmission({
+    database: currentDatabase,
+    translationRows: input.translationRows,
+    sourceEntries: input.sourceEntries,
+  });
+}
+
+export function buildSiteSourceStorageEntries(): D1SourceStorageEntry[] {
+  return Object.entries(siteSourceManifest).map(([namespace, source]) => ({
+    namespace,
+    sourceHash: source.sourceHash,
+    sourceStrings: source.sourceStrings,
+  }));
 }
 
 export function loadMainAppRepairRows(): MainAppRepairRow[] {
@@ -3515,6 +4584,59 @@ export function loadMainAppRepairRows(): MainAppRepairRow[] {
   }
 
   return rows;
+}
+
+/**
+ * Re-reads and revalidates every translation payload immediately before the
+ * atomic import. This binds the already-built SQL to the same reviewed corpus
+ * that exists after the final clean/pushed artifact gate, closing the window
+ * where a pack could be changed while the release process is waiting.
+ */
+export function assertTranslationRepairPayloadInputsUnchanged(input: {
+  expectedCuratedCorpusSha256: string;
+  expectedMarketingSiteCorpusSha256: string;
+  expectedMainAppRepairSqlSha256: string;
+  loadCuratedRows?: () => CuratedNamespaceRepairRow[];
+  loadMarketingSite?: () => MarketingSiteRepairCorpus;
+  loadMainAppRows?: () => MainAppRepairRow[];
+}) {
+  if (
+    !/^[a-f0-9]{64}$/.test(input.expectedCuratedCorpusSha256) ||
+    !/^[a-f0-9]{64}$/.test(input.expectedMarketingSiteCorpusSha256) ||
+    !/^[a-f0-9]{64}$/.test(input.expectedMainAppRepairSqlSha256)
+  ) {
+    throw new Error("Translation payload revalidation expected malformed SHA-256 evidence.");
+  }
+  const liveCuratedRows = (input.loadCuratedRows ?? loadCuratedNamespaceRepairRows)();
+  assertExactCuratedExpectedRows(liveCuratedRows);
+  const liveCuratedCorpusSha256 = curatedCorpusSha256(liveCuratedRows);
+  if (liveCuratedCorpusSha256 !== input.expectedCuratedCorpusSha256) {
+    throw new Error("Curated translation corpus drifted before its D1 write.");
+  }
+
+  const liveMarketingSite = (
+    input.loadMarketingSite ?? loadReleasedMarketingSiteRepairCorpus
+  )();
+  assertExactMarketingSiteRepairCorpus(liveMarketingSite);
+  const liveMarketingSiteCorpusSha256 =
+    liveMarketingSite.corpus.identity.corpusSha256;
+  if (
+    liveMarketingSiteCorpusSha256 !==
+    input.expectedMarketingSiteCorpusSha256
+  ) {
+    throw new Error("Marketing-site translation corpus drifted before its D1 write.");
+  }
+
+  const liveMainAppRows = (input.loadMainAppRows ?? loadMainAppRepairRows)();
+  const liveMainAppRepairSqlSha256 = sha256(buildMainAppRepairPlan(liveMainAppRows).sql);
+  if (liveMainAppRepairSqlSha256 !== input.expectedMainAppRepairSqlSha256) {
+    throw new Error("Main-app translation corpus drifted before its D1 write.");
+  }
+  return {
+    curatedCorpusSha256: liveCuratedCorpusSha256,
+    marketingSiteCorpusSha256: liveMarketingSiteCorpusSha256,
+    mainAppRepairSqlSha256: liveMainAppRepairSqlSha256,
+  };
 }
 
 export function buildMainAppRepairPlan(rows: readonly MainAppRepairRow[]): MainAppRepairPlan {
@@ -3861,27 +4983,128 @@ export function buildCuratedNamespaceRepairPlan(
 function buildCuratedCardinalityGuardSql(
   expectedPacks: readonly CuratedPackIdentifier[],
 ) {
-  const values = expectedPacks
-    .map(
-      (identifier) =>
-        `(${sqlString(identifier.namespace)}, ${sqlString(identifier.language)})`,
-    )
+  const excludedNamespaces = [
+    mainAppTranslationNamespace,
+    ...staticRepairNamespaces,
+  ].map(sqlString).join(", ");
+  return [
+    buildExpectedCuratedCte(expectedPacks),
+    "SELECT CASE",
+    `  WHEN (SELECT COUNT(*) FROM expected_curated) = ${expectedPacks.length}`,
+    "    AND NOT EXISTS (",
+    "      SELECT 1 FROM app_translations AS target",
+    `      WHERE target.namespace NOT IN (${excludedNamespaces})`,
+    "        AND NOT EXISTS (",
+    "          SELECT 1 FROM expected_curated AS expected",
+    "          WHERE expected.namespace = target.namespace",
+    "            AND expected.language = target.language",
+    "        )",
+    "    )",
+    "  THEN json('{}')",
+    "  ELSE json('curated-cardinality-guard-failed')",
+    "END AS curated_cardinality_guard;",
+  ].join("\n");
+}
+
+export function buildExpectedCuratedCte(
+  expected: readonly Readonly<{ namespace: string; language: SupportedLanguage }>[],
+) {
+  const namespaces = [...new Set(expected.map((row) => row.namespace))].sort();
+  const languages = [...new Set(expected.map((row) => row.language))].sort();
+  const identifiers = new Set(
+    expected.map((row) => translationIdentifier(row.namespace, row.language)),
+  );
+  const isExactCartesianProduct =
+    identifiers.size === expected.length &&
+    expected.length === namespaces.length * languages.length &&
+    namespaces.every((namespace) =>
+      languages.every((language) =>
+        identifiers.has(translationIdentifier(namespace, language)),
+      ),
+    );
+  if (isExactCartesianProduct) {
+    const namespaceValues = namespaces.map((namespace) => `(${sqlString(namespace)})`).join(",\n    ");
+    const languageValues = languages.map((language) => `(${sqlString(language)})`).join(",\n    ");
+    return [
+      "WITH expected_curated_namespaces(namespace) AS (",
+      `  VALUES ${namespaceValues}`,
+      "),",
+      "expected_curated_languages(language) AS (",
+      `  VALUES ${languageValues}`,
+      "),",
+      "expected_curated(namespace, language) AS (",
+      "  SELECT namespace, language",
+      "  FROM expected_curated_namespaces",
+      "  CROSS JOIN expected_curated_languages",
+      ")",
+    ].join("\n");
+  }
+
+  const values = expected
+    .map((row) => `(${sqlString(row.namespace)}, ${sqlString(row.language)})`)
     .join(",\n    ");
   return [
     "WITH expected_curated(namespace, language) AS (",
     `  VALUES ${values}`,
     ")",
-    "SELECT CASE",
-    `  WHEN (SELECT COUNT(*) FROM expected_curated) = ${expectedPacks.length}`,
-    "    AND (",
-    "      SELECT COUNT(*) FROM expected_curated AS expected",
-    "      JOIN app_translations AS target",
-    "        ON target.namespace = expected.namespace AND target.language = expected.language",
-    `    ) <= ${expectedPacks.length}`,
-    "  THEN json('{}')",
-    "  ELSE json('curated-cardinality-guard-failed')",
-    "END AS curated_cardinality_guard;",
   ].join("\n");
+}
+
+export function buildExactTranslationPartitionGuardSql() {
+  const curated = getExactCuratedPackIdentifiers().filter(
+    (identifier) => identifier.namespace !== mainAppTranslationNamespace,
+  );
+  if (
+    curated.length !== LEGACY_MARKETING_SITE_EXPECTED_CURATED_SITE_ROW_COUNT
+  ) {
+    throw new Error("Final translation partition guard has a stale curated row count.");
+  }
+  const allowedLanguages = legacyMarketingSiteTargetLanguages
+    .map((language) => `(${sqlString(language)})`)
+    .join(",\n    ");
+  const sql = [
+    buildExpectedCuratedCte(curated),
+    ",",
+    "expected_target_languages(language) AS (",
+    `  VALUES ${allowedLanguages}`,
+    ")",
+    "SELECT CASE",
+    `  WHEN (SELECT COUNT(*) FROM app_translations) = ${LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT}`,
+    `    AND (SELECT COUNT(*) FROM app_translations WHERE namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}) = ${LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT}`,
+    `    AND (SELECT COUNT(*) FROM app_translations WHERE namespace = ${sqlString(mainAppTranslationNamespace)}) = ${LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT}`,
+    `    AND (SELECT COUNT(*) FROM app_translations WHERE namespace NOT IN (${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}, ${sqlString(mainAppTranslationNamespace)})) = ${LEGACY_MARKETING_SITE_EXPECTED_CURATED_SITE_ROW_COUNT}`,
+    "    AND NOT EXISTS (",
+    "      SELECT 1 FROM app_translations AS target",
+    "      WHERE NOT (",
+    `        (target.namespace IN (${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}, ${sqlString(mainAppTranslationNamespace)})`,
+    "          AND EXISTS (SELECT 1 FROM expected_target_languages AS expected",
+    "            WHERE expected.language = target.language))",
+    "        OR EXISTS (SELECT 1 FROM expected_curated AS expected",
+    "          WHERE expected.namespace = target.namespace",
+    "            AND expected.language = target.language)",
+    "      )",
+    "    )",
+    "    AND NOT EXISTS (",
+    "      SELECT 1 FROM expected_curated AS expected",
+    "      WHERE NOT EXISTS (SELECT 1 FROM app_translations AS target",
+    "        WHERE target.namespace = expected.namespace",
+    "          AND target.language = expected.language)",
+    "    )",
+    "    AND NOT EXISTS (",
+    "      SELECT 1 FROM expected_target_languages AS expected",
+    "      WHERE NOT EXISTS (SELECT 1 FROM app_translations AS target",
+    `        WHERE target.namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}`,
+    "          AND target.language = expected.language)",
+    "        OR NOT EXISTS (SELECT 1 FROM app_translations AS target",
+    `          WHERE target.namespace = ${sqlString(mainAppTranslationNamespace)}`,
+    "            AND target.language = expected.language)",
+    "    )",
+    "  THEN json('{}')",
+    "  ELSE json('exact-translation-partition-guard-failed')",
+    "END AS exact_translation_partition_guard;",
+  ].join("\n");
+  assertD1SqlStatementSize(sql);
+  return sql;
 }
 
 function buildCuratedResetStatement(row: CuratedNamespaceRepairRow) {
@@ -4023,12 +5246,14 @@ export function projectRepairBilledRowWrites(
   sourceSyncProjectedWrites: number,
   staticRepairRows: number,
   curatedRepairLogicalRowWrites: number,
+  marketingSiteRepairLogicalRowWrites: number,
   mainAppRepairRowWrites: number,
 ) {
   const counts = [
     sourceSyncProjectedWrites,
     staticRepairRows,
     curatedRepairLogicalRowWrites,
+    marketingSiteRepairLogicalRowWrites,
     mainAppRepairRowWrites,
   ];
   if (counts.some((count) => !Number.isSafeInteger(count) || count < 0)) {
@@ -4036,7 +5261,10 @@ export function projectRepairBilledRowWrites(
   }
   return (
     sourceSyncProjectedWrites +
-    (staticRepairRows + curatedRepairLogicalRowWrites + mainAppRepairRowWrites) *
+    (staticRepairRows +
+      curatedRepairLogicalRowWrites +
+      marketingSiteRepairLogicalRowWrites +
+      mainAppRepairRowWrites) *
       projectedBilledWritesPerRepairTranslationRow +
     4 // exact indexed create + clear of the durable production maintenance marker
   );
@@ -4048,6 +5276,7 @@ export function translationRepairBudgetPlanSha256(input: {
   repairSqlSha256: string;
   sourceSyncSha256: string;
   curatedCorpusSha256: string;
+  marketingSiteCorpusSha256: string;
 }) {
   const candidateVersionId = requireWorkerVersion(input.candidateVersionId);
   const sourceFingerprint = releaseBudgetSourceIdentity(input.sourceFingerprint);
@@ -4055,6 +5284,7 @@ export function translationRepairBudgetPlanSha256(input: {
     ["repair SQL", input.repairSqlSha256],
     ["source-sync plan", input.sourceSyncSha256],
     ["curated corpus", input.curatedCorpusSha256],
+    ["marketing-site corpus", input.marketingSiteCorpusSha256],
   ] as const) {
     if (!/^[a-f0-9]{64}$/.test(value)) {
       throw new Error(`Translation repair budget requires an exact ${label} SHA-256.`);
@@ -4068,6 +5298,7 @@ export function translationRepairBudgetPlanSha256(input: {
       repairSqlSha256: input.repairSqlSha256,
       sourceSyncSha256: input.sourceSyncSha256,
       curatedCorpusSha256: input.curatedCorpusSha256,
+      marketingSiteCorpusSha256: input.marketingSiteCorpusSha256,
     }),
   );
 }
@@ -4147,12 +5378,14 @@ export function projectRepairBilledRowReads(
   sourceSyncProjectedReads: number,
   staticRepairRows: number,
   curatedRepairRows: number,
+  marketingSiteRepairRows: number,
   mainAppRepairRows: number,
 ) {
   const counts = [
     sourceSyncProjectedReads,
     staticRepairRows,
     curatedRepairRows,
+    marketingSiteRepairRows,
     mainAppRepairRows,
   ];
   if (counts.some((count) => !Number.isSafeInteger(count) || count < 0)) {
@@ -4163,7 +5396,10 @@ export function projectRepairBilledRowReads(
   // identifier (target discovery, the atomic guard, verification, and headroom).
   return (
     sourceSyncProjectedReads +
-    (staticRepairRows + curatedRepairRows + mainAppRepairRows) * 4 +
+    (staticRepairRows +
+      curatedRepairRows +
+      marketingSiteRepairRows +
+      mainAppRepairRows) * 4 +
     1_128 // verification headroom plus bounded marker create/clear ownership reads
   );
 }
@@ -4308,24 +5544,33 @@ export function validateExistingMainAppTargetIdentifiers(
 function validateRemoteRepairTargets(
   translations: ReadonlyMap<SupportedLanguage, string>,
   curatedRows: readonly CuratedNamespaceRepairRow[],
+  marketingSite: MarketingSiteRepairCorpus,
   mainAppRows: readonly MainAppRepairRow[],
   runner: WranglerRunner = runWrangler,
 ) {
-  const curatedValues = curatedRows
-    .map((row) => `(${sqlString(row.namespace)}, ${sqlString(row.language)})`)
-    .join(",\n    ");
+  assertExactMarketingSiteRepairCorpus(marketingSite);
+  const marketingLanguages = new Set<string>(
+    marketingSite.rows.map((row) => row.language),
+  );
+  if (
+    marketingLanguages.size !== translations.size ||
+    [...translations.keys()].some(
+      (language) => !marketingLanguages.has(language),
+    )
+  ) {
+    throw new Error(
+      "Remote marketing-site target discovery is not bound to the exact released language set.",
+    );
+  }
   const sql = [
     "SELECT 'static' AS target_kind, namespace, language",
     "FROM app_translations",
     `WHERE namespace IN (${staticRepairNamespaces.map(sqlString).join(", ")})`,
     "ORDER BY namespace, language;",
-    "WITH expected_curated(namespace, language) AS (",
-    `  VALUES ${curatedValues}`,
-    ")",
     "SELECT 'curated' AS target_kind, target.namespace, target.language",
-    "FROM expected_curated AS expected",
-    "JOIN app_translations AS target",
-    "  ON target.namespace = expected.namespace AND target.language = expected.language",
+    "FROM app_translations AS target",
+    `WHERE target.namespace <> ${sqlString(mainAppTranslationNamespace)}`,
+    `  AND target.namespace NOT IN (${staticRepairNamespaces.map(sqlString).join(", ")})`,
     "ORDER BY target.namespace, target.language;",
     "SELECT 'main-app' AS target_kind, namespace, language",
     "FROM app_translations",
@@ -4364,34 +5609,7 @@ function validateRemoteRepairTargets(
 }
 
 export function validateSiteSourceManifestFreshness() {
-  const extractedNamespaces = [
-    siteTranslationNamespace,
-    ...getAllSiteTranslationNamespaces({ mode: "extract" }),
-  ].sort();
-  const manifestNamespaces = Object.keys(siteSourceManifest).sort();
-  if (
-    extractedNamespaces.length !== manifestNamespaces.length ||
-    extractedNamespaces.some((namespace, index) => namespace !== manifestNamespaces[index])
-  ) {
-    throw new Error("Generated site translation manifest namespace set is stale.");
-  }
-
-  for (const namespace of extractedNamespaces) {
-    const manifestSource = getSiteTranslationSource(namespace);
-    const extractedSource = getSiteTranslationSource(namespace, { mode: "extract" });
-    if (manifestSource.sourceHash !== extractedSource.sourceHash) {
-      throw new Error(
-        "Generated site translation manifest is stale for " +
-          namespace +
-          ": " +
-          manifestSource.sourceHash +
-          " != " +
-          extractedSource.sourceHash +
-          ".",
-      );
-    }
-  }
-  return extractedNamespaces.length;
+  return assertCurrentSiteSourceManifestFreshness().namespaceCount;
 }
 
 export function loadAndValidateTranslationSeed() {
@@ -4472,33 +5690,49 @@ function validateSourceContract(): Record<RepairNamespace, string> {
   return hashes;
 }
 
-function validateRepairSql(
-  sql: string,
-  translations: ReadonlyMap<SupportedLanguage, string>,
-  sourceHashes: Record<RepairNamespace, string>,
-) {
-  for (const hash of Object.values(sourceHashes)) {
-    if (!sql.includes(hash)) {
-      throw new Error("SEO CTA repair SQL is missing source hash " + hash + ".");
-    }
+export function buildCanonicalLegacyMarketingCleanupSql() {
+  if (
+    legacyMarketingCleanupKeys.length !== 10 ||
+    new Set<string>(legacyMarketingCleanupKeys).size !==
+      legacyMarketingCleanupKeys.length ||
+    retiredGameTranslationKeys.some(
+      (key, index) => legacyMarketingCleanupKeys[index] !== key,
+    )
+  ) {
+    throw new Error("Canonical legacy marketing cleanup key contract drifted.");
   }
-  if (!sql.includes(startLearningKey) || !sql.includes(tryPublicModesKey) || !sql.includes(model)) {
-    throw new Error("SEO CTA repair SQL is missing its required keys or provenance.");
+  const jsonPath = (key: (typeof legacyMarketingCleanupKeys)[number]) =>
+    `'$."${key}"'`;
+  return [
+    "UPDATE app_translations",
+    "SET",
+    "  payload = json_remove(",
+    "    payload,",
+    ...legacyMarketingCleanupKeys.map(
+      (key, index) =>
+        `    ${jsonPath(key)}${index + 1 === legacyMarketingCleanupKeys.length ? "" : ","}`,
+    ),
+    "  ),",
+    "  updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000",
+    "WHERE namespace = 'marketing-site'",
+    "  AND (",
+    ...legacyMarketingCleanupKeys.map(
+      (key, index) =>
+        `    ${index === 0 ? "" : "OR "}json_type(payload, ${jsonPath(key)}) IS NOT NULL`,
+    ),
+    "  );",
+    "",
+  ].join("\n");
+}
+
+export function validateRepairSql(sql: string) {
+  const expected = buildCanonicalLegacyMarketingCleanupSql();
+  if (sql !== expected) {
+    throw new Error(
+      "Legacy marketing cleanup SQL must byte-match the canonical 10-key allowlist.",
+    );
   }
-  if (!sql.includes(previousMarketingSiteHash)) {
-    throw new Error("SEO CTA repair SQL is missing the previous marketing-site source hash.");
-  }
-  for (const key of retiredGameTranslationKeys) {
-    if (!sql.includes(key)) {
-      throw new Error("SEO CTA repair SQL is missing retired game translation key " + key + ".");
-    }
-  }
-  for (const [language, value] of translations) {
-    const row = "(" + sqlString(language) + ", " + sqlString(value) + ")";
-    if (!sql.includes(row)) {
-      throw new Error("SEO CTA repair SQL does not match the seed for " + language + ".");
-    }
-  }
+  return expected;
 }
 
 export function buildRemoteRepairVerificationSql(
@@ -4515,9 +5749,6 @@ export function buildRemoteRepairVerificationSql(
     translations.keys(),
     (language) => `(${sqlString(language)})`,
   ).join(",");
-  const repairValues = Array.from(translations, ([language, value]) => {
-    return "(" + sqlString(language) + ", " + sqlString(value) + ")";
-  }).join(",");
   return [
     `WITH expected_sources(namespace, source_hash) AS (VALUES ${expectedSourceValues})`,
     "SELECT COUNT(*) AS expected_source_namespaces,",
@@ -4531,44 +5762,15 @@ export function buildRemoteRepairVerificationSql(
     "LEFT JOIN app_translation_sources AS source USING (namespace);",
     `WITH allowed_languages(language) AS (VALUES ${allowedLanguageValues})`,
     "SELECT COUNT(*) AS observed_translation_rows,",
-    "  SUM(t.source_hash = s.source_hash) AS observed_fresh_translation_rows,",
-    "  SUM(CASE WHEN s.namespace IS NULL THEN 1 ELSE 0 END) AS unexpected_translation_namespaces,",
+    `  SUM(CASE WHEN t.namespace <> ${sqlString(mainAppTranslationNamespace)} THEN 1 ELSE 0 END) AS observed_site_translation_rows,`,
+    `  SUM(CASE WHEN t.namespace NOT IN (${sqlString(mainAppTranslationNamespace)}, ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}) THEN 1 ELSE 0 END) AS observed_curated_site_rows,`,
+    `  SUM(CASE WHEN t.namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)} THEN 1 ELSE 0 END) AS observed_marketing_site_rows,`,
+    `  SUM(CASE WHEN t.namespace = ${sqlString(mainAppTranslationNamespace)} THEN 1 ELSE 0 END) AS observed_main_app_rows,`,
+    `  SUM(CASE WHEN t.namespace <> ${sqlString(mainAppTranslationNamespace)} AND t.source_hash = s.source_hash THEN 1 ELSE 0 END) AS observed_fresh_translation_rows,`,
+    `  SUM(CASE WHEN s.namespace IS NULL AND t.namespace <> ${sqlString(mainAppTranslationNamespace)} THEN 1 ELSE 0 END) AS unexpected_translation_namespaces,`,
     "  SUM(CASE WHEN allowed_languages.language IS NULL THEN 1 ELSE 0 END) AS unsupported_languages",
     "FROM app_translations AS t LEFT JOIN app_translation_sources AS s USING (namespace)",
-    "LEFT JOIN allowed_languages ON allowed_languages.language = t.language",
-    `WHERE t.namespace <> ${sqlString(mainAppTranslationNamespace)};`,
-    "SELECT t.namespace, COUNT(*) AS rows, COUNT(DISTINCT t.language) AS languages,",
-    "  SUM(t.source_hash = s.source_hash) AS fresh_rows,",
-    "  SUM(CASE WHEN NOT EXISTS (",
-    "    SELECT 1 FROM app_translation_source_strings AS ss",
-    "    WHERE ss.namespace = t.namespace AND (",
-    "      COALESCE(json_type(t.payload, '$.\"' || ss.source_key || '\"'), '') <> 'text'",
-    "      OR COALESCE(TRIM(CAST(json_extract(t.payload, '$.\"' || ss.source_key || '\"') AS TEXT)), '') = ''",
-    "    )",
-    "  ) THEN 1 ELSE 0 END) AS complete_rows",
-    "FROM app_translations AS t JOIN app_translation_sources AS s USING (namespace)",
-    "WHERE t.namespace IN ('route:about', 'route:media', 'route:schools')",
-    "GROUP BY t.namespace ORDER BY t.namespace;",
-    "SELECT target.namespace, SUM(CASE WHEN",
-    "  json_extract(target.payload, '$.\"" + startLearningKey + "\"') IS",
-    "  json_extract(home.payload, '$.\"" + startLearningKey + "\"')",
-    "  THEN 0 ELSE 1 END) AS mismatches",
-    "FROM app_translations AS target",
-    "JOIN app_translations AS home ON home.namespace = 'route:home' AND home.language = target.language",
-    "WHERE target.namespace IN ('route:about', 'route:media')",
-    `  AND target.language NOT IN (${bootstrapCuratedLanguages.map(sqlString).join(", ")})`,
-    "GROUP BY target.namespace ORDER BY target.namespace;",
-    "SELECT namespace, model, COUNT(*) AS rows FROM app_translations",
-    "WHERE namespace IN ('route:about', 'route:media', 'route:schools')",
-    `  AND language NOT IN (${bootstrapCuratedLanguages.map(sqlString).join(", ")})`,
-    "GROUP BY namespace, model ORDER BY namespace, model;",
-    "WITH repair_values(language, value) AS (VALUES " + repairValues + ")",
-    "SELECT COUNT(*) AS school_values_matched",
-    "FROM app_translations AS target",
-    "JOIN repair_values ON repair_values.language = target.language",
-    "WHERE target.namespace = 'route:schools'",
-    `  AND target.language NOT IN (${bootstrapCuratedLanguages.map(sqlString).join(", ")})`,
-    "  AND json_extract(target.payload, '$.\"" + tryPublicModesKey + "\"') = repair_values.value;",
+    "LEFT JOIN allowed_languages ON allowed_languages.language = t.language;",
     "SELECT COUNT(*) AS retired_game_payloads FROM app_translations",
     "WHERE namespace = 'marketing-site' AND (",
     ...retiredGameTranslationKeys.flatMap((key, index) => [
@@ -4649,6 +5851,7 @@ export function parseD1Billing(
     label: string;
     expectedResultSets?: number;
     readOnly?: boolean;
+    requireSingleAttempt?: boolean;
   },
 ): D1Billing {
   const value = parseJsonFromOutput(output);
@@ -4675,7 +5878,8 @@ export function parseD1Billing(
       typeof meta.rows_written !== "number" ||
       !Number.isSafeInteger(meta.rows_written) ||
       meta.rows_written < 0 ||
-      (options.readOnly === true && meta.rows_written !== 0)
+      (options.readOnly === true && meta.rows_written !== 0) ||
+      (options.requireSingleAttempt === true && meta.total_attempts !== 1)
     ) {
       throw new RemoteVerificationIndeterminateError(
         `${options.label} returned malformed or unexpectedly mutating billing metadata.`,
@@ -4748,6 +5952,7 @@ export function assertRemoteRepairBillingWithinMaximum(input: {
 export function verifyRemoteTranslationDrift(input: {
   translations: ReadonlyMap<SupportedLanguage, string>;
   curatedRepairRows: readonly CuratedNamespaceRepairRow[];
+  marketingSite: MarketingSiteRepairCorpus;
   mainAppRepairRows: readonly MainAppRepairRow[];
   runner?: WranglerRunner;
   now?: number;
@@ -4779,9 +5984,16 @@ export function verifyRemoteTranslationDrift(input: {
   const payloadInspection = inspectRemoteRepairPayloads(
     input.translations,
     input.curatedRepairRows,
+    input.marketingSite,
     input.mainAppRepairRows,
     runner,
   );
+  if (counter.queries !== payloadInspection.expectedRemoteQueries) {
+    throw new RemoteVerificationIndeterminateError(
+      `Production translation verification executed ${counter.queries} read-only queries; ` +
+        `expected exactly ${payloadInspection.expectedRemoteQueries}.`,
+    );
+  }
   const issues = [...sourceIssues, ...payloadInspection.issues];
   const status = issues.length ? "repair-required" : "reconciled";
   return {
@@ -4795,8 +6007,10 @@ export function verifyRemoteTranslationDrift(input: {
     expected: {
       sourceNamespaces: Object.keys(siteSourceManifest).length,
       curatedRows: input.curatedRepairRows.length,
+      marketingSiteRows: input.marketingSite.rows.length,
       mainAppRows: input.mainAppRepairRows.length,
       supportedTargetLanguages: input.translations.size,
+      remoteQueries: payloadInspection.expectedRemoteQueries,
     },
     sourceSnapshot: {
       status: sourceStatus,
@@ -4861,6 +6075,7 @@ function runRemoteVerificationQuery(
 function inspectRemoteRepairPayloads(
   translations: ReadonlyMap<SupportedLanguage, string>,
   curatedRepairRows: readonly CuratedNamespaceRepairRow[],
+  marketingSite: MarketingSiteRepairCorpus,
   mainAppRepairRows: readonly MainAppRepairRow[],
   runner: WranglerRunner,
 ) {
@@ -4878,20 +6093,12 @@ function inspectRemoteRepairPayloads(
     (row) => "observed_translation_rows" in row,
     "translation coverage",
   );
-  const targets = rows.filter((row) => typeof row.namespace === "string" && "complete_rows" in row);
-  const mismatches = rows.filter((row) => typeof row.namespace === "string" && "mismatches" in row);
-  const models = rows.filter((row) => typeof row.namespace === "string" && "model" in row);
-  const schools = requireSingleVerificationRow(
-    rows,
-    (row) => "school_values_matched" in row,
-    "school CTA coverage",
-  );
   const retired = requireSingleVerificationRow(
     rows,
     (row) => "retired_game_payloads" in row,
     "retired game coverage",
   );
-  const classifiedRows = 4 + targets.length + mismatches.length + models.length;
+  const classifiedRows = 3;
   if (classifiedRows !== rows.length) {
     throw new RemoteVerificationIndeterminateError(
       `Remote translation summary returned ${rows.length - classifiedRows} unclassified row(s).`,
@@ -4922,6 +6129,22 @@ function inspectRemoteRepairPayloads(
     observed.observed_fresh_translation_rows,
     "observed fresh translation row count",
   );
+  const observedSiteTranslationRows = verificationCounter(
+    observed.observed_site_translation_rows,
+    "observed site translation row count",
+  );
+  const observedCuratedSiteRows = verificationCounter(
+    observed.observed_curated_site_rows,
+    "observed curated site row count",
+  );
+  const observedMarketingSiteRows = verificationCounter(
+    observed.observed_marketing_site_rows,
+    "observed marketing-site row count",
+  );
+  const observedMainAppRows = verificationCounter(
+    observed.observed_main_app_rows,
+    "observed main-app row count",
+  );
   const unexpectedTranslationNamespaces = verificationCounter(
     observed.unexpected_translation_namespaces,
     "unexpected translation namespace count",
@@ -4930,30 +6153,10 @@ function inspectRemoteRepairPayloads(
     observed.unsupported_languages,
     "unsupported translation language count",
   );
-  const schoolValuesMatched = verificationCounter(
-    schools.school_values_matched,
-    "school CTA match count",
-  );
   const retiredGamePayloads = verificationCounter(
     retired.retired_game_payloads,
     "retired game payload count",
   );
-  for (const row of targets) {
-    verificationCounter(row.rows, "target row count");
-    verificationCounter(row.languages, "target language count");
-    verificationCounter(row.fresh_rows, "target fresh row count");
-    verificationCounter(row.complete_rows, "target complete row count");
-  }
-  for (const row of mismatches) verificationCounter(row.mismatches, "CTA mismatch count");
-  for (const row of models) {
-    if (typeof row.model !== "string") {
-      throw new RemoteVerificationIndeterminateError(
-        "Remote translation model verification returned a malformed model.",
-      );
-    }
-    verificationCounter(row.rows, "model row count");
-  }
-
   const issues: RemoteTranslationDriftIssue[] = [];
   const addIssue = (
     scope: RemoteTranslationDriftIssue["scope"],
@@ -4967,8 +6170,18 @@ function inspectRemoteRepairPayloads(
     freshSourceNamespaces !== expectedSourceNamespaces ||
     totalSourceNamespaces !== expectedSourceNamespaces ||
     unexpectedSourceNamespaces !== 0 ||
-    observedTranslationRows < curatedRepairRows.length ||
-    observedFreshTranslationRows < curatedRepairRows.length ||
+    observedTranslationRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_FINAL_TRANSLATION_ROW_COUNT ||
+    observedFreshTranslationRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_SITE_ROW_COUNT ||
+    observedSiteTranslationRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_SITE_ROW_COUNT ||
+    observedCuratedSiteRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_CURATED_SITE_ROW_COUNT ||
+    observedMarketingSiteRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT ||
+    observedMainAppRows !==
+      LEGACY_MARKETING_SITE_EXPECTED_TARGET_LANGUAGE_COUNT ||
     unexpectedTranslationNamespaces !== 0 ||
     unsupportedLanguages !== 0
   ) {
@@ -4976,48 +6189,6 @@ function inspectRemoteRepairPayloads(
       "translation-summary",
       "source-or-translation-coverage-drift",
       "Translation source or audited payload coverage verification failed.",
-    );
-  }
-  if (
-    targets.length !== 3 ||
-    targets.some((row) =>
-      [row.rows, row.languages, row.fresh_rows, row.complete_rows].some(
-        (value) => numeric(value) !== translations.size,
-      ),
-    )
-  ) {
-    addIssue(
-      "translation-summary",
-      "target-completeness-drift",
-      "Target translation completeness verification failed.",
-    );
-  }
-  if (mismatches.length !== 2 || mismatches.some((row) => numeric(row.mismatches) !== 0)) {
-    addIssue(
-      "translation-summary",
-      "start-learning-drift",
-      "Start learning translation verification failed.",
-    );
-  }
-  if (
-    models.length !== 3 ||
-    models.some(
-      (row) =>
-        row.model !== model ||
-        numeric(row.rows) !== translations.size - bootstrapCuratedLanguages.length,
-    )
-  ) {
-    addIssue(
-      "translation-summary",
-      "static-provenance-drift",
-      "Translation repair provenance verification failed.",
-    );
-  }
-  if (schoolValuesMatched !== translations.size - bootstrapCuratedLanguages.length) {
-    addIssue(
-      "translation-summary",
-      "school-cta-drift",
-      "Try public modes translation verification failed.",
     );
   }
   if (retiredGamePayloads !== 0) {
@@ -5028,18 +6199,16 @@ function inspectRemoteRepairPayloads(
     );
   }
 
-  const curatedResultRows = runRemoteVerificationQuery(
-    buildCuratedRepairVerificationSql(curatedRepairRows),
-    64 * 1024 * 1024,
-    runner,
-  );
-  let curatedVerification: ReturnType<typeof verifyCuratedRepairResultRows> | undefined;
+  const curatedVerificationChunks = buildCuratedRepairVerificationChunks(curatedRepairRows);
+  let curatedVerification: ReturnType<typeof verifyCuratedRepairResultChunks> | undefined;
   try {
-    curatedVerification = verifyCuratedRepairResultRows(
-      curatedResultRows,
+    curatedVerification = verifyCuratedRepairPlannedResultChunks(
       curatedRepairRows,
+      curatedVerificationChunks,
+      (chunk) => runRemoteVerificationQuery(chunk.sql, chunk.maxBufferBytes, runner),
     );
-  } catch {
+  } catch (error) {
+    if (error instanceof RemoteVerificationIndeterminateError) throw error;
     addIssue(
       "curated-payloads",
       "exact-curated-payload-drift",
@@ -5047,19 +6216,36 @@ function inspectRemoteRepairPayloads(
     );
   }
 
-  const mainAppResultRows = runRemoteVerificationQuery(
-    "SELECT namespace, language, payload, source_hash, model FROM app_translations " +
-      `WHERE namespace = ${sqlString(mainAppTranslationNamespace)} ORDER BY language;`,
-    128 * 1024 * 1024,
-    runner,
-  );
+  const marketingSiteVerificationChunks =
+    buildMarketingSiteRepairVerificationChunks(marketingSite);
+  let marketingSiteVerification:
+    | ReturnType<typeof verifyMarketingSiteRepairResultChunks>
+    | undefined;
+  try {
+    marketingSiteVerification = verifyMarketingSiteRepairPlannedResultChunks(
+      marketingSite,
+      marketingSiteVerificationChunks,
+      (chunk) => runRemoteVerificationQuery(chunk.sql, chunk.maxBufferBytes, runner),
+    );
+  } catch (error) {
+    if (error instanceof RemoteVerificationIndeterminateError) throw error;
+    addIssue(
+      "marketing-site-payloads",
+      "exact-marketing-site-payload-drift",
+      "Exact composed marketing-site translation verification failed.",
+    );
+  }
+
+  const mainAppVerificationChunks = buildMainAppRepairVerificationChunks(mainAppRepairRows);
   let mainAppRowsMatched: number | undefined;
   try {
-    mainAppRowsMatched = verifyMainAppRepairResultRows(
-      mainAppResultRows,
+    mainAppRowsMatched = verifyMainAppRepairPlannedResultChunks(
       mainAppRepairRows,
-    );
-  } catch {
+      mainAppVerificationChunks,
+      (chunk) => runRemoteVerificationQuery(chunk.sql, chunk.maxBufferBytes, runner),
+    ).rowsMatched;
+  } catch (error) {
+    if (error instanceof RemoteVerificationIndeterminateError) throw error;
     addIssue(
       "main-app-payloads",
       "exact-main-app-payload-drift",
@@ -5067,8 +6253,18 @@ function inspectRemoteRepairPayloads(
     );
   }
 
-  if (issues.length || !curatedVerification || mainAppRowsMatched === undefined) {
-    return { issues };
+  const expectedRemoteQueries =
+    remoteTranslationVerificationFixedQueryCount +
+    curatedVerificationChunks.length +
+    marketingSiteVerificationChunks.length +
+    mainAppVerificationChunks.length;
+  if (
+    issues.length ||
+    !curatedVerification ||
+    !marketingSiteVerification ||
+    mainAppRowsMatched === undefined
+  ) {
+    return { issues, expectedRemoteQueries };
   }
   const verification: NonNullable<RepairReport["productionVerification"]> = {
     expectedSourceNamespaces,
@@ -5078,26 +6274,35 @@ function inspectRemoteRepairPayloads(
     observedFreshTranslationRows,
     auditedSiteNamespaces,
     auditedSiteRows: curatedVerification.rowsMatched,
-    targetNamespaces: targets.length,
-    schoolValuesMatched,
     retiredGamePayloads,
     curatedRowsMatched: curatedVerification.rowsMatched,
     curatedPayloadBytesMatched: curatedVerification.payloadBytesMatched,
     curatedCorpusSha256: curatedVerification.corpusSha256,
+    marketingSiteRowsMatched: marketingSiteVerification.rowsMatched,
+    marketingSitePayloadBytesMatched:
+      marketingSiteVerification.payloadBytesMatched,
+    marketingSiteCorpusSha256:
+      marketingSiteVerification.corpusSha256,
     mainAppRowsMatched,
+    exactFinalRows:
+      curatedVerification.rowsMatched +
+      marketingSiteVerification.rowsMatched +
+      mainAppRowsMatched,
   };
-  return { issues, verification };
+  return { issues, verification, expectedRemoteQueries };
 }
 
 function verifyRemoteRepair(
   translations: ReadonlyMap<SupportedLanguage, string>,
   curatedRepairRows: readonly CuratedNamespaceRepairRow[],
+  marketingSite: MarketingSiteRepairCorpus,
   mainAppRepairRows: readonly MainAppRepairRow[],
   runner: WranglerRunner = runWrangler,
 ) {
   const inspection = inspectRemoteRepairPayloads(
     translations,
     curatedRepairRows,
+    marketingSite,
     mainAppRepairRows,
     runner,
   );
@@ -5119,14 +6324,17 @@ export function buildCuratedRepairVerificationSql(
   expectedRows: readonly CuratedNamespaceRepairRow[],
 ) {
   assertExactCuratedExpectedRows(expectedRows);
-  const values = [...expectedRows]
-    .sort(compareCuratedRepairRows)
-    .map((row) => `(${sqlString(row.namespace)}, ${sqlString(row.language)})`)
-    .join(",\n    ");
+  return buildCuratedRepairVerificationQuery(expectedRows);
+}
+
+function buildCuratedRepairVerificationQuery(
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+) {
+  if (expectedRows.length === 0) {
+    throw new Error("Curated translation verification query must not be empty.");
+  }
   const sql = [
-    "WITH expected_curated(namespace, language) AS (",
-    `  VALUES ${values}`,
-    ")",
+    buildExpectedCuratedCte([...expectedRows].sort(compareCuratedRepairRows)),
     "SELECT target.namespace, target.language, target.payload, target.source_hash, target.model",
     "FROM expected_curated AS expected",
     "JOIN app_translations AS target",
@@ -5137,11 +6345,367 @@ export function buildCuratedRepairVerificationSql(
   return sql;
 }
 
-export function verifyCuratedRepairResultRows(
+function curatedVerificationMaxBufferBytes(
+  expectedPayloadBytes: number,
+  rows: number,
+) {
+  if (
+    !Number.isSafeInteger(expectedPayloadBytes) ||
+    expectedPayloadBytes < 0 ||
+    !Number.isSafeInteger(rows) ||
+    rows <= 0
+  ) {
+    throw new Error("Curated translation verification buffer inputs are invalid.");
+  }
+  const estimatedJsonEnvelopeBytes =
+    expectedPayloadBytes * 3 + rows * 4_096 + 64 * 1_024;
+  if (!Number.isSafeInteger(estimatedJsonEnvelopeBytes)) {
+    throw new Error("Curated translation verification buffer estimate overflowed.");
+  }
+  return Math.min(
+    curatedVerificationMaximumBufferBytes,
+    Math.max(curatedVerificationMinimumBufferBytes, estimatedJsonEnvelopeBytes),
+  );
+}
+
+export function buildCuratedRepairVerificationChunks(
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+): CuratedRepairVerificationChunk[] {
+  assertExactCuratedExpectedRows(expectedRows);
+  const sortedRows = [...expectedRows].sort(compareCuratedRepairRows);
+  const chunks: CuratedRepairVerificationChunk[] = [];
+  let pendingRows: CuratedNamespaceRepairRow[] = [];
+  let pendingPayloadBytes = 0;
+
+  const flush = () => {
+    if (pendingRows.length === 0) return;
+    const exactRows = Object.freeze([...pendingRows]);
+    const sql = buildCuratedRepairVerificationQuery(exactRows);
+    chunks.push({
+      index: chunks.length,
+      rows: exactRows.length,
+      expectedPayloadBytes: pendingPayloadBytes,
+      sqlBytes: Buffer.byteLength(sql, "utf8"),
+      maxBufferBytes: curatedVerificationMaxBufferBytes(
+        pendingPayloadBytes,
+        exactRows.length,
+      ),
+      expectedRows: exactRows,
+      sql,
+    });
+    pendingRows = [];
+    pendingPayloadBytes = 0;
+  };
+
+  for (const row of sortedRows) {
+    const rowPayloadBytes = assertD1TranslationPayloadSize(
+      Buffer.byteLength(canonicalPayloadJson(row.payload), "utf8"),
+      `${row.namespace}/${row.language}`,
+    );
+    if (
+      pendingRows.length > 0 &&
+      (pendingRows.length >= curatedVerificationMaximumRowsPerQuery ||
+        pendingPayloadBytes + rowPayloadBytes > curatedVerificationTargetPayloadBytes)
+    ) {
+      flush();
+    }
+    pendingRows.push(row);
+    pendingPayloadBytes += rowPayloadBytes;
+  }
+  flush();
+
+  if (
+    chunks.length === 0 ||
+    chunks.reduce((total, chunk) => total + chunk.rows, 0) !== expectedRows.length ||
+    chunks.some(
+      (chunk) =>
+        chunk.rows <= 0 ||
+        chunk.rows > curatedVerificationMaximumRowsPerQuery ||
+        chunk.sqlBytes > maximumD1SqlStatementBytes ||
+        chunk.maxBufferBytes > curatedVerificationMaximumBufferBytes,
+    )
+  ) {
+    throw new Error("Curated translation verification chunk planning failed closed.");
+  }
+  return chunks;
+}
+
+export function curatedRepairVerificationQueryCount(
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+) {
+  return buildCuratedRepairVerificationChunks(expectedRows).length;
+}
+
+export function buildMarketingSiteRepairVerificationChunks(
+  release: MarketingSiteRepairCorpus,
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+): MarketingSiteRepairVerificationChunk[] {
+  assertExactMarketingSiteRepairCorpus(release, contract);
+  const sortedRows = [...release.rows].sort((left, right) =>
+    left.language.localeCompare(right.language)
+  );
+  const chunks: MarketingSiteRepairVerificationChunk[] = [];
+  let pendingRows: MarketingSiteRepairRow[] = [];
+  let pendingPayloadBytes = 0;
+  const flush = () => {
+    if (pendingRows.length === 0) return;
+    const exactRows = Object.freeze([...pendingRows]);
+    const sql = [
+      "SELECT namespace, language, payload, source_hash, model",
+      "FROM app_translations",
+      `WHERE namespace = ${sqlString(LEGACY_MARKETING_SITE_NAMESPACE)}`,
+      `  AND language IN (${exactRows.map((row) => sqlString(row.language)).join(", ")})`,
+      "ORDER BY language;",
+    ].join("\n");
+    const sqlBytes = assertD1SqlStatementSize(sql);
+    chunks.push({
+      index: chunks.length,
+      rows: exactRows.length,
+      expectedPayloadBytes: pendingPayloadBytes,
+      sqlBytes,
+      maxBufferBytes: curatedVerificationMaxBufferBytes(
+        pendingPayloadBytes,
+        exactRows.length,
+      ),
+      expectedRows: exactRows,
+      sql,
+    });
+    pendingRows = [];
+    pendingPayloadBytes = 0;
+  };
+  for (const row of sortedRows) {
+    const rowPayloadBytes = assertD1TranslationPayloadSize(
+      Buffer.byteLength(row.payload, "utf8"),
+      `${row.namespace}/${row.language}`,
+    );
+    if (
+      pendingRows.length > 0 &&
+      (pendingRows.length >= marketingSiteVerificationMaximumRowsPerQuery ||
+        pendingPayloadBytes + rowPayloadBytes >
+          curatedVerificationTargetPayloadBytes)
+    ) {
+      flush();
+    }
+    pendingRows.push(row);
+    pendingPayloadBytes += rowPayloadBytes;
+  }
+  flush();
+  if (
+    chunks.length === 0 ||
+    chunks.reduce((total, chunk) => total + chunk.rows, 0) !==
+      release.rows.length ||
+    chunks.some(
+      (chunk) =>
+        chunk.rows <= 0 ||
+        chunk.rows > marketingSiteVerificationMaximumRowsPerQuery ||
+        chunk.sqlBytes > maximumD1SqlStatementBytes ||
+        chunk.maxBufferBytes > curatedVerificationMaximumBufferBytes,
+    )
+  ) {
+    throw new Error("Marketing-site translation verification chunk planning failed closed.");
+  }
+  return chunks;
+}
+
+export function marketingSiteRepairVerificationQueryCount(
+  release: MarketingSiteRepairCorpus,
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+) {
+  return buildMarketingSiteRepairVerificationChunks(release, contract).length;
+}
+
+export function verifyMarketingSiteRepairResultRows(
+  actualRows: readonly Record<string, unknown>[],
+  release: MarketingSiteRepairCorpus,
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+) {
+  assertExactMarketingSiteRepairCorpus(release, contract);
+  if (actualRows.length !== release.rows.length) {
+    throw new Error(
+      `Marketing-site translation row cardinality failed: ${actualRows.length}/${release.rows.length}.`,
+    );
+  }
+  const rows: MarketingSiteRepairRow[] = actualRows.map((actual) => {
+    const language = isLegacyMarketingSiteTargetLanguage(actual.language)
+      ? actual.language
+      : null;
+    if (
+      actual.namespace !== LEGACY_MARKETING_SITE_NAMESPACE ||
+      !language ||
+      typeof actual.source_hash !== "string" ||
+      typeof actual.payload !== "string" ||
+      typeof actual.model !== "string"
+    ) {
+      throw new Error("Marketing-site translation verification returned a malformed row.");
+    }
+    return {
+      namespace: LEGACY_MARKETING_SITE_NAMESPACE,
+      language,
+      source_hash: actual.source_hash,
+      payload: actual.payload,
+      model: actual.model,
+    };
+  });
+  const validated = validateLegacyMarketingSiteDatabaseRows({
+    contract,
+    expectedCorpus: release.corpus,
+    rows,
+  });
+  return {
+    rowsMatched: validated.rows,
+    payloadBytesMatched: rows.reduce(
+      (total, row) => total + Buffer.byteLength(row.payload, "utf8"),
+      0,
+    ),
+    corpusSha256: validated.corpusSha256,
+    model: validated.model,
+  };
+}
+
+function isLegacyMarketingSiteTargetLanguage(
+  value: unknown,
+): value is LegacyMarketingSiteTargetLanguage {
+  return (
+    typeof value === "string" &&
+    legacyMarketingSiteTargetLanguages.some(
+      (candidate) => candidate === value,
+    )
+  );
+}
+
+export function verifyMarketingSiteRepairResultChunks(
+  release: MarketingSiteRepairCorpus,
+  readChunk: (
+    chunk: MarketingSiteRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+) {
+  return verifyMarketingSiteRepairPlannedResultChunks(
+    release,
+    buildMarketingSiteRepairVerificationChunks(release, contract),
+    readChunk,
+    contract,
+  );
+}
+
+function verifyMarketingSiteRepairPlannedResultChunks(
+  release: MarketingSiteRepairCorpus,
+  chunks: readonly MarketingSiteRepairVerificationChunk[],
+  readChunk: (
+    chunk: MarketingSiteRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+  contract: LegacyMarketingSiteContract = legacyMarketingSiteContract,
+) {
+  const actualRows: Record<string, unknown>[] = [];
+  let firstVerificationError: unknown;
+  for (const chunk of chunks) {
+    try {
+      const rows = readChunk(chunk);
+      if (rows.length !== chunk.expectedRows.length) {
+        throw new Error(
+          `Marketing-site verification chunk ${chunk.index} returned ${rows.length}/${chunk.expectedRows.length} rows.`,
+        );
+      }
+      actualRows.push(...rows);
+    } catch (error) {
+      firstVerificationError ??= error;
+    }
+  }
+  if (firstVerificationError !== undefined) throw firstVerificationError;
+  return {
+    ...verifyMarketingSiteRepairResultRows(actualRows, release, contract),
+    queryCount: chunks.length,
+  };
+}
+
+export function buildMainAppRepairVerificationChunks(
+  expectedRows: readonly MainAppRepairRow[],
+): MainAppRepairVerificationChunk[] {
+  assertExactMainAppExpectedRows(expectedRows);
+  const sortedRows = [...expectedRows].sort((left, right) =>
+    left.language.localeCompare(right.language),
+  );
+  const chunks: MainAppRepairVerificationChunk[] = [];
+  let pendingRows: MainAppRepairRow[] = [];
+  let pendingPayloadBytes = 0;
+
+  const flush = () => {
+    if (pendingRows.length === 0) return;
+    const exactRows = Object.freeze([...pendingRows]);
+    const sql = [
+      "SELECT namespace, language, payload, source_hash, model",
+      "FROM app_translations",
+      `WHERE namespace = ${sqlString(mainAppTranslationNamespace)}`,
+      `  AND language IN (${exactRows.map((row) => sqlString(row.language)).join(", ")})`,
+      "ORDER BY language;",
+    ].join("\n");
+    const sqlBytes = assertD1SqlStatementSize(sql);
+    chunks.push({
+      index: chunks.length,
+      rows: exactRows.length,
+      expectedPayloadBytes: pendingPayloadBytes,
+      sqlBytes,
+      maxBufferBytes: curatedVerificationMaxBufferBytes(
+        pendingPayloadBytes,
+        exactRows.length,
+      ),
+      expectedRows: exactRows,
+      sql,
+    });
+    pendingRows = [];
+    pendingPayloadBytes = 0;
+  };
+
+  for (const row of sortedRows) {
+    const rowPayloadBytes = assertD1TranslationPayloadSize(
+      Buffer.byteLength(canonicalPayloadJson(row.payload), "utf8"),
+      `${mainAppTranslationNamespace}/${row.language}`,
+    );
+    if (
+      pendingRows.length > 0 &&
+      (pendingRows.length >= mainAppVerificationMaximumRowsPerQuery ||
+        pendingPayloadBytes + rowPayloadBytes > curatedVerificationTargetPayloadBytes)
+    ) {
+      flush();
+    }
+    pendingRows.push(row);
+    pendingPayloadBytes += rowPayloadBytes;
+  }
+  flush();
+
+  if (
+    chunks.length === 0 ||
+    chunks.reduce((total, chunk) => total + chunk.rows, 0) !== expectedRows.length ||
+    chunks.some(
+      (chunk) =>
+        chunk.rows <= 0 ||
+        chunk.rows > mainAppVerificationMaximumRowsPerQuery ||
+        chunk.sqlBytes > maximumD1SqlStatementBytes ||
+        chunk.maxBufferBytes > curatedVerificationMaximumBufferBytes,
+    )
+  ) {
+    throw new Error("Main-app translation verification chunk planning failed closed.");
+  }
+  return chunks;
+}
+
+export function mainAppRepairVerificationQueryCount(
+  expectedRows: readonly MainAppRepairRow[],
+) {
+  return buildMainAppRepairVerificationChunks(expectedRows).length;
+}
+
+type CuratedVerificationHashRow = {
+  namespace: keyof typeof siteSourceManifest;
+  language: SupportedLanguage;
+  sourceHash: string;
+  payload: string;
+};
+
+function verifyCuratedRepairChunkResultRows(
   actualRows: readonly Record<string, unknown>[],
   expectedRows: readonly CuratedNamespaceRepairRow[],
 ) {
-  const expectedIdentifiers = assertExactCuratedExpectedRows(expectedRows);
   if (actualRows.length !== expectedRows.length) {
     throw new Error(
       `Curated translation row cardinality failed: ${actualRows.length}/${expectedRows.length}.`,
@@ -5151,11 +6715,6 @@ export function verifyCuratedRepairResultRows(
   const expectedByIdentifier = new Map<string, CuratedNamespaceRepairRow>();
   for (const expected of expectedRows) {
     const identifier = translationIdentifier(expected.namespace, expected.language);
-    if (!expectedIdentifiers.has(identifier)) {
-      throw new Error(
-        `Curated expected rows contain an unexpected ${expected.namespace}/${expected.language}.`,
-      );
-    }
     if (expectedByIdentifier.has(identifier)) {
       throw new Error(
         `Curated expected rows contain a duplicate ${expected.namespace}/${expected.language}.`,
@@ -5164,14 +6723,8 @@ export function verifyCuratedRepairResultRows(
     expectedByIdentifier.set(identifier, expected);
   }
 
-  let matched = 0;
   let payloadBytesMatched = 0;
-  const actualHashRows: Array<{
-    namespace: keyof typeof siteSourceManifest;
-    language: SupportedLanguage;
-    sourceHash: string;
-    payload: string;
-  }> = [];
+  const hashRows: CuratedVerificationHashRow[] = [];
   for (const actual of actualRows) {
     const namespace = isPublishedSiteNamespace(actual.namespace) ? actual.namespace : null;
     const language = isSupportedLanguageValue(actual.language) ? actual.language : null;
@@ -5198,28 +6751,111 @@ export function verifyCuratedRepairResultRows(
       );
     }
     payloadBytesMatched += Buffer.byteLength(actual.payload, "utf8");
-    actualHashRows.push({
+    hashRows.push({
       namespace,
       language,
       sourceHash: expected.sourceHash,
       payload: actual.payload,
     });
     expectedByIdentifier.delete(identifier);
-    matched += 1;
   }
 
-  if (expectedByIdentifier.size !== 0 || matched !== expectedRows.length) {
-    throw new Error(`Curated translation row verification failed: ${matched}/${expectedRows.length}.`);
+  if (expectedByIdentifier.size !== 0 || hashRows.length !== expectedRows.length) {
+    throw new Error(
+      `Curated translation row verification failed: ${hashRows.length}/${expectedRows.length}.`,
+    );
   }
-  const corpusSha256 = curatedResultCorpusSha256(actualHashRows);
+  hashRows.sort(compareCuratedVerificationHashRows);
+  return { rowsMatched: hashRows.length, payloadBytesMatched, hashRows };
+}
+
+export function verifyCuratedRepairResultChunks(
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+  readChunk: (
+    chunk: CuratedRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+) {
+  const chunks = buildCuratedRepairVerificationChunks(expectedRows);
+  return verifyCuratedRepairPlannedResultChunks(expectedRows, chunks, readChunk);
+}
+
+function verifyCuratedRepairPlannedResultChunks(
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+  chunks: readonly CuratedRepairVerificationChunk[],
+  readChunk: (
+    chunk: CuratedRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+) {
+  const digest = crypto.createHash("sha256");
+  let firstDigestRow = true;
+  let rowsMatched = 0;
+  let payloadBytesMatched = 0;
+  let firstVerificationError: unknown;
+
+  for (const chunk of chunks) {
+    const actualRows = readChunk(chunk);
+    let verified: ReturnType<typeof verifyCuratedRepairChunkResultRows>;
+    try {
+      verified = verifyCuratedRepairChunkResultRows(actualRows, chunk.expectedRows);
+    } catch (error) {
+      firstVerificationError ??= error;
+      continue;
+    }
+    rowsMatched += verified.rowsMatched;
+    payloadBytesMatched += verified.payloadBytesMatched;
+    for (const row of verified.hashRows) {
+      updateCuratedCorpusDigest(digest, row, firstDigestRow);
+      firstDigestRow = false;
+    }
+  }
+
+  if (firstVerificationError !== undefined) throw firstVerificationError;
+
+  if (rowsMatched !== expectedRows.length) {
+    throw new Error(
+      `Curated translation row verification failed: ${rowsMatched}/${expectedRows.length}.`,
+    );
+  }
+  const corpusSha256 = digest.digest("hex");
   const expectedCorpusSha256 = curatedCorpusSha256(expectedRows);
   if (corpusSha256 !== expectedCorpusSha256) {
     throw new Error("Curated translation corpus SHA-256 verification failed.");
   }
-  return { rowsMatched: matched, payloadBytesMatched, corpusSha256 };
+  return {
+    rowsMatched,
+    payloadBytesMatched,
+    corpusSha256,
+    queryCount: chunks.length,
+  };
+}
+
+export function verifyCuratedRepairResultRows(
+  actualRows: readonly Record<string, unknown>[],
+  expectedRows: readonly CuratedNamespaceRepairRow[],
+) {
+  assertExactCuratedExpectedRows(expectedRows);
+  const verified = verifyCuratedRepairChunkResultRows(actualRows, expectedRows);
+  const corpusSha256 = curatedResultCorpusSha256(verified.hashRows);
+  const expectedCorpusSha256 = curatedCorpusSha256(expectedRows);
+  if (corpusSha256 !== expectedCorpusSha256) {
+    throw new Error("Curated translation corpus SHA-256 verification failed.");
+  }
+  return {
+    rowsMatched: verified.rowsMatched,
+    payloadBytesMatched: verified.payloadBytesMatched,
+    corpusSha256,
+  };
 }
 
 export function verifyMainAppRepairResultRows(
+  actualRows: readonly Record<string, unknown>[],
+  expectedRows: readonly MainAppRepairRow[],
+) {
+  assertExactMainAppExpectedRows(expectedRows);
+  return verifyMainAppRepairChunkResultRows(actualRows, expectedRows);
+}
+
+function verifyMainAppRepairChunkResultRows(
   actualRows: readonly Record<string, unknown>[],
   expectedRows: readonly MainAppRepairRow[],
 ) {
@@ -5259,6 +6895,45 @@ export function verifyMainAppRepairResultRows(
     throw new Error(`Main-app translation row verification failed: ${matched}/${expectedRows.length}.`);
   }
   return matched;
+}
+
+export function verifyMainAppRepairResultChunks(
+  expectedRows: readonly MainAppRepairRow[],
+  readChunk: (
+    chunk: MainAppRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+) {
+  const chunks = buildMainAppRepairVerificationChunks(expectedRows);
+  return verifyMainAppRepairPlannedResultChunks(expectedRows, chunks, readChunk);
+}
+
+function verifyMainAppRepairPlannedResultChunks(
+  expectedRows: readonly MainAppRepairRow[],
+  chunks: readonly MainAppRepairVerificationChunk[],
+  readChunk: (
+    chunk: MainAppRepairVerificationChunk,
+  ) => readonly Record<string, unknown>[],
+) {
+  let rowsMatched = 0;
+  let firstVerificationError: unknown;
+  for (const chunk of chunks) {
+    const actualRows = readChunk(chunk);
+    try {
+      rowsMatched += verifyMainAppRepairChunkResultRows(
+        actualRows,
+        chunk.expectedRows,
+      );
+    } catch (error) {
+      firstVerificationError ??= error;
+    }
+  }
+  if (firstVerificationError !== undefined) throw firstVerificationError;
+  if (rowsMatched !== expectedRows.length) {
+    throw new Error(
+      `Main-app translation row verification failed: ${rowsMatched}/${expectedRows.length}.`,
+    );
+  }
+  return { rowsMatched, queryCount: chunks.length };
 }
 
 function translationIdentifier(namespace: string, language: string) {
@@ -5314,6 +6989,33 @@ function assertExactCuratedExpectedRows(
   return expectedIdentifiers;
 }
 
+function assertExactMainAppExpectedRows(rows: readonly MainAppRepairRow[]) {
+  const expectedLanguages = new Set<SupportedLanguage>(
+    supportedLanguages.filter((language) => language !== defaultLanguage),
+  );
+  if (rows.length !== expectedLanguages.size) {
+    throw new Error(
+      `Main-app expected row cardinality failed: ${rows.length}/${expectedLanguages.size}.`,
+    );
+  }
+  const seen = new Set<SupportedLanguage>();
+  for (const row of rows) {
+    if (
+      row.namespace !== mainAppTranslationNamespace ||
+      !expectedLanguages.has(row.language)
+    ) {
+      throw new Error(
+        `Main-app expected rows contain an unexpected ${row.namespace}/${row.language}.`,
+      );
+    }
+    if (seen.has(row.language)) {
+      throw new Error(`Main-app expected rows contain a duplicate ${row.language}.`);
+    }
+    seen.add(row.language);
+  }
+  return expectedLanguages;
+}
+
 function canonicalPayloadJson(payload: Readonly<Record<string, string>>) {
   const canonical: Record<string, string> = {};
   for (const key of Object.keys(payload).sort()) canonical[key] = payload[key];
@@ -5321,35 +7023,56 @@ function canonicalPayloadJson(payload: Readonly<Record<string, string>>) {
 }
 
 function curatedCorpusSha256(rows: readonly CuratedNamespaceRepairRow[]) {
-  const records = [...rows].sort(compareCuratedRepairRows).map((row) =>
-    JSON.stringify([
-      row.namespace,
-      row.language,
-      row.sourceHash,
-      canonicalPayloadJson(row.payload),
-    ]),
-  );
-  return sha256(records.join("\n"));
+  const digest = crypto.createHash("sha256");
+  let firstRow = true;
+  for (const row of [...rows].sort(compareCuratedRepairRows)) {
+    updateCuratedCorpusDigest(
+      digest,
+      {
+        namespace: row.namespace,
+        language: row.language,
+        sourceHash: row.sourceHash,
+        payload: canonicalPayloadJson(row.payload),
+      },
+      firstRow,
+    );
+    firstRow = false;
+  }
+  return digest.digest("hex");
 }
 
 function curatedResultCorpusSha256(
-  rows: readonly {
-    namespace: keyof typeof siteSourceManifest;
-    language: SupportedLanguage;
-    sourceHash: string;
-    payload: string;
-  }[],
+  rows: readonly CuratedVerificationHashRow[],
 ) {
-  const records = [...rows]
-    .sort(
-      (left, right) =>
-        left.namespace.localeCompare(right.namespace) ||
-        left.language.localeCompare(right.language),
-    )
-    .map((row) =>
-      JSON.stringify([row.namespace, row.language, row.sourceHash, row.payload]),
-    );
-  return sha256(records.join("\n"));
+  const digest = crypto.createHash("sha256");
+  let firstRow = true;
+  for (const row of [...rows].sort(compareCuratedVerificationHashRows)) {
+    updateCuratedCorpusDigest(digest, row, firstRow);
+    firstRow = false;
+  }
+  return digest.digest("hex");
+}
+
+function compareCuratedVerificationHashRows(
+  left: CuratedVerificationHashRow,
+  right: CuratedVerificationHashRow,
+) {
+  return (
+    left.namespace.localeCompare(right.namespace) ||
+    left.language.localeCompare(right.language)
+  );
+}
+
+function updateCuratedCorpusDigest(
+  digest: ReturnType<typeof crypto.createHash>,
+  row: CuratedVerificationHashRow,
+  firstRow: boolean,
+) {
+  if (!firstRow) digest.update("\n");
+  digest.update(
+    JSON.stringify([row.namespace, row.language, row.sourceHash, row.payload]),
+    "utf8",
+  );
 }
 
 function assertNoExplicitTransactionControl(sql: string) {
@@ -5479,6 +7202,36 @@ function sqlString(value: string) {
 
 function sha256(value: string) {
   return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+function sha256CanonicalJson(value: unknown) {
+  return sha256(canonicalJsonForHash(value));
+}
+
+function canonicalJsonForHash(value: unknown): string {
+  if (
+    value === null ||
+    typeof value === "string" ||
+    typeof value === "boolean"
+  ) {
+    return JSON.stringify(value);
+  }
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) {
+      throw new Error("Canonical JSON cannot contain a non-finite number.");
+    }
+    return JSON.stringify(value);
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map(canonicalJsonForHash).join(",")}]`;
+  }
+  if (isRecord(value)) {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${canonicalJsonForHash(value[key])}`)
+      .join(",")}}`;
+  }
+  throw new Error(`Canonical JSON cannot encode ${typeof value}.`);
 }
 
 function getArg(name: string) {

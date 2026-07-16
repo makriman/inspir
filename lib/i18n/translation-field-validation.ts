@@ -19,7 +19,7 @@ const languageSpecificIdenticalTranslations: Record<string, ReadonlySet<string>>
   Czech: new Set(["Sparring partner"]),
   Indonesian: new Set(["2 September 1666", "Media"]),
   Malay: new Set(["2 September 1666", "Media"]),
-  Afrikaans: new Set(["2 September 1666", "Media"]),
+  Afrikaans: new Set(["2 September 1666", "Blog", "Media"]),
   Yoruba: new Set(["Media"]),
   Norwegian: new Set(["Blog", "Media", "Social", "Start", "Start 10 min"]),
   Swedish: new Set(["Blog", "Media", "Social", "Start"]),
@@ -209,6 +209,7 @@ function hasLikelyExtraneousTranslationArtifact(source: string, value: string, l
 function canRemainUntranslated(source: string, language?: string) {
   const value = source.trim();
   if (mustTranslatePhrases.has(value) || mustTranslateSingleWords.has(value)) return false;
+  if (/^(?:\{[a-zA-Z0-9_]+\}\s*)+(?:ms|s|min|h)$/i.test(value)) return true;
   const literalText = value
     .replace(/\{[a-zA-Z0-9_]+\}/g, "")
     .replace(/\binspir\b/gi, "")

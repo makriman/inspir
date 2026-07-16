@@ -21,20 +21,29 @@ import {
 } from "./production-validation-lock";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 import {
+  assertReleaseSequenceCurrentReleaseBinding,
+  type ReleaseSequenceCurrentRelease,
+} from "./release-sequence-attestations";
+import {
   buildWorkerDeployArtifactEvidence,
   readSoleActiveWorkerVersion,
   type WorkerDeployArtifactEvidence,
 } from "./worker-deploy-evidence";
 import { assertFreshProductionVectorizeReadiness } from "./vectorize-readiness-evidence";
+import {
+  readWorkerCandidateUploadEvidence,
+  workerCandidateUploadEvidencePath,
+} from "./worker-candidate-release-evidence";
 
 const workerName = "inspirlearning";
 const heartbeatIntervalMs = 10 * 60 * 1_000;
 const defaultBoundedChildOutputBytes = 128 * 1024 * 1024;
 const boundedChildOuterTimeoutGraceMs = 60_000;
 const rollbackMessage = "Guarded rollback failed inspir release";
-export const STANDALONE_SOURCE_SYNC_BLOCKED_FOR_ROLLOVER = true as const;
+const STANDALONE_SOURCE_SYNC_BLOCKED_FOR_ROLLOVER = true as const;
 const operationScripts: Record<Exclude<ProductionReleaseOperationName, "rollback">, string> = {
   "apply-d1-runtime-migrations": "scripts/cloudflare/apply-d1-runtime-migrations.ts",
+  "apply-d1-runtime-migration-0017": "scripts/cloudflare/apply-d1-runtime-migration-0017.ts",
   "sync-site-translation-sources": "scripts/cloudflare/sync-site-translation-sources.ts",
   "sync-topic-seeds": "scripts/cloudflare/sync-topic-seeds.ts",
 };
@@ -98,11 +107,30 @@ export async function runProductionReleaseOperation(
   } = {},
 ) {
   assertProductionReleaseOperationAllowed(operation);
+  if (operation === "apply-d1-runtime-migration-0017") {
+    // This must happen before even a read-only remote topology query. The 0017
+    // child has no supported passthrough flags, so malformed admission cannot
+    // consume a D1/Workers request or reach the exclusion mutation.
+    assertRuntimeMigration0017GuardedArguments(args);
+  }
   const cwd = path.resolve(options.cwd ?? process.cwd());
   const backupDir = path.resolve(options.backupDir ?? resolveBackupDir());
   const readActiveVersion = options.readActiveVersion ?? readSoleActiveWorkerVersion;
   const sourceFingerprintBefore = buildRepoSourceFingerprint(cwd);
+  const runtimeMigration0017Release = operation === "apply-d1-runtime-migration-0017"
+    ? assertRuntimeMigration0017ReleaseBeforeProductionLock({
+        backupDir,
+        cwd,
+        sourceFingerprint: sourceFingerprintBefore,
+      })
+    : null;
   const activeVersionBefore = readActiveVersion();
+  if (runtimeMigration0017Release) {
+    assertRuntimeMigration0017LiveBaselineBeforeProductionLock({
+      activeVersionId: activeVersionBefore,
+      release: runtimeMigration0017Release,
+    });
+  }
   if (operation === "sync-topic-seeds") {
     assertTopicSequenceBeforeProductionLock({
       args,
@@ -124,11 +152,22 @@ export async function runProductionReleaseOperation(
   try {
     assertNoLiveProductionValidationLock();
     exclusion = acquireProductionValidationExclusion({
-      candidateVersionId: activeVersionBefore,
+      candidateVersionId:
+        runtimeMigration0017Release?.targetCandidateVersionId ??
+        activeVersionBefore,
       sourceFingerprintSha256: sourceFingerprintBefore.sha256,
     });
     exclusion = attestProductionValidationExclusion(exclusion);
     assertProductionValidationExclusionCommandWindow(exclusion);
+    if (
+      runtimeMigration0017Release &&
+      exclusion.owner.candidateVersionId !==
+        runtimeMigration0017Release.targetCandidateVersionId
+    ) {
+      throw new Error(
+        "Production migration 0017 exclusion owner drifted from the canonical inactive candidate.",
+      );
+    }
     const lockedActiveVersion = readActiveVersion();
     if (lockedActiveVersion !== activeVersionBefore) {
       throw new Error(
@@ -281,15 +320,28 @@ export function assertTopicSequenceBeforeProductionLock(
   dependencies: {
     readGitIdentity?: typeof assertGitReleaseIdentity;
     buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
+    readUploadEvidence?: typeof readWorkerCandidateUploadEvidence;
+    assertCurrentReleaseBinding?: (
+      input: Parameters<typeof assertReleaseSequenceCurrentReleaseBinding>[0],
+    ) => unknown;
     validateVectorizeReadiness?: (
       input: Parameters<typeof assertFreshProductionVectorizeReadiness>[0],
     ) => { createdAt: string };
   } = {},
 ) {
   const candidateVersionId = requireUniqueCandidateVersion(input.args);
-  if (candidateVersionId !== input.activeVersionId) {
+  const backupDir = path.resolve(input.backupDir);
+  const upload = (
+    dependencies.readUploadEvidence ?? readWorkerCandidateUploadEvidence
+  )(workerCandidateUploadEvidencePath(backupDir));
+  if (upload.value.targetCandidateVersionId !== candidateVersionId) {
     throw new Error(
-      `Topic reconciliation expected active candidate ${candidateVersionId} before exclusion acquisition; received ${input.activeVersionId}.`,
+      `Topic reconciliation expected uploaded candidate ${candidateVersionId} before exclusion acquisition; canonical upload evidence names ${upload.value.targetCandidateVersionId}.`,
+    );
+  }
+  if (upload.value.serviceBaselineVersionId !== input.activeVersionId) {
+    throw new Error(
+      `Topic reconciliation requires service baseline ${upload.value.serviceBaselineVersionId} alone at 100% before exclusion acquisition; received ${input.activeVersionId}.`,
     );
   }
   const readGitIdentity = dependencies.readGitIdentity ?? assertGitReleaseIdentity;
@@ -297,15 +349,105 @@ export function assertTopicSequenceBeforeProductionLock(
     dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence;
   const validateVectorizeReadiness =
     dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness;
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: upload.value.targetCandidateVersionId,
+    serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    phaseEvidenceSha256: upload.sha256,
+    phaseEvidenceCreatedAt: upload.value.createdAt,
+    soleServingVersionId: upload.value.serviceBaselineVersionId,
+    git: readGitIdentity({ cwd: path.resolve(input.cwd) }),
+    artifactEvidence: buildArtifactEvidence(path.resolve(input.cwd)),
+  };
+  (
+    dependencies.assertCurrentReleaseBinding ??
+    assertReleaseSequenceCurrentReleaseBinding
+  )({ backupDir, currentRelease });
   return validateVectorizeReadiness({
-    backupDir: path.resolve(input.backupDir),
-    currentRelease: {
-      candidateVersionId,
-      activeVersionId: input.activeVersionId,
-      git: readGitIdentity({ cwd: path.resolve(input.cwd) }),
-      artifactEvidence: buildArtifactEvidence(path.resolve(input.cwd)),
-    },
+    backupDir,
+    currentRelease,
+    requiredPhase: "uploaded-inactive",
   });
+}
+
+export type RuntimeMigration0017ReleaseIdentity = Readonly<{
+  targetCandidateVersionId: string;
+  serviceBaselineVersionId: string;
+  uploadEvidenceSha256: string;
+}>;
+
+export function assertRuntimeMigration0017ReleaseBeforeProductionLock(
+  input: Readonly<{
+    backupDir: string;
+    cwd: string;
+    sourceFingerprint: SourceFingerprint;
+  }>,
+  dependencies: {
+    readGitIdentity?: typeof assertGitReleaseIdentity;
+    buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
+    readUploadEvidence?: typeof readWorkerCandidateUploadEvidence;
+    assertCurrentReleaseBinding?: (
+      input: Parameters<typeof assertReleaseSequenceCurrentReleaseBinding>[0],
+    ) => unknown;
+  } = {},
+): RuntimeMigration0017ReleaseIdentity {
+  const backupDir = path.resolve(input.backupDir);
+  const cwd = path.resolve(input.cwd);
+  const upload = (
+    dependencies.readUploadEvidence ?? readWorkerCandidateUploadEvidence
+  )(workerCandidateUploadEvidencePath(backupDir));
+  const git = (dependencies.readGitIdentity ?? assertGitReleaseIdentity)({ cwd });
+  const artifactEvidence = (
+    dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence
+  )(cwd);
+  if (
+    artifactEvidence.sourceFingerprint.sha256 !== input.sourceFingerprint.sha256 ||
+    artifactEvidence.sourceFingerprint.fileCount !== input.sourceFingerprint.fileCount
+  ) {
+    throw new Error(
+      "Production migration 0017 source changed while validating its inactive upload before exclusion acquisition.",
+    );
+  }
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: upload.value.targetCandidateVersionId,
+    serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    phaseEvidenceSha256: upload.sha256,
+    phaseEvidenceCreatedAt: upload.value.createdAt,
+    soleServingVersionId: upload.value.serviceBaselineVersionId,
+    git,
+    artifactEvidence,
+  };
+  (
+    dependencies.assertCurrentReleaseBinding ??
+    assertReleaseSequenceCurrentReleaseBinding
+  )({ backupDir, currentRelease });
+  return Object.freeze({
+    targetCandidateVersionId: upload.value.targetCandidateVersionId,
+    serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+  });
+}
+
+export function assertRuntimeMigration0017LiveBaselineBeforeProductionLock(
+  input: Readonly<{
+    activeVersionId: string;
+    release: RuntimeMigration0017ReleaseIdentity;
+  }>,
+) {
+  const activeVersionId = requireVersionId(input.activeVersionId);
+  if (
+    input.release.targetCandidateVersionId ===
+      input.release.serviceBaselineVersionId ||
+    activeVersionId !== input.release.serviceBaselineVersionId
+  ) {
+    throw new Error(
+      `Production migration 0017 requires service baseline ${input.release.serviceBaselineVersionId} alone at 100% while canonical candidate ${input.release.targetCandidateVersionId} remains inactive; received ${activeVersionId}.`,
+    );
+  }
+  return input.release;
 }
 
 export function productionReleaseOperationCommand(
@@ -327,10 +469,21 @@ export function productionReleaseOperationCommand(
       ],
     };
   }
+  if (operation === "apply-d1-runtime-migration-0017") {
+    assertRuntimeMigration0017GuardedArguments(args);
+  }
   return {
     command: process.execPath,
     args: ["--import", "tsx", path.resolve(cwd, operationScripts[operation]), ...args],
   };
+}
+
+function assertRuntimeMigration0017GuardedArguments(args: readonly string[]) {
+  if (args.length !== 1 || args[0] !== "--confirm-production") {
+    throw new Error(
+      "Production migration 0017 admission and apply are one guarded operation and accept only --confirm-production.",
+    );
+  }
 }
 
 export function boundedReleaseChildCommand(

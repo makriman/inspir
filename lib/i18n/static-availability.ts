@@ -20,12 +20,20 @@ const staticNamespaceAvailability = new Map<SupportedLanguage, ReadonlySet<strin
 export function isStaticSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
   if (language === defaultLanguage) return true;
 
-  const requiredNamespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
-  if (!requiredNamespaces.length) return false;
   const available = staticNamespaceAvailability.get(language);
-  if (!available?.size) return false;
+  return hasStaticSiteNamespaceCoverage(pathname, available);
+}
 
-  return requiredNamespaces.every((namespace) => available.has(namespace));
+export function hasStaticSiteNamespaceCoverage(
+  pathname: string,
+  availableNamespaces: ReadonlySet<string> | undefined,
+) {
+  const requiredNamespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
+  if (!requiredNamespaces.length || !availableNamespaces?.size) return false;
+
+  return requiredNamespaces.every((namespace) =>
+    availableNamespaces.has(namespace),
+  );
 }
 
 export function staticSiteLanguagesForPath(pathname: string) {

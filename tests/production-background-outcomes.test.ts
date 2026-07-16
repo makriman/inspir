@@ -5,6 +5,15 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import {
+  NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS,
+  NATIVE_SCHEDULED_CPU_LIMIT_MS,
+  NATIVE_SCHEDULED_D1_QUERY_CEILING,
+  NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+  NATIVE_SCHEDULED_MEMORY_USER_CAP,
+  NATIVE_SCHEDULED_RESOURCE_CONTRACT,
+  NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
+} from "../lib/free-runtime/state-api";
+import {
   backgroundQueueSettlementQuietPeriodMs,
   backgroundScheduledSettlementQuietPeriodMs,
   captureTail,
@@ -326,10 +335,30 @@ test("scheduled evidence requires the real daily cron, exact UTC occurrence, and
   );
 
   const overEnqueueBound = scheduledRecord();
-  overEnqueueBound.logs[0] = scheduledEnqueueLog({ due: 26, queued: 26 });
+  overEnqueueBound.logs[0] = scheduledEnqueueLog({
+    due: NATIVE_SCHEDULED_MEMORY_USER_CAP + 1,
+    queued: NATIVE_SCHEDULED_MEMORY_USER_CAP + 1,
+  });
   assert.ok(
     scheduledEvaluation(overEnqueueBound).problems.includes("scheduled-success-log"),
   );
+
+  for (const [field, value] of [
+    ["resourceContract", "wrong-contract"],
+    ["cpuLimitMs", NATIVE_SCHEDULED_CPU_LIMIT_MS + 1],
+    ["cpuHeadroomExclusiveMs", NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS + 1],
+    ["d1QueryLimit", NATIVE_SCHEDULED_D1_QUERY_LIMIT + 1],
+    ["d1QueryCeiling", NATIVE_SCHEDULED_D1_QUERY_CEILING - 1],
+    ["dueCap", NATIVE_SCHEDULED_MEMORY_USER_CAP - 1],
+    ["vectorCleanupDrainCap", NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP - 1],
+  ] as const) {
+    const wrongContract = scheduledRecord();
+    wrongContract.logs[0] = scheduledEnqueueLog({ [field]: value });
+    assert.ok(
+      scheduledEvaluation(wrongContract).problems.includes("scheduled-success-log"),
+      field,
+    );
+  }
 
   const missingCleanupSuccess = scheduledRecord();
   missingCleanupSuccess.logs = missingCleanupSuccess.logs.slice(0, 1);
@@ -680,6 +709,13 @@ function scheduledEnqueueLog(overrides: Record<string, unknown> = {}) {
     failed: 0,
     skipped: null,
     cron: "0 3 * * *",
+    resourceContract: NATIVE_SCHEDULED_RESOURCE_CONTRACT,
+    cpuLimitMs: NATIVE_SCHEDULED_CPU_LIMIT_MS,
+    cpuHeadroomExclusiveMs: NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS,
+    d1QueryLimit: NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+    d1QueryCeiling: NATIVE_SCHEDULED_D1_QUERY_CEILING,
+    dueCap: NATIVE_SCHEDULED_MEMORY_USER_CAP,
+    vectorCleanupDrainCap: NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
     ...overrides,
   });
 }

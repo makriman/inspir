@@ -18,3 +18,28 @@ export function redactProductionPlaywrightOutput(
     "$1[REDACTED]",
   );
 }
+
+export function redactPlaywrightJsonEvidence(
+  value: unknown,
+  sensitiveValues: readonly string[],
+): unknown {
+  if (typeof value === "string") {
+    return redactProductionPlaywrightOutput(value, sensitiveValues);
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) =>
+      redactPlaywrightJsonEvidence(entry, sensitiveValues),
+    );
+  }
+  if (!isRecord(value)) return value;
+  return Object.fromEntries(
+    Object.entries(value).map(([key, entry]) => [
+      redactProductionPlaywrightOutput(key, sensitiveValues),
+      redactPlaywrightJsonEvidence(entry, sensitiveValues),
+    ]),
+  );
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}

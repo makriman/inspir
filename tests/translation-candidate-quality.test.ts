@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
@@ -119,6 +120,31 @@ test("candidate field QA enforces lossless structural literals and explicit nega
     validateTranslationCandidateField({ language: "Hindi", source: "JavaScript", value: "JavaScript" }).failures,
     [],
   );
+  assert.deepEqual(
+    validateTranslationCandidateField({ language: "Afrikaans", source: "Blog", value: "Blog" }).failures,
+    [],
+  );
+  assert.deepEqual(
+    validateTranslationCandidateField({
+      language: "Afrikaans",
+      source: "{value1} min",
+      value: "{value1} min",
+    }).failures,
+    [],
+  );
+  for (const sourceCopy of [
+    "Start {value1} min",
+    "{value1} min remaining",
+    "{value1} minimum",
+  ]) {
+    assert.ok(
+      validateTranslationCandidateField({
+        language: "Afrikaans",
+        source: sourceCopy,
+        value: sourceCopy,
+      }).failures.includes("source-equality"),
+    );
+  }
   assert.deepEqual(
     validateTranslationCandidateField({
       language: "Spanish",
@@ -412,6 +438,104 @@ test("directory QA fails closed for missing files, mixed models, and identity dr
     assert.throws(
       () => validateTranslationRepairCandidateDirectories({ worklistDir, candidateDir }),
       /Reasons must be sorted and unique/,
+    );
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("directory QA keeps reviewed exceptions explicit, exact, and opt-in", () => {
+  const root = path.resolve("tmp", `translation-candidate-qa-exception-${process.pid}`);
+  const worklistDir = path.join(root, "worklists");
+  const candidateDir = path.join(root, "candidates");
+  const source = "Draw/Sketch Board";
+  const value = "Teken-/Sketsbord";
+  const worklist = {
+    schemaVersion: 1,
+    kind: "translation-repair-worklist",
+    protectorVersion: "literal-protector-v2",
+    protectorFingerprint,
+    language: "Afrikaans",
+    locale: "af",
+    namespace: "main-app",
+    sourceHash,
+    entries: [
+      {
+        key: "topic.draw-sketch-board.name",
+        source,
+        existingCandidate: value,
+        reasons: ["quality-review"],
+        value: "",
+      },
+    ],
+  };
+  const candidate = {
+    ...worklist,
+    kind: "translation-repair-candidate",
+    draftModel: "reviewed-test",
+    entries: worklist.entries.map((entry) => ({ ...entry, value })),
+  };
+  const sha256Text = (text: string) =>
+    createHash("sha256").update(text, "utf8").digest("hex");
+  const reviewedException = {
+    kind: "reviewed-candidate-field-exception-v1" as const,
+    language: "Afrikaans" as const,
+    locale: "af",
+    namespace: "main-app",
+    sourceHash,
+    key: "topic.draw-sketch-board.name",
+    sourceSha256: sha256Text(source),
+    valueSha256: sha256Text(value),
+    decisionIdentitySha256: "1".repeat(64),
+    proposalIdentitySha256: "2".repeat(64),
+    fieldIdentitySha256: "3".repeat(64),
+    reviewerId: "reviewer-a" as const,
+    authority: "original-review-evidence" as const,
+    verdict: "preserve-current" as const,
+    failures: ["protected-literal-parity"] as const,
+  };
+
+  try {
+    writeJson(path.join(worklistDir, "af/main-app.json"), worklist);
+    writeJson(path.join(candidateDir, "af/main-app.json"), candidate);
+    const ordinaryReport = validateTranslationRepairCandidateDirectories({
+      worklistDir,
+      candidateDir,
+    });
+    assert.equal(ordinaryReport.ok, false);
+    assert.equal(ordinaryReport.ordinaryCheckedFields, 1);
+    assert.equal(ordinaryReport.acceptedExceptionFields, 0);
+
+    const reviewedReport = validateTranslationRepairCandidateDirectories({
+      worklistDir,
+      candidateDir,
+      exceptionPolicy: {
+        kind: "reviewed-candidate-field-exceptions-v1",
+        exceptions: [reviewedException],
+      },
+    });
+    assert.equal(reviewedReport.ok, true);
+    assert.equal(reviewedReport.checkedFields, 1);
+    assert.equal(reviewedReport.ordinaryCheckedFields, 0);
+    assert.equal(reviewedReport.acceptedExceptionFields, 1);
+    assert.deepEqual(reviewedReport.acceptedExceptions, [reviewedException]);
+
+    assert.throws(
+      () =>
+        validateTranslationRepairCandidateDirectories({
+          worklistDir,
+          candidateDir,
+          exceptionPolicy: {
+            kind: "reviewed-candidate-field-exceptions-v1",
+            exceptions: [
+              {
+                ...reviewedException,
+                valueSha256: "4".repeat(64),
+              },
+            ],
+          },
+        }),
+      /not exactly consumed/u,
     );
   } finally {
     fs.rmSync(root, { recursive: true, force: true });

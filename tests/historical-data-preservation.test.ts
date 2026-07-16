@@ -16,25 +16,38 @@ import {
   HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS,
   HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT,
   HISTORICAL_DATA_IDENTITIES_SQL,
+  HISTORICAL_DATA_SCHEMA_OBJECT_RESULT_SET_COUNT,
   HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT,
   HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT,
   HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
   HISTORICAL_DATA_SNAPSHOT_SQL,
   HISTORICAL_DATA_SUMMARY_SQL,
   HISTORICAL_DATASET_NAMES,
+  HISTORICAL_GAME_RESULTS_IDENTITY_MAX_BYTES,
+  HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS,
+  HISTORICAL_GAME_RESULTS_ROW_LIMIT,
   HISTORICAL_OPERATIONAL_DATASET_NAMES,
+  HISTORICAL_SCHEMA_OBJECT_LIMIT,
+  HISTORICAL_SCHEMA_OBJECT_SQL_MAX_BYTES,
   HISTORICAL_SUPPLEMENTAL_DATASET_NAMES,
+  assertHistoricalGameResultsIdentity,
   createHistoricalDataBaseline,
+  finalizeHistoricalDataPreparedVerification,
   historicalDataBudgetOperationId,
+  historicalDataIdentityHmac,
   historicalDataReportPath,
   parseHistoricalDataBaselineReport,
+  parseHistoricalDataPreparedVerification,
   parseHistoricalDataLegacyBaselineReportForContinuity,
   readAndValidateHistoricalDataBaseline,
   verifyHistoricalDataPreservation,
   writeHistoricalDataReport,
+  historicalGameResultsSchemaObjectResultRows,
+  parseHistoricalGameResultsSchemaObjects,
   type HistoricalDataBaselineReport,
   type HistoricalDatasetName,
   type HistoricalDataLegacyBaselineReport,
+  type HistoricalDataPreparedVerification,
   type HistoricalOperationalDatasetName,
   type HistoricalSupplementalDatasetName,
 } from "../scripts/cloudflare/verify-historical-data-preservation";
@@ -142,10 +155,10 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
       HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
     );
     assert.equal(baseline.ledger.reservation.phase, "exact");
-    assert.equal(baseline.ledger.reservation.rowsRead, 68);
+    assert.equal(baseline.ledger.reservation.rowsRead, 86);
     assert.deepEqual(baseline.limits, {
       coreRows: 350_000,
-      supplementalRows: 125_000,
+      supplementalRows: 175_000,
       operationalRows: 10_000,
       logicalSnapshotRowsRead: HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ,
       logicalRowsReadLimit: HISTORICAL_BILLED_READ_LIMIT,
@@ -160,10 +173,11 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
     assert.deepEqual(baselineCalls[0]?.options, {
       env: {
         HISTORICAL_DATA_PRESERVATION_HMAC_SECRET: undefined,
+        WRANGLER_LOG_SANITIZE: "true",
         WRANGLER_WRITE_LOGS: "false",
       },
     });
-    assert.equal(baseline.rowsRead, 68);
+    assert.equal(baseline.rowsRead, 86);
     assert.deepEqual(
       Object.keys(baseline.supplementalDatasets).sort(),
       [...HISTORICAL_SUPPLEMENTAL_DATASET_NAMES].sort(),
@@ -242,6 +256,95 @@ test("private baseline and verifier preserve HMAC sentinels while allowing concu
         sha256: source.sha256,
         fileCount: source.fileCount,
       }),
+    );
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("final verifier persists one authorized prepared capture and recovers without a second D1 snapshot", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-history-final-prepared-"),
+  );
+  try {
+    const source = makeSource("final prepared source");
+    const baseline = createHistoricalDataBaseline({
+      backupDir,
+      hmacSecret: secret,
+      sourceFingerprint: source,
+      runner: fixtureRunner(databaseFixture()),
+      usageLoader: () => emptyUsage,
+      clock: () => now,
+    });
+    let authorized = false;
+    let runnerCalls = 0;
+    let prepared: HistoricalDataPreparedVerification | undefined;
+    const delegate = fixtureRunner(databaseFixture());
+    const runner: WranglerRunner = (args, options) => {
+      runnerCalls += 1;
+      assert.equal(authorized, true, "authorization must be durable before D1");
+      return delegate(args, options);
+    };
+    assert.throws(
+      () => verifyHistoricalDataPreservation({
+        baseline,
+        backupDir,
+        hmacSecret: secret,
+        sourceFingerprint: source,
+        runner,
+        usageLoader: () => emptyUsage,
+        clock: () => now,
+        authorizeLastPreD1: () => {
+          assert.equal(authorized, false);
+          authorized = true;
+        },
+        persistPreparedVerification: (value) => {
+          prepared = parseHistoricalDataPreparedVerification(value);
+          throw new Error("simulated crash after prepared capture");
+        },
+      }),
+      /simulated crash after prepared capture/,
+    );
+    assert.equal(runnerCalls, 1);
+    assert.ok(prepared);
+    const operationId = historicalDataBudgetOperationId("verification", {
+      sha256: source.sha256,
+      fileCount: source.fileCount,
+    });
+    const retained = readD1ReleaseBudgetLedger(
+      d1ReleaseBudgetLedgerPath(backupDir, "2026-07-11"),
+    ).reservations.find((reservation) => reservation.operationId === operationId);
+    assert.equal(retained?.phase, "maximum");
+    assert.equal(
+      retained?.rowsRead,
+      HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
+    );
+
+    const recovered = finalizeHistoricalDataPreparedVerification({
+      prepared,
+      hmacSecret: secret,
+      expectedSourceFingerprint: source,
+      now,
+    });
+    assert.equal(recovered.ok, true);
+    assert.equal(recovered.rowsRead, 86);
+    assert.equal(runnerCalls, 1, "prepared recovery must not query D1 again");
+    const exact = readD1ReleaseBudgetLedger(
+      d1ReleaseBudgetLedgerPath(backupDir, "2026-07-11"),
+    ).reservations.find((reservation) => reservation.operationId === operationId);
+    assert.equal(exact?.phase, "exact");
+    assert.equal(exact?.rowsRead, 86);
+
+    const tampered = structuredClone(prepared);
+    tampered.datasets.users.rowCount += 1;
+    assert.throws(
+      () => finalizeHistoricalDataPreparedVerification({
+        prepared: tampered,
+        hmacSecret: secret,
+        expectedSourceFingerprint: source,
+        now,
+      }),
+      /capture binding/,
     );
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
@@ -439,6 +542,207 @@ test("operational outbox capture rejects a missing required 0016 column", () => 
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
   }
+});
+
+test("historical game results fail closed above their cap or without payload schema", () => {
+  const cases = [
+    {
+      name: "row cap",
+      mutateFixture: (fixture: DatabaseFixture) => {
+        fixture.counts.game_results = HISTORICAL_GAME_RESULTS_ROW_LIMIT + 1;
+      },
+      mutateSets: undefined,
+      expected: /game_results rows exceed its cap/,
+    },
+    {
+      name: "payload schema",
+      mutateFixture: (fixture: DatabaseFixture) => {
+        void fixture;
+      },
+      mutateSets: (sets: FixtureResultSet[]) => {
+        const gameResultsSchemaIndex =
+          HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
+          schemaTableNames().indexOf("game_results");
+        const gameResultsSchema = sets[gameResultsSchemaIndex];
+        assert.ok(gameResultsSchema);
+        gameResultsSchema.rows = gameResultsSchema.rows.filter(
+          (row) => row.name !== "payload",
+        );
+      },
+      expected: /game_results schema is incomplete/,
+    },
+    {
+      name: "fifteenth column",
+      mutateFixture: (fixture: DatabaseFixture) => {
+        void fixture;
+      },
+      mutateSets: (sets: FixtureResultSet[]) => {
+        const gameResultsSchemaIndex =
+          HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
+          schemaTableNames().indexOf("game_results");
+        const gameResultsSchema = sets[gameResultsSchemaIndex];
+        assert.ok(gameResultsSchema);
+        gameResultsSchema.rows.push({
+          table_name: "game_results",
+          name: "unapproved_column",
+          type: "text",
+          not_null: 0,
+          primary_key: 0,
+        });
+      },
+      expected: /game_results schema is incomplete/,
+    },
+  ] as const;
+
+  for (const fixtureCase of cases) {
+    const backupDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), `inspir-history-game-${fixtureCase.name}-`),
+    );
+    try {
+      const fixture = databaseFixture();
+      fixtureCase.mutateFixture(fixture);
+      assert.throws(
+        () => createHistoricalDataBaseline({
+          backupDir,
+          hmacSecret: secret,
+          sourceFingerprint: makeSource(`invalid game ${fixtureCase.name}`),
+          runner: fixtureRunner(fixture, [], fixtureCase.mutateSets),
+          usageLoader: () => emptyUsage,
+          clock: () => now,
+        }),
+        fixtureCase.expected,
+      );
+    } finally {
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
+});
+
+test("game schema-object proof enforces exact DDL, inventory, and byte boundaries", () => {
+  const canonical = historicalGameResultsSchemaObjectResultRows();
+  const extras = Array.from(
+    { length: HISTORICAL_SCHEMA_OBJECT_LIMIT - canonical.length },
+    (_, index) => ({
+      object_type: "index",
+      object_name: `fixture_index_${index}`,
+      table_name: "fixture_table",
+      sql_bytes: 1,
+      sql: "x",
+    }),
+  );
+  const maximumInventory = [...canonical, ...extras];
+  assert.equal(maximumInventory.length, HISTORICAL_SCHEMA_OBJECT_LIMIT);
+  assert.doesNotThrow(() =>
+    parseHistoricalGameResultsSchemaObjects(structuredClone(maximumInventory))
+  );
+
+  const inventoryOverflow = [
+    ...maximumInventory,
+    {
+      object_type: "index",
+      object_name: "fixture_index_overflow",
+      table_name: "fixture_table",
+      sql_bytes: 1,
+      sql: "x",
+    },
+  ];
+  assert.throws(
+    () => parseHistoricalGameResultsSchemaObjects(inventoryOverflow),
+    /inventory is empty or exceeds its cap/,
+  );
+
+  const exactByteBoundary = structuredClone(maximumInventory);
+  const boundaryRow = exactByteBoundary.at(-1);
+  assert.ok(boundaryRow);
+  boundaryRow.sql = "x".repeat(HISTORICAL_SCHEMA_OBJECT_SQL_MAX_BYTES);
+  boundaryRow.sql_bytes = HISTORICAL_SCHEMA_OBJECT_SQL_MAX_BYTES;
+  assert.doesNotThrow(() =>
+    parseHistoricalGameResultsSchemaObjects(exactByteBoundary)
+  );
+  boundaryRow.sql = `${boundaryRow.sql}x`;
+  boundaryRow.sql_bytes = HISTORICAL_SCHEMA_OBJECT_SQL_MAX_BYTES + 1;
+  assert.throws(
+    () => parseHistoricalGameResultsSchemaObjects(exactByteBoundary),
+    /DDL exceeds its byte cap or is malformed/,
+  );
+
+  const changedTable = structuredClone(canonical);
+  const tableRow = changedTable.find(
+    (row) => row.object_type === "table" && row.object_name === "game_results",
+  );
+  assert.ok(tableRow);
+  tableRow.sql = `${tableRow.sql} `;
+  tableRow.sql_bytes += 1;
+  assert.throws(
+    () => parseHistoricalGameResultsSchemaObjects(changedTable),
+    /table or immutability-trigger DDL changed/,
+  );
+
+  const missingTrigger = canonical.filter(
+    (row) => row.object_name !== "game_results_reject_update",
+  );
+  assert.throws(
+    () => parseHistoricalGameResultsSchemaObjects(missingTrigger),
+    /schema objects are incomplete/,
+  );
+
+  const duplicate = [...canonical, structuredClone(canonical[0])];
+  assert.throws(
+    () => parseHistoricalGameResultsSchemaObjects(duplicate),
+    /duplicate object/,
+  );
+});
+
+test("typed historical identity HMAC is framed, precision-safe, and null-safe", () => {
+  const digest = (values: readonly (string | number | null)[]) =>
+    historicalDataIdentityHmac(secret, "game_results", values);
+
+  assert.notEqual(digest(["1"]), digest([1]));
+  assert.notEqual(digest(["ab", "c"]), digest(["a", "bc"]));
+  assert.notEqual(digest([null]), digest(["null"]));
+  assert.notEqual(digest(["é"]), digest(["e\u0301"]));
+  assert.throws(
+    () => digest([Number.MAX_SAFE_INTEGER + 1]),
+    /exact string, safe-integer, or null fields/,
+  );
+  assert.throws(
+    () => digest([1.5]),
+    /exact string, safe-integer, or null fields/,
+  );
+});
+
+test("game identity accepts nullable timestamps and rejects oversized private payloads", () => {
+  const values = [
+    "private-game-result-id",
+    1,
+    "chess",
+    "engine",
+    "1",
+    "checkmate",
+    "human",
+    "win",
+    42,
+    "x".repeat(HISTORICAL_GAME_RESULTS_IDENTITY_MAX_BYTES - 256),
+    null,
+    2,
+    null,
+    2,
+  ] as const;
+  assert.doesNotThrow(() => assertHistoricalGameResultsIdentity(values));
+  const digest = historicalDataIdentityHmac(secret, "game_results", values);
+  assert.match(digest, /^[a-f0-9]{64}$/);
+  assert.equal(JSON.stringify({ digest }).includes("private-game-result-id"), false);
+
+  const oversized = [...values];
+  oversized[9] = "x".repeat(HISTORICAL_GAME_RESULTS_IDENTITY_MAX_BYTES + 1);
+  assert.throws(
+    () => assertHistoricalGameResultsIdentity(oversized),
+    /identity exceeds its byte cap/,
+  );
+  assert.throws(
+    () => assertHistoricalGameResultsIdentity([...values, "fifteenth"]),
+    /identity types are invalid/,
+  );
 });
 
 test("every supplemental dataset rejects count loss and sentinel replacement", () => {
@@ -815,11 +1119,12 @@ test("final verification permits the guarded release window while preflight fres
 });
 
 test("preservation SQL is bounded and read-only", () => {
-  assert.equal(HISTORICAL_DATA_COUNT_RESULT_SET_COUNT, 21);
-  assert.equal(HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT, 19);
-  assert.equal(HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT, 20);
-  assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 60);
-  assert.equal(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ, 690_209);
+  assert.equal(HISTORICAL_DATA_COUNT_RESULT_SET_COUNT, 22);
+  assert.equal(HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT, 20);
+  assert.equal(HISTORICAL_DATA_SCHEMA_OBJECT_RESULT_SET_COUNT, 1);
+  assert.equal(HISTORICAL_DATA_IDENTITY_RESULT_SET_COUNT, 21);
+  assert.equal(HISTORICAL_DATA_SNAPSHOT_RESULT_SET_COUNT, 64);
+  assert.equal(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ, 740_996);
   assert.ok(HISTORICAL_DATA_SNAPSHOT_MAX_ROWS_READ <= HISTORICAL_BILLED_READ_LIMIT);
   assert.equal(HISTORICAL_DATA_MAX_AUTOMATIC_READ_ATTEMPTS, 3);
   assert.equal(HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT, 2_250_000);
@@ -844,16 +1149,22 @@ test("preservation SQL is bounded and read-only", () => {
     );
   }
   assert.doesNotMatch(HISTORICAL_DATA_SNAPSHOT_SQL, /\bUNION\b/i);
-  assert.equal((HISTORICAL_DATA_IDENTITIES_SQL.match(/ORDER BY rowid LIMIT 16/g) ?? []).length, 19);
+  assert.equal((HISTORICAL_DATA_IDENTITIES_SQL.match(/ORDER BY rowid LIMIT 16/g) ?? []).length, 20);
   assert.equal(
     (HISTORICAL_DATA_SUMMARY_SQL.match(/AS row_count FROM \(SELECT/g) ?? []).length,
-    21,
+    22,
   );
   assert.match(HISTORICAL_DATA_IDENTITIES_SQL, /bounded_rowid[\s\S]*LIMIT 100001/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /profile_photo_pointers/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /chat_memory_turns/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /memory_source_feedback/);
+  assert.match(HISTORICAL_DATA_SUMMARY_SQL, /game_results/);
   assert.match(HISTORICAL_DATA_SUMMARY_SQL, /memory_vector_cleanup_outbox/);
+  assert.match(
+    HISTORICAL_DATA_IDENTITIES_SQL,
+    /id AS identity_1, schema_version AS identity_2[\s\S]*created_at AS identity_14/,
+  );
+  assert.equal(HISTORICAL_GAME_RESULTS_ROW_LIMIT, 50_000);
 });
 
 test("snapshot result partitions and billing metadata fail closed", () => {
@@ -901,7 +1212,9 @@ test("snapshot result partitions and billing metadata fail closed", () => {
       name: "extra identity field",
       mutate: (sets) => {
         const firstIdentity = sets[
-          HISTORICAL_DATA_COUNT_RESULT_SET_COUNT + HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT
+          HISTORICAL_DATA_COUNT_RESULT_SET_COUNT +
+            HISTORICAL_DATA_SCHEMA_RESULT_SET_COUNT +
+            HISTORICAL_DATA_SCHEMA_OBJECT_RESULT_SET_COUNT
         ];
         const row = firstIdentity?.rows[0];
         if (row) row.raw_identifier = "must-never-be-accepted";
@@ -1050,6 +1363,28 @@ test("generated snapshot SQL executes on D1 and oversized sparse users scans sto
       .filter(Boolean)
       .map((statement) => database.prepare(statement));
     await database.batch(schemaStatements);
+    await database.prepare(
+      `insert into game_results (
+         id, schema_version, game_slug, engine_id, engine_version,
+         terminal_code, winner, outcome, ply_count, payload, started_at,
+         completed_at, duration_ms, created_at
+       ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    ).bind(
+      "game-result-id",
+      1,
+      "chess",
+      "engine",
+      "1",
+      "checkmate",
+      "human",
+      "win",
+      42,
+      '{"moves":[]}',
+      1,
+      2,
+      1,
+      2,
+    ).run();
     const statements = HISTORICAL_DATA_SNAPSHOT_SQL
       .split(";")
       .map((statement) => statement.trim())
@@ -1058,6 +1393,30 @@ test("generated snapshot SQL executes on D1 and oversized sparse users scans sto
     for (const statement of statements) {
       await database.prepare(statement).all();
     }
+    const gameIdentityStatement = HISTORICAL_DATA_IDENTITIES_SQL
+      .split(";")
+      .map((statement) => statement.trim())
+      .find((statement) => statement.includes("FROM game_results"));
+    assert.ok(gameIdentityStatement);
+    const gameIdentity = await database.prepare(gameIdentityStatement).first<
+      Record<`identity_${number}`, string | number | null>
+    >();
+    assert.deepEqual(gameIdentity, {
+      identity_1: "game-result-id",
+      identity_2: 1,
+      identity_3: "chess",
+      identity_4: "engine",
+      identity_5: "1",
+      identity_6: "checkmate",
+      identity_7: "human",
+      identity_8: "win",
+      identity_9: 42,
+      identity_10: '{"moves":[]}',
+      identity_11: 1,
+      identity_12: 2,
+      identity_13: 1,
+      identity_14: 2,
+    });
 
     await database.prepare(
       `with recursive generated(value) as (
@@ -1137,6 +1496,7 @@ function databaseFixture(): DatabaseFixture {
       memory_synthesis_runs: 1,
       memory_source_feedback: 1,
       memory_events: 1,
+      game_results: 1,
       memory_vector_cleanup_outbox: 0,
     },
     identities: {
@@ -1199,6 +1559,22 @@ function databaseFixture(): DatabaseFixture {
         identity_4: "chat-id",
         identity_5: "message-id",
       }],
+      game_results: [{
+        identity_1: "game-result-id",
+        identity_2: 1,
+        identity_3: "chess",
+        identity_4: "engine",
+        identity_5: "1",
+        identity_6: "checkmate",
+        identity_7: "human",
+        identity_8: "win",
+        identity_9: 42,
+        identity_10: '{"moves":[]}',
+        identity_11: 1,
+        identity_12: 2,
+        identity_13: 1,
+        identity_14: 2,
+      }],
     },
   };
 }
@@ -1228,7 +1604,9 @@ function fixtureRunner(
       const schemaSets = schemaTableNames().map((table) => {
         const rows = table === "memory_vector_cleanup_outbox"
           ? memoryVectorCleanupOutboxSchemaRows()
-          : [{
+          : table === "game_results"
+            ? gameResultsSchemaRows()
+            : [{
               table_name: table,
               name: table === "admin_users" ? "email" : "id",
               type: "text",
@@ -1241,7 +1619,17 @@ function fixtureRunner(
         rows: fixture.identities[name],
         rowsRead: fixture.identities[name].length,
       }));
-      const sets: FixtureResultSet[] = [...countSets, ...schemaSets, ...identitySets];
+      const schemaObjectRows = historicalGameResultsSchemaObjectResultRows();
+      const schemaObjectSets = [{
+        rows: schemaObjectRows,
+        rowsRead: schemaObjectRows.length,
+      }];
+      const sets: FixtureResultSet[] = [
+        ...countSets,
+        ...schemaSets,
+        ...schemaObjectSets,
+        ...identitySets,
+      ];
       mutate?.(sets);
       return wranglerResult(sets);
     }
@@ -1297,8 +1685,19 @@ function schemaTableNames() {
     "memory_synthesis_runs",
     "memory_source_feedback",
     "memory_events",
+    "game_results",
     "memory_vector_cleanup_outbox",
   ] as const;
+}
+
+function gameResultsSchemaRows() {
+  return HISTORICAL_GAME_RESULTS_REQUIRED_COLUMNS.map((column) => ({
+    table_name: "game_results",
+    name: column.name,
+    type: column.type,
+    not_null: column.notNull,
+    primary_key: column.primaryKey,
+  }));
 }
 
 function memoryVectorCleanupOutboxSchemaRows() {
@@ -1442,6 +1841,22 @@ const HISTORICAL_SNAPSHOT_TEST_SCHEMA_SQL = `
     memory_id text,
     chat_id text,
     message_id text
+  );
+  create table game_results (
+    id text primary key not null,
+    schema_version integer not null,
+    game_slug text not null,
+    engine_id text not null,
+    engine_version text not null,
+    terminal_code text not null,
+    winner text not null,
+    outcome text not null,
+    ply_count integer not null,
+    payload text not null,
+    started_at integer,
+    completed_at integer not null,
+    duration_ms integer,
+    created_at integer not null
   );
   create table memory_vector_cleanup_outbox (
     vector_id text primary key not null,

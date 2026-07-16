@@ -1,35 +1,18 @@
-import type { Metadata } from "next";
-import { TermsAndConditionsContent, termsDescription } from "@/components/legal/TermsAndConditionsContent";
-import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { siteName, socialImage } from "@/lib/seo/config";
-
-const pageMetadata: Metadata = {
-  title: "Terms",
-  description: termsDescription,
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: "Terms | inspir",
-    description: termsDescription,
-    url: "/terms",
-    siteName,
-    images: [socialImage({ title: "Terms", eyebrow: "Terms", description: termsDescription })],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Terms | inspir",
-    description: termsDescription,
-    images: [socialImage({ title: "Terms", eyebrow: "Terms", description: termsDescription }).url],
-  },
-};
+import { TermsAndConditionsContent } from "@/components/legal/TermsAndConditionsContent";
+import { defaultLanguage } from "@/lib/content/languages";
 
 export const dynamic = "force-static";
 export const revalidate = false;
 
 export function generateMetadata() {
-  return localizeMarketingMetadata(pageMetadata, "/terms");
+  return TermsAndConditionsContent.generateMetadata(defaultLanguage);
 }
 
 export default function TermsPage() {
-  return <TermsAndConditionsContent path="/terms" />;
+  return (
+    <TermsAndConditionsContent
+      path="/terms"
+      language={defaultLanguage}
+    />
+  );
 }

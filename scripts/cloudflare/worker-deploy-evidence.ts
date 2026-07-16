@@ -3,14 +3,31 @@ import fs from "node:fs";
 import path from "node:path";
 import { cloudflareDir, runWrangler } from "./migration-config";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
+import type {
+  WorkerCandidateGitIdentity,
+  WorkerVersionDeployOutputEvent,
+  WorkerVersionUploadOutputEvent,
+} from "./worker-candidate-release-evidence";
 
-export const WORKER_DEPLOY_REPORT = "cloudflare/worker-deploy-report.json";
+export const WORKER_CANDIDATE_UPLOAD_COMMAND_REPORT =
+  "cloudflare/worker-candidate-upload-command-report.json";
+export const WORKER_CANDIDATE_STAGING_COMMAND_REPORT =
+  "cloudflare/worker-candidate-staging-command-report.json";
+export const WORKER_CANDIDATE_ACTIVATION_COMMAND_REPORT =
+  "cloudflare/worker-candidate-activation-command-report.json";
+// Keep legacy consumers fail-closed on the activation command evidence path
+// while they migrate to the stronger immutable activation evidence contract.
+export const WORKER_DEPLOY_REPORT =
+  WORKER_CANDIDATE_ACTIVATION_COMMAND_REPORT;
 const WORKER_DEPLOY_NAME = "inspirlearning";
 const WORKER_SOURCE_FILE = "cloudflare-worker.ts";
 const WORKER_WRANGLER_CONFIG_FILE = "wrangler.jsonc";
 const WORKER_STATIC_ASSET_ROOT = ".open-next/assets";
 
-export type WorkerDeployMode = "opennext-deploy" | "opennext-upload";
+export type WorkerDeployMode =
+  | "worker-candidate-upload"
+  | "worker-candidate-staging"
+  | "worker-candidate-activation";
 
 export type WorkerDeployArtifactManifest = {
   root: string;
@@ -41,6 +58,13 @@ export type ActiveWorkerDeploymentEvidence = {
   readAt: string;
 };
 
+export type WorkerCommandOutputEvidence = Readonly<{
+  path: string;
+  bytes: number;
+  sha256: string;
+  event: WorkerVersionUploadOutputEvent | WorkerVersionDeployOutputEvent;
+}>;
+
 export type WorkerDeployEvidenceReport = {
   createdAt: string;
   startedAt: string;
@@ -66,9 +90,15 @@ export type WorkerDeployEvidenceReport = {
   assetManifest?: WorkerDeployArtifactManifest;
   artifactEvidenceAfter?: WorkerDeployArtifactEvidenceSummary;
   artifactEvidenceStable: boolean | null;
+  wranglerOutput?: WorkerCommandOutputEvidence;
+  targetCandidateVersionId?: string;
+  workerDeployPreparationSha256?: string;
+  preActivationSealSha256?: string;
+  git?: WorkerCandidateGitIdentity;
   activeDeployment?: ActiveWorkerDeploymentEvidence;
   expectedActiveVersionId?: string;
   activeDeploymentReadbackError?: string;
+  wranglerOutputReadbackError?: string;
   artifactEvidenceError?: string;
   sourceFingerprintReadbackError?: string;
   blockedArgs?: string[];
@@ -95,7 +125,12 @@ export type WorkerDeployEvidenceSession = {
   finish: (
     status: number | null,
     extra: WorkerDeployEvidenceFinishInput,
-  ) => { status: number; report: WorkerDeployEvidenceReport };
+  ) => {
+    status: number;
+    report: WorkerDeployEvidenceReport;
+    reportPath: string;
+    reportSha256: string;
+  };
 };
 
 export type CreateWorkerDeployEvidenceSessionOptions = {
@@ -105,8 +140,112 @@ export type CreateWorkerDeployEvidenceSessionOptions = {
   passthroughArgs: string[];
   cwd?: string;
   readActiveWorkerVersion?: ActiveWorkerVersionReader;
+  getWranglerOutputPath?: () => string | undefined;
+  parseWranglerOutput?: (
+    output: string,
+  ) => WorkerVersionUploadOutputEvent | WorkerVersionDeployOutputEvent;
+  getTargetCandidateVersionId?: () => string | undefined;
+  getWorkerDeployPreparation?: () =>
+    | Readonly<{
+        sha256: string;
+        git: WorkerCandidateGitIdentity;
+      }>
+    | undefined;
+  getPreActivationSealSha256?: () => string | undefined;
+  readCommand?: () => string[];
   now?: () => Date;
 };
+
+const MAX_WRANGLER_OUTPUT_BYTES = 64 * 1_024;
+
+export function createPrivateWranglerOutputFile(
+  backupDir: string,
+  operation: WorkerDeployMode,
+) {
+  const directory = cloudflareDir(path.resolve(backupDir));
+  const outputPath = path.join(
+    directory,
+    `wrangler-${operation}-${process.pid}-${crypto.randomUUID()}.jsonl`,
+  );
+  fs.writeFileSync(outputPath, "", {
+    encoding: "utf8",
+    flag: "wx",
+    mode: 0o600,
+  });
+  fs.chmodSync(outputPath, 0o600);
+  return outputPath;
+}
+
+export function readPrivateWranglerOutputFile(file: string) {
+  const absolute = path.resolve(file);
+  const before = lstatOrThrow(absolute, "Wrangler structured output");
+  if (
+    before.isSymbolicLink() ||
+    !before.isFile() ||
+    (before.mode & 0o077) !== 0
+  ) {
+    throw new Error(
+      "Wrangler structured output must be an owner-only regular non-symlink file.",
+    );
+  }
+  if (before.size <= 0 || before.size > MAX_WRANGLER_OUTPUT_BYTES) {
+    throw new Error("Wrangler structured output has an invalid byte size.");
+  }
+  const noFollow = fs.constants.O_NOFOLLOW ?? 0;
+  const descriptor = fs.openSync(
+    absolute,
+    fs.constants.O_RDONLY | noFollow,
+  );
+  try {
+    const opened = fs.fstatSync(descriptor);
+    if (
+      !opened.isFile() ||
+      opened.dev !== before.dev ||
+      opened.ino !== before.ino ||
+      opened.size !== before.size ||
+      (opened.mode & 0o077) !== 0
+    ) {
+      throw new Error(
+        "Wrangler structured output changed while it was being opened.",
+      );
+    }
+    const body = fs.readFileSync(descriptor);
+    const after = fs.fstatSync(descriptor);
+    if (
+      after.dev !== opened.dev ||
+      after.ino !== opened.ino ||
+      after.size !== opened.size
+    ) {
+      throw new Error(
+        "Wrangler structured output changed while it was being read.",
+      );
+    }
+    const afterPath = lstatOrThrow(
+      absolute,
+      "Wrangler structured output",
+    );
+    if (
+      afterPath.isSymbolicLink() ||
+      !afterPath.isFile() ||
+      afterPath.dev !== opened.dev ||
+      afterPath.ino !== opened.ino ||
+      afterPath.size !== opened.size ||
+      (afterPath.mode & 0o077) !== 0
+    ) {
+      throw new Error(
+        "Wrangler structured output path changed while it was being read.",
+      );
+    }
+    return {
+      path: absolute,
+      bytes: body.byteLength,
+      sha256: sha256(body),
+      output: body.toString("utf8"),
+    } as const;
+  } finally {
+    fs.closeSync(descriptor);
+  }
+}
 
 export function buildWorkerDeployArtifactManifest(root: string): WorkerDeployArtifactManifest {
   const absoluteRoot = path.resolve(root);
@@ -221,13 +360,72 @@ export function createWorkerDeployEvidenceSession(
       return commandArtifacts;
     },
     finish(status, extra) {
+      let wranglerOutput: WorkerCommandOutputEvidence | undefined;
+      let wranglerOutputReadbackError: string | undefined;
+      if (status === 0 && extra.commandExecuted) {
+        try {
+          const outputPath = options.getWranglerOutputPath?.();
+          if (!outputPath || !options.parseWranglerOutput) {
+            throw new Error(
+              "Worker candidate command omitted its private Wrangler structured output contract.",
+            );
+          }
+          const privateOutput = readPrivateWranglerOutputFile(outputPath);
+          const event = options.parseWranglerOutput(privateOutput.output);
+          if (
+            event.workerName !== WORKER_DEPLOY_NAME ||
+            (options.mode === "worker-candidate-upload" &&
+              event.type !== "version-upload") ||
+            (options.mode !== "worker-candidate-upload" &&
+              event.type !== "version-deploy")
+          ) {
+            throw new Error(
+              "Wrangler structured output described the wrong Worker operation.",
+            );
+          }
+          wranglerOutput = {
+            path: privateOutput.path,
+            bytes: privateOutput.bytes,
+            sha256: privateOutput.sha256,
+            event,
+          };
+        } catch (error) {
+          wranglerOutputReadbackError = summarizeEvidenceError(error);
+        }
+      }
       let activeDeployment: ActiveWorkerDeploymentEvidence | undefined;
       let activeDeploymentReadbackError: string | undefined;
-      if (options.mode === "opennext-deploy" && status === 0 && extra.commandExecuted) {
+      const configuredTargetCandidateVersionId =
+        options.getTargetCandidateVersionId?.();
+      const targetCandidateVersionId =
+        configuredTargetCandidateVersionId ??
+        (wranglerOutput?.event.type === "version-upload"
+          ? wranglerOutput.event.versionId
+          : undefined);
+      const workerDeployPreparation =
+        options.getWorkerDeployPreparation?.();
+      const preActivationSealSha256 =
+        options.getPreActivationSealSha256?.();
+      if (
+        options.mode === "worker-candidate-activation" &&
+        status === 0 &&
+        extra.commandExecuted
+      ) {
         try {
           const versionId = readActiveWorkerVersion();
           if (!isWorkerVersionUuid(versionId)) {
             throw new Error("Active Worker version readback returned an invalid UUID.");
+          }
+          if (
+            targetCandidateVersionId !== undefined &&
+            (
+              !isWorkerVersionUuid(targetCandidateVersionId) ||
+              versionId !== targetCandidateVersionId
+            )
+          ) {
+            throw new Error(
+              "Active Worker version does not match the attested activation candidate.",
+            );
           }
           if (
             extra.expectedActiveVersionId !== undefined &&
@@ -281,19 +479,26 @@ export function createWorkerDeployEvidenceSession(
         completedAt,
         backupDir: options.backupDir,
         mode: options.mode,
-        command: options.command,
+        command: options.readCommand?.() ?? options.command,
         passthroughArgs: options.passthroughArgs,
         ok:
           status === 0 &&
           extra.commandExecuted === true &&
-          extra.deployPreflightOk === true &&
+          (options.mode !== "worker-candidate-activation" ||
+            extra.deployPreflightOk === true) &&
           extra.resourceBudgetOk === true &&
           extra.scanBeforeOk === true &&
           sourceFingerprintStable &&
           commandArtifacts !== null &&
           artifactEvidenceStable === true &&
+          wranglerOutput !== undefined &&
+          targetCandidateVersionId !== undefined &&
+          workerDeployPreparation !== undefined &&
           !extra.error &&
-          (options.mode === "opennext-upload" || activeDeployment !== undefined),
+          (options.mode !== "worker-candidate-activation" ||
+            (activeDeployment !== undefined &&
+              preActivationSealSha256 !== undefined &&
+              /^[a-f0-9]{64}$/.test(preActivationSealSha256))),
         status,
         sourceFingerprintBefore,
         ...(commandArtifacts
@@ -308,25 +513,55 @@ export function createWorkerDeployEvidenceSession(
         sourceFingerprintStable,
         artifactEvidenceAfter,
         artifactEvidenceStable,
+        ...(wranglerOutput ? { wranglerOutput } : {}),
+        ...(targetCandidateVersionId
+          ? { targetCandidateVersionId }
+          : {}),
+        ...(workerDeployPreparation
+          ? {
+              workerDeployPreparationSha256:
+                workerDeployPreparation.sha256,
+              git: workerDeployPreparation.git,
+            }
+          : {}),
+        ...(preActivationSealSha256
+          ? { preActivationSealSha256 }
+          : {}),
         ...(activeDeployment ? { activeDeployment } : {}),
         ...(activeDeploymentReadbackError ? { activeDeploymentReadbackError } : {}),
+        ...(wranglerOutputReadbackError ? { wranglerOutputReadbackError } : {}),
         ...(artifactEvidenceError ? { artifactEvidenceError } : {}),
         ...(sourceFingerprintAfterResult.error
           ? { sourceFingerprintReadbackError: sourceFingerprintAfterResult.error }
           : {}),
         ...extra,
       };
-      writeWorkerDeployEvidenceReport(report);
-      return { status: report.ok ? 0 : status === 0 ? 1 : status ?? 1, report };
+      const written = writeWorkerDeployEvidenceReport(report);
+      return {
+        status: report.ok ? 0 : status === 0 ? 1 : status ?? 1,
+        report,
+        reportPath: written.path,
+        reportSha256: written.sha256,
+      };
     },
   };
 }
 
 function writeWorkerDeployEvidenceReport(report: WorkerDeployEvidenceReport) {
-  const outputPath = path.join(cloudflareDir(report.backupDir), path.basename(WORKER_DEPLOY_REPORT));
+  const reportName =
+    report.mode === "worker-candidate-upload"
+      ? WORKER_CANDIDATE_UPLOAD_COMMAND_REPORT
+      : report.mode === "worker-candidate-staging"
+        ? WORKER_CANDIDATE_STAGING_COMMAND_REPORT
+        : WORKER_CANDIDATE_ACTIVATION_COMMAND_REPORT;
+  const outputPath = path.join(
+    cloudflareDir(report.backupDir),
+    path.basename(reportName),
+  );
   const temporaryPath = `${outputPath}.${process.pid}.${crypto.randomUUID()}.tmp`;
+  const payload = Buffer.from(`${JSON.stringify(report, null, 2)}\n`, "utf8");
   try {
-    fs.writeFileSync(temporaryPath, `${JSON.stringify(report, null, 2)}\n`, {
+    fs.writeFileSync(temporaryPath, payload, {
       encoding: "utf8",
       flag: "wx",
       mode: 0o600,
@@ -337,7 +572,7 @@ function writeWorkerDeployEvidenceReport(report: WorkerDeployEvidenceReport) {
   } finally {
     fs.rmSync(temporaryPath, { force: true });
   }
-  return outputPath;
+  return { path: outputPath, sha256: sha256(payload) } as const;
 }
 
 function tryBuildSourceFingerprint(cwd: string) {

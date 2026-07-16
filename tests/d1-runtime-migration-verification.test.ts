@@ -354,19 +354,41 @@ test("verifier fails closed for missing columns, altered index definitions, and 
   }
 });
 
-test("verifier rejects write metadata and source changes during the query", () => {
+test("verifier rejects writes, missing/retried attempt metadata, and source changes", () => {
   assert.throws(
     () =>
       loadRuntimeMigrationVerificationRows(() =>
         JSON.stringify([
           {
             results: validVerificationRows(),
-            meta: { rows_read: 33, rows_written: 1 },
+            meta: { rows_read: 33, rows_written: 1, total_attempts: 1 },
           },
         ]),
       ),
     /unexpectedly wrote rows/,
   );
+  for (const totalAttempts of [undefined, "1", 0, 2, 3]) {
+    assert.throws(
+      () =>
+        loadRuntimeMigrationVerificationRows(() =>
+          JSON.stringify([
+            {
+              results: validVerificationRows(),
+              meta: {
+                rows_read: 33,
+                rows_written: 0,
+                ...(totalAttempts === undefined
+                  ? {}
+                  : { total_attempts: totalAttempts }),
+              },
+            },
+          ]),
+        ),
+      totalAttempts === 0 || totalAttempts === 2 || totalAttempts === 3
+        ? /exactly one automatic attempt/
+        : /verification total attempts/,
+    );
+  }
 
   const { backupDir, repoDir } = makeFixture();
   const report = verifyD1RuntimeMigrations({
@@ -418,7 +440,7 @@ test("CLI requires explicit production confirmation and package wiring exposes t
   };
   assert.equal(
     packageJson.scripts?.["cf:verify:d1-runtime-migrations"],
-    "tsx scripts/cloudflare/verify-d1-runtime-migrations.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:verify:d1-runtime-migrations",
   );
 });
 
@@ -618,7 +640,7 @@ function wranglerResult(rows: Array<Record<string, unknown>>) {
   return JSON.stringify([
     {
       results: rows,
-      meta: { rows_read: 33, rows_written: 0 },
+      meta: { rows_read: 33, rows_written: 0, total_attempts: 1 },
     },
   ]);
 }

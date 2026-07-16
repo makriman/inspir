@@ -8,6 +8,7 @@ import {
   mainAppTranslationNamespace,
 } from "../lib/i18n/main-app-source";
 import { readStaticMainAppTranslations } from "../lib/i18n/static-main-app-translations";
+import { getSiteTranslationSource } from "../lib/i18n/site-source";
 import { isTranslationBundleCompleteAndFluent } from "../lib/i18n/translation-quality";
 
 const workspaceRoot = process.cwd();
@@ -211,23 +212,50 @@ function parseCuratedPack(value: unknown, file: string): CuratedPack {
     typeof value.language !== "string" ||
     typeof value.locale !== "string" ||
     typeof value.namespace !== "string" ||
-    typeof value.sourceHash !== "string" ||
-    !Array.isArray(value.entries)
+    typeof value.sourceHash !== "string"
   ) {
     throw new Error(`Invalid Spanish curated pack metadata in ${file}`);
   }
 
-  const entries: CuratedEntry[] = value.entries.map((entry, index) => {
-    if (
-      !isRecord(entry) ||
-      typeof entry.key !== "string" ||
-      typeof entry.source !== "string" ||
-      typeof entry.value !== "string"
-    ) {
-      throw new Error(`Invalid Spanish curated entry ${file}/${index}`);
+  const rawEntries = value.entries;
+  const rawTranslations = value.translations;
+  if ((rawEntries === undefined) === (rawTranslations === undefined)) {
+    throw new Error(`Ambiguous Spanish curated pack representation in ${file}`);
+  }
+  const entries: CuratedEntry[] = [];
+  if (rawEntries !== undefined) {
+    if (!Array.isArray(rawEntries)) {
+      throw new Error(`Invalid Spanish curated entries in ${file}`);
     }
-    return { key: entry.key, source: entry.source, value: entry.value };
-  });
+    for (const [index, entry] of rawEntries.entries()) {
+      if (
+        !isRecord(entry) ||
+        typeof entry.key !== "string" ||
+        typeof entry.source !== "string" ||
+        typeof entry.value !== "string"
+      ) {
+        throw new Error(`Invalid Spanish curated entry ${file}/${index}`);
+      }
+      entries.push({ key: entry.key, source: entry.source, value: entry.value });
+    }
+  } else {
+    if (!isRecord(rawTranslations)) {
+      throw new Error(`Invalid compact Spanish curated translations in ${file}`);
+    }
+    const source = getSiteTranslationSource(value.namespace);
+    if (source.sourceHash !== value.sourceHash) {
+      throw new Error(`Stale compact Spanish curated source in ${file}`);
+    }
+    for (const [key, translated] of Object.entries(rawTranslations).sort(([left], [right]) =>
+      left.localeCompare(right),
+    )) {
+      const sourceText = source.sourceStrings[key];
+      if (sourceText === undefined || typeof translated !== "string") {
+        throw new Error(`Invalid compact Spanish curated entry ${file}/${key}`);
+      }
+      entries.push({ key, source: sourceText, value: translated });
+    }
+  }
 
   return {
     language: value.language,

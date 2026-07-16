@@ -106,7 +106,16 @@ function buildTranslationBundle(
 }
 
 function curatedPackFiles(language: SupportedLanguage, namespace: string) {
-  const languageDir = join(resolve(process.cwd(), curatedRoot), languageConfigs[language].prefix || languageConfigs[language].locale);
+  const root = resolve(process.cwd(), curatedRoot);
+  if (!existsSync(root)) {
+    throw new Error(
+      "Curated translation root is unavailable; refusing a partial snapshot.",
+    );
+  }
+  const languageDir = join(
+    root,
+    languageConfigs[language].prefix || languageConfigs[language].locale,
+  );
   if (!existsSync(languageDir)) return [];
 
   const safeNamespace = fileSafeNamespace(namespace);

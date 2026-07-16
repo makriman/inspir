@@ -123,7 +123,7 @@ test("native Wrangler preview preserves sanitized build and local D1 gates", () 
   );
   assert.equal(
     packageJson.scripts?.["cf:preview:remote"],
-    "tsx scripts/cloudflare/run-sanitized-build.ts wrangler-preview --remote",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:preview:remote",
   );
   assert.match(previewRunner, /setup-local-d1\.ts", "--reset-runtime-state"/);
   assert.match(previewRunner, /run-sanitized-build\.ts", "wrangler-preview"/);
@@ -137,7 +137,8 @@ test("native Wrangler preview preserves sanitized build and local D1 gates", () 
   assert.match(nativePreviewCommand, /buildBefore: true/);
   assert.match(nativePreviewCommand, /scanBefore: true/);
   assert.match(sanitizedBuild, /mode === "wrangler-preview"/);
-  assert.match(sanitizedBuild, /writeLocalPreviewRuntimeVars\(\)/);
+  assert.match(sanitizedBuild, /writeLocalPreviewRuntimeVars\(localPreviewProviderSecrets\)/);
+  assert.match(sanitizedBuild, /localPreviewRuntimeDotEnvContent\(process\.cwd\(\), providerSecrets\)/);
   assert.match(sanitizedBuild, /writeLocalPreviewWranglerConfig\(\)/);
   assert.match(sanitizedBuild, /\["--config", localPreviewConfig, \.\.\.passthroughArgs\]/);
   assert.match(sanitizedBuild, /delete config\.routes/);
@@ -339,29 +340,61 @@ test("public delivery is Static Assets with exact native account Worker routes",
   assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], undefined);
   assert.equal(
     packageJson.scripts?.["cf:verify:authenticated-production"],
-    "tsx scripts/cloudflare/run-authenticated-production-validation.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:verify:authenticated-production",
   );
   assert.equal(
     packageJson.scripts?.["cf:verify:vectorize-readiness"],
-    "tsx scripts/cloudflare/verify-vectorize-readiness.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:verify:vectorize-readiness",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:upload-candidate"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:upload-candidate",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:activate-candidate"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:activate-candidate",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:stage-candidate"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:stage-candidate",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:upload"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:upload",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:deploy"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:deploy",
   );
   assert.equal(
     packageJson.scripts?.["cf:apply:d1-runtime-migrations"],
-    "tsx scripts/cloudflare/run-production-release-operation.ts apply-d1-runtime-migrations",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:apply:d1-runtime-migrations",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:check:d1-migration-0017-budget"],
+    undefined,
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:apply:d1-runtime-migration-0017"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:apply:d1-runtime-migration-0017",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:verify:d1-runtime-migration-0017"],
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:verify:d1-runtime-migration-0017",
   );
   assert.equal(
     packageJson.scripts?.["cf:rollback"],
-    "tsx scripts/cloudflare/run-production-release-operation.ts rollback",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:rollback",
   );
   assert.equal(
     packageJson.scripts?.["cf:resolve:production-maintenance"],
-    "tsx scripts/cloudflare/resolve-production-maintenance.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:resolve:production-maintenance",
   );
   assert.equal(packageJson.scripts?.["cf:activate:write-freeze"], undefined);
   assert.equal(packageJson.scripts?.["cf:backup:frozen-cloudflare"], undefined);
   assert.equal(
     packageJson.scripts?.["cf:verify:historical-data-preservation"],
-    "tsx scripts/cloudflare/verify-historical-data-preservation.ts",
+    "tsx scripts/cloudflare/run-trust-bound-production-command.ts cf:verify:historical-data-preservation",
   );
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");

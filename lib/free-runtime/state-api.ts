@@ -24,6 +24,10 @@ import {
   deriveDisposableAdminValidationIdentity,
   resolveDisposableAdminValidationScope,
 } from "./disposable-admin-validation";
+import {
+  timingSafeDigestEqual,
+  type TimingSafeDigestSubtleCrypto,
+} from "./timing-safe-equal";
 
 // The schema uses JSON text. New rows store the exact revisioned Vectorize ID;
 // historical arrays and the v1 marker remain readable as the legacy identity.
@@ -70,6 +74,13 @@ export const MAX_MEMORY_SUMMARY_SECTION_TITLE_CHARS = 120;
 export const MAX_MEMORY_SUMMARY_SECTION_SUMMARY_CHARS = 1_200;
 export const MAX_MEMORY_SUMMARY_SECTION_SOURCE_IDS = 20;
 export const MAX_MEMORY_SUMMARY_SECTION_SOURCE_ID_CHARS = 120;
+export const NATIVE_SCHEDULED_MEMORY_USER_CAP = 25;
+export const NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP = 13;
+export const NATIVE_SCHEDULED_D1_QUERY_CEILING = 46;
+export const NATIVE_SCHEDULED_D1_QUERY_LIMIT = 50;
+export const NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS = 8;
+export const NATIVE_SCHEDULED_CPU_LIMIT_MS = 10;
+export const NATIVE_SCHEDULED_RESOURCE_CONTRACT = "cloudflare-workers-free-v1";
 
 // Every text column in these historical-memory reads is truncated in SQLite
 // before it crosses the D1 boundary. The extra character is a truncation
@@ -112,11 +123,11 @@ const maxMemoryDashboardItems = 50;
 // statements; the drain also uses one claim and at most two remaining-row
 // lookups. Thirteen rows therefore cap the drain at 42 D1 queries; even the
 // Scheduled handler's four other D1 operations stay at 46/50 with headroom.
-const MAX_VECTOR_CLEANUP_DRAIN_IDS = 13;
+const MAX_VECTOR_CLEANUP_DRAIN_IDS = NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP;
 const VECTOR_CLEANUP_VERIFY_DELAY_MS = 3 * 60 * 1_000;
 const VECTOR_PENDING_WRITE_STALE_MS = 15 * 60 * 1_000;
 const requiredVectorCleanupAbsences = 2;
-const maxDailySynthesisUsers = 25;
+const maxDailySynthesisUsers = NATIVE_SCHEDULED_MEMORY_USER_CAP;
 const maxSynthesisMemories = 40;
 const maxSynthesisTurns = 12;
 const oneDayMs = 24 * 60 * 60 * 1_000;
@@ -682,6 +693,13 @@ export async function handleMemoryScheduled(
       event: "native_memory_scheduled_enqueued",
       ...stats,
       cron: controller.cron.slice(0, 80),
+      resourceContract: NATIVE_SCHEDULED_RESOURCE_CONTRACT,
+      cpuLimitMs: NATIVE_SCHEDULED_CPU_LIMIT_MS,
+      cpuHeadroomExclusiveMs: NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS,
+      d1QueryLimit: NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+      d1QueryCeiling: NATIVE_SCHEDULED_D1_QUERY_CEILING,
+      dueCap: NATIVE_SCHEDULED_MEMORY_USER_CAP,
+      vectorCleanupDrainCap: NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
     }),
   );
 }
@@ -804,28 +822,13 @@ function boundedMemoryCronLimit(value: string | null) {
   return Math.min(maxDailySynthesisUsers, Math.max(1, Number(value)));
 }
 
-function timingSafeCronBearerEquals(authorization: string | null, secret: string) {
+export async function timingSafeCronBearerEquals(
+  authorization: string | null,
+  secret: string,
+  subtle: TimingSafeDigestSubtleCrypto = crypto.subtle,
+) {
   if ((authorization?.length ?? 0) > 512) return false;
-  const encoder = new TextEncoder();
-  const actual = encoder.encode(authorization ?? "");
-  const expected = encoder.encode(`Bearer ${secret}`);
-  const actualPadded = new Uint8Array(512);
-  const expectedPadded = new Uint8Array(512);
-  actualPadded.set(actual);
-  expectedPadded.set(expected);
-  return actual.length === expected.length && timingSafeBytesEqual(
-    actualPadded,
-    expectedPadded,
-  );
-}
-
-function timingSafeBytesEqual(left: Uint8Array, right: Uint8Array) {
-  let difference = left.length ^ right.length;
-  const length = Math.max(left.length, right.length);
-  for (let index = 0; index < length; index += 1) {
-    difference |= (left[index] ?? 0) ^ (right[index] ?? 0);
-  }
-  return difference === 0;
+  return timingSafeDigestEqual(authorization ?? "", `Bearer ${secret}`, subtle);
 }
 
 /**

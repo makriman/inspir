@@ -6,12 +6,29 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   "Hindi": [
     "marketing-shell",
     "route:home",
-    "route:mission"
+    "route:about",
+    "route:ai-learning-map",
+    "route:compare",
+    "route:for",
+    "route:learn",
+    "route:media",
+    "route:mission",
+    "route:prompts",
+    "route:schools",
+    "route:subjects",
+    "route:topics",
+    "route:trust"
   ],
   "Spanish": [
     "marketing-shell",
     "route:home",
-    "route:mission"
+    "route:about",
+    "route:ai-learning-map",
+    "route:compare",
+    "route:learn",
+    "route:media",
+    "route:mission",
+    "route:trust"
   ],
   "French": [
     "marketing-shell",
@@ -81,7 +98,16 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   "Arabic": [
     "marketing-shell",
     "route:home",
-    "route:mission"
+    "route:about",
+    "route:ai-learning-map",
+    "route:compare",
+    "route:learn",
+    "route:media",
+    "route:mission",
+    "route:prompts",
+    "route:schools",
+    "route:subjects",
+    "route:trust"
   ],
   "Hebrew": [
     "marketing-shell",
@@ -131,7 +157,19 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   "Malayalam": [
     "marketing-shell",
     "route:home",
-    "route:mission"
+    "route:about",
+    "route:ai-learning-map",
+    "route:blog",
+    "route:compare",
+    "route:for",
+    "route:learn",
+    "route:media",
+    "route:mission",
+    "route:prompts",
+    "route:schools",
+    "route:subjects",
+    "route:topics",
+    "route:trust"
   ],
   "Punjabi": [
     "marketing-shell",

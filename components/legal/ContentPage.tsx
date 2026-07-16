@@ -1,9 +1,21 @@
 import Image from "next/image";
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
-import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
+import {
+  MarketingFooterWithChrome,
+  MarketingHeaderWithChrome,
+} from "@/components/marketing/MarketingShell";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { legalEnglishControlsNotice } from "@/lib/i18n/site-source-constants";
+import {
+  defaultLanguage,
+  type SupportedLanguage,
+} from "@/lib/content/languages";
+import {
+  getStaticMarketingChrome,
+  type MarketingChrome,
+} from "@/lib/i18n/marketing-chrome";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;
@@ -21,7 +33,7 @@ function slugifyHeading(block: string, index: number) {
   return `${slug || "section"}-${index}`;
 }
 
-export function ContentPage({
+export async function ContentPage({
   title,
   blocks,
   description,
@@ -33,6 +45,8 @@ export function ContentPage({
     { href: "/schools", label: "Schools" },
     { href: "/blog", label: "Learning guides" },
   ],
+  language = defaultLanguage,
+  chrome: chromeOverride,
 }: {
   title: string;
   blocks: readonly string[];
@@ -41,11 +55,19 @@ export function ContentPage({
   images?: readonly string[];
   path?: string;
   relatedLinks?: readonly { href: string; label: string }[];
+  language?: SupportedLanguage;
+  chrome?: MarketingChrome;
 }) {
+  const pathname = path ?? "/";
+  const chrome =
+    chromeOverride ?? (await getStaticMarketingChrome(pathname, language));
+  const { hrefLanguage, t } = chrome;
+  const localizedTitle = t(title);
   const filtered = blocks.filter((block) => block.trim() && block.trim() !== title);
   const blockCounts = new Map<string, number>();
   const entries = filtered.map((block, index) => ({
     block,
+    localizedBlock: t(block),
     id: isHeading(block) ? slugifyHeading(block, index) : undefined,
     isHeading: isHeading(block),
     key: (() => {
@@ -69,32 +91,45 @@ export function ContentPage({
 
   return (
     <main className="marketing-site">
-      <JsonLdScripts items={jsonLd} />
-      <MarketingHeader />
+      <JsonLdScripts items={jsonLd} path={path} language={language} />
+      <MarketingHeaderWithChrome chrome={chrome} />
       <article className="content-page">
         <header className="content-page-header">
-          <span>{eyebrow}</span>
-          <h1>{title}</h1>
-          {description ? <p>{description}</p> : null}
-          {showLegalNotice ? <p className="content-page-legal-notice">{legalEnglishControlsNotice}</p> : null}
+          <span>{t(eyebrow)}</span>
+          <h1>{localizedTitle}</h1>
+          {description ? <p>{t(description)}</p> : null}
+          {showLegalNotice ? (
+            <p className="content-page-legal-notice">
+              {t(legalEnglishControlsNotice)}
+            </p>
+          ) : null}
         </header>
         <div className="content-page-layout">
-          <aside className="content-page-rail" aria-label={`${title} page navigation`}>
+          <aside
+            className="content-page-rail"
+            aria-label={t(`${title} page navigation`)}
+          >
             {headings.length > 0 ? (
-              <nav className="content-page-index" aria-label={`${title} sections`}>
-                <span>On this page</span>
+              <nav
+                className="content-page-index"
+                aria-label={t(`${title} sections`)}
+              >
+                <span>{t("On this page")}</span>
                 {headings.map((entry) => (
                   <a key={entry.id} href={`#${entry.id}`}>
-                    {entry.block}
+                    {entry.localizedBlock}
                   </a>
                 ))}
               </nav>
             ) : null}
             <div className="content-page-related">
-              <span>Explore next</span>
+              <span>{t("Explore next")}</span>
               {relatedLinks.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  {link.label}
+                <Link
+                  key={link.href}
+                  href={localizeStaticSiteHref(link.href, hrefLanguage)}
+                >
+                  {t(link.label)}
                 </Link>
               ))}
             </div>
@@ -119,14 +154,18 @@ export function ContentPage({
                       loading="lazy"
                     />
                   ) : null}
-                  {entry.isHeading ? <h2>{entry.block}</h2> : <p>{entry.block}</p>}
+                  {entry.isHeading ? (
+                    <h2>{entry.localizedBlock}</h2>
+                  ) : (
+                    <p>{entry.localizedBlock}</p>
+                  )}
                 </section>
               );
             })}
           </div>
         </div>
       </article>
-      <MarketingFooter />
+      <MarketingFooterWithChrome chrome={chrome} />
     </main>
   );
 }

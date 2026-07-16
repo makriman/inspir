@@ -5,6 +5,15 @@ import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { StringDecoder } from "node:string_decoder";
 import { pathToFileURL } from "node:url";
+import {
+  NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS,
+  NATIVE_SCHEDULED_CPU_LIMIT_MS,
+  NATIVE_SCHEDULED_D1_QUERY_CEILING,
+  NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+  NATIVE_SCHEDULED_MEMORY_USER_CAP,
+  NATIVE_SCHEDULED_RESOURCE_CONTRACT,
+  NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
+} from "../../lib/free-runtime/state-api";
 import { readCloudflareApiToken } from "./cloudflare-api-token";
 import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
 import {
@@ -17,9 +26,9 @@ import {
 } from "./migration-config";
 
 const workerName = "inspirlearning";
-const cpuHeadroomExclusiveMs = 8;
-const maxDailySynthesisUsers = 25;
-const maxVectorCleanupDrainIds = 13;
+const cpuHeadroomExclusiveMs = NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS;
+const maxDailySynthesisUsers = NATIVE_SCHEDULED_MEMORY_USER_CAP;
+const maxVectorCleanupDrainIds = NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP;
 const tailReadyTimeoutMs = 60_000;
 const queueCaptureTimeoutMs = 2 * 60_000;
 export const backgroundQueueSettlementQuietPeriodMs = 65_000;
@@ -248,6 +257,17 @@ async function main() {
     outcomeCaptureStartedAt,
     outcomeCaptureOutputOffset,
     cpuThresholdExclusiveMs: cpuHeadroomExclusiveMs,
+    scheduledResourceContract: mode === "scheduled"
+      ? {
+          kind: NATIVE_SCHEDULED_RESOURCE_CONTRACT,
+          cpuLimitMs: NATIVE_SCHEDULED_CPU_LIMIT_MS,
+          cpuHeadroomExclusiveMs: NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS,
+          d1QueryLimit: NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+          d1QueryCeiling: NATIVE_SCHEDULED_D1_QUERY_CEILING,
+          dueCap: NATIVE_SCHEDULED_MEMORY_USER_CAP,
+          vectorCleanupDrainCap: NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
+        }
+      : undefined,
     tailOutputBytes,
     tailOutputBounded,
     tailOutputClosed: hasExited(tail),
@@ -828,7 +848,21 @@ function scheduledLogMatches(logs: unknown) {
   const log = matches[0];
   if (
     !log ||
-    !hasExactRecordKeys(log, ["cron", "due", "event", "failed", "queued", "skipped"])
+    !hasExactRecordKeys(log, [
+      "cpuHeadroomExclusiveMs",
+      "cpuLimitMs",
+      "cron",
+      "d1QueryCeiling",
+      "d1QueryLimit",
+      "due",
+      "dueCap",
+      "event",
+      "failed",
+      "queued",
+      "resourceContract",
+      "skipped",
+      "vectorCleanupDrainCap",
+    ])
   ) {
     return false;
   }
@@ -838,7 +872,15 @@ function scheduledLogMatches(logs: unknown) {
     log.queued === due &&
     log.failed === 0 &&
     log.skipped === null &&
-    log.cron === "0 3 * * *";
+    log.cron === "0 3 * * *" &&
+    log.resourceContract === NATIVE_SCHEDULED_RESOURCE_CONTRACT &&
+    log.cpuLimitMs === NATIVE_SCHEDULED_CPU_LIMIT_MS &&
+    log.cpuHeadroomExclusiveMs === NATIVE_SCHEDULED_CPU_HEADROOM_EXCLUSIVE_MS &&
+    log.d1QueryLimit === NATIVE_SCHEDULED_D1_QUERY_LIMIT &&
+    log.d1QueryCeiling === NATIVE_SCHEDULED_D1_QUERY_CEILING &&
+    NATIVE_SCHEDULED_D1_QUERY_CEILING < NATIVE_SCHEDULED_D1_QUERY_LIMIT &&
+    log.dueCap === NATIVE_SCHEDULED_MEMORY_USER_CAP &&
+    log.vectorCleanupDrainCap === NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP;
 }
 
 function scheduledCleanupLogMatches(logs: unknown) {

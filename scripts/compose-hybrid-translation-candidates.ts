@@ -26,6 +26,11 @@ import {
   validateTranslationRepairCandidateDirectories,
   type TranslationCandidateQaIssue,
 } from "./validate-translation-repair-candidates";
+import {
+  __testOnlyAfrikaansReconciliationAdapter,
+  validateAfrikaansReconciliationHybridCandidateManifest,
+} from "./afrikaans-reconciliation-apply-adapter";
+import type { AfrikaansReconciliationFrozenPolicy } from "./afrikaans-reconciliation-frozen-policy";
 
 const worklistRootOrder = [
   "schemaVersion",
@@ -1024,6 +1029,32 @@ export function mergeHybridTranslationRepairCandidates(
 export function validateHybridTranslationCandidateManifest(
   args: ValidateHybridTranslationCandidateManifestArgs,
 ): HybridTranslationCandidateManifestValidation {
+  return validateHybridTranslationCandidateManifestInternal(
+    args,
+    validateAfrikaansReconciliationHybridCandidateManifest,
+  );
+}
+
+/** Synthetic-policy seam used only by isolated fixtures; production consumers never call it. */
+export function __testOnlyValidateHybridTranslationCandidateManifest(
+  args: ValidateHybridTranslationCandidateManifestArgs & {
+    reconciliationPolicy: AfrikaansReconciliationFrozenPolicy;
+    reconciliationNowEpochMs?: number;
+  },
+): HybridTranslationCandidateManifestValidation {
+  return validateHybridTranslationCandidateManifestInternal(args, (input) =>
+    __testOnlyAfrikaansReconciliationAdapter.validateManifest({
+      ...input,
+      policy: args.reconciliationPolicy,
+      nowEpochMs: args.reconciliationNowEpochMs,
+    }),
+  );
+}
+
+function validateHybridTranslationCandidateManifestInternal(
+  args: ValidateHybridTranslationCandidateManifestArgs,
+  reconciliationValidator: typeof validateAfrikaansReconciliationHybridCandidateManifest,
+): HybridTranslationCandidateManifestValidation {
   const worklistDir = resolve(args.worklistDir);
   const candidateDir = resolve(args.candidateDir);
   const manifestPath = resolve(args.manifestPath);
@@ -1050,6 +1081,13 @@ export function validateHybridTranslationCandidateManifest(
     `hybrid candidate manifest ${manifestPath}`,
   );
   const schemaVersion = manifest.schemaVersion;
+  if (schemaVersion === 3) {
+    return reconciliationValidator({
+      worklistDir,
+      candidateDir,
+      manifestPath,
+    });
+  }
   if (
     (schemaVersion !== 1 && schemaVersion !== 2) ||
     manifest.kind !== "translation-hybrid-candidate-manifest" ||

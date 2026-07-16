@@ -163,7 +163,7 @@ test("D1 release ledger lazily upgrades v1 and keeps same-ID reservations source
     const legacyBytes = fs.readFileSync(legacyMaximum.ledgerPath, "utf8");
 
     const normalized = readD1ReleaseBudgetLedger(legacyMaximum.ledgerPath);
-    assert.equal(normalized.schemaVersion, 2);
+    assert.equal(normalized.schemaVersion, 3);
     assert.deepEqual(normalized.reservations[0]?.sourceFingerprint, source);
     assert.equal(fs.readFileSync(legacyMaximum.ledgerPath, "utf8"), legacyBytes);
 
@@ -199,10 +199,10 @@ test("D1 release ledger lazily upgrades v1 and keeps same-ID reservations source
     assert.equal(nextExact.revision, legacyMaximum.revision + 1);
     assert.equal(Object.hasOwn(nextExact.reservation, "sourceFingerprint"), false);
 
-    const rawV2 = readPrivateJsonNoFollow(legacyMaximum.ledgerPath);
-    assert.ok(isRecord(rawV2));
-    assert.equal(rawV2.schemaVersion, 2);
-    assert.equal(Object.hasOwn(rawV2, "sourceFingerprint"), false);
+    const rawV3 = readPrivateJsonNoFollow(legacyMaximum.ledgerPath);
+    assert.ok(isRecord(rawV3));
+    assert.equal(rawV3.schemaVersion, 3);
+    assert.equal(Object.hasOwn(rawV3, "sourceFingerprint"), false);
 
     const refinedLegacy = reserveD1ReleaseBudget({
       backupDir,
@@ -258,6 +258,128 @@ test("D1 release ledger lazily upgrades v1 and keeps same-ID reservations source
     assert.throws(
       () => readD1ReleaseBudgetLedger(refinedLegacy.ledgerPath),
       /duplicate operation-and-source identities/,
+    );
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("D1 release ledger counts one aggregate envelope, freezes delayed Insights for children, and refines only after child proof", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-d1-ledger-envelope-"),
+  );
+  const candidateVersionId = "11111111-1111-1111-1111-111111111111";
+  try {
+    const parent = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "day2-envelope",
+      operation: "Day-2 aggregate envelope",
+      sourceFingerprint: source,
+      candidateVersionId,
+      phase: "maximum",
+      rowsRead: 3_900_000,
+      rowsWritten: 70_192,
+      observedUsage: {
+        ...emptyUsage,
+        rowsRead: 100_000,
+        rowsWritten: 5_000,
+      },
+      now: day,
+    });
+    const childMaximum = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "day2-migration-child",
+      operation: "Day-2 migration child",
+      sourceFingerprint: source,
+      candidateVersionId,
+      accountingParentOperationId: parent.reservation.operationId,
+      phase: "maximum",
+      rowsRead: 866_373,
+      rowsWritten: 50_000,
+      // Insights has caught up with work already protected by the envelope.
+      // Child evidence must not merge this delayed observation into totals.
+      observedUsage: {
+        ...emptyUsage,
+        rowsRead: 3_000_000,
+        rowsWritten: 60_000,
+      },
+      now: new Date("2026-07-12T12:01:00.000Z"),
+      expectedUtcDay: parent.utcDay,
+    });
+    assert.deepEqual(childMaximum.totals, {
+      rowsRead: 3_900_000,
+      rowsWritten: 70_192,
+    });
+    assert.deepEqual(childMaximum.accountedUsage, {
+      rowsRead: 4_000_000,
+      rowsWritten: 75_192,
+    });
+    assert.throws(
+      () =>
+        reserveD1ReleaseBudget({
+          backupDir,
+          operationId: parent.reservation.operationId,
+          operation: "Day-2 aggregate envelope",
+          sourceFingerprint: source,
+          candidateVersionId,
+          phase: "exact",
+          rowsRead: 800_000,
+          rowsWritten: 50_000,
+          observedUsage: emptyUsage,
+          now: new Date("2026-07-12T12:02:00.000Z"),
+          expectedUtcDay: parent.utcDay,
+        }),
+      /child remains maximum/,
+    );
+    const childExact = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "day2-migration-child",
+      operation: "Day-2 migration child",
+      sourceFingerprint: source,
+      candidateVersionId,
+      accountingParentOperationId: parent.reservation.operationId,
+      phase: "exact",
+      rowsRead: 500_000,
+      rowsWritten: 40_000,
+      observedUsage: emptyUsage,
+      now: new Date("2026-07-12T12:03:00.000Z"),
+      expectedUtcDay: parent.utcDay,
+    });
+    assert.deepEqual(childExact.totals, childMaximum.totals);
+    const refined = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: parent.reservation.operationId,
+      operation: "Day-2 aggregate envelope",
+      sourceFingerprint: source,
+      candidateVersionId,
+      phase: "exact",
+      rowsRead: 500_000,
+      rowsWritten: 40_000,
+      observedUsage: emptyUsage,
+      now: new Date("2026-07-12T12:04:00.000Z"),
+      expectedUtcDay: parent.utcDay,
+    });
+    assert.deepEqual(refined.totals, {
+      rowsRead: 500_000,
+      rowsWritten: 40_000,
+    });
+    assert.throws(
+      () =>
+        reserveD1ReleaseBudget({
+          backupDir,
+          operationId: "day2-final-child",
+          operation: "Day-2 final child",
+          sourceFingerprint: source,
+          candidateVersionId,
+          accountingParentOperationId: parent.reservation.operationId,
+          phase: "maximum",
+          rowsRead: 1,
+          rowsWritten: 0,
+          observedUsage: emptyUsage,
+          now: new Date("2026-07-12T12:05:00.000Z"),
+          expectedUtcDay: parent.utcDay,
+        }),
+      /live top-level maximum envelope/,
     );
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
@@ -375,7 +497,7 @@ test("D1 release ledger rejects cumulative multi-source overflow, same-source re
   }
 });
 
-test("D1 release ledger nofollow reader rejects broad permissions and symlinks", () => {
+test("D1 release ledger nofollow reader rejects broad permissions, hardlinks, and symlinks", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-d1-ledger-read-"));
   try {
     const reservation = reserveD1ReleaseBudget({
@@ -395,10 +517,53 @@ test("D1 release ledger nofollow reader rejects broad permissions and symlinks",
       /mode-0600/,
     );
     fs.chmodSync(reservation.ledgerPath, 0o600);
+    const hardlink = path.join(path.dirname(reservation.ledgerPath), "ledger-hardlink.json");
+    fs.linkSync(reservation.ledgerPath, hardlink);
+    assert.throws(
+      () => readD1ReleaseBudgetLedger(reservation.ledgerPath),
+      /mode-0600/,
+    );
+    fs.unlinkSync(hardlink);
     const symlink = path.join(path.dirname(reservation.ledgerPath), "ledger-link.json");
     fs.symlinkSync(reservation.ledgerPath, symlink);
     assert.throws(() => readD1ReleaseBudgetLedger(symlink), /mode-0600/);
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("durable private JSON publication preserves collision and symlink targets", async (t) => {
+  for (const kind of ["regular", "symlink"] as const) {
+    await t.test(kind, () => {
+      const directory = fs.mkdtempSync(
+        path.join(os.tmpdir(), `inspir-private-json-${kind}-`),
+      );
+      const target = path.join(directory, "target.json");
+      const publication = path.join(directory, "publication.json");
+      const original = '{"existing":true}\n';
+      fs.writeFileSync(target, original, { mode: 0o600 });
+      if (kind === "symlink") {
+        fs.symlinkSync(target, publication);
+      } else {
+        fs.writeFileSync(publication, original, { mode: 0o600 });
+      }
+      try {
+        assert.throws(
+          () =>
+            writePrivateJsonDurably(publication, { replacement: true }, {
+              replace: false,
+            }),
+          /new non-symlink path/,
+        );
+        assert.equal(fs.readFileSync(target, "utf8"), original);
+        if (kind === "regular") {
+          assert.equal(fs.readFileSync(publication, "utf8"), original);
+        } else {
+          assert.equal(fs.lstatSync(publication).isSymbolicLink(), true);
+        }
+      } finally {
+        fs.rmSync(directory, { recursive: true, force: true });
+      }
+    });
   }
 });

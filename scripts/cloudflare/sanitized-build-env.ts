@@ -63,6 +63,23 @@ const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = [
   "E2E_TEST_AUTH_EMAIL",
 ] as const;
 
+const LOCAL_PREVIEW_PROVIDER_SECRET_ENV_KEYS = [
+  "CLOUDFLARE_AI_GATEWAY_TOKEN",
+] as const;
+
+type LocalPreviewProviderSecretKey =
+  (typeof LOCAL_PREVIEW_PROVIDER_SECRET_ENV_KEYS)[number];
+
+export type LocalPreviewProviderRuntimeSecrets = Readonly<
+  Partial<Record<LocalPreviewProviderSecretKey, string>>
+>;
+
+export type LocalPreviewE2EAuth = Readonly<{
+  email: string | undefined;
+  secret: string | undefined;
+  configured: boolean;
+}>;
+
 export function withSanitizedProjectEnvFiles<T>(
   callback: () => T,
   cwd = process.cwd(),
@@ -106,21 +123,92 @@ export function buildSanitizedCloudflareBuildEnv(
     if (isForbiddenBuildEnvKey(key)) delete env[key];
   }
 
-  Object.assign(env, readWranglerVars(cwd), ALWAYS_SAFE_ENV, stringifyValues(overrides));
+  Object.assign(
+    env,
+    buildSafePublicEnvValues(readWranglerVars(cwd)),
+    ALWAYS_SAFE_ENV,
+    buildSafePublicEnvValues(stringifyValues(overrides)),
+  );
   return env;
 }
 
 export function sanitizedDotEnvContent(cwd = process.cwd(), options: SanitizedProjectEnvOptions = {}) {
   const values = {
-    ...readWranglerVars(cwd),
+    ...buildSafePublicEnvValues(readWranglerVars(cwd)),
     ...ALWAYS_SAFE_ENV,
     ...(options.includeLocalPreviewRuntimeSecrets ? localPreviewRuntimeEnv() : {}),
-    ...stringifyValues(options.overrides ?? {}),
+    ...buildSafePublicEnvValues(stringifyValues(options.overrides ?? {})),
   };
-  return `${Object.entries(values)
-    .sort(([left], [right]) => left.localeCompare(right))
-    .map(([key, value]) => `${key}=${quoteDotEnvValue(String(value))}`)
-    .join("\n")}\n`;
+  return renderDotEnvContent(values);
+}
+
+export function resolveLocalPreviewProviderRuntimeSecrets(
+  baseEnv: Readonly<Record<string, string | undefined>> = process.env,
+  cwd = process.cwd(),
+): LocalPreviewProviderRuntimeSecrets {
+  const localDotEnv = readPrivateLocalPreviewDotEnv(cwd);
+  const resolved: Partial<Record<LocalPreviewProviderSecretKey, string>> = {};
+  for (const key of LOCAL_PREVIEW_PROVIDER_SECRET_ENV_KEYS) {
+    const explicit = baseEnv[key];
+    const candidate =
+      explicit === undefined
+        ? readExactDotEnvAssignment(localDotEnv, key)
+        : explicit;
+    if (isExactLocalPreviewProviderSecret(candidate)) resolved[key] = candidate;
+  }
+  return Object.freeze(resolved);
+}
+
+export function resolveLocalPreviewE2EAuth(
+  baseEnv: Readonly<Record<string, string | undefined>> = process.env,
+  cwd = process.cwd(),
+): LocalPreviewE2EAuth {
+  const localDotEnv = readPrivateLocalPreviewDotEnv(cwd);
+  const email = exactLocalE2EEmail(
+    resolveLocalPreviewEnvValue(baseEnv, localDotEnv, "E2E_TEST_AUTH_EMAIL"),
+  );
+  const secret = exactLocalE2ESecret(
+    resolveLocalPreviewEnvValue(baseEnv, localDotEnv, "E2E_TEST_AUTH_SECRET"),
+  );
+  return Object.freeze({
+    email,
+    secret,
+    configured: Boolean(email && secret),
+  });
+}
+
+export function localPreviewProviderSecretValues(
+  secrets: LocalPreviewProviderRuntimeSecrets,
+): readonly string[] {
+  return Object.freeze(
+    LOCAL_PREVIEW_PROVIDER_SECRET_ENV_KEYS.flatMap((key) => {
+      const value = secrets[key];
+      return isExactLocalPreviewProviderSecret(value) ? [value] : [];
+    }),
+  );
+}
+
+export function localPreviewRuntimeDotEnvContent(
+  cwd = process.cwd(),
+  providerSecrets: LocalPreviewProviderRuntimeSecrets = {},
+) {
+  const runtimeProviderSecrets: Partial<
+    Record<LocalPreviewProviderSecretKey, string>
+  > = {};
+  for (const key of LOCAL_PREVIEW_PROVIDER_SECRET_ENV_KEYS) {
+    const value = providerSecrets[key];
+    if (value === undefined) continue;
+    if (!isExactLocalPreviewProviderSecret(value)) {
+      throw new Error(`Local preview provider secret ${key} is invalid.`);
+    }
+    runtimeProviderSecrets[key] = value;
+  }
+  return renderDotEnvContent({
+    ...buildSafePublicEnvValues(readWranglerVars(cwd)),
+    ...ALWAYS_SAFE_ENV,
+    ...localPreviewRuntimeEnv(),
+    ...runtimeProviderSecrets,
+  });
 }
 
 export function localPreviewRuntimeEnv() {
@@ -160,6 +248,106 @@ function exactLocalE2ESecret(value: string | undefined) {
 
 function stringifyValues(values: Record<string, string | number | boolean>) {
   return Object.fromEntries(Object.entries(values).map(([key, value]) => [key, String(value)]));
+}
+
+function buildSafePublicEnvValues(
+  values: Readonly<Record<string, string>>,
+) {
+  return Object.fromEntries(
+    Object.entries(values).filter(([key]) => !isForbiddenBuildEnvKey(key)),
+  );
+}
+
+function renderDotEnvContent(values: Readonly<Record<string, string>>) {
+  return `${Object.entries(values)
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([key, value]) => `${key}=${quoteDotEnvValue(value)}`)
+    .join("\n")}\n`;
+}
+
+function readPrivateLocalPreviewDotEnv(cwd: string) {
+  const filePath = path.join(cwd, ".dev.vars");
+  let descriptor: number | null = null;
+  try {
+    descriptor = fs.openSync(
+      filePath,
+      fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW,
+    );
+    const stat = fs.fstatSync(descriptor);
+    const currentUid =
+      typeof process.getuid === "function" ? process.getuid() : null;
+    if (
+      !stat.isFile() ||
+      stat.isSymbolicLink() ||
+      stat.nlink !== 1 ||
+      stat.size < 0 ||
+      stat.size > 1_024 * 1_024 ||
+      (stat.mode & 0o077) !== 0 ||
+      (currentUid !== null && stat.uid !== currentUid)
+    ) {
+      return "";
+    }
+    return fs.readFileSync(descriptor, "utf8");
+  } catch {
+    return "";
+  } finally {
+    if (descriptor !== null) fs.closeSync(descriptor);
+  }
+}
+
+function readExactDotEnvAssignment(source: string, expectedKey: string) {
+  let matched: string | undefined;
+  for (const line of source.split(/\r?\n/)) {
+    const assignment = line.match(
+      /^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/,
+    );
+    if (!assignment || assignment[1] !== expectedKey) continue;
+    if (matched !== undefined) return undefined;
+    matched = parseDotEnvScalar(assignment[2] ?? "");
+    if (matched === undefined) return undefined;
+  }
+  return matched;
+}
+
+function resolveLocalPreviewEnvValue(
+  baseEnv: Readonly<Record<string, string | undefined>>,
+  localDotEnv: string,
+  key: string,
+) {
+  const explicit = baseEnv[key];
+  return explicit === undefined
+    ? readExactDotEnvAssignment(localDotEnv, key)
+    : explicit;
+}
+
+function parseDotEnvScalar(source: string) {
+  const value = source.trim();
+  if (!value) return "";
+  if (value.startsWith('"')) {
+    if (!value.endsWith('"')) return undefined;
+    try {
+      const parsed: unknown = JSON.parse(value);
+      return typeof parsed === "string" ? parsed : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+  if (value.startsWith("'")) {
+    return value.endsWith("'") ? value.slice(1, -1) : undefined;
+  }
+  const commentIndex = value.indexOf("#");
+  return (commentIndex === -1 ? value : value.slice(0, commentIndex)).trim();
+}
+
+function isExactLocalPreviewProviderSecret(
+  value: string | undefined,
+): value is string {
+  return Boolean(
+    value &&
+      value === value.trim() &&
+      value.length <= 8_192 &&
+      /^[\x21-\x7e]+$/.test(value),
+  );
 }
 
 export function isForbiddenBuildEnvKey(key: string) {

@@ -26,18 +26,27 @@ Next and OpenNext are build tools only. The deployed request handler must not im
 - `/tnc` is a Static Assets `308` to `/terms`.
 - `inspirlearning-www-redirect` remains the canonical `www` route Worker and returns `X-Inspir-Delivery: www-redirect-worker`.
 - The main Worker and redirect Worker each have one version at 100%; no split rollout is accepted.
-- The OpenNext build budget admits exactly the three complete localized static
-  route families this release owns (home, chat shell, and mission). Its
-  450-entry internal-cache guard leaves only deterministic headroom, while the
-  exact 207-localized-entry cap and unchanged byte limits fail closed on a
-  fourth route family or meaningful artifact growth. Static materialization
-  enforces a 5,000-file internal release ceiling—well below Cloudflare's
-  20,000-file Workers Free platform limit—and binds the complete asset-tree
-  manifest into the materialization and deploy evidence.
+- Static materialization derives the complete localized HTML path set from the
+  tracked translation-availability manifest. It must never assume that every
+  non-English language owns all 17 localized documents. The source-current
+  selected no-site-promotion release admits exactly 245 localized HTML paths.
+  A future finalized-Afrikaans branch may change that separately, but it is not
+  operative for this release. The release gate consumes the regenerated
+  manifest and fails on any missing, unexpected, stale, or differently counted
+  path. That exact path set is hash-bound in `.open-next/assets`. The final
+  asset tree fails closed above the 5,000-file internal release ceiling or
+  Cloudflare's 25 MiB per-file limit, and its complete manifest is bound into
+  materialization and deploy evidence. OpenNext cache totals and total raw
+  Static Assets bytes are recorded as release observations, not admission
+  caps: the cache is never uploaded and Cloudflare does not define a total raw
+  Static Assets byte limit. Wrangler dry-run evidence separately proves the
+  deployed Worker's compressed size.
 
 ## Historical-data preservation gate
 
-In steady state, capture a privacy-safe production baseline before the first release data mutation. For this one-release rollover, the already archived V1 baseline is the pre-migration predecessor; capture the V2 successor only after the guarded `0016` migration and its read-only schema verification, but before the new Worker can activate or write an outbox job. The capture command generates one release-only 256-bit HMAC key, stores it as a non-overwriting macOS login-Keychain item whose account is the non-secret `hmacKeyId`, verifies the readback, and keeps the secret out of arguments, environment variables, reports, and command output. The login Keychain must be unlocked:
+### Future steady-state process (not the current `0016` release)
+
+The ordinary process below is the future steady-state path, not the current incident release. In steady state, capture a privacy-safe production V2 baseline before the first release data mutation. The capture command generates one release-only 256-bit HMAC key, stores it as a non-overwriting macOS login-Keychain item whose account is the non-secret `hmacKeyId`, verifies the readback, and keeps the secret out of arguments, environment variables, reports, and command output. The login Keychain must be unlocked. **Do not run this ordinary capture for the current `0016` release; use only the accepted fresh-boundary coordinator in the next section.**
 
 ```bash
 pnpm cf:verify:historical-data-preservation -- \
@@ -46,11 +55,11 @@ pnpm cf:verify:historical-data-preservation -- \
   --confirm-production
 ```
 
-The baseline fails on an empty/wrong database and covers users, OAuth accounts, sessions, chats, messages, admin grants, user memories, activity runs, product events, and profile-photo pointers. Every new V2 baseline also requires `ai_runs` plus the saved-memory storage and provenance graph: memory source edges, settings, chat summaries, indexed turns and their message/topic edges, profiles, user summaries, synthesis runs, source feedback, and memory events. It separately records `memory_vector_cleanup_outbox` as a bounded, mutable operational dataset. Outbox job rows are deliberately not historical learner records: successful cleanup must be allowed to delete them, so direct post-deploy preservation compares its schema but never requires its count or job identities to survive. Direct readers, deploy preflight, and post-deploy verification accept V2 only. The older ten-dataset V1 format is parsed solely for the byte- and SHA-pinned one-release rollover predecessor; it cannot be substituted for a current baseline. Evidence stores only counts, schema identities, and at most 16 HMAC sentinels per protected dataset—never raw IDs, emails, session tokens, chat text, memory text, vector IDs, or outbox ownership. Every count uses an inner `cap + 1` scan, both sparse profile-photo queries bound the underlying users scan before filtering, schemas are capped, and the operational outbox scan stops at 10,001 rows. One logical V2 snapshot has a proven 690,209-row bound and retains its 750,000-row logical cushion. Because Cloudflare may transparently execute each read-only statement up to three times, admission reserves the full 2,250,000-row worst-case billable ceiling before D1. Every returned result set must contain an exact integer `meta.total_attempts` of `1`; missing, invalid, or retried-attempt metadata fails closed, retains the maximum reservation, and cannot produce or refine a report. Only a single-attempt response whose summed `rows_read` remains within the logical bound refines that reservation to exact metadata. V2 evidence and the operation's snapshot-plan hash bind all four values: logical snapshot bound, logical cushion, maximum automatic attempts, and worst-case billable reservation. Evidence is source-bound, owner-only mode `0600`, nofollow-read, and fsynced. Deploy preflight requires it to be at most 30 minutes old. Final verification may reuse that exact baseline for at most 12 hours so the guarded deploy and live validation can finish, but its reservation remains bound to the exact source inside the one cumulative D1 ledger, which still forbids crossing the UTC billing-day boundary. Preflight rejects a missing, stale, wrong-source, wrong-ledger, malformed, symlinked, or broadly readable baseline.
+The baseline fails on an empty/wrong database and covers users, OAuth accounts, sessions, chats, messages, admin grants, user memories, activity runs, product events, profile-photo pointers, and immutable historical `game_results`. The retired game runtime is not restored; this evidence only prevents existing user result rows from being silently lost. Every new V2 baseline also requires `ai_runs` plus the saved-memory storage and provenance graph: memory source edges, settings, chat summaries, indexed turns and their message/topic edges, profiles, user summaries, synthesis runs, source feedback, and memory events. It separately records `memory_vector_cleanup_outbox` as a bounded, mutable operational dataset. Outbox job rows are deliberately not historical learner records: successful cleanup must be allowed to delete them, so ordinary post-deploy preservation compares its schema but never requires its count or job identities to survive. Ordinary direct readers and post-deploy verification accept V2 only. The current release's deploy preflight does **not** accept a standalone V2 baseline: it requires the fully validated canonical fresh-`0016` completion chain described below. The older ten-dataset V1 format remains readable only as immutable historical incident evidence; it cannot authorize this release or substitute for a current baseline. Evidence stores only counts, schema identities, and at most 16 HMAC sentinels per protected dataset—never raw IDs, emails, session tokens, chat text, memory text, vector IDs, or outbox ownership. Every count uses an inner `cap + 1` scan, both sparse profile-photo queries bound the underlying users scan before filtering, column schemas are capped, and the operational outbox scan stops at 10,001 rows. A separate `sqlite_master` inventory stops at 513 objects, rejects a 513th object or DDL over 4,096 bytes, and binds the exact `game_results` table and immutable-update trigger SQL hashes. Each game-result sentinel streams 14 typed, length-framed fields locally into HMAC; raw payloads and identifiers are never persisted. One logical V2 snapshot has a proven 740,996-row bound and retains its 750,000-row logical cushion. Because Cloudflare may transparently execute each read-only statement up to three times, admission reserves the full 2,250,000-row worst-case billable ceiling before D1. Every returned result set must contain an exact integer `meta.total_attempts` of `1`; missing, invalid, or retried-attempt metadata fails closed, retains the maximum reservation, and cannot produce or refine a report. Only a single-attempt response whose summed `rows_read` remains within the logical bound refines that reservation to exact metadata. V2 evidence and the operation's snapshot-plan hash bind all four values: logical snapshot bound, logical cushion, maximum automatic attempts, and worst-case billable reservation. Evidence is source-bound, owner-only mode `0600`, nofollow-read, and fsynced. The ordinary steady-state gate requires a baseline to be at most 30 minutes old. Ordinary final verification may reuse that exact baseline for at most 12 hours so a guarded deploy and live validation can finish, but its reservation remains bound to the exact source inside the one cumulative D1 ledger, which still forbids crossing the UTC billing-day boundary. Ordinary readers reject a missing, stale, wrong-source, wrong-ledger, malformed, symlinked, or broadly readable baseline.
 
-An ordinary steady-state capture or verification reservation is single-use. If its source-bound operation already has either a maximum or exact reservation, repeating the command fails before `wrangler d1 execute`; an exact reservation is never widened or treated as permission for another billed snapshot. Only the pinned successor coordinator may reuse a still-maximum reservation, and only after its retained state chain proves the previous attempt stopped before D1 and acquires the exact pre-scan resume lease described below.
+An ordinary steady-state capture or verification reservation is single-use. If its source-bound operation already has either a maximum or exact reservation, repeating the command fails before `wrangler d1 execute`; an exact reservation is never widened or treated as permission for another billed snapshot. Only the accepted fresh-boundary coordinator may reuse a still-maximum reservation, and only after its retained state chain proves the previous attempt stopped before D1 and acquires the exact pre-scan resume lease described below.
 
-After deployment, translation/topic reconciliation, authenticated mutation cleanup, and all other release writes, prove protected-data counts never decreased, every sampled historical identity remains, and baseline columns were not removed. The operational outbox may grow or drain during this interval, but it must remain within its fail-closed capture cap and retain every baseline column:
+For a future ordinary steady-state release, after deployment, translation/topic reconciliation, authenticated mutation cleanup, and all other release writes, prove protected-data counts never decreased, every sampled historical identity remains, and baseline columns were not removed. The operational outbox may grow or drain during this interval, but it must remain within its fail-closed capture cap and retain every baseline column. **Do not use this command for the current `0016` release; its exact fresh-successor verification command appears below.**
 
 ```bash
 pnpm cf:verify:historical-data-preservation -- \
@@ -60,103 +69,340 @@ pnpm cf:verify:historical-data-preservation -- \
 
 Verification reads the expected `hmacKeyId` from the fully validated private baseline and retrieves exactly that Keychain item before any D1 operation. A missing, locked, denied, malformed, or mismatched item fails closed. Never generate a replacement for an existing baseline. A failed or indeterminate verification means the release is incomplete; do not replace its baseline or conceal the mismatch.
 
-### One-release 2026-07-13 budget-rollover continuity bridge
-
-The SEO translation import completed after the `2026-07-13T01:10:08.863Z` historical baseline, but its direct final preservation check was rejected before D1 execution: current account reads plus the cumulative release ledger and the verifier's conservative reservation projected `5,333,906` reads against the `4,000,000` lag-safe ceiling. Do not retry around the ledger, lower the reservation, generate a new HMAC secret, or overwrite the predecessor evidence. This release has one tracked, fail-closed rollover policy bound to commit `054ecb541cacec420f09e535ed4b5e79c46d1dfe`, source fingerprint `ecafef85eedc234608d5034801a24167339abc2a2026ca425a2d6c056277382f`, the exact baseline and ledger hashes, candidate `73a5299f-fd1f-47df-84a1-adf4bae573ce`, and repair run `5cde8cb4-87d5-4bc9-8f05-cc93ade2e446`.
-
-Archive the predecessor while its original ledger day and 12-hour evidence window are still live. This phase reads only owner-local evidence and Git objects. It never invokes Wrangler, D1, or a Cloudflare API; a byte-exact replay is idempotent, while partial or divergent evidence fails closed:
+For archived legacy-rollover incident recovery only—not for the current fresh-`0016` path—an independently recovered exact predecessor key must first be supplied through a normalized absolute, owner-only mode-`0600`, nofollow file and escrowed into the matching non-overwriting Keychain identity. Only then may the ordinary successor capture and rollover verifier run in their documented UTC window:
 
 ```bash
 pnpm cf:verify:historical-data-continuity -- \
-  --archive-predecessor \
   --confirm-production \
-  --confirm-budget-blocked-rollover
-```
-
-The rollover requires the exact predecessor HMAC key, not merely a new key with the same purpose. Its expected non-secret key ID is pinned in source and the archived predecessor is byte/hash/policy/ledger validated before retrieval. If an approved secure copy of the original 64-character key is recovered, escrow it from an owner-only file; the command validates it against the archived predecessor before a non-overwriting Keychain write and never prints the secret:
-
-```bash
-pnpm cf:verify:historical-data-continuity -- \
-  --escrow-recovered-predecessor-key \
-  --recovered-key-file /absolute/path/to/owner-only-recovered-key \
-  --confirm-production \
-  --confirm-budget-blocked-rollover
-```
-
-Do not use `echo`, a secret-valued command argument, standard input, or an environment variable for recovery input. The normalized absolute file path is non-secret; the command opens it with no-follow semantics, requires current-user ownership and mode `0600`, rejects extended ACLs, validates an unchanged descriptor, and never prints the contents. It deliberately does not delete the file: after exact Keychain readback, retain that plaintext only in approved encrypted recovery storage or remove it through the owner-approved secure disposal process before continuing. The Keychain item explicitly trusts `/usr/bin/security`; keep the login Keychain locked whenever the release operator is unattended and restrict access to the macOS account. If the exact key is unavailable, stop before every production D1 read/write, migration, upload, activation, or deploy; do not generate or substitute a new key. Finish, commit, push, and locally validate the exact successor source before recapture. On `2026-07-14`, capture the successor as soon as the D1 budget resets and no later than `01:10:08.863Z`, so the two snapshots remain at most 24 hours apart. The ordinary capture replaces the canonical baseline only after the predecessor archive is durable:
-
-```bash
-pnpm cf:check:d1-migration-budget -- --confirm-production
-pnpm cf:apply:d1-runtime-migrations -- --confirm-production
-pnpm cf:verify:d1-runtime-migrations -- --confirm-production
-pnpm cf:verify:historical-data-continuity -- \
-  --capture-successor \
   --confirm-budget-blocked-rollover \
-  --confirm-production
+  --escrow-recovered-predecessor-key \
+  --recovered-key-file </absolute/owner-only/recovered-key>
+
 pnpm cf:verify:historical-data-continuity -- \
-  --verify-rollover \
-  --confirm-production
+  --confirm-production \
+  --confirm-budget-blocked-rollover \
+  --capture-successor
+
+pnpm cf:verify:historical-data-continuity -- \
+  --confirm-production \
+  --verify-rollover
+```
+
+This recovery path cannot authorize the current release or retroactively prove the known lost-key interval.
+
+### One-release accepted fresh trust boundary for migration 0016
+
+The original `2026-07-13T01:10:08.863Z` predecessor HMAC key is unavailable and the former July 14 successor window is permanently expired. Therefore the identity continuity of the interval from that predecessor to the new cutover cannot be cryptographically re-proven. Do not claim otherwise, retry the expired rollover, substitute a new key for the old predecessor, overwrite old evidence, bypass the cumulative D1 ledger, or run raw migration `0016`.
+
+This one-release path is authorized only after the owner explicitly accepts: “I accept the fresh trust boundary and understand that the 13 July-to-cutover identity interval cannot be cryptographically re-proven.” The command-line confirmation is the exact `--confirm-lost-key-fresh-boundary` flag. It creates a new Keychain-backed HMAC identity and proves all 21 protected datasets—including immutable historical `game_results`—plus their schemas, counts, sampled identities, and exact immutable-result DDL across a new pre-`0016` predecessor and post-`0016` successor. The bounded pre-`0016` capture is exactly 62 result sets with a 730,738-row logical bound inside the unchanged 750,000-row cushion. That proof begins at the new predecessor; it is not retroactive evidence for the lost interval.
+
+Before the first production read or write, finish every source change, run all local gates, commit, and push the exact clean source. Only after the owner has supplied the exact statement above, record that acknowledgement locally with the exact flag. This command performs no production access. It creates or exactly reuses one owner-only, single-link acceptance artifact bound to the clean pushed Git identity, complete source fingerprint, Cloudflare account, Worker, D1 database, one-release scope, exact statement hash, and known non-reprovable interval:
+
+```bash
+pnpm cf:accept:fresh-boundary -- --confirm-lost-key-fresh-boundary
+```
+
+Every supported remote release, production read/write, upload, staging, activation, and production-validation package command enters through `run-trust-bound-production-command.ts`, which nofollow-validates that exact current acceptance before starting a child process. Do not invoke the underlying TypeScript files or raw Wrangler commands. The deploy preparation is schema v2 and embeds the acceptance artifact SHA-256 and exact Git/source binding; upload evidence then carries the preparation hash through the rest of the append-only release chain. A missing, future-dated, changed-source, changed-Git, symlinked, hardlinked, broadly readable, replaced, or mismatched acceptance fails before remote access.
+
+Create the upload-time deploy preparation and, while its 12-hour upload-eligibility interval is still open, upload exactly one inactive candidate:
+
+```bash
+pnpm cf:prepare:deploy
+pnpm cf:upload
+```
+
+Preserve the owner-only upload evidence and record its exact target-candidate and service-baseline UUIDs. The target must differ from the baseline, receive no traffic, and remain absent from deployment topology; the baseline must remain the sole deployed version at `100%`. The upload evidence permanently hash-binds the exact preparation bytes that authorized the upload. Once the upload has occurred inside that preparation's original interval, the preparation becomes immutable release provenance rather than a rolling freshness gate: do not rebuild, recertify, create a replacement preparation, upload another candidate, or change source, Git, Worker, configuration, or Static Assets while the release proceeds.
+
+On a strictly earlier UTC day than the predecessor, run only the guarded `0017` apply below. Its wrapper derives the exclusion owner from the canonical upload's inactive target candidate while independently keeping live topology pinned to the service baseline alone at `100%`; no candidate UUID is accepted from the command line. Its independent top-level reservation is the full 125,000-read and 50,000-write maximum. It requires exact `0013`-`0015` applied state with both `0016` and `0017` absent, applies only `0017`, and exact-verifies the new index before returning success:
+
+```bash
+pnpm cf:apply:d1-runtime-migration-0017 -- --confirm-production
+```
+
+Preserve the resulting owner-only immutable `cloudflare/d1-runtime-migration-0017-apply-verification.json`, `cloudflare/d1-runtime-migration-0017-apply-outcome.json`, and durable pre-spawn `cloudflare/d1-runtime-migration-0017-write-attempt.json`. The outcome hash-binds the immutable apply verification, and the predecessor binds all three. They must be source/Worker-bound and from a UTC day strictly earlier than the predecessor. Never replace them with the refreshable `cloudflare/d1-runtime-migration-0017-report.json`.
+
+Topic and translation reconciliation are also pre-predecessor prerequisites for this incident cutover, not Day-2 work. On a later—but still pre-predecessor—UTC day, capture uploaded-inactive Vectorize readiness, reconcile topics, and complete the staged read-only translation plan seal in that order. Every operation must bind the same clean pushed source and inactive target while the recorded service baseline remains alone at `100%`. Preserve the owner-only `topic-reconciliation-attestation.json` and staged-release-bound `translation-reconciliation-attestation.json` files. The staged evidence explicitly forbids pre-activation translation mutation and requires the exact candidate-active cleanup later in this runbook. Do not stage the candidate before canonical `finish`, hand-create evidence, or start without the complete immutable upload/prerequisite chain.
+
+Run `start` during the final 30 minutes before a chosen UTC reset (`23:30:00.000Z` through `23:59:59.999Z`). Before it creates a new HMAC key, run directory, claim, predecessor reservation, or snapshot, it reserves a separate 15,132-read/zero-write live gate and proves exact `0013`-`0015` plus `0017` applied state with `0016` absent. It nofollow-reads the immutable upload, `0017`, topic, and translation evidence; requires the baseline alone at `100%` and the inactive target absent from deployment topology; proves every binding and timestamp; and embeds their hashes and aggregate results in the claim. Missing, replaced, same-day, partial, wrong-source, wrong-Worker, staged-candidate, changed-baseline, or changed-upload evidence fails before the predecessor. Only then does it create the fresh HMAC key, reserve and capture the bounded pre-`0016` predecessor, and stop at durable `predecessor-complete`. Record the returned non-secret run UUID. Do not use the generic migration wrapper for `0016`: its final write boundary deliberately refuses it.
+
+```bash
+pnpm cf:cutover:historical-data-fresh-0016 -- \
+  start \
+  --confirm-production \
+  --confirm-lost-key-fresh-boundary
+```
+
+The following UTC day, run `finish` during its first 30 minutes (`00:00:00.000Z` through `00:30:00.000Z`) with that exact run UUID. The coordinator acquires the production exclusion, admits the new day's cumulative Free-plan budget, applies the exact source-pinned `0016` bytes plus the insert-only run marker, performs exact read-only runtime verification, captures the post-migration successor with the same fresh HMAC key while the outbox is empty, verifies nondecreasing protected data, publishes the canonical 12-stage completion artifact, and only then releases the exclusion:
+
+```bash
+pnpm cf:cutover:historical-data-fresh-0016 -- \
+  finish \
+  --run-id <exact-run-uuid> \
+  --confirm-production \
+  --confirm-lost-key-fresh-boundary
+```
+
+Still inside that same Day-2 parent, produce the standard read-only `0013`-`0016` report, then refresh only the replaceable `0017` verifier report, and immediately run final deploy preflight. The `0017` refresh is exactly 36 billed reads accounted beneath the still-maximum Day-2 parent; it has no separate top-level reservation and must not touch the three immutable earlier-day apply artifacts. Preflight has no legacy-baseline or expired-rollover fallback: it rebuilds and verifies the full append-only cutover chain, requires the existing canonical completion artifact, exact accepted policy, current pushed source and backup path, empty pre-activation outbox, and evidence no more than one hour old. The baseline must still be alone at `100%` and the target absent from deployment topology throughout `finish` and this preflight. Only after all three succeed may the already-uploaded target be staged at `0%`, override-smoked, sealed, and activated.
+
+```bash
+pnpm cf:verify:d1-runtime-migrations -- --confirm-production
+pnpm cf:verify:d1-runtime-migration-0017 -- --confirm-production
 pnpm cf:preflight:deploy
 ```
 
-Successor capture maintains an owner-only, hash-chained state machine beside the archived predecessor. The exact scan-authorization marker is durably written at the last pre-D1 cut line, after the cumulative read reservation and before the snapshot runner. A retry with prepared or complete evidence finalizes or replays the same report without loading the Keychain and without another D1 scan; finalization may finish just after the capture window, but the ordinary 12-hour final-verification freshness limit still applies. A fresh capture can begin only inside the pinned UTC window. Claims are immutable and are never unlinked or replaced: completion retains the exact claim as permanent chain evidence, eliminating cleanup/acquisition races. A Keychain, validation, or interrupted first-publication-sync failure before D1 retains its exact run ID. After proving the prior owner process is gone (or after the same process has unwound the failed attempt), resume only that claim with:
+Inspect a retained run without mutation authority or production confirmation flags:
 
 ```bash
-pnpm cf:verify:historical-data-continuity -- \
-  --capture-successor \
-  --resume-successor-pre-scan-run <exact-run-uuid> \
-  --confirm-budget-blocked-rollover \
-  --confirm-production
+pnpm cf:cutover:historical-data-fresh-0016 -- \
+  status \
+  --run-id <exact-run-uuid>
 ```
 
-The failure message prints the non-secret exact run UUID. Resume revalidates the source, predecessor, HMAC key, capture window, owner identity, state inode/hash chain, and existing budget reservation before reaching D1. Cross-process recovery uses a bounded append-only lease chain (`01` through `08`): the latest owner must be this already-unwound process or provably exited, every lease hashes the claim and prior lease, all contenders race for the same deterministic `O_EXCL` slot, and only the exact latest current-process owner may authorize or finalize a scan. An exact `nlink=2` interrupted scan-authorization publication remains explicitly classified as definitely pre-D1; resume first makes that same inode durable and then uses it at the last pre-D1 cut. A normal mode-`0600` scan authorization without prepared evidence remains indeterminate because D1 may already have started, so automatic rescan is forbidden. Never delete, rename, replace, or hand-edit any successor state file.
+For an interrupted operation, preserve every state file and reuse only the exact run UUID. Re-run `start --run-id <exact-run-uuid>` only inside the same pre-reset window when status proves the predecessor step is safely resumable; re-run `finish --run-id <exact-run-uuid>` only inside the post-reset window when status authorizes automatic continuation. If status says D1 may have started, automatic retry is false, an authorization tail is unresolved, the owner process may still be live, or the chain is conflicting/broken, stop for reviewed readback recovery. Never delete, rename, replace, chmod, hard-link, symlink, or hand-edit the owner-only mode-`0700` run directory, its mode-`0600` evidence, the Keychain item, the live ledger, or the canonical completion artifact.
 
-The rollover verifier requires a clean pushed successor, the exact next UTC day, a fresh live-ledger successor baseline, the retained HMAC key, byte-exact predecessor archive evidence, and a gap no longer than 24 hours. For every protected dataset it applies the direct verifier's same guarantees: counts cannot decrease, every predecessor column identity must remain, and every predecessor HMAC sentinel must still occur in the successor's bounded identity set. The pinned V1 predecessor did not capture the not-yet-introduced operational outbox, so inventing predecessor job-row preservation would be false evidence. Instead, this one-release bridge requires the post-`0016`, pre-activation successor snapshot to prove the complete outbox schema exists and its row count is exactly zero. Its report records that job-row preservation is false by design. Future V2 preservation snapshots may contain live outbox jobs and compare schema only, allowing verified jobs to drain normally. The verifier writes a private source- and baseline-bound continuity report. Deploy preflight rejects a missing, stale, failed, wrong-source, wrong-baseline, wrong-policy, wrong-manifest, nonempty first-release outbox, symlinked, or broad-permission report. This bridge is not a general bypass and must not be copied to another incident.
-
-## Additive D1 runtime migrations 0013-0016
-
-Before deploying this revision, apply all four tracked supplemental migrations in order. `0013` adds the bounded runtime indexes on `rate_limit_windows(reset_at)`, `ai_runs(created_at)`, and `ops_events(user_id)`; the last one keeps disposable validation cleanup from scanning the operations table. `0014` reads the durable all-time user, chat, message, and AI-run counts once and upserts the single `native-admin-totals-v1` `app_metadata` row. It excludes only the reserved `@inspirlearning.invalid` validation owner while retaining NULL/orphan historical chats and their child rows. `0015` adds nullable `completion_token` and `completion_message_id` columns to `activity_runs` plus one exact unique partial index for each non-NULL receipt. `0016` adds the checked `user_memory_settings.summary_suppression_mask`, creates the initially empty `memory_vector_cleanup_outbox` durability table and its single due index on `(next_attempt_at, created_at, vector_id)`, then performs one bounded compatibility backfill from known canonical or bare suppression-feedback section IDs. The backfill never scans summary JSON, changes no saved memory/chat content, preserves every existing settings preference, and creates default settings only for an affected existing user who has no settings row. Its final statement writes the fixed `runtime-migration-0016-complete` marker; marker absence proves the file did not finish and is classified as partial rather than applied. Historical arbitrary summary IDs are preserved lazily by the runtime before synthesis or derived-summary invalidation. Local preview setup applies every unapplied supplemental migration automatically.
-
-Use this exact production order: daily Free-plan budget reservation, guarded migration wrapper, read-only verification, then Worker preflight/deploy. The budget gate sums the current UTC day's D1 analytics across every database in the account, rejects truncated Query Insights, and admits work only below the four-million-read and 80,000-write safety ceilings that retain one million reads and 20,000 writes of hard-limit headroom. It initially reserves the migration operation's conservative one-million-read and 50,000-write maximum, bounds `activity_runs` while projecting all three `0013` indexes, both `0015` partial unique indexes, and three full `0014` snapshot-read passes. For `0016`, it also takes capped cardinalities for settings, suppression feedback, and distinct affected users, projects the compatibility backfill's reads, reserves two billed writes per affected user for the worst-case missing settings row plus its implicit `TEXT PRIMARY KEY` index entry, and adds the conservative fixed allowance for the additive schema, completion marker, and exact read-only verification. Existing-row updates cost no more than that reservation. It refuses any cardinality at its cap or any inconsistent affected-user count. The owner-only UTC-day ledger accounts cumulatively for release operations even while Cloudflare analytics lag, and rejects a stale day instead of rolling a reservation into the next day. It refuses before cardinality SQL when the daily allowance is exhausted. Wait for the next `00:00 UTC` reset if it fails; do not bypass it or move this release to a paid plan.
+Immediately after activation and before any later validation mutation, verify preservation against the exact fresh successor rather than the unavailable legacy baseline. Topic and translation mutation are not remaining writes: their claim-bound reconciliation already completed before the predecessor and must not be repeated from the predecessor claim through this verifier. This must finish on the successor's UTC ledger day and within the 12-hour evidence window; the command full-chain-validates the canonical cutover, exact successor file hash, immutable earlier-day `0017` proof, current source, HMAC identity, live still-maximum Day-2 parent, and a new authoritative candidate-active topology observation. That observation must bind the same upload/activation chain and show the target candidate alone at `100%`; the former service baseline must no longer serve. Only then does it compare the protected production data. Final preservation is the only step that may authorize exact parent refinement; do not refine after `finish`, the read-only verifiers, preflight, staging, or activation. There is no fallback to the expired rollover:
 
 ```bash
-# 1. Account-wide daily budget and bounded 0013-0016 projection.
-pnpm cf:check:d1-migration-budget -- --confirm-production
-
-# 2. Create durable diagnostic evidence, then apply the exact tracked files in order.
-pnpm cf:apply:d1-runtime-migrations -- --confirm-production
-
-# 3. Prove the complete 0013-0016 state before any Worker upload/deploy.
-pnpm cf:verify:d1-runtime-migrations -- --confirm-production
+pnpm cf:verify:historical-data-fresh-0016-preservation -- \
+  --confirm-production \
+  --fresh-0016-run-id <exact-run-uuid>
 ```
 
-Never run the four migration SQL files with ad-hoc Wrangler commands. The wrapper requires the fresh exact budget report and its live ledger reservation, records and fsyncs the Time Travel bookmark, database identity, source fingerprint, migration hashes, projection, and forward-correction-only policy before its first write, and verifies exact state after each migration. It serializes no destructive restore recipe. It refuses partial or stale state and never blindly retries an ambiguous `0015` or `0016` response. The separate verifier is read-only and requires explicit production confirmation. It proves both `0015` columns, both exact unique partial index definitions, all three `0013` index definitions, one valid `0014` snapshot whose four counts are non-negative integers, the exact checked `0016` suppression-mask column, all 18 exact outbox columns and defaults, the complete outbox table/check-constraint SQL, exactly one explicit outbox index with the required three-column due order, and the exact final `0016` completion marker with a positive server timestamp. The marker is part of `0016` exact-state classification, so schema without a successfully completed backfill cannot authorize activation. The verifier atomically writes fresh, source-fingerprint-bound, mode-`0600` evidence under the active backup directory. `pnpm cf:preflight:deploy`, `pnpm cf:upload`, and `pnpm cf:deploy` reject missing, stale, non-regular, symlinked, wrong-mode, wrong-source, incomplete, or non-ok evidence, so the Worker cannot activate before `0016`. Finish, commit, and push the exact source before starting this sequence; any later tracked-source change invalidates the release evidence and must be resolved before deployment. None of these commands uses `d1 export`.
+The resulting fresh boundary is a one-release incident policy, not a reusable shortcut. After this release is accepted, future steady-state releases must capture a normal current V2 baseline with a newly authorized release key before their first mutation.
 
-The production migration, standalone source sync, topic sync, Worker deploy, translation maintenance, authenticated validation, and main-Worker rollback all use the same D1-backed production exclusion. The three D1 child scripts refuse direct remote execution unless their parent wrapper proves the exact live owner. The parent revalidates the sole active Worker and repository fingerprint after acquisition, renews the lease while the child runs, holds it through the child report and authoritative readbacks, and releases only after final certification. A crashed non-validation operation leaves a bounded lease; after D1 declares it expired, the next guarded operation replaces it atomically. Do not invoke the underlying TypeScript files or raw Wrangler mutation commands directly.
+The final verifier is a two-phase Day-2 child. It writes an owner-only last-pre-D1 authorization immediately before its snapshot command and an owner-only prepared capture after successful bounded readback but before exact ledger refinement. A crash with authorization but no prepared capture is ambiguous and must retain the aggregate maximum without a second D1 snapshot. A durable prepared capture finalizes exact accounting and the report without querying D1 again; a durable final report replays only aggregate refinement. Any missing, linked, broadly readable, cross-day, source/Worker/parent-budget, HMAC, immutable-`0017`, activation-topology, or capture-hash ambiguity keeps the maximum. The Day-2 order is fixed: `finish`/fresh `0016`, standard read-only runtime verification, read-only `0017` refresh, baseline-only preflight, candidate staging, override smoke, pre-activation seal, activation, candidate-active final preservation and exact parent refinement, candidate-active Vectorize readiness, exact candidate-active staged translation cleanup, then authenticated validation.
 
-All four migrations are additive. A Worker rollback leaves their table, columns, indexes, and snapshot in place; do not drop them during an application rollback.
+## Additive D1 runtime migrations 0013-0017
+
+Migrations `0013`, `0014`, and `0015` are the already-applied prerequisite prefix for the accepted fresh boundary. `0013` adds bounded indexes on `rate_limit_windows(reset_at)`, `ai_runs(created_at)`, and `ops_events(user_id)`. `0014` stores the durable all-time native admin totals snapshot. `0015` adds the two nullable activity completion receipts and their unique partial indexes. If exact read-only state does not show this complete prefix with `0016` absent, stop; do not try to repair the state inside the cutover window.
+
+Migration `0016` belongs exclusively to the fresh-boundary coordinator above. It adds the checked `user_memory_settings.summary_suppression_mask`, creates the initially empty `memory_vector_cleanup_outbox` and its exact due index, performs the bounded compatibility backfill, writes the fixed `runtime-migration-0016-complete` marker, and inserts the source/run-bound fresh-cutover marker in the same transaction. The generic migration child has a final write-boundary guard that refuses raw `0016`, even when called through the production release wrapper. Do not weaken that guard and do not invoke any migration SQL through ad-hoc Wrangler commands.
+
+The coordinator performs its own account-wide daily Free-plan admission, cumulative ledger reservations, bounded cardinality projection, immutable pre-write evidence, exact migration rendering, Time Travel diagnostic capture, ambiguity classification, and read-only state verification while it owns the production exclusion. It rejects truncated analytics, cap hits, UTC-day drift, source drift, partial state, excessive projected reads or writes, and an outbox that is not empty before activation. Wait for a later UTC reset if admission fails; do not lower the reservation, bypass the ledger, move to a paid plan, or run a separate migration wrapper.
+
+`pnpm cf:upload` intentionally occurs before canonical cutover and requires only the fresh upload-time preparation plus baseline-only topology; it does not consume post-cutover migration reports. After canonical cutover completion, `pnpm cf:verify:d1-runtime-migrations -- --confirm-production` proves all `0013`-`0016` checks in one read-only attempt and writes the fresh source-bound mode-`0600` report required by deploy preflight. Immediately after it, `pnpm cf:verify:d1-runtime-migration-0017 -- --confirm-production` replaces only `cloudflare/d1-runtime-migration-0017-report.json` with the Day-2 source-bound applied-state proof. Baseline preflight, staging, pre-activation sealing, and activation require both fresh reports, the independently full-chain-validated canonical fresh boundary, canonical upload evidence, and the exact upload-bound preparation provenance. Any later tracked-source change invalidates all release gates. None of these commands uses `d1 export`.
+
+Migration `0017` creates the additive covering expression index `users_normalized_email_lookup_idx` on `lower(email), id, email`, so Google account linking cannot fall back to a production user-table scan while retaining the existing ambiguity rejection. Although numbered after `0016`, this one-release Free-plan chronology applies it on a strictly earlier UTC day while `0016` is still absent. This prevents its independent 125,000-read/50,000-write maximum from overflowing the fresh-`0016` Day-2 aggregate. It remains deliberately excluded from the frozen `0013`-`0016` projection, migration file, coordinator apply stage, and canonical `0016` evidence formats. Do not append it to `0016`, rerender the accepted cutover, or invoke its SQL directly.
+
+The earlier-day admission is deliberately part of the guarded apply child; there is no supported standalone `0017` budget command because that would reopen a release-exclusion race. The only supported mutation command is the earlier-day `pnpm cf:apply:d1-runtime-migration-0017 -- --confirm-production` shown above. The Day-2 verifier is read-only and runs only after canonical `finish`, immediately before final deploy preflight.
+
+While it owns the same D1-backed production exclusion from admission through
+post-state verification, the child reserves the full 125,000-read and
+50,000-write envelope before its first bounded user scan. It never refines that
+reservation before or during the write. Immediately before the sole file
+execution it reloads account-wide daily usage, replays the unchanged maximum
+into the cumulative UTC ledger, rechecks source and canonical migration bytes,
+and admits storage using the full 16,000-user ID/email/index envelope rather
+than the earlier observed row count. An intervening ordinary account creation
+therefore does not invalidate billing or storage admission while it remains
+inside those fixed caps.
+
+The executed file is a private mode-`0600`, nofollow-created, fsynced SQL file
+whose exact bytes, hash, inode, owner, links, timestamps, and owner-only
+directory are attested immediately before and after Wrangler can consume it.
+The file first inserts an admission row whose constraints cover the fixed user
+and key-byte caps and whose non-null value must equal the exact live production
+lock owner; it then creates the index and drops the temporary guard table. D1
+serializes that guard and index in one D1-owned file transaction, so a user write
+is either visible to the guard or follows the completed index, and a failed cap
+or lock check rolls the sequence back. Do not add explicit `BEGIN`, `COMMIT`, or
+`ROLLBACK`: Cloudflare's [D1 import guidance](https://developers.cloudflare.com/d1/best-practices/import-export-data/)
+requires transaction control to be removed because D1 already owns the import
+transaction, and the [D1 batch contract](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch)
+states that a failed statement aborts or rolls back the sequence.
+
+The child exact-verifies `0013`-`0015` applied with both `0016` and `0017`
+absent, captures a diagnostic Time Travel bookmark, and rejects any partial or
+out-of-order state before a write. After the final source,
+exclusion, maximum-ledger, account-usage, storage, and guarded-SQL checks, it
+exclusively creates the fixed owner-only mode-`0600`
+`d1-runtime-migration-0017-write-attempt.json` marker with `O_NOFOLLOW`, fsyncs
+both its bytes and containing directory, and exact-reads it back before the
+sole Wrangler `--file` invocation. The marker binds those admitted inputs, the
+pre-write evidence path, exact SQL-file attestation, and exact Wrangler arguments;
+it is never replaced or removed automatically. Every rerun checks this marker
+before admission and refuses the write even when `SIGKILL` prevented the first
+process from reaching a catch block or final outcome. A kill immediately after
+the durable marker but just before process spawn therefore blocks
+conservatively. An ambiguous response is never retried; only exact
+applied-state verification in the original surviving process may recover it,
+while an absent, mismatched, or indeterminate result requires reviewed forward
+correction. Success exclusively publishes
+`d1-runtime-migration-0017-apply-verification.json` once, then hash-binds that
+exact immutable report into `d1-runtime-migration-0017-apply-outcome.json`.
+The predecessor validates the immutable verification, outcome, and write marker
+as one earlier-day chain. The later CLI verifier never replaces any of them.
+
+Final deploy preflight requires all three independent proof classes: the fresh unchanged `0013`-`0016` verifier, the full canonical `0016` cutover chain (which binds the immutable earlier-day `0017` chain), and the fresh source-bound mode-`0600` refreshable `0017` verifier report. A tracked-source change invalidates all of them.
+
+The production migrations, standalone source sync, topic sync, Worker deploy, translation maintenance, authenticated validation, and main-Worker rollback all use the same D1-backed production exclusion. The four D1 child scripts refuse direct remote execution unless their parent wrapper proves the exact live owner. The parent revalidates the sole active Worker and repository fingerprint after acquisition, renews the lease while the child runs, holds it through the child report and authoritative readbacks, and releases only after final certification. A crashed non-validation operation leaves a bounded lease; after D1 declares it expired, the next guarded operation replaces it atomically. Do not invoke the underlying TypeScript files or raw Wrangler mutation commands directly.
+
+All five migrations are additive. A Worker rollback leaves their table, columns, indexes, and snapshot in place; do not drop them during an application rollback.
 
 ## Translation gate
 
-The repository owns the curated translation bundles used at build time. D1 mirrors every current source namespace and stores the audited payload repairs used by the former runtime. Run the read-only repair verifier and require complete bundles for every language on the surfaces this Free deployment publishes globally:
+The repository owns the curated translation bundles used at build time. This
+release uses the distinct **staged canonical-English-fallback** contract: keep
+every complete, source-current tracked curated pack, promote no new site
+translation cohort, and omit every incomplete or stale locale/route from localized Static
+Assets, navigation, and sitemap output. An omitted localized route resolves
+through the canonical English experience. Partial packs and mixed-language
+localized documents remain forbidden.
 
-The four bootstrap-language site corpora are tracked in full. Other languages track the three globally materialized site surfaces, and main-app translations use the compact tracked `translations/static-main-app` representation. Full main-app editing packs remain ignored workbench files and must never affect release identity. A clean checkout must reproduce the exact 691 site rows plus 69 main-app rows used by the repair.
+The future full multilingual completion definition is unchanged: 124 site
+namespaces across 69 non-English targets equals 8,556 site packs; the 69
+compact main-app packs bring the full semantic corpus to 8,625 packs; and the
+separate 69-row legacy `marketing-site` aggregate brings the eventual exact D1
+inventory to 8,694 rows. That full-corpus generation, audit, legacy-delta, and
+D1-repair workflow is deferred and is **not executable for this release**. Its
+status, restart requirements, and unchanged completion criteria live in
+`docs/language-translation-work.md`.
+
+All 69 compact main-app packs remain mandatory. Full main-app editing packs are
+ignored workbench files and must never affect release identity. The deliberately
+filtered legacy Static Assets API remains fixed at 280 compatibility assets and
+is not the D1 corpus.
 
 ```bash
-pnpm cf:d1:repair-seo-translations
-pnpm translations:static-main-app:check
-pnpm translations:status -- --all-languages \
-  --namespace=main-app \
-  --namespace=marketing-shell \
-  --namespace=route:home \
-  --namespace=route:mission
+env NO_UPDATE_NOTIFIER=1 PNPM_DISABLE_SELF_UPDATE_CHECK=true \
+  npm_config_offline=true \
+  pnpm --config.offline=true --config.update-notifier=false \
+  translations:static-main-app:check
+env NO_UPDATE_NOTIFIER=1 PNPM_DISABLE_SELF_UPDATE_CHECK=true \
+  npm_config_offline=true \
+  pnpm --config.offline=true --config.update-notifier=false \
+  translations:verify-site-source-manifest
 ```
 
-If the audited SEO source hashes changed, do not run the remote repair from an unvalidated working tree. Finish every local gate, commit and push the exact source, and deploy the candidate first; then use the post-deploy translation reconciliation section below. The repair binds itself to that candidate UUID, the pushed commit, fresh source-scoped gate reports, the native Worker hash, and a deterministic Static Assets manifest before it can upload maintenance code.
+### Current no-new-site-promotion fallback branch
 
-The repair must fail closed unless source extraction, all tracked curated packs, Unicode normalization, field validation, D1 statement/file limits, and the account-wide Free-plan budget all pass. Before its first target/snapshot D1 read it reserves the conservative maximum in the one cumulative UTC-day release ledger under a reservation bound to the exact source fingerprint, candidate, immutable plan, and release-preflight run ID. It deliberately retains that maximum through target discovery, source planning, import, byte-exact post-import verification, candidate restoration, maintenance-marker cleanup, and exclusion release; the lower planning forecast must never be presented as exact billing. Wrangler JSON metadata meters every read-only query and a confirmed import, while missing import metadata keeps the maximum reservation rather than guessing. Immediately before import the repair revalidates the candidate, source, immutable repair plan, unchanged maximum ledger reservation, and UTC day. It never uses `d1 export`, because exports block database requests. Instead it validates a current Time Travel bookmark and writes a unique mode-`0600`, exclusively-created, fsynced diagnostic record plus an unresolved-operation marker before its first import. It applies one atomic SQL file and byte-verifies every resulting row. A definite mismatch, billing overflow, or indeterminate verification leaves maintenance active and requires a reviewed forward correction. Destructive whole-D1 Time Travel restore is unsupported on Free because the runtime cannot prove cross-store quiescence. A new repair refuses to start while an unresolved marker exists. Never run it routinely when the same hashes already pass.
+Translation generation and site-pack promotion are closed for this release.
+The incomplete R16 and R17 Afrikaans candidate roots remain ignored,
+untrusted, and non-promotable; they are not attestation, D1, build, deploy, or
+source-fingerprint inputs. The exact tracked inventory is 691 physical site
+packs: 599 complete/source-current clean packs plus 92 stale packs. The pending
+ledger is 7,957 entries (7,865 missing and 92 stale), the availability manifest
+advertises exactly 245 localized HTML paths, and all 69 compact main-app packs
+remain mandatory. Every pending site translation uses canonical English
+fallback.
 
-The repair also persists an exact cross-workspace maintenance marker in production D1 while it still owns the global exclusion and before it activates the maintenance Worker. Ordinary deploy, validation, rollback, and release-maintenance wrappers refuse that marker even after the original lease expires. After a reviewed forward correction (or when evidence proves no D1 write occurred), resolve only the exact recorded run with:
+Create the distinct selected attestation from those tracked bytes:
+
+```bash
+pnpm translations:attest-current-fallback
+```
+
+The command requires its fixed `--current-no-site-promotion` package argument
+and creates then nofollow-rereads
+`translations/current-fallback-no-site-promotion-attestation.json`. It binds
+the exact source and availability manifests, 245-path set, curated and
+main-app trees, 7,957-entry pending ledger, explicit no-promotion scope, and
+canonical English fallback policy. It grants no deployment, production-read,
+production-write, full-semantic, full-D1-repair, production-sync, legacy-delta,
+or promotion authority by itself.
+
+### Future finalized-Afrikaans branch (not selected for this release)
+
+The independently gated finalized-Afrikaans attestation schema, semantic
+promotion proof reader, and corpus loader remain in code for a future
+translation run. They are not operative deploy-preflight or pre-activation
+seal inputs for this release. R16 and R17 failed closed and must never be
+resumed, audited, promoted, or represented as finalized evidence. A future
+attempt must use a fresh run root and pass its complete generation, semantic
+audit, transactional promotion, regenerated availability, and attestation
+gates before that branch can be selected in a separately reviewed runbook.
+
+### Staged D1 reconciliation contract and rollback-safe cutover
+
+The staged path is separate from the deferred full-corpus repair. It rebuilds
+the exact allowed D1 corpus from nofollow-validated current bytes: 599 clean
+site pairs plus all 69 main-app pairs, for 668 exact rows. The selected path
+asserts those availability-derived tracked counts; it never
+substitutes the numbers for the canonical row inventory. Every other
+`app_translations` pair—including source-stale/missing targets, unsupported
+identities, retired game data, and the obsolete 69-row `marketing-site`
+aggregate—is outside the final set. Current source catalog rows and strings are
+upserted additively and are never deleted by this staged cleanup.
+
+First create the owner-only local plan authorization after the tracked staged
+fallback attestation exists:
+
+```bash
+pnpm cf:d1:reconcile-staged-translations -- \
+  --release-mode staged-canonical-English-fallback \
+  --prepare-local-authorization
+```
+
+The command emits the exact plan/resume paths. The authorization grants only
+local candidate-input validity. Its production-read, production-write,
+deployment, and deploy-by-itself flags are all false. It binds the attestation
+file/self hashes, source/availability/localized-path manifests, both trees,
+target and pending sets, fallback policy, explicit no-site-promotion scope,
+exact 668-row identity root, payload corpus root, and SQL hash.
+A changed, linked, nonregular, replaced, traversal-escaped, duplicated, stale,
+or mixed-mode input invalidates it.
+
+Do **not** delete legacy D1 rows while the old service baseline is serving. The
+predecessor-day reconciliation is deliberately read-only: it exact-reads the
+current state, byte-checks every already-present desired row, reports whether
+post-activation cleanup is required, and writes an owner-only prepared
+readback before exact ledger refinement. A retry consumes that same
+candidate/source/plan-bound readback without querying D1 again; it cannot
+substitute different billing or row evidence. Every D1 result set must report
+exactly one attempt; missing or retried billing metadata keeps the maximum and
+fails the seal. A durable last-pre-read attempt without its matching prepared
+readback forbids an automatic same-day reread. The command then writes the
+distinct staged plan-ready reconciliation evidence. Extras remain visible in the report and
+are not misreported as an exact 668-row database. This avoids an unproven
+interval in which an older rollback baseline could still request its aggregate
+translations.
+
+```bash
+pnpm cf:d1:reconcile-staged-translations -- \
+  --release-mode staged-canonical-English-fallback \
+  --remote --verify-only --confirm-production \
+  --phase uploaded-inactive \
+  --candidate-version <exact-uploaded-inactive-candidate-uuid> \
+  --local-authorization <exact-owner-only-local-authorization-path>
+```
+
+Only the later guarded candidate-active cleanup may mutate translations. It
+requires the exact upload/activation chain, staged reconciliation, local plan,
+fresh canonical final-preservation proof, fresh candidate-active Vectorize
+evidence, clean pushed source, current
+artifacts, the candidate alone at `100%`, the cumulative D1 ledger, storage and
+statement admission, production exclusion, native write-freeze maintenance,
+diagnostic Time Travel bookmark, and an attested single SQL file. It resets
+every desired payload to `{}` before bounded patches, deletes the symmetric
+difference, byte-rereads all 668 rows, verifies every required current source
+catalog row and source string without deleting preserved extras, restores the
+same active candidate, and writes a fresh owner-only cleanup attestation whose
+exact pre-write, budget, maintenance, resolution, and atomic-SQL chain is
+consumed by authenticated
+production validation.
+
+Immediately before its first D1 read, cleanup writes a candidate/plan/source/
+authorization/budget-bound owner-only attempt marker. That marker is included
+by hash in the cleanup attestation. A reused maximum reservation or an earlier
+same-day marker without final cleanup evidence forbids automatic retry; retain
+the reservation and review the recorded maintenance/pre-write state instead.
+
+```bash
+pnpm cf:d1:reconcile-staged-translations -- \
+  --release-mode staged-canonical-English-fallback \
+  --apply-cleanup --remote --confirm-production \
+  --confirm-native-write-freeze --phase candidate-active \
+  --candidate-version <exact-active-candidate-uuid> \
+  --local-authorization <exact-owner-only-local-authorization-path>
+```
+
+The cleanup is after candidate activation and fresh candidate-active Vectorize
+readiness, but before authenticated production validation. If import may have
+started and exact reread does not pass, the native maintenance version remains
+active and the unresolved marker remains for reviewed forward correction. An
+older production repair marker continues to block every path. Resolve only the
+exact recorded run after reviewed correction (or proof that no D1 write
+occurred):
 
 ```bash
 pnpm cf:resolve:production-maintenance -- \
@@ -177,14 +423,16 @@ pnpm cf:resolve:production-maintenance -- \
 
 This continuation never changes translation or user rows. If a successful resolution report already exists, it requires authoritative absence of both production maintenance and the validation lock before retiring local evidence. If only the durable preliminary report exists because the prior resolver stopped after clearing the maintenance marker, it acquires a fresh candidate/source-bound recovery exclusion. A still-live crashed owner is never stolen; after D1 declares that lease expired, the normal compare-and-swap acquisition may replace it. The continuation then proves the recorded candidate is sole, healthy, and unfrozen, exact-releases its recovery exclusion, promotes the production report, and retires the matching local marker idempotently. Every path requires matching mode-`0600` unresolved, prewrite, release-preflight, and resolution evidence. Never delete either the D1 or local marker or deploy around it by hand.
 
-For this one-release 2026-07-13 budget-rollover cutover, the standalone source synchronizer is
+For this one-release accepted fresh-boundary `0016` cutover, the standalone source synchronizer is
 explicitly forbidden. Do not invoke the `cf:sync:site-translation-sources` package script during
 this release. The guarded production wrapper mechanically rejects that operation before reading
 source state, the active Worker, or acquiring the D1 exclusion; the package entry is intentionally
-non-executable for this rollover. Source reconciliation is part of the candidate-bound main atomic translation repair,
-so running the standalone path would spend from the same cumulative UTC-day ledger without the
-required candidate/deploy continuity. The tool remains available only for a future, separately
-reviewed steady-state runbook after this one-release restriction is removed.
+non-executable for this cutover. Any future staged-scope source reconciliation
+must be part of the candidate-bound atomic translation delta described above;
+running the standalone path would spend from the same cumulative UTC-day ledger
+without the required candidate/deploy continuity. The standalone tool remains
+available only for a future, separately reviewed steady-state runbook after
+this one-release restriction is removed.
 
 Never commit the generated SQL, backups, or reports.
 
@@ -193,6 +441,10 @@ Never commit the generated SQL, backups, or reports.
 Run the repository gates before every deployable change:
 
 ```bash
+env NO_UPDATE_NOTIFIER=1 PNPM_DISABLE_SELF_UPDATE_CHECK=true \
+  npm_config_offline=true \
+  pnpm --config.offline=true --config.update-notifier=false \
+  translations:verify-site-source-manifest
 pnpm typecheck
 pnpm lint
 pnpm test
@@ -202,14 +454,34 @@ pnpm cf:check:resource-budget
 pnpm cf:scan:source-secrets
 pnpm cf:scan:build-artifacts
 pnpm cf:check:www-redirect
+E2E_TEST_AUTH_SECRET="$(openssl rand -hex 32)" \
+E2E_TEST_AUTH_EMAIL="codex-e2e@inspirlearning.invalid" \
+REQUIRE_LIVE_AI=1 \
+pnpm cf:test:e2e:preview
 pnpm cf:verify:local
 ```
 
-After those gates pass, commit and push the exact release source. Confirm the worktree is clean, the branch has an upstream, and local `HEAD` equals that upstream before any source-bound production evidence is collected. Run the production D1 preservation/migration gates in this runbook, then run `pnpm cf:preflight:deploy`. Preflight intentionally refuses a dirty, unpushed, or diverged tree; do not bypass it to obtain an early deploy report.
+After the staged local D1 plan/contract tests and all of these gates pass,
+commit and push the exact release source, then keep it unchanged.
+Confirm the worktree is clean, the branch has an upstream, and local `HEAD`
+equals that upstream. Seal the already-built local release and immediately
+upload the exact candidate without traffic before the guarded earlier-day
+`0017`, Vectorize, topic, and translation prerequisites:
+
+```bash
+pnpm cf:prepare:deploy
+pnpm cf:upload
+```
+
+The owner-only, append-only preparation is purely local: it does not read or mutate production. It binds the pushed Git identity, exact source fingerprint, native Worker and Wrangler configuration hashes, the complete symlink-free Static Assets manifest, resource inspection, complete translation/materialization proof, and byte hashes of the live-preview E2E, local-gate, source-secret, and build-artifact reports. Those reports must be no more than one hour old when sealed. The preparation remains eligible to authorize an upload for at most 12 hours and only while every bound byte and identity is unchanged. `cf:upload` consumes that exact preparation, creates an inactive Worker version, proves the recorded service baseline remains the sole version at `100%`, and publishes immutable upload evidence without routing traffic to the candidate. The upload timestamp must fall inside the preparation's original interval, including its exact end boundary. Later stage/seal/activation operations nofollow-read and hash-check those exact preparation bytes through canonical upload evidence; expiration after a valid upload does not authorize replacing or refreshing them. A missing, expired-before-upload, replaced, linked, broadly readable, hash-mismatched, or upload-unbound preparation has no build, recertification, or upload fallback.
+
+With the earlier-day prerequisites complete and immutable, execute the fresh-`0016` predecessor/successor cutover exactly as ordered in this runbook. After Day-2 `finish`, produce the standard read-only `0013`-`0016` report, refresh the separate read-only `0017` report, and immediately run `pnpm cf:preflight:deploy`. Preflight intentionally refuses a dirty, unpushed, or diverged tree; do not bypass it to obtain an early deploy report. The upload-bound preparation provenance does not extend the canonical fresh-`0016` completion or either read-only runtime-migration report: all three still must be no more than one hour old at activation.
 
 `pnpm cf:build` performs a clean sanitized OpenNext build and then materializes the prerender cache into `.open-next/assets`. Inspect `.open-next/static-marketing-assets-report.json` and require:
 
-- at least 100 public HTML documents and all 69 non-English localized home documents;
+- at least 100 public HTML documents and the exact availability-derived
+  localized HTML path set (245 for the selected no-promotion release), with no
+  localized route outside that manifest;
 - one static chat shell for every supported language;
 - exact English and localized known-topic `308` redirects into query-based static chat shells, with fewer than Cloudflare's 100 dynamic redirect-rule limit;
 - `index.html`, `404.html`, `/api/topics`, `_redirects`, `manifest.webmanifest`, `robots.txt`, `sitemap.xml`, and `llms.txt`;
@@ -221,7 +493,7 @@ After those gates pass, commit and push the exact release source. Confirm the wo
   hash, complete symlink-free asset-tree file/byte/hash manifest, individual
   file-size bound, source-hash scan, and secret scan all matching.
 
-`pnpm cf:preflight:deploy` rejects dirty or unpushed Git state, stale source-fingerprinted gate evidence, a missing/stale/mismatched materialization report or actual asset tree, missing or incorrect D1/Vectorize/profile-R2/Queue/cron bindings, any OpenNext incremental-cache R2 binding, an extra Worker-first route, paid CPU configuration, missing Static Asset 404 boundary, missing translation/chat/admin artifacts, missing rollback-safe Durable Object infrastructure, or a main Worker that imports OpenNext. The deploy wrapper validates the freshly rebuilt tree again immediately after materialization and compares that same manifest with the immutable artifact capture immediately before Wrangler runs; a previous build's green report cannot authorize a new deployment.
+`pnpm cf:preflight:deploy` rejects dirty or unpushed Git state, a generated site-source manifest whose ordered namespace set, field keys, source bytes, per-namespace hashes, counts, or full-corpus roots differ from current extraction, missing or mismatched canonical upload/preparation provenance, stale source-fingerprinted gate evidence outside that exact provenance, missing/stale/wrong-source live-preview evidence, any preview report without `REQUIRE_LIVE_AI=1` and authenticated local coverage, any skipped test beyond the exact two production-only cases, a mismatched materialization report or actual asset tree, missing or incorrect D1/Vectorize/profile-R2/Queue/cron bindings, any OpenNext incremental-cache R2 binding, an extra Worker-first route, paid CPU configuration, missing Static Asset 404 boundary, missing translation/chat/admin artifacts, missing rollback-safe Durable Object infrastructure, or a main Worker that imports OpenNext. The freshness report records both the complete manifest and non-aggregate routed namespace/field counts and roots from current data rather than relying on sampled routes or a hard-coded corpus size. The deploy wrapper never rebuilds or rematerializes production activation. It revalidates the exact upload-bound preparation, resource contract, read-only artifact scan, Static Assets tree, full preflight, production exclusion, and Worker/config/asset hashes immediately before Wrangler runs.
 
 For local browser coverage:
 
@@ -229,10 +501,11 @@ For local browser coverage:
 pnpm cf:d1:local:setup
 E2E_TEST_AUTH_SECRET="$(openssl rand -hex 32)" \
 E2E_TEST_AUTH_EMAIL="codex-e2e@inspirlearning.invalid" \
+REQUIRE_LIVE_AI=1 \
 pnpm cf:test:e2e:preview
 ```
 
-The preview runner starts a sanitized Wrangler preview itself. When both E2E values are supplied, the local-only config treats that exact email as an admin so account, saved-chat, memory, admin, quiz, and flashcard coverage cannot silently skip. `E2E_TEST_AUTH_IS_ADMIN` is retired and has no effect.
+The preview runner starts a sanitized Wrangler preview itself and refuses to start release coverage unless `REQUIRE_LIVE_AI=1` and both valid E2E values are supplied. The local-only config treats that exact email as an admin. The evidence gate requires account/saved-chat/memory/admin preservation, authenticated tutor memory and cross-chat recall, complete quiz results, complete flashcard results, and a real streamed guest response all to pass exactly once. Its skipped-title set must be exactly the two production-only tests (Worker version pinning and read-only production-account preservation); every other skip fails the release. Run this before `pnpm cf:verify:local`, which independently validates the current source-bound owner-only report and records `cloudflare-preview-live-e2e` in the local-gate evidence. `E2E_TEST_AUTH_IS_ADMIN` is retired and has no effect.
 
 ## Canonical `www` Worker
 
@@ -256,7 +529,124 @@ curl -sS -X POST -D - -o /dev/null 'https://www.inspirlearning.com/api/health?pr
 
 All three responses must be `308`, contain `X-Inspir-Delivery: www-redirect-worker`, preserve the complete query, and point at the apex host. Keep both Custom Domains in the main config for DNS and certificate coverage.
 
-## Atomic main deploy
+## Uploaded-inactive and candidate-active Vectorize readiness gates
+
+Before the earlier-day topic or translation path can touch D1, capture a fresh read-only
+Vectorize attestation against the exact uploaded-inactive candidate while its service baseline
+remains the sole version at `100%`:
+
+```bash
+pnpm cf:verify:vectorize-readiness -- \
+  --remote \
+  --confirm-production \
+  --phase uploaded-inactive \
+  --candidate-version <exact-uploaded-inactive-candidate-uuid>
+```
+
+This command is strictly read-only and records all five remote reads in order: `wrangler
+deployments status` before the Vectorize inspection, `wrangler vectorize get`, `wrangler vectorize
+info`, `wrangler vectorize list-metadata-index`, and a second `wrangler deployments status`
+readback. It never creates an index, creates a metadata index, inserts a vector, or changes
+Cloudflare state. It fails unless the clean local `HEAD` equals its pushed upstream, the private
+upload evidence and immutable source/Worker/config/asset evidence bind the exact candidate, both
+deployment readbacks keep the recorded service baseline alone at `100%` and the candidate
+inactive, `MEMORY_VECTORIZE` binds the exact
+`inspirlearning-memory-prod` index, the immutable remote configuration is exactly 512 dimensions
+with cosine distance, the index contains at least one vector, and the remote metadata indexes are
+exactly `userId:string` and `chatId:string`, matching Wrangler's lowercase API contract. Success durably writes fresh, source- and
+candidate-bound owner-only mode-`0600` evidence under the active backup directory.
+Topic sync requires this exact `uploaded-inactive` evidence before its first D1
+operation. The staged translation reconciliation must require the same evidence
+before its first read-only D1 query. It expires after 30 minutes; rerun the same
+read-only inactive-phase command against the unchanged upload when needed
+before staging.
+
+After atomic activation and the immediate candidate-active fresh-`0016` preservation verifier,
+repeat the same read-only inspection for the activated topology:
+
+```bash
+pnpm cf:verify:vectorize-readiness -- \
+  --remote \
+  --confirm-production \
+  --phase candidate-active \
+  --candidate-version <exact-active-candidate-uuid>
+```
+
+The active-phase report additionally requires the complete upload, staged, and activation evidence
+chain and the candidate alone at `100%`. Authenticated production validation consumes only this
+fresh `candidate-active` readiness. It cannot authorize topic synchronization
+or staged translation reconciliation; both remain uploaded-inactive-only.
+
+## Atomic managed-topic reconciliation
+
+For the accepted fresh-`0016` incident path, execute this section on a strictly earlier UTC day before `start`; its successful attestation is a predecessor prerequisite. Do not execute it after the fresh claim. Other future steady-state releases retain their ordinary ordering.
+
+Immediately after the Vectorize gate, retire the removed arena and reconcile the tracked topic
+catalogue with one guarded transaction:
+
+```bash
+pnpm cf:sync:topic-seeds -- \
+  --remote \
+  --confirm-production \
+  --candidate-version <exact-uploaded-inactive-candidate-uuid>
+```
+
+This order is a Free-plan safety invariant. Topic sync first reserves its conservative maximum of
+2,500,000 reads and 50,000 writes, then refines that reservation to its exact snapshot-derived cost
+before import. The staged read-only plan seal then reserves its own conservative
+read maximum and refines it to exact billed reads with zero writes. The later
+candidate-active cleanup separately retains the 2,500,000-read/50,000-write
+maximum until exact post-import proof. Both operations use the cumulative
+ledger, so the combined projection must remain inside those lag-safe ceilings.
+Do not borrow the deferred full-corpus repair's assumptions, reverse these
+sections, or split them across untracked commands.
+
+The command requires `--candidate-version <exact-uploaded-inactive-candidate-uuid>`. Its parent validates the same clean pushed Git/source/Worker/config/assets/upload/readiness identity and proves the recorded service baseline remains alone at `100%` before acquiring the production D1 exclusion; the child repeats that gate before its first D1 query and immediately before import. It checks the cumulative UTC-day D1 release ledger before its first D1 SQL, records a diagnostic Time Travel bookmark and explicit forward-correction-only policy, executes one atomic SQL file, and exact-verifies every managed, retired, and untouched topic plus both seed metadata rows. Only after that verification succeeds does it durably write the owner-only topic-reconciliation attestation consumed by translation work. It serializes no destructive restore recipe. A lost Wrangler response succeeds only after exact verification; a definite mismatch or indeterminate read requires a reviewed forward correction. It archives only `ai-game-arena` and stale slugs from the previous repository-owned `topic_seed_slugs` manifest; it never changes an existing topic ID or created timestamp and its SQL never reads or writes account, user, chat, message, session, or memory rows. If this command fails, the release is incomplete: leave the service baseline serving, do not stage the candidate, and use a reviewed forward correction for D1.
+
+## Predecessor-day translation reconciliation for the inactive candidate
+
+This remains a mandatory predecessor prerequisite after topic reconciliation
+and before fresh-`0016 start`, while the exact uploaded candidate is inactive
+and the service baseline remains alone at `100%`. Run the uploaded-inactive
+read-only command in the staged D1 section above. It validates fresh Vectorize
+and topic evidence, the exact local non-authority plan, current tracked staged
+evidence, clean pushed source and immutable upload; every Wrangler D1 statement
+is checked as read-only. It publishes
+`production-staged-translation-reconciliation-v1`, whose pending-to-success
+transition consumes the exact same release mode, candidate, topic, corpus, and
+plan. The success embeds the read-only cutover policy:
+
+```bash
+pnpm cf:d1:reconcile-staged-translations -- \
+  --release-mode staged-canonical-English-fallback \
+  --remote --verify-only --confirm-production \
+  --phase uploaded-inactive \
+  --candidate-version <exact-uploaded-inactive-candidate-uuid> \
+  --local-authorization <exact-owner-only-local-authorization-path>
+```
+
+Phase 1 is exactly uploaded-inactive read-only derive/hash/verify/seal with zero
+translation writes. Phase 2 occurs only after the candidate is sole-active: a
+single atomic transaction resets and UPSERTs all 668 desired rows and deletes
+all nonmembers, followed by exact byte readback before maintenance ends. There
+is no preactivation translation UPSERT.
+
+- pre-activation D1 translation mutation is false;
+- legacy rows remain untouched while the prior baseline serves;
+- candidate-active exact cleanup is mandatory; and
+- the desired result remains the independently derived 599 + 69 = 668 rows.
+
+Fresh-`0016` accepts a strict full-or-staged evidence union. It rejects unknown,
+legacy-as-staged, extra-field, mixed-mode, changed-corpus, changed-proof, or
+post-attestation tree evidence and carries the staged policy and exact roots
+into its immutable prerequisite chain. Do not substitute the full-corpus
+command, hand-create reconciliation evidence, or reuse another candidate's
+plan. Any indeterminate read leaves the service baseline serving and the
+release blocked. Pre-activation translation mutation remains forbidden; the
+only mutation is the guarded candidate-active cleanup described above. Never
+edit a budget ledger or production attestation by hand.
+
+## Guarded candidate stage and atomic activation
 
 Record the active versions before changing production:
 
@@ -268,108 +658,19 @@ curl -fsS https://inspirlearning.com/api/health
 
 The main rollback target must be at or after `opennext-cache-queue-v1`; Cloudflare cannot roll a migrated Worker back to a pre-migration version.
 
-After every local and translation gate passes:
+Only after canonical fresh-`0016` completion, both fresh runtime-migration reports, and baseline-only deploy preflight pass may the already-uploaded target be staged. `cf:stage-candidate` creates the exact baseline-`100%`/candidate-`0%` deployment. Prove that staged candidate through Cloudflare's version override before creating the activation seal:
 
 ```bash
+pnpm cf:stage-candidate
+pnpm cf:verify:candidate-override -- --confirm-production
+pnpm exec tsx scripts/cloudflare/worker-candidate-pre-activation-seal.ts
 pnpm cf:deploy
 pnpm exec wrangler deployments status --name inspirlearning --json
 ```
 
-`pnpm cf:deploy` reruns preflight, rebuilds from clean source, rematerializes assets, repeats resource/secret scans, and runs `wrangler deploy`. Do not deploy a hand-edited `.open-next` directory or bypass the wrapper. The native Worker and Static Assets manifest are one versioned deployment. A successful deploy atomically writes owner-only `cloudflare/worker-deploy-report.json` under the active backup directory, binding the sole 100%-active version UUID to the exact pushed source fingerprint, Worker/config hashes, and symlink-free Static Assets manifest.
+`cf:verify:candidate-override` issues one cache-bypassed, unpinned `GET /api/health` that must identify the exact `100%` service baseline, then sends the documented `Cloudflare-Workers-Version-Overrides: inspirlearning="<candidate UUID>"` header to the same endpoint. Only an exact candidate-attributed JSON response with `X-Inspir-Delivery: lean-api-worker`, private/no-store policy, accounts/saved-state/memory/admin enabled, OpenNext and games disabled, and the expected version metadata can pass. A valid baseline response to a pinned request is retried only within the bounded global-propagation window; a wrong UUID, transport failure, cacheable response, or wrong architecture fails immediately. The command re-reads the immutable upload and staged topology and requires activation evidence to remain absent before publishing the owner-only, nofollow, exclusive `cloudflare/worker-candidate-version-override-smoke.json` report.
 
-## Post-deploy Vectorize readiness gate
-
-Before the topic, translation, or authenticated-validation paths can mutate D1, Worker versions,
-Worker secrets, or Vectorize-backed application state, capture a fresh read-only Vectorize
-attestation against the exact deployed candidate:
-
-```bash
-pnpm cf:verify:vectorize-readiness -- \
-  --remote \
-  --confirm-production \
-  --candidate-version <exact-100-percent-worker-version-uuid>
-```
-
-This command is strictly read-only and records all five remote reads in order: `wrangler
-deployments status` before the Vectorize inspection, `wrangler vectorize get`, `wrangler vectorize
-info`, `wrangler vectorize list-metadata-index`, and a second `wrangler deployments status`
-readback. It never creates an index, creates a metadata index, inserts a vector, or changes
-Cloudflare state. It fails unless the clean local `HEAD` equals its pushed upstream, the private
-deploy report and immutable source/Worker/config/asset evidence bind the exact candidate, both
-deployment readbacks keep that candidate alone at 100%, `MEMORY_VECTORIZE` binds the exact
-`inspirlearning-memory-prod` index, the immutable remote configuration is exactly 512 dimensions
-with cosine distance, the index contains at least one vector, and the remote metadata indexes are
-exactly `userId:string` and `chatId:string`, matching Wrangler's lowercase API contract. Success durably writes fresh, source- and
-candidate-bound owner-only mode-`0600` evidence under the active backup directory.
-Topic sync, translation repair, and authenticated production validation each revalidate this
-evidence before their first mutation. It expires after 30 minutes; rerun this same read-only command
-against the unchanged candidate when needed.
-
-## Atomic managed-topic reconciliation
-
-Immediately after the Vectorize gate, retire the removed arena and reconcile the tracked topic
-catalogue with one guarded transaction:
-
-```bash
-pnpm cf:sync:topic-seeds -- \
-  --remote \
-  --confirm-production \
-  --candidate-version <exact-100-percent-worker-version-uuid>
-```
-
-This order is a Free-plan safety invariant. Topic sync first reserves its conservative maximum of
-2,500,000 reads and 50,000 writes, then refines that reservation to its exact snapshot-derived cost
-before import. Translation detection/repair retains its full 2,500,000-read and 50,000-write
-maximum through completion. Starting translation first would make the later topic maximum project
-5,000,000 reads and 100,000 writes, which the cumulative release ledger must reject against its
-4,000,000-read and 80,000-write lag-safe ceilings. Running topic sync first and refining it preserves
-the only admissible headroom; do not reverse these sections or split them across untracked commands.
-
-The command requires `--candidate-version <exact-100-percent-worker-version-uuid>`. Its parent validates the same clean pushed Git/source/Worker/config/assets/version/readiness identity before acquiring the production D1 exclusion, and the child repeats that gate before its first D1 query and immediately before import. It checks the cumulative UTC-day D1 release ledger before its first D1 SQL, records a diagnostic Time Travel bookmark and explicit forward-correction-only policy, executes one atomic SQL file, and exact-verifies every managed, retired, and untouched topic plus both seed metadata rows. Only after that verification succeeds does it durably write the owner-only topic-reconciliation attestation consumed by translation work. It serializes no destructive restore recipe. A lost Wrangler response succeeds only after exact verification; a definite mismatch or indeterminate read requires a reviewed forward correction. It archives only `ai-game-arena` and stale slugs from the previous repository-owned `topic_seed_slugs` manifest; it never changes an existing topic ID or created timestamp and its SQL never reads or writes account, user, chat, message, session, or memory rows. If this command fails, the release is incomplete: roll back the candidate Worker before continuing and use a reviewed forward correction for D1.
-
-## Post-deploy translation reconciliation
-
-Only after managed-topic reconciliation has completed and refined its ledger reservation, run the
-guarded read-only production translation drift detector against the exact deployed source. It
-requires the fresh Vectorize evidence and successful topic-reconciliation attestation for the same
-clean pushed source and candidate before its first D1 read. It performs only bounded `SELECT`/`WITH`
-statements and returns nonzero when a repair is required. Before those reads it durably replaces any
-prior translation success with an owner-only `checking` attestation, so a crash or indeterminate
-result cannot authorize authenticated validation. Only exact reconciliation replaces that pending
-record with successful, source/candidate/topic-bound evidence:
-
-```bash
-pnpm cf:d1:repair-seo-translations -- \
-  --remote \
-  --verify-only \
-  --confirm-production \
-  --candidate-version <exact-100-percent-worker-version-uuid>
-```
-
-If a repair already reserved its maximum but failed before durable prewrite evidence, maintenance-state creation, maintenance activation, Time Travel, or import, do not delete or edit the UTC-day ledger. While the original candidate is still the sole healthy version and the same UTC billing day is active, refine only that exact aborted preflight:
-
-```bash
-pnpm cf:d1:repair-seo-translations -- \
-  --refine-aborted-prewrite-reservation \
-  <exact-release-preflight-timestamp-and-uuid> \
-  --confirm-production \
-  --confirm-prewrite-abort
-```
-
-This recovery requires a clean pushed tree and owner-only, nofollow release evidence. It recomputes the immutable plan; accepts only the exact run-bound reservation (or a tightly timestamp-bound legacy reservation); rejects any prewrite/unresolved/maintenance evidence; holds the shared production exclusion; proves the original candidate healthy and unfrozen before and after a deterministic read-only drift check; requires `rows_written` to be exactly zero in every D1 result; and retains the summed billed reads plus the full validation-lock read/write allowance when refining the maximum. It writes mode-`0600` prepared evidence before the ledger transition and promotes it only after exact lock release. A prepared crash replay performs one bounded read-only maintenance/lock-absence check before the remaining local ledger/evidence transition; a complete replay is local-only and idempotent, including after UTC rollover. If any prerequisite is not exact, leave the conservative maximum in place and wait for the next UTC day; never hand-edit the ledger. Run this recovery before deploying a different candidate or collecting new source-bound release evidence.
-
-Only when that detector reports exact, determinate drift, run the guarded repair against the already deployed and committed candidate:
-
-```bash
-pnpm cf:d1:repair-seo-translations -- \
-  --remote \
-  --confirm-production \
-  --confirm-native-write-freeze \
-  --candidate-version <exact-100-percent-worker-version-uuid>
-pnpm exec wrangler deployments status --name inspirlearning --json
-```
-
-The repair refuses missing or stale Vectorize readiness evidence, missing/current-topic reconciliation evidence, and a missing, stale-source, non-`0600`, symlinked, upload-only, unsuccessful, or version-mismatched Worker deploy report. Before any repair D1 work it replaces translation success with a fail-closed `checking` attestation. It re-hashes the complete source/Worker/config/asset set before and after the maintenance upload and again immediately before activation, and also proves the captured candidate is still the sole version at 100%. The command then moves 100% traffic to the uniquely tagged, framework-free maintenance version: static pages remain available, while API, Queue, cron, and D1 mutation paths fail before touching D1. After exact post-import verification it restores 100% traffic to the captured candidate UUID rather than compiling or deploying current local source, revalidates that final release sequence, writes the successful translation attestation, and only then allows authenticated validation. Lost Wrangler responses are resolved from repeated authoritative version/deployment readback. OpenNext and the retired cache R2 path cannot enter either transition. Continue using the original candidate UUID for every following production gate.
+The 20-minute pre-activation seal can be created only while that exact smoke is newly fresh. Seal creation and every activation reread bind its file hash, baseline and candidate UUIDs, upload and staged hashes, staged deployment/topology identity, response hashes, and timestamps. `pnpm cf:deploy` requires that exact seal, immutable earlier-day `0017` apply chain, canonical fresh-`0016` cutover chain, and both fresh read-only reports; it reruns preflight, performs no build or evidence regeneration, revalidates the immutable release bytes again under the production exclusion, and activates the exact staged candidate without uploading fresh code. Do not edit `.open-next`, regenerate reports, rebuild after cutover, or bypass the wrapper. Any mismatch stops before activation. The canonical fresh-`0016` completion and both read-only reports remain a hard one-hour activation window; if any expires, the seal cannot recertify it. Keep the Day-2 parent reservation at its maximum through activation and the required candidate-active fresh-`0016` preservation verifier; only that verifier may authorize exact parent refinement. The native Worker and Static Assets manifest are one versioned deployment.
 
 ## Production verification
 
@@ -377,7 +678,12 @@ Before any mutation or Cloudflare API-token use, the authenticated verifier send
 
 Use the single candidate-version UUID reported at 100%. Authenticated production verification is mandatory and uses five temporary Worker secrets. The wrapper generates `E2E_TEST_MUTATION_RUN_ID` and a hard `E2E_TEST_AUTH_EXPIRES_AT`, manages `E2E_TEST_AUTH_REQUIRE_EXISTING=1`, and installs the operator-supplied `E2E_TEST_AUTH_EMAIL` and `E2E_TEST_AUTH_SECRET`. `E2E_TEST_AUTH_EMAIL` must be the exact lowercase email of an existing configured admin. The historical-account action fails with `409` if that user is absent, reuses the existing ID without updating any user/profile field, confirms `isAdmin` from server configuration, and never creates a user or admin grant. A separate candidate/run-bound action creates only a deterministic non-admin `@inspirlearning.invalid` disposable user for mutation validation. An exact-session, live-capability action may then grant only that marked disposable identity temporary database-admin status so the real admin mutation APIs can be tested; it cannot elevate the historical account or an arbitrary email. Keep `ADMIN_EMAILS` unchanged.
 
-Run the guarded wrapper below instead of installing or deleting temporary secrets by hand. Before its first secret write, it proves all five temporary names are absent, validates fresh Vectorize and translation-reconciliation success evidence, the candidate's clean pushed source/private deploy evidence, and sole 100% deployment, and writes a private, fsynced recovery manifest under the active backup directory. If either 30-minute readiness window elapsed during reconciliation, rerun the read-only Vectorize and translation verification commands against the unchanged candidate first. The manifest binds the candidate, pushed source fingerprint, immutable Worker resources, baseline secret names, mutation run, 90-minute capability expiry, historical-session purposes, installed-secret progress, cleanup proofs, and the cumulative D1 lock budget. Each secret operation must produce only an exact secret-triggered version of the same immutable release. The wrapper installs the route capability last, samples the first real requests under tail, runs the outcome/smoke/private read-only Playwright and disposable mutation gates, then exact-cleans and independently verifies both historical validation sessions and the disposable graph before removing the route capability first and all remaining temporary secrets. Immediately before the one explicit real post-turn Queue publish, the mutation gate also writes owner-only recovery evidence containing the deterministic revision-bound `t:<user-message-uuid>:<16-hex-revision>` Vectorize ID and its candidate/run/source/chat bindings; a publish cannot precede this durable evidence.
+Run the guarded wrapper below instead of installing or deleting temporary secrets by hand. Before its first secret write, it proves all five temporary names are absent; validates fresh candidate-active Vectorize readiness; pure-locally validates the fresh canonical final-preservation proof; revalidates the unchanged successful earlier-day translation attestation bound into the canonical fresh-`0016` chain; requires the exact successful candidate-active staged cleanup bound to that attestation; proves the candidate's clean pushed source/private deploy evidence and sole `100%` deployment; and writes a private, fsynced recovery manifest under the active backup directory. If Vectorize readiness expires, rerun only the read-only `--phase candidate-active` Vectorize command. Never rerun the uploaded-inactive translation plan seal after `start`, and never run any translation mutation after the exact candidate-active staged cleanup succeeds. The manifest binds the candidate, pushed source fingerprint, immutable Worker resources, baseline secret names, mutation run, 90-minute capability expiry, historical-session purposes, installed-secret progress, cleanup proofs, and the cumulative D1 lock budget. Each secret operation must produce only an exact secret-triggered version of the same immutable release. The wrapper installs the route capability last, samples the first real requests under tail, runs the outcome/smoke/private read-only Playwright and disposable mutation gates, then exact-cleans and independently verifies both historical validation sessions and the disposable graph before removing the route capability first and all remaining temporary secrets. Immediately before the one explicit real post-turn Queue publish, the mutation gate also writes owner-only recovery evidence containing the deterministic revision-bound `t:<user-message-uuid>:<16-hex-revision>` Vectorize ID and its candidate/run/source/chat bindings; a publish cannot precede this durable evidence.
+
+Authenticated-validation recovery additionally pins the exact translation
+attestation hash and, for staged releases, the cleanup run plus cleanup,
+pre-write, and resolved-evidence hashes. Recovery therefore cannot swap staged
+and full reconciliation or substitute another otherwise-valid cleanup chain.
 
 The private manifest is only the machine-local recovery record. Cross-workspace exclusion comes from one atomic compare-and-swap row at `app_metadata.native-production-validation-lock-v1`, acquired before any temporary secret mutation. Its exact non-secret owner contains only the candidate UUID, mutation-run UUID, source fingerprint, lease-generation UUID, and bounded lease expiry. D1's clock—not an operator workstation's clock—decides whether ownership is live or expired. A live foreign owner, noncanonical or malformed row, unexpected field, source mismatch, stale lease generation, or lost ownership fails closed. Renewal requires the exact prior canonical owner and a fresh lease generation. Recovery never steals a copied live generation; it waits for D1 expiry and then copied recovery processes race through one expired-owner compare-and-swap. The wrapper durably reserves each lock operation before invoking D1, enforces cumulative maxima of 128 operations, 1,024 rows read, and 64 rows written (including indexed primary-key writes), and records returned D1 billing metadata. It attests or renews ownership before and after every secret operation and authenticated child gate even when the operation itself fails, and holds the lock through the final secret-free outcome/production/hidden-route gates. Every ordinary production deploy, migration, sync, rollback, translation-repair, and authenticated-validation wrapper refuses a live owner or durable maintenance marker; only the exact confirmed recovery paths may reclaim expired ownership or resolve the recorded maintenance state. The lock is deleted with an owner-qualified statement and exact absent readback only after all validation residue is zero and all five temporary Worker secrets are authoritatively absent.
 
@@ -387,7 +693,7 @@ If validation or cleanup fails, the wrapper attempts to rotate the mint expiry t
 export E2E_TEST_AUTH_SECRET="$(openssl rand -hex 32)"
 export E2E_TEST_AUTH_EMAIL="<exact-existing-configured-admin-email>"
 REQUIRE_LIVE_AI=1 pnpm cf:verify:authenticated-production -- \
-  --candidate-version <current-worker-version-id> \
+  --candidate-version <exact-activated-candidate-version-uuid> \
   --confirm-production
 unset E2E_TEST_AUTH_SECRET E2E_TEST_AUTH_EMAIL
 ```
@@ -401,7 +707,7 @@ pnpm cf:verify:authenticated-production -- --recover --confirm-production
 unset E2E_TEST_AUTH_SECRET E2E_TEST_AUTH_EMAIL
 ```
 
-Recovery revalidates the current source fingerprint, deploy evidence, original candidate-bound Vectorize and translation attestations, immutable active Worker resources, exact secret set, and stored D1 budget before changing remote state. It does not require the original candidate to be active while a temporary secret-derived version legitimately owns traffic, and it does not let either attestation's 30-minute freshness window block emergency cleanup; the recovery manifest and active-version sequence separately bind every secret-derived version to that immutable candidate. If the exact memory-recovery sidecar exists, recovery requires its authenticated-version/run/source/chat binding and deletes only the one recorded deterministic disposable-test vector ID `t:<user-message-uuid>:<16-hex-revision>`—never a metadata-selected set, another user's vector, or the index. It proves that exact ID absent before hidden D1 cleanup, then repeats bounded exact-ID deletion/absence polling after D1 cleanup to fence a late in-flight Queue upsert. The sidecar is removed only after the post-D1 absence proof; if no sidecar exists, a crash before the authenticated-version manifest update safely falls back to the current secret-derived version and performs no Vectorize mutation. Recovery reacquires or renews only the manifest's same global lock identity, holds it through this known-ID cleanup and the complete disposable sweep, deletes secrets in the guarded order, proves the route is disabled, releases the lock with an absent readback, and retains both recovery records on any indeterminate result. A recovered release must still rerun the full authenticated production validation before acceptance.
+Recovery revalidates the current source fingerprint, deploy evidence, original candidate-bound Vectorize and translation release bindings, the immutable candidate-active staged cleanup and its owner-only pre-write proof, immutable active Worker resources, exact secret set, and stored D1 budget before changing remote state. It does not require the original candidate to be active while a temporary secret-derived version legitimately owns traffic, and it does not let readiness or cleanup-evidence age—or a missing normal-path acceptance proof—block emergency cleanup; the recovery manifest and active-version sequence separately bind every secret-derived version to that immutable candidate. If the exact memory-recovery sidecar exists, recovery requires its authenticated-version/run/source/chat binding and deletes only the one recorded deterministic disposable-test vector ID `t:<user-message-uuid>:<16-hex-revision>`—never a metadata-selected set, another user's vector, or the index. It proves that exact ID absent before hidden D1 cleanup, then repeats bounded exact-ID deletion/absence polling after D1 cleanup to fence a late in-flight Queue upsert. The sidecar is removed only after the post-D1 absence proof; if no sidecar exists, a crash before the authenticated-version manifest update safely falls back to the current secret-derived version and performs no Vectorize mutation. Recovery reacquires or renews only the manifest's same global lock identity, holds it through this known-ID cleanup and the complete disposable sweep, deletes secrets in the guarded order, proves the route is disabled, releases the lock with an absent readback, and retains both recovery records on any indeterminate result. A recovered release must still rerun the full authenticated production validation before acceptance.
 
 The outcome soak authenticates through the hidden migration route, verifies the exact admin identity without changing that user, and keeps its returned session cookie only in memory. Historical-account production probes are GET-only for profile, chat list/detail, account topics, memory, and admin state. The wrapper then authenticates the candidate/run-bound disposable user, grants only that exact marked session temporary admin status, proves successful `POST /api/admin/users`, successful `POST /api/admin/topics`, and independent account-topic readback, then exact-deletes the topic and admin grant and requires `admin_users=0` and `topics=0` in hidden inventory. Temporary validation-admin authority is bound to the exact runtime version, mutation run, deterministic identity, live capability expiry, and installed secret; it permits only the exact self admin mutation and deterministic topic fixture, fails closed after any binding disappears or expires, and does not restrict ordinary admins. Every validation admin write includes the exact active marker and user identity in its D1 statement, and its ops event commits in the same batch. Generic cleanup first atomically changes that exact marker to its deterministic fenced state and revokes every exact disposable session in one two-statement D1 batch, so writes ordered after the fence fail their marker/session authorization guards. It then takes one fresh topic/ownership snapshot and executes exactly one final serialized D1 batch: 29 statements in the topic-present worst case, comprising five unconditional set-wise legacy/exact vector capture-or-fence statements, the complete owner-data sweep, and guarded account/session/user/non-fence/fence finalization. Every expected vector ID must resolve to an outbox row with the exact same owner, source namespace, and source row before its source or owning chat parent can be removed; a foreign-owner or foreign-source collision fails closed without rewriting the existing outbox or deleting the source, chat, user, or fence. Any owner-scoped outbox row blocks identity and fence finalization until explicit Vectorize absence verification drains it and an HMAC-authorized cleanup retry succeeds. The verified topic-present cleanup request uses at most 35 D1 queries, below the Workers Free 50-query invocation limit. The fenced marker remains available for idempotent crash recovery until final zero-residue deletion. Topic creation atomically stores a second ownership marker whose ID is the created topic UUID. Cleanup binds that exact UUID, every stable topic field, and both ownership markers; it refuses while chats, chat summaries, memory turns, or response-cache rows reference the topic. A slug collision, replacement UUID, missing marker, dependency, or mismatched row fails closed, and generic recovery preserves the identity until the exact residue can be removed. The same wrapper production-proves profile mutation, current SSE chat plus explicit finalization, legacy text chat plus server-side persistence, memory create/update/list/delete, completed quiz and flashcard result experiences, and saved result readback. Automatic Queue enqueue remains suppressed for the disposable account, but the verifier explicitly publishes one exact finalized `memory.post_turn.v2` job while its source rows exist. A separate version-only tail must prove one batch-size-one `stored` Queue invocation and same-invocation vector indexing below 8 ms CPU; an authoritative known-ID read must prove vector presence before a second current-SSE chat proves at least one hydrated prior turn. Cleanup first uses the authenticated owned-chat delete/Vectorize path, proves the source chat is `404`, then performs disposable D1 cleanup and bounded known-ID absence polling. Hidden cleanup refuses to erase the source when owned vector cleanup is unproven. An ignored version override, identity substitution, indeterminate readback, vector residue, or nonzero D1 inventory fails the release. Every correlated HTTP invocation must name the exact Worker and authenticated-validation version, report `truncated: false`, contain a real empty exceptions array, contain no warning/error log, have an `ok` outcome and finite non-negative CPU sample, and use less than 8 ms CPU. If the wrapper exits nonzero, treat the release as failed: use the private manifest and `--recover` when present, and independently inspect `wrangler secret list --name inspirlearning` for all five names: `E2E_TEST_AUTH_SECRET`, `E2E_TEST_AUTH_EMAIL`, `E2E_TEST_MUTATION_RUN_ID`, `E2E_TEST_AUTH_EXPIRES_AT`, and `E2E_TEST_AUTH_REQUIRE_EXISTING`.
 

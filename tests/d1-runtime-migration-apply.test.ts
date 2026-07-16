@@ -42,7 +42,7 @@ const usage = {
   windowMinutes: 721,
 };
 
-test("migration wrapper durably captures diagnostic evidence before applying 0013-0016 in order", () => {
+test("legacy wrapper records earlier migrations but refuses raw 0016 before its write", () => {
   const fixture = makeReleaseFixture();
   let appliedThrough = 0;
   const migrationCalls: string[] = [];
@@ -67,28 +67,39 @@ test("migration wrapper durably captures diagnostic evidence before applying 001
   };
 
   try {
-    const outcome = applyD1RuntimeMigrations({
-      confirmed: true,
-      backupDir: fixture.backupDir,
-      cwd: fixture.repoDir,
-      runner,
-      clock: () => clockValue,
-    });
-    assert.equal(outcome.ok, true);
-    assert.equal(outcome.status, "verified");
+    assert.throws(
+      () =>
+        applyD1RuntimeMigrations({
+          confirmed: true,
+          backupDir: fixture.backupDir,
+          cwd: fixture.repoDir,
+          runner,
+          clock: () => clockValue,
+        }),
+      /refuses raw 0016/,
+    );
     assert.equal(evidenceObservedBeforeFirstWrite, true);
     assert.deepEqual(
       migrationCalls,
-      RUNTIME_MIGRATION_FILES.map((file) => path.basename(file)),
+      RUNTIME_MIGRATION_FILES.slice(0, 3).map((file) => path.basename(file)),
     );
+    const outcomePath = path.join(
+      fixture.backupDir,
+      "cloudflare",
+      D1_RUNTIME_MIGRATION_OUTCOME_REPORT,
+    );
+    const outcome = readJson(outcomePath);
+    assert.equal(outcome.ok, false);
+    assert.equal(outcome.status, "failed");
+    assert.ok(Array.isArray(outcome.attempts));
     assert.deepEqual(
       outcome.attempts.map((attempt) => attempt.migration),
-      ["0013", "0014", "0015", "0016"],
+      ["0013", "0014", "0015"],
     );
     assert.ok(outcome.attempts.every((attempt) => attempt.responseConfirmed));
-    assert.equal(outcome.stateAfter?.nextMigration, null);
-    assert.ok(outcome.preWriteEvidencePath);
-    const evidence = readJson(outcome.preWriteEvidencePath);
+    assert.equal(requiredRecordValue(outcome.stateAfter).nextMigration, "0016");
+    assert.equal(typeof outcome.preWriteEvidencePath, "string");
+    const evidence = readJson(String(outcome.preWriteEvidencePath));
     assert.equal(evidence.kind, "d1-runtime-migrations-0013-0016-prewrite");
     assert.deepEqual(evidence.database, { id: D1_DATABASE_ID, name: D1_DATABASE_NAME });
     assert.equal(evidence.timeTravelBookmark, bookmark);
@@ -105,13 +116,8 @@ test("migration wrapper durably captures diagnostic evidence before applying 001
     assert.equal(evidence.destructiveRestoreSupported, false);
     assert.equal(Object.hasOwn(evidence, "restoreCommand"), false);
     assert.equal(Object.hasOwn(evidence, "restoreCommandStdin"), false);
-    const outcomePath = path.join(
-      fixture.backupDir,
-      "cloudflare",
-      D1_RUNTIME_MIGRATION_OUTCOME_REPORT,
-    );
     assert.equal(fs.statSync(outcomePath).mode & 0o777, 0o600);
-    assert.equal(readJson(outcomePath).ok, true);
+    assert.equal(readJson(outcomePath).ok, false);
 
     const durableWriter = fs.readFileSync(
       path.resolve("scripts/cloudflare/d1-release-budget-ledger.ts"),
@@ -125,7 +131,7 @@ test("migration wrapper durably captures diagnostic evidence before applying 001
   }
 });
 
-test("ambiguous 0015 is never retried and successful exact read-only state recovers it", () => {
+test("ambiguous 0015 is recovered exactly before raw 0016 is refused", () => {
   const fixture = makeReleaseFixture();
   let appliedThrough = 0;
   let migration0015Calls = 0;
@@ -153,15 +159,23 @@ test("ambiguous 0015 is never retried and successful exact read-only state recov
   };
 
   try {
-    const outcome = applyD1RuntimeMigrations({
-      confirmed: true,
-      backupDir: fixture.backupDir,
-      cwd: fixture.repoDir,
-      runner,
-      clock: () => clockValue,
-    });
-    assert.equal(outcome.ok, true);
+    assert.throws(
+      () =>
+        applyD1RuntimeMigrations({
+          confirmed: true,
+          backupDir: fixture.backupDir,
+          cwd: fixture.repoDir,
+          runner,
+          clock: () => clockValue,
+        }),
+      /refuses raw 0016/,
+    );
+    const outcome = readJson(
+      path.join(fixture.backupDir, "cloudflare", D1_RUNTIME_MIGRATION_OUTCOME_REPORT),
+    );
+    assert.equal(outcome.ok, false);
     assert.equal(migration0015Calls, 1);
+    assert.ok(Array.isArray(outcome.attempts));
     const attempt = outcome.attempts.find((entry) => entry.migration === "0015");
     assert.ok(attempt);
     assert.equal(attempt.responseConfirmed, false);
@@ -174,7 +188,7 @@ test("ambiguous 0015 is never retried and successful exact read-only state recov
   }
 });
 
-test("ambiguous unapplied 0016 stops after one attempt instead of retrying blindly", () => {
+test("raw 0016 is refused without invoking its Wrangler file", () => {
   const fixture = makeReleaseFixture();
   let appliedThrough = 0;
   let migration0016Calls = 0;
@@ -207,9 +221,9 @@ test("ambiguous unapplied 0016 stops after one attempt instead of retrying blind
           runner,
           clock: () => clockValue,
         }),
-      /0016 had an ambiguous response and remained unapplied; it was not retried automatically/,
+      /refuses raw 0016/,
     );
-    assert.equal(migration0016Calls, 1);
+    assert.equal(migration0016Calls, 0);
     const outcome = readJson(
       path.join(fixture.backupDir, "cloudflare", D1_RUNTIME_MIGRATION_OUTCOME_REPORT),
     );
@@ -218,10 +232,7 @@ test("ambiguous unapplied 0016 stops after one attempt instead of retrying blind
     const attempt = outcome.attempts.find(
       (entry) => isRecord(entry) && entry.migration === "0016",
     );
-    assert.ok(attempt);
-    assert.ok(isRecord(attempt));
-    assert.equal(attempt.responseConfirmed, false);
-    assert.equal(attempt.recoveredByVerification, false);
+    assert.equal(attempt, undefined);
   } finally {
     cleanupFixture(fixture);
   }
@@ -688,7 +699,7 @@ function verificationOutput(rows: Array<Record<string, unknown>>) {
     {
       success: true,
       results: rows,
-      meta: { rows_read: 31, rows_written: 0 },
+      meta: { rows_read: 31, rows_written: 0, total_attempts: 1 },
     },
   ]);
 }

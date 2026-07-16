@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { defaultLanguage, languageConfigs, supportedLanguages } from "../lib/content/languages";
 import { staticSiteTranslationNamespaceAvailability } from "../lib/i18n/site-availability-manifest";
+import { getPotentialSiteTranslationNamespacesForPath } from "../lib/i18n/site-path-namespaces";
 import { siteSourceManifest } from "../lib/i18n/site-source-manifest";
 import { staticSiteLanguagesForPath } from "../lib/i18n/static-availability";
 
@@ -16,12 +17,48 @@ type CuratedPack = {
 };
 
 test("localized routes are generated only for proven route coverage", () => {
-  assert.equal(
-    staticSiteLanguagesForPath("/").filter((language) => language !== defaultLanguage).length,
-    supportedLanguages.length - 1,
-  );
-  assert.deepEqual(staticSiteLanguagesForPath("/mission"), [...supportedLanguages]);
-  assert.deepEqual(staticSiteLanguagesForPath("/about"), [defaultLanguage]);
+  const localizedDocumentPaths = [
+    "/",
+    "/about",
+    "/ai-learning-map",
+    "/blog",
+    "/compare",
+    "/for",
+    "/learn",
+    "/media",
+    "/mission",
+    "/privacy",
+    "/prompts",
+    "/schools",
+    "/subjects",
+    "/terms",
+    "/topics",
+    "/trust",
+  ] as const;
+
+  for (const pathname of localizedDocumentPaths) {
+    const actualLanguages = staticSiteLanguagesForPath(pathname);
+    assert.deepEqual(
+      actualLanguages,
+      expectedStaticLanguagesForPath(pathname),
+      `${pathname} must derive its locales from complete generated namespace coverage`,
+    );
+
+    const requiredNamespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
+    for (const language of supportedLanguages) {
+      if (language === defaultLanguage) continue;
+      const available = new Set(staticSiteTranslationNamespaceAvailability[language] ?? []);
+      if (requiredNamespaces.some((namespace) => !available.has(namespace))) {
+        assert.equal(
+          actualLanguages.includes(language),
+          false,
+          `${pathname} must omit incomplete ${language} coverage`,
+        );
+      }
+    }
+  }
+
+  assert.deepEqual(staticSiteLanguagesForPath("/loading"), [defaultLanguage]);
   assert.deepEqual(staticSiteLanguagesForPath("/reset_pw"), [defaultLanguage]);
 
   const localeRoot = path.resolve("app/[locale]");
@@ -42,6 +79,16 @@ test("localized routes are generated only for proven route coverage", () => {
   assert.match(layout, /export const revalidate = false;/);
   assert.doesNotMatch(layout, /supportedLanguages/);
 });
+
+function expectedStaticLanguagesForPath(pathname: string) {
+  const requiredNamespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
+  return supportedLanguages.filter((language) => {
+    if (language === defaultLanguage) return true;
+    if (!requiredNamespaces.length) return false;
+    const available = new Set(staticSiteTranslationNamespaceAvailability[language] ?? []);
+    return requiredNamespaces.every((namespace) => available.has(namespace));
+  });
+}
 
 test("every advertised deploy translation is committed, complete, and source-hash exact", () => {
   for (const language of supportedLanguages) {

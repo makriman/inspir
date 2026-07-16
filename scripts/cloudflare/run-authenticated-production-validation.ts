@@ -51,25 +51,39 @@ import {
 import {
   buildWorkerDeployArtifactEvidence,
   readSoleActiveWorkerVersion,
-  WORKER_DEPLOY_REPORT,
 } from "./worker-deploy-evidence";
 import {
-  readPrivateWorkerDeployEvidence,
-  validateWorkerDeployEvidenceForRepair,
-} from "./repair-seo-cta-translations";
-import {
-  assertFreshProductionTranslationReconciliation,
+  assertReleaseSequenceCurrentReleaseBinding,
   assertProductionTranslationReconciliationReleaseBinding,
+  type ReleaseSequenceCurrentRelease,
 } from "./release-sequence-attestations";
+import {
+  assertFreshHistoricalFresh0016FinalPreservation,
+} from "./historical-data-fresh-0016-preservation-cli-adapter";
 import { assertGitReleaseIdentity } from "./git-release-identity";
 import {
   assertFreshProductionVectorizeReadiness,
   assertProductionVectorizeReadinessReleaseBinding,
 } from "./vectorize-readiness-evidence";
 import {
+  isStagedTranslationD1CleanupRunId,
+  readAndValidateCandidateActiveStagedTranslationD1Cleanup,
+  stagedTranslationD1CleanupProofBinding,
+  type StagedTranslationD1CleanupProofBinding,
+} from "./reconcile-staged-translation-fallback";
+import {
   boundedReleaseChildCommand,
   runBoundedReleaseChildSync,
 } from "./run-production-release-operation";
+import {
+  readWorkerCandidateActivationEvidence,
+  readWorkerCandidateStagedEvidence,
+  readWorkerCandidateUploadEvidence,
+  verifyWorkerCandidateActivationEvidence,
+  workerCandidateActivationEvidencePath,
+  workerCandidateStagedEvidencePath,
+  workerCandidateUploadEvidencePath,
+} from "./worker-candidate-release-evidence";
 
 const workerName = "inspirlearning";
 const productionBaseUrl = "https://inspirlearning.com/";
@@ -126,6 +140,14 @@ type ProductionValidationRecoveryManifest = {
   existingSessionPurposes: readonly ExistingValidationSessionPurpose[];
   sourceFingerprintSha256: string;
   sourceFingerprintFileCount: number;
+  translationReconciliationKind:
+    | "production-translation-reconciliation-v1"
+    | "production-staged-translation-reconciliation-v1";
+  translationReconciliationSha256: string;
+  stagedCleanupRunId: string | null;
+  stagedCleanupEvidenceSha256: string | null;
+  stagedCleanupPreWriteEvidenceSha256: string | null;
+  stagedCleanupResolvedEvidenceSha256: string | null;
   immutableReleaseIdentity: string;
   baselineSecretNames: string[];
   installedTemporarySecrets: string[];
@@ -139,6 +161,19 @@ type ProductionValidationRecoveryManifest = {
   residueZeroVerifiedAt: string | null;
   secretsAbsentVerifiedAt: string | null;
 };
+
+type CandidateReleaseEvidence = Readonly<{
+  sourceFingerprintSha256: string;
+  sourceFingerprintFileCount: number;
+  translationReconciliationKind:
+    | "production-translation-reconciliation-v1"
+    | "production-staged-translation-reconciliation-v1";
+  translationReconciliationSha256: string;
+  stagedCleanupRunId: string | null;
+  stagedCleanupEvidenceSha256: string | null;
+  stagedCleanupPreWriteEvidenceSha256: string | null;
+  stagedCleanupResolvedEvidenceSha256: string | null;
+}>;
 
 let productionSecretsTouched = false;
 let activeRecoveryManifest: ProductionValidationRecoveryManifest | null = null;
@@ -211,6 +246,17 @@ async function main() {
     existingSessionPurposes,
     sourceFingerprintSha256: releaseEvidence.sourceFingerprintSha256,
     sourceFingerprintFileCount: releaseEvidence.sourceFingerprintFileCount,
+    translationReconciliationKind:
+      releaseEvidence.translationReconciliationKind,
+    translationReconciliationSha256:
+      releaseEvidence.translationReconciliationSha256,
+    stagedCleanupRunId: releaseEvidence.stagedCleanupRunId,
+    stagedCleanupEvidenceSha256:
+      releaseEvidence.stagedCleanupEvidenceSha256,
+    stagedCleanupPreWriteEvidenceSha256:
+      releaseEvidence.stagedCleanupPreWriteEvidenceSha256,
+    stagedCleanupResolvedEvidenceSha256:
+      releaseEvidence.stagedCleanupResolvedEvidenceSha256,
     immutableReleaseIdentity: baseline.immutableReleaseIdentity,
     baselineSecretNames: baseline.secretNames,
     installedTemporarySecrets: [],
@@ -246,7 +292,8 @@ async function main() {
       const lockedReleaseEvidence = assertCandidateReleaseEvidence(candidateVersion);
       if (
         lockedReleaseEvidence.sourceFingerprintSha256 !== releaseEvidence.sourceFingerprintSha256 ||
-        lockedReleaseEvidence.sourceFingerprintFileCount !== releaseEvidence.sourceFingerprintFileCount
+        lockedReleaseEvidence.sourceFingerprintFileCount !== releaseEvidence.sourceFingerprintFileCount ||
+        !sameCandidateReleaseEvidence(lockedReleaseEvidence, releaseEvidence)
       ) {
         throw new Error("Authenticated-validation release evidence changed after lock acquisition.");
       }
@@ -532,30 +579,75 @@ function assertCandidateReleaseEvidence(
   options: { recovery?: boolean } = {},
 ) {
   const backupDir = resolveBackupDir();
-  const currentArtifactEvidence = buildWorkerDeployArtifactEvidence(process.cwd());
-  const deployEvidence = validateWorkerDeployEvidenceForRepair({
-    report: readPrivateWorkerDeployEvidence(path.resolve(backupDir, WORKER_DEPLOY_REPORT)),
-    backupDir,
-    candidateVersionId,
-    currentArtifactEvidence,
+  const upload = readWorkerCandidateUploadEvidence(
+    workerCandidateUploadEvidencePath(backupDir),
+  );
+  if (upload.value.targetCandidateVersionId !== candidateVersionId) {
+    throw new Error(
+      `Authenticated production validation expected candidate ${candidateVersionId}; canonical upload evidence names ${upload.value.targetCandidateVersionId}.`,
+    );
+  }
+  const staged = readWorkerCandidateStagedEvidence(
+    workerCandidateStagedEvidencePath(backupDir),
+  );
+  const activation = readWorkerCandidateActivationEvidence(
+    workerCandidateActivationEvidencePath(backupDir),
+  );
+  verifyWorkerCandidateActivationEvidence({
+    uploadEvidence: upload.value,
+    uploadEvidenceSha256: upload.sha256,
+    stagedEvidence: staged.value,
+    stagedEvidenceSha256: staged.sha256,
+    activationEvidence: activation.value,
+    activationEvidenceSha256: activation.sha256,
   });
+  const currentArtifactEvidence = buildWorkerDeployArtifactEvidence(process.cwd());
   const git = assertGitReleaseIdentity({ cwd: process.cwd() });
-  const currentRelease = {
-    candidateVersionId,
-    activeVersionId: candidateVersionId,
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "candidate-active",
+    targetCandidateVersionId: upload.value.targetCandidateVersionId,
+    serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    phaseEvidenceSha256: activation.sha256,
+    phaseEvidenceCreatedAt: activation.value.createdAt,
+    soleServingVersionId: upload.value.targetCandidateVersionId,
     git,
     artifactEvidence: currentArtifactEvidence,
   };
+  assertReleaseSequenceCurrentReleaseBinding({ backupDir, currentRelease });
+  const sourceEvidence = {
+    sourceFingerprintSha256:
+      currentArtifactEvidence.sourceFingerprint.sha256,
+    sourceFingerprintFileCount:
+      currentArtifactEvidence.sourceFingerprint.fileCount,
+  } as const;
   if (options.recovery) {
     assertProductionVectorizeReadinessReleaseBinding({
       backupDir,
       currentRelease,
+      requiredPhase: "candidate-active",
     });
-    assertProductionTranslationReconciliationReleaseBinding({
+    const translation = assertProductionTranslationReconciliationReleaseBinding({
       backupDir,
       currentRelease,
     });
-    return deployEvidence;
+    let cleanupProof: StagedTranslationD1CleanupProofBinding | null = null;
+    if (translation.kind === "production-staged-translation-reconciliation-v1") {
+      const cleanup = readAndValidateCandidateActiveStagedTranslationD1Cleanup({
+        backupDir,
+        candidateVersionId,
+        recovery: true,
+      });
+      cleanupProof = stagedTranslationD1CleanupProofBinding({
+        backupDir,
+        evidence: cleanup,
+      });
+    }
+    return bindCandidateReleaseEvidence({
+      sourceEvidence,
+      translation,
+      cleanupProof,
+    });
   }
   const activeVersionId = readSoleActiveWorkerVersion();
   if (activeVersionId !== candidateVersionId) {
@@ -566,12 +658,110 @@ function assertCandidateReleaseEvidence(
   assertFreshProductionVectorizeReadiness({
     backupDir,
     currentRelease,
+    requiredPhase: "candidate-active",
   });
-  assertFreshProductionTranslationReconciliation({
+  assertFreshHistoricalFresh0016FinalPreservation({
+    backupDirectory: backupDir,
+    cwd: process.cwd(),
+    targetCandidateVersionId: currentRelease.targetCandidateVersionId,
+    serviceBaselineVersionId: currentRelease.serviceBaselineVersionId,
+    uploadEvidenceSha256: currentRelease.uploadEvidenceSha256,
+    activationEvidenceSha256: activation.sha256,
+  });
+  // The final-preservation reader revalidates the canonical cutover and its
+  // hash-bound translation prerequisite. Keep that immutable reconciliation
+  // release-bound here. A staged release additionally requires the fresh,
+  // candidate-active exact-cleanup attestation; this reader revalidates its
+  // immutable plan and byte proof without spending Day-2 D1 budget again.
+  const translation = assertProductionTranslationReconciliationReleaseBinding({
     backupDir,
     currentRelease,
   });
-  return deployEvidence;
+  let cleanupProof: StagedTranslationD1CleanupProofBinding | null = null;
+  if (translation.kind === "production-staged-translation-reconciliation-v1") {
+    const cleanup = readAndValidateCandidateActiveStagedTranslationD1Cleanup({
+      backupDir,
+      candidateVersionId,
+    });
+    cleanupProof = stagedTranslationD1CleanupProofBinding({
+      backupDir,
+      evidence: cleanup,
+    });
+  }
+  return bindCandidateReleaseEvidence({
+    sourceEvidence,
+    translation,
+    cleanupProof,
+  });
+}
+
+function bindCandidateReleaseEvidence(input: {
+  sourceEvidence: Readonly<{
+    sourceFingerprintSha256: string;
+    sourceFingerprintFileCount: number;
+  }>;
+  translation: ReturnType<
+    typeof assertProductionTranslationReconciliationReleaseBinding
+  >;
+  cleanupProof: StagedTranslationD1CleanupProofBinding | null;
+}): CandidateReleaseEvidence {
+  const staged =
+    input.translation.kind ===
+    "production-staged-translation-reconciliation-v1";
+  if (staged !== (input.cleanupProof !== null)) {
+    throw new Error(
+      "Candidate release evidence has an inconsistent staged-cleanup proof.",
+    );
+  }
+  return Object.freeze({
+    ...input.sourceEvidence,
+    translationReconciliationKind: input.translation.kind,
+    translationReconciliationSha256: createHash("sha256")
+      .update(stableStringify(input.translation))
+      .digest("hex"),
+    stagedCleanupRunId: input.cleanupProof?.runId ?? null,
+    stagedCleanupEvidenceSha256:
+      input.cleanupProof?.cleanupEvidenceSha256 ?? null,
+    stagedCleanupPreWriteEvidenceSha256:
+      input.cleanupProof?.preWriteEvidenceSha256 ?? null,
+    stagedCleanupResolvedEvidenceSha256:
+      input.cleanupProof?.resolvedEvidenceSha256 ?? null,
+  });
+}
+
+function candidateReleaseEvidenceFromManifest(
+  manifest: ProductionValidationRecoveryManifest,
+): CandidateReleaseEvidence {
+  return Object.freeze({
+    sourceFingerprintSha256: manifest.sourceFingerprintSha256,
+    sourceFingerprintFileCount: manifest.sourceFingerprintFileCount,
+    translationReconciliationKind: manifest.translationReconciliationKind,
+    translationReconciliationSha256: manifest.translationReconciliationSha256,
+    stagedCleanupRunId: nullableStagedCleanupRunId(
+      manifest.stagedCleanupRunId,
+    ),
+    stagedCleanupEvidenceSha256: nullableSha256(
+      manifest.stagedCleanupEvidenceSha256,
+      "staged cleanup evidence SHA-256",
+    ),
+    stagedCleanupPreWriteEvidenceSha256:
+      nullableSha256(
+        manifest.stagedCleanupPreWriteEvidenceSha256,
+        "staged cleanup pre-write evidence SHA-256",
+      ),
+    stagedCleanupResolvedEvidenceSha256:
+      nullableSha256(
+        manifest.stagedCleanupResolvedEvidenceSha256,
+        "staged cleanup resolved evidence SHA-256",
+      ),
+  });
+}
+
+function sameCandidateReleaseEvidence(
+  left: CandidateReleaseEvidence,
+  right: CandidateReleaseEvidence,
+) {
+  return stableStringify(left) === stableStringify(right);
 }
 
 function recoveryManifestPath() {
@@ -814,7 +1004,11 @@ async function recoverInterruptedValidation(input: {
   });
   if (
     releaseEvidence.sourceFingerprintSha256 !== manifest.sourceFingerprintSha256 ||
-    releaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount
+    releaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount ||
+    !sameCandidateReleaseEvidence(
+      releaseEvidence,
+      candidateReleaseEvidenceFromManifest(manifest),
+    )
   ) {
     throw new Error(
       "Authenticated-validation recovery source no longer matches the candidate deploy evidence.",
@@ -863,7 +1057,11 @@ async function recoverInterruptedValidation(input: {
   });
   if (
     lockedReleaseEvidence.sourceFingerprintSha256 !== manifest.sourceFingerprintSha256 ||
-    lockedReleaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount
+    lockedReleaseEvidence.sourceFingerprintFileCount !== manifest.sourceFingerprintFileCount ||
+    !sameCandidateReleaseEvidence(
+      lockedReleaseEvidence,
+      candidateReleaseEvidenceFromManifest(manifest),
+    )
   ) {
     throw new Error("Authenticated-validation recovery evidence changed after lock acquisition.");
   }
@@ -1027,6 +1225,12 @@ export function parseRecoveryManifest(value: unknown): ProductionValidationRecov
       "secretsAbsentVerifiedAt",
       "sourceFingerprintFileCount",
       "sourceFingerprintSha256",
+      "stagedCleanupEvidenceSha256",
+      "stagedCleanupPreWriteEvidenceSha256",
+      "stagedCleanupResolvedEvidenceSha256",
+      "stagedCleanupRunId",
+      "translationReconciliationKind",
+      "translationReconciliationSha256",
       "updatedAt",
       "validationLockAcquiredAt",
       "validationLockAcquisitionAttemptedAt",
@@ -1062,6 +1266,39 @@ export function parseRecoveryManifest(value: unknown): ProductionValidationRecov
     typeof manifest.sourceFingerprintFileCount !== "number" ||
     !Number.isSafeInteger(manifest.sourceFingerprintFileCount) ||
     manifest.sourceFingerprintFileCount < 1 ||
+    (
+      manifest.translationReconciliationKind !==
+        "production-translation-reconciliation-v1" &&
+      manifest.translationReconciliationKind !==
+        "production-staged-translation-reconciliation-v1"
+    ) ||
+    typeof manifest.translationReconciliationSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(manifest.translationReconciliationSha256) ||
+    (
+      manifest.translationReconciliationKind ===
+      "production-staged-translation-reconciliation-v1"
+        ? (
+            !isStagedTranslationD1CleanupRunId(
+              manifest.stagedCleanupRunId,
+            ) ||
+            typeof manifest.stagedCleanupEvidenceSha256 !== "string" ||
+            !/^[a-f0-9]{64}$/.test(manifest.stagedCleanupEvidenceSha256) ||
+            typeof manifest.stagedCleanupPreWriteEvidenceSha256 !== "string" ||
+            !/^[a-f0-9]{64}$/.test(
+              manifest.stagedCleanupPreWriteEvidenceSha256,
+            ) ||
+            typeof manifest.stagedCleanupResolvedEvidenceSha256 !== "string" ||
+            !/^[a-f0-9]{64}$/.test(
+              manifest.stagedCleanupResolvedEvidenceSha256,
+            )
+          )
+        : (
+            manifest.stagedCleanupRunId !== null ||
+            manifest.stagedCleanupEvidenceSha256 !== null ||
+            manifest.stagedCleanupPreWriteEvidenceSha256 !== null ||
+            manifest.stagedCleanupResolvedEvidenceSha256 !== null
+          )
+    ) ||
     typeof manifest.immutableReleaseIdentity !== "string" ||
     !manifest.immutableReleaseIdentity ||
     !isStringArray(manifest.baselineSecretNames) ||
@@ -1130,6 +1367,25 @@ export function parseRecoveryManifest(value: unknown): ProductionValidationRecov
     existingSessionPurposes,
     sourceFingerprintSha256: manifest.sourceFingerprintSha256,
     sourceFingerprintFileCount: manifest.sourceFingerprintFileCount,
+    translationReconciliationKind: manifest.translationReconciliationKind,
+    translationReconciliationSha256: manifest.translationReconciliationSha256,
+    stagedCleanupRunId: nullableStagedCleanupRunId(
+      manifest.stagedCleanupRunId,
+    ),
+    stagedCleanupEvidenceSha256: nullableSha256(
+      manifest.stagedCleanupEvidenceSha256,
+      "staged cleanup evidence SHA-256",
+    ),
+    stagedCleanupPreWriteEvidenceSha256:
+      nullableSha256(
+        manifest.stagedCleanupPreWriteEvidenceSha256,
+        "staged cleanup pre-write evidence SHA-256",
+      ),
+    stagedCleanupResolvedEvidenceSha256:
+      nullableSha256(
+        manifest.stagedCleanupResolvedEvidenceSha256,
+        "staged cleanup resolved evidence SHA-256",
+      ),
     immutableReleaseIdentity: manifest.immutableReleaseIdentity,
     baselineSecretNames: [...manifest.baselineSecretNames].sort(),
     installedTemporarySecrets: [...manifest.installedTemporarySecrets].sort(),
@@ -1143,6 +1399,22 @@ export function parseRecoveryManifest(value: unknown): ProductionValidationRecov
     residueZeroVerifiedAt: manifest.residueZeroVerifiedAt,
     secretsAbsentVerifiedAt: manifest.secretsAbsentVerifiedAt,
   };
+}
+
+function nullableStagedCleanupRunId(value: unknown): string | null {
+  if (value === null) return null;
+  if (!isStagedTranslationD1CleanupRunId(value)) {
+    throw new Error("Authenticated-validation staged cleanup run ID is malformed.");
+  }
+  return value;
+}
+
+function nullableSha256(value: unknown, label: string): string | null {
+  if (value === null) return null;
+  if (typeof value !== "string" || !/^[a-f0-9]{64}$/.test(value)) {
+    throw new Error(`Authenticated-validation ${label} is malformed.`);
+  }
+  return value;
 }
 
 function hasExactRecordKeys(record: Record<string, unknown>, names: readonly string[]) {

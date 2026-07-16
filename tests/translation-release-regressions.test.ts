@@ -8,6 +8,7 @@ import {
   getMainAppSourceStrings,
   mainAppTranslationNamespace,
 } from "../lib/i18n/main-app-source";
+import { getSiteTranslationSource } from "../lib/i18n/site-source";
 import { readStaticMainAppTranslations } from "../lib/i18n/static-main-app-translations";
 
 type CuratedEntry = {
@@ -28,6 +29,7 @@ const mainAppLanguageByLocale = {
   ar: "Arabic",
   es: "Spanish",
   hi: "Hindi",
+  nl: "Dutch",
 } as const satisfies Record<string, SupportedLanguage>;
 
 function readPack(locale: string, filename: string): CuratedPack {
@@ -56,17 +58,42 @@ function readPack(locale: string, filename: string): CuratedPack {
   const parsed: unknown = JSON.parse(
     fs.readFileSync(path.join(curatedRoot, locale, filename), "utf8"),
   );
-  assert.ok(isRecord(parsed) && Array.isArray(parsed.entries), `Invalid curated pack ${locale}/${filename}`);
+  assert.ok(
+    isRecord(parsed) && typeof parsed.namespace === "string" && typeof parsed.sourceHash === "string",
+    `Invalid curated pack ${locale}/${filename}`,
+  );
+  const rawEntries = parsed.entries;
+  const rawTranslations = parsed.translations;
+  assert.notEqual(
+    rawEntries === undefined,
+    rawTranslations === undefined,
+    `Ambiguous curated pack ${locale}/${filename}`,
+  );
   const entries: CuratedEntry[] = [];
-  for (const entry of parsed.entries) {
-    assert.ok(isRecord(entry), `Invalid curated entry ${locale}/${filename}`);
-    const key = entry.key;
-    const source = entry.source;
-    const value = entry.value;
-    assert.ok(typeof key === "string", `Invalid curated key ${locale}/${filename}`);
-    assert.ok(typeof source === "string", `Invalid curated source ${locale}/${filename}`);
-    assert.ok(typeof value === "string", `Invalid curated value ${locale}/${filename}`);
-    entries.push({ key, source, value });
+  if (rawEntries !== undefined) {
+    assert.ok(Array.isArray(rawEntries), `Invalid curated entries ${locale}/${filename}`);
+    for (const entry of rawEntries) {
+      assert.ok(isRecord(entry), `Invalid curated entry ${locale}/${filename}`);
+      const key = entry.key;
+      const source = entry.source;
+      const value = entry.value;
+      assert.ok(typeof key === "string", `Invalid curated key ${locale}/${filename}`);
+      assert.ok(typeof source === "string", `Invalid curated source ${locale}/${filename}`);
+      assert.ok(typeof value === "string", `Invalid curated value ${locale}/${filename}`);
+      entries.push({ key, source, value });
+    }
+  } else {
+    assert.ok(isRecord(rawTranslations), `Invalid compact curated pack ${locale}/${filename}`);
+    const siteSource = getSiteTranslationSource(parsed.namespace);
+    assert.equal(siteSource.sourceHash, parsed.sourceHash, `Stale compact pack ${locale}/${filename}`);
+    for (const [key, translated] of Object.entries(rawTranslations).sort(([left], [right]) =>
+      left.localeCompare(right),
+    )) {
+      const source = siteSource.sourceStrings[key];
+      assert.ok(source, `Unknown compact curated key ${locale}/${filename}/${key}`);
+      assert.ok(typeof translated === "string", `Invalid compact curated value ${locale}/${filename}/${key}`);
+      entries.push({ key, source, value: translated });
+    }
   }
   return { entries };
 }
@@ -75,6 +102,7 @@ function mainAppLanguage(locale: string): SupportedLanguage | null {
   if (locale === "ar") return mainAppLanguageByLocale.ar;
   if (locale === "es") return mainAppLanguageByLocale.es;
   if (locale === "hi") return mainAppLanguageByLocale.hi;
+  if (locale === "nl") return mainAppLanguageByLocale.nl;
   return null;
 }
 
@@ -219,6 +247,13 @@ test("Arabic main-app translations retain the four severe semantic repairs", () 
   for (const [key, value] of Object.entries(expected)) {
     assert.equal(requireEntry("ar", "main-app.json", key).value, value, key);
   }
+});
+
+test("Dutch main-app keeps the reviewed Michelangelo wording", () => {
+  assert.equal(
+    requireEntry("nl", "main-app.json", "component.7540943a58b3").value,
+    "Het beeld David van Michelangelo werd in 1504 geplaatst",
+  );
 });
 
 test("Arabic main-app semantic gate catches long-string truncation missed by structure checks", () => {

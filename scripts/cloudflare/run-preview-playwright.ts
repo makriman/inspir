@@ -1,56 +1,156 @@
 import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
+import {
+  PREVIEW_E2E_EVIDENCE_KIND,
+  PREVIEW_E2E_EVIDENCE_SCHEMA_VERSION,
+  analyzePreviewE2EPlaywrightReport,
+} from "./preview-e2e-evidence";
+import {
+  redactPlaywrightJsonEvidence,
+  redactProductionPlaywrightOutput,
+} from "./production-playwright-safety";
 import { clearLocalPreviewCacheApiState } from "./run-sanitized-build";
+import {
+  localPreviewProviderSecretValues,
+  resolveLocalPreviewE2EAuth,
+  resolveLocalPreviewProviderRuntimeSecrets,
+} from "./sanitized-build-env";
 import { buildRepoSourceFingerprint } from "./source-fingerprint";
 
 const backupDir = resolveBackupDir();
 const reportPath = path.join(cloudflareDir(backupDir), "playwright-preview-report.json");
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8787";
 clearLocalPreviewCacheApiState();
-const localCliBinDir = createLocalCliWrappers();
 const sourceFingerprintBefore = buildRepoSourceFingerprint();
+const commandEnvironment = commandEnv();
+const localPreviewE2EAuth = resolveLocalPreviewE2EAuth(commandEnvironment);
+const authenticatedE2eConfigured = localPreviewE2EAuth.configured;
+const localPreviewProviderSecrets =
+  resolveLocalPreviewProviderRuntimeSecrets(commandEnvironment);
+const providerRuntimeCredentialConfigured = Boolean(
+  localPreviewProviderSecrets.CLOUDFLARE_AI_GATEWAY_TOKEN,
+);
+const sensitiveValues = [
+  localPreviewE2EAuth.secret ?? "",
+  localPreviewE2EAuth.email ?? "",
+  ...localPreviewProviderSecretValues(localPreviewProviderSecrets),
+];
+const localPreviewE2EAuthEnv = localPreviewE2EAuth.configured
+  ? {
+      E2E_TEST_AUTH_SECRET: localPreviewE2EAuth.secret,
+      E2E_TEST_AUTH_EMAIL: localPreviewE2EAuth.email,
+    }
+  : {};
+const liveEnvironment = {
+  requireLiveAi: process.env.REQUIRE_LIVE_AI === "1",
+  providerRuntimeCredentialConfigured,
+  authenticatedE2eRequired: true,
+  migrationE2eAuth: authenticatedE2eConfigured,
+  productionE2eReadOnly: false,
+  googleEmail: Boolean(process.env.E2E_GOOGLE_EMAIL?.trim()),
+  googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
+  googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
+  productScope: "multilingual-static-native-accounts-memory-admin-and-activities",
+} as const;
+const requirementBlockers = [
+  ...(liveEnvironment.requireLiveAi
+    ? []
+    : ["REQUIRE_LIVE_AI=1 is required for release preview E2E."]),
+  ...(authenticatedE2eConfigured
+    ? []
+    : [
+        "A lowercase E2E_TEST_AUTH_EMAIL and 32-to-512-byte printable E2E_TEST_AUTH_SECRET are required for release preview E2E.",
+      ]),
+  ...(providerRuntimeCredentialConfigured
+    ? []
+    : [
+        "A local CLOUDFLARE_AI_GATEWAY_TOKEN is required for release preview E2E live AI.",
+      ]),
+];
 
-const result = spawnSync(path.resolve(process.cwd(), "node_modules", ".bin", "playwright"), ["test", "--reporter=json"], {
-  cwd: process.cwd(),
-  encoding: "utf8",
-  env: {
-    ...commandEnv(),
-    PLAYWRIGHT_BASE_URL: baseUrl,
-    PLAYWRIGHT_START_CF_PREVIEW: "1",
-    PATH: [localCliBinDir, commandEnv().PATH].join(path.delimiter),
-  },
-  maxBuffer: 128 * 1024 * 1024,
-});
-fs.rmSync(localCliBinDir, { recursive: true, force: true });
+let exitCode: number | null = null;
+let output = requirementBlockers.join("\n");
+let parsed: unknown = null;
 
-const output = `${result.stdout ?? ""}${result.stderr ?? ""}`;
-const parsed = parsePlaywrightJson(output);
+if (requirementBlockers.length === 0) {
+  const localCliBinDir = createLocalCliWrappers();
+  const playwrightReportDirectory = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-preview-playwright-report-"),
+  );
+  const playwrightReportPath = path.join(
+    playwrightReportDirectory,
+    "report.json",
+  );
+  const playwrightArtifactsDirectory = path.join(
+    playwrightReportDirectory,
+    "artifacts",
+  );
+  try {
+    const result = spawnSync(
+      path.resolve(process.cwd(), "node_modules", ".bin", "playwright"),
+      ["test", "--reporter=json", "--output", playwrightArtifactsDirectory],
+      {
+        cwd: process.cwd(),
+        encoding: "utf8",
+        env: {
+          ...commandEnvironment,
+          ...localPreviewE2EAuthEnv,
+          PLAYWRIGHT_BASE_URL: baseUrl,
+          PLAYWRIGHT_START_CF_PREVIEW: "1",
+          EXPECTED_WORKER_VERSION: "",
+          PLAYWRIGHT_DISABLE_TRACE: "1",
+          PRODUCTION_E2E_READ_ONLY: "0",
+          REQUIRE_AUTHENTICATED_E2E: "1",
+          REQUIRE_LIVE_AI: "1",
+          PLAYWRIGHT_JSON_OUTPUT_FILE: playwrightReportPath,
+          PATH: [localCliBinDir, commandEnvironment.PATH].join(path.delimiter),
+        },
+        maxBuffer: 128 * 1024 * 1024,
+      },
+    );
+    exitCode = result.status;
+    output = `${result.stdout ?? ""}${result.stderr ?? ""}`;
+    parsed = redactPlaywrightJsonEvidence(
+      readPlaywrightJsonReport(playwrightReportPath),
+      sensitiveValues,
+    );
+  } finally {
+    fs.rmSync(localCliBinDir, { recursive: true, force: true });
+    fs.rmSync(playwrightReportDirectory, { recursive: true, force: true });
+  }
+}
+
 const sourceFingerprintAfter = buildRepoSourceFingerprint();
 const sourceFingerprintStable = sourceFingerprintBefore.sha256 === sourceFingerprintAfter.sha256;
+const coverage = analyzePreviewE2EPlaywrightReport(parsed);
+const redactedOutput = redactProductionPlaywrightOutput(output, sensitiveValues);
+const ok =
+  requirementBlockers.length === 0 &&
+  exitCode === 0 &&
+  parsed !== null &&
+  sourceFingerprintStable &&
+  coverage.ok;
 writeReport({
-  ok: result.status === 0 && Boolean(parsed) && sourceFingerprintStable,
-  exitCode: result.status,
+  kind: PREVIEW_E2E_EVIDENCE_KIND,
+  schemaVersion: PREVIEW_E2E_EVIDENCE_SCHEMA_VERSION,
+  ok,
+  exitCode,
   sourceFingerprintBefore,
   sourceFingerprintAfter,
   sourceFingerprintStable,
-  stats: parsed?.stats ?? null,
-  liveEnvironment: {
-    requireLiveAi: process.env.REQUIRE_LIVE_AI === "1",
-    migrationE2eAuth: hasValidLocalE2EAuth(),
-    migrationE2eAdminVerifiedByServer: hasValidLocalE2EAuth(),
-    googleEmail: Boolean(process.env.E2E_GOOGLE_EMAIL?.trim()),
-    googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
-    googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
-    productScope: "multilingual-static-native-accounts-memory-admin-and-activities",
-  },
-  rawOutput: parsed ? undefined : output,
+  stats: playwrightStats(parsed),
+  liveEnvironment,
+  coverage,
+  requirementBlockers,
+  rawOutput: parsed ? undefined : redactedOutput.slice(-12_000),
   playwright: parsed,
 });
 
-if (result.status !== 0 || !parsed || !sourceFingerprintStable) process.exitCode = 1;
+if (!ok) process.exitCode = 1;
 
 function createLocalCliWrappers() {
   const binDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-preview-playwright-bin-"));
@@ -129,13 +229,51 @@ function writeReport(extra: Record<string, unknown>) {
     baseUrl,
     ...extra,
   };
-  fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
+  writePrivateReportAtomically(report);
   console.log(JSON.stringify(compactReport(report), null, 2));
 }
 
+function writePrivateReportAtomically(report: Record<string, unknown>) {
+  const payload = `${JSON.stringify(report, null, 2)}\n`;
+  const directory = path.dirname(reportPath);
+  const temporaryPath = path.join(
+    directory,
+    `.playwright-preview-report.${process.pid}.${crypto.randomUUID()}.tmp`,
+  );
+  let descriptor: number | null = null;
+  try {
+    descriptor = fs.openSync(
+      temporaryPath,
+      fs.constants.O_WRONLY |
+        fs.constants.O_CREAT |
+        fs.constants.O_EXCL |
+        fs.constants.O_NOFOLLOW,
+      0o600,
+    );
+    fs.writeFileSync(descriptor, payload);
+    fs.fsyncSync(descriptor);
+    fs.closeSync(descriptor);
+    descriptor = null;
+    fs.renameSync(temporaryPath, reportPath);
+    const directoryDescriptor = fs.openSync(directory, fs.constants.O_RDONLY);
+    try {
+      fs.fsyncSync(directoryDescriptor);
+    } finally {
+      fs.closeSync(directoryDescriptor);
+    }
+  } finally {
+    if (descriptor !== null) fs.closeSync(descriptor);
+    fs.rmSync(temporaryPath, { force: true });
+  }
+}
+
 function compactReport(report: Record<string, unknown>) {
-  const sourceAfter = report.sourceFingerprintAfter as { sha256?: string; fileCount?: number } | undefined;
-  const sourceBefore = report.sourceFingerprintBefore as { sha256?: string } | undefined;
+  const sourceAfter = isRecord(report.sourceFingerprintAfter)
+    ? report.sourceFingerprintAfter
+    : null;
+  const sourceBefore = isRecord(report.sourceFingerprintBefore)
+    ? report.sourceFingerprintBefore
+    : null;
   return {
     createdAt: report.createdAt,
     backupDir: report.backupDir,
@@ -150,29 +288,43 @@ function compactReport(report: Record<string, unknown>) {
     },
     stats: report.stats,
     liveEnvironment: report.liveEnvironment,
-    rawOutput: report.rawOutput ? String(report.rawOutput).slice(-4000) : undefined,
+    coverage: report.coverage,
+    requirementBlockers: report.requirementBlockers,
+    diagnosticOutputPersisted: Boolean(report.rawOutput),
   };
 }
 
-function parsePlaywrightJson(output: string) {
-  const first = output.indexOf("{");
-  const last = output.lastIndexOf("}");
-  if (first === -1 || last === -1 || last <= first) return null;
+function readPlaywrightJsonReport(filePath: string) {
+  let descriptor: number | null = null;
   try {
-    return JSON.parse(output.slice(first, last + 1)) as { stats?: Record<string, unknown> };
+    descriptor = fs.openSync(
+      filePath,
+      fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW,
+    );
+    const stat = fs.fstatSync(descriptor);
+    if (
+      !stat.isFile() ||
+      stat.isSymbolicLink() ||
+      stat.nlink !== 1 ||
+      stat.size <= 0 ||
+      stat.size > 64 * 1_024 * 1_024
+    ) {
+      return null;
+    }
+    const parsed: unknown = JSON.parse(fs.readFileSync(descriptor, "utf8"));
+    return parsed;
   } catch {
     return null;
+  } finally {
+    if (descriptor !== null) fs.closeSync(descriptor);
   }
 }
 
-function hasValidLocalE2EAuth() {
-  const secret = process.env.E2E_TEST_AUTH_SECRET ?? "";
-  const email = process.env.E2E_TEST_AUTH_EMAIL ?? "";
-  return (
-    Buffer.byteLength(secret, "utf8") >= 32 &&
-    /^[\x21-\x7e]+$/.test(secret) &&
-    email === email.trim() &&
-    email === email.toLowerCase() &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-  );
+function playwrightStats(value: unknown) {
+  if (!isRecord(value) || !isRecord(value.stats)) return null;
+  return value.stats;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
 }

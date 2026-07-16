@@ -12,6 +12,7 @@ import {
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
   reserveD1ReleaseBudget,
+  writePrivateJsonDurably,
   type D1ReleaseBudgetReservationResult,
 } from "./d1-release-budget-ledger";
 import {
@@ -29,23 +30,24 @@ import {
   type WranglerRunner,
 } from "./migration-config";
 import {
-  readPrivateWorkerDeployEvidence,
-  validateWorkerDeployEvidenceForRepair,
-  type WorkerDeployRepairEvidence,
-} from "./repair-seo-cta-translations";
-import {
-  WORKER_DEPLOY_REPORT,
   buildWorkerDeployArtifactEvidence,
   readSoleActiveWorkerVersion,
   type WorkerDeployArtifactEvidence,
 } from "./worker-deploy-evidence";
 import { assertProductionReleaseChildExclusion } from "./production-validation-lock";
 import {
+  assertReleaseSequenceCurrentReleaseBinding,
   createTopicReconciliationAttestation,
+  releaseSequenceIdentityFromCurrentRelease,
   writeTopicReconciliationAttestation,
+  type ReleaseSequenceCurrentRelease,
   type ReleaseSequenceIdentity,
 } from "./release-sequence-attestations";
 import { assertFreshProductionVectorizeReadiness } from "./vectorize-readiness-evidence";
+import {
+  readWorkerCandidateUploadEvidence,
+  workerCandidateUploadEvidencePath,
+} from "./worker-candidate-release-evidence";
 
 type SyncMode = "local" | "remote";
 
@@ -82,22 +84,8 @@ export type TopicSeedReleaseGatePhase =
   | "before-first-d1-query"
   | "immediately-before-import";
 
-export type TopicSeedReleaseIdentity = {
-  candidateVersionId: string;
-  activeVersionId: string;
-  gitHead: string;
-  gitUpstream: string;
-  gitUpstreamRef: string;
-  sourceFingerprintSha256: string;
-  sourceFingerprintFileCount: number;
+export type TopicSeedReleaseIdentity = ReleaseSequenceCurrentRelease & {
   topicSeedSha256: string;
-  workerSourceSha256: string;
-  wranglerConfigSha256: string;
-  assetManifestSha256: string;
-  assetManifestFileCount: number;
-  assetManifestBytes: number;
-  workerDeployReportPath: string;
-  workerDeployEvidenceCreatedAt: string;
   vectorizeReadinessCreatedAt: string;
 };
 
@@ -117,8 +105,10 @@ export type TopicSeedReleaseGate = (
 export type TopicSeedReleaseGateDependencies = {
   readGitIdentity?: (cwd: string) => GitReleaseIdentity;
   buildArtifactEvidence?: (cwd: string) => WorkerDeployArtifactEvidence;
-  readDeployReport?: (reportPath: string) => unknown;
-  validateDeployEvidence?: typeof validateWorkerDeployEvidenceForRepair;
+  readUploadEvidence?: typeof readWorkerCandidateUploadEvidence;
+  assertCurrentReleaseBinding?: (
+    input: Parameters<typeof assertReleaseSequenceCurrentReleaseBinding>[0],
+  ) => unknown;
   readActiveVersion?: (runner: WranglerRunner) => string;
   validateVectorizeReadiness?: (
     input: Parameters<typeof assertFreshProductionVectorizeReadiness>[0],
@@ -280,7 +270,7 @@ export function syncTopicSeeds(
       operationId: requireTopicSeedReleaseOperationId(releaseOperationId),
       operation: "Remote topic seed synchronization",
       sourceFingerprint: topicSeedSourceIdentity(identity),
-      candidateVersionId: identity.candidateVersionId,
+      candidateVersionId: identity.targetCandidateVersionId,
       phase: "maximum",
       rowsRead: MAX_PROJECTED_TOPIC_SEED_BILLED_ROW_READS,
       rowsWritten: MAX_PROJECTED_TOPIC_SEED_BILLED_ROW_WRITES,
@@ -303,7 +293,7 @@ export function syncTopicSeeds(
       operationId: requireTopicSeedReleaseOperationId(releaseOperationId),
       operation: "Remote topic seed synchronization",
       sourceFingerprint: topicSeedSourceIdentity(identity),
-      candidateVersionId: identity.candidateVersionId,
+      candidateVersionId: identity.targetCandidateVersionId,
       phase: "exact",
       rowsRead: projection.projectedBilledRowReads,
       rowsWritten: projection.projectedBilledRowWrites,
@@ -362,7 +352,7 @@ export function syncTopicSeeds(
         utcDay: exactBudget.utcDay,
         operationId: requireTopicSeedReleaseOperationId(releaseOperationId),
         sourceFingerprint: topicSeedSourceIdentity(beforeImportIdentity),
-        candidateVersionId: beforeImportIdentity.candidateVersionId,
+        candidateVersionId: beforeImportIdentity.targetCandidateVersionId,
         phase: "exact",
         rowsRead: projection.projectedBilledRowReads,
         rowsWritten: projection.projectedBilledRowWrites,
@@ -482,24 +472,7 @@ export function syncTopicSeeds(
 function topicReleaseSequenceIdentity(
   identity: TopicSeedReleaseIdentity,
 ): ReleaseSequenceIdentity {
-  return {
-    candidateVersionId: identity.candidateVersionId,
-    activeVersionId: identity.activeVersionId,
-    git: {
-      head: identity.gitHead,
-      upstream: identity.gitUpstream,
-      upstreamRef: identity.gitUpstreamRef,
-    },
-    artifactEvidence: {
-      sourceFingerprintSha256: identity.sourceFingerprintSha256,
-      sourceFingerprintFileCount: identity.sourceFingerprintFileCount,
-      workerSourceSha256: identity.workerSourceSha256,
-      wranglerConfigSha256: identity.wranglerConfigSha256,
-      assetManifestSha256: identity.assetManifestSha256,
-      assetManifestFileCount: identity.assetManifestFileCount,
-      assetManifestBytes: identity.assetManifestBytes,
-    },
-  };
+  return releaseSequenceIdentityFromCurrentRelease(identity);
 }
 
 export function assertRemoteTopicSeedReleaseGate(
@@ -516,75 +489,92 @@ export function assertRemoteTopicSeedReleaseGate(
     dependencies.readGitIdentity ?? ((gitCwd: string) => assertGitReleaseIdentity({ cwd: gitCwd }));
   const buildArtifactEvidence =
     dependencies.buildArtifactEvidence ?? buildWorkerDeployArtifactEvidence;
-  const readDeployReport = dependencies.readDeployReport ?? readPrivateWorkerDeployEvidence;
-  const validateDeployEvidence =
-    dependencies.validateDeployEvidence ?? validateWorkerDeployEvidenceForRepair;
+  const readUploadEvidence =
+    dependencies.readUploadEvidence ?? readWorkerCandidateUploadEvidence;
+  const assertCurrentReleaseBinding =
+    dependencies.assertCurrentReleaseBinding ?? assertReleaseSequenceCurrentReleaseBinding;
   const readActiveVersion =
     dependencies.readActiveVersion ??
     ((runner: WranglerRunner) => readSoleActiveWorkerVersion((args) => runner(args)));
 
+  const uploadPath = workerCandidateUploadEvidencePath(backupDir);
+  const uploadBefore = readUploadEvidence(uploadPath);
+  if (uploadBefore.value.targetCandidateVersionId !== candidateVersionId) {
+    throw new Error(
+      `Remote topic synchronization expected uploaded candidate ${candidateVersionId}; canonical upload evidence names ${uploadBefore.value.targetCandidateVersionId}.`,
+    );
+  }
   const gitBefore = readGitIdentity(cwd);
   const artifactBefore = buildArtifactEvidence(cwd);
-  const workerDeployReportPath = path.resolve(backupDir, WORKER_DEPLOY_REPORT);
-  const workerDeployReport = readDeployReport(workerDeployReportPath);
-  const deployEvidenceBefore = validateDeployEvidence({
-    report: workerDeployReport,
+  const currentBefore: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: uploadBefore.value.targetCandidateVersionId,
+    serviceBaselineVersionId: uploadBefore.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: uploadBefore.sha256,
+    phaseEvidenceSha256: uploadBefore.sha256,
+    phaseEvidenceCreatedAt: uploadBefore.value.createdAt,
+    soleServingVersionId: uploadBefore.value.serviceBaselineVersionId,
+    git: gitBefore,
+    artifactEvidence: artifactBefore,
+  };
+  assertCurrentReleaseBinding({
     backupDir,
-    candidateVersionId,
-    currentArtifactEvidence: artifactBefore,
+    currentRelease: currentBefore,
   });
   const firstActiveVersion = readActiveVersion(input.runner);
-  if (firstActiveVersion !== candidateVersionId) {
+  if (firstActiveVersion !== uploadBefore.value.serviceBaselineVersionId) {
     throw new Error(
-      `Remote topic synchronization expected candidate ${candidateVersionId} at 100% traffic; received ${firstActiveVersion}.`,
+      `Remote topic synchronization requires service baseline ${uploadBefore.value.serviceBaselineVersionId} alone at 100% while candidate ${candidateVersionId} remains inactive; received ${firstActiveVersion}.`,
     );
   }
 
+  const uploadAfter = readUploadEvidence(uploadPath);
   const gitAfter = readGitIdentity(cwd);
   const artifactAfter = buildArtifactEvidence(cwd);
-  const deployEvidenceAfter = validateDeployEvidence({
-    report: workerDeployReport,
+  if (
+    uploadAfter.sha256 !== uploadBefore.sha256 ||
+    uploadAfter.value.targetCandidateVersionId !== candidateVersionId ||
+    uploadAfter.value.serviceBaselineVersionId !==
+      uploadBefore.value.serviceBaselineVersionId
+  ) {
+    throw new Error(
+      "Remote topic synchronization canonical upload evidence changed during its release gate.",
+    );
+  }
+  const currentRelease: ReleaseSequenceCurrentRelease = {
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: uploadAfter.value.targetCandidateVersionId,
+    serviceBaselineVersionId: uploadAfter.value.serviceBaselineVersionId,
+    uploadEvidenceSha256: uploadAfter.sha256,
+    phaseEvidenceSha256: uploadAfter.sha256,
+    phaseEvidenceCreatedAt: uploadAfter.value.createdAt,
+    soleServingVersionId: uploadAfter.value.serviceBaselineVersionId,
+    git: gitAfter,
+    artifactEvidence: artifactAfter,
+  };
+  assertCurrentReleaseBinding({
     backupDir,
-    candidateVersionId,
-    currentArtifactEvidence: artifactAfter,
+    currentRelease,
   });
   assertStableGitReleaseIdentity(gitBefore, gitAfter);
   assertStableWorkerArtifactEvidence(artifactBefore, artifactAfter);
-  assertStableWorkerDeployRepairEvidence(deployEvidenceBefore, deployEvidenceAfter);
 
   const activeVersionId = readActiveVersion(input.runner);
-  if (activeVersionId !== candidateVersionId) {
+  if (activeVersionId !== currentRelease.serviceBaselineVersionId) {
     throw new Error(
-      `Remote topic synchronization candidate changed during ${input.phase}: expected ${candidateVersionId}, received ${activeVersionId}.`,
+      `Remote topic synchronization service baseline changed during ${input.phase}: expected ${currentRelease.serviceBaselineVersionId}, received ${activeVersionId}.`,
     );
   }
   const vectorizeReadiness = (
     dependencies.validateVectorizeReadiness ?? assertFreshProductionVectorizeReadiness
   )({
     backupDir,
-    currentRelease: {
-      candidateVersionId,
-      activeVersionId,
-      git: gitAfter,
-      artifactEvidence: artifactAfter,
-    },
+    currentRelease,
+    requiredPhase: "uploaded-inactive",
   });
   return {
-    candidateVersionId,
-    activeVersionId,
-    gitHead: gitAfter.head,
-    gitUpstream: gitAfter.upstream,
-    gitUpstreamRef: gitAfter.upstreamRef,
-    sourceFingerprintSha256: artifactAfter.sourceFingerprint.sha256,
-    sourceFingerprintFileCount: artifactAfter.sourceFingerprint.fileCount,
+    ...currentRelease,
     topicSeedSha256: input.topicSeedSha256,
-    workerSourceSha256: artifactAfter.workerSourceSha256,
-    wranglerConfigSha256: artifactAfter.wranglerConfigSha256,
-    assetManifestSha256: artifactAfter.assetManifest.sha256,
-    assetManifestFileCount: artifactAfter.assetManifest.fileCount,
-    assetManifestBytes: artifactAfter.assetManifest.bytes,
-    workerDeployReportPath,
-    workerDeployEvidenceCreatedAt: deployEvidenceAfter.createdAt,
     vectorizeReadinessCreatedAt: vectorizeReadiness.createdAt,
   };
 }
@@ -593,10 +583,8 @@ function assertStableTopicSeedReleaseIdentity(
   expected: TopicSeedReleaseIdentity,
   current: TopicSeedReleaseIdentity,
 ) {
-  for (const field of Object.keys(expected) as Array<keyof TopicSeedReleaseIdentity>) {
-    if (expected[field] !== current[field]) {
-      throw new Error(`Remote topic synchronization release identity changed at ${field}.`);
-    }
+  if (stableStringify(expected) !== stableStringify(current)) {
+    throw new Error("Remote topic synchronization release identity changed.");
   }
   return current;
 }
@@ -606,51 +594,26 @@ function validateTopicSeedReleaseIdentity(
   candidateVersionId: string,
   seedSha256: string,
 ) {
+  const release = releaseSequenceIdentityFromCurrentRelease(identity);
   if (
-    identity.candidateVersionId !== candidateVersionId ||
-    identity.activeVersionId !== candidateVersionId
+    identity.phase !== "uploaded-inactive" ||
+    identity.targetCandidateVersionId !== candidateVersionId ||
+    identity.soleServingVersionId !== identity.serviceBaselineVersionId ||
+    identity.phaseEvidenceSha256 !== identity.uploadEvidenceSha256 ||
+    release.targetCandidateVersionId !== candidateVersionId
   ) {
-    throw new Error("Remote topic synchronization release gate returned the wrong candidate.");
+    throw new Error(
+      "Remote topic synchronization release gate returned the wrong inactive candidate or sole-serving baseline.",
+    );
   }
   if (identity.topicSeedSha256 !== seedSha256) {
     throw new Error("Remote topic synchronization release gate returned the wrong topic hash.");
   }
-  for (const [label, value] of [
-    ["Git HEAD", identity.gitHead],
-    ["Git upstream", identity.gitUpstream],
-  ] as const) {
-    if (!/^[a-f0-9]{40,64}$/i.test(value)) {
-      throw new Error(`Remote topic synchronization release gate returned an invalid ${label}.`);
-    }
-  }
-  if (identity.gitHead !== identity.gitUpstream || !identity.gitUpstreamRef) {
-    throw new Error("Remote topic synchronization requires HEAD to equal a configured upstream.");
-  }
-  for (const [label, value] of [
-    ["source fingerprint", identity.sourceFingerprintSha256],
-    ["Worker source hash", identity.workerSourceSha256],
-    ["Wrangler config hash", identity.wranglerConfigSha256],
-    ["Static Assets hash", identity.assetManifestSha256],
-  ] as const) {
-    if (!/^[a-f0-9]{64}$/.test(value)) {
-      throw new Error(`Remote topic synchronization release gate returned an invalid ${label}.`);
-    }
-  }
-  for (const [label, value] of [
-    ["source file count", identity.sourceFingerprintFileCount],
-    ["Static Assets file count", identity.assetManifestFileCount],
-    ["Static Assets bytes", identity.assetManifestBytes],
-  ] as const) {
-    if (!Number.isSafeInteger(value) || value < 0) {
-      throw new Error(`Remote topic synchronization release gate returned invalid ${label}.`);
-    }
-  }
   if (
-    !path.isAbsolute(identity.workerDeployReportPath) ||
-    !Number.isFinite(Date.parse(identity.workerDeployEvidenceCreatedAt)) ||
+    !Number.isFinite(Date.parse(identity.phaseEvidenceCreatedAt)) ||
     !Number.isFinite(Date.parse(identity.vectorizeReadinessCreatedAt))
   ) {
-    throw new Error("Remote topic synchronization release gate returned invalid deploy evidence.");
+    throw new Error("Remote topic synchronization release gate returned invalid phase evidence.");
   }
   return identity;
 }
@@ -692,25 +655,6 @@ function assertStableWorkerArtifactEvidence(
     expected.assetManifest.sha256 !== current.assetManifest.sha256
   ) {
     throw new Error("Remote topic synchronization source or Worker artifacts changed during a release gate.");
-  }
-}
-
-function assertStableWorkerDeployRepairEvidence(
-  expected: WorkerDeployRepairEvidence,
-  current: WorkerDeployRepairEvidence,
-) {
-  if (
-    expected.createdAt !== current.createdAt ||
-    expected.backupDir !== current.backupDir ||
-    expected.candidateVersionId !== current.candidateVersionId ||
-    expected.sourceFingerprintSha256 !== current.sourceFingerprintSha256 ||
-    expected.sourceFingerprintFileCount !== current.sourceFingerprintFileCount ||
-    expected.workerSourceSha256 !== current.workerSourceSha256 ||
-    expected.wranglerConfigSha256 !== current.wranglerConfigSha256 ||
-    expected.assetManifest.sha256 !== current.assetManifest.sha256 ||
-    expected.activeDeploymentReadAt !== current.activeDeploymentReadAt
-  ) {
-    throw new Error("Remote topic synchronization deploy evidence changed during a release gate.");
   }
 }
 
@@ -1043,7 +987,7 @@ function writeTopicSeedPreWriteDiagnosticEvidence(input: {
     cloudflareDir(input.backupDir),
     `topic-seed-sync-prewrite-${timestamp}.json`,
   );
-  writeFsyncedPrivateJson(evidencePath, evidence);
+  writePrivateJsonDurably(evidencePath, evidence, { replace: false });
   return evidencePath;
 }
 
@@ -1057,17 +1001,6 @@ function assertOperatorLocalEvidenceDirectory(backupDir: string) {
   const root = relative.split(path.sep)[0];
   if (!root || !new Set(["tmp", "backups", "inspirlearning-local-backups"]).has(root)) {
     throw new Error("D1 diagnostic evidence must be written outside the repository or under a gitignored report directory.");
-  }
-}
-
-function writeFsyncedPrivateJson(file: string, value: unknown) {
-  const descriptor = fs.openSync(file, "w", 0o600);
-  try {
-    fs.fchmodSync(descriptor, 0o600);
-    fs.writeFileSync(descriptor, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-    fs.fsyncSync(descriptor);
-  } finally {
-    fs.closeSync(descriptor);
   }
 }
 
@@ -1292,7 +1225,7 @@ function requireWorkerVersion(value: string | undefined) {
     !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
   ) {
     throw new Error(
-      "Remote topic seed synchronization requires --candidate-version with the exact active Worker version UUID.",
+      "Remote topic seed synchronization requires --candidate-version with the exact uploaded inactive Worker candidate UUID.",
     );
   }
   return value;
@@ -1300,8 +1233,8 @@ function requireWorkerVersion(value: string | undefined) {
 
 function topicSeedSourceIdentity(identity: TopicSeedReleaseIdentity) {
   return {
-    sha256: identity.sourceFingerprintSha256,
-    fileCount: identity.sourceFingerprintFileCount,
+    sha256: identity.artifactEvidence.sourceFingerprint.sha256,
+    fileCount: identity.artifactEvidence.sourceFingerprint.fileCount,
   };
 }
 

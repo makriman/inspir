@@ -138,19 +138,37 @@ test("reviewed account, memory, activity, and recovery translations remain in st
 });
 
 function parseSiteEntries(value: unknown, label: string) {
-  if (!isRecord(value) || !Array.isArray(value.entries)) {
+  if (!isRecord(value)) {
     throw new Error(`Invalid bootstrap site translation pack: ${label}`);
   }
-
-  return value.entries.map((entry, index) => {
-    if (
-      !isRecord(entry) ||
-      typeof entry.key !== "string" ||
-      typeof entry.value !== "string"
-    ) {
-      throw new Error(`Invalid bootstrap site translation entry: ${label}/${index}`);
+  const rawEntries = value.entries;
+  const rawTranslations = value.translations;
+  if ((rawEntries === undefined) === (rawTranslations === undefined)) {
+    throw new Error(`Ambiguous bootstrap site translation pack: ${label}`);
+  }
+  if (rawEntries !== undefined) {
+    if (!Array.isArray(rawEntries)) {
+      throw new Error(`Invalid bootstrap site translation entries: ${label}`);
     }
-    return { key: entry.key, value: entry.value };
+    return rawEntries.map((entry, index) => {
+      if (
+        !isRecord(entry) ||
+        typeof entry.key !== "string" ||
+        typeof entry.value !== "string"
+      ) {
+        throw new Error(`Invalid bootstrap site translation entry: ${label}/${index}`);
+      }
+      return { key: entry.key, value: entry.value };
+    });
+  }
+  if (!isRecord(rawTranslations)) {
+    throw new Error(`Invalid compact bootstrap site translations: ${label}`);
+  }
+  return Object.entries(rawTranslations).map(([key, translated]) => {
+    if (typeof translated !== "string") {
+      throw new Error(`Invalid compact bootstrap site translation: ${label}/${key}`);
+    }
+    return { key, value: translated };
   });
 }
 

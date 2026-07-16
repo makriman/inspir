@@ -3,11 +3,15 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { Miniflare } from "miniflare";
+import "./worker-crypto-test-shim";
 import {
   drainNativeMemoryVectorCleanupOutbox,
   handleMemoryQueue,
   handleMemoryScheduled,
   handleStateApiRequest,
+  NATIVE_SCHEDULED_D1_QUERY_CEILING,
+  NATIVE_SCHEDULED_D1_QUERY_LIMIT,
+  NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP,
   parseBoundedMemorySummarySections,
   persistNativeMemoryVectorsBestEffort,
   STATE_API_INCREMENTAL_CONTRACT_HEADER,
@@ -123,7 +127,7 @@ test("an all-stale Scheduled cleanup stays below the Free-plan D1 query ceiling"
   try {
     const now = Date.now() - 1_000;
     const setup: D1PreparedStatement[] = [];
-    for (let index = 1; index <= 13; index += 1) {
+    for (let index = 1; index <= NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP; index += 1) {
       const rowId = `stale-turn-${index}`;
       const vectorId = `chat_memory_turns:${rowId}`;
       setup.push(
@@ -169,9 +173,9 @@ test("an all-stale Scheduled cleanup stays below the Free-plan D1 query ceiling"
     );
     await Promise.all(pending);
 
-    assert.equal(countingDatabase.statementCount, 46);
-    assert.ok(countingDatabase.statementCount < 50);
-    assert.deepEqual(countingDatabase.batchSizes, [39]);
+    assert.equal(countingDatabase.statementCount, NATIVE_SCHEDULED_D1_QUERY_CEILING);
+    assert.ok(NATIVE_SCHEDULED_D1_QUERY_CEILING < NATIVE_SCHEDULED_D1_QUERY_LIMIT);
+    assert.deepEqual(countingDatabase.batchSizes, [NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP * 3]);
     assert.equal(
       await scalar(fixture.database, "select count(*) as value from memory_vector_cleanup_outbox"),
       0,

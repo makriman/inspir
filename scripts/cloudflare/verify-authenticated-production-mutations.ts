@@ -14,6 +14,7 @@ import {
 import type { MemoryVectorCleanupQueueMessage } from "../../lib/free-runtime/memory-queue-contract";
 import { buildNativeMemoryTurnSearchableText } from "../../lib/free-runtime/state-api";
 import { disposableAdminTopicFixture } from "../../lib/free-runtime/disposable-admin-validation";
+import { maxProfileImageBytes } from "../../lib/profile/photo";
 import { readCloudflareApiToken } from "./cloudflare-api-token";
 import { readPrivateJsonNoFollow, writePrivateJsonDurably } from "./d1-release-budget-ledger";
 import {
@@ -42,6 +43,8 @@ const tailReadinessRequestTimeoutMs = 15_000;
 const tailReadinessMaximumResponseBytes = 64 * 1024;
 const requestTimeoutMs = 75_000;
 const maximumResponseBytes = 768 * 1024;
+const profilePhotoSeedMaximumBytes = 64 * 1024;
+const profilePhotoSeedPath = "public/media/inspir-learning-film-poster.webp";
 const cleanupAttemptLimit = 3;
 const queueCaptureTimeoutMs = 5 * 60_000;
 export const authenticatedCleanupQueueSettlementTimeoutMs = 10 * 60_000;
@@ -129,6 +132,27 @@ export type AuthenticatedMutationTailEvaluation = {
   ok: boolean;
   samples: AuthenticatedMutationTailSample[];
   problems: string[];
+};
+
+export const authenticatedCriticalResourceTraceRequirements = [
+  { label: "profile-photo-upload", routeTemplate: "/api/me/photo", method: "PATCH", status: 200 },
+  { label: "profile-photo-read", routeTemplate: "/api/me/photo", method: "GET", status: 200 },
+  { label: "profile-photo-delete", routeTemplate: "/api/me/photo", method: "DELETE", status: 200 },
+  { label: "memory-source-feedback", routeTemplate: "/api/memory/source-feedback", method: "POST", status: 200 },
+  { label: "analytics-event", routeTemplate: "/api/analytics/events", method: "POST", status: 200 },
+] as const;
+
+export type AuthenticatedCriticalResourceTailEvaluation = {
+  ok: boolean;
+  requiredRouteCount: number;
+  problems: string[];
+};
+
+export type AuthenticatedProfilePhotoProbe = {
+  bytes: Uint8Array<ArrayBuffer>;
+  byteLength: number;
+  mimeType: "image/webp";
+  sha256: string;
 };
 
 export type AuthenticatedMemoryQueueTailEvaluation = {
@@ -278,10 +302,48 @@ export type AuthenticatedMutationDisposableIdentity = {
 
 type MutationRequestResult = {
   response: Response;
+  bodyBytes: Uint8Array;
   text: string;
   value: unknown;
   trace: AuthenticatedMutationTrace;
 };
+
+export function buildAuthenticatedProfilePhotoProbe(): AuthenticatedProfilePhotoProbe {
+  const seedFile = path.resolve(process.cwd(), profilePhotoSeedPath);
+  const seedStat = fs.statSync(seedFile);
+  if (
+    !seedStat.isFile() ||
+    seedStat.size < 20 ||
+    seedStat.size > profilePhotoSeedMaximumBytes ||
+    seedStat.size % 2 !== 0 ||
+    maxProfileImageBytes - seedStat.size < 8
+  ) {
+    throw new Error("Authenticated profile-photo WebP seed is outside its bounded RIFF contract.");
+  }
+  const seed = fs.readFileSync(seedFile);
+  if (
+    seed.byteLength !== seedStat.size ||
+    seed.subarray(0, 4).toString("ascii") !== "RIFF" ||
+    seed.subarray(8, 12).toString("ascii") !== "WEBP" ||
+    seed.readUInt32LE(4) !== seed.byteLength - 8
+  ) {
+    throw new Error("Authenticated profile-photo seed is not an exact WebP RIFF container.");
+  }
+
+  const bytes = new Uint8Array(maxProfileImageBytes);
+  bytes.set(seed);
+  const view = new DataView(bytes.buffer);
+  view.setUint32(4, maxProfileImageBytes - 8, true);
+  bytes.set([0x4a, 0x55, 0x4e, 0x4b], seed.byteLength);
+  view.setUint32(seed.byteLength + 4, maxProfileImageBytes - seed.byteLength - 8, true);
+  const sha256 = createHash("sha256").update(bytes).digest("hex");
+  return {
+    bytes,
+    byteLength: bytes.byteLength,
+    mimeType: "image/webp",
+    sha256,
+  };
+}
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   void main().catch((error) => {
@@ -626,6 +688,11 @@ async function main() {
         tailOutputClosed: true,
       },
     );
+    const criticalResourceTail = evaluateAuthenticatedCriticalResourceTail(
+      traces,
+      evaluation.samples,
+      expectedVersion,
+    );
     if (!semanticTrace || !hotPathEvidence.semantic) {
       throw new Error("Authenticated semantic retrieval evidence was not captured.");
     }
@@ -644,8 +711,13 @@ async function main() {
       createdAt: new Date().toISOString(),
       ok:
         evaluation.ok &&
+        criticalResourceTail.ok &&
         flow.adminUsersMutationVerified &&
         flow.adminTopicsMutationVerified &&
+        flow.profilePhotoVerified &&
+        flow.profilePhotoDeleted &&
+        flow.sourceFeedbackVerified &&
+        flow.analyticsEventVerified &&
         flow.cleanupVerified &&
         flow.queueStored &&
         flow.knownVectorPresentBeforeRecall &&
@@ -677,6 +749,7 @@ async function main() {
       requestCount: traces.length,
       traces,
       tail: evaluation,
+      criticalResourceTail,
       storedMemoryQueueTail: hotPathEvidence.queue,
       vectorCleanupQueueTail: cleanupAggregate,
       vectorCleanupWakeTail: hotPathEvidence.cleanupWakes,
@@ -686,6 +759,11 @@ async function main() {
         adminTopicsMutationVerified: flow.adminTopicsMutationVerified,
         chatFinalized: flow.chatFinalized,
         profileMutationVerified: flow.profileMutationVerified,
+        profilePhotoVerified: flow.profilePhotoVerified,
+        profilePhotoDeleted: flow.profilePhotoDeleted,
+        profilePhotoByteLength: maxProfileImageBytes,
+        sourceFeedbackVerified: flow.sourceFeedbackVerified,
+        analyticsEventVerified: flow.analyticsEventVerified,
         spanishActivityBundleVerified: flow.spanishActivityBundleVerified,
         legacyAnswerPersisted: flow.legacyAnswerPersisted,
         memoryCrudVerified: flow.memoryCrudVerified,
@@ -712,6 +790,7 @@ async function main() {
       throw new Error(
         `Authenticated mutation validation failed (${[
           ...evaluation.problems,
+          ...criticalResourceTail.problems,
           ...(hotPathEvidence.queue?.problems ?? []),
           ...cleanupAggregate.problems,
           ...hotPathEvidence.cleanupWakes.flatMap((entry) => entry.problems),
@@ -768,10 +847,15 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   let requestIndex = 0;
   let primaryError: unknown = null;
   const cleanupErrors: unknown[] = [];
+  let disposableCreated = false;
   let sourceChatId: string | null = null;
   let knownTurnVectorId: string | null = null;
   let chatFinalized = false;
   let profileMutationVerified = false;
+  let profilePhotoVerified = false;
+  let profilePhotoDeleted = false;
+  let sourceFeedbackVerified = false;
+  let analyticsEventVerified = false;
   let spanishActivityBundleVerified = false;
   let legacyAnswerPersisted = false;
   let memoryCrudVerified = false;
@@ -793,6 +877,7 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     pathname: string,
     init: RequestInit,
     expectedStatus = 200,
+    maximumBodyBytes = maximumResponseBytes,
   ): Promise<MutationRequestResult> => {
     const url = new URL(pathname, options.baseUrl);
     const probe = createAuthenticatedMutationProbe(label, requestIndex);
@@ -810,7 +895,8 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
       signal: init.signal ?? AbortSignal.timeout(requestTimeoutMs),
     });
     cookie = updatedSessionCookie(cookie, response.headers);
-    const text = await readBoundedResponseText(response, maximumResponseBytes);
+    const bodyBytes = await readBoundedResponseBytes(response, maximumBodyBytes);
+    const text = new TextDecoder().decode(bodyBytes);
     const trace = {
       label,
       probe,
@@ -832,7 +918,7 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
         `${label} response`,
       );
     }
-    return { response, text, value, trace };
+    return { response, bodyBytes, text, value, trace };
   };
 
   const mutationBody = (action: string, userId?: string) => JSON.stringify({
@@ -878,6 +964,7 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     ) {
       throw new Error("Disposable authentication did not return a non-admin isolated user.");
     }
+    disposableCreated = true;
 
     const grantResponse = await request(
       "grant-disposable-admin",
@@ -1109,6 +1196,78 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
       profileReadbackUser.profileImageHash === null;
     if (!profileMutationVerified) {
       throw new Error("Disposable profile mutation was not verified by an independent readback.");
+    }
+
+    const profilePhotoProbe = buildAuthenticatedProfilePhotoProbe();
+    if (profilePhotoProbe.byteLength !== maxProfileImageBytes) {
+      throw new Error("Authenticated profile-photo probe is not exactly at the runtime byte cap.");
+    }
+    const profilePhotoForm = new FormData();
+    profilePhotoForm.set(
+      "photo",
+      new File(
+        [profilePhotoProbe.bytes],
+        `inspir-resource-probe-${options.runId}.webp`,
+        { type: profilePhotoProbe.mimeType },
+      ),
+    );
+    const profilePhotoUpload = requiredRecord((await request(
+      "profile-photo-upload",
+      "/api/me/photo",
+      { method: "PATCH", body: profilePhotoForm },
+    )).value, "profile photo upload");
+    if (profilePhotoUpload.profileImageHash !== profilePhotoProbe.sha256) {
+      throw new Error("Disposable profile-photo upload returned the wrong content hash.");
+    }
+    const profilePhotoRead = await request(
+      "profile-photo-read",
+      "/api/me/photo",
+      { method: "GET" },
+      200,
+      maxProfileImageBytes,
+    );
+    if (
+      profilePhotoRead.bodyBytes.byteLength !== maxProfileImageBytes ||
+      profilePhotoRead.response.headers.get("content-type") !== profilePhotoProbe.mimeType ||
+      createHash("sha256").update(profilePhotoRead.bodyBytes).digest("hex") !==
+        profilePhotoProbe.sha256
+    ) {
+      throw new Error("Disposable profile-photo readback did not preserve the exact bounded WebP.");
+    }
+    const profilePhotoDelete = requiredRecord((await request(
+      "profile-photo-delete",
+      "/api/me/photo",
+      { method: "DELETE" },
+    )).value, "profile photo delete");
+    if (profilePhotoDelete.profileImageHash !== null) {
+      throw new Error("Disposable profile-photo delete returned the wrong pointer contract.");
+    }
+    await request(
+      "profile-photo-after-delete",
+      "/api/me/photo",
+      { method: "GET" },
+      404,
+    );
+    profilePhotoDeleted = true;
+    profilePhotoVerified = true;
+
+    const analyticsEvent = requiredRecord((await request(
+      "analytics-event",
+      "/api/analytics/events",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: "profile_opened",
+          route: "/profile?resource_probe=redacted",
+          sessionId: options.runId,
+          properties: { surface: "authenticated-resource-validation" },
+        }),
+      },
+    )).value, "analytics event");
+    analyticsEventVerified = analyticsEvent.ok === true && analyticsEvent.recorded === true;
+    if (!analyticsEventVerified) {
+      throw new Error("Disposable analytics event was not admitted for durable recording.");
     }
 
     const chatId = await createChat(request, "learn-anything", "chat-create");
@@ -1364,6 +1523,33 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     })) {
       throw new Error("Disposable memory CRUD was not visible in the saved-memory result.");
     }
+    const sourceFeedback = requiredRecord((await request(
+      "memory-source-feedback",
+      "/api/memory/source-feedback",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          memoryId,
+          action: "dont_mention",
+          note: "Authenticated resource validation suppression.",
+        }),
+      },
+    )).value, "memory source feedback");
+    const memoryAfterFeedback = requiredRecord((await request(
+      "memory-after-source-feedback",
+      "/api/memory",
+      { method: "GET" },
+    )).value, "memory after source feedback");
+    sourceFeedbackVerified = sourceFeedback.ok === true &&
+      requiredArray(memoryAfterFeedback.memories, "memory items after source feedback")
+        .some((value) => {
+          const item = optionalRecord(value);
+          return item?.id === memoryId && item.doNotMention === true;
+        });
+    if (!sourceFeedbackVerified) {
+      throw new Error("Disposable source feedback did not suppress its owned memory.");
+    }
     const memoryDeleted = requiredRecord((await request(
       "memory-delete",
       `/api/memory/${memoryId}`,
@@ -1462,6 +1648,27 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
   } catch (error) {
     primaryError = error;
   } finally {
+    if (disposableCreated && !profilePhotoDeleted) {
+      try {
+        const cleanupPhoto = requiredRecord((await request(
+          "cleanup-profile-photo",
+          "/api/me/photo",
+          { method: "DELETE" },
+        )).value, "cleanup profile photo");
+        if (cleanupPhoto.profileImageHash !== null) {
+          throw new Error("Cleanup profile-photo delete returned the wrong pointer contract.");
+        }
+        await request(
+          "verify-cleanup-profile-photo",
+          "/api/me/photo",
+          { method: "GET" },
+          404,
+        );
+        profilePhotoDeleted = true;
+      } catch (error) {
+        cleanupErrors.push(error);
+      }
+    }
     if (sourceChatId) {
       let deletionMutationError: unknown = null;
       try {
@@ -1584,6 +1791,10 @@ export async function runAuthenticatedProductionMutationFlow(options: MutationFl
     adminTopicsMutationVerified,
     chatFinalized,
     profileMutationVerified,
+    profilePhotoVerified,
+    profilePhotoDeleted,
+    sourceFeedbackVerified,
+    analyticsEventVerified,
     spanishActivityBundleVerified,
     legacyAnswerPersisted,
     memoryCrudVerified,
@@ -1818,6 +2029,77 @@ export function evaluateAuthenticatedMutationTail(
     }
   }
   return { ok: problems.length === 0, samples, problems };
+}
+
+export function evaluateAuthenticatedCriticalResourceTail(
+  traces: readonly AuthenticatedMutationTrace[],
+  samples: readonly AuthenticatedMutationTailSample[],
+  authenticatedValidationVersionId: string,
+): AuthenticatedCriticalResourceTailEvaluation {
+  const problems: string[] = [];
+  for (const requirement of authenticatedCriticalResourceTraceRequirements) {
+    const matchingTraces = traces.filter((trace) => trace.label === requirement.label);
+    if (matchingTraces.length !== 1) {
+      problems.push(`${requirement.label}:required-trace-count=${matchingTraces.length}`);
+      continue;
+    }
+    const trace = matchingTraces[0];
+    if (trace.routeTemplate !== requirement.routeTemplate) {
+      problems.push(`${requirement.label}:required-route`);
+    }
+    if (trace.method !== requirement.method) {
+      problems.push(`${requirement.label}:required-method`);
+    }
+    if (trace.status !== requirement.status) {
+      problems.push(`${requirement.label}:required-status`);
+    }
+
+    const matchingSamples = samples.filter(
+      (sample) => sample.label === requirement.label && sample.probe === trace.probe,
+    );
+    if (matchingSamples.length !== 1) {
+      problems.push(`${requirement.label}:required-tail-count=${matchingSamples.length}`);
+      continue;
+    }
+    const sample = matchingSamples[0];
+    if (sample.routeTemplate !== requirement.routeTemplate) {
+      problems.push(`${requirement.label}:tail-route`);
+    }
+    if (sample.method !== requirement.method) {
+      problems.push(`${requirement.label}:tail-method`);
+    }
+    if (sample.status !== requirement.status) {
+      problems.push(`${requirement.label}:tail-status`);
+    }
+    if (sample.scriptName !== workerName) {
+      problems.push(`${requirement.label}:tail-script`);
+    }
+    if (sample.scriptVersionId !== authenticatedValidationVersionId) {
+      problems.push(`${requirement.label}:tail-version`);
+    }
+    if (sample.outcome !== "ok") {
+      problems.push(`${requirement.label}:tail-outcome`);
+    }
+    if (sample.truncated !== false) {
+      problems.push(`${requirement.label}:tail-truncated`);
+    }
+    if (sample.exceptionCount !== 0) {
+      problems.push(`${requirement.label}:tail-exception`);
+    }
+    if (!sample.logArrayValid || sample.warningOrErrorLogCount !== 0) {
+      problems.push(`${requirement.label}:tail-log`);
+    }
+    if (sample.cpuTimeMs === null || sample.cpuTimeMs < 0) {
+      problems.push(`${requirement.label}:tail-cpu-missing-or-negative`);
+    } else if (sample.cpuTimeMs >= authenticatedMutationCpuThresholdMs) {
+      problems.push(`${requirement.label}:tail-cpu>=${authenticatedMutationCpuThresholdMs}`);
+    }
+  }
+  return {
+    ok: problems.length === 0,
+    requiredRouteCount: authenticatedCriticalResourceTraceRequirements.length,
+    problems,
+  };
 }
 
 export function evaluateAuthenticatedMemoryQueueTail(
@@ -3325,7 +3607,11 @@ export function exactDisposableInventory(value: unknown): Record<string, number>
 }
 
 async function readBoundedResponseText(response: Response, maximumBytes: number) {
-  if (!response.body) return "";
+  return new TextDecoder().decode(await readBoundedResponseBytes(response, maximumBytes));
+}
+
+async function readBoundedResponseBytes(response: Response, maximumBytes: number) {
+  if (!response.body) return new Uint8Array(0);
   const reader = response.body.getReader();
   const chunks: Uint8Array[] = [];
   let bytes = 0;
@@ -3345,7 +3631,7 @@ async function readBoundedResponseText(response: Response, maximumBytes: number)
     combined.set(chunk, offset);
     offset += chunk.byteLength;
   }
-  return new TextDecoder().decode(combined);
+  return combined;
 }
 
 function updatedSessionCookie(current: string, headers: Headers) {

@@ -4,15 +4,21 @@ import {
   readPrivateJsonNoFollow,
   writePrivateJsonDurably,
 } from "./d1-release-budget-ledger";
-import type { GitReleaseIdentity } from "./git-release-identity";
 import {
   cloudflareDir,
   VECTORIZE_INDEX_NAME,
 } from "./migration-config";
-import type { WorkerDeployArtifactEvidence } from "./worker-deploy-evidence";
+import {
+  assertReleaseSequenceCurrentReleaseBinding,
+  parseReleaseSequenceIdentity,
+  releaseSequenceIdentityFromCurrentRelease,
+  type ReleaseSequenceCurrentRelease,
+  type ReleaseSequenceIdentity,
+  type ReleaseSequenceServingPhase,
+} from "./release-sequence-attestations";
 
 const VECTORIZE_READINESS_REPORT = "cloudflare/vectorize-readiness-report.json";
-const VECTORIZE_READINESS_EVIDENCE_KIND = "vectorize-readiness-v1" as const;
+const VECTORIZE_READINESS_EVIDENCE_KIND = "vectorize-readiness-v2" as const;
 const VECTORIZE_READINESS_MAX_AGE_MS = 30 * 60 * 1_000;
 const VECTORIZE_READINESS_MAX_JSON_BYTES = 64 * 1_024;
 const VECTORIZE_READINESS_DIMENSIONS = 512;
@@ -33,7 +39,6 @@ const VECTORIZE_READINESS_METADATA_INDEXES = [
 
 const workerName = "inspirlearning";
 const workerVersionPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-const gitObjectPattern = /^[0-9a-f]{40,64}$/;
 
 export type VectorizeMetadataIndex = {
   propertyName: string;
@@ -58,21 +63,14 @@ export type VectorizeReadinessReport = {
   mode: "remote-production-read-only";
   ok: true;
   workerName: typeof workerName;
-  candidateVersionId: string;
-  activeVersionId: string;
-  git: GitReleaseIdentity;
-  artifactEvidence: {
-    sourceFingerprintSha256: string;
-    sourceFingerprintFileCount: number;
-    workerSourceSha256: string;
-    wranglerConfigSha256: string;
-    assetManifestSha256: string;
-    assetManifestFileCount: number;
-    assetManifestBytes: number;
-  };
-  deployEvidence: {
-    createdAt: string;
-    activeDeploymentReadAt: string;
+  phase: ReleaseSequenceServingPhase;
+  release: ReleaseSequenceIdentity;
+  servingObservation: {
+    soleServingVersionId: string;
+    phaseEvidenceSha256: string;
+    phaseEvidenceCreatedAt: string;
+    observedBeforeAt: string;
+    observedAfterAt: string;
   };
   vectorize: {
     binding: typeof VECTORIZE_READINESS_BINDING;
@@ -89,12 +87,7 @@ export type VectorizeReadinessReport = {
   };
 };
 
-export type VectorizeReadinessCurrentRelease = {
-  candidateVersionId: string;
-  activeVersionId: string;
-  git: GitReleaseIdentity;
-  artifactEvidence: WorkerDeployArtifactEvidence;
-};
+export type VectorizeReadinessCurrentRelease = ReleaseSequenceCurrentRelease;
 
 export function readConfiguredVectorizeBinding(cwd = process.cwd()) {
   const configPath = path.resolve(cwd, "wrangler.jsonc");
@@ -201,7 +194,7 @@ export function createVectorizeReadinessReport(input: {
   createdAt: string;
   backupDir: string;
   currentRelease: VectorizeReadinessCurrentRelease;
-  deployEvidence: { createdAt: string; activeDeploymentReadAt: string };
+  servingObservation: { observedBeforeAt: string; observedAfterAt: string };
   vectorizeIndex: VectorizeIndexConfiguration;
   vectorizeInfo: VectorizeInfo;
   metadataIndexes: readonly VectorizeMetadataIndex[];
@@ -226,11 +219,15 @@ export function createVectorizeReadinessReport(input: {
     mode: "remote-production-read-only",
     ok: true,
     workerName,
-    candidateVersionId: input.currentRelease.candidateVersionId,
-    activeVersionId: input.currentRelease.activeVersionId,
-    git: input.currentRelease.git,
-    artifactEvidence: summarizeArtifactEvidence(input.currentRelease.artifactEvidence),
-    deployEvidence: input.deployEvidence,
+    phase: input.currentRelease.phase,
+    release: releaseSequenceIdentityFromCurrentRelease(input.currentRelease),
+    servingObservation: {
+      soleServingVersionId: input.currentRelease.soleServingVersionId,
+      phaseEvidenceSha256: input.currentRelease.phaseEvidenceSha256,
+      phaseEvidenceCreatedAt: input.currentRelease.phaseEvidenceCreatedAt,
+      observedBeforeAt: input.servingObservation.observedBeforeAt,
+      observedAfterAt: input.servingObservation.observedAfterAt,
+    },
     vectorize: {
       binding: VECTORIZE_READINESS_BINDING,
       indexName: VECTORIZE_INDEX_NAME,
@@ -259,6 +256,7 @@ export function writeVectorizeReadinessReport(
 export function assertFreshProductionVectorizeReadiness(input: {
   backupDir: string;
   currentRelease: VectorizeReadinessCurrentRelease;
+  requiredPhase: ReleaseSequenceServingPhase;
   now?: Date;
 }) {
   const report = assertProductionVectorizeReadinessReleaseBinding(input);
@@ -277,6 +275,7 @@ export function assertFreshProductionVectorizeReadiness(input: {
 export function assertProductionVectorizeReadinessReleaseBinding(input: {
   backupDir: string;
   currentRelease: VectorizeReadinessCurrentRelease;
+  requiredPhase: ReleaseSequenceServingPhase;
 }) {
   const report = parseVectorizeReadinessReport(
     readPrivateJsonNoFollow(
@@ -284,22 +283,32 @@ export function assertProductionVectorizeReadinessReleaseBinding(input: {
       VECTORIZE_READINESS_MAX_JSON_BYTES,
     ),
   );
-  const current = input.currentRelease;
-  const expectedArtifacts = summarizeArtifactEvidence(current.artifactEvidence);
+  const current = assertReleaseSequenceCurrentReleaseBinding({
+    backupDir: input.backupDir,
+    currentRelease: input.currentRelease,
+  });
   const mismatches: string[] = [];
   if (path.resolve(report.backupDir) !== path.resolve(input.backupDir)) {
     mismatches.push("backup directory");
   }
   if (
-    report.candidateVersionId !== current.candidateVersionId ||
-    report.activeVersionId !== current.candidateVersionId ||
-    current.activeVersionId !== current.candidateVersionId
+    report.phase !== input.requiredPhase ||
+    current.currentRelease.phase !== input.requiredPhase
   ) {
-    mismatches.push("candidate or active Worker version");
+    mismatches.push("required serving phase");
   }
-  if (!sameGitIdentity(report.git, current.git)) mismatches.push("clean pushed Git identity");
-  if (!sameArtifactSummary(report.artifactEvidence, expectedArtifacts)) {
-    mismatches.push("source or immutable Worker artifacts");
+  if (!sameReleaseIdentity(report.release, current.identity)) {
+    mismatches.push("immutable candidate release identity");
+  }
+  if (
+    report.servingObservation.soleServingVersionId !==
+      current.currentRelease.soleServingVersionId ||
+    report.servingObservation.phaseEvidenceSha256 !==
+      current.currentRelease.phaseEvidenceSha256 ||
+    report.servingObservation.phaseEvidenceCreatedAt !==
+      current.currentRelease.phaseEvidenceCreatedAt
+  ) {
+    mismatches.push("phase evidence or sole-serving Worker version");
   }
   if (mismatches.length) {
     throw new Error(`Vectorize readiness evidence does not authorize this release: ${mismatches.join(", ")}.`);
@@ -311,40 +320,30 @@ function parseVectorizeReadinessReport(value: unknown): VectorizeReadinessReport
   const report = exactRecord(
     value,
     [
-      "activeVersionId",
-      "artifactEvidence",
       "backupDir",
-      "candidateVersionId",
       "createdAt",
-      "deployEvidence",
-      "git",
       "kind",
       "mode",
       "ok",
+      "phase",
       "readOnly",
+      "release",
+      "servingObservation",
       "vectorize",
       "workerName",
     ],
     "Vectorize readiness evidence",
   );
-  const git = exactRecord(report.git, ["head", "upstream", "upstreamRef"], "Vectorize Git evidence");
-  const artifacts = exactRecord(
-    report.artifactEvidence,
+  const servingObservation = exactRecord(
+    report.servingObservation,
     [
-      "assetManifestBytes",
-      "assetManifestFileCount",
-      "assetManifestSha256",
-      "sourceFingerprintFileCount",
-      "sourceFingerprintSha256",
-      "workerSourceSha256",
-      "wranglerConfigSha256",
+      "observedAfterAt",
+      "observedBeforeAt",
+      "phaseEvidenceCreatedAt",
+      "phaseEvidenceSha256",
+      "soleServingVersionId",
     ],
-    "Vectorize artifact evidence",
-  );
-  const deploy = exactRecord(
-    report.deployEvidence,
-    ["activeDeploymentReadAt", "createdAt"],
-    "Vectorize deploy evidence",
+    "Vectorize serving observation",
   );
   const vectorize = exactRecord(
     report.vectorize,
@@ -358,29 +357,49 @@ function parseVectorizeReadinessReport(value: unknown): VectorizeReadinessReport
   );
 
   const createdAt = requiredIsoTimestamp(report.createdAt, "Vectorize readiness createdAt");
-  const candidateVersionId = requiredWorkerVersion(report.candidateVersionId, "Vectorize candidate");
-  const activeVersionId = requiredWorkerVersion(report.activeVersionId, "Vectorize active version");
-  const parsedGit = {
-    head: requiredGitObject(git.head, "Vectorize Git HEAD"),
-    upstream: requiredGitObject(git.upstream, "Vectorize Git upstream"),
-    upstreamRef: requiredNonEmptyString(git.upstreamRef, "Vectorize Git upstream ref"),
-  };
-  if (parsedGit.head !== parsedGit.upstream) {
-    throw new Error("Vectorize readiness Git HEAD does not equal its pushed upstream.");
-  }
-  const deployCreatedAt = requiredIsoTimestamp(
-    deploy.createdAt,
-    "Worker deploy evidence createdAt",
+  const phase = requiredServingPhase(report.phase);
+  const release = parseReleaseSequenceIdentity(report.release);
+  const soleServingVersionId = requiredWorkerVersion(
+    servingObservation.soleServingVersionId,
+    "Vectorize sole-serving Worker version",
   );
-  const activeDeploymentReadAt = requiredIsoTimestamp(
-    deploy.activeDeploymentReadAt,
-    "Worker deploy active readback",
+  const phaseEvidenceSha256 = requiredSha256(
+    servingObservation.phaseEvidenceSha256,
+    "Vectorize phase evidence hash",
+  );
+  const phaseEvidenceCreatedAt = requiredIsoTimestamp(
+    servingObservation.phaseEvidenceCreatedAt,
+    "Vectorize phase evidence timestamp",
+  );
+  const observedBeforeAt = requiredIsoTimestamp(
+    servingObservation.observedBeforeAt,
+    "Vectorize first serving observation",
+  );
+  const observedAfterAt = requiredIsoTimestamp(
+    servingObservation.observedAfterAt,
+    "Vectorize final serving observation",
   );
   if (
-    Date.parse(activeDeploymentReadAt) > Date.parse(deployCreatedAt) ||
-    Date.parse(deployCreatedAt) > Date.parse(createdAt)
+    Date.parse(phaseEvidenceCreatedAt) > Date.parse(observedBeforeAt) ||
+    Date.parse(observedBeforeAt) > Date.parse(observedAfterAt) ||
+    Date.parse(observedAfterAt) > Date.parse(createdAt)
   ) {
     throw new Error("Vectorize readiness timestamps are not in causal order.");
+  }
+  const expectedServingVersionId =
+    phase === "uploaded-inactive"
+      ? release.serviceBaselineVersionId
+      : release.targetCandidateVersionId;
+  if (soleServingVersionId !== expectedServingVersionId) {
+    throw new Error("Vectorize readiness has the wrong phase-specific serving version.");
+  }
+  if (
+    phase === "uploaded-inactive" &&
+    phaseEvidenceSha256 !== release.uploadEvidenceSha256
+  ) {
+    throw new Error(
+      "Uploaded-inactive Vectorize readiness must use immutable upload evidence as phase evidence.",
+    );
   }
 
   if (!Array.isArray(vectorize.metadataIndexes)) {
@@ -405,7 +424,6 @@ function parseVectorizeReadinessReport(value: unknown): VectorizeReadinessReport
     report.mode !== "remote-production-read-only" ||
     report.ok !== true ||
     report.workerName !== workerName ||
-    candidateVersionId !== activeVersionId ||
     vectorize.binding !== VECTORIZE_READINESS_BINDING ||
     vectorize.indexName !== VECTORIZE_INDEX_NAME ||
     vectorize.dimensions !== VECTORIZE_READINESS_DIMENSIONS ||
@@ -424,27 +442,14 @@ function parseVectorizeReadinessReport(value: unknown): VectorizeReadinessReport
     mode: "remote-production-read-only",
     ok: true,
     workerName,
-    candidateVersionId,
-    activeVersionId,
-    git: parsedGit,
-    artifactEvidence: {
-      sourceFingerprintSha256: requiredSha256(artifacts.sourceFingerprintSha256, "source fingerprint"),
-      sourceFingerprintFileCount: nonNegativeSafeInteger(
-        artifacts.sourceFingerprintFileCount,
-        "source fingerprint file count",
-      ),
-      workerSourceSha256: requiredSha256(artifacts.workerSourceSha256, "Worker source hash"),
-      wranglerConfigSha256: requiredSha256(artifacts.wranglerConfigSha256, "Wrangler config hash"),
-      assetManifestSha256: requiredSha256(artifacts.assetManifestSha256, "Static Assets hash"),
-      assetManifestFileCount: nonNegativeSafeInteger(
-        artifacts.assetManifestFileCount,
-        "Static Assets file count",
-      ),
-      assetManifestBytes: nonNegativeSafeInteger(artifacts.assetManifestBytes, "Static Assets bytes"),
-    },
-    deployEvidence: {
-      createdAt: deployCreatedAt,
-      activeDeploymentReadAt,
+    phase,
+    release,
+    servingObservation: {
+      soleServingVersionId,
+      phaseEvidenceSha256,
+      phaseEvidenceCreatedAt,
+      observedBeforeAt,
+      observedAfterAt,
     },
     vectorize: {
       binding: VECTORIZE_READINESS_BINDING,
@@ -464,18 +469,6 @@ function parseVectorizeReadinessReport(value: unknown): VectorizeReadinessReport
 
 export function vectorizeReadinessReportPath(backupDir: string) {
   return path.join(cloudflareDir(path.resolve(backupDir)), path.basename(VECTORIZE_READINESS_REPORT));
-}
-
-function summarizeArtifactEvidence(evidence: WorkerDeployArtifactEvidence) {
-  return {
-    sourceFingerprintSha256: evidence.sourceFingerprint.sha256,
-    sourceFingerprintFileCount: evidence.sourceFingerprint.fileCount,
-    workerSourceSha256: evidence.workerSourceSha256,
-    wranglerConfigSha256: evidence.wranglerConfigSha256,
-    assetManifestSha256: evidence.assetManifest.sha256,
-    assetManifestFileCount: evidence.assetManifest.fileCount,
-    assetManifestBytes: evidence.assetManifest.bytes,
-  };
 }
 
 function boundedJson(output: string, label: string): unknown {
@@ -524,12 +517,6 @@ function requiredWorkerVersion(value: unknown, label: string) {
   const version = requiredNonEmptyString(value, label);
   if (!workerVersionPattern.test(version)) throw new Error(`${label} must be a lowercase Worker UUID.`);
   return version;
-}
-
-function requiredGitObject(value: unknown, label: string) {
-  const objectId = requiredNonEmptyString(value, label);
-  if (!gitObjectPattern.test(objectId)) throw new Error(`${label} must be an exact lowercase Git object ID.`);
-  return objectId;
 }
 
 function requiredSha256(value: unknown, label: string) {
@@ -581,21 +568,18 @@ function sameMetadataIndexes(
   );
 }
 
-function sameGitIdentity(left: GitReleaseIdentity, right: GitReleaseIdentity) {
-  return left.head === right.head && left.upstream === right.upstream && left.upstreamRef === right.upstreamRef;
+function sameReleaseIdentity(
+  left: ReleaseSequenceIdentity,
+  right: ReleaseSequenceIdentity,
+) {
+  return JSON.stringify(left) === JSON.stringify(right);
 }
 
-function sameArtifactSummary(
-  left: VectorizeReadinessReport["artifactEvidence"],
-  right: VectorizeReadinessReport["artifactEvidence"],
-) {
-  return left.sourceFingerprintSha256 === right.sourceFingerprintSha256 &&
-    left.sourceFingerprintFileCount === right.sourceFingerprintFileCount &&
-    left.workerSourceSha256 === right.workerSourceSha256 &&
-    left.wranglerConfigSha256 === right.wranglerConfigSha256 &&
-    left.assetManifestSha256 === right.assetManifestSha256 &&
-    left.assetManifestFileCount === right.assetManifestFileCount &&
-    left.assetManifestBytes === right.assetManifestBytes;
+function requiredServingPhase(value: unknown): ReleaseSequenceServingPhase {
+  if (value !== "uploaded-inactive" && value !== "candidate-active") {
+    throw new Error("Vectorize readiness serving phase must be explicit.");
+  }
+  return value;
 }
 
 function sameStringSequence(value: unknown, expected: readonly string[]) {

@@ -5,7 +5,9 @@ import path from "node:path";
 import test from "node:test";
 import { getCuratedMainAppTranslationBundle } from "../lib/i18n/main-app-curated";
 import { buildStaticMainAppBundleAsset } from "../lib/i18n/main-app-static-asset";
+import { maxProfileImageBytes } from "../lib/profile/photo";
 import {
+  authenticatedCriticalResourceTraceRequirements,
   authenticatedOutboxDrainMaximumAttempts,
   authenticatedOutboxDrainRetryDelayMs,
   authenticatedQueueSettlementQuietPeriodMs,
@@ -18,6 +20,7 @@ import {
   assertAuthenticatedMutationResponseProof,
   assertCompleteFlashcardResult,
   assertCompleteQuizResult,
+  buildAuthenticatedProfilePhotoProbe,
   cleanupDisposableMutationState,
   captureAuthenticatedTail,
   createAuthenticatedTailReadinessProbe,
@@ -25,6 +28,7 @@ import {
   evaluateAuthenticatedMemoryQueueTail,
   evaluateAuthenticatedMemoryQueueResourceWindow,
   evaluateAuthenticatedMemoryVectorCleanupQueueTail,
+  evaluateAuthenticatedCriticalResourceTail,
   evaluateAuthenticatedMutationTail,
   evaluateAuthenticatedSemanticRetrievalTail,
   expectedAuthenticatedMutationDisposableIdentity,
@@ -87,6 +91,86 @@ test("disposable response proof requires the exact deterministic email, identity
     ),
     /wrong runtime Worker version/,
   );
+});
+
+test("profile-photo CPU probe is one exact bounded valid WebP RIFF container", () => {
+  const probe = buildAuthenticatedProfilePhotoProbe();
+  assert.equal(probe.byteLength, maxProfileImageBytes);
+  assert.equal(probe.bytes.byteLength, maxProfileImageBytes);
+  assert.equal(Buffer.from(probe.bytes.subarray(0, 4)).toString("ascii"), "RIFF");
+  assert.equal(Buffer.from(probe.bytes.subarray(8, 12)).toString("ascii"), "WEBP");
+  assert.equal(new DataView(probe.bytes.buffer).getUint32(4, true), maxProfileImageBytes - 8);
+  assert.equal(probe.mimeType, "image/webp");
+  assert.match(probe.sha256, /^[0-9a-f]{64}$/);
+});
+
+test("critical high-cost route matrix is independently mandatory and exact-version below 8ms", () => {
+  const traces: AuthenticatedMutationTrace[] = authenticatedCriticalResourceTraceRequirements.map(
+    (requirement, index) => {
+      const probe = `inspir-critical-resource-${index}`;
+      return {
+        label: requirement.label,
+        probe,
+        origin: "https://inspirlearning.com",
+        requestKey: `${requirement.routeTemplate}?authenticated_mutation_probe=${probe}`,
+        routeTemplate: requirement.routeTemplate,
+        method: requirement.method,
+        status: requirement.status,
+      };
+    },
+  );
+  const acceptedTail = evaluateAuthenticatedMutationTail(
+    traces.map((trace) => JSON.stringify(tailRecord(trace, 7.999))).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(acceptedTail.ok, true);
+  const accepted = evaluateAuthenticatedCriticalResourceTail(
+    traces,
+    acceptedTail.samples,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.requiredRouteCount, authenticatedCriticalResourceTraceRequirements.length);
+
+  const missing = evaluateAuthenticatedCriticalResourceTail(
+    traces.slice(1),
+    acceptedTail.samples.slice(1),
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(missing.ok, false);
+  assert.ok(missing.problems.includes("profile-photo-upload:required-trace-count=0"));
+
+  const wrongVersionRecords = traces.map((trace, index) => {
+    const record = tailRecord(trace, 1);
+    if (index === 0) record.scriptVersion.id = "22222222-2222-4222-8222-222222222222";
+    return JSON.stringify(record);
+  }).join("\n");
+  const wrongVersionTail = evaluateAuthenticatedMutationTail(
+    wrongVersionRecords,
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  const wrongVersion = evaluateAuthenticatedCriticalResourceTail(
+    traces,
+    wrongVersionTail.samples,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(wrongVersion.ok, false);
+  assert.ok(wrongVersion.problems.includes("profile-photo-upload:tail-version"));
+
+  const atCpuBoundaryTail = evaluateAuthenticatedMutationTail(
+    traces.map((trace, index) => JSON.stringify(tailRecord(trace, index === 0 ? 8 : 1))).join("\n"),
+    traces,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  const atCpuBoundary = evaluateAuthenticatedCriticalResourceTail(
+    traces,
+    atCpuBoundaryTail.samples,
+    MUTATION_TAIL_VERSION_ID,
+  );
+  assert.equal(atCpuBoundary.ok, false);
+  assert.ok(atCpuBoundary.problems.includes("profile-photo-upload:tail-cpu>=8"));
 });
 
 test("tail evaluator requires one exact ok CPU sample below 8ms for every mutation request", () => {
@@ -1799,6 +1883,17 @@ test("production mutation verifier covers chat provider/finalize, completed acti
   assert.match(source, /"profile-update", "\/api\/me"/);
   assert.match(source, /profile-after-update/);
   assert.match(source, /profileImageHash === null/);
+  assert.match(source, /"profile-photo-upload",\s*"\/api\/me\/photo"/);
+  assert.match(source, /"profile-photo-read",\s*"\/api\/me\/photo"/);
+  assert.match(source, /"profile-photo-delete",\s*"\/api\/me\/photo"/);
+  assert.match(source, /profilePhotoProbe\.byteLength !== maxProfileImageBytes/);
+  assert.match(source, /createHash\("sha256"\)\.update\(profilePhotoRead\.bodyBytes\)/);
+  assert.match(source, /"memory-source-feedback",\s*"\/api\/memory\/source-feedback"/);
+  assert.match(source, /action: "dont_mention"/);
+  assert.match(source, /"analytics-event",\s*"\/api\/analytics\/events"/);
+  assert.match(source, /analyticsEvent\.recorded === true/);
+  assert.match(source, /evaluateAuthenticatedCriticalResourceTail\(/);
+  assert.match(source, /criticalResourceTail\.ok/);
   assert.match(source, /"chat-provider", "\/api\/chat"/);
   assert.match(source, /"chat-legacy-provider", "\/api\/chat"/);
   assert.match(source, /"x-inspir-assistant-message-id"/);
@@ -1877,6 +1972,10 @@ test("production mutation verifier covers chat provider/finalize, completed acti
   const flowFinally = source.slice(
     source.indexOf("} finally {", source.indexOf("runAuthenticatedProductionMutationFlow")),
     source.indexOf("const failures =", source.indexOf("runAuthenticatedProductionMutationFlow")),
+  );
+  assert.ok(
+    flowFinally.indexOf("cleanup-profile-photo") <
+      flowFinally.indexOf("cleanupDisposableMutationState"),
   );
   assert.ok(
     flowFinally.indexOf("delete-stored-memory-source-chat") <

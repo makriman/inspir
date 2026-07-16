@@ -33,17 +33,23 @@ const snapshotTableScanLimit = 90_001;
 const indexedTableScanLimit = 16_662;
 const suppressionFeedbackScanLimit = 16_662;
 const preCardinalityReadReserve = 600_000;
-export const MAXIMUM_PROJECTED_RUNTIME_MIGRATION_READS = 1_000_000;
+const MAXIMUM_PROJECTED_RUNTIME_MIGRATION_READS = 1_000_000;
 export const MAXIMUM_PROJECTED_RUNTIME_MIGRATION_WRITES = 50_000;
 export const RUNTIME_MIGRATION_SNAPSHOT_READ_PASSES = 3;
 export const RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ = 5_000;
-export const RUNTIME_MIGRATION_FIXED_DDL_ROWS_WRITTEN = 16;
+const RUNTIME_MIGRATION_FIXED_DDL_ROWS_WRITTEN = 16;
 // This fixed 0016 reserve is deliberately inclusive: the settings-column
 // addition, empty cleanup-outbox table/index, and final app_metadata completion
 // sentinel all fit inside it. The populated suppression backfill is projected
 // separately from measured cardinalities below.
 export const RUNTIME_MIGRATION_0016_FIXED_ROWS_READ = 1_000;
 export const RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN = 32;
+// The fresh-cutover marker is appended as one insert-only app_metadata row in
+// the same Wrangler file transaction as 0016. Keep its table read plus table
+// and implicit TEXT-primary-key writes visible rather than hiding them inside
+// the platform-dependent schema cushion above.
+export const RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_READ = 1;
+export const RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_WRITTEN = 2;
 export const RUNTIME_MIGRATION_BUDGET_EVIDENCE_KIND =
   "d1-runtime-migrations-0013-0016-budget" as const;
 export const RUNTIME_MIGRATION_BUDGET_REPORT =
@@ -76,6 +82,8 @@ export type RuntimeMigrationProjection = {
   suppressionBackfillRowsWritten: number;
   outboxSchemaRowsRead: number;
   outboxSchemaRowsWritten: number;
+  freshCutoverMarkerRowsRead: number;
+  freshCutoverMarkerRowsWritten: number;
 };
 
 export type D1CardinalityResult = {
@@ -218,7 +226,7 @@ export function writeRuntimeMigrationBudgetReport(
   return reportPath;
 }
 
-export function runtimeMigrationBudgetReportPath(backupDir: string) {
+function runtimeMigrationBudgetReportPath(backupDir: string) {
   return path.join(cloudflareDir(path.resolve(backupDir)), RUNTIME_MIGRATION_BUDGET_REPORT);
 }
 
@@ -329,6 +337,10 @@ export function projectRuntimeMigrationUsage(
   // the mask column addition and completion sentinel, not only the outbox schema.
   const outboxSchemaRowsRead = RUNTIME_MIGRATION_0016_FIXED_ROWS_READ;
   const outboxSchemaRowsWritten = RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN;
+  const freshCutoverMarkerRowsRead =
+    RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_READ;
+  const freshCutoverMarkerRowsWritten =
+    RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_WRITTEN;
   // DDL accounting is platform-dependent. Reserve four reads and three writes
   // per indexed row, then three full snapshot passes for the reserved-domain
   // exclusion lookups in 0014 plus fixed verification room.
@@ -344,6 +356,7 @@ export function projectRuntimeMigrationUsage(
       RUNTIME_MIGRATION_FIXED_VERIFICATION_ROWS_READ,
       suppressionBackfillRowsRead,
       outboxSchemaRowsRead,
+      freshCutoverMarkerRowsRead,
     ],
     "projected migration reads",
   );
@@ -353,6 +366,7 @@ export function projectRuntimeMigrationUsage(
       RUNTIME_MIGRATION_FIXED_DDL_ROWS_WRITTEN,
       suppressionBackfillRowsWritten,
       outboxSchemaRowsWritten,
+      freshCutoverMarkerRowsWritten,
     ],
     "projected migration writes",
   );
@@ -377,6 +391,8 @@ export function projectRuntimeMigrationUsage(
     suppressionBackfillRowsWritten,
     outboxSchemaRowsRead,
     outboxSchemaRowsWritten,
+    freshCutoverMarkerRowsRead,
+    freshCutoverMarkerRowsWritten,
   };
 }
 
@@ -512,8 +528,14 @@ function parseWranglerJson(output: string): unknown {
   } catch {
     const first = trimmed.indexOf("[");
     const last = trimmed.lastIndexOf("]");
-    if (first === -1 || last <= first) throw new Error("Could not parse Wrangler D1 JSON output.");
-    return JSON.parse(trimmed.slice(first, last + 1)) as unknown;
+    if (first === -1 || last <= first) {
+      throw new Error("Could not parse Wrangler D1 JSON output.");
+    }
+    try {
+      return JSON.parse(trimmed.slice(first, last + 1)) as unknown;
+    } catch {
+      throw new Error("Could not parse Wrangler D1 JSON output.");
+    }
   }
 }
 

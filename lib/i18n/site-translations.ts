@@ -32,6 +32,13 @@ type CuratedTranslationPack = {
 const buildTimeBundleCache = new Map<string, Promise<TranslationBundle | null>>();
 const buildTimePackCache = new Map<string, Promise<CuratedTranslationPack[]>>();
 
+class CuratedTranslationSnapshotUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "CuratedTranslationSnapshotUnavailableError";
+  }
+}
+
 export function getSiteTranslationNamespaces(pathname: string) {
   return getRuntimeSiteTranslationNamespacesForPath(pathname);
 }
@@ -128,6 +135,9 @@ function readBuildTimeCuratedPacksForNamespace(language: SupportedLanguage, name
   if (cached) return cached;
 
   const promise = readBuildTimeCuratedPackFiles(language, namespace).catch((error) => {
+    if (error instanceof CuratedTranslationSnapshotUnavailableError) {
+      throw error;
+    }
     console.warn("site_translation_curated_pack_unavailable", {
       language,
       namespace,
@@ -140,9 +150,21 @@ function readBuildTimeCuratedPacksForNamespace(language: SupportedLanguage, name
 }
 
 async function readBuildTimeCuratedPackFiles(language: SupportedLanguage, namespace: string) {
-  const [{ readFile, readdir }, path] = await Promise.all([import("node:fs/promises"), import("node:path")]);
+  const [{ readFile, readdir, stat }, path] = await Promise.all([import("node:fs/promises"), import("node:path")]);
   const locale = languageConfigs[language].prefix || languageConfigs[language].locale;
-  const languageDir = path.join(process.cwd(), "translations/curated", locale);
+  const curatedRoot = path.join(process.cwd(), "translations/curated");
+  try {
+    if (!(await stat(curatedRoot)).isDirectory()) {
+      throw new Error("not a directory");
+    }
+  } catch (error) {
+    throw new CuratedTranslationSnapshotUnavailableError(
+      `Curated translation root is unavailable; refusing a partial build snapshot: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  }
+  const languageDir = path.join(curatedRoot, locale);
   let files: string[];
   try {
     files = await readdir(languageDir);

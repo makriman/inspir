@@ -12,6 +12,7 @@ import {
   materializeStaticMarketingAssets,
   validateStaticMarketingAssetRelease,
 } from "../scripts/cloudflare/materialize-static-marketing-assets";
+import { expectedLocalizedStaticAssetPaths } from "../scripts/cloudflare/static-asset-release-contract";
 
 const fixtureIcon = Buffer.from("89504e470d0a1a0a0000000d49484452", "hex");
 
@@ -105,6 +106,7 @@ test("OpenNext prerenders become direct Free-plan static assets", () => {
 test("default release materialization seals the exact complete legacy contract", () => {
   const cwd = makeFixture();
   try {
+    populateExpectedLocalizedCache(cwd);
     const report = materializeStaticMarketingAssets(cwd);
     const validation = validateStaticMarketingAssetRelease(cwd, {
       nowMs: Date.parse(report.createdAt),
@@ -124,6 +126,15 @@ test("default release materialization seals the exact complete legacy contract",
     fs.rmSync(cwd, { recursive: true, force: true });
   }
 });
+
+function populateExpectedLocalizedCache(cwd: string) {
+  for (const assetPath of expectedLocalizedStaticAssetPaths) {
+    const cacheKey = assetPath.slice(0, -"/index.html".length);
+    const cachePath = path.join(cwd, ".open-next/cache/build-test", `${cacheKey}.cache`);
+    if (fs.existsSync(cachePath)) continue;
+    writeCache(cwd, cacheKey, app(`<h1>${cacheKey}</h1>`));
+  }
+}
 
 test("static materialization enforces the internal 5,000-file release limit", () => {
   assert.equal(STATIC_ASSET_RELEASE_FILE_LIMIT, 5_000);

@@ -12,6 +12,8 @@ import {
 import {
   RUNTIME_MIGRATION_0016_FIXED_ROWS_READ,
   RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN,
+  RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_READ,
+  RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_WRITTEN,
   evaluateRuntimeMigrationBudget,
   loadRuntimeMigrationCardinalities,
   projectRuntimeMigrationUsage,
@@ -110,6 +112,35 @@ test("D1 insights parsing rejects malformed or truncated usage", () => {
   );
 });
 
+test("D1 budget JSON fallbacks never echo malformed private output", () => {
+  const sentinelSecret = "sentinel-secret-private-d1-output";
+  const malformed = `wrangler banner\n[{"private":"${sentinelSecret}"} BROKEN]`;
+  const runner: WranglerRunner = () => malformed;
+  const runs = [
+    () =>
+      loadAccountD1DailyUsage(
+        new Date("2026-07-11T12:00:00.000Z"),
+        runner,
+      ),
+    () => loadRuntimeMigrationCardinalities(runner),
+  ];
+
+  for (const run of runs) {
+    let captured: unknown;
+    try {
+      run();
+    } catch (error) {
+      captured = error;
+    }
+    assert.ok(captured instanceof Error);
+    assert.equal(Object.hasOwn(captured, "cause"), false);
+    const publicFailure =
+      `${captured.name}\n${captured.message}\n${captured.stack ?? ""}`;
+    assert.equal(publicFailure.includes(sentinelSecret), false);
+    assert.equal(publicFailure.includes(malformed), false);
+  }
+});
+
 test("D1 usage aggregation covers every account database without retaining query text", () => {
   const calls: string[][] = [];
   const runner: WranglerRunner = (args) => {
@@ -193,8 +224,8 @@ test("runtime migration projection is conservative and bounded", () => {
       48_307,
     ),
     {
-      rowsRead: 246_978,
-      rowsWritten: 7_498,
+      rowsRead: 246_979,
+      rowsWritten: 7_500,
       indexedRows: 2_350,
       runtimeIndexRows: 1_750,
       activityPartialUniqueIndexRows: 600,
@@ -203,6 +234,10 @@ test("runtime migration projection is conservative and bounded", () => {
       suppressionBackfillRowsWritten: 400,
       outboxSchemaRowsRead: RUNTIME_MIGRATION_0016_FIXED_ROWS_READ,
       outboxSchemaRowsWritten: RUNTIME_MIGRATION_0016_FIXED_ROWS_WRITTEN,
+      freshCutoverMarkerRowsRead:
+        RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_READ,
+      freshCutoverMarkerRowsWritten:
+        RUNTIME_MIGRATION_FRESH_0016_MARKER_ROWS_WRITTEN,
     },
   );
   assert.throws(

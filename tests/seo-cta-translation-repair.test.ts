@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import test from "node:test";
+import {
+  assertFullTranslationCompletionTestRegistration,
+  fullTranslationCompletionTest,
+} from "./helpers/full-translation-completion-test";
 import {
   defaultLanguage,
   supportedLanguages,
@@ -20,38 +25,70 @@ import { getSiteTranslationSource } from "../lib/i18n/site-source";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
 import { isTranslationFieldLikelyFluent } from "../lib/i18n/translation-quality";
 import {
+  LONG_TAIL_NLLB_EXECUTION_PROFILE_SHA256,
+  LONG_TAIL_TRANSLATION_PIPELINE_VERSION,
+} from "../scripts/long-tail-nllb-execution-profile";
+import {
+  LEGACY_MARKETING_SITE_EXPECTED_SOURCE_HASH,
+  LEGACY_MARKETING_SITE_NAMESPACE,
+  buildLegacyMarketingSiteComposedCorpus,
+  type LegacyMarketingSiteContract,
+} from "../lib/i18n/legacy-marketing-site-contract";
+import {
   assertReadOnlyRemoteTranslationVerificationArgs,
-  abortedPrewriteRecoveryOperationId,
+  assertTranslationReconciliationCliPhase,
   assertRepairReadBudget,
   assertRepairWriteBudget,
   assertD1SqlStatementSize,
   assertD1TranslationPayloadSize,
   assertRepairArtifactEvidenceUnchanged,
+  assertTranslationRepairPayloadInputsUnchanged,
   assertRemoteRepairBillingWithinMaximum,
+  assertRemoteTranslationSequenceGate,
+  assertExactProductionD1StorageIdentity,
   buildAtomicSeoCtaRepairSql,
+  buildCanonicalLegacyMarketingCleanupSql,
+  buildExactCuratedPackPayload,
+  buildExactD1StorageAdmission,
+  buildExactTranslationPartitionGuardSql,
+  buildExactTranslationStorageRows,
+  buildExpectedCuratedCte,
   buildRepairArtifactManifest,
   buildNativeMaintenanceUploadArgs,
   buildPinnedWorkerVersionDeployArgs,
   buildCuratedNamespaceRepairPlan,
   buildCuratedNamespaceRepairSql,
+  buildCuratedRepairVerificationChunks,
   buildCuratedRepairVerificationSql,
   buildMainAppRepairPlan,
+  buildMainAppRepairVerificationChunks,
+  buildMarketingSiteRepairPlan,
+  buildMarketingSiteRepairVerificationChunks,
   buildRemoteRepairVerificationSql,
+  buildSiteSourceStorageEntries,
   decideImportRecovery,
   confirmPinnedWorkerVersion,
+  curatedRepairVerificationQueryCount,
   getExactCuratedPackIdentifiers,
+  getGrandfatheredEntryCuratedPackIdentifiers,
+  isGrandfatheredEntryCuratedPackIdentifier,
   isMainAppWorkbenchPackFile,
   largestSqlStatementBytes,
   loadAndValidateTranslationSeed,
   loadCuratedNamespaceRepairRows,
   loadMainAppRepairRows,
+  loadReleasedMarketingSiteRepairCorpus,
+  mainAppRepairVerificationQueryCount,
+  marketingSiteRepairVerificationQueryCount,
   nativeD1MaintenanceWorkerSource,
   nativeWranglerDeployEnv,
   parseD1Billing,
+  parseCuratedPack,
   projectRepairBilledRowReads,
   projectRepairBilledRowWrites,
   productionMaintenanceRepairRunId,
   refineAbortedPrewriteTranslationRepairReservation,
+  revalidateExactD1StorageAdmission,
   repairSeoCtaTranslations,
   readPrivateWorkerDeployEvidence,
   splitSqlStatements,
@@ -60,22 +97,40 @@ import {
   validateExistingCuratedTargetIdentifiers,
   validateExistingMainAppTargetIdentifiers,
   validateNativeMaintenanceProbe,
+  validateRepairSql,
   validateStaticRepairTargetIdentifiers,
   validateSiteSourceManifestFreshness,
   validateWorkerDeployEvidenceForRepair,
   verifyCuratedRepairResultRows,
+  verifyCuratedRepairResultChunks,
   verifyMainAppRepairResultRows,
+  verifyMainAppRepairResultChunks,
+  verifyMarketingSiteRepairResultRows,
+  verifyMarketingSiteRepairResultChunks,
   verifyRemoteTranslationDrift,
   writePreWriteDiagnosticEvidence,
   type CuratedNamespaceRepairRow,
   type MainAppRepairRow,
+  type MarketingSiteRepairCorpus,
   type RemoteTranslationDriftReport,
 } from "../scripts/cloudflare/repair-seo-cta-translations";
+import type { WorkerDeployArtifactEvidence } from "../scripts/cloudflare/worker-deploy-evidence";
+import {
+  buildWorkerCandidateUploadEvidence,
+  workerCandidateUploadEvidencePath,
+  workerCandidateEvidenceSha256,
+  writeWorkerCandidateEvidence,
+} from "../scripts/cloudflare/worker-candidate-release-evidence";
+import { protectLongTailSourceText } from "../scripts/generate-long-tail-translations";
 import {
   readD1ReleaseBudgetLedger,
   reserveD1ReleaseBudget,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
-import type { WranglerRunner } from "../scripts/cloudflare/migration-config";
+import {
+  D1_DATABASE_ID,
+  D1_DATABASE_NAME,
+  type WranglerRunner,
+} from "../scripts/cloudflare/migration-config";
 import {
   PRODUCTION_VALIDATION_LOCK_KEY,
   PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ,
@@ -87,11 +142,179 @@ import {
   buildSiteTranslationSourceSyncPlan,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+  parseD1SourceSnapshotBilledRowReads,
   parseD1SourceSnapshotResultSets,
   syncSiteTranslationSources,
 } from "../scripts/cloudflare/sync-site-translation-sources";
 
 const repairCandidateVersionId = "22222222-2222-4222-8222-222222222222";
+const repairServiceBaselineVersionId = "11111111-1111-4111-8111-111111111111";
+let cachedMarketingSiteRepairCorpus: MarketingSiteRepairCorpus | undefined;
+let cachedSyntheticMarketingSiteFixture:
+  | Readonly<{
+      contract: LegacyMarketingSiteContract;
+      release: MarketingSiteRepairCorpus;
+    }>
+  | undefined;
+
+test("translation release gate requires canonical uploaded-inactive identity and sole-active baseline", () => {
+  const backupDir = path.resolve("/tmp/inspir-translation-sequence");
+  const cwd = path.resolve("/tmp/inspir-translation-source");
+  const git = {
+    head: "a".repeat(40),
+    upstream: "a".repeat(40),
+    upstreamRef: "origin/codex/release",
+  };
+  const artifacts: WorkerDeployArtifactEvidence = {
+    sourceFingerprint: {
+      sha256: "b".repeat(64),
+      fileCount: 1,
+      files: [{ file: "package.json", sha256: "c".repeat(64), bytes: 1 }],
+    },
+    workerSourceSha256: "d".repeat(64),
+    wranglerConfigSha256: "e".repeat(64),
+    assetManifest: {
+      root: path.join(cwd, ".open-next/assets"),
+      sha256: "f".repeat(64),
+      fileCount: 1,
+      bytes: 1,
+    },
+  };
+  const upload = translationUploadEvidence(backupDir, git, artifacts);
+  let bindingChecks = 0;
+  const result = assertRemoteTranslationSequenceGate(
+    {
+      backupDir,
+      candidateVersionId: repairCandidateVersionId,
+      cwd,
+    },
+    {
+      readUploadEvidence: () => upload,
+      readGitIdentity: () => git,
+      buildArtifactEvidence: () => artifacts,
+      readActiveVersion: () => repairServiceBaselineVersionId,
+      assertCurrentReleaseBinding: ({ currentRelease }) => {
+        bindingChecks += 1;
+        assert.equal(currentRelease.phase, "uploaded-inactive");
+        assert.equal(currentRelease.uploadEvidenceSha256, upload.sha256);
+      },
+      validateVectorizeReadiness: (input) => {
+        assert.equal(input.requiredPhase, "uploaded-inactive");
+        assert.equal(
+          input.currentRelease.soleServingVersionId,
+          repairServiceBaselineVersionId,
+        );
+        return { createdAt: "2026-07-15T10:01:00.000Z" };
+      },
+      validateTopicReconciliation: ({ currentRelease }) => {
+        assert.equal(
+          currentRelease.targetCandidateVersionId,
+          repairCandidateVersionId,
+        );
+        return {
+          createdAt: "2026-07-15T10:02:00.000Z",
+          vectorizeReadinessCreatedAt: "2026-07-15T10:01:00.000Z",
+        };
+      },
+    },
+  );
+  assert.equal(bindingChecks, 1);
+  assert.equal(result.currentRelease.phase, "uploaded-inactive");
+  assert.equal(
+    result.currentRelease.targetCandidateVersionId,
+    repairCandidateVersionId,
+  );
+  assert.equal(
+    result.currentRelease.serviceBaselineVersionId,
+    repairServiceBaselineVersionId,
+  );
+
+  assert.throws(
+    () =>
+      assertRemoteTranslationSequenceGate(
+        { backupDir, candidateVersionId: repairCandidateVersionId, cwd },
+        {
+          readUploadEvidence: () => upload,
+          readGitIdentity: () => git,
+          buildArtifactEvidence: () => artifacts,
+          readActiveVersion: () => repairCandidateVersionId,
+        },
+      ),
+    /service baseline.*candidate.*remains inactive/,
+  );
+});
+
+function releasedMarketingSiteRepairCorpus() {
+  cachedMarketingSiteRepairCorpus ??= loadReleasedMarketingSiteRepairCorpus();
+  return cachedMarketingSiteRepairCorpus;
+}
+
+function syntheticMarketingSiteRepairFixture() {
+  if (cachedSyntheticMarketingSiteFixture) {
+    return cachedSyntheticMarketingSiteFixture;
+  }
+  const source = getSiteTranslationSource("marketing-shell");
+  const sourceKey = "site.d0d9118568f5027bc1";
+  const sourceText = source.sourceStrings[sourceKey];
+  assert.ok(sourceText);
+  const syntheticSourceStrings = Object.freeze({ [sourceKey]: sourceText });
+  const identifiers = getExactCuratedPackIdentifiers().filter(
+    (identifier) => identifier.namespace === "marketing-shell",
+  );
+  assert.equal(identifiers.length, 69);
+  const payloads = identifiers.map((identifier) => {
+    const completePayload = buildExactCuratedPackPayload(
+      parseCuratedPack(identifier.file),
+      source.sourceStrings,
+      identifier,
+    );
+    const value = completePayload[sourceKey];
+    assert.ok(value);
+    return { language: identifier.language, payload: { [sourceKey]: value } };
+  });
+  const ownerByKey = Object.fromEntries(
+    Object.keys(syntheticSourceStrings).map((key) => [key, "marketing-shell"]),
+  );
+  const contract: LegacyMarketingSiteContract = Object.freeze({
+    namespace: LEGACY_MARKETING_SITE_NAMESPACE,
+    marketingSourceHash: source.sourceHash,
+    marketingSourceStrings: syntheticSourceStrings,
+    routeNamespaces: Object.freeze(["marketing-shell"]),
+    routeSourcesByNamespace: Object.freeze({
+      "marketing-shell": Object.freeze({
+        sourceHash: source.sourceHash,
+        sourceStrings: syntheticSourceStrings,
+      }),
+    }),
+    routeUnionSourceStrings: syntheticSourceStrings,
+    routeUnionHash: "a".repeat(64),
+    deltaSourceStrings: Object.freeze({}),
+    deltaHash: "b".repeat(64),
+    ownerByKey: Object.freeze(ownerByKey),
+    ownerMapHash: "c".repeat(64),
+  });
+  const corpus = buildLegacyMarketingSiteComposedCorpus({
+    contract,
+    deltaCorpusSha256: "d".repeat(64),
+    payloads,
+  });
+  const rows = Object.freeze(
+    corpus.payloads.map((payload) =>
+      Object.freeze({
+        namespace: LEGACY_MARKETING_SITE_NAMESPACE,
+        language: payload.language,
+        source_hash: contract.marketingSourceHash,
+        payload: payload.payloadJson,
+        model: corpus.identity.model,
+      }),
+    ),
+  );
+  cachedSyntheticMarketingSiteFixture = Object.freeze({
+    contract,
+    release: Object.freeze({ corpus, rows }),
+  });
+  return cachedSyntheticMarketingSiteFixture;
+}
 
 test("SEO CTA repair seed covers and validates every target language", () => {
   const translations = loadAndValidateTranslationSeed();
@@ -114,7 +337,7 @@ test("SEO CTA repair seed covers and validates every target language", () => {
   assert.equal(translations.get("Zulu"), "Zama izimodi ezivulekele wonke umuntu");
 });
 
-test("SEO CTA repair verifies final source hashes and SQL without touching D1", () => {
+fullTranslationCompletionTest("SEO CTA repair verifies final source hashes and SQL without touching D1", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-seo-cta-verify-"));
   try {
     const report = repairSeoCtaTranslations({
@@ -125,13 +348,28 @@ test("SEO CTA repair verifies final source hashes and SQL without touching D1", 
     assert.equal(report.ok, true);
     assert.equal(report.mode, "verify");
     assert.equal(report.translationCount, 69);
-    assert.equal(report.curatedTranslationRows, 691);
+    assert.equal(report.curatedTranslationRows, 8_556);
     assert.equal(report.curatedRepairLogicalRowWrites, report.curatedRepairStatements);
     assert.ok(report.curatedRepairStatements > report.curatedTranslationRows * 2);
     assert.ok(report.curatedPayloadBytes > 10_000_000);
     assert.ok(report.largestCuratedPayloadBytes > 100_000);
     assert.ok(report.largestCuratedPayloadBytes <= 2_000_000);
     assert.match(report.curatedCorpusSha256, /^[a-f0-9]{64}$/);
+    assert.equal(report.marketingSiteTranslationRows, 69);
+    assert.equal(
+      report.marketingSiteRepairLogicalRowWrites,
+      report.marketingSiteRepairStatements,
+    );
+    assert.ok(report.marketingSiteRepairStatements >= 138);
+    assert.ok(report.marketingSitePayloadBytes > 0);
+    assert.ok(report.largestMarketingSitePayloadBytes < 2_000_000);
+    assert.match(report.marketingSiteComposedCorpusSha256, /^[a-f0-9]{64}$/);
+    assert.match(report.marketingSiteDeltaCorpusSha256, /^[a-f0-9]{64}$/);
+    assert.match(
+      report.marketingSiteModel,
+      /^legacy-marketing-site-composed-v1:[a-f0-9]{64}$/,
+    );
+    assert.ok(report.largestMarketingSiteRepairStatementBytes <= 90_000);
     assert.equal(report.mainAppTranslationRows, 69);
     assert.equal(report.mainAppRepairLogicalRowWrites, report.mainAppRepairStatements);
     assert.ok(report.mainAppRepairStatements > 138);
@@ -147,17 +385,32 @@ test("SEO CTA repair verifies final source hashes and SQL without touching D1", 
     assert.equal(report.d1FileImportByteLimit, 5_000_000_000);
     assert.ok(report.atomicSqlBytes < report.d1FileImportByteLimit);
     assert.equal(report.executionMode, "single-transaction-wrangler-import");
-    assert.equal(report.projectionBasis, "cold-manifest");
+    assert.deepEqual(report.exactTranslationPartitions, {
+      curatedSiteRows: 8_556,
+      marketingSiteRows: 69,
+      siteRows: 8_625,
+      mainAppRows: 69,
+      finalRows: 8_694,
+    });
+    assert.equal(report.projectionBasis, "local-static-proof");
     assert.ok(
       (report.projectedBilledRowWrites ?? Number.POSITIVE_INFINITY) <=
         MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
     );
+    assert.ok(
+      (report.coldCombinedProjectedBilledRowWrites ?? 0) >
+        MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+    );
+    assert.equal(report.coldCombinedWriteBudgetAdmissible, false);
     assert.equal(
       report.projectedBilledRowWriteLimit,
       MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
     );
     assert.equal(report.manifestNamespacesVerified, 125);
-    assert.equal(report.sourceHashes["marketing-site"], "8fba4fae8adf717ba9de242b46c5b0f1861b2414209355280f36e25ae6992166");
+    assert.equal(
+      report.sourceHashes["marketing-site"],
+      LEGACY_MARKETING_SITE_EXPECTED_SOURCE_HASH,
+    );
     assert.equal(report.sourceHashes["route:chat-public"], "f5ef074ab3712ef9b40cb5fcbc794e9b7d42efd2089fc22400aeb280abce8689");
     assert.equal(report.sourceHashes["route:about"], "6aa44ee2349a660b840519a4fc03037976d4e26ee4ceb55d7d94e2959b211a99");
     assert.match(report.repairSqlSha256, /^[a-f0-9]{64}$/);
@@ -170,26 +423,19 @@ test("SEO CTA repair verifies final source hashes and SQL without touching D1", 
   }
 });
 
-test("SEO repair mirrors the exact 760-pack audited inventory without synthesizing gaps", () => {
+fullTranslationCompletionTest("SEO repair requires the exact 8,625-pack promoted inventory without synthesizing gaps", () => {
   const identifiers = getExactCuratedPackIdentifiers();
-  assert.equal(identifiers.length, 760);
+  assert.equal(identifiers.length, 8_625);
   assert.equal(
     identifiers.filter((identifier) => identifier.namespace === "main-app").length,
     69,
   );
   const rows = loadCuratedNamespaceRepairRows();
-  assert.equal(rows.length, 691);
+  assert.equal(rows.length, 8_556);
   assert.equal(rows.filter((row) => row.namespace === "marketing-shell").length, 69);
   assert.equal(rows.filter((row) => row.namespace === "route:home").length, 69);
   assert.equal(rows.filter((row) => row.namespace === "route:mission").length, 69);
-  assert.equal(rows.filter((row) => row.namespace === "route:about").length, 4);
-  assert.deepEqual(
-    rows
-      .filter((row) => row.namespace === "route:about")
-      .map((row) => row.language)
-      .sort(),
-    ["Arabic", "Hindi", "Malayalam", "Spanish"],
-  );
+  assert.equal(rows.filter((row) => row.namespace === "route:about").length, 69);
   assert.equal(
     rows.find((row) => row.namespace === "marketing-shell" && row.language === "Arabic")?.payload[
       "site.d0d9118568f5027bc1"
@@ -200,16 +446,16 @@ test("SEO repair mirrors the exact 760-pack audited inventory without synthesizi
   const plan = buildCuratedNamespaceRepairPlan(rows);
   const sql = buildCuratedNamespaceRepairSql(rows);
   assert.equal(sql, plan.sql);
-  assert.equal(plan.rows, 691);
-  assert.equal(plan.resetStatements, 691);
+  assert.equal(plan.rows, 8_556);
+  assert.equal(plan.resetStatements, 8_556);
   assert.ok(plan.patchStatements > plan.resetStatements);
   assert.equal(plan.logicalRowWrites, plan.resetStatements + plan.patchStatements);
   assert.match(plan.legacyPrerequisiteSql, /'route:home'/);
   assert.doesNotMatch(plan.legacyPrerequisiteSql, /VALUES\n  \('route:about'/);
   assert.doesNotMatch(plan.postLegacyCanonicalSql, /VALUES\n  \('route:home'/);
   assert.match(plan.postLegacyCanonicalSql, /'route:about'|'route:schools'/);
-  assert.equal(sql.match(/^INSERT INTO app_translations$/gm)?.length, 691);
-  assert.match(sql, /codex-curated-free-static-no-games-v6/);
+  assert.equal(sql.match(/^INSERT INTO app_translations$/gm)?.length, 8_556);
+  assert.match(sql, /codex-curated-free-static-no-games-v7/);
   assert.match(sql, /'route:mission'/);
   assert.match(sql, /'blog:ai-art-appreciation-guide'/);
   assert.match(sql, /json_patch\(payload, json\(/);
@@ -220,7 +466,316 @@ test("SEO repair mirrors the exact 760-pack audited inventory without synthesizi
   assert.doesNotMatch(sql, /created_at = excluded\.created_at/);
 });
 
-test("large curated route payloads rebuild through sorted sub-90KB JSON patches", () => {
+test("SEO repair accepts provenance-bound compact packs and rejects tampering or ambiguous shapes", () => {
+  const identifier = getExactCuratedPackIdentifiers().find(
+    (candidate) =>
+      candidate.namespace === "marketing-shell" && candidate.language === "Arabic",
+  );
+  assert.ok(identifier);
+  const source = getSiteTranslationSource("marketing-shell");
+  const original = parseCuratedPack(identifier.file);
+  const expectedPayload = buildExactCuratedPackPayload(
+    original,
+    source.sourceStrings,
+    identifier,
+  );
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-compact-curated-pack-"));
+  const compactFile = path.join(directory, "marketing-shell.json");
+  const tamperedFile = path.join(directory, "tampered.json");
+  const missingProvenanceFile = path.join(directory, "missing-provenance.json");
+  const ambiguousFile = path.join(directory, "ambiguous.json");
+  const invalidFile = path.join(directory, "invalid.json");
+  const staleProfileFile = path.join(directory, "stale-profile.json");
+
+  try {
+    const metadata = {
+      schemaVersion: 1,
+      language: identifier.language,
+      locale: original.locale,
+      namespace: identifier.namespace,
+      sourceHash: source.sourceHash,
+    } as const;
+    const promotedPack = buildTestPromotedCompactPack(
+      metadata,
+      expectedPayload,
+      source.sourceStrings,
+    );
+    fs.writeFileSync(
+      compactFile,
+      `${JSON.stringify(promotedPack, null, 2)}\n`,
+      "utf8",
+    );
+    const compact = parseCuratedPack(compactFile);
+    assert.equal(compact.entries, undefined);
+    assert.deepEqual(
+      buildExactCuratedPackPayload(compact, source.sourceStrings, identifier),
+      expectedPayload,
+    );
+
+    fs.writeFileSync(
+      staleProfileFile,
+      `${JSON.stringify(
+        buildTestPromotedCompactPack(
+          metadata,
+          expectedPayload,
+          source.sourceStrings,
+          "0".repeat(64),
+        ),
+        null,
+        2,
+      )}\n`,
+      "utf8",
+    );
+    assert.throws(
+      () => parseCuratedPack(staleProfileFile),
+      /provenance contract is invalid/,
+    );
+
+    fs.writeFileSync(
+      missingProvenanceFile,
+      `${JSON.stringify({ ...metadata, translations: expectedPayload }, null, 2)}\n`,
+      "utf8",
+    );
+    const missingProvenance = parseCuratedPack(missingProvenanceFile);
+    assert.throws(
+      () => buildExactCuratedPackPayload(
+        missingProvenance,
+        source.sourceStrings,
+        identifier,
+      ),
+      /missing immutable provenance/,
+    );
+
+    const tamperKey = "site.d0d9118568f5027bc1";
+    const originalValue = expectedPayload[tamperKey];
+    assert.ok(originalValue);
+    fs.writeFileSync(
+      tamperedFile,
+      `${JSON.stringify({
+        ...promotedPack,
+        translations: {
+          ...expectedPayload,
+          [tamperKey]: `${originalValue} الآن`,
+        },
+      }, null, 2)}\n`,
+      "utf8",
+    );
+    const tampered = parseCuratedPack(tamperedFile);
+    assert.throws(
+      () => buildExactCuratedPackPayload(tampered, source.sourceStrings, identifier),
+      /strict candidate preservation|candidate provenance drifted/,
+    );
+
+    fs.writeFileSync(
+      ambiguousFile,
+      `${JSON.stringify({
+        ...metadata,
+        entries: [],
+        translations: expectedPayload,
+      })}\n`,
+      "utf8",
+    );
+    assert.throws(
+      () => parseCuratedPack(ambiguousFile),
+      /exactly one translation representation/,
+    );
+
+    fs.writeFileSync(
+      invalidFile,
+      `${JSON.stringify({ ...metadata, translations: { invalid: 42 } })}\n`,
+      "utf8",
+    );
+    assert.throws(() => parseCuratedPack(invalidFile), /compact value is invalid/);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("entry-form curated packs are restricted to the exact 691-identifier grandfather allowlist", () => {
+  const grandfathered = getGrandfatheredEntryCuratedPackIdentifiers();
+  assert.equal(grandfathered.length, 691);
+  assert.equal(
+    new Set(
+      grandfathered.map(
+        (identifier) => `${identifier.namespace}\u0000${identifier.language}`,
+      ),
+    ).size,
+    691,
+  );
+  assert.ok(
+    grandfathered.every((identifier) =>
+      isGrandfatheredEntryCuratedPackIdentifier(identifier),
+    ),
+  );
+  assert.equal(
+    grandfathered.filter((identifier) => identifier.namespace === "marketing-shell")
+      .length,
+    69,
+  );
+  assert.equal(
+    grandfathered.filter((identifier) => identifier.namespace === "route:home")
+      .length,
+    69,
+  );
+  assert.equal(
+    grandfathered.filter((identifier) => identifier.namespace === "route:mission")
+      .length,
+    69,
+  );
+  for (const language of ["Arabic", "Spanish", "Hindi", "Malayalam"] as const) {
+    assert.equal(
+      grandfathered.filter((identifier) => identifier.language === language).length,
+      124,
+    );
+  }
+
+  const forbiddenEntryIdentifier = getExactCuratedPackIdentifiers().find(
+    (identifier) =>
+      identifier.namespace === "route:about" && identifier.language === "French",
+  );
+  assert.ok(forbiddenEntryIdentifier);
+  const source = getSiteTranslationSource("route:about");
+  assert.throws(
+    () =>
+      buildExactCuratedPackPayload(
+        {
+          schemaVersion: 1,
+          language: forbiddenEntryIdentifier.language,
+          locale: "fr",
+          namespace: forbiddenEntryIdentifier.namespace,
+          sourceHash: source.sourceHash,
+          model: "curated-quality-repair-v3",
+          entries: [],
+        },
+        source.sourceStrings,
+        forbiddenEntryIdentifier,
+      ),
+    /representation downgrade is forbidden|immutable compact provenance is required/,
+  );
+
+  const allowedEntryIdentifier = grandfathered.find(
+    (identifier) =>
+      identifier.namespace === "marketing-shell" && identifier.language === "Arabic",
+  );
+  assert.ok(allowedEntryIdentifier);
+  const allowedSource = getSiteTranslationSource("marketing-shell");
+  const allowedPack = parseCuratedPack(allowedEntryIdentifier.file);
+  assert.throws(
+    () =>
+      buildExactCuratedPackPayload(
+        { ...allowedPack, model: "unreviewed-entry-model" },
+        allowedSource.sourceStrings,
+        allowedEntryIdentifier,
+      ),
+    /model is not explicitly grandfathered/,
+  );
+});
+
+test("exact curated identifier contract is 124 site namespaces by 69 target languages", () => {
+  const identifiers = getExactCuratedPackIdentifiers();
+  const siteIdentifiers = identifiers.filter(
+    (identifier) => identifier.namespace !== mainAppTranslationNamespace,
+  );
+  assert.equal(identifiers.length, 8_625);
+  assert.equal(siteIdentifiers.length, 8_556);
+  assert.equal(
+    new Set(siteIdentifiers.map((identifier) => identifier.namespace)).size,
+    124,
+  );
+  assert.equal(
+    new Set(siteIdentifiers.map((identifier) => identifier.language)).size,
+    69,
+  );
+  assert.equal(
+    identifiers.filter((identifier) => identifier.namespace === mainAppTranslationNamespace)
+      .length,
+    69,
+  );
+  assert.equal(
+    siteIdentifiers.some((identifier) => identifier.namespace === "marketing-site"),
+    false,
+  );
+});
+
+test("full curated Cartesian identifiers compress below the D1 statement ceiling", () => {
+  const targetLanguages = supportedLanguages.filter(
+    (language) => language !== defaultLanguage,
+  );
+  const namespaces = Array.from(
+    { length: 124 },
+    (_, index) => `synthetic:namespace-${String(index).padStart(3, "0")}`,
+  );
+  const cartesian = namespaces.flatMap((namespace) =>
+    targetLanguages.map((language) => ({ namespace, language })),
+  );
+  const cte = buildExpectedCuratedCte(cartesian);
+  assert.match(cte, /CROSS JOIN expected_curated_languages/);
+  assert.ok(Buffer.byteLength(cte, "utf8") < 10_000);
+  assert.equal(cte.match(/synthetic:namespace-000/g)?.length, 1);
+
+  const sparse = buildExpectedCuratedCte([
+    { namespace: "route:a", language: "Arabic" },
+    { namespace: "route:b", language: "Spanish" },
+  ]);
+  assert.doesNotMatch(sparse, /CROSS JOIN/);
+  assert.match(sparse, /\('route:a', 'Arabic'\)/);
+  assert.match(sparse, /\('route:b', 'Spanish'\)/);
+});
+
+fullTranslationCompletionTest("final pre-import payload revalidation binds the exact curated and main-app corpora", () => {
+  const synthetic = buildSyntheticRemoteTranslationExpectations();
+  const marketingSite = synthetic.marketingSite;
+  const mainAppRows = loadMainAppRepairRows();
+  const expectedCuratedCorpusSha256 = testCuratedCorpusSha256(synthetic.curatedRows);
+  const expectedMarketingSiteCorpusSha256 =
+    marketingSite.corpus.identity.corpusSha256;
+  const expectedMainAppRepairSqlSha256 = testSha256(buildMainAppRepairPlan(mainAppRows).sql);
+  const evidence = assertTranslationRepairPayloadInputsUnchanged({
+    expectedCuratedCorpusSha256,
+    expectedMarketingSiteCorpusSha256,
+    expectedMainAppRepairSqlSha256,
+    loadCuratedRows: () => synthetic.curatedRows,
+    loadMarketingSite: () => marketingSite,
+    loadMainAppRows: () => mainAppRows,
+  });
+  assert.equal(evidence.curatedCorpusSha256, expectedCuratedCorpusSha256);
+  assert.equal(
+    evidence.marketingSiteCorpusSha256,
+    expectedMarketingSiteCorpusSha256,
+  );
+  assert.equal(evidence.mainAppRepairSqlSha256, expectedMainAppRepairSqlSha256);
+
+  const firstCurated = synthetic.curatedRows[0];
+  assert.ok(firstCurated);
+  const driftedCurated = [
+    { ...firstCurated, payload: { synthetic: "changed-after-initial-load" } },
+    ...synthetic.curatedRows.slice(1),
+  ];
+  assert.throws(
+    () => assertTranslationRepairPayloadInputsUnchanged({
+      expectedCuratedCorpusSha256,
+      expectedMarketingSiteCorpusSha256,
+      expectedMainAppRepairSqlSha256,
+      loadCuratedRows: () => driftedCurated,
+      loadMarketingSite: () => marketingSite,
+      loadMainAppRows: () => mainAppRows,
+    }),
+    /Curated translation corpus drifted before its D1 write/,
+  );
+  assert.throws(
+    () => assertTranslationRepairPayloadInputsUnchanged({
+      expectedCuratedCorpusSha256,
+      expectedMarketingSiteCorpusSha256,
+      expectedMainAppRepairSqlSha256,
+      loadCuratedRows: () => synthetic.curatedRows,
+      loadMarketingSite: () => marketingSite,
+      loadMainAppRows: () => [...mainAppRows].reverse(),
+    }),
+    /Main-app translation corpus drifted before its D1 write/,
+  );
+});
+
+fullTranslationCompletionTest("large curated route payloads rebuild through sorted sub-90KB JSON patches", () => {
   const rows = loadCuratedNamespaceRepairRows();
   const plan = buildCuratedNamespaceRepairPlan(rows);
   const row = rows.find(
@@ -267,7 +822,378 @@ test("large curated route payloads rebuild through sorted sub-90KB JSON patches"
   assert.equal(JSON.stringify(reconstructed), JSON.stringify(row.payload));
 });
 
-test("curated repair SQL rejects duplicate, stale, and incomplete UPSERT rows", () => {
+test("marketing-site corpus plans and verifies all 69 exact composed rows", () => {
+  const { contract, release } = syntheticMarketingSiteRepairFixture();
+  const plan = buildMarketingSiteRepairPlan(release, contract);
+  assert.equal(release.rows.length, 69);
+  assert.equal(plan.rows, 69);
+  assert.equal(plan.resetStatements, 69);
+  assert.equal(plan.logicalRowWrites, plan.resetStatements + plan.patchStatements);
+  assert.ok(plan.patchStatements >= 69);
+  assert.ok(plan.payloadBytes > 0);
+  assert.ok(plan.largestPayloadBytes > 0 && plan.largestPayloadBytes < 2_000_000);
+  assert.ok(plan.largestStatementBytes <= 90_000);
+  assert.equal(plan.corpusSha256, release.corpus.identity.corpusSha256);
+  assert.equal(plan.deltaCorpusSha256, release.corpus.identity.deltaCorpusSha256);
+  assert.equal(plan.model, release.corpus.identity.model);
+  assert.match(plan.sql, /marketing-site-cardinality-guard/);
+  assert.equal(plan.sql.match(/^INSERT INTO app_translations$/gm)?.length, 69);
+
+  const chunks = buildMarketingSiteRepairVerificationChunks(release, contract);
+  assert.equal(
+    chunks.reduce((total, chunk) => total + chunk.rows, 0),
+    69,
+  );
+  assert.equal(
+    chunks.length,
+    marketingSiteRepairVerificationQueryCount(release, contract),
+  );
+  assert.ok(chunks.every((chunk) => chunk.rows >= 1 && chunk.rows <= 16));
+  assert.ok(chunks.every((chunk) => chunk.sqlBytes <= 100_000));
+  assert.ok(chunks.every((chunk) => chunk.maxBufferBytes <= 16 * 1024 * 1024));
+
+  const databaseRows = release.rows.map(marketingSiteDatabaseResultRow);
+  const verified = verifyMarketingSiteRepairResultRows(
+    databaseRows,
+    release,
+    contract,
+  );
+  assert.equal(verified.rowsMatched, 69);
+  assert.equal(verified.corpusSha256, release.corpus.identity.corpusSha256);
+  assert.equal(verified.model, release.corpus.identity.model);
+  assert.equal(
+    verified.payloadBytesMatched,
+    release.rows.reduce(
+      (total, row) => total + Buffer.byteLength(row.payload, "utf8"),
+      0,
+    ),
+  );
+  const chunked = verifyMarketingSiteRepairResultChunks(
+    release,
+    (chunk) => chunk.expectedRows.map(marketingSiteDatabaseResultRow),
+    contract,
+  );
+  assert.equal(chunked.rowsMatched, 69);
+  assert.equal(chunked.queryCount, chunks.length);
+
+  const first = databaseRows[0];
+  assert.ok(first);
+  assert.throws(
+    () => verifyMarketingSiteRepairResultRows([], release, contract),
+    /row cardinality failed: 0\/69/,
+  );
+  assert.throws(
+    () =>
+      verifyMarketingSiteRepairResultRows(
+        [...databaseRows, first],
+        release,
+        contract,
+      ),
+    /row cardinality failed: 70\/69/,
+  );
+  assert.throws(
+    () =>
+      verifyMarketingSiteRepairResultRows(
+        [{ ...first, source_hash: "stale-source-hash" }, ...databaseRows.slice(1)],
+        release,
+        contract,
+      ),
+    /metadata is stale|source hash|database row|differs|identity/i,
+  );
+  assert.throws(
+    () =>
+      verifyMarketingSiteRepairResultRows(
+        [{ ...first, payload: "{}" }, ...databaseRows.slice(1)],
+        release,
+        contract,
+      ),
+    /payload|database row|differs|identity/i,
+  );
+  assert.throws(
+    () =>
+      verifyMarketingSiteRepairResultRows(
+        [{ ...first, model: "tampered-model" }, ...databaseRows.slice(1)],
+        release,
+        contract,
+      ),
+    /metadata is stale|model|database row|differs|identity/i,
+  );
+});
+
+test("exact D1 translation storage projection contains only 8,556 curated, 69 marketing, and 69 main rows", () => {
+  const expected = buildSyntheticTranslationRows();
+  const marketingSite = syntheticMarketingSiteRepairFixture();
+  const rows = buildExactTranslationStorageRows({
+    curatedRows: expected.curatedRows,
+    marketingSite: marketingSite.release,
+    mainAppRows: expected.mainAppRows,
+    marketingContract: marketingSite.contract,
+  });
+  assert.equal(rows.length, 8_694);
+  assert.equal(rows.filter((row) => row.namespace === "marketing-site").length, 69);
+  assert.equal(rows.filter((row) => row.namespace === "main-app").length, 69);
+  assert.equal(
+    rows.filter(
+      (row) => row.namespace !== "marketing-site" && row.namespace !== "main-app",
+    ).length,
+    8_556,
+  );
+  assert.equal(
+    new Set(rows.map((row) => `${row.namespace}\u0000${row.language}`)).size,
+    8_694,
+  );
+  const guardSql = buildExactTranslationPartitionGuardSql();
+  assert.match(guardSql, /COUNT\(\*\).*8694/);
+  assert.match(guardSql, /namespace = 'marketing-site'\) = 69/);
+  assert.match(guardSql, /namespace = 'main-app'\) = 69/);
+  assert.match(guardSql, /exact-translation-partition-guard-failed/);
+  assert.ok(largestSqlStatementBytes(guardSql) <= 100_000);
+
+  const database = new DatabaseSync(":memory:");
+  try {
+    database.exec(
+      "CREATE TABLE app_translations (" +
+        "namespace TEXT NOT NULL, language TEXT NOT NULL, " +
+        "PRIMARY KEY(namespace, language))",
+    );
+    const insert = database.prepare(
+      "INSERT INTO app_translations(namespace, language) VALUES (?1, ?2)",
+    );
+    database.exec("BEGIN");
+    for (const row of rows) insert.run(row.namespace, row.language);
+    database.exec("COMMIT");
+    assert.doesNotThrow(() => database.exec(guardSql));
+
+    insert.run("unexpected:namespace", "English");
+    assert.throws(
+      () => database.exec(guardSql),
+      /malformed JSON|exact-translation-partition-guard-failed/,
+    );
+    database
+      .prepare(
+        "DELETE FROM app_translations WHERE namespace = ?1 AND language = ?2",
+      )
+      .run("unexpected:namespace", "English");
+    const missing = rows[0];
+    assert.ok(missing);
+    database
+      .prepare(
+        "DELETE FROM app_translations WHERE namespace = ?1 AND language = ?2",
+      )
+      .run(missing.namespace, missing.language);
+    assert.throws(
+      () => database.exec(guardSql),
+      /malformed JSON|exact-translation-partition-guard-failed/,
+    );
+  } finally {
+    database.close();
+  }
+});
+
+test("exact 8,694-row storage admission is formula-exact and rejects second-read database or capacity drift", () => {
+  const expected = buildSyntheticTranslationRows();
+  const marketingSite = syntheticMarketingSiteRepairFixture();
+  const translationRows = buildExactTranslationStorageRows({
+    curatedRows: expected.curatedRows,
+    marketingSite: marketingSite.release,
+    mainAppRows: expected.mainAppRows,
+    marketingContract: marketingSite.contract,
+  });
+  const sourceEntries = buildSiteSourceStorageEntries();
+  const database = {
+    databaseName: D1_DATABASE_NAME,
+    databaseUuid: D1_DATABASE_ID,
+    databaseSizeBytes: 1_000_000,
+    tableCount: 24,
+  } as const;
+  assert.equal(assertExactProductionD1StorageIdentity(database), database);
+
+  const admission = buildExactD1StorageAdmission({
+    database,
+    translationRows,
+    sourceEntries,
+  });
+  assert.equal(admission.databaseName, D1_DATABASE_NAME);
+  assert.equal(admission.databaseUuid, D1_DATABASE_ID);
+  assert.equal(admission.currentTableCount, database.tableCount);
+  assert.equal(admission.plannedTranslationRows, 8_694);
+  assert.equal(
+    admission.plannedSourceRows,
+    sourceEntries.length +
+      sourceEntries.reduce(
+        (count, entry) => count + Object.keys(entry.sourceStrings).length,
+        0,
+      ),
+  );
+  assert.equal(
+    admission.plannedPersistentBytes,
+    admission.plannedTranslationRowBytes +
+      admission.plannedTranslationIndexBytes +
+      admission.plannedSourceRowAndIndexBytes,
+  );
+  assert.equal(
+    admission.projectedGrowthBytes,
+    Math.ceil((admission.plannedPersistentBytes * 3) / 2) +
+      admission.fixedImportReserveBytes,
+  );
+  assert.equal(
+    admission.projectedFinalDatabaseBytes,
+    database.databaseSizeBytes + admission.projectedGrowthBytes,
+  );
+  assert.ok(admission.plannedSourceMaximumRowBytes <= 2_000_000);
+  assert.equal(admission.admissible, true);
+
+  const secondRead = {
+    ...database,
+    databaseSizeBytes: database.databaseSizeBytes + 4_096,
+  };
+  const revalidated = revalidateExactD1StorageAdmission({
+    initialDatabase: database,
+    currentDatabase: secondRead,
+    translationRows,
+    sourceEntries,
+  });
+  assert.equal(revalidated.currentDatabaseBytes, secondRead.databaseSizeBytes);
+  assert.equal(
+    revalidated.projectedFinalDatabaseBytes,
+    secondRead.databaseSizeBytes + revalidated.projectedGrowthBytes,
+  );
+
+  assert.throws(
+    () =>
+      revalidateExactD1StorageAdmission({
+        initialDatabase: database,
+        currentDatabase: {
+          ...secondRead,
+          databaseUuid: "11111111-2222-4333-8444-555555555555",
+        },
+        translationRows,
+        sourceEntries,
+      }),
+    /database identity changed before import/,
+  );
+  assert.throws(
+    () =>
+      revalidateExactD1StorageAdmission({
+        initialDatabase: database,
+        currentDatabase: {
+          ...secondRead,
+          databaseSizeBytes: admission.admissionCeilingBytes,
+        },
+        translationRows,
+        sourceEntries,
+      }),
+    /exceeds the Workers Free storage safety ceiling/,
+  );
+});
+
+test("remote repair orders free-storage admission and exact SQL attestation around the sole D1 import", () => {
+  const source = fs.readFileSync(
+    path.resolve("scripts/cloudflare/repair-seo-cta-translations.ts"),
+    "utf8",
+  );
+  const freeze = source.indexOf(
+    "deployPinnedWorkerVersion(\n      maintenanceVersionId,",
+  );
+  const targetValidation = source.indexOf(
+    "staticRepairRows = validateRemoteRepairTargets(",
+  );
+  const remotePlan = source.indexOf(
+    "remoteAtomicSql = buildAtomicSeoCtaRepairSql(sourceSync.sql, completeRepairSql);",
+  );
+  const exactRows = source.indexOf(
+    "const exactTranslationStorageRows = buildExactTranslationStorageRows({",
+  );
+  const sourceEntries = source.indexOf(
+    "const exactSourceStorageEntries = buildSiteSourceStorageEntries();",
+    exactRows,
+  );
+  const initialStorageRead = source.indexOf(
+    "const initialD1DatabaseStorageInfo = assertExactProductionD1StorageIdentity(",
+    sourceEntries,
+  );
+  const storageAdmission = source.indexOf(
+    "d1StorageAdmission = buildExactD1StorageAdmission({",
+    initialStorageRead,
+  );
+  const timeTravel = source.indexOf(
+    "timeTravelBookmark = parseD1TimeTravelBookmark(",
+  );
+  const prewrite = source.indexOf(
+    "preWriteEvidencePath = writePreWriteDiagnosticEvidence({",
+  );
+  const temporaryWrite = source.indexOf(
+    "const atomicSqlPath = writeTemporarySqlFile(",
+  );
+  const initialAttestation = source.indexOf(
+    "const initialAtomicSqlAttestation = attestTemporarySqlFile(",
+    temporaryWrite,
+  );
+  const storageRevalidation = source.indexOf(
+    "d1StorageAdmission = revalidateExactD1StorageAdmission({",
+    initialAttestation,
+  );
+  const immediateStorageRead = source.indexOf(
+    "currentDatabase: readD1DatabaseStorageInfo(runWrangler),",
+    storageRevalidation,
+  );
+  const immediatelyBefore = source.indexOf(
+    "const immediatelyBeforeImport = attestTemporarySqlFile(",
+    storageRevalidation,
+  );
+  const importCall = source.indexOf(
+    "importOutput = runBoundedMutationWrangler(",
+    immediatelyBefore,
+  );
+  const immediatelyAfter = source.indexOf(
+    "immediatelyAfterImport = attestTemporarySqlFile(",
+    importCall,
+  );
+  const exactCleanup = source.indexOf(
+    "removeAttestedTemporarySqlFile(\n          immediatelyAfterImport,",
+    immediatelyAfter,
+  );
+  for (const offset of [
+    freeze,
+    targetValidation,
+    remotePlan,
+    storageAdmission,
+    exactRows,
+    sourceEntries,
+    initialStorageRead,
+    timeTravel,
+    prewrite,
+    temporaryWrite,
+    initialAttestation,
+    storageRevalidation,
+    immediateStorageRead,
+    immediatelyBefore,
+    importCall,
+    immediatelyAfter,
+    exactCleanup,
+  ]) {
+    assert.ok(offset >= 0);
+  }
+  assert.ok(freeze < targetValidation);
+  assert.ok(targetValidation < remotePlan);
+  assert.ok(remotePlan < exactRows && exactRows < sourceEntries);
+  assert.ok(sourceEntries < initialStorageRead && initialStorageRead < storageAdmission);
+  assert.ok(storageAdmission < timeTravel && timeTravel < prewrite);
+  assert.ok(prewrite < temporaryWrite && temporaryWrite < initialAttestation);
+  assert.ok(initialAttestation < storageRevalidation);
+  assert.ok(
+    storageRevalidation < immediateStorageRead &&
+      immediateStorageRead < immediatelyBefore,
+  );
+  assert.ok(immediatelyBefore < importCall && importCall < immediatelyAfter);
+  assert.ok(immediatelyAfter < exactCleanup);
+  assert.doesNotMatch(
+    source.slice(temporaryWrite, source.indexOf("  } catch (error) {", exactCleanup)),
+    /fs\.rmSync\(path\.dirname\(atomicSqlPath\)/,
+  );
+});
+
+fullTranslationCompletionTest("curated repair SQL rejects duplicate, stale, and incomplete UPSERT rows", () => {
   const rows = loadCuratedNamespaceRepairRows();
   const first = rows[0];
   assert.ok(first);
@@ -301,23 +1227,23 @@ test("curated repair SQL rejects duplicate, stale, and incomplete UPSERT rows", 
   );
 });
 
-test("curated post-write verification is byte- and hash-exact for all 691 site packs", () => {
+fullTranslationCompletionTest("curated post-write verification is byte- and hash-exact for all 8,556 site packs", () => {
   const expectedRows = loadCuratedNamespaceRepairRows();
   const actualRows: Array<Record<string, unknown>> = expectedRows.map((row) => ({
     namespace: row.namespace,
     language: row.language,
     payload: JSON.stringify(row.payload),
     source_hash: row.sourceHash,
-    model: "codex-curated-free-static-no-games-v6",
+    model: "codex-curated-free-static-no-games-v7",
   }));
 
   const verified = verifyCuratedRepairResultRows(actualRows, expectedRows);
-  assert.equal(verified.rowsMatched, 691);
+  assert.equal(verified.rowsMatched, 8_556);
   assert.ok(verified.payloadBytesMatched > 10_000_000);
   assert.match(verified.corpusSha256, /^[a-f0-9]{64}$/);
   assert.throws(
     () => verifyCuratedRepairResultRows(actualRows.slice(0, -1), expectedRows),
-    /row cardinality failed: 690\/691/,
+    /row cardinality failed: 8555\/8556/,
   );
 
   const missionIndex = expectedRows.findIndex((row) => row.namespace === "route:mission");
@@ -363,15 +1289,95 @@ test("curated post-write verification is byte- and hash-exact for all 691 site p
   );
 });
 
-test("curated verification namespace SQL is generated and statement-size bounded", () => {
+fullTranslationCompletionTest("curated verification namespace SQL is generated and statement-size bounded", () => {
   const rows = loadCuratedNamespaceRepairRows();
   const sql = buildCuratedRepairVerificationSql(rows);
   assert.equal(splitSqlStatements(sql).length, 1);
-  assert.match(sql, /WITH expected_curated\(namespace, language\) AS/);
-  assert.match(sql, /'marketing-shell', 'Arabic'/);
-  assert.match(sql, /'blog:ai-art-appreciation-guide', 'Spanish'/);
+  assert.match(sql, /WITH expected_curated_namespaces\(namespace\) AS/);
+  assert.match(sql, /CROSS JOIN expected_curated_languages/);
+  assert.match(sql, /\('marketing-shell'\)/);
+  assert.match(sql, /\('Arabic'\)/);
+  assert.match(sql, /\('blog:ai-art-appreciation-guide'\)/);
+  assert.match(sql, /\('Spanish'\)/);
   assert.ok(Buffer.byteLength(sql, "utf8") < 100_000);
   assert.match(sql, /route:about|route:media|route:schools/);
+});
+
+fullTranslationCompletionTest("curated exact verification is deterministically chunked and digested incrementally", () => {
+  const expectedRows = buildSyntheticRemoteTranslationExpectations().curatedRows;
+  const chunks = buildCuratedRepairVerificationChunks(expectedRows);
+  assert.equal(chunks.length, curatedRepairVerificationQueryCount(expectedRows));
+  assert.ok(chunks.length > 1);
+  assert.equal(
+    chunks.reduce((total, chunk) => total + chunk.rows, 0),
+    8_556,
+  );
+  assert.ok(chunks.every((chunk) => chunk.rows <= 256));
+  assert.ok(chunks.every((chunk) => chunk.sqlBytes < 100_000));
+  assert.ok(chunks.every((chunk) => chunk.maxBufferBytes <= 16 * 1024 * 1024));
+
+  let reads = 0;
+  const verified = verifyCuratedRepairResultChunks(expectedRows, (chunk) => {
+    reads += 1;
+    return [...chunk.expectedRows]
+      .reverse()
+      .map((row) => ({
+        namespace: row.namespace,
+        language: row.language,
+        payload: canonicalTestPayloadJson(row.payload),
+        source_hash: row.sourceHash,
+        model: "codex-curated-free-static-no-games-v7",
+      }));
+  });
+  assert.equal(reads, chunks.length);
+  assert.equal(verified.queryCount, chunks.length);
+  assert.equal(verified.rowsMatched, 8_556);
+  assert.match(verified.corpusSha256, /^[a-f0-9]{64}$/);
+
+  let mismatchReads = 0;
+  assert.throws(
+    () =>
+      verifyCuratedRepairResultChunks(expectedRows, (chunk) => {
+        mismatchReads += 1;
+        return chunk.expectedRows.map((row, index) => ({
+          namespace: row.namespace,
+          language: row.language,
+          payload:
+            chunk.index === 0 && index === 0
+              ? "{}"
+              : canonicalTestPayloadJson(row.payload),
+          source_hash: row.sourceHash,
+          model: "codex-curated-free-static-no-games-v7",
+        }));
+      }),
+    /payload byte verification failed/,
+  );
+  assert.equal(mismatchReads, chunks.length);
+});
+
+fullTranslationCompletionTest("main-app exact verification is bounded and reads every deterministic chunk", () => {
+  const expectedRows = buildSyntheticRemoteTranslationExpectations().mainAppRows;
+  const chunks = buildMainAppRepairVerificationChunks(expectedRows);
+  assert.equal(chunks.length, mainAppRepairVerificationQueryCount(expectedRows));
+  assert.ok(chunks.length > 1);
+  assert.ok(chunks.every((chunk) => chunk.rows <= 64));
+  assert.ok(chunks.every((chunk) => chunk.sqlBytes < 100_000));
+  assert.ok(chunks.every((chunk) => chunk.maxBufferBytes <= 16 * 1024 * 1024));
+
+  let reads = 0;
+  const verified = verifyMainAppRepairResultChunks(expectedRows, (chunk) => {
+    reads += 1;
+    return chunk.expectedRows.map((row) => ({
+      namespace: row.namespace,
+      language: row.language,
+      payload: JSON.stringify(row.payload),
+      source_hash: row.sourceHash,
+      model: "codex-curated-free-static-no-games-main-app-v1",
+    }));
+  });
+  assert.equal(reads, chunks.length);
+  assert.equal(verified.rowsMatched, 69);
+  assert.equal(verified.queryCount, chunks.length);
 });
 
 test("main-app repair upserts and rebuilds all 69 payloads exactly with bounded JSON patches", () => {
@@ -458,12 +1464,14 @@ test("main-app repair upserts and rebuilds all 69 payloads exactly with bounded 
   assert.ok(firstExpected);
   const reorderedPayload = Object.fromEntries(Object.entries(firstExpected.payload).reverse());
   assert.notEqual(JSON.stringify(reorderedPayload), firstActual.payload);
+  const reorderedRows = reconstructedRows.map((row, index) =>
+    index === 0
+      ? { ...row, payload: JSON.stringify(reorderedPayload) }
+      : row,
+  );
   assert.throws(
     () =>
-      verifyMainAppRepairResultRows(
-        [{ ...firstActual, payload: JSON.stringify(reorderedPayload) }],
-        [firstExpected],
-      ),
+      verifyMainAppRepairResultRows(reorderedRows, rows),
     /byte equality/,
   );
 });
@@ -548,33 +1556,64 @@ test("D1 statement sizing parses SQL literals and enforces the 100000-byte limit
 });
 
 test("SEO CTA repair verifies every extracted namespace against the generated manifest", () => {
-  assert.equal(validateSiteSourceManifestFreshness(), 125);
+  assert.equal(
+    validateSiteSourceManifestFreshness(),
+    Object.keys(siteSourceManifest).length,
+  );
 });
 
 test("remote verification separates exact source freshness from audited payload coverage", () => {
   const sql = buildRemoteRepairVerificationSql(loadAndValidateTranslationSeed());
   assert.match(sql, /WITH expected_sources\(namespace, source_hash\) AS \(VALUES/);
-  assert.match(sql, /91c1b6ff25b53cc0143c710bd821d17945a82dd164a0555c0a1311294c24106a/);
+  assert.ok(sql.includes(siteSourceManifest["route:home"].sourceHash));
   assert.match(sql, /AS fresh_source_namespaces/);
   assert.match(sql, /AS observed_translation_rows/);
+  assert.match(sql, /AS observed_site_translation_rows/);
+  assert.match(sql, /AS observed_curated_site_rows/);
+  assert.match(sql, /AS observed_marketing_site_rows/);
+  assert.match(sql, /AS observed_main_app_rows/);
   assert.match(sql, /AS observed_fresh_translation_rows/);
   assert.match(sql, /AS unexpected_translation_namespaces/);
   assert.match(sql, /AS unsupported_languages/);
-  assert.match(sql, /WHERE t\.namespace <> 'main-app';/);
   assert.doesNotMatch(sql, /AS site_rows|AS site_namespaces/);
 });
 
-test("start-learning verification preserves canonical bootstrap context variants", () => {
-  const summarySql = buildRemoteRepairVerificationSql(loadAndValidateTranslationSeed());
-  const mismatchSql = splitSqlStatements(summarySql).find((statement) =>
-    statement.includes("AS mismatches"),
+test("legacy SQL only removes retired marketing keys without stamping routes or provenance", () => {
+  const legacySql = fs.readFileSync(
+    path.resolve("scripts/cloudflare/seo-cta-translation-repair.sql"),
+    "utf8",
   );
-  assert.ok(mismatchSql);
-  assert.match(
-    mismatchSql,
-    /target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/,
+  const canonicalLegacySql = buildCanonicalLegacyMarketingCleanupSql();
+  assert.equal(legacySql, canonicalLegacySql);
+  assert.equal(validateRepairSql(legacySql), canonicalLegacySql);
+  for (const mutated of [
+    `${legacySql}SELECT 1;\n`,
+    legacySql.replace("site.97d1bd7fe820bd7b27", "site.unrelated"),
+    legacySql.replace("WHERE namespace = 'marketing-site'", "WHERE namespace = 'route:home'"),
+    legacySql.replace("  updated_at =", "  model = 'tampered',\n  updated_at ="),
+  ]) {
+    assert.throws(
+      () => validateRepairSql(mutated),
+      /byte-match the canonical 10-key allowlist/,
+    );
+  }
+  assert.match(legacySql, /WHERE namespace = 'marketing-site'/);
+  assert.doesNotMatch(legacySql, /route:(?:chat-public|about|media|schools)/);
+  assert.doesNotMatch(legacySql, /\b(?:source_hash|model)\s*=/i);
+  const verificationSql = buildRemoteRepairVerificationSql(
+    loadAndValidateTranslationSeed(),
   );
-
+  assert.doesNotMatch(
+    verificationSql,
+    /mismatches|school_values_matched|complete_rows/,
+  );
+  for (const key of [
+    "site.ee30b035ee17c34450",
+    "site.5121f7306ecc75edb5",
+    "site.df499d7c6f44a88703",
+  ]) {
+    assert.ok(verificationSql.includes(key));
+  }
   const database = new DatabaseSync(":memory:");
   try {
     database.exec(`CREATE TABLE app_translations (
@@ -590,145 +1629,61 @@ test("start-learning verification preserves canonical bootstrap context variants
       "INSERT INTO app_translations(namespace, language, payload, source_hash, model, updated_at) " +
         "VALUES (?1, ?2, ?3, ?4, ?5, 1)",
     );
-    const startLearning = "site.02d279ce2f7b58c890";
-    const curatedRows = loadCuratedNamespaceRepairRows();
-    const bootstrapLanguages = ["Arabic", "Hindi", "Malayalam", "Spanish"] as const;
-    const namespaces = ["route:home", "route:about", "route:media"] as const;
-    const exactRow = (namespace: (typeof namespaces)[number], language: string) => {
-      const row = curatedRows.find(
-        (candidate) => candidate.namespace === namespace && candidate.language === language,
-      );
-      assert.ok(row, `Missing curated fixture ${namespace}/${language}.`);
-      assert.equal(typeof row.payload[startLearning], "string");
-      return row;
+    const retiredPayload = {
+      "site.ee30b035ee17c34450": "retired one",
+      "site.5121f7306ecc75edb5": "retired two",
+      "site.df499d7c6f44a88703": "retired three",
+      retained: "keep me",
     };
-    for (const language of bootstrapLanguages) {
-      for (const namespace of namespaces) {
-        const row = exactRow(namespace, language);
-        insert.run(
-          namespace,
-          language,
-          JSON.stringify(row.payload),
-          row.sourceHash,
-          "codex-curated-free-static-no-games-v6",
-        );
-      }
-    }
-    const afrikaansHome = exactRow("route:home", "Afrikaans");
     insert.run(
-      "route:home",
-      "Afrikaans",
-      JSON.stringify(afrikaansHome.payload),
-      afrikaansHome.sourceHash,
-      "codex-curated-free-static-no-games-v6",
+      "marketing-site",
+      "Spanish",
+      JSON.stringify(retiredPayload),
+      "marketing-source-before-delta",
+      "marketing-model-before-delta",
     );
-    for (const namespace of ["route:about", "route:media"] as const) {
-      insert.run(
-        namespace,
-        "Afrikaans",
-        JSON.stringify({ [startLearning]: "stale" }),
-        "stale",
-        "stale",
-      );
-    }
-
-    const legacySql = fs.readFileSync(
-      path.resolve("scripts/cloudflare/seo-cta-translation-repair.sql"),
-      "utf8",
-    );
-    assert.equal(
-      legacySql.match(/target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/g)
-        ?.length,
-      2,
+    insert.run(
+      "route:about",
+      "Spanish",
+      JSON.stringify(retiredPayload),
+      "route-source",
+      "codex-curated-free-static-no-games-v7",
     );
     database.exec(legacySql);
-
-    const readStartLearning = database.prepare(
-      "SELECT json_extract(payload, '$.\"site.02d279ce2f7b58c890\"') AS value " +
-        "FROM app_translations WHERE namespace = ?1 AND language = ?2",
-    );
-    for (const language of bootstrapLanguages) {
-      for (const namespace of ["route:about", "route:media"] as const) {
-        assert.equal(
-          readStartLearning.get(namespace, language)?.value,
-          exactRow(namespace, language).payload[startLearning],
-        );
-      }
-    }
-    for (const namespace of ["route:about", "route:media"] as const) {
-      assert.equal(
-        readStartLearning.get(namespace, "Afrikaans")?.value,
-        afrikaansHome.payload[startLearning],
-      );
-    }
-
-    const applyCanonical = database.prepare(
-      "UPDATE app_translations SET payload = ?1, source_hash = ?2, model = ?3 " +
-        "WHERE namespace = ?4 AND language = ?5",
-    );
-    for (const language of bootstrapLanguages) {
-      for (const namespace of ["route:about", "route:media"] as const) {
-        const row = exactRow(namespace, language);
-        applyCanonical.run(
-          JSON.stringify(row.payload),
-          row.sourceHash,
-          "codex-curated-free-static-no-games-v6",
-          namespace,
-          language,
-        );
-      }
-    }
-
-    const oldUnfilteredSql = mismatchSql.replace(
-      /\n\s*AND target\.language NOT IN \('Arabic', 'Hindi', 'Malayalam', 'Spanish'\)/,
-      "",
-    );
-    // The reviewed Arabic and Malayalam packs now intentionally share the
-    // home label. Hindi retains the one route-specific canonical variant that
-    // proves an unfiltered legacy copy would still clobber audited bootstrap
-    // payloads.
-    assert.deepEqual(
-      database.prepare(oldUnfilteredSql).all().map((row) => ({
-        namespace: row.namespace,
-        mismatches: row.mismatches,
-      })),
-      [
-        { namespace: "route:about", mismatches: 1 },
-        { namespace: "route:media", mismatches: 1 },
-      ],
-    );
-
-    const canonicalRows = database.prepare(mismatchSql).all();
-    assert.deepEqual(
-      canonicalRows.map((row) => ({ namespace: row.namespace, mismatches: row.mismatches })),
-      [
-        { namespace: "route:about", mismatches: 0 },
-        { namespace: "route:media", mismatches: 0 },
-      ],
-    );
-
-    database.prepare(
-      "UPDATE app_translations SET payload = ?1 WHERE namespace = 'route:about' AND language = 'Afrikaans'",
-    ).run(JSON.stringify({ [startLearning]: "Begin nou leer" }));
-    const driftRows = database.prepare(mismatchSql).all();
-    assert.deepEqual(
-      driftRows.map((row) => ({ namespace: row.namespace, mismatches: row.mismatches })),
-      [
-        { namespace: "route:about", mismatches: 1 },
-        { namespace: "route:media", mismatches: 0 },
-      ],
-    );
+    const rows = database.prepare(
+      "SELECT namespace, payload, source_hash, model FROM app_translations ORDER BY namespace",
+    ).all().map((row) => ({
+      namespace: row.namespace,
+      payload: row.payload,
+      source_hash: row.source_hash,
+      model: row.model,
+    }));
+    assert.deepEqual(rows, [
+      {
+        namespace: "marketing-site",
+        payload: JSON.stringify({ retained: "keep me" }),
+        source_hash: "marketing-source-before-delta",
+        model: "marketing-model-before-delta",
+      },
+      {
+        namespace: "route:about",
+        payload: JSON.stringify(retiredPayload),
+        source_hash: "route-source",
+        model: "codex-curated-free-static-no-games-v7",
+      },
+    ]);
   } finally {
     database.close();
   }
 });
 
-test("verify-only production drift detection is exact, structured, and mutation-free", () => {
+fullTranslationCompletionTest("verify-only production drift detection is exact, structured, and mutation-free", () => {
   const expected = buildSyntheticRemoteTranslationExpectations();
   const reconciled = buildRemoteTranslationVerificationRunner(expected);
   const report = verifyRemoteTranslationDrift({
     translations: expected.translations,
     curatedRepairRows: expected.curatedRows,
+    marketingSite: expected.marketingSite,
     mainAppRepairRows: expected.mainAppRows,
     runner: reconciled.runner,
     now: Date.UTC(2026, 6, 12, 0, 0, 0),
@@ -740,19 +1695,55 @@ test("verify-only production drift detection is exact, structured, and mutation-
   assert.equal(report.repairRequired, false);
   assert.deepEqual(report.issues, []);
   assert.equal(report.expected.sourceNamespaces, 125);
-  assert.equal(report.expected.curatedRows, 691);
+  assert.equal(report.expected.curatedRows, 8_556);
+  assert.equal(report.expected.marketingSiteRows, 69);
   assert.equal(report.expected.mainAppRows, 69);
+  const expectedRemoteQueries =
+    curatedRepairVerificationQueryCount(expected.curatedRows) +
+    marketingSiteRepairVerificationQueryCount(expected.marketingSite) +
+    mainAppRepairVerificationQueryCount(expected.mainAppRows) +
+    2;
+  assert.equal(report.expected.remoteQueries, expectedRemoteQueries);
   assert.equal(report.sourceSnapshot.status, "reconciled");
   assert.equal(report.sourceSnapshot.reconciliationStatements, 0);
   assert.equal(report.payloadSnapshot.status, "reconciled");
-  assert.equal(report.payloadSnapshot.verification?.curatedRowsMatched, 691);
+  assert.equal(report.payloadSnapshot.verification?.curatedRowsMatched, 8_556);
+  assert.equal(report.payloadSnapshot.verification?.marketingSiteRowsMatched, 69);
   assert.equal(report.payloadSnapshot.verification?.mainAppRowsMatched, 69);
-  assert.equal(report.readOnly.remoteQueries, 4);
+  assert.equal(report.payloadSnapshot.verification?.exactFinalRows, 8_694);
+  assert.equal(report.readOnly.remoteQueries, expectedRemoteQueries);
+  assert.equal(
+    reconciled.curatedMaxBuffers.length,
+    curatedRepairVerificationQueryCount(expected.curatedRows),
+  );
+  assert.ok(
+    reconciled.curatedMaxBuffers.every(
+      (maxBuffer) => maxBuffer > 0 && maxBuffer <= 16 * 1024 * 1024,
+    ),
+  );
+  assert.equal(
+    reconciled.marketingSiteMaxBuffers.length,
+    marketingSiteRepairVerificationQueryCount(expected.marketingSite),
+  );
+  assert.ok(
+    reconciled.marketingSiteMaxBuffers.every(
+      (maxBuffer) => maxBuffer > 0 && maxBuffer <= 16 * 1024 * 1024,
+    ),
+  );
+  assert.equal(
+    reconciled.mainAppMaxBuffers.length,
+    mainAppRepairVerificationQueryCount(expected.mainAppRows),
+  );
+  assert.ok(
+    reconciled.mainAppMaxBuffers.every(
+      (maxBuffer) => maxBuffer > 0 && maxBuffer <= 16 * 1024 * 1024,
+    ),
+  );
   assert.ok(report.readOnly.billedRowsRead > 0);
   assert.deepEqual(
     report.readOnly,
     {
-      remoteQueries: 4,
+      remoteQueries: expectedRemoteQueries,
       billedRowsRead: report.readOnly.billedRowsRead,
       workerUploads: 0,
       workerDeployments: 0,
@@ -777,10 +1768,12 @@ test("verify-only production drift detection is exact, structured, and mutation-
   const drifted = buildRemoteTranslationVerificationRunner(expected, {
     staleSource: true,
     tamperCuratedPayload: true,
+    tamperMarketingPayload: true,
   });
   const driftReport = verifyRemoteTranslationDrift({
     translations: expected.translations,
     curatedRepairRows: expected.curatedRows,
+    marketingSite: expected.marketingSite,
     mainAppRepairRows: expected.mainAppRows,
     runner: drifted.runner,
   });
@@ -796,10 +1789,15 @@ test("verify-only production drift detection is exact, structured, and mutation-
   assert.ok(
     driftReport.issues.some((issue) => issue.code === "exact-curated-payload-drift"),
   );
-  assert.equal(driftReport.readOnly.remoteQueries, 4);
+  assert.ok(
+    driftReport.issues.some(
+      (issue) => issue.code === "exact-marketing-site-payload-drift",
+    ),
+  );
+  assert.equal(driftReport.readOnly.remoteQueries, expectedRemoteQueries);
 });
 
-test("verify-only repair exits before ledger admission and never alters ledger evidence", () => {
+fullTranslationCompletionTest("verify-only repair exits before ledger admission and never alters ledger evidence", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-verify-only-no-ledger-"));
   const ledgerDir = path.join(backupDir, "cloudflare");
   const ledgerPath = path.join(ledgerDir, "d1-release-budget-ledger-2026-07-12.json");
@@ -812,6 +1810,7 @@ test("verify-only repair exits before ledger admission and never alters ledger e
     const report = verifyRemoteTranslationDrift({
       translations: expected.translations,
       curatedRepairRows: expected.curatedRows,
+      marketingSite: expected.marketingSite,
       mainAppRepairRows: expected.mainAppRows,
       runner: verification.runner,
       now: Date.UTC(2026, 6, 12, 12, 0, 0),
@@ -843,7 +1842,7 @@ test("verify-only repair exits before ledger admission and never alters ledger e
   }
 });
 
-test("verify-only production drift detection fails closed on malformed or indeterminate reads", () => {
+fullTranslationCompletionTest("verify-only production drift detection fails closed on malformed or indeterminate reads", () => {
   const expected = buildSyntheticRemoteTranslationExpectations();
   const malformed = buildRemoteTranslationVerificationRunner(expected, {
     malformedSummary: true,
@@ -853,6 +1852,7 @@ test("verify-only production drift detection fails closed on malformed or indete
       verifyRemoteTranslationDrift({
         translations: expected.translations,
         curatedRepairRows: expected.curatedRows,
+        marketingSite: expected.marketingSite,
         mainAppRepairRows: expected.mainAppRows,
         runner: malformed.runner,
       }),
@@ -868,12 +1868,35 @@ test("verify-only production drift detection fails closed on malformed or indete
       verifyRemoteTranslationDrift({
         translations: expected.translations,
         curatedRepairRows: expected.curatedRows,
+        marketingSite: expected.marketingSite,
         mainAppRepairRows: expected.mainAppRows,
         runner: transport.runner,
       }),
     /did not return a deterministic result/,
   );
   assert.equal(transport.calls.length, 2);
+
+  const finalChunkTransport = buildRemoteTranslationVerificationRunner(expected, {
+    failFinalVerificationTransport: true,
+  });
+  assert.throws(
+    () =>
+      verifyRemoteTranslationDrift({
+        translations: expected.translations,
+        curatedRepairRows: expected.curatedRows,
+        marketingSite: expected.marketingSite,
+        mainAppRepairRows: expected.mainAppRows,
+        runner: finalChunkTransport.runner,
+      }),
+    /did not return a deterministic result/,
+  );
+  assert.equal(
+    finalChunkTransport.calls.length,
+    curatedRepairVerificationQueryCount(expected.curatedRows) +
+      marketingSiteRepairVerificationQueryCount(expected.marketingSite) +
+      mainAppRepairVerificationQueryCount(expected.mainAppRows) +
+      2,
+  );
 
   assert.throws(
     () =>
@@ -929,37 +1952,119 @@ test("verify-only CLI contract requires explicit remote production confirmation"
   }
 });
 
+test("translation verification CLI phase is explicit and uploaded-inactive only", () => {
+  assert.equal(
+    assertTranslationReconciliationCliPhase({
+      argv: ["--remote", "--verify-only", "--phase", "uploaded-inactive"],
+      refinementRequested: false,
+      remote: true,
+      verifyOnly: true,
+    }),
+    "uploaded-inactive",
+  );
+  for (const argv of [
+    ["--remote", "--verify-only"],
+    ["--remote", "--verify-only", "--phase"],
+    ["--remote", "--verify-only", "--phase", "candidate-active"],
+    [
+      "--remote",
+      "--verify-only",
+      "--phase",
+      "uploaded-inactive",
+      "--phase",
+      "uploaded-inactive",
+    ],
+  ]) {
+    assert.throws(
+      () =>
+        assertTranslationReconciliationCliPhase({
+          argv,
+          refinementRequested: false,
+          remote: true,
+          verifyOnly: true,
+        }),
+      /--phase|candidate-active/,
+    );
+  }
+  assert.throws(
+    () =>
+      assertTranslationReconciliationCliPhase({
+        argv: ["--remote", "--phase", "uploaded-inactive"],
+        refinementRequested: false,
+        remote: true,
+        verifyOnly: false,
+      }),
+    /Only read-only production translation verification/,
+  );
+  assert.throws(
+    () =>
+      assertTranslationReconciliationCliPhase({
+        argv: ["--phase", "uploaded-inactive"],
+        refinementRequested: true,
+        remote: false,
+        verifyOnly: false,
+      }),
+    /refinement does not accept --phase/,
+  );
+});
+
+test("candidate-active translation verification fails at the CLI boundary before corpus or D1 work", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-translation-active-phase-reject-"),
+  );
+  try {
+    const result = spawnSync(
+      process.execPath,
+      [
+        "--import",
+        "tsx",
+        path.resolve("scripts/cloudflare/repair-seo-cta-translations.ts"),
+        "--remote",
+        "--verify-only",
+        "--confirm-production",
+        "--phase",
+        "candidate-active",
+        "--candidate-version",
+        repairCandidateVersionId,
+        "--backup",
+        backupDir,
+      ],
+      {
+        cwd: process.cwd(),
+        encoding: "utf8",
+        timeout: 30_000,
+      },
+    );
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /requires --phase uploaded-inactive; candidate-active verification is forbidden/,
+    );
+    assert.deepEqual(fs.readdirSync(backupDir), []);
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
 test("production translation repair validates exact namespace/language identifiers", () => {
   const targetLanguages = supportedLanguages.filter((language) => language !== defaultLanguage);
-  const mandatoryNamespaces = [
-    "route:chat-public",
-    "route:about",
-    "route:media",
-    "route:schools",
-  ];
-  const valid = mandatoryNamespaces.flatMap((namespace) =>
-    targetLanguages.map((language) => ({ namespace, language })),
-  );
-  assert.equal(validateStaticRepairTargetIdentifiers(valid, targetLanguages), 276);
-  const withMarketing = [
-    ...targetLanguages.map((language) => ({ namespace: "marketing-site", language })),
-    ...valid,
-  ];
-  assert.equal(validateStaticRepairTargetIdentifiers(withMarketing, targetLanguages), 345);
+  const valid = targetLanguages.map((language) => ({ namespace: "marketing-site", language }));
+  assert.equal(validateStaticRepairTargetIdentifiers([], targetLanguages), 0);
+  assert.equal(validateStaticRepairTargetIdentifiers(valid, targetLanguages), 69);
   assert.throws(
     () =>
       validateStaticRepairTargetIdentifiers(
         valid.filter(
-          (row) => !(row.namespace === "route:media" && row.language === "Spanish"),
+          (row) => row.language !== "Spanish",
         ),
         targetLanguages,
       ),
-    /route:media: 68\/69/,
+    /marketing-site: 68\/69/,
   );
   assert.throws(
     () =>
       validateStaticRepairTargetIdentifiers(
-        [...valid, { namespace: "route:schools", language: "Klingon" }],
+        [...valid, { namespace: "marketing-site", language: "Klingon" }],
         targetLanguages,
       ),
     /Unexpected production translation language/,
@@ -971,14 +2076,14 @@ test("production translation repair validates exact namespace/language identifie
   assert.throws(
     () =>
       validateStaticRepairTargetIdentifiers(
-        [...valid, { namespace: "route:retired-game", language: "Spanish" }],
+        [...valid, { namespace: "route:about", language: "Spanish" }],
         targetLanguages,
       ),
     /Unexpected production translation namespace/,
   );
 });
 
-test("curated UPSERT discovery allows missing exact rows but rejects extras and duplicates", () => {
+fullTranslationCompletionTest("curated UPSERT discovery allows missing exact rows but rejects extras and duplicates", () => {
   const expectedRows = loadCuratedNamespaceRepairRows();
   const existing = expectedRows.slice(0, 68).map((row) => ({
     namespace: row.namespace,
@@ -1042,11 +2147,31 @@ test("main-app repair discovery allows missing supported rows but rejects exact-
   );
 });
 
-test("projected repair writes include static, curated, and chunked main-app writes", () => {
-  assert.equal(projectRepairBilledRowWrites(1_000, 276, 1_500, 300), 5_156);
-  assert.equal(projectRepairBilledRowWrites(1_000, 345, 1_500, 300), 5_294);
+test("projected repair writes include static, curated, marketing-site, and chunked main-app writes", () => {
+  assert.equal(projectRepairBilledRowWrites(1_000, 0, 1_500, 0, 300), 4_604);
+  assert.equal(projectRepairBilledRowWrites(1_000, 69, 1_500, 69, 300), 4_880);
+  const coldSourcePlan = buildSiteTranslationSourceSyncPlan();
+  const minimumCuratedLogicalWrites = 8_556 * 2;
+  const minimumMarketingSiteLogicalWrites = 69 * 2;
+  const minimumMainAppLogicalWrites = 69 * 2;
+  const translationOnlyMinimum = projectRepairBilledRowWrites(
+    0,
+    69,
+    minimumCuratedLogicalWrites,
+    minimumMarketingSiteLogicalWrites,
+    minimumMainAppLogicalWrites,
+  );
+  const coldCombinedMinimum = projectRepairBilledRowWrites(
+    coldSourcePlan.projectedBilledRowWrites,
+    69,
+    minimumCuratedLogicalWrites,
+    minimumMarketingSiteLogicalWrites,
+    minimumMainAppLogicalWrites,
+  );
+  assert.ok(translationOnlyMinimum <= MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES);
+  assert.ok(coldCombinedMinimum > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES);
   assert.throws(
-    () => projectRepairBilledRowWrites(0, -1, 1_500, 300),
+    () => projectRepairBilledRowWrites(0, -1, 1_500, 69, 300),
     /non-negative safe integers/,
   );
   assert.equal(
@@ -1059,9 +2184,9 @@ test("projected repair writes include static, curated, and chunked main-app writ
   );
   assert.throws(() => assertRepairWriteBudget(Number.NaN), /non-negative safe integer/);
 
-  assert.equal(projectRepairBilledRowReads(10_000, 345, 691, 69), 15_548);
+  assert.equal(projectRepairBilledRowReads(10_000, 69, 8_556, 69, 69), 46_180);
   assert.throws(
-    () => projectRepairBilledRowReads(0, 0, -1, 0),
+    () => projectRepairBilledRowReads(0, 0, -1, 69, 0),
     /non-negative safe integers/,
   );
   assert.equal(assertRepairReadBudget(2_500_000), 2_500_000);
@@ -1079,6 +2204,7 @@ test("remote repair budget identities bind candidate, source, and immutable plan
     repairSqlSha256: "b".repeat(64),
     sourceSyncSha256: "c".repeat(64),
     curatedCorpusSha256: "d".repeat(64),
+    marketingSiteCorpusSha256: "e".repeat(64),
   };
   const planSha256 = translationRepairBudgetPlanSha256(input);
   const operationId = translationRepairBudgetOperationId({
@@ -1118,7 +2244,14 @@ test("remote repair budget identities bind candidate, source, and immutable plan
   assert.notEqual(
     translationRepairBudgetPlanSha256({
       ...input,
-      repairSqlSha256: "e".repeat(64),
+      repairSqlSha256: "f".repeat(64),
+    }),
+    planSha256,
+  );
+  assert.notEqual(
+    translationRepairBudgetPlanSha256({
+      ...input,
+      marketingSiteCorpusSha256: "0".repeat(64),
     }),
     planSha256,
   );
@@ -1401,7 +2534,7 @@ test("remote repair maintenance uses the native Worker and proves both freeze st
   assert.ok(verificationIndex >= 0 && releaseIndex > verificationIndex);
   assert.match(
     repairSource.slice(verificationIndex, releaseIndex + 180),
-    /if \(recovery\.releaseAllowed && exclusionOwned\)[\s\S]*releasePreflight\.candidateVersionId/,
+    /if \(recovery\.releaseAllowed && exclusionOwned\)[\s\S]*releasePreflight\.serviceBaselineVersionId/,
   );
   assert.doesNotMatch(
     repairSource,
@@ -1884,6 +3017,50 @@ test("source synchronization fails closed on partial or malformed D1 snapshots",
   }
 });
 
+test("release source snapshots require exactly one billed D1 attempt", () => {
+  const output = (totalAttempts: number | null, rowsWritten = 0) =>
+    JSON.stringify(
+      Array.from({ length: 3 }, () => ({
+        success: true,
+        results: [],
+        meta: {
+          rows_read: 1,
+          rows_written: rowsWritten,
+          ...(totalAttempts === null
+            ? {}
+            : { total_attempts: totalAttempts }),
+        },
+      })),
+    );
+  assert.equal(
+    parseD1SourceSnapshotBilledRowReads(output(1), {
+      required: true,
+      readOnly: true,
+      requireSingleAttempt: true,
+    }),
+    3,
+  );
+  for (const attempts of [null, 2] as const) {
+    assert.throws(
+      () =>
+        parseD1SourceSnapshotBilledRowReads(output(attempts), {
+          required: true,
+          readOnly: true,
+          requireSingleAttempt: true,
+        }),
+      /exactly one billed attempt/,
+    );
+  }
+  assert.throws(
+    () =>
+      parseD1SourceSnapshotBilledRowReads(
+        output(1, 1),
+        { required: true, readOnly: true, requireSingleAttempt: true },
+      ),
+    /zero billed writes/,
+  );
+});
+
 test("SEO source synchronization and payload repair compose into one SQL file", () => {
   const sql = buildAtomicSeoCtaRepairSql(
     "PRAGMA foreign_keys = ON;\nSELECT 1;",
@@ -1896,7 +3073,7 @@ test("SEO source synchronization and payload repair compose into one SQL file", 
   assert.throws(() => buildAtomicSeoCtaRepairSql("", ""), /must not be empty/);
 });
 
-function buildSyntheticRemoteTranslationExpectations() {
+function buildSyntheticTranslationRows() {
   const translations = new Map(
     supportedLanguages
       .filter((language) => language !== defaultLanguage)
@@ -1929,16 +3106,40 @@ function buildSyntheticRemoteTranslationExpectations() {
   return { translations, curatedRows, mainAppRows };
 }
 
+function buildSyntheticRemoteTranslationExpectations() {
+  return {
+    ...buildSyntheticTranslationRows(),
+    marketingSite: releasedMarketingSiteRepairCorpus(),
+  };
+}
+
+function marketingSiteDatabaseResultRow(
+  row: MarketingSiteRepairCorpus["rows"][number],
+): Record<string, unknown> {
+  return {
+    namespace: row.namespace,
+    language: row.language,
+    source_hash: row.source_hash,
+    payload: row.payload,
+    model: row.model,
+  };
+}
+
 function buildRemoteTranslationVerificationRunner(
   expected: ReturnType<typeof buildSyntheticRemoteTranslationExpectations>,
   options: {
     staleSource?: boolean;
     tamperCuratedPayload?: boolean;
+    tamperMarketingPayload?: boolean;
     malformedSummary?: boolean;
     failSummaryTransport?: boolean;
+    failFinalVerificationTransport?: boolean;
   } = {},
 ) {
   const calls: string[][] = [];
+  const curatedMaxBuffers: number[] = [];
+  const marketingSiteMaxBuffers: number[] = [];
+  const mainAppMaxBuffers: number[] = [];
   const sourceRows: Array<{ namespace: string; source_hash: string }> = Object.entries(
     siteSourceManifest,
   )
@@ -1965,12 +3166,14 @@ function buildRemoteTranslationVerificationRunner(
       {
         namespace: mainAppTranslationNamespace,
         source_hash: expected.mainAppRows[0]?.sourceHash ?? "missing",
-        translation_rows: expected.curatedRows.length + expected.mainAppRows.length,
+        translation_rows:
+          expected.curatedRows.length +
+          expected.marketingSite.rows.length +
+          expected.mainAppRows.length,
       },
     ],
   ]);
   const expectedSourceNamespaces = Object.keys(siteSourceManifest).length;
-  const targetLanguages = expected.translations.size;
   const summary = d1TestResultSets([
     [
       {
@@ -1983,47 +3186,73 @@ function buildRemoteTranslationVerificationRunner(
     ],
     [
       {
-        observed_translation_rows: expected.curatedRows.length,
-        observed_fresh_translation_rows: expected.curatedRows.length,
+        observed_translation_rows:
+          expected.curatedRows.length +
+          expected.marketingSite.rows.length +
+          expected.mainAppRows.length,
+        observed_site_translation_rows:
+          expected.curatedRows.length + expected.marketingSite.rows.length,
+        observed_curated_site_rows: expected.curatedRows.length,
+        observed_marketing_site_rows: expected.marketingSite.rows.length,
+        observed_main_app_rows: expected.mainAppRows.length,
+        observed_fresh_translation_rows:
+          expected.curatedRows.length + expected.marketingSite.rows.length,
         unexpected_translation_namespaces: 0,
         unsupported_languages: 0,
       },
     ],
-    ["route:about", "route:media", "route:schools"].map((namespace) => ({
-      namespace,
-      rows: targetLanguages,
-      languages: targetLanguages,
-      fresh_rows: targetLanguages,
-      complete_rows: targetLanguages,
-    })),
-    ["route:about", "route:media"].map((namespace) => ({ namespace, mismatches: 0 })),
-    ["route:about", "route:media", "route:schools"].map((namespace) => ({
-      namespace,
-      model: "codex-curated-free-static-no-games-v4",
-      rows: targetLanguages - 4,
-    })),
-    [{ school_values_matched: targetLanguages - 4 }],
     [{ retired_game_payloads: 0 }],
   ]);
-  const curatedRows = expected.curatedRows.map((row, index) => ({
-    namespace: row.namespace,
-    language: row.language,
-    payload:
-      options.tamperCuratedPayload && index === 0
-        ? "{}"
-        : canonicalTestPayloadJson(row.payload),
-    source_hash: row.sourceHash,
-    model: "codex-curated-free-static-no-games-v6",
-  }));
-  const mainAppRows = expected.mainAppRows.map((row) => ({
-    namespace: row.namespace,
-    language: row.language,
-    payload: JSON.stringify(row.payload),
-    source_hash: row.sourceHash,
-    model: "codex-curated-free-static-no-games-main-app-v1",
-  }));
+  const curatedResponses = new Map(
+    buildCuratedRepairVerificationChunks(expected.curatedRows).map((chunk) => [
+      chunk.sql,
+      d1TestResultSets([
+        chunk.expectedRows.map((row, index) => ({
+          namespace: row.namespace,
+          language: row.language,
+          payload:
+            options.tamperCuratedPayload && chunk.index === 0 && index === 0
+              ? "{}"
+              : canonicalTestPayloadJson(row.payload),
+          source_hash: row.sourceHash,
+          model: "codex-curated-free-static-no-games-v7",
+        })),
+      ]),
+    ]),
+  );
+  const marketingSiteResponses = new Map(
+    buildMarketingSiteRepairVerificationChunks(expected.marketingSite).map(
+      (chunk) => [
+        chunk.sql,
+        d1TestResultSets([
+          chunk.expectedRows.map((row, index) => ({
+            ...marketingSiteDatabaseResultRow(row),
+            payload:
+              options.tamperMarketingPayload && chunk.index === 0 && index === 0
+                ? "{}"
+                : row.payload,
+          })),
+        ]),
+      ],
+    ),
+  );
+  const mainAppResponses = new Map(
+    buildMainAppRepairVerificationChunks(expected.mainAppRows).map((chunk) => [
+      chunk.sql,
+      d1TestResultSets([
+        chunk.expectedRows.map((row) => ({
+          namespace: row.namespace,
+          language: row.language,
+          payload: JSON.stringify(row.payload),
+          source_hash: row.sourceHash,
+          model: "codex-curated-free-static-no-games-main-app-v1",
+        })),
+      ]),
+    ]),
+  );
+  const finalMainAppVerificationSql = [...mainAppResponses.keys()].at(-1);
 
-  const runner: WranglerRunner = (args) => {
+  const runner: WranglerRunner = (args, runnerOptions = {}) => {
     calls.push([...args]);
     const commandIndex = args.indexOf("--command");
     const sql = commandIndex >= 0 ? args[commandIndex + 1] : undefined;
@@ -2038,15 +3267,45 @@ function buildRemoteTranslationVerificationRunner(
       }
       return summary;
     }
-    if (sql.includes("WITH expected_curated(namespace, language) AS")) {
-      return d1TestResultSets([curatedRows]);
+    const curatedResponse = curatedResponses.get(sql);
+    if (curatedResponse) {
+      if (typeof runnerOptions.maxBuffer !== "number") {
+        throw new Error("Synthetic curated verification received no maxBuffer.");
+      }
+      curatedMaxBuffers.push(runnerOptions.maxBuffer);
+      return curatedResponse;
     }
-    if (sql.includes("WHERE namespace = 'main-app' ORDER BY language")) {
-      return d1TestResultSets([mainAppRows]);
+    const marketingSiteResponse = marketingSiteResponses.get(sql);
+    if (marketingSiteResponse) {
+      if (typeof runnerOptions.maxBuffer !== "number") {
+        throw new Error("Synthetic marketing-site verification received no maxBuffer.");
+      }
+      marketingSiteMaxBuffers.push(runnerOptions.maxBuffer);
+      return marketingSiteResponse;
+    }
+    const mainAppResponse = mainAppResponses.get(sql);
+    if (mainAppResponse) {
+      if (
+        options.failFinalVerificationTransport &&
+        sql === finalMainAppVerificationSql
+      ) {
+        throw new Error("synthetic final verification transport loss");
+      }
+      if (typeof runnerOptions.maxBuffer !== "number") {
+        throw new Error("Synthetic main-app verification received no maxBuffer.");
+      }
+      mainAppMaxBuffers.push(runnerOptions.maxBuffer);
+      return mainAppResponse;
     }
     throw new Error(`Synthetic verification runner received an unexpected query: ${sql.slice(0, 80)}.`);
   };
-  return { runner, calls };
+  return {
+    runner,
+    calls,
+    curatedMaxBuffers,
+    marketingSiteMaxBuffers,
+    mainAppMaxBuffers,
+  };
 }
 
 function d1TestResultSets(resultSets: readonly (readonly Record<string, unknown>[])[]) {
@@ -2065,6 +3324,152 @@ function canonicalTestPayloadJson(payload: Readonly<Record<string, string>>) {
   );
 }
 
+function testCuratedCorpusSha256(rows: readonly CuratedNamespaceRepairRow[]) {
+  const digest = crypto.createHash("sha256");
+  const sortedRows = [...rows].sort(
+    (left, right) =>
+      left.namespace.localeCompare(right.namespace) ||
+      left.language.localeCompare(right.language),
+  );
+  for (const [index, row] of sortedRows.entries()) {
+    if (index > 0) digest.update("\n");
+    digest.update(
+      JSON.stringify([
+        row.namespace,
+        row.language,
+        row.sourceHash,
+        canonicalTestPayloadJson(row.payload),
+      ]),
+      "utf8",
+    );
+  }
+  return digest.digest("hex");
+}
+
+function buildTestPromotedCompactPack(
+  metadata: Readonly<{
+    schemaVersion: 1;
+    language: SupportedLanguage;
+    locale: string;
+    namespace: string;
+    sourceHash: string;
+  }>,
+  translations: Readonly<Record<string, string>>,
+  sourceStrings: Readonly<Record<string, string>>,
+  executionProfileSha256 = LONG_TAIL_NLLB_EXECUTION_PROFILE_SHA256,
+) {
+  const sourceEntries = Object.keys(sourceStrings)
+    .sort()
+    .map((key) => {
+      const source = sourceStrings[key];
+      if (source === undefined) throw new Error(`Missing test source ${key}.`);
+      const protectedText = protectLongTailSourceText(source);
+      return {
+        key,
+        source,
+        sourceSha256: testSha256(source),
+        invariantSha256: protectedText.invariantSha256,
+        segments: protectedText.segments,
+      };
+    });
+  const sourceEntriesSha256 = testCanonicalSha256(sourceEntries);
+  const model = "nllb-test-model";
+  const immutableHashes = {
+    masterWorklistSha256: "1".repeat(64),
+    packWorklistSha256: "2".repeat(64),
+    jobSha256: "3".repeat(64),
+    modelSha256: "4".repeat(64),
+    pipelineImplementationSha256: "5".repeat(64),
+    workerImplementationSha256: "6".repeat(64),
+    protectorSha256: "7".repeat(64),
+    validatorPolicySha256: "8".repeat(64),
+  } as const;
+  const candidate = {
+    schemaVersion: 1,
+    kind: "inspir-long-tail-translation-candidate-v1",
+    pipelineVersion: LONG_TAIL_TRANSLATION_PIPELINE_VERSION,
+    executionProfileSha256,
+    masterWorklistSha256: immutableHashes.masterWorklistSha256,
+    packWorklistSha256: immutableHashes.packWorklistSha256,
+    jobSha256: immutableHashes.jobSha256,
+    language: metadata.language,
+    locale: metadata.locale,
+    namespace: metadata.namespace,
+    sourceHash: metadata.sourceHash,
+    sourceEntriesSha256,
+    modelLabel: model,
+    modelSha256: immutableHashes.modelSha256,
+    workerImplementationSha256: immutableHashes.workerImplementationSha256,
+    validatorPolicySha256: immutableHashes.validatorPolicySha256,
+    entries: sourceEntries.map((entry) => {
+      const value = translations[entry.key];
+      if (value === undefined) throw new Error(`Missing test translation ${entry.key}.`);
+      return {
+        key: entry.key,
+        source: entry.source,
+        sourceSha256: entry.sourceSha256,
+        value,
+      };
+    }),
+  } as const;
+  const provenanceMaterial = {
+    kind: "inspir-long-tail-curated-provenance-v1",
+    pipelineVersion: LONG_TAIL_TRANSLATION_PIPELINE_VERSION,
+    executionProfileSha256,
+    protectorVersion: "inspir-long-tail-literal-protector-v1",
+    protectorSha256: immutableHashes.protectorSha256,
+    masterWorklistSha256: immutableHashes.masterWorklistSha256,
+    packWorklistSha256: immutableHashes.packWorklistSha256,
+    jobSha256: immutableHashes.jobSha256,
+    sourceEntriesSha256,
+    modelSha256: immutableHashes.modelSha256,
+    pipelineImplementationSha256: immutableHashes.pipelineImplementationSha256,
+    workerImplementationSha256: immutableHashes.workerImplementationSha256,
+    validatorPolicySha256: immutableHashes.validatorPolicySha256,
+    candidateSha256: testCanonicalSha256(candidate),
+  } as const;
+  return {
+    ...metadata,
+    model,
+    provenance: {
+      ...provenanceMaterial,
+      provenanceSha256: testCanonicalSha256(provenanceMaterial),
+    },
+    translations,
+  } as const;
+}
+
+function testCanonicalSha256(value: unknown) {
+  return testSha256(testCanonicalJson(value));
+}
+
+function testSha256(value: string) {
+  return crypto.createHash("sha256").update(value).digest("hex");
+}
+
+function testCanonicalJson(value: unknown): string {
+  if (
+    value === null ||
+    typeof value === "string" ||
+    typeof value === "boolean" ||
+    (typeof value === "number" && Number.isFinite(value))
+  ) {
+    const encoded = JSON.stringify(value);
+    if (encoded === undefined) throw new Error("Test canonical JSON encoding failed.");
+    return encoded;
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map(testCanonicalJson).join(",")}]`;
+  }
+  if (typeof value === "object") {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${testCanonicalJson(Reflect.get(value, key))}`)
+      .join(",")}}`;
+  }
+  throw new Error(`Test canonical JSON cannot encode ${typeof value}.`);
+}
+
 function isTestPublishedNamespace(
   value: string,
 ): value is keyof typeof siteSourceManifest {
@@ -2077,6 +3482,7 @@ const recoveryReleasePreflightCreatedAt = "2026-07-12T09:10:50.778Z";
 const recoveryReservationCreatedAt = "2026-07-12T09:10:50.783Z";
 const recoveryClock = new Date("2026-07-12T09:11:00.000Z");
 const recoveryCandidateVersionId = "42986870-cd08-4a64-9276-8495400783dd";
+const recoveryServiceBaselineVersionId = "52986870-cd08-4a64-9276-8495400783dd";
 const recoveryDriftBilledRowsRead = 36_502;
 const recoveryDailyUsage = {
   databaseCount: 1,
@@ -2086,9 +3492,7 @@ const recoveryDailyUsage = {
   executions: 0,
   windowMinutes: 552,
 };
-const recoveryOperationIds = new Map<string, string>();
-
-test("prewrite-abort recovery retains exact D1 verification and lock charges", () => {
+fullTranslationCompletionTest("prewrite-abort recovery retains exact D1 verification and lock charges", () => {
   const fixture = createPrewriteAbortRecoveryFixture();
   let sourceAssertions = 0;
   let activeReads = 0;
@@ -2109,7 +3513,7 @@ test("prewrite-abort recovery retains exact D1 verification and lock charges", (
       buildRecoveryPlan: fixture.buildRecoveryPlan,
       readActiveWorkerVersion: () => {
         activeReads += 1;
-        return fixture.candidateVersionId;
+        return fixture.serviceBaselineVersionId;
       },
       probeCandidate: (candidateVersionId) => {
         candidateProbes += 1;
@@ -2255,7 +3659,7 @@ test("prewrite-abort recovery rejects a tampered source inventory before lock wo
   }
 });
 
-test("prewrite-abort recovery is bound to the exact preflight reservation window and UTC day", () => {
+fullTranslationCompletionTest("prewrite-abort recovery is bound to the exact preflight reservation window and UTC day", () => {
   const lateFixture = createPrewriteAbortRecoveryFixture({
     reservationCreatedAt: "2026-07-12T09:10:55.779Z",
   });
@@ -2308,7 +3712,7 @@ test("prewrite-abort recovery is bound to the exact preflight reservation window
   }
 });
 
-test("prewrite-abort recovery rejects an exact reservation without prepared evidence", () => {
+fullTranslationCompletionTest("prewrite-abort recovery rejects an exact reservation without prepared evidence", () => {
   const fixture = createPrewriteAbortRecoveryFixture();
   const exactRowsRead =
     recoveryDriftBilledRowsRead + PRODUCTION_VALIDATION_LOCK_MAX_BILLED_ROWS_READ;
@@ -2337,7 +3741,7 @@ test("prewrite-abort recovery rejects an exact reservation without prepared evid
   }
 });
 
-test("prewrite-abort recovery fails closed when the candidate or drift proof changed", () => {
+fullTranslationCompletionTest("prewrite-abort recovery fails closed when the candidate or drift proof changed", () => {
   const candidateFixture = createPrewriteAbortRecoveryFixture();
   const driftFixture = createPrewriteAbortRecoveryFixture();
   const otherCandidate = "33333333-3333-4333-8333-333333333333";
@@ -2378,7 +3782,7 @@ test("prewrite-abort recovery fails closed when the candidate or drift proof cha
   }
 });
 
-test("prewrite-abort recovery survives a lost lock release without replaying D1 drift", () => {
+fullTranslationCompletionTest("prewrite-abort recovery survives a lost lock release without replaying D1 drift", () => {
   const fixture = createPrewriteAbortRecoveryFixture();
   let failRelease = true;
   const lostReleaseRunner: ProductionValidationLockRunner = (args) => {
@@ -2463,15 +3867,22 @@ test("prewrite-abort recovery survives a lost lock release without replaying D1 
   }
 });
 
+assertFullTranslationCompletionTestRegistration();
+
 function createPrewriteAbortRecoveryFixture(
   options: {
     reservationCreatedAt?: string;
     useRunBoundOperationId?: boolean;
   } = {},
 ) {
-  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-prewrite-recovery-"));
+  const fixtureRoot = path.resolve("tmp");
+  fs.mkdirSync(fixtureRoot, { recursive: true, mode: 0o700 });
+  const backupDir = fs.mkdtempSync(
+    path.join(fixtureRoot, "inspir-prewrite-recovery-"),
+  );
   const cloudflareDirectory = path.join(backupDir, "cloudflare");
   fs.mkdirSync(cloudflareDirectory, { recursive: true });
+  fs.chmodSync(cloudflareDirectory, 0o700);
   const sourceFile = {
     file: "fixture.txt",
     bytes: 7,
@@ -2482,15 +3893,11 @@ function createPrewriteAbortRecoveryFixture(
     .update(`${sourceFile.file}\0${sourceFile.bytes}\0${sourceFile.sha256}\n`)
     .digest("hex");
   const sourceIdentity = { sha256: sourceSha256, fileCount: 1 };
-  const operationKey = `${sourceSha256}:${recoveryCandidateVersionId}`;
-  let legacyOperationId = recoveryOperationIds.get(operationKey);
-  if (!legacyOperationId) {
-    legacyOperationId = abortedPrewriteRecoveryOperationId(
-      sourceIdentity,
-      recoveryCandidateVersionId,
-    );
-    recoveryOperationIds.set(operationKey, legacyOperationId);
-  }
+  const legacyOperationId = translationRepairBudgetOperationId({
+    candidateVersionId: recoveryCandidateVersionId,
+    sourceFingerprint: sourceIdentity,
+    planSha256: "8".repeat(64),
+  });
   const operationId = options.useRunBoundOperationId
     ? `seo-cta-translation-repair:${"9".repeat(64)}`
     : legacyOperationId;
@@ -2500,6 +3907,59 @@ function createPrewriteAbortRecoveryFixture(
     bytes: 1,
     sha256: "b".repeat(64),
   };
+  const uploadValue = buildWorkerCandidateUploadEvidence({
+    createdAt: "2026-07-12T09:10:49.000Z",
+    targetCandidateVersionId: recoveryCandidateVersionId,
+    serviceBaselineVersionId: recoveryServiceBaselineVersionId,
+    expectedReleaseTag: "release-recovery-candidate",
+    expectedReleaseMessageSha256: "1".repeat(64),
+    uploadCommandEvidenceSha256: "2".repeat(64),
+    workerDeployPreparationSha256: "3".repeat(64),
+    git: {
+      head: "c".repeat(40),
+      upstream: "c".repeat(40),
+      upstreamRef: "origin/codex/release",
+    },
+    artifacts: {
+      sourceFingerprintSha256: sourceSha256,
+      sourceFingerprintFileCount: 1,
+      workerSourceSha256: "d".repeat(64),
+      wranglerConfigSha256: "e".repeat(64),
+      assetManifestSha256: assetManifest.sha256,
+      assetManifestFileCount: assetManifest.fileCount,
+      assetManifestBytes: assetManifest.bytes,
+    },
+    uploadOutput: {
+      type: "version-upload",
+      version: 1,
+      workerName: "inspirlearning",
+      workerTag: "inspirlearning",
+      versionId: recoveryCandidateVersionId,
+      previewUrl: null,
+      previewAliasUrl: null,
+      wranglerEnvironment: null,
+      workerNameOverridden: false,
+      timestamp: "2026-07-12T09:10:47.000Z",
+    },
+    versionView: {
+      versionId: recoveryCandidateVersionId,
+      createdAt: "2026-07-12T09:10:48.000Z",
+      source: "wrangler",
+      releaseTag: "release-recovery-candidate",
+      releaseMessageSha256: "1".repeat(64),
+      resourceConfigSha256: "4".repeat(64),
+    },
+    soleBaselineTopology: {
+      deploymentId: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      serviceBaselineVersionId: recoveryServiceBaselineVersionId,
+      percentage: 100,
+      observedVersions: 1,
+    },
+  });
+  const upload = writeWorkerCandidateEvidence(
+    workerCandidateUploadEvidencePath(backupDir),
+    uploadValue,
+  );
   const preflightPath = path.join(
     cloudflareDirectory,
     `d1-translation-repair-release-preflight-${recoveryReleasePreflightRunId}.json`,
@@ -2509,7 +3969,9 @@ function createPrewriteAbortRecoveryFixture(
     runId: recoveryReleasePreflightRunId,
     createdAt: recoveryReleasePreflightCreatedAt,
     candidateVersionId: recoveryCandidateVersionId,
-    activeVersionId: recoveryCandidateVersionId,
+    serviceBaselineVersionId: recoveryServiceBaselineVersionId,
+    uploadEvidenceSha256: upload.sha256,
+    activeVersionId: recoveryServiceBaselineVersionId,
     gitHead: "c".repeat(40),
     gitUpstream: "c".repeat(40),
     sourceFingerprint: {
@@ -2546,10 +4008,12 @@ function createPrewriteAbortRecoveryFixture(
         },
       },
     ],
-    candidateProbe: inactiveRecoveryCandidateProbe(recoveryCandidateVersionId),
-    workerDeployReportPath: path.resolve(backupDir, "cloudflare/worker-deploy-report.json"),
+    candidateProbe: inactiveRecoveryCandidateProbe(
+      recoveryServiceBaselineVersionId,
+    ),
+    workerDeployReportPath: workerCandidateUploadEvidencePath(backupDir),
     workerDeployEvidence: {
-      createdAt: recoveryReleasePreflightCreatedAt,
+      createdAt: upload.value.createdAt,
       backupDir: path.resolve(backupDir),
       candidateVersionId: recoveryCandidateVersionId,
       sourceFingerprintSha256: sourceSha256,
@@ -2557,7 +4021,7 @@ function createPrewriteAbortRecoveryFixture(
       workerSourceSha256: "d".repeat(64),
       wranglerConfigSha256: "e".repeat(64),
       assetManifest,
-      activeDeploymentReadAt: recoveryReleasePreflightCreatedAt,
+      activeDeploymentReadAt: upload.value.createdAt,
     },
   });
   reserveD1ReleaseBudget({
@@ -2587,11 +4051,13 @@ function createPrewriteAbortRecoveryFixture(
     buildRecoveryPlan: () => ({
       translations: new Map<SupportedLanguage, string>(),
       curatedRepairRows: [],
+      marketingSite: releasedMarketingSiteRepairCorpus(),
       mainAppRepairRows: [],
       operationId,
       legacyOperationId,
     }),
     candidateVersionId: recoveryCandidateVersionId,
+    serviceBaselineVersionId: recoveryServiceBaselineVersionId,
     database,
     ledgerPath,
     operationId,
@@ -2618,7 +4084,7 @@ function recoveryInvocation(fixture: ReturnType<typeof createPrewriteAbortRecove
     lockRunner: fixture.runner,
     assertRecoverySource: () => {},
     buildRecoveryPlan: fixture.buildRecoveryPlan,
-    readActiveWorkerVersion: () => fixture.candidateVersionId,
+    readActiveWorkerVersion: () => fixture.serviceBaselineVersionId,
     probeCandidate: inactiveRecoveryCandidateProbe,
     verifyDrift: recoveryRepairRequiredDriftReport,
   };
@@ -2640,9 +4106,11 @@ function recoveryRepairRequiredDriftReport(): RemoteTranslationDriftReport {
     issues: [issue],
     expected: {
       sourceNamespaces: 125,
-      curatedRows: 691,
+      curatedRows: 8_556,
+      marketingSiteRows: 69,
       mainAppRows: 69,
       supportedTargetLanguages: 69,
+      remoteQueries: 4,
     },
     sourceSnapshot: {
       status: "repair-required",
@@ -2685,6 +4153,63 @@ function recoveryReconciledDriftReport(): RemoteTranslationDriftReport {
       reconciliationLogicalRowWrites: 0,
     },
     payloadSnapshot: { status: "reconciled", issues: [] },
+  };
+}
+
+function translationUploadEvidence(
+  backupDir: string,
+  git: { head: string; upstream: string; upstreamRef: string },
+  artifacts: WorkerDeployArtifactEvidence,
+) {
+  const value = buildWorkerCandidateUploadEvidence({
+    createdAt: "2026-07-15T10:00:00.000Z",
+    targetCandidateVersionId: repairCandidateVersionId,
+    serviceBaselineVersionId: repairServiceBaselineVersionId,
+    expectedReleaseTag: "release-translation-candidate",
+    expectedReleaseMessageSha256: "1".repeat(64),
+    uploadCommandEvidenceSha256: "2".repeat(64),
+    workerDeployPreparationSha256: "3".repeat(64),
+    git,
+    artifacts: {
+      sourceFingerprintSha256: artifacts.sourceFingerprint.sha256,
+      sourceFingerprintFileCount: artifacts.sourceFingerprint.fileCount,
+      workerSourceSha256: artifacts.workerSourceSha256,
+      wranglerConfigSha256: artifacts.wranglerConfigSha256,
+      assetManifestSha256: artifacts.assetManifest.sha256,
+      assetManifestFileCount: artifacts.assetManifest.fileCount,
+      assetManifestBytes: artifacts.assetManifest.bytes,
+    },
+    uploadOutput: {
+      type: "version-upload",
+      version: 1,
+      workerName: "inspirlearning",
+      workerTag: "inspirlearning",
+      versionId: repairCandidateVersionId,
+      previewUrl: null,
+      previewAliasUrl: null,
+      wranglerEnvironment: null,
+      workerNameOverridden: false,
+      timestamp: "2026-07-15T09:58:00.000Z",
+    },
+    versionView: {
+      versionId: repairCandidateVersionId,
+      createdAt: "2026-07-15T09:59:00.000Z",
+      source: "wrangler",
+      releaseTag: "release-translation-candidate",
+      releaseMessageSha256: "1".repeat(64),
+      resourceConfigSha256: "4".repeat(64),
+    },
+    soleBaselineTopology: {
+      deploymentId: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      serviceBaselineVersionId: repairServiceBaselineVersionId,
+      percentage: 100,
+      observedVersions: 1,
+    },
+  });
+  return {
+    path: path.resolve(backupDir, "cloudflare/worker-candidate-upload.json"),
+    value,
+    sha256: workerCandidateEvidenceSha256(value),
   };
 }
 

@@ -16,6 +16,7 @@ import {
   isValidFieldTranslation,
 } from "../lib/i18n/translation-field-validation";
 import { placeholdersIn } from "../lib/i18n/translation-validation";
+import { inspectStagedTranslationFallbackInventory } from "../scripts/staged-translation-fallback-release-attestation";
 
 type SiteEntry = {
   key: string;
@@ -56,9 +57,39 @@ type SiteCorrectionsFixture = {
 
 const curatedRoot = path.join(process.cwd(), "translations/curated");
 
-test("all 691 tracked site packs reject unapproved case-only source copies", () => {
+test("staged inventory validates every clean physical pack and retains the full 8,556 target", () => {
+  const inventory = inspectStagedTranslationFallbackInventory();
   const packs = readSitePacks();
-  assert.equal(packs.length, 691);
+  assert.equal(packs.length, inventory.counts.physicalSitePacks);
+  assert.equal(inventory.counts.fullSitePackTarget, 8_556);
+  assert.equal(inventory.counts.stalePhysicalSitePacks, 92);
+  assert.equal(
+    inventory.counts.pendingCandidateJobs,
+    inventory.counts.missingSitePacks + inventory.counts.stalePhysicalSitePacks,
+  );
+  assert.equal(
+    inventory.pendingLedger.entries.length,
+    inventory.counts.pendingCandidateJobs,
+  );
+  assert.equal(
+    [
+      "691/599/7865/7957",
+      "812/720/7744/7836",
+    ].includes([
+      inventory.counts.physicalSitePacks,
+      inventory.counts.cleanPhysicalSitePacks,
+      inventory.counts.missingSitePacks,
+      inventory.counts.pendingCandidateJobs,
+    ].join("/")),
+    true,
+    "inventory must be either the exact pre-promotion or post-Afrikaans staged state",
+  );
+  const staleTargets = new Set(
+    inventory.pendingLedger.entries
+      .filter((entry) => entry[2] === "stale")
+      .map((entry) => `${entry[0]}\u0000${entry[1]}`),
+  );
+  let validatedCleanPacks = 0;
 
   for (const pack of packs) {
     const languageConfig = languageConfigs[pack.language];
@@ -74,6 +105,10 @@ test("all 691 tracked site packs reject unapproved case-only source copies", () 
       true,
       `${pack.relativePath} has an unknown namespace`,
     );
+
+    const targetIdentity = `${pack.locale}\u0000${pack.namespace}`;
+    if (staleTargets.has(targetIdentity)) continue;
+    validatedCleanPacks += 1;
 
     const source = getSiteTranslationSource(pack.namespace);
     assert.equal(pack.sourceHash, source.sourceHash, `${pack.relativePath} source hash drifted`);
@@ -128,6 +163,7 @@ test("all 691 tracked site packs reject unapproved case-only source copies", () 
       );
     }
   }
+  assert.equal(validatedCleanPacks, inventory.counts.cleanPhysicalSitePacks);
 });
 
 test("reviewed site semantic corrections remain exact", () => {
@@ -256,23 +292,46 @@ function parseSitePack(relativePath: string, value: unknown): SitePack | null {
     !isSupportedLanguage(value.language) ||
     typeof value.locale !== "string" ||
     typeof value.namespace !== "string" ||
-    typeof value.sourceHash !== "string" ||
-    !Array.isArray(value.entries)
+    typeof value.sourceHash !== "string"
   ) {
     throw new Error(`Invalid site translation pack metadata: ${relativePath}.`);
   }
 
+  const rawEntries = value.entries;
+  const rawTranslations = value.translations;
+  if ((rawEntries === undefined) === (rawTranslations === undefined)) {
+    throw new Error(`Ambiguous site translation pack representation: ${relativePath}.`);
+  }
   const entries: SiteEntry[] = [];
-  for (const entry of value.entries) {
-    if (
-      !isRecord(entry) ||
-      typeof entry.key !== "string" ||
-      typeof entry.source !== "string" ||
-      typeof entry.value !== "string"
-    ) {
-      throw new Error(`Invalid site translation entry: ${relativePath}.`);
+  if (rawEntries !== undefined) {
+    if (!Array.isArray(rawEntries)) {
+      throw new Error(`Invalid site translation entries: ${relativePath}.`);
     }
-    entries.push({ key: entry.key, source: entry.source, value: entry.value });
+    for (const entry of rawEntries) {
+      if (
+        !isRecord(entry) ||
+        typeof entry.key !== "string" ||
+        typeof entry.source !== "string" ||
+        typeof entry.value !== "string"
+      ) {
+        throw new Error(`Invalid site translation entry: ${relativePath}.`);
+      }
+      entries.push({ key: entry.key, source: entry.source, value: entry.value });
+    }
+  } else {
+    if (!isRecord(rawTranslations)) {
+      throw new Error(`Invalid compact site translations: ${relativePath}.`);
+    }
+    const source = getSiteTranslationSource(value.namespace);
+    for (const [key, translated] of Object.entries(rawTranslations).sort(([left], [right]) =>
+      left.localeCompare(right),
+    )) {
+      const sourceText = source.sourceStrings[key];
+      if (sourceText === undefined || typeof translated !== "string") {
+        throw new Error(`Invalid compact site translation: ${relativePath}/${key}.`);
+      }
+      entries.push({ key, source: sourceText, value: translated });
+    }
   }
 
   return {

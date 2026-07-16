@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFileSync, readdirSync, lstatSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -12,9 +13,33 @@ import {
   type TranslationCandidateTargetLanguage,
 } from "@/lib/i18n/translation-candidate-quality";
 
-type CandidateQaArgs = {
+export type TranslationCandidateQaReviewedException = Readonly<{
+  kind: "reviewed-candidate-field-exception-v1";
+  language: TranslationCandidateTargetLanguage;
+  locale: string;
+  namespace: string;
+  sourceHash: string;
+  key: string;
+  sourceSha256: string;
+  valueSha256: string;
+  decisionIdentitySha256: string;
+  proposalIdentitySha256: string;
+  fieldIdentitySha256: string;
+  reviewerId: "reviewer-a" | "reviewer-b";
+  authority: "original-review-evidence";
+  verdict: "preserve-current";
+  failures: readonly ["protected-literal-parity"];
+}>;
+
+export type TranslationCandidateQaExceptionPolicy = Readonly<{
+  kind: "reviewed-candidate-field-exceptions-v1";
+  exceptions: readonly TranslationCandidateQaReviewedException[];
+}>;
+
+export type CandidateQaArgs = {
   worklistDir: string;
   candidateDir: string;
+  exceptionPolicy?: TranslationCandidateQaExceptionPolicy;
 };
 
 type WorklistEntry = {
@@ -80,6 +105,9 @@ export type TranslationCandidateQaReport = {
   candidateFiles: number;
   checkedFiles: number;
   checkedFields: number;
+  ordinaryCheckedFields: number;
+  acceptedExceptionFields: number;
+  acceptedExceptions: TranslationCandidateQaReviewedException[];
   draftModel: string | null;
   issues: TranslationCandidateQaIssue[];
 };
@@ -98,6 +126,24 @@ const worklistRootKeys = [
 
 const candidateRootKeys = [...worklistRootKeys, "draftModel"] as const;
 const entryKeys = ["existingCandidate", "key", "reasons", "source", "value"] as const;
+const exceptionPolicyKeys = ["exceptions", "kind"] as const;
+const reviewedExceptionKeys = [
+  "authority",
+  "decisionIdentitySha256",
+  "failures",
+  "fieldIdentitySha256",
+  "key",
+  "kind",
+  "language",
+  "locale",
+  "namespace",
+  "proposalIdentitySha256",
+  "reviewerId",
+  "sourceHash",
+  "sourceSha256",
+  "valueSha256",
+  "verdict",
+] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
@@ -140,6 +186,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
 export function validateTranslationRepairCandidateDirectories(
   args: CandidateQaArgs,
 ): TranslationCandidateQaReport {
+  const exceptionPolicy = parseExceptionPolicy(args.exceptionPolicy);
   const worklistDir = resolve(args.worklistDir);
   const candidateDir = resolve(args.candidateDir);
   if (worklistDir === candidateDir) {
@@ -186,6 +233,7 @@ export function validateTranslationRepairCandidateDirectories(
 
   let checkedFiles = 0;
   let checkedFields = 0;
+  const acceptedExceptions: TranslationCandidateQaReviewedException[] = [];
   for (const [relativePath, worklist] of worklists) {
     const candidate = candidates.get(relativePath);
     if (!candidate) continue;
@@ -202,6 +250,32 @@ export function validateTranslationRepairCandidateDirectories(
         value: candidateEntry.value,
       });
       if (quality.failures.length) {
+        const reviewedException = exceptionPolicy.get(
+          exceptionLocator(
+            worklist.language,
+            worklist.locale,
+            worklist.namespace,
+            worklistEntry.key,
+          ),
+        );
+        if (
+          reviewedException &&
+          reviewedException.sourceHash === worklist.sourceHash &&
+          reviewedException.sourceSha256 === sha256Text(worklistEntry.source) &&
+          reviewedException.valueSha256 === sha256Text(candidateEntry.value) &&
+          sameStringArray(reviewedException.failures, quality.failures)
+        ) {
+          exceptionPolicy.delete(
+            exceptionLocator(
+              worklist.language,
+              worklist.locale,
+              worklist.namespace,
+              worklistEntry.key,
+            ),
+          );
+          acceptedExceptions.push(reviewedException);
+          continue;
+        }
         issues.push({
           code: "candidate-field",
           relativePath,
@@ -215,7 +289,20 @@ export function validateTranslationRepairCandidateDirectories(
     }
   }
 
+  if (exceptionPolicy.size) {
+    throw new Error(
+      `Reviewed candidate QA exception policy was not exactly consumed: ${[
+        ...exceptionPolicy.keys(),
+      ].join(", ")}.`,
+    );
+  }
+
   issues.sort(compareIssues);
+  acceptedExceptions.sort((left, right) =>
+    exceptionLocator(left.language, left.locale, left.namespace, left.key).localeCompare(
+      exceptionLocator(right.language, right.locale, right.namespace, right.key),
+    ),
+  );
   return {
     ok: issues.length === 0,
     worklistDir,
@@ -224,9 +311,96 @@ export function validateTranslationRepairCandidateDirectories(
     candidateFiles: candidateFiles.length,
     checkedFiles,
     checkedFields,
+    ordinaryCheckedFields: checkedFields - acceptedExceptions.length,
+    acceptedExceptionFields: acceptedExceptions.length,
+    acceptedExceptions,
     draftModel: draftModels.length === 1 ? draftModels[0] : null,
     issues,
   };
+}
+
+function parseExceptionPolicy(
+  policy: TranslationCandidateQaExceptionPolicy | undefined,
+): Map<string, TranslationCandidateQaReviewedException> {
+  if (policy === undefined) return new Map();
+  if (!isRecord(policy)) throw new Error("Candidate QA exception policy must be an object.");
+  assertExactKeys(policy, exceptionPolicyKeys, "candidate QA exception policy");
+  if (
+    policy.kind !== "reviewed-candidate-field-exceptions-v1" ||
+    !Array.isArray(policy.exceptions) ||
+    !policy.exceptions.length
+  ) {
+    throw new Error("Invalid candidate QA exception policy metadata.");
+  }
+  const exceptions = new Map<string, TranslationCandidateQaReviewedException>();
+  for (let index = 0; index < policy.exceptions.length; index += 1) {
+    const raw: unknown = policy.exceptions[index];
+    if (!isRecord(raw)) throw new Error(`Candidate QA exception ${index} must be an object.`);
+    assertExactKeys(raw, reviewedExceptionKeys, `candidate QA exception ${index}`);
+    const language = parseTargetLanguage(raw.language, `candidate QA exception ${index}`);
+    const locale = parseLocale(raw.locale, language, `candidate QA exception ${index}`);
+    if (
+      raw.kind !== "reviewed-candidate-field-exception-v1" ||
+      typeof raw.namespace !== "string" ||
+      !raw.namespace.trim() ||
+      typeof raw.key !== "string" ||
+      !raw.key.trim() ||
+      !isSha256(raw.sourceHash) ||
+      !isSha256(raw.sourceSha256) ||
+      !isSha256(raw.valueSha256) ||
+      !isSha256(raw.decisionIdentitySha256) ||
+      !isSha256(raw.proposalIdentitySha256) ||
+      !isSha256(raw.fieldIdentitySha256) ||
+      (raw.reviewerId !== "reviewer-a" && raw.reviewerId !== "reviewer-b") ||
+      raw.authority !== "original-review-evidence" ||
+      raw.verdict !== "preserve-current" ||
+      !Array.isArray(raw.failures) ||
+      raw.failures.length !== 1 ||
+      raw.failures[0] !== "protected-literal-parity"
+    ) {
+      throw new Error(`Invalid candidate QA exception metadata at index ${index}.`);
+    }
+    const reviewedException: TranslationCandidateQaReviewedException = {
+      kind: "reviewed-candidate-field-exception-v1",
+      language,
+      locale,
+      namespace: raw.namespace,
+      sourceHash: raw.sourceHash,
+      key: raw.key,
+      sourceSha256: raw.sourceSha256,
+      valueSha256: raw.valueSha256,
+      decisionIdentitySha256: raw.decisionIdentitySha256,
+      proposalIdentitySha256: raw.proposalIdentitySha256,
+      fieldIdentitySha256: raw.fieldIdentitySha256,
+      reviewerId: raw.reviewerId,
+      authority: "original-review-evidence",
+      verdict: "preserve-current",
+      failures: ["protected-literal-parity"],
+    };
+    const locator = exceptionLocator(language, locale, raw.namespace, raw.key);
+    if (exceptions.has(locator)) {
+      throw new Error(`Duplicate candidate QA exception for ${locator}.`);
+    }
+    exceptions.set(locator, reviewedException);
+  }
+  return exceptions;
+}
+
+function exceptionLocator(
+  language: TranslationCandidateTargetLanguage,
+  locale: string,
+  namespace: string,
+  key: string,
+) {
+  return `${language}/${locale}/${namespace}/${key}`;
+}
+
+function isSha256(value: unknown): value is string {
+  return typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
+}
+
+function sha256Text(value: string) {
+  return createHash("sha256").update(value, "utf8").digest("hex");
 }
 
 function parseWorklist(file: string, relativePath: string): TranslationRepairWorklist {

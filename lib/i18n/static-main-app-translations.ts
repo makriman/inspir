@@ -28,6 +28,18 @@ export function readStaticMainAppTranslations(
   if (!existsSync(filePath)) return null;
 
   const value: unknown = JSON.parse(readFileSync(filePath, "utf8"));
+  return parseStaticMainAppTranslationsValue(source, language, value);
+}
+
+/**
+ * Validate an already-read tracked pack. Release inspectors use this pure
+ * entry point so the bytes they hash are exactly the bytes they validate.
+ */
+export function parseStaticMainAppTranslationsValue(
+  source: TranslationSource,
+  language: SupportedLanguage,
+  value: unknown,
+): Record<string, string> {
   if (!isRecord(value)) throw invalidPack(language, "root must be an object");
   if (value.schemaVersion !== 1 || value.kind !== "static-main-app-values") {
     throw invalidPack(language, "unsupported schema");

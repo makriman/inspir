@@ -1,16 +1,22 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { DatabaseSync } from "node:sqlite";
 import test from "node:test";
 import { makeSignature } from "better-auth/crypto";
+import "./worker-crypto-test-shim";
 import {
   createNativeOAuthSession,
+  GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX,
+  GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL,
   linkVerifiedGoogleIdentity,
   handleAccountApiRequest,
   handleLogout,
   handleMigrationE2EAuthRequest,
   handleNativeAuthRequest,
   findUniqueGoogleEmailUser,
+  parseNativeOAuthStateCookie,
+  timingSafeDigestEqual,
   type GoogleIdentity,
   type GoogleTokenSet,
   type MigrationE2EAuthEnv,
@@ -25,6 +31,7 @@ import {
   shouldRefreshNativeSession,
   verifyNativeAuthValue,
 } from "../lib/free-runtime/native-session";
+import { hasTimingSafeEqual } from "../lib/free-runtime/timing-safe-equal";
 
 const testSecret = "native-session-test-secret-that-is-long-enough";
 const testToken = "01JSESSIONTOKEN_FOR_NATIVE_ACCOUNT_TEST";
@@ -60,6 +67,64 @@ test("native session verification accepts Better Auth HMAC cookies and rejects t
     headers: { cookie: `${cookiePair.slice(0, -1)}A` },
   });
   assert.equal(await readVerifiedNativeSessionToken(tamperedRequest, testSecret), null);
+  assert.equal(await verifyNativeAuthValue(`${testToken}.short`, testSecret), null);
+  assert.equal(await verifyNativeAuthValue(`${testToken}.${"a".repeat(257)}`, testSecret), null);
+  assert.equal(await verifyNativeAuthValue("unsigned-value", testSecret), null);
+
+  const canonicalSignature = await makeSignature(testToken, testSecret);
+  const base64Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  const terminalIndex = canonicalSignature.length - 2;
+  const terminalValue = base64Alphabet.indexOf(canonicalSignature.charAt(terminalIndex));
+  assert.match(canonicalSignature, /^[A-Za-z0-9+/]{43}=$/);
+  assert.ok(terminalValue >= 0 && terminalValue % 4 === 0);
+  const nonCanonicalSignature =
+    `${canonicalSignature.slice(0, terminalIndex)}${base64Alphabet.charAt(terminalValue + 1)}=`;
+  assert.equal(atob(nonCanonicalSignature), atob(canonicalSignature));
+  assert.equal(
+    await verifyNativeAuthValue(`${testToken}.${nonCanonicalSignature}`, testSecret),
+    null,
+  );
+});
+
+test("native secret verification fails closed without the Workers timing-safe primitive", async () => {
+  const digestOnlySubtle = {
+    digest: crypto.subtle.digest.bind(crypto.subtle),
+  };
+  const signedValue = `${testToken}.${await makeSignature(testToken, testSecret)}`;
+
+  assert.equal(
+    await timingSafeDigestEqual(testSecret, testSecret, digestOnlySubtle),
+    false,
+  );
+  assert.equal(
+    await verifyNativeAuthValue(signedValue, testSecret, digestOnlySubtle),
+    null,
+  );
+});
+
+test("native session verification compares fixed 32-byte HMAC buffers", async () => {
+  const comparedLengths: Array<readonly [number, number]> = [];
+  const instrumentedSubtle = {
+    digest: crypto.subtle.digest.bind(crypto.subtle),
+    timingSafeEqual(
+      left: ArrayBuffer | ArrayBufferView,
+      right: ArrayBuffer | ArrayBufferView,
+    ) {
+      comparedLengths.push([left.byteLength, right.byteLength]);
+      return testTimingSafeEqual(left, right);
+    },
+  };
+  const signedValue = `${testToken}.${await makeSignature(testToken, testSecret)}`;
+
+  assert.equal(
+    await verifyNativeAuthValue(signedValue, testSecret, instrumentedSubtle),
+    testToken,
+  );
+  assert.equal(
+    await verifyNativeAuthValue(`${testToken}.short`, testSecret, instrumentedSubtle),
+    null,
+  );
+  assert.deepEqual(comparedLengths, [[32, 32], [32, 32]]);
 });
 
 test("native session verification does not let a stale non-secure cookie shadow a valid production cookie", async () => {
@@ -493,7 +558,7 @@ test("native Google initiation atomically caps state writes and fails closed on 
   }
 });
 
-test("Google linking fails closed before account or session writes for ambiguous case-folded emails", async () => {
+test("Google linking rejects an exact email match when a case-folded duplicate also exists", async () => {
   const database = new AmbiguousGoogleEmailD1Database();
   const originalConsoleError = console.error;
   const loggedEvents: string[] = [];
@@ -509,10 +574,159 @@ test("Google linking fails closed before account or session writes for ambiguous
 
   assert.ok(loggedEvents.some((value) => value.includes("native_google_casefold_email_conflict")));
   assert.ok(loggedEvents.every((value) => !value.includes("learner@example.com")));
-  assert.ok(database.statements.some((statement) => statement.query.includes("where email = ?1")));
-  assert.ok(database.statements.some((statement) => statement.query.includes("where lower(email) = ?1")));
+  assert.equal(database.prepareCalls, 1);
+  const lookup = database.statements[0];
+  assert.ok(lookup);
+  assert.match(lookup.query, new RegExp(`indexed by ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX}`));
+  assert.match(lookup.query, /where lower\(email\) = lower\(\?1\)/);
+  assert.match(lookup.query, /limit 2/);
+  assert.doesNotMatch(lookup.query, /where email = \?1/);
+  assert.deepEqual(
+    lookup.boundValues,
+    ["learner@example.com"],
+  );
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into accounts")));
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into sessions")));
+});
+
+test("Google case-fold linking is forced through its covering normalized-email index", () => {
+  const database = new DatabaseSync(":memory:");
+  try {
+    database.exec(`
+      create table users (id text primary key not null, email text not null);
+      create unique index users_email_unique on users (email);
+      insert into users (id, email) values
+        ('user-b', 'Learner@Example.com'),
+        ('user-a', 'learner@example.com');
+    `);
+    database.exec(
+      fs.readFileSync(
+        path.resolve("drizzle-d1/0017_users_normalized_email_lookup.sql"),
+        "utf8",
+      ),
+    );
+
+    const plan = database
+      .prepare(`explain query plan ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL}`)
+      .all("LEARNER@example.com");
+    assert.ok(
+      plan.some(
+        (row) =>
+          String(row.detail) ===
+          `SEARCH users USING COVERING INDEX ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX} (<expr>=?)`,
+      ),
+    );
+    assert.ok(plan.every((row) => !/\bSCAN users\b/i.test(String(row.detail))));
+    assert.deepEqual(
+      database
+        .prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL)
+        .all("LEARNER@example.com")
+        .map((row) => ({ id: row.id, email: row.email })),
+      [
+        { id: "user-a", email: "learner@example.com" },
+        { id: "user-b", email: "Learner@Example.com" },
+      ],
+    );
+    const unindexedDatabase = new DatabaseSync(":memory:");
+    try {
+      unindexedDatabase.exec(
+        "create table users (id text primary key not null, email text not null)",
+      );
+      assert.throws(
+        () => unindexedDatabase.prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL),
+        /no such index/,
+      );
+    } finally {
+      unindexedDatabase.close();
+    }
+  } finally {
+    database.close();
+  }
+});
+
+test("Workers timing-safe digest comparison rejects unequal content and length", async () => {
+  const comparedLengths: Array<readonly [number, number]> = [];
+  const instrumentedSubtle = {
+    digest: crypto.subtle.digest.bind(crypto.subtle),
+    timingSafeEqual(
+      left: ArrayBuffer | ArrayBufferView,
+      right: ArrayBuffer | ArrayBufferView,
+    ) {
+      comparedLengths.push([left.byteLength, right.byteLength]);
+      return testTimingSafeEqual(left, right);
+    },
+  };
+  assert.equal(
+    await timingSafeDigestEqual(
+      configuredE2ESecret,
+      configuredE2ESecret,
+      instrumentedSubtle,
+    ),
+    true,
+  );
+  assert.equal(
+    await timingSafeDigestEqual(
+      configuredE2ESecret,
+      `${configuredE2ESecret.slice(0, -1)}x`,
+      instrumentedSubtle,
+    ),
+    false,
+  );
+  assert.equal(
+    await timingSafeDigestEqual(configuredE2ESecret, "short", instrumentedSubtle),
+    false,
+  );
+  assert.deepEqual(comparedLengths, [[32, 32], [32, 32], [32, 32]]);
+});
+
+test("native OAuth state comparison is timing-safe and fails closed without the Worker primitive", async () => {
+  const oauthState = "A".repeat(43);
+  const encodedStateData = testBase64Url(
+    new TextEncoder().encode(
+      JSON.stringify({
+        callbackURL: "https://inspirlearning.com/chat",
+        clientId: "google-client-id",
+        codeVerifier: "v".repeat(86),
+        expiresAt: Date.now() + 60_000,
+        oauthState,
+      }),
+    ),
+  );
+  const instrumentedSubtle = {
+    digest: crypto.subtle.digest.bind(crypto.subtle),
+    timingSafeEqual(
+      left: ArrayBuffer | ArrayBufferView,
+      right: ArrayBuffer | ArrayBufferView,
+    ) {
+      return testTimingSafeEqual(left, right);
+    },
+  };
+  assert.ok(
+    await parseNativeOAuthStateCookie(
+      encodedStateData,
+      oauthState,
+      "google-client-id",
+      instrumentedSubtle,
+    ),
+  );
+  assert.equal(
+    await parseNativeOAuthStateCookie(
+      encodedStateData,
+      `${"A".repeat(42)}B`,
+      "google-client-id",
+      instrumentedSubtle,
+    ),
+    null,
+  );
+  assert.equal(
+    await parseNativeOAuthStateCookie(
+      encodedStateData,
+      oauthState,
+      "google-client-id",
+      { digest: crypto.subtle.digest.bind(crypto.subtle) },
+    ),
+    null,
+  );
 });
 
 test("Google linking and OAuth session creation preserve an existing historical user ID", async () => {
@@ -551,7 +765,12 @@ test("Google linking and OAuth session creation preserve an existing historical 
   assert.equal(database.session?.ipAddress, trustedTestIp);
   assert.equal(database.session?.userAgent, "historical-google-link-test");
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into users")));
-  assert.ok(database.statements.every((statement) => !statement.query.includes("where lower(email)")));
+  assert.equal(
+    database.statements.filter((statement) =>
+      statement.query.includes("where lower(email) = lower(?1)")
+    ).length,
+    1,
+  );
 });
 
 test("migration E2E auth requires a 32-byte secret and a trusted Cloudflare client IP", async () => {
@@ -596,24 +815,29 @@ test("migration E2E auth requires a 32-byte secret and a trusted Cloudflare clie
   assert.equal(database.prepareCalls, 0);
 });
 
-test("migration E2E auth rejects wrong secrets without amplifying them into D1 writes", async () => {
-  const database = new GuardD1Database();
-  const response = await handleMigrationE2EAuthRequest(
-    new Request("https://inspirlearning.com/api/migration/e2e-auth", {
-      method: "POST",
-      headers: {
-        "cf-connecting-ip": trustedTestIp,
-        "x-migration-e2e-auth-secret": "wrong-secret",
-      },
-    }),
-    e2eEnv(database, {
-      E2E_TEST_AUTH_SECRET: configuredE2ESecret,
-      E2E_TEST_AUTH_EMAIL: configuredE2EEmail,
-    }),
-  );
-  assert.equal(response.status, 404);
-  assert.equal(await response.text(), "");
-  assert.equal(database.prepareCalls, 0);
+test("migration E2E auth rejects wrong-length and wrong-content secrets before D1", async () => {
+  for (const providedSecret of [
+    "wrong-secret",
+    `${configuredE2ESecret.slice(0, -1)}x`,
+  ]) {
+    const database = new GuardD1Database();
+    const response = await handleMigrationE2EAuthRequest(
+      new Request("https://inspirlearning.com/api/migration/e2e-auth", {
+        method: "POST",
+        headers: {
+          "cf-connecting-ip": trustedTestIp,
+          "x-migration-e2e-auth-secret": providedSecret,
+        },
+      }),
+      e2eEnv(database, {
+        E2E_TEST_AUTH_SECRET: configuredE2ESecret,
+        E2E_TEST_AUTH_EMAIL: configuredE2EEmail,
+      }),
+    );
+    assert.equal(response.status, 404, providedSecret);
+    assert.equal(await response.text(), "", providedSecret);
+    assert.equal(database.prepareCalls, 0, providedSecret);
+  }
 });
 
 test("an explicit localhost E2E opt-in creates only an isolated preview user and never mutates admin membership", async () => {
@@ -1014,6 +1238,10 @@ test("write freeze blocks migration cleanup mutations but keeps verification act
 test("native account runtime excludes Next and preserves migrated Google account linking", () => {
   const source = fs.readFileSync(path.resolve("lib/free-runtime/account-api.ts"), "utf8");
   const sessionSource = fs.readFileSync(path.resolve("lib/free-runtime/native-session.ts"), "utf8");
+  const timingSafeSource = fs.readFileSync(
+    path.resolve("lib/free-runtime/timing-safe-equal.ts"),
+    "utf8",
+  );
   assert.doesNotMatch(source, /next\/server|\.open-next|@opennextjs|nextCookies|refreshProfilePhoto/);
   assert.doesNotMatch(source, /from "better-auth/);
   assert.match(source, /googleAuthorizationEndpoint/);
@@ -1032,7 +1260,14 @@ test("native account runtime excludes Next and preserves migrated Google account
     /delete from verification_tokens\s+where identifier = \?2 and token <> \?3[\s\S]{0,160}disposablePostUserNonTokenZeroResidueSql/,
   );
   assert.match(source, /parseNativeOAuthStateCookie/);
-  assert.match(source, /constantTimeStringEqual\(clientId, expectedClientId\)/);
+  assert.match(source, /clientId !== expectedClientId/);
+  assert.match(source, /await timingSafeDigestEqual\(oauthState, expectedState, subtle\)/);
+  assert.doesNotMatch(source, /oauthState !== expectedState/);
+  assert.match(timingSafeSource, /subtle\.timingSafeEqual\(leftDigest, rightDigest\)/);
+  assert.match(sessionSource, /timingSafeFixedBytesEqual\(actual, expected, subtle\)/);
+  assert.match(sessionSource, /const actual = decoded \?\? new Uint8Array\(expected\.byteLength\)/);
+  assert.doesNotMatch(sessionSource, /function constantTimeStringEqual|difference \|=/);
+  assert.doesNotMatch(source, /function constantTimeStringEqual/);
   assert.match(source, /crypto\.subtle\.verify/);
   assert.doesNotMatch(source, /pendingGoogleJwks/);
   assert.match(source, /Never retain an in-flight fetch promise across Worker requests/);
@@ -1052,6 +1287,7 @@ test("native account runtime excludes Next and preserves migrated Google account
   assert.match(source, /handleMigrationE2EAuthRequest/);
   assert.match(source, /x-migration-e2e-auth-secret/);
   assert.match(source, /on conflict\(email\) do nothing/);
+  assert.doesNotMatch(source, /const exact = await findGoogleExactEmailUser/);
   assert.match(source, /on conflict\(provider, provider_account_id\) do update set/);
   assert.doesNotMatch(
     source,
@@ -1570,14 +1806,14 @@ class AmbiguousGoogleEmailD1Statement extends EmptyD1Statement {
 
   all<T = Record<string, unknown>>(): Promise<D1Result<T>>;
   async all() {
-    if (!this.query.includes("where lower(email) = ?1")) {
+    if (!this.query.includes("where lower(email) = lower(?1)")) {
       return emptyD1Result<Record<string, unknown>>();
     }
     return {
       ...emptyD1Result<Record<string, unknown>>(),
       results: [
         { id: "legacy-upper", email: "Learner@example.com" },
-        { id: "legacy-lower", email: "LEARNER@example.com" },
+        { id: "legacy-lower", email: "learner@example.com" },
       ],
     };
   }
@@ -1608,6 +1844,23 @@ class ExistingGoogleLinkD1Statement extends EmptyD1Statement {
       };
     }
     throw new Error(`Unexpected Google-link first() query: ${this.query}`);
+  }
+
+  all<T = Record<string, unknown>>(): Promise<D1Result<T>>;
+  async all() {
+    if (this.query.includes("where lower(email) = lower(?1)")) {
+      assert.deepEqual(this.boundValues, [this.database.historicalEmail]);
+      return {
+        ...emptyD1Result<Record<string, unknown>>(),
+        results: [
+          {
+            id: this.database.historicalUserId,
+            email: this.database.historicalEmail,
+          },
+        ],
+      };
+    }
+    throw new Error(`Unexpected Google-link all() query: ${this.query}`);
   }
 
   async run<T = Record<string, unknown>>() {
@@ -1736,4 +1989,15 @@ function emptyD1Result<T>(changes = 0): D1Result<T> {
     },
     results: [],
   };
+}
+
+function testTimingSafeEqual(
+  left: ArrayBuffer | ArrayBufferView,
+  right: ArrayBuffer | ArrayBufferView,
+) {
+  const subtle = crypto.subtle;
+  if (!hasTimingSafeEqual(subtle)) {
+    throw new Error("The Worker crypto test shim did not install timingSafeEqual.");
+  }
+  return subtle.timingSafeEqual(left, right);
 }

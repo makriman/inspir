@@ -1120,9 +1120,10 @@ async function handleAccountTopics(
        metadata
      from topics
      where status = 'active'
+       and slug <> ?1
      order by sort_order asc, name asc
      limit 200`,
-  ).all<TopicRow>();
+  ).bind("ai-game-arena").all<TopicRow>();
   return sessionJson(
     {
       topics: rows.results.map((row) => ({

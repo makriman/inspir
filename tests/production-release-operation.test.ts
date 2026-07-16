@@ -7,14 +7,23 @@ import test from "node:test";
 import { pathToFileURL } from "node:url";
 import {
   assertProductionReleaseOperationAllowed,
+  assertRuntimeMigration0017LiveBaselineBeforeProductionLock,
+  assertRuntimeMigration0017ReleaseBeforeProductionLock,
   assertTopicSequenceBeforeProductionLock,
   boundedReleaseChildCommand,
   parseRollbackArguments,
   productionReleaseOperationCommand,
   runBoundedReleaseChildSync,
+  runProductionReleaseOperation,
 } from "../scripts/cloudflare/run-production-release-operation";
+import type { WorkerDeployArtifactEvidence } from "../scripts/cloudflare/worker-deploy-evidence";
+import {
+  buildWorkerCandidateUploadEvidence,
+  workerCandidateEvidenceSha256,
+} from "../scripts/cloudflare/worker-candidate-release-evidence";
 
 const targetVersion = "11111111-1111-4111-8111-111111111111";
+const baselineVersion = "22222222-2222-4222-8222-222222222222";
 
 test("rollover blocks standalone source sync and prevalidates topic readiness before locking", () => {
   assert.throws(
@@ -25,38 +34,49 @@ test("rollover blocks standalone source sync and prevalidates topic readiness be
   const backupDir = path.resolve("/tmp/inspir-topic-prelock-evidence");
   let validated = false;
   const readiness = { createdAt: "2026-07-13T10:00:00.000Z" };
+  const git = {
+    head: "a".repeat(40),
+    upstream: "a".repeat(40),
+    upstreamRef: "origin/codex/release",
+  };
+  const artifacts: WorkerDeployArtifactEvidence = {
+    sourceFingerprint: {
+      sha256: "b".repeat(64),
+      fileCount: 1,
+      files: [{ file: "package.json", sha256: "c".repeat(64), bytes: 1 }],
+    },
+    workerSourceSha256: "d".repeat(64),
+    wranglerConfigSha256: "e".repeat(64),
+    assetManifest: {
+      root: path.join(cwd, ".open-next/assets"),
+      sha256: "f".repeat(64),
+      fileCount: 1,
+      bytes: 1,
+    },
+  };
+  const upload = productionTopicUploadEvidence(backupDir, git, artifacts);
   const result = assertTopicSequenceBeforeProductionLock(
     {
       args: ["--confirm-production", "--candidate-version", targetVersion],
-      activeVersionId: targetVersion,
+      activeVersionId: baselineVersion,
       backupDir,
       cwd,
     },
     {
-      readGitIdentity: () => ({
-        head: "a".repeat(40),
-        upstream: "a".repeat(40),
-        upstreamRef: "origin/codex/release",
-      }),
-      buildArtifactEvidence: () => ({
-        sourceFingerprint: {
-          sha256: "b".repeat(64),
-          fileCount: 1,
-          files: [{ file: "package.json", sha256: "c".repeat(64), bytes: 1 }],
-        },
-        workerSourceSha256: "d".repeat(64),
-        wranglerConfigSha256: "e".repeat(64),
-        assetManifest: {
-          root: path.join(cwd, ".open-next/assets"),
-          sha256: "f".repeat(64),
-          fileCount: 1,
-          bytes: 1,
-        },
-      }),
+      readGitIdentity: () => git,
+      buildArtifactEvidence: () => artifacts,
+      readUploadEvidence: () => upload,
+      assertCurrentReleaseBinding: ({ currentRelease }) => {
+        assert.equal(currentRelease.phase, "uploaded-inactive");
+        assert.equal(currentRelease.targetCandidateVersionId, targetVersion);
+        assert.equal(currentRelease.serviceBaselineVersionId, baselineVersion);
+        assert.equal(currentRelease.soleServingVersionId, baselineVersion);
+      },
       validateVectorizeReadiness: (input) => {
         validated = true;
         assert.equal(input.backupDir, backupDir);
-        assert.equal(input.currentRelease.candidateVersionId, targetVersion);
+        assert.equal(input.requiredPhase, "uploaded-inactive");
+        assert.equal(input.currentRelease.targetCandidateVersionId, targetVersion);
         return readiness;
       },
     },
@@ -66,9 +86,11 @@ test("rollover blocks standalone source sync and prevalidates topic readiness be
   assert.throws(
     () => assertTopicSequenceBeforeProductionLock({
       args: ["--confirm-production", "--candidate-version", targetVersion],
-      activeVersionId: "22222222-2222-4222-8222-222222222222",
+      activeVersionId: "33333333-3333-4333-8333-333333333333",
       backupDir,
       cwd,
+    }, {
+      readUploadEvidence: () => upload,
     }),
     /before exclusion acquisition/,
   );
@@ -86,6 +108,205 @@ test("rollover blocks standalone source sync and prevalidates topic readiness be
       source.indexOf("acquireProductionValidationExclusion({"),
   );
 });
+
+test("0017 validates immutable upload identity before remote access and reserves the inactive target", async () => {
+  const cwd = path.resolve("/tmp/inspir-0017-prelock");
+  const backupDir = path.resolve("/tmp/inspir-0017-prelock-evidence");
+  const git = {
+    head: "a".repeat(40),
+    upstream: "a".repeat(40),
+    upstreamRef: "origin/codex/release",
+  };
+  const artifacts: WorkerDeployArtifactEvidence = {
+    sourceFingerprint: {
+      sha256: "b".repeat(64),
+      fileCount: 1,
+      files: [{ file: "package.json", sha256: "c".repeat(64), bytes: 1 }],
+    },
+    workerSourceSha256: "d".repeat(64),
+    wranglerConfigSha256: "e".repeat(64),
+    assetManifest: {
+      root: path.join(cwd, ".open-next/assets"),
+      sha256: "f".repeat(64),
+      fileCount: 1,
+      bytes: 1,
+    },
+  };
+  const upload = productionTopicUploadEvidence(backupDir, git, artifacts);
+  let bound = false;
+  const release = assertRuntimeMigration0017ReleaseBeforeProductionLock(
+    {
+      backupDir,
+      cwd,
+      sourceFingerprint: artifacts.sourceFingerprint,
+    },
+    {
+      readGitIdentity: () => git,
+      buildArtifactEvidence: () => artifacts,
+      readUploadEvidence: () => upload,
+      assertCurrentReleaseBinding: ({ currentRelease }) => {
+        bound = true;
+        assert.equal(currentRelease.phase, "uploaded-inactive");
+        assert.equal(currentRelease.targetCandidateVersionId, targetVersion);
+        assert.equal(currentRelease.serviceBaselineVersionId, baselineVersion);
+        assert.equal(currentRelease.soleServingVersionId, baselineVersion);
+      },
+    },
+  );
+  assert.equal(bound, true);
+  assert.deepEqual(release, {
+    targetCandidateVersionId: targetVersion,
+    serviceBaselineVersionId: baselineVersion,
+    uploadEvidenceSha256: upload.sha256,
+  });
+  assert.equal(
+    assertRuntimeMigration0017LiveBaselineBeforeProductionLock({
+      activeVersionId: baselineVersion,
+      release,
+    }),
+    release,
+  );
+  assert.throws(
+    () =>
+      assertRuntimeMigration0017LiveBaselineBeforeProductionLock({
+        activeVersionId: targetVersion,
+        release,
+      }),
+    /baseline .* alone at 100%.*candidate .* remains inactive/,
+  );
+  assert.throws(
+    () =>
+      assertRuntimeMigration0017ReleaseBeforeProductionLock(
+        {
+          backupDir,
+          cwd,
+          sourceFingerprint: {
+            ...artifacts.sourceFingerprint,
+            sha256: "9".repeat(64),
+          },
+        },
+        {
+          readGitIdentity: () => git,
+          buildArtifactEvidence: () => artifacts,
+          readUploadEvidence: () => upload,
+          assertCurrentReleaseBinding: () => undefined,
+        },
+      ),
+    /source changed.*before exclusion acquisition/,
+  );
+
+  let remoteReads = 0;
+  await assert.rejects(
+    runProductionReleaseOperation(
+      "apply-d1-runtime-migration-0017",
+      ["--confirm-production", "--unsupported"],
+      {
+        cwd,
+        backupDir,
+        readActiveVersion: () => {
+          remoteReads += 1;
+          return baselineVersion;
+        },
+      },
+    ),
+    /accept only --confirm-production/,
+  );
+  assert.equal(remoteReads, 0);
+
+  const source = fs.readFileSync(
+    path.resolve("scripts/cloudflare/run-production-release-operation.ts"),
+    "utf8",
+  );
+  const runStart = source.indexOf("export async function runProductionReleaseOperation");
+  const exactArguments = source.indexOf(
+    "assertRuntimeMigration0017GuardedArguments(args)",
+    runStart,
+  );
+  const uploadPrelock = source.indexOf(
+    "assertRuntimeMigration0017ReleaseBeforeProductionLock({",
+    exactArguments,
+  );
+  const remoteTopology = source.indexOf(
+    "const activeVersionBefore = readActiveVersion()",
+    uploadPrelock,
+  );
+  const acquire = source.indexOf(
+    "exclusion = acquireProductionValidationExclusion({",
+    remoteTopology,
+  );
+  const targetReservation = source.indexOf(
+    "runtimeMigration0017Release?.targetCandidateVersionId",
+    remoteTopology,
+  );
+  const sourceReservation = source.indexOf(
+    "sourceFingerprintSha256: sourceFingerprintBefore.sha256",
+    acquire,
+  );
+  assert.ok(runStart >= 0);
+  assert.ok(exactArguments > runStart);
+  assert.ok(uploadPrelock > exactArguments);
+  assert.ok(remoteTopology > uploadPrelock);
+  assert.ok(acquire > remoteTopology);
+  assert.ok(targetReservation > acquire);
+  assert.ok(sourceReservation > targetReservation);
+});
+
+function productionTopicUploadEvidence(
+  backupDir: string,
+  git: { head: string; upstream: string; upstreamRef: string },
+  artifacts: WorkerDeployArtifactEvidence,
+) {
+  const value = buildWorkerCandidateUploadEvidence({
+    createdAt: "2026-07-13T09:59:00.000Z",
+    targetCandidateVersionId: targetVersion,
+    serviceBaselineVersionId: baselineVersion,
+    expectedReleaseTag: "release-production-topic",
+    expectedReleaseMessageSha256: "1".repeat(64),
+    uploadCommandEvidenceSha256: "2".repeat(64),
+    workerDeployPreparationSha256: "3".repeat(64),
+    git,
+    artifacts: {
+      sourceFingerprintSha256: artifacts.sourceFingerprint.sha256,
+      sourceFingerprintFileCount: artifacts.sourceFingerprint.fileCount,
+      workerSourceSha256: artifacts.workerSourceSha256,
+      wranglerConfigSha256: artifacts.wranglerConfigSha256,
+      assetManifestSha256: artifacts.assetManifest.sha256,
+      assetManifestFileCount: artifacts.assetManifest.fileCount,
+      assetManifestBytes: artifacts.assetManifest.bytes,
+    },
+    uploadOutput: {
+      type: "version-upload",
+      version: 1,
+      workerName: "inspirlearning",
+      workerTag: "inspirlearning",
+      versionId: targetVersion,
+      previewUrl: null,
+      previewAliasUrl: null,
+      wranglerEnvironment: null,
+      workerNameOverridden: false,
+      timestamp: "2026-07-13T09:58:00.000Z",
+    },
+    versionView: {
+      versionId: targetVersion,
+      createdAt: "2026-07-13T09:58:30.000Z",
+      source: "wrangler",
+      releaseTag: "release-production-topic",
+      releaseMessageSha256: "1".repeat(64),
+      resourceConfigSha256: "4".repeat(64),
+    },
+    soleBaselineTopology: {
+      deploymentId: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      serviceBaselineVersionId: baselineVersion,
+      percentage: 100,
+      observedVersions: 1,
+    },
+  });
+  return {
+    path: path.resolve(backupDir, "cloudflare/worker-candidate-upload.json"),
+    value,
+    sha256: workerCandidateEvidenceSha256(value),
+  };
+}
 
 test("guarded rollback accepts one explicit UUID and blocks passthrough overrides", () => {
   assert.deepEqual(
@@ -125,6 +346,26 @@ test("production release operations use fixed child entry points", () => {
     "tsx",
     path.join(cwd, "scripts/cloudflare/apply-d1-runtime-migrations.ts"),
   ]);
+  const migration0017 = productionReleaseOperationCommand(
+    "apply-d1-runtime-migration-0017",
+    ["--confirm-production"],
+    cwd,
+  );
+  assert.equal(migration0017.command, process.execPath);
+  assert.deepEqual(migration0017.args.slice(0, 3), [
+    "--import",
+    "tsx",
+    path.join(cwd, "scripts/cloudflare/apply-d1-runtime-migration-0017.ts"),
+  ]);
+  assert.throws(
+    () =>
+      productionReleaseOperationCommand(
+        "apply-d1-runtime-migration-0017",
+        ["--confirm-production", "--budget-only"],
+        cwd,
+      ),
+    /admission and apply are one guarded operation/,
+  );
 
   const rollback = productionReleaseOperationCommand(
     "rollback",
@@ -273,7 +514,30 @@ test("every direct production Wrangler mutation uses the bounded watchdog launch
     "utf8",
   );
 
-  assert.match(sanitizedDeploy, /requiresProductionDeployPreflight\(mode\)[\s\S]{0,180}runBoundedReleaseChildSync/);
+  const productionBoundary = sanitizedDeploy.indexOf(
+    "const commandBoundary = requiresProductionDeployPreflight(mode)",
+  );
+  const sealedPreflight = sanitizedDeploy.indexOf(
+    "runAfterFinalProductionDeployPreflight({",
+    productionBoundary,
+  );
+  const boundedProductionMutation = sanitizedDeploy.indexOf(
+    "runBoundedReleaseChildSync(actualCommand",
+    sealedPreflight,
+  );
+  const nonProductionFallback = sanitizedDeploy.indexOf(
+    "result: spawnSync(actualCommand.command",
+    boundedProductionMutation,
+  );
+  const boundaryEnd = sanitizedDeploy.indexOf(
+    'if (commandBoundary.kind === "blocked")',
+    nonProductionFallback,
+  );
+  assert.ok(productionBoundary >= 0);
+  assert.ok(sealedPreflight > productionBoundary);
+  assert.ok(boundedProductionMutation > sealedPreflight);
+  assert.ok(nonProductionFallback > boundedProductionMutation);
+  assert.ok(boundaryEnd > nonProductionFallback);
   assert.equal(translationRepair.match(/runBoundedMutationWrangler\(/g)?.length, 4);
   assert.match(translationRepair, /runBoundedMutationWrangler\([\s\S]{0,250}"d1",[\s\S]{0,80}"execute"/);
   assert.doesNotMatch(translationRepair, /runWrangler\(buildPinnedWorkerVersionDeployArgs/);
@@ -284,6 +548,7 @@ test("every direct production Wrangler mutation uses the bounded watchdog launch
 test("every production D1 release mutator self-requires the guarded child proof", () => {
   const expected = [
     ["scripts/cloudflare/apply-d1-runtime-migrations.ts", "apply-d1-runtime-migrations"],
+    ["scripts/cloudflare/apply-d1-runtime-migration-0017.ts", "apply-d1-runtime-migration-0017"],
     ["scripts/cloudflare/sync-site-translation-sources.ts", "sync-site-translation-sources"],
     ["scripts/cloudflare/sync-topic-seeds.ts", "sync-topic-seeds"],
   ] as const;
@@ -297,21 +562,61 @@ test("every production D1 release mutator self-requires the guarded child proof"
 
 test("rollover runbook enforces Vectorize, topic, then translation release order", () => {
   const runbook = fs.readFileSync(path.resolve("deploy.md"), "utf8");
-  const deploy = runbook.indexOf("## Atomic main deploy");
-  const vectorize = runbook.indexOf("## Post-deploy Vectorize readiness gate");
+  const vectorize = runbook.indexOf(
+    "## Uploaded-inactive and candidate-active Vectorize readiness gates",
+  );
   const topics = runbook.indexOf("## Atomic managed-topic reconciliation");
-  const translations = runbook.indexOf("## Post-deploy translation reconciliation");
+  const translations = runbook.indexOf(
+    "## Predecessor-day translation reconciliation for the inactive candidate",
+  );
+  const activation = runbook.indexOf("## Guarded candidate stage and atomic activation");
   const productionValidation = runbook.indexOf("## Production verification");
 
-  assert.ok(deploy >= 0);
-  assert.ok(vectorize > deploy);
+  assert.ok(vectorize >= 0);
   assert.ok(topics > vectorize);
   assert.ok(translations > topics);
-  assert.ok(productionValidation > translations);
+  assert.ok(activation > translations);
+  assert.ok(productionValidation > activation);
+  assert.match(runbook, /--phase uploaded-inactive/);
+  assert.match(runbook, /--phase candidate-active/);
+  assert.match(
+    runbook,
+    /Phase 1 is exactly uploaded-inactive read-only derive\/hash\/verify\/seal with zero\ntranslation writes/,
+  );
+  assert.match(
+    runbook,
+    /Phase 2 occurs only after the candidate is sole-active: a\nsingle atomic transaction resets and UPSERTs all 668 desired rows and deletes\nall nonmembers/,
+  );
+  assert.match(runbook, /There\s+is no preactivation translation UPSERT/);
   assert.match(runbook, /2,500,000 reads and 50,000 writes/);
-  assert.match(runbook, /4,000,000-read and 80,000-write lag-safe ceilings/);
   assert.match(runbook, /standalone source synchronizer is\nexplicitly forbidden/);
   assert.doesNotMatch(runbook, /pnpm cf:sync:site-translation-sources/);
+});
+
+test("runbook scopes translation verification to uploaded-inactive before activation", () => {
+  const runbook = fs.readFileSync(path.resolve("deploy.md"), "utf8");
+  const start = runbook.indexOf(
+    "## Predecessor-day translation reconciliation for the inactive candidate",
+  );
+  const end = runbook.indexOf(
+    "## Guarded candidate stage and atomic activation",
+    start,
+  );
+  assert.ok(start >= 0 && end > start);
+  const section = runbook.slice(start, end);
+  const commands = [...section.matchAll(/```bash\n([\s\S]*?)```/g)].map(
+    (match) => match[1] ?? "",
+  );
+  const verify = commands.find(
+    (command) =>
+      command.includes("cf:d1:reconcile-staged-translations") &&
+      command.includes("--verify-only"),
+  );
+  assert.ok(verify);
+  assert.match(verify, /--phase uploaded-inactive/);
+  assert.doesNotMatch(section, /--phase candidate-active/);
+  assert.match(section, /zero\ntranslation writes/);
+  assert.match(section, /There\s+is no preactivation translation UPSERT/);
 });
 
 test("post-deploy stages consume durable readiness and reconciliation predecessors", () => {
@@ -348,7 +653,11 @@ test("post-deploy stages consume durable readiness and reconciliation predecesso
   );
   assert.match(
     authenticatedValidation,
-    /assertFreshProductionVectorizeReadiness[\s\S]*assertFreshProductionTranslationReconciliation/,
+    /assertFreshProductionVectorizeReadiness[\s\S]*assertFreshHistoricalFresh0016FinalPreservation[\s\S]*assertProductionTranslationReconciliationReleaseBinding/,
+  );
+  assert.doesNotMatch(
+    authenticatedValidation,
+    /assertFreshProductionTranslationReconciliation/,
   );
 });
 

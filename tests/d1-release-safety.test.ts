@@ -34,10 +34,15 @@ import {
   type WranglerRunner,
 } from "../scripts/cloudflare/migration-config";
 import type { WorkerDeployArtifactEvidence } from "../scripts/cloudflare/worker-deploy-evidence";
+import {
+  buildWorkerCandidateUploadEvidence,
+  workerCandidateEvidenceSha256,
+} from "../scripts/cloudflare/worker-candidate-release-evidence";
 
 const now = 1_720_000_000_000;
 const bookmark = "00000085-0000024c-00004c6d-8e61117bf38d7adb71b934ebbf891683";
 const candidateVersionId = "22222222-2222-4222-8222-222222222222";
+const serviceBaselineVersionId = "11111111-1111-4111-8111-111111111111";
 const sourceSyncFingerprint = { sha256: "c".repeat(64), fileCount: 12 };
 const sourceSyncFingerprintProvider = () => sourceSyncFingerprint;
 const emptyDailyUsage = {
@@ -182,7 +187,11 @@ test("remote topic synchronization records diagnostic evidence and exact-verifie
       events[events.indexOf("release-immediately-before-import") + 1],
       "d1-import",
     );
-    assert.equal(report.releaseIdentity?.candidateVersionId, candidateVersionId);
+    assert.equal(report.releaseIdentity?.targetCandidateVersionId, candidateVersionId);
+    assert.equal(
+      report.releaseIdentity?.soleServingVersionId,
+      serviceBaselineVersionId,
+    );
     assert.equal(report.releaseBudgetReservation?.reservation.phase, "exact");
     assert.equal(
       report.releaseBudgetReservation?.reservation.candidateVersionId,
@@ -198,7 +207,10 @@ test("remote topic synchronization records diagnostic evidence and exact-verifie
     assert.equal(evidence.projectedBilledRowReads, report.projectedBilledRowReads);
     assert.equal(evidence.projectedBilledRowWrites, report.projectedBilledRowWrites);
     assert.ok(isRecord(evidence.releaseIdentity));
-    assert.equal(evidence.releaseIdentity.candidateVersionId, candidateVersionId);
+    assert.equal(
+      evidence.releaseIdentity.targetCandidateVersionId,
+      candidateVersionId,
+    );
     assert.ok(isRecord(evidence.releaseBudgetReservation));
     assert.ok(isRecord(evidence.releaseBudgetReservation.reservation));
     assert.equal(evidence.releaseBudgetReservation.reservation.phase, "exact");
@@ -249,7 +261,7 @@ test("remote topic synchronization rejects missing confirmation and oversized re
   }
 });
 
-test("remote topic release gate binds stable Git, deploy evidence, artifacts, and active candidate", () => {
+test("remote topic release gate binds canonical inactive upload, stable source, and sole-active baseline", () => {
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-topic-release-gate-"));
   const topicHash = topicSeedHash([testSeed]);
   const gitIdentity = {
@@ -268,16 +280,11 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
       sha256: "e".repeat(64),
     },
   };
-  const reportPath = path.join(backupDir, "cloudflare/worker-deploy-report.json");
-  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
-  fs.writeFileSync(
-    reportPath,
-    `${JSON.stringify(workerDeployReportFixture(backupDir, artifactEvidence), null, 2)}\n`,
-    { mode: 0o600 },
-  );
-  fs.chmodSync(reportPath, 0o600);
+  const upload = topicUploadEvidence(backupDir, artifactEvidence, gitIdentity);
   try {
     let activeReads = 0;
+    let uploadReads = 0;
+    let bindingChecks = 0;
     const identity = assertRemoteTopicSeedReleaseGate(
       {
         phase: "before-first-d1-query",
@@ -290,47 +297,41 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
       {
         readGitIdentity: () => gitIdentity,
         buildArtifactEvidence: () => artifactEvidence,
-        validateVectorizeReadiness: () => ({
-          createdAt: "2026-07-12T00:02:00.000Z",
-        }),
+        readUploadEvidence: () => {
+          uploadReads += 1;
+          return upload;
+        },
+        assertCurrentReleaseBinding: ({ currentRelease }) => {
+          bindingChecks += 1;
+          assert.equal(currentRelease.phase, "uploaded-inactive");
+          assert.equal(currentRelease.uploadEvidenceSha256, upload.sha256);
+        },
+        validateVectorizeReadiness: (input) => {
+          assert.equal(input.requiredPhase, "uploaded-inactive");
+          return { createdAt: "2026-07-12T00:02:00.000Z" };
+        },
         readActiveVersion: () => {
           activeReads += 1;
-          return candidateVersionId;
+          return serviceBaselineVersionId;
         },
       },
     );
     assert.equal(activeReads, 2);
-    assert.equal(identity.candidateVersionId, candidateVersionId);
-    assert.equal(identity.gitHead, gitIdentity.head);
-    assert.equal(identity.sourceFingerprintSha256, artifactEvidence.sourceFingerprint.sha256);
-    assert.equal(identity.assetManifestSha256, artifactEvidence.assetManifest.sha256);
-
-    fs.chmodSync(reportPath, 0o640);
-    assert.throws(
-      () =>
-        assertRemoteTopicSeedReleaseGate(
-          {
-            phase: "before-first-d1-query",
-            backupDir,
-            candidateVersionId,
-            topicSeedSha256: topicHash,
-            cwd: process.cwd(),
-            runner: () => "",
-          },
-          {
-            readGitIdentity: () => gitIdentity,
-            buildArtifactEvidence: () => artifactEvidence,
-            validateVectorizeReadiness: () => ({
-              createdAt: "2026-07-12T00:02:00.000Z",
-            }),
-            readActiveVersion: () => candidateVersionId,
-          },
-        ),
-      /mode-0600/,
+    assert.equal(uploadReads, 2);
+    assert.equal(bindingChecks, 2);
+    assert.equal(identity.targetCandidateVersionId, candidateVersionId);
+    assert.equal(identity.serviceBaselineVersionId, serviceBaselineVersionId);
+    assert.equal(identity.git.head, gitIdentity.head);
+    assert.equal(
+      identity.artifactEvidence.sourceFingerprint.sha256,
+      artifactEvidence.sourceFingerprint.sha256,
     );
-    fs.chmodSync(reportPath, 0o600);
+    assert.equal(
+      identity.artifactEvidence.assetManifest.sha256,
+      artifactEvidence.assetManifest.sha256,
+    );
 
-    let changedActiveReads = 0;
+    let changedUploadReads = 0;
     assert.throws(
       () =>
         assertRemoteTopicSeedReleaseGate(
@@ -345,18 +346,20 @@ test("remote topic release gate binds stable Git, deploy evidence, artifacts, an
           {
             readGitIdentity: () => gitIdentity,
             buildArtifactEvidence: () => artifactEvidence,
+            readUploadEvidence: () => {
+              changedUploadReads += 1;
+              return changedUploadReads === 1
+                ? upload
+                : { ...upload, sha256: "0".repeat(64) };
+            },
+            assertCurrentReleaseBinding: () => undefined,
             validateVectorizeReadiness: () => ({
               createdAt: "2026-07-12T00:02:00.000Z",
             }),
-            readActiveVersion: () => {
-              changedActiveReads += 1;
-              return changedActiveReads === 1
-                ? candidateVersionId
-                : "33333333-3333-4333-8333-333333333333";
-            },
+            readActiveVersion: () => serviceBaselineVersionId,
           },
         ),
-      /candidate changed/,
+      /canonical upload evidence changed/,
     );
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });
@@ -395,7 +398,7 @@ test("remote topic synchronization refuses changed release identity before impor
               : { ...identity, sourceFingerprintSha256: "f".repeat(64) };
           },
         }),
-      /release identity changed at sourceFingerprintSha256/,
+      /release identity changed/,
     );
     assert.equal(gateCalls, 2);
     assert.equal(importCalls, 0);
@@ -751,6 +754,162 @@ test("standalone remote source synchronization bookmarks without export and exac
   }
 });
 
+test("source-sync pre-write evidence refuses collisions and preserves symlink targets", async (t) => {
+  for (const fixtureKind of ["regular", "symlink"] as const) {
+    await t.test(fixtureKind, () => {
+      const backupDir = fs.mkdtempSync(
+        path.join(os.tmpdir(), `inspir-source-evidence-${fixtureKind}-`),
+      );
+      const desired = [
+        ["alpha", { sourceHash: "alpha-new", sourceStrings: { key: "New" } }],
+      ] satisfies Array<[string, SourceManifestEntry]>;
+      const before = sourceSnapshotOutput(
+        [{ namespace: "alpha", source_hash: "alpha-old" }],
+        [{ namespace: "alpha", source_key: "key", source_text: "Old" }],
+      );
+      const evidencePath = diagnosticEvidencePath(
+        backupDir,
+        "site-translation-source-sync-prewrite",
+      );
+      const targetPath = path.join(backupDir, "must-not-change.json");
+      const originalTarget = '{"owner":"operator"}\n';
+      fs.mkdirSync(path.dirname(evidencePath), { recursive: true });
+      fs.writeFileSync(targetPath, originalTarget, { mode: 0o600 });
+      if (fixtureKind === "symlink") {
+        fs.symlinkSync(targetPath, evidencePath);
+      } else {
+        fs.writeFileSync(evidencePath, originalTarget, { mode: 0o600 });
+      }
+      let importCalls = 0;
+      const runner: WranglerRunner = (args) => {
+        if (args[1] === "execute" && args.includes("--command")) return before;
+        if (args[1] === "time-travel") return JSON.stringify({ bookmark });
+        if (args[1] === "execute" && args.includes("--file")) {
+          importCalls += 1;
+          return "must not run";
+        }
+        throw new Error(`Unexpected fake Wrangler command: ${args.join(" ")}`);
+      };
+
+      try {
+        assert.throws(
+          () =>
+            syncSiteTranslationSources("remote", backupDir, {
+              confirmed: true,
+              now,
+              runner,
+              sources: desired,
+              dailyUsage: emptyDailyUsage,
+              sourceFingerprintProvider: sourceSyncFingerprintProvider,
+            }),
+          /must be created at a new non-symlink path/,
+        );
+        assert.equal(importCalls, 0);
+        assert.equal(fs.readFileSync(targetPath, "utf8"), originalTarget);
+        assert.equal(
+          fixtureKind === "symlink" ? fs.lstatSync(evidencePath).isSymbolicLink() : true,
+          true,
+        );
+        if (fixtureKind === "regular") {
+          assert.equal(fs.readFileSync(evidencePath, "utf8"), originalTarget);
+        }
+      } finally {
+        fs.rmSync(backupDir, { recursive: true, force: true });
+      }
+    });
+  }
+});
+
+test("D1 source snapshot parsing preserves hostile keys without prototype pollution", () => {
+  const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-source-hostile-key-"));
+  const pollutionKey = "inspir_d1_snapshot_pollution_probe";
+  Reflect.deleteProperty(Object.prototype, pollutionKey);
+  const hostile = sourceSnapshotOutput(
+    [{ namespace: "__proto__", source_hash: "hostile-hash" }],
+    [
+      {
+        namespace: "__proto__",
+        source_key: pollutionKey,
+        source_text: "YES",
+      },
+    ],
+    [],
+  );
+  const runner: WranglerRunner = (args) => {
+    if (args[1] === "execute" && args.includes("--command")) return hostile;
+    if (args[1] === "execute" && args.includes("--file")) return "applied";
+    throw new Error(`Unexpected fake Wrangler command: ${args.join(" ")}`);
+  };
+
+  try {
+    assert.throws(
+      () =>
+        syncSiteTranslationSources("local", backupDir, {
+          runner,
+          sources: [],
+        }),
+      /failed exact verification/,
+    );
+    assert.equal(Reflect.get(Object.prototype, pollutionKey), undefined);
+  } finally {
+    Reflect.deleteProperty(Object.prototype, pollutionKey);
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("D1 source snapshots reject duplicate, empty, and NUL-bearing identities", () => {
+  const fixtures = [
+    sourceSnapshotOutput(
+      [
+        { namespace: "alpha", source_hash: "one" },
+        { namespace: "alpha", source_hash: "two" },
+      ],
+      [],
+      [],
+    ),
+    sourceSnapshotOutput([{ namespace: "", source_hash: "hash" }], [], []),
+    sourceSnapshotOutput([{ namespace: "bad\0namespace", source_hash: "hash" }], [], []),
+    sourceSnapshotOutput(
+      [],
+      [
+        { namespace: "alpha", source_key: "key", source_text: "one" },
+        { namespace: "alpha", source_key: "key", source_text: "two" },
+      ],
+      [],
+    ),
+    sourceSnapshotOutput(
+      [],
+      [{ namespace: "alpha", source_key: "", source_text: "empty key" }],
+      [],
+    ),
+    sourceSnapshotOutput(
+      [],
+      [{ namespace: "alpha", source_key: "bad\0key", source_text: "NUL key" }],
+      [],
+    ),
+    sourceSnapshotOutput(
+      [],
+      [],
+      [{ namespace: "bad\0group", source_hash: "hash", translation_rows: 1 }],
+    ),
+  ];
+
+  for (const [index, output] of fixtures.entries()) {
+    const backupDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), `inspir-source-invalid-identity-${index}-`),
+    );
+    const runner: WranglerRunner = () => output;
+    try {
+      assert.throws(
+        () => syncSiteTranslationSources("local", backupDir, { runner, sources: [] }),
+        /duplicate|non-empty NUL-free/,
+      );
+    } finally {
+      fs.rmSync(backupDir, { recursive: true, force: true });
+    }
+  }
+});
+
 test("definite post-import mismatches fail closed without whole-database restore", () => {
   const topicBackupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-topic-rollback-"));
   const sourceBackupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-source-rollback-"));
@@ -1051,14 +1210,21 @@ test("source synchronization fails closed on read budget and post-write drift", 
 });
 
 test("standalone D1 sync sources cannot regress to blocking export recovery", () => {
+  const durableWriter = fs.readFileSync(
+    path.resolve("scripts/cloudflare/d1-release-budget-ledger.ts"),
+    "utf8",
+  );
+  assert.match(durableWriter, /fs\.constants\.O_EXCL/);
+  assert.match(durableWriter, /fs\.constants\.O_NOFOLLOW/);
+  assert.match(durableWriter, /fs\.fsyncSync\(descriptor\)/);
+  assert.match(durableWriter, /fsyncDirectory\(directory\)/);
   for (const file of [
     "scripts/cloudflare/sync-site-translation-sources.ts",
     "scripts/cloudflare/sync-topic-seeds.ts",
   ]) {
     const source = fs.readFileSync(path.resolve(file), "utf8");
     assert.doesNotMatch(source, /exportRemoteD1TablesBackup|\[\s*"d1",\s*"export"/);
-    assert.match(source, /fs\.fsyncSync\(descriptor\)/);
-    assert.match(source, /mode[^\n]*0o600|openSync\([^\n]*0o600/);
+    assert.match(source, /writePrivateJsonDurably/);
   }
 });
 
@@ -1087,75 +1253,93 @@ function topicReleaseIdentity(
   seedSha256: string,
 ): TopicSeedReleaseIdentity {
   return {
-    candidateVersionId,
-    activeVersionId: candidateVersionId,
-    gitHead: "a".repeat(40),
-    gitUpstream: "a".repeat(40),
-    gitUpstreamRef: "origin/codex/release",
-    sourceFingerprintSha256: "b".repeat(64),
-    sourceFingerprintFileCount: 10,
+    phase: "uploaded-inactive",
+    targetCandidateVersionId: candidateVersionId,
+    serviceBaselineVersionId,
+    uploadEvidenceSha256: "f".repeat(64),
+    phaseEvidenceSha256: "f".repeat(64),
+    phaseEvidenceCreatedAt: "2026-07-12T00:01:00.000Z",
+    soleServingVersionId: serviceBaselineVersionId,
+    git: {
+      head: "a".repeat(40),
+      upstream: "a".repeat(40),
+      upstreamRef: "origin/codex/release",
+    },
+    artifactEvidence: {
+      sourceFingerprint: {
+        sha256: "b".repeat(64),
+        fileCount: 10,
+        files: [],
+      },
+      workerSourceSha256: "c".repeat(64),
+      wranglerConfigSha256: "d".repeat(64),
+      assetManifest: {
+        root: path.resolve(backupDir, "assets"),
+        sha256: "e".repeat(64),
+        fileCount: 20,
+        bytes: 1_000,
+      },
+    },
     topicSeedSha256: seedSha256,
-    workerSourceSha256: "c".repeat(64),
-    wranglerConfigSha256: "d".repeat(64),
-    assetManifestSha256: "e".repeat(64),
-    assetManifestFileCount: 20,
-    assetManifestBytes: 1_000,
-    workerDeployReportPath: path.resolve(
-      backupDir,
-      "cloudflare/worker-deploy-report.json",
-    ),
-    workerDeployEvidenceCreatedAt: "2026-07-12T00:01:00.000Z",
     vectorizeReadinessCreatedAt: "2026-07-12T00:02:00.000Z",
   };
 }
 
-function workerDeployReportFixture(
+function topicUploadEvidence(
   backupDir: string,
   artifactEvidence: WorkerDeployArtifactEvidence,
+  git: { head: string; upstream: string; upstreamRef: string },
 ) {
   const createdAt = "2026-07-12T00:01:00.000Z";
-  const sourceFingerprint = artifactEvidence.sourceFingerprint;
-  const assetManifest = artifactEvidence.assetManifest;
-  return {
+  const value = buildWorkerCandidateUploadEvidence({
     createdAt,
-    backupDir,
-    mode: "opennext-deploy",
-    ok: true,
-    status: 0,
-    commandExecuted: true,
-    deployPreflightOk: true,
-    deployPreflightStatus: 0,
-    resourceBudgetOk: true,
-    scanBeforeOk: true,
-    scanAfterOk: null,
-    command: [
-      path.resolve("node_modules/.bin/wrangler"),
-      "deploy",
-      "--config",
-      "wrangler.jsonc",
-    ],
-    passthroughArgs: [],
-    sourceFingerprint,
-    sourceFingerprintBefore: sourceFingerprint,
-    sourceFingerprintAfter: sourceFingerprint,
-    sourceFingerprintStable: true,
-    workerSourceSha256: artifactEvidence.workerSourceSha256,
-    wranglerConfigSha256: artifactEvidence.wranglerConfigSha256,
-    assetManifest,
-    artifactEvidenceAfter: {
-      sourceFingerprintSha256: sourceFingerprint.sha256,
+    targetCandidateVersionId: candidateVersionId,
+    serviceBaselineVersionId,
+    expectedReleaseTag: "release-topic-candidate",
+    expectedReleaseMessageSha256: "6".repeat(64),
+    uploadCommandEvidenceSha256: "7".repeat(64),
+    workerDeployPreparationSha256: "8".repeat(64),
+    git,
+    artifacts: {
+      sourceFingerprintSha256: artifactEvidence.sourceFingerprint.sha256,
+      sourceFingerprintFileCount: artifactEvidence.sourceFingerprint.fileCount,
       workerSourceSha256: artifactEvidence.workerSourceSha256,
       wranglerConfigSha256: artifactEvidence.wranglerConfigSha256,
-      assetManifest,
+      assetManifestSha256: artifactEvidence.assetManifest.sha256,
+      assetManifestFileCount: artifactEvidence.assetManifest.fileCount,
+      assetManifestBytes: artifactEvidence.assetManifest.bytes,
     },
-    artifactEvidenceStable: true,
-    activeDeployment: {
+    uploadOutput: {
+      type: "version-upload",
+      version: 1,
       workerName: "inspirlearning",
+      workerTag: "inspirlearning",
       versionId: candidateVersionId,
+      previewUrl: null,
+      previewAliasUrl: null,
+      wranglerEnvironment: null,
+      workerNameOverridden: false,
+      timestamp: "2026-07-12T00:00:00.000Z",
+    },
+    versionView: {
+      versionId: candidateVersionId,
+      createdAt: "2026-07-12T00:00:30.000Z",
+      source: "wrangler",
+      releaseTag: "release-topic-candidate",
+      releaseMessageSha256: "6".repeat(64),
+      resourceConfigSha256: "9".repeat(64),
+    },
+    soleBaselineTopology: {
+      deploymentId: "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      serviceBaselineVersionId,
       percentage: 100,
       observedVersions: 1,
-      readAt: "2026-07-12T00:00:59.000Z",
     },
+  });
+  return {
+    path: path.resolve(backupDir, "cloudflare/worker-candidate-upload.json"),
+    value,
+    sha256: workerCandidateEvidenceSha256(value),
   };
 }
 

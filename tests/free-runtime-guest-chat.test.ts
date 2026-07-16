@@ -8,6 +8,7 @@ import {
   MAX_FREE_GUEST_CHAT_HISTORY_CHARACTERS,
   MAX_FREE_GUEST_LEGACY_ASSISTANT_CHARACTERS,
   MAX_FREE_GUEST_LEGACY_RESPONSE_BYTES,
+  requestIpForGuestQuota,
   type FreeGuestChatD1Database,
   type FreeGuestChatD1Result,
   type FreeGuestChatD1Statement,
@@ -551,25 +552,95 @@ test("success sets secure cookies, builds a localized compact prompt, and passes
   assert.equal(await response.text(), ssePayload);
 });
 
-test("requests without a trusted IP atomically consume only session and fingerprint rows", async () => {
-  const database = createMockDatabase();
-  const response = await handleFreeGuestChat(
+test("production guest chat fails closed before D1, provider, or cookies without a trusted IP", async () => {
+  const requests = [
+    new Request("https://inspirlearning.com/api/guest-chat", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "text/event-stream",
+        "user-agent": "Inspir unit test browser",
+        "x-forwarded-for": "198.51.100.91, 10.0.0.1",
+        "x-real-ip": "198.51.100.92",
+      },
+      body: JSON.stringify({ topicId: "learn-anything", content: "Hello" }),
+    }),
     jsonRequest(
       { topicId: "learn-anything", content: "Hello" },
-      { "cf-connecting-ip": "" },
+      {
+        "cf-connecting-ip": "not-an-ip",
+        "x-forwarded-for": "198.51.100.91, 10.0.0.1",
+        "x-real-ip": "198.51.100.92",
+      },
     ),
+  ];
+
+  for (const request of requests) {
+    const database = createMockDatabase();
+    const logs: FreeGuestChatLogEntry[] = [];
+    let providerCalls = 0;
+    const response = await handleFreeGuestChat(
+      request,
+      baseEnv(database.db),
+      runtime(async () => {
+        providerCalls += 1;
+        return sseResponse();
+      }, logs),
+    );
+
+    assert.equal(response.status, 503);
+    assert.deepEqual(await response.json(), {
+      error: "Guest chat is temporarily unavailable.",
+      code: "guest_identity_unavailable",
+    });
+    assert.equal(response.headers.get("set-cookie"), null);
+    assert.equal(database.batchRuns, 0);
+    assert.equal(database.preparedStatements.length, 0);
+    assert.equal(database.globalWrites, 0);
+    assert.equal(database.guestWrites, 0);
+    assert.equal(providerCalls, 0);
+    assert.deepEqual(logs, [
+      {
+        event: "guest_chat_trusted_ip_unavailable",
+        severity: "critical",
+        posture: "fail_closed",
+        reason: "missing_or_invalid_cf_connecting_ip",
+      },
+    ]);
+  }
+});
+
+test("guest quota IP trust is Cloudflare-only in production and explicit for local preview", async () => {
+  const productionRequest = jsonRequest(
+    { topicId: "learn-anything", content: "Hello" },
+    {
+      "cf-connecting-ip": "",
+      "x-forwarded-for": "198.51.100.91, 10.0.0.1",
+      "x-real-ip": "198.51.100.92",
+    },
+  );
+  assert.equal(requestIpForGuestQuota(productionRequest), null);
+
+  const localRequest = jsonRequest(
+    { topicId: "learn-anything", content: "Hello" },
+    {
+      "cf-connecting-ip": "",
+      "x-forwarded-for": "198.51.100.091, 10.0.0.1",
+      "x-real-ip": "198.51.100.92",
+    },
+    "http://127.0.0.1:8787/api/guest-chat",
+  );
+  assert.equal(requestIpForGuestQuota(localRequest), "198.51.100.91");
+
+  const database = createMockDatabase();
+  const response = await handleFreeGuestChat(
+    localRequest,
     baseEnv(database.db),
     runtime(async () => sseResponse()),
   );
-
   assert.equal(response.status, 200);
-  assert.equal(database.batchRuns, 1);
-  assert.equal(database.globalWrites, 1);
-  assert.equal(database.guestWrites, 2);
-  assert.equal(database.lastGuestQuotaKeys.length, 2);
-  assert.equal(database.lastGuestQuotaKeys[0], `guest-chat:session:${fixedSessionId}`);
-  assert.match(database.lastGuestQuotaKeys[1] ?? "", /^guest-chat:fingerprint:[a-f0-9]{64}$/);
-  assert.equal(database.lastGuestQuotaKeys.some((key) => key.startsWith("guest-chat:ip:")), false);
+  assert.equal(database.lastGuestQuotaKeys.length, 3);
+  assert.match(database.lastGuestQuotaKeys[2] ?? "", /^guest-chat:ip:[a-f0-9]{64}$/);
 });
 
 test("client cancellation propagates directly to the provider SSE stream", async () => {
@@ -750,7 +821,7 @@ function createMockDatabase(options: MockDatabaseOptions = {}) {
       }
 
       const quotaBindingCount = guestPrepared.bindings.length - 5;
-      if (quotaBindingCount !== 6 && quotaBindingCount !== 9) {
+      if (quotaBindingCount !== 9) {
         throw new Error("Unexpected guest quota binding count");
       }
       const quotas: MockGuestQuota[] = [];
@@ -889,8 +960,12 @@ function baseEnv(db: FreeGuestChatD1Database): FreeGuestChatEnv {
   };
 }
 
-function jsonRequest(body: unknown, headers: Record<string, string> = {}) {
-  return new Request("https://inspirlearning.com/api/guest-chat", {
+function jsonRequest(
+  body: unknown,
+  headers: Record<string, string> = {},
+  url = "https://inspirlearning.com/api/guest-chat",
+) {
+  return new Request(url, {
     method: "POST",
     headers: {
       "content-type": "application/json",

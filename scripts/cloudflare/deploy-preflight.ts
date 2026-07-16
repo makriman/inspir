@@ -29,19 +29,63 @@ import {
   RUNTIME_MIGRATION_FILES,
   RUNTIME_MIGRATION_VERIFICATION_CHECK_IDS,
 } from "./verify-d1-runtime-migrations";
-import { readAndValidateHistoricalDataBaseline } from "./verify-historical-data-preservation";
 import {
-  readAndValidateHistoricalDataContinuityReport,
-  type HistoricalDataContinuityPredecessorLoader,
-} from "./verify-historical-data-continuity";
+  RUNTIME_MIGRATION_0017_CHECK_ID,
+  RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
+  RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH,
+} from "./verify-d1-runtime-migration-0017";
+import { RUNTIME_MIGRATION_0017_FILE } from "./check-d1-runtime-migration-0017-budget";
+import {
+  readAndValidateHistoricalFresh0016CutoverComplete,
+  type HistoricalFresh0016ValidatedCutoverArtifactHandle,
+} from "./verify-historical-data-fresh-0016-cutover-chain";
 import {
   STATIC_ASSET_RELEASE_FILE_LIMIT,
   validateStaticMarketingAssetRelease,
 } from "./materialize-static-marketing-assets";
+import {
+  LONG_TAIL_PROMOTION_TRANSACTION_ROOT_RELATIVE_PATH,
+  assertLongTailPromotionSnapshotTransactionRootSettled,
+} from "../long-tail-promotion-snapshot";
+import {
+  TRANSLATION_SEMANTIC_RELEASE_ATTESTATION_CHECK_NAME,
+  readAndValidateTranslationSemanticReleaseAttestation,
+} from "../translation-semantic-release-attestation";
+import {
+  readAndValidateCurrentTranslationFallbackReleaseAttestation,
+  type CurrentTranslationFallbackReleaseAttestationHandle,
+} from "../staged-translation-fallback-release-attestation";
+import {
+  SITE_SOURCE_MANIFEST_FRESHNESS_CHECK_NAME,
+  assertCurrentSiteSourceManifestFreshness,
+  type SiteSourceManifestFreshnessValidation,
+} from "../verify-site-source-manifest";
+import {
+  WORKER_DEPLOY_PREPARATION_CHECK_NAME,
+  WORKER_DEPLOY_PREPARATION_MAX_AGE_MS,
+  assertWorkerDeployPreparationBoundStateUnchanged,
+  readAndValidateWorkerDeployPreparation,
+  readAndValidateWorkerDeployPreparationProvenance,
+  type WorkerDeployPreparationHandle,
+} from "./worker-deploy-preparation";
+import {
+  PREVIEW_E2E_CHECK_NAME,
+  readAndValidatePreviewE2EEvidence,
+} from "./preview-e2e-evidence";
+import {
+  parseWorkerDeploymentStatusOutput,
+  parseWorkerVersionViewOutput,
+  readWorkerCandidateUploadEvidence,
+  readWorkerCandidateStagedEvidence,
+  workerCandidateUploadEvidencePath,
+  workerCandidateStagedEvidencePath,
+  type WorkerCandidateEvidenceHandle,
+  type WorkerCandidateStagedEvidence,
+} from "./worker-candidate-release-evidence";
 
 type CheckStatus = "pass" | "fail";
 
-type DeployPreflightCheck = {
+export type DeployPreflightCheck = {
   name: string;
   status: CheckStatus;
   detail?: unknown;
@@ -89,16 +133,69 @@ type RuntimeMigrationEvidenceReport = {
   sourceFingerprint?: SourceFingerprint;
   sourceFingerprintStable?: boolean;
   rowsWritten?: number;
+  totalAttempts?: number | null;
   checks?: Array<{ id?: string; ok?: boolean }>;
 };
 
-type DeployPreflightReport = {
+type RuntimeMigration0017EvidenceReport = {
+  kind?: string;
+  schemaVersion?: number;
+  ok?: boolean;
+  state?: string;
+  createdAt?: string;
+  backupDir?: string;
+  database?: string;
+  migration?: string;
+  sourceFingerprintBefore?: SourceFingerprint;
+  sourceFingerprint?: SourceFingerprint;
+  sourceFingerprintStable?: boolean;
+  rowsWritten?: number;
+  totalAttempts?: number | null;
+  checks?: Array<{
+    id?: string;
+    ok?: boolean;
+    detail?: { state?: string };
+  }>;
+};
+
+export type DeployPreflightReport = {
   createdAt: string;
   backupDir: string;
   mode: "steady-state";
+  workerTopologyPhase: DeployPreflightWorkerTopologyPhase;
   ok: boolean;
   checks: DeployPreflightCheck[];
 };
+
+export type DeployPreflightWorkerTopologyPhase =
+  | "baseline-sole-active"
+  | "candidate-staged"
+  | "candidate-active";
+
+type RemoteWranglerReadResult = Readonly<{
+  status: number | null;
+  stdout: string;
+  stderr: string;
+}>;
+
+export type SemanticReleaseAttestationValidation = Readonly<{
+  path: string;
+  sha256: string;
+  curatedTreeSha256: string;
+  semanticEvidenceSha256: string;
+}>;
+
+export type StagedFallbackReleaseAttestationValidation = Readonly<{
+  path: string;
+  sha256: string;
+  attestationKind: string;
+  sitePromotionMode: "none-current-availability";
+  curatedTreeSha256: string;
+  staticMainAppTreeSha256: string;
+  availabilityManifestSha256: string;
+  localizedHtmlPathsSha256: string;
+  pendingLedgerSha256: string;
+}>;
 
 const REQUIRED_SECRET_KEYS = [
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
@@ -142,6 +239,7 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
   "CRON_SECRET",
 ];
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
+const FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS = 60 * 60 * 1000;
 const STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH =
   ".open-next/static-marketing-assets-report.json";
 const EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS = {
@@ -201,11 +299,33 @@ export const FREE_PLAN_WORKER_FIRST_ROUTES = [
 ] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const cli = parseDeployPreflightCli(process.argv.slice(2));
   const backupDir = resolveBackupDir();
-  const report = buildSteadyStateDeployPreflightReport({ backupDir });
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    workerTopologyPhase: cli.workerTopologyPhase,
+  });
   writeReport(report);
   console.log(JSON.stringify(report, null, 2));
   if (!report.ok) process.exitCode = 1;
+}
+
+export function parseDeployPreflightCli(args: readonly string[]) {
+  if (args.length === 0) {
+    return Object.freeze({
+      workerTopologyPhase: "baseline-sole-active" as const,
+    });
+  }
+  if (
+    args.length !== 2 ||
+    args[0] !== "--worker-topology-phase" ||
+    (args[1] !== "candidate-staged" && args[1] !== "candidate-active")
+  ) {
+    throw new Error(
+      "Deploy preflight accepts only --worker-topology-phase candidate-staged|candidate-active.",
+    );
+  }
+  return Object.freeze({ workerTopologyPhase: args[1] });
 }
 
 export function buildSteadyStateDeployPreflightReport(options: {
@@ -213,31 +333,131 @@ export function buildSteadyStateDeployPreflightReport(options: {
   cwd?: string;
   nowMs?: number;
   runWranglerDryRun?: boolean;
-  historicalDataContinuityPredecessorLoader?: HistoricalDataContinuityPredecessorLoader;
+  workerTopologyPhase?: DeployPreflightWorkerTopologyPhase;
+  remoteWranglerReader?: (args: readonly string[]) => RemoteWranglerReadResult;
+  workerCandidateStagedEvidenceLoader?: (
+    file: string,
+  ) => WorkerCandidateEvidenceHandle<WorkerCandidateStagedEvidence>;
+  historicalFresh0016CutoverLoader?: (input: {
+    cwd: string;
+    backupDirectory: string;
+  }) => HistoricalFresh0016ValidatedCutoverArtifactHandle;
+  workerDeployPreparationLoader?: (input: {
+    cwd: string;
+    backupDirectory: string;
+    now: Date;
+  }) => WorkerDeployPreparationHandle;
+  semanticReleaseAttestationValidator?: (input: {
+    workspaceRoot: string;
+  }) => SemanticReleaseAttestationValidation;
+  stagedFallbackReleaseAttestationValidator?: (input: {
+    workspaceRoot: string;
+  }) => StagedFallbackReleaseAttestationValidation;
+  siteSourceManifestFreshnessValidator?: (input: {
+    workspaceRoot: string;
+  }) => SiteSourceManifestFreshnessValidation;
 }): DeployPreflightReport {
   const cwd = options.cwd ?? process.cwd();
   const checks: DeployPreflightCheck[] = [];
   const currentSourceFingerprint = buildRepoSourceFingerprint(cwd);
 
   checks.push(gitReleaseIdentityCheck(cwd));
-  checks.push(localGatesCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(staticMarketingAssetReleaseCheck(cwd, options.nowMs));
+  checks.push(longTailPromotionSettlementCheck(cwd));
+  checks.push(siteSourceManifestFreshnessCheck(
+    cwd,
+    options.siteSourceManifestFreshnessValidator,
+  ));
+  checks.push(semanticReleaseAttestationCheck(
+    cwd,
+    options.semanticReleaseAttestationValidator,
+    options.stagedFallbackReleaseAttestationValidator,
+  ));
+  const preparation = workerDeployPreparationCheck({
+    cwd,
+    backupDir: options.backupDir,
+    currentSourceFingerprint,
+    nowMs: options.nowMs,
+    workerTopologyPhase:
+      options.workerTopologyPhase ?? "baseline-sole-active",
+    loader: options.workerDeployPreparationLoader,
+  });
+  checks.push(preparation.check);
+  const provenancePreparation =
+    preparation.handle?.validation === "immutable-upload-provenance"
+      ? preparation.handle
+      : null;
+  const preparationIsUploadProvenance = provenancePreparation !== null;
+  const localEvidenceNowMs = provenancePreparation
+    ? Date.parse(provenancePreparation.artifact.createdAt)
+    : options.nowMs;
+  const localEvidenceMaxAgeMs = preparation.handle
+    ? preparationIsUploadProvenance
+      ? STEADY_STATE_REPORT_MAX_AGE_MS
+      : WORKER_DEPLOY_PREPARATION_MAX_AGE_MS
+    : STEADY_STATE_REPORT_MAX_AGE_MS;
+  checks.push(
+    localGatesCheck(
+      options.backupDir,
+      currentSourceFingerprint,
+      localEvidenceNowMs,
+      localEvidenceMaxAgeMs,
+    ),
+  );
+  checks.push(
+    previewE2ECheck(
+      cwd,
+      options.backupDir,
+      currentSourceFingerprint,
+      localEvidenceNowMs,
+      localEvidenceMaxAgeMs,
+    ),
+  );
+  checks.push(
+    sourceSecretScanCheck(
+      options.backupDir,
+      currentSourceFingerprint,
+      localEvidenceNowMs,
+      localEvidenceMaxAgeMs,
+    ),
+  );
+  checks.push(
+    buildArtifactScanCheck(
+      options.backupDir,
+      currentSourceFingerprint,
+      localEvidenceNowMs,
+      localEvidenceMaxAgeMs,
+    ),
+  );
+  checks.push(
+    staticMarketingAssetReleaseCheck(
+      cwd,
+      localEvidenceNowMs,
+      localEvidenceMaxAgeMs,
+    ),
+  );
   checks.push(runtimeMigrationEvidenceCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(historicalDataBaselineCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(historicalDataContinuityCheck(
-    options.backupDir,
+  checks.push(historicalFresh0016CutoverCheck(
     cwd,
     currentSourceFingerprint,
+    options.backupDir,
     options.nowMs,
-    options.historicalDataContinuityPredecessorLoader,
+    options.historicalFresh0016CutoverLoader,
+  ));
+  checks.push(runtimeMigration0017EvidenceCheck(
+    options.backupDir,
+    currentSourceFingerprint,
+    options.nowMs,
   ));
   checks.push(wranglerConfigCheck(cwd));
   checks.push(leanWorkerArchitectureCheck(cwd));
 
   if (options.runWranglerDryRun !== false) {
-    checks.push(remoteDurableObjectInfrastructureCheck());
+    checks.push(remoteDurableObjectInfrastructureCheck({
+      backupDir: options.backupDir,
+      phase: options.workerTopologyPhase ?? "baseline-sole-active",
+      runner: options.remoteWranglerReader,
+      stagedEvidenceLoader: options.workerCandidateStagedEvidenceLoader,
+    }));
     checks.push(wranglerDeployDryRunCheck());
   }
 
@@ -245,9 +465,251 @@ export function buildSteadyStateDeployPreflightReport(options: {
     createdAt: new Date(options.nowMs ?? Date.now()).toISOString(),
     backupDir: options.backupDir,
     mode: "steady-state",
+    workerTopologyPhase:
+      options.workerTopologyPhase ?? "baseline-sole-active",
     ok: checks.every((check) => check.status === "pass"),
     checks,
   };
+}
+
+function siteSourceManifestFreshnessCheck(
+  cwd: string,
+  validator?: (input: {
+    workspaceRoot: string;
+  }) => SiteSourceManifestFreshnessValidation,
+): DeployPreflightCheck {
+  try {
+    const validate = validator ?? assertCurrentSiteSourceManifestFreshness;
+    return {
+      name: SITE_SOURCE_MANIFEST_FRESHNESS_CHECK_NAME,
+      status: "pass",
+      detail: validate({ workspaceRoot: cwd }),
+    };
+  } catch (error) {
+    return {
+      name: SITE_SOURCE_MANIFEST_FRESHNESS_CHECK_NAME,
+      status: "fail",
+      detail: { reason: error instanceof Error ? error.message : String(error) },
+    };
+  }
+}
+
+export function semanticReleaseAttestationCheck(
+  cwd: string,
+  semanticValidator?: (input: {
+    workspaceRoot: string;
+  }) => SemanticReleaseAttestationValidation,
+  stagedValidator?: (input: {
+    workspaceRoot: string;
+  }) => StagedFallbackReleaseAttestationValidation,
+): DeployPreflightCheck {
+  let fullSemanticFailure: string | null = null;
+  try {
+    const validate = semanticValidator ?? ((input: { workspaceRoot: string }) => {
+      const handle = readAndValidateTranslationSemanticReleaseAttestation(input);
+      return Object.freeze({
+        path: handle.path,
+        sha256: handle.sha256,
+        curatedTreeSha256: handle.artifact.curatedTree.sha256,
+        semanticEvidenceSha256:
+          handle.artifact.semanticEvidence.semanticEvidenceSha256,
+      });
+    });
+    return {
+      name: TRANSLATION_SEMANTIC_RELEASE_ATTESTATION_CHECK_NAME,
+      status: "pass",
+      detail: {
+        releaseMode: "full-semantic",
+        ...validate({ workspaceRoot: cwd }),
+      },
+    };
+  } catch (error) {
+    fullSemanticFailure = error instanceof Error ? error.message : String(error);
+  }
+
+  try {
+    const validate = stagedValidator ?? ((input: { workspaceRoot: string }) =>
+      stagedFallbackValidationDetail(
+        readAndValidateCurrentTranslationFallbackReleaseAttestation(input),
+      ));
+    return {
+      name: TRANSLATION_SEMANTIC_RELEASE_ATTESTATION_CHECK_NAME,
+      status: "pass",
+      detail: {
+        releaseMode: "staged-canonical-English-fallback",
+        ...validate({ workspaceRoot: cwd }),
+      },
+    };
+  } catch (error) {
+    return {
+      name: TRANSLATION_SEMANTIC_RELEASE_ATTESTATION_CHECK_NAME,
+      status: "fail",
+      detail: {
+        reason: "Neither the full semantic nor staged fallback translation release attestation is valid.",
+        fullSemanticFailure,
+        stagedFallbackFailure:
+          error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+}
+
+function stagedFallbackValidationDetail(
+  handle: CurrentTranslationFallbackReleaseAttestationHandle,
+): StagedFallbackReleaseAttestationValidation {
+  return Object.freeze({
+    path: handle.path,
+    sha256: handle.sha256,
+    attestationKind: handle.artifact.kind,
+    sitePromotionMode: "none-current-availability",
+    curatedTreeSha256: handle.artifact.inventory.curatedSiteTree.sha256,
+    staticMainAppTreeSha256:
+      handle.artifact.inventory.staticMainAppTree.sha256,
+    availabilityManifestSha256:
+      handle.artifact.inventory.availabilityManifest.fileSha256,
+    localizedHtmlPathsSha256:
+      handle.artifact.inventory.availabilityManifest.localizedHtmlPathsSha256,
+    pendingLedgerSha256: handle.artifact.inventory.pendingLedger.sha256,
+  });
+}
+
+function workerDeployPreparationCheck(input: {
+  cwd: string;
+  backupDir: string;
+  currentSourceFingerprint: SourceFingerprint;
+  nowMs?: number;
+  workerTopologyPhase: DeployPreflightWorkerTopologyPhase;
+  loader?: (input: {
+    cwd: string;
+    backupDirectory: string;
+    now: Date;
+  }) => WorkerDeployPreparationHandle;
+}): {
+  check: DeployPreflightCheck;
+  handle: WorkerDeployPreparationHandle | null;
+} {
+  try {
+    const backupDirectory = path.resolve(input.backupDir);
+    const now = new Date(input.nowMs ?? Date.now());
+    const loader =
+      input.loader ??
+      ((options: {
+        cwd: string;
+        backupDirectory: string;
+        now: Date;
+      }) => {
+        if (input.workerTopologyPhase !== "candidate-staged") {
+          return readAndValidateWorkerDeployPreparation(options);
+        }
+        const upload = readWorkerCandidateUploadEvidence(
+          workerCandidateUploadEvidencePath(options.backupDirectory),
+        );
+        return readAndValidateWorkerDeployPreparationProvenance({
+          ...options,
+          uploadEvidence: upload.value,
+        });
+      });
+    const handle = loader({
+      cwd: input.cwd,
+      backupDirectory,
+      now,
+    });
+    assertWorkerDeployPreparationBoundStateUnchanged({
+      handle,
+      cwd: input.cwd,
+      backupDirectory,
+    });
+    const createdAtMs = Date.parse(handle.artifact.createdAt);
+    const ageMs = now.getTime() - createdAtMs;
+    if (
+      (handle.validation !== "existing-sealed-preparation" &&
+        handle.validation !== "immutable-upload-provenance") ||
+      handle.artifact.backupDirectory !== backupDirectory ||
+      handle.artifact.sourceFingerprint.sha256 !==
+        input.currentSourceFingerprint.sha256 ||
+      handle.artifact.sourceFingerprint.fileCount !==
+        input.currentSourceFingerprint.fileCount ||
+      !Number.isFinite(createdAtMs) ||
+      (handle.validation === "existing-sealed-preparation" &&
+        (ageMs < 0 || ageMs > WORKER_DEPLOY_PREPARATION_MAX_AGE_MS)) ||
+      (handle.validation === "immutable-upload-provenance" &&
+        input.workerTopologyPhase !== "candidate-staged")
+    ) {
+      throw new Error(
+        "Worker deploy preparation is stale, from the future, or not bound to the exact source and backup.",
+      );
+    }
+    return {
+      check: {
+        name: WORKER_DEPLOY_PREPARATION_CHECK_NAME,
+        status: "pass",
+        detail: {
+          path: handle.path,
+          sha256: handle.sha256,
+          createdAt: handle.artifact.createdAt,
+          validUntil: handle.artifact.validUntil,
+          sourceFingerprint: handle.artifact.sourceFingerprint.sha256,
+          workerSourceSha256:
+            handle.artifact.deployArtifacts.workerSourceSha256,
+          wranglerConfigSha256:
+            handle.artifact.deployArtifacts.wranglerConfigSha256,
+          assetManifestSha256:
+            handle.artifact.deployArtifacts.assetManifest.sha256,
+          translationOutputSha256:
+            handle.artifact.translationAssets.outputSha256,
+        },
+      },
+      handle,
+    };
+  } catch (error) {
+    return {
+      check: {
+        name: WORKER_DEPLOY_PREPARATION_CHECK_NAME,
+        status: "fail",
+        detail: {
+          reason: error instanceof Error ? error.message : String(error),
+        },
+      },
+      handle: null,
+    };
+  }
+}
+
+function longTailPromotionSettlementCheck(cwd: string): DeployPreflightCheck {
+  const transactionRoot = path.join(
+    cwd,
+    LONG_TAIL_PROMOTION_TRANSACTION_ROOT_RELATIVE_PATH,
+  );
+  try {
+    const metadata = fs.lstatSync(transactionRoot, { throwIfNoEntry: false });
+    if (!metadata) {
+      return {
+        name: "settled long-tail translation promotion transactions",
+        status: "pass",
+        detail: { state: "absent", transactionRoot },
+      };
+    }
+    if (metadata.isSymbolicLink() || !metadata.isDirectory()) {
+      throw new Error(
+        "The long-tail promotion transaction root must be a real directory.",
+      );
+    }
+    assertLongTailPromotionSnapshotTransactionRootSettled({ transactionRoot });
+    return {
+      name: "settled long-tail translation promotion transactions",
+      status: "pass",
+      detail: { state: "settled", transactionRoot },
+    };
+  } catch (error) {
+    return {
+      name: "settled long-tail translation promotion transactions",
+      status: "fail",
+      detail: {
+        transactionRoot,
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
 }
 
 function gitReleaseIdentityCheck(cwd: string): DeployPreflightCheck {
@@ -269,83 +731,212 @@ function gitReleaseIdentityCheck(cwd: string): DeployPreflightCheck {
   }
 }
 
-function remoteDurableObjectInfrastructureCheck(): DeployPreflightCheck {
+export function remoteDurableObjectInfrastructureCheck(options: {
+  backupDir: string;
+  phase: DeployPreflightWorkerTopologyPhase;
+  runner?: (args: readonly string[]) => RemoteWranglerReadResult;
+  stagedEvidenceLoader?: (
+    file: string,
+  ) => WorkerCandidateEvidenceHandle<WorkerCandidateStagedEvidence>;
+}): DeployPreflightCheck {
+  const runner = options.runner ?? runRemoteWranglerRead;
+  try {
+    const status = runner([
+      "deployments",
+      "status",
+      "--json",
+      "--name",
+      "inspirlearning",
+    ]);
+    if (status.status !== 0) {
+      throw new Error(
+        `Worker deployment status failed with ${status.status ?? "no exit status"}: ${boundedOutputTail(status)}`,
+      );
+    }
+    const deployment = parseWorkerDeploymentStatusOutput(status.stdout);
+    let inspectedVersionId: string;
+    let expectedResourceConfigSha256: string | undefined;
+    let candidateViewExpectation: Readonly<{
+      releaseTag: string;
+      releaseMessageSha256: string;
+    }> | undefined;
+    let releaseIdentity: Readonly<{
+      serviceBaselineVersionId: string;
+      targetCandidateVersionId: string;
+      stagedDeploymentId: string;
+      stagedEvidenceSha256: string;
+    }> | undefined;
+
+    if (options.phase === "baseline-sole-active") {
+      const sole = deployment.versions[0];
+      if (
+        deployment.versions.length !== 1 ||
+        sole?.percentage !== 100
+      ) {
+        throw new Error(
+          "Baseline preflight requires exactly one Worker version at 100% traffic.",
+        );
+      }
+      inspectedVersionId = sole.versionId;
+    } else {
+      const staged = (
+        options.stagedEvidenceLoader ?? readWorkerCandidateStagedEvidence
+      )(workerCandidateStagedEvidencePath(options.backupDir));
+      const stagedValue = staged.value;
+      releaseIdentity = {
+        serviceBaselineVersionId: stagedValue.serviceBaselineVersionId,
+        targetCandidateVersionId: stagedValue.targetCandidateVersionId,
+        stagedDeploymentId: stagedValue.topology.deploymentId,
+        stagedEvidenceSha256: staged.sha256,
+      };
+      expectedResourceConfigSha256 =
+        stagedValue.uploadEvidence.versionView.resourceConfigSha256;
+      candidateViewExpectation = {
+        releaseTag: stagedValue.uploadEvidence.expectedReleaseTag,
+        releaseMessageSha256:
+          stagedValue.uploadEvidence.expectedReleaseMessageSha256,
+      };
+      inspectedVersionId = stagedValue.targetCandidateVersionId;
+
+      if (options.phase === "candidate-staged") {
+        const percentages = new Map(
+          deployment.versions.map((entry) => [
+            entry.versionId,
+            entry.percentage,
+          ]),
+        );
+        if (
+          deployment.deploymentId !== stagedValue.topology.deploymentId ||
+          deployment.versions.length !== 2 ||
+          percentages.get(stagedValue.serviceBaselineVersionId) !== 100 ||
+          percentages.get(stagedValue.targetCandidateVersionId) !== 0
+        ) {
+          throw new Error(
+            "Candidate-staged preflight requires the exact immutable baseline@100 + candidate@0 deployment.",
+          );
+        }
+      } else {
+        const sole = deployment.versions[0];
+        if (
+          deployment.versions.length !== 1 ||
+          sole?.versionId !== stagedValue.targetCandidateVersionId ||
+          sole.percentage !== 100
+        ) {
+          throw new Error(
+            "Candidate-active preflight requires the exact uploaded candidate alone at 100% traffic.",
+          );
+        }
+      }
+    }
+
+    const viewed = runner([
+      "versions",
+      "view",
+      inspectedVersionId,
+      "--name",
+      "inspirlearning",
+      "--json",
+    ]);
+    if (viewed.status !== 0) {
+      throw new Error(
+        `Worker version view failed with ${viewed.status ?? "no exit status"}: ${boundedOutputTail(viewed)}`,
+      );
+    }
+    const viewedIdentity = candidateViewExpectation
+      ? parseWorkerVersionViewOutput(
+        viewed.stdout,
+        inspectedVersionId,
+        candidateViewExpectation,
+      )
+      : undefined;
+    if (
+      expectedResourceConfigSha256 !== undefined &&
+      viewedIdentity?.resourceConfigSha256 !== expectedResourceConfigSha256
+    ) {
+      throw new Error(
+        "Candidate Worker resources drifted from immutable upload evidence.",
+      );
+    }
+    const version = parseJsonFromOutput<Record<string, unknown>>(
+      viewed.stdout,
+      {},
+    );
+    const resources = objectValue(version.resources);
+    const bindings = Array.isArray(resources.bindings)
+      ? resources.bindings.filter(
+          (binding): binding is Record<string, unknown> =>
+            binding !== null &&
+            typeof binding === "object" &&
+            !Array.isArray(binding),
+        )
+      : [];
+    const queueBinding = bindings.find(
+      (binding) => binding.name === "NEXT_CACHE_DO_QUEUE",
+    );
+    if (
+      queueBinding?.type !== "durable_object_namespace" ||
+      queueBinding.class_name !== "DOQueueHandler"
+    ) {
+      throw new Error(
+        "Inspected Worker version is missing the exact NEXT_CACHE_DO_QUEUE/DOQueueHandler binding.",
+      );
+    }
+    return {
+      name: "post-migration Durable Object infrastructure",
+      status: "pass",
+      detail: {
+        phase: options.phase,
+        deploymentId: deployment.deploymentId,
+        inspectedVersionId,
+        resourceConfigSha256: viewedIdentity?.resourceConfigSha256 ?? null,
+        binding: "NEXT_CACHE_DO_QUEUE",
+        className: "DOQueueHandler",
+        releaseIdentity: releaseIdentity ?? null,
+      },
+    };
+  } catch (error) {
+    return {
+      name: "post-migration Durable Object infrastructure",
+      status: "fail",
+      detail: {
+        phase: options.phase,
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+}
+
+function runRemoteWranglerRead(args: readonly string[]): RemoteWranglerReadResult {
   const wrangler = path.resolve(process.cwd(), "node_modules/.bin/wrangler");
-  const status = spawnSync(wrangler, ["deployments", "status", "--json", "--name", "inspirlearning"], {
+  const result = spawnSync(wrangler, [...args], {
     cwd: process.cwd(),
     env: commandEnv(),
     encoding: "utf8",
     maxBuffer: 64 * 1024 * 1024,
   });
-  if (status.status !== 0) {
-    return {
-      name: "post-migration Durable Object infrastructure",
-      status: "fail",
-      detail: { status: status.status, outputTail: `${status.stdout ?? ""}${status.stderr ?? ""}`.slice(-2000) },
-    };
-  }
-  const deployment = parseJsonFromOutput<{
-    versions?: Array<{ version_id?: string; percentage?: number }>;
-  }>(`${status.stdout ?? ""}${status.stderr ?? ""}`, {});
-  const active = deployment.versions?.length === 1 && deployment.versions[0]?.percentage === 100
-    ? deployment.versions[0]
-    : null;
-  if (!active?.version_id) {
-    return {
-      name: "post-migration Durable Object infrastructure",
-      status: "fail",
-      detail: { reason: "A single 100% infrastructure-compatible version is required.", versions: deployment.versions },
-    };
-  }
-
-  const viewed = spawnSync(
-    wrangler,
-    ["versions", "view", active.version_id, "--name", "inspirlearning", "--json"],
-    {
-      cwd: process.cwd(),
-      env: commandEnv(),
-      encoding: "utf8",
-      maxBuffer: 64 * 1024 * 1024,
-    },
-  );
-  if (viewed.status !== 0) {
-    return {
-      name: "post-migration Durable Object infrastructure",
-      status: "fail",
-      detail: { status: viewed.status, outputTail: `${viewed.stdout ?? ""}${viewed.stderr ?? ""}`.slice(-2000) },
-    };
-  }
-  const version = parseJsonFromOutput<Record<string, unknown>>(
-    `${viewed.stdout ?? ""}${viewed.stderr ?? ""}`,
-    {},
-  );
-  const resources = objectValue(version.resources);
-  const bindings = Array.isArray(resources.bindings)
-    ? resources.bindings.filter(
-        (binding): binding is Record<string, unknown> =>
-          binding !== null && typeof binding === "object" && !Array.isArray(binding),
-      )
-    : [];
-  const queueBinding = bindings.find((binding) => binding.name === "NEXT_CACHE_DO_QUEUE");
-  const ok =
-    queueBinding?.type === "durable_object_namespace" &&
-    queueBinding.class_name === "DOQueueHandler";
   return {
-    name: "post-migration Durable Object infrastructure",
-    status: ok ? "pass" : "fail",
-    detail: ok
-      ? { activeVersion: active.version_id, binding: "NEXT_CACHE_DO_QUEUE", className: "DOQueueHandler" }
-      : { activeVersion: active.version_id, queueBinding: queueBinding ?? null },
+    status: result.status,
+    stdout: result.stdout ?? "",
+    stderr: result.stderr ?? "",
   };
 }
 
-function localGatesCheck(backupDir: string, currentSourceFingerprint: SourceFingerprint, nowMs?: number): DeployPreflightCheck {
+function boundedOutputTail(result: RemoteWranglerReadResult) {
+  return `${result.stdout}${result.stderr}`.slice(-2_000);
+}
+
+function localGatesCheck(
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+  maxAgeMs = STEADY_STATE_REPORT_MAX_AGE_MS,
+): DeployPreflightCheck {
   const report = readBackupJson<LocalGatesReport>(backupDir, "cloudflare/local-gates-report.json");
   const freshnessBlockers = freshBackupScopedReportBlockers({
     relativePath: "cloudflare/local-gates-report.json",
     report,
     backupDir,
-    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
+    maxAgeMs,
     nowMs,
     requireOk: true,
   });
@@ -385,13 +976,18 @@ function localGatesCheck(backupDir: string, currentSourceFingerprint: SourceFing
   };
 }
 
-function sourceSecretScanCheck(backupDir: string, currentSourceFingerprint: SourceFingerprint, nowMs?: number): DeployPreflightCheck {
+function sourceSecretScanCheck(
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+  maxAgeMs = STEADY_STATE_REPORT_MAX_AGE_MS,
+): DeployPreflightCheck {
   const report = readBackupJson<SourceSecretScanReport>(backupDir, "cloudflare/source-secret-scan-report.json");
   const freshnessBlockers = freshBackupScopedReportBlockers({
     relativePath: "cloudflare/source-secret-scan-report.json",
     report,
     backupDir,
-    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
+    maxAgeMs,
     nowMs,
     requireOk: true,
   });
@@ -416,13 +1012,57 @@ function sourceSecretScanCheck(backupDir: string, currentSourceFingerprint: Sour
   };
 }
 
-function buildArtifactScanCheck(backupDir: string, currentSourceFingerprint: SourceFingerprint, nowMs?: number): DeployPreflightCheck {
+function previewE2ECheck(
+  cwd: string,
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+  maxAgeMs = STEADY_STATE_REPORT_MAX_AGE_MS,
+): DeployPreflightCheck {
+  try {
+    const handle = readAndValidatePreviewE2EEvidence({
+      cwd,
+      backupDirectory: backupDir,
+      sourceFingerprint: currentSourceFingerprint,
+      nowMs,
+      maxAgeMs,
+    });
+    return {
+      name: PREVIEW_E2E_CHECK_NAME,
+      status: "pass",
+      detail: {
+        path: handle.path,
+        sha256: handle.sha256,
+        createdAt: handle.validation.createdAt,
+        sourceFingerprint: handle.validation.sourceFingerprint.sha256,
+        totalTests: handle.validation.totalTests,
+        requiredPassedTitles: handle.validation.requiredPassedTitles,
+        skippedTitles: handle.validation.skippedTitles,
+      },
+    };
+  } catch (error) {
+    return {
+      name: PREVIEW_E2E_CHECK_NAME,
+      status: "fail",
+      detail: {
+        reason: error instanceof Error ? error.message : String(error),
+      },
+    };
+  }
+}
+
+function buildArtifactScanCheck(
+  backupDir: string,
+  currentSourceFingerprint: SourceFingerprint,
+  nowMs?: number,
+  maxAgeMs = STEADY_STATE_REPORT_MAX_AGE_MS,
+): DeployPreflightCheck {
   const report = readBackupJson<BuildArtifactScanReport>(backupDir, "cloudflare/build-artifact-scan-report.json");
   const freshnessBlockers = freshBackupScopedReportBlockers({
     relativePath: "cloudflare/build-artifact-scan-report.json",
     report,
     backupDir,
-    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
+    maxAgeMs,
     nowMs,
     requireOk: true,
   });
@@ -461,7 +1101,11 @@ function buildArtifactScanCheck(backupDir: string, currentSourceFingerprint: Sou
   };
 }
 
-function staticMarketingAssetReleaseCheck(cwd: string, nowMs?: number): DeployPreflightCheck {
+function staticMarketingAssetReleaseCheck(
+  cwd: string,
+  nowMs?: number,
+  maxAgeMs = STEADY_STATE_REPORT_MAX_AGE_MS,
+): DeployPreflightCheck {
   const reportPath = path.join(cwd, STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH);
   let parsed: unknown;
   try {
@@ -541,7 +1185,10 @@ function staticMarketingAssetReleaseCheck(cwd: string, nowMs?: number): DeployPr
   let releaseValidation: ReturnType<typeof validateStaticMarketingAssetRelease> | null = null;
   let releaseValidationError: string | null = null;
   try {
-    releaseValidation = validateStaticMarketingAssetRelease(cwd, { nowMs });
+    releaseValidation = validateStaticMarketingAssetRelease(cwd, {
+      nowMs,
+      maxAgeMs,
+    });
   } catch (error) {
     releaseValidationError = error instanceof Error ? error.message : String(error);
   }
@@ -564,6 +1211,12 @@ function staticMarketingAssetReleaseCheck(cwd: string, nowMs?: number): DeployPr
           mainAppTranslationPaths: manifestCounts.mainApp,
           siteTranslationPaths: manifestCounts.site,
           incompleteTranslationPaths: 0,
+          translationAvailabilitySha256:
+            releaseValidation?.translationAvailabilitySha256,
+          localizedHtmlDocuments:
+            releaseValidation?.localizedHtmlDocuments,
+          localizedHtmlPathsSha256:
+            releaseValidation?.localizedHtmlPathsSha256,
           assetManifestBytes: releaseValidation?.assetManifest.bytes,
           assetManifestSha256: releaseValidation?.assetManifest.sha256,
         }
@@ -635,6 +1288,7 @@ function runtimeMigrationEvidenceCheck(
     report?.kind === RUNTIME_MIGRATION_EVIDENCE_KIND &&
     report.database === D1_DATABASE_NAME &&
     report.rowsWritten === 0 &&
+    report.totalAttempts === 1 &&
     migrationsOk &&
     requiredChecksOk;
   const ok =
@@ -668,70 +1322,137 @@ function runtimeMigrationEvidenceCheck(
   };
 }
 
-function historicalDataBaselineCheck(
+function runtimeMigration0017EvidenceCheck(
   backupDir: string,
   currentSourceFingerprint: SourceFingerprint,
   nowMs?: number,
 ): DeployPreflightCheck {
-  try {
-    const baseline = readAndValidateHistoricalDataBaseline({
-      backupDir,
-      expectedSourceFingerprint: currentSourceFingerprint,
-      now: new Date(nowMs ?? Date.now()),
-    });
-    return {
-      name: "historical production data preservation baseline",
-      status: "pass",
-      detail: {
-        createdAt: baseline.createdAt,
-        utcDay: baseline.utcDay,
-        operationId: baseline.operationId,
-        sourceFingerprint: baseline.sourceFingerprint.sha256,
-        rowsRead: baseline.rowsRead,
-        rowsWritten: baseline.rowsWritten,
-        ledgerRevision: baseline.ledger.revision,
-      },
-    };
-  } catch (error) {
-    return {
-      name: "historical production data preservation baseline",
-      status: "fail",
-      detail: {
-        reason: error instanceof Error ? error.message : String(error),
-      },
-    };
-  }
+  const fileSecurity = backupEvidenceFileSecurity(
+    backupDir,
+    RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH,
+  );
+  const report = fileSecurity.ok
+    ? readBackupJson<RuntimeMigration0017EvidenceReport>(
+        backupDir,
+        RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH,
+      )
+    : null;
+  const freshnessBlockers = freshBackupScopedReportBlockers({
+    relativePath: RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH,
+    report,
+    backupDir,
+    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
+    nowMs,
+    requireOk: true,
+  });
+  const backupDirOk = path.resolve(report?.backupDir ?? "") === path.resolve(backupDir);
+  const sourceFingerprintOk =
+    report?.sourceFingerprintStable === true &&
+    report.sourceFingerprintBefore?.sha256 === currentSourceFingerprint.sha256 &&
+    report.sourceFingerprintBefore?.fileCount === currentSourceFingerprint.fileCount &&
+    report.sourceFingerprint?.sha256 === currentSourceFingerprint.sha256 &&
+    report.sourceFingerprint?.fileCount === currentSourceFingerprint.fileCount;
+  const checks = report?.checks ?? [];
+  const check = checks[0];
+  const reportShapeOk =
+    report?.kind === RUNTIME_MIGRATION_0017_EVIDENCE_KIND &&
+    report.schemaVersion === 1 &&
+    report.database === D1_DATABASE_NAME &&
+    report.migration === RUNTIME_MIGRATION_0017_FILE &&
+    report.state === "applied" &&
+    report.rowsWritten === 0 &&
+    report.totalAttempts === 1 &&
+    checks.length === 1 &&
+    check?.id === RUNTIME_MIGRATION_0017_CHECK_ID &&
+    check.ok === true &&
+    check.detail?.state === "applied";
+  const ok =
+    report?.ok === true &&
+    freshnessBlockers.length === 0 &&
+    fileSecurity.ok &&
+    backupDirOk &&
+    sourceFingerprintOk &&
+    reportShapeOk;
+  return {
+    name: "D1 runtime migration 0017 normalized-email index",
+    status: ok ? "pass" : "fail",
+    detail: ok
+      ? {
+          sourceFingerprint: currentSourceFingerprint.sha256,
+          migration: RUNTIME_MIGRATION_0017_FILE,
+          check: RUNTIME_MIGRATION_0017_CHECK_ID,
+        }
+      : {
+          reportOk: report?.ok,
+          freshnessBlockers,
+          fileSecurity,
+          backupDirOk,
+          sourceFingerprintOk,
+          reportShapeOk,
+          expectedSourceFingerprint: currentSourceFingerprint.sha256,
+          actualSourceFingerprint: report?.sourceFingerprint?.sha256,
+        },
+  };
 }
 
-function historicalDataContinuityCheck(
-  backupDir: string,
+function historicalFresh0016CutoverCheck(
   cwd: string,
   currentSourceFingerprint: SourceFingerprint,
+  backupDir: string,
   nowMs?: number,
-  predecessorLoader?: HistoricalDataContinuityPredecessorLoader,
+  loader: (input: {
+    cwd: string;
+    backupDirectory: string;
+  }) => HistoricalFresh0016ValidatedCutoverArtifactHandle =
+    readAndValidateHistoricalFresh0016CutoverComplete,
 ): DeployPreflightCheck {
   try {
-    const report = readAndValidateHistoricalDataContinuityReport({
-      backupDir,
+    const resolvedBackupDir = path.resolve(backupDir);
+    const completion = loader({
       cwd,
-      expectedSourceFingerprint: currentSourceFingerprint,
-      predecessorLoader,
-      now: new Date(nowMs ?? Date.now()),
+      backupDirectory: resolvedBackupDir,
     });
+    const artifact = completion.artifact;
+    const currentTime = nowMs ?? Date.now();
+    const createdAtMs = Date.parse(artifact.createdAt);
+    const ageMs = currentTime - createdAtMs;
+    if (
+      completion.validation !== "existing-full-chain" ||
+      artifact.paths.backupDirectory !== resolvedBackupDir ||
+      artifact.paths.canonicalCompletePath !== completion.path ||
+      artifact.sourceFingerprint.sha256 !== currentSourceFingerprint.sha256 ||
+      artifact.sourceFingerprint.fileCount !== currentSourceFingerprint.fileCount ||
+      artifact.policy.legacyIntervalContinuityProven !== false ||
+      artifact.policy.retroactiveContinuityClaimed !== false ||
+      artifact.continuity.ok !== true ||
+      artifact.continuity.outboxSchemaPresent !== true ||
+      artifact.continuity.outboxRowsBeforeActivation !== 0 ||
+      !Number.isFinite(createdAtMs) ||
+      ageMs < 0 ||
+      ageMs > FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS
+    ) {
+      throw new Error(
+        "Fresh-0016 canonical completion is stale, from the future, or not bound to the exact accepted source, backup, continuity, and empty-outbox boundary.",
+      );
+    }
     return {
-      name: "budget-rollover historical data continuity",
+      name: "fresh-0016 accepted historical trust boundary",
       status: "pass",
       detail: {
-        policyId: report.policyId,
-        predecessorSource: report.predecessor.source.sha256,
-        successorSource: report.successor.source.sha256,
-        successorBaselineCreatedAt: report.successor.baselineCreatedAt,
-        gapMs: report.gapMs,
+        policyId: artifact.policy.id,
+        createdAt: artifact.createdAt,
+        cutoverRunId: artifact.cutoverRunId,
+        sourceFingerprint: artifact.sourceFingerprint.sha256,
+        canonicalArtifactSha256: completion.sha256,
+        legacyIntervalContinuityProven: false,
+        retroactiveContinuityClaimed: false,
+        predecessorToSuccessorGapMs:
+          artifact.continuity.predecessorToSuccessorGapMs,
       },
     };
   } catch (error) {
     return {
-      name: "budget-rollover historical data continuity",
+      name: "fresh-0016 accepted historical trust boundary",
       status: "fail",
       detail: {
         reason: error instanceof Error ? error.message : String(error),

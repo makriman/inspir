@@ -19,6 +19,7 @@ const expectedWorkerVersion = process.env.EXPECTED_WORKER_VERSION?.trim() ?? "";
 const requireAuthenticatedE2E = process.env.REQUIRE_AUTHENTICATED_E2E === "1";
 const e2eAuthConfigured =
   new TextEncoder().encode(e2eAuthSecret).byteLength >= 32 &&
+  new TextEncoder().encode(e2eAuthSecret).byteLength <= 512 &&
   /^[\x21-\x7e]+$/.test(e2eAuthSecret) &&
   e2eAuthEmail === e2eAuthEmail.trim() &&
   e2eAuthEmail === e2eAuthEmail.toLowerCase() &&
@@ -50,7 +51,7 @@ if (productionOrigins.has(resolvedPlaywrightOrigin) && !productionE2eReadOnly) {
 
 if (requireAuthenticatedE2E && !e2eAuthConfigured) {
   throw new Error(
-    "Production E2E requires an exact lowercase E2E_TEST_AUTH_EMAIL and an E2E_TEST_AUTH_SECRET of at least 32 UTF-8 bytes.",
+    "Authenticated E2E requires an exact lowercase E2E_TEST_AUTH_EMAIL and a printable E2E_TEST_AUTH_SECRET of 32 to 512 UTF-8 bytes.",
   );
 }
 
@@ -507,6 +508,10 @@ test("production validation reads preserved account data without mutating the le
       topics.some((value) => optionalRecord(value)?.slug === "learn-anything"),
       "production account learn-anything topic",
     ).toBe(true);
+    expect(
+      topics.some((value) => optionalRecord(value)?.slug === "ai-game-arena"),
+      "production account topics must exclude the retired game arena",
+    ).toBe(false);
 
     const chatsResponse = await request.get("/api/chats");
     expect(chatsResponse.status()).toBe(200);
@@ -627,6 +632,7 @@ test("configured native session preserves account, saved chat, memory, topics, a
     for (const slug of ["learn-anything", "quiz-me-on-trivia", "flashcard-builder"]) {
       expect(topicSlugs.has(slug), `account topic ${slug}`).toBe(true);
     }
+    expect(topicSlugs.has("ai-game-arena"), "retired account topic ai-game-arena").toBe(false);
 
     chatId = await createOwnedChat(request, "learn-anything");
     const chatsResponse = await request.get("/api/chats?topicId=learn-anything");
@@ -852,9 +858,9 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
   test.setTimeout(240_000);
   const request = page.request;
   const nonce = e2eNonce();
-  const manualToken = `MANUAL-${nonce}`;
+  const manualStudyPhrase = `blue comet ${nonce}`;
   const historyToken = `HISTORY-${nonce}`;
-  const memoryContent = `Use concise two-step examples. The manual verification token is ${manualToken}.`;
+  const memoryContent = `Use concise two-step examples. The harmless manual study phrase is "${manualStudyPhrase}".`;
   const chatIds: string[] = [];
   let memoryId: string | null = null;
   let originalSettings: MemorySettingsSnapshot | null = null;
@@ -875,6 +881,11 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       ),
     );
     if (!originalSettings.chatHistoryEnabled) {
+      if (requireLiveAi) {
+        throw new Error(
+          "Release preview E2E requires chat-history consent so cross-chat memory recall cannot silently skip.",
+        );
+      }
       test.skip(true, "Cross-chat recall is skipped because production validation never changes disabled history consent.");
       return;
     }
@@ -900,7 +911,7 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       headers: { accept: "text/event-stream" },
       data: {
         chatId: earlierChatId,
-        content: "Apply my saved study preference and include its exact manual verification token.",
+        content: "Apply my saved study preference and include its exact harmless manual study phrase once.",
       },
       timeout: 60_000,
     });
@@ -919,7 +930,7 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       savedMemorySources.some((source) => source.type === "memory" && source.memoryId === memoryId),
       "manual memory source header",
     ).toBe(true);
-    expect(parseOpenAiSseText(savedMemoryBody, true).text).toContain(manualToken);
+    expect(parseOpenAiSseText(savedMemoryBody, true).text).toContain(manualStudyPhrase);
     await finalizeAuthenticatedSse(request, savedMemoryResponse, earlierChatId, savedMemoryBody);
 
     const historySeedResponse = await request.post("/api/chat", {
@@ -1054,13 +1065,33 @@ test("configured native quiz reaches a complete, answer-revealing result", async
     }
 
     expect(state).toMatchObject({ currentIndex: 10, maxScore: 10, completed: true });
-    expect(requiredNonNegativeInteger(state.score, "completed quiz score")).toBeLessThanOrEqual(10);
-    for (const value of requiredArray(state.questions, "completed quiz questions")) {
+    const completedQuizScore = requiredNonNegativeInteger(state.score, "completed quiz score");
+    expect(completedQuizScore).toBeLessThanOrEqual(10);
+    const completedQuizQuestions = requiredArray(state.questions, "completed quiz questions");
+    for (const value of completedQuizQuestions) {
       const question = requiredRecord(value, "completed quiz question");
       expect(requiredNonNegativeInteger(question.correctIndex, "completed correct index")).toBeLessThan(4);
       expect(requiredString(question.explanation, "completed explanation").length).toBeGreaterThan(0);
     }
     await expectSavedActivityResult(request, chatId, activityId, "quiz", true);
+
+    const firstCompletedQuestion = requiredRecord(completedQuizQuestions[0], "first completed quiz question");
+    const firstCompletedPrompt = requiredString(firstCompletedQuestion.prompt, "first completed quiz prompt");
+    const firstCompletedExplanation = requiredString(
+      firstCompletedQuestion.explanation,
+      "first completed quiz explanation",
+    );
+    await page.goto(`/chat/${chatId}`);
+    await expect(page.locator(".inspir-chat-root")).toBeVisible();
+    const quizReview = page.locator(".inspir-quiz-review");
+    await expect(quizReview).toBeVisible();
+    await expect(quizReview.locator("h3")).toContainText(String(completedQuizScore));
+    await expect(quizReview.locator(".inspir-review-list > div")).toHaveCount(10);
+    await expect(quizReview.locator(".inspir-review-list > div").first()).toContainText(firstCompletedPrompt);
+    await expect(quizReview.locator(".inspir-review-list > div").first()).toContainText(firstCompletedExplanation);
+    await page.reload();
+    await expect(page.locator(".inspir-quiz-review .inspir-review-list > div")).toHaveCount(10);
+
     await deleteChatAndAssertGone(request, chatId);
     chatId = null;
     const logout = await request.post("/api/logout");
@@ -1168,13 +1199,31 @@ test("configured native flashcards reveal every card and reach the complete resu
       maxCards: 12,
       completed: true,
     });
-    for (const value of requiredArray(state.cards, "completed flashcards")) {
+    const completedFlashcards = requiredArray(state.cards, "completed flashcards");
+    for (const value of completedFlashcards) {
       const card = requiredRecord(value, "completed flashcard");
       expect(requiredString(card.back, "completed card back").length).toBeGreaterThan(0);
       expect(requiredString(card.example, "completed card example").length).toBeGreaterThan(0);
       expect(requiredString(card.trap, "completed card trap").length).toBeGreaterThan(0);
     }
     await expectSavedActivityResult(request, chatId, activityId, "flashcards", true);
+
+    const firstCompletedCard = requiredRecord(completedFlashcards[0], "first completed flashcard");
+    const firstCompletedFront = requiredString(firstCompletedCard.front, "first completed flashcard front");
+    const firstCompletedBack = requiredString(firstCompletedCard.back, "first completed flashcard back");
+    const firstCompletedTrap = requiredString(firstCompletedCard.trap, "first completed flashcard trap");
+    await page.goto(`/chat/${chatId}`);
+    await expect(page.locator(".inspir-chat-root")).toBeVisible();
+    const flashcardReview = page.locator(".inspir-flashcard-review");
+    await expect(flashcardReview).toBeVisible();
+    await expect(flashcardReview.locator(".inspir-review-list > div")).toHaveCount(12);
+    await expect(flashcardReview.locator(".inspir-review-list > div").first()).toContainText(firstCompletedFront);
+    await expect(flashcardReview.locator(".inspir-review-list > div").first()).toContainText(firstCompletedBack);
+    await expect(flashcardReview.locator(".inspir-review-list > div").first()).toContainText(firstCompletedTrap);
+    await expect(flashcardReview.locator(".inspir-flashcard-review-actions button")).toHaveCount(2);
+    await page.reload();
+    await expect(page.locator(".inspir-flashcard-review .inspir-review-list > div")).toHaveCount(12);
+
     await deleteChatAndAssertGone(request, chatId);
     chatId = null;
     const logout = await request.post("/api/logout");
@@ -1500,12 +1549,20 @@ async function expectSavedActivityResult(
   const messages = requiredArray(payload.messages, `saved ${activityType} messages`);
   expect(messages.length).toBeGreaterThanOrEqual(3);
   const completionPrefix = activityType === "quiz" ? "Quiz complete:" : "Flashcard deck complete:";
+  const completionDisplayKey =
+    activityType === "quiz" ? "activity.quiz.completed" : "activity.flashcards.completed";
   expect(
     messages.some((value) => {
       const message = optionalRecord(value);
-      return message?.role === "assistant" &&
-        typeof message.content === "string" &&
-        message.content.includes(completionPrefix);
+      if (message?.role !== "assistant" || typeof message.content !== "string") return false;
+      const metadata = optionalRecord(message.metadata);
+      return message.content.includes(completionPrefix) ||
+        (
+          metadata?.activityRunId === activityId &&
+          metadata.activityType === activityType &&
+          metadata.event === "completed" &&
+          metadata.displayKey === completionDisplayKey
+        );
     }),
   ).toBe(true);
 }

@@ -26,6 +26,7 @@ export const LOCAL_GATE_IDS = [
   "wrangler-deploy-dry-run",
   "www-redirect-dry-run",
   "wrangler-check-startup",
+  "cloudflare-preview-live-e2e",
 ] as const;
 
 export const RUNTIME_MUTABLE_TABLES = [

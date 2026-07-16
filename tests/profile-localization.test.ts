@@ -15,6 +15,8 @@ import {
 } from "../lib/i18n/language-detection";
 import { resolveRequestLanguage } from "../lib/i18n/language-preference";
 import { localizeStructuredDataValue } from "../lib/i18n/metadata";
+import { staticSiteTranslationNamespaceAvailability } from "../lib/i18n/site-availability-manifest";
+import { getPotentialSiteTranslationNamespacesForPath } from "../lib/i18n/site-path-namespaces";
 import {
   isStaticSiteLanguageAvailableForPath,
   localizeStaticSiteHref,
@@ -502,7 +504,10 @@ test("locale routing helpers preserve canonical English and prefix non-English p
 test("static locale availability admits only render-localized page bodies", () => {
   assert.equal(isStaticSiteLanguageAvailableForPath("/", "Spanish"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), true);
-  assert.equal(isStaticSiteLanguageAvailableForPath("/about", "Spanish"), false);
+  assert.equal(
+    isStaticSiteLanguageAvailableForPath("/about", "Spanish"),
+    manifestHasCompleteCoverage("/about", "Spanish"),
+  );
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/reset_pw", "Spanish"), false);
   assert.equal(localizeStaticSiteHref("/mission?source=home#principles", "Spanish"), "/es/mission?source=home#principles");
@@ -511,8 +516,22 @@ test("static locale availability admits only render-localized page bodies", () =
     "/hi/mission?source=home#principles",
   );
   assert.equal(localizeStaticSiteHref("/chat/learn-anything?source=home", "Hindi"), "/hi/chat/learn-anything?source=home");
-  assert.equal(localizeStaticSiteHref("/blog/ai-learn-anything-guide", "Spanish"), "/blog/ai-learn-anything-guide");
+  assert.equal(
+    localizeStaticSiteHref("/blog/ai-learn-anything-guide", "Spanish"),
+    manifestHasCompleteCoverage("/blog/ai-learn-anything-guide", "Spanish")
+      ? "/es/blog/ai-learn-anything-guide"
+      : "/blog/ai-learn-anything-guide",
+  );
 });
+
+function manifestHasCompleteCoverage(
+  pathname: string,
+  language: Exclude<(typeof supportedLanguages)[number], typeof defaultLanguage>,
+) {
+  const requiredNamespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
+  const available = new Set(staticSiteTranslationNamespaceAvailability[language] ?? []);
+  return requiredNamespaces.length > 0 && requiredNamespaces.every((namespace) => available.has(namespace));
+}
 
 test("explicit English language cookie wins over localized referrer", () => {
   assert.equal(

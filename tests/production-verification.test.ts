@@ -89,6 +89,12 @@ test("authenticated validation binds every secret-derived version and recovery m
     existingSessionPurposes: ["production-playwright", "production-outcome-soak"],
     sourceFingerprintSha256: "a".repeat(64),
     sourceFingerprintFileCount: 10,
+    translationReconciliationKind: "production-translation-reconciliation-v1",
+    translationReconciliationSha256: "b".repeat(64),
+    stagedCleanupRunId: null,
+    stagedCleanupEvidenceSha256: null,
+    stagedCleanupPreWriteEvidenceSha256: null,
+    stagedCleanupResolvedEvidenceSha256: null,
     immutableReleaseIdentity: baseline.immutableReleaseIdentity,
     baselineSecretNames: ["AUTH_SECRET"],
     installedTemporarySecrets: ["E2E_TEST_AUTH_EXPIRES_AT"],
@@ -115,6 +121,29 @@ test("authenticated validation binds every secret-derived version and recovery m
     secretsAbsentVerifiedAt: null,
   };
   assert.equal(parseRecoveryManifest(manifest).capabilityExpiresAt, "1");
+  const stagedManifest = {
+    ...manifest,
+    translationReconciliationKind:
+      "production-staged-translation-reconciliation-v1",
+    stagedCleanupRunId:
+      "2026-07-15T12-00-00-000Z-66666666-6666-4666-8666-666666666666",
+    stagedCleanupEvidenceSha256: "c".repeat(64),
+    stagedCleanupPreWriteEvidenceSha256: "d".repeat(64),
+    stagedCleanupResolvedEvidenceSha256: "e".repeat(64),
+  };
+  assert.equal(
+    parseRecoveryManifest(stagedManifest).stagedCleanupRunId,
+    stagedManifest.stagedCleanupRunId,
+  );
+  assert.throws(
+    () =>
+      parseRecoveryManifest({
+        ...manifest,
+        translationReconciliationKind:
+          "production-staged-translation-reconciliation-v1",
+      }),
+    /malformed/,
+  );
   const pendingRenewal = {
     ...manifest,
     validationLockOwner: {
@@ -371,6 +400,19 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /"x-migration-e2e-auth-secret": secret/);
   assert.match(authenticatedProductionWrapper, /body: JSON\.stringify\(\{ email \}\)/);
   assert.match(authenticatedProductionWrapper, /--candidate-version/);
+  assert.match(
+    authenticatedProductionWrapper,
+    /readWorkerCandidateUploadEvidence[\s\S]*readWorkerCandidateStagedEvidence[\s\S]*readWorkerCandidateActivationEvidence[\s\S]*verifyWorkerCandidateActivationEvidence/,
+  );
+  assert.match(
+    authenticatedProductionWrapper,
+    /phase: "candidate-active"[\s\S]{0,500}targetCandidateVersionId:[\s\S]{0,200}serviceBaselineVersionId:[\s\S]{0,200}uploadEvidenceSha256:[\s\S]{0,200}phaseEvidenceSha256: activation\.sha256[\s\S]{0,200}phaseEvidenceCreatedAt: activation\.value\.createdAt[\s\S]{0,200}soleServingVersionId:/,
+  );
+  assert.ok(
+    authenticatedProductionWrapper.match(/requiredPhase: "candidate-active"/g)
+      ?.length === 2,
+    "fresh and recovery validation must both require candidate-active Vectorize evidence",
+  );
   assert.match(authenticatedProductionWrapper, /--recover/);
   assert.match(authenticatedProductionWrapper, /authenticated-production-validation-recovery-v1/);
   assert.match(authenticatedProductionWrapper, /writePrivateJsonDurably/);
