@@ -63,9 +63,13 @@ import {
 } from "../scripts/cloudflare/production-validation-lock";
 import {
   evaluateRuntimeMigration0017VerificationRows,
+  parseRuntimeMigration0017CliExpectation,
   RUNTIME_MIGRATION_0017_CHECK_ID,
   RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
+  RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG,
   RUNTIME_MIGRATION_0017_VERIFICATION_SQL,
+  runtimeMigration0017VerificationReportPath,
+  runtimeMigration0017ReportMatchesCliExpectation,
   type RuntimeMigration0017State,
   type RuntimeMigration0017VerificationReport,
 } from "../scripts/cloudflare/verify-d1-runtime-migration-0017";
@@ -200,6 +204,96 @@ test("0017 verifier distinguishes exact, absent, and partial index state", () =>
     assert.equal(partial.detail.state, "partial");
   } finally {
     database.close();
+  }
+});
+
+test("0017 verifier CLI keeps applied verification separate from Free-plan deferral", () => {
+  const fixture = makeBudgetFixture();
+  try {
+    assert.equal(
+      parseRuntimeMigration0017CliExpectation(["--confirm-production"]),
+      "applied",
+    );
+    assert.equal(
+      parseRuntimeMigration0017CliExpectation([
+        "--confirm-production",
+        RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG,
+      ]),
+      "absent-deferred-free-plan",
+    );
+    assert.equal(
+      parseRuntimeMigration0017CliExpectation([
+        RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG,
+        "--confirm-production",
+      ]),
+      "absent-deferred-free-plan",
+    );
+    assert.throws(
+      () => parseRuntimeMigration0017CliExpectation([]),
+      /requires --confirm-production/,
+    );
+    assert.throws(
+      () =>
+        parseRuntimeMigration0017CliExpectation([
+          "--confirm-production",
+          RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG,
+          RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG,
+        ]),
+      /at most once/,
+    );
+    assert.throws(
+      () =>
+        parseRuntimeMigration0017CliExpectation([
+          "--confirm-production",
+          "--unsupported",
+        ]),
+      /accepts only --confirm-production/,
+    );
+
+    const absent = migration0017Report(
+      fixture.repoDir,
+      fixture.backupDir,
+      "absent",
+    );
+    const applied = migration0017Report(
+      fixture.repoDir,
+      fixture.backupDir,
+      "applied",
+    );
+    const partial = migration0017Report(
+      fixture.repoDir,
+      fixture.backupDir,
+      "partial",
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(absent, "absent-deferred-free-plan"),
+      true,
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(absent, "applied"),
+      false,
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(applied, "applied"),
+      true,
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(applied, "absent-deferred-free-plan"),
+      false,
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(partial, "absent-deferred-free-plan"),
+      false,
+    );
+    assert.equal(
+      runtimeMigration0017ReportMatchesCliExpectation(
+        { ...absent, error: "wrangler failed", totalAttempts: null },
+        "absent-deferred-free-plan",
+      ),
+      false,
+    );
+  } finally {
+    fs.rmSync(fixture.root, { recursive: true, force: true });
   }
 });
 
@@ -625,6 +719,18 @@ test("0017 apply requires exact pre-0016 state, writes once, and exact-verifies"
       uploadEvidenceSha256: upload.sha256,
       predecessorStartAt,
     });
+    fs.writeFileSync(
+      runtimeMigration0017VerificationReportPath(fixture.backupDir),
+      `${JSON.stringify(
+        migration0017Report(
+          fixture.repoDir,
+          fixture.backupDir,
+          "absent",
+          predecessorStartAt,
+        ),
+      )}\n`,
+      { encoding: "utf8", flag: "wx", mode: 0o600 },
+    );
     const prerequisiteInput = {
       backupDirectory: fixture.backupDir,
       sourceFingerprint: sourceIdentity,
@@ -637,8 +743,14 @@ test("0017 apply requires exact pre-0016 state, writes once, and exact-verifies"
     const prerequisites = readHistoricalFresh0016PredecessorPrerequisites(
       prerequisiteInput,
     );
-    assert.equal(prerequisites.runtimeMigration0017.state, "applied");
-    assert.equal(prerequisites.runtimeMigration0017.utcDay, "2026-07-15");
+    assert.equal(
+      prerequisites.runtimeMigration0017.state,
+      "absent-deferred-free-plan",
+    );
+    assert.equal(
+      prerequisites.runtimeMigration0017.verifiedAt,
+      predecessorStartAt.toISOString(),
+    );
 
     assert.throws(
       () => readHistoricalFresh0016PredecessorPrerequisites({
@@ -663,9 +775,8 @@ test("0017 apply requires exact pre-0016 state, writes once, and exact-verifies"
       }, null, 2)}\n`,
       { encoding: "utf8", mode: 0o600 },
     );
-    assert.throws(
+    assert.doesNotThrow(
       () => readHistoricalFresh0016PredecessorPrerequisites(prerequisiteInput),
-      /earlier-day 0017 apply\/write fence/,
     );
   } finally {
     fs.rmSync(fixture.root, { recursive: true, force: true });
@@ -1262,7 +1373,12 @@ function verifyRuntimeMigration0017PrerequisiteGate(input: Readonly<{
     reserveBudget: reserveD1ReleaseBudget,
     pre0016StateVerifier: () => pre0016StateProof(input.cwd),
     migration0017Verifier: () =>
-      migration0017Report(input.cwd, input.backupDirectory, "applied"),
+      migration0017Report(
+        input.cwd,
+        input.backupDirectory,
+        "absent",
+        input.predecessorStartAt,
+      ),
   });
 }
 
@@ -1354,13 +1470,14 @@ function migration0017Report(
   repoDir: string,
   backupDir: string,
   state: RuntimeMigration0017State,
+  createdAt: Date = now,
 ): RuntimeMigration0017VerificationReport {
   const source = buildRepoSourceFingerprint(repoDir);
   const ok = state === "applied";
   return {
     kind: RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
     schemaVersion: 1,
-    createdAt: now.toISOString(),
+    createdAt: createdAt.toISOString(),
     backupDir,
     database: D1_DATABASE_NAME,
     migration: RUNTIME_MIGRATION_0017_FILE,

@@ -1343,7 +1343,7 @@ function runtimeMigration0017EvidenceCheck(
     backupDir,
     maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
     nowMs,
-    requireOk: true,
+    requireOk: false,
   });
   const backupDirOk = path.resolve(report?.backupDir ?? "") === path.resolve(backupDir);
   const sourceFingerprintOk =
@@ -1359,28 +1359,31 @@ function runtimeMigration0017EvidenceCheck(
     report.schemaVersion === 1 &&
     report.database === D1_DATABASE_NAME &&
     report.migration === RUNTIME_MIGRATION_0017_FILE &&
-    report.state === "applied" &&
+    report.ok === false &&
+    report.state === "absent" &&
     report.rowsWritten === 0 &&
     report.totalAttempts === 1 &&
     checks.length === 1 &&
     check?.id === RUNTIME_MIGRATION_0017_CHECK_ID &&
-    check.ok === true &&
-    check.detail?.state === "applied";
+    check.ok === false &&
+    check.detail?.state === "absent";
   const ok =
-    report?.ok === true &&
     freshnessBlockers.length === 0 &&
     fileSecurity.ok &&
     backupDirOk &&
     sourceFingerprintOk &&
     reportShapeOk;
   return {
-    name: "D1 runtime migration 0017 normalized-email index",
+    name: "D1 runtime migration 0017 deferred Free-plan index",
     status: ok ? "pass" : "fail",
     detail: ok
       ? {
           sourceFingerprint: currentSourceFingerprint.sha256,
           migration: RUNTIME_MIGRATION_0017_FILE,
           check: RUNTIME_MIGRATION_0017_CHECK_ID,
+          state: "absent-deferred-free-plan",
+          runtimePath:
+            "users-email-unique-exact-lookup-with-bounded-casefold-fallback",
         }
       : {
           reportOk: report?.ok,

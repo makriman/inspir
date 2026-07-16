@@ -1067,17 +1067,16 @@ function predecessorPrerequisites(
       repairApplied: false,
     },
     runtimeMigration0017: {
-      utcDay: "2026-07-13",
-      appliedAt: "2026-07-13T18:00:00.000Z",
-      verifiedAt: "2026-07-13T18:05:00.000Z",
-      outcomeEvidenceSha256: "2".repeat(64),
-      writeAttemptEvidenceSha256: "3".repeat(64),
+      verifiedAt: "2026-07-14T18:05:00.000Z",
       verificationEvidenceSha256: "4".repeat(64),
-      pre0016RuntimeStateProofSha256: "5".repeat(64),
       operationId: "d1-runtime-migration-0017" as const,
-      reservedRowsRead: 125_000 as const,
-      reservedRowsWritten: 50_000 as const,
-      state: "applied" as const,
+      reservedRowsRead: 768 as const,
+      reservedRowsWritten: 0 as const,
+      state: "absent-deferred-free-plan" as const,
+      reason:
+        "cloudflare-free-plan-verified-production-users-exceed-0017-index-write-envelope" as const,
+      runtimePath:
+        "users-email-unique-exact-lookup-with-bounded-casefold-fallback" as const,
     },
     liveRuntimeState: {
       kind: "inspir-historical-data-fresh-0016-predecessor-runtime-gate-v2" as const,
@@ -1093,7 +1092,7 @@ function predecessorPrerequisites(
       exactState: {
         migrations0013To0015: "applied" as const,
         migration0016: "absent" as const,
-        migration0017: "applied" as const,
+        migration0017: "absent-deferred-free-plan" as const,
         appliedStaticCheckCount: 8 as const,
         absent0016StaticCheckCount: 5 as const,
       },
@@ -1101,7 +1100,7 @@ function predecessorPrerequisites(
         "dedicated-top-level-maximum-reserved-before-live-read-only-queries" as const,
     },
     mutationRule:
-      "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier" as const,
+      "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier" as const,
     privacy: "release-identities-and-aggregate-counts-only" as const,
   };
 }

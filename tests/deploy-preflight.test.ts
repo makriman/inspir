@@ -51,8 +51,6 @@ import {
 } from "../scripts/cloudflare/verify-d1-runtime-migration-0017";
 import {
   RUNTIME_MIGRATION_0017_FILE,
-  RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ,
-  RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN,
 } from "../scripts/cloudflare/check-d1-runtime-migration-0017-budget";
 import {
   createHistoricalFresh0016LiveTopologyEvidence,
@@ -104,7 +102,7 @@ import {
 const HISTORICAL_FRESH_0016_CHECK =
   "fresh-0016 accepted historical trust boundary";
 const RUNTIME_MIGRATION_0017_CHECK =
-  "D1 runtime migration 0017 normalized-email index";
+  "D1 runtime migration 0017 deferred Free-plan index";
 const STATIC_ASSET_RELEASE_CHECK = "Static Asset release and legacy translation report";
 const LONG_TAIL_PROMOTION_SETTLEMENT_CHECK =
   "settled long-tail translation promotion transactions";
@@ -1253,7 +1251,7 @@ test("steady-state deploy preflight rejects absent D1 0013-0016 verification evi
   assert.equal(migration?.status, "fail");
 });
 
-test("steady-state deploy preflight rejects absent or non-applied D1 0017 evidence", () => {
+test("steady-state deploy preflight rejects missing or partial deferred D1 0017 evidence", () => {
   for (const mutation of ["absent-file", "partial-state"] as const) {
     const { backupDir, repoDir } = makeFixture();
     const reportPath = path.join(
@@ -1850,8 +1848,8 @@ function writeLocalEvidence(
   writeJson(backupDir, RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH, {
     kind: RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
     schemaVersion: 1,
-    ok: true,
-    state: "applied",
+    ok: false,
+    state: "absent",
     createdAt,
     backupDir,
     database: D1_DATABASE_NAME,
@@ -1865,8 +1863,17 @@ function writeLocalEvidence(
     checks: [
       {
         id: RUNTIME_MIGRATION_0017_CHECK_ID,
-        ok: true,
-        detail: { state: "applied" },
+        ok: false,
+        detail: {
+          state: "absent",
+          schemaRows: 0,
+          catalogRows: 0,
+          keyRows: 0,
+          tableMatches: false,
+          sqlMatches: false,
+          catalogMatches: false,
+          keySequenceMatches: false,
+        },
       },
     ],
   });
@@ -2051,7 +2058,7 @@ function historicalFresh0016CutoverFixture(
     exactState: {
       migrations0013To0015: "applied",
       migration0016: "absent",
-      migration0017: "applied",
+      migration0017: "absent-deferred-free-plan",
       appliedStaticCheckCount: 8,
       absent0016StaticCheckCount: 5,
     },
@@ -2082,21 +2089,20 @@ function historicalFresh0016CutoverFixture(
       repairApplied: false,
     },
     runtimeMigration0017: {
-      utcDay: "2026-06-24",
-      appliedAt: "2026-06-24T18:00:00.000Z",
-      verifiedAt: "2026-06-24T18:01:00.000Z",
-      outcomeEvidenceSha256: hash,
-      writeAttemptEvidenceSha256: hash,
+      verifiedAt: "2026-06-25T18:01:00.000Z",
       verificationEvidenceSha256: hash,
-      pre0016RuntimeStateProofSha256: hash,
       operationId: "d1-runtime-migration-0017",
-      reservedRowsRead: RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ,
-      reservedRowsWritten: RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN,
-      state: "applied",
+      reservedRowsRead: 768,
+      reservedRowsWritten: 0,
+      state: "absent-deferred-free-plan",
+      reason:
+        "cloudflare-free-plan-verified-production-users-exceed-0017-index-write-envelope",
+      runtimePath:
+        "users-email-unique-exact-lookup-with-bounded-casefold-fallback",
     },
     liveRuntimeState,
     mutationRule:
-      "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier",
+      "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier",
     privacy: "release-identities-and-aggregate-counts-only",
   } as const;
   const artifact = {

@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -10,23 +9,11 @@ import {
   verifyHistoricalFresh0016PredecessorRuntimeGate,
 } from "../scripts/cloudflare/historical-data-fresh-0016-prerequisites";
 import {
-  D1_RUNTIME_MIGRATION_0017_OUTCOME_KIND,
-  D1_RUNTIME_MIGRATION_0017_OUTCOME_REPORT,
-  D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_KIND,
-  D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_REPORT,
-  runtimeMigration0017ApplyVerificationPath,
-} from "../scripts/cloudflare/apply-d1-runtime-migration-0017";
-import {
   d1ReleaseBudgetLedgerPath,
   reserveD1ReleaseBudget,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
 import {
-  canonicalProductionValidationLockOwner,
-} from "../scripts/cloudflare/production-validation-lock";
-import {
-  D1_DATABASE_ID,
   D1_DATABASE_NAME,
-  stableStringify,
 } from "../scripts/cloudflare/migration-config";
 import {
   RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
@@ -138,8 +125,8 @@ test("predecessor live runtime gate reserves first and rejects a UTC crossing", 
         backupDir: root,
         database: "inspirlearning-prod" as const,
         migration: "drizzle-d1/0017_users_normalized_email_lookup.sql" as const,
-        ok: true,
-        state: "applied" as const,
+        ok: false,
+        state: "absent" as const,
         sourceFingerprintBefore: source,
         sourceFingerprint: source,
         sourceFingerprintStable: true,
@@ -149,16 +136,16 @@ test("predecessor live runtime gate reserves first and rejects a UTC crossing", 
         checks: [
           {
             id: "0017-users-normalized-email-covering-index" as const,
-            ok: true,
+            ok: false,
             detail: {
-              state: "applied" as const,
-              schemaRows: 1,
-              catalogRows: 1,
-              keyRows: 3,
-              tableMatches: true,
-              sqlMatches: true,
-              catalogMatches: true,
-              keySequenceMatches: true,
+              state: "absent" as const,
+              schemaRows: 0,
+              catalogRows: 0,
+              keyRows: 0,
+              tableMatches: false,
+              sqlMatches: false,
+              catalogMatches: false,
+              keySequenceMatches: false,
             },
           },
         ],
@@ -234,7 +221,7 @@ test("predecessor live runtime gate reserves first and rejects a UTC crossing", 
   }
 });
 
-test("fresh-0016 predecessor claim consumes earlier-day source-bound topic, translation, and 0017 proof", () => {
+test("fresh-0016 predecessor claim consumes earlier-day topic/translation and same-day deferred 0017 proof", () => {
   const root = fs.realpathSync(fs.mkdtempSync(
     path.join(os.tmpdir(), "inspir-fresh-prerequisites-"),
   ));
@@ -300,26 +287,15 @@ test("fresh-0016 predecessor claim consumes earlier-day source-bound topic, tran
     assert.equal(evidence.translation.createdAt, translation.createdAt);
     assert.equal(
       evidence.mutationRule,
-      "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier",
+      "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier",
     );
-    assert.equal(evidence.runtimeMigration0017.utcDay, "2026-07-13");
-    assert.equal(evidence.liveRuntimeState.exactState.migration0017, "applied");
-    writePrivate(runtimeMigration0017VerificationReportPath(backupDirectory), {
-      kind: "replaceable-day2-preflight-refresh",
-      createdAt: "2026-07-15T00:10:00.000Z",
-    });
-    assert.deepEqual(
-      readHistoricalFresh0016PredecessorPrerequisites({
-        backupDirectory,
-        sourceFingerprint,
-        targetCandidateVersionId,
-        serviceBaselineVersionId,
-        uploadEvidenceSha256: upload.sha256,
-        predecessorStartAt: new Date("2026-07-14T23:45:00.000Z"),
-        liveRuntimeState,
-      }),
-      evidence,
-      "replaceable Day-2 preflight verification must not rewrite immutable predecessor evidence",
+    assert.equal(
+      evidence.runtimeMigration0017.state,
+      "absent-deferred-free-plan",
+    );
+    assert.equal(
+      evidence.liveRuntimeState.exactState.migration0017,
+      "absent-deferred-free-plan",
     );
 
     fs.writeFileSync(
@@ -349,25 +325,24 @@ test("fresh-0016 predecessor claim consumes earlier-day source-bound topic, tran
       { mode: 0o600 },
     );
     fs.chmodSync(translationAttestationPath(backupDirectory), 0o600);
-    const markerPath = path.join(
+    const verifierPath = runtimeMigration0017VerificationReportPath(
       backupDirectory,
-      "cloudflare",
-      D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_REPORT,
     );
-    const marker = JSON.parse(fs.readFileSync(markerPath, "utf8")) as unknown;
-    for (const candidateVersionId of [
-      serviceBaselineVersionId,
-      null,
-    ] as const) {
-      const tampered: unknown = structuredClone(marker);
+    const verifier = JSON.parse(fs.readFileSync(verifierPath, "utf8")) as unknown;
+    for (const state of ["partial", "applied"] as const) {
+      const tampered: unknown = structuredClone(verifier);
       assertRecord(tampered);
-      const ledger = nestedRecord(tampered, "ledger");
-      nestedRecord(ledger, "reservation").candidateVersionId =
-        candidateVersionId;
-      fs.writeFileSync(markerPath, `${JSON.stringify(tampered)}\n`, {
+      tampered.state = state;
+      tampered.ok = state === "applied";
+      const checks = tampered.checks;
+      assert.ok(Array.isArray(checks));
+      assertRecord(checks[0]);
+      checks[0].ok = state === "applied";
+      nestedRecord(checks[0], "detail").state = state;
+      fs.writeFileSync(verifierPath, `${JSON.stringify(tampered)}\n`, {
         mode: 0o600,
       });
-      fs.chmodSync(markerPath, 0o600);
+      fs.chmodSync(verifierPath, 0o600);
       assert.throws(
         () => readHistoricalFresh0016PredecessorPrerequisites({
           backupDirectory,
@@ -378,7 +353,7 @@ test("fresh-0016 predecessor claim consumes earlier-day source-bound topic, tran
           predecessorStartAt: new Date("2026-07-14T23:45:00.000Z"),
           liveRuntimeState,
         }),
-        /apply\/write fence/,
+        /absent-0017 report/,
       );
     }
   } finally {
@@ -556,8 +531,8 @@ function verifyRuntimeGateFixture(
       backupDir: backupDirectory,
       database: "inspirlearning-prod",
       migration: "drizzle-d1/0017_users_normalized_email_lookup.sql",
-      ok: true,
-      state: "applied",
+      ok: false,
+      state: "absent",
       sourceFingerprintBefore: source,
       sourceFingerprint: source,
       sourceFingerprintStable: true,
@@ -566,16 +541,16 @@ function verifyRuntimeGateFixture(
       totalAttempts: 1,
       checks: [{
         id: "0017-users-normalized-email-covering-index",
-        ok: true,
+        ok: false,
         detail: {
-          state: "applied",
-          schemaRows: 1,
-          catalogRows: 1,
-          keyRows: 3,
-          tableMatches: true,
-          sqlMatches: true,
-          catalogMatches: true,
-          keySequenceMatches: true,
+          state: "absent",
+          schemaRows: 0,
+          catalogRows: 0,
+          keyRows: 0,
+          tableMatches: false,
+          sqlMatches: false,
+          catalogMatches: false,
+          keySequenceMatches: false,
         },
       }],
     }),
@@ -583,37 +558,16 @@ function verifyRuntimeGateFixture(
 }
 
 function writeRuntimeMigration0017Evidence(backupDirectory: string) {
-  const createdAt = "2026-07-13T18:00:00.000Z";
-  const proof = {
-    classification: "exact-pre-0016",
-    sourceFingerprint,
-    staticRowsRead: 13,
-    probeRowsRead: 9,
-    staticTotalAttempts: 1,
-    probeTotalAttempts: 1,
-    appliedCheckCount: 8,
-    absentCheckCount: 5,
-    schemaObjectsAbsent: true,
-    fixedMarkerAbsent: true,
-    freshMarkerAbsent: true,
-  } as const;
-  const owner = {
-    candidateVersionId: targetCandidateVersionId,
-    leaseExpiresAt: Date.parse("2026-07-13T19:00:00.000Z"),
-    leaseId: "22222222-2222-4222-8222-222222222222",
-    runId: "33333333-3333-4333-8333-333333333333",
-    sourceFingerprintSha256: sourceFingerprint.sha256,
-  };
   const source = { ...sourceFingerprint, files: [] };
   const verification = {
     kind: RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
     schemaVersion: 1,
-    createdAt: "2026-07-13T18:04:00.000Z",
+    createdAt: "2026-07-14T23:44:00.000Z",
     backupDir: path.resolve(backupDirectory),
     database: D1_DATABASE_NAME,
     migration: "drizzle-d1/0017_users_normalized_email_lookup.sql",
-    ok: true,
-    state: "applied",
+    ok: false,
+    state: "absent",
     sourceFingerprintBefore: source,
     sourceFingerprint: source,
     sourceFingerprintStable: true,
@@ -623,114 +577,22 @@ function writeRuntimeMigration0017Evidence(backupDirectory: string) {
     checks: [
       {
         id: "0017-users-normalized-email-covering-index",
-        ok: true,
+        ok: false,
         detail: {
-          state: "applied",
-          schemaRows: 1,
-          catalogRows: 1,
-          keyRows: 3,
-          tableMatches: true,
-          sqlMatches: true,
-          catalogMatches: true,
-          keySequenceMatches: true,
+          state: "absent",
+          schemaRows: 0,
+          catalogRows: 0,
+          keyRows: 0,
+          tableMatches: false,
+          sqlMatches: false,
+          catalogMatches: false,
+          keySequenceMatches: false,
         },
       },
     ],
   } as const;
   writePrivate(
-    path.join(
-      backupDirectory,
-      "cloudflare",
-      D1_RUNTIME_MIGRATION_0017_OUTCOME_REPORT,
-    ),
-    {
-      kind: D1_RUNTIME_MIGRATION_0017_OUTCOME_KIND,
-      schemaVersion: 3,
-      createdAt: "2026-07-13T18:05:00.000Z",
-      backupDir: path.resolve(backupDirectory),
-      database: {
-        id: D1_DATABASE_ID,
-        name: D1_DATABASE_NAME,
-      },
-      ok: true,
-      status: "verified",
-      sourceFingerprint,
-      utcDay: "2026-07-13",
-      budgetReportPath: path.join(
-        backupDirectory,
-        "cloudflare",
-        "d1-runtime-migration-0017-budget.json",
-      ),
-      pre0016RuntimeStateProof: proof,
-      applyVerificationEvidencePath:
-        runtimeMigration0017ApplyVerificationPath(backupDirectory),
-      applyVerificationEvidenceSha256: createHash("sha256")
-        .update(stableStringify(verification))
-        .digest("hex"),
-      stateBefore: "absent",
-      stateAfter: "applied",
-      writeAttempted: true,
-      responseConfirmed: true,
-      recoveredByVerification: false,
-      preWriteEvidencePath: path.join(
-        backupDirectory,
-        "cloudflare",
-        "d1-runtime-migration-0017-prewrite-fixture.json",
-      ),
-    },
-  );
-  writePrivate(
-    path.join(
-      backupDirectory,
-      "cloudflare",
-      D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_REPORT,
-    ),
-    {
-      kind: D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_KIND,
-      schemaVersion: 2,
-      createdAt,
-      backupDir: path.resolve(backupDirectory),
-      database: {
-        id: D1_DATABASE_ID,
-        name: D1_DATABASE_NAME,
-      },
-      operationId: "d1-runtime-migration-0017",
-      sourceFingerprint,
-      utcDay: "2026-07-13",
-      budgetReportPath: path.join(
-        backupDirectory,
-        "cloudflare",
-        "d1-runtime-migration-0017-budget.json",
-      ),
-      ledger: {
-        path: d1ReleaseBudgetLedgerPath(backupDirectory, "2026-07-13"),
-        reservationRetainedAtMaximum: true,
-        reservation: {
-          operationId: "d1-runtime-migration-0017",
-          accountingParentOperationId: null,
-          candidateVersionId: targetCandidateVersionId,
-          phase: "maximum",
-          rowsRead: 125_000,
-          rowsWritten: 50_000,
-          maximumRowsRead: 125_000,
-          maximumRowsWritten: 50_000,
-        },
-      },
-      pre0016RuntimeStateProof: proof,
-      preWriteEvidencePath: path.join(
-        backupDirectory,
-        "cloudflare",
-        "d1-runtime-migration-0017-prewrite-fixture.json",
-      ),
-      productionExclusionOwner: canonicalProductionValidationLockOwner(owner),
-      stateBefore: "absent",
-      writeAttempted: true,
-      responseConfirmed: false,
-      automaticRetryPermitted: false,
-    },
-  );
-  writePrivate(
-    runtimeMigration0017ApplyVerificationPath(backupDirectory),
+    runtimeMigration0017VerificationReportPath(backupDirectory),
     verification,
   );
 }

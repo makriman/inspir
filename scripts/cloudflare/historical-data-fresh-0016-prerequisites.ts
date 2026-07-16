@@ -2,7 +2,6 @@ import { createHash } from "node:crypto";
 import path from "node:path";
 import { z } from "zod";
 import {
-  d1ReleaseBudgetLedgerPath,
   readPrivateJsonNoFollow,
   reserveD1ReleaseBudget,
   type D1ReleaseSourceIdentity,
@@ -20,28 +19,15 @@ import {
   type D1RuntimePre0016StateProof,
 } from "./d1-runtime-pre-0016-state";
 import {
-  D1_RUNTIME_MIGRATION_0017_OUTCOME_KIND,
-  D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_KIND,
-  runtimeMigration0017ApplyVerificationPath,
-  runtimeMigration0017OutcomePath,
-  runtimeMigration0017WriteAttemptPath,
-} from "./apply-d1-runtime-migration-0017";
-import {
-  RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ,
-  RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN,
   RUNTIME_MIGRATION_0017_FILE,
   RUNTIME_MIGRATION_0017_OPERATION_ID,
   RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ,
 } from "./check-d1-runtime-migration-0017-budget";
 import {
-  D1_DATABASE_ID,
   D1_DATABASE_NAME,
   stableStringify,
   type WranglerRunner,
 } from "./migration-config";
-import {
-  parseStoredProductionValidationLockOwner,
-} from "./production-validation-lock";
 import {
   stagedTranslationReconciliationBindingFromAttestation,
   topicAttestationPath,
@@ -56,6 +42,7 @@ import {
   RUNTIME_MIGRATION_0017_CHECK_ID,
   RUNTIME_MIGRATION_0017_EVIDENCE_KIND,
   RUNTIME_MIGRATION_0017_VERIFICATION_LOGICAL_ROWS_READ_LIMIT,
+  runtimeMigration0017VerificationReportPath,
   verifyD1RuntimeMigration0017,
   type RuntimeMigration0017VerificationReport,
 } from "./verify-d1-runtime-migration-0017";
@@ -81,6 +68,10 @@ export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_OPERATION =
 export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_MAXIMUM_ROWS_READ =
   D1_RUNTIME_PRE_0016_VERIFICATION_BILLABLE_ROWS_READ +
   RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ;
+const RUNTIME_MIGRATION_0017_DEFERRED_REASON =
+  "cloudflare-free-plan-verified-production-users-exceed-0017-index-write-envelope" as const;
+const RUNTIME_MIGRATION_0017_DEFERRED_RUNTIME_PATH =
+  "users-email-unique-exact-lookup-with-bounded-casefold-fallback" as const;
 
 const sha256Schema = z.string().regex(/^[a-f0-9]{64}$/);
 const gitObjectSchema = z.string().regex(/^[a-f0-9]{40,64}$/);
@@ -249,6 +240,18 @@ const translationAttestationSchema = z.union([
   fullTranslationAttestationSchema,
   stagedTranslationAttestationSchema,
 ]);
+const deferredRuntimeMigration0017Schema = z.object({
+  verifiedAt: canonicalTimestampSchema,
+  verificationEvidenceSha256: sha256Schema,
+  operationId: z.literal(RUNTIME_MIGRATION_0017_OPERATION_ID),
+  reservedRowsRead: z.literal(
+    RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ,
+  ),
+  reservedRowsWritten: z.literal(0),
+  state: z.literal("absent-deferred-free-plan"),
+  reason: z.literal(RUNTIME_MIGRATION_0017_DEFERRED_REASON),
+  runtimePath: z.literal(RUNTIME_MIGRATION_0017_DEFERRED_RUNTIME_PATH),
+}).strict();
 
 const runtimeStateGateSchema = z.object({
   kind: z.literal(HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_KIND),
@@ -275,7 +278,7 @@ const runtimeStateGateSchema = z.object({
   exactState: z.object({
     migrations0013To0015: z.literal("applied"),
     migration0016: z.literal("absent"),
-    migration0017: z.literal("applied"),
+    migration0017: z.literal("absent-deferred-free-plan"),
     appliedStaticCheckCount: z.literal(
       D1_RUNTIME_PRE_0016_APPLIED_CHECK_IDS.length,
     ),
@@ -345,35 +348,18 @@ export const historicalFresh0016PredecessorPrerequisitesSchema = z.object({
     preActivationMutationAllowed: z.literal(false),
     postActivationExactCleanupRequired: z.literal(true),
   }).strict()]),
-  runtimeMigration0017: z.object({
-    utcDay: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    appliedAt: canonicalTimestampSchema,
-    verifiedAt: canonicalTimestampSchema,
-    outcomeEvidenceSha256: sha256Schema,
-    writeAttemptEvidenceSha256: sha256Schema,
-    verificationEvidenceSha256: sha256Schema,
-    pre0016RuntimeStateProofSha256: sha256Schema,
-    operationId: z.literal(RUNTIME_MIGRATION_0017_OPERATION_ID),
-    reservedRowsRead: z.literal(RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ),
-    reservedRowsWritten: z.literal(
-      RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN,
-    ),
-    state: z.literal("applied"),
-  }).strict(),
+  runtimeMigration0017: deferredRuntimeMigration0017Schema,
   liveRuntimeState: runtimeStateGateSchema,
   mutationRule: z.literal(
-    "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier",
+    "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier",
   ),
   privacy: z.literal("release-identities-and-aggregate-counts-only"),
 }).strict().superRefine((value, context) => {
   if (
     value.topic.createdAt.slice(0, 10) >= value.predecessorUtcDay ||
     value.translation.createdAt.slice(0, 10) >= value.predecessorUtcDay ||
-    value.runtimeMigration0017.utcDay >= value.predecessorUtcDay ||
-    value.runtimeMigration0017.appliedAt.slice(0, 10) !==
-      value.runtimeMigration0017.utcDay ||
     value.runtimeMigration0017.verifiedAt.slice(0, 10) !==
-      value.runtimeMigration0017.utcDay ||
+      value.predecessorUtcDay ||
     value.liveRuntimeState.predecessorUtcDay !== value.predecessorUtcDay ||
     value.liveRuntimeState.sourceFingerprint.sha256 !==
       value.sourceFingerprint.sha256 ||
@@ -388,7 +374,7 @@ export const historicalFresh0016PredecessorPrerequisitesSchema = z.object({
     context.addIssue({
       code: "custom",
       message:
-        "Fresh-0016 predecessor prerequisites are not an earlier-day ordered topic/translation/0017 proof with a same-day live state gate.",
+        "Fresh-0016 predecessor prerequisites are not an earlier-day ordered topic/translation proof with a same-day live runtime gate and deferred-0017 proof.",
     });
   }
 });
@@ -496,7 +482,7 @@ export function verifyHistoricalFresh0016PredecessorRuntimeGate(
       nowMs: predecessorStartAt.getTime(),
       runner: input.runner,
     });
-  assertApplied0017Report(migration0017, input.sourceFingerprint);
+  assertDeferred0017Report(migration0017, input.sourceFingerprint);
   const completedAt = validDate(clock());
   if (completedAt.toISOString().slice(0, 10) !== predecessorUtcDay) {
     throw new Error(
@@ -534,7 +520,7 @@ function buildRuntimeGateProof(input: Readonly<{
     exactState: {
       migrations0013To0015: "applied",
       migration0016: "absent",
-      migration0017: "applied",
+      migration0017: "absent-deferred-free-plan",
       appliedStaticCheckCount:
         D1_RUNTIME_PRE_0016_APPLIED_CHECK_IDS.length,
       absent0016StaticCheckCount: D1_RUNTIME_0016_ABSENT_CHECK_IDS.length,
@@ -608,11 +594,10 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
     backupDirectory,
     liveRuntimeState.liveTopology.observedAt,
   );
-  const runtimeMigration0017 = readEarlierDayRuntimeMigration0017Evidence({
+  const runtimeMigration0017 = readDeferredRuntimeMigration0017Evidence({
     backupDirectory,
     predecessorUtcDay,
     sourceFingerprint: input.sourceFingerprint,
-    targetCandidateVersionId: workerRelease.targetCandidateVersionId,
   });
   const releaseIdentitySha256 = sha256(topic.release);
   const upload = readWorkerCandidateUploadEvidence(
@@ -657,7 +642,7 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
     translation.createdAt.slice(0, 10) >= predecessorUtcDay
   ) {
     throw new Error(
-      "Fresh-0016 predecessor requires source-bound earlier-day topic/translation/0017 evidence and a same-day exact live runtime gate.",
+      "Fresh-0016 predecessor requires source-bound earlier-day topic/translation evidence and a same-day exact live runtime gate with deferred-0017 proof.",
     );
   }
   return historicalFresh0016PredecessorPrerequisitesSchema.parse({
@@ -707,7 +692,7 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
     runtimeMigration0017,
     liveRuntimeState,
     mutationRule:
-      "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier",
+      "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier",
     privacy: "release-identities-and-aggregate-counts-only",
   });
 }
@@ -765,181 +750,42 @@ function assertLiveTopologyPostdatesUpload(
   }
 }
 
-function readEarlierDayRuntimeMigration0017Evidence(input: Readonly<{
+function readDeferredRuntimeMigration0017Evidence(input: Readonly<{
   backupDirectory: string;
   predecessorUtcDay: string;
   sourceFingerprint: D1ReleaseSourceIdentity;
-  targetCandidateVersionId: string;
 }>) {
-  const outcomeValue = readPrivateJsonNoFollow(
-    runtimeMigration0017OutcomePath(input.backupDirectory),
-    2 * 1024 * 1024,
-  );
-  const markerValue = readPrivateJsonNoFollow(
-    runtimeMigration0017WriteAttemptPath(input.backupDirectory),
-    2 * 1024 * 1024,
-  );
   const verificationValue = readPrivateJsonNoFollow(
-    runtimeMigration0017ApplyVerificationPath(input.backupDirectory),
+    runtimeMigration0017VerificationReportPath(input.backupDirectory),
     2 * 1024 * 1024,
   );
-  const outcome = requiredRecord(outcomeValue, "0017 apply outcome");
-  const marker = requiredRecord(markerValue, "0017 write-attempt marker");
   const verification = requiredRecord(
     verificationValue,
-    "0017 exact verification report",
-  );
-  const outcomeSource = requiredSourceIdentity(
-    outcome.sourceFingerprint,
-    "0017 outcome source",
-  );
-  const markerSource = requiredSourceIdentity(
-    marker.sourceFingerprint,
-    "0017 marker source",
-  );
-  const outcomeProof = requiredPre0016Proof(
-    outcome.pre0016RuntimeStateProof,
-    input.sourceFingerprint,
-  );
-  const markerProof = requiredPre0016Proof(
-    marker.pre0016RuntimeStateProof,
-    input.sourceFingerprint,
-  );
-  const outcomeCreatedAt = requiredTimestamp(
-    outcome.createdAt,
-    "0017 outcome timestamp",
-  );
-  const markerCreatedAt = requiredTimestamp(
-    marker.createdAt,
-    "0017 marker timestamp",
+    "0017 deferred read-only verification report",
   );
   const verifiedAt = requiredTimestamp(
     verification.createdAt,
     "0017 verification timestamp",
   );
-  const utcDay = requiredUtcDay(outcome.utcDay, "0017 outcome UTC day");
-  const markerUtcDay = requiredUtcDay(marker.utcDay, "0017 marker UTC day");
-  const outcomeDatabase = requiredRecord(outcome.database, "0017 outcome database");
-  const markerDatabase = requiredRecord(marker.database, "0017 marker database");
-  const markerLedger = requiredRecord(marker.ledger, "0017 marker ledger");
-  const markerReservation = requiredRecord(
-    markerLedger.reservation,
-    "0017 marker reservation",
-  );
-  const owner = parseStoredProductionValidationLockOwner(
-    marker.productionExclusionOwner,
-  );
-  const applyVerificationEvidencePath = path.resolve(
-    requiredText(
-      outcome.applyVerificationEvidencePath,
-      "0017 immutable apply-verification path",
-    ),
-  );
-  const applyVerificationEvidenceSha256 = requiredText(
-    outcome.applyVerificationEvidenceSha256,
-    "0017 immutable apply-verification SHA-256",
-  );
-  const outcomeBudgetReportPath = path.resolve(
-    requiredText(outcome.budgetReportPath, "0017 outcome budget path"),
-  );
-  const markerBudgetReportPath = path.resolve(
-    requiredText(marker.budgetReportPath, "0017 marker budget path"),
-  );
-  const outcomePreWriteEvidencePath = path.resolve(
-    requiredText(outcome.preWriteEvidencePath, "0017 outcome prewrite path"),
-  );
-  const markerPreWriteEvidencePath = path.resolve(
-    requiredText(marker.preWriteEvidencePath, "0017 marker prewrite path"),
-  );
-  if (
-    outcome.kind !== D1_RUNTIME_MIGRATION_0017_OUTCOME_KIND ||
-    outcome.schemaVersion !== 3 ||
-    outcome.ok !== true ||
-    (outcome.status !== "verified" &&
-      outcome.status !== "verified-after-ambiguous-response") ||
-    outcome.stateBefore !== "absent" ||
-    outcome.stateAfter !== "applied" ||
-    outcome.writeAttempted !== true ||
-    outcome.responseConfirmed !== (outcome.status === "verified") ||
-    outcome.recoveredByVerification !==
-      (outcome.status === "verified-after-ambiguous-response") ||
-    applyVerificationEvidencePath !==
-      runtimeMigration0017ApplyVerificationPath(input.backupDirectory) ||
-    !/^[a-f0-9]{64}$/.test(applyVerificationEvidenceSha256) ||
-    applyVerificationEvidenceSha256 !== sha256(verificationValue) ||
-    marker.kind !== D1_RUNTIME_MIGRATION_0017_WRITE_ATTEMPT_KIND ||
-    marker.schemaVersion !== 2 ||
-    marker.operationId !== RUNTIME_MIGRATION_0017_OPERATION_ID ||
-    marker.stateBefore !== "absent" ||
-    marker.writeAttempted !== true ||
-    marker.responseConfirmed !== false ||
-    marker.automaticRetryPermitted !== false ||
-    outcomeDatabase.id !== D1_DATABASE_ID ||
-    outcomeDatabase.name !== D1_DATABASE_NAME ||
-    markerDatabase.id !== D1_DATABASE_ID ||
-    markerDatabase.name !== D1_DATABASE_NAME ||
-    path.resolve(requiredText(outcome.backupDir, "0017 outcome backup")) !==
-      input.backupDirectory ||
-    path.resolve(requiredText(marker.backupDir, "0017 marker backup")) !==
-      input.backupDirectory ||
-    outcomeBudgetReportPath !== markerBudgetReportPath ||
-    outcomePreWriteEvidencePath !== markerPreWriteEvidencePath ||
-    !outcomeBudgetReportPath.startsWith(
-      `${path.join(input.backupDirectory, "cloudflare")}${path.sep}`,
-    ) ||
-    !outcomePreWriteEvidencePath.startsWith(
-      `${path.join(input.backupDirectory, "cloudflare")}${path.sep}`,
-    ) ||
-    outcomeSource.sha256 !== input.sourceFingerprint.sha256 ||
-    outcomeSource.fileCount !== input.sourceFingerprint.fileCount ||
-    markerSource.sha256 !== input.sourceFingerprint.sha256 ||
-    markerSource.fileCount !== input.sourceFingerprint.fileCount ||
-    stableStringify(outcomeProof) !== stableStringify(markerProof) ||
-    markerUtcDay !== utcDay ||
-    outcomeCreatedAt.slice(0, 10) !== utcDay ||
-    markerCreatedAt.slice(0, 10) !== utcDay ||
-    verifiedAt.slice(0, 10) !== utcDay ||
-    Date.parse(markerCreatedAt) > Date.parse(outcomeCreatedAt) ||
-    Date.parse(verifiedAt) > Date.parse(outcomeCreatedAt) ||
-    utcDay >= input.predecessorUtcDay ||
-    markerLedger.reservationRetainedAtMaximum !== true ||
-    path.resolve(requiredText(markerLedger.path, "0017 marker ledger path")) !==
-      d1ReleaseBudgetLedgerPath(input.backupDirectory, utcDay) ||
-    markerReservation.operationId !== RUNTIME_MIGRATION_0017_OPERATION_ID ||
-    markerReservation.accountingParentOperationId !== null ||
-    markerReservation.phase !== "maximum" ||
-    markerReservation.candidateVersionId !== input.targetCandidateVersionId ||
-    markerReservation.rowsRead !== RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ ||
-    markerReservation.rowsWritten !==
-      RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN ||
-    markerReservation.maximumRowsRead !==
-      RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ ||
-    markerReservation.maximumRowsWritten !==
-      RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN ||
-    owner.candidateVersionId !== input.targetCandidateVersionId ||
-    owner.sourceFingerprintSha256 !== input.sourceFingerprint.sha256
-  ) {
+  if (verifiedAt.slice(0, 10) !== input.predecessorUtcDay) {
     throw new Error(
-      "Fresh-0016 predecessor rejected the source-bound earlier-day 0017 apply/write fence.",
+      "Fresh-0016 predecessor requires deferred-0017 read-only verification on the predecessor UTC day.",
     );
   }
-  assertApplied0017EvidenceRecord(verification, input);
+  assertDeferred0017EvidenceRecord(verification, input);
   return Object.freeze({
-    utcDay,
-    appliedAt: outcomeCreatedAt,
     verifiedAt,
-    outcomeEvidenceSha256: sha256(outcomeValue),
-    writeAttemptEvidenceSha256: sha256(markerValue),
     verificationEvidenceSha256: sha256(verificationValue),
-    pre0016RuntimeStateProofSha256: sha256(outcomeProof),
     operationId: RUNTIME_MIGRATION_0017_OPERATION_ID,
-    reservedRowsRead: RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_READ,
-    reservedRowsWritten: RUNTIME_MIGRATION_0017_MAXIMUM_ROWS_WRITTEN,
-    state: "applied" as const,
+    reservedRowsRead: RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ,
+    reservedRowsWritten: 0,
+    state: "absent-deferred-free-plan" as const,
+    reason: RUNTIME_MIGRATION_0017_DEFERRED_REASON,
+    runtimePath: RUNTIME_MIGRATION_0017_DEFERRED_RUNTIME_PATH,
   });
 }
 
-function assertApplied0017EvidenceRecord(
+function assertDeferred0017EvidenceRecord(
   report: Record<string, unknown>,
   input: Readonly<{
     backupDirectory: string;
@@ -968,8 +814,8 @@ function assertApplied0017EvidenceRecord(
     report.migration !== RUNTIME_MIGRATION_0017_FILE ||
     path.resolve(requiredText(report.backupDir, "0017 verification backup")) !==
       input.backupDirectory ||
-    report.ok !== true ||
-    report.state !== "applied" ||
+    report.ok !== false ||
+    report.state !== "absent" ||
     report.sourceFingerprintStable !== true ||
     before.sha256 !== input.sourceFingerprint.sha256 ||
     before.fileCount !== input.sourceFingerprint.fileCount ||
@@ -982,27 +828,27 @@ function assertApplied0017EvidenceRecord(
     report.rowsWritten !== 0 ||
     report.totalAttempts !== 1 ||
     check?.id !== RUNTIME_MIGRATION_0017_CHECK_ID ||
-    check.ok !== true ||
-    detail?.state !== "applied" ||
-    detail.schemaRows !== 1 ||
-    detail.catalogRows !== 1 ||
-    detail.keyRows !== 3 ||
-    detail.tableMatches !== true ||
-    detail.sqlMatches !== true ||
-    detail.catalogMatches !== true ||
-    detail.keySequenceMatches !== true
+    check.ok !== false ||
+    detail?.state !== "absent" ||
+    detail.schemaRows !== 0 ||
+    detail.catalogRows !== 0 ||
+    detail.keyRows !== 0 ||
+    detail.tableMatches !== false ||
+    detail.sqlMatches !== false ||
+    detail.catalogMatches !== false ||
+    detail.keySequenceMatches !== false
   ) {
     throw new Error(
-      "Fresh-0016 predecessor requires an exact source-bound read-only applied-0017 report.",
+      "Fresh-0016 predecessor requires an exact source-bound read-only absent-0017 report for the Free-plan deferred runtime path.",
     );
   }
 }
 
-function assertApplied0017Report(
+function assertDeferred0017Report(
   report: RuntimeMigration0017VerificationReport,
   sourceFingerprint: D1ReleaseSourceIdentity,
 ) {
-  assertApplied0017EvidenceRecord(report, {
+  assertDeferred0017EvidenceRecord(report, {
     backupDirectory: path.resolve(report.backupDir),
     sourceFingerprint,
   });
@@ -1088,17 +934,6 @@ function requiredTimestamp(value: unknown, label: string) {
     throw new Error(`${label} is not canonical.`);
   }
   return timestamp;
-}
-
-function requiredUtcDay(value: unknown, label: string) {
-  const day = requiredText(value, label);
-  if (
-    !/^\d{4}-\d{2}-\d{2}$/.test(day) ||
-    new Date(`${day}T00:00:00.000Z`).toISOString().slice(0, 10) !== day
-  ) {
-    throw new Error(`${label} is invalid.`);
-  }
-  return day;
 }
 
 function requiredText(value: unknown, label: string) {

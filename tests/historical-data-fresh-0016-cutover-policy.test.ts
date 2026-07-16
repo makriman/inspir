@@ -134,14 +134,23 @@ test("fresh 0016 policy requires a transactional insert-only marker and forbids 
   );
 });
 
-test("fresh 0016 policy freezes the earlier-day 0017 state transition and exact Day-2 envelope", () => {
+test("fresh 0016 policy freezes the deferred 0017 state and exact Day-2 envelope", () => {
   const policy = HISTORICAL_FRESH_0016_CUTOVER_POLICY;
   const prerequisite = policy.runtimeMigration0017Prerequisite;
   const day2 = policy.day2Budget;
 
   assert.equal(
     prerequisite.timing,
-    "strictly-earlier-utc-day-before-predecessor",
+    "same-utc-day-read-only-predecessor-runtime-gate",
+  );
+  assert.equal(prerequisite.releaseState, "deferred-free-plan");
+  assert.equal(
+    prerequisite.reason,
+    "production-user-cardinality-exceeds-free-plan-index-write-envelope",
+  );
+  assert.equal(
+    prerequisite.runtimePath,
+    "users-email-unique-exact-lookup-with-bounded-casefold-fallback",
   );
   assert.deepEqual(prerequisite.requiredStateBeforeApply, {
     "0013": "applied",
@@ -155,9 +164,14 @@ test("fresh 0016 policy freezes the earlier-day 0017 state transition and exact 
     "0014": "applied",
     "0015": "applied",
     "0016": "absent",
-    "0017": "applied",
+    "0017": "absent-deferred-free-plan",
   });
+  assert.equal(
+    prerequisite.durableEvidence,
+    "source-bound-read-only-absence-verification",
+  );
   assert.equal(prerequisite.mutationAfterPredecessorPermitted, false);
+  assert.equal(prerequisite.writeAttemptPermittedInFreePlanRelease, false);
   assert.equal(prerequisite.day2ReadOnlyRefreshBillableRowsRead, 768);
 
   assert.equal(day2.aggregateRowsRead, 3_900_036);

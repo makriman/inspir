@@ -216,10 +216,8 @@ type GoogleEmailUserRow = {
   email: string;
 };
 
-export const GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX =
-  "users_normalized_email_lookup_idx" as const;
-export const GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL = `select id, email
-       from users indexed by ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX}
+export const GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL = `select id, email
+       from users
        where lower(email) = lower(?1)
        order by id
        limit 2` as const;
@@ -1007,8 +1005,10 @@ async function findGoogleAccountUser(db: D1Database, subject: string) {
 }
 
 export async function findUniqueGoogleEmailUser(db: D1Database, email: string) {
+  const exact = await findGoogleExactEmailUser(db, email);
+  if (exact) return exact;
   const matches = await db
-    .prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL)
+    .prepare(GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL)
     .bind(email)
     .all<GoogleEmailUserRow>();
   if (matches.results.length > 1) {

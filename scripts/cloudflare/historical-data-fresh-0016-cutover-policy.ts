@@ -473,7 +473,12 @@ export const HISTORICAL_FRESH_0016_CUTOVER_POLICY = {
       HISTORICAL_FRESH_0016_CUTOVER_PRE_RESET_WINDOW_MS,
   },
   runtimeMigration0017Prerequisite: {
-    timing: "strictly-earlier-utc-day-before-predecessor",
+    timing: "same-utc-day-read-only-predecessor-runtime-gate",
+    releaseState: "deferred-free-plan",
+    reason:
+      "production-user-cardinality-exceeds-free-plan-index-write-envelope",
+    runtimePath:
+      "users-email-unique-exact-lookup-with-bounded-casefold-fallback",
     requiredStateBeforeApply: {
       "0013": "applied",
       "0014": "applied",
@@ -486,11 +491,12 @@ export const HISTORICAL_FRESH_0016_CUTOVER_POLICY = {
       "0014": "applied",
       "0015": "applied",
       "0016": "absent",
-      "0017": "applied",
+      "0017": "absent-deferred-free-plan",
     },
     durableEvidence:
-      "successful-outcome-write-attempt-marker-and-exact-verification",
+      "source-bound-read-only-absence-verification",
     mutationAfterPredecessorPermitted: false,
+    writeAttemptPermittedInFreePlanRelease: false,
     day2ReadOnlyRefreshBillableRowsRead:
       RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ,
   },

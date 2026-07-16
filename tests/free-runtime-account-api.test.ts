@@ -7,8 +7,7 @@ import { makeSignature } from "better-auth/crypto";
 import "./worker-crypto-test-shim";
 import {
   createNativeOAuthSession,
-  GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX,
-  GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL,
+  GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL,
   linkVerifiedGoogleIdentity,
   handleAccountApiRequest,
   handleLogout,
@@ -574,13 +573,15 @@ test("Google linking rejects an exact email match when a case-folded duplicate a
 
   assert.ok(loggedEvents.some((value) => value.includes("native_google_casefold_email_conflict")));
   assert.ok(loggedEvents.every((value) => !value.includes("learner@example.com")));
-  assert.equal(database.prepareCalls, 1);
-  const lookup = database.statements[0];
+  assert.equal(database.prepareCalls, 2);
+  const exactLookup = database.statements[0];
+  assert.ok(exactLookup);
+  assert.match(exactLookup.query, /where email = \?1/);
+  const lookup = database.statements[1];
   assert.ok(lookup);
-  assert.match(lookup.query, new RegExp(`indexed by ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX}`));
+  assert.doesNotMatch(lookup.query, /indexed by/i);
   assert.match(lookup.query, /where lower\(email\) = lower\(\?1\)/);
   assert.match(lookup.query, /limit 2/);
-  assert.doesNotMatch(lookup.query, /where email = \?1/);
   assert.deepEqual(
     lookup.boundValues,
     ["learner@example.com"],
@@ -589,7 +590,7 @@ test("Google linking rejects an exact email match when a case-folded duplicate a
   assert.ok(database.statements.every((statement) => !statement.query.includes("insert into sessions")));
 });
 
-test("Google case-fold linking is forced through its covering normalized-email index", () => {
+test("Google linking uses the exact email index before bounded case-fold fallback", () => {
   const database = new DatabaseSync(":memory:");
   try {
     database.exec(`
@@ -599,27 +600,22 @@ test("Google case-fold linking is forced through its covering normalized-email i
         ('user-b', 'Learner@Example.com'),
         ('user-a', 'learner@example.com');
     `);
-    database.exec(
-      fs.readFileSync(
-        path.resolve("drizzle-d1/0017_users_normalized_email_lookup.sql"),
-        "utf8",
-      ),
-    );
 
     const plan = database
-      .prepare(`explain query plan ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL}`)
-      .all("LEARNER@example.com");
+      .prepare("explain query plan select id, email from users where email = ?1 limit 1")
+      .all("learner@example.com");
     assert.ok(
       plan.some(
         (row) =>
-          String(row.detail) ===
-          `SEARCH users USING COVERING INDEX ${GOOGLE_NORMALIZED_EMAIL_LOOKUP_INDEX} (<expr>=?)`,
+          /SEARCH users USING (?:COVERING )?INDEX users_email_unique/.test(
+            String(row.detail),
+          ),
       ),
     );
     assert.ok(plan.every((row) => !/\bSCAN users\b/i.test(String(row.detail))));
     assert.deepEqual(
       database
-        .prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL)
+        .prepare(GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL)
         .all("LEARNER@example.com")
         .map((row) => ({ id: row.id, email: row.email })),
       [
@@ -632,9 +628,8 @@ test("Google case-fold linking is forced through its covering normalized-email i
       unindexedDatabase.exec(
         "create table users (id text primary key not null, email text not null)",
       );
-      assert.throws(
-        () => unindexedDatabase.prepare(GOOGLE_NORMALIZED_EMAIL_LOOKUP_SQL),
-        /no such index/,
+      assert.doesNotThrow(
+        () => unindexedDatabase.prepare(GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL),
       );
     } finally {
       unindexedDatabase.close();
@@ -769,7 +764,14 @@ test("Google linking and OAuth session creation preserve an existing historical 
     database.statements.filter((statement) =>
       statement.query.includes("where lower(email) = lower(?1)")
     ).length,
-    1,
+    0,
+  );
+  assert.equal(
+    database.statements.filter((statement) =>
+      statement.query.includes("select id, email") &&
+      statement.query.includes("where email = ?1")
+    ).length,
+    2,
   );
 });
 
@@ -1287,7 +1289,8 @@ test("native account runtime excludes Next and preserves migrated Google account
   assert.match(source, /handleMigrationE2EAuthRequest/);
   assert.match(source, /x-migration-e2e-auth-secret/);
   assert.match(source, /on conflict\(email\) do nothing/);
-  assert.doesNotMatch(source, /const exact = await findGoogleExactEmailUser/);
+  assert.match(source, /const exact = await findGoogleExactEmailUser/);
+  assert.match(source, /GOOGLE_CASEFOLD_EMAIL_LOOKUP_SQL/);
   assert.match(source, /on conflict\(provider, provider_account_id\) do update set/);
   assert.doesNotMatch(
     source,

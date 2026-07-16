@@ -1191,17 +1191,16 @@ function claimPayload(
         repairApplied: false,
       },
       runtimeMigration0017: {
-        utcDay: "2026-07-13",
-        appliedAt: "2026-07-13T18:00:00.000Z",
-        verifiedAt: "2026-07-13T18:05:00.000Z",
-        outcomeEvidenceSha256: "5".repeat(64),
-        writeAttemptEvidenceSha256: "6".repeat(64),
+        verifiedAt: "2026-07-14T18:05:00.000Z",
         verificationEvidenceSha256: "7".repeat(64),
-        pre0016RuntimeStateProofSha256: "8".repeat(64),
         operationId: "d1-runtime-migration-0017",
-        reservedRowsRead: 125_000,
-        reservedRowsWritten: 50_000,
-        state: "applied",
+        reservedRowsRead: 768,
+        reservedRowsWritten: 0,
+        state: "absent-deferred-free-plan",
+        reason:
+          "cloudflare-free-plan-verified-production-users-exceed-0017-index-write-envelope",
+        runtimePath:
+          "users-email-unique-exact-lookup-with-bounded-casefold-fallback",
       },
       liveRuntimeState: {
         kind: "inspir-historical-data-fresh-0016-predecessor-runtime-gate-v2",
@@ -1216,7 +1215,7 @@ function claimPayload(
         exactState: {
           migrations0013To0015: "applied",
           migration0016: "absent",
-          migration0017: "applied",
+          migration0017: "absent-deferred-free-plan",
           appliedStaticCheckCount: 8,
           absent0016StaticCheckCount: 5,
         },
@@ -1224,7 +1223,7 @@ function claimPayload(
           "dedicated-top-level-maximum-reserved-before-live-read-only-queries",
       },
       mutationRule:
-        "no-topic-translation-or-0017-mutation-from-predecessor-through-final-verifier",
+        "no-topic-translation-or-deferred-0017-apply-from-predecessor-through-final-verifier",
       privacy: "release-identities-and-aggregate-counts-only",
     },
   };

@@ -9,7 +9,6 @@ import { writePrivateJsonDurably } from "./d1-release-budget-ledger";
 import {
   cloudflareDir,
   D1_DATABASE_NAME,
-  hasFlag,
   resolveBackupDir,
   runWrangler,
   type WranglerRunner,
@@ -24,6 +23,8 @@ export const RUNTIME_MIGRATION_0017_EVIDENCE_RELATIVE_PATH =
   "cloudflare/d1-runtime-migration-0017-report.json" as const;
 export const RUNTIME_MIGRATION_0017_CHECK_ID =
   "0017-users-normalized-email-covering-index" as const;
+export const RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG =
+  "--expect-absent-deferred-free-plan" as const;
 export { RUNTIME_MIGRATION_0017_VERIFICATION_LOGICAL_ROWS_READ_LIMIT };
 
 const maximumVerificationOutputBytes = 1 * 1024 * 1024;
@@ -127,6 +128,10 @@ type RuntimeMigration0017QueryResult = Readonly<{
   rowsWritten: 0;
   totalAttempts: 1;
 }>;
+
+export type RuntimeMigration0017CliExpectation =
+  | "applied"
+  | "absent-deferred-free-plan";
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runCli();
@@ -266,9 +271,7 @@ export function runtimeMigration0017VerificationReportPath(backupDir: string) {
 }
 
 function runCli() {
-  if (!hasFlag("--confirm-production")) {
-    throw new Error("The read-only production D1 migration 0017 verifier requires --confirm-production.");
-  }
+  const expectation = parseRuntimeMigration0017CliExpectation(process.argv.slice(2));
   const backupDir = resolveBackupDir();
   const outputPath = runtimeMigration0017VerificationReportPath(backupDir);
   fs.rmSync(outputPath, { force: true });
@@ -284,7 +287,63 @@ function runCli() {
   }
   const reportPath = writeRuntimeMigration0017VerificationReport(report);
   console.log(JSON.stringify({ ...report, reportPath }, null, 2));
-  if (!report.ok) process.exitCode = 1;
+  if (!runtimeMigration0017ReportMatchesCliExpectation(report, expectation)) {
+    process.exitCode = 1;
+  }
+}
+
+export function parseRuntimeMigration0017CliExpectation(
+  args: readonly string[],
+): RuntimeMigration0017CliExpectation {
+  const remaining = [...args];
+  const confirmIndex = remaining.indexOf("--confirm-production");
+  if (confirmIndex < 0) {
+    throw new Error(
+      "The read-only production D1 migration 0017 verifier requires --confirm-production.",
+    );
+  }
+  remaining.splice(confirmIndex, 1);
+
+  let expectation: RuntimeMigration0017CliExpectation = "applied";
+  const deferredIndex = remaining.indexOf(RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG);
+  if (deferredIndex >= 0) {
+    expectation = "absent-deferred-free-plan";
+    remaining.splice(deferredIndex, 1);
+  }
+  if (remaining.includes(RUNTIME_MIGRATION_0017_EXPECT_ABSENT_DEFERRED_FLAG)) {
+    throw new Error(
+      "The D1 migration 0017 verifier accepts the deferred Free-plan expectation at most once.",
+    );
+  }
+  if (remaining.length > 0) {
+    throw new Error(
+      "The D1 migration 0017 verifier accepts only --confirm-production and optional --expect-absent-deferred-free-plan.",
+    );
+  }
+  return expectation;
+}
+
+export function runtimeMigration0017ReportMatchesCliExpectation(
+  report: RuntimeMigration0017VerificationReport,
+  expectation: RuntimeMigration0017CliExpectation,
+) {
+  if (expectation === "applied") {
+    return report.ok && report.state === "applied";
+  }
+  const check = report.checks[0];
+  return (
+    !report.error &&
+    report.sourceFingerprintStable &&
+    report.rowsWritten === 0 &&
+    report.totalAttempts === 1 &&
+    report.state === "absent" &&
+    report.ok === false &&
+    check.ok === false &&
+    check.detail.state === "absent" &&
+    check.detail.schemaRows === 0 &&
+    check.detail.catalogRows === 0 &&
+    check.detail.keyRows === 0
+  );
 }
 
 function failedReport(input: {
