@@ -12,6 +12,7 @@ export const PROFILE_IMAGES_R2_BUCKET_NAME = "inspirlearning-profile-images-prod
 export const MEMORY_POST_TURN_QUEUE_NAME = "inspirlearning-memory-post-turn-prod";
 export const MEMORY_POST_TURN_DLQ_NAME = "inspirlearning-memory-post-turn-dlq";
 export const CLOUDFLARE_CLI_TIMEOUT_MS = 10 * 60 * 1_000;
+export const RELEASE_BACKUP_DIR_ENV = "CLOUDFLARE_RELEASE_BACKUP_DIR";
 export const LOCAL_GATE_IDS = [
   "typecheck",
   "cloudflare-worker-typecheck",
@@ -171,6 +172,9 @@ function commandPath() {
 export function resolveBackupDir() {
   const explicit = getArg("--backup");
   if (explicit) return path.resolve(explicit);
+
+  const envExplicit = process.env[RELEASE_BACKUP_DIR_ENV];
+  if (envExplicit) return path.resolve(envExplicit);
 
   return path.resolve(process.cwd(), "tmp", "cloudflare-reports");
 }

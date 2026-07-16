@@ -20,6 +20,7 @@ import {
   parseTrustBoundProductionCommandName,
   runTrustBoundProductionCommand,
 } from "../scripts/cloudflare/run-trust-bound-production-command";
+import { RELEASE_BACKUP_DIR_ENV } from "../scripts/cloudflare/migration-config";
 
 const ACCEPTED_AT = new Date("2026-07-16T09:00:00.000Z");
 const EXPECTED_TRUST_BOUND_PRODUCTION_COMMANDS = [
@@ -352,6 +353,51 @@ test("the trust-bound runner validates acceptance before any child process", () 
     /acceptance absent/,
   );
   assert.equal(childCalled, false);
+});
+
+test("the trust-bound runner strips backup metadata from immutable child commands", () => {
+  const fixture = makeFixture();
+  const acceptance = createProductionTrustBoundaryAcceptance({
+    ...acceptanceOptions(fixture),
+    now: ACCEPTED_AT,
+  });
+  let readBackupDirectory: string | undefined;
+  let invoked:
+    | Readonly<{
+        executable: string;
+        args: readonly string[];
+        cwd: string;
+        env: NodeJS.ProcessEnv;
+      }>
+    | undefined;
+  const status = runTrustBoundProductionCommand(
+    "cf:upload",
+    ["--backup", fixture.backupDirectory],
+    {
+      cwd: fixture.cwd,
+      dependencies: {
+        readAcceptance: (input) => {
+          readBackupDirectory = input.backupDirectory;
+          return acceptance;
+        },
+        run: (input) => {
+          invoked = input;
+          return { status: 0 };
+        },
+      },
+    },
+  );
+
+  assert.equal(status, 0);
+  assert.equal(readBackupDirectory, fixture.backupDirectory);
+  assert.ok(invoked);
+  assert.deepEqual(invoked.args.slice(-2), [
+    path.join(fixture.cwd, "scripts/cloudflare/run-sanitized-build.ts"),
+    "worker-upload-candidate",
+  ]);
+  assert.equal(invoked.args.includes("--backup"), false);
+  assert.equal(invoked.args.includes(fixture.backupDirectory), false);
+  assert.equal(invoked.env[RELEASE_BACKUP_DIR_ENV], fixture.backupDirectory);
 });
 
 test("every mapped production command has an exact guarded package entry point", () => {

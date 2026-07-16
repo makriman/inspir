@@ -5,6 +5,7 @@ import {
   readAndValidateProductionTrustBoundaryAcceptance,
   type ProductionTrustBoundaryAcceptanceHandle,
 } from "./production-trust-boundary-acceptance";
+import { RELEASE_BACKUP_DIR_ENV } from "./migration-config";
 
 type TrustBoundCommand = Readonly<
   | {
@@ -186,6 +187,7 @@ type TrustBoundCommandDependencies = Readonly<{
     executable: string;
     args: readonly string[];
     cwd: string;
+    env: NodeJS.ProcessEnv;
   }>) => CommandResult;
 }>;
 
@@ -201,10 +203,10 @@ const defaultDependencies: TrustBoundCommandDependencies = {
       cwd,
       backupDirectory,
     }),
-  run: ({ executable, args, cwd }) => {
+  run: ({ executable, args, cwd, env }) => {
     const result = spawnSync(executable, [...args], {
       cwd,
-      env: process.env,
+      env,
       stdio: "inherit",
     });
     return {
@@ -267,13 +269,34 @@ export function runTrustBoundProductionCommand(
   // D1 access, upload, staging, activation, or production probe is allowed first.
   dependencies.readAcceptance({ cwd, backupDirectory });
 
-  const invocation = commandInvocation(command, cwd, passthroughArgs);
-  const result = dependencies.run({ ...invocation, cwd });
+  const childPassthroughArgs = stripBackupDirectoryArguments(passthroughArgs);
+  const invocation = commandInvocation(command, cwd, childPassthroughArgs);
+  const result = dependencies.run({
+    ...invocation,
+    cwd,
+    env: {
+      ...process.env,
+      [RELEASE_BACKUP_DIR_ENV]: backupDirectory,
+    },
+  });
   if (result.error) throw result.error;
   if (!Number.isInteger(result.status) || result.status === null) {
     throw new Error("Trust-bound production command did not return an exit status.");
   }
   return result.status;
+}
+
+function stripBackupDirectoryArguments(args: readonly string[]) {
+  const stripped: string[] = [];
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (arg !== "--backup") {
+      stripped.push(arg);
+      continue;
+    }
+    index += 1;
+  }
+  return stripped;
 }
 
 function backupDirectoryFromArguments(args: readonly string[], cwd: string) {
