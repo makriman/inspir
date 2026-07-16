@@ -232,6 +232,20 @@ test("versions-view parser binds the exact candidate and canonical resource/conf
     ).createdAt,
     UPLOAD_EVENT_AT,
   );
+  assert.equal(
+    parseWorkerVersionViewOutput(
+      JSON.stringify({
+        ...versionViewRecord(),
+        metadata: {
+          ...versionViewRecord().metadata,
+          created_on: "2026-07-15T10:00:00.123456Z",
+        },
+      }),
+      CANDIDATE_VERSION_ID,
+      releaseAnnotations(),
+    ).createdAt,
+    "2026-07-15T10:00:00.123Z",
+  );
   assert.throws(
     () =>
       parseWorkerVersionViewOutput(

@@ -31,7 +31,7 @@ const UUID_PATTERN =
 const SHA256_PATTERN = /^[0-9a-f]{64}$/;
 const GIT_OBJECT_PATTERN = /^[0-9a-f]{40,64}$/;
 const CLOUDFLARE_TIMESTAMP_PATTERN =
-  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/;
+  /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$/;
 
 const canonicalTimestampSchema = z.string().refine(
   (value) => {
