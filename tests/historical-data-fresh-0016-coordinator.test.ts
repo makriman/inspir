@@ -16,6 +16,10 @@ import {
   HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY_SHA256,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+  HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
+  type HistoricalFresh0016CutoverTimingMode,
 } from "../scripts/cloudflare/historical-data-fresh-0016-cutover-policy";
 import {
   HISTORICAL_FRESH_0016_DAY2_MIGRATION_MAXIMUM_ROWS_READ,
@@ -175,8 +179,9 @@ test("fresh-0016 package and runbook wiring use the current accepted boundary wi
     "the immutable local acceptance must precede deploy preparation",
   );
   assert.match(releaseSection, /run-trust-bound-production-command\.ts/);
-  assert.match(releaseSection, /final 30 minutes before a chosen UTC reset/);
-  assert.match(releaseSection, /first 30 minutes/);
+  assert.match(releaseSection, /--confirm-paid-expedited-cutover/);
+  assert.match(releaseSection, /releaseTimingMode: "paid-expedited"/);
+  assert.match(releaseSection, /without waiting for that reset window/);
   assert.match(releaseSection, /cf:cutover:historical-data-fresh-0016/);
   assert.match(releaseSection, /--confirm-lost-key-fresh-boundary/);
   assert.match(
@@ -228,7 +233,7 @@ test("fresh-0016 CLI is strict and status rejects mutation authority", () => {
         "status",
         "--run-id",
         randomUUID(),
-        "--confirm-production",
+        HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
       ]),
     /read-only and rejects mutation confirmations/,
   );
@@ -248,12 +253,17 @@ test("fresh-0016 CLI is strict and status rejects mutation authority", () => {
     "22222222-2222-4222-8222-222222222222",
     "--confirm-production",
     HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+    HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
   ]);
   assert.equal(parsed.mode, "finish");
   assert.equal(parsed.productionConfirmation, "--confirm-production");
   assert.equal(
     parsed.lostKeyBoundaryConfirmation,
     HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+  );
+  assert.equal(
+    parsed.paidExpeditedConfirmation,
+    HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
   );
 });
 
@@ -573,6 +583,117 @@ test("fresh-0016 finish rejects D+2 before ownership, D1, or lock work", async (
   }
 });
 
+test("fresh-0016 paid-expedited finish can advance on the predecessor UTC day only with the paid timing flag", async () => {
+  const fixture = createStageFourFixture({
+    releaseTimingMode: HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+  });
+  const owner: HistoricalFresh0016Owner = {
+    hostname: os.hostname(),
+    pid: process.pid + 10_000,
+  };
+  const productionOwner = {
+    candidateVersionId: targetCandidateVersionId,
+    leaseExpiresAt: Date.parse("2026-07-15T01:30:00.000Z"),
+    leaseId: "33333333-3333-4333-8333-333333333333",
+    runId: "44444444-4444-4444-8444-444444444444",
+    sourceFingerprintSha256: source.sha256,
+  } as const;
+  let acquireExclusionCalls = 0;
+  let releaseExclusionCalls = 0;
+  let loadDailyUsageCalls = 0;
+  const dependencies: Partial<HistoricalFresh0016CoordinatorDependencies> = {
+    assertGitIdentity: () => ({
+      head: "c".repeat(40),
+      upstream: "c".repeat(40),
+      upstreamRef: "origin/main",
+    }),
+    buildSourceFingerprint: () => ({ ...source, files: [] }),
+    readCandidateUploadEvidence: candidateUploadHandle,
+    observeLiveTopology: topologyObservation,
+    readPredecessorPrerequisites: () => predecessorPrerequisites(),
+    verifyPredecessorRuntimeGate: () =>
+      predecessorPrerequisites().liveRuntimeState,
+    readHmacKey: async () => ({ hmacKeyId, secret }),
+    readPredecessorIdentity: () => ({
+      sha256: "d".repeat(64),
+      report: { hmacKeyId, utcDay: "2026-07-14" },
+    }),
+    acquireExclusion: () => {
+      acquireExclusionCalls += 1;
+      return {
+        owner: productionOwner,
+        budget: {
+          operations: 1,
+          reservedRowsRead: 32,
+          reservedRowsWritten: 4,
+          billedRowsRead: 1,
+          billedRowsWritten: 1,
+        },
+        serverNowMs: Date.parse("2026-07-14T23:55:00.000Z"),
+      };
+    },
+    attestExclusion: (exclusion) => exclusion,
+    releaseExclusion: () => {
+      releaseExclusionCalls += 1;
+      return {
+        budget: {
+          operations: 2,
+          reservedRowsRead: 32,
+          reservedRowsWritten: 4,
+          billedRowsRead: 1,
+          billedRowsWritten: 1,
+        },
+        recoveredFromLostResponse: false,
+        releaseError: null,
+      };
+    },
+    loadDailyUsage: () => {
+      loadDailyUsageCalls += 1;
+      throw new Error("The paid timing smoke stops before D1 usage.");
+    },
+    afterBoundary: (boundary) => {
+      if (boundary === "production-exclusion-attested") {
+        throw new Error("crash:production-exclusion-attested");
+      }
+    },
+  };
+  const common = {
+    mode: "finish" as const,
+    cwd: fixture.root,
+    backupDirectory: fixture.backupDirectory,
+    runId: fixture.runId,
+    productionConfirmation: "--confirm-production",
+    lostKeyBoundaryConfirmation:
+      HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+    runner: () => {
+      throw new Error("No real Wrangler or network call is allowed.");
+    },
+    clock: () => new Date("2026-07-14T23:55:00.000Z"),
+    owner,
+    dependencies,
+  };
+  try {
+    await assert.rejects(
+      runHistoricalDataFresh0016Cutover(common),
+      /release timing mode changed/,
+    );
+    assert.equal(acquireExclusionCalls, 0);
+    await assert.rejects(
+      runHistoricalDataFresh0016Cutover({
+        ...common,
+        paidExpeditedConfirmation:
+          HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
+      }),
+      /paid timing smoke stops before D1 usage/,
+    );
+    assert.equal(acquireExclusionCalls, 0);
+    assert.equal(releaseExclusionCalls, 0);
+    assert.equal(loadDailyUsageCalls, 1);
+  } finally {
+    fixture.cleanup();
+  }
+});
+
 test("prepared migration budget survives every adjacent crash without a second cardinality query", async () => {
   const fixture = createStageFourFixture();
   const owner: HistoricalFresh0016Owner = {
@@ -790,7 +911,11 @@ test("prepared migration budget survives every adjacent crash without a second c
   }
 });
 
-function createStageFourFixture() {
+function createStageFourFixture(
+  options: Readonly<{
+    releaseTimingMode?: HistoricalFresh0016CutoverTimingMode;
+  }> = {},
+) {
   const root = fs.realpathSync.native(
     fs.mkdtempSync(
       path.join(os.tmpdir(), "inspir-fresh-coordinator-"),
@@ -812,6 +937,9 @@ function createStageFourFixture() {
     uploadEvidence,
   );
   const owner = { hostname: os.hostname(), pid: process.pid + 10_000 };
+  const releaseTimingMode =
+    options.releaseTimingMode ??
+    HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
   const common = {
     backupDirectory,
     runId,
@@ -824,6 +952,7 @@ function createStageFourFixture() {
     payload: {
       kind: HISTORICAL_FRESH_0016_CHAIN_CLAIM_KIND,
       schemaVersion: 2,
+      releaseTimingMode,
       operatorConfirmationFlag:
         HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
       lostKeyBoundaryAccepted: true,

@@ -57,6 +57,15 @@ import {
 
 export const HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG =
   "--confirm-lost-key-fresh-boundary" as const;
+export const HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG =
+  "--confirm-paid-expedited-cutover" as const;
+export const HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE =
+  "workers-free-utc-reset" as const;
+export const HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE =
+  "paid-expedited" as const;
+export type HistoricalFresh0016CutoverTimingMode =
+  | typeof HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE
+  | typeof HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE;
 export const HISTORICAL_FRESH_0016_CUTOVER_RUNS_RELATIVE_DIRECTORY =
   "cloudflare/fresh-0016-cutover" as const;
 export const HISTORICAL_FRESH_0016_CUTOVER_COMPLETE_RELATIVE_PATH =
@@ -414,6 +423,15 @@ export const HISTORICAL_FRESH_0016_CUTOVER_POLICY = {
     name: D1_DATABASE_NAME,
   },
   operatorConfirmationFlag: HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+  cutoverTiming: {
+    defaultMode: HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
+    paidExpeditedMode: HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+    paidExpeditedConfirmationFlag:
+      HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
+    paidExpeditedDayPolicy:
+      "predecessor-and-successor-may-share-a-utc-day-or-use-the-next-utc-day",
+    maximumGapMs: HISTORICAL_FRESH_0016_CUTOVER_MAXIMUM_GAP_MS,
+  },
   legacyInterval: {
     startsAt: "2026-07-13T01:10:08.863Z",
     endsAt: "fresh-pre-0016-predecessor-capture",

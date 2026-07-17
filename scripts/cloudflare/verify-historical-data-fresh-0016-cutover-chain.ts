@@ -22,6 +22,8 @@ import {
   HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY_SHA256,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+  HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
   historicalFresh0016LiveTopologyEvidenceSchema,
 } from "./historical-data-fresh-0016-cutover-policy";
 import {
@@ -157,6 +159,10 @@ const utcDaySchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(
     new Date(`${value}T00:00:00.000Z`).toISOString().slice(0, 10) === value,
   "Expected a valid UTC day.",
 );
+const releaseTimingModeSchema = z.enum([
+  HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+]);
 const absolutePathSchema = z.string().min(1).max(4_096).refine(
   (value) =>
     path.isAbsolute(value) &&
@@ -409,6 +415,7 @@ const successorCaptureSchema = z.object({
 export const historicalFresh0016ClaimPayloadSchema = z.object({
   kind: z.literal(HISTORICAL_FRESH_0016_CHAIN_CLAIM_KIND),
   schemaVersion: z.literal(2),
+  releaseTimingMode: releaseTimingModeSchema.optional(),
   operatorConfirmationFlag: z.literal(HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG),
   lostKeyBoundaryAccepted: z.literal(true),
   legacyIntervalContinuityProven: z.literal(false),
@@ -659,6 +666,7 @@ export const historicalFresh0016CanonicalCutoverArtifactSchema = z.object({
     outboxRowsBeforeActivation: z.literal(0),
   }).strict(),
   timing: z.object({
+    releaseTimingMode: releaseTimingModeSchema.optional(),
     predecessorUtcDay: utcDaySchema,
     successorUtcDay: utcDaySchema,
     predecessorCreatedAt: canonicalTimestampSchema,
@@ -1171,6 +1179,7 @@ function verifyFirstElevenStages(input: {
     throw chainError("CHAIN_INVALID", "Protected dataset continuity failed across fresh 0016.");
   }
   validateTimingAndBudgets({
+    claim,
     predecessorAuthorized,
     predecessor: predecessor.report,
     runtime: runtimeStage.report,
@@ -1219,6 +1228,11 @@ type StageHandle = HistoricalFresh0016StateFileHandle<
   HistoricalFresh0016StateStageEnvelope
 >;
 type ClaimPayload = z.infer<typeof historicalFresh0016ClaimPayloadSchema>;
+function claimReleaseTimingMode(claim: ClaimPayload) {
+  return claim.releaseTimingMode ??
+    HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
+}
+
 type PredecessorAuthorizationPayload = z.infer<
   typeof historicalFresh0016PredecessorAuthorizationPayloadSchema
 >;
@@ -2094,6 +2108,7 @@ function validateSuccessorStageBindings(input: {
 }
 
 function validateTimingAndBudgets(input: {
+  claim: ClaimPayload;
   predecessorAuthorized: PredecessorAuthorizationPayload;
   predecessor: ReturnType<typeof parseHistoricalFresh0016PredecessorReport>;
   runtime: z.infer<typeof historicalFresh0016RuntimeVerificationReportSchema>;
@@ -2109,14 +2124,20 @@ function validateTimingAndBudgets(input: {
   const predecessorDayStart = Date.parse(`${input.predecessor.utcDay}T00:00:00.000Z`);
   const successorDayStart = Date.parse(`${input.successor.utcDay}T00:00:00.000Z`);
   const predecessorDayEnd = predecessorDayStart + 24 * 60 * 60 * 1_000;
+  const utcDayDeltaMs = successorDayStart - predecessorDayStart;
+  const resetTimingInvalid =
+    claimReleaseTimingMode(input.claim) ===
+    HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE
+      ? utcDayDeltaMs !== 0 && utcDayDeltaMs !== 24 * 60 * 60 * 1_000
+      : utcDayDeltaMs !== 24 * 60 * 60 * 1_000 ||
+        predecessorStart <
+          predecessorDayEnd - policy.predecessor.targetFinalUtcDayWindowMs ||
+        predecessorCreated >= predecessorDayEnd ||
+        successorStart < successorDayStart ||
+        successorStart >
+          successorDayStart + policy.successor.targetFirstNextUtcDayWindowMs;
   if (
-    successorDayStart - predecessorDayStart !== 24 * 60 * 60 * 1_000 ||
-    predecessorStart <
-      predecessorDayEnd - policy.predecessor.targetFinalUtcDayWindowMs ||
-    predecessorCreated >= predecessorDayEnd ||
-    successorStart < successorDayStart ||
-    successorStart >
-      successorDayStart + policy.successor.targetFirstNextUtcDayWindowMs ||
+    resetTimingInvalid ||
     predecessorCreated > runtimeCreated ||
     runtimeCreated > successorStart ||
     successorCreated - predecessorCreated !==
@@ -2245,6 +2266,7 @@ function buildCanonicalArtifact(input: {
         outboxRowsBeforeActivation: 0,
       },
       timing: {
+        releaseTimingMode: claimReleaseTimingMode(value.claim),
         predecessorUtcDay: value.predecessor.report.utcDay,
         successorUtcDay: value.successor.report.utcDay,
         predecessorCreatedAt: value.predecessor.report.createdAt,

@@ -24,11 +24,16 @@ import {
   assertHistoricalFresh0016LiveTopologyEvidence,
   createHistoricalFresh0016LiveTopologyEvidence,
   HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+  HISTORICAL_FRESH_0016_CUTOVER_MAXIMUM_GAP_MS,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY_SHA256,
   HISTORICAL_FRESH_0016_CUTOVER_POST_RESET_WINDOW_MS,
   HISTORICAL_FRESH_0016_CUTOVER_PRE_RESET_WINDOW_MS,
   HISTORICAL_FRESH_0016_DAY2_MIGRATION_PROJECTION_ROWS_READ_LIMIT,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+  HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
+  type HistoricalFresh0016CutoverTimingMode,
   type HistoricalFresh0016LiveTopologyEvidence,
 } from "./historical-data-fresh-0016-cutover-policy";
 import {
@@ -184,6 +189,7 @@ export type HistoricalFresh0016CutoverOptions = Readonly<{
   runId?: string;
   productionConfirmation?: string;
   lostKeyBoundaryConfirmation?: string;
+  paidExpeditedConfirmation?: string;
   runner?: WranglerRunner;
   clock?: () => Date;
   owner?: HistoricalFresh0016Owner;
@@ -198,6 +204,7 @@ export type HistoricalFresh0016CutoverCliOptions = Readonly<{
   runId?: string;
   productionConfirmation?: typeof PRODUCTION_CONFIRMATION_FLAG;
   lostKeyBoundaryConfirmation?: typeof HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG;
+  paidExpeditedConfirmation?: typeof HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG;
 }>;
 
 export type HistoricalFresh0016CoordinatorDependencies = Readonly<{
@@ -392,6 +399,9 @@ export function parseHistoricalFresh0016CutoverCliArgs(
   let lostKeyBoundaryConfirmation:
     | typeof HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG
     | undefined;
+  let paidExpeditedConfirmation:
+    | typeof HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG
+    | undefined;
   const seen = new Set<string>();
   for (let index = 1; index < args.length; index += 1) {
     const token = args[index];
@@ -406,6 +416,13 @@ export function parseHistoricalFresh0016CutoverCliArgs(
     if (token === HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG) {
       lostKeyBoundaryConfirmation =
         HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG;
+      continue;
+    }
+    if (
+      token === HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG
+    ) {
+      paidExpeditedConfirmation =
+        HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG;
       continue;
     }
     if (token !== "--cwd" && token !== "--backup" && token !== "--run-id") {
@@ -426,7 +443,11 @@ export function parseHistoricalFresh0016CutoverCliArgs(
   );
   if (mode === "status") {
     if (!runId) throw new Error("Fresh-0016 status requires --run-id.");
-    if (productionConfirmation || lostKeyBoundaryConfirmation) {
+    if (
+      productionConfirmation ||
+      lostKeyBoundaryConfirmation ||
+      paidExpeditedConfirmation
+    ) {
       throw new Error("Fresh-0016 status is read-only and rejects mutation confirmations.");
     }
     return { mode, cwd, backupDirectory: backup, runId };
@@ -450,6 +471,7 @@ export function parseHistoricalFresh0016CutoverCliArgs(
     ...(runId ? { runId } : {}),
     productionConfirmation,
     lostKeyBoundaryConfirmation,
+    ...(paidExpeditedConfirmation ? { paidExpeditedConfirmation } : {}),
   };
 }
 
@@ -467,11 +489,13 @@ export async function runHistoricalDataFresh0016Cutover(
   );
   const clock = options.clock ?? (() => new Date());
   const owner = options.owner ?? { hostname: os.hostname(), pid: process.pid };
+  const timingMode = cutoverTimingMode(options);
   if (options.mode === "status") {
     if (!options.runId) throw new Error("Fresh-0016 status requires a run ID.");
     if (
       options.productionConfirmation !== undefined ||
-      options.lostKeyBoundaryConfirmation !== undefined
+      options.lostKeyBoundaryConfirmation !== undefined ||
+      options.paidExpeditedConfirmation !== undefined
     ) {
       throw new Error(
         "Fresh-0016 status is read-only and rejects mutation confirmations.",
@@ -497,6 +521,7 @@ export async function runHistoricalDataFresh0016Cutover(
       runId: options.runId,
       runner,
       clock,
+      timingMode,
       owner,
       ownerExitProbe: options.ownerExitProbe,
       dependencies,
@@ -509,6 +534,7 @@ export async function runHistoricalDataFresh0016Cutover(
     runId: options.runId,
     runner,
     clock,
+    timingMode,
     owner,
     ownerExitProbe: options.ownerExitProbe,
     dependencies,
@@ -521,6 +547,7 @@ type CoordinatorContext = Readonly<{
   runId: string;
   runner: WranglerRunner;
   clock: () => Date;
+  timingMode: HistoricalFresh0016CutoverTimingMode;
   owner: HistoricalFresh0016Owner;
   ownerExitProbe?: (owner: HistoricalFresh0016Owner) => boolean;
   dependencies: HistoricalFresh0016CoordinatorDependencies;
@@ -531,7 +558,7 @@ type StartContext = Omit<CoordinatorContext, "runId"> &
 
 async function runStart(input: StartContext) {
   const startAt = readClock(input.clock, "start window");
-  assertPreResetWindow(startAt);
+  assertPredecessorTiming(startAt, input.timingMode);
   const release = assertReleaseIdentity(input);
   const startTopology = observeLiveTopology(input, release, startAt);
   const liveRuntimeState =
@@ -567,6 +594,7 @@ async function runStart(input: StartContext) {
     const claim = historicalFresh0016ClaimPayloadSchema.parse({
       kind: HISTORICAL_FRESH_0016_CHAIN_CLAIM_KIND,
       schemaVersion: 2,
+      releaseTimingMode: input.timingMode,
       operatorConfirmationFlag:
         HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
       lostKeyBoundaryAccepted: true,
@@ -606,6 +634,7 @@ async function runStart(input: StartContext) {
       claimStage.value.payload,
     );
     assertClaimReleaseIdentity(claim, release);
+    assertClaimTimingMode(claim, input.timingMode);
     if (
       canonicalHistoricalFresh0016Json(claim.predecessorPrerequisites) !==
         canonicalHistoricalFresh0016Json(predecessorPrerequisites)
@@ -630,6 +659,7 @@ async function runStart(input: StartContext) {
     requiredStage(classification, "claim").value.payload,
   );
   assertClaimReleaseIdentity(claim, release);
+  assertClaimTimingMode(claim, context.timingMode);
   if (classification.currentStage === "predecessor-authorized") {
     throw unresolvedAuthorizationError("predecessor");
   }
@@ -646,7 +676,7 @@ async function runStart(input: StartContext) {
   if (classification.currentStage === "claim") {
     assertReleaseIdentity(context, claim);
     const startedAt = readClock(input.clock, "predecessor budget start");
-    assertPreResetWindow(startedAt);
+    assertPredecessorTiming(startedAt, input.timingMode);
     const utcDay = startedAt.toISOString().slice(0, 10);
     const usage = input.dependencies.loadDailyUsage(
       startedAt,
@@ -866,17 +896,19 @@ async function runFinish(context: CoordinatorContext) {
       runId: context.runId,
     }),
   );
+  const claimStage = requiredStage(classification, "claim");
   const claim = historicalFresh0016ClaimPayloadSchema.parse(
-    requiredStage(classification, "claim").value.payload,
+    claimStage.value.payload,
   );
   assertClaimReleaseIdentity(claim, release);
+  assertClaimTimingMode(claim, context.timingMode);
   const livePrerequisites =
     context.dependencies.readPredecessorPrerequisites({
       backupDirectory: context.backupDirectory,
       sourceFingerprint: release.source,
       ...release.workerRelease,
       predecessorStartAt: new Date(
-        requiredStage(classification, "claim").value.createdAt,
+        claimStage.value.createdAt,
       ),
       liveRuntimeState: claim.predecessorPrerequisites.liveRuntimeState,
     });
@@ -907,8 +939,17 @@ async function runFinish(context: CoordinatorContext) {
   if (classification.currentStage === "cutover-complete") {
     return completeAndRelease(context, release, claim, hmac);
   }
-  assertPostResetWindow(startedAt);
-  assertExactNextUtcDay(predecessorIdentity.report.utcDay, startedAt);
+  assertSuccessorTiming(startedAt, context.timingMode);
+  assertCutoverUtcDay(
+    predecessorIdentity.report.utcDay,
+    startedAt,
+    context.timingMode,
+  );
+  assertCutoverGap(
+    new Date(claimStage.value.createdAt),
+    startedAt,
+    context.timingMode,
+  );
   classification = acquireStateOwnershipIfRequired(context, classification);
 
   let exclusion: ProductionValidationExclusion | undefined;
@@ -935,7 +976,7 @@ async function runFinish(context: CoordinatorContext) {
           context.clock,
           "Day-2 aggregate budget admission",
         );
-        assertPostResetWindow(envelopeStartedAt);
+        assertSuccessorTiming(envelopeStartedAt, context.timingMode);
         const initialObservedUsage = context.dependencies.loadDailyUsage(
           envelopeStartedAt,
           context.runner,
@@ -997,7 +1038,7 @@ async function runFinish(context: CoordinatorContext) {
           context.clock,
           "migration budget start",
         );
-        assertPostResetWindow(budgetStartedAt);
+        assertSuccessorTiming(budgetStartedAt, context.timingMode);
         const utcDay = day2Budget.evidence.utcDay;
         if (budgetStartedAt.toISOString().slice(0, 10) !== utcDay) {
           throw new Error(
@@ -1551,7 +1592,7 @@ function advanceSuccessor(input: Readonly<{
       input.context.clock,
       "successor budget start",
     );
-    assertPostResetWindow(captureStartedAt);
+    assertSuccessorTiming(captureStartedAt, input.context.timingMode);
     const usage = input.manifest.migrationBudget.evidence.usage;
     const accountingParentOperationId =
       input.manifest.migrationBudget.evidence.day2BudgetEnvelope.operationId;
@@ -2424,6 +2465,116 @@ function assertMutationConfirmation(
   ) {
     throw new Error(
       `Fresh-0016 mutation requires exact ${PRODUCTION_CONFIRMATION_FLAG} and ${HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG} confirmations.`,
+    );
+  }
+  if (
+    options.paidExpeditedConfirmation !== undefined &&
+    options.paidExpeditedConfirmation !==
+      HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG
+  ) {
+    throw new Error(
+      `Fresh-0016 paid-expedited timing requires exact ${HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG} confirmation.`,
+    );
+  }
+}
+
+function cutoverTimingMode(
+  options: Pick<HistoricalFresh0016CutoverOptions, "paidExpeditedConfirmation">,
+): HistoricalFresh0016CutoverTimingMode {
+  if (
+    options.paidExpeditedConfirmation ===
+    HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG
+  ) {
+    return HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE;
+  }
+  if (options.paidExpeditedConfirmation !== undefined) {
+    throw new Error(
+      `Fresh-0016 paid-expedited timing requires exact ${HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG} confirmation.`,
+    );
+  }
+  return HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
+}
+
+function assertClaimTimingMode(
+  claim: ReturnType<typeof historicalFresh0016ClaimPayloadSchema.parse>,
+  expected: HistoricalFresh0016CutoverTimingMode,
+) {
+  const actual =
+    claim.releaseTimingMode ??
+    HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
+  if (actual !== expected) {
+    throw new Error(
+      "Fresh-0016 release timing mode changed after the durable claim.",
+    );
+  }
+}
+
+function assertPredecessorTiming(
+  now: Date,
+  timingMode: HistoricalFresh0016CutoverTimingMode,
+) {
+  if (timingMode === HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE) {
+    return;
+  }
+  assertPreResetWindow(now);
+}
+
+function assertSuccessorTiming(
+  now: Date,
+  timingMode: HistoricalFresh0016CutoverTimingMode,
+) {
+  if (timingMode === HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE) {
+    return;
+  }
+  assertPostResetWindow(now);
+}
+
+function assertCutoverUtcDay(
+  predecessorUtcDay: string,
+  finishAt: Date,
+  timingMode: HistoricalFresh0016CutoverTimingMode,
+) {
+  if (timingMode !== HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE) {
+    assertExactNextUtcDay(predecessorUtcDay, finishAt);
+    return;
+  }
+  const predecessorDayStart = Date.parse(
+    `${predecessorUtcDay}T00:00:00.000Z`,
+  );
+  const finishDayStart = Date.UTC(
+    finishAt.getUTCFullYear(),
+    finishAt.getUTCMonth(),
+    finishAt.getUTCDate(),
+  );
+  const dayDelta = finishDayStart - predecessorDayStart;
+  if (
+    !Number.isFinite(predecessorDayStart) ||
+    new Date(predecessorDayStart).toISOString().slice(0, 10) !==
+      predecessorUtcDay ||
+    (dayDelta !== 0 && dayDelta !== 24 * 60 * 60 * 1_000)
+  ) {
+    throw new Error(
+      "Fresh-0016 paid-expedited finish must occur on the predecessor UTC day or the exact next UTC day.",
+    );
+  }
+}
+
+function assertCutoverGap(
+  predecessorClaimCreatedAt: Date,
+  finishAt: Date,
+  timingMode: HistoricalFresh0016CutoverTimingMode,
+) {
+  if (timingMode !== HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE) {
+    return;
+  }
+  const gapMs = finishAt.getTime() - predecessorClaimCreatedAt.getTime();
+  if (
+    !Number.isFinite(predecessorClaimCreatedAt.getTime()) ||
+    gapMs <= 0 ||
+    gapMs > HISTORICAL_FRESH_0016_CUTOVER_MAXIMUM_GAP_MS
+  ) {
+    throw new Error(
+      "Fresh-0016 paid-expedited finish exceeded the maximum predecessor-to-successor evidence gap.",
     );
   }
 }
