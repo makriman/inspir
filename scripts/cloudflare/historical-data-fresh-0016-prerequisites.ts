@@ -68,7 +68,7 @@ export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_KIND =
   "inspir-historical-data-fresh-0016-predecessor-runtime-gate-v2" as const;
 export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_OPERATION =
   "Fresh-0016 predecessor live runtime-state gate" as const;
-export const HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING =
+const HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING =
   "completed-on-earlier-utc-day-before-predecessor" as const;
 export const HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING =
   "completed-on-same-utc-day-paid-expedited-before-predecessor" as const;
