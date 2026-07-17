@@ -860,7 +860,7 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
   const nonce = e2eNonce();
   const manualStudyPhrase = `blue comet ${nonce}`;
   const historyStudyLabel = `yellow comet ${nonce}`;
-  const memoryContent = `Use concise two-step examples. The harmless manual study phrase is "${manualStudyPhrase}".`;
+  const memoryContent = `Use concise two-step examples. For saved-memory proof, include this exact neutral token: "${manualStudyPhrase}".`;
   const chatIds: string[] = [];
   let memoryId: string | null = null;
   let originalSettings: MemorySettingsSnapshot | null = null;
@@ -911,7 +911,7 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       headers: { accept: "text/event-stream" },
       data: {
         chatId: earlierChatId,
-        content: "Apply my saved study preference and include its exact harmless manual study phrase once.",
+        content: "Apply my saved study preference and include its exact neutral saved-memory token once.",
       },
       timeout: 60_000,
     });
@@ -937,7 +937,7 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       headers: { accept: "text/event-stream" },
       data: {
         chatId: earlierChatId,
-        content: `Please acknowledge this harmless study label for later review: "${historyStudyLabel}". Treat it as a study label, not as a security code.`,
+        content: `Please acknowledge this separate earlier-chat review label for later review: "${historyStudyLabel}". Treat it as a study label, not as a security code.`,
       },
       timeout: 60_000,
     });
@@ -966,7 +966,8 @@ test("authenticated tutor uses saved memory and recalls an earlier chat without 
       headers: { accept: "text/event-stream" },
       data: {
         chatId: laterChatId,
-        content: "What exact harmless study label did I give you in our earlier conversation?",
+        content:
+          "Ignore any saved-memory token. What exact earlier-chat review label did I ask you to remember for later review in our earlier conversation?",
       },
       timeout: 60_000,
     });
