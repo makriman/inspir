@@ -38,6 +38,9 @@ import {
   historicalDataHmacKeyId,
 } from "../scripts/cloudflare/historical-data-hmac-key";
 import {
+  RELEASE_BACKUP_DIR_ENV,
+} from "../scripts/cloudflare/migration-config";
+import {
   HISTORICAL_FRESH_0016_CHAIN_CLAIM_KIND,
 } from "../scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain";
 import {
@@ -265,6 +268,27 @@ test("fresh-0016 CLI is strict and status rejects mutation authority", () => {
     parsed.paidExpeditedConfirmation,
     HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
   );
+});
+
+test("fresh-0016 CLI honors the trust-bound wrapper backup environment", () => {
+  const original = process.env[RELEASE_BACKUP_DIR_ENV];
+  const backupDirectory = path.join(os.tmpdir(), `fresh-0016-wrapper-${randomUUID()}`);
+  try {
+    process.env[RELEASE_BACKUP_DIR_ENV] = backupDirectory;
+    const parsed = parseHistoricalFresh0016CutoverCliArgs([
+      "start",
+      "--confirm-production",
+      HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
+      HISTORICAL_FRESH_0016_PAID_EXPEDITED_CUTOVER_CONFIRMATION_FLAG,
+    ]);
+    assert.equal(parsed.backupDirectory, path.resolve(backupDirectory));
+  } finally {
+    if (original === undefined) {
+      delete process.env[RELEASE_BACKUP_DIR_ENV];
+    } else {
+      process.env[RELEASE_BACKUP_DIR_ENV] = original;
+    }
+  }
 });
 
 test("fresh-0016 status is filesystem-only and returns no payload or secret", async () => {

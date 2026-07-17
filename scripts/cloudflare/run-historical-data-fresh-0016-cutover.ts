@@ -110,6 +110,7 @@ import {
   createHistoricalPre0016SnapshotPlan,
 } from "./historical-data-pre-0016-snapshot";
 import {
+  RELEASE_BACKUP_DIR_ENV,
   runWrangler,
   type WranglerRunner,
 } from "./migration-config";
@@ -438,9 +439,11 @@ export function parseHistoricalFresh0016CutoverCliArgs(
     if (token === "--run-id") runId = value;
   }
   cwd = path.resolve(cwd);
-  const backup = path.resolve(
-    backupDirectory ?? path.join(cwd, "tmp", "cloudflare-reports"),
-  );
+  const envBackupDirectory = process.env[RELEASE_BACKUP_DIR_ENV];
+  const defaultBackupDirectory =
+    backupDirectory ??
+    (envBackupDirectory ? envBackupDirectory : path.join(cwd, "tmp", "cloudflare-reports"));
+  const backup = path.resolve(defaultBackupDirectory);
   if (mode === "status") {
     if (!runId) throw new Error("Fresh-0016 status requires --run-id.");
     if (
