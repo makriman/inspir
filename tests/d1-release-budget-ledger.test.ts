@@ -5,6 +5,8 @@ import path from "node:path";
 import test from "node:test";
 import {
   assertD1ReleaseBudgetReservation,
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+  D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
   d1ReleaseBudgetLedgerPath,
   readD1ReleaseBudgetLedger,
   readPrivateJsonNoFollow,
@@ -163,7 +165,7 @@ test("D1 release ledger lazily upgrades v1 and keeps same-ID reservations source
     const legacyBytes = fs.readFileSync(legacyMaximum.ledgerPath, "utf8");
 
     const normalized = readD1ReleaseBudgetLedger(legacyMaximum.ledgerPath);
-    assert.equal(normalized.schemaVersion, 3);
+    assert.equal(normalized.schemaVersion, 4);
     assert.deepEqual(normalized.reservations[0]?.sourceFingerprint, source);
     assert.equal(fs.readFileSync(legacyMaximum.ledgerPath, "utf8"), legacyBytes);
 
@@ -199,10 +201,10 @@ test("D1 release ledger lazily upgrades v1 and keeps same-ID reservations source
     assert.equal(nextExact.revision, legacyMaximum.revision + 1);
     assert.equal(Object.hasOwn(nextExact.reservation, "sourceFingerprint"), false);
 
-    const rawV3 = readPrivateJsonNoFollow(legacyMaximum.ledgerPath);
-    assert.ok(isRecord(rawV3));
-    assert.equal(rawV3.schemaVersion, 3);
-    assert.equal(Object.hasOwn(rawV3, "sourceFingerprint"), false);
+    const rawV4 = readPrivateJsonNoFollow(legacyMaximum.ledgerPath);
+    assert.ok(isRecord(rawV4));
+    assert.equal(rawV4.schemaVersion, 4);
+    assert.equal(Object.hasOwn(rawV4, "sourceFingerprint"), false);
 
     const refinedLegacy = reserveD1ReleaseBudget({
       backupDir,
@@ -380,6 +382,94 @@ test("D1 release ledger counts one aggregate envelope, freezes delayed Insights 
           expectedUtcDay: parent.utcDay,
         }),
       /live top-level maximum envelope/,
+    );
+  } finally {
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+});
+
+test("D1 release ledger requires explicit paid-expedited admission to exceed free daily usage", () => {
+  const backupDir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-d1-ledger-paid-expedited-"),
+  );
+  const candidateVersionId = "11111111-1111-1111-1111-111111111111";
+  const highUsage = {
+    ...emptyUsage,
+    rowsRead: 4_000_001,
+    rowsWritten: 80_001,
+  };
+  try {
+    assert.throws(
+      () =>
+        reserveD1ReleaseBudget({
+          backupDir,
+          operationId: "free-overflow-probe",
+          operation: "Free overflow probe",
+          sourceFingerprint: source,
+          candidateVersionId,
+          phase: "maximum",
+          rowsRead: 1,
+          rowsWritten: 0,
+          observedUsage: highUsage,
+          now: day,
+        }),
+      /Workers Free D1 daily budget/,
+    );
+
+    const paidParent = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "paid-day2-envelope",
+      operation: "Paid Day-2 aggregate envelope",
+      sourceFingerprint: source,
+      candidateVersionId,
+      phase: "maximum",
+      rowsRead: 3_900_000,
+      rowsWritten: 70_000,
+      observedUsage: highUsage,
+      admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+      now: day,
+    });
+    assert.ok(paidParent.accountedUsage.rowsRead > 4_000_000);
+    assert.ok(paidParent.accountedUsage.rowsWritten > 80_000);
+
+    const paidLedger = readD1ReleaseBudgetLedger(paidParent.ledgerPath);
+    assert.equal(
+      paidLedger.admissionMode,
+      D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    );
+    assert.equal(paidLedger.observedUsageFloor.rowsRead, highUsage.rowsRead);
+    assert.equal(paidLedger.observedUsageFloor.rowsWritten, highUsage.rowsWritten);
+
+    reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "paid-day2-child",
+      operation: "Paid Day-2 child",
+      sourceFingerprint: source,
+      candidateVersionId,
+      accountingParentOperationId: paidParent.reservation.operationId,
+      phase: "maximum",
+      rowsRead: 1,
+      rowsWritten: 0,
+      observedUsage: highUsage,
+      now: new Date("2026-07-12T12:01:00.000Z"),
+      expectedUtcDay: paidParent.utcDay,
+    });
+    assert.equal(
+      readD1ReleaseBudgetLedger(paidParent.ledgerPath).admissionMode,
+      D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    );
+
+    writePrivateJsonDurably(
+      paidParent.ledgerPath,
+      {
+        ...readD1ReleaseBudgetLedger(paidParent.ledgerPath),
+        admissionMode: D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
+      },
+      { replace: true },
+    );
+    assert.throws(
+      () => readD1ReleaseBudgetLedger(paidParent.ledgerPath),
+      /Workers Free D1 daily budget/,
     );
   } finally {
     fs.rmSync(backupDir, { recursive: true, force: true });

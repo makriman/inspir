@@ -13,10 +13,19 @@ import {
 } from "./migration-config";
 
 export const D1_RELEASE_BUDGET_LEDGER_KIND = "d1-release-budget-ledger" as const;
-export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 3 as const;
+export const D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION = 4 as const;
 const D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION = 1 as const;
 const D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION = 2 as const;
+const D1_RELEASE_BUDGET_LEDGER_CHILD_ACCOUNTING_SCHEMA_VERSION = 3 as const;
 const D1_RELEASE_BUDGET_LEDGER_MAX_BYTES = 4 * 1024 * 1024;
+export const D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE =
+  "workers-free" as const;
+export const D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE =
+  "paid-expedited" as const;
+
+export type D1ReleaseBudgetAdmissionMode =
+  | typeof D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE
+  | typeof D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE;
 
 export type D1ReleaseSourceIdentity = {
   sha256: string;
@@ -62,6 +71,7 @@ export type D1ReleaseBudgetLedger = {
     rowsRead: typeof D1_FREE_SAFE_ROWS_READ_LIMIT;
     rowsWritten: typeof D1_FREE_SAFE_ROWS_WRITTEN_LIMIT;
   };
+  admissionMode: D1ReleaseBudgetAdmissionMode;
   observedUsageFloor: D1ReleaseBudgetObservedUsageFloor;
   reservations: D1ReleaseBudgetLedgerReservation[];
   totals: {
@@ -85,6 +95,7 @@ export type ReserveD1ReleaseBudgetInput = {
   rowsWritten: number;
   observedUsage: D1DailyUsage;
   accountingParentOperationId?: string;
+  admissionMode?: D1ReleaseBudgetAdmissionMode;
   now?: Date;
   expectedUtcDay?: string;
 };
@@ -129,15 +140,13 @@ export function reserveD1ReleaseBudget(
   const accountingParentOperationId = input.accountingParentOperationId === undefined
     ? null
     : validateOperationId(input.accountingParentOperationId);
+  const requestedAdmissionMode = validateAdmissionMode(
+    input.admissionMode ?? D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
+  );
   if (accountingParentOperationId === operationId) {
     throw new Error("A D1 release budget reservation cannot account under itself.");
   }
   validateObservedUsage(input.observedUsage);
-  assertD1FreeDailyBudget(input.observedUsage, {
-    operation,
-    rowsRead: 0,
-    rowsWritten: 0,
-  });
 
   const ledgerPath = d1ReleaseBudgetLedgerPath(input.backupDir, utcDay);
   return withLedgerLock(ledgerPath, now, () => {
@@ -154,6 +163,17 @@ export function reserveD1ReleaseBudget(
     const timestamp = now.toISOString();
     if (accountingParentOperationId !== null && !existing) {
       throw new Error("A D1 release budget child requires an existing aggregate envelope.");
+    }
+    const admissionMode = nextAdmissionMode(
+      existing?.admissionMode,
+      requestedAdmissionMode,
+    );
+    if (admissionMode === D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE) {
+      assertD1FreeDailyBudget(input.observedUsage, {
+        operation,
+        rowsRead: 0,
+        rowsWritten: 0,
+      });
     }
     const observedUsageFloor = existing
       ? accountingParentOperationId === null
@@ -202,7 +222,13 @@ export function reserveD1ReleaseBudget(
         "accounted rows written",
       ),
     };
-    assertAccountedUsageWithinLimits(operation, observedUsageFloor, totals, accountedUsage);
+    assertAccountedUsageWithinLimits(
+      operation,
+      admissionMode,
+      observedUsageFloor,
+      totals,
+      accountedUsage,
+    );
 
     const usageFloorChanged =
       existing !== undefined &&
@@ -233,6 +259,7 @@ export function reserveD1ReleaseBudget(
         rowsRead: D1_FREE_SAFE_ROWS_READ_LIMIT,
         rowsWritten: D1_FREE_SAFE_ROWS_WRITTEN_LIMIT,
       },
+      admissionMode,
       observedUsageFloor,
       reservations,
       totals,
@@ -504,6 +531,7 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
     value.kind !== D1_RELEASE_BUDGET_LEDGER_KIND ||
     (schemaVersion !== D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION &&
       schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION &&
+      schemaVersion !== D1_RELEASE_BUDGET_LEDGER_CHILD_ACCOUNTING_SCHEMA_VERSION &&
       schemaVersion !== D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION)
   ) {
     throw new Error("D1 release budget ledger has an unsupported schema.");
@@ -534,6 +562,10 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
     throw new Error("D1 release budget ledger daily limits do not match this source revision.");
   }
   const usage = requiredRecord(value.observedUsageFloor, "ledger observed usage floor");
+  const admissionMode =
+    schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION
+      ? validateAdmissionMode(value.admissionMode)
+      : D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE;
   const observedUsageFloor: D1ReleaseBudgetObservedUsageFloor = {
     databaseCount: positiveSafeInteger(usage.databaseCount, "ledger database count"),
     queryGroups: nonNegativeSafeInteger(usage.queryGroups, "ledger query groups"),
@@ -581,7 +613,13 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
   ) {
     throw new Error("D1 release budget ledger accounted usage is inconsistent.");
   }
-  assertAccountedUsageWithinLimits("Stored D1 release budget ledger", observedUsageFloor, totals, accountedUsage);
+  assertAccountedUsageWithinLimits(
+    "Stored D1 release budget ledger",
+    admissionMode,
+    observedUsageFloor,
+    totals,
+    accountedUsage,
+  );
   const utcDay = validateUtcDay(value.utcDay);
   const createdAt = validIsoTimestamp(value.createdAt, "ledger creation timestamp");
   const updatedAt = validIsoTimestamp(value.updatedAt, "ledger update timestamp");
@@ -612,6 +650,7 @@ function parseLedger(value: unknown): D1ReleaseBudgetLedger {
       rowsRead: D1_FREE_SAFE_ROWS_READ_LIMIT,
       rowsWritten: D1_FREE_SAFE_ROWS_WRITTEN_LIMIT,
     },
+    admissionMode,
     observedUsageFloor,
     reservations,
     totals,
@@ -626,6 +665,7 @@ function parseReservation(
   schemaVersion:
     | typeof D1_RELEASE_BUDGET_LEDGER_LEGACY_SCHEMA_VERSION
     | typeof D1_RELEASE_BUDGET_LEDGER_SOURCE_BOUND_SCHEMA_VERSION
+    | typeof D1_RELEASE_BUDGET_LEDGER_CHILD_ACCOUNTING_SCHEMA_VERSION
     | typeof D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION,
 ): D1ReleaseBudgetLedgerReservation {
   if (!isRecord(value)) throw new Error(`D1 release budget reservation ${index} is invalid.`);
@@ -667,7 +707,10 @@ function parseReservation(
   if (rowsRead > maximumRowsRead || rowsWritten > maximumRowsWritten) {
     throw new Error(`D1 release budget reservation ${index} exceeds its recorded maximum.`);
   }
-  const accountingParentOperationId = schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION
+  const accountingParentOperationId = (
+    schemaVersion === D1_RELEASE_BUDGET_LEDGER_CHILD_ACCOUNTING_SCHEMA_VERSION ||
+    schemaVersion === D1_RELEASE_BUDGET_LEDGER_SCHEMA_VERSION
+  )
     ? value.accountingParentOperationId === null
       ? null
       : validateOperationId(
@@ -1064,10 +1107,14 @@ function sameObservedUsageFloor(
 
 function assertAccountedUsageWithinLimits(
   operation: string,
+  admissionMode: D1ReleaseBudgetAdmissionMode,
   observed: D1ReleaseBudgetObservedUsageFloor,
   totals: D1ReleaseBudgetLedger["totals"],
   accounted: D1ReleaseBudgetLedger["accountedUsage"],
 ) {
+  if (admissionMode === D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE) {
+    return;
+  }
   if (
     accounted.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
     accounted.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT
@@ -1080,6 +1127,29 @@ function assertAccountedUsageWithinLimits(
         "Wait for the next 00:00 UTC reset and start a new UTC-day ledger.",
     );
   }
+}
+
+function nextAdmissionMode(
+  existing: D1ReleaseBudgetAdmissionMode | undefined,
+  requested: D1ReleaseBudgetAdmissionMode,
+): D1ReleaseBudgetAdmissionMode {
+  if (
+    existing === D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE ||
+    requested === D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE
+  ) {
+    return D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE;
+  }
+  return D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE;
+}
+
+function validateAdmissionMode(value: unknown): D1ReleaseBudgetAdmissionMode {
+  if (
+    value === D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE ||
+    value === D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE
+  ) {
+    return value;
+  }
+  throw new Error("D1 release budget ledger has an invalid admission mode.");
 }
 
 function validateObservedUsage(usage: D1DailyUsage) {

@@ -13,7 +13,10 @@ import {
 } from "./check-d1-runtime-migration-budget";
 import {
   assertD1ReleaseBudgetReservation,
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+  D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
   reserveD1ReleaseBudget,
+  type D1ReleaseBudgetAdmissionMode,
   type D1ReleaseBudgetReservationResult,
 } from "./d1-release-budget-ledger";
 import {
@@ -1007,6 +1010,7 @@ async function runFinish(context: CoordinatorContext) {
           liveTopology: envelopeTopology.evidence,
           liveDeploymentStatusOutput: envelopeTopology.statusOutput,
           initialObservedUsage,
+          admissionMode: d1ReleaseBudgetAdmissionMode(context.timingMode),
         });
         context.dependencies.afterBoundary("day2-budget-envelope-published");
         classification = requireHealthyState(
@@ -2498,6 +2502,14 @@ function cutoverTimingMode(
     );
   }
   return HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
+}
+
+function d1ReleaseBudgetAdmissionMode(
+  timingMode: HistoricalFresh0016CutoverTimingMode,
+): D1ReleaseBudgetAdmissionMode {
+  return timingMode === HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE
+    ? D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE
+    : D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE;
 }
 
 function assertClaimTimingMode(

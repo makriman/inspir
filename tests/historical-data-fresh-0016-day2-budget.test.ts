@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
   readD1ReleaseBudgetLedger,
   reserveD1ReleaseBudget,
   writePrivateJsonDurably,
@@ -462,6 +463,101 @@ test("fresh-0016 preauthorizes one Day-2 parent, accounts children beneath it, a
       envelope.evidence.operationId,
     );
     assert.equal(fs.statSync(paths.auxiliaryFiles.day2BudgetEnvelope).mode & 0o777, 0o600);
+  } finally {
+    fs.rmSync(backupDirectory, { recursive: true, force: true });
+  }
+});
+
+test("fresh-0016 Day-2 paid-expedited admission records real usage above the free ceiling", () => {
+  const rawBackupDirectory = fs.mkdtempSync(
+    path.join(os.tmpdir(), "inspir-fresh-day2-paid-expedited-"),
+  );
+  const backupDirectory = fs.realpathSync.native(rawBackupDirectory);
+  fs.chmodSync(backupDirectory, 0o700);
+  try {
+    const paths = createHistoricalFresh0016RunDirectory({
+      backupDirectory,
+      runId,
+    });
+    fs.chmodSync(path.join(backupDirectory, "cloudflare"), 0o700);
+    fs.chmodSync(path.dirname(paths.runDirectory), 0o700);
+    fs.chmodSync(paths.runDirectory, 0o700);
+    const upload = writeUploadEvidence(backupDirectory);
+    const workerRelease = {
+      phase: "uploaded-inactive" as const,
+      targetCandidateVersionId,
+      serviceBaselineVersionId,
+      uploadEvidenceSha256: upload.sha256,
+    };
+    const stageTimes = [
+      "2026-07-14T23:55:00.000Z",
+      "2026-07-14T23:56:00.000Z",
+      "2026-07-14T23:57:00.000Z",
+      "2026-07-14T23:58:00.000Z",
+    ] as const;
+    const stages = [
+      "claim",
+      "predecessor-authorized",
+      "predecessor-prepared",
+      "predecessor-complete",
+    ] as const;
+    let predecessorCompleteSha256 = "";
+    for (const [index, stage] of stages.entries()) {
+      const handle = publishHistoricalFresh0016StateStage({
+        backupDirectory,
+        runId,
+        stage,
+        sourceFingerprint,
+        payload: { fixture: stage },
+        now: new Date(stageTimes[index]!),
+        owner,
+      });
+      if (stage === "predecessor-complete") {
+        predecessorCompleteSha256 = handle.sha256;
+      }
+    }
+    const highUsage = {
+      ...usage,
+      rowsRead: 4_000_001,
+      rowsWritten: 80_001,
+    } as const;
+    const common = {
+      backupDirectory,
+      cutoverRunId: runId,
+      now: new Date("2026-07-15T00:05:00.000Z"),
+      predecessorCompleteStageSha256: predecessorCompleteSha256,
+      predecessorReportSha256: "b".repeat(64),
+      sourceFingerprint,
+      ...workerRelease,
+      liveTopology: liveTopology(
+        upload.sha256,
+        "2026-07-15T00:04:30.000Z",
+      ),
+      liveDeploymentStatusOutput: baselineStatusOutput,
+      initialObservedUsage: highUsage,
+    } as const;
+    assert.throws(
+      () => preauthorizeHistoricalFresh0016Day2Budget(common),
+      /admission ceiling/,
+    );
+
+    const envelope = preauthorizeHistoricalFresh0016Day2Budget({
+      ...common,
+      admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    });
+    assert.equal(
+      envelope.evidence.admissionMode,
+      D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    );
+    const ledger = readD1ReleaseBudgetLedger(
+      envelope.evidence.maximum.ledger.ledgerPath,
+    );
+    assert.equal(
+      ledger.admissionMode,
+      D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    );
+    assert.equal(ledger.observedUsageFloor.rowsRead, highUsage.rowsRead);
+    assert.equal(ledger.observedUsageFloor.rowsWritten, highUsage.rowsWritten);
   } finally {
     fs.rmSync(backupDirectory, { recursive: true, force: true });
   }

@@ -2,10 +2,13 @@ import path from "node:path";
 import { z } from "zod";
 import {
   assertD1ReleaseBudgetReservation,
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+  D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
   readD1ReleaseBudgetLedger,
   readPrivateJsonNoFollow,
   reserveD1ReleaseBudget,
   writePrivateJsonDurably,
+  type D1ReleaseBudgetAdmissionMode,
   type D1ReleaseBudgetReservationResult,
 } from "./d1-release-budget-ledger";
 import type { D1DailyUsage } from "./d1-free-budget";
@@ -132,6 +135,10 @@ const maximumLedgerSchema = z.object({
     rowsWritten: nonnegativeIntegerSchema,
   }).strict(),
 }).strict();
+const budgetAdmissionModeSchema = z.union([
+  z.literal(D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE),
+  z.literal(D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE),
+]);
 
 const historicalFresh0016Day2BudgetEnvelopeSchema = z.object({
   kind: z.literal(HISTORICAL_FRESH_0016_DAY2_BUDGET_ENVELOPE_KIND),
@@ -152,6 +159,9 @@ const historicalFresh0016Day2BudgetEnvelopeSchema = z.object({
     id: z.literal(policy.database.id),
     name: z.literal(policy.database.name),
   }).strict(),
+  admissionMode: budgetAdmissionModeSchema.default(
+    D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE,
+  ),
   initialObservedUsage: usageSchema,
   maximum: z.object({
     rowsRead: z.literal(HISTORICAL_FRESH_0016_DAY2_AGGREGATE_ROWS_READ),
@@ -214,10 +224,11 @@ const historicalFresh0016Day2BudgetEnvelopeSchema = z.object({
       value.workerRelease.targetCandidateVersionId ||
     historicalFresh0016JsonSha256(value.liveTopology.workerRelease) !==
       historicalFresh0016JsonSha256(value.workerRelease) ||
-    value.initialObservedUsage.rowsRead >
-      HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_READ_LIMIT ||
-    value.initialObservedUsage.rowsWritten >
-      HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_WRITTEN_LIMIT
+    (value.admissionMode === D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE &&
+      (value.initialObservedUsage.rowsRead >
+        HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_READ_LIMIT ||
+        value.initialObservedUsage.rowsWritten >
+          HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_WRITTEN_LIMIT))
   ) {
     context.addIssue({
       code: "custom",
@@ -298,14 +309,18 @@ export function preauthorizeHistoricalFresh0016Day2Budget(input: Readonly<{
   liveTopology: HistoricalFresh0016LiveTopologyEvidence;
   liveDeploymentStatusOutput: string;
   initialObservedUsage: D1DailyUsage;
+  admissionMode?: D1ReleaseBudgetAdmissionMode;
   reserveBudget?: typeof reserveD1ReleaseBudget;
 }>): HistoricalFresh0016Day2BudgetEnvelopeHandle {
   const now = validDate(input.now);
+  const admissionMode =
+    input.admissionMode ?? D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE;
   if (
-    input.initialObservedUsage.rowsRead >
+    admissionMode === D1_RELEASE_BUDGET_WORKERS_FREE_ADMISSION_MODE &&
+    (input.initialObservedUsage.rowsRead >
       HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_READ_LIMIT ||
-    input.initialObservedUsage.rowsWritten >
-      HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_WRITTEN_LIMIT
+      input.initialObservedUsage.rowsWritten >
+        HISTORICAL_FRESH_0016_DAY2_OBSERVED_ROWS_WRITTEN_LIMIT)
   ) {
     throw new Error(
       "Fresh-0016 Day-2 observed usage exceeds the aggregate-envelope admission ceiling; wait for the next UTC reset.",
@@ -341,6 +356,7 @@ export function preauthorizeHistoricalFresh0016Day2Budget(input: Readonly<{
     rowsRead: HISTORICAL_FRESH_0016_DAY2_AGGREGATE_ROWS_READ,
     rowsWritten: HISTORICAL_FRESH_0016_DAY2_AGGREGATE_ROWS_WRITTEN,
     observedUsage: input.initialObservedUsage,
+    admissionMode,
     now,
     expectedUtcDay: utcDay,
   });
@@ -359,6 +375,7 @@ export function preauthorizeHistoricalFresh0016Day2Budget(input: Readonly<{
     workerRelease,
     liveTopology,
     database: policy.database,
+    admissionMode,
     initialObservedUsage: input.initialObservedUsage,
     maximum: {
       rowsRead: HISTORICAL_FRESH_0016_DAY2_AGGREGATE_ROWS_READ,
@@ -443,6 +460,12 @@ export function readHistoricalFresh0016Day2BudgetEnvelope(input: Readonly<{
   } catch (maximumError) {
     if (!input.allowRefined) throw maximumError;
     assertEnvelopeWasSafelyRefined(evidence);
+  }
+  const ledger = readD1ReleaseBudgetLedger(evidence.maximum.ledger.ledgerPath);
+  if (ledger.admissionMode !== evidence.admissionMode) {
+    throw new Error(
+      "Fresh-0016 Day-2 budget envelope admission mode no longer matches its ledger.",
+    );
   }
   return Object.freeze({
     path: handle.path,
