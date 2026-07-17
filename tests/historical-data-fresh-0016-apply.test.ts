@@ -113,6 +113,29 @@ test("confirmed apply executes only the immutable rendered file and publishes ve
   }
 });
 
+test("confirmed apply accepts static verifier multi-result read-only D1 output", () => {
+  const fixture = createFixture();
+  const database = createDatabaseRunner(
+    fixture,
+    "pre",
+    ["commit-confirmed"],
+    { splitStaticResultSets: true },
+  );
+  try {
+    const outcome = applyHistoricalDataFresh0016Migration({
+      ...fixture.options,
+      runner: database.runner,
+    });
+
+    assert.equal(outcome.ok, true);
+    assert.equal(outcome.status, "verified");
+    assert.equal(outcome.lastDatabaseState, "verified-committed");
+    assert.equal(database.fileCalls.length, 1);
+  } finally {
+    fixture.cleanup();
+  }
+});
+
 test("ambiguous response succeeds only from exact same-run marker and privacy-safe readback", () => {
   const fixture = createFixture();
   const database = createDatabaseRunner(fixture, "pre", ["commit-ambiguous"]);
@@ -684,6 +707,7 @@ type ExecutionBehavior =
 type RunnerMetadataMutation = Readonly<{
   staticTotalAttempts?: number;
   staticRowsWritten?: number;
+  splitStaticResultSets?: boolean;
   probeTotalAttempts?: number;
   probeRowsWritten?: number;
 }>;
@@ -859,15 +883,16 @@ function createDatabaseRunner(
     calls.push([...args]);
     const command = args.at(-1);
     if (command === RUNTIME_MIGRATION_VERIFICATION_SQL) {
-      return JSON.stringify([
-        staticResult(
-          mode === "committed" || mode === "wrong"
-            ? committedStaticRows()
-            : pre0016StaticRows(),
-          metadata.staticRowsWritten ?? 0,
-          metadata.staticTotalAttempts ?? 1,
-        ),
-      ]);
+      const rows = mode === "committed" || mode === "wrong"
+        ? committedStaticRows()
+        : pre0016StaticRows();
+      const rowsWritten = metadata.staticRowsWritten ?? 0;
+      const totalAttempts = metadata.staticTotalAttempts ?? 1;
+      return JSON.stringify(
+        metadata.splitStaticResultSets
+          ? rows.map((row) => staticResult([row], rowsWritten, totalAttempts))
+          : [staticResult(rows, rowsWritten, totalAttempts)],
+      );
     }
     if (command === HISTORICAL_FRESH_0016_APPLY_STATE_SQL) {
       return JSON.stringify([

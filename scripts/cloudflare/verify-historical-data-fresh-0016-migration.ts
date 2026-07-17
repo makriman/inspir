@@ -346,7 +346,7 @@ export function verifyHistoricalDataFresh0016Migration(
   try {
     const strictStaticRunner: WranglerRunner = (args, runnerOptions) => {
       const output = runner(args, runnerOptions);
-      assertSuccessfulReadOnlySingleAttemptResult(
+      assertSuccessfulReadOnlySingleAttemptResults(
         output,
         "static runtime migration verification",
       );
@@ -641,6 +641,68 @@ function parsePost0016Verification(
     fixedUpdatedAt,
     freshUpdatedAt,
     freshValue: actualValue,
+  };
+}
+
+function assertSuccessfulReadOnlySingleAttemptResults(
+  output: string,
+  label: string,
+) {
+  const parsed = parseWranglerJson(output);
+  if (
+    !Array.isArray(parsed) ||
+    parsed.length === 0 ||
+    !parsed.every(isRecord)
+  ) {
+    throw verificationError(
+      "POST_VERIFICATION_FAILED",
+      `The ${label} returned an invalid result set.`,
+    );
+  }
+  const results: unknown[] = [];
+  let rowsRead = 0;
+  for (const [index, result] of parsed.entries()) {
+    if (result.success !== true || !isRecord(result.meta)) {
+      throw verificationError(
+        "POST_VERIFICATION_FAILED",
+        `The ${label} did not report explicit success metadata.`,
+      );
+    }
+    const resultRowsRead = requiredNonNegativeSafeInteger(
+      result.meta.rows_read,
+      `${label} result set ${index + 1} rows read`,
+    );
+    const rowsWritten = requiredNonNegativeSafeInteger(
+      result.meta.rows_written,
+      `${label} result set ${index + 1} rows written`,
+    );
+    const totalAttempts = requiredNonNegativeSafeInteger(
+      result.meta.total_attempts,
+      `${label} result set ${index + 1} total attempts`,
+    );
+    if (rowsWritten !== 0 || totalAttempts !== 1) {
+      throw verificationError(
+        "POST_VERIFICATION_FAILED",
+        `The ${label} was not one exact read-only attempt.`,
+      );
+    }
+    if (!Array.isArray(result.results)) {
+      throw verificationError(
+        "POST_VERIFICATION_FAILED",
+        `The ${label} returned invalid result rows.`,
+      );
+    }
+    rowsRead += resultRowsRead;
+    results.push(...result.results);
+  }
+  return {
+    resultSetCount: parsed.length,
+    results,
+    meta: {
+      rows_read: rowsRead,
+      rows_written: 0,
+      total_attempts: 1,
+    },
   };
 }
 

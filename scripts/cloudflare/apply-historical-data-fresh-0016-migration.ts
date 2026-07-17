@@ -1030,6 +1030,12 @@ function parseApplyStateProbe(output: string) {
       "The fresh-0016 apply probe returned the wrong row count.",
     );
   }
+  if (result.resultSetCount !== 1) {
+    throw applyError(
+      "D1_STATE_INDETERMINATE",
+      "The fresh-0016 apply probe returned the wrong result-set count.",
+    );
+  }
   const row = result.results[0];
   if (
     !isRecord(row) ||
@@ -1352,31 +1358,59 @@ function assertSuccessfulReadOnlyResult(output: string, label: string) {
   const parsed = parseWranglerJson(output);
   if (
     !Array.isArray(parsed) ||
-    parsed.length !== 1 ||
-    !isRecord(parsed[0]) ||
-    parsed[0].success !== true ||
-    !isRecord(parsed[0].meta)
+    parsed.length === 0 ||
+    !parsed.every(isRecord)
   ) {
     throw applyError(
       "D1_STATE_INDETERMINATE",
       `The ${label} omitted explicit successful read metadata.`,
     );
   }
-  const rowsWritten = requiredNonNegativeInteger(
-    parsed[0].meta.rows_written,
-    `${label} rows written`,
-  );
-  const totalAttempts = requiredNonNegativeInteger(
-    parsed[0].meta.total_attempts,
-    `${label} total attempts`,
-  );
-  if (rowsWritten !== 0 || totalAttempts !== 1) {
-    throw applyError(
-      "D1_STATE_INDETERMINATE",
-      `The ${label} was not one exact read-only attempt.`,
+  let rowsRead = 0;
+  const results: unknown[] = [];
+  for (const [index, entry] of parsed.entries()) {
+    if (entry.success !== true || !isRecord(entry.meta)) {
+      throw applyError(
+        "D1_STATE_INDETERMINATE",
+        `The ${label} omitted explicit successful read metadata.`,
+      );
+    }
+    const entryRowsRead = requiredNonNegativeInteger(
+      entry.meta.rows_read,
+      `${label} result set ${index + 1} rows read`,
     );
+    const rowsWritten = requiredNonNegativeInteger(
+      entry.meta.rows_written,
+      `${label} result set ${index + 1} rows written`,
+    );
+    const totalAttempts = requiredNonNegativeInteger(
+      entry.meta.total_attempts,
+      `${label} result set ${index + 1} total attempts`,
+    );
+    if (rowsWritten !== 0 || totalAttempts !== 1) {
+      throw applyError(
+        "D1_STATE_INDETERMINATE",
+        `The ${label} was not one exact read-only attempt.`,
+      );
+    }
+    if (!Array.isArray(entry.results)) {
+      throw applyError(
+        "D1_STATE_INDETERMINATE",
+        `The ${label} returned invalid result rows.`,
+      );
+    }
+    rowsRead += entryRowsRead;
+    results.push(...entry.results);
   }
-  return { results: parsed[0].results, meta: parsed[0].meta };
+  return {
+    resultSetCount: parsed.length,
+    results,
+    meta: {
+      rows_read: rowsRead,
+      rows_written: 0,
+      total_attempts: 1,
+    },
+  };
 }
 
 function isConfirmedFileExecutionResponse(output: string) {
