@@ -531,7 +531,11 @@ export function applyHistoricalDataFresh0016Migration(
       "Fresh-0016 apply requires the exact manifest tail and refuses already-completed or out-of-order state.",
     );
   }
-  if (!sameOwner(currentStage.value.owner, owner)) {
+  const controllingOwner = currentControllingOwner(
+    classification,
+    currentStage.value.stage,
+  );
+  if (!controllingOwner || !sameOwner(controllingOwner, owner)) {
     throw applyError(
       "STATE_INVALID",
       "The fresh-0016 apply process does not own the manifest state.",
@@ -1327,6 +1331,21 @@ function assertStaticReportMetadata(
       "The static migration state query was retried, wrote rows, or changed source.",
     );
   }
+}
+
+function currentControllingOwner(
+  classification: ReturnType<typeof classifyHistoricalFresh0016State>,
+  stage: string,
+): HistoricalFresh0016Owner | undefined {
+  const resolution = classification.readbackResolutions
+    .filter((entry) => entry.value.stage === stage)
+    .at(-1);
+  const lease = classification.resumeLeases
+    .filter((entry) => entry.value.stage === stage)
+    .at(-1);
+  return resolution?.value.owner ??
+    lease?.value.owner ??
+    classification.stages.at(-1)?.value.owner;
 }
 
 function assertSuccessfulReadOnlyResult(output: string, label: string) {

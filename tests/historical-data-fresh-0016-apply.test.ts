@@ -30,6 +30,7 @@ import {
 } from "../scripts/cloudflare/historical-data-fresh-0016-migration";
 import {
   HISTORICAL_FRESH_0016_STATE_AUXILIARY_FILE_NAMES,
+  acquireHistoricalFresh0016ResumeLease,
   classifyHistoricalFresh0016State,
   createHistoricalFresh0016RunDirectory,
   historicalFresh0016JsonSha256,
@@ -221,6 +222,48 @@ test("later exact-absent readback is review-required and can never retry or re-a
         .length,
       1,
     );
+  } finally {
+    fixture.cleanup();
+  }
+});
+
+test("manifest resume lease transfers apply ownership before the D1 write boundary", () => {
+  const fixture = createFixture();
+  const recoveryOwner = nextOwner(fixture.owner, 6);
+  const database = createDatabaseRunner(fixture, "pre", ["commit-confirmed"]);
+  try {
+    const lease = acquireHistoricalFresh0016ResumeLease({
+      backupDirectory: fixture.backupDirectory,
+      runId,
+      now: new Date("2026-07-14T10:00:10.000Z"),
+      owner: recoveryOwner,
+      ownerExitProbe: (owner) =>
+        owner.hostname === fixture.owner.hostname &&
+        owner.pid === fixture.owner.pid,
+    });
+    assert.equal(lease.value.stage, "manifest");
+    const outcome = applyHistoricalDataFresh0016Migration({
+      ...fixture.options,
+      stateOwner: recoveryOwner,
+      runner: database.runner,
+    });
+
+    assert.equal(outcome.ok, true);
+    assert.equal(outcome.status, "verified");
+    assert.equal(database.fileCalls.length, 1);
+    const state = classifyHistoricalFresh0016State({
+      backupDirectory: fixture.backupDirectory,
+      runId,
+    });
+    assert.equal(state.currentStage, "migration-complete");
+    assert.equal(state.resumeLeases.length, 1);
+    assert.equal(state.resumeLeases[0]?.sha256, lease.sha256);
+    assert.equal(state.stages.at(-1)?.value.owner.pid, recoveryOwner.pid);
+    const authorization = state.stages.find(
+      (stage) => stage.value.stage === "migration-authorized",
+    );
+    assert.equal(authorization?.value.owner.pid, recoveryOwner.pid);
+    assert.equal(authorization?.value.resumeLeaseSha256, lease.sha256);
   } finally {
     fixture.cleanup();
   }

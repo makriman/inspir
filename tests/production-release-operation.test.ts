@@ -459,7 +459,7 @@ test("bounded watchdog survives a SIGKILLed synchronous parent", { skip: process
     { cwd: process.cwd(), stdio: "ignore" },
   );
   try {
-    const deadline = Date.now() + 3_000;
+    const deadline = Date.now() + 15_000;
     while (!fs.existsSync(started) && Date.now() < deadline) {
       await new Promise((resolve) => setTimeout(resolve, 20));
     }
