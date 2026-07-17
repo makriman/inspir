@@ -20,6 +20,7 @@ import {
   HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY,
   HISTORICAL_FRESH_0016_CUTOVER_POLICY_SHA256,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
 } from "../scripts/cloudflare/historical-data-fresh-0016-cutover-policy";
 import {
   preauthorizeHistoricalFresh0016Day2Budget,
@@ -38,6 +39,7 @@ import {
 } from "../scripts/cloudflare/historical-data-fresh-0016-migration-budget";
 import {
   HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_KIND,
+  HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING,
 } from "../scripts/cloudflare/historical-data-fresh-0016-prerequisites";
 import {
   HISTORICAL_FRESH_0016_PREDECESSOR_OPERATION_NAME,
@@ -127,6 +129,7 @@ import {
   HistoricalFresh0016CutoverChainError,
   buildHistoricalFresh0016CutoverCompletionIntent,
   historicalFresh0016CanonicalCompletePath,
+  historicalFresh0016ClaimPayloadSchema,
   historicalFresh0016MigrationBudgetEvidenceSchema,
   readAndValidateHistoricalFresh0016CutoverComplete,
   verifyAndPublishHistoricalFresh0016CutoverComplete,
@@ -157,6 +160,50 @@ const owner: HistoricalFresh0016Owner = Object.freeze({
 });
 const dayOne = "2026-07-14";
 const dayTwo = "2026-07-15";
+
+test("fresh-0016 claim accepts same-day prerequisites only for paid-expedited timing", () => {
+  const fixture = createBaseFixture();
+  try {
+    const base = claimPayload(
+      fixture.sourceFingerprint,
+      hmacKeyId,
+      fixture.workerRelease,
+      "2026-07-14T19:00:00.000Z",
+    );
+    const sameDayPrerequisites = {
+      ...base.predecessorPrerequisites,
+      timing:
+        HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING,
+      topic: {
+        ...base.predecessorPrerequisites.topic,
+        createdAt: "2026-07-14T18:00:00.000Z",
+      },
+      translation: {
+        ...base.predecessorPrerequisites.translation,
+        createdAt: "2026-07-14T18:10:00.000Z",
+      },
+    };
+    const paid = historicalFresh0016ClaimPayloadSchema.parse({
+      ...base,
+      releaseTimingMode: HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+      predecessorPrerequisites: sameDayPrerequisites,
+    });
+    assert.equal(
+      paid.predecessorPrerequisites.timing,
+      HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING,
+    );
+    assert.throws(
+      () =>
+        historicalFresh0016ClaimPayloadSchema.parse({
+          ...base,
+          predecessorPrerequisites: sameDayPrerequisites,
+        }),
+      /same-day predecessor prerequisites require paid-expedited/,
+    );
+  } finally {
+    fixture.cleanup();
+  }
+});
 
 test("canonical fresh-0016 verifier publishes once and exact replay is idempotent", () => {
   const fixture = createCompleteFixture();

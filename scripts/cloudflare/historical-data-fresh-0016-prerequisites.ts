@@ -53,6 +53,9 @@ import {
   assertHistoricalFresh0016LiveTopologyEvidence,
   createHistoricalFresh0016LiveTopologyEvidence,
   historicalFresh0016LiveTopologyEvidenceSchema,
+  HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE,
+  HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE,
+  type HistoricalFresh0016CutoverTimingMode,
 } from "./historical-data-fresh-0016-cutover-policy";
 import {
   readWorkerCandidateUploadEvidence,
@@ -65,6 +68,10 @@ export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_KIND =
   "inspir-historical-data-fresh-0016-predecessor-runtime-gate-v2" as const;
 export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_OPERATION =
   "Fresh-0016 predecessor live runtime-state gate" as const;
+export const HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING =
+  "completed-on-earlier-utc-day-before-predecessor" as const;
+export const HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING =
+  "completed-on-same-utc-day-paid-expedited-before-predecessor" as const;
 export const HISTORICAL_FRESH_0016_PREDECESSOR_RUNTIME_GATE_MAXIMUM_ROWS_READ =
   D1_RUNTIME_PRE_0016_VERIFICATION_BILLABLE_ROWS_READ +
   RUNTIME_MIGRATION_0017_VERIFICATION_BILLABLE_ROWS_READ;
@@ -308,7 +315,10 @@ export type HistoricalFresh0016PredecessorRuntimeGate = z.infer<
 export const historicalFresh0016PredecessorPrerequisitesSchema = z.object({
   kind: z.literal(HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_KIND),
   schemaVersion: z.literal(3),
-  timing: z.literal("completed-on-earlier-utc-day-before-predecessor"),
+  timing: z.enum([
+    HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING,
+    HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING,
+  ]),
   predecessorUtcDay: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   sourceFingerprint: z.object({
     sha256: sha256Schema,
@@ -355,9 +365,17 @@ export const historicalFresh0016PredecessorPrerequisitesSchema = z.object({
   ),
   privacy: z.literal("release-identities-and-aggregate-counts-only"),
 }).strict().superRefine((value, context) => {
+  const topicDay = value.topic.createdAt.slice(0, 10);
+  const translationDay = value.translation.createdAt.slice(0, 10);
+  const timingDayValid =
+    value.timing ===
+    HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING
+      ? topicDay < value.predecessorUtcDay &&
+        translationDay < value.predecessorUtcDay
+      : topicDay === value.predecessorUtcDay &&
+        translationDay === value.predecessorUtcDay;
   if (
-    value.topic.createdAt.slice(0, 10) >= value.predecessorUtcDay ||
-    value.translation.createdAt.slice(0, 10) >= value.predecessorUtcDay ||
+    !timingDayValid ||
     value.runtimeMigration0017.verifiedAt.slice(0, 10) !==
       value.predecessorUtcDay ||
     value.liveRuntimeState.predecessorUtcDay !== value.predecessorUtcDay ||
@@ -374,7 +392,7 @@ export const historicalFresh0016PredecessorPrerequisitesSchema = z.object({
     context.addIssue({
       code: "custom",
       message:
-        "Fresh-0016 predecessor prerequisites are not an earlier-day ordered topic/translation proof with a same-day live runtime gate and deferred-0017 proof.",
+        "Fresh-0016 predecessor prerequisites are not an ordered earlier-day or paid-expedited same-day topic/translation proof with a same-day live runtime gate and deferred-0017 proof for the recorded timing mode.",
     });
   }
 });
@@ -536,11 +554,14 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
   targetCandidateVersionId: string;
   serviceBaselineVersionId: string;
   uploadEvidenceSha256: string;
+  timingMode?: HistoricalFresh0016CutoverTimingMode;
   predecessorStartAt: Date;
   liveRuntimeState: HistoricalFresh0016PredecessorRuntimeGate;
 }>) {
   const predecessorStartAt = validDate(input.predecessorStartAt);
   const predecessorUtcDay = predecessorStartAt.toISOString().slice(0, 10);
+  const timingMode =
+    input.timingMode ?? HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
   const backupDirectory = path.resolve(input.backupDirectory);
   const workerRelease = requireUploadedInactiveWorkerRelease({
     backupDirectory,
@@ -599,6 +620,21 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
     predecessorUtcDay,
     sourceFingerprint: input.sourceFingerprint,
   });
+  const topicUtcDay = topic.createdAt.slice(0, 10);
+  const translationUtcDay = translation.createdAt.slice(0, 10);
+  const prerequisiteTiming =
+    timingMode === HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE &&
+    topicUtcDay === predecessorUtcDay &&
+    translationUtcDay === predecessorUtcDay
+      ? HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING
+      : HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING;
+  const topicTranslationDayMatchesTiming =
+    prerequisiteTiming ===
+    HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_EARLIER_DAY_TIMING
+      ? topicUtcDay < predecessorUtcDay &&
+        translationUtcDay < predecessorUtcDay
+      : topicUtcDay === predecessorUtcDay &&
+        translationUtcDay === predecessorUtcDay;
   const releaseIdentitySha256 = sha256(topic.release);
   const upload = readWorkerCandidateUploadEvidence(
     workerCandidateUploadEvidencePath(backupDirectory),
@@ -638,17 +674,18 @@ export function readHistoricalFresh0016PredecessorPrerequisites(input: Readonly<
     }) ||
     Date.parse(topic.vectorizeReadinessCreatedAt) > Date.parse(topic.createdAt) ||
     Date.parse(topic.createdAt) > Date.parse(translation.createdAt) ||
-    topic.createdAt.slice(0, 10) >= predecessorUtcDay ||
-    translation.createdAt.slice(0, 10) >= predecessorUtcDay
+    Date.parse(topic.createdAt) >= predecessorStartAt.getTime() ||
+    Date.parse(translation.createdAt) >= predecessorStartAt.getTime() ||
+    !topicTranslationDayMatchesTiming
   ) {
     throw new Error(
-      "Fresh-0016 predecessor requires source-bound earlier-day topic/translation evidence and a same-day exact live runtime gate with deferred-0017 proof.",
+      "Fresh-0016 predecessor requires source-bound earlier-day or paid-expedited same-day topic/translation evidence for the recorded timing mode and a same-day exact live runtime gate with deferred-0017 proof.",
     );
   }
   return historicalFresh0016PredecessorPrerequisitesSchema.parse({
     kind: HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_KIND,
     schemaVersion: 3,
-    timing: "completed-on-earlier-utc-day-before-predecessor",
+    timing: prerequisiteTiming,
     predecessorUtcDay,
     sourceFingerprint: input.sourceFingerprint,
     workerRelease,

@@ -584,6 +584,7 @@ async function runStart(input: StartContext) {
       sourceFingerprint: release.source,
       ...release.workerRelease,
       predecessorStartAt: startAt,
+      timingMode: input.timingMode,
       liveRuntimeState,
     });
   let runId = input.runId;
@@ -913,6 +914,7 @@ async function runFinish(context: CoordinatorContext) {
       predecessorStartAt: new Date(
         claimStage.value.createdAt,
       ),
+      timingMode: context.timingMode,
       liveRuntimeState: claim.predecessorPrerequisites.liveRuntimeState,
     });
   if (

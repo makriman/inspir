@@ -27,6 +27,7 @@ import {
   historicalFresh0016LiveTopologyEvidenceSchema,
 } from "./historical-data-fresh-0016-cutover-policy";
 import {
+  HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING,
   historicalFresh0016PredecessorPrerequisitesSchema,
 } from "./historical-data-fresh-0016-prerequisites";
 import {
@@ -428,7 +429,22 @@ export const historicalFresh0016ClaimPayloadSchema = z.object({
   hmacKeyId: sha256Schema,
   predecessorPrerequisites:
     historicalFresh0016PredecessorPrerequisitesSchema,
-}).strict();
+}).strict().superRefine((value, context) => {
+  const releaseTimingMode =
+    value.releaseTimingMode ??
+    HISTORICAL_FRESH_0016_WORKERS_FREE_UTC_RESET_TIMING_MODE;
+  if (
+    value.predecessorPrerequisites.timing ===
+      HISTORICAL_FRESH_0016_PREDECESSOR_PREREQUISITES_PAID_EXPEDITED_SAME_DAY_TIMING &&
+    releaseTimingMode !== HISTORICAL_FRESH_0016_PAID_EXPEDITED_TIMING_MODE
+  ) {
+    context.addIssue({
+      code: "custom",
+      message:
+        "Fresh-0016 same-day predecessor prerequisites require paid-expedited release timing.",
+    });
+  }
+});
 
 export const historicalFresh0016PredecessorAuthorizationPayloadSchema = z.object({
   kind: z.literal(HISTORICAL_FRESH_0016_PREDECESSOR_AUTHORIZATION_KIND),
