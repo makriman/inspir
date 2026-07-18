@@ -146,9 +146,25 @@ const maximumCleanupEvidenceAgeMs = 30 * 60 * 1_000;
 const patchStatementTargetBytes = 90_000;
 const verificationMaximumRowsPerQuery = 192;
 const verificationTargetPayloadBytes = 4 * 1024 * 1024;
+const maximumCleanupReadAttemptEvidenceBytes = 4 * 1024 * 1024;
 // app_translations owns the table row, composite-primary-key index, and
 // language index. Reserve all three writes for every logical mutation.
 const stagedTranslationBilledWritesPerLogicalRow = 3;
+
+export function compactReleaseSourceFingerprint(
+  sourceFingerprint: Readonly<{ sha256: string; fileCount: number }>,
+) {
+  if (
+    !isSha256(sourceFingerprint.sha256) ||
+    !isPositiveSafeInteger(sourceFingerprint.fileCount)
+  ) {
+    throw new Error("Release source fingerprint identity is malformed.");
+  }
+  return Object.freeze({
+    sha256: sourceFingerprint.sha256,
+    fileCount: sourceFingerprint.fileCount,
+  });
+}
 
 export function isStagedTranslationD1CleanupRunId(
   value: unknown,
@@ -499,10 +515,6 @@ function parseStagedTranslationCleanupReadAttempt(
     !isSha256(value.activationEvidenceSha256) ||
     !isSha256(value.planSha256) ||
     !isSha256(value.localAuthorizationSha256) ||
-    !isRecord(value.sourceFingerprint) ||
-    !hasExactKeys(value.sourceFingerprint, ["fileCount", "sha256"]) ||
-    !isSha256(value.sourceFingerprint.sha256) ||
-    !isPositiveSafeInteger(value.sourceFingerprint.fileCount) ||
     value.d1ReadMayHaveStarted !== true ||
     value.automaticRetryAllowed !== false
   ) {
@@ -524,10 +536,10 @@ function parseStagedTranslationCleanupReadAttempt(
     activationEvidenceSha256: value.activationEvidenceSha256,
     planSha256: value.planSha256,
     localAuthorizationSha256: value.localAuthorizationSha256,
-    sourceFingerprint: {
-      sha256: value.sourceFingerprint.sha256,
-      fileCount: value.sourceFingerprint.fileCount,
-    },
+    sourceFingerprint: parseSourceFingerprintIdentity(
+      value.sourceFingerprint,
+      "candidate-active staged cleanup read-attempt source fingerprint",
+    ),
     d1ReadMayHaveStarted: true,
     automaticRetryAllowed: false,
   };
@@ -584,13 +596,13 @@ function writeStagedTranslationCleanupReadAttempt(input: {
     activationEvidenceSha256: input.activationEvidenceSha256,
     planSha256: input.planSha256,
     localAuthorizationSha256: input.localAuthorizationSha256,
-    sourceFingerprint: Object.freeze({ ...input.sourceFingerprint }),
+    sourceFingerprint: compactReleaseSourceFingerprint(input.sourceFingerprint),
     d1ReadMayHaveStarted: true,
     automaticRetryAllowed: false,
   });
   writePrivateJsonDurably(file, attempt, { replace: false });
   const stored = parseStagedTranslationCleanupReadAttempt(
-    readPrivateJsonNoFollow(file, maximumPlanEvidenceBytes),
+    readPrivateJsonNoFollow(file, maximumCleanupReadAttemptEvidenceBytes),
   );
   if (
     stableStringify(stored) !== stableStringify(attempt) ||
@@ -974,10 +986,6 @@ function parseStagedPlanReadyAttempt(
     !isWorkerVersion(value.candidateVersionId) ||
     !isSha256(value.uploadEvidenceSha256) ||
     !isSha256(value.planSha256) ||
-    !isRecord(value.sourceFingerprint) ||
-    !hasExactKeys(value.sourceFingerprint, ["fileCount", "sha256"]) ||
-    !isSha256(value.sourceFingerprint.sha256) ||
-    !isPositiveSafeInteger(value.sourceFingerprint.fileCount) ||
     value.d1ReadMayHaveStarted !== true ||
     value.automaticRereadAllowed !== false
   ) {
@@ -995,10 +1003,10 @@ function parseStagedPlanReadyAttempt(
     candidateVersionId: value.candidateVersionId,
     uploadEvidenceSha256: value.uploadEvidenceSha256,
     planSha256: value.planSha256,
-    sourceFingerprint: {
-      sha256: value.sourceFingerprint.sha256,
-      fileCount: value.sourceFingerprint.fileCount,
-    },
+    sourceFingerprint: parseSourceFingerprintIdentity(
+      value.sourceFingerprint,
+      "staged translation plan-ready attempt source fingerprint",
+    ),
     d1ReadMayHaveStarted: true,
     automaticRereadAllowed: false,
   };
@@ -1017,6 +1025,9 @@ function readOrCreateStagedPlanReadyPrepared(input: {
   runner?: WranglerRunner;
   now?: Date;
 }) {
+  const sourceFingerprint = compactReleaseSourceFingerprint(
+    input.sourceFingerprint,
+  );
   const file = path.join(
     path.resolve(input.backupDir),
     "cloudflare",
@@ -1043,7 +1054,7 @@ function readOrCreateStagedPlanReadyPrepared(input: {
       prepared.planSha256 !== stagedTranslationD1PlanSha256(input.plan) ||
       prepared.attemptEvidenceSha256 !== sha256Canonical(attempt) ||
       stableStringify(prepared.sourceFingerprint) !==
-        stableStringify(input.sourceFingerprint) ||
+        stableStringify(sourceFingerprint) ||
       attempt.operationId !== input.operationId ||
       attempt.utcDay !== input.utcDay ||
       attempt.ledgerPath !== input.ledgerPath ||
@@ -1051,7 +1062,7 @@ function readOrCreateStagedPlanReadyPrepared(input: {
       attempt.uploadEvidenceSha256 !== input.uploadEvidenceSha256 ||
       attempt.planSha256 !== stagedTranslationD1PlanSha256(input.plan) ||
       stableStringify(attempt.sourceFingerprint) !==
-        stableStringify(input.sourceFingerprint) ||
+        stableStringify(sourceFingerprint) ||
       Date.parse(attempt.createdAt) > Date.parse(prepared.createdAt) ||
       prepared.report.planSha256 !== stagedTranslationD1PlanSha256(input.plan) ||
       prepared.report.expectedRows !== input.plan.counts.exactRows
@@ -1092,7 +1103,7 @@ function readOrCreateStagedPlanReadyPrepared(input: {
       candidateVersionId: input.candidateVersionId,
       uploadEvidenceSha256: input.uploadEvidenceSha256,
       planSha256: stagedTranslationD1PlanSha256(input.plan),
-      sourceFingerprint: input.sourceFingerprint,
+      sourceFingerprint,
       d1ReadMayHaveStarted: true,
       automaticRereadAllowed: false,
     },
@@ -1109,7 +1120,7 @@ function readOrCreateStagedPlanReadyPrepared(input: {
     storedAttempt.uploadEvidenceSha256 !== input.uploadEvidenceSha256 ||
     storedAttempt.planSha256 !== stagedTranslationD1PlanSha256(input.plan) ||
     stableStringify(storedAttempt.sourceFingerprint) !==
-      stableStringify(input.sourceFingerprint) ||
+      stableStringify(sourceFingerprint) ||
     storedAttempt.d1ReadMayHaveStarted !== true ||
     storedAttempt.automaticRereadAllowed !== false
   ) {
@@ -1130,7 +1141,7 @@ function readOrCreateStagedPlanReadyPrepared(input: {
     candidateVersionId: input.candidateVersionId,
     uploadEvidenceSha256: input.uploadEvidenceSha256,
     planSha256: stagedTranslationD1PlanSha256(input.plan),
-    sourceFingerprint: Object.freeze({ ...input.sourceFingerprint }),
+    sourceFingerprint,
     attemptEvidenceSha256: sha256Canonical(storedAttempt),
     report,
   });
@@ -1170,13 +1181,14 @@ function parseStagedPlanReadyPrepared(
     !isSha256(value.uploadEvidenceSha256) ||
     !isSha256(value.planSha256) ||
     !isSha256(value.attemptEvidenceSha256) ||
-    !isRecord(value.sourceFingerprint) ||
-    !hasExactKeys(value.sourceFingerprint, ["fileCount", "sha256"]) ||
-    !isSha256(value.sourceFingerprint.sha256) ||
-    !isPositiveSafeInteger(value.sourceFingerprint.fileCount)
+    !isRecord(value.sourceFingerprint)
   ) {
     throw new Error("Staged translation plan-ready prepared evidence is malformed.");
   }
+  const sourceFingerprint = parseSourceFingerprintIdentity(
+    value.sourceFingerprint,
+    "staged translation plan-ready prepared source fingerprint",
+  );
   const report = parseStagedTranslationD1VerificationReport(value.report);
   if (
     report.createdAt !== value.createdAt ||
@@ -1194,10 +1206,7 @@ function parseStagedPlanReadyPrepared(
     candidateVersionId: value.candidateVersionId,
     uploadEvidenceSha256: value.uploadEvidenceSha256,
     planSha256: value.planSha256,
-    sourceFingerprint: {
-      sha256: value.sourceFingerprint.sha256,
-      fileCount: value.sourceFingerprint.fileCount,
-    },
+    sourceFingerprint,
     attemptEvidenceSha256: value.attemptEvidenceSha256,
     report,
   };
@@ -3554,6 +3563,20 @@ function isWorkerVersion(value: unknown): value is string {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function parseSourceFingerprintIdentity(value: unknown, label: string) {
+  if (
+    !isRecord(value) ||
+    !isSha256(value.sha256) ||
+    !isPositiveSafeInteger(value.fileCount)
+  ) {
+    throw new Error(`${label} is malformed.`);
+  }
+  return compactReleaseSourceFingerprint({
+    sha256: value.sha256,
+    fileCount: value.fileCount,
+  });
 }
 
 function hasExactKeys(

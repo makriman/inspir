@@ -9,6 +9,7 @@ import {
   STAGED_TRANSLATION_D1_RELEASE_MODE,
   buildExactStagedD1StorageAdmission,
   buildStagedTranslationD1Sql,
+  compactReleaseSourceFingerprint,
   readAndValidateStagedTranslationD1LocalAuthorization,
   validateStagedTranslationD1ResumeEvidence,
   verifyRemoteStagedTranslationD1,
@@ -360,6 +361,24 @@ test("current fallback storage admission is separately pinned to exactly 668 uni
     }),
     /duplicate translation rows/,
   );
+});
+
+test("release source fingerprint identity omits bulky file inventories from staged evidence", () => {
+  const sourceFingerprint = {
+    sha256: hash("release-source"),
+    fileCount: 2,
+    files: [
+      { path: "app/page.tsx", sha256: hash("page") },
+      { path: "scripts/cloudflare/reconcile-staged-translation-fallback.ts", sha256: hash("tool") },
+    ],
+  } as const;
+  const compact = compactReleaseSourceFingerprint(sourceFingerprint);
+  assert.deepEqual(compact, {
+    sha256: sourceFingerprint.sha256,
+    fileCount: sourceFingerprint.fileCount,
+  });
+  assert.equal(Object.hasOwn(compact, "files"), false);
+  assert.ok(JSON.stringify(compact).length < 160);
 });
 
 function fixturePlan(): StagedTranslationD1Plan {
