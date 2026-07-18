@@ -68,6 +68,7 @@ import {
 import {
   assertD1FreeDailyBudget,
   loadAccountD1DailyUsage,
+  utcUsageWindowMinutes,
   type D1DailyUsage,
 } from "./d1-free-budget";
 import {
@@ -150,6 +151,17 @@ const maximumCleanupReadAttemptEvidenceBytes = 4 * 1024 * 1024;
 // app_translations owns the table row, composite-primary-key index, and
 // language index. Reserve all three writes for every logical mutation.
 const stagedTranslationBilledWritesPerLogicalRow = 3;
+
+function paidExpeditedD1ObservedUsageFloor(now: Date): D1DailyUsage {
+  return {
+    databaseCount: 1,
+    queryGroups: 0,
+    rowsRead: 0,
+    rowsWritten: 0,
+    executions: 0,
+    windowMinutes: utcUsageWindowMinutes(now),
+  };
+}
 
 export function compactReleaseSourceFingerprint(
   sourceFingerprint: Readonly<{ sha256: string; fileCount: number }>,
@@ -1575,7 +1587,7 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
     sourceFingerprint: artifacts.sourceFingerprint,
   });
   const usage =
-    input.dailyUsage ?? loadAccountD1DailyUsage(startedAt, runWrangler, clock);
+    input.dailyUsage ?? paidExpeditedD1ObservedUsageFloor(startedAt);
   let budget: D1ReleaseBudgetReservationResult = reserveD1ReleaseBudget({
     backupDir,
     operationId,

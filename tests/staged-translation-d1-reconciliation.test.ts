@@ -307,6 +307,8 @@ test("candidate-active cleanup is ordered after activation and preserves source 
     /admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE/,
   );
   assert.doesNotMatch(cleanup, /assertD1FreeDailyBudget\(usage/);
+  assert.doesNotMatch(cleanup, /loadAccountD1DailyUsage\(startedAt/);
+  assert.match(cleanup, /paidExpeditedD1ObservedUsageFloor\(startedAt\)/);
   assert.ok(
     cleanup.indexOf("reserveD1ReleaseBudget({") <
       cleanup.indexOf("acquireProductionValidationExclusion({"),
