@@ -2,6 +2,9 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "./migration-config";
+import {
+  readReleaseToolingForwardCorrection,
+} from "./release-tooling-forward-correction";
 
 export type SourceFileFingerprint = {
   file: string;
@@ -16,6 +19,35 @@ export type SourceFingerprint = {
 };
 
 export function buildRepoSourceFingerprint(cwd = process.cwd()): SourceFingerprint {
+  const correction = readReleaseToolingForwardCorrection(cwd);
+  if (correction) {
+    const releaseSource = buildGitCommitSourceFingerprint(
+      correction.releaseGit.head,
+      cwd,
+    );
+    if (
+      releaseSource.sha256 !== correction.releaseSourceFingerprint.sha256 ||
+      releaseSource.fileCount !== correction.releaseSourceFingerprint.fileCount
+    ) {
+      throw new Error(
+        "Release tooling forward correction release source fingerprint no longer matches its recorded Git object.",
+      );
+    }
+    const toolingSource = buildRepoSourceFingerprintRaw(cwd);
+    if (
+      toolingSource.sha256 !== correction.toolingSourceFingerprint.sha256 ||
+      toolingSource.fileCount !== correction.toolingSourceFingerprint.fileCount
+    ) {
+      throw new Error(
+        "Release tooling forward correction tooling source fingerprint no longer matches the clean working tree.",
+      );
+    }
+    return releaseSource;
+  }
+  return buildRepoSourceFingerprintRaw(cwd);
+}
+
+export function buildRepoSourceFingerprintRaw(cwd = process.cwd()): SourceFingerprint {
   const files = listRepoSourceFiles(cwd).map((file) => fingerprintFile(cwd, path.join(cwd, file)));
   const hash = createHash();
   for (const file of files) hash.update(`${file.file}\0${file.bytes}\0${file.sha256}\n`);

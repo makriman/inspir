@@ -1,5 +1,8 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
+import {
+  readReleaseToolingForwardCorrection,
+} from "./release-tooling-forward-correction";
 
 export type GitReleaseIdentity = {
   head: string;
@@ -22,6 +25,10 @@ export function assertGitReleaseIdentity(options: {
   runner?: GitCommandRunner;
 } = {}): GitReleaseIdentity {
   const cwd = path.resolve(options.cwd ?? process.cwd());
+  if (!options.runner) {
+    const correction = readReleaseToolingForwardCorrection(cwd);
+    if (correction) return { ...correction.releaseGit };
+  }
   const runner = options.runner ?? runGitCommand;
   const workTree = runRequiredGit(runner, cwd, ["rev-parse", "--is-inside-work-tree"]);
   if (workTree.trim() !== "true") {

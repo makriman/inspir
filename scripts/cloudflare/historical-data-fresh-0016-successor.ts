@@ -8,8 +8,10 @@ import {
   type D1DailyUsage,
 } from "./d1-free-budget";
 import {
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
+  readD1ReleaseBudgetLedger,
   reserveD1ReleaseBudget,
   type D1ReleaseBudgetReservationResult,
   type D1ReleaseSourceIdentity,
@@ -1864,20 +1866,38 @@ function validateLedgerUsage(
   usage: D1DailyUsage,
   label: string,
 ) {
+  const minimumRowsRead = safeAdd(
+    usage.rowsRead,
+    ledger.totals.rowsRead,
+    `${label} rows read`,
+  );
+  const minimumRowsWritten = safeAdd(
+    usage.rowsWritten,
+    ledger.totals.rowsWritten,
+    `${label} rows written`,
+  );
   if (
-    ledger.accountedUsage.rowsRead <
-      safeAdd(usage.rowsRead, ledger.totals.rowsRead, `${label} rows read`) ||
-    ledger.accountedUsage.rowsWritten <
-      safeAdd(
-        usage.rowsWritten,
-        ledger.totals.rowsWritten,
-        `${label} rows written`,
-      ) ||
-    ledger.accountedUsage.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
-    ledger.accountedUsage.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT
+    ledger.accountedUsage.rowsRead < minimumRowsRead ||
+    ledger.accountedUsage.rowsWritten < minimumRowsWritten
   ) {
     throw new Error(
-      `Fresh 0016 successor ${label} ledger does not cover exact usage within safe daily limits.`,
+      `Fresh 0016 successor ${label} ledger does not cover exact usage.`,
+    );
+  }
+  if (
+    ledger.accountedUsage.rowsRead <= D1_FREE_SAFE_ROWS_READ_LIMIT &&
+    ledger.accountedUsage.rowsWritten <= D1_FREE_SAFE_ROWS_WRITTEN_LIMIT
+  ) {
+    return;
+  }
+
+  const liveLedger = readD1ReleaseBudgetLedger(ledger.ledgerPath);
+  if (
+    liveLedger.utcDay !== ledger.utcDay ||
+    liveLedger.admissionMode !== D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE
+  ) {
+    throw new Error(
+      `Fresh 0016 successor ${label} ledger exceeds Workers Free safety limits without exact paid-expedited admission evidence.`,
     );
   }
 }

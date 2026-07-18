@@ -5,9 +5,11 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
   D1_RELEASE_BUDGET_LEDGER_KIND,
   reserveD1ReleaseBudget,
   readD1ReleaseBudgetLedger,
+  type D1ReleaseBudgetAdmissionMode,
   type D1ReleaseBudgetReservationResult,
 } from "../scripts/cloudflare/d1-release-budget-ledger";
 import type { D1DailyUsage } from "../scripts/cloudflare/d1-free-budget";
@@ -369,6 +371,28 @@ test("fresh-0016 successor captures, exact-refines, and binds all protected data
     );
     assert.equal(reservation?.phase, "exact");
     assert.equal(reservation?.rowsRead, report.rowsRead);
+  } finally {
+    fixture.cleanup();
+  }
+});
+
+test("paid-expedited successor capture accepts an exact ledger above Workers Free limits", () => {
+  const fixture = createSuccessorFixture({
+    admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    usage: {
+      ...usage,
+      rowsRead: 4_000_001,
+    },
+  });
+  try {
+    const report = successfulCapture(fixture);
+    assert.ok(report.ledger.maximum.accountedUsage.rowsRead > 4_000_000);
+    assert.ok(report.ledger.exact.accountedUsage.rowsRead > 4_000_000);
+    const ledger = readD1ReleaseBudgetLedger(report.ledger.exact.ledgerPath);
+    assert.equal(
+      ledger.admissionMode,
+      D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    );
   } finally {
     fixture.cleanup();
   }
@@ -1229,7 +1253,10 @@ function successfulCapture(fixture: SuccessorFixture) {
 
 type SuccessorFixture = ReturnType<typeof createSuccessorFixture>;
 
-function createSuccessorFixture() {
+function createSuccessorFixture(options: {
+  usage?: D1DailyUsage;
+  admissionMode?: D1ReleaseBudgetAdmissionMode;
+} = {}) {
   const rawBackupDirectory = fs.mkdtempSync(
     path.join(os.tmpdir(), "inspir-fresh-0016-successor-"),
   );
@@ -1295,6 +1322,7 @@ function createSuccessorFixture() {
     runtimeVerificationReportSha256,
     productionExclusionOwnerSha256,
   });
+  const fixtureUsage = options.usage ?? usage;
   reserveD1ReleaseBudget({
     backupDir: backupDirectory,
     operationId: accountingParentOperationId,
@@ -1304,7 +1332,8 @@ function createSuccessorFixture() {
     phase: "maximum",
     rowsRead: 3_900_000,
     rowsWritten: 70_192,
-    observedUsage: usage,
+    observedUsage: fixtureUsage,
+    admissionMode: options.admissionMode,
     now: new Date("2026-07-15T00:08:00.000Z"),
     expectedUtcDay: "2026-07-15",
   });
@@ -1318,7 +1347,7 @@ function createSuccessorFixture() {
     phase: "maximum",
     rowsRead: HISTORICAL_DATA_BILLABLE_READ_RESERVATION_LIMIT,
     rowsWritten: 0,
-    observedUsage: usage,
+    observedUsage: fixtureUsage,
     now: new Date("2026-07-15T00:09:00.000Z"),
     expectedUtcDay: "2026-07-15",
   });
@@ -1336,7 +1365,7 @@ function createSuccessorFixture() {
     runtimeVerification,
     runtimeVerificationStageSha256,
     productionExclusionOwner,
-    usage,
+    usage: fixtureUsage,
     maximumReservation,
     accountingParentOperationId,
     persistPreparedCapture: () => undefined,
