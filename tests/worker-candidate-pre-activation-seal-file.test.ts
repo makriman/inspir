@@ -19,7 +19,7 @@ import {
 const BASELINE_VERSION_ID = "11111111-1111-1111-1111-111111111111";
 const CANDIDATE_VERSION_ID = "22222222-2222-2222-2222-222222222222";
 const CREATED_AT = "2026-07-15T10:10:00.000Z";
-const VALID_UNTIL = "2026-07-15T10:30:00.000Z";
+const VALID_UNTIL = "2026-07-15T10:55:00.000Z";
 
 const GIT = Object.freeze({
   head: "a".repeat(40),
@@ -103,7 +103,7 @@ test("seal schema binds authorization hashes and exact chronology", () => {
         buildSeal(fixture.root, {
           preparation: {
             ...valid.preparation,
-            validUntil: "2026-07-15T10:29:59.999Z",
+            validUntil: "2026-07-15T10:54:59.999Z",
           },
         }),
       /chronology, candidate identity, or preparation validity/i,
@@ -123,7 +123,7 @@ test("seal schema binds authorization hashes and exact chronology", () => {
         buildSeal(fixture.root, {
           versionOverrideSmoke: {
             ...valid.versionOverrideSmoke,
-            validUntil: "2026-07-15T10:29:59.999Z",
+            validUntil: "2026-07-15T10:54:59.999Z",
           },
         }),
       /chronology, candidate identity, or preparation validity/i,
@@ -448,7 +448,7 @@ function buildSeal(
         sha256: "a".repeat(64),
       },
       createdAt: "2026-07-15T10:09:30.000Z",
-      validUntil: "2026-07-15T10:39:30.000Z",
+      validUntil: "2026-07-15T11:09:30.000Z",
       targetCandidateVersionId: CANDIDATE_VERSION_ID,
       serviceBaselineVersionId: BASELINE_VERSION_ID,
       uploadEvidenceSha256: release.uploadEvidenceSha256,

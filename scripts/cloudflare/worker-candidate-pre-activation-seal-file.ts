@@ -9,7 +9,7 @@ export const WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_KIND =
 const WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_REPORT =
   "worker-candidate-pre-activation-seal.json" as const;
 export const WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_MAX_AGE_MS =
-  20 * 60 * 1_000;
+  45 * 60 * 1_000;
 
 const MAXIMUM_SEAL_BYTES = 512 * 1_024;
 const sha256Schema = z.string().regex(/^[a-f0-9]{64}$/);

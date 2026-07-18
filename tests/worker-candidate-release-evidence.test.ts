@@ -41,6 +41,7 @@ import {
 } from "../scripts/cloudflare/worker-candidate-release-evidence";
 import {
   WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_KIND,
+  WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_MAX_AGE_MS,
   parseWorkerCandidatePreActivationSeal,
   workerCandidatePreActivationCanonicalValueSha256,
   workerCandidatePreActivationSealPath,
@@ -1119,7 +1120,7 @@ function writeTestPreActivationSeal(
   const preparation = {
     sha256: "6".repeat(64),
     createdAt: "2026-07-15T10:02:00.000Z",
-    validUntil: "2026-07-15T10:30:00.000Z",
+    validUntil: "2026-07-15T22:00:00.000Z",
   };
   const preflight = {
     workerTopologyPhase: "candidate-staged" as const,
@@ -1139,7 +1140,7 @@ function writeTestPreActivationSeal(
       sha256: "0".repeat(64),
     },
     createdAt: "2026-07-15T10:02:21.000Z",
-    validUntil: "2026-07-15T10:32:21.000Z",
+    validUntil: "2026-07-15T11:02:21.000Z",
     targetCandidateVersionId: upload.value.targetCandidateVersionId,
     serviceBaselineVersionId: upload.value.serviceBaselineVersionId,
     uploadEvidenceSha256: upload.sha256,
@@ -1166,8 +1167,8 @@ function writeTestPreActivationSeal(
     schemaVersion: 1,
     phase: "candidate-staged",
     createdAt: "2026-07-15T10:02:30.000Z",
-    validUntil: "2026-07-15T10:22:30.000Z",
-    maximumAgeMs: 20 * 60 * 1_000,
+    validUntil: "2026-07-15T10:47:30.000Z",
+    maximumAgeMs: WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_MAX_AGE_MS,
     backupDirectory: path.resolve(backupDirectory),
     ...authorizationMaterial,
     authorizationMaterialSha256:
