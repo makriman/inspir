@@ -1861,6 +1861,7 @@ export function validateHistoricalDataFresh0016FinalVerificationReport(
     baseline: HistoricalDataPreservationBaselineReference;
     day2Budget: HistoricalFresh0016FinalVerificationDay2Binding;
     now: Date;
+    maximumReportAgeMs?: number | null;
   }>,
 ): HistoricalDataVerificationReport {
   return validateHistoricalDataFresh0016FinalVerificationReportInternal({
@@ -1880,6 +1881,7 @@ export function readAndValidateHistoricalDataFresh0016FinalVerificationProof(
     baseline: HistoricalDataPreservationBaselineReference;
     day2Budget: HistoricalFresh0016FinalVerificationEnvelopeBinding;
     now: Date;
+    maximumReportAgeMs?: number | null;
   }>,
 ) {
   const backupDir = path.resolve(input.backupDir);
@@ -1931,6 +1933,7 @@ export function readAndValidateHistoricalDataFresh0016FinalVerificationProof(
     baseline: input.baseline,
     day2Budget,
     now: input.now,
+    maximumReportAgeMs: input.maximumReportAgeMs,
   });
   if (Date.parse(authorization.createdAt) > Date.parse(report.createdAt)) {
     throw new Error(
@@ -1953,6 +1956,7 @@ function validateHistoricalDataFresh0016FinalVerificationReportInternal(
     baseline: HistoricalDataPreservationBaselineReference;
     day2Budget: HistoricalFresh0016FinalVerificationDay2Binding;
     now: Date;
+    maximumReportAgeMs?: number | null;
     requireSuccessfulProof: boolean;
   }>,
 ) {
@@ -2002,7 +2006,19 @@ function validateHistoricalDataFresh0016FinalVerificationReportInternal(
       compactReportSource,
     );
     const createdAtMs = Date.parse(report.createdAt);
+    const baselineCreatedAtMs = Date.parse(baselineCreatedAt);
     const nowMs = now.getTime();
+    const maximumReportAgeMs =
+      input.maximumReportAgeMs === undefined
+        ? HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS
+        : input.maximumReportAgeMs;
+    if (
+      maximumReportAgeMs !== null &&
+      (!Number.isSafeInteger(maximumReportAgeMs) ||
+        maximumReportAgeMs < 0)
+    ) {
+      throw new Error("Invalid final-proof maximum age.");
+    }
     const exactProblems = historicalVerificationProblems({
       baseline: input.baseline,
       hmacKeyId: report.hmacKeyId,
@@ -2015,9 +2031,11 @@ function validateHistoricalDataFresh0016FinalVerificationReportInternal(
       report.utcDay !== day2UtcDay ||
       report.createdAt.slice(0, 10) !== day2UtcDay ||
       createdAtMs > nowMs ||
-      nowMs - createdAtMs >
-        HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS ||
+      (maximumReportAgeMs !== null &&
+        nowMs - createdAtMs > maximumReportAgeMs) ||
       baselineCreatedAt > report.createdAt ||
+      createdAtMs - baselineCreatedAtMs >
+        HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS ||
       report.baselineCreatedAt !== baselineCreatedAt ||
       stableStringify(report.baselineEvidence ?? null) !==
         stableStringify(baselineEvidence) ||

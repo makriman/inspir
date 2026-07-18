@@ -314,6 +314,7 @@ function readHistoricalFresh0016CanonicalFinalPreservationProof(
     baseline,
     day2Budget: envelope,
     now: input.now,
+    maximumReportAgeMs: null,
   });
   return Object.freeze({
     createdAt: proof.report.createdAt,
