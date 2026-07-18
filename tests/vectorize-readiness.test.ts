@@ -390,7 +390,7 @@ test("post-activation consumers reject pre-activation Vectorize evidence until r
         backupDir,
         currentRelease: active,
         requiredPhase: "candidate-active",
-        now: new Date("2026-07-13T10:40:00.001Z"),
+        now: new Date("2026-07-13T11:40:00.001Z"),
       }),
       /stale/,
     );

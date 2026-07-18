@@ -19,7 +19,7 @@ import {
 
 const VECTORIZE_READINESS_REPORT = "cloudflare/vectorize-readiness-report.json";
 const VECTORIZE_READINESS_EVIDENCE_KIND = "vectorize-readiness-v2" as const;
-const VECTORIZE_READINESS_MAX_AGE_MS = 30 * 60 * 1_000;
+const VECTORIZE_READINESS_MAX_AGE_MS = 90 * 60 * 1_000;
 const VECTORIZE_READINESS_MAX_JSON_BYTES = 64 * 1_024;
 const VECTORIZE_READINESS_DIMENSIONS = 512;
 const VECTORIZE_READINESS_METRIC = "cosine" as const;
