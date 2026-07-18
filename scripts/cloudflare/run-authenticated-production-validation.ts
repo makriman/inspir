@@ -1953,10 +1953,21 @@ function resolveLockedOperationOutcome<T>(
   return outcome.value;
 }
 
+function productionValidationPnpmArgs(args: readonly string[]) {
+  if (
+    args[0]?.startsWith("cf:") &&
+    !args.includes("--backup")
+  ) {
+    return [args[0], "--backup", resolveBackupDir(), ...args.slice(1)];
+  }
+  return [...args];
+}
+
 function runPnpm(args: string[], extraEnv: Record<string, string>) {
   return new Promise<void>((resolve, reject) => {
+    const commandArgs = productionValidationPnpmArgs(args);
     const boundedCommand = boundedReleaseChildCommand(
-      { command: "pnpm", args },
+      { command: "pnpm", args: commandArgs },
       process.cwd(),
     );
     const child = spawn(boundedCommand.command, boundedCommand.args, {
@@ -1996,20 +2007,21 @@ function runPnpm(args: string[], extraEnv: Record<string, string>) {
       if (activeValidationChild === child) activeValidationChild = null;
       if (spawnError) reject(spawnError);
       else if (timeoutExpired) {
-        reject(new Error(`Production validation command exceeded its protected runtime: pnpm ${args.join(" ")}`));
+        reject(new Error(`Production validation command exceeded its protected runtime: pnpm ${commandArgs.join(" ")}`));
       } else if (outputOverflow) {
-        reject(new Error(`Production validation command exceeded its bounded output: pnpm ${args.join(" ")}`));
+        reject(new Error(`Production validation command exceeded its bounded output: pnpm ${commandArgs.join(" ")}`));
       } else if (status !== 0) {
-        reject(new Error(`Production validation command failed: pnpm ${args.join(" ")}`));
+        reject(new Error(`Production validation command failed: pnpm ${commandArgs.join(" ")}`));
       } else resolve();
     });
   });
 }
 
 function runLockedPnpm(args: string[], extraEnv: Record<string, string>) {
+  const commandArgs = productionValidationPnpmArgs(args);
   return runWithActiveProductionValidationLockAsync(
-    `Production validation command pnpm ${args.join(" ")}`,
-    () => runPnpm(args, extraEnv),
+    `Production validation command pnpm ${commandArgs.join(" ")}`,
+    () => runPnpm(commandArgs, extraEnv),
   );
 }
 

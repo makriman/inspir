@@ -421,6 +421,15 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /releaseActiveProductionValidationLock/);
   assert.match(authenticatedProductionWrapper, /runLockedPnpm/);
   assert.match(authenticatedProductionWrapper, /runWithActiveProductionValidationLockAsync/);
+  assert.match(authenticatedProductionWrapper, /function productionValidationPnpmArgs/);
+  assert.match(
+    authenticatedProductionWrapper,
+    /args\[0\]\?\.startsWith\("cf:"\)[\s\S]{0,180}"--backup"[\s\S]{0,180}resolveBackupDir\(\)/,
+  );
+  assert.match(
+    authenticatedProductionWrapper,
+    /runPnpm\(commandArgs, extraEnv\)/,
+  );
   assert.match(authenticatedProductionWrapper, /validationLockPreviousOwner/);
   assert.match(authenticatedProductionWrapper, /Recovery cannot safely steal a copied, still-live generation/);
   assert.doesNotMatch(authenticatedProductionWrapper, /claimActiveProductionValidationLockForRecoveryProcess/);
@@ -545,7 +554,7 @@ test("production verification covers the resource-outage contracts", () => {
   );
   assert.match(
     authenticatedProductionWrapper,
-    /function runLockedPnpm[\s\S]{0,260}runWithActiveProductionValidationLock/,
+    /function runLockedPnpm[\s\S]{0,420}runWithActiveProductionValidationLock/,
   );
   assert.match(
     authenticatedProductionWrapper,
