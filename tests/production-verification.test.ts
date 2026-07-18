@@ -473,6 +473,21 @@ test("production verification covers the resource-outage contracts", () => {
     authenticatedProductionWrapper,
     /if \(options\.recovery\)[\s\S]{0,180}assertProductionVectorizeReadinessReleaseBinding/,
   );
+  const normalReleaseEvidenceStart = authenticatedProductionWrapper.indexOf(
+    "assertFreshHistoricalFresh0016FinalPreservation(",
+  );
+  const normalReleaseEvidenceEnd = authenticatedProductionWrapper.indexOf(
+    "return bindCandidateReleaseEvidence",
+    normalReleaseEvidenceStart,
+  );
+  assert.ok(normalReleaseEvidenceStart >= 0 && normalReleaseEvidenceEnd > normalReleaseEvidenceStart);
+  assert.match(
+    authenticatedProductionWrapper.slice(
+      normalReleaseEvidenceStart,
+      normalReleaseEvidenceEnd,
+    ),
+    /readAndValidateCandidateActiveStagedTranslationD1Cleanup\(\{[\s\S]{0,140}recovery: true/,
+  );
   assert.ok(
     authenticatedProductionWrapper.match(/E2E_TEST_GUEST_QUOTA_SCOPE: mutationRunId/g)?.length === 2,
     "authenticated and secret-free outcomes must reuse one release-scoped guest fingerprint",

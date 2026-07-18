@@ -670,7 +670,7 @@ function assertCandidateReleaseEvidence(
   });
   // The final-preservation reader revalidates the canonical cutover and its
   // hash-bound translation prerequisite. Keep that immutable reconciliation
-  // release-bound here. A staged release additionally requires the fresh,
+  // release-bound here. A staged release additionally requires the completed
   // candidate-active exact-cleanup attestation; this reader revalidates its
   // immutable plan and byte proof without spending Day-2 D1 budget again.
   const translation = assertProductionTranslationReconciliationReleaseBinding({
@@ -682,6 +682,7 @@ function assertCandidateReleaseEvidence(
     const cleanup = readAndValidateCandidateActiveStagedTranslationD1Cleanup({
       backupDir,
       candidateVersionId,
+      recovery: true,
     });
     cleanupProof = stagedTranslationD1CleanupProofBinding({
       backupDir,
