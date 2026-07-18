@@ -129,6 +129,9 @@ async function main() {
       tail,
       capture.output,
       capture.diagnostics,
+      baseUrl,
+      expectedVersion,
+      tailSessionToken,
     );
 
     const { probeToken, requests, staticRequestKeys, workerRequestKeys, guestQuotaEvidence } = await runResourceSoak(
@@ -1487,13 +1490,22 @@ async function waitForTailReadiness(
   child: ChildProcess,
   output: () => string,
   diagnostics: () => string,
+  baseUrl: string,
+  expectedVersion: string,
+  tailSessionToken: string,
 ) {
   const startedAt = Date.now();
+  const token = createPublicProbeToken("tail-readiness");
+  const requestKeyPrefix = `/api/health?tail_readiness_probe=${token}-`;
+  let attempts = 0;
+  let lastStatus: number | null = null;
   while (Date.now() - startedAt < tailReadyTimeoutMs) {
     if (wranglerTailDiagnosticIsConnected(`${output()}\n${diagnostics()}`)) {
       return {
         source: "wrangler-connected-diagnostic" as const,
         durationMs: Date.now() - startedAt,
+        attempts,
+        lastStatus,
       };
     }
     if (hasChildExited(child)) {
@@ -1501,11 +1513,48 @@ async function waitForTailReadiness(
         `Wrangler tail exited before its connection diagnostic (${child.exitCode ?? child.signalCode}).`,
       );
     }
-    await delay(100);
+    const requestKey = `${requestKeyPrefix}${attempts}`;
+    attempts += 1;
+    try {
+      const response = await fetch(new URL(requestKey, baseUrl), {
+        headers: {
+          "cache-control": "no-cache",
+          "Cloudflare-Workers-Version-Overrides": `${workerName}="${expectedVersion}"`,
+          [tailSessionHeader]: tailSessionToken,
+        },
+        signal: AbortSignal.timeout(10_000),
+      });
+      lastStatus = response.status;
+      await response.arrayBuffer();
+    } catch {
+      lastStatus = null;
+    }
+    await delay(tailPollMs);
+    if (tailOutputHasRequestPrefix(output(), requestKeyPrefix)) {
+      return {
+        source: "tail-readiness-probe" as const,
+        durationMs: Date.now() - startedAt,
+        attempts,
+        lastStatus,
+      };
+    }
+    if (attempts % 10 === 0) {
+      console.error(
+        JSON.stringify({
+          stage: "tail_readiness_probe",
+          attempts,
+          stdoutBytes: Buffer.byteLength(output()),
+          stderrBytes: Buffer.byteLength(diagnostics()),
+          parsedRequestEvents: extractTailRequestKeys(output()).length,
+        }),
+      );
+    }
   }
+  const parsedRequestEvents = extractTailRequestKeys(output()).length;
   throw new Error(
     `Wrangler tail did not report its connected state within ${tailReadyTimeoutMs}ms ` +
-      `(${Buffer.byteLength(output())} stdout bytes, ${Buffer.byteLength(diagnostics())} stderr bytes).`,
+      `or capture a readiness probe after ${attempts} attempts ` +
+      `(${Buffer.byteLength(output())} stdout bytes, ${Buffer.byteLength(diagnostics())} stderr bytes, ${parsedRequestEvents} parsed request events).`,
   );
 }
 

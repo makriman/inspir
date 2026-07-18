@@ -296,6 +296,8 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(outcomes, /staticRequestKeySet/);
   assert.match(outcomes, /waitForTailReadiness/);
   assert.match(outcomes, /tailReadyTimeoutMs = 180_000/);
+  assert.match(outcomes, /tail-readiness-probe/);
+  assert.match(outcomes, /tail_readiness_probe/);
   assert.match(outcomes, /waitForCapturedRequestKeys/);
   assert.match(outcomes, /wrangler-connected-diagnostic/);
   assert.match(outcomes, /waiting for logs/);
