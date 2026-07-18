@@ -13,7 +13,19 @@ import {
 import {
   RELEASE_TOOLING_FORWARD_CORRECTION_ENV,
   RELEASE_TOOLING_FORWARD_CORRECTION_KIND,
+  isAllowedReleaseToolingFile,
 } from "../scripts/cloudflare/release-tooling-forward-correction";
+
+test("release tooling correction allowlist includes reviewed Vectorize topology verifier patches", () => {
+  assert.equal(
+    isAllowedReleaseToolingFile("scripts/cloudflare/verify-vectorize-readiness.ts"),
+    true,
+  );
+  assert.equal(
+    isAllowedReleaseToolingFile("tests/vectorize-readiness.test.ts"),
+    true,
+  );
+});
 
 test("release tooling forward correction returns recorded release Git and source only for a clean tooling-only diff", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "release-tooling-forward-"));
