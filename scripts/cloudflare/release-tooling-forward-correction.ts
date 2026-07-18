@@ -245,6 +245,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/source-fingerprint.ts" ||
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||
     file === "scripts/cloudflare/verify-historical-data-preservation.ts" ||
+    file === "scripts/cloudflare/verify-production-background-outcomes.ts" ||
     file === "scripts/cloudflare/verify-vectorize-readiness.ts" ||
     file === "scripts/cloudflare/vectorize-readiness-evidence.ts" ||
     file === "scripts/cloudflare/worker-candidate-pre-activation-seal.ts" ||
@@ -255,6 +256,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "tests/historical-data-fresh-0016-day2-budget.test.ts" ||
     file === "tests/historical-data-fresh-0016-final-preservation-evidence.test.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
+    file === "tests/production-background-outcomes.test.ts" ||
     file === "tests/production-verification.test.ts" ||
     file === "tests/staged-translation-d1-reconciliation.test.ts" ||
     file === "tests/worker-candidate-pre-activation-seal-file.test.ts" ||

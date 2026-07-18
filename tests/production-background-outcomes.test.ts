@@ -516,6 +516,7 @@ test("background production lifecycle is pinned, settled, and re-evaluated after
     path.resolve("scripts/cloudflare/verify-production-background-outcomes.ts"),
     "utf8",
   );
+  assert.match(verifier, /const queueCaptureTimeoutMs = 5 \* 60_000/);
   const tailArgs = verifier.slice(
     verifier.indexOf("const tail = spawn("),
     verifier.indexOf("const capture = captureTail", verifier.indexOf("const tail = spawn(")),

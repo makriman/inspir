@@ -38,7 +38,15 @@ test("release tooling correction allowlist includes reviewed Vectorize topology 
     true,
   );
   assert.equal(
+    isAllowedReleaseToolingFile("scripts/cloudflare/verify-production-background-outcomes.ts"),
+    true,
+  );
+  assert.equal(
     isAllowedReleaseToolingFile("tests/production-verification.test.ts"),
+    true,
+  );
+  assert.equal(
+    isAllowedReleaseToolingFile("tests/production-background-outcomes.test.ts"),
     true,
   );
 });
