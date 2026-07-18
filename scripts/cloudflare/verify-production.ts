@@ -674,9 +674,7 @@ async function request(
     redirect: "manual",
     signal: AbortSignal.timeout(30_000),
   });
-  const responseHeaders = Object.fromEntries(
-    [...response.headers.entries()].map(([key, value]) => [key.toLowerCase(), value]),
-  );
+  const responseHeaders = captureResponseHeaders(response.headers);
   const contentType = responseHeaders["content-type"] ?? "";
   const body =
     contentType.includes("image/") || response.status === 204 ? "" : await response.text().catch((error) => String(error));
@@ -688,6 +686,16 @@ async function request(
     body,
     bodyPreview: body.slice(0, 2000),
   };
+}
+
+export function captureResponseHeaders(headers: Headers): Record<string, string> {
+  const captured: Record<string, string> = {};
+  for (const [key, value] of headers.entries()) {
+    const lowerKey = key.toLowerCase();
+    const previous = captured[lowerKey];
+    captured[lowerKey] = previous ? `${previous}\n${value}` : value;
+  }
+  return captured;
 }
 
 function checkResponse(

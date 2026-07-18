@@ -21,6 +21,32 @@ test("production Playwright output redacts capabilities, account identity, and s
   assert.equal((output.match(/\[REDACTED\]/g) ?? []).length, 5);
 });
 
+test("production smoke header capture preserves duplicate set-cookie values", async () => {
+  const previousExpectedVersion = process.env.EXPECTED_WORKER_VERSION;
+  process.env.EXPECTED_WORKER_VERSION = "11111111-1111-4111-8111-111111111111";
+  try {
+    const { captureResponseHeaders } = await import("../scripts/cloudflare/verify-production");
+    const headers = new Headers();
+    headers.append(
+      "set-cookie",
+      "inspir_locale=Hindi; Path=/; Max-Age=31536000; SameSite=Lax; Secure",
+    );
+    headers.append(
+      "set-cookie",
+      "inspir_locale_prompt_dismissed=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure",
+    );
+    const captured = captureResponseHeaders(headers);
+    assert.match(captured["set-cookie"], /inspir_locale=Hindi/);
+    assert.match(captured["set-cookie"], /inspir_locale_prompt_dismissed=1/);
+  } finally {
+    if (previousExpectedVersion === undefined) {
+      delete process.env.EXPECTED_WORKER_VERSION;
+    } else {
+      process.env.EXPECTED_WORKER_VERSION = previousExpectedVersion;
+    }
+  }
+});
+
 test("authenticated validation binds every secret-derived version and recovery manifest to one release", async () => {
   const {
     assertProductionValidationVersionTransition,
