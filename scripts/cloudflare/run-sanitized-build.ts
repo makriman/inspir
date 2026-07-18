@@ -1665,13 +1665,14 @@ function runProductionDeployPreflight(
     "--import",
     "tsx",
     "scripts/cloudflare/deploy-preflight.ts",
-    "--backup",
-    backupDir,
     "--worker-topology-phase",
     workerTopologyPhase,
   ], {
     cwd: process.cwd(),
-    env: commandEnv(),
+    env: {
+      ...commandEnv(),
+      CLOUDFLARE_RELEASE_BACKUP_DIR: backupDir,
+    },
     stdio: "inherit",
   });
   return { ok: result.status === 0, status: result.status };

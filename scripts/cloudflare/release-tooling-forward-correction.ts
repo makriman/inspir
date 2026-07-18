@@ -200,6 +200,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/git-release-identity.ts" ||
     file === "scripts/cloudflare/historical-data-fresh-0016-successor.ts" ||
     file === "scripts/cloudflare/release-tooling-forward-correction.ts" ||
+    file === "scripts/cloudflare/run-sanitized-build.ts" ||
     file === "scripts/cloudflare/source-fingerprint.ts" ||
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
