@@ -319,6 +319,11 @@ test("candidate-active cleanup is ordered after activation and preserves source 
     cleanup.indexOf("deployPinnedWorkerVersion(\n      maintenanceVersionId") <
       cleanup.indexOf("runBoundedMutationWrangler("),
   );
+  assert.match(
+    cleanup,
+    /probeNativeWriteFreezeWithPropagationRetry\(\s*true,\s*maintenanceVersionId,\s*\)/,
+  );
+  assert.match(source, /nativeWriteFreezePropagationProbeAttempts = 18/);
   assert.ok(
     cleanup.indexOf("verifyRemoteStagedTranslationD1({ plan })", 1) <
       cleanup.lastIndexOf("deployPinnedWorkerVersion("),

@@ -144,6 +144,8 @@ export const STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES =
 
 const maximumPlanEvidenceBytes = 64 * 1024;
 const maximumCleanupEvidenceAgeMs = 30 * 60 * 1_000;
+const nativeWriteFreezePropagationProbeAttempts = 18;
+const nativeWriteFreezePropagationProbeDelayMs = 5_000;
 const patchStatementTargetBytes = 90_000;
 const verificationMaximumRowsPerQuery = 192;
 const verificationTargetPayloadBytes = 4 * 1024 * 1024;
@@ -1521,7 +1523,7 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
         .join(", ")}.`,
     );
   }
-  const activeProbe = probeNativeWriteFreeze(
+  const activeProbe = probeNativeWriteFreezeWithPropagationRetry(
     false,
     release.currentRelease.targetCandidateVersionId,
   );
@@ -1681,7 +1683,10 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
       "Native maintenance: candidate-active staged translation cleanup",
     );
     maintenanceActivated = true;
-    const maintenanceProbe = probeNativeWriteFreeze(true, maintenanceVersionId);
+    const maintenanceProbe = probeNativeWriteFreezeWithPropagationRetry(
+      true,
+      maintenanceVersionId,
+    );
     exclusion = attestProductionValidationExclusion(exclusion);
     assertProductionValidationExclusionCommandWindow(exclusion);
 
@@ -1922,7 +1927,7 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
           release.currentRelease.targetCandidateVersionId,
           "Restore active candidate after staged translation cleanup",
         );
-        probeNativeWriteFreeze(
+        probeNativeWriteFreezeWithPropagationRetry(
           false,
           release.currentRelease.targetCandidateVersionId,
         );
@@ -1947,7 +1952,7 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
         }
         exclusion = attestProductionValidationExclusion(exclusion);
         assertProductionValidationExclusionCommandWindow(exclusion);
-        probeNativeWriteFreeze(
+        probeNativeWriteFreezeWithPropagationRetry(
           false,
           release.currentRelease.targetCandidateVersionId,
         );
@@ -2090,6 +2095,35 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
     evidence: storedEvidence,
   });
   return storedEvidence;
+}
+
+function probeNativeWriteFreezeWithPropagationRetry(
+  expectedActive: boolean,
+  expectedVersionId: string,
+) {
+  const errors: Error[] = [];
+  for (let attempt = 1; attempt <= nativeWriteFreezePropagationProbeAttempts; attempt += 1) {
+    try {
+      return probeNativeWriteFreeze(expectedActive, expectedVersionId);
+    } catch (error) {
+      errors.push(error instanceof Error ? error : new Error(String(error)));
+      if (attempt < nativeWriteFreezePropagationProbeAttempts) {
+        sleepForNativeWriteFreezePropagation();
+      }
+    }
+  }
+  throw new AggregateError(
+    errors,
+    `Native Worker write-freeze probe did not observe expected ${
+      expectedActive ? "active" : "inactive"
+    } state for version ${expectedVersionId} after ${nativeWriteFreezePropagationProbeAttempts} propagation attempts.`,
+  );
+}
+
+function sleepForNativeWriteFreezePropagation() {
+  const waitBuffer = new SharedArrayBuffer(4);
+  const waitView = new Int32Array(waitBuffer);
+  Atomics.wait(waitView, 0, 0, nativeWriteFreezePropagationProbeDelayMs);
 }
 
 export function stagedTranslationD1LocalAuthorizationPath(
