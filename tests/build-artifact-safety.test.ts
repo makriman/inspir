@@ -481,6 +481,27 @@ test("the immediate activation seal gate covers the bounded command plus safety 
   );
 });
 
+test("live pre-activation seals are issued after the expensive preflight", () => {
+  const source = fs.readFileSync(
+    path.join(
+      process.cwd(),
+      "scripts/cloudflare/worker-candidate-pre-activation-seal.ts",
+    ),
+    "utf8",
+  );
+
+  assert.match(source, /const sealIssuedAt = options\.now \?\? new Date\(\);/);
+  assert.match(source, /const createdAt = sealIssuedAt\.toISOString\(\);/);
+  assert.match(
+    source.replace(/\s+/g, " "),
+    /sealIssuedAt\.getTime\(\) \+ WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_MAX_AGE_MS/,
+  );
+  assert.doesNotMatch(
+    source,
+    /createWorkerCandidatePreActivationSeal\(\{[\s\S]{0,240}\n\s+now,/,
+  );
+});
+
 test("a stale final production preflight blocks the command after an earlier pass", () => {
   const events: string[] = [];
   let preflightCalls = 0;

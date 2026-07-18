@@ -205,8 +205,10 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/source-fingerprint.ts" ||
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||
     file === "scripts/cloudflare/vectorize-readiness-evidence.ts" ||
+    file === "scripts/cloudflare/worker-candidate-pre-activation-seal.ts" ||
     file === "scripts/cloudflare/worker-candidate-pre-activation-seal-file.ts" ||
     file === "scripts/cloudflare/worker-candidate-version-override-smoke-evidence.ts" ||
+    file === "tests/build-artifact-safety.test.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
     file === "tests/worker-candidate-pre-activation-seal-file.test.ts" ||
     file === "tests/worker-candidate-release-evidence.test.ts" ||

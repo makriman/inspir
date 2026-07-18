@@ -157,9 +157,15 @@ export function createWorkerCandidatePreActivationSeal(
       context.versionOverrideSmokeHandle,
       context.now,
     );
-  const createdAt = context.now.toISOString();
+  // Live seal creation performs a full Cloudflare preflight before writing the
+  // authorization file. Stamp the seal at issuance time so the protected
+  // activation command receives the full bounded validity window after that
+  // expensive proof completes. Tests and callers that inject a clock keep the
+  // deterministic timestamp they requested.
+  const sealIssuedAt = options.now ?? new Date();
+  const createdAt = sealIssuedAt.toISOString();
   const validUntil = new Date(
-    context.now.getTime() +
+    sealIssuedAt.getTime() +
       WORKER_CANDIDATE_PRE_ACTIVATION_SEAL_MAX_AGE_MS,
   ).toISOString();
   const release = {
@@ -820,7 +826,6 @@ if (
     const handle = createWorkerCandidatePreActivationSeal({
       cwd,
       backupDirectory,
-      now,
       uploadHandle,
       stagedHandle,
       workerDeployPreparationHandle,
