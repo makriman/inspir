@@ -17,6 +17,10 @@ import {
   D1_FREE_SAFE_ROWS_WRITTEN_LIMIT,
 } from "./d1-free-budget";
 import {
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+  readD1ReleaseBudgetLedger,
+} from "./d1-release-budget-ledger";
+import {
   assertHistoricalFresh0016LiveTopologyEvidence,
   HISTORICAL_FRESH_0016_CUTOVER_COMPLETE_RELATIVE_PATH,
   HISTORICAL_FRESH_0016_CUTOVER_CONFIRMATION_FLAG,
@@ -1760,6 +1764,12 @@ function validateMaximumToExactReservation(input: {
   const exact = input.exact;
   const releasedReads = input.maximumRowsRead - input.exactRowsRead;
   const releasedWrites = input.maximumRowsWritten - input.exactRowsWritten;
+  const maximumOverFree =
+    maximum.accountedUsage.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
+    maximum.accountedUsage.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT;
+  const exactOverFree =
+    exact.accountedUsage.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
+    exact.accountedUsage.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT;
   if (
     releasedReads < 0 ||
     releasedWrites < 0 ||
@@ -1804,12 +1814,28 @@ function validateMaximumToExactReservation(input: {
       safeAdd(input.usage.rowsWritten, maximum.totals.rowsWritten, `${input.label} maximum writes`) ||
     exact.accountedUsage.rowsWritten <
       safeAdd(input.usage.rowsWritten, exact.totals.rowsWritten, `${input.label} exact writes`) ||
-    maximum.accountedUsage.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
-    exact.accountedUsage.rowsRead > D1_FREE_SAFE_ROWS_READ_LIMIT ||
-    maximum.accountedUsage.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT ||
-    exact.accountedUsage.rowsWritten > D1_FREE_SAFE_ROWS_WRITTEN_LIMIT
+    ((maximumOverFree || exactOverFree) &&
+      !hasPaidExpeditedAdmission(maximum, exact))
   ) {
     throw chainError("CHAIN_INVALID", `The ${input.label} maximum-to-exact ledger transition is invalid.`);
+  }
+}
+
+function hasPaidExpeditedAdmission(
+  maximum: z.infer<typeof genericLedgerResultSchema>,
+  exact: z.infer<typeof genericLedgerResultSchema>,
+) {
+  if (maximum.ledgerPath !== exact.ledgerPath || maximum.utcDay !== exact.utcDay) {
+    return false;
+  }
+  try {
+    const ledger = readD1ReleaseBudgetLedger(maximum.ledgerPath);
+    return (
+      ledger.utcDay === maximum.utcDay &&
+      ledger.admissionMode === D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE
+    );
+  } catch {
+    return false;
   }
 }
 
