@@ -240,6 +240,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/release-tooling-forward-correction.ts" ||
     file === "scripts/cloudflare/reconcile-staged-translation-fallback.ts" ||
     file === "scripts/cloudflare/repair-seo-cta-translations.ts" ||
+    file === "scripts/cloudflare/run-authenticated-production-validation.ts" ||
     file === "scripts/cloudflare/run-sanitized-build.ts" ||
     file === "scripts/cloudflare/source-fingerprint.ts" ||
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||
@@ -253,6 +254,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "tests/historical-data-fresh-0016-day2-budget.test.ts" ||
     file === "tests/historical-data-fresh-0016-final-preservation-evidence.test.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
+    file === "tests/production-verification.test.ts" ||
     file === "tests/staged-translation-d1-reconciliation.test.ts" ||
     file === "tests/worker-candidate-pre-activation-seal-file.test.ts" ||
     file === "tests/worker-candidate-release-evidence.test.ts" ||
