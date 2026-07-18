@@ -73,6 +73,7 @@ export function readHistoricalFresh0016PreservationReference(input: Readonly<{
   backupDir: string;
   cwd: string;
   now: Date;
+  requireSuccessorFreshness?: boolean;
 }>): HistoricalDataPreservationBaselineReference {
   const backupDir = path.resolve(input.backupDir);
   const cwd = path.resolve(input.cwd);
@@ -122,11 +123,13 @@ export function readHistoricalFresh0016PreservationReference(input: Readonly<{
   };
   const createdAtMs = Date.parse(report.createdAt);
   const nowMs = input.now.getTime();
+  const requireSuccessorFreshness = input.requireSuccessorFreshness ?? true;
   if (
     !Number.isFinite(nowMs) ||
     !Number.isFinite(createdAtMs) ||
     createdAtMs > nowMs ||
-    nowMs - createdAtMs > HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS
+    (requireSuccessorFreshness &&
+      nowMs - createdAtMs > HISTORICAL_DATA_FINAL_VERIFICATION_MAX_AGE_MS)
   ) {
     throw new Error(
       "Fresh-0016 successor preservation evidence is stale or from the future.",
@@ -281,6 +284,7 @@ function readHistoricalFresh0016CanonicalFinalPreservationProof(
     backupDir: backupDirectory,
     cwd: path.resolve(input.cwd),
     now: input.now,
+    requireSuccessorFreshness: false,
   });
   const baselineEvidence = baseline.baselineEvidence;
   if (!baselineEvidence) {

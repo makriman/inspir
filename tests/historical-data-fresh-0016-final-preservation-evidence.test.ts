@@ -358,6 +358,7 @@ test("canonical final-preservation consumption is local-only and precedes non-ag
   assert.ok(proofStart >= 0 && proofEnd > proofStart);
   const proofReader = adapter.slice(proofStart, proofEnd);
   assert.match(proofReader, /readHistoricalFresh0016PreservationReference/);
+  assert.match(proofReader, /requireSuccessorFreshness:\s*false/);
   assert.match(proofReader, /readHistoricalFresh0016Day2BudgetEnvelope/);
   assert.match(
     proofReader,
