@@ -197,6 +197,7 @@ function assertCurrentGitMatchesCorrection(
 export function isAllowedReleaseToolingFile(file: string) {
   return (
     file === "scripts/cloudflare/create-release-tooling-forward-correction.ts" ||
+    file === "scripts/cloudflare/deploy-preflight.ts" ||
     file === "scripts/cloudflare/git-release-identity.ts" ||
     file === "scripts/cloudflare/historical-data-fresh-0016-successor.ts" ||
     file === "scripts/cloudflare/release-tooling-forward-correction.ts" ||

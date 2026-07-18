@@ -240,6 +240,8 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
 ];
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
 const FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS = 60 * 60 * 1000;
+const PAID_EXPEDITED_STAGED_FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS =
+  WORKER_DEPLOY_PREPARATION_MAX_AGE_MS;
 const STATIC_MARKETING_ASSET_REPORT_RELATIVE_PATH =
   ".open-next/static-marketing-assets-report.json";
 const EXPECTED_LEGACY_TRANSLATION_REPORT_COUNTS = {
@@ -440,6 +442,7 @@ export function buildSteadyStateDeployPreflightReport(options: {
     cwd,
     currentSourceFingerprint,
     options.backupDir,
+    options.workerTopologyPhase ?? "baseline-sole-active",
     options.nowMs,
     options.historicalFresh0016CutoverLoader,
   ));
@@ -1402,6 +1405,7 @@ function historicalFresh0016CutoverCheck(
   cwd: string,
   currentSourceFingerprint: SourceFingerprint,
   backupDir: string,
+  workerTopologyPhase: DeployPreflightWorkerTopologyPhase,
   nowMs?: number,
   loader: (input: {
     cwd: string;
@@ -1419,6 +1423,14 @@ function historicalFresh0016CutoverCheck(
     const currentTime = nowMs ?? Date.now();
     const createdAtMs = Date.parse(artifact.createdAt);
     const ageMs = currentTime - createdAtMs;
+    const sameUtcDay =
+      new Date(currentTime).toISOString().slice(0, 10) ===
+      artifact.timing.successorUtcDay;
+    const paidExpeditedStagedActivationWindow =
+      workerTopologyPhase === "candidate-staged" &&
+      artifact.timing.releaseTimingMode === "paid-expedited" &&
+      sameUtcDay &&
+      ageMs <= PAID_EXPEDITED_STAGED_FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS;
     if (
       completion.validation !== "existing-full-chain" ||
       artifact.paths.backupDirectory !== resolvedBackupDir ||
@@ -1432,7 +1444,8 @@ function historicalFresh0016CutoverCheck(
       artifact.continuity.outboxRowsBeforeActivation !== 0 ||
       !Number.isFinite(createdAtMs) ||
       ageMs < 0 ||
-      ageMs > FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS
+      (ageMs > FRESH_0016_CUTOVER_COMPLETION_MAX_AGE_MS &&
+        !paidExpeditedStagedActivationWindow)
     ) {
       throw new Error(
         "Fresh-0016 canonical completion is stale, from the future, or not bound to the exact accepted source, backup, continuity, and empty-outbox boundary.",
@@ -1449,6 +1462,7 @@ function historicalFresh0016CutoverCheck(
         canonicalArtifactSha256: completion.sha256,
         legacyIntervalContinuityProven: false,
         retroactiveContinuityClaimed: false,
+        paidExpeditedStagedActivationWindow,
         predecessorToSuccessorGapMs:
           artifact.continuity.predecessorToSuccessorGapMs,
       },
