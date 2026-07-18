@@ -573,12 +573,9 @@ function writeStagedTranslationCleanupReadAttempt(input: {
   sourceFingerprint: Readonly<{ sha256: string; fileCount: number }>;
   now: Date;
 }) {
-  if (
-    input.budget.reservation.phase !== "maximum" ||
-    input.budget.idempotent !== false
-  ) {
+  if (input.budget.reservation.phase !== "maximum") {
     throw new Error(
-      "Candidate-active staged cleanup cannot begin D1 reads from a reused budget reservation.",
+      "Candidate-active staged cleanup cannot begin D1 reads from an invalid budget phase.",
     );
   }
   const createdAt = validClock(
@@ -1604,19 +1601,19 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
     admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
     now: startedAt,
   });
-  if (
-    budget.reservation.phase !== "maximum" ||
-    budget.idempotent !== false ||
-    pathEntryExists(
-      stagedTranslationCleanupReadAttemptPath({
-        backupDir,
-        utcDay: budget.utcDay,
-        operationId,
-      }),
-    )
-  ) {
+  if (budget.reservation.phase !== "maximum") {
     throw new Error(
-      "Candidate-active staged cleanup cannot reuse a prior D1-read attempt or budget reservation.",
+      "Candidate-active staged cleanup reserved an invalid D1 budget phase.",
+    );
+  }
+  const cleanupReadAttemptPath = stagedTranslationCleanupReadAttemptPath({
+    backupDir,
+    utcDay: budget.utcDay,
+    operationId,
+  });
+  if (pathEntryExists(cleanupReadAttemptPath)) {
+    throw new Error(
+      "Candidate-active staged cleanup cannot reuse a prior D1-read attempt.",
     );
   }
 
