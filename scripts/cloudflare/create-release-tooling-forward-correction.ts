@@ -75,7 +75,7 @@ function main() {
     expiresAt: expiresAt.toISOString(),
     kind: RELEASE_TOOLING_FORWARD_CORRECTION_KIND,
     reason:
-      "Allow paid-expedited fresh-0016 successor verifier correction while preserving the uploaded release runtime/source identity.",
+      "Allow reviewed paid-expedited release-tooling corrections while preserving the uploaded release runtime/source identity.",
     releaseGit,
     releaseSourceFingerprint: releaseSource,
     schemaVersion: 1,

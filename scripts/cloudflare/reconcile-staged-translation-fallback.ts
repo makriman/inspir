@@ -92,7 +92,6 @@ import {
   attestTemporarySqlFile,
   buildSiteTranslationSourceSyncPlan,
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS,
-  MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
   readRemoteSiteTranslationSourceSnapshot,
   removeAttestedTemporarySqlFile,
   writeTemporarySqlFile,
@@ -140,7 +139,7 @@ export const CURRENT_FALLBACK_TRANSLATION_EXACT_ROWS = 668 as const;
 export const STAGED_TRANSLATION_D1_MAX_BILLED_ROW_READS =
   MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS;
 export const STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES =
-  MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES;
+  75_000;
 
 const maximumPlanEvidenceBytes = 64 * 1024;
 const maximumCleanupEvidenceAgeMs = 30 * 60 * 1_000;
@@ -457,6 +456,8 @@ function stagedTranslationCleanupOperationId(input: {
   return `staged-translation-cleanup:${sha256Canonical({
     candidateVersionId: input.candidateVersionId,
     activationEvidenceSha256: input.activationEvidenceSha256,
+    admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
+    cleanupWriteCeiling: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
     planSha256: stagedTranslationD1PlanSha256(input.plan),
     localAuthorizationSha256: sha256Canonical(input.localAuthorization),
     sourceFingerprint: compactReleaseSourceFingerprint(input.sourceFingerprint),

@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {
+  STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
   STAGED_TRANSLATION_D1_PLAN_KIND,
   STAGED_TRANSLATION_D1_RELEASE_MODE,
   buildExactStagedD1StorageAdmission,
@@ -24,7 +25,10 @@ import {
 } from "../scripts/cloudflare/migration-config";
 import { splitSqlStatements } from "../scripts/cloudflare/repair-seo-cta-translations";
 import type { StagedTranslationReconciliationBinding } from "../scripts/cloudflare/release-sequence-attestations";
-import { buildSiteTranslationSourceSyncPlan } from "../scripts/cloudflare/sync-site-translation-sources";
+import {
+  MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+  buildSiteTranslationSourceSyncPlan,
+} from "../scripts/cloudflare/sync-site-translation-sources";
 import { CURRENT_TRANSLATION_FALLBACK_ATTESTATION_KIND } from "../scripts/staged-translation-fallback-release-attestation";
 
 const rows = Object.freeze([
@@ -322,6 +326,18 @@ test("candidate-active cleanup is ordered after activation and preserves source 
   assert.match(
     source,
     /sourceFingerprint: compactReleaseSourceFingerprint\(input\.sourceFingerprint\)/,
+  );
+  assert.match(
+    source,
+    /cleanupWriteCeiling: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES/,
+  );
+  assert.ok(
+    STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES >
+      MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
+  );
+  assert.ok(
+    67_139 <= STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
+    "paid cleanup ceiling must cover the observed candidate-active before-import projection",
   );
 
   const additiveSourcePlan = buildSiteTranslationSourceSyncPlan();
