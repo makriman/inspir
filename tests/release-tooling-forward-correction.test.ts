@@ -93,6 +93,22 @@ test("release tooling forward correction returns recorded release Git and source
     try {
       assert.equal(assertGitReleaseIdentity({ cwd: repo }).head, releaseGitHead);
       assert.equal(buildRepoSourceFingerprint(repo).sha256, releaseSource.sha256);
+      const fixtureRepo = path.join(root, "fixture-repo");
+      fs.mkdirSync(fixtureRepo);
+      git(fixtureRepo, ["init", "-b", "main"]);
+      fs.writeFileSync(path.join(fixtureRepo, "fixture.txt"), "unrelated\n");
+      assert.equal(
+        buildRepoSourceFingerprint(fixtureRepo).sha256,
+        buildRepoSourceFingerprintRaw(fixtureRepo).sha256,
+        "the global correction env does not apply to unrelated Git fixtures",
+      );
+      fs.writeFileSync(path.join(repo, "app.ts"), "export const app = 'dirty';\n");
+      assert.throws(
+        () => buildRepoSourceFingerprint(repo),
+        /clean current Git working tree/,
+        "the correction still fails closed when the corrected tooling repo is dirty",
+      );
+      fs.writeFileSync(path.join(repo, "app.ts"), "export const app = true;\n");
     } finally {
       if (previous === undefined) {
         delete process.env[RELEASE_TOOLING_FORWARD_CORRECTION_ENV];

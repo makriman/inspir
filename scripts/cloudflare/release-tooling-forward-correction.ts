@@ -39,9 +39,14 @@ export function readReleaseToolingForwardCorrection(
 ): ReleaseToolingForwardCorrection | null {
   const configuredPath = process.env[RELEASE_TOOLING_FORWARD_CORRECTION_ENV];
   if (!configuredPath) return null;
+  const resolvedCwd = path.resolve(cwd);
   const correction = parseCorrection(readPrivateCorrectionJson(configuredPath));
   assertCorrectionTimestamps(correction);
-  assertCurrentGitMatchesCorrection(path.resolve(cwd), correction);
+  const currentGit = readCurrentGitIdentityIfAvailable(resolvedCwd);
+  if (!currentGit || !sameGitIdentity(currentGit, correction.toolingGit)) {
+    return null;
+  }
+  assertCurrentGitMatchesCorrection(resolvedCwd, correction, currentGit);
   return correction;
 }
 
@@ -134,6 +139,7 @@ function assertCorrectionTimestamps(
 function assertCurrentGitMatchesCorrection(
   cwd: string,
   correction: ReleaseToolingForwardCorrection,
+  precheckedGit?: ReleaseToolingForwardCorrectionGitIdentity,
 ) {
   const status = git(cwd, ["status", "--porcelain=v1", "--untracked-files=all"]);
   if (status.trim()) {
@@ -141,18 +147,7 @@ function assertCurrentGitMatchesCorrection(
       "Release tooling forward correction requires a clean current Git working tree.",
     );
   }
-  const currentGit = {
-    head: git(cwd, ["rev-parse", "--verify", "HEAD"]).trim().toLowerCase(),
-    upstream: git(cwd, ["rev-parse", "--verify", "@{upstream}"])
-      .trim()
-      .toLowerCase(),
-    upstreamRef: git(cwd, [
-      "rev-parse",
-      "--abbrev-ref",
-      "--symbolic-full-name",
-      "@{upstream}",
-    ]).trim(),
-  } satisfies ReleaseToolingForwardCorrectionGitIdentity;
+  const currentGit = precheckedGit ?? readCurrentGitIdentity(cwd);
   if (
     currentGit.head !== correction.toolingGit.head ||
     currentGit.upstream !== correction.toolingGit.upstream ||
@@ -192,6 +187,44 @@ function assertCurrentGitMatchesCorrection(
       "Release tooling forward correction Git diff is not the exact allowed tooling-only file set.",
     );
   }
+}
+
+function readCurrentGitIdentityIfAvailable(
+  cwd: string,
+): ReleaseToolingForwardCorrectionGitIdentity | null {
+  try {
+    return readCurrentGitIdentity(cwd);
+  } catch {
+    return null;
+  }
+}
+
+function readCurrentGitIdentity(
+  cwd: string,
+): ReleaseToolingForwardCorrectionGitIdentity {
+  return {
+    head: git(cwd, ["rev-parse", "--verify", "HEAD"]).trim().toLowerCase(),
+    upstream: git(cwd, ["rev-parse", "--verify", "@{upstream}"])
+      .trim()
+      .toLowerCase(),
+    upstreamRef: git(cwd, [
+      "rev-parse",
+      "--abbrev-ref",
+      "--symbolic-full-name",
+      "@{upstream}",
+    ]).trim(),
+  };
+}
+
+function sameGitIdentity(
+  left: ReleaseToolingForwardCorrectionGitIdentity,
+  right: ReleaseToolingForwardCorrectionGitIdentity,
+) {
+  return (
+    left.head === right.head &&
+    left.upstream === right.upstream &&
+    left.upstreamRef === right.upstreamRef
+  );
 }
 
 export function isAllowedReleaseToolingFile(file: string) {
