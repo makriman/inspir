@@ -298,6 +298,11 @@ test("candidate-active cleanup is ordered after activation and preserves source 
     cleanup.indexOf("assertCandidateActiveStagedCleanupGate({") <
       cleanup.indexOf("reserveD1ReleaseBudget({"),
   );
+  assert.match(
+    cleanup,
+    /admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE/,
+  );
+  assert.doesNotMatch(cleanup, /assertD1FreeDailyBudget\(usage/);
   assert.ok(
     cleanup.indexOf("reserveD1ReleaseBudget({") <
       cleanup.indexOf("acquireProductionValidationExclusion({"),
@@ -313,6 +318,10 @@ test("candidate-active cleanup is ordered after activation and preserves source 
   assert.match(
     source,
     /--apply-cleanup[\s\S]*--confirm-native-write-freeze[\s\S]*--phase candidate-active/,
+  );
+  assert.match(
+    source,
+    /sourceFingerprint: compactReleaseSourceFingerprint\(input\.sourceFingerprint\)/,
   );
 
   const additiveSourcePlan = buildSiteTranslationSourceSyncPlan();

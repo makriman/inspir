@@ -55,6 +55,7 @@ import {
   type WranglerRunner,
 } from "./migration-config";
 import {
+  D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
   assertD1ReleaseBudgetReservation,
   assertD1ReleaseBudgetUtcDay,
   d1ReleaseBudgetLedgerPath,
@@ -458,7 +459,7 @@ function stagedTranslationCleanupOperationId(input: {
     activationEvidenceSha256: input.activationEvidenceSha256,
     planSha256: stagedTranslationD1PlanSha256(input.plan),
     localAuthorizationSha256: sha256Canonical(input.localAuthorization),
-    sourceFingerprint: input.sourceFingerprint,
+    sourceFingerprint: compactReleaseSourceFingerprint(input.sourceFingerprint),
   })}`;
 }
 
@@ -1574,11 +1575,6 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
   });
   const usage =
     input.dailyUsage ?? loadAccountD1DailyUsage(startedAt, runWrangler, clock);
-  assertD1FreeDailyBudget(usage, {
-    operation: "Candidate-active staged translation cleanup maximum",
-    rowsRead: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_READS,
-    rowsWritten: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
-  });
   let budget: D1ReleaseBudgetReservationResult = reserveD1ReleaseBudget({
     backupDir,
     operationId,
@@ -1592,6 +1588,7 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
     rowsRead: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_READS,
     rowsWritten: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
     observedUsage: usage,
+    admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
     now: startedAt,
   });
   if (
@@ -1717,11 +1714,6 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
         "Candidate-active staged cleanup exceeds the cumulative D1 write ceiling.",
       );
     }
-    assertD1FreeDailyBudget(usage, {
-      operation: "Candidate-active staged translation cleanup exact projection",
-      rowsRead: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_READS,
-      rowsWritten: projectedWrites,
-    });
     const storageRows = stagedTranslationStorageRows(plan);
     const database = assertExactProductionD1StorageIdentity(
       readD1DatabaseStorageInfo(runWrangler),
@@ -2252,7 +2244,7 @@ function validateStagedTranslationCleanupReadAttempt(input: {
     attempt.localAuthorizationSha256 !==
       sha256Canonical(input.localAuthorization) ||
     stableStringify(attempt.sourceFingerprint) !==
-      stableStringify(artifacts.sourceFingerprint) ||
+      stableStringify(compactReleaseSourceFingerprint(artifacts.sourceFingerprint)) ||
     Date.parse(attempt.createdAt) < input.evidence.sourceSyncUpdatedAt ||
     attempt.createdAt.slice(0, 10) !== input.evidence.createdAt.slice(0, 10) ||
     Date.parse(attempt.createdAt) > Date.parse(input.evidence.createdAt)
