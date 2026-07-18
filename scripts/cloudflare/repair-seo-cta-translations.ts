@@ -3509,6 +3509,8 @@ export function writePreWriteDiagnosticEvidence(input: {
   projectedBilledRowWrites: number;
   d1StorageAdmission?: D1StorageAdmissionProjection;
   d1ReleaseBudget?: D1ReleaseBudgetReservationResult;
+  d1ReleaseBudgetMaximumRowsRead?: number;
+  d1ReleaseBudgetMaximumRowsWritten?: number;
 }) {
   if (!isValidD1TimeTravelBookmark(input.bookmark)) {
     throw new Error("Pre-write diagnostic evidence requires a valid Time Travel bookmark.");
@@ -3525,13 +3527,19 @@ export function writePreWriteDiagnosticEvidence(input: {
   if (!path.isAbsolute(input.releasePreflightEvidencePath)) {
     throw new Error("Pre-write diagnostic evidence requires an absolute release-preflight path.");
   }
+  const expectedBudgetRowsRead =
+    input.d1ReleaseBudgetMaximumRowsRead ??
+    MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS;
+  const expectedBudgetRowsWritten =
+    input.d1ReleaseBudgetMaximumRowsWritten ??
+    MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES;
   if (
     input.d1ReleaseBudget &&
     (input.d1ReleaseBudget.reservation.phase !== "maximum" ||
       input.d1ReleaseBudget.reservation.rowsRead !==
-        MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_READS ||
+        expectedBudgetRowsRead ||
       input.d1ReleaseBudget.reservation.rowsWritten !==
-        MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES)
+        expectedBudgetRowsWritten)
   ) {
     throw new Error(
       "Pre-write diagnostic evidence requires the full D1 maximum reservation through import and verification.",

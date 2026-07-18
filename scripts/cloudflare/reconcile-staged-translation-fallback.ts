@@ -144,6 +144,8 @@ export const STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES =
 
 const maximumPlanEvidenceBytes = 64 * 1024;
 const maximumCleanupEvidenceAgeMs = 30 * 60 * 1_000;
+const stagedTranslationCleanupToolingContract =
+  "propagation-retry-and-paid-prewrite-budget-v2" as const;
 const nativeWriteFreezePropagationProbeAttempts = 18;
 const nativeWriteFreezePropagationProbeDelayMs = 5_000;
 const patchStatementTargetBytes = 90_000;
@@ -472,6 +474,7 @@ function stagedTranslationCleanupOperationId(input: {
     activationEvidenceSha256: input.activationEvidenceSha256,
     admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE,
     cleanupWriteCeiling: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
+    cleanupToolingContract: stagedTranslationCleanupToolingContract,
     planSha256: stagedTranslationD1PlanSha256(input.plan),
     localAuthorizationSha256: sha256Canonical(input.localAuthorization),
     sourceFingerprint: compactReleaseSourceFingerprint(input.sourceFingerprint),
@@ -1760,6 +1763,8 @@ export function runCandidateActiveStagedTranslationD1Cleanup(input: {
       projectedBilledRowWrites: projectedWrites,
       d1StorageAdmission: storageAdmission,
       d1ReleaseBudget: budget,
+      d1ReleaseBudgetMaximumRowsRead: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_READS,
+      d1ReleaseBudgetMaximumRowsWritten: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES,
     });
 
     const livePlan = loadStagedTranslationD1Plan(workspaceRoot);

@@ -239,6 +239,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/historical-data-fresh-0016-successor.ts" ||
     file === "scripts/cloudflare/release-tooling-forward-correction.ts" ||
     file === "scripts/cloudflare/reconcile-staged-translation-fallback.ts" ||
+    file === "scripts/cloudflare/repair-seo-cta-translations.ts" ||
     file === "scripts/cloudflare/run-sanitized-build.ts" ||
     file === "scripts/cloudflare/source-fingerprint.ts" ||
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||

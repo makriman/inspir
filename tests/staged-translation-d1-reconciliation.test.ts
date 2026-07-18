@@ -306,6 +306,8 @@ test("candidate-active cleanup is ordered after activation and preserves source 
     cleanup,
     /admissionMode: D1_RELEASE_BUDGET_PAID_EXPEDITED_ADMISSION_MODE/,
   );
+  assert.match(source, /stagedTranslationCleanupToolingContract/);
+  assert.match(source, /d1ReleaseBudgetMaximumRowsWritten: STAGED_TRANSLATION_D1_MAX_BILLED_ROW_WRITES/);
   assert.doesNotMatch(cleanup, /assertD1FreeDailyBudget\(usage/);
   assert.doesNotMatch(cleanup, /loadAccountD1DailyUsage\(startedAt/);
   assert.doesNotMatch(cleanup, /idempotent\s*!==\s*false/);

@@ -25,6 +25,10 @@ test("release tooling correction allowlist includes reviewed Vectorize topology 
     isAllowedReleaseToolingFile("tests/vectorize-readiness.test.ts"),
     true,
   );
+  assert.equal(
+    isAllowedReleaseToolingFile("scripts/cloudflare/repair-seo-cta-translations.ts"),
+    true,
+  );
 });
 
 test("release tooling forward correction returns recorded release Git and source only for a clean tooling-only diff", () => {
