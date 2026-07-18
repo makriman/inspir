@@ -98,6 +98,7 @@ export type ReserveD1ReleaseBudgetInput = {
   admissionMode?: D1ReleaseBudgetAdmissionMode;
   now?: Date;
   expectedUtcDay?: string;
+  allowStaleMaximumChildReservationsOnExactAggregate?: boolean;
 };
 
 export type D1ReleaseBudgetReservationResult = {
@@ -211,6 +212,7 @@ export function reserveD1ReleaseBudget(
     assertAggregateRefinementCoversChildren(
       transition.reservation,
       reservations,
+      input.allowStaleMaximumChildReservationsOnExactAggregate === true,
     );
 
     const totals = sumReservations(reservations);
@@ -1022,6 +1024,7 @@ function validateAccountingParents(
 function assertAggregateRefinementCoversChildren(
   reservation: D1ReleaseBudgetLedgerReservation,
   reservations: readonly D1ReleaseBudgetLedgerReservation[],
+  allowStaleMaximumChildren: boolean,
 ) {
   if (
     reservation.accountingParentOperationId !== null ||
@@ -1037,12 +1040,19 @@ function assertAggregateRefinementCoversChildren(
         reservation.sourceFingerprint,
       ),
   );
-  if (children.some((child) => child.phase !== "exact")) {
+  const maximumChildren = children.filter((child) => child.phase === "maximum");
+  if (maximumChildren.length > 0 && !allowStaleMaximumChildren) {
     throw new Error(
       "A D1 release aggregate envelope cannot refine while a bound child remains maximum.",
     );
   }
-  const exactChildren = children.reduce(
+  const exactChildren = children.filter((child) => child.phase === "exact");
+  if (maximumChildren.length > 0 && exactChildren.length === 0) {
+    throw new Error(
+      "A D1 release aggregate envelope cannot refine stale maximum children without at least one exact child proof.",
+    );
+  }
+  const exactChildUsage = exactChildren.reduce(
     (total, child) => ({
       rowsRead: safeAdd(
         total.rowsRead,
@@ -1058,8 +1068,8 @@ function assertAggregateRefinementCoversChildren(
     { rowsRead: 0, rowsWritten: 0 },
   );
   if (
-    exactChildren.rowsRead > reservation.rowsRead ||
-    exactChildren.rowsWritten > reservation.rowsWritten
+    exactChildUsage.rowsRead > reservation.rowsRead ||
+    exactChildUsage.rowsWritten > reservation.rowsWritten
   ) {
     throw new Error(
       "An exact D1 release aggregate envelope must cover every bound child exact reservation.",

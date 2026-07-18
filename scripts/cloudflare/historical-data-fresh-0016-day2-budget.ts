@@ -706,21 +706,28 @@ export function refineHistoricalFresh0016Day2BudgetAfterFinalProof(
       reservation.sourceFingerprint.sha256 === envelope.sourceFingerprint.sha256 &&
       reservation.sourceFingerprint.fileCount === envelope.sourceFingerprint.fileCount,
   );
+  const exactChildren = children.filter((child) => child.phase === "exact");
+  const nonExactChildren = children.filter((child) => child.phase !== "exact");
+  // Recovered or resumed cutover branches can leave conservative maximum child
+  // reservations behind even after the exact child reservations are present.
+  // Those maximum reservations remain in the ledger totals, so aggregate
+  // refinement only proves from exact children and refuses any unexpected phase.
   if (
-    children.some((child) => child.phase !== "exact") ||
-    children.filter((child) =>
+    nonExactChildren.some((child) => child.phase !== "maximum") ||
+    exactChildren.filter((child) =>
       child.operationId.startsWith("historical-fresh-0016-migration:"),
     ).length !== 1 ||
-    children.filter((child) =>
+    exactChildren.filter((child) =>
       child.operationId.startsWith("historical-fresh-0016-successor:"),
     ).length !== 1 ||
-    children.filter((child) => child.operationId === proof.operationId).length !== 1
+    exactChildren.filter((child) => child.operationId === proof.operationId)
+      .length !== 1
   ) {
     throw new Error(
       "Fresh-0016 aggregate refinement requires exact migration, successor, and final-verifier child proof.",
     );
   }
-  const childUsage = children.reduce(
+  const childUsage = exactChildren.reduce(
     (total, child) => ({
       rowsRead: safeAdd(total.rowsRead, child.rowsRead, "Day-2 exact child reads"),
       rowsWritten: safeAdd(
@@ -765,6 +772,7 @@ export function refineHistoricalFresh0016Day2BudgetAfterFinalProof(
     rowsRead: exactRowsRead,
     rowsWritten: exactRowsWritten,
     observedUsage: envelope.initialObservedUsage,
+    allowStaleMaximumChildReservationsOnExactAggregate: true,
     now,
     expectedUtcDay: envelope.utcDay,
   });

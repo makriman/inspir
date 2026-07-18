@@ -348,6 +348,38 @@ test("D1 release ledger counts one aggregate envelope, freezes delayed Insights 
       expectedUtcDay: parent.utcDay,
     });
     assert.deepEqual(childExact.totals, childMaximum.totals);
+    const staleChildMaximum = reserveD1ReleaseBudget({
+      backupDir,
+      operationId: "day2-recovered-stale-child",
+      operation: "Day-2 recovered stale child",
+      sourceFingerprint: source,
+      candidateVersionId,
+      accountingParentOperationId: parent.reservation.operationId,
+      phase: "maximum",
+      rowsRead: 10_000,
+      rowsWritten: 0,
+      observedUsage: emptyUsage,
+      now: new Date("2026-07-12T12:03:30.000Z"),
+      expectedUtcDay: parent.utcDay,
+    });
+    assert.deepEqual(staleChildMaximum.totals, childMaximum.totals);
+    assert.throws(
+      () =>
+        reserveD1ReleaseBudget({
+          backupDir,
+          operationId: parent.reservation.operationId,
+          operation: "Day-2 aggregate envelope",
+          sourceFingerprint: source,
+          candidateVersionId,
+          phase: "exact",
+          rowsRead: 500_000,
+          rowsWritten: 40_000,
+          observedUsage: emptyUsage,
+          now: new Date("2026-07-12T12:03:45.000Z"),
+          expectedUtcDay: parent.utcDay,
+        }),
+      /child remains maximum/,
+    );
     const refined = reserveD1ReleaseBudget({
       backupDir,
       operationId: parent.reservation.operationId,
@@ -358,6 +390,7 @@ test("D1 release ledger counts one aggregate envelope, freezes delayed Insights 
       rowsRead: 500_000,
       rowsWritten: 40_000,
       observedUsage: emptyUsage,
+      allowStaleMaximumChildReservationsOnExactAggregate: true,
       now: new Date("2026-07-12T12:04:00.000Z"),
       expectedUtcDay: parent.utcDay,
     });

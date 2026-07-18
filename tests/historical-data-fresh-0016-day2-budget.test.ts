@@ -220,6 +220,21 @@ test("fresh-0016 preauthorizes one Day-2 parent, accounts children beneath it, a
       });
       if (index === 2) verificationLedger = exactLedger;
     }
+    const staleSuccessorMaximum = reserveD1ReleaseBudget({
+      backupDir: backupDirectory,
+      operationId: `historical-fresh-0016-successor:${"e".repeat(64)}`,
+      operation: "Fresh 0016 post-migration historical successor capture",
+      sourceFingerprint,
+      candidateVersionId: targetCandidateVersionId,
+      accountingParentOperationId: envelope.evidence.operationId,
+      phase: "maximum",
+      rowsRead: 2_500,
+      rowsWritten: 0,
+      observedUsage: usage,
+      now: new Date("2026-07-15T00:17:00.000Z"),
+      expectedUtcDay: envelope.evidence.utcDay,
+    });
+    assert.equal(staleSuccessorMaximum.reservation.phase, "maximum");
     assert.ok(verificationLedger);
     const beforeProof = readD1ReleaseBudgetLedger(
       envelope.evidence.maximum.ledger.ledgerPath,
@@ -436,6 +451,16 @@ test("fresh-0016 preauthorizes one Day-2 parent, accounts children beneath it, a
       rowsRead: 44_512,
       rowsWritten: 20_202,
     });
+    const refinedLedger = readD1ReleaseBudgetLedger(refined.ledgerPath);
+    assert.ok(
+      refinedLedger.reservations.some(
+        (reservation) =>
+          reservation.operationId ===
+            staleSuccessorMaximum.reservation.operationId &&
+          reservation.phase === "maximum",
+      ),
+      "aggregate refinement preserves separately recorded stale maximum children",
+    );
     const replayedRefinement = refineHistoricalFresh0016Day2BudgetAfterFinalProof({
       envelope,
       finalProofPath,
