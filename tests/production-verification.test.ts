@@ -295,6 +295,7 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(outcomes, /workerInvokedStaticRoutes/);
   assert.match(outcomes, /staticRequestKeySet/);
   assert.match(outcomes, /waitForTailReadiness/);
+  assert.match(outcomes, /tailReadyTimeoutMs = 180_000/);
   assert.match(outcomes, /waitForCapturedRequestKeys/);
   assert.match(outcomes, /wrangler-connected-diagnostic/);
   assert.match(outcomes, /waiting for logs/);
@@ -436,6 +437,11 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /assertAuthenticatedMutationResponseProof/);
   assert.match(authenticatedProductionWrapper, /validationLockOwner/);
   assert.match(authenticatedProductionWrapper, /validationLockBudget/);
+  assert.match(authenticatedProductionWrapper, /releaseAlreadyCleanInterruptedValidationLock/);
+  assert.match(
+    authenticatedProductionWrapper,
+    /residueZeroVerifiedAt[\s\S]{0,240}secretsAbsentVerifiedAt[\s\S]{0,800}releaseActiveProductionValidationLock\(\)/,
+  );
   assert.ok(
     authenticatedProductionWrapper.indexOf("acquireActiveProductionValidationLock();") <
       authenticatedProductionWrapper.indexOf('putSecret(existingUserGuardSecretName, "1", sequence)'),

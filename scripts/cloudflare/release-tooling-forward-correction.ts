@@ -246,6 +246,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/verify-historical-data-fresh-0016-cutover-chain.ts" ||
     file === "scripts/cloudflare/verify-historical-data-preservation.ts" ||
     file === "scripts/cloudflare/verify-production-background-outcomes.ts" ||
+    file === "scripts/cloudflare/verify-production-worker-outcomes.ts" ||
     file === "scripts/cloudflare/verify-vectorize-readiness.ts" ||
     file === "scripts/cloudflare/vectorize-readiness-evidence.ts" ||
     file === "scripts/cloudflare/worker-candidate-pre-activation-seal.ts" ||

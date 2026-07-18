@@ -12,7 +12,7 @@ import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config"
 const workerName = "inspirlearning";
 const defaultBaseUrl = "https://inspirlearning.com";
 const tailSessionHeader = "x-inspir-tail-session";
-const tailReadyTimeoutMs = 60_000;
+const tailReadyTimeoutMs = 180_000;
 const tailCaptureTimeoutMs = 30_000;
 const tailPollMs = 1_000;
 const tailSettleGraceMs = 2_000;

@@ -1015,6 +1015,7 @@ async function recoverInterruptedValidation(input: {
       "Authenticated-validation recovery source no longer matches the candidate deploy evidence.",
     );
   }
+  if (releaseAlreadyCleanInterruptedValidationLock(manifest)) return;
   const baseline: ProductionValidationVersionSnapshot = {
     versionId: manifest.candidateVersionId,
     immutableReleaseIdentity: manifest.immutableReleaseIdentity,
@@ -1203,6 +1204,45 @@ async function recoverInterruptedValidation(input: {
     `Interrupted authenticated validation cleanup completed; secret-free version: ${finalVersion}. ` +
       "Rerun the full production validation before accepting the release.",
   );
+}
+
+function releaseAlreadyCleanInterruptedValidationLock(
+  manifest: ProductionValidationRecoveryManifest,
+) {
+  if (
+    !manifest.validationLockAcquisitionAttemptedAt ||
+    !manifest.validationLockAcquiredAt ||
+    manifest.validationLockReleasedAt ||
+    manifest.validationLockPreviousOwner !== null ||
+    !manifest.residueZeroVerifiedAt ||
+    !manifest.secretsAbsentVerifiedAt ||
+    manifest.installedTemporarySecrets.length !== 0
+  ) {
+    return false;
+  }
+
+  const baseline: ProductionValidationVersionSnapshot = {
+    versionId: manifest.candidateVersionId,
+    immutableReleaseIdentity: manifest.immutableReleaseIdentity,
+    secretNames: manifest.baselineSecretNames,
+    triggeredBy: null,
+  };
+  const current = readActiveVersionSnapshot(manifest.activeVersionId);
+  assertProductionValidationVersionTransition({
+    baseline,
+    previousVersionId: manifest.activeVersionId,
+    current,
+    expectedTemporarySecretNames: new Set<string>(),
+    requireNewVersion: false,
+  });
+  assertTemporarySecretsAbsent();
+  releaseActiveProductionValidationLock();
+  removeRecoveryManifest();
+  console.log(
+    `Already-clean interrupted authenticated validation lock released; secret-free version: ${current.versionId}. ` +
+      "Rerun the full production validation before accepting the release.",
+  );
+  return true;
 }
 
 export function parseRecoveryManifest(value: unknown): ProductionValidationRecoveryManifest {
