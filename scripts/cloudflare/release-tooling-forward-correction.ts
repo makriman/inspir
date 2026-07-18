@@ -199,6 +199,8 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/create-release-tooling-forward-correction.ts" ||
     file === "scripts/cloudflare/deploy-preflight.ts" ||
     file === "scripts/cloudflare/git-release-identity.ts" ||
+    file === "scripts/cloudflare/historical-data-fresh-0016-preservation-cli-adapter.ts" ||
+    file === "scripts/cloudflare/historical-data-fresh-0016-prerequisites.ts" ||
     file === "scripts/cloudflare/historical-data-fresh-0016-successor.ts" ||
     file === "scripts/cloudflare/release-tooling-forward-correction.ts" ||
     file === "scripts/cloudflare/run-sanitized-build.ts" ||
@@ -209,6 +211,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/worker-candidate-pre-activation-seal-file.ts" ||
     file === "scripts/cloudflare/worker-candidate-version-override-smoke-evidence.ts" ||
     file === "tests/build-artifact-safety.test.ts" ||
+    file === "tests/historical-data-fresh-0016-final-preservation-evidence.test.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
     file === "tests/worker-candidate-pre-activation-seal-file.test.ts" ||
     file === "tests/worker-candidate-release-evidence.test.ts" ||

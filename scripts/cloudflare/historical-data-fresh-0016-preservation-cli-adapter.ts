@@ -1,6 +1,8 @@
+import { createHash } from "node:crypto";
 import path from "node:path";
 import {
   assertD1ReleaseBudgetReservation,
+  readPrivateJsonNoFollow,
   type D1ReleaseSourceIdentity,
 } from "./d1-release-budget-ledger";
 import {
@@ -12,11 +14,24 @@ import {
   readHistoricalFresh0016Day2BudgetEnvelope,
   refineHistoricalFresh0016Day2BudgetAfterFinalProof,
 } from "./historical-data-fresh-0016-day2-budget";
-import { runWrangler } from "./migration-config";
-import { readHistoricalFresh0016PredecessorPrerequisites } from "./historical-data-fresh-0016-prerequisites";
+import {
+  runWrangler,
+  stableStringify,
+} from "./migration-config";
+import {
+  assertDeferred0017EvidenceRecord,
+  readHistoricalFresh0016PredecessorPrerequisites,
+} from "./historical-data-fresh-0016-prerequisites";
 import {
   historicalFresh0016JsonSha256,
 } from "./historical-data-fresh-0016-state";
+import {
+  topicAttestationPath,
+  translationAttestationPath,
+} from "./release-sequence-attestations";
+import {
+  runtimeMigration0017VerificationReportPath,
+} from "./verify-d1-runtime-migration-0017";
 import { readHistoricalFresh0016SuccessorReport } from "./historical-data-fresh-0016-successor";
 import { buildRepoSourceFingerprint } from "./source-fingerprint";
 import {
@@ -43,6 +58,17 @@ import {
   type WorkerCandidateUploadEvidence,
 } from "./worker-candidate-release-evidence";
 
+const FINAL_PREREQUISITE_EVIDENCE_MAX_BYTES = 2 * 1024 * 1024;
+
+type CutoverBoundPredecessorPrerequisites = Readonly<{
+  predecessorUtcDay: string;
+  topic: Readonly<{ evidenceSha256: string }>;
+  translation: Readonly<{ evidenceSha256: string }>;
+  runtimeMigration0017: Readonly<{
+    verificationEvidenceSha256: string;
+  }>;
+}>;
+
 export function readHistoricalFresh0016PreservationReference(input: Readonly<{
   backupDir: string;
   cwd: string;
@@ -54,24 +80,35 @@ export function readHistoricalFresh0016PreservationReference(input: Readonly<{
     cwd,
     backupDirectory: backupDir,
   });
-  const livePrerequisites =
-    readHistoricalFresh0016PredecessorPrerequisites({
-      backupDirectory: backupDir,
-      sourceFingerprint: completion.artifact.sourceFingerprint,
-      ...completion.artifact.workerRelease,
-      predecessorStartAt: new Date(
-        completion.artifact.timing.predecessorCreatedAt,
-      ),
-      liveRuntimeState:
-        completion.artifact.evidence.predecessorPrerequisites.liveRuntimeState,
-    });
-  if (
-    historicalFresh0016JsonSha256(livePrerequisites) !==
-      completion.artifact.evidence.predecessorPrerequisitesSha256
-  ) {
-    throw new Error(
-      "Fresh-0016 topic/translation prerequisite evidence changed before the final verifier.",
+  let livePrerequisitesSha256: string | null = null;
+  try {
+    livePrerequisitesSha256 = historicalFresh0016JsonSha256(
+      readHistoricalFresh0016PredecessorPrerequisites({
+        backupDirectory: backupDir,
+        sourceFingerprint: completion.artifact.sourceFingerprint,
+        ...completion.artifact.workerRelease,
+        predecessorStartAt: new Date(
+          completion.artifact.timing.predecessorCreatedAt,
+        ),
+        liveRuntimeState:
+          completion.artifact.evidence.predecessorPrerequisites.liveRuntimeState,
+      }),
     );
+  } catch {
+    livePrerequisitesSha256 = null;
+  }
+  if (
+    livePrerequisitesSha256 !==
+    completion.artifact.evidence.predecessorPrerequisitesSha256
+  ) {
+    assertCutoverBoundPredecessorPrerequisitesStillSafe({
+      backupDir,
+      sourceFingerprint: completion.artifact.sourceFingerprint,
+      expectedPrerequisites:
+        completion.artifact.evidence.predecessorPrerequisites,
+      expectedPrerequisitesSha256:
+        completion.artifact.evidence.predecessorPrerequisitesSha256,
+    });
   }
   const successor = readHistoricalFresh0016SuccessorReport({
     backupDirectory: backupDir,
@@ -151,6 +188,85 @@ export function readHistoricalFresh0016PreservationReference(input: Readonly<{
       successorReportSha256: successor.sha256,
     }),
   });
+}
+
+function assertCutoverBoundPredecessorPrerequisitesStillSafe(input: Readonly<{
+  backupDir: string;
+  sourceFingerprint: D1ReleaseSourceIdentity;
+  expectedPrerequisites: CutoverBoundPredecessorPrerequisites;
+  expectedPrerequisitesSha256: string;
+}>) {
+  if (
+    historicalFresh0016JsonSha256(input.expectedPrerequisites) !==
+    input.expectedPrerequisitesSha256
+  ) {
+    throw new Error(
+      "Fresh-0016 cutover-bound predecessor prerequisites no longer match the accepted completion hash.",
+    );
+  }
+  const topic = readPrivateJsonNoFollow(
+    topicAttestationPath(input.backupDir),
+    FINAL_PREREQUISITE_EVIDENCE_MAX_BYTES,
+  );
+  const translation = readPrivateJsonNoFollow(
+    translationAttestationPath(input.backupDir),
+    FINAL_PREREQUISITE_EVIDENCE_MAX_BYTES,
+  );
+  if (
+    canonicalJsonSha256(topic) !==
+      input.expectedPrerequisites.topic.evidenceSha256 ||
+    canonicalJsonSha256(translation) !==
+      input.expectedPrerequisites.translation.evidenceSha256
+  ) {
+    throw new Error(
+      "Fresh-0016 topic/translation prerequisite evidence changed before the final verifier.",
+    );
+  }
+  const current0017 = requiredRecord(
+    readPrivateJsonNoFollow(
+      runtimeMigration0017VerificationReportPath(input.backupDir),
+      FINAL_PREREQUISITE_EVIDENCE_MAX_BYTES,
+    ),
+    "current 0017 deferred verification report",
+  );
+  assertDeferred0017EvidenceRecord(current0017, {
+    backupDirectory: input.backupDir,
+    sourceFingerprint: input.sourceFingerprint,
+  });
+  const current0017CreatedAt = requiredCanonicalTimestamp(
+    current0017.createdAt,
+    "current 0017 verification timestamp",
+  );
+  if (
+    current0017CreatedAt.slice(0, 10) !==
+    input.expectedPrerequisites.predecessorUtcDay
+  ) {
+    throw new Error(
+      "Fresh-0016 final verifier requires current 0017 read-only absence evidence on the predecessor UTC day.",
+    );
+  }
+}
+
+function canonicalJsonSha256(value: unknown) {
+  return createHash("sha256").update(stableStringify(value)).digest("hex");
+}
+
+function requiredRecord(value: unknown, label: string): Record<string, unknown> {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    throw new Error(`Expected ${label} to be a JSON object.`);
+  }
+  return value as Record<string, unknown>;
+}
+
+function requiredCanonicalTimestamp(value: unknown, label: string) {
+  if (typeof value !== "string") {
+    throw new Error(`Expected ${label} to be a timestamp.`);
+  }
+  const parsed = new Date(value);
+  if (!Number.isFinite(parsed.getTime()) || parsed.toISOString() !== value) {
+    throw new Error(`Expected ${label} to be a canonical timestamp.`);
+  }
+  return value;
 }
 
 function readHistoricalFresh0016CanonicalFinalPreservationProof(

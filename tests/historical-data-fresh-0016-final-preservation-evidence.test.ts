@@ -364,6 +364,13 @@ test("canonical final-preservation consumption is local-only and precedes non-ag
     /readAndValidateHistoricalDataFresh0016FinalVerificationProof/,
   );
   assert.doesNotMatch(proofReader, /runWrangler|d1\W+execute|verifyRemoteTranslationDrift/);
+  assert.match(
+    adapter,
+    /assertCutoverBoundPredecessorPrerequisitesStillSafe/,
+  );
+  assert.match(adapter, /assertDeferred0017EvidenceRecord/);
+  assert.match(adapter, /topicAttestationPath/);
+  assert.match(adapter, /translationAttestationPath/);
 
   const preservation = fs.readFileSync(
     path.resolve("scripts/cloudflare/verify-historical-data-preservation.ts"),

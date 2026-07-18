@@ -822,7 +822,7 @@ function readDeferredRuntimeMigration0017Evidence(input: Readonly<{
   });
 }
 
-function assertDeferred0017EvidenceRecord(
+export function assertDeferred0017EvidenceRecord(
   report: Record<string, unknown>,
   input: Readonly<{
     backupDirectory: string;
