@@ -468,7 +468,7 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /releaseAlreadyCleanInterruptedValidationLock/);
   assert.match(
     authenticatedProductionWrapper,
-    /residueZeroVerifiedAt[\s\S]{0,240}secretsAbsentVerifiedAt[\s\S]{0,800}releaseActiveProductionValidationLock\(\)/,
+    /residueZeroVerifiedAt[\s\S]{0,240}secretsAbsentVerifiedAt[\s\S]{0,1200}releaseProductionValidationLock\(\{[\s\S]{0,240}owner: manifest\.validationLockOwner[\s\S]{0,240}validationLockReleasedAt/,
   );
   assert.ok(
     authenticatedProductionWrapper.indexOf("acquireActiveProductionValidationLock();") <

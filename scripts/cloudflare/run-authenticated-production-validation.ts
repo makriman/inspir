@@ -1236,7 +1236,16 @@ function releaseAlreadyCleanInterruptedValidationLock(
     requireNewVersion: false,
   });
   assertTemporarySecretsAbsent();
-  releaseActiveProductionValidationLock();
+  const released = releaseProductionValidationLock({
+    owner: manifest.validationLockOwner,
+    budget: manifest.validationLockBudget,
+    onReserved: persistProductionValidationLockReservation,
+  });
+  updateRecoveryManifest({
+    validationLockBudget: released.budget,
+    validationLockPreviousOwner: null,
+    validationLockReleasedAt: new Date().toISOString(),
+  });
   removeRecoveryManifest();
   console.log(
     `Already-clean interrupted authenticated validation lock released; secret-free version: ${current.versionId}. ` +
