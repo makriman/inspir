@@ -39,6 +39,7 @@ const baselineVersionId = "11111111-1111-4111-8111-111111111111";
 const uploadDeploymentId = "44444444-4444-4444-8444-444444444444";
 const stagedDeploymentId = "55555555-5555-4555-8555-555555555555";
 const activeDeploymentId = "66666666-6666-4666-8666-666666666666";
+const restoredDeploymentId = "77777777-7777-4777-8777-777777777777";
 const uploadCreatedAt = "2026-07-13T09:50:00.000Z";
 const activeCreatedAt = "2026-07-13T09:55:00.000Z";
 const reportCreatedAt = "2026-07-13T10:00:00.000Z";
@@ -211,6 +212,31 @@ test("candidate-active verification consumes the complete upload-to-activation c
     assert.equal(report.servingObservation.soleServingVersionId, candidateVersionId);
     assert.equal(
       report.servingObservation.phaseEvidenceSha256,
+      activation.sha256,
+    );
+    const restoredReport = verifyProductionVectorizeReadiness(
+      {
+        confirmed: true,
+        remote: true,
+        phase: "candidate-active",
+        candidateVersionId,
+        backupDir,
+        cwd,
+      },
+      {
+        readGitIdentity: () => git,
+        buildArtifactEvidence: () => artifacts,
+        runner: vectorRunner([], {
+          deploymentId: restoredDeploymentId,
+          versions: [{ versionId: candidateVersionId, percentage: 100 }],
+        }),
+        clock: () => new Date(reportCreatedAt),
+        writeReport: () => path.join(backupDir, "restored.json"),
+      },
+    );
+    assert.equal(restoredReport.phase, "candidate-active");
+    assert.equal(
+      restoredReport.servingObservation.phaseEvidenceSha256,
       activation.sha256,
     );
 

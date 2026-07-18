@@ -482,12 +482,11 @@ function assertPhaseServingTopology(input: {
   }
   if (
     input.activation === undefined ||
-    input.deployment.deploymentId !== input.activation.value.topology.deploymentId ||
     input.deployment.versions.length !== 1 ||
     percentages.get(candidate) !== 100
   ) {
     throw new Error(
-      "Candidate-active Vectorize readiness requires the exact activated candidate alone at 100% under the activation deployment ID.",
+      "Candidate-active Vectorize readiness requires the exact activated candidate alone at 100%.",
     );
   }
   return candidate;
