@@ -87,6 +87,45 @@ test("authenticated validation binds every secret-derived version and recovery m
     expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
     requireNewVersion: true,
   }));
+  const reuploadedChild = parseProductionValidationVersionSnapshot({
+    id: childVersionId,
+    resources: {
+      script: {
+        etag: "cloudflare-reupload-specific-etag",
+        handlers: ["queue", "fetch", "scheduled"],
+        last_deployed_from: "api",
+      },
+      script_runtime: { compatibility_date: "2026-07-12" },
+      bindings: [
+        { name: "E2E_TEST_AUTH_EXPIRES_AT", type: "secret_text" },
+        { name: "AUTH_SECRET", type: "secret_text" },
+        { name: "DB", type: "d1", id: "database-id" },
+      ],
+    },
+    annotations: { "workers/triggered_by": "version_upload" },
+  }, childVersionId);
+  assert.doesNotThrow(() => assertProductionValidationVersionTransition({
+    baseline: parseProductionValidationVersionSnapshot({
+      id: candidateVersionId,
+      resources: {
+        script: {
+          etag: "candidate-upload-specific-etag",
+          handlers: ["fetch", "scheduled", "queue"],
+          last_deployed_from: "wrangler",
+        },
+        script_runtime: { compatibility_date: "2026-07-12" },
+        bindings: [
+          { name: "DB", type: "d1", id: "database-id" },
+          { name: "AUTH_SECRET", type: "secret_text" },
+        ],
+      },
+      annotations: { "workers/triggered_by": "version_upload" },
+    }, candidateVersionId),
+    previousVersionId: candidateVersionId,
+    current: reuploadedChild,
+    expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
+    requireNewVersion: true,
+  }));
   assert.throws(() => assertProductionValidationVersionTransition({
     baseline,
     previousVersionId: candidateVersionId,

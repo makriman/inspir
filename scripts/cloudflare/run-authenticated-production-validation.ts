@@ -2241,10 +2241,10 @@ export function parseProductionValidationVersionSnapshot(
   const nonSecretBindings = exactBindings
     .filter((binding) => binding.type !== "secret_text")
     .sort((left, right) => stableStringify(left).localeCompare(stableStringify(right)));
-  const immutableResources = {
-    ...resources,
-    bindings: nonSecretBindings,
-  };
+  const immutableResources = normalizedImmutableReleaseResources(
+    resources,
+    nonSecretBindings,
+  );
   const annotations = objectRecord(version.annotations);
   return {
     versionId: expectedVersionId,
@@ -2254,6 +2254,30 @@ export function parseProductionValidationVersionSnapshot(
       typeof annotations?.["workers/triggered_by"] === "string"
         ? annotations["workers/triggered_by"]
         : null,
+  };
+}
+
+function normalizedImmutableReleaseResources(
+  resources: Record<string, unknown>,
+  nonSecretBindings: readonly Record<string, unknown>[],
+) {
+  const script = objectRecord(resources.script);
+  const normalizedScript = script
+    ? Object.fromEntries(
+      Object.entries(script)
+        .filter(([key]) => key !== "etag" && key !== "last_deployed_from")
+        .map(([key, value]) => [
+          key,
+          key === "handlers" && Array.isArray(value)
+            ? [...value].sort((left, right) => String(left).localeCompare(String(right)))
+            : value,
+        ]),
+    )
+    : script;
+  return {
+    ...resources,
+    script: normalizedScript,
+    bindings: nonSecretBindings,
   };
 }
 
