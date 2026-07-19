@@ -284,6 +284,10 @@ test("production verification covers the resource-outage contracts", () => {
     path.resolve("scripts/cloudflare/run-authenticated-production-validation.ts"),
     "utf8",
   );
+  const stagedTranslationReconciliation = fs.readFileSync(
+    path.resolve("scripts/cloudflare/reconcile-staged-translation-fallback.ts"),
+    "utf8",
+  );
   const headers = fs.readFileSync(path.resolve("public/_headers"), "utf8");
   const workerRoutes = outcomes.match(
     /const workerRoutes: SoakRoute\[\] = \[([\s\S]*?)\n  \];\n  const staticRoutes/,
@@ -616,6 +620,26 @@ test("production verification covers the resource-outage contracts", () => {
       normalReleaseEvidenceEnd,
     ),
     /readAndValidateCandidateActiveStagedTranslationD1Cleanup\(\{[\s\S]{0,140}recovery: true/,
+  );
+  const cleanupProofBindingStart = stagedTranslationReconciliation.indexOf(
+    "export function stagedTranslationD1CleanupProofBinding",
+  );
+  const cleanupProofBindingEnd = stagedTranslationReconciliation.indexOf(
+    "function validateStagedTranslationCleanupReadAttempt",
+    cleanupProofBindingStart,
+  );
+  assert.ok(cleanupProofBindingStart >= 0 && cleanupProofBindingEnd > cleanupProofBindingStart);
+  const cleanupProofBinding = stagedTranslationReconciliation.slice(
+    cleanupProofBindingStart,
+    cleanupProofBindingEnd,
+  );
+  assert.match(
+    cleanupProofBinding,
+    /storedCleanupEvidenceSha256 !== sha256Canonical\(input\.evidence\)/,
+  );
+  assert.doesNotMatch(
+    cleanupProofBinding,
+    /readAndValidateCandidateActiveStagedTranslationD1Cleanup\(/,
   );
   assert.ok(
     authenticatedProductionWrapper.match(/E2E_TEST_GUEST_QUOTA_SCOPE: mutationRunId/g)?.length === 2,

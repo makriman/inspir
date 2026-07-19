@@ -2170,19 +2170,9 @@ export function stagedTranslationD1CleanupProofBinding(input: {
       maximumPlanEvidenceBytes,
     ),
   );
-  if (stableStringify(stored) !== stableStringify(input.evidence)) {
+  const storedCleanupEvidenceSha256 = sha256Canonical(stored);
+  if (storedCleanupEvidenceSha256 !== sha256Canonical(input.evidence)) {
     throw new Error("Staged cleanup proof binding received different cleanup evidence.");
-  }
-  const validated = readAndValidateCandidateActiveStagedTranslationD1Cleanup({
-    backupDir,
-    candidateVersionId: stored.candidateVersionId,
-    workspaceRoot,
-    recovery: true,
-  });
-  if (stableStringify(validated) !== stableStringify(stored)) {
-    throw new Error(
-      "Staged cleanup proof binding did not validate the exact stored cleanup evidence.",
-    );
   }
   const plan = loadStagedTranslationD1Plan(workspaceRoot);
   const localAuthorization =
@@ -2246,7 +2236,7 @@ export function stagedTranslationD1CleanupProofBinding(input: {
   });
   return Object.freeze({
     runId: stored.runId,
-    cleanupEvidenceSha256: sha256Canonical(stored),
+    cleanupEvidenceSha256: storedCleanupEvidenceSha256,
     preWriteEvidenceSha256: sha256Canonical(preWrite),
     resolvedEvidenceSha256: sha256Canonical(resolved),
   });
