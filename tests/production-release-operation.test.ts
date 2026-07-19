@@ -541,8 +541,10 @@ test("every direct production Wrangler mutation uses the bounded watchdog launch
   assert.equal(translationRepair.match(/runBoundedMutationWrangler\(/g)?.length, 4);
   assert.match(translationRepair, /runBoundedMutationWrangler\([\s\S]{0,250}"d1",[\s\S]{0,80}"execute"/);
   assert.doesNotMatch(translationRepair, /runWrangler\(buildPinnedWorkerVersionDeployArgs/);
-  assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\["secret", "delete"/);
-  assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\["secret", "put"/);
+  assert.match(authenticatedValidation, /createExactTemporarySecretVersion/);
+  assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\[\s+"versions",\s+"deploy"/);
+  assert.match(authenticatedValidation, /AbortSignal\.timeout\(CLOUDFLARE_CLI_TIMEOUT_MS\)/);
+  assert.doesNotMatch(authenticatedValidation, /runBoundedWranglerMutation\(\["secret",/);
 });
 
 test("every production D1 release mutator self-requires the guarded child proof", () => {

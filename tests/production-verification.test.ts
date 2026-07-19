@@ -433,7 +433,13 @@ test("production verification covers the resource-outage contracts", () => {
   );
   assert.match(authenticatedProductionWrapper, /process\.once\(signal/);
   assert.match(authenticatedProductionWrapper, /"SIGINT", "SIGTERM"/);
-  assert.match(authenticatedProductionWrapper, /secret", "delete"/);
+  assert.match(authenticatedProductionWrapper, /createExactTemporarySecretVersion/);
+  assert.match(authenticatedProductionWrapper, /content\/v2/);
+  assert.match(authenticatedProductionWrapper, /baseVersionId: sequence\.current\.versionId/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "put"/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "delete"/);
+  assert.match(authenticatedProductionWrapper, /operation: "delete"/);
+  assert.match(authenticatedProductionWrapper, /"versions",\s+"deploy"/);
   assert.match(authenticatedProductionWrapper, /summarizeAuthenticatedValidationFailure/);
   assert.match(authenticatedProductionWrapper, /E2E_TEST_AUTH_SECRET=<redacted>/);
   assert.match(authenticatedProductionWrapper, /assertTemporarySecretsAbsent\(\)/);
@@ -550,11 +556,11 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /hardExpireMintCapability/);
   assert.match(
     authenticatedProductionWrapper,
-    /cleanupErrors = cleanupTemporarySecrets\(sequence\);[\s\S]{0,160}if \(cleanupErrors\.length > 0\)[\s\S]{0,160}hardExpireMintCapability\(sequence\)/,
+    /cleanupErrors = await cleanupTemporarySecrets\(sequence\);[\s\S]{0,180}if \(cleanupErrors\.length > 0\)[\s\S]{0,180}await hardExpireMintCapability\(sequence\)/,
   );
   assert.match(
     authenticatedProductionWrapper,
-    /async function recoverInterruptedValidation[\s\S]*?catch \(error\) \{[\s\S]{0,160}hardExpireMintCapability\(sequence\)/,
+    /async function recoverInterruptedValidation[\s\S]*?catch \(error\) \{[\s\S]{0,180}await hardExpireMintCapability\(sequence\)/,
   );
   assert.match(authenticatedProductionWrapper, /--secret-free/);
   assert.ok(
