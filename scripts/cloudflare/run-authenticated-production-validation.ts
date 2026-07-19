@@ -1904,8 +1904,19 @@ export function assertProductionValidationVersionTransition(input: {
     ...input.baseline.secretNames,
     ...input.expectedTemporarySecretNames,
   ]);
-  if (!sameStringSet(expectedSecrets, new Set(input.current.secretNames))) {
-    throw new Error("Temporary validation secret operation produced an unexpected secret set.");
+  const actualSecrets = new Set(input.current.secretNames);
+  if (!sameStringSet(expectedSecrets, actualSecrets)) {
+    const missingSecrets = [...expectedSecrets]
+      .filter((name) => !actualSecrets.has(name))
+      .sort();
+    const extraSecrets = [...actualSecrets]
+      .filter((name) => !expectedSecrets.has(name))
+      .sort();
+    throw new Error(
+      "Temporary validation secret operation produced an unexpected secret set: " +
+        `missing ${formatSecretNameList(missingSecrets)}; ` +
+        `extra ${formatSecretNameList(extraSecrets)}.`,
+    );
   }
   if (input.requireNewVersion) {
     if (input.current.versionId === input.previousVersionId) {
@@ -2265,6 +2276,12 @@ function sanitizeAuthenticatedValidationFailureMessage(message: string) {
     .replace(/E2E_TEST_AUTH_EMAIL=\\S+/gu, "E2E_TEST_AUTH_EMAIL=<redacted>")
     .replace(/E2E_TEST_MUTATION_RUN_ID=\\S+/gu, "E2E_TEST_MUTATION_RUN_ID=<redacted>")
     .slice(0, 2_000);
+}
+
+function formatSecretNameList(names: readonly string[]) {
+  if (names.length === 0) return "(none)";
+  const visible = names.slice(0, 16).join(", ");
+  return names.length > 16 ? `${visible}, … +${names.length - 16} more` : visible;
 }
 
 function fsyncDirectory(directory: string) {

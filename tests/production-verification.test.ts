@@ -97,6 +97,16 @@ test("authenticated validation binds every secret-derived version and recovery m
   assert.throws(() => assertProductionValidationVersionTransition({
     baseline,
     previousVersionId: candidateVersionId,
+    current: {
+      ...child,
+      secretNames: ["AUTH_SECRET", "E2E_TEST_AUTH_EMAIL"],
+    },
+    expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
+    requireNewVersion: true,
+  }), /missing E2E_TEST_AUTH_EXPIRES_AT; extra E2E_TEST_AUTH_EMAIL/);
+  assert.throws(() => assertProductionValidationVersionTransition({
+    baseline,
+    previousVersionId: candidateVersionId,
     current: { ...child, versionId: candidateVersionId },
     expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
     requireNewVersion: true,
