@@ -1064,7 +1064,13 @@ async function executeExistingSessionCleanupVerification(input: {
   );
   results.push(cleanup.result);
   try {
-    if (!cleanup.result.ok) throw new Error("Existing-session cleanup request failed.");
+    if (!cleanup.result.ok) {
+      throw new Error(
+        `Existing-session cleanup request failed: ${
+          formatExistingSessionCleanupDiagnostic("cleanup", cleanup)
+        }`,
+      );
+    }
     cleanupIdentity = assertExistingSessionCleanupResponse(cleanup.body, {
       expectedVersion: input.expectedVersion,
       expectedRuntimeVersion: input.expectedVersion,
@@ -1072,7 +1078,11 @@ async function executeExistingSessionCleanupVerification(input: {
       purpose: input.purpose,
     });
   } catch (error) {
-    errors.push(error instanceof Error ? error : new Error(String(error)));
+    errors.push(new Error(
+      `${error instanceof Error ? error.message : String(error)}; diagnostic=${
+        formatExistingSessionCleanupDiagnostic("cleanup", cleanup)
+      }`,
+    ));
   }
 
   const verify = await executeSoakProbeWithCapture(
@@ -1084,7 +1094,13 @@ async function executeExistingSessionCleanupVerification(input: {
   );
   results.push(verify.result);
   try {
-    if (!verify.result.ok) throw new Error("Existing-session cleanup verification failed.");
+    if (!verify.result.ok) {
+      throw new Error(
+        `Existing-session cleanup verification failed: ${
+          formatExistingSessionCleanupDiagnostic("verify", verify)
+        }`,
+      );
+    }
     const verifyIdentity = assertExistingSessionCleanupResponse(verify.body, {
       expectedVersion: input.expectedVersion,
       expectedRuntimeVersion: input.expectedVersion,
@@ -1101,12 +1117,51 @@ async function executeExistingSessionCleanupVerification(input: {
       throw new Error("Existing-session cleanup and verification identities differ.");
     }
   } catch (error) {
-    errors.push(error instanceof Error ? error : new Error(String(error)));
+    errors.push(new Error(
+      `${error instanceof Error ? error.message : String(error)}; diagnostic=${
+        formatExistingSessionCleanupDiagnostic("verify", verify)
+      }`,
+    ));
   }
   if (errors.length) {
     throw new AggregateError(errors, "Existing-account validation session cleanup is indeterminate.");
   }
   return results;
+}
+
+function formatExistingSessionCleanupDiagnostic(
+  stage: "cleanup" | "verify",
+  execution: {
+    result: SoakRequestResult;
+    body: string | null;
+    responseHeaders: Headers | null;
+  },
+) {
+  return JSON.stringify({
+    stage,
+    route: execution.result.route,
+    status: execution.result.status,
+    expectedStatus: execution.result.expectedStatus,
+    ok: execution.result.ok,
+    problems: execution.result.problems ?? [],
+    error: execution.result.error ?? null,
+    actualDelivery: execution.result.actualDelivery ?? null,
+    contentType: execution.result.contentType ?? null,
+    cacheControl: execution.result.cacheControl ?? null,
+    bodyBytes: execution.result.bodyBytes ?? null,
+    responseBody: redactExistingSessionCleanupBody(execution.body),
+  });
+}
+
+function redactExistingSessionCleanupBody(body: string | null) {
+  if (body === null) return null;
+  const parsed = parseCapturedJson(body);
+  if (!parsed) return body.slice(0, 512);
+  const redacted = {
+    ...parsed,
+    session: parsed.session ? "[redacted-existing-session-proof]" : parsed.session,
+  };
+  return JSON.stringify(redacted).slice(0, 512);
 }
 
 export function assertExistingSessionCleanupResponse(

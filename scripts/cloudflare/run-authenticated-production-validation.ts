@@ -1668,9 +1668,39 @@ async function postValidationCapabilityAction(input: {
   });
   const source = await readBoundedResponse(response, 512 * 1_024);
   if (response.status !== 200) {
-    throw new Error(`Validation residue action returned HTTP ${response.status}.`);
+    throw new Error(
+      `Validation residue action returned HTTP ${response.status}: ${
+        formatValidationResidueHttpFailure(input.body.action, response, source)
+      }`,
+    );
   }
   return source;
+}
+
+function formatValidationResidueHttpFailure(
+  action: unknown,
+  response: Response,
+  source: string,
+) {
+  return JSON.stringify({
+    action: typeof action === "string" ? action : null,
+    status: response.status,
+    contentType: response.headers.get("content-type"),
+    cacheControl: response.headers.get("cache-control"),
+    retryAfter: response.headers.get("retry-after"),
+    body: redactValidationResidueResponseBody(source),
+  });
+}
+
+function redactValidationResidueResponseBody(source: string) {
+  const parsed = parseJsonOutput(source);
+  const record = objectRecord(parsed);
+  if (!record) return source.slice(0, 512);
+  return JSON.stringify({
+    ...record,
+    session: record.session ? "[redacted-existing-session-proof]" : record.session,
+    payload: record.payload ? "[redacted-mutation-payload]" : record.payload,
+  }).slice(0, 512);
 }
 
 async function readBoundedResponse(response: Response, maximumBytes: number) {

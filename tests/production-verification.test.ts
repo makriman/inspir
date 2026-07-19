@@ -433,6 +433,8 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(outcomes, /action: "cleanup-existing-session"/);
   assert.match(outcomes, /verify-existing-session-cleanup/);
   assert.match(outcomes, /assertExistingSessionCleanupResponse/);
+  assert.match(outcomes, /formatExistingSessionCleanupDiagnostic/);
+  assert.match(outcomes, /redactExistingSessionCleanupBody/);
   assert.match(outcomes, /--secret-free/);
   assert.doesNotMatch(outcomes, /Inspir release verifier|image:\s*"\/icon\.png"/);
   assert.ok(
@@ -498,6 +500,8 @@ test("production verification covers the resource-outage contracts", () => {
   );
   assert.match(authenticatedProductionWrapper, /Cloudflare API request failed for \$\{method\} \$\{resource\}/);
   assert.match(authenticatedProductionWrapper, /summarizeAuthenticatedValidationFailure/);
+  assert.match(authenticatedProductionWrapper, /formatValidationResidueHttpFailure/);
+  assert.match(authenticatedProductionWrapper, /redactValidationResidueResponseBody/);
   assert.match(authenticatedProductionWrapper, /E2E_TEST_AUTH_SECRET=<redacted>/);
   assert.match(authenticatedProductionWrapper, /assertTemporarySecretsAbsent\(\)/);
   assert.match(authenticatedProductionWrapper, /assertHiddenAuthDisabled\(secret, email\)/);
