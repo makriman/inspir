@@ -2083,8 +2083,9 @@ async function cloudflareApiJson(
     })
     : [];
   if (!response.ok || envelope?.success !== true) {
+    const method = init.method?.toUpperCase() ?? "GET";
     throw new Error(
-      `Cloudflare API request failed: HTTP ${response.status}; ${errors.join("; ") || "no structured error"}.`,
+      `Cloudflare API request failed for ${method} ${resource}: HTTP ${response.status}; ${errors.join("; ") || "no structured error"}.`,
     );
   }
   return envelope.result;
@@ -2095,7 +2096,7 @@ async function cloudflareApiRaw(
   init: RequestInit = {},
   queryParams?: URLSearchParams,
 ) {
-  const url = new URL(resource, "https://api.cloudflare.com/client/v4");
+  const url = new URL(resource.replace(/^\/+/, ""), "https://api.cloudflare.com/client/v4/");
   if (queryParams) {
     for (const [name, value] of queryParams) url.searchParams.set(name, value);
   }

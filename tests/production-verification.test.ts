@@ -454,6 +454,10 @@ test("production verification covers the resource-outage contracts", () => {
   assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "delete"/);
   assert.match(authenticatedProductionWrapper, /operation: "delete"/);
   assert.match(authenticatedProductionWrapper, /"versions",\s+"deploy"/);
+  assert.ok(
+    authenticatedProductionWrapper.includes('new URL(resource.replace(/^\\/+/, ""), "https://api.cloudflare.com/client/v4/")'),
+  );
+  assert.match(authenticatedProductionWrapper, /Cloudflare API request failed for \$\{method\} \$\{resource\}/);
   assert.match(authenticatedProductionWrapper, /summarizeAuthenticatedValidationFailure/);
   assert.match(authenticatedProductionWrapper, /E2E_TEST_AUTH_SECRET=<redacted>/);
   assert.match(authenticatedProductionWrapper, /assertTemporarySecretsAbsent\(\)/);
