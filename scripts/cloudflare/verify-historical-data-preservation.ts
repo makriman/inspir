@@ -2078,6 +2078,7 @@ function validateHistoricalDataFresh0016FinalVerificationReportInternal(
       rowsRead: report.rowsRead,
       rowsWritten: 0,
       now,
+      allowHistoricalExactReservation: maximumReportAgeMs === null,
     });
     if (
       stableStringify(report.ledger.reservation) !==

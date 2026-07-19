@@ -609,6 +609,49 @@ test("D1 release ledger rejects cumulative multi-source overflow, same-source re
         }),
       /crossed the UTC billing-day boundary/,
     );
+    assert.throws(
+      () =>
+        assertD1ReleaseBudgetReservation({
+          ledgerPath: initial.ledgerPath,
+          utcDay: initial.utcDay,
+          operationId: "first-release",
+          sourceFingerprint: source,
+          phase: "exact",
+          rowsRead: 2_000_000,
+          rowsWritten: 20_000,
+          now: new Date("2026-07-13T00:00:00.000Z"),
+        }),
+      /crossed the UTC billing-day boundary/,
+    );
+    assert.equal(
+      assertD1ReleaseBudgetReservation({
+        ledgerPath: initial.ledgerPath,
+        utcDay: initial.utcDay,
+        operationId: "first-release",
+        sourceFingerprint: source,
+        phase: "exact",
+        rowsRead: 2_000_000,
+        rowsWritten: 20_000,
+        now: new Date("2026-07-13T00:00:00.000Z"),
+        allowHistoricalExactReservation: true,
+      }).reservation.phase,
+      "exact",
+    );
+    assert.throws(
+      () =>
+        assertD1ReleaseBudgetReservation({
+          ledgerPath: initial.ledgerPath,
+          utcDay: initial.utcDay,
+          operationId: "first-release",
+          sourceFingerprint: source,
+          phase: "maximum",
+          rowsRead: 2_000_000,
+          rowsWritten: 20_000,
+          now: new Date("2026-07-13T00:00:00.000Z"),
+          allowHistoricalExactReservation: true,
+        }),
+      /Only exact D1 release budget reservations may be replayed historically/,
+    );
     assert.equal(
       fs.existsSync(d1ReleaseBudgetLedgerPath(backupDir, "2026-07-13")),
       false,

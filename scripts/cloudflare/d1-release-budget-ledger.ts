@@ -122,6 +122,7 @@ export type AssertD1ReleaseBudgetReservationInput = {
   rowsWritten: number;
   accountingParentOperationId?: string;
   now?: Date;
+  allowHistoricalExactReservation?: boolean;
 };
 
 export function reserveD1ReleaseBudget(
@@ -291,9 +292,14 @@ export function assertD1ReleaseBudgetReservation(
   input: AssertD1ReleaseBudgetReservationInput,
 ): D1ReleaseBudgetReservationResult {
   const now = validDate(input.now ?? new Date(), "reservation validation clock");
-  assertD1ReleaseBudgetUtcDay(input.utcDay, now);
+  if (input.allowHistoricalExactReservation && input.phase !== "exact") {
+    throw new Error("Only exact D1 release budget reservations may be replayed historically.");
+  }
+  const expectedUtcDay = input.allowHistoricalExactReservation
+    ? validateUtcDay(input.utcDay)
+    : assertD1ReleaseBudgetUtcDay(input.utcDay, now);
   const ledger = readD1ReleaseBudgetLedger(path.resolve(input.ledgerPath));
-  if (ledger.utcDay !== input.utcDay) {
+  if (ledger.utcDay !== expectedUtcDay) {
     throw new Error("D1 release budget evidence points to the wrong UTC-day ledger.");
   }
   const sourceFingerprint = validateSourceIdentity(input.sourceFingerprint);
