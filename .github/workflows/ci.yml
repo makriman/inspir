@@ -1,4 +1,4 @@
-name: CI
+name: React Doctor
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
+  group: react-doctor-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -17,9 +17,9 @@ env:
   npm_config_confirm_modules_purge: "false"
 
 jobs:
-  checks:
+  react-doctor:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -36,26 +36,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Unit tests
-        run: pnpm test
-
-      - name: Source secret scan
-        run: pnpm cf:scan:source-secrets
-
-      - name: Next build
-        run: pnpm build
-        env:
-          ADMIN_EMAILS: ""
-          AUTH_GOOGLE_ID: ci-google-client-id
-          AUTH_GOOGLE_SECRET: ci-google-client-secret
-          AUTH_SECRET: ci-auth-secret
-          CRON_SECRET: ci-cron-secret
-
-      - name: OpenNext Cloudflare build
-        run: pnpm cf:build
+      - name: React Doctor
+        run: pnpm doctor:json

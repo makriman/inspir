@@ -8,10 +8,7 @@ Why is this useful for learners, maintainers, or the product?
 
 ## Testing
 
-- [ ] `pnpm typecheck`
-- [ ] `pnpm lint`
-- [ ] `pnpm test`
-- [ ] `pnpm build`
+- [ ] `pnpm doctor:json`
 
 ## Screenshots
 
