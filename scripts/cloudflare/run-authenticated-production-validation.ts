@@ -2290,8 +2290,11 @@ export function assertProductionValidationVersionTransition(input: {
     if (input.current.versionId === input.previousVersionId) {
       throw new Error("Temporary validation secret operation did not activate a new Worker version.");
     }
-    if (input.current.triggeredBy !== "secret") {
-      throw new Error("Temporary validation version was not created by an exact secret operation.");
+    if (
+      input.current.triggeredBy !== "secret" &&
+      input.current.triggeredBy !== "version_upload"
+    ) {
+      throw new Error("Temporary validation version was not created by an exact secret operation or exact pinned upload.");
     }
   }
 }

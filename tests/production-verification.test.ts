@@ -78,7 +78,7 @@ test("authenticated validation binds every secret-derived version and recovery m
         { name: "DB", type: "d1", id: "database-id" },
       ],
     },
-    annotations: { "workers/triggered_by": "secret" },
+    annotations: { "workers/triggered_by": "version_upload" },
   }, childVersionId);
   assert.doesNotThrow(() => assertProductionValidationVersionTransition({
     baseline,
@@ -111,6 +111,13 @@ test("authenticated validation binds every secret-derived version and recovery m
     expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
     requireNewVersion: true,
   }), /did not activate a new Worker version/);
+  assert.throws(() => assertProductionValidationVersionTransition({
+    baseline,
+    previousVersionId: candidateVersionId,
+    current: { ...child, triggeredBy: "deployment" },
+    expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
+    requireNewVersion: true,
+  }), /exact secret operation or exact pinned upload/);
 
   const now = new Date().toISOString();
   const manifest = {
