@@ -1,8 +1,10 @@
 import fs from "node:fs";
+import { homedir } from "node:os";
+import path from "node:path";
 import { CLOUDFLARE_ACCOUNT_ID } from "./migration-config";
 
 export type CloudflareApiTokenSource = {
-  kind: "env" | "file";
+  kind: "env" | "file" | "wrangler-oauth";
   name: string;
 };
 
@@ -13,6 +15,10 @@ export type CloudflareApiTokenResolution = {
 };
 
 type EnvMap = Record<string, string | undefined>;
+type ReadCloudflareApiTokenOptions = Readonly<{
+  allowWranglerOauthFallback?: boolean;
+  wranglerConfigPath?: string;
+}>;
 
 const TOKEN_ENV_KEYS = ["CLOUDFLARE_API_TOKEN", "CF_API_TOKEN"] as const;
 const TOKEN_FILE_ENV_KEYS = ["CLOUDFLARE_API_TOKEN_FILE", "CF_API_TOKEN_FILE"] as const;
@@ -28,7 +34,10 @@ export const CLOUDFLARE_TOKEN_REQUIRED_PERMISSIONS = {
   temporaryProbeRecord: CLOUDFLARE_DNS_WRITE_PROBE_HOSTNAME,
 };
 
-export function readCloudflareApiToken(env: EnvMap = process.env): CloudflareApiTokenResolution {
+export function readCloudflareApiToken(
+  env: EnvMap = process.env,
+  options: ReadCloudflareApiTokenOptions = {},
+): CloudflareApiTokenResolution {
   for (const key of TOKEN_FILE_ENV_KEYS) {
     const filePath = env[key]?.trim();
     if (!filePath) continue;
@@ -74,11 +83,21 @@ export function readCloudflareApiToken(env: EnvMap = process.env): CloudflareApi
     if (token) return { token, source: { kind: "env", name: key } };
   }
 
+  if (options.allowWranglerOauthFallback !== false) {
+    const wrangler = readWranglerOauthToken(
+      options.wranglerConfigPath ?? defaultWranglerConfigPath(),
+    );
+    if (wrangler.token) return wrangler;
+    if (wrangler.error && wrangler.error !== "missing") {
+      return wrangler;
+    }
+  }
+
   return {
     token: "",
     source: null,
     error:
-      "Set CLOUDFLARE_API_TOKEN_FILE or CF_API_TOKEN_FILE to a 0600 token file, or set CLOUDFLARE_API_TOKEN/CF_API_TOKEN.",
+      "Set CLOUDFLARE_API_TOKEN_FILE or CF_API_TOKEN_FILE to a 0600 token file, set CLOUDFLARE_API_TOKEN/CF_API_TOKEN, or run wrangler login for direct Cloudflare API OAuth fallback.",
   };
 }
 
@@ -104,4 +123,51 @@ function safeStat(filePath: string) {
 
 function formatMode(mode: number) {
   return mode.toString(8).padStart(4, "0");
+}
+
+function defaultWranglerConfigPath() {
+  return path.join(
+    homedir(),
+    "Library",
+    "Preferences",
+    ".wrangler",
+    "config",
+    "default.toml",
+  );
+}
+
+function readWranglerOauthToken(configPath: string): CloudflareApiTokenResolution & { error?: string } {
+  let stat: fs.Stats;
+  try {
+    stat = fs.lstatSync(configPath);
+  } catch {
+    return { token: "", source: null, error: "missing" };
+  }
+  const mode = stat.mode & 0o777;
+  if (
+    !stat.isFile() ||
+    stat.nlink !== 1 ||
+    (mode & 0o077) !== 0 ||
+    (typeof process.getuid === "function" && stat.uid !== process.getuid())
+  ) {
+    return {
+      token: "",
+      source: null,
+      error:
+        `Wrangler OAuth config must be a single-link owner-only file: ${configPath}.`,
+    };
+  }
+  const source = fs.readFileSync(configPath, "utf8");
+  const token = source.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1]?.trim();
+  if (!token) {
+    return {
+      token: "",
+      source: null,
+      error: `Wrangler OAuth config does not contain an oauth_token: ${configPath}.`,
+    };
+  }
+  return {
+    token,
+    source: { kind: "wrangler-oauth", name: "default.toml" },
+  };
 }

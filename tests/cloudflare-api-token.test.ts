@@ -37,7 +37,7 @@ test("Cloudflare API token files reject group/other readable modes", () => {
 test("direct Cloudflare API token env remains supported", () => {
   const result = readCloudflareApiToken({
     CLOUDFLARE_API_TOKEN: " cfat_direct_test_value\n",
-  });
+  }, { allowWranglerOauthFallback: false });
 
   assert.equal(result.token, "cfat_direct_test_value");
   assert.deepEqual(result.source, { kind: "env", name: "CLOUDFLARE_API_TOKEN" });
@@ -52,6 +52,24 @@ test("Cloudflare API token file takes precedence over stale direct env", () => {
 
     assert.equal(result.token, "cfat_test_token_value");
     assert.deepEqual(result.source, { kind: "file", name: "CLOUDFLARE_API_TOKEN_FILE" });
+  });
+});
+
+test("Wrangler OAuth is used only when no direct Cloudflare token is configured", () => {
+  withWranglerConfig(0o600, (wranglerConfigPath) => {
+    const result = readCloudflareApiToken({}, { wranglerConfigPath });
+
+    assert.equal(result.token, "wrangler_oauth_test_value");
+    assert.deepEqual(result.source, { kind: "wrangler-oauth", name: "default.toml" });
+  });
+});
+
+test("Wrangler OAuth fallback rejects group/other readable config", () => {
+  withWranglerConfig(0o644, (wranglerConfigPath) => {
+    const result = readCloudflareApiToken({}, { wranglerConfigPath });
+
+    assert.equal(result.token, "");
+    assert.match(result.error ?? "", /Wrangler OAuth config must be/);
   });
 });
 
@@ -88,6 +106,18 @@ function withTokenFile(mode: number, callback: (tokenFile: string) => void) {
     fs.writeFileSync(tokenFile, "cfat_test_token_value\n", { mode });
     fs.chmodSync(tokenFile, mode);
     callback(tokenFile);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+function withWranglerConfig(mode: number, callback: (wranglerConfigPath: string) => void) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-wrangler-oauth-"));
+  const configPath = path.join(dir, "default.toml");
+  try {
+    fs.writeFileSync(configPath, 'oauth_token = "wrangler_oauth_test_value"\n', { mode });
+    fs.chmodSync(configPath, mode);
+    callback(configPath);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
