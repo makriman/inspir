@@ -259,6 +259,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "tests/historical-data-fresh-0016-final-preservation-evidence.test.ts" ||
     file === "tests/historical-data-fresh-0016-successor.test.ts" ||
     file === "tests/production-background-outcomes.test.ts" ||
+    file === "tests/production-release-operation.test.ts" ||
     file === "tests/production-verification.test.ts" ||
     file === "tests/staged-translation-d1-reconciliation.test.ts" ||
     file === "tests/worker-candidate-pre-activation-seal-file.test.ts" ||
