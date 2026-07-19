@@ -541,11 +541,16 @@ test("every direct production Wrangler mutation uses the bounded watchdog launch
   assert.equal(translationRepair.match(/runBoundedMutationWrangler\(/g)?.length, 4);
   assert.match(translationRepair, /runBoundedMutationWrangler\([\s\S]{0,250}"d1",[\s\S]{0,80}"execute"/);
   assert.doesNotMatch(translationRepair, /runWrangler\(buildPinnedWorkerVersionDeployArgs/);
-  assert.match(authenticatedValidation, /createExactTemporarySecretVersion/);
-  assert.match(authenticatedValidation, /baseVersionNonSecretBindings/);
-  assert.doesNotMatch(authenticatedValidation, /inheritedNonSecretBindings/);
+  assert.match(authenticatedValidation, /prepareWranglerTemporarySecretBase\(sequence\)/);
+  assert.match(authenticatedValidation, /createWranglerTemporarySecretBaseVersion/);
+  assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\[\s+"versions",\s+"upload"/);
+  assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\s+\[\s+"versions",\s+"secret"/);
   assert.match(authenticatedValidation, /runBoundedWranglerMutation\(\[\s+"versions",\s+"deploy"/);
-  assert.match(authenticatedValidation, /AbortSignal\.timeout\(CLOUDFLARE_CLI_TIMEOUT_MS\)/);
+  assert.match(authenticatedValidation, /runBoundedReleaseChildSync/);
+  assert.match(authenticatedValidation, /timeoutMs: CLOUDFLARE_CLI_TIMEOUT_MS/);
+  assert.doesNotMatch(authenticatedValidation, /createExactTemporarySecretVersion/);
+  assert.doesNotMatch(authenticatedValidation, /baseVersionNonSecretBindings/);
+  assert.doesNotMatch(authenticatedValidation, /inheritedNonSecretBindings/);
   assert.doesNotMatch(authenticatedValidation, /runBoundedWranglerMutation\(\["secret",/);
 });
 

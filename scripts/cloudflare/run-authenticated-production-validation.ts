@@ -1,7 +1,6 @@
 import { createHash, createHmac } from "node:crypto";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import fs from "node:fs";
-import { homedir } from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
@@ -9,7 +8,6 @@ import {
   writePrivateJsonDurably,
 } from "./d1-release-budget-ledger";
 import {
-  CLOUDFLARE_ACCOUNT_ID,
   CLOUDFLARE_CLI_TIMEOUT_MS,
   cloudflareDir,
   commandEnv,
@@ -128,35 +126,6 @@ type ProductionValidationVersionSequence = {
   baseline: ProductionValidationVersionSnapshot;
   current: ProductionValidationVersionSnapshot;
   temporarySecretNames: Set<string>;
-};
-
-type CloudflareWorkerModuleType =
-  | "esm"
-  | "commonjs"
-  | "compiled-wasm"
-  | "buffer"
-  | "text"
-  | "python"
-  | "python-requirement";
-
-type WorkerVersionContentPart = {
-  name: string;
-  fileName: string;
-  mimeType: string;
-  moduleType: CloudflareWorkerModuleType;
-  content: ArrayBuffer;
-};
-
-type WorkerVersionContent = {
-  mainPartName: string;
-  mainModuleType: CloudflareWorkerModuleType;
-  parts: WorkerVersionContentPart[];
-};
-
-type WorkerUploadMetadataBinding = {
-  name: string;
-  type: string;
-  [key: string]: unknown;
 };
 
 type ProductionValidationRecoveryManifest = {
@@ -360,6 +329,7 @@ async function main() {
       );
     }
     productionSecretsTouched = true;
+    prepareWranglerTemporarySecretBase(sequence);
     await putSecret(existingUserGuardSecretName, "1", sequence);
     await putSecret(validationEmailSecretName, email, sequence);
     await putSecret(mutationRunSecretName, mutationRunId, sequence);
@@ -1765,11 +1735,10 @@ async function deleteSecretUntilVerifiedAbsent(
             if (!requiredTransition) {
               throw new Error(`${name} is unexpectedly configured before cleanup attempt ${attempt}.`);
             }
-            const secretFreeVersionId = await createExactTemporarySecretVersion({
-              baseVersionId: sequence.current.versionId,
+            const secretFreeVersionId = createWranglerTemporarySecretVersion({
               operation: "delete",
               secretName: name,
-              inheritedSecretNames: sequence.current.secretNames,
+              message: `Authenticated production validation cleanup: delete ${name}`,
             });
             deployWorkerVersionToProduction(
               secretFreeVersionId,
@@ -1812,11 +1781,11 @@ async function putSecret(
 ) {
   await runWithActiveProductionValidationLockAsync(`temporary Worker secret put ${name}`, async () => {
     const previousVersionId = sequence.current.versionId;
-    const secretVersionId = await createExactTemporarySecretVersion({
-      baseVersionId: previousVersionId,
+    const secretVersionId = createWranglerTemporarySecretVersion({
       operation: "put",
       secretName: name,
       secretValue: value,
+      message: `Authenticated production validation setup: put ${name}`,
     });
     deployWorkerVersionToProduction(
       secretVersionId,
@@ -1841,98 +1810,58 @@ async function putSecret(
   });
 }
 
-async function createExactTemporarySecretVersion(input: {
-  baseVersionId: string;
+function prepareWranglerTemporarySecretBase(sequence: ProductionValidationVersionSequence) {
+  const previousVersionId = sequence.current.versionId;
+  const baseVersionId = createWranglerTemporarySecretBaseVersion(previousVersionId);
+  const base = readWorkerVersionSnapshot(baseVersionId);
+  assertProductionValidationVersionTransition({
+    baseline: sequence.baseline,
+    previousVersionId,
+    current: base,
+    expectedTemporarySecretNames: sequence.temporarySecretNames,
+    requireNewVersion: true,
+  });
+}
+
+function createWranglerTemporarySecretBaseVersion(candidateVersionId: string) {
+  const exactCandidateVersionId = requireWorkerVersion(candidateVersionId);
+  const result = runBoundedWranglerMutation([
+    "versions",
+    "upload",
+    "--config",
+    "wrangler.jsonc",
+    "--strict",
+    "--message",
+    `Authenticated production validation secret base for ${exactCandidateVersionId.slice(0, 8)}`,
+  ]);
+  return parseWranglerTemporarySecretVersionId(result.stdout);
+}
+
+function createWranglerTemporarySecretVersion(input: {
   operation: "put" | "delete";
   secretName: (typeof temporarySecretNames)[number];
   secretValue?: string;
-  inheritedSecretNames?: readonly string[];
+  message: string;
 }) {
-  const baseVersionId = requireWorkerVersion(input.baseVersionId);
-  const [versionInfo, scriptSettings, content] = await Promise.all([
-    cloudflareApiJson(
-      `/accounts/${CLOUDFLARE_ACCOUNT_ID}/workers/scripts/${workerName}/versions/${baseVersionId}`,
-    ),
-    cloudflareApiJson(
-      `/accounts/${CLOUDFLARE_ACCOUNT_ID}/workers/scripts/${workerName}/script-settings`,
-    ),
-    readWorkerVersionContent(baseVersionId),
-  ]);
-  const metadataBindings = baseVersionNonSecretBindings(versionInfo);
-  const keepBindings = ["secret_key"];
-  if (input.operation === "put") {
-    if (input.secretValue === undefined) {
-      throw new Error("Temporary Worker secret put omitted its value.");
-    }
-    metadataBindings.push({
-      name: input.secretName,
-      type: "secret_text",
-      text: input.secretValue,
-    });
-    keepBindings.push("secret_text");
-  } else {
-    for (const secretName of input.inheritedSecretNames ?? []) {
-      if (secretName === input.secretName) continue;
-      metadataBindings.push({
-        name: secretName,
-        type: "inherit",
-      });
-    }
+  if (input.operation === "put" && input.secretValue === undefined) {
+    throw new Error("Temporary Worker secret put omitted its value.");
   }
-
-  const versionRecord = objectRecord(versionInfo);
-  const resources = objectRecord(versionRecord?.resources);
-  const script = objectRecord(resources?.script);
-  const scriptRuntime = objectRecord(resources?.script_runtime);
-  if (!versionRecord || !resources || !script || !scriptRuntime) {
-    throw new Error("Cloudflare Worker version metadata is missing required resources.");
-  }
-
-  const metadata: Record<string, unknown> = {
-    ...(content.mainModuleType === "commonjs"
-      ? { body_part: content.mainPartName }
-      : { main_module: content.mainPartName }),
-    bindings: metadataBindings,
-    keep_bindings: keepBindings,
-    keep_assets: true,
-    annotations: {
-      "workers/message": `Authenticated production validation ${input.operation} ${input.secretName}`,
+  const result = runBoundedWranglerMutation(
+    [
+      "versions",
+      "secret",
+      input.operation,
+      input.secretName,
+      "--name",
+      workerName,
+      "--message",
+      input.message,
+    ],
+    {
+      input: input.operation === "put" ? `${input.secretValue}\n` : undefined,
     },
-  };
-  copyMetadataField(metadata, "compatibility_date", scriptRuntime.compatibility_date);
-  copyMetadataField(metadata, "compatibility_flags", scriptRuntime.compatibility_flags);
-  copyMetadataField(metadata, "limits", scriptRuntime.limits);
-  copyMetadataField(metadata, "placement", script.placement);
-  copyMetadataField(metadata, "cache_options", versionRecord.cache_options);
-  const settings = objectRecord(scriptSettings);
-  copyMetadataField(metadata, "logpush", settings?.logpush);
-  copyMetadataField(metadata, "tail_consumers", settings?.tail_consumers);
-  copyMetadataField(metadata, "observability", settings?.observability);
-
-  const body = new FormData();
-  body.set("metadata", JSON.stringify(metadata));
-  for (const part of content.parts) {
-    body.set(
-      part.name,
-      new File([part.content], part.fileName, { type: part.mimeType }),
-    );
-  }
-
-  const created = objectRecord(
-    await cloudflareApiJson(
-      `/accounts/${CLOUDFLARE_ACCOUNT_ID}/workers/scripts/${workerName}/versions`,
-      {
-        method: "POST",
-        body,
-      },
-      new URLSearchParams({
-        include_subdomain_availability: "true",
-        excludeScript: "true",
-      }),
-    ),
   );
-  const versionId = typeof created?.id === "string" ? created.id : "";
-  return requireWorkerVersion(versionId);
+  return parseWranglerTemporarySecretVersionId(result.stdout);
 }
 
 function deployWorkerVersionToProduction(versionId: string, message: string) {
@@ -1958,209 +1887,6 @@ function deployWorkerVersionToProduction(versionId: string, message: string) {
       `Expected temporary validation Worker version ${exactVersionId} at 100% traffic.`,
     );
   }
-}
-
-function baseVersionNonSecretBindings(value: unknown): WorkerUploadMetadataBinding[] {
-  const version = objectRecord(value);
-  const resources = objectRecord(version?.resources);
-  const bindings = Array.isArray(resources?.bindings) ? resources.bindings : null;
-  if (!bindings) throw new Error("Cloudflare Worker version omitted bindings.");
-  return bindings.flatMap((entry) => {
-    const binding = objectRecord(entry);
-    if (!binding) throw new Error("Cloudflare Worker version contained a malformed binding.");
-    if (binding.type === "secret_text") return [];
-    if (typeof binding.name !== "string" || !binding.name) {
-      throw new Error("Cloudflare Worker version contained an unnamed binding.");
-    }
-    if (typeof binding.type !== "string" || !binding.type || binding.type === "inherit") {
-      throw new Error("Cloudflare Worker version contained an invalid binding type.");
-    }
-    return [{
-      ...binding,
-      name: binding.name,
-      type: binding.type,
-    }];
-  });
-}
-
-async function readWorkerVersionContent(versionId: string): Promise<WorkerVersionContent> {
-  const exactVersionId = requireWorkerVersion(versionId);
-  const response = await cloudflareApiRaw(
-    `/accounts/${CLOUDFLARE_ACCOUNT_ID}/workers/scripts/${workerName}/content/v2`,
-    {},
-    new URLSearchParams({ version: exactVersionId }),
-  );
-  if (!response.ok) {
-    throw new Error(
-      `Cloudflare Worker content read failed: HTTP ${response.status} ${await readBoundedApiText(response)}`,
-    );
-  }
-  const contentType = response.headers.get("content-type") ?? "";
-  if (contentType.startsWith("multipart/form-data")) {
-    const mainPartName = response.headers.get("cf-entrypoint");
-    if (!mainPartName) {
-      throw new Error("Cloudflare Worker module content omitted its entrypoint.");
-    }
-    const form = await response.formData();
-    const parts: WorkerVersionContentPart[] = [];
-    for (const [name, value] of form.entries()) {
-      const part = await workerVersionContentPart(name, value);
-      parts.push(part);
-    }
-    const main = parts.find((part) => part.name === mainPartName);
-    if (!main) {
-      throw new Error("Cloudflare Worker module content did not include its entrypoint.");
-    }
-    return {
-      mainPartName,
-      mainModuleType: main.moduleType,
-      parts,
-    };
-  }
-
-  const mimeType = normalizedMimeType(contentType || "application/javascript");
-  const text = await response.text();
-  const content = new TextEncoder().encode(text);
-  const moduleType = workerModuleTypeFromMimeType(mimeType);
-  return {
-    mainPartName: "index.js",
-    mainModuleType: moduleType,
-    parts: [{
-      name: "index.js",
-      fileName: "index.js",
-      mimeType,
-      moduleType,
-      content: content.buffer.slice(
-        content.byteOffset,
-        content.byteOffset + content.byteLength,
-      ),
-    }],
-  };
-}
-
-async function workerVersionContentPart(
-  name: string,
-  value: FormDataEntryValue,
-): Promise<WorkerVersionContentPart> {
-  if (typeof value === "string") {
-    const content = new TextEncoder().encode(value);
-    const mimeType = "text/plain";
-    return {
-      name,
-      fileName: name,
-      mimeType,
-      moduleType: workerModuleTypeFromMimeType(mimeType),
-      content: content.buffer.slice(
-        content.byteOffset,
-        content.byteOffset + content.byteLength,
-      ),
-    };
-  }
-  const mimeType = normalizedMimeType(value.type || "application/octet-stream");
-  return {
-    name,
-    fileName: value.name || name,
-    mimeType,
-    moduleType: workerModuleTypeFromMimeType(mimeType),
-    content: await value.arrayBuffer(),
-  };
-}
-
-function workerModuleTypeFromMimeType(mimeType: string): CloudflareWorkerModuleType {
-  const normalized = normalizedMimeType(mimeType);
-  const moduleType = Object.entries(workerModuleMimeTypes)
-    .find(([, candidate]) => candidate === normalized)?.[0];
-  if (!moduleType) throw new Error(`Unsupported Worker module MIME type ${normalized}.`);
-  return moduleType as CloudflareWorkerModuleType;
-}
-
-const workerModuleMimeTypes = Object.freeze({
-  esm: "application/javascript+module",
-  commonjs: "application/javascript",
-  "compiled-wasm": "application/wasm",
-  buffer: "application/octet-stream",
-  text: "text/plain",
-  python: "text/x-python",
-  "python-requirement": "text/x-python-requirement",
-} satisfies Record<CloudflareWorkerModuleType, string>);
-
-function normalizedMimeType(value: string) {
-  return value.split(";")[0]?.trim().toLowerCase() || "application/octet-stream";
-}
-
-function copyMetadataField(
-  target: Record<string, unknown>,
-  name: string,
-  value: unknown,
-) {
-  if (value !== undefined && value !== null) target[name] = value;
-}
-
-async function cloudflareApiJson(
-  resource: string,
-  init: RequestInit = {},
-  queryParams?: URLSearchParams,
-) {
-  const response = await cloudflareApiRaw(resource, init, queryParams);
-  const text = await readBoundedApiText(response);
-  const envelope = objectRecord(parseJsonOutput(text));
-  const errors = Array.isArray(envelope?.errors)
-    ? envelope.errors.map((entry) => {
-      const record = objectRecord(entry);
-      const code = typeof record?.code === "number" ? `code ${record.code}` : "unknown code";
-      const message = typeof record?.message === "string" ? record.message : "unknown error";
-      return `${code}: ${message}`;
-    })
-    : [];
-  if (!response.ok || envelope?.success !== true) {
-    const method = init.method?.toUpperCase() ?? "GET";
-    throw new Error(
-      `Cloudflare API request failed for ${method} ${resource}: HTTP ${response.status}; ${errors.join("; ") || "no structured error"}.`,
-    );
-  }
-  return envelope.result;
-}
-
-async function cloudflareApiRaw(
-  resource: string,
-  init: RequestInit = {},
-  queryParams?: URLSearchParams,
-) {
-  const url = new URL(resource.replace(/^\/+/, ""), "https://api.cloudflare.com/client/v4/");
-  if (queryParams) {
-    for (const [name, value] of queryParams) url.searchParams.set(name, value);
-  }
-  const headers = new Headers(init.headers);
-  headers.set("authorization", `Bearer ${readWranglerOauthToken()}`);
-  if (!headers.has("accept")) headers.set("accept", "application/json");
-  return fetch(url, {
-    ...init,
-    headers,
-    signal: init.signal ?? AbortSignal.timeout(CLOUDFLARE_CLI_TIMEOUT_MS),
-  });
-}
-
-async function readBoundedApiText(response: Response) {
-  return readBoundedResponse(response, 4 * 1024 * 1024);
-}
-
-function readWranglerOauthToken() {
-  const configPath = path.join(
-    homedir(),
-    "Library",
-    "Preferences",
-    ".wrangler",
-    "config",
-    "default.toml",
-  );
-  const source = fs.readFileSync(configPath, "utf8");
-  const token = source.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1];
-  if (!token) {
-    throw new Error(
-      "Wrangler OAuth token is not available; run `wrangler login` rather than exporting Wrangler OAuth as CLOUDFLARE_API_TOKEN.",
-    );
-  }
-  return token;
 }
 
 function assertTemporarySecretsAbsent() {
@@ -2228,15 +1954,20 @@ function requireActiveVersion(expectedVersion?: string) {
 
 function readActiveVersionSnapshot(expectedVersion?: string) {
   const versionId = requireActiveVersion(expectedVersion);
+  return readWorkerVersionSnapshot(versionId);
+}
+
+function readWorkerVersionSnapshot(versionId: string) {
+  const exactVersionId = requireWorkerVersion(versionId);
   const result = runWrangler([
     "versions",
     "view",
-    versionId,
+    exactVersionId,
     "--name",
     workerName,
     "--json",
   ]);
-  return parseProductionValidationVersionSnapshot(parseJsonOutput(result.stdout), versionId);
+  return parseProductionValidationVersionSnapshot(parseJsonOutput(result.stdout), exactVersionId);
 }
 
 export function parseProductionValidationVersionSnapshot(
@@ -2578,8 +2309,19 @@ function runBoundedWranglerMutation(
   }
   return {
     ok: result.status === 0,
-    stdout: result.stdout,
+    stdout: output,
   };
+}
+
+export function parseWranglerTemporarySecretVersionId(output: string) {
+  const matches = [...output.matchAll(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi)]
+    .map((match) => match[0].toLowerCase())
+    .filter(isWorkerVersionId);
+  const unique = [...new Set(matches)];
+  if (unique.length !== 1) {
+    throw new Error("Wrangler temporary secret operation did not report exactly one Worker version.");
+  }
+  return unique[0];
 }
 
 function parseJsonOutput(output: string): unknown {

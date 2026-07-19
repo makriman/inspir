@@ -50,6 +50,7 @@ test("production smoke header capture preserves duplicate set-cookie values", as
 test("authenticated validation binds every secret-derived version and recovery manifest to one release", async () => {
   const {
     assertProductionValidationVersionTransition,
+    parseWranglerTemporarySecretVersionId,
     parseProductionValidationVersionSnapshot,
     parseRecoveryManifest,
   } = await import("../scripts/cloudflare/run-authenticated-production-validation");
@@ -157,6 +158,23 @@ test("authenticated validation binds every secret-derived version and recovery m
     expectedTemporarySecretNames: new Set(["E2E_TEST_AUTH_EXPIRES_AT"]),
     requireNewVersion: true,
   }), /exact secret operation or exact pinned upload/);
+  assert.equal(
+    parseWranglerTemporarySecretVersionId(
+      `✨ Success! Created version ${childVersionId} with uploaded Worker bundle.`,
+    ),
+    childVersionId,
+  );
+  assert.throws(
+    () => parseWranglerTemporarySecretVersionId("✨ Success! No created version reported."),
+    /did not report exactly one Worker version/,
+  );
+  assert.throws(
+    () =>
+      parseWranglerTemporarySecretVersionId(
+        `Created ${candidateVersionId} and then ${childVersionId}.`,
+      ),
+    /did not report exactly one Worker version/,
+  );
 
   const now = new Date().toISOString();
   const manifest = {
@@ -481,24 +499,22 @@ test("production verification covers the resource-outage contracts", () => {
   );
   assert.match(authenticatedProductionWrapper, /process\.once\(signal/);
   assert.match(authenticatedProductionWrapper, /"SIGINT", "SIGTERM"/);
-  assert.match(authenticatedProductionWrapper, /createExactTemporarySecretVersion/);
-  assert.match(authenticatedProductionWrapper, /content\/v2/);
-  assert.match(authenticatedProductionWrapper, /baseVersionId: sequence\.current\.versionId/);
-  assert.match(authenticatedProductionWrapper, /const metadataBindings = baseVersionNonSecretBindings\(versionInfo\)/);
-  assert.match(authenticatedProductionWrapper, /function baseVersionNonSecretBindings/);
-  assert.match(authenticatedProductionWrapper, /if \(binding\.type === "secret_text"\) return \[\];/);
-  assert.match(authenticatedProductionWrapper, /binding\.type === "inherit"/);
-  assert.match(authenticatedProductionWrapper, /metadataBindings\.push\(\{[\s\S]{0,80}name: secretName,[\s\S]{0,80}type: "inherit"/);
-  assert.match(authenticatedProductionWrapper, /keepBindings\.push\("secret_text"\)/);
-  assert.doesNotMatch(authenticatedProductionWrapper, /inheritedNonSecretBindings/);
-  assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "put"/);
-  assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "delete"/);
+  assert.match(authenticatedProductionWrapper, /prepareWranglerTemporarySecretBase\(sequence\)/);
+  assert.match(authenticatedProductionWrapper, /createWranglerTemporarySecretBaseVersion/);
+  assert.match(authenticatedProductionWrapper, /"versions",\s+"upload"[\s\S]{0,200}"wrangler\.jsonc"/);
+  assert.match(authenticatedProductionWrapper, /readWorkerVersionSnapshot\(baseVersionId\)/);
+  assert.match(authenticatedProductionWrapper, /createWranglerTemporarySecretVersion/);
+  assert.match(authenticatedProductionWrapper, /"versions",\s+"secret",\s+input\.operation/);
+  assert.match(authenticatedProductionWrapper, /parseWranglerTemporarySecretVersionId/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /createExactTemporarySecretVersion/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /content\/v2/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /baseVersionNonSecretBindings/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /metadataBindings/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /keep_bindings/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /cloudflareApiJson/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /cloudflareApiRaw/);
   assert.match(authenticatedProductionWrapper, /operation: "delete"/);
   assert.match(authenticatedProductionWrapper, /"versions",\s+"deploy"/);
-  assert.ok(
-    authenticatedProductionWrapper.includes('new URL(resource.replace(/^\\/+/, ""), "https://api.cloudflare.com/client/v4/")'),
-  );
-  assert.match(authenticatedProductionWrapper, /Cloudflare API request failed for \$\{method\} \$\{resource\}/);
   assert.match(authenticatedProductionWrapper, /summarizeAuthenticatedValidationFailure/);
   assert.match(authenticatedProductionWrapper, /formatValidationResidueHttpFailure/);
   assert.match(authenticatedProductionWrapper, /redactValidationResidueResponseBody/);
