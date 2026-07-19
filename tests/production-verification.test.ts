@@ -436,6 +436,13 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /createExactTemporarySecretVersion/);
   assert.match(authenticatedProductionWrapper, /content\/v2/);
   assert.match(authenticatedProductionWrapper, /baseVersionId: sequence\.current\.versionId/);
+  assert.match(authenticatedProductionWrapper, /const metadataBindings = baseVersionNonSecretBindings\(versionInfo\)/);
+  assert.match(authenticatedProductionWrapper, /function baseVersionNonSecretBindings/);
+  assert.match(authenticatedProductionWrapper, /if \(binding\.type === "secret_text"\) return \[\];/);
+  assert.match(authenticatedProductionWrapper, /binding\.type === "inherit"/);
+  assert.match(authenticatedProductionWrapper, /metadataBindings\.push\(\{[\s\S]{0,80}name: secretName,[\s\S]{0,80}type: "inherit"/);
+  assert.match(authenticatedProductionWrapper, /keepBindings\.push\("secret_text"\)/);
+  assert.doesNotMatch(authenticatedProductionWrapper, /inheritedNonSecretBindings/);
   assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "put"/);
   assert.doesNotMatch(authenticatedProductionWrapper, /\["secret", "delete"/);
   assert.match(authenticatedProductionWrapper, /operation: "delete"/);

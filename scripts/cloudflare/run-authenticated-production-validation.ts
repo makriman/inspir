@@ -1828,7 +1828,7 @@ async function createExactTemporarySecretVersion(input: {
     ),
     readWorkerVersionContent(baseVersionId),
   ]);
-  const metadataBindings = inheritedNonSecretBindings(versionInfo);
+  const metadataBindings = baseVersionNonSecretBindings(versionInfo);
   const keepBindings = ["secret_key"];
   if (input.operation === "put") {
     if (input.secretValue === undefined) {
@@ -1930,7 +1930,7 @@ function deployWorkerVersionToProduction(versionId: string, message: string) {
   }
 }
 
-function inheritedNonSecretBindings(value: unknown): WorkerUploadMetadataBinding[] {
+function baseVersionNonSecretBindings(value: unknown): WorkerUploadMetadataBinding[] {
   const version = objectRecord(value);
   const resources = objectRecord(version?.resources);
   const bindings = Array.isArray(resources?.bindings) ? resources.bindings : null;
@@ -1942,9 +1942,13 @@ function inheritedNonSecretBindings(value: unknown): WorkerUploadMetadataBinding
     if (typeof binding.name !== "string" || !binding.name) {
       throw new Error("Cloudflare Worker version contained an unnamed binding.");
     }
+    if (typeof binding.type !== "string" || !binding.type || binding.type === "inherit") {
+      throw new Error("Cloudflare Worker version contained an invalid binding type.");
+    }
     return [{
+      ...binding,
       name: binding.name,
-      type: "inherit",
+      type: binding.type,
     }];
   });
 }
