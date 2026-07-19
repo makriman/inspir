@@ -424,6 +424,8 @@ test("production verification covers the resource-outage contracts", () => {
   assert.match(authenticatedProductionWrapper, /process\.once\(signal/);
   assert.match(authenticatedProductionWrapper, /"SIGINT", "SIGTERM"/);
   assert.match(authenticatedProductionWrapper, /secret", "delete"/);
+  assert.match(authenticatedProductionWrapper, /summarizeAuthenticatedValidationFailure/);
+  assert.match(authenticatedProductionWrapper, /E2E_TEST_AUTH_SECRET=<redacted>/);
   assert.match(authenticatedProductionWrapper, /assertTemporarySecretsAbsent\(\)/);
   assert.match(authenticatedProductionWrapper, /assertHiddenAuthDisabled\(secret, email\)/);
   assert.match(authenticatedProductionWrapper, /"x-migration-e2e-auth-secret": secret/);

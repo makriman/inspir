@@ -570,7 +570,14 @@ async function main() {
   const failures = [validationError, ...cleanupErrors.map((message) => new Error(message)), postCleanupError]
     .filter((value): value is NonNullable<typeof value> => value !== null);
   if (failures.length) {
-    throw new AggregateError(failures, "Authenticated production validation did not complete safely.");
+    throw new AggregateError(
+      failures,
+      `Authenticated production validation did not complete safely:\n${failures
+        .map((failure, index) =>
+          `${index + 1}. ${summarizeAuthenticatedValidationFailure(failure)}`,
+        )
+        .join("\n")}`,
+    );
   }
 }
 
@@ -2228,6 +2235,36 @@ function pathEntryExists(filePath: string) {
 
 function asError(value: unknown) {
   return value instanceof Error ? value : new Error("Unknown production validation failure.");
+}
+
+function summarizeAuthenticatedValidationFailure(value: unknown, depth = 0): string {
+  const error = asError(value);
+  const message = sanitizeAuthenticatedValidationFailureMessage(error.message);
+  if (depth >= 2) return message;
+  const nested = objectRecord(value);
+  const nestedErrors = Array.isArray(nested?.errors) ? nested.errors : [];
+  const nestedSummary = nestedErrors
+    .slice(0, 5)
+    .map((entry, index) =>
+      `${index + 1}) ${summarizeAuthenticatedValidationFailure(entry, depth + 1)}`,
+    );
+  const cause = "cause" in error ? error.cause : undefined;
+  if (cause !== undefined) {
+    nestedSummary.push(
+      `cause) ${summarizeAuthenticatedValidationFailure(cause, depth + 1)}`,
+    );
+  }
+  return nestedSummary.length
+    ? `${message} [${nestedSummary.join("; ")}]`
+    : message;
+}
+
+function sanitizeAuthenticatedValidationFailureMessage(message: string) {
+  return message
+    .replace(/E2E_TEST_AUTH_SECRET=\\S+/gu, "E2E_TEST_AUTH_SECRET=<redacted>")
+    .replace(/E2E_TEST_AUTH_EMAIL=\\S+/gu, "E2E_TEST_AUTH_EMAIL=<redacted>")
+    .replace(/E2E_TEST_MUTATION_RUN_ID=\\S+/gu, "E2E_TEST_MUTATION_RUN_ID=<redacted>")
+    .slice(0, 2_000);
 }
 
 function fsyncDirectory(directory: string) {
