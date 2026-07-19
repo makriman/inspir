@@ -360,6 +360,10 @@ test("canonical final-preservation consumption is local-only and precedes non-ag
   assert.match(proofReader, /readHistoricalFresh0016PreservationReference/);
   assert.match(proofReader, /requireSuccessorFreshness:\s*false/);
   assert.match(proofReader, /maximumReportAgeMs:\s*null/);
+  assert.match(
+    adapter,
+    /allowHistoricalExactReservation:\s*!input\.requireSuccessorFreshness/,
+  );
   assert.match(proofReader, /readHistoricalFresh0016Day2BudgetEnvelope/);
   assert.match(
     proofReader,

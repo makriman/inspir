@@ -170,6 +170,7 @@ export function readHistoricalFresh0016PreservationReference(input: Readonly<{
     rowsRead: report.rowsRead,
     rowsWritten: 0,
     now: input.now,
+    allowHistoricalExactReservation: !input.requireSuccessorFreshness,
   });
   validateHistoricalProtectedDatasetEvidence(
     report.datasets,
