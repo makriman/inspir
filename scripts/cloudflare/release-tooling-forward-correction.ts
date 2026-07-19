@@ -230,6 +230,7 @@ function sameGitIdentity(
 export function isAllowedReleaseToolingFile(file: string) {
   return (
     file === "scripts/cloudflare/create-release-tooling-forward-correction.ts" ||
+    file === "scripts/cloudflare/cloudflare-api-token.ts" ||
     file === "scripts/cloudflare/d1-release-budget-ledger.ts" ||
     file === "scripts/cloudflare/deploy-preflight.ts" ||
     file === "scripts/cloudflare/git-release-identity.ts" ||
@@ -254,6 +255,7 @@ export function isAllowedReleaseToolingFile(file: string) {
     file === "scripts/cloudflare/worker-candidate-pre-activation-seal-file.ts" ||
     file === "scripts/cloudflare/worker-candidate-version-override-smoke-evidence.ts" ||
     file === "tests/build-artifact-safety.test.ts" ||
+    file === "tests/cloudflare-api-token.test.ts" ||
     file === "tests/d1-release-budget-ledger.test.ts" ||
     file === "tests/historical-data-fresh-0016-day2-budget.test.ts" ||
     file === "tests/historical-data-fresh-0016-final-preservation-evidence.test.ts" ||
