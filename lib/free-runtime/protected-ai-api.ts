@@ -20,6 +20,7 @@ import {
   type NativeMemoryVectorMatches,
 } from "./native-memory-vector";
 import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
+import { freeTierDailyCapFromEnv } from "./free-tier-quota-fallbacks";
 import {
   disposableAdminCleanupFenceToken,
   disposableAdminTopicOwnershipToken,
@@ -720,7 +721,7 @@ async function handleAuthenticatedChat(
     env,
     session.user.id,
     `chat:user:${session.user.id}`,
-    nonNegativeIntegerFromEnv(env.RATE_LIMIT_USER_CHAT_DAILY, 20),
+    freeTierDailyCapFromEnv(env.RATE_LIMIT_USER_CHAT_DAILY, "RATE_LIMIT_USER_CHAT_DAILY"),
     "Daily message limit reached",
   );
   if (!admission.ok) return admissionResponse(admission, session);
@@ -1180,7 +1181,7 @@ async function handleQuizCreate(
     env,
     session.user.id,
     `activity:quiz:${session.user.id}`,
-    nonNegativeIntegerFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, 10),
+    freeTierDailyCapFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, "RATE_LIMIT_ACTIVITY_DAILY"),
     "Daily activity limit reached",
   );
   if (!admission.ok) return admissionResponse(admission, session);
@@ -1371,7 +1372,7 @@ async function handleFlashcardsCreate(
     env,
     session.user.id,
     `activity:flashcards:${session.user.id}`,
-    nonNegativeIntegerFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, 10),
+    freeTierDailyCapFromEnv(env.RATE_LIMIT_ACTIVITY_DAILY, "RATE_LIMIT_ACTIVITY_DAILY"),
     "Daily activity limit reached",
   );
   if (!admission.ok) return admissionResponse(admission, session);

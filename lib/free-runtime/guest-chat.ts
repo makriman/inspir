@@ -1,5 +1,6 @@
 import { topicSeeds, type TopicSeed } from "../content/topics";
 import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
+import { freeTierDailyCapFromEnv } from "./free-tier-quota-fallbacks";
 import {
   acceptsOpenAiSse,
   readBoundedOpenAiChatCompletionText,
@@ -368,7 +369,10 @@ export async function handleFreeGuestChat(
   const day = utcDay(now);
   const resetAtMs = nextUtcDayMs(now);
   const retryAfterSeconds = secondsUntil(resetAtMs, now.getTime());
-  const sessionLimit = nonNegativeIntegerFromEnv(env.RATE_LIMIT_GUEST_SESSION_DAILY, 10);
+  const sessionLimit = freeTierDailyCapFromEnv(
+    env.RATE_LIMIT_GUEST_SESSION_DAILY,
+    "RATE_LIMIT_GUEST_SESSION_DAILY",
+  );
   const sessionCookie = readCookie(request.headers, guestSessionCookie);
   const sessionId = validSessionId(sessionCookie)
     ? sessionCookie.toLowerCase()
@@ -390,12 +394,15 @@ export async function handleFreeGuestChat(
     {
       bucket: "fingerprint",
       key: `guest-chat:fingerprint:${fingerprintHash}`,
-      limit: nonNegativeIntegerFromEnv(env.RATE_LIMIT_GUEST_FINGERPRINT_DAILY, 10),
+      limit: freeTierDailyCapFromEnv(
+        env.RATE_LIMIT_GUEST_FINGERPRINT_DAILY,
+        "RATE_LIMIT_GUEST_FINGERPRINT_DAILY",
+      ),
     },
     {
       bucket: "ip",
       key: `guest-chat:ip:${ipHash}`,
-      limit: nonNegativeIntegerFromEnv(env.RATE_LIMIT_GUEST_IP_DAILY, 150),
+      limit: freeTierDailyCapFromEnv(env.RATE_LIMIT_GUEST_IP_DAILY, "RATE_LIMIT_GUEST_IP_DAILY"),
     },
   ];
 
