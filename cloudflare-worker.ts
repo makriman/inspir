@@ -85,6 +85,10 @@ const handler = {
 
 export default handler;
 
+// Live GET /api/health for this Worker. Trust this body over app/api/health/route.ts.
+// Production reports deploymentMode "free-static-native-accounts", openNext false,
+// incrementalCache "none", and workerCpuPlan "free-10ms". The Next route's
+// free-static-first and regional-r2 fields are the unused dev/build probe.
 function healthResponse(request: Request, env: CloudflareEnv) {
   if (request.method !== "GET" && request.method !== "HEAD") {
     return jsonResponse({ error: "Method not allowed" }, 405, { allow: "GET, HEAD" });
