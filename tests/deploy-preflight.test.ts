@@ -1572,6 +1572,130 @@ test("steady-state deploy preflight rejects Worker-wide response caching", () =>
   assert.equal((wrangler?.detail as { workerGlobalCacheOk?: boolean }).workerGlobalCacheOk, false);
 });
 
+test("steady-state deploy preflight rejects more expensive Free-tier queue, cache, and sampling settings", () => {
+  const cases: Array<{
+    label: string;
+    flag: string;
+    mutate: (config: ReturnType<typeof wranglerConfig>) => void;
+  }> = [
+    {
+      label: "memory queue retries",
+      flag: "freeTierQueueConsumerOk",
+      mutate: (config) => {
+        const consumer = config.queues?.consumers?.[0];
+        if (consumer) consumer.max_retries = 6;
+      },
+    },
+    {
+      label: "memory queue timeout",
+      flag: "freeTierQueueConsumerOk",
+      mutate: (config) => {
+        const consumer = config.queues?.consumers?.[0];
+        if (consumer) consumer.max_batch_timeout = 30;
+      },
+    },
+    {
+      label: "memory queue retry delay",
+      flag: "freeTierQueueConsumerOk",
+      mutate: (config) => {
+        const consumer = config.queues?.consumers?.[0];
+        if (consumer) consumer.retry_delay = 1;
+      },
+    },
+    {
+      label: "cache queue consumer",
+      flag: "cacheQueueConsumersDormant",
+      mutate: (config) => {
+        config.queues?.consumers?.push({
+          queue: "inspirlearning-cache-prod",
+          max_batch_size: 10,
+          max_batch_timeout: 5,
+          max_retries: 3,
+          retry_delay: 1,
+          dead_letter_queue: "inspirlearning-cache-dlq",
+        });
+      },
+    },
+    {
+      label: "cache queue producer",
+      flag: "cacheQueueConsumersDormant",
+      mutate: (config) => {
+        config.queues?.producers?.push({
+          binding: "NEXT_CACHE_DO_QUEUE",
+          queue: "inspirlearning-cache-prod",
+        });
+      },
+    },
+    {
+      label: "activated cache durable object",
+      flag: "cacheRevalidationDoOk",
+      mutate: (config) => {
+        Object.assign(config.durable_objects.bindings[0] ?? {}, { script_name: "open-next-worker" });
+      },
+    },
+    {
+      label: "extra cache durable object class",
+      flag: "cacheRevalidationMigrationOk",
+      mutate: (config) => {
+        config.migrations.push({ tag: "extra-cache-do", new_sqlite_classes: ["PaidCacheHandler"] });
+      },
+    },
+    {
+      label: "retired cache bucket name",
+      flag: "retiredCacheR2Unbound",
+      mutate: (config) => {
+        config.r2_buckets.push({
+          binding: "CACHE",
+          bucket_name: "inspirlearning-next-cache-prod",
+        });
+      },
+    },
+    {
+      label: "retired cache binding",
+      flag: "retiredCacheR2Unbound",
+      mutate: (config) => {
+        config.r2_buckets.push({
+          binding: "NEXT_CACHE_R2_BUCKET",
+          bucket_name: "inspirlearning-profile-images-prod",
+        });
+      },
+    },
+    {
+      label: "worker head sample rate",
+      flag: "observabilityOk",
+      mutate: (config) => {
+        config.observability.head_sampling_rate = 0.03;
+      },
+    },
+    {
+      label: "log head sample rate",
+      flag: "observabilityOk",
+      mutate: (config) => {
+        config.observability.logs.head_sampling_rate = 0.1;
+      },
+    },
+  ];
+
+  for (const { label, flag, mutate } of cases) {
+    const { backupDir, repoDir } = makeFixture();
+    replaceWranglerConfig(repoDir, backupDir, mutate);
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: Date.parse("2026-06-26T12:00:00Z"),
+    });
+    assert.equal(report.ok, false, label);
+    const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+    assert.equal(wrangler?.status, "fail", label);
+    assert.equal(
+      (wrangler?.detail as Record<string, boolean> | undefined)?.[flag],
+      false,
+      label,
+    );
+  }
+});
+
 test("steady-state deploy preflight rejects paid-only CPU limits on the Free deployment", () => {
   const { backupDir, repoDir } = makeFixture();
   replaceWranglerConfig(repoDir, backupDir, (config) => {

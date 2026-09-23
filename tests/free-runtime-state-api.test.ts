@@ -678,7 +678,18 @@ test("native state runtime excludes OpenNext and scopes every private data looku
   assert.match(runtimeIndexMigration, /rate_limit_windows_reset_at_idx[^]*`reset_at`/);
   assert.match(runtimeIndexMigration, /ai_runs_created_idx[^]*`created_at`/);
   assert.match(source, /privateNoStoreHeaders/);
-  assert.match(source, /export const NATIVE_SCHEDULED_MEMORY_USER_CAP = 25/);
+  assert.match(
+    source,
+    /export const NATIVE_SCHEDULED_MEMORY_USER_CAP = FREE_TIER_COST_LIMITS\.synthesisUserCap/,
+  );
+  assert.match(
+    source,
+    /export const MAX_RATE_LIMIT_PRUNE_ROWS = FREE_TIER_COST_LIMITS\.rateLimitPruneRows/,
+  );
+  assert.match(
+    source,
+    /export const MAX_STALE_AI_RUN_REPAIRS = FREE_TIER_COST_LIMITS\.staleAiRunRepairs/,
+  );
   assert.match(
     source,
     /const maxDailySynthesisUsers = NATIVE_SCHEDULED_MEMORY_USER_CAP/,
