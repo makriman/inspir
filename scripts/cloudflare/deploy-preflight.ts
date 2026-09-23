@@ -1,8 +1,17 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { supportedLanguages } from "../../lib/content/languages";
+import {
+  cacheDurableObjectBindingIsTombstone,
+  cacheDurableObjectMigrationIsTombstone,
+  FREE_TIER_COST_LIMITS,
+  memoryQueueConsumerWithinFreeTier,
+  observabilitySamplingWithinFreeTier,
+  onlyMemoryPostTurnQueueIsActive,
+  retiredOpenNextCacheR2IsUnbound,
+} from "../../lib/free-runtime/free-tier-cost-limits";
 import {
   getPublishedLegacySiteTranslationPairs,
   legacyTranslationAssetPath,
@@ -15,6 +24,7 @@ import {
   MEMORY_POST_TURN_DLQ_NAME,
   MEMORY_POST_TURN_QUEUE_NAME,
   PROFILE_IMAGES_R2_BUCKET_NAME,
+  R2_BUCKET_NAME,
   VECTORIZE_INDEX_NAME,
   cloudflareDir,
   commandEnv,
@@ -1513,20 +1523,13 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const nextCacheR2 = arrayValue(config.r2_buckets).find(
     (binding) => binding.binding === "NEXT_INC_CACHE_R2_BUCKET",
   );
-  const queueProducer = arrayValue(objectValue(config.queues).producers).find(
-    (binding) => binding.binding === "MEMORY_POST_TURN_QUEUE",
-  );
-  const queueConsumer = arrayValue(objectValue(config.queues).consumers).find(
-    (binding) => binding.queue === MEMORY_POST_TURN_QUEUE_NAME,
-  );
+  const queueProducers = arrayValue(objectValue(config.queues).producers);
+  const queueConsumers = arrayValue(objectValue(config.queues).consumers);
+  const queueProducer = queueProducers.find((binding) => binding.binding === "MEMORY_POST_TURN_QUEUE");
   const services = arrayValue(config.services).find((binding) => binding.binding === "WORKER_SELF_REFERENCE");
   const versionMetadata = objectValue(config.version_metadata);
-  const cacheQueueDo = arrayValue(objectValue(config.durable_objects).bindings).find(
-    (binding) => binding.name === "NEXT_CACHE_DO_QUEUE",
-  );
-  const cacheQueueMigration = arrayValue(config.migrations).find((migration) =>
-    Array.isArray(migration.new_sqlite_classes) && migration.new_sqlite_classes.includes("DOQueueHandler"),
-  );
+  const cacheDoBindings = arrayValue(objectValue(config.durable_objects).bindings);
+  const cacheMigrations = arrayValue(config.migrations);
   const routes = arrayValue(config.routes).map((route) => route.pattern);
   const observability = objectValue(config.observability);
   const configuredCrons = objectValue(config.triggers).crons;
@@ -1537,13 +1540,21 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const observabilityLogs = objectValue(observability.logs);
   const observabilityTraces = objectValue(observability.traces);
   const observabilityIncidentMode = vars.OBSERVABILITY_INCIDENT_MODE === "1";
-  const observabilitySamplingOk = observabilityIncidentMode
-    ? samplingRateAtMost(observability.head_sampling_rate, 1) &&
-      samplingRateAtMost(observabilityLogs.head_sampling_rate, 1) &&
-      samplingRateAtMost(observabilityTraces.head_sampling_rate, 1)
-    : samplingRateAtMost(observability.head_sampling_rate, 0.05) &&
-      samplingRateAtMost(observabilityLogs.head_sampling_rate, 0.1) &&
-      samplingRateAtMost(observabilityTraces.head_sampling_rate, 0.05);
+  const observabilitySamplingOk = observabilitySamplingWithinFreeTier(
+    {
+      worker: observability.head_sampling_rate,
+      logs: observabilityLogs.head_sampling_rate,
+      traces: observabilityTraces.head_sampling_rate,
+    },
+    observabilityIncidentMode,
+  );
+  const freeTierQueueConsumerOk =
+    queueConsumers.length === 1 &&
+    memoryQueueConsumerWithinFreeTier(
+      queueConsumers[0],
+      MEMORY_POST_TURN_QUEUE_NAME,
+      MEMORY_POST_TURN_DLQ_NAME,
+    );
 
   const problems = {
     missingVars: REQUIRED_WRANGLER_VARS.filter((key) => vars[key] === undefined || vars[key] === ""),
@@ -1559,17 +1570,22 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
       nextCacheR2 === undefined &&
       arrayValue(config.r2_buckets).length === 1 &&
       queueProducer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
-      queueConsumer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
-      queueConsumer.dead_letter_queue === MEMORY_POST_TURN_DLQ_NAME &&
-      Number(queueConsumer.max_batch_size) === 1 &&
-      Number(queueConsumer.max_batch_timeout) <= 10 &&
-      Number(queueConsumer.max_retries) >= 1 &&
+      freeTierQueueConsumerOk &&
       Array.isArray(configuredCrons) &&
       sameStringSet(configuredCrons.filter(isString), ["0 3 * * *"]),
     serviceOk: services?.service === "inspirlearning",
     versionMetadataOk: versionMetadata.binding === "CF_VERSION_METADATA",
-    cacheRevalidationDoOk: cacheQueueDo?.class_name === "DOQueueHandler",
-    cacheRevalidationMigrationOk: cacheQueueMigration !== undefined,
+    cacheRevalidationDoOk: cacheDurableObjectBindingIsTombstone(cacheDoBindings),
+    cacheRevalidationMigrationOk: cacheDurableObjectMigrationIsTombstone(cacheMigrations),
+    freeTierCostLimitsPinned: freeTierCostLimitsMatchPins(),
+    freeTierQueueConsumerOk,
+    freeTierCronCapsOk: runtimeCronCapsUseSharedLimits(),
+    cacheQueueConsumersDormant: onlyMemoryPostTurnQueueIsActive(
+      queueProducers,
+      queueConsumers,
+      MEMORY_POST_TURN_QUEUE_NAME,
+    ),
+    retiredCacheR2Unbound: retiredOpenNextCacheR2IsUnbound(arrayValue(config.r2_buckets), R2_BUCKET_NAME),
     routesOk: routes.includes("inspirlearning.com") && routes.includes("www.inspirlearning.com"),
     appUrlOk:
       vars.APP_URL === "https://inspirlearning.com" &&
@@ -1611,6 +1627,11 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.versionMetadataOk &&
     problems.cacheRevalidationDoOk &&
     problems.cacheRevalidationMigrationOk &&
+    problems.freeTierCostLimitsPinned &&
+    problems.freeTierQueueConsumerOk &&
+    problems.freeTierCronCapsOk &&
+    problems.cacheQueueConsumersDormant &&
+    problems.retiredCacheR2Unbound &&
     problems.routesOk &&
     problems.appUrlOk &&
     problems.mainEntryOk &&
@@ -1757,9 +1778,55 @@ function duplicateStrings(values: readonly string[]) {
   return [...duplicates].sort();
 }
 
-function samplingRateAtMost(value: unknown, max: number) {
-  const numeric = Number(value);
-  return Number.isFinite(numeric) && numeric >= 0 && numeric <= max;
+const PINNED_FREE_TIER_COST_LIMITS = {
+  memoryQueueMaxBatchSize: 1,
+  memoryQueueMaxBatchTimeoutSeconds: 10,
+  memoryQueueMaxRetries: 5,
+  memoryQueueMinRetryDelaySeconds: 60,
+  synthesisUserCap: 25,
+  rateLimitPruneRows: 5_000,
+  staleAiRunRepairs: 500,
+  observabilityHeadSampleRate: 0.02,
+  observabilityLogSampleRate: 0.05,
+  observabilityTraceSampleRate: 0.02,
+} as const;
+
+function freeTierCostLimitsMatchPins() {
+  const pinnedKeys = Object.keys(PINNED_FREE_TIER_COST_LIMITS) as Array<
+    keyof typeof PINNED_FREE_TIER_COST_LIMITS
+  >;
+  return (
+    pinnedKeys.length === Object.keys(FREE_TIER_COST_LIMITS).length &&
+    pinnedKeys.every((key) => FREE_TIER_COST_LIMITS[key] === PINNED_FREE_TIER_COST_LIMITS[key])
+  );
+}
+
+function runtimeCronCapsUseSharedLimits() {
+  const sourcePath = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../lib/free-runtime/state-api.ts",
+  );
+  let source = "";
+  try {
+    source = fs.readFileSync(sourcePath, "utf8");
+  } catch {
+    return false;
+  }
+  return (
+    source.includes(
+      "export const MAX_RATE_LIMIT_PRUNE_ROWS = FREE_TIER_COST_LIMITS.rateLimitPruneRows;",
+    ) &&
+    source.includes(
+      "export const MAX_STALE_AI_RUN_REPAIRS = FREE_TIER_COST_LIMITS.staleAiRunRepairs;",
+    ) &&
+    source.includes(
+      "export const NATIVE_SCHEDULED_MEMORY_USER_CAP = FREE_TIER_COST_LIMITS.synthesisUserCap;",
+    ) &&
+    source.includes("const maxDailySynthesisUsers = NATIVE_SCHEDULED_MEMORY_USER_CAP;") &&
+    /limit \$\{MAX_RATE_LIMIT_PRUNE_ROWS\}/.test(source) &&
+    /limit \$\{MAX_STALE_AI_RUN_REPAIRS\}/.test(source) &&
+    source.includes("Math.min(maxDailySynthesisUsers, Math.max(1, Math.trunc(input.limit)))")
+  );
 }
 
 function sameStringSet(actual: readonly string[], expected: readonly string[]) {

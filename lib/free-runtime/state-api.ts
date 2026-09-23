@@ -24,6 +24,7 @@ import {
   deriveDisposableAdminValidationIdentity,
   resolveDisposableAdminValidationScope,
 } from "./disposable-admin-validation";
+import { FREE_TIER_COST_LIMITS } from "./free-tier-cost-limits";
 import {
   timingSafeDigestEqual,
   type TimingSafeDigestSubtleCrypto,
@@ -53,8 +54,8 @@ export const NATIVE_STATE_API_DELIVERY = "lean-api-worker";
 // Keep a small parsing margin without re-materializing legacy 120 KiB rows.
 export const MAX_QUEUED_USER_MESSAGE_READ_CHARS = 2_201;
 export const MAX_QUEUED_ASSISTANT_MESSAGE_READ_CHARS = 1_201;
-export const MAX_RATE_LIMIT_PRUNE_ROWS = 5_000;
-export const MAX_STALE_AI_RUN_REPAIRS = 500;
+export const MAX_RATE_LIMIT_PRUNE_ROWS = FREE_TIER_COST_LIMITS.rateLimitPruneRows;
+export const MAX_STALE_AI_RUN_REPAIRS = FREE_TIER_COST_LIMITS.staleAiRunRepairs;
 export const MAX_RECENT_CHAT_RESULTS = 100;
 export const STATE_API_INCREMENTAL_CONTRACT_HEADER = "x-inspir-state-contract";
 export const STATE_API_INCREMENTAL_CONTRACT_VALUE = "incremental-v2";
@@ -74,7 +75,7 @@ export const MAX_MEMORY_SUMMARY_SECTION_TITLE_CHARS = 120;
 export const MAX_MEMORY_SUMMARY_SECTION_SUMMARY_CHARS = 1_200;
 export const MAX_MEMORY_SUMMARY_SECTION_SOURCE_IDS = 20;
 export const MAX_MEMORY_SUMMARY_SECTION_SOURCE_ID_CHARS = 120;
-export const NATIVE_SCHEDULED_MEMORY_USER_CAP = 25;
+export const NATIVE_SCHEDULED_MEMORY_USER_CAP = FREE_TIER_COST_LIMITS.synthesisUserCap;
 export const NATIVE_SCHEDULED_VECTOR_CLEANUP_DRAIN_CAP = 13;
 export const NATIVE_SCHEDULED_D1_QUERY_CEILING = 46;
 export const NATIVE_SCHEDULED_D1_QUERY_LIMIT = 50;
