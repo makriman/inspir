@@ -76,7 +76,7 @@ test("native quota call sites use the shared Free fallbacks", () => {
   ] as const) {
     assert.match(
       combined,
-      new RegExp(`freeTierDailyCapFromEnv\\([\\s\\S]{0,160}?${name}[\\s\\S]{0,80}?"${name}"\\)`),
+      new RegExp(`freeTierDailyCapFromEnv\\(\\s*env\\.${name},\\s*"${name}"\\s*,?\\s*\\)`),
     );
   }
   assert.equal(combined.match(/freeTierDailyCapFromEnv\(env\.RATE_LIMIT_ACTIVITY_DAILY, "RATE_LIMIT_ACTIVITY_DAILY"\)/g)?.length, 2);
