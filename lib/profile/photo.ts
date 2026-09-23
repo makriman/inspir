@@ -78,9 +78,23 @@ function detectImageMimeType(bytes: Uint8Array) {
   return null;
 }
 
+function profileImageDigestSource(bytes: Uint8Array): ArrayBuffer {
+  // Workers Free request memory is tight. A profile upload already holds the
+  // file bytes; hash that ArrayBuffer in place. Copy only a partial view or
+  // a SharedArrayBuffer, and only for the view's own length.
+  if (
+    bytes.buffer instanceof ArrayBuffer &&
+    bytes.byteOffset === 0 &&
+    bytes.byteLength === bytes.buffer.byteLength
+  ) {
+    return bytes.buffer;
+  }
+  const copy = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(copy).set(bytes);
+  return copy;
+}
+
 async function sha256Hex(bytes: Uint8Array) {
-  // Digest the upload view in place. Copying a 1 MB profile photo into a
-  // second ArrayBuffer is request-path memory pressure on Workers Free.
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const digest = await crypto.subtle.digest("SHA-256", profileImageDigestSource(bytes));
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }

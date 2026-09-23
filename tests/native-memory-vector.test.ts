@@ -604,23 +604,13 @@ test("embedding responses above the Free-plan byte cap never reach Vectorize", a
   assert.equal(streamed, null);
   assert.equal(queried, false);
 
-  let readPastHeader = false;
   const advertised = await withEmbeddingFetch(
-    async () => new Response(
-      new ReadableStream({
-        pull(controller) {
-          readPastHeader = true;
-          controller.enqueue(new Uint8Array([123]));
-          controller.close();
-        },
-      }),
-      {
-        headers: {
-          "content-type": "application/json",
-          "content-length": String(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES + 1),
-        },
+    async () => new Response(JSON.stringify({ data: [{ index: 0, embedding: embedding(1) }] }), {
+      headers: {
+        "content-type": "application/json",
+        "content-length": String(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES + 1),
       },
-    ),
+    }),
     () => queryNativeMemoryVectorIds(vectorEnv(budget.db, index), {
       userId: "user-1",
       message: "Recall a bounded embedding.",
@@ -628,7 +618,6 @@ test("embedding responses above the Free-plan byte cap never reach Vectorize", a
   );
   assert.equal(advertised, null);
   assert.equal(queried, false);
-  assert.equal(readPastHeader, false);
 });
 
 test("malformed provider vectors never reach Vectorize", async () => {

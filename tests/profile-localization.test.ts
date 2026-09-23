@@ -115,8 +115,9 @@ test("profile photo validation accepts small real image types only", async () =>
   }
 
   const photoSource = readFileSync(path.join(process.cwd(), "lib/profile/photo.ts"), "utf8");
-  assert.match(photoSource, /crypto\.subtle\.digest\("SHA-256", bytes\)/);
-  assert.doesNotMatch(photoSource, /new ArrayBuffer\(bytes\.byteLength\)/);
+  assert.match(photoSource, /bytes\.buffer instanceof ArrayBuffer/);
+  assert.match(photoSource, /return bytes\.buffer/);
+  assert.match(photoSource, /crypto\.subtle\.digest\("SHA-256", profileImageDigestSource\(bytes\)\)/);
 });
 
 test("profile photo upload preflight rejects oversized content length", () => {
