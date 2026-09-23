@@ -35,4 +35,4 @@ If you are unsure whether something is security-sensitive, report it privately f
 
 ## Supported versions
 
-Security fixes target the current `main` branch unless the maintainer announces a release policy.
+Security fixes target the live production branch `codex/free-static-no-games`. GitHub's default branch `main` is behind that branch and is not the deployed Worker.
