@@ -21,6 +21,11 @@ import {
 } from "./native-memory-vector";
 import { globalDailyCallLimitFromEnv } from "./global-ai-budget";
 import {
+  cancelUnreadBody,
+  chatJsonWithinCpuBounds,
+  discardIfDeclaredBodyExceeds,
+} from "./request-body-bounds";
+import {
   disposableAdminCleanupFenceToken,
   disposableAdminTopicOwnershipToken,
   resolveDisposableAdminValidationScope,
@@ -232,6 +237,27 @@ from (
 ) recent
 order by created_at asc`;
 
+/**
+ * Request-path prompt caps for the Workers Free 10 ms ceiling. These apply
+ * even when MEMORY_REQUEST_VECTOR_QUERY is off and the loader only reads D1.
+ * Saved-memory row count stays at the prompt ceiling; the generous part was
+ * per-row text, profile rows, recent-turn rows, and the sections blob.
+ */
+export const NATIVE_PROMPT_SAVED_MEMORY_LIMIT = 5;
+export const NATIVE_PROMPT_SAVED_MEMORY_CHARS = 400;
+export const NATIVE_PROMPT_PROFILE_LIMIT = 2;
+export const NATIVE_PROMPT_PROFILE_CHARS = 400;
+export const NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT = 5;
+export const NATIVE_PROMPT_PRIOR_TURN_LIMIT = 4;
+export const NATIVE_PROMPT_TURN_QUESTION_CHARS = 320;
+export const NATIVE_PROMPT_TURN_ANSWER_CHARS = 400;
+export const NATIVE_PROMPT_TURN_TOPICS_CHARS = 240;
+export const NATIVE_PROMPT_SECTION_SCAN = 8;
+export const NATIVE_PROMPT_SECTION_SUMMARY_CHARS = 400;
+export const NATIVE_PROMPT_SUMMARY_LIMIT = 2;
+export const NATIVE_PROMPT_SUMMARY_CHARS = 800;
+export const NATIVE_PROMPT_SECTIONS_JSON_CHARS = 8_000;
+
 export const NATIVE_MEMORY_SETTINGS_SUMMARY_SQL = `select
   'settings' as rowKind,
   coalesce(s.enabled, 1) as enabled,
@@ -239,8 +265,29 @@ export const NATIVE_MEMORY_SETTINGS_SUMMARY_SQL = `select
   coalesce(s.chat_history_enabled, 1) as chatHistoryEnabled,
   substr(coalesce(s.retrieval_mode, 'need_based'),1,41) as retrievalMode,
   substr(ms.user_id,1,121) as summaryId,
-  substr(coalesce(ms.summary, ''),1,4001) as summary,
-  substr(coalesce(ms.sections, '[]'),1,16001) as sections
+  substr(coalesce(ms.summary, ''),1,${NATIVE_PROMPT_SUMMARY_CHARS + 1}) as summary,
+  coalesce((
+    select json_group_array(json_object(
+      'id', substr(json_extract(section.value, '$.id'), 1, 120),
+      'title', substr(json_extract(section.value, '$.title'), 1, 120),
+      'category', substr(json_extract(section.value, '$.category'), 1, 60),
+      'summary', substr(json_extract(section.value, '$.summary'), 1, ${NATIVE_PROMPT_SECTION_SUMMARY_CHARS}),
+      'doNotMention', case
+        when json_extract(section.value, '$.doNotMention') in (1, 'true') then json('true')
+        else json('false')
+      end
+    ))
+    from (
+      select value
+      from json_each(
+        case
+          when json_valid(ms.sections) and json_type(ms.sections) = 'array' then ms.sections
+          else '[]'
+        end
+      )
+      limit ${NATIVE_PROMPT_SECTION_SCAN}
+    ) as section
+  ), '[]') as sections
 from users u
 left join user_memory_settings s on s.user_id = u.id
 left join user_memory_summaries ms on ms.user_id = u.id
@@ -253,7 +300,7 @@ export const NATIVE_SAVED_MEMORY_PROMPT_SQL = `select
   substr(m.kind,1,41) as kind,
   substr(m.category,1,61) as category,
   substr(m.source_type,1,61) as sourceType,
-  substr(m.content,1,601) as content,
+  substr(m.content,1,${NATIVE_PROMPT_SAVED_MEMORY_CHARS + 1}) as content,
   coalesce(m.pinned, 0) as pinned,
   coalesce(m.salience, 0) as salience
 from user_memories m
@@ -265,12 +312,12 @@ where m.user_id = ?1
   and m.freshness_status <> 'expired'
 order by case when m.kind = 'explicit' then 0 else 1 end,
          m.pinned desc, m.salience desc, m.updated_at desc
-limit 5`;
+limit ${NATIVE_PROMPT_SAVED_MEMORY_LIMIT}`;
 
 export const NATIVE_MEMORY_PROFILES_SQL = `select
   'profile' as rowKind,
   substr(p.category,1,61) as category,
-  substr(p.summary,1,1201) as summary
+  substr(p.summary,1,${NATIVE_PROMPT_PROFILE_CHARS + 1}) as summary
 from user_memory_profiles p
 left join user_memory_settings s on s.user_id = p.user_id
 where p.user_id = ?1
@@ -282,16 +329,16 @@ where p.user_id = ?1
       and hidden.do_not_mention = 1
   )
 order by p.updated_at desc, p.category asc
-limit 4`;
+limit ${NATIVE_PROMPT_PROFILE_LIMIT}`;
 
 export const NATIVE_RECENT_CHAT_TURNS_SQL = `select
   'turn' as rowKind,
   substr(t.id,1,121) as id,
   substr(t.chat_id,1,121) as chatId,
   substr(coalesce(t.topic_id, ''),1,121) as topicId,
-  substr(t.question,1,601) as question,
-  substr(t.answer_excerpt,1,801) as answerExcerpt,
-  substr(t.topics,1,1001) as topics,
+  substr(t.question,1,${NATIVE_PROMPT_TURN_QUESTION_CHARS + 1}) as question,
+  substr(t.answer_excerpt,1,${NATIVE_PROMPT_TURN_ANSWER_CHARS + 1}) as answerExcerpt,
+  substr(t.topics,1,${NATIVE_PROMPT_TURN_TOPICS_CHARS + 1}) as topics,
   t.updated_at as updatedAt
 from chat_memory_turns t
 left join user_memory_settings s on s.user_id = t.user_id
@@ -302,12 +349,25 @@ where t.user_id = ?1
     or (s.enabled = 1 and s.saved_memory_enabled = 1 and s.chat_history_enabled = 1)
   )
 order by t.updated_at desc
-limit 8`;
+limit ${NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT}`;
 
 const cloudflareGatewayHost = "gateway.ai.cloudflare.com";
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const truthyValues = new Set(["1", "true", "yes", "on"]);
+
+/**
+ * Workers Free rejects `limits.cpu_ms`. Embedding plus two Vectorize queries
+ * on the authenticated chat request is off unless this var is explicitly true.
+ * Absent, "0", and any other value keep the request on the bounded D1 memory
+ * batch. Queue-side vector writes are a separate invocation and stay gated
+ * by the fail-closed global LLM budget.
+ */
+export function nativeMemoryRequestVectorQueryEnabled(
+  env: { MEMORY_REQUEST_VECTOR_QUERY?: string },
+) {
+  return truthyValues.has((env.MEMORY_REQUEST_VECTOR_QUERY ?? "").trim().toLowerCase());
+}
 const bootstrapAdminEmails = new Set(["makridroid@gmail.com"]);
 const nativeMemoryVectorMarkerSql = `case
   when embedding like '"p:m:%"' or embedding like '"p:t:%"'
@@ -643,6 +703,16 @@ export async function handleProtectedAiApiRequest(
   const pathname = new URL(request.url).pathname;
   if (!isProtectedAiApiPath(pathname)) return null;
 
+  // Refuse an advertised oversized chat body before session HMAC/D1 or JSON.parse.
+  // Other protected routes still authenticate first; their readers remain bounded.
+  if (
+    request.method === "POST" &&
+    (pathname === "/api/chat" || pathname === "/api/chat/finalize") &&
+    (await discardIfDeclaredBodyExceeds(request, MAX_PROTECTED_API_BODY_BYTES))
+  ) {
+    return jsonResponse({ error: "Request is too large" }, 413);
+  }
+
   let session: NativeAuthenticatedSession | null;
   try {
     session = await requireNativeSession(request, env);
@@ -834,6 +904,8 @@ async function handleAuthenticatedChat(
     const memorySourcesHeader = encodeNativeMemorySourcesHeader(memoryRunMetadata.sources);
     if (memorySourcesHeader) headers.set("x-inspir-memory-sources", memorySourcesHeader);
     appendNativeSessionRefresh(headers, session);
+    // Pass the provider stream through. Do not buffer, tee, or parse SSE bytes
+    // on this Worker; the browser finalizes the bounded answer afterward.
     return new Response(upstream.body, { status: 200, headers });
   }
 
@@ -2368,7 +2440,8 @@ async function getContextMessages(env: CloudflareEnv, chatId: string) {
 }
 
 export async function loadNativeMemoryPromptContext(
-  env: Omit<NativeMemoryVectorEnv, "DB"> & Pick<CloudflareEnv, "DB">,
+  env: Omit<NativeMemoryVectorEnv, "DB"> &
+    Pick<CloudflareEnv, "DB"> & { MEMORY_REQUEST_VECTOR_QUERY?: string },
   input: {
     userId: string;
     chatId: string;
@@ -2405,6 +2478,7 @@ export async function loadNativeMemoryPromptContext(
     let semanticTurnRows: NativeRecentChatTurnBatchRow[] = [];
     let semanticMatches: NativeMemoryVectorMatches | null = null;
     if (
+      nativeMemoryRequestVectorQueryEnabled(env) &&
       settings &&
       nativeMemoryBoolean(settings.enabled) &&
       nativeMemoryBoolean(settings.savedMemoryEnabled) &&
@@ -2482,7 +2556,7 @@ async function hydrateNativeMemoryVectorMatches(
          substr(kind,1,41) as kind,
          substr(category,1,61) as category,
          substr(source_type,1,61) as sourceType,
-         substr(content,1,601) as content,
+         substr(content,1,${NATIVE_PROMPT_SAVED_MEMORY_CHARS + 1}) as content,
          coalesce(pinned, 0) as pinned,
          coalesce(salience, 0) as salience,
          ${nativeMemoryVectorMarkerSql} as vectorMarker
@@ -2500,9 +2574,9 @@ async function hydrateNativeMemoryVectorMatches(
          substr(id,1,121) as id,
          substr(chat_id,1,121) as chatId,
          substr(coalesce(topic_id, ''),1,121) as topicId,
-         substr(question,1,601) as question,
-         substr(answer_excerpt,1,801) as answerExcerpt,
-         substr(topics,1,1001) as topics,
+         substr(question,1,${NATIVE_PROMPT_TURN_QUESTION_CHARS + 1}) as question,
+         substr(answer_excerpt,1,${NATIVE_PROMPT_TURN_ANSWER_CHARS + 1}) as answerExcerpt,
+         substr(topics,1,${NATIVE_PROMPT_TURN_TOPICS_CHARS + 1}) as topics,
          updated_at as updatedAt,
          ${nativeMemoryVectorMarkerSql} as vectorMarker
        from chat_memory_turns
@@ -2653,7 +2727,7 @@ function normalizeNativeSavedMemories(
     const kind = boundedString(row.kind, 1, 40);
     const category = boundedString(row.category, 1, 60);
     const sourceType = boundedString(row.sourceType, 1, 60);
-    const content = normalizeSqlBoundedText(row.content, 600);
+    const content = normalizeSqlBoundedText(row.content, NATIVE_PROMPT_SAVED_MEMORY_CHARS);
     if (!id || !kind || !category || !sourceType || !content || seen.has(id)) continue;
     seen.add(id);
     const explicit = kind === "explicit";
@@ -2681,50 +2755,61 @@ function normalizeNativeSavedMemories(
         right.salience - left.salience ||
         left.inputIndex - right.inputIndex,
     )
-    .slice(0, 5)
+    .slice(0, NATIVE_PROMPT_SAVED_MEMORY_LIMIT)
     .map((candidate) => candidate.memory);
 }
 
 function normalizeNativeMemorySummaries(settings: NativeMemorySettingsBatchRow) {
-  const sectionsText = boundedString(settings.sections, 2, 16_001);
-  if (!sectionsText || sectionsText.length > 16_000) return [];
-  const parsed = parseJsonValue(sectionsText);
-  if (!Array.isArray(parsed)) return [];
-
-  const summaries: NativePromptMemorySummary[] = [];
-  const seen = new Set<string>();
-  for (const value of parsed.slice(0, 100)) {
-    if (!isRecord(value) || value.doNotMention === true || value.do_not_mention === true) continue;
-    const id = boundedString(value.id, 1, 120);
-    const title = boundedString(value.title, 1, 120);
-    const category = boundedString(value.category, 1, 60);
-    const summary = normalizeSqlBoundedText(value.summary, 1_200);
-    if (!id || !title || !category || !summary || seen.has(id)) continue;
-    seen.add(id);
-    summaries.push({ id, title, category, summary, summarySectionId: id });
-    if (summaries.length >= 3) break;
-  }
-  if (parsed.length > 0 || summaries.length > 0) return summaries;
+  const fromSections = summariesFromProjectedSections(settings.sections);
+  if (fromSections) return fromSections;
 
   const id = boundedString(settings.summaryId, 1, 120);
-  const fullSummary = normalizeSqlBoundedText(settings.summary, 4_000);
+  const fullSummary = normalizeSqlBoundedText(settings.summary, NATIVE_PROMPT_SUMMARY_CHARS);
   if (!id || !fullSummary) return [];
   return [
     {
       id,
       title: "Learner memory summary",
       category: "general",
-      summary: compactNativeMemoryText(fullSummary, 1_200),
+      summary: compactNativeMemoryText(fullSummary, NATIVE_PROMPT_SUMMARY_CHARS),
     },
   ];
+}
+
+function summariesFromProjectedSections(sections: unknown) {
+  const sectionsText = boundedString(sections, 2, NATIVE_PROMPT_SECTIONS_JSON_CHARS + 1);
+  if (!sectionsText || sectionsText.length > NATIVE_PROMPT_SECTIONS_JSON_CHARS) return null;
+  const parsed = parseJsonValue(sectionsText);
+  if (!Array.isArray(parsed) || parsed.length === 0) return null;
+
+  const summaries: NativePromptMemorySummary[] = [];
+  const seen = new Set<string>();
+  for (const value of parsed.slice(0, NATIVE_PROMPT_SECTION_SCAN)) {
+    if (!isRecord(value) || sectionMentionHidden(value.doNotMention) || sectionMentionHidden(value.do_not_mention)) {
+      continue;
+    }
+    const id = boundedString(value.id, 1, 120);
+    const title = boundedString(value.title, 1, 120);
+    const category = boundedString(value.category, 1, 60);
+    const summary = normalizeSqlBoundedText(value.summary, NATIVE_PROMPT_SECTION_SUMMARY_CHARS);
+    if (!id || !title || !category || !summary || seen.has(id)) continue;
+    seen.add(id);
+    summaries.push({ id, title, category, summary, summarySectionId: id });
+    if (summaries.length >= NATIVE_PROMPT_SUMMARY_LIMIT) break;
+  }
+  return summaries;
+}
+
+function sectionMentionHidden(value: unknown) {
+  return value === true || value === 1;
 }
 
 function normalizeNativeMemoryProfiles(rows: readonly NativeMemoryProfileBatchRow[]) {
   const profiles: NativePromptMemoryProfile[] = [];
   const seen = new Set<string>();
-  for (const row of rows.slice(0, 4)) {
+  for (const row of rows.slice(0, NATIVE_PROMPT_PROFILE_LIMIT)) {
     const category = boundedString(row.category, 1, 60);
-    const summary = normalizeSqlBoundedText(row.summary, 1_200);
+    const summary = normalizeSqlBoundedText(row.summary, NATIVE_PROMPT_PROFILE_CHARS);
     if (!category || !summary || seen.has(category)) continue;
     seen.add(category);
     profiles.push({ category, summary });
@@ -2762,17 +2847,17 @@ function rankNativeRecentChatTurns(
     input.semanticTurnMatches.slice(0, 20).map((match) => [match.rowId, match.score]),
   );
   const seen = new Set<string>();
-  // The first eight rows are the bounded lexical/recency candidates from D1.
-  // Up to twenty additional rows may have been hydrated from Vectorize. Only
-  // accept rows beyond the SQL bound when their ID was actually returned by
-  // the semantic query, so callers cannot expand prompt input accidentally.
-  for (const [index, row] of rows.slice(0, 28).entries()) {
+  // The first rows are the bounded lexical/recency candidates from D1.
+  // Additional rows may have been hydrated from Vectorize. Only accept rows
+  // beyond the SQL bound when their ID was actually returned by the semantic
+  // query, so callers cannot expand prompt input accidentally.
+  for (const [index, row] of rows.slice(0, NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT + 20).entries()) {
     const id = boundedString(row.id, 1, 120);
-    if (id && index >= 8 && !semanticScores.has(id)) continue;
+    if (id && index >= NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT && !semanticScores.has(id)) continue;
     const chatId = boundedString(row.chatId, 1, 120);
     const rawTopicId = boundedString(row.topicId, 0, 120);
-    const question = normalizeSqlBoundedText(row.question, 600);
-    const answerExcerpt = normalizeSqlBoundedText(row.answerExcerpt, 800);
+    const question = normalizeSqlBoundedText(row.question, NATIVE_PROMPT_TURN_QUESTION_CHARS);
+    const answerExcerpt = normalizeSqlBoundedText(row.answerExcerpt, NATIVE_PROMPT_TURN_ANSWER_CHARS);
     if (!id || !chatId || chatId === input.currentChatId || !question || !answerExcerpt || seen.has(id)) continue;
     seen.add(id);
     const topics = normalizeNativeMemoryTopics(row.topics);
@@ -2809,13 +2894,13 @@ function rankNativeRecentChatTurns(
         right.updatedAt - left.updatedAt ||
         left.index - right.index,
     )
-    .slice(0, 4)
+    .slice(0, NATIVE_PROMPT_PRIOR_TURN_LIMIT)
     .map((candidate) => candidate.turn);
 }
 
 function normalizeNativeMemoryTopics(value: unknown) {
-  const text = boundedString(value, 2, 1_001);
-  if (!text || text.length > 1_000) return [];
+  const text = boundedString(value, 2, NATIVE_PROMPT_TURN_TOPICS_CHARS + 1);
+  if (!text || text.length > NATIVE_PROMPT_TURN_TOPICS_CHARS) return [];
   const parsed = parseJsonValue(text);
   if (!Array.isArray(parsed)) return [];
   const topics: string[] = [];
@@ -2865,14 +2950,14 @@ export function shouldQueryNativeMemoryVectors(input: {
   if (!queryTerms.length) return false;
 
   const candidateTexts = [
-    ...input.memoryRows.slice(0, 5).flatMap((row) => {
-      const content = normalizeSqlBoundedText(row.content, 600);
+    ...input.memoryRows.slice(0, NATIVE_PROMPT_SAVED_MEMORY_LIMIT).flatMap((row) => {
+      const content = normalizeSqlBoundedText(row.content, NATIVE_PROMPT_SAVED_MEMORY_CHARS);
       return content ? [content] : [];
     }),
-    ...input.turnRows.slice(0, 8).flatMap((row) => {
-      const question = normalizeSqlBoundedText(row.question, 600);
-      const answer = normalizeSqlBoundedText(row.answerExcerpt, 800);
-      const topics = boundedString(row.topics, 2, 1_000);
+    ...input.turnRows.slice(0, NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT).flatMap((row) => {
+      const question = normalizeSqlBoundedText(row.question, NATIVE_PROMPT_TURN_QUESTION_CHARS);
+      const answer = normalizeSqlBoundedText(row.answerExcerpt, NATIVE_PROMPT_TURN_ANSWER_CHARS);
+      const topics = boundedString(row.topics, 2, NATIVE_PROMPT_TURN_TOPICS_CHARS);
       const text = normalizeLexicalText(`${question ?? ""} ${answer ?? ""} ${topics ?? ""}`);
       return text ? [text] : [];
     }),
@@ -3885,25 +3970,25 @@ function formatNativeMemoryPromptContext(context: NativeMemoryPromptContext) {
   }
   if (context.memories.length) {
     lines.push("Saved memories:");
-    for (const memory of context.memories.slice(0, 5)) {
+    for (const memory of context.memories.slice(0, NATIVE_PROMPT_SAVED_MEMORY_LIMIT)) {
       lines.push(`- [${memory.category}] ${memory.content}`);
     }
   }
   if (context.summaries.length) {
     lines.push("Memory summary:");
-    for (const summary of context.summaries.slice(0, 3)) {
+    for (const summary of context.summaries.slice(0, NATIVE_PROMPT_SUMMARY_LIMIT)) {
       lines.push(`- [${summary.category}] ${summary.title}: ${summary.summary}`);
     }
   }
   if (context.profiles.length) {
     lines.push("Learner profile summaries:");
-    for (const profile of context.profiles.slice(0, 4)) {
+    for (const profile of context.profiles.slice(0, NATIVE_PROMPT_PROFILE_LIMIT)) {
       lines.push(`- [${profile.category}] ${profile.summary}`);
     }
   }
   if (context.priorChatTurns.length) {
     lines.push("Related past chat turns:");
-    for (const turn of context.priorChatTurns.slice(0, 4)) {
+    for (const turn of context.priorChatTurns.slice(0, NATIVE_PROMPT_PRIOR_TURN_LIMIT)) {
       const topics = turn.topics.length ? ` (${turn.topics.join(", ")})` : "";
       lines.push(`- Learner asked: ${turn.question}${topics}`);
       lines.push(`  Inspir replied: ${turn.answerExcerpt}`);
@@ -4027,16 +4112,18 @@ function parseAdminTopicPayload(value: unknown) {
 async function readBoundedJson(request: Request): Promise<JsonReadResult> {
   const mediaType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase();
   if (mediaType !== "application/json" && !mediaType?.endsWith("+json")) {
+    await cancelUnreadBody(request.body, "protected_api_unsupported_media_type");
     return { ok: false, status: 415, error: "Requests must use JSON" };
   }
-  const advertised = Number(request.headers.get("content-length") ?? "0");
-  if (Number.isFinite(advertised) && advertised > MAX_PROTECTED_API_BODY_BYTES) {
+  if (await discardIfDeclaredBodyExceeds(request, MAX_PROTECTED_API_BODY_BYTES)) {
     return { ok: false, status: 413, error: "Request is too large" };
   }
   try {
     const bytes = await readBoundedStream(request.body, MAX_PROTECTED_API_BODY_BYTES);
     if (bytes.byteLength === 0) return { ok: false, status: 400, error: "Invalid request" };
-    return { ok: true, value: JSON.parse(new TextDecoder().decode(bytes)) };
+    const text = new TextDecoder().decode(bytes);
+    if (!chatJsonWithinCpuBounds(text)) return { ok: false, status: 400, error: "Invalid request" };
+    return { ok: true, value: JSON.parse(text) };
   } catch (error) {
     return {
       ok: false,

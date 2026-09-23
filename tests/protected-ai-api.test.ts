@@ -28,8 +28,20 @@ import {
   NATIVE_CONTEXT_MESSAGES_SQL,
   NATIVE_MEMORY_PROFILES_SQL,
   NATIVE_MEMORY_SETTINGS_SUMMARY_SQL,
+  NATIVE_PROMPT_PRIOR_TURN_LIMIT,
+  NATIVE_PROMPT_PROFILE_CHARS,
+  NATIVE_PROMPT_PROFILE_LIMIT,
+  NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT,
+  NATIVE_PROMPT_SAVED_MEMORY_CHARS,
+  NATIVE_PROMPT_SAVED_MEMORY_LIMIT,
+  NATIVE_PROMPT_SECTION_SCAN,
+  NATIVE_PROMPT_SECTION_SUMMARY_CHARS,
+  NATIVE_PROMPT_SUMMARY_CHARS,
+  NATIVE_PROMPT_TURN_ANSWER_CHARS,
+  NATIVE_PROMPT_TURN_QUESTION_CHARS,
   NATIVE_RECENT_CHAT_TURNS_SQL,
   NATIVE_SAVED_MEMORY_PROMPT_SQL,
+  nativeMemoryRequestVectorQueryEnabled,
   normalizeNativeMemoryPromptContext,
   parseChatFinalizePayload,
   PROTECTED_AI_API_DELIVERY,
@@ -188,6 +200,7 @@ test("authenticated chat finalization is strict and keeps provider streaming off
   assert.match(streamHandler, /"text\/plain; charset=utf-8"/);
   assert.match(streamHandler, /finalizeLegacyAuthenticatedChat/);
   assert.doesNotMatch(streamHandler, /\.tee\(|parseOpenAiSse|ctx\.waitUntil/);
+  assert.doesNotMatch(streamHandler, /upstream\.(?:text|json|arrayBuffer)\(/);
   const finalizer = source.slice(
     source.indexOf("async function handleAuthenticatedChatFinalize("),
     source.indexOf("async function handleAccountTopics("),
@@ -230,11 +243,26 @@ test("legacy authenticated chat fails closed when server finalization does not c
 });
 
 test("native memory SQL is bounded, settings-gated, current-chat-safe, and index-shaped", () => {
+  assert.equal(NATIVE_PROMPT_SAVED_MEMORY_LIMIT, 5);
+  assert.equal(NATIVE_PROMPT_SAVED_MEMORY_CHARS, 400);
+  assert.equal(NATIVE_PROMPT_PROFILE_LIMIT, 2);
+  assert.equal(NATIVE_PROMPT_PROFILE_CHARS, 400);
+  assert.equal(NATIVE_PROMPT_RECENT_TURN_SQL_LIMIT, 5);
+  assert.equal(NATIVE_PROMPT_PRIOR_TURN_LIMIT, 4);
+  assert.equal(NATIVE_PROMPT_SECTION_SCAN, 8);
+  assert.equal(NATIVE_PROMPT_SECTION_SUMMARY_CHARS, 400);
+  assert.equal(NATIVE_PROMPT_SUMMARY_CHARS, 800);
+  assert.ok(NATIVE_PROMPT_TURN_QUESTION_CHARS < 600);
+  assert.ok(NATIVE_PROMPT_TURN_ANSWER_CHARS <= 400);
+
   assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /coalesce\(s\.enabled, 1\) as enabled/);
   assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /s\.retrieval_mode, 'need_based'/);
-  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /substr\(coalesce\(ms\.summary, ''\),1,4001\)/);
-  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /substr\(coalesce\(ms\.sections, '\[\]'\),1,16001\)/);
-  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /substr\(m\.content,1,601\) as content/);
+  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /substr\(coalesce\(ms\.summary, ''\),1,801\)/);
+  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /json_each/);
+  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /json_extract\(section\.value, '\$\.summary'\)/);
+  assert.match(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /limit 8/);
+  assert.doesNotMatch(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL, /sourceMemoryIds|sourceTurnIds|1,16001/);
+  assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /substr\(m\.content,1,401\) as content/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /left join user_memory_settings s/);
   assert.match(
     NATIVE_SAVED_MEMORY_PROMPT_SQL,
@@ -247,18 +275,93 @@ test("native memory SQL is bounded, settings-gated, current-chat-safe, and index
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /m\.freshness_status <> 'expired'/);
   assert.match(NATIVE_SAVED_MEMORY_PROMPT_SQL, /limit 5$/);
   assert.doesNotMatch(NATIVE_SAVED_MEMORY_PROMPT_SQL, /inner join user_memory_settings/);
-  assert.match(NATIVE_MEMORY_PROFILES_SQL, /substr\(p\.summary,1,1201\)/);
+  assert.match(NATIVE_MEMORY_PROFILES_SQL, /substr\(p\.summary,1,401\)/);
   assert.match(NATIVE_MEMORY_PROFILES_SQL, /hidden\.do_not_mention = 1/);
-  assert.match(NATIVE_MEMORY_PROFILES_SQL, /limit 4$/);
+  assert.match(NATIVE_MEMORY_PROFILES_SQL, /limit 2$/);
   assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /t\.chat_id <> \?2/);
   assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /s\.chat_history_enabled = 1/);
-  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /order by t\.updated_at desc\s+limit 8$/);
-  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /substr\(t\.question,1,601\)/);
-  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /substr\(t\.answer_excerpt,1,801\)/);
+  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /order by t\.updated_at desc\s+limit 5$/);
+  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /substr\(t\.question,1,321\)/);
+  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /substr\(t\.answer_excerpt,1,401\)/);
+  assert.match(NATIVE_RECENT_CHAT_TURNS_SQL, /substr\(t\.topics,1,241\)/);
   assert.doesNotMatch(
     `${NATIVE_MEMORY_SETTINGS_SUMMARY_SQL}\n${NATIVE_SAVED_MEMORY_PROMPT_SQL}\n${NATIVE_MEMORY_PROFILES_SQL}\n${NATIVE_RECENT_CHAT_TURNS_SQL}`,
     /embedding|vector/i,
   );
+});
+
+test("request-path summary SQL projects prompt fields and drops source id arrays", async () => {
+  const miniflare = new Miniflare({
+    modules: true,
+    script: "export default {}",
+    d1Databases: { DB: `memory-projection-${crypto.randomUUID()}` },
+  });
+  try {
+    const db = await miniflare.getD1Database("DB");
+    const longSummary = "s".repeat(2_000);
+    const sections = JSON.stringify([
+      {
+        id: "hidden-section",
+        title: "Hidden",
+        category: "identity",
+        summary: `HIDDEN ${longSummary}`,
+        doNotMention: true,
+        sourceMemoryIds: Array.from({ length: 40 }, (_, index) => `memory-${index}`),
+      },
+      {
+        id: "visible-section",
+        title: "Goals",
+        category: "goals",
+        summary: longSummary,
+        sourceTurnIds: ["turn-1"],
+      },
+    ]);
+    await db.batch([
+      db.prepare("create table users (id text primary key)"),
+      db.prepare(`create table user_memory_settings (
+        user_id text primary key,
+        enabled integer,
+        saved_memory_enabled integer,
+        chat_history_enabled integer,
+        retrieval_mode text
+      )`),
+      db.prepare(`create table user_memory_summaries (
+        user_id text primary key,
+        summary text,
+        sections text
+      )`),
+      db.prepare("insert into users (id) values ('user-1')"),
+      db.prepare(`insert into user_memory_settings
+        (user_id, enabled, saved_memory_enabled, chat_history_enabled, retrieval_mode)
+        values ('user-1', 1, 1, 1, 'need_based')`),
+      db.prepare("insert into user_memory_summaries (user_id, summary, sections) values ('user-1', ?1, ?2)")
+        .bind("f".repeat(2_000), sections),
+    ]);
+    const row = await db.prepare(NATIVE_MEMORY_SETTINGS_SUMMARY_SQL).bind("user-1").first<{
+      summary: string;
+      sections: string;
+      retrievalMode: string;
+    }>();
+    assert.ok(row);
+    assert.equal(row.retrievalMode, "need_based");
+    assert.equal(row.summary.length, NATIVE_PROMPT_SUMMARY_CHARS + 1);
+    const projected: unknown = JSON.parse(row.sections);
+    assert.ok(Array.isArray(projected));
+    assert.equal(projected.length, 2);
+    const hidden = projected[0];
+    const visible = projected[1];
+    assert.ok(hidden && typeof hidden === "object");
+    assert.ok(visible && typeof visible === "object");
+    assert.equal(Reflect.get(hidden, "doNotMention"), true);
+    assert.equal(Reflect.get(visible, "doNotMention"), false);
+    assert.equal(String(Reflect.get(visible, "summary")).length, NATIVE_PROMPT_SECTION_SUMMARY_CHARS);
+    assert.equal(Object.hasOwn(hidden, "sourceMemoryIds"), false);
+    assert.equal(Object.hasOwn(visible, "sourceTurnIds"), false);
+    assert.equal(row.sections.includes("memory-0"), false);
+    assert.equal(row.sections.includes("turn-1"), false);
+  } finally {
+    await miniflare.dispose();
+  }
 });
 
 test("bounded native memory context restores explicit, summary, profile, and ranked past-chat semantics", () => {
@@ -268,11 +371,11 @@ test("bounded native memory context restores explicit, summary, profile, and ran
   assert.equal(context.chatHistoryEnabled, true);
   assert.equal(context.used, true);
   assert.equal(context.memories.length, 5);
-  assert.equal(context.memories[0]?.content.length, 600);
+  assert.equal(context.memories[0]?.content.length, NATIVE_PROMPT_SAVED_MEMORY_CHARS);
   assert.match(context.memories[0]?.content ?? "", /\.\.\.$/);
   assert.deepEqual(context.summarySectionIds, ["summary-visible"]);
   assert.equal(context.summaries.some((summary) => summary.id === "summary-hidden"), false);
-  assert.equal(context.profiles.length, 4);
+  assert.equal(context.profiles.length, NATIVE_PROMPT_PROFILE_LIMIT);
   assert.equal(context.priorChatTurns.length, 4);
   assert.equal(context.priorChatTurns[0]?.id, "turn-same-topic");
   assert.equal(context.priorChatTurns[1]?.id, "turn-arabic-overlap");
@@ -297,9 +400,9 @@ test("trusted memories retain priority while strong semantic matches can fill re
     marker: "m:memory-6:0123456789abcdef",
     score: 0.96,
   }];
-  // The semantic turn sits beyond the eight-row lexical SQL bound. This
-  // proves hydrated Vectorize matches are considered instead of being
-  // appended and then silently sliced away.
+  // The semantic turn sits beyond the lexical SQL bound. This proves hydrated
+  // Vectorize matches are considered instead of being appended and then
+  // silently sliced away.
   fixture.semanticTurnMatches = [{
     rowId: "turn-semantic-ninth",
     vectorId: "t:turn-semantic-ninth:fedcba9876543210",
@@ -437,6 +540,58 @@ test("persisted retrieval modes and Unicode need-based overlap gate semantic spe
   }), false);
 });
 
+test("request-path vector retrieval stays off unless MEMORY_REQUEST_VECTOR_QUERY is truthy", () => {
+  for (const value of [undefined, "", "0", "false", "off", "no"]) {
+    assert.equal(
+      nativeMemoryRequestVectorQueryEnabled({ MEMORY_REQUEST_VECTOR_QUERY: value }),
+      false,
+      String(value),
+    );
+  }
+  for (const value of ["1", "true", "TRUE", " yes ", "on"]) {
+    assert.equal(nativeMemoryRequestVectorQueryEnabled({ MEMORY_REQUEST_VECTOR_QUERY: value }), true, value);
+  }
+});
+
+test("projected sections hide SQLite boolean 1 and do not require source id arrays", () => {
+  const fixture = memoryFixture();
+  fixture.settingsRows = [settingsRow({
+    sections: JSON.stringify([
+      {
+        id: "summary-hidden",
+        title: "Hidden",
+        category: "identity",
+        summary: "HIDDEN SUMMARY MUST NOT APPEAR",
+        doNotMention: 1,
+        sourceMemoryIds: ["memory-should-not-be-required"],
+      },
+      {
+        id: "summary-visible",
+        title: "Learning goals",
+        category: "goals",
+        summary: "The learner is preparing for a mathematics assessment.",
+        sourceTurnIds: ["turn-should-not-be-required"],
+      },
+    ]),
+  })];
+  const context = normalizeNativeMemoryPromptContext(fixture);
+  assert.deepEqual(context.summarySectionIds, ["summary-visible"]);
+  assert.equal(context.summaries.some((summary) => summary.summary.includes("HIDDEN")), false);
+});
+
+test("authenticated chat rejects an oversized content-length before session or JSON", () => {
+  const source = fs.readFileSync(path.resolve("lib/free-runtime/protected-ai-api.ts"), "utf8");
+  const handlerStart = source.indexOf("export async function handleProtectedAiApiRequest");
+  const sessionCheck = source.indexOf("requireNativeSession(request, env)", handlerStart);
+  const handler = source.slice(handlerStart, sessionCheck);
+  assert.ok(handlerStart >= 0 && sessionCheck > handlerStart);
+  assert.match(handler, /pathname === "\/api\/chat"/);
+  assert.match(handler, /pathname === "\/api\/chat\/finalize"/);
+  assert.match(handler, /discardIfDeclaredBodyExceeds\(request, MAX_PROTECTED_API_BODY_BYTES\)/);
+  assert.match(handler, /Request is too large/);
+  assert.doesNotMatch(handler, /cpu_ms\s*:/);
+});
+
 test("native memory settings fail closed and independently gate past-chat retrieval", () => {
   const disabled = memoryFixture();
   disabled.settingsRows = [settingsRow({ enabled: 0 })];
@@ -456,7 +611,7 @@ test("native memory settings fail closed and independently gate past-chat retrie
   const historyOffContext = normalizeNativeMemoryPromptContext(historyDisabled);
   assert.equal(historyOffContext.memories.length, 5);
   assert.equal(historyOffContext.summaries.length, 1);
-  assert.equal(historyOffContext.profiles.length, 4);
+  assert.equal(historyOffContext.profiles.length, NATIVE_PROMPT_PROFILE_LIMIT);
   assert.deepEqual(historyOffContext.priorChatTurns, []);
   assert.deepEqual(historyOffContext.chatTurnIds, []);
 
@@ -677,7 +832,7 @@ test("protected runtime stays framework-neutral and preserves security invariant
   const loaderSource = source.slice(loaderStart, loaderEnd);
   assert.equal(loaderSource.match(/env\.DB\.batch<NativeMemoryBatchRow>/g)?.length, 1);
   assert.equal(loaderSource.match(/env\.DB\.prepare\(NATIVE_/g)?.length, 4);
-  assert.match(loaderSource, /queryNativeMemoryVectorIds\(env/);
+  assert.match(loaderSource, /nativeMemoryRequestVectorQueryEnabled\(env\)[\s\S]*queryNativeMemoryVectorIds\(env/);
   assert.match(loaderSource, /hydrateNativeMemoryVectorMatches/);
   assert.match(loaderSource, /where user_id = \?1[\s\S]*id in \(\$\{memoryPlaceholders\}\)/);
   assert.match(loaderSource, /where user_id = \?1[\s\S]*chat_id <> \?2[\s\S]*id in \(\$\{turnPlaceholders\}\)/);
@@ -769,7 +924,7 @@ function memoryFixture(): MemoryFixtureInput {
     kind: "explicit",
     category: index === 0 ? "preferences" : "general",
     sourceType: index === 0 ? "manual" : "chat",
-    content: index === 0 ? "a".repeat(601) : `Durable learner fact ${index + 1}`,
+    content: index === 0 ? "a".repeat(NATIVE_PROMPT_SAVED_MEMORY_CHARS + 1) : `Durable learner fact ${index + 1}`,
     pinned: index === 0 ? 1 : 0,
     salience: 100 - index,
   }));
