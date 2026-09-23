@@ -28,6 +28,7 @@ import {
   timingSafeDigestEqual,
   type TimingSafeDigestSubtleCrypto,
 } from "./timing-safe-equal";
+import { freeTierDailyCapFromEnv } from "./free-tier-quota-fallbacks";
 
 // The schema uses JSON text. New rows store the exact revisioned Vectorize ID;
 // historical arrays and the v1 marker remain readable as the legacy identity.
@@ -4618,7 +4619,7 @@ async function consumeMemoryQuota(
   userId: string,
   key: string,
 ): Promise<QuotaDecision> {
-  const limit = nonNegativeInteger(env.RATE_LIMIT_MEMORY_DAILY, 60);
+  const limit = freeTierDailyCapFromEnv(env.RATE_LIMIT_MEMORY_DAILY, "RATE_LIMIT_MEMORY_DAILY");
   const now = Date.now();
   const resetAt = now + oneDayMs;
   if (limit <= 0) return { ok: false, retryAfterSeconds: 1 };

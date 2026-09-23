@@ -1,21 +1,14 @@
 # Expert Review Follow-Ups
 
-This file records recommendations from the external review that are not direct code changes in the current hardening batch.
+This file records recommendations from the external review. Production is the native Worker: `cloudflare-worker.ts` and `lib/free-runtime/`. Next middleware, NextAuth, and `app/api/*` are not the live request path.
 
-## Authentication Runtime
+## Authentication
 
-Status: migrated to Better Auth, with sliding session refresh restored.
+Status: native Google sign-in in `lib/free-runtime/account-api.ts`.
 
-The app now uses Better Auth with Google OAuth, D1-backed session rows, and Cloudflare Worker runtime configuration. The migration keeps the existing `users`, `accounts`, `sessions`, and `verification_tokens` table names so user IDs and app data survive the auth-library change.
+`handleAccountApiRequest` owns `/api/auth/*`, `/api/logout`, and `/api/me`. Google OAuth completes in `handleNativeGoogleCallback` (`/api/auth/callback/google`), which checks the Google identity token and writes a D1 session. Later requests use the HMAC-signed cookie through `requireNativeSession` in `lib/free-runtime/native-session.ts`.
 
-Follow-up discipline:
-
-- Keep the auth route, middleware, admin, private chat, and session-auth E2E tests passing.
-- Re-check Better Auth release notes before future auth upgrades.
-- Treat any future auth-table schema change as its own deployable project with production Google sign-in and session regression tests.
-- `requireSession()` refreshes sessions by default so normal app activity honors the Better Auth one-day `updateAge`; telemetry-only reads must opt out with `{ refresh: false }`.
-- `requireLocalEmailVerified: false` is intentionally safe only while Google is the sole provider and Google `email_verified` is enforced. Revisit before adding any second provider.
-- Keep the legacy NextAuth columns on `accounts` through the soak period as rollback data, then drop them in one table-focused migration.
+That is the production auth contract. Do not treat a NextAuth soak, leftover NextAuth columns, or `requireSession()` refresh as live behavior. `middleware.ts` does not run for Workers Static Assets. Google remains the only identity provider. A future auth-table change is its own deployable project, with production Google sign-in and session regression tests, and is not a reason to restore NextAuth.
 
 ## Render-Time I18n
 
@@ -40,6 +33,12 @@ Current commitment:
 
 ## CSP
 
-Status: nonce-based script CSP implemented through middleware.
+Status: Workers Static Assets `public/_headers` is the production CSP.
 
-Middleware generates a per-request nonce, forwards it in `Content-Security-Policy` and `x-inspir-csp-nonce`, and layout scripts receive the same nonce. Production `script-src` no longer uses `unsafe-inline` or `unsafe-eval`; development keeps `unsafe-eval` only when `NODE_ENV=development`.
+`public/_headers` sets `Content-Security-Policy` on `/*`, including `/chat`. The live `script-src` is `'self' 'unsafe-inline'` plus the Google, Tag Manager, and Clarity hosts. That is the policy browsers receive for static HTML.
+
+`middleware.ts` and `lib/security/headers.ts` still build a per-request nonce policy (`Content-Security-Policy` and `x-inspir-csp-nonce`). Static Asset matches bypass Next middleware, so that nonce policy is not production HTML protection. Do not describe it as the live CSP, and do not rewrite `script-src` as a side effect of another change.
+
+## Post-release hidden auth check
+
+`/api/migration/e2e-auth` stays on the Worker allowlist. `handleMigrationE2EAuthRequest` in `lib/free-runtime/account-api.ts` returns `404` with an empty body when `E2E_TEST_AUTH_SECRET` or `E2E_TEST_AUTH_EMAIL` is unset. After every release validation, confirm those temporary secrets are absent and `POST /api/migration/e2e-auth` still returns `404`. Do not remove the route in a drive-by. See `docs/runtime-routes.md`.

@@ -1,4 +1,6 @@
-export const DEFAULT_GLOBAL_DAILY_CALL_LIMIT = 1_000;
+import { FREE_TIER_QUOTA_FALLBACKS } from "./free-tier-quota-fallbacks";
+
+export const DEFAULT_GLOBAL_DAILY_CALL_LIMIT = FREE_TIER_QUOTA_FALLBACKS.LLM_GLOBAL_DAILY_CALL_LIMIT;
 
 export function parseConfiguredGlobalDailyCallLimit(value: unknown) {
   if (typeof value !== "string") return null;
