@@ -700,6 +700,10 @@ test("protected runtime stays framework-neutral and preserves security invariant
   assert.doesNotMatch(vectorSource, /@ts-ignore|@ts-expect-error|:\s*any\b|\bas any\b/);
   assert.match(vectorSource, /NATIVE_MEMORY_VECTOR_DIMENSIONS = 512/);
   assert.match(vectorSource, /MAX_NATIVE_MEMORY_VECTOR_INPUTS = 4/);
+  assert.match(vectorSource, /NATIVE_MEMORY_VECTOR_QUERY_TOP_K = 8/);
+  assert.match(vectorSource, /MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES/);
+  assert.doesNotMatch(vectorSource, /256 \* 1_024/);
+  assert.doesNotMatch(vectorSource, /cpu_ms\s*:/);
   assert.match(vectorSource, /filter: \{ userId \}/);
   assert.match(vectorSource, /posture: "fail_closed"/);
 

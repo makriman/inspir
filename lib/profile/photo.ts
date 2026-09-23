@@ -79,8 +79,8 @@ function detectImageMimeType(bytes: Uint8Array) {
 }
 
 async function sha256Hex(bytes: Uint8Array) {
-  const digestSource = new ArrayBuffer(bytes.byteLength);
-  new Uint8Array(digestSource).set(bytes);
-  const digest = await crypto.subtle.digest("SHA-256", digestSource);
+  // Digest the upload view in place. Copying a 1 MB profile photo into a
+  // second ArrayBuffer is request-path memory pressure on Workers Free.
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }

@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import test from "node:test";
 import { buildTopicSystemPrompt } from "../lib/ai/prompts";
 import {
@@ -100,6 +102,21 @@ test("profile photo validation accepts small real image types only", async () =>
 
   const tooLarge = await prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
   assert.equal(tooLarge.success, false);
+
+  const carrier = new Uint8Array(16);
+  carrier.set([0xff, 0xd8, 0xff, 0xdb], 4);
+  const view = carrier.subarray(4, 8);
+  const viewed = await prepareProfileImage(view, "image/jpeg");
+  const exact = await prepareProfileImage(new Uint8Array([0xff, 0xd8, 0xff, 0xdb]), "image/jpeg");
+  assert.equal(viewed.success, true);
+  assert.equal(exact.success, true);
+  if (viewed.success && exact.success) {
+    assert.equal(viewed.hash, exact.hash);
+  }
+
+  const photoSource = readFileSync(path.join(process.cwd(), "lib/profile/photo.ts"), "utf8");
+  assert.match(photoSource, /crypto\.subtle\.digest\("SHA-256", bytes\)/);
+  assert.doesNotMatch(photoSource, /new ArrayBuffer\(bytes\.byteLength\)/);
 });
 
 test("profile photo upload preflight rejects oversized content length", () => {

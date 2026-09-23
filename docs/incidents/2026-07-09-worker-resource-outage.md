@@ -28,7 +28,7 @@ That last finding described the intermediate OpenNext design, not the final reso
 6. Retire incremental page caching, OpenNext R2 cache reads, and request-time revalidation. Keep the migrated Durable Object class and binding only as a dormant rollback-compatible tombstone.
 7. Remove the eSlams-inspired game arena, game routes, game APIs, and game assets. Retire `ai-game-arena` in the managed topic transaction.
 8. Bound every request body, response materialization, D1 query, background queue read, and quota window. Authenticated provider SSE now passes through without Worker parsing; the browser submits one bounded, ownership-rechecked, idempotent finalize request to persist the answer and trigger memory. Keep the global LLM budget fail-closed.
-9. Keep production on Workers Free with no paid-only `limits.cpu_ms` setting. Validate the exact uploaded version under live tail and require every sampled request to remain below the 10 ms Free-plan CPU ceiling.
+9. Keep production on Workers Free with no paid-only `limits.cpu_ms` setting. Validate the exact uploaded version under live tail and require every sampled request to remain below the 10 ms Free-plan CPU ceiling. Request-path embedding parses stay under 64 KiB, Vectorize chat queries stay at topK 8, and profile-photo hashing digests the upload view in place. Those bounds are how this account stays inside the Free ceiling.
 
 ## Release invariants
 
