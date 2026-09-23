@@ -14,6 +14,7 @@ import {
 } from "./openai-chat-contract";
 import {
   NATIVE_MEMORY_VECTOR_MARKER,
+  NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
   queryNativeMemoryVectorIds,
   type NativeMemoryVectorEnv,
   type NativeMemoryVectorMatch,
@@ -308,6 +309,19 @@ const cloudflareGatewayHost = "gateway.ai.cloudflare.com";
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const truthyValues = new Set(["1", "true", "yes", "on"]);
+
+/**
+ * Workers Free rejects `limits.cpu_ms`. Embedding plus two Vectorize queries
+ * on the authenticated chat request is off unless this var is explicitly true.
+ * Absent, "0", and any other value keep the request on the bounded D1 memory
+ * batch. Queue-side vector writes are a separate invocation and stay gated
+ * by the fail-closed global LLM budget.
+ */
+export function nativeMemoryRequestVectorQueryEnabled(
+  env: { MEMORY_REQUEST_VECTOR_QUERY?: string },
+) {
+  return truthyValues.has((env.MEMORY_REQUEST_VECTOR_QUERY ?? "").trim().toLowerCase());
+}
 const bootstrapAdminEmails = new Set(["makridroid@gmail.com"]);
 const nativeMemoryVectorMarkerSql = `case
   when embedding like '"p:m:%"' or embedding like '"p:t:%"'
@@ -2368,7 +2382,8 @@ async function getContextMessages(env: CloudflareEnv, chatId: string) {
 }
 
 export async function loadNativeMemoryPromptContext(
-  env: Omit<NativeMemoryVectorEnv, "DB"> & Pick<CloudflareEnv, "DB">,
+  env: Omit<NativeMemoryVectorEnv, "DB"> &
+    Pick<CloudflareEnv, "DB"> & { MEMORY_REQUEST_VECTOR_QUERY?: string },
   input: {
     userId: string;
     chatId: string;
@@ -2405,6 +2420,7 @@ export async function loadNativeMemoryPromptContext(
     let semanticTurnRows: NativeRecentChatTurnBatchRow[] = [];
     let semanticMatches: NativeMemoryVectorMatches | null = null;
     if (
+      nativeMemoryRequestVectorQueryEnabled(env) &&
       settings &&
       nativeMemoryBoolean(settings.enabled) &&
       nativeMemoryBoolean(settings.savedMemoryEnabled) &&
@@ -2470,8 +2486,12 @@ async function hydrateNativeMemoryVectorMatches(
   currentChatId: string,
   matches: NativeMemoryVectorMatches,
 ) {
-  const memoryIds = matches.memoryMatches.slice(0, 20).map((match) => match.rowId);
-  const turnIds = matches.turnMatches.slice(0, 20).map((match) => match.rowId);
+  const memoryIds = matches.memoryMatches
+    .slice(0, NATIVE_MEMORY_VECTOR_QUERY_TOP_K)
+    .map((match) => match.rowId);
+  const turnIds = matches.turnMatches
+    .slice(0, NATIVE_MEMORY_VECTOR_QUERY_TOP_K)
+    .map((match) => match.rowId);
   const memoryPlaceholders = positionalPlaceholders(memoryIds.length || 1, 2);
   const turnPlaceholders = positionalPlaceholders(turnIds.length || 1, 3);
   const results = await db.batch<NativeMemoryBatchRow>([
@@ -2492,7 +2512,7 @@ async function hydrateNativeMemoryVectorMatches(
          and do_not_mention = 0
          and freshness_status <> 'expired'
          and id in (${memoryPlaceholders})
-       limit 20`,
+       limit ${NATIVE_MEMORY_VECTOR_QUERY_TOP_K}`,
     ).bind(userId, ...(memoryIds.length ? memoryIds : ["__no_memory_match__"])),
     db.prepare(
       `select
@@ -2509,7 +2529,7 @@ async function hydrateNativeMemoryVectorMatches(
        where user_id = ?1
          and chat_id <> ?2
          and id in (${turnPlaceholders})
-       limit 20`,
+       limit ${NATIVE_MEMORY_VECTOR_QUERY_TOP_K}`,
     ).bind(userId, currentChatId, ...(turnIds.length ? turnIds : ["__no_turn_match__"])),
   ]);
   if (results.length !== 2 || results.some((result) => !result.success)) {
@@ -2645,10 +2665,10 @@ function normalizeNativeSavedMemories(
     inputIndex: number;
   }> = [];
   const semanticScores = new Map(
-    semanticMemoryMatches.slice(0, 20).map((match) => [match.rowId, match.score]),
+    semanticMemoryMatches.slice(0, NATIVE_MEMORY_VECTOR_QUERY_TOP_K).map((match) => [match.rowId, match.score]),
   );
   const seen = new Set<string>();
-  for (const [inputIndex, row] of rows.slice(0, 25).entries()) {
+  for (const [inputIndex, row] of rows.slice(0, 5 + NATIVE_MEMORY_VECTOR_QUERY_TOP_K).entries()) {
     const id = boundedString(row.id, 1, 120);
     const kind = boundedString(row.kind, 1, 40);
     const category = boundedString(row.category, 1, 60);
@@ -2759,14 +2779,15 @@ function rankNativeRecentChatTurns(
     index: number;
   }> = [];
   const semanticScores = new Map(
-    input.semanticTurnMatches.slice(0, 20).map((match) => [match.rowId, match.score]),
+    input.semanticTurnMatches.slice(0, NATIVE_MEMORY_VECTOR_QUERY_TOP_K).map((match) => [match.rowId, match.score]),
   );
   const seen = new Set<string>();
   // The first eight rows are the bounded lexical/recency candidates from D1.
-  // Up to twenty additional rows may have been hydrated from Vectorize. Only
-  // accept rows beyond the SQL bound when their ID was actually returned by
-  // the semantic query, so callers cannot expand prompt input accidentally.
-  for (const [index, row] of rows.slice(0, 28).entries()) {
+  // Additional rows may have been hydrated from Vectorize, capped by the
+  // Free-plan query topK. Only accept rows beyond the SQL bound when their ID
+  // was actually returned by the semantic query, so callers cannot expand
+  // prompt input accidentally.
+  for (const [index, row] of rows.slice(0, 8 + NATIVE_MEMORY_VECTOR_QUERY_TOP_K).entries()) {
     const id = boundedString(row.id, 1, 120);
     if (id && index >= 8 && !semanticScores.has(id)) continue;
     const chatId = boundedString(row.chatId, 1, 120);

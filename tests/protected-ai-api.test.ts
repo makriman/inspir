@@ -30,6 +30,7 @@ import {
   NATIVE_MEMORY_SETTINGS_SUMMARY_SQL,
   NATIVE_RECENT_CHAT_TURNS_SQL,
   NATIVE_SAVED_MEMORY_PROMPT_SQL,
+  nativeMemoryRequestVectorQueryEnabled,
   normalizeNativeMemoryPromptContext,
   parseChatFinalizePayload,
   PROTECTED_AI_API_DELIVERY,
@@ -437,6 +438,23 @@ test("persisted retrieval modes and Unicode need-based overlap gate semantic spe
   }), false);
 });
 
+test("request-path vector retrieval stays off on Workers Free unless explicitly enabled", () => {
+  for (const value of [undefined, "", "0", "false", "off", "no"]) {
+    assert.equal(
+      nativeMemoryRequestVectorQueryEnabled({ MEMORY_REQUEST_VECTOR_QUERY: value }),
+      false,
+      String(value),
+    );
+  }
+  for (const value of ["1", "true", "TRUE", " yes ", "on"]) {
+    assert.equal(nativeMemoryRequestVectorQueryEnabled({ MEMORY_REQUEST_VECTOR_QUERY: value }), true, value);
+  }
+
+  const wrangler = fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8");
+  assert.match(wrangler, /"MEMORY_REQUEST_VECTOR_QUERY": "0"/);
+  assert.doesNotMatch(wrangler, /"cpu_ms"/);
+});
+
 test("native memory settings fail closed and independently gate past-chat retrieval", () => {
   const disabled = memoryFixture();
   disabled.settingsRows = [settingsRow({ enabled: 0 })];
@@ -677,7 +695,7 @@ test("protected runtime stays framework-neutral and preserves security invariant
   const loaderSource = source.slice(loaderStart, loaderEnd);
   assert.equal(loaderSource.match(/env\.DB\.batch<NativeMemoryBatchRow>/g)?.length, 1);
   assert.equal(loaderSource.match(/env\.DB\.prepare\(NATIVE_/g)?.length, 4);
-  assert.match(loaderSource, /queryNativeMemoryVectorIds\(env/);
+  assert.match(loaderSource, /nativeMemoryRequestVectorQueryEnabled\(env\)[\s\S]*queryNativeMemoryVectorIds\(env/);
   assert.match(loaderSource, /hydrateNativeMemoryVectorMatches/);
   assert.match(loaderSource, /where user_id = \?1[\s\S]*id in \(\$\{memoryPlaceholders\}\)/);
   assert.match(loaderSource, /where user_id = \?1[\s\S]*chat_id <> \?2[\s\S]*id in \(\$\{turnPlaceholders\}\)/);
@@ -700,6 +718,10 @@ test("protected runtime stays framework-neutral and preserves security invariant
   assert.doesNotMatch(vectorSource, /@ts-ignore|@ts-expect-error|:\s*any\b|\bas any\b/);
   assert.match(vectorSource, /NATIVE_MEMORY_VECTOR_DIMENSIONS = 512/);
   assert.match(vectorSource, /MAX_NATIVE_MEMORY_VECTOR_INPUTS = 4/);
+  assert.match(vectorSource, /NATIVE_MEMORY_VECTOR_QUERY_TOP_K = 8/);
+  assert.match(vectorSource, /MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES/);
+  assert.doesNotMatch(vectorSource, /256 \* 1_024/);
+  assert.doesNotMatch(vectorSource, /cpu_ms\s*:/);
   assert.match(vectorSource, /filter: \{ userId \}/);
   assert.match(vectorSource, /posture: "fail_closed"/);
 

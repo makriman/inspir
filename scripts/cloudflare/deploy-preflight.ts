@@ -227,6 +227,7 @@ const REQUIRED_WRANGLER_VARS = [
   "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
   "MEMORY_PROFILE_COMPILE_LIMIT",
   "OBSERVABILITY_INCIDENT_MODE",
+  "MEMORY_REQUEST_VECTOR_QUERY",
   "APP_WRITE_FREEZE",
   "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS",
 ];
@@ -1580,6 +1581,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     previewUrlsOk: config.preview_urls === false,
     workerGlobalCacheOk: config.cache === undefined || objectValue(config.cache).enabled === false,
     freePlanCpuConfigOk: config.limits === undefined,
+    requestPathVectorQueryDisabled: vars.MEMORY_REQUEST_VECTOR_QUERY === "0",
     staticAssetsOk:
       assets.directory === ".open-next/assets" &&
       assets.binding === "ASSETS" &&
@@ -1618,6 +1620,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.previewUrlsOk &&
     problems.workerGlobalCacheOk &&
     problems.freePlanCpuConfigOk &&
+    problems.requestPathVectorQueryDisabled &&
     problems.staticAssetsOk &&
     problems.staticLegalRedirectOk &&
     problems.observabilityOk;

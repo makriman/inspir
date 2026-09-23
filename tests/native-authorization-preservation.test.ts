@@ -792,6 +792,7 @@ class AuthorizationTestCloudflareEnv implements CloudflareEnv {
   get MEMORY_POST_TURN_SYNTHESIS_THRESHOLD(): string { return unavailableBinding("MEMORY_POST_TURN_SYNTHESIS_THRESHOLD"); }
   get MEMORY_PROFILE_COMPILE_LIMIT(): string { return unavailableBinding("MEMORY_PROFILE_COMPILE_LIMIT"); }
   get OBSERVABILITY_INCIDENT_MODE(): string { return unavailableBinding("OBSERVABILITY_INCIDENT_MODE"); }
+  get MEMORY_REQUEST_VECTOR_QUERY(): string { return "0"; }
   get APP_WRITE_FREEZE_RETRY_AFTER_SECONDS(): string { return unavailableBinding("APP_WRITE_FREEZE_RETRY_AFTER_SECONDS"); }
   get CLOUDFLARE_AI_GATEWAY_TOKEN(): string { return unavailableBinding("CLOUDFLARE_AI_GATEWAY_TOKEN"); }
   get AUTH_GOOGLE_ID(): string { return unavailableBinding("AUTH_GOOGLE_ID"); }

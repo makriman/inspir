@@ -26,7 +26,18 @@ The separate `inspirlearning-www-redirect` Worker canonicalizes `www.inspirlearn
 
 ## Free-plan CPU boundary
 
-`wrangler.jsonc` deliberately has no `limits.cpu_ms`; Workers Free rejects configurable CPU limits and enforces a 10 ms HTTP CPU ceiling. Every native route must be sampled below the repository's 8 ms release threshold so two milliseconds remain as operating headroom.
+`wrangler.jsonc` deliberately has no `limits.cpu_ms`. Workers Free rejects configurable CPU limits and enforces a 10 ms HTTP CPU ceiling. Production stays on that plan. Every native route must be sampled below the repository's 8 ms release threshold so two milliseconds remain as operating headroom.
+
+Authenticated chat still loads the bounded D1 memory batch (settings, saved memories, profiles, and recent turns) and still streams the provider response. It does not embed that turn or query Vectorize unless `MEMORY_REQUEST_VECTOR_QUERY` is explicitly `1`, `true`, `yes`, or `on`. `wrangler.jsonc` sets that var to `0`. Absent and every other value stay off. The global LLM ceiling still fail-closes for the chat completion, and for an embedding call if the var is later enabled.
+
+When request-path vector retrieval is enabled, it stays inside the same Free ceiling:
+
+- Embedding JSON above `MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES` (a 512-dimension batch of 4, under 64 KiB) is rejected before `JSON.parse`.
+- Each namespace query uses `NATIVE_MEMORY_VECTOR_QUERY_TOP_K` of 8. Prompt assembly keeps at most 5 saved memories and 4 past turns, and hydration uses the same cap.
+- Profile photo hashing digests the upload view in place. The 1 MB product cap stays one buffer on the request.
+- The memory queue stays at `max_batch_size: 1`. Cron caps stay at 25 users, 5,000 rate-limit rows, and 500 stale AI runs.
+
+Leave `limits.cpu_ms` unset. Steady-state deploy preflight rejects a paid CPU limit and rejects `MEMORY_REQUEST_VECTOR_QUERY` set to anything other than `0`.
 
 The exact `assets.run_worker_first` rules contain only the native routes above, the three exact legacy compatibility paths, narrow child globs, and the higher-precedence `!/_next/static/*` exclusion. Cloudflare `*` patterns match deeply, so the exclusion prevents chat route globs from intercepting immutable Next chunks whose generated path contains a `/chat/` segment. Broad `/api/*` and `/*` patterns are forbidden. Public HTML, SEO documents, `/api/topics`, backing translation assets (including content-addressed `/i18n/main-app/*` bundles), chunks, and media bypass the Worker.
 

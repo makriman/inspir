@@ -6,9 +6,26 @@ export const MAX_NATIVE_MEMORY_VECTOR_TEXT_CHARS = 4_000;
 export const NATIVE_MEMORY_VECTOR_MINIMUM_SIMILARITY = 0.72;
 export const NATIVE_MEMORY_VECTOR_MARKER = "vectorize:512:v1";
 export const NATIVE_MEMORY_VECTOR_REVISION_HEX_CHARS = 16;
+/**
+ * Prompt assembly keeps at most five saved memories and four past turns.
+ * Eight nearest neighbors per namespace cover that set after the similarity
+ * floor, without hydrating a top-20 list on the Workers Free 10 ms ceiling.
+ */
+export const NATIVE_MEMORY_VECTOR_QUERY_TOP_K = 8;
 
 const cloudflareGatewayHost = "gateway.ai.cloudflare.com";
-const maxEmbeddingResponseBytes = 256 * 1_024;
+// Workers Free rejects limits.cpu_ms. A 256 KiB embedding body is enough for
+// JSON.parse alone to exhaust the 10 ms request budget. This cap fits a
+// worst-case JSON number (24 digits, comma, and space) for every dimension
+// in the maximum write batch, plus item and envelope overhead, and stays
+// under 64 KiB.
+const embeddingJsonNumberChars = 24 + 2;
+const embeddingVectorJsonChars = 2 + NATIVE_MEMORY_VECTOR_DIMENSIONS * embeddingJsonNumberChars;
+const embeddingItemOverheadChars = 512;
+const embeddingEnvelopeChars = 8_192;
+export const MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES =
+  MAX_NATIVE_MEMORY_VECTOR_INPUTS * (embeddingVectorJsonChars + embeddingItemOverheadChars) +
+  embeddingEnvelopeChars;
 const maxVectorIdBytes = 64;
 
 const reserveGlobalProviderCallSql = `insert into llm_usage_daily_shards (day, shard, call_count, created_at, updated_at)
@@ -197,7 +214,7 @@ export async function queryNativeMemoryVectorIds(
         ? Promise.resolve({ matches: [], count: 0 })
         : index.query(embedding, {
             namespace: "user_memories",
-            topK: 20,
+            topK: NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
             returnMetadata: "none",
             filter: { userId },
           }),
@@ -205,14 +222,22 @@ export async function queryNativeMemoryVectorIds(
         ? Promise.resolve({ matches: [], count: 0 })
         : index.query(embedding, {
             namespace: "chat_memory_turns",
-            topK: 20,
+            topK: NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
             returnMetadata: "none",
             filter: { userId },
           }),
     ]);
     return {
-      memoryMatches: vectorMatches("user_memories", memoryMatches.matches, 20),
-      turnMatches: vectorMatches("chat_memory_turns", turnMatches.matches, 20),
+      memoryMatches: vectorMatches(
+        "user_memories",
+        memoryMatches.matches,
+        NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
+      ),
+      turnMatches: vectorMatches(
+        "chat_memory_turns",
+        turnMatches.matches,
+        NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
+      ),
     };
   } catch (error) {
     console.warn(
@@ -348,7 +373,15 @@ async function requestEmbeddingBatch(
     await cancelBody(response.body, "native_memory_embedding_invalid_content_type");
     throw new Error("Embedding provider did not return JSON");
   }
-  const bytes = await readBoundedBody(response.body, maxEmbeddingResponseBytes);
+  const advertisedBytes = contentLengthBytes(response.headers.get("content-length"));
+  if (
+    advertisedBytes !== null &&
+    advertisedBytes > MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES
+  ) {
+    await cancelBody(response.body, "native_memory_embedding_response_too_large");
+    throw new Error("Embedding provider response exceeded its byte limit");
+  }
+  const bytes = await readBoundedBody(response.body, MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES);
   const payload: unknown = JSON.parse(new TextDecoder().decode(bytes));
   if (!isRecord(payload) || !Array.isArray(payload.data) || payload.data.length !== values.length) {
     throw new Error("Embedding provider returned the wrong result count");
@@ -585,6 +618,12 @@ function boundedText(value: unknown, min: number, max: number) {
   if (typeof value !== "string") return null;
   const normalized = value.trim();
   return normalized.length >= min && normalized.length <= max ? normalized : null;
+}
+
+function contentLengthBytes(value: string | null) {
+  if (!value || !/^[0-9]+$/.test(value)) return null;
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) ? parsed : null;
 }
 
 function nonEmpty(value: string | undefined) {

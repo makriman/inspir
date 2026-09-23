@@ -2,9 +2,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { Miniflare } from "miniflare";
 import {
+  MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES,
   MAX_NATIVE_MEMORY_VECTOR_INPUTS,
   NATIVE_MEMORY_VECTOR_DIMENSIONS,
   NATIVE_MEMORY_VECTOR_MINIMUM_SIMILARITY,
+  NATIVE_MEMORY_VECTOR_QUERY_TOP_K,
   nativeMemoryVectorId,
   nativeMemoryVectorRevision,
   parseNativeMemoryVectorId,
@@ -177,7 +179,7 @@ test("native memory vector queries pre-filter both namespaces by user and return
   assert.equal(budget.bindings[0]?.[3], "user-1");
   assert.equal(queries.length, 2);
   for (const query of queries) {
-    assert.equal(query.topK, 20);
+    assert.equal(query.topK, NATIVE_MEMORY_VECTOR_QUERY_TOP_K);
     assert.equal(query.returnMetadata, "none");
     assert.deepEqual(query.filter, { userId: "user-1" });
   }
@@ -562,6 +564,60 @@ test("embedding write spend fails closed before fetch or Vectorize when budget v
   assert.equal(budget.bindings[0]?.[3], "user-1");
   assert.equal(fetched, false);
   assert.equal(upserted, false);
+});
+
+test("embedding responses above the Free-plan byte cap never reach Vectorize", async () => {
+  const minimumDenseBatchBytes =
+    MAX_NATIVE_MEMORY_VECTOR_INPUTS * (2 + NATIVE_MEMORY_VECTOR_DIMENSIONS * 25);
+  assert.equal(NATIVE_MEMORY_VECTOR_QUERY_TOP_K, 8);
+  assert.ok(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES >= minimumDenseBatchBytes);
+  assert.ok(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES <= 64 * 1_024);
+
+  let queried = false;
+  const budget = budgetDatabase({ callCount: 3 });
+  const index = {
+    async query() {
+      queried = true;
+      return { matches: [], count: 0 };
+    },
+    async upsert(vectors: VectorizeVector[]) {
+      return { ids: vectors.map((vector) => vector.id), count: vectors.length };
+    },
+  } satisfies NonNullable<NativeMemoryVectorEnv["MEMORY_VECTORIZE"]>;
+
+  const oversized = new Uint8Array(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES + 1);
+  const streamed = await withEmbeddingFetch(
+    async () => new Response(
+      new ReadableStream({
+        start(controller) {
+          controller.enqueue(oversized);
+          controller.close();
+        },
+      }),
+      { headers: { "content-type": "application/json" } },
+    ),
+    () => queryNativeMemoryVectorIds(vectorEnv(budget.db, index), {
+      userId: "user-1",
+      message: "Recall a bounded embedding.",
+    }),
+  );
+  assert.equal(streamed, null);
+  assert.equal(queried, false);
+
+  const advertised = await withEmbeddingFetch(
+    async () => new Response(JSON.stringify({ data: [{ index: 0, embedding: embedding(1) }] }), {
+      headers: {
+        "content-type": "application/json",
+        "content-length": String(MAX_NATIVE_MEMORY_EMBEDDING_RESPONSE_BYTES + 1),
+      },
+    }),
+    () => queryNativeMemoryVectorIds(vectorEnv(budget.db, index), {
+      userId: "user-1",
+      message: "Recall a bounded embedding.",
+    }),
+  );
+  assert.equal(advertised, null);
+  assert.equal(queried, false);
 });
 
 test("malformed provider vectors never reach Vectorize", async () => {

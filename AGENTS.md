@@ -11,6 +11,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Preserve strict TypeScript. Do not add `any`, `@ts-ignore`, unsafe casts, or untyped route payloads when a local type/schema can express the contract.
 - API routes must self-enforce authorization. Middleware/proxy is only an optimistic UX guard; private data access must be scoped by the authenticated user in the route or query.
 - Global LLM budget is a spend ceiling and must fail closed. Per-user or per-guest limits may fail open only when the code intentionally favors availability and logs the failure.
+- Workers Free is the live CPU plan. Do not set `limits.cpu_ms`. Request-path memory vector retrieval stays off unless `MEMORY_REQUEST_VECTOR_QUERY` is explicitly true (`0` in `wrangler.jsonc`). Authenticated chat keeps the bounded D1 memory batch, pass-through streaming, and the fail-closed global LLM budget.
 - Guest chat must not trust client-resettable state as the only quota key. Keep server-derived buckets and bounded request history.
 - Chat streaming is a user-facing quality gate. Avoid remounting streamed assistant messages, raw markdown flashes, scroll jumps, and MutationObserver work on token chunks.
 - Translations are supplied by curated bundles/DB tables. Prefer render-time lookup for new UI copy; avoid expanding DOM-walking translation.
