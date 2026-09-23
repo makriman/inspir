@@ -10,6 +10,16 @@ Production is intentionally limited to the product that can run reliably on Clou
 
 Next and OpenNext are build tools only. The deployed request handler must not import Next or the OpenNext server runtime. The old `DOQueueHandler` binding, migration tag, and self binding remain solely to keep the existing Durable Object migration rollback-safe; they are dormant in normal traffic. Memory uses its existing D1, Vectorize, profile R2, Queue, DLQ, and daily cron bindings. The Queue consumer deliberately processes one message per invocation so a burst cannot multiply deterministic memory work past the Workers Free 10 ms CPU ceiling.
 
+## Do not deploy `.open-next/worker.js`
+
+`app/api/*` and `pnpm dev` are non-production. `pnpm dev` starts Next.js and serves `app/api/*` on localhost. Production does not. Live API behavior is `lib/free-runtime/`, called from `cloudflare-worker.ts`. `wrangler.jsonc` `main` must stay `./cloudflare-worker.ts`.
+
+Do not deploy `.open-next/worker.js`. Do not set Wrangler `main` to that file, and do not import it from the native Worker. `.open-next/assets` is the Static Assets directory. `.open-next/worker.js` is the unused OpenNext server bundle. Deploying it brings back the 2026-07-09 `Exceeded CPU Limit` failure mode on Workers Free. See `docs/free-tier-cpu-budget.md` and `docs/incidents/2026-07-09-worker-resource-outage.md`.
+
+`GET /api/health` in production is `healthResponse` in `cloudflare-worker.ts` (`deploymentMode: free-static-native-accounts`, `openNext: false`, `incrementalCache: none`). `app/api/health/route.ts` is the Next/`pnpm dev` probe (`free-static-first`, `incrementalCache: regional-r2`). Do not treat the Next JSON as live health.
+
+Commands later in this file are a production release runbook. Do not run them unless the founder explicitly asks for a release.
+
 ## Release invariants
 
 - `wrangler.jsonc` has no `limits.cpu_ms`. The Free plan's 10 ms CPU ceiling is a hard constraint.

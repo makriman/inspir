@@ -66,7 +66,9 @@ The product preserves the core learning behavior on a Cloudflare-native stack th
 ## Repository map
 
 ```txt
-app/                 Next.js routes, layouts, API handlers, public pages
+app/                 Next.js pages and non-production API handlers (`pnpm dev` only)
+cloudflare-worker.ts Production Worker entry (`wrangler.jsonc` main)
+lib/free-runtime/    Production API handlers called by that Worker
 components/          Brand, marketing, legal, admin, and chat UI
 lib/ai/              Topic prompts, agent setup, and AI utilities
 lib/auth/            Auth config, session helpers, admin checks, photo sync
@@ -96,7 +98,7 @@ cp .env.example .env.local
 
 Fill in the values needed for the feature you are working on. Keep real provider keys, auth secrets, Cloudflare tokens, backups, and generated reports out of git.
 
-Run the app:
+Run the Next.js dev server. This is not the production Worker. It serves `app/api/*`, including a health JSON that does not match live `/api/health`:
 
 ```bash
 pnpm dev

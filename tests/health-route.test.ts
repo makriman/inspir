@@ -29,3 +29,17 @@ test("production health exposes version-attributed architecture without cacheabl
 test("obsolete public ISR health probe is not exposed on the Free Worker", () => {
   assert.equal(fs.existsSync(path.resolve("app/api/cache-health/route.ts")), false);
 });
+
+test("Next health stays labeled as the non-production probe", () => {
+  const nextHealth = fs.readFileSync(path.resolve("app/api/health/route.ts"), "utf8");
+  const liveHealth = fs.readFileSync(path.resolve("cloudflare-worker.ts"), "utf8");
+
+  assert.match(nextHealth, /Non-production health probe/);
+  assert.match(nextHealth, /pnpm dev/);
+  assert.match(nextHealth, /do not deploy \.open-next\/worker\.js/i);
+  assert.match(nextHealth, /deploymentMode: "free-static-first"/);
+  assert.match(nextHealth, /incrementalCache: "regional-r2"/);
+  assert.match(liveHealth, /Live GET \/api\/health for this Worker/);
+  assert.match(liveHealth, /Trust this body over app\/api\/health\/route\.ts/);
+  assert.doesNotMatch(liveHealth, /\.open-next\/worker\.js|@opennextjs\/cloudflare|next\/server/);
+});

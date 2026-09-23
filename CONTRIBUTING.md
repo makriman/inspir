@@ -22,6 +22,8 @@ pnpm dev
 
 Use Node.js `20.9.0` or newer.
 
+`pnpm dev` runs Next.js locally and serves `app/api/*`. That is not production. Live APIs are `lib/free-runtime/` and `cloudflare-worker.ts`. Do not deploy `.open-next/worker.js`. See `docs/free-tier-cpu-budget.md`.
+
 You will need local environment variables for database, auth, and AI features. Never commit `.env`, `.env.local`, local backups, provider keys, or production data.
 
 ## Checks

@@ -2,6 +2,8 @@
 
 Inspir uses a static-first, native-account architecture for Cloudflare Workers Free. OpenNext is a build tool only: it prerenders documents, and the deploy pipeline materializes eligible output into Workers Static Assets. The deployed request handler does not import Next or the OpenNext request runtime.
 
+`app/api/*` is not that handler. `pnpm dev` serves the Next routes under `app/api/` on localhost. Production APIs are `lib/free-runtime/` functions dispatched by `cloudflare-worker.ts`. Do not deploy `.open-next/worker.js`; Wrangler `main` stays `./cloudflare-worker.ts`, and `.open-next/assets` is static output only. CPU and health-field details are in `docs/free-tier-cpu-budget.md`.
+
 ## Delivery map
 
 | Route class | Examples | Production delivery | Contract |
@@ -13,6 +15,7 @@ Inspir uses a static-first, native-account architecture for Cloudflare Workers F
 | Chat shell | `/chat`, localized equivalents | Static HTML and client bootstrap | Starts as a guest shell, then checks `/api/me`; signed-in users receive profile, D1 topics, saved chat, memory, and admin capabilities |
 | Account recovery | `/reset_pw` | Direct Workers Static Assets | No password form or private data; explains Google-only recovery and returns existing users to sign-in without invoking the Worker |
 | Topic and saved-chat child URL | `/chat/:topic`, `/chat/:uuid` | Tiny native router | Known topics receive a `308` to the query shell; UUIDs receive the same static shell with private/no-store and load only through an ownership-checked API |
+| Health | `/api/health` | Native Worker `healthResponse` in `cloudflare-worker.ts` | Live fields are `free-static-native-accounts`, `openNext: false`, `incrementalCache: none`, `workerCpuPlan: free-10ms`. `app/api/health/route.ts` (`free-static-first`, `regional-r2`) is the Next/`pnpm dev` probe and is not this response |
 | Native account APIs | `/api/auth/*`, `/api/logout`, `/api/me`, `/api/me/photo` | Native Worker | Better Auth-compatible Google OAuth/session model; private/no-store; bounded bodies; no Next/OpenNext |
 | Legacy localization compatibility | `/api/language-preference`, `/api/main-app-translations`, `/api/site-translations` | Tiny native adapter over release-owned Static Assets | Preserves pre-games cookie/JSON contracts for cached clients; the release contains 70 complete main-app envelopes plus 210 published site language/namespace envelopes, with no incomplete fallback assets and no request-time D1, translation provider, Next, or OpenNext work |
 | Native saved-state APIs | `/api/chats/*`, `/api/memory/*` | Native Worker | Session and ownership checks in every handler; bounded raw D1 operations |
