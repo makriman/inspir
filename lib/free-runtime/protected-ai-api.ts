@@ -309,6 +309,19 @@ const cloudflareGatewayHost = "gateway.ai.cloudflare.com";
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const truthyValues = new Set(["1", "true", "yes", "on"]);
+
+/**
+ * Workers Free rejects `limits.cpu_ms`. Embedding plus two Vectorize queries
+ * on the authenticated chat request is off unless this var is explicitly true.
+ * Absent, "0", and any other value keep the request on the bounded D1 memory
+ * batch. Queue-side vector writes are a separate invocation and stay gated
+ * by the fail-closed global LLM budget.
+ */
+export function nativeMemoryRequestVectorQueryEnabled(
+  env: { MEMORY_REQUEST_VECTOR_QUERY?: string },
+) {
+  return truthyValues.has((env.MEMORY_REQUEST_VECTOR_QUERY ?? "").trim().toLowerCase());
+}
 const bootstrapAdminEmails = new Set(["makridroid@gmail.com"]);
 const nativeMemoryVectorMarkerSql = `case
   when embedding like '"p:m:%"' or embedding like '"p:t:%"'
@@ -2369,7 +2382,8 @@ async function getContextMessages(env: CloudflareEnv, chatId: string) {
 }
 
 export async function loadNativeMemoryPromptContext(
-  env: Omit<NativeMemoryVectorEnv, "DB"> & Pick<CloudflareEnv, "DB">,
+  env: Omit<NativeMemoryVectorEnv, "DB"> &
+    Pick<CloudflareEnv, "DB"> & { MEMORY_REQUEST_VECTOR_QUERY?: string },
   input: {
     userId: string;
     chatId: string;
@@ -2406,6 +2420,7 @@ export async function loadNativeMemoryPromptContext(
     let semanticTurnRows: NativeRecentChatTurnBatchRow[] = [];
     let semanticMatches: NativeMemoryVectorMatches | null = null;
     if (
+      nativeMemoryRequestVectorQueryEnabled(env) &&
       settings &&
       nativeMemoryBoolean(settings.enabled) &&
       nativeMemoryBoolean(settings.savedMemoryEnabled) &&

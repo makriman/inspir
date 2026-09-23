@@ -1591,6 +1591,28 @@ test("steady-state deploy preflight rejects paid-only CPU limits on the Free dep
   assert.equal((wrangler?.detail as { freePlanCpuConfigOk?: boolean }).freePlanCpuConfigOk, false);
 });
 
+test("steady-state deploy preflight keeps request-path vector retrieval off on Free", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.vars.MEMORY_REQUEST_VECTOR_QUERY = "1";
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal(
+    (wrangler?.detail as { requestPathVectorQueryDisabled?: boolean }).requestPathVectorQueryDisabled,
+    false,
+  );
+});
+
 test("steady-state deploy preflight rejects a missing Static Asset 404 boundary", () => {
   const { backupDir, repoDir } = makeFixture();
   replaceWranglerConfig(repoDir, backupDir, (config) => {
@@ -2553,6 +2575,7 @@ function wranglerConfig() {
       MEMORY_POST_TURN_SYNTHESIS_THRESHOLD: "2",
       MEMORY_PROFILE_COMPILE_LIMIT: "20",
       OBSERVABILITY_INCIDENT_MODE: "0",
+      MEMORY_REQUEST_VECTOR_QUERY: "0",
       APP_WRITE_FREEZE: "0",
       APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: "300",
     },
