@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import test from "node:test";
 import {
   FREE_GUEST_CHAT_DELIVERY,
@@ -105,6 +106,63 @@ test("native guest chat rejects non-strict and oversized payloads before D1 or p
   assert.equal(streamedOversize.status, 413);
   assert.equal(database.batchRuns, 0);
   assert.equal(database.globalWrites, 0);
+  assert.equal(providerCalls, 0);
+
+  let pulled = false;
+  let cancelled = false;
+  const declaredOversize = new Request("https://inspirlearning.com/api/guest-chat", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "content-length": String(MAX_FREE_GUEST_CHAT_BODY_BYTES + 1),
+    },
+    body: new ReadableStream<Uint8Array>({
+      pull(controller) {
+        pulled = true;
+        controller.enqueue(new Uint8Array([123, 125]));
+        controller.close();
+      },
+      cancel() {
+        cancelled = true;
+      },
+    }),
+    ...{ duplex: "half" },
+  });
+  const declaredResponse = await handleFreeGuestChat(
+    declaredOversize,
+    baseEnv(database.db),
+    runtime(fetchImpl),
+  );
+  assert.equal(declaredResponse.status, 413);
+  assert.equal(pulled, false);
+  assert.equal(cancelled, true);
+  assert.equal(database.batchRuns, 0);
+  assert.equal(providerCalls, 0);
+
+  const formUpload = await handleFreeGuestChat(
+    new Request("https://inspirlearning.com/api/guest-chat", {
+      method: "POST",
+      headers: { "content-type": "multipart/form-data; boundary=----bound" },
+      body: "------bound\r\n\r\n",
+    }),
+    baseEnv(database.db),
+    runtime(fetchImpl),
+  );
+  assert.equal(formUpload.status, 415);
+  assert.equal(database.batchRuns, 0);
+  assert.equal(providerCalls, 0);
+
+  const deepJson = await handleFreeGuestChat(
+    new Request("https://inspirlearning.com/api/guest-chat", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: `${"[".repeat(8)}${"]".repeat(8)}`,
+    }),
+    baseEnv(database.db),
+    runtime(fetchImpl),
+  );
+  assert.equal(deepJson.status, 400);
+  assert.equal(database.batchRuns, 0);
   assert.equal(providerCalls, 0);
 });
 
@@ -550,6 +608,34 @@ test("success sets secure cookies, builds a localized compact prompt, and passes
   assert.equal(latestUser.content, "Now explain momentum");
 
   assert.equal(await response.text(), ssePayload);
+});
+
+test("guest SSE passes the provider body through without buffering it", async () => {
+  const database = createMockDatabase();
+  const encoder = new TextEncoder();
+  const upstream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      controller.enqueue(encoder.encode(ssePayload));
+      controller.close();
+    },
+  });
+  const response = await handleFreeGuestChat(
+    jsonRequest({ topicId: "learn-anything", content: "Stream me" }),
+    baseEnv(database.db),
+    runtime(async () => new Response(upstream, {
+      status: 200,
+      headers: { "content-type": "text/event-stream; charset=utf-8" },
+    })),
+  );
+  assert.equal(response.status, 200);
+  assert.equal(response.body, upstream);
+  assert.equal(await response.text(), ssePayload);
+  const guestSource = fs.readFileSync(new URL("../lib/free-runtime/guest-chat.ts", import.meta.url), "utf8");
+  const workerSource = fs.readFileSync(new URL("../cloudflare-worker.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(guestSource, /MEMORY_VECTORIZE|queryNativeMemoryVectorIds|\/embeddings|ai\.run/);
+  assert.doesNotMatch(workerSource, /MEMORY_VECTORIZE|queryNativeMemoryVectorIds|\/embeddings|ai\.run/);
+  assert.match(guestSource, /return new Response\(providerResponse\.body/);
+  assert.match(guestSource, /chatJsonWithinCpuBounds\(text\)/);
 });
 
 test("production guest chat fails closed before D1, provider, or cookies without a trusted IP", async () => {

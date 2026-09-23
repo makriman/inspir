@@ -4,6 +4,11 @@ import {
   acceptsOpenAiSse,
   readBoundedOpenAiChatCompletionText,
 } from "./openai-chat-contract";
+import {
+  cancelUnreadBody,
+  chatJsonWithinCpuBounds,
+  discardIfDeclaredBodyExceeds,
+} from "./request-body-bounds";
 
 export const FREE_GUEST_CHAT_DELIVERY = "lean-api-worker";
 export const MAX_FREE_GUEST_CHAT_BODY_BYTES = 20 * 1024;
@@ -303,6 +308,10 @@ export async function handleFreeGuestChat(
     );
   }
 
+  if (await discardIfDeclaredBodyExceeds(request, MAX_FREE_GUEST_CHAT_BODY_BYTES)) {
+    return jsonResponse({ error: "Chat request is too large" }, 413);
+  }
+
   if (isWriteFreezeEnabled(env)) {
     return jsonResponse(
       {
@@ -509,6 +518,8 @@ export async function handleFreeGuestChat(
   if (useOpenAiSse) {
     responseHeaders.set("content-type", providerResponse.headers.get("content-type") ?? "text/event-stream; charset=utf-8");
     responseHeaders.set("x-accel-buffering", "no");
+    // Pass the provider stream through. Buffering or parsing SSE here would
+    // spend the Workers Free 10 ms budget on tokens the browser already reads.
     return new Response(providerResponse.body, {
       status: 200,
       headers: responseHeaders,
@@ -541,11 +552,11 @@ export async function handleFreeGuestChat(
 async function readBoundedJson(request: Request): Promise<ReadJsonResult> {
   const mediaType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase();
   if (mediaType !== "application/json" && !mediaType?.endsWith("+json")) {
+    await cancelUnreadBody(request.body, "guest_chat_unsupported_media_type");
     return { ok: false, status: 415, error: "Chat requests must use JSON" };
   }
 
-  const advertisedLength = Number(request.headers.get("content-length") ?? "0");
-  if (Number.isFinite(advertisedLength) && advertisedLength > MAX_FREE_GUEST_CHAT_BODY_BYTES) {
+  if (await discardIfDeclaredBodyExceeds(request, MAX_FREE_GUEST_CHAT_BODY_BYTES)) {
     return { ok: false, status: 413, error: "Chat request is too large" };
   }
   if (!request.body) return { ok: false, status: 400, error: "Invalid chat request" };
@@ -579,6 +590,10 @@ async function readBoundedJson(request: Request): Promise<ReadJsonResult> {
     return { ok: false, status: 400, error: "Invalid chat request" };
   } finally {
     reader.releaseLock();
+  }
+
+  if (!chatJsonWithinCpuBounds(text)) {
+    return { ok: false, status: 400, error: "Invalid chat request" };
   }
 
   try {
